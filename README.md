@@ -17,3 +17,5 @@ npm run build
 ```
 
 The static output is written to `dist/`. Set `PUBLIC_GA4_ID` only when the dedicated MyZooTwin GA4 web stream is confirmed.
+
+Production deploys are built automatically from `main` by Cloudflare Pages.
