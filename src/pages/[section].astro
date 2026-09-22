@@ -1,0 +1,9 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+export function getStaticPaths(){ return ['wildlife','pets','learn','adventures','gear'].map((section)=>({params:{section}})); }
+const section = Astro.params.section;
+const copy = { wildlife:['Into the wild','Habitats, behavior, ecology, and the stories unfolding beyond the familiar.'], pets:['Life with pets','Thoughtful, practical knowledge for sharing a healthier life with companion animals.'], learn:['Learn something wild','Accessible explainers for anatomy, behavior, evolution, and animal science.'], adventures:['Field notes & adventures','Character-led stories that follow curiosity into the world.'], gear:['Gear & field notes','A future home for careful guides to useful animal and outdoor equipment.'] }[section] ?? ['Explore','A new MyZooTwin section.'];
+---
+<BaseLayout title={`${copy[0]} — MyZooTwin`}><section class="section-page"><p class="eyebrow">MyZooTwin / {section}</p><h1>{copy[0]}</h1><p class="lead">{copy[1]}</p><div class="coming"><span>COMING SOON</span><h2>We are gathering the good stuff.</h2><p>This section is part of the foundation. New stories will arrive as they are researched, written, and ready to be useful.</p><a class="button secondary" href="/animals/">Browse the library foundation →</a></div></section></BaseLayout>
+<style>.section-page{padding:clamp(5rem,12vw,10rem) clamp(1.2rem,10vw,10rem);min-height:75vh;background:var(--cream)}.section-page h1{font-size:clamp(3.6rem,8vw,7.5rem);margin:1rem 0;color:var(--ink)}.lead{font-size:1.25rem;color:var(--muted);max-width:40rem}.coming{margin-top:5rem;max-width:620px;padding:2.5rem 0;border-top:1px solid var(--line)}.coming span{font-size:.72rem;letter-spacing:.16em;color:var(--gold);font-weight:700}.coming h2{font-size:2.3rem;margin:1rem 0}.coming p{color:var(--muted);margin-bottom:1.7rem}
+</style>
