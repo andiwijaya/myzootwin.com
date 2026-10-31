@@ -1,6 +1,6 @@
 # MyZooTwin M0-01 audit checkpoint
 
-Observation date: 2026-10-31 UTC. Status: **PARTIAL / BLOCKED**; verified V1 is **2/51**, from independently completed M0-02 and M0-03 only. Scope: audit and documentation only.
+Observation date: 2026-10-31 UTC. Status: **PARTIAL / BLOCKED**; verified V1 is **3/51**, from independently completed M0-02, M0-03 and M0-04 only. Scope: audit and documentation only.
 
 ## Repository and history
 
@@ -73,4 +73,4 @@ Layout breakpoints include header/footer 820px/520px, homepage 900px/560px and A
 
 Reuse the existing Astro repository/build, static routing, visual identity/media when rights permit, journal pages, navigation, SEO and isolated existing analytics integration. Add a lazy-loaded /play module rather than replacing the whole site or introducing a second build/repository. Keep homepage emphasis unchanged until playable release readiness. Detailed proposed boundaries are in ARCHITECTURE.md.
 
-Source packaging is resolved through the parent's explicitly authorized complete source-text transcription alternative (SOURCE_PROVENANCE.md); no native Library materialization success is claimed. Before M0-01 completion: resolve the remaining Cloudflare source/build/canonical-pointer verification gap above or obtain explicit parent acceptance of the documented audit limit. M0-02 baseline screenshots/browser smoke/rollback plan were independently completed without app or production changes; see M0-02_BASELINE.md. This does not close M0-01. M0-03 asset inventory/rights decisions/original macaw direction were also completed independently; see M0-03_ASSETS.md. Next feature is M0-04 /play/start screen/navigation, with no deployment before the final gate. PRD test/runtime targets are requirements, not verified results. M7 remains deferred.
+Source packaging is resolved through the parent's explicitly authorized complete source-text transcription alternative (SOURCE_PROVENANCE.md); no native Library materialization success is claimed. Before M0-01 completion: resolve the remaining Cloudflare source/build/canonical-pointer verification gap above or obtain explicit parent acceptance of the documented audit limit. M0-02 baseline screenshots/browser smoke/rollback plan were independently completed without app or production changes; see M0-02_BASELINE.md. This does not close M0-01. M0-03 asset inventory/rights decisions/original macaw direction were also completed independently; see M0-03_ASSETS.md. M0-04 local /play/navigation/guide/settings are complete; see M0-04_PLAY_ENTRY.md. Next feature is M0-05 canvas/loading/WebGL failure state; the external configuration gap and release gate remain pending. PRD test/runtime targets are requirements, not verified results. M7 remains deferred.

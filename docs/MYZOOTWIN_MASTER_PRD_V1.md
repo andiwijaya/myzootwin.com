@@ -318,7 +318,7 @@ Dot harus memperjelas typing dan validasi aktual sebelum implementasi; `unknown`
 - [ ] **M0-01** Audit repo, stack, Cloudflare Pages routing, existing content/SEO, analytics; catat apa yang boleh di-reuse. **Verify:** laporan audit dan baseline routes.
 - [x] **M0-02** Ambil baseline screenshots &amp; browser smoke existing homepage, navigation, mobile; kumpulkan rollback plan. **Verify:** snapshot dan baseline tests.
 - [x] **M0-03** Asset inventory + licenses + visual target; pilih model satu spesies burung tropis yang feasible dan legal. **Verify:** manifest asset, ukuran, attribution.
-- [ ] **M0-04** Buat route `/play`, start screen, navigasi &amp; link dari site tanpa merusak routes lain. **Verify:** reload direct URL /play + original URLs.
+- [x] **M0-04** Buat route `/play`, start screen, navigasi &amp; link dari site tanpa merusak routes lain. **Verify:** reload direct URL /play + original URLs.
 - [ ] **M0-05** Setup 3D canvas, loading, WebGL failure state; no blank screen. **Verify:** desktop/mobile render &amp; negative test.
 - [ ] **M0-06** Tentukan typed game entities, simulation tick, event bus minimal, save schema version. **Verify:** architecture tests &amp; serialization sample.
 - [ ] **M0-07** Setup unit, integration, local E2E + screenshot capture yang dijalankan tanpa GitHub Actions. **Verify:** reproducible test commands.
@@ -571,11 +571,11 @@ Golden-path playable: NO / LOCAL ONLY / LIVE VERIFIED
 
 ## Execution status — 2026-10-31 UTC
 
-Verified V1 completion: **2/51 (3.92%)**; M7 **0/12 deferred**. Only M0-02 and M0-03 are checked complete; M0-01 remains partial.
+Verified V1 completion: **3/51 (5.88%)**; M7 **0/12 deferred**. Only M0-02, M0-03 and M0-04 are checked complete; M0-01 remains partial.
 
 M0-01 PARTIAL: repo/stack and public routes/SEO/analytics audit recorded in M0-01_AUDIT.md. Documentation checkpoint commit: 3a85cb01843c44fc1d0b56b319b13e69dceec2f3 (local only). Complete source-text transcription alternative is now saved with explicit provenance; no failed Library helper retry or metadata bypass occurred. Existing Wrangler OAuth access independently confirmed the MyZooTwin Pages project/domains, main production deployments, dist output and PUBLIC_GA4_ID variable name. Exact source-repository binding and build command remain unavailable through the supported CLI read surfaces used; see audit evidence and remaining verification gap.
 
-No app code, route, dependency, or production changes. M0-02 browser baseline is complete as recorded below; no gameplay, physical Android, true-touch or performance pass is claimed. Next: M0-04 /play start screen/navigation preserving original routes. M0-01 external configuration verification remains pending and the production release gate stays closed.
+Local /play entry, navigation, guide and ID/EN preference UI are now implemented; no Three.js/canvas, game simulation, gameplay, game-save, dependency or production changes. No physical Android, true-touch, full localization or performance pass is claimed. Next: M0-05 3D canvas/loading/WebGL failure state. M0-01 external configuration verification remains pending and the production release gate stays closed.
 
 ### M0-02 completion record — 2026-10-31 UTC
 
@@ -592,3 +592,13 @@ Status: COMPLETE as asset inventory/rights treatment/visual and model-approach s
 Selected species: blue-and-yellow macaw (Ara ararauna), two individuals, with original parametric geometry. Study measurements: 2,028 triangles, eight rigid groups, one material, zero textures/animations, 189,816-byte GLB. Asset hashes/direct notice spot-checks, authoritative species/OFL/MIT sources, deterministic regeneration, bounded GLB structural positive/negative checks and actual isolated-browser SVG-projection review recorded. Temporary loopback viewer shut down. Existing app/media/dependencies and immutable transcripts unchanged.
 
 Limits: old hero/favicon provenance remains unverified and their existing use is preserved; no external model/texture/audio selected or agreement accepted. Study is not final M2-01 art, a GLB-loader/WebGL/animation/FPS/mobile-device pass, or a completed <=20 MB game bundle. Primary species facts are separated from game simplifications. Next: M0-04. V1 verified progress: 2/51 (3.92%); M0-01 remains partial, M7 deferred, no push/deploy.
+
+### M0-04 completion record — 2026-10-31 UTC
+
+Status: COMPLETE as the real route/navigation/entry slice. Implementation/evidence commit: b72795dbdc91a4442ef39a440e41bf3026c6aaef (local only). Report: [M0-04_PLAY_ENTRY.md](M0-04_PLAY_ENTRY.md); actual screenshots, browser and HTTP/SEO evidence: [qa/m0-04](qa/m0-04/). /play and /play/ now serve the local entry with canonical https://myzootwin.com/play/, not the homepage fallback. Existing eight journal routes/content/media and analytics source preserved; sitemap retains them and adds /play/.
+
+Truthful scope: Play/Continue disabled until gameplay exists; How to play/Settings work. Entry ID/EN dictionaries, browser preference, manual locale persistence, failure handling and native keyboard dialogs are implemented. Original inline SVG is labelled concept illustration, not a rendered game world. No Three.js/canvas, simulated gameplay, visitor/economy, game-save or final-animal claim.
+
+Verification: 8 native Node unit tests passed; Astro check 12 files/0 errors/warnings/hints; final build 9 pages and 6,379-byte entry bundle (2,628 gzip). 18 browser URL/reload scenarios, dialog/keyboard, language reload persistence, history back/forward, mobile horizontal nav, desktop/portrait/landscape visuals and final-bundle smoke recorded. Nine screenshots total 412,878 bytes. Owned 127.0.0.1:4321 preview stopped and shutdown verified; tabs closed/viewport reset.
+
+Limits/issues: BASE-01/02 unchanged; no physical Android/true touch/Safari/iOS/GPU/FPS/full localization pass. Optional Python public HTML comparison GET https://myzootwin.com/ returned HTTP 403 and was not retried; local regression uses saved M0-02 browser metadata plus unchanged source/media. M0-01 remains partial. Next: M0-05. V1 verified progress: 3/51 (5.88%); M7 deferred; no Actions/push/deploy.
