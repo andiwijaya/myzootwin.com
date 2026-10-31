@@ -2,7 +2,7 @@
   "schema_version": 1,
   "audited_at": "2026-10-31",
   "baseline_commit": "3b06c6d8d2a920ad5894868059885c98a58217a6",
-  "scope": "Existing inventory retained; M1-04 original footprint ghost/session-plan indicator recorded. No external art or license agreement.",
+  "scope": "Existing inventory retained; M1-05 original enclosed aviary construction asset and shared original geometry builder recorded. No external art or license agreement.",
   "assets": [
     {
       "path": "public/images/myzootwin-beranda.png",
@@ -154,8 +154,8 @@
     {
       "id": "tropical_creek_m1_01",
       "path": "src/game/render3d/tropical-diorama.ts",
-      "bytes": 9160,
-      "sha256": "d25a51bedc052070156fc44fec2628ecff59d3b67b536bdf97dc04941553fed7",
+      "bytes": 9167,
+      "sha256": "915ad3f835e7229857fce60cec1978153340cccc2befc0831f7f7970bb948cd1",
       "origin": "Original geometry authored in this repository for the owner, 2026-10-31",
       "rights_status": "original_code_authored_geometry_no_third_party_art",
       "provenance_evidence": "All ground, water, palms, broadleaf trees, rocks, reeds, gate roof/sign and contact shade generated from original vertex coordinates/transforms. Existing Three.js MIT engine notice retained. No external models/textures/audio/asset terms accepted.",
@@ -171,9 +171,15 @@
           "commit": "aae1e065fabae62c61f08c47efd5ea2ed358f9d1",
           "bytes": 7612,
           "sha256": "8064ad1cfcb86984d33061881a1153fae44c57efebc3e6b4a4c2457236f3f1fa"
+        },
+        {
+          "feature": "M1-03",
+          "commit": "161bb94690b9542ed222d75372bb8a94a7f65c72",
+          "bytes": 9160,
+          "sha256": "d25a51bedc052070156fc44fec2628ecff59d3b67b536bdf97dc04941553fed7"
         }
       ],
-      "source_revision_note": "M1-03 adds stable triangle ownership/catalog metadata. Original procedural art is retained; no intentional mesh design change. Source byte identity updated, prior revision preserved."
+      "source_revision_note": "M1-05 only exports the existing Batch geometry builder for the original aviary. Original world shape and6 batches/4128tri unchanged; earlier source revisions preserved."
     },
     {
       "id": "selection_indicator_m1_03",
@@ -208,6 +214,25 @@
         "added_triangles_ghost_and_plan": 8
       },
       "measurement_note": "Actual WebGL 12 draws/4136 triangles vs world 6/4128, one active ghost and at most one confirmed plan; shared line geometry reused. No external textures."
+    },
+    {
+      "id": "starter_macaw_habitat_m1_05",
+      "path": "src/game/render3d/habitat-scene.ts",
+      "bytes": 3934,
+      "sha256": "8fea839b58695e0afcf9ee881d7909f59fd86610288871ae8b7f562203d15ac5",
+      "origin": "Original procedural enclosed aviary authored in this repository: wooden perimeter posts/rails/sill, keeper door/latch, grass floor, closed wire walls and roof.",
+      "rights_status": "original_code_authored_geometry_no_third_party_art",
+      "usage_decision": "Actual2x2 starter habitat for two future Ara ararauna. No animal/care/path/economy claims; simplified game enclosure, not real husbandry guidance.",
+      "attribution": "Existing Three.js MIT notice retained at public/licenses/three-MIT.txt. No external asset/model/texture/audio.",
+      "bounded_resource_pool": {
+        "geometries_per_habitat": 2,
+        "materials_per_habitat": 2,
+        "draw_calls_per_habitat": 2,
+        "triangles_per_habitat": 264,
+        "wire_segments": 74,
+        "starter_habitat_limit": 1
+      },
+      "visual_inspection": "Actual built and selected habitat at1366x768/1920x1080/360x780/780x360; enlarged native camera detail and invalid overlap screenshot; docs/qa/m1-05."
     }
   ],
   "direct_package_notice_spot_checks": [

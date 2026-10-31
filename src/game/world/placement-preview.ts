@@ -1,5 +1,5 @@
 import type { Point, WorldState } from '../core/state.ts';
-export type PlacementReason = 'choose' | 'ready' | 'outside' | 'creek' | 'path' | 'occupied' | 'scenery';
+export type PlacementReason = 'choose' | 'ready' | 'outside' | 'creek' | 'path' | 'occupied' | 'scenery' | 'limit' | 'command';
 export interface PlacementProposal { kind:'habitat'; anchor:Point; width:2; height:2; cells:Point[]; }
 export interface PlacementView { active:boolean; revision:number; proposal:PlacementProposal|null; reason:PlacementReason; confirmed:PlacementProposal|null; confirmations:number; }
 export type PlacementCommand = 'begin'|'confirm'|'cancel'|'left'|'right'|'up'|'down';
@@ -15,16 +15,23 @@ export function validatePlacement(world:WorldState, anchor:Point|null, blocked:R
   const reason=tiles.some(t=>!t)?'outside':tiles.some(t=>t!.terrain==='creek')?'creek':tiles.some(t=>t!.path)?'path':tiles.some(t=>t!.occupantId!==null)?'occupied':cells.some(c=>blocked.has(cellKey(c)))?'scenery':'ready';
   return {proposal,reason};
 }
-/** Session-local planning only. It never writes world occupancy, currency or saves. */
-export function createPlacementPlanner(world:()=>WorldState,blocked:ReadonlySet<string>,onChange:(view:PlacementView)=>void) {
+export interface PlacementPlannerOptions {
+  validate?:(world:WorldState,anchor:Point|null)=>{proposal:PlacementProposal|null;reason:PlacementReason};
+  commit?:(proposal:PlacementProposal,operationId:string)=>boolean;
+  operationId?:()=>string;
+}
+/** Candidate state is local; an optional authoritative command commits the checked proposal. */
+export function createPlacementPlanner(world:()=>WorldState,blocked:ReadonlySet<string>,onChange:(view:PlacementView)=>void,options:PlacementPlannerOptions={}) {
   let active=false,anchor:Point|null=null,confirmed:PlacementProposal|null=null,revision=0,confirmations=0,disposed=false,enabled=true;
-  const view=():PlacementView=>({active,revision,...validatePlacement(world(),anchor,blocked),confirmed:confirmed?structuredClone(confirmed):null,confirmations});
+  let operationId='';
+  const validate=(anchor:Point|null)=>options.validate?options.validate(world(),anchor):validatePlacement(world(),anchor,blocked);
+  const view=():PlacementView=>({active,revision,...validate(anchor),confirmed:confirmed?structuredClone(confirmed):null,confirmations});
   function emit(){revision++;onChange(view());}
   return {
-    begin(){if(!enabled||disposed||active)return;active=true;anchor=null;emit();},
+    begin(){if(!enabled||disposed||active)return;active=true;anchor=null;operationId=options.operationId?.()??`habitat-${crypto.randomUUID()}`;emit();},
     choose(value:Point|null){if(!enabled||disposed||!active)return;anchor=value?{...value}:null;emit();},
     move(dx:number,dz:number){if(!enabled||disposed||!active)return;const w=world(),p=anchor??{x:Math.floor(w.width/2)-1,z:Math.floor(w.height/2)-1};anchor={x:Math.max(-1,Math.min(w.width-1,p.x+dx)),z:Math.max(-1,Math.min(w.height-1,p.z+dz))};emit();},
-    confirm(expectedRevision:number){if(!enabled||disposed||!active||revision!==expectedRevision)return false;const checked=validatePlacement(world(),anchor,blocked);if(checked.reason!=='ready'||!checked.proposal){emit();return false;}confirmed=structuredClone(checked.proposal);confirmations++;active=false;anchor=null;emit();return true;},
+    confirm(expectedRevision:number){if(!enabled||disposed||!active||revision!==expectedRevision)return false;const checked=validate(anchor);if(checked.reason!=='ready'||!checked.proposal){emit();return false;}if(options.commit&&!options.commit(checked.proposal,operationId)){emit();return false;}confirmed=structuredClone(checked.proposal);confirmations++;active=false;anchor=null;emit();return true;},
     cancel(){if(!enabled||disposed||!active)return;active=false;anchor=null;emit();},
     setEnabled(value:boolean){enabled=value;},
     snapshot:view,

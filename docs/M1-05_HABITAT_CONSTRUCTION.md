@@ -1,0 +1,49 @@
+# M1-05 — Actual enclosed habitat and authoritative occupancy
+
+Status: COMPLETE locally, 2026-10-31 UTC. The M1-04 Confirm flow now constructs an actual enclosed habitat in the simulation and renderer. One starter habitat, four occupied cells, selectable bilingual identity. Full gameplay, paths, animal placement/care, economy and autosave remain later milestones. M0-01 exact external Cloudflare configuration remains partial; no production change.
+
+## Player outcome and state boundary
+
+Open the3D preview → Build a macaw habitat → choose a clear2×2 footprint by mouse/touch tap or keyboard/tile arrows → Build habitat. The floor, wooden sill/posts/rails, closed keeper door/latch, wire walls and wire roof appear in the world. The habitat is original procedural game art, intended for the two future blue-and-yellow macaws; it is not real husbandry guidance. Actual birds/perches/food/water do not appear prematurely. Original journal pages/assets/analytics stay intact and Play/Continue remain truthfully disabled while the whole game is unfinished.
+
+`simulation.buildHabitat(anchor,operationId)` prepares a cloned world, validates all state references/schema invariants, then commits habitat+four tile occupant IDs atomically. It emits `habitat-built` only after commit. Same operation ID and same footprint return an idempotent duplicate result, including after actual save-codec roundtrip; conflicting reuse is rejected. Invalid/paused/disposed/cancelled/stale/repeated commands cannot partially occupy tiles. Currency, ledger, missions, birds, RNG and time are unchanged by the command. UI explicitly says this construction preview has no coin charge yet; pricing is M3, not a fake transaction.
+
+The shared pure validator rejects bounds, creek, paths/gate, occupancy and scenery. The77-cell conservative scenery mask is a pure-data copy of actual art bounds; a test compares it exactly against generated geometry to catch drift. The starter scope allows one habitat; occupied sites still report occupied, other clear sites report the starter limit. These are separate ID/EN textual reasons with green/red cue and disabled invalid Confirm. Actual generated floor/wood/wire bounds were additionally checked for **all120 starter-grid anchors:21 legal placements**, all inside their exact occupied footprint. The keeper door/latch is inside the perimeter, including valid edge placements.
+
+`createHabitatScene` batches the floor/wood into one vertex-color mesh and the74 wire segments into one line mesh. Actual triangles and occupied tile metadata join the existing catalog, so clicking habitat floor/posts selects “Macaw habitat1” / “Habitat makaw1”, with four-tile status. The identity/outline survives camera movement and language changes; overlays cannot pick through. Ghosts are transient; no blue planning outline is presented as a built habitat.
+
+The pure in-memory `SanctuarySessionState` stores cloned serializable data under a weak owner key. It retains habitat, occupancy and fixed-tick state across close/reopen, context/render retry and same-root remount/unmount. GPU/core/listeners are still disposed. It is **page-session data, not localStorage/IndexedDB/autosave or durable progress across navigation/reload**; closing/reloading the document can reset it. UI warns about full reload. Actual version1 codec roundtrip proves occupancy serializes and reloads correctly, but player Continue/autosave remain M5. Restored renderer events are checked against their initial tick, with a new positive/adversarial receipt-accounting test; no second simulation/RAF loop was added.
+
+## Final verification
+
+Run `20261031T211432Z-7ce3b19f`; source `30a37066bd96a87f259d57643d2cb0f13d3fe656649544261d21bbf0651d20fa`; build `572326a9d28fecdf873ea13ec0a849b798189635cc772204eb326bc6115012d6`. `npm run qa:local`: **88/88 tests**, zero failed/skipped/todo; Astro check **57 files, zero errors/warnings/hints**; build9 pages; all9 route/title/H1/canonical/sitemap checks and direct `/play` PASS. `node scripts/qa/payload.mjs` measured that same build. `npm run qa:verify` PASS at **2026-10-31T21:23:29.193Z**, checking current source/build, complete raw logs, screenshots and stopped loopback ports. [Raw evidence](qa/m1-05/).
+
+Actual built-product native input and pixels were reviewed at1366×768,360×780 portrait,780×360 landscape and1920×1080. Six actual full-page captures total **788,358 bytes**; CSS viewport and capture dimensions are distinct. Native keyboard built, mouse selected the constructed habitat, same-site placement was rejected, Escape cancelled, ID/EN selection worked, and native drag/wheel/keyboard camera kept selected ID and occupancy. Close/reopen retained the identical habitat UUID and four occupied cells. Journal navigation, Back and full reload remained valid and reopened closed without a stale canvas; durable progress after document navigation/reload is not claimed.
+
+The labelled isolated fixture ran **42 construction +27 camera +36 selection =105 injected cases** across three viewport sizes. Native WebGL frames are awaited for actual construction/selection/bounded-pool checks. Construction covers valid ghost without mutation, water/scenery/bounds rejection, cancel, drag/pinch/cancel/late release/overlay isolation, ID/EN/arrows/Enter/Escape, paused build rejection, actual exactly-once commit, actual habitat picking, occupied overlap, starter limit and40 repeated preview/cancel cycles per size. Synthetic touch/events are explicitly not native OS touch or physical Android testing.
+
+Pause held its tick before advancing again on resume. Close/reopen restored a nonzero initial tick and habitat; context loss/render failure, held-pointer orientation, remount, stale prior-handle disposal, unmount/remount and injected unsupported-WebGL→native recovery retained one habitat/four cells. Held pointer changed1→0 on orientation without committing. Nine cleanup snapshots show zero live canvas/session/RAF, geometry/material/program/texture/subscriber ownership, disposed camera/picker/planner/habitat renderer and cleanupErrors0. Authoritative habitat data intentionally remains in the memento; no claim that it was deleted. Max active renderer/pending RAF stayed1. Owned tabs39/40 closed, viewport reset; owned TTY previews stopped gracefully and ports4321/4322 independently free.
+
+## Cleanup warning resolved
+
+M1-04's injected-context cleanup warning was a redundant `forceContextLoss()` call after the context was already lost; querying the loss extension then can report unsupported. A small tested `releaseLiveContext` helper now loses only a live context. Geometry/material/renderer cleanup still executes for lost contexts. Current full product+fixture warn/error captures, including context/render/unsupported injections, are **empty at uncapped limit200**. Prior warning evidence in M1-04 is preserved. This corrects the redundant cleanup action, with no engine/security/browser setting change.
+
+## Measurements and asset hygiene
+
+Original world6 draws/4,128tri; constructed habitat adds **2 draws/264tri**, giving8 draws/4,392tri unselected. The habitat uses2 geometries/2 materials, no textures or external assets. The fully warmed QA pool after actual selection and invalid ghosts had12 GPU geometries/13 owned materials/8 programs/one reported engine texture, bounded across repeated previews; all returned to zero on release. Wire lines are74 segments, not counted as triangles. Existing selection/ghost pools remain reusable and hidden when unused.
+
+| Five-second probe | CSS viewport | RAF callback Hz | Synchronous CPU-submit p95 ms | Readout writes |
+|---|---|---:|---:|---:|
+| desktop-built-habitat | 1366×768 | 60.00 | 0.70 | 20 |
+| portrait-built-habitat | 360×780 | 60.00 | 0.90 | 20 |
+| landscape-built-habitat | 780×360 | 60.00 | 0.70 | 20 |
+
+These small-panel, same-machine callback/JS/core/render-submit observations are **not presented FPS, GPU time, physical mobile performance or touch latency**. No15-minute soak/network/startup certification. Optional legacy heap values are potentially shared/quantized and are not retained-memory/GC/leak-free proof.
+
+Known preview-open files **622,525 raw /162,965 gzip-level9-estimate bytes**, +6,537/+2,167 versus M1-04. Shell53,636 raw; lazy foundation **568,889 raw**. The raw>500kB warning stays visible. Estimates exclude external fonts/incidental icons/analytics and are not future populated-game download certification. No dependency upgrade/download, broad engine refactor or artificial chunk splitting.
+
+Asset manifest records the original aviary and the shared existing Batch export; world design remains6 batches/4,128tri and earlier source revisions are preserved. No external art/license agreement. One old generated run was fully archived (**18 files/533,577 compressed bytes**), CRC and every-entry SHA verified before owner/path-checked cache prune; newest3 retained. Historical docs/QA/source/media/macaw study/PRD transcriptions/Git rollback remain intact. Only the unhashed preview console log has trailing blank lines trimmed; hashed receipts/test/check/build logs and screenshots are byte-exact.
+
+## Remaining gates
+
+M1-06 paths/connectivity is next; viewingCell stays null and no visitor access/revenue is invented. Animal placement/behavior/care, economy/mission rewards, player save/Continue/reset, full localization, physical Android/touch/Safari/iOS, actual FPS/GPU/network/soak and production remain unverified later work. BASE-01/02 are preexisting. M0-01 still lacks exact external Cloudflare repository/build/root/automatic-deploy configuration; no login/new grant attempted. No Actions/push/deploy/public403 retry or account/access changes. Verified V1 after completion checkpoint: **12/51(23.53%)**, all12M7 deferred.

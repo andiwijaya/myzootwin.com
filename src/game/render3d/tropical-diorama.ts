@@ -3,7 +3,7 @@ import type { FaceOwner, SceneCatalog, SceneIdentityKind } from './scene-selecti
 import type { WorldState } from '../core/state.ts';
 
 /** Original code-authored scenery. Dressing is not a player structure or a habitat. */
-class Batch {
+export class Batch {
   positions: number[] = []; normals: number[] = []; colors: number[] = [];
   owner:string|null=null; ranges:FaceOwner[]=[];
   add(source: BufferGeometry, color: string, position: number[], scale = [1, 1, 1], yaw = 0) {

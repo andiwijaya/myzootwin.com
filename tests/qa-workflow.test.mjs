@@ -56,3 +56,10 @@ test('generated fixture must carry exact visible run/build/source IDs before bro
   assert.equal(fixtureIdentityMatches('<strong>LOCAL QA</strong>',report),false);
   assert.equal(fixtureIdentityMatches(html.replace('source-1','old-source'),report),false);
 });
+
+test('resumed simulation receipts account for initial tick without accepting missing or fabricated events',()=>{
+ const {report,receipt}=records(),row=receipt.cases.find(c=>c.id==='native-lifecycle');row.status='PASS';
+ const sample=(name,tick,events,paused=false)=>({name,maxActiveSessions:1,maxPendingRAFs:1,canvasCount:1,pendingRAFs:paused?0:1,session:{simulationStartTick:20,simulationTick:tick,simulationEvents:events,simulationSubscribers:1,simulationGameTimeMs:tick*100,visualGameTimeMs:tick*100,pendingFrames:paused?0:1}});
+ row.data={harnessRunId:report.runId,harnessBuildId:report.build.id,harnessSourceId:report.source.id,samples:[sample('ready',21,1),sample('paused',22,2,true),sample('still-paused',22,2,true),sample('resumed',23,3),{name:'closed',maxActiveSessions:1,maxPendingRAFs:1,canvasCount:0,pendingRAFs:0,lastDisposed:{simulationDisposed:true,simulationSubscribers:0}}]};
+ assert.deepEqual(browserVerdict(receipt,report).errors,[]);row.data.samples[1].session.simulationEvents=0;assert.ok(browserVerdict(receipt,report).errors.some(e=>e.includes('integration mismatch')));
+});

@@ -1,3 +1,6 @@
+import {releaseLiveContext} from './webgl-cleanup.ts';
+import {createHabitatScene} from './habitat-scene.ts';
+import type {SanctuarySessionState} from '../core/session-state.ts';
 import { createPlacementPreview } from './placement-preview.ts';
 import { createScenePicker } from './scene-picking.ts';
 import { AmbientLight, BufferGeometry, Color, DirectionalLight, OrthographicCamera, Scene, SRGBColorSpace, WebGLRenderer, type Material } from 'three';
@@ -8,12 +11,13 @@ import { createFrameLoop, type FrameDriver } from './frame-loop';
 import { PreviewFailure, type PreviewFailureKind, type PreviewSession } from './preview-controller';
 
 interface FoundationOptions {
+  stateStore?:SanctuarySessionState;
   frames?: FrameDriver;
   createContext?: (canvas: HTMLCanvasElement) => WebGL2RenderingContext | null;
   createRenderer?: (canvas: HTMLCanvasElement, context: WebGL2RenderingContext) => WebGLRenderer;
 }
 
-/** Read-only sanctuary world driven by the fixed-tick foundation; no gameplay yet. */
+/** Fixed-tick sanctuary with authoritative habitat construction; later animal/economy loop pending. */
 export function mountFoundationScene(host: HTMLElement, onFailure: (kind: PreviewFailureKind) => void, options: FoundationOptions = {}): PreviewSession {
   const canvas = document.createElement('canvas');
   canvas.setAttribute('aria-hidden', 'true');
@@ -37,12 +41,16 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   let controls: ReturnType<typeof mountCameraControls> | undefined;
   let picker: ReturnType<typeof createScenePicker> | undefined;
   let placement:ReturnType<typeof createPlacementPreview>|undefined;
-  const simulation = createSimulation();
-  let simulationTimeMs = 0;
+  let habitats:ReturnType<typeof createHabitatScene>|undefined;
+  let habitatDirty=true;
+  const simulation = createSimulation(options.stateStore?.read());
+  const simulationStartTick=simulation.inspect().tick;
+  let simulationTimeMs = simulation.inspect().gameTimeMs;
   let simulationEvents = 0;
   const unsubscribe = simulation.subscribe(event => {
     simulationTimeMs = event.gameTimeMs;
     if (event.type === 'tick') simulationEvents++;
+    if(event.type==='habitat-built')habitatDirty=true;
   });
 
   function notifyContextLoss() {
@@ -55,6 +63,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   function render() {
     if (disposed || lost) return;
     if (context?.isContextLost()) { notifyContextLoss(); return; }
+    if(habitatDirty&&habitats){habitats.sync(simulation.snapshot().world);habitatDirty=false;}
     diorama?.update(simulationTimeMs, motion.matches);
     renderer?.render(scene, camera);
     if (renderer) renderSubmissions++;
@@ -91,6 +100,8 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     safe(() => controls?.dispose());
     safe(() => picker?.dispose());
     safe(() => placement?.dispose());
+    safe(() => habitats?.dispose());
+    safe(() => options.stateStore?.write(simulation.snapshot()));
     unsubscribe();
     simulation.dispose();
     canvas.removeEventListener('webglcontextlost', onLost);
@@ -103,9 +114,9 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     scene.clear();
     if (renderer) {
       safe(() => renderer!.dispose());
-      safe(() => renderer!.forceContextLoss());
+      safe(() => releaseLiveContext(context,()=>renderer!.forceContextLoss()));
     } else {
-      safe(() => context?.getExtension('WEBGL_lose_context')?.loseContext());
+      safe(() => releaseLiveContext(context,()=>context?.getExtension('WEBGL_lose_context')?.loseContext()));
     }
     canvas.remove();
   }
@@ -127,6 +138,9 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     diorama = createTropicalDiorama(initialWorld);
     geometries.push(...diorama.geometries); materials.push(...diorama.materials);
     scene.add(diorama.group);
+    habitats=createHabitatScene(diorama.catalog,(geometry,material)=>{geometries.push(geometry);materials.push(material);});scene.add(habitats.group);
+    function announceHabitat(){const s=simulation.inspect();host.dataset.builtHabitats=String(s.habitatCount);host.dataset.occupiedTiles=String(s.occupiedTiles);host.dispatchEvent(new CustomEvent('scene-habitat-change',{detail:{count:s.habitatCount,occupiedTiles:s.occupiedTiles}}));}
+    announceHabitat();
     picker=createScenePicker(diorama.catalog,camera,()=>canvas.getBoundingClientRect(),identity=>{
       if(identity)host.dataset.selectedId=identity.id;else delete host.dataset.selectedId;
       host.dispatchEvent(new CustomEvent('scene-selection-change',{detail:identity}));
@@ -137,7 +151,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
       host.dataset.planAnchor=view.proposal?`${view.proposal.anchor.x},${view.proposal.anchor.z}`:'';
       host.dataset.planConfirmed=view.confirmed?`${view.confirmed.anchor.x},${view.confirmed.anchor.z}`:'';
       host.dispatchEvent(new CustomEvent('scene-placement-change',{detail:view}));
-    });
+    },(anchor,operationId)=>{const result=simulation.buildHabitat(anchor,operationId);if(result.ok){options.stateStore?.write(simulation.snapshot());announceHabitat();return true;}return false;});
     geometries.push(...placement.geometries);materials.push(...placement.materials);scene.add(placement.group);
     controls=mountCameraControls(host,canvas,camera,diorama.bounds,initialWorld,point=>placement?.active()?placement.pick(point):picker?.pick(point),()=>placement?.active()?placement.command('cancel'):picker?.clear());
     canvas.addEventListener('webglcontextlost', onLost);
@@ -162,6 +176,6 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     clearSelection:()=>picker?.clear(),
     placement:(command,revision)=>{if(command==='begin')picker?.clear();placement?.command(command,revision);},
     setPaused(value) { paused = value; updateRunning(); },
-    inspect: () => ({ disposed, lost, canvasAttached: canvas.isConnected, pendingFrames: loop.inspect().pendingFrames, geometries: renderer?.info.memory.geometries ?? 0, textures: renderer?.info.memory.textures ?? 0, programs: renderer?.info.programs?.length ?? 0, ownedMaterialsLive: materials.length - releasedMaterials, drawCallsLastRender: renderer?.info.render.calls ?? 0, trianglesLastRender: renderer?.info.render.triangles ?? 0, renderSubmissions, bufferWidth: canvas.width, bufferHeight: canvas.height, pixelRatio: renderer?.getPixelRatio() ?? 0, cleanupErrors, simulationTick: simulation.inspect().tick, simulationGameTimeMs: simulation.inspect().gameTimeMs, simulationPaused: simulation.inspect().paused, simulationDisposed: simulation.inspect().disposed, simulationSubscribers: simulation.inspect().subscribers, simulationEvents, orthographicCamera: camera.isOrthographicCamera, ...diorama?.inspect(), ...controls?.inspect(), ...picker?.inspect(), ...placement?.inspect() }),
+    inspect: () => ({ disposed, lost, canvasAttached: canvas.isConnected, pendingFrames: loop.inspect().pendingFrames, geometries: renderer?.info.memory.geometries ?? 0, textures: renderer?.info.memory.textures ?? 0, programs: renderer?.info.programs?.length ?? 0, ownedMaterialsLive: materials.length - releasedMaterials, drawCallsLastRender: renderer?.info.render.calls ?? 0, trianglesLastRender: renderer?.info.render.triangles ?? 0, renderSubmissions, bufferWidth: canvas.width, bufferHeight: canvas.height, pixelRatio: renderer?.getPixelRatio() ?? 0, cleanupErrors, simulationTick: simulation.inspect().tick, simulationGameTimeMs: simulation.inspect().gameTimeMs, simulationPaused: simulation.inspect().paused, simulationDisposed: simulation.inspect().disposed, simulationSubscribers: simulation.inspect().subscribers, simulationEvents, simulationStartTick, habitatCount:simulation.inspect().habitatCount, occupiedTiles:simulation.inspect().occupiedTiles, currency:simulation.inspect().currency, ...habitats?.inspect(), orthographicCamera: camera.isOrthographicCamera, ...diorama?.inspect(), ...controls?.inspect(), ...picker?.inspect(), ...placement?.inspect() }),
   };
 }

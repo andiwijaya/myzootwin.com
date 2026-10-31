@@ -106,7 +106,7 @@ export function browserVerdict(receipt,report) {
       if(!['ready','paused','still-paused','resumed','closed'].every(name=>samples.some(x=>x.name===name)))fail('Missing lifecycle phases');
       for(const sample of samples) {
         if(sample.maxActiveSessions!==1||sample.maxPendingRAFs!==1)fail('Duplicate session/RAF detected');
-        if(sample.session) { const s=sample.session;if(s.simulationSubscribers!==1||s.simulationEvents!==s.simulationTick||s.simulationGameTimeMs!==s.simulationTick*100||s.visualGameTimeMs!==s.simulationGameTimeMs)fail('Core/event/renderer integration mismatch'); }
+        if(sample.session) { const s=sample.session;if(s.simulationSubscribers!==1||s.simulationEvents+(s.simulationStartTick??0)!==s.simulationTick||s.simulationGameTimeMs!==s.simulationTick*100||s.visualGameTimeMs!==s.simulationGameTimeMs)fail('Core/event/renderer integration mismatch'); }
         if(sample.name==='closed'&&(sample.canvasCount!==0||sample.pendingRAFs!==0||!sample.lastDisposed?.simulationDisposed||sample.lastDisposed?.simulationSubscribers!==0))fail('Core cleanup failed');
       }
       const paused=samples.find(x=>x.name==='paused')?.session,later=samples.find(x=>x.name==='still-paused')?.session,resumed=samples.find(x=>x.name==='resumed')?.session;

@@ -1,3 +1,4 @@
+import {sanctuarySessionFor} from '../game/core/session-state.ts';
 import type { PlacementCommand, PlacementView } from '../game/world/placement-preview.ts';
 import type { SceneIdentity } from '../game/render3d/scene-selection.ts';
 import { presentSelection } from './selection-presentation.ts';
@@ -43,6 +44,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     }
   }
   let placement:PlacementView|null=null;
+  let habitatCount=0;
   const placementTools=root.querySelector<HTMLElement>('[data-placement-tools]');
   function renderPlacement(){
     if(!placementTools)return;const copy=entryMessages[locale],active=Boolean(placement?.active);
@@ -55,7 +57,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     root.querySelector('[data-placement-reason]')?.replaceChildren(active?copy[reasonKey]:'');
     const anchor=placement?.proposal?.anchor;
     root.querySelector('[data-placement-location]')?.replaceChildren(active&&anchor?copy.placementLocation.replace('{x}',String(anchor.x+1)).replace('{z}',String(anchor.z+1)):'');
-    const confirmed=root.querySelector<HTMLElement>('[data-placement-confirmed]');if(confirmed){confirmed.hidden=!placement?.confirmed||active;confirmed.textContent=copy.placementConfirmed;}
+    const confirmed=root.querySelector<HTMLElement>('[data-placement-confirmed]');if(confirmed){confirmed.hidden=habitatCount===0||active;confirmed.textContent=copy.placementConfirmed;}
   }
   const cameraControls=root.querySelector<HTMLElement>('[data-camera-controls]');
   const zoomOutput=root.querySelector<HTMLOutputElement>('[data-camera-zoom]');
@@ -70,7 +72,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) return;
     const copy = entryMessages[locale];
     panel.lang = locale;
-    if(next.status!=='ready'){selected=null;placement=null;}
+    if(next.status!=='ready'){selected=null;placement=null;habitatCount=0;}
     renderPlacement();
     renderSelection();
     if(cameraControls){cameraControls.hidden=next.status!=='ready';cameraControls.setAttribute('aria-label',copy.cameraControls);}
@@ -116,10 +118,11 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
 
   const load: PreviewLoader = options.loadRenderer ?? (async () => {
     const module = await import('../game/render3d/foundation-scene');
-    return (onFailure) => module.mountFoundationScene(host, onFailure);
+    return (onFailure) => module.mountFoundationScene(host, onFailure,{stateStore:sanctuarySessionFor(root)});
   });
   const controller = createPreviewController(load, render);
   host.addEventListener('scene-selection-change',event=>{const had=Boolean(selected);selected=(event as CustomEvent<SceneIdentity|null>).detail;renderSelection();if(!selected&&had&&selectionStatus)selectionStatus.value=entryMessages[locale].selectionCleared;},{signal:events.signal});
+  host.addEventListener('scene-habitat-change',event=>{habitatCount=(event as CustomEvent<{count:number}>).detail.count;renderPlacement();},{signal:events.signal});
   host.addEventListener('scene-placement-change',event=>{placement=(event as CustomEvent<PlacementView>).detail;renderPlacement();},{signal:events.signal});
   for(const button of root.querySelectorAll<HTMLButtonElement>('[data-placement-command]'))button.addEventListener('click',()=>{const command=button.dataset.placementCommand as PlacementCommand;controller.placement(command,placement?.revision);if(command==='begin'||command==='cancel'||command==='confirm')host.focus({preventScroll:true});},{signal:events.signal});
   placementTools?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();controller.placement('cancel');host.focus({preventScroll:true});}},{signal:events.signal});
