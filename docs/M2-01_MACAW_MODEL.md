@@ -1,6 +1,6 @@
 # M2-01 — Final V1 macaw model and minimum animations
 
-Status: COMPLETE locally, 2026-10-31 UTC. Implementation/evidence commit is recorded in the living completion record. No push, deploy, Actions, login, new grant, purchase, license acceptance or external upload.
+Status: COMPLETE locally, 2026-10-31 UTC. Implementation/evidence commit: 8f91a980759d337d186de9d1dec095fd0eb60aeb (local only). No push, deploy, Actions, login, new grant, purchase, license acceptance or external upload.
 
 The original blue-and-yellow macaw (`Ara ararauna`, core species ID `ara-ararauna`) is now a reusable code-native low-poly model with seven working animation states. It is a new articulated asset, not the M0-03 GLB study renamed. Curved closed hook, marked pale cheeks/eyes, green forehead, gold breast/underwing, blue articulated wings, tapered long tail, ground/gripping feet and closed-eye overlay provide recognizable anatomy. The earlier study and all original media remain intact.
 
