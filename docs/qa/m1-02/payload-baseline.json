@@ -1,0 +1,280 @@
+{
+  "generatedAt": "2026-10-31T19:33:43.183Z",
+  "source": "f6691e2f0876eb84095331f062b5ff72fb8cd6531336a39260d882240bbe4642",
+  "buildId": "4fd75132383c555d57a19f17d1004019ac22156ddf982170970235ddad0e3fc5",
+  "scope": "Current read-only renderer preview. Same-origin built bytes/gzip estimates, not measured network transfer, first-interaction latency or future populated-game payload",
+  "shell": {
+    "files": [
+      {
+        "path": "play/index.html",
+        "bytes": 15591,
+        "gzipLevel9Bytes": 4908,
+        "sha256": "68e96057ec2ed2ec41e3ecd6432c8f85fe61abae87f408046e13a53e7a5b1e98"
+      },
+      {
+        "path": "_astro/play.CyhYdWCd.css",
+        "bytes": 8372,
+        "gzipLevel9Bytes": 1918,
+        "sha256": "f6989b425e538992151b01e7378f44e74c1b27dfbcfb44902266a1dcffa12a01"
+      },
+      {
+        "path": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.XZo5JuUx.js",
+        "bytes": 15162,
+        "gzipLevel9Bytes": 5660,
+        "sha256": "5ceef1debd53527dc4eb6b33b17049599d98a090b05f1b6cec0d51f7bd75aa51"
+      }
+    ],
+    "rawBytes": 39125,
+    "gzipLevel9EstimateBytes": 12486
+  },
+  "firstPreviewOpen": {
+    "files": [
+      {
+        "path": "play/index.html",
+        "bytes": 15591,
+        "gzipLevel9Bytes": 4908,
+        "sha256": "68e96057ec2ed2ec41e3ecd6432c8f85fe61abae87f408046e13a53e7a5b1e98"
+      },
+      {
+        "path": "_astro/play.CyhYdWCd.css",
+        "bytes": 8372,
+        "gzipLevel9Bytes": 1918,
+        "sha256": "f6989b425e538992151b01e7378f44e74c1b27dfbcfb44902266a1dcffa12a01"
+      },
+      {
+        "path": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.XZo5JuUx.js",
+        "bytes": 15162,
+        "gzipLevel9Bytes": 5660,
+        "sha256": "5ceef1debd53527dc4eb6b33b17049599d98a090b05f1b6cec0d51f7bd75aa51"
+      },
+      {
+        "path": "_astro/foundation-scene.Kl9vWlyu.js",
+        "bytes": 549518,
+        "gzipLevel9Bytes": 140472,
+        "sha256": "5d70a3a2a6e877b52846fc146b42070c835548bfa4d4ed671c920a0578e4b4a8"
+      }
+    ],
+    "rawBytes": 588643,
+    "gzipLevel9EstimateBytes": 152958
+  },
+  "externalRuntimeAssets": "Existing Google Fonts stylesheet/fonts are remote and not measured; no external game model/texture/audio loaded",
+  "dist": {
+    "files": 19,
+    "rawBytes": 3654589
+  },
+  "analysis": {
+    "generatedAt": "2026-10-31T19:32:57.229Z",
+    "scope": "Client bundle only; module renderedLength is retained pre-minification code, not additive minified/transfer attribution",
+    "chunks": [
+      {
+        "fileName": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.XZo5JuUx.js",
+        "name": "PlayEntry.astro_astro_type_script_index_0_lang",
+        "bytes": 15162,
+        "sha256": "5ceef1debd53527dc4eb6b33b17049599d98a090b05f1b6cec0d51f7bd75aa51",
+        "isEntry": true,
+        "isDynamicEntry": false,
+        "imports": [],
+        "dynamicImports": [
+          "_astro/foundation-scene.Kl9vWlyu.js"
+        ],
+        "modules": [
+          {
+            "id": "src/game-entry/locale.ts",
+            "renderedLength": 8793,
+            "originalLength": 9358
+          },
+          {
+            "id": "src/game-entry/preview-panel.ts",
+            "renderedLength": 6263,
+            "originalLength": 6882
+          },
+          {
+            "id": "src/scripts/play-entry.ts",
+            "renderedLength": 2804,
+            "originalLength": 3260
+          },
+          {
+            "id": "\u0000vite/preload-helper.js",
+            "renderedLength": 2206,
+            "originalLength": 2542
+          },
+          {
+            "id": "src/game/render3d/preview-controller.ts",
+            "renderedLength": 1948,
+            "originalLength": 2793
+          },
+          {
+            "id": "src/components/PlayEntry.astro?astro&type=script&index=0&lang.ts",
+            "renderedLength": 0,
+            "originalLength": 21256
+          }
+        ]
+      },
+      {
+        "fileName": "_astro/foundation-scene.Kl9vWlyu.js",
+        "name": "foundation-scene",
+        "bytes": 549518,
+        "sha256": "5d70a3a2a6e877b52846fc146b42070c835548bfa4d4ed671c920a0578e4b4a8",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "imports": [
+          "_astro/PlayEntry.astro_astro_type_script_index_0_lang.XZo5JuUx.js"
+        ],
+        "dynamicImports": [],
+        "modules": [
+          {
+            "id": "node_modules/three/build/three.module.js",
+            "renderedLength": 647861,
+            "originalLength": 658900
+          },
+          {
+            "id": "node_modules/three/build/three.core.js",
+            "renderedLength": 642929,
+            "originalLength": 1474762
+          },
+          {
+            "id": "src/game/persistence/save-v1.ts",
+            "renderedLength": 10599,
+            "originalLength": 11235
+          },
+          {
+            "id": "src/game/render3d/tropical-diorama.ts",
+            "renderedLength": 7409,
+            "originalLength": 7612
+          },
+          {
+            "id": "src/game/render3d/foundation-scene.ts",
+            "renderedLength": 6167,
+            "originalLength": 7305
+          },
+          {
+            "id": "src/game/render3d/camera-controls.ts",
+            "renderedLength": 5523,
+            "originalLength": 5388
+          },
+          {
+            "id": "src/game/render3d/camera-navigation.ts",
+            "renderedLength": 2338,
+            "originalLength": 2525
+          },
+          {
+            "id": "src/game/render3d/camera-gestures.ts",
+            "renderedLength": 2243,
+            "originalLength": 2444
+          },
+          {
+            "id": "src/game/core/simulation.ts",
+            "renderedLength": 2046,
+            "originalLength": 2344
+          },
+          {
+            "id": "src/game/core/initial-state.ts",
+            "renderedLength": 1450,
+            "originalLength": 1534
+          },
+          {
+            "id": "src/game/core/fixed-clock.ts",
+            "renderedLength": 1235,
+            "originalLength": 1440
+          },
+          {
+            "id": "src/game/render3d/frame-loop.ts",
+            "renderedLength": 1083,
+            "originalLength": 1350
+          },
+          {
+            "id": "src/game/render3d/isometric-camera.ts",
+            "renderedLength": 949,
+            "originalLength": 1123
+          },
+          {
+            "id": "src/game/core/events.ts",
+            "renderedLength": 690,
+            "originalLength": 896
+          },
+          {
+            "id": "src/game/core/random.ts",
+            "renderedLength": 321,
+            "originalLength": 416
+          },
+          {
+            "id": "src/game/core/state.ts",
+            "renderedLength": 169,
+            "originalLength": 2680
+          }
+        ]
+      }
+    ]
+  },
+  "disk": {
+    "src": {
+      "files": 25,
+      "logicalBytes": 101245,
+      "skippedSymlinks": 0
+    },
+    "public": {
+      "files": 4,
+      "logicalBytes": 3002839,
+      "skippedSymlinks": 0
+    },
+    "art": {
+      "files": 11,
+      "logicalBytes": 902446,
+      "skippedSymlinks": 0
+    },
+    "docs": {
+      "files": 140,
+      "logicalBytes": 4841518,
+      "skippedSymlinks": 0
+    },
+    ".git": {
+      "files": 424,
+      "logicalBytes": 7089223,
+      "skippedSymlinks": 0
+    },
+    "node_modules": {
+      "files": 17189,
+      "logicalBytes": 216696619,
+      "skippedSymlinks": 0
+    },
+    "dist": {
+      "files": 19,
+      "logicalBytes": 3654589,
+      "skippedSymlinks": 0
+    },
+    ".qa": {
+      "files": 36,
+      "logicalBytes": 491296,
+      "skippedSymlinks": 0
+    }
+  },
+  "budgets": {
+    "futureFirstPlayBytes": 20000000,
+    "futurePhysicalAndroidPresentationFPS": 30,
+    "futureDesktopPresentationFPS": 60,
+    "screenCSS": [
+      [
+        360,
+        780
+      ],
+      [
+        780,
+        360
+      ],
+      [
+        1366,
+        768
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "qaRunsMax": 5,
+    "qaPruneKeep": 3,
+    "qaLogMaxBytes": 2000000,
+    "qaScreenshotMaxBytes": 2000000,
+    "qaScreenshotMaxCount": 8,
+    "repoPreferredMaxBytes": 10000000000
+  }
+}

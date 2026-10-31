@@ -1,7 +1,7 @@
 import { AmbientLight, BufferGeometry, Color, DirectionalLight, OrthographicCamera, Scene, SRGBColorSpace, WebGLRenderer, type Material } from 'three';
 import { createInitialState } from '../core/initial-state.ts';
 import { createTropicalDiorama } from './tropical-diorama.ts';
-import { fitIsometricCamera } from './isometric-camera.ts';
+import { mountCameraControls } from './camera-controls.ts';
 import { createSimulation } from '../core/simulation.ts';
 import { createFrameLoop, type FrameDriver } from './frame-loop';
 import { PreviewFailure, type PreviewFailureKind, type PreviewSession } from './preview-controller';
@@ -33,6 +33,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const frames = options.frames ?? { request: (fn) => requestAnimationFrame(fn), cancel: (id) => cancelAnimationFrame(id) };
   let diorama: ReturnType<typeof createTropicalDiorama> | undefined;
+  let controls: ReturnType<typeof mountCameraControls> | undefined;
   const simulation = createSimulation();
   let simulationTimeMs = 0;
   let simulationEvents = 0;
@@ -59,6 +60,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   function updateRunning() {
     const shouldPause = disposed || lost || paused || document.hidden;
     simulation.setPaused(shouldPause);
+    controls?.setEnabled(!shouldPause);
     if (shouldPause) loop.stop();
     else loop.start();
   }
@@ -68,7 +70,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     const width = Math.max(1, Math.round(bounds.width));
     const height = Math.max(1, Math.round(bounds.height));
     renderer.setSize(width, height, false);
-    if (diorama) fitIsometricCamera(camera, diorama.bounds, width / height);
+    controls?.resize(width,height);
     render();
   }
   function onResize() {
@@ -81,6 +83,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     if (disposed) return;
     disposed = true;
     safe(() => loop.dispose());
+    safe(() => controls?.dispose());
     unsubscribe();
     simulation.dispose();
     canvas.removeEventListener('webglcontextlost', onLost);
@@ -113,9 +116,11 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     const sun = new DirectionalLight('#fff1d6', 2.5);
     sun.position.set(-6, 10, 8);
     scene.add(sun);
-    diorama = createTropicalDiorama(createInitialState().world);
+    const initialWorld=createInitialState().world;
+    diorama = createTropicalDiorama(initialWorld);
     geometries.push(...diorama.geometries); materials.push(...diorama.materials);
     scene.add(diorama.group);
+    controls=mountCameraControls(host,canvas,camera,diorama.bounds,initialWorld);
     canvas.addEventListener('webglcontextlost', onLost);
     host.append(canvas);
     resize(); // Ready means a real first render completed, not merely an import.
@@ -134,7 +139,8 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
 
   return {
     dispose,
+    camera: value => controls?.command(value),
     setPaused(value) { paused = value; updateRunning(); },
-    inspect: () => ({ disposed, lost, canvasAttached: canvas.isConnected, pendingFrames: loop.inspect().pendingFrames, geometries: renderer?.info.memory.geometries ?? 0, textures: renderer?.info.memory.textures ?? 0, programs: renderer?.info.programs?.length ?? 0, ownedMaterialsLive: materials.length - releasedMaterials, drawCallsLastRender: renderer?.info.render.calls ?? 0, trianglesLastRender: renderer?.info.render.triangles ?? 0, renderSubmissions, bufferWidth: canvas.width, bufferHeight: canvas.height, pixelRatio: renderer?.getPixelRatio() ?? 0, cleanupErrors, simulationTick: simulation.inspect().tick, simulationGameTimeMs: simulation.inspect().gameTimeMs, simulationPaused: simulation.inspect().paused, simulationDisposed: simulation.inspect().disposed, simulationSubscribers: simulation.inspect().subscribers, simulationEvents, orthographicCamera: camera.isOrthographicCamera, ...diorama?.inspect() }),
+    inspect: () => ({ disposed, lost, canvasAttached: canvas.isConnected, pendingFrames: loop.inspect().pendingFrames, geometries: renderer?.info.memory.geometries ?? 0, textures: renderer?.info.memory.textures ?? 0, programs: renderer?.info.programs?.length ?? 0, ownedMaterialsLive: materials.length - releasedMaterials, drawCallsLastRender: renderer?.info.render.calls ?? 0, trianglesLastRender: renderer?.info.render.triangles ?? 0, renderSubmissions, bufferWidth: canvas.width, bufferHeight: canvas.height, pixelRatio: renderer?.getPixelRatio() ?? 0, cleanupErrors, simulationTick: simulation.inspect().tick, simulationGameTimeMs: simulation.inspect().gameTimeMs, simulationPaused: simulation.inspect().paused, simulationDisposed: simulation.inspect().disposed, simulationSubscribers: simulation.inspect().subscribers, simulationEvents, orthographicCamera: camera.isOrthographicCamera, ...diorama?.inspect(), ...controls?.inspect() }),
   };
 }

@@ -1,3 +1,4 @@
+import type { CameraCommand } from './camera-navigation.ts';
 export type PreviewFailureKind = 'unsupported' | 'load' | 'init' | 'context-lost' | 'render';
 export type PreviewState =
   | { status: 'closed' | 'loading' | 'ready' }
@@ -11,6 +12,7 @@ export class PreviewFailure extends Error {
 
 export interface PreviewSession {
   dispose(): void;
+  camera?(command:CameraCommand):void;
   setPaused?(paused: boolean): void;
   inspect?(): Record<string, number | boolean>;
 }
@@ -67,5 +69,6 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     dispose() { if (disposed) return; close(); disposed = true; },
     getState: () => state,
     inspectSession: () => session?.inspect?.(),
+    camera(command:CameraCommand) {if(!paused&&state.status==='ready')session?.camera?.(command);},
   };
 }

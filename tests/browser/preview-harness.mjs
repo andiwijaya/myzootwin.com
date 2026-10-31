@@ -1,3 +1,4 @@
+import { runCameraDomScenarios, beginInjectedCameraGesture } from './camera-dom-scenarios.mjs';
 import { createFrameMetrics, legacyMemory, probeStatus } from './frame-metrics.mjs';
 import { mountPreviewPanel } from '../../src/game-entry/preview-panel.ts';
 import { mountFoundationScene } from '../../src/game/render3d/foundation-scene.ts';
@@ -27,6 +28,7 @@ function factory(onFailure){
   active++;maxActive=Math.max(maxActive,active);let ended=false;
   return {
     setPaused:value=>native.setPaused?.(value),
+    camera:value=>native.camera?.(value),
     inspect:()=>native.inspect?.(),
     dispose(){if(ended)return;ended=true;native.dispose();active--;disposed++;lastDisposed=native.inspect?.();update();},
   };
@@ -56,6 +58,8 @@ document.querySelector('#qa-memory').addEventListener('click',()=>{if(heapSnapsh
 document.querySelector('#qa-stale').addEventListener('click',()=>{previousHandle?.dispose();update();});
 document.querySelector('#qa-id').addEventListener('click',()=>{locale='id';handle?.setLocale(locale);update();});
 document.querySelector('#qa-en').addEventListener('click',()=>{locale='en';handle?.setLocale(locale);update();});
+document.querySelector('#qa-camera').addEventListener('click',()=>{const result=runCameraDomScenarios(root,()=>handle?.inspect().session,value=>handle?.setPaused(value));document.querySelector('#qa-camera-results').textContent=JSON.stringify(result);update();});
+document.querySelector('#qa-camera-held').addEventListener('click',()=>{beginInjectedCameraGesture(root);update();});
 const observer=new MutationObserver(update);
 observer.observe(root,{subtree:true,childList:true,attributes:true,attributeFilter:['data-renderer-state']});
 const onVisibility=()=>{if(document.hidden){endProbe('ABORTED_HIDDEN');update();}};

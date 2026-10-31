@@ -1,3 +1,4 @@
+import type { CameraCommand } from '../game/render3d/camera-navigation.ts';
 import { createPreviewController, type PreviewLoader, type PreviewState } from '../game/render3d/preview-controller';
 import { entryMessages, type EntryLocale, type EntryMessage } from './locale';
 
@@ -21,6 +22,12 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   let disposed = false;
   let state: PreviewState = { status: 'closed' };
   const events = new AbortController();
+  const cameraControls=root.querySelector<HTMLElement>('[data-camera-controls]');
+  const zoomOutput=root.querySelector<HTMLOutputElement>('[data-camera-zoom]');
+  function cameraState(zoom=Number(host?.dataset.cameraZoom??1)) {
+    if(zoomOutput)zoomOutput.value=`${Math.round(zoom*100)}%`;
+    for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]'))button.disabled=state.status!=='ready'||(button.dataset.cameraCommand==='zoom-in'?zoom>=3:button.dataset.cameraCommand==='zoom-out'?zoom<=1:zoom===1);
+  }
 
   function render(next: PreviewState) {
     const previous = state.status;
@@ -28,6 +35,14 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) return;
     const copy = entryMessages[locale];
     panel.lang = locale;
+    if(cameraControls){cameraControls.hidden=next.status!=='ready';cameraControls.setAttribute('aria-label',copy.cameraControls);}
+    root.querySelector('[data-camera-help]')?.replaceChildren(copy.cameraHelp);
+    for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]')) {
+      const command=button.dataset.cameraCommand;
+      if(command==='reset')button.textContent=copy.cameraReset;
+      button.setAttribute('aria-label',copy[command==='zoom-in'?'cameraZoomIn':command==='zoom-out'?'cameraZoomOut':'cameraReset']);
+    }
+    cameraState();
     const failed = next.status === 'unsupported' || next.status === 'error';
     panel.dataset.rendererState = next.status;
     illustration.hidden = next.status === 'loading' || next.status === 'ready';
@@ -66,6 +81,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     return (onFailure) => module.mountFoundationScene(host, onFailure);
   });
   const controller = createPreviewController(load, render);
+  host.addEventListener('camera-view-change',()=>cameraState(),{signal:events.signal});
+  for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]'))button.addEventListener('click',()=>controller.camera(button.dataset.cameraCommand as CameraCommand),{signal:events.signal});
   open.addEventListener('click', () => { void controller.open(); }, { signal: events.signal });
   retry.addEventListener('click', () => { void controller.open(); }, { signal: events.signal });
   close.addEventListener('click', () => { controller.close(); open.focus(); }, { signal: events.signal });

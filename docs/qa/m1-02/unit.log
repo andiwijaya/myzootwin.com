@@ -1,0 +1,364 @@
+TAP version 13
+# Subtest: camera overview, zoom and adversarial panning keep the ground focus inside actual map at every aspect
+ok 1 - camera overview, zoom and adversarial panning keep the ground focus inside actual map at every aspect
+  ---
+  duration_ms: 8.5704
+  type: 'test'
+  ...
+# Subtest: anchored zoom keeps the pointed ground position stable away from clamps; bad data does not poison navigation
+ok 2 - anchored zoom keeps the pointed ground position stable away from clamps; bad data does not poison navigation
+  ---
+  duration_ms: 2.1909
+  type: 'test'
+  ...
+# Subtest: tap/drag threshold, pinch, third finger and lifting a pinch never create false taps or jumps
+ok 3 - tap/drag threshold, pinch, third finger and lifting a pinch never create false taps or jumps
+  ---
+  duration_ms: 1.3174
+  type: 'test'
+  ...
+# Subtest: pointer cancellation and reset invalidate all late moves/ups and never deliver a pick
+ok 4 - pointer cancellation and reset invalidate all late moves/ups and never deliver a pick
+  ---
+  duration_ms: 0.4282
+  type: 'test'
+  ...
+# Subtest: real input adapter isolates canvas wheel/keys and releases capture on cancel, pause, resize, blur and disposal
+ok 5 - real input adapter isolates canvas wheel/keys and releases capture on cancel, pause, resize, blur and disposal
+  ---
+  duration_ms: 3.9345
+  type: 'test'
+  ...
+# Subtest: actual orthographic view-center ray stays on the ground map at zoom/pan bounds and after orientation changes
+ok 6 - actual orthographic view-center ray stays on the ground map at zoom/pan bounds and after orientation changes
+  ---
+  duration_ms: 8.9176
+  type: 'test'
+  ...
+# Subtest: browser Indonesian preference and other-language fallback
+ok 7 - browser Indonesian preference and other-language fallback
+  ---
+  duration_ms: 1.3313
+  type: 'test'
+  ...
+# Subtest: valid saved choice overrides browser language
+ok 8 - valid saved choice overrides browser language
+  ---
+  duration_ms: 0.9988
+  type: 'test'
+  ...
+# Subtest: malformed preferences fall back without deleting or rewriting storage
+ok 9 - malformed preferences fall back without deleting or rewriting storage
+  ---
+  duration_ms: 0.2285
+  type: 'test'
+  ...
+# Subtest: unsupported schemas and locales are ignored
+ok 10 - unsupported schemas and locales are ignored
+  ---
+  duration_ms: 0.2113
+  type: 'test'
+  ...
+# Subtest: blocked storage remains usable for the current visit
+ok 11 - blocked storage remains usable for the current visit
+  ---
+  duration_ms: 0.2265
+  type: 'test'
+  ...
+# Subtest: saving writes only the entry preference namespace and versioned locale
+ok 12 - saving writes only the entry preference namespace and versioned locale
+  ---
+  duration_ms: 0.253
+  type: 'test'
+  ...
+# Subtest: unavailable persistence and invalid runtime locale never claim success
+ok 13 - unavailable persistence and invalid runtime locale never claim success
+  ---
+  duration_ms: 0.3586
+  type: 'test'
+  ...
+# Subtest: entry dictionaries have complete matching keys and truthful preview copy
+ok 14 - entry dictionaries have complete matching keys and truthful preview copy
+  ---
+  duration_ms: 0.4331
+  type: 'test'
+  ...
+# Subtest: baseline reports callback/JS-submit statistics without promoting them to presentation FPS
+ok 15 - baseline reports callback/JS-submit statistics without promoting them to presentation FPS
+  ---
+  duration_ms: 1.453
+  type: 'test'
+  ...
+# Subtest: baseline collector rejects invalid/backward samples and reset discards the preceding window
+ok 16 - baseline collector rejects invalid/backward samples and reset discards the preceding window
+  ---
+  duration_ms: 0.5562
+  type: 'test'
+  ...
+# Subtest: unsupported memory remains unavailable and supported heap numbers retain their uncertainty label
+ok 17 - unsupported memory remains unavailable and supported heap numbers retain their uncertainty label
+  ---
+  duration_ms: 0.3475
+  type: 'test'
+  ...
+# Subtest: payload baseline refuses stale module-analysis bytes for the current built chunks
+ok 18 - payload baseline refuses stale module-analysis bytes for the current built chunks
+  ---
+  duration_ms: 1.4217
+  type: 'test'
+  ...
+# Subtest: probe collection cannot finish successfully while closed, paused, hidden or too short
+ok 19 - probe collection cannot finish successfully while closed, paused, hidden or too short
+  ---
+  duration_ms: 0.3886
+  type: 'test'
+  ...
+# Subtest: RAF start is idempotent and stale cancelled callbacks cannot duplicate a restarted loop
+ok 20 - RAF start is idempotent and stale cancelled callbacks cannot duplicate a restarted loop
+  ---
+  duration_ms: 1.7862
+  type: 'test'
+  ...
+# Subtest: disposed RAF loop cannot render or restart
+ok 21 - disposed RAF loop cannot render or restart
+  ---
+  duration_ms: 0.3307
+  type: 'test'
+  ...
+# Subtest: render exceptions stop the RAF chain and report once
+ok 22 - render exceptions stop the RAF chain and report once
+  ---
+  duration_ms: 0.2264
+  type: 'test'
+  ...
+# Subtest: request failures become an explicit stopped error
+ok 23 - request failures become an explicit stopped error
+  ---
+  duration_ms: 0.206
+  type: 'test'
+  ...
+# Subtest: lazy session opens once, closes once, and can reopen without overlap
+ok 24 - lazy session opens once, closes once, and can reopen without overlap
+  ---
+  duration_ms: 1.1052
+  type: 'test'
+  ...
+# Subtest: closing during import prevents a late mount and ready transition
+ok 25 - closing during import prevents a late mount and ready transition
+  ---
+  duration_ms: 0.1819
+  type: 'test'
+  ...
+# Subtest: a failed lazy load is visible and a later attempt can recover
+ok 26 - a failed lazy load is visible and a later attempt can recover
+  ---
+  duration_ms: 1.1276
+  type: 'test'
+  ...
+# Subtest: unsupported WebGL has its own fallback and retry state
+ok 27 - unsupported WebGL has its own fallback and retry state
+  ---
+  duration_ms: 0.2174
+  type: 'test'
+  ...
+# Subtest: initialization exceptions do not become false ready states
+ok 28 - initialization exceptions do not become false ready states
+  ---
+  duration_ms: 0.2163
+  type: 'test'
+  ...
+# Subtest: context loss disposes the active session once and supports a fresh retry
+ok 29 - context loss disposes the active session once and supports a fresh retry
+  ---
+  duration_ms: 0.3534
+  type: 'test'
+  ...
+# Subtest: synchronous failure while mounting still disposes the late-created session
+ok 30 - synchronous failure while mounting still disposes the late-created session
+  ---
+  duration_ms: 0.2353
+  type: 'test'
+  ...
+# Subtest: pause state is applied to newly loaded sessions without changing lifecycle status
+ok 31 - pause state is applied to newly loaded sessions without changing lifecycle status
+  ---
+  duration_ms: 0.1807
+  type: 'test'
+  ...
+# Subtest: disposing a pending import prevents later renderer creation
+ok 32 - disposing a pending import prevents later renderer creation
+  ---
+  duration_ms: 0.0964
+  type: 'test'
+  ...
+# Subtest: QA cannot pass from failed process, truncated/capped TAP, duplicate summary or skipped tests
+ok 33 - QA cannot pass from failed process, truncated/capped TAP, duplicate summary or skipped tests
+  ---
+  duration_ms: 2.8002
+  type: 'test'
+  ...
+# Subtest: QA requires completed check/build receipts; successful compile text alone is insufficient
+ok 34 - QA requires completed check/build receipts; successful compile text alone is insufficient
+  ---
+  duration_ms: 0.4426
+  type: 'test'
+  ...
+# Subtest: QA capture actually marks overflowing or timed-out child output as failure
+ok 35 - QA capture actually marks overflowing or timed-out child output as failure
+  ---
+  duration_ms: 171.8646
+  type: 'test'
+  ...
+# Subtest: QA paths cannot escape a named output directory or point to its root
+ok 36 - QA paths cannot escape a named output directory or point to its root
+  ---
+  duration_ms: 0.558
+  type: 'test'
+  ...
+# Subtest: browser checks remain UNRUN until all six approved-runtime cases are recorded
+ok 37 - browser checks remain UNRUN until all six approved-runtime cases are recorded
+  ---
+  duration_ms: 1.4045
+  type: 'test'
+  ...
+# Subtest: stale identity/time, capped console and missing cleanup can never produce browser PASS
+ok 38 - stale identity/time, capped console and missing cleanup can never produce browser PASS
+  ---
+  duration_ms: 0.3222
+  type: 'test'
+  ...
+# Subtest: a claimed mobile PASS must match the measured viewport, rendered canvas and built script
+ok 39 - a claimed mobile PASS must match the measured viewport, rendered canvas and built script
+  ---
+  duration_ms: 0.1531
+  type: 'test'
+  ...
+# Subtest: route comparison decodes actual journal HTML entities before checking the browser baseline
+ok 40 - route comparison decodes actual journal HTML entities before checking the browser baseline
+  ---
+  duration_ms: 0.5199
+  type: 'test'
+  ...
+# Subtest: generated fixture must carry exact visible run/build/source IDs before browser work starts
+ok 41 - generated fixture must carry exact visible run/build/source IDs before browser work starts
+  ---
+  duration_ms: 0.3417
+  type: 'test'
+  ...
+# Subtest: initial state has two reserve macaws, concrete bounded grid, reconciled starter ledger and no fake gameplay
+ok 42 - initial state has two reserve macaws, concrete bounded grid, reconciled starter ledger and no fake gameplay
+  ---
+  duration_ms: 4.7694
+  type: 'test'
+  ...
+# Subtest: initial and populated version-1 save roundtrip preserve every reference without sharing mutable data
+ok 43 - initial and populated version-1 save roundtrip preserve every reference without sharing mutable data
+  ---
+  duration_ms: 4.2037
+  type: 'test'
+  ...
+# Subtest: seeded RNG has a known uint32 vector, reproducibility and valid fraction range
+ok 44 - seeded RNG has a known uint32 vector, reproducibility and valid fraction range
+  ---
+  duration_ms: 0.6269
+  type: 'test'
+  ...
+# Subtest: same accepted time produces byte-identical state under integer and fractional frame partitions
+ok 45 - same accepted time produces byte-identical state under integer and fractional frame partitions
+  ---
+  duration_ms: 9.2256
+  type: 'test'
+  ...
+# Subtest: frame adapter ignores first frame and repeated timestamps; simulation is independent of render calls
+ok 46 - frame adapter ignores first frame and repeated timestamps; simulation is independent of render calls
+  ---
+  duration_ms: 2.1617
+  type: 'test'
+  ...
+# Subtest: bounded catch-up drops long gaps instead of granting unlimited offline progress
+ok 47 - bounded catch-up drops long gaps instead of granting unlimited offline progress
+  ---
+  duration_ms: 1.1515
+  type: 'test'
+  ...
+# Subtest: pause resets fractional catch-up, ignores hidden elapsed time and resumes from a fresh anchor
+ok 48 - pause resets fractional catch-up, ignores hidden elapsed time and resumes from a fresh anchor
+  ---
+  duration_ms: 1.1947
+  type: 'test'
+  ...
+# Subtest: snapshot and reload continue deterministic RNG/time without storing RAF timestamps or accumulator
+ok 49 - snapshot and reload continue deterministic RNG/time without storing RAF timestamps or accumulator
+  ---
+  duration_ms: 3.0927
+  type: 'test'
+  ...
+# Subtest: restart preserves one subscriber, emits baseline reset time and cannot revive disposed simulation
+ok 50 - restart preserves one subscriber, emits baseline reset time and cannot revive disposed simulation
+  ---
+  duration_ms: 1.5081
+  type: 'test'
+  ...
+# Subtest: event unsubscribe during dispatch, throwing listener and bus disposal are safe and observable
+ok 51 - event unsubscribe during dispatch, throwing listener and bus disposal are safe and observable
+  ---
+  duration_ms: 0.3172
+  type: 'test'
+  ...
+# Subtest: invalid deltas/timestamps are rejected and paused/disposed clocks never step
+ok 52 - invalid deltas/timestamps are rejected and paused/disposed clocks never step
+  ---
+  duration_ms: 0.6072
+  type: 'test'
+  ...
+# Subtest: schema rejection is explicit for malformed JSON, future schema, oversize and non-data objects
+ok 53 - schema rejection is explicit for malformed JSON, future schema, oversize and non-data objects
+  ---
+  duration_ms: 0.7785
+  type: 'test'
+  ...
+# Subtest: range/reference/invariant corruptions are rejected without mutating their source
+ok 54 - range/reference/invariant corruptions are rejected without mutating their source
+  ---
+  duration_ms: 25.5292
+  type: 'test'
+  ...
+# Subtest: simulation ownership rejects invalid input and snapshots cannot change authoritative currency/needs
+ok 55 - simulation ownership rejects invalid input and snapshots cannot change authoritative currency/needs
+  ---
+  duration_ms: 2.3338
+  type: 'test'
+  ...
+# Subtest: existing RAF owner drives fixed steps through pause/restart without a second loop or late updates
+ok 56 - existing RAF owner drives fixed steps through pause/restart without a second loop or late updates
+  ---
+  duration_ms: 0.9388
+  type: 'test'
+  ...
+# Subtest: scenery follows terrain and gate without mutating placement, animals, economy or missions
+ok 57 - scenery follows terrain and gate without mutating placement, animals, economy or missions
+  ---
+  duration_ms: 45.8469
+  type: 'test'
+  ...
+# Subtest: fixed isometric framing contains the entire original world at all target aspect ratios
+ok 58 - fixed isometric framing contains the entire original world at all target aspect ratios
+  ---
+  duration_ms: 15.1836
+  type: 'test'
+  ...
+# Subtest: scenery is reproducible and its ambient water reads fixed simulation time; reduced motion freezes the effect
+ok 59 - scenery is reproducible and its ambient water reads fixed simulation time; reduced motion freezes the effect
+  ---
+  duration_ms: 25.7863
+  type: 'test'
+  ...
+1..59
+# tests 59
+# suites 0
+# pass 59
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 336.0499

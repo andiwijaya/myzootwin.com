@@ -1,6 +1,6 @@
 import { Box3, OrthographicCamera, Vector3 } from 'three';
 
-/** Fixed 3/4 view. Fit the actual diorama bounds; camera gestures belong to M1-02. */
+/** Base 3/4 overview; navigation applies bounded ground-plane translation and zoom. */
 export function fitIsometricCamera(camera: OrthographicCamera, bounds: Box3, aspect: number) {
   const center = bounds.getCenter(new Vector3());
   camera.position.copy(center).add(new Vector3(14, 13, 16));
@@ -16,4 +16,5 @@ export function fitIsometricCamera(camera: OrthographicCamera, bounds: Box3, asp
   camera.left = -halfHeight * aspect; camera.right = halfHeight * aspect;
   camera.top = halfHeight; camera.bottom = -halfHeight;
   camera.near = .1; camera.far = 100; camera.updateProjectionMatrix();
+  return {halfWidth:halfHeight*aspect,halfHeight};
 }
