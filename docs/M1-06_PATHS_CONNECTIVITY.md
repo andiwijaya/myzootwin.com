@@ -1,6 +1,6 @@
 # M1-06 — Visitor paths and real entrance connectivity
 
-Status: COMPLETE locally, 2026-10-31 UTC. Actual one-cell paths, authoritative four-neighbor topology, habitat viewing cell/route and bilingual connected/disconnected feedback now work. No visitor, ticket, economy, mission reward, deletion/refund, autosave or production completion is implied. M0-01 exact external Cloudflare configuration remains partial.
+Status: COMPLETE locally, 2026-10-31 UTC. Implementation/evidence commit: 296fa207c4cd186ac09b2d1bbe3c1e3c3b5f5047 (local only). Actual one-cell paths, authoritative four-neighbor topology, habitat viewing cell/route and bilingual connected/disconnected feedback now work. No visitor, ticket, economy, mission reward, deletion/refund, autosave or production completion is implied. M0-01 exact external Cloudflare configuration remains partial.
 
 ## Player result
 
