@@ -1,4 +1,5 @@
 import { AmbientLight, Color, CylinderGeometry, DirectionalLight, Mesh, MeshStandardMaterial, OctahedronGeometry, PerspectiveCamera, Scene, SRGBColorSpace, TorusGeometry, WebGLRenderer } from 'three';
+import { createSimulation } from '../core/simulation.ts';
 import { createFrameLoop, type FrameDriver } from './frame-loop';
 import { PreviewFailure, type PreviewFailureKind, type PreviewSession } from './preview-controller';
 
@@ -8,7 +9,7 @@ interface FoundationOptions {
   createRenderer?: (canvas: HTMLCanvasElement, context: WebGL2RenderingContext) => WebGLRenderer;
 }
 
-/** A renderer workbench only: no sanctuary world, animal proxy or simulation. */
+/** Renderer workbench driven by the fixed-tick foundation; no sanctuary gameplay yet. */
 export function mountFoundationScene(host: HTMLElement, onFailure: (kind: PreviewFailureKind) => void, options: FoundationOptions = {}): PreviewSession {
   const canvas = document.createElement('canvas');
   canvas.setAttribute('aria-hidden', 'true');
@@ -29,22 +30,32 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const frames = options.frames ?? { request: (fn) => requestAnimationFrame(fn), cancel: (id) => cancelAnimationFrame(id) };
   let marker: Mesh | undefined;
+  const simulation = createSimulation();
+  let simulationTimeMs = 0;
+  let simulationEvents = 0;
+  const unsubscribe = simulation.subscribe(event => {
+    simulationTimeMs = event.gameTimeMs;
+    if (event.type === 'tick') simulationEvents++;
+  });
 
   function notifyContextLoss() {
     if (disposed || lost) return;
     lost = true;
+    simulation.setPaused(true);
     loop.stop();
     onFailure('context-lost');
   }
-  function render(time = 0) {
+  function render() {
     if (disposed || lost) return;
     if (context?.isContextLost()) { notifyContextLoss(); return; }
-    if (marker && !motion.matches) marker.rotation.y = time * .00025;
+    if (marker && !motion.matches) marker.rotation.y = simulationTimeMs * .00025;
     renderer?.render(scene, camera);
   }
-  const loop = createFrameLoop(frames, render, () => onFailure('render'));
+  const loop = createFrameLoop(frames, time => { simulation.frame(time); render(); }, () => onFailure('render'));
   function updateRunning() {
-    if (disposed || lost || paused || document.hidden || motion.matches) loop.stop();
+    const shouldPause = disposed || lost || paused || document.hidden;
+    simulation.setPaused(shouldPause);
+    if (shouldPause) loop.stop();
     else loop.start();
   }
   function resize() {
@@ -67,6 +78,8 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     if (disposed) return;
     disposed = true;
     safe(() => loop.dispose());
+    unsubscribe();
+    simulation.dispose();
     canvas.removeEventListener('webglcontextlost', onLost);
     document.removeEventListener('visibilitychange', updateRunning);
     window.removeEventListener('resize', onResize);
@@ -133,6 +146,6 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   return {
     dispose,
     setPaused(value) { paused = value; updateRunning(); },
-    inspect: () => ({ disposed, lost, canvasAttached: canvas.isConnected, pendingFrames: loop.inspect().pendingFrames, geometries: renderer?.info.memory.geometries ?? 0, cleanupErrors }),
+    inspect: () => ({ disposed, lost, canvasAttached: canvas.isConnected, pendingFrames: loop.inspect().pendingFrames, geometries: renderer?.info.memory.geometries ?? 0, cleanupErrors, simulationTick: simulation.inspect().tick, simulationGameTimeMs: simulation.inspect().gameTimeMs, simulationPaused: simulation.inspect().paused, simulationDisposed: simulation.inspect().disposed, simulationSubscribers: simulation.inspect().subscribers, simulationEvents, markerRotation: marker?.rotation.y ?? 0 }),
   };
 }

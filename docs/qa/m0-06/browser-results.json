@@ -1,0 +1,554 @@
+{
+  "startedAt": "2026-10-31T17:17:24.611Z",
+  "browser": "isolated in-app browser",
+  "physicalAndroid": false,
+  "harness": [
+    {
+      "name": "native fixed core drives rendered marker",
+      "data": {
+        "activeSessions": 1,
+        "canvasCount": 1,
+        "disposedSessions": 0,
+        "faultSource": "none",
+        "lastDisposed": null,
+        "loads": 1,
+        "maxActiveSessions": 1,
+        "maxPendingRAFs": 1,
+        "mode": "native",
+        "pendingRAFs": 1,
+        "session": {
+          "canvasAttached": true,
+          "cleanupErrors": 0,
+          "disposed": false,
+          "geometries": 3,
+          "lost": false,
+          "markerRotation": 0.425,
+          "pendingFrames": 1,
+          "simulationDisposed": false,
+          "simulationEvents": 17,
+          "simulationGameTimeMs": 1700,
+          "simulationPaused": false,
+          "simulationSubscribers": 1,
+          "simulationTick": 17
+        },
+        "state": {
+          "status": "ready"
+        }
+      }
+    },
+    {
+      "name": "paused",
+      "data": {
+        "activeSessions": 1,
+        "canvasCount": 1,
+        "disposedSessions": 0,
+        "faultSource": "none",
+        "lastDisposed": null,
+        "loads": 1,
+        "maxActiveSessions": 1,
+        "maxPendingRAFs": 1,
+        "mode": "native",
+        "pendingRAFs": 0,
+        "session": {
+          "canvasAttached": true,
+          "cleanupErrors": 0,
+          "disposed": false,
+          "geometries": 3,
+          "lost": false,
+          "markerRotation": 0.45,
+          "pendingFrames": 0,
+          "simulationDisposed": false,
+          "simulationEvents": 18,
+          "simulationGameTimeMs": 1800,
+          "simulationPaused": true,
+          "simulationSubscribers": 1,
+          "simulationTick": 18
+        },
+        "state": {
+          "status": "ready"
+        }
+      }
+    },
+    {
+      "name": "still paused across UI changes",
+      "data": {
+        "activeSessions": 1,
+        "canvasCount": 1,
+        "disposedSessions": 0,
+        "faultSource": "none",
+        "lastDisposed": null,
+        "loads": 1,
+        "maxActiveSessions": 1,
+        "maxPendingRAFs": 1,
+        "mode": "native",
+        "pendingRAFs": 0,
+        "session": {
+          "canvasAttached": true,
+          "cleanupErrors": 0,
+          "disposed": false,
+          "geometries": 3,
+          "lost": false,
+          "markerRotation": 0.45,
+          "pendingFrames": 0,
+          "simulationDisposed": false,
+          "simulationEvents": 18,
+          "simulationGameTimeMs": 1800,
+          "simulationPaused": true,
+          "simulationSubscribers": 1,
+          "simulationTick": 18
+        },
+        "state": {
+          "status": "ready"
+        }
+      }
+    },
+    {
+      "name": "resumed",
+      "data": {
+        "activeSessions": 1,
+        "canvasCount": 1,
+        "disposedSessions": 0,
+        "faultSource": "none",
+        "lastDisposed": null,
+        "loads": 1,
+        "maxActiveSessions": 1,
+        "maxPendingRAFs": 1,
+        "mode": "native",
+        "pendingRAFs": 1,
+        "session": {
+          "canvasAttached": true,
+          "cleanupErrors": 0,
+          "disposed": false,
+          "geometries": 3,
+          "lost": false,
+          "markerRotation": 0.6,
+          "pendingFrames": 1,
+          "simulationDisposed": false,
+          "simulationEvents": 24,
+          "simulationGameTimeMs": 2400,
+          "simulationPaused": false,
+          "simulationSubscribers": 1,
+          "simulationTick": 24
+        },
+        "state": {
+          "status": "ready"
+        }
+      }
+    },
+    {
+      "name": "injected native context loss disposes core",
+      "source": "WEBGL_lose_context extension",
+      "data": {
+        "activeSessions": 0,
+        "canvasCount": 0,
+        "disposedSessions": 1,
+        "faultSource": "injected WEBGL_lose_context",
+        "lastDisposed": {
+          "canvasAttached": false,
+          "cleanupErrors": 0,
+          "disposed": true,
+          "geometries": 0,
+          "lost": true,
+          "markerRotation": 5.2,
+          "pendingFrames": 0,
+          "simulationDisposed": true,
+          "simulationEvents": 209,
+          "simulationGameTimeMs": 20900,
+          "simulationPaused": true,
+          "simulationSubscribers": 0,
+          "simulationTick": 209
+        },
+        "loads": 1,
+        "maxActiveSessions": 1,
+        "maxPendingRAFs": 1,
+        "mode": "native",
+        "pendingRAFs": 0,
+        "session": null,
+        "state": {
+          "reason": "context-lost",
+          "status": "error"
+        }
+      }
+    },
+    {
+      "name": "context loss retry starts one fresh core",
+      "data": {
+        "activeSessions": 1,
+        "canvasCount": 1,
+        "disposedSessions": 1,
+        "faultSource": "injected WEBGL_lose_context",
+        "lastDisposed": {
+          "canvasAttached": false,
+          "cleanupErrors": 0,
+          "disposed": true,
+          "geometries": 0,
+          "lost": true,
+          "markerRotation": 5.2,
+          "pendingFrames": 0,
+          "simulationDisposed": true,
+          "simulationEvents": 209,
+          "simulationGameTimeMs": 20900,
+          "simulationPaused": true,
+          "simulationSubscribers": 0,
+          "simulationTick": 209
+        },
+        "loads": 2,
+        "maxActiveSessions": 1,
+        "maxPendingRAFs": 1,
+        "mode": "native",
+        "pendingRAFs": 1,
+        "session": {
+          "canvasAttached": true,
+          "cleanupErrors": 0,
+          "disposed": false,
+          "geometries": 3,
+          "lost": false,
+          "markerRotation": 0.05,
+          "pendingFrames": 1,
+          "simulationDisposed": false,
+          "simulationEvents": 2,
+          "simulationGameTimeMs": 200,
+          "simulationPaused": false,
+          "simulationSubscribers": 1,
+          "simulationTick": 2
+        },
+        "state": {
+          "status": "ready"
+        }
+      }
+    },
+    {
+      "name": "remount disposes core 1",
+      "data": {
+        "activeSessions": 0,
+        "canvasCount": 0,
+        "disposedSessions": 2,
+        "faultSource": "injected WEBGL_lose_context",
+        "lastDisposed": {
+          "canvasAttached": false,
+          "cleanupErrors": 0,
+          "disposed": true,
+          "geometries": 0,
+          "lost": false,
+          "markerRotation": 0.075,
+          "pendingFrames": 0,
+          "simulationDisposed": true,
+          "simulationEvents": 3,
+          "simulationGameTimeMs": 300,
+          "simulationPaused": false,
+          "simulationSubscribers": 0,
+          "simulationTick": 3
+        },
+        "loads": 2,
+        "maxActiveSessions": 1,
+        "maxPendingRAFs": 1,
+        "mode": "native",
+        "pendingRAFs": 0,
+        "session": null,
+        "state": {
+          "status": "closed"
+        }
+      }
+    },
+    {
+      "name": "restart retains one subscriber 1",
+      "data": {
+        "activeSessions": 1,
+        "canvasCount": 1,
+        "disposedSessions": 2,
+        "faultSource": "injected WEBGL_lose_context",
+        "lastDisposed": {
+          "canvasAttached": false,
+          "cleanupErrors": 0,
+          "disposed": true,
+          "geometries": 0,
+          "lost": false,
+          "markerRotation": 0.075,
+          "pendingFrames": 0,
+          "simulationDisposed": true,
+          "simulationEvents": 3,
+          "simulationGameTimeMs": 300,
+          "simulationPaused": false,
+          "simulationSubscribers": 0,
+          "simulationTick": 3
+        },
+        "loads": 3,
+        "maxActiveSessions": 1,
+        "maxPendingRAFs": 1,
+        "mode": "native",
+        "pendingRAFs": 1,
+        "session": {
+          "canvasAttached": true,
+          "cleanupErrors": 0,
+          "disposed": false,
+          "geometries": 3,
+          "lost": false,
+          "markerRotation": 0.15,
+          "pendingFrames": 1,
+          "simulationDisposed": false,
+          "simulationEvents": 6,
+          "simulationGameTimeMs": 600,
+          "simulationPaused": false,
+          "simulationSubscribers": 1,
+          "simulationTick": 6
+        },
+        "state": {
+          "status": "ready"
+        }
+      }
+    },
+    {
+      "name": "remount disposes core 2",
+      "data": {
+        "activeSessions": 0,
+        "canvasCount": 0,
+        "disposedSessions": 3,
+        "faultSource": "injected WEBGL_lose_context",
+        "lastDisposed": {
+          "canvasAttached": false,
+          "cleanupErrors": 0,
+          "disposed": true,
+          "geometries": 0,
+          "lost": false,
+          "markerRotation": 0.15,
+          "pendingFrames": 0,
+          "simulationDisposed": true,
+          "simulationEvents": 6,
+          "simulationGameTimeMs": 600,
+          "simulationPaused": false,
+          "simulationSubscribers": 0,
+          "simulationTick": 6
+        },
+        "loads": 3,
+        "maxActiveSessions": 1,
+        "maxPendingRAFs": 1,
+        "mode": "native",
+        "pendingRAFs": 0,
+        "session": null,
+        "state": {
+          "status": "closed"
+        }
+      }
+    },
+    {
+      "name": "restart retains one subscriber 2",
+      "data": {
+        "activeSessions": 1,
+        "canvasCount": 1,
+        "disposedSessions": 3,
+        "faultSource": "injected WEBGL_lose_context",
+        "lastDisposed": {
+          "canvasAttached": false,
+          "cleanupErrors": 0,
+          "disposed": true,
+          "geometries": 0,
+          "lost": false,
+          "markerRotation": 0.15,
+          "pendingFrames": 0,
+          "simulationDisposed": true,
+          "simulationEvents": 6,
+          "simulationGameTimeMs": 600,
+          "simulationPaused": false,
+          "simulationSubscribers": 0,
+          "simulationTick": 6
+        },
+        "loads": 4,
+        "maxActiveSessions": 1,
+        "maxPendingRAFs": 1,
+        "mode": "native",
+        "pendingRAFs": 1,
+        "session": {
+          "canvasAttached": true,
+          "cleanupErrors": 0,
+          "disposed": false,
+          "geometries": 3,
+          "lost": false,
+          "markerRotation": 0.15,
+          "pendingFrames": 1,
+          "simulationDisposed": false,
+          "simulationEvents": 6,
+          "simulationGameTimeMs": 600,
+          "simulationPaused": false,
+          "simulationSubscribers": 1,
+          "simulationTick": 6
+        },
+        "state": {
+          "status": "ready"
+        }
+      }
+    },
+    {
+      "name": "remount disposes core 3",
+      "data": {
+        "activeSessions": 0,
+        "canvasCount": 0,
+        "disposedSessions": 4,
+        "faultSource": "injected WEBGL_lose_context",
+        "lastDisposed": {
+          "canvasAttached": false,
+          "cleanupErrors": 0,
+          "disposed": true,
+          "geometries": 0,
+          "lost": false,
+          "markerRotation": 0.15,
+          "pendingFrames": 0,
+          "simulationDisposed": true,
+          "simulationEvents": 6,
+          "simulationGameTimeMs": 600,
+          "simulationPaused": false,
+          "simulationSubscribers": 0,
+          "simulationTick": 6
+        },
+        "loads": 4,
+        "maxActiveSessions": 1,
+        "maxPendingRAFs": 1,
+        "mode": "native",
+        "pendingRAFs": 0,
+        "session": null,
+        "state": {
+          "status": "closed"
+        }
+      }
+    },
+    {
+      "name": "restart retains one subscriber 3",
+      "data": {
+        "activeSessions": 1,
+        "canvasCount": 1,
+        "disposedSessions": 4,
+        "faultSource": "injected WEBGL_lose_context",
+        "lastDisposed": {
+          "canvasAttached": false,
+          "cleanupErrors": 0,
+          "disposed": true,
+          "geometries": 0,
+          "lost": false,
+          "markerRotation": 0.15,
+          "pendingFrames": 0,
+          "simulationDisposed": true,
+          "simulationEvents": 6,
+          "simulationGameTimeMs": 600,
+          "simulationPaused": false,
+          "simulationSubscribers": 0,
+          "simulationTick": 6
+        },
+        "loads": 5,
+        "maxActiveSessions": 1,
+        "maxPendingRAFs": 1,
+        "mode": "native",
+        "pendingRAFs": 1,
+        "session": {
+          "canvasAttached": true,
+          "cleanupErrors": 0,
+          "disposed": false,
+          "geometries": 3,
+          "lost": false,
+          "markerRotation": 0.125,
+          "pendingFrames": 1,
+          "simulationDisposed": false,
+          "simulationEvents": 5,
+          "simulationGameTimeMs": 500,
+          "simulationPaused": false,
+          "simulationSubscribers": 1,
+          "simulationTick": 5
+        },
+        "state": {
+          "status": "ready"
+        }
+      }
+    },
+    {
+      "name": "unmount final core cleanup",
+      "data": {
+        "activeSessions": 0,
+        "canvasCount": 0,
+        "disposedSessions": 5,
+        "faultSource": "injected WEBGL_lose_context",
+        "lastDisposed": {
+          "canvasAttached": false,
+          "cleanupErrors": 0,
+          "disposed": true,
+          "geometries": 0,
+          "lost": false,
+          "markerRotation": 0.15,
+          "pendingFrames": 0,
+          "simulationDisposed": true,
+          "simulationEvents": 6,
+          "simulationGameTimeMs": 600,
+          "simulationPaused": false,
+          "simulationSubscribers": 0,
+          "simulationTick": 6
+        },
+        "loads": 5,
+        "maxActiveSessions": 1,
+        "maxPendingRAFs": 1,
+        "mode": "native",
+        "pendingRAFs": 0,
+        "session": null,
+        "state": "unmounted"
+      }
+    }
+  ],
+  "product": [
+    {
+      "name": "built desktop native",
+      "data": {
+        "canvas": 1,
+        "height": 768,
+        "playDisabled": 2,
+        "state": "ready",
+        "width": 1366
+      }
+    },
+    {
+      "name": "built portrait ID",
+      "data": {
+        "canvas": 1,
+        "documentWidth": 360,
+        "height": 780,
+        "lang": "id",
+        "state": "ready",
+        "width": 360
+      }
+    },
+    {
+      "name": "built landscape ID",
+      "data": {
+        "canvas": 1,
+        "documentWidth": 780,
+        "height": 360,
+        "state": "ready",
+        "width": 780
+      }
+    },
+    {
+      "name": "history return releases preview",
+      "data": {
+        "canvas": 0,
+        "path": "/play/",
+        "state": "closed"
+      }
+    },
+    {
+      "name": "final rebuilt validator native smoke",
+      "data": {
+        "canvas": 1,
+        "height": 780,
+        "scripts": [
+          "http://127.0.0.1:4321/_astro/PlayEntry.astro_astro_type_script_index_0_lang.BNEcJUvu.js"
+        ],
+        "state": "ready",
+        "width": 360
+      }
+    },
+    {
+      "name": "final product close",
+      "data": {
+        "canvas": 0,
+        "state": "closed"
+      }
+    }
+  ],
+  "nativeConsole": [],
+  "finishedAt": "2026-10-31T17:20:54.891Z"
+}
