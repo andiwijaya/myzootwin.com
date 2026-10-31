@@ -36,13 +36,26 @@ robots.txt, sitemap-index.xml and sitemap-0.xml returned 200. Sitemap lists exac
 
 **Critical routing observation:** GET /play returns 200 but its response body is byte-for-byte identical to the homepage and canonical is https://myzootwin.com/. It is a fallback response, not an implemented game route. Direct route reload/content checks in M0-04 must assert game-specific content and canonical, not status 200 alone. No redirect or Cloudflare configuration was changed.
 
-## Cloudflare deployment facts and gaps
+## Cloudflare deployment facts and gaps (updated after existing CLI access found)
 
 README says production builds automatically from main using Cloudflare Pages. astro.config.mjs site=https://myzootwin.com and output=static; README describes dist output. Live site responds through Cloudflare and has Cloudflare Insights. These facts do not establish the actual Pages project, repo binding, branch binding, build command, output setting, deployment SHA, preview policy or redirect rules.
 
 Authenticated GitHub API reads: deployments endpoint empty; HEAD check-runs empty; combined commit statuses total_count=0/state=pending; Actions workflows total_count=0. No deployment identity can be recovered from those records. No existing wrangler executable or Cloudflare environment variable names were present in the task shell. No credential stores were scanned.
 
-A dedicated background browser tab opened dash.cloudflare.com and redirected to /login. No login button, consent/grant, account creation or authentication was attempted. Tab closed after inspection. **BLOCKER:** authenticated read-only Cloudflare Pages configuration remains unavailable in this session. Verify project identity/custom domain, GitHub repo+production branch, build command/output, current production commit, routing/404 behavior and environment variable names using an existing authorized session before claiming this audit complete.
+A dedicated background browser tab opened dash.cloudflare.com and redirected to /login. No login button, consent/grant, account creation or authentication was attempted. Tab closed after inspection.
+
+Follow-up scoped lookup found an existing official Wrangler 4.145.0 installation in the npm npx cache (not in PATH or repo dependencies). No install/update occurred. Existing OAuth authentication was usable; no credential file or token contents were read by the agent, and no login/new grants were created. WRANGLER_SEND_METRICS=false was set for these read commands. An unrelated warning about missing K2 scopes was not acted on.
+
+Supported CLI reads now verify:
+
+- Pages project **myzootwin-com**, domains **myzootwin-com.pages.dev**, **myzootwin.com**, **www.myzootwin.com**, Git provider integration present.
+- Production deployment list contains two main-branch deployments at source prefix **ad20f2b**: latest listed **5a755ea7-3513-41a8-8908-7dab1fa2b2cf** (https://5a755ea7.myzootwin-com.pages.dev), preceding **c3fd7754-64a8-40ee-8096-fd6f8fa7138a**. CLI reports relative status age, not an exact deployment timestamp or canonical pointer, so neither is invented.
+- Prefix ad20f2b resolves unambiguously in local Git to **ad20f2b90fc110e5f8a886174b3ddb816070df7d**, the initial foundation commit. Diff to remote f10d037 is README-only (four added lines); do not claim production itself is deployed from f10d037.
+- Read-only pages download config into an isolated task-workspace audit folder confirms **pages_build_output_dir=dist**, **compatibility_date=2026-09-22**, production environment variable name **PUBLIC_GA4_ID**, no root vars. Only names/selected non-sensitive fields were printed; downloaded config was not copied into application source or used to change project settings.
+
+Commands used: wrangler whoami; pages project list (table and supported --json); pages deployment list --project-name myzootwin-com --environment production --json; pages download config myzootwin-com --cwd isolated-audit-folder. JSON list output exposes formatted display fields, not the full Pages project object. The downloaded configuration exposes runtime/output fields, not source/build settings.
+
+**Remaining external configuration gap:** exact GitHub source-repository binding, dashboard build command/root directory, auto-deploy policy and canonical production deployment pointer are not exposed by the supported CLI read surfaces used. No credential extraction, custom authenticated API bypass or dashboard login was attempted. Keep M0-01 pending until a supported existing-authorized read route verifies these settings or the parent explicitly accepts the documented audit limit. This gap does not prevent independent public/local baseline capture; deployment remains gated.
 
 ## Analytics and privacy baseline
 
@@ -60,4 +73,4 @@ Layout breakpoints include header/footer 820px/520px, homepage 900px/560px and A
 
 Reuse the existing Astro repository/build, static routing, visual identity/media when rights permit, journal pages, navigation, SEO and isolated existing analytics integration. Add a lazy-loaded /play module rather than replacing the whole site or introducing a second build/repository. Keep homepage emphasis unchanged until playable release readiness. Detailed proposed boundaries are in ARCHITECTURE.md.
 
-Before M0-01 completion: resolve source preservation (SOURCE_PROVENANCE.md) and Cloudflare read-only verification above. Then record actual evidence and complete commit/checklist workflow. Next sequential feature M0-02: baseline screenshots + browser smoke homepage/navigation/mobile and rollback plan. PRD test/runtime targets are requirements, not verified results. M7 remains deferred.
+Source packaging is resolved through the parent's explicitly authorized complete source-text transcription alternative (SOURCE_PROVENANCE.md); no native Library materialization success is claimed. Before M0-01 completion: resolve the remaining Cloudflare source/build/canonical-pointer verification gap above or obtain explicit parent acceptance of the documented audit limit. Next independent safe feature work is M0-02 baseline screenshots + browser smoke homepage/navigation/mobile and rollback plan, without modifying app code or production and without claiming the whole audit complete. PRD test/runtime targets are requirements, not verified results. M7 remains deferred.
