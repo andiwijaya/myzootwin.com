@@ -1,3 +1,4 @@
+import{passedScenario}from'./browser/scenario-result.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { resolve, join } from 'node:path';
@@ -63,3 +64,5 @@ test('resumed simulation receipts account for initial tick without accepting mis
  row.data={harnessRunId:report.runId,harnessBuildId:report.build.id,harnessSourceId:report.source.id,samples:[sample('ready',21,1),sample('paused',22,2,true),sample('still-paused',22,2,true),sample('resumed',23,3),{name:'closed',maxActiveSessions:1,maxPendingRAFs:1,canvasCount:0,pendingRAFs:0,lastDisposed:{simulationDisposed:true,simulationSubscribers:0}}]};
  assert.deepEqual(browserVerdict(receipt,report).errors,[]);row.data.samples[1].session.simulationEvents=0;assert.ok(browserVerdict(receipt,report).errors.some(e=>e.includes('integration mismatch')));
 });
+
+test('scenario recorder owns verdict/ID even when observed UI contains a status field',()=>{assert.deepEqual(passedScenario('bridge',{status:'Disconnected',id:'UI-id',accessStatus:'Connected'}),{status:'PASS',id:'bridge',accessStatus:'Connected'});});

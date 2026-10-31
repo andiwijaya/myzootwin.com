@@ -1,5 +1,6 @@
 export type SimulationEvent =
   | { type: 'tick'; tick: number; gameTimeMs: number; randomSample: number }
+  | { type: 'path-built'; cell:{x:number;z:number}; tick:number; gameTimeMs:number }
   | { type: 'habitat-built'; habitatId:string; tick:number; gameTimeMs:number }
   | { type: 'reset'; tick: number; gameTimeMs: number };
 

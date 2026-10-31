@@ -62,6 +62,8 @@ import { english as copy } from '../game-entry/locale';
       </div>
       <section class="placement-tools" data-placement-tools hidden aria-labelledby="placement-title">
         <button type="button" data-placement-command="begin">{copy.placementStart}</button>
+        <button type="button" data-placement-command="begin-path">{copy.pathStart}</button>
+        <p data-access-status role="status" aria-live="polite"></p>
         <div data-placement-edit hidden>
           <h3 id="placement-title" data-placement-text="placementTitle">{copy.placementTitle}</h3>
           <p data-placement-text="placementHint">{copy.placementHint}</p>

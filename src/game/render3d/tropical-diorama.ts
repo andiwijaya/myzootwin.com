@@ -59,7 +59,7 @@ export function createTropicalDiorama(world: WorldState) {
     if (tile.terrain === 'land') {
       const greens = ['#9abf73','#9fc478','#a5c97e','#98bd70'];
       box(terrain,greens[(tile.cell.x*7+tile.cell.z*3)%4],[x,-.018,z],[1,.08,1]);
-      if (tile.path) box(props,'#edcd91',[x,.04,z],[.94,.06,.94]);
+      if (tile.path&&tile.cell.x===world.gate.x&&tile.cell.z===world.gate.z) box(props,'#edcd91',[x,.04,z],[.94,.06,.94]);
     } else {
       box(terrain,'#d0bd89',[x,-.025,z],[1,.06,1]);
       box(water,'#52b6b7',[x,.018,z],[.84,.026,1]);

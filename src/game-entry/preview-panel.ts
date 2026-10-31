@@ -1,3 +1,4 @@
+import type {AccessSummary} from '../game/world/paths.ts';
 import {sanctuarySessionFor} from '../game/core/session-state.ts';
 import type { PlacementCommand, PlacementView } from '../game/world/placement-preview.ts';
 import type { SceneIdentity } from '../game/render3d/scene-selection.ts';
@@ -44,17 +45,21 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     }
   }
   let placement:PlacementView|null=null;
-  let habitatCount=0;
+  let habitatCount=0;let access:AccessSummary|null=null;
   const placementTools=root.querySelector<HTMLElement>('[data-placement-tools]');
   function renderPlacement(){
-    if(!placementTools)return;const copy=entryMessages[locale],active=Boolean(placement?.active);
+    if(!placementTools)return;const copy=entryMessages[locale],active=Boolean(placement?.active),path=placement?.kind==='path';
     placementTools.hidden=state.status!=='ready';placementTools.dataset.valid=String(placement?.reason==='ready');
     const start=root.querySelector<HTMLButtonElement>('[data-placement-command="begin"]');if(start){start.hidden=active;start.textContent=copy.placementStart;}
+    const pathStart=root.querySelector<HTMLButtonElement>('[data-placement-command="begin-path"]');if(pathStart){pathStart.hidden=active;pathStart.textContent=copy.pathStart;}
+    root.querySelector('[data-access-status]')?.replaceChildren(copy[!access?.habitats?'accessNoHabitat':access.connected?'accessConnected':'accessDisconnected'].replace('{n}',String(access?.pathTiles??1)).replace('{r}',String(access?.routeCells??0)));
+    if(placementTools)placementTools.dataset.connected=String(Boolean(access?.connected));
     const edit=root.querySelector<HTMLElement>('[data-placement-edit]');if(edit)edit.hidden=!active;
-    for(const el of root.querySelectorAll<HTMLElement>('[data-placement-text]'))el.textContent=copy[el.dataset.placementText as EntryMessage];
-    for(const command of ['confirm','cancel','left','right','up','down'] as const){const button=root.querySelector<HTMLButtonElement>(`[data-placement-command="${command}"]`);if(!button)continue;const key=`placement${command[0].toUpperCase()}${command.slice(1)}` as EntryMessage;if(command==='confirm'||command==='cancel')button.textContent=copy[key];else button.setAttribute('aria-label',copy[key]);if(command==='confirm')button.disabled=!active||placement?.reason!=='ready';}
+    for(const el of root.querySelectorAll<HTMLElement>('[data-placement-text]'))el.textContent=copy[path?(el.dataset.placementText==='placementTitle'?'pathTitle':'pathHint'):el.dataset.placementText as EntryMessage];
+    for(const command of ['confirm','cancel','left','right','up','down'] as const){const button=root.querySelector<HTMLButtonElement>(`[data-placement-command="${command}"]`);if(!button)continue;const key=`placement${command[0].toUpperCase()}${command.slice(1)}` as EntryMessage;if(command==='confirm'||command==='cancel')button.textContent=copy[path?(command==='confirm'?'pathConfirm':'pathCancel'):key];else button.setAttribute('aria-label',copy[key]);if(command==='confirm')button.disabled=!active||placement?.reason!=='ready';}
     const reasonKey=`placement${(placement?.reason??'choose')[0].toUpperCase()}${(placement?.reason??'choose').slice(1)}` as EntryMessage;
-    root.querySelector('[data-placement-reason]')?.replaceChildren(active?copy[reasonKey]:'');
+    root.querySelector('[data-placement-reason]')?.replaceChildren(active?copy[path&&placement?.reason==='ready'?'pathReady':path&&placement?.reason==='path'?'pathAlready':reasonKey]:'');
+    root.querySelector('.placement-arrows')?.setAttribute('aria-label',path?copy.pathTitle:copy.placementTitle);
     const anchor=placement?.proposal?.anchor;
     root.querySelector('[data-placement-location]')?.replaceChildren(active&&anchor?copy.placementLocation.replace('{x}',String(anchor.x+1)).replace('{z}',String(anchor.z+1)):'');
     const confirmed=root.querySelector<HTMLElement>('[data-placement-confirmed]');if(confirmed){confirmed.hidden=habitatCount===0||active;confirmed.textContent=copy.placementConfirmed;}
@@ -72,7 +77,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) return;
     const copy = entryMessages[locale];
     panel.lang = locale;
-    if(next.status!=='ready'){selected=null;placement=null;habitatCount=0;}
+    if(next.status!=='ready'){selected=null;placement=null;habitatCount=0;access=null;}
     renderPlacement();
     renderSelection();
     if(cameraControls){cameraControls.hidden=next.status!=='ready';cameraControls.setAttribute('aria-label',copy.cameraControls);}
@@ -122,9 +127,10 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   });
   const controller = createPreviewController(load, render);
   host.addEventListener('scene-selection-change',event=>{const had=Boolean(selected);selected=(event as CustomEvent<SceneIdentity|null>).detail;renderSelection();if(!selected&&had&&selectionStatus)selectionStatus.value=entryMessages[locale].selectionCleared;},{signal:events.signal});
+  host.addEventListener('scene-access-change',event=>{access=(event as CustomEvent<AccessSummary>).detail;renderPlacement();},{signal:events.signal});
   host.addEventListener('scene-habitat-change',event=>{habitatCount=(event as CustomEvent<{count:number}>).detail.count;renderPlacement();},{signal:events.signal});
   host.addEventListener('scene-placement-change',event=>{placement=(event as CustomEvent<PlacementView>).detail;renderPlacement();},{signal:events.signal});
-  for(const button of root.querySelectorAll<HTMLButtonElement>('[data-placement-command]'))button.addEventListener('click',()=>{const command=button.dataset.placementCommand as PlacementCommand;controller.placement(command,placement?.revision);if(command==='begin'||command==='cancel'||command==='confirm')host.focus({preventScroll:true});},{signal:events.signal});
+  for(const button of root.querySelectorAll<HTMLButtonElement>('[data-placement-command]'))button.addEventListener('click',()=>{const command=button.dataset.placementCommand as PlacementCommand;controller.placement(command,placement?.revision);if(command==='begin'||command==='begin-path'||command==='cancel'||command==='confirm')host.focus({preventScroll:true});},{signal:events.signal});
   placementTools?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();controller.placement('cancel');host.focus({preventScroll:true});}},{signal:events.signal});
   const dismiss=()=>{controller.clearSelection();host.focus({preventScroll:true});};
   root.querySelector('[data-clear-selection]')?.addEventListener('click',dismiss,{signal:events.signal});

@@ -1,3 +1,4 @@
+import {preparePath,reconcilePathAccess,accessSummary} from '../world/paths.ts';
 import {prepareHabitat} from '../world/build-habitat.ts';
 import type {Point} from './state.ts';
 import { createEventBus, type SimulationEvent } from './events.ts';
@@ -11,7 +12,9 @@ import { validateSave } from '../persistence/save-v1.ts';
 export function createSimulation(initial: ZooSaveV1 = createInitialState()) {
   const checked=validateSave(initial);
   if(!checked.ok)throw new Error(`Invalid initial state at ${checked.path}`);
-  const baseline=checked.value;
+  const reconciled=reconcilePathAccess(checked.value.world);
+  const baseline={...checked.value,world:reconciled.world};
+  let topology=reconciled.topology;
   let state=structuredClone(baseline);
   let disposed=false;
   let lastFrame:number|null=null;
@@ -37,14 +40,22 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState()) {
       if(disposed||clock.inspect().paused)return {ok:false as const,reason:'command' as const};
       const prepared=prepareHabitat(state.world,anchor,operationId);
       if(!prepared.ok)return prepared;
-      if(!prepared.duplicate){const next=validateSave({...state,world:prepared.world});if(!next.ok)return {ok:false as const,reason:'command' as const};state=next.value;bus.emit(Object.freeze({type:'habitat-built',habitatId:prepared.habitatId,tick:state.tick,gameTimeMs:state.gameTimeMs}));}
+      if(!prepared.duplicate){const connected=reconcilePathAccess(prepared.world);const next=validateSave({...state,world:connected.world});if(!next.ok)return {ok:false as const,reason:'command' as const};state=next.value;topology=connected.topology;bus.emit(Object.freeze({type:'habitat-built',habitatId:prepared.habitatId,tick:state.tick,gameTimeMs:state.gameTimeMs}));}
       return {ok:true as const,habitatId:prepared.habitatId,duplicate:prepared.duplicate};
     },
+    buildPath(cell:Point){
+      if(disposed||clock.inspect().paused)return {ok:false as const,reason:'command' as const};
+      const prepared=preparePath(state.world,cell);if(!prepared.ok)return prepared;
+      if(!prepared.duplicate){const connected=reconcilePathAccess(prepared.world);const next=validateSave({...state,world:connected.world});if(!next.ok)return {ok:false as const,reason:'command' as const};state=next.value;topology=connected.topology;bus.emit(Object.freeze({type:'path-built',cell:{...cell},tick:state.tick,gameTimeMs:state.gameTimeMs}));}
+      return {ok:true as const,duplicate:prepared.duplicate};
+    },
+    pathTopology:()=>structuredClone(topology),
+    access:()=>accessSummary(topology),
     subscribe: bus.subscribe,
     snapshot: ()=>structuredClone(state),
     setPaused(value:boolean) { if(clock.inspect().paused!==value) { lastFrame=null; clock.setPaused(value); } },
-    reset() { if(disposed)return; state=structuredClone(baseline); lastFrame=null; clock.reset(); bus.emit(Object.freeze({type:'reset',tick:state.tick,gameTimeMs:state.gameTimeMs})); },
+    reset() { if(disposed)return; state=structuredClone(baseline);topology=reconcilePathAccess(state.world).topology; lastFrame=null; clock.reset(); bus.emit(Object.freeze({type:'reset',tick:state.tick,gameTimeMs:state.gameTimeMs})); },
     dispose() { if(disposed)return; disposed=true; lastFrame=null; clock.dispose(); bus.dispose(); },
-    inspect: ()=>({tick:state.tick,gameTimeMs:state.gameTimeMs,randomState:state.randomState,currency:state.currency,birdCount:state.animals.length,habitatCount:state.world.habitats.length,occupiedTiles:state.world.tiles.filter(t=>t.occupantId!==null).length,...clock.inspect(),subscribers:bus.inspect().subscribers,listenerErrors:bus.inspect().listenerErrors}),
+    inspect: ()=>({tick:state.tick,gameTimeMs:state.gameTimeMs,randomState:state.randomState,currency:state.currency,birdCount:state.animals.length,pathTiles:topology.pathTiles,reachablePathTiles:topology.reachable.length,connectedHabitats:topology.habitats.filter(h=>h.connected).length,routeCells:accessSummary(topology).routeCells,habitatCount:state.world.habitats.length,occupiedTiles:state.world.tiles.filter(t=>t.occupantId!==null).length,...clock.inspect(),subscribers:bus.inspect().subscribers,listenerErrors:bus.inspect().listenerErrors}),
   };
 }

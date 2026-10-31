@@ -22,8 +22,8 @@ export function createScenePicker(catalog:SceneCatalog,camera:Camera,rect:()=>Pi
   const fill=new Mesh(new PlaneGeometry(1,1),new MeshBasicMaterial({color:'#ffe4a0',transparent:true,opacity:.28,side:DoubleSide,depthWrite:false,polygonOffset:true,polygonOffsetFactor:-1,polygonOffsetUnits:-1}));
   fill.rotation.x=-Math.PI/2;fill.renderOrder=20;group.add(fill,outline);
   const raycaster=new Raycaster();let current:SceneIdentity|null=null,enabled=true,disposed=false,revision=0;
-  function select(next:SceneIdentity|null) {
-    if(disposed||current?.id===next?.id)return;
+  function select(next:SceneIdentity|null,force=false) {
+    if(disposed||(!force&&current?.id===next?.id&&current?.kind===next?.kind&&current?.connected===next?.connected))return;
     current=next;revision++;group.visible=Boolean(next);
     const bounds=next?catalog.bounds.get(next.id):undefined;
     if(bounds){
@@ -36,6 +36,7 @@ export function createScenePicker(catalog:SceneCatalog,camera:Camera,rect:()=>Pi
   return {group,geometries:[outline.geometry,fill.geometry],materials:[...outlineMaterials,fill.material],
     pick(point:{x:number;y:number}) {if(enabled&&!disposed)select(raycastScene(catalog,camera,point,rect(),raycaster));},
     clear(){select(null);},
+    refresh(){if(current){const next=catalog.identities.get(current.id);select(next?{...next,cell:{...next.cell}}:null,true);}},
     setEnabled(value:boolean){enabled=value;},
     dispose(){if(disposed)return;select(null);disposed=true;group.visible=false;},
     inspect:()=>({selectionActive:Boolean(current),selectionRevision:revision,selectionMarkerVisible:group.visible,selectionDisposed:disposed,selectableTiles:[...catalog.identities.values()].filter(i=>i.category==='tile').length,selectableObjects:[...catalog.identities.values()].filter(i=>i.category==='object').length}),

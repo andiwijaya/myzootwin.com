@@ -1,3 +1,4 @@
+import{runPathDomScenarios}from'./path-dom-scenarios.mjs';
 import {sanctuarySessionFor} from '../../src/game/core/session-state.ts';
 import {runPlacementDomScenarios} from './placement-dom-scenarios.mjs';
 import { runSelectionDomScenarios,selectGateForFixture } from './selection-dom-scenarios.mjs';
@@ -70,6 +71,9 @@ document.querySelector('#qa-select-gate').addEventListener('click',()=>{try{sele
 const placementRun=document.createElement('button');placementRun.id='qa-placement';placementRun.textContent='Run injected placement checks';document.querySelector('#qa-selection').after(placementRun);
 const placementOutput=document.createElement('output');placementOutput.id='qa-placement-results';placementRun.after(placementOutput);
 placementRun.addEventListener('click',async()=>{let result;try{result=await runPlacementDomScenarios(root,()=>handle?.inspect().session,value=>handle?.setPaused(value),value=>{locale=value;handle?.setLocale(value);});}catch(error){result={status:'FAIL',error:String(error)};}placementOutput.textContent=JSON.stringify(result);update();});
+const pathRun=document.createElement('button');pathRun.id='qa-path';pathRun.textContent='Run injected path checks';document.querySelector('#qa-placement').after(pathRun);
+const pathOutput=document.createElement('output');pathOutput.id='qa-path-results';pathRun.after(pathOutput);
+pathRun.addEventListener('click',async()=>{let result;try{result=await runPathDomScenarios(root,()=>handle?.inspect().session,value=>handle?.setPaused(value),value=>{locale=value;handle?.setLocale(value);});}catch(error){result={status:'FAIL',error:String(error)};}pathOutput.textContent=JSON.stringify(result);update();});
 const observer=new MutationObserver(update);
 observer.observe(root,{subtree:true,childList:true,attributes:true,attributeFilter:['data-renderer-state']});
 const onVisibility=()=>{if(document.hidden){endProbe('ABORTED_HIDDEN');update();}};
