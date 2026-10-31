@@ -1,3 +1,4 @@
+import type { PlacementCommand } from '../world/placement-preview.ts';
 import type { CameraCommand } from './camera-navigation.ts';
 export type PreviewFailureKind = 'unsupported' | 'load' | 'init' | 'context-lost' | 'render';
 export type PreviewState =
@@ -14,6 +15,7 @@ export interface PreviewSession {
   dispose(): void;
   camera?(command:CameraCommand):void;
   clearSelection?():void;
+  placement?(command:PlacementCommand,revision?:number):void;
   setPaused?(paused: boolean): void;
   inspect?(): Record<string, number | boolean>;
 }
@@ -72,5 +74,6 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     inspectSession: () => session?.inspect?.(),
     camera(command:CameraCommand) {if(!paused&&state.status==='ready')session?.camera?.(command);},
     clearSelection(){if(!paused&&state.status==='ready')session?.clearSelection?.();},
+    placement(command:PlacementCommand,revision?:number){if(!paused&&state.status==='ready')session?.placement?.(command,revision);},
   };
 }

@@ -60,6 +60,22 @@ import { english as copy } from '../game-entry/locale';
         <button type="button" data-camera-command="reset">{copy.cameraReset}</button>
         <p id="camera-help" data-camera-help>{copy.cameraHelp}</p>
       </div>
+      <section class="placement-tools" data-placement-tools hidden aria-labelledby="placement-title">
+        <button type="button" data-placement-command="begin">{copy.placementStart}</button>
+        <div data-placement-edit hidden>
+          <h3 id="placement-title" data-placement-text="placementTitle">{copy.placementTitle}</h3>
+          <p data-placement-text="placementHint">{copy.placementHint}</p>
+          <p data-placement-location></p><p data-placement-reason role="status" aria-live="polite"></p>
+          <div class="placement-arrows" role="group" aria-label={copy.placementTitle}>
+            <button type="button" data-placement-command="left" aria-label={copy.placementLeft}>←</button>
+            <button type="button" data-placement-command="up" aria-label={copy.placementUp}>↑</button>
+            <button type="button" data-placement-command="down" aria-label={copy.placementDown}>↓</button>
+            <button type="button" data-placement-command="right" aria-label={copy.placementRight}>→</button>
+          </div>
+          <div class="placement-actions"><button type="button" data-placement-command="confirm" disabled>{copy.placementConfirm}</button><button type="button" data-placement-command="cancel">{copy.placementCancel}</button></div>
+        </div>
+        <p data-placement-confirmed role="status" hidden>{copy.placementConfirmed}</p>
+      </section>
       <section class="scene-selection" data-scene-selection aria-labelledby="scene-selection-title" hidden>
         <div><h3 id="scene-selection-title" data-selection-title></h3><button type="button" data-clear-selection>{copy.selectionDismiss}</button></div>
         <p data-selection-location></p><p data-selection-detail></p>
@@ -105,6 +121,8 @@ import { english as copy } from '../game-entry/locale';
 </script>
 
 <style>
+.placement-tools{margin:0 .8rem .8rem;padding:.75rem;border:1px solid #8aa08c;border-radius:12px;text-align:left;background:#fffdf4}.placement-tools h3{margin:.2rem 0;font:700 1rem/1.4 'DM Sans',sans-serif}.placement-tools p{font-size:.75rem;line-height:1.5;margin:.45rem 0;color:#344f40;overflow-wrap:anywhere}.placement-tools [data-placement-reason]{font-weight:700}.placement-tools button{min-width:44px;min-height:44px;padding:.45rem .65rem;border:1px solid #52755d;border-radius:9px;background:#fffdf4;color:#183b32;font:700 .75rem/1.4 'DM Sans',sans-serif;cursor:pointer}.placement-tools button:disabled{opacity:.5;cursor:default}.placement-tools button:focus-visible{outline:3px solid #ad7629;outline-offset:2px}.placement-actions,.placement-arrows{display:flex;gap:.4rem;flex-wrap:wrap;margin:.5rem 0}.placement-actions button:first-child{background:#214f3c;color:white}.placement-tools[data-valid="false"] [data-placement-reason]{color:#94252d}
+
 .preview-stage{position:relative}.selection-crosshair{display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;font:700 1.2rem/1 monospace;color:#183b32;text-shadow:0 0 2px #fff}.preview-stage:focus-visible .selection-crosshair{display:block}.scene-selection{margin:0 .8rem .8rem;padding:.75rem;background:#fff9e8;border:1px solid #b39d66;border-radius:12px;text-align:left}.scene-selection>div{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem}.scene-selection h3{margin:.2rem 0;font:700 1rem/1.3 'DM Sans',sans-serif;overflow-wrap:anywhere}.scene-selection button{min-height:44px;max-width:55%;border:1px solid #7e9981;border-radius:9px;background:var(--paper);color:var(--ink);font:700 .72rem/1.3 'DM Sans',sans-serif;padding:.45rem .6rem;cursor:pointer}.scene-selection p{margin:.3rem 0 0;font-size:.78rem;line-height:1.5;color:#425e50}.selection-announcement{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
 .camera-controls{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.45rem;padding:0 .75rem .6rem}.camera-controls button{min-width:44px;min-height:44px;border:1px solid #7e9981;border-radius:10px;background:var(--paper);color:var(--ink);font:700 .78rem/1.2 'DM Sans',sans-serif;cursor:pointer;padding:.45rem .7rem}.camera-controls button:disabled{opacity:.5;cursor:default}.camera-controls output{font:700 .75rem/1.2 monospace;min-width:4ch;text-align:center}.camera-controls p{flex-basis:100%;font-size:.7rem;line-height:1.55;text-align:center;color:#52645b;margin:.15rem 0 0}.preview-stage:focus-visible{outline:3px solid #ad7629;outline-offset:-4px}
 .sanctuary-art [hidden]{display:none!important}.preview-frame{position:relative}.preview-stage{width:100%;height:clamp(250px,28vw,350px)}.preview-feedback{padding:.7rem 1.1rem;text-align:center;font-size:.78rem;color:var(--ink)}.preview-feedback strong{display:block;font-size:.85rem}.preview-feedback p{margin:.35rem 0 0;color:#52645b;line-height:1.5}.sanctuary-art[data-renderer-state="loading"] .preview-feedback,.sanctuary-art[data-renderer-state="error"] .preview-feedback,.sanctuary-art[data-renderer-state="unsupported"] .preview-feedback{position:absolute;inset:10%;display:flex;flex-direction:column;justify-content:center;background:#fffdf8f5;border:1px solid #bfccb5;border-radius:16px;padding:1rem}.sanctuary-art[data-renderer-state="error"] [data-preview-illustration],.sanctuary-art[data-renderer-state="unsupported"] [data-preview-illustration]{opacity:.35}.preview-controls{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;padding:0 .8rem}.preview-controls button{min-height:44px;border:1px solid var(--forest);border-radius:10px;background:var(--paper);color:var(--ink);font:700 .78rem/1.35 'DM Sans',sans-serif;padding:.55rem .8rem;cursor:pointer}.preview-controls button:hover{background:#e2ebd9}.software-notice{display:block;text-align:center;font-size:.65rem;color:#4e6856;margin:.7rem .6rem 0;text-decoration:underline}

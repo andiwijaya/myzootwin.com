@@ -1,3 +1,4 @@
+import type { PlacementCommand, PlacementView } from '../game/world/placement-preview.ts';
 import type { SceneIdentity } from '../game/render3d/scene-selection.ts';
 import { presentSelection } from './selection-presentation.ts';
 import type { CameraCommand } from '../game/render3d/camera-navigation.ts';
@@ -41,6 +42,21 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
       for(const field of ['title','location','detail'])root.querySelector(`[data-selection-${field}]`)?.replaceChildren();
     }
   }
+  let placement:PlacementView|null=null;
+  const placementTools=root.querySelector<HTMLElement>('[data-placement-tools]');
+  function renderPlacement(){
+    if(!placementTools)return;const copy=entryMessages[locale],active=Boolean(placement?.active);
+    placementTools.hidden=state.status!=='ready';placementTools.dataset.valid=String(placement?.reason==='ready');
+    const start=root.querySelector<HTMLButtonElement>('[data-placement-command="begin"]');if(start){start.hidden=active;start.textContent=copy.placementStart;}
+    const edit=root.querySelector<HTMLElement>('[data-placement-edit]');if(edit)edit.hidden=!active;
+    for(const el of root.querySelectorAll<HTMLElement>('[data-placement-text]'))el.textContent=copy[el.dataset.placementText as EntryMessage];
+    for(const command of ['confirm','cancel','left','right','up','down'] as const){const button=root.querySelector<HTMLButtonElement>(`[data-placement-command="${command}"]`);if(!button)continue;const key=`placement${command[0].toUpperCase()}${command.slice(1)}` as EntryMessage;if(command==='confirm'||command==='cancel')button.textContent=copy[key];else button.setAttribute('aria-label',copy[key]);if(command==='confirm')button.disabled=!active||placement?.reason!=='ready';}
+    const reasonKey=`placement${(placement?.reason??'choose')[0].toUpperCase()}${(placement?.reason??'choose').slice(1)}` as EntryMessage;
+    root.querySelector('[data-placement-reason]')?.replaceChildren(active?copy[reasonKey]:'');
+    const anchor=placement?.proposal?.anchor;
+    root.querySelector('[data-placement-location]')?.replaceChildren(active&&anchor?copy.placementLocation.replace('{x}',String(anchor.x+1)).replace('{z}',String(anchor.z+1)):'');
+    const confirmed=root.querySelector<HTMLElement>('[data-placement-confirmed]');if(confirmed){confirmed.hidden=!placement?.confirmed||active;confirmed.textContent=copy.placementConfirmed;}
+  }
   const cameraControls=root.querySelector<HTMLElement>('[data-camera-controls]');
   const zoomOutput=root.querySelector<HTMLOutputElement>('[data-camera-zoom]');
   function cameraState(zoom=Number(host?.dataset.cameraZoom??1)) {
@@ -54,7 +70,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) return;
     const copy = entryMessages[locale];
     panel.lang = locale;
-    if(next.status!=='ready')selected=null;
+    if(next.status!=='ready'){selected=null;placement=null;}
+    renderPlacement();
     renderSelection();
     if(cameraControls){cameraControls.hidden=next.status!=='ready';cameraControls.setAttribute('aria-label',copy.cameraControls);}
     root.querySelector('[data-camera-help]')?.replaceChildren(copy.cameraHelp);
@@ -103,6 +120,9 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   });
   const controller = createPreviewController(load, render);
   host.addEventListener('scene-selection-change',event=>{const had=Boolean(selected);selected=(event as CustomEvent<SceneIdentity|null>).detail;renderSelection();if(!selected&&had&&selectionStatus)selectionStatus.value=entryMessages[locale].selectionCleared;},{signal:events.signal});
+  host.addEventListener('scene-placement-change',event=>{placement=(event as CustomEvent<PlacementView>).detail;renderPlacement();},{signal:events.signal});
+  for(const button of root.querySelectorAll<HTMLButtonElement>('[data-placement-command]'))button.addEventListener('click',()=>{const command=button.dataset.placementCommand as PlacementCommand;controller.placement(command,placement?.revision);if(command==='begin'||command==='cancel'||command==='confirm')host.focus({preventScroll:true});},{signal:events.signal});
+  placementTools?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();controller.placement('cancel');host.focus({preventScroll:true});}},{signal:events.signal});
   const dismiss=()=>{controller.clearSelection();host.focus({preventScroll:true});};
   root.querySelector('[data-clear-selection]')?.addEventListener('click',dismiss,{signal:events.signal});
   selectionPanel?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();dismiss();}},{signal:events.signal});

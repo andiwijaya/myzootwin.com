@@ -2,7 +2,7 @@
   "schema_version": 1,
   "audited_at": "2026-10-31",
   "baseline_commit": "3b06c6d8d2a920ad5894868059885c98a58217a6",
-  "scope": "Existing inventory retained; M1-03 original selection indicator and source ownership metadata recorded. No new downloaded art or license agreement.",
+  "scope": "Existing inventory retained; M1-04 original footprint ghost/session-plan indicator recorded. No external art or license agreement.",
   "assets": [
     {
       "path": "public/images/myzootwin-beranda.png",
@@ -191,6 +191,23 @@
         "added_triangles_when_selected": 4
       },
       "measurement_note": "Actual WebGL inspection after selecting gate; transparent double-sided fill uses two passes plus outline. Pool reused and disposed with session; not a performance bottleneck claim."
+    },
+    {
+      "id": "placement_footprint_m1_04",
+      "path": "src/game/render3d/placement-preview.ts",
+      "bytes": 3857,
+      "sha256": "0463bf764236632781e4c333379a51494828039942717f9bcb0cc763c4ca860e",
+      "origin": "Original procedural footprint configuration authored in repository using existing Three.js MIT primitives.",
+      "rights_status": "original_configuration_using_existing_three_mit",
+      "usage_decision": "Green/red 2x2 ghost and blue session-local approved planning outline; not a constructed habitat or saved player progress.",
+      "attribution": "Existing public/licenses/three-MIT.txt retained.",
+      "bounded_resource_pool": {
+        "geometries": 2,
+        "materials": 3,
+        "added_draw_calls_ghost_and_plan": 6,
+        "added_triangles_ghost_and_plan": 8
+      },
+      "measurement_note": "Actual WebGL 12 draws/4136 triangles vs world 6/4128, one active ghost and at most one confirmed plan; shared line geometry reused. No external textures."
     }
   ],
   "direct_package_notice_spot_checks": [

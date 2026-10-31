@@ -1,3 +1,4 @@
+import {runPlacementDomScenarios} from './placement-dom-scenarios.mjs';
 import { runSelectionDomScenarios,selectGateForFixture } from './selection-dom-scenarios.mjs';
 import { runCameraDomScenarios, beginInjectedCameraGesture } from './camera-dom-scenarios.mjs';
 import { createFrameMetrics, legacyMemory, probeStatus } from './frame-metrics.mjs';
@@ -31,6 +32,7 @@ function factory(onFailure){
     setPaused:value=>native.setPaused?.(value),
     camera:value=>native.camera?.(value),
     clearSelection:()=>native.clearSelection?.(),
+    placement:(command,revision)=>native.placement?.(command,revision),
     inspect:()=>native.inspect?.(),
     dispose(){if(ended)return;ended=true;native.dispose();active--;disposed++;lastDisposed=native.inspect?.();update();},
   };
@@ -64,6 +66,9 @@ document.querySelector('#qa-camera').addEventListener('click',()=>{const result=
 document.querySelector('#qa-camera-held').addEventListener('click',()=>{beginInjectedCameraGesture(root);update();});
 document.querySelector('#qa-selection').addEventListener('click',()=>{let result;try{result=runSelectionDomScenarios(root,()=>handle?.inspect().session,value=>handle?.setPaused(value),value=>{locale=value;handle?.setLocale(value);});}catch(error){result={status:'FAIL',error:String(error)};}document.querySelector('#qa-selection-results').textContent=JSON.stringify(result);update();});
 document.querySelector('#qa-select-gate').addEventListener('click',()=>{try{selectGateForFixture(root,()=>handle?.inspect().session);}catch(error){document.querySelector('#qa-selection-results').textContent=JSON.stringify({status:'FAIL',error:String(error)});}update();});
+const placementRun=document.createElement('button');placementRun.id='qa-placement';placementRun.textContent='Run injected placement checks';document.querySelector('#qa-selection').after(placementRun);
+const placementOutput=document.createElement('output');placementOutput.id='qa-placement-results';placementRun.after(placementOutput);
+placementRun.addEventListener('click',()=>{let result;try{result=runPlacementDomScenarios(root,()=>handle?.inspect().session,value=>handle?.setPaused(value),value=>{locale=value;handle?.setLocale(value);});}catch(error){result={status:'FAIL',error:String(error)};}placementOutput.textContent=JSON.stringify(result);update();});
 const observer=new MutationObserver(update);
 observer.observe(root,{subtree:true,childList:true,attributes:true,attributeFilter:['data-renderer-state']});
 const onVisibility=()=>{if(document.hidden){endProbe('ABORTED_HIDDEN');update();}};

@@ -1,6 +1,6 @@
+import { createPlacementPreview } from './placement-preview.ts';
 import { createScenePicker } from './scene-picking.ts';
 import { AmbientLight, BufferGeometry, Color, DirectionalLight, OrthographicCamera, Scene, SRGBColorSpace, WebGLRenderer, type Material } from 'three';
-import { createInitialState } from '../core/initial-state.ts';
 import { createTropicalDiorama } from './tropical-diorama.ts';
 import { mountCameraControls } from './camera-controls.ts';
 import { createSimulation } from '../core/simulation.ts';
@@ -36,6 +36,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   let diorama: ReturnType<typeof createTropicalDiorama> | undefined;
   let controls: ReturnType<typeof mountCameraControls> | undefined;
   let picker: ReturnType<typeof createScenePicker> | undefined;
+  let placement:ReturnType<typeof createPlacementPreview>|undefined;
   const simulation = createSimulation();
   let simulationTimeMs = 0;
   let simulationEvents = 0;
@@ -64,6 +65,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     simulation.setPaused(shouldPause);
     controls?.setEnabled(!shouldPause);
     picker?.setEnabled(!shouldPause);
+    placement?.setEnabled(!shouldPause);
     if (shouldPause) loop.stop();
     else loop.start();
   }
@@ -88,6 +90,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     safe(() => loop.dispose());
     safe(() => controls?.dispose());
     safe(() => picker?.dispose());
+    safe(() => placement?.dispose());
     unsubscribe();
     simulation.dispose();
     canvas.removeEventListener('webglcontextlost', onLost);
@@ -120,7 +123,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     const sun = new DirectionalLight('#fff1d6', 2.5);
     sun.position.set(-6, 10, 8);
     scene.add(sun);
-    const initialWorld=createInitialState().world;
+    const initialWorld=simulation.snapshot().world;
     diorama = createTropicalDiorama(initialWorld);
     geometries.push(...diorama.geometries); materials.push(...diorama.materials);
     scene.add(diorama.group);
@@ -129,7 +132,14 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
       host.dispatchEvent(new CustomEvent('scene-selection-change',{detail:identity}));
     });
     geometries.push(...picker.geometries);materials.push(...picker.materials);scene.add(picker.group);
-    controls=mountCameraControls(host,canvas,camera,diorama.bounds,initialWorld,point=>picker?.pick(point),()=>picker?.clear());
+    placement=createPlacementPreview(()=>simulation.snapshot().world,diorama.catalog,camera,()=>canvas.getBoundingClientRect(),view=>{
+      host.dataset.planActive=String(view.active);host.dataset.planReason=view.reason;
+      host.dataset.planAnchor=view.proposal?`${view.proposal.anchor.x},${view.proposal.anchor.z}`:'';
+      host.dataset.planConfirmed=view.confirmed?`${view.confirmed.anchor.x},${view.confirmed.anchor.z}`:'';
+      host.dispatchEvent(new CustomEvent('scene-placement-change',{detail:view}));
+    });
+    geometries.push(...placement.geometries);materials.push(...placement.materials);scene.add(placement.group);
+    controls=mountCameraControls(host,canvas,camera,diorama.bounds,initialWorld,point=>placement?.active()?placement.pick(point):picker?.pick(point),()=>placement?.active()?placement.command('cancel'):picker?.clear());
     canvas.addEventListener('webglcontextlost', onLost);
     host.append(canvas);
     resize(); // Ready means a real first render completed, not merely an import.
@@ -150,7 +160,8 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     dispose,
     camera: value => controls?.command(value),
     clearSelection:()=>picker?.clear(),
+    placement:(command,revision)=>{if(command==='begin')picker?.clear();placement?.command(command,revision);},
     setPaused(value) { paused = value; updateRunning(); },
-    inspect: () => ({ disposed, lost, canvasAttached: canvas.isConnected, pendingFrames: loop.inspect().pendingFrames, geometries: renderer?.info.memory.geometries ?? 0, textures: renderer?.info.memory.textures ?? 0, programs: renderer?.info.programs?.length ?? 0, ownedMaterialsLive: materials.length - releasedMaterials, drawCallsLastRender: renderer?.info.render.calls ?? 0, trianglesLastRender: renderer?.info.render.triangles ?? 0, renderSubmissions, bufferWidth: canvas.width, bufferHeight: canvas.height, pixelRatio: renderer?.getPixelRatio() ?? 0, cleanupErrors, simulationTick: simulation.inspect().tick, simulationGameTimeMs: simulation.inspect().gameTimeMs, simulationPaused: simulation.inspect().paused, simulationDisposed: simulation.inspect().disposed, simulationSubscribers: simulation.inspect().subscribers, simulationEvents, orthographicCamera: camera.isOrthographicCamera, ...diorama?.inspect(), ...controls?.inspect(), ...picker?.inspect() }),
+    inspect: () => ({ disposed, lost, canvasAttached: canvas.isConnected, pendingFrames: loop.inspect().pendingFrames, geometries: renderer?.info.memory.geometries ?? 0, textures: renderer?.info.memory.textures ?? 0, programs: renderer?.info.programs?.length ?? 0, ownedMaterialsLive: materials.length - releasedMaterials, drawCallsLastRender: renderer?.info.render.calls ?? 0, trianglesLastRender: renderer?.info.render.triangles ?? 0, renderSubmissions, bufferWidth: canvas.width, bufferHeight: canvas.height, pixelRatio: renderer?.getPixelRatio() ?? 0, cleanupErrors, simulationTick: simulation.inspect().tick, simulationGameTimeMs: simulation.inspect().gameTimeMs, simulationPaused: simulation.inspect().paused, simulationDisposed: simulation.inspect().disposed, simulationSubscribers: simulation.inspect().subscribers, simulationEvents, orthographicCamera: camera.isOrthographicCamera, ...diorama?.inspect(), ...controls?.inspect(), ...picker?.inspect(), ...placement?.inspect() }),
   };
 }
