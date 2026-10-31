@@ -7,7 +7,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "qa:local": "node scripts/qa/qa.mjs local",
+    "qa:serve": "node scripts/qa/qa.mjs serve",
+    "qa:verify": "node scripts/qa/qa.mjs verify",
+    "qa:prune": "node scripts/qa/qa.mjs prune"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",

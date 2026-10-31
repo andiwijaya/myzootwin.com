@@ -1,0 +1,280 @@
+TAP version 13
+# Subtest: browser Indonesian preference and other-language fallback
+ok 1 - browser Indonesian preference and other-language fallback
+  ---
+  duration_ms: 0.8283
+  type: 'test'
+  ...
+# Subtest: valid saved choice overrides browser language
+ok 2 - valid saved choice overrides browser language
+  ---
+  duration_ms: 0.6679
+  type: 'test'
+  ...
+# Subtest: malformed preferences fall back without deleting or rewriting storage
+ok 3 - malformed preferences fall back without deleting or rewriting storage
+  ---
+  duration_ms: 0.1441
+  type: 'test'
+  ...
+# Subtest: unsupported schemas and locales are ignored
+ok 4 - unsupported schemas and locales are ignored
+  ---
+  duration_ms: 0.1273
+  type: 'test'
+  ...
+# Subtest: blocked storage remains usable for the current visit
+ok 5 - blocked storage remains usable for the current visit
+  ---
+  duration_ms: 0.1308
+  type: 'test'
+  ...
+# Subtest: saving writes only the entry preference namespace and versioned locale
+ok 6 - saving writes only the entry preference namespace and versioned locale
+  ---
+  duration_ms: 0.1382
+  type: 'test'
+  ...
+# Subtest: unavailable persistence and invalid runtime locale never claim success
+ok 7 - unavailable persistence and invalid runtime locale never claim success
+  ---
+  duration_ms: 0.1195
+  type: 'test'
+  ...
+# Subtest: entry dictionaries have complete matching keys and truthful preview copy
+ok 8 - entry dictionaries have complete matching keys and truthful preview copy
+  ---
+  duration_ms: 0.2683
+  type: 'test'
+  ...
+# Subtest: RAF start is idempotent and stale cancelled callbacks cannot duplicate a restarted loop
+ok 9 - RAF start is idempotent and stale cancelled callbacks cannot duplicate a restarted loop
+  ---
+  duration_ms: 1.9038
+  type: 'test'
+  ...
+# Subtest: disposed RAF loop cannot render or restart
+ok 10 - disposed RAF loop cannot render or restart
+  ---
+  duration_ms: 0.2301
+  type: 'test'
+  ...
+# Subtest: render exceptions stop the RAF chain and report once
+ok 11 - render exceptions stop the RAF chain and report once
+  ---
+  duration_ms: 0.296
+  type: 'test'
+  ...
+# Subtest: request failures become an explicit stopped error
+ok 12 - request failures become an explicit stopped error
+  ---
+  duration_ms: 0.3026
+  type: 'test'
+  ...
+# Subtest: lazy session opens once, closes once, and can reopen without overlap
+ok 13 - lazy session opens once, closes once, and can reopen without overlap
+  ---
+  duration_ms: 1.68
+  type: 'test'
+  ...
+# Subtest: closing during import prevents a late mount and ready transition
+ok 14 - closing during import prevents a late mount and ready transition
+  ---
+  duration_ms: 0.2863
+  type: 'test'
+  ...
+# Subtest: a failed lazy load is visible and a later attempt can recover
+ok 15 - a failed lazy load is visible and a later attempt can recover
+  ---
+  duration_ms: 1.4298
+  type: 'test'
+  ...
+# Subtest: unsupported WebGL has its own fallback and retry state
+ok 16 - unsupported WebGL has its own fallback and retry state
+  ---
+  duration_ms: 0.3737
+  type: 'test'
+  ...
+# Subtest: initialization exceptions do not become false ready states
+ok 17 - initialization exceptions do not become false ready states
+  ---
+  duration_ms: 0.3086
+  type: 'test'
+  ...
+# Subtest: context loss disposes the active session once and supports a fresh retry
+ok 18 - context loss disposes the active session once and supports a fresh retry
+  ---
+  duration_ms: 0.4571
+  type: 'test'
+  ...
+# Subtest: synchronous failure while mounting still disposes the late-created session
+ok 19 - synchronous failure while mounting still disposes the late-created session
+  ---
+  duration_ms: 0.2025
+  type: 'test'
+  ...
+# Subtest: pause state is applied to newly loaded sessions without changing lifecycle status
+ok 20 - pause state is applied to newly loaded sessions without changing lifecycle status
+  ---
+  duration_ms: 0.1671
+  type: 'test'
+  ...
+# Subtest: disposing a pending import prevents later renderer creation
+ok 21 - disposing a pending import prevents later renderer creation
+  ---
+  duration_ms: 0.0925
+  type: 'test'
+  ...
+# Subtest: QA cannot pass from failed process, truncated/capped TAP, duplicate summary or skipped tests
+ok 22 - QA cannot pass from failed process, truncated/capped TAP, duplicate summary or skipped tests
+  ---
+  duration_ms: 2.1471
+  type: 'test'
+  ...
+# Subtest: QA requires completed check/build receipts; successful compile text alone is insufficient
+ok 23 - QA requires completed check/build receipts; successful compile text alone is insufficient
+  ---
+  duration_ms: 0.3872
+  type: 'test'
+  ...
+# Subtest: QA capture actually marks overflowing or timed-out child output as failure
+ok 24 - QA capture actually marks overflowing or timed-out child output as failure
+  ---
+  duration_ms: 167.516
+  type: 'test'
+  ...
+# Subtest: QA paths cannot escape a named output directory or point to its root
+ok 25 - QA paths cannot escape a named output directory or point to its root
+  ---
+  duration_ms: 0.507
+  type: 'test'
+  ...
+# Subtest: browser checks remain UNRUN until all six approved-runtime cases are recorded
+ok 26 - browser checks remain UNRUN until all six approved-runtime cases are recorded
+  ---
+  duration_ms: 1.3421
+  type: 'test'
+  ...
+# Subtest: stale identity/time, capped console and missing cleanup can never produce browser PASS
+ok 27 - stale identity/time, capped console and missing cleanup can never produce browser PASS
+  ---
+  duration_ms: 0.3124
+  type: 'test'
+  ...
+# Subtest: a claimed mobile PASS must match the measured viewport, rendered canvas and built script
+ok 28 - a claimed mobile PASS must match the measured viewport, rendered canvas and built script
+  ---
+  duration_ms: 0.1458
+  type: 'test'
+  ...
+# Subtest: route comparison decodes actual journal HTML entities before checking the browser baseline
+ok 29 - route comparison decodes actual journal HTML entities before checking the browser baseline
+  ---
+  duration_ms: 0.4962
+  type: 'test'
+  ...
+# Subtest: generated fixture must carry exact visible run/build/source IDs before browser work starts
+ok 30 - generated fixture must carry exact visible run/build/source IDs before browser work starts
+  ---
+  duration_ms: 0.2874
+  type: 'test'
+  ...
+# Subtest: initial state has two reserve macaws, concrete bounded grid, reconciled starter ledger and no fake gameplay
+ok 31 - initial state has two reserve macaws, concrete bounded grid, reconciled starter ledger and no fake gameplay
+  ---
+  duration_ms: 3.2286
+  type: 'test'
+  ...
+# Subtest: initial and populated version-1 save roundtrip preserve every reference without sharing mutable data
+ok 32 - initial and populated version-1 save roundtrip preserve every reference without sharing mutable data
+  ---
+  duration_ms: 4.163
+  type: 'test'
+  ...
+# Subtest: seeded RNG has a known uint32 vector, reproducibility and valid fraction range
+ok 33 - seeded RNG has a known uint32 vector, reproducibility and valid fraction range
+  ---
+  duration_ms: 0.5537
+  type: 'test'
+  ...
+# Subtest: same accepted time produces byte-identical state under integer and fractional frame partitions
+ok 34 - same accepted time produces byte-identical state under integer and fractional frame partitions
+  ---
+  duration_ms: 4.6172
+  type: 'test'
+  ...
+# Subtest: frame adapter ignores first frame and repeated timestamps; simulation is independent of render calls
+ok 35 - frame adapter ignores first frame and repeated timestamps; simulation is independent of render calls
+  ---
+  duration_ms: 0.9237
+  type: 'test'
+  ...
+# Subtest: bounded catch-up drops long gaps instead of granting unlimited offline progress
+ok 36 - bounded catch-up drops long gaps instead of granting unlimited offline progress
+  ---
+  duration_ms: 0.6187
+  type: 'test'
+  ...
+# Subtest: pause resets fractional catch-up, ignores hidden elapsed time and resumes from a fresh anchor
+ok 37 - pause resets fractional catch-up, ignores hidden elapsed time and resumes from a fresh anchor
+  ---
+  duration_ms: 0.6586
+  type: 'test'
+  ...
+# Subtest: snapshot and reload continue deterministic RNG/time without storing RAF timestamps or accumulator
+ok 38 - snapshot and reload continue deterministic RNG/time without storing RAF timestamps or accumulator
+  ---
+  duration_ms: 2.5172
+  type: 'test'
+  ...
+# Subtest: restart preserves one subscriber, emits baseline reset time and cannot revive disposed simulation
+ok 39 - restart preserves one subscriber, emits baseline reset time and cannot revive disposed simulation
+  ---
+  duration_ms: 1.5284
+  type: 'test'
+  ...
+# Subtest: event unsubscribe during dispatch, throwing listener and bus disposal are safe and observable
+ok 40 - event unsubscribe during dispatch, throwing listener and bus disposal are safe and observable
+  ---
+  duration_ms: 0.2681
+  type: 'test'
+  ...
+# Subtest: invalid deltas/timestamps are rejected and paused/disposed clocks never step
+ok 41 - invalid deltas/timestamps are rejected and paused/disposed clocks never step
+  ---
+  duration_ms: 0.5733
+  type: 'test'
+  ...
+# Subtest: schema rejection is explicit for malformed JSON, future schema, oversize and non-data objects
+ok 42 - schema rejection is explicit for malformed JSON, future schema, oversize and non-data objects
+  ---
+  duration_ms: 0.8011
+  type: 'test'
+  ...
+# Subtest: range/reference/invariant corruptions are rejected without mutating their source
+ok 43 - range/reference/invariant corruptions are rejected without mutating their source
+  ---
+  duration_ms: 19.6999
+  type: 'test'
+  ...
+# Subtest: simulation ownership rejects invalid input and snapshots cannot change authoritative currency/needs
+ok 44 - simulation ownership rejects invalid input and snapshots cannot change authoritative currency/needs
+  ---
+  duration_ms: 1.8052
+  type: 'test'
+  ...
+# Subtest: existing RAF owner drives fixed steps through pause/restart without a second loop or late updates
+ok 45 - existing RAF owner drives fixed steps through pause/restart without a second loop or late updates
+  ---
+  duration_ms: 0.9017
+  type: 'test'
+  ...
+1..45
+# tests 45
+# suites 0
+# pass 45
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 281.5603

@@ -1,4 +1,6 @@
-# Local renderer fixture (M0-05)
+See [the reproducible local QA workflow](../../docs/LOCAL_QA.md) for run/build identity, six approved-runtime browser cases, bounded evidence and PASS/FAIL/UNRUN verification. The standalone commands below remain useful for debugging; an unverified standalone fixture cannot pass the full QA receipt gate.
+
+# Local renderer fixture (M0-05, workflow updated M0-07)
 
 This test fixture is not an Astro route and does not ship in dist. Use Node 24 and the existing installed dependencies; no separate browser driver/install is needed.
 
