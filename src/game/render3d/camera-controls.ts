@@ -3,7 +3,7 @@ import { fitIsometricCamera } from './isometric-camera.ts';
 import { createCameraNavigation, type CameraCommand } from './camera-navigation.ts';
 import { createCameraGestures, type CameraPointer } from './camera-gestures.ts';
 
-export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, camera:OrthographicCamera, bounds:Box3, map:{width:number;height:number}, onTap?:(point:CameraPointer)=>void) {
+export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, camera:OrthographicCamera, bounds:Box3, map:{width:number;height:number}, onTap?:(point:CameraPointer)=>void,onCancel?:()=>void) {
   let disposed=false,enabled=true;const events=new AbortController();
   let basePosition=new Vector3();
   const navigation=createCameraNavigation(()=>{
@@ -39,11 +39,15 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
   host.addEventListener('keydown',event=>{
     if(!enabled||disposed||event.target!==host||event.ctrlKey||event.metaKey||event.altKey)return;
     const key=event.key;
-    if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','_','Home','Escape'].includes(key))return;
+    if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','_','Home','Escape','Enter',' '].includes(key))return;
     event.preventDefault();cancelAll();
     const step=event.shiftKey?80:40;
     if(key.startsWith('Arrow'))navigation.panPixels(key==='ArrowLeft'?step:key==='ArrowRight'?-step:0,key==='ArrowUp'?step:key==='ArrowDown'?-step:0);
-    else if(key==='Home')navigation.command('reset');else if(key!=='Escape')navigation.command(key==='+'||key==='='?'zoom-in':'zoom-out');
+    else if(key==='Home')navigation.command('reset');
+    else if(key==='Escape')onCancel?.();
+    else if(key==='Enter'||key===' ') {
+      if(!event.repeat){const b=canvas.getBoundingClientRect();onTap?.({id:0,x:b.left+b.width/2,y:b.top+b.height/2});}
+    } else navigation.command(key==='+'||key==='='?'zoom-in':'zoom-out');
   },{signal:events.signal});
   window.addEventListener('blur',cancelAll,{signal:events.signal});
   return {

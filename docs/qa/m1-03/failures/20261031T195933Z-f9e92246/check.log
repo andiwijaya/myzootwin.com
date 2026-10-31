@@ -1,0 +1,21 @@
+02.59.36 [vite] Re-optimizing dependencies because vite config has changed
+02.59.36 [content] Syncing content
+02.59.36 [content] Synced content
+02.59.36 [types] Generated 189ms
+02.59.36 [check] Getting diagnostics for Astro files in C:\MyZooTwin...
+[96msrc/game/render3d/foundation-scene.ts[0m:[93m131[0m:[93m58[0m - [91merror[0m[90m ts(2345): [0mArgument of type 'Material<MaterialEventMap> | Material<MaterialEventMap>[]' is not assignable to parameter of type 'Material<MaterialEventMap>'.
+  Type 'Material<MaterialEventMap>[]' is missing the following properties from type 'Material<MaterialEventMap>': isMaterial, id, uuid, type, and 59 more.
+
+[7m131[0m     geometries.push(...picker.geometries);materials.push(...picker.materials);scene.add(picker.group);
+[7m   [0m [91m                                                         ~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/game/render3d/scene-picking.ts[0m:[93m19[0m:[93m71[0m - [91merror[0m[90m ts(2339): [0mProperty 'depthTest' does not exist on type 'Material<MaterialEventMap> | Material<MaterialEventMap>[]'.
+  Property 'depthTest' does not exist on type 'Material<MaterialEventMap>[]'.
+
+[7m19[0m   const outline=new Box3Helper(new Box3(),'#284d42');outline.material.depthTest=false;outline.renderOrder=21;
+[7m  [0m [91m                                                                      ~~~~~~~~~[0m
+
+Result (47 files):
+- 2 errors
+- 0 warnings
+- 0 hints

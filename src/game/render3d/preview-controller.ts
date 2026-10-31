@@ -13,6 +13,7 @@ export class PreviewFailure extends Error {
 export interface PreviewSession {
   dispose(): void;
   camera?(command:CameraCommand):void;
+  clearSelection?():void;
   setPaused?(paused: boolean): void;
   inspect?(): Record<string, number | boolean>;
 }
@@ -70,5 +71,6 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     getState: () => state,
     inspectSession: () => session?.inspect?.(),
     camera(command:CameraCommand) {if(!paused&&state.status==='ready')session?.camera?.(command);},
+    clearSelection(){if(!paused&&state.status==='ready')session?.clearSelection?.();},
   };
 }

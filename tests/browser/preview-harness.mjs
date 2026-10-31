@@ -1,3 +1,4 @@
+import { runSelectionDomScenarios,selectGateForFixture } from './selection-dom-scenarios.mjs';
 import { runCameraDomScenarios, beginInjectedCameraGesture } from './camera-dom-scenarios.mjs';
 import { createFrameMetrics, legacyMemory, probeStatus } from './frame-metrics.mjs';
 import { mountPreviewPanel } from '../../src/game-entry/preview-panel.ts';
@@ -29,6 +30,7 @@ function factory(onFailure){
   return {
     setPaused:value=>native.setPaused?.(value),
     camera:value=>native.camera?.(value),
+    clearSelection:()=>native.clearSelection?.(),
     inspect:()=>native.inspect?.(),
     dispose(){if(ended)return;ended=true;native.dispose();active--;disposed++;lastDisposed=native.inspect?.();update();},
   };
@@ -60,6 +62,8 @@ document.querySelector('#qa-id').addEventListener('click',()=>{locale='id';handl
 document.querySelector('#qa-en').addEventListener('click',()=>{locale='en';handle?.setLocale(locale);update();});
 document.querySelector('#qa-camera').addEventListener('click',()=>{const result=runCameraDomScenarios(root,()=>handle?.inspect().session,value=>handle?.setPaused(value));document.querySelector('#qa-camera-results').textContent=JSON.stringify(result);update();});
 document.querySelector('#qa-camera-held').addEventListener('click',()=>{beginInjectedCameraGesture(root);update();});
+document.querySelector('#qa-selection').addEventListener('click',()=>{let result;try{result=runSelectionDomScenarios(root,()=>handle?.inspect().session,value=>handle?.setPaused(value),value=>{locale=value;handle?.setLocale(value);});}catch(error){result={status:'FAIL',error:String(error)};}document.querySelector('#qa-selection-results').textContent=JSON.stringify(result);update();});
+document.querySelector('#qa-select-gate').addEventListener('click',()=>{try{selectGateForFixture(root,()=>handle?.inspect().session);}catch(error){document.querySelector('#qa-selection-results').textContent=JSON.stringify({status:'FAIL',error:String(error)});}update();});
 const observer=new MutationObserver(update);
 observer.observe(root,{subtree:true,childList:true,attributes:true,attributeFilter:['data-renderer-state']});
 const onVisibility=()=>{if(document.hidden){endProbe('ABORTED_HIDDEN');update();}};

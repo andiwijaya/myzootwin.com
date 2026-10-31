@@ -1,3 +1,5 @@
+import type { SceneIdentity } from '../game/render3d/scene-selection.ts';
+import { presentSelection } from './selection-presentation.ts';
 import type { CameraCommand } from '../game/render3d/camera-navigation.ts';
 import { createPreviewController, type PreviewLoader, type PreviewState } from '../game/render3d/preview-controller';
 import { entryMessages, type EntryLocale, type EntryMessage } from './locale';
@@ -22,6 +24,23 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   let disposed = false;
   let state: PreviewState = { status: 'closed' };
   const events = new AbortController();
+  let selected:SceneIdentity|null=null;
+  const selectionPanel=root.querySelector<HTMLElement>('[data-scene-selection]');
+  const selectionStatus=root.querySelector<HTMLOutputElement>('[data-selection-announcement]');
+  function renderSelection() {
+    if(!selectionPanel)return;
+    selectionPanel.hidden=state.status!=='ready'||!selected;
+    const button=root.querySelector<HTMLButtonElement>('[data-clear-selection]');if(button)button.textContent=entryMessages[locale].selectionDismiss;
+    if(selected&&state.status==='ready') {
+      const view=presentSelection(selected,locale);
+      root.querySelector('[data-selection-title]')?.replaceChildren(view.title);
+      root.querySelector('[data-selection-location]')?.replaceChildren(view.location);
+      root.querySelector('[data-selection-detail]')?.replaceChildren(view.detail);
+      if(selectionStatus)selectionStatus.value=view.title;
+    } else {
+      for(const field of ['title','location','detail'])root.querySelector(`[data-selection-${field}]`)?.replaceChildren();
+    }
+  }
   const cameraControls=root.querySelector<HTMLElement>('[data-camera-controls]');
   const zoomOutput=root.querySelector<HTMLOutputElement>('[data-camera-zoom]');
   function cameraState(zoom=Number(host?.dataset.cameraZoom??1)) {
@@ -35,6 +54,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) return;
     const copy = entryMessages[locale];
     panel.lang = locale;
+    if(next.status!=='ready')selected=null;
+    renderSelection();
     if(cameraControls){cameraControls.hidden=next.status!=='ready';cameraControls.setAttribute('aria-label',copy.cameraControls);}
     root.querySelector('[data-camera-help]')?.replaceChildren(copy.cameraHelp);
     for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]')) {
@@ -81,6 +102,10 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     return (onFailure) => module.mountFoundationScene(host, onFailure);
   });
   const controller = createPreviewController(load, render);
+  host.addEventListener('scene-selection-change',event=>{const had=Boolean(selected);selected=(event as CustomEvent<SceneIdentity|null>).detail;renderSelection();if(!selected&&had&&selectionStatus)selectionStatus.value=entryMessages[locale].selectionCleared;},{signal:events.signal});
+  const dismiss=()=>{controller.clearSelection();host.focus({preventScroll:true});};
+  root.querySelector('[data-clear-selection]')?.addEventListener('click',dismiss,{signal:events.signal});
+  selectionPanel?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();dismiss();}},{signal:events.signal});
   host.addEventListener('camera-view-change',()=>cameraState(),{signal:events.signal});
   for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]'))button.addEventListener('click',()=>controller.camera(button.dataset.cameraCommand as CameraCommand),{signal:events.signal});
   open.addEventListener('click', () => { void controller.open(); }, { signal: events.signal });

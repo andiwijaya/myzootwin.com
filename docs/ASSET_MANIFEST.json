@@ -2,7 +2,7 @@
   "schema_version": 1,
   "audited_at": "2026-10-31",
   "baseline_commit": "3b06c6d8d2a920ad5894868059885c98a58217a6",
-  "scope": "Existing inventory retained; original M1-01 Tropical Creek procedural diorama added, no downloaded art.",
+  "scope": "Existing inventory retained; M1-03 original selection indicator and source ownership metadata recorded. No new downloaded art or license agreement.",
   "assets": [
     {
       "path": "public/images/myzootwin-beranda.png",
@@ -154,8 +154,8 @@
     {
       "id": "tropical_creek_m1_01",
       "path": "src/game/render3d/tropical-diorama.ts",
-      "bytes": 7612,
-      "sha256": "8064ad1cfcb86984d33061881a1153fae44c57efebc3e6b4a4c2457236f3f1fa",
+      "bytes": 9160,
+      "sha256": "d25a51bedc052070156fc44fec2628ecff59d3b67b536bdf97dc04941553fed7",
       "origin": "Original geometry authored in this repository for the owner, 2026-10-31",
       "rights_status": "original_code_authored_geometry_no_third_party_art",
       "provenance_evidence": "All ground, water, palms, broadleaf trees, rocks, reeds, gate roof/sign and contact shade generated from original vertex coordinates/transforms. Existing Three.js MIT engine notice retained. No external models/textures/audio/asset terms accepted.",
@@ -163,8 +163,34 @@
       "rendered_geometry_triangles": 4128,
       "static_draw_batches": 6,
       "external_art_bytes": 0,
-      "visual_inspection": "Actual built WebGL pixels inspected desktop, portrait and landscape; evidence docs/qa/m1-01.",
-      "attribution": "No third-party art attribution required; engine attribution public/licenses/three-MIT.txt."
+      "visual_inspection": "M1-01 actual diorama review plus M1-03 selected-tree/tile pixels inspected at desktop, phone portrait/landscape; docs/qa/m1-03.",
+      "attribution": "No third-party art attribution required; engine attribution public/licenses/three-MIT.txt.",
+      "source_revisions": [
+        {
+          "feature": "M1-01",
+          "commit": "aae1e065fabae62c61f08c47efd5ea2ed358f9d1",
+          "bytes": 7612,
+          "sha256": "8064ad1cfcb86984d33061881a1153fae44c57efebc3e6b4a4c2457236f3f1fa"
+        }
+      ],
+      "source_revision_note": "M1-03 adds stable triangle ownership/catalog metadata. Original procedural art is retained; no intentional mesh design change. Source byte identity updated, prior revision preserved."
+    },
+    {
+      "id": "selection_indicator_m1_03",
+      "path": "src/game/render3d/scene-picking.ts",
+      "bytes": 3495,
+      "sha256": "2cbc146edfd693f3d003f9ef02c16881347fb91e56a1d38fdc4ca8c2a7862da8",
+      "origin": "Original selection UI configuration/procedural indicator authored in repository; Three.js Box3Helper/PlaneGeometry from existing MIT engine.",
+      "rights_status": "original_configuration_using_existing_three_mit",
+      "usage_decision": "Reusable selection bounds/ground cue only, not a habitat/fence/player structure. No external art/model/texture/audio.",
+      "attribution": "Existing public/licenses/three-MIT.txt retained.",
+      "bounded_resource_pool": {
+        "geometries": 2,
+        "materials": 2,
+        "added_draw_calls_when_selected": 3,
+        "added_triangles_when_selected": 4
+      },
+      "measurement_note": "Actual WebGL inspection after selecting gate; transparent double-sided fill uses two passes plus outline. Pool reused and disposed with session; not a performance bottleneck claim."
     }
   ],
   "direct_package_notice_spot_checks": [

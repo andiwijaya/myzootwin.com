@@ -45,7 +45,7 @@ class Element extends EventTarget {
   getBoundingClientRect(){return this.box;}focus(){}setPointerCapture(id){this.captured.add(id);}hasPointerCapture(id){return this.captured.has(id);}releasePointerCapture(id){this.captured.delete(id);}
 }
 function fire(target,type,data={}){const e=new Event(type,{cancelable:true});Object.assign(e,data);target.dispatchEvent(e);return e;}
-function setup(){const previous=globalThis.window;globalThis.window=new EventTarget();const host=new Element(),canvas=new Element(),camera=new OrthographicCamera(),bounds=new Box3(new Vector3(-6,-.4,-5),new Vector3(6,2.4,5));const c=mountCameraControls(host,canvas,camera,bounds,{width:12,height:10});c.resize(500,350);return {host,canvas,camera,c,finish(){c.dispose();globalThis.window=previous;}};}
+function setup(onTap,onCancel){const previous=globalThis.window;globalThis.window=new EventTarget();const host=new Element(),canvas=new Element(),camera=new OrthographicCamera(),bounds=new Box3(new Vector3(-6,-.4,-5),new Vector3(6,2.4,5));const c=mountCameraControls(host,canvas,camera,bounds,{width:12,height:10},onTap,onCancel);c.resize(500,350);return {host,canvas,camera,c,finish(){c.dispose();globalThis.window=previous;}};}
 test('real input adapter isolates canvas wheel/keys and releases capture on cancel, pause, resize, blur and disposal',()=>{
  const s=setup();try{
   const {host,canvas,c}=s;
@@ -73,4 +73,9 @@ test('actual orthographic view-center ray stays on the ground map at zoom/pan bo
     }
   }
  }finally{s.finish();}
+});
+
+test('keyboard center inspection/cancel callbacks work without repeats,modifiers or disposed input',()=>{
+ const taps=[];let cancelled=0;const s=setup(p=>taps.push(p),()=>cancelled++);
+ try{assert.equal(fire(s.host,'keydown',{key:'Enter'}).defaultPrevented,true);assert.deepEqual(taps,[{id:0,x:250,y:175}]);fire(s.host,'keydown',{key:' ',repeat:true});assert.equal(taps.length,1);fire(s.host,'keydown',{key:' '});assert.equal(taps.length,2);fire(s.host,'keydown',{key:'Escape'});assert.equal(cancelled,1);fire(s.host,'keydown',{key:'Enter',ctrlKey:true});assert.equal(taps.length,2);s.c.dispose();fire(s.host,'keydown',{key:'Enter'});assert.equal(taps.length,2);}finally{s.finish();}
 });

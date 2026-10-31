@@ -1,0 +1,15 @@
+{
+  "status": "FAIL",
+  "stage": "initial npm test before M1-03 browser work",
+  "observedSummary": {
+    "tests": 67,
+    "pass": 66,
+    "fail": 1,
+    "skipped": 0
+  },
+  "reason": "Keyboard branch concatenated else and navigation during authoring, causing ReferenceError: elsenavigation is not defined in EventTarget callbacks. Runner correctly failed despite individual assertions passing.",
+  "sourceBeforeSha256": "ef70c16a63dc8a04daa93b8c28afd7389f85af5bce4a2ada483422eb80f92896",
+  "source": "src/game/render3d/camera-controls.ts",
+  "correction": "Separate explicit else branch; add Enter/Space/Escape callback regression; rerun full suite.",
+  "evidenceType": "Summary of actual terminal failure; full repetitive console output was tool-truncated, not represented as an intact log."
+}
