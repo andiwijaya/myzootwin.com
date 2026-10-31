@@ -1,0 +1,29 @@
+✔ browser Indonesian preference and other-language fallback (0.7033ms)
+✔ valid saved choice overrides browser language (0.5402ms)
+✔ malformed preferences fall back without deleting or rewriting storage (0.1215ms)
+✔ unsupported schemas and locales are ignored (0.1133ms)
+✔ blocked storage remains usable for the current visit (0.166ms)
+✔ saving writes only the entry preference namespace and versioned locale (0.1449ms)
+✔ unavailable persistence and invalid runtime locale never claim success (0.1185ms)
+✔ entry dictionaries have complete matching keys and truthful preview copy (0.3411ms)
+✔ RAF start is idempotent and stale cancelled callbacks cannot duplicate a restarted loop (0.8809ms)
+✔ disposed RAF loop cannot render or restart (0.1497ms)
+✔ render exceptions stop the RAF chain and report once (0.1146ms)
+✔ request failures become an explicit stopped error (0.1021ms)
+✔ lazy session opens once, closes once, and can reopen without overlap (0.8347ms)
+✔ closing during import prevents a late mount and ready transition (0.1315ms)
+✔ a failed lazy load is visible and a later attempt can recover (0.8377ms)
+✔ unsupported WebGL has its own fallback and retry state (0.205ms)
+✔ initialization exceptions do not become false ready states (0.1404ms)
+✔ context loss disposes the active session once and supports a fresh retry (0.2523ms)
+✔ synchronous failure while mounting still disposes the late-created session (0.1625ms)
+✔ pause state is applied to newly loaded sessions without changing lifecycle status (0.1489ms)
+✔ disposing a pending import prevents later renderer creation (0.0905ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 119.011

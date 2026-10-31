@@ -2,7 +2,7 @@
   "schema_version": 1,
   "audited_at": "2026-10-31",
   "baseline_commit": "3b06c6d8d2a920ad5894868059885c98a58217a6",
-  "scope": "M0-03 asset inventory/model decision, updated by M0-04 original entry illustration; existing media retained.",
+  "scope": "M0-03 inventory/model decision, M0-04 entry illustration and M0-05 original renderer foundation/Three.js notice; existing media retained.",
   "assets": [
     {
       "path": "public/images/myzootwin-beranda.png",
@@ -131,6 +131,25 @@
       "svg_template_sha256": "077f1a47d7ec443b449fa6b63644694e7e3f9e96b1eb2c614c07c1a2a931692c",
       "external_asset_inputs": [],
       "license_note": "Original native vector/code work for this project; no third-party asset agreement or public license grant added."
+    },
+    {
+      "id": "foundation_geometry_m0_05",
+      "path": "src/game/render3d/foundation-scene.ts",
+      "origin": "original procedural repository code",
+      "rights_status": "original project implementation; no external model/texture/audio",
+      "usage_decision": "Abstract hexagonal platform, marker and ring for renderer foundation only. Actual native WebGL visually inspected; not sanctuary world/final animal/M2-01 art.",
+      "texture_count": 0,
+      "geometry_count": 3
+    },
+    {
+      "id": "three_runtime_m0_05",
+      "path": "public/licenses/three-MIT.txt",
+      "origin": "npm three@0.187.0 from the well-known npm registry; exact lockfile",
+      "source_url": "https://github.com/mrdoob/three.js",
+      "rights_status": "MIT package notice retained unchanged and linked in preview",
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "bytes": 1081,
+      "usage_decision": "Lazy WebGL2 runtime; no external model assets. @types/three exact matching dev version. Eight added package metadata and existing-version comparison in qa/m0-05/verification.json; not a full transitive license audit."
     }
   ],
   "direct_package_notice_spot_checks": [
