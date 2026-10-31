@@ -2,7 +2,7 @@
 
 Updated: 2026-10-31 UTC. Complete canonical working requirements: MYZOOTWIN_MASTER_PRD_V1.md. Immutable source-text transcriptions and original Library references: SOURCE_PROVENANCE.md. Native Library materialization failed; the explicitly authorized complete source-text alternative is saved and clearly labeled.
 
-Verified V1: **9/51 (17.65%)**. M7 excluded: **12 deferred items**. Local entry/rendering/core/QA, measured baseline/retention, Tropical Creek diorama and bounded camera controls; no gameplay or production changes.
+Verified V1: **10/51 (19.61%)**. M7 excluded: **12 deferred items**. Local entry/rendering/core/QA, measured baseline/retention, Tropical Creek diorama, bounded camera and bilingual tile/object selection; no gameplay or production changes.
 
 ## Current checkpoint: M0-01 PARTIAL / BLOCKED
 
@@ -10,7 +10,7 @@ Completed: local/GitHub audit; live route/sitemap/analytics baseline; complete P
 
 Remaining external configuration gap: supported CLI read surfaces used do not expose the exact GitHub source-repository binding or dashboard build command/root-directory/automatic deployment policy. The dashboard browser session requires login; no login/new grants authorized or attempted. README is not proof of these settings. Keep M0-01 unchecked until verified or the parent explicitly accepts the documented audit limit.
 
-M0-02 independently COMPLETE on 2026-10-31. Evidence commit: ec17bd19f4d4292eba269854ac4a512114737b0c (local only). Report: [M0-02_BASELINE.md](M0-02_BASELINE.md); screenshots and structured evidence: [qa/m0-02](qa/m0-02/). Check/build passed; 24 browser route/reload scenarios, navigation/keyboard, responsive screenshots and loopback shutdown verified. Existing BASE-01 mobile heading overflow and BASE-02 low quote contrast are recorded; no app fixes or physical Android/performance/gameplay claims. M0-02 remains complete; M0-03 is now independently complete as recorded below. M0-04 is now complete as recorded below. M0-05 is now complete as recorded below. M0-06 is now complete as recorded below. M0-07 is now complete as recorded below. M0-08 is now complete as recorded below. M1-01 and M1-02 are now complete as recorded below. Next: M1-03 scene picking and identity panel. M0-01 remains partial; production release stays gated on external configuration verification.
+M0-02 independently COMPLETE on 2026-10-31. Evidence commit: ec17bd19f4d4292eba269854ac4a512114737b0c (local only). Report: [M0-02_BASELINE.md](M0-02_BASELINE.md); screenshots and structured evidence: [qa/m0-02](qa/m0-02/). Check/build passed; 24 browser route/reload scenarios, navigation/keyboard, responsive screenshots and loopback shutdown verified. Existing BASE-01 mobile heading overflow and BASE-02 low quote contrast are recorded; no app fixes or physical Android/performance/gameplay claims. M0-02 remains complete; M0-03 is now independently complete as recorded below. M0-04 is now complete as recorded below. M0-05 is now complete as recorded below. M0-06 is now complete as recorded below. M0-07 is now complete as recorded below. M0-08 is now complete as recorded below. M1-01 through M1-03 are now complete as recorded below. Next: M1-04 valid/invalid build preview with Confirm/Cancel. M0-01 remains partial; production release stays gated on external configuration verification.
 
 ## M0-03 COMPLETE — 2026-10-31 UTC
 
@@ -86,6 +86,18 @@ Known preview-open588,643 raw/152,958 gzip9-estimate bytes (+9,304/+3,137 vs M1-
 
 Known limits: true hardware touch/pinch, physical Android/Safari/iOS, FPS/network/soak and later gameplay remain UNRUN. BASE-01/02 and M0-01 external Cloudflare gap persist. No login/newgrants/Actions/push/deploy/public403 retry. Next: M1-03 scene picking and identity panel. Verified V1:9/51 (17.65%); all12 M7 deferred.
 
+## M1-03 COMPLETE - 2026-10-31 UTC
+
+Status: COMPLETE for actual tile/scenery picking and identity panel,2026-10-31 UTC. Implementation/evidence commit: 161bb94690b9542ed222d75372bb8a94a7f65c72 (local only). [Report](M1-03_SELECTION.md), [raw native/injected/lifecycle/visual evidence](qa/m1-03/), [recipe](LOCAL_QA.md), [source provenance](ASSET_MANIFEST.json).
+
+Visible-triangle ownership for120 tiles/22 objects in four pickable batches; closest visible geometry, no box-proxy fallthrough. Reusable bounds/ground marker and bilingual name/location/description panel,1-based coordinates, clear via empty canvas/Dismiss/Escape, keyboard center Enter/Space. Tap grammar rejects drag/pinch/cancel; panel input scoped outside canvas. Same identity persists through camera/locale/resize. Closing/retry clears data and hidden identity fields. No placement/habitat/economy/gameplay/save mutation or second RAF.
+
+Final run20261031T201259Z-849f5aef:67/67 unit/integration tests, check48 files0 diagnostics,9-page build and nine route/SEO baselines PASS. Native grass/tree clicks, wheel/drag/Home preservation, panel isolation, Enter/Escape/Dismiss/reopen and Back/reload passed; corrected canvas click scroll226→226.36 injected selection cases +27 camera regressions PASS over desktop/portrait/landscape; orientation releases held pointer1→0 while keeping gate1. Six actual selected-object/tile screenshots620,933 bytes at1366x768/1920x1080/360x780/780x360. Injected events/viewport emulation are not physical touch. Context/render-error retries have no old identity/marker/title; eight cleanup snapshots all live GPU/material/canvas/RAF/subscriber/pointer counts0, picker/controls disposed, max1 session/RAF. qa:verify PASS/exit0; owned tabs32–34 closed, viewport reset, graceful serverstop0 and4321/4322 free.
+
+Known preview-open602,780 raw/156,991 gzip9-estimate bytes (+14,137/+4,033 vs M1-02), lazy renderer558,474 raw; >500kB warning visible. Original world6 draws/4,128tri; selected cue9 draws/4,132tri, bounded2 geometry/2 material additions, warmed8 geometries/8 owned materials/7 programs, no external assets/dependency. Five five-second small-canvas probes≈60 callbacks/s: selected p95 CPU-submit1.1/1.3/1.0/1.2ms, warmed unselected desktop0.7ms; not presentation FPS/GPU/latency/physical Android/soak. Legacy heap14,778,614–27,403,234 bytes fluctuated under heavier QA; no retained/leak-free inference. Five old runs fully archived/CRC+everySHA verified in three ZIPs (55 files/807,703 bytes) before scoped prune; newest3 retained. Initial keyboard typo, material typing and native scroll-anchor issue corrected and retested; truthful failed/UNRUN receipts preserved, not relabelled.
+
+Known limits: physical Android/touch/pinch/Safari/iOS, actual FPS/network/soak, whole-game localization and later gameplay remain UNRUN. BASE-01/02 and M0-01 exact external Cloudflare gap persist. No login/newgrants/Actions/push/deploy/public403 retry. Next: M1-04 valid/invalid build-mode preview with Confirm/Cancel, not started. Verified V1:10/51 (19.61%); all12 M7 deferred.
+
 ## V1 checklist (exact task wording from source-text handoff)
 
 - [ ] **M0-01** Audit repo, stack, Cloudflare Pages routing, existing content/SEO, analytics; catat apa yang boleh di-reuse. **Verify:** laporan audit dan baseline routes.
@@ -108,7 +120,7 @@ Known limits: true hardware touch/pinch, physical Android/Safari/iOS, FPS/networ
 
 - [x] **M1-02** Pan/zoom camera dengan mouse dan touch, clamped. **Verify:** gesture &amp; wheel tidak keluar map atau page-scroll tak sengaja.
 
-- [ ] **M1-03** Scene picking: pilih tile/object, show panel identitas. **Verify:** raycast mouse/touch akurat.
+- [x] **M1-03** Scene picking: pilih tile/object, show panel identitas. **Verify:** raycast mouse/touch akurat.
 
 - [ ] **M1-04** Build-mode preview dengan valid/invalid placement, Confirm/Cancel. **Verify:** cancel no side-effects.
 

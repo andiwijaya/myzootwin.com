@@ -1,6 +1,6 @@
 # M1-03 — Tile and scenery picking
 
-Verified locally on2026-10-31 UTC. Exact scope: select a visible tile/object by accurate mouse/touch raycast and show its identity. Implementation/evidence commit is recorded in the living PRD once the local checkpoint exists. No placement/habitat/economy/gameplay or production claim.
+Verified locally on2026-10-31 UTC. Exact scope: select a visible tile/object by accurate mouse/touch raycast and show its identity. Implementation/evidence commit: `161bb94690b9542ed222d75372bb8a94a7f65c72` (local). Verified V1 progress10/51 (19.61%); M0-01 remains pending. No placement/habitat/economy/gameplay or production claim.
 
 The actual existing batched mesh triangles now carry stable ownership ranges:120 tiles and22 objects (six palms, four broadleaf trees, seven rocks, four reed groups, one gate). Four render batches participate in picking; animated glints and contact shade do not intercept it. The closest visible triangle wins. Unowned soil/empty background clears selection; no proxy box selects through an occluder. Gate roof/sign and entrance apron retain distinct object/tile identities.
 
