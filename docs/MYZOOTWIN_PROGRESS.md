@@ -2,7 +2,7 @@
 
 Updated: 2026-10-31 UTC. Complete canonical working requirements: MYZOOTWIN_MASTER_PRD_V1.md. Immutable source-text transcriptions and original Library references: SOURCE_PROVENANCE.md. Native Library materialization failed; the explicitly authorized complete source-text alternative is saved and clearly labeled.
 
-Verified V1: **1/51 (1.96%)**. M7 excluded: **12 deferred items**. No gameplay implemented or production changed.
+Verified V1: **2/51 (3.92%)**. M7 excluded: **12 deferred items**. No gameplay implemented or production changed.
 
 ## Current checkpoint: M0-01 PARTIAL / BLOCKED
 
@@ -10,7 +10,11 @@ Completed: local/GitHub audit; live route/sitemap/analytics baseline; complete P
 
 Remaining external configuration gap: supported CLI read surfaces used do not expose the exact GitHub source-repository binding or dashboard build command/root-directory/automatic deployment policy. The dashboard browser session requires login; no login/new grants authorized or attempted. README is not proof of these settings. Keep M0-01 unchecked until verified or the parent explicitly accepts the documented audit limit.
 
-M0-02 independently COMPLETE on 2026-10-31. Evidence commit: ec17bd19f4d4292eba269854ac4a512114737b0c (local only). Report: [M0-02_BASELINE.md](M0-02_BASELINE.md); screenshots and structured evidence: [qa/m0-02](qa/m0-02/). Check/build passed; 24 browser route/reload scenarios, navigation/keyboard, responsive screenshots and loopback shutdown verified. Existing BASE-01 mobile heading overflow and BASE-02 low quote contrast are recorded; no app fixes or physical Android/performance/gameplay claims. Only M0-02 is complete. Next: M0-03 asset inventory/licenses/visual target. M0-01 remains partial; production release stays gated on external configuration verification.
+M0-02 independently COMPLETE on 2026-10-31. Evidence commit: ec17bd19f4d4292eba269854ac4a512114737b0c (local only). Report: [M0-02_BASELINE.md](M0-02_BASELINE.md); screenshots and structured evidence: [qa/m0-02](qa/m0-02/). Check/build passed; 24 browser route/reload scenarios, navigation/keyboard, responsive screenshots and loopback shutdown verified. Existing BASE-01 mobile heading overflow and BASE-02 low quote contrast are recorded; no app fixes or physical Android/performance/gameplay claims. M0-02 remains complete; M0-03 is now independently complete as recorded below. Next: M0-04 /play start screen/navigation preserving original routes. M0-01 remains partial; production release stays gated on external configuration verification.
+
+## M0-03 COMPLETE — 2026-10-31 UTC
+
+Evidence commit: 01f61a4a5208ed66350e5c5a56f82df138945461 (local only). [Asset report](M0-03_ASSETS.md), [manifest](ASSET_MANIFEST.json), [original macaw study](../art/studies/macaw-m0-03/README.md). Chosen Ara ararauna with original procedural geometry; actual study 2,028 triangles/one material/no textures, 189,816 bytes. Inventory/rights evidence, species facts, visual projection review, structural positive/negative checks and viewer shutdown recorded. Old media retained with provenance uncertainty. No final model/animation/WebGL/FPS/physical Android pass and no app/dependency/production changes. Only M0-02 and M0-03 complete; M0-01 partial, M7 deferred. Next: M0-04.
 
 ## V1 checklist (exact task wording from source-text handoff)
 
@@ -18,7 +22,7 @@ M0-02 independently COMPLETE on 2026-10-31. Evidence commit: ec17bd19f4d4292eba2
 
 - [x] **M0-02** Ambil baseline screenshots &amp; browser smoke existing homepage, navigation, mobile; kumpulkan rollback plan. **Verify:** snapshot dan baseline tests.
 
-- [ ] **M0-03** Asset inventory + licenses + visual target; pilih model satu spesies burung tropis yang feasible dan legal. **Verify:** manifest asset, ukuran, attribution.
+- [x] **M0-03** Asset inventory + licenses + visual target; pilih model satu spesies burung tropis yang feasible dan legal. **Verify:** manifest asset, ukuran, attribution.
 
 - [ ] **M0-04** Buat route `/play`, start screen, navigasi &amp; link dari site tanpa merusak routes lain. **Verify:** reload direct URL /play + original URLs.
 
