@@ -2,7 +2,7 @@
 
 Updated: 2026-10-31 UTC. Complete canonical working requirements: MYZOOTWIN_MASTER_PRD_V1.md. Immutable source-text transcriptions and original Library references: SOURCE_PROVENANCE.md. Native Library materialization failed; the explicitly authorized complete source-text alternative is saved and clearly labeled.
 
-Verified V1: **6/51 (11.76%)**. M7 excluded: **12 deferred items**. Local entry/rendering, typed core/save-codec and repeatable QA/browser-receipt foundation; no gameplay or production changes.
+Verified V1: **7/51 (13.73%)**. M7 excluded: **12 deferred items**. Local entry/rendering/core/QA plus measured foundation baseline and retention; no gameplay or production changes.
 
 ## Current checkpoint: M0-01 PARTIAL / BLOCKED
 
@@ -10,7 +10,7 @@ Completed: local/GitHub audit; live route/sitemap/analytics baseline; complete P
 
 Remaining external configuration gap: supported CLI read surfaces used do not expose the exact GitHub source-repository binding or dashboard build command/root-directory/automatic deployment policy. The dashboard browser session requires login; no login/new grants authorized or attempted. README is not proof of these settings. Keep M0-01 unchecked until verified or the parent explicitly accepts the documented audit limit.
 
-M0-02 independently COMPLETE on 2026-10-31. Evidence commit: ec17bd19f4d4292eba269854ac4a512114737b0c (local only). Report: [M0-02_BASELINE.md](M0-02_BASELINE.md); screenshots and structured evidence: [qa/m0-02](qa/m0-02/). Check/build passed; 24 browser route/reload scenarios, navigation/keyboard, responsive screenshots and loopback shutdown verified. Existing BASE-01 mobile heading overflow and BASE-02 low quote contrast are recorded; no app fixes or physical Android/performance/gameplay claims. M0-02 remains complete; M0-03 is now independently complete as recorded below. M0-04 is now complete as recorded below. M0-05 is now complete as recorded below. M0-06 is now complete as recorded below. M0-07 is now complete as recorded below. Next: M0-08 performance baseline/screen matrix/artifact budgets. M0-01 remains partial; production release stays gated on external configuration verification.
+M0-02 independently COMPLETE on 2026-10-31. Evidence commit: ec17bd19f4d4292eba269854ac4a512114737b0c (local only). Report: [M0-02_BASELINE.md](M0-02_BASELINE.md); screenshots and structured evidence: [qa/m0-02](qa/m0-02/). Check/build passed; 24 browser route/reload scenarios, navigation/keyboard, responsive screenshots and loopback shutdown verified. Existing BASE-01 mobile heading overflow and BASE-02 low quote contrast are recorded; no app fixes or physical Android/performance/gameplay claims. M0-02 remains complete; M0-03 is now independently complete as recorded below. M0-04 is now complete as recorded below. M0-05 is now complete as recorded below. M0-06 is now complete as recorded below. M0-07 is now complete as recorded below. M0-08 is now complete as recorded below. Next: M1-01 small tropical diorama. M0-01 remains partial; production release stays gated on external configuration verification.
 
 ## M0-03 COMPLETE — 2026-10-31 UTC
 
@@ -50,6 +50,18 @@ Executed final run 20261031T174545Z-942b4125: 45/45 tests, Astro check31 files z
 
 Limits: browser interaction/visual judgment is not an unattended driver or physical Android/touch/Safari/iOS/FPS/network/soak/gameplay/save/live-production pass. Those gates remain UNRUN. Raw >500kB lazy chunk warning and BASE-01/02 persist; prune apply not needed/performed. M0-01 exact external Cloudflare configuration still pending, no login attempted, no previous public403 retry. Next: M0-08 performance baseline/screen matrix/artifact budgets. V1 verified6/51 (11.76%); M7 deferred; no Actions/push/deploy.
 
+## M0-08 COMPLETE - 2026-10-31 UTC
+
+Status: COMPLETE as measured foundation baseline/screen matrix/artifact hygiene, 2026-10-31 UTC. Implementation/evidence commit: 5c7ad90ce11e3df2e9bb33dea8d9c5ea5e503ed9 (local only). [Measured report](M0-08_PERFORMANCE_BASELINE.md), [repeatable recipe/budgets](PERFORMANCE_BASELINE.md), [raw probes/module/payload/cleanup/retention evidence](qa/m0-08/).
+
+Actual client Rollup module attribution and hash-matched payload reporting, passive renderer resource counters, bounded 300-sample callback/CPU collector, true 250ms QA readout limit and optional explicitly uncertain legacy heap observations. Initial eager-readout instrumentation was corrected and final-source checks/probes rerun. Public assets now participate in QA source freshness. No engine/material/visual refactor or dependency changes; >500kB lazy warning remains visible because required Three modules dominate98.16% of retained pre-minification module code. Known critical preview-open set575,583 raw /147,861 gzip-level9-estimate bytes; lazy renderer539,959 raw; external fonts/incidental icons/analytics excluded from critical-set estimate and not a full-game/network certification.
+
+Final run20261031T183101Z-7b5049b7: 50/50 unit/integration tests, Astro check35 files zero errors/warnings/hints, nine-page build and route/metadata/sitemap regression PASS, six required actual browser cases plus1920-wide view and final qa:verify PASS/exit0. Four visible five-second probes at1366x768/1920x1080/360x780/780x360: about60 RAF callbacks/s, synchronous JS-submit p95 0.8-1.3ms,20-21 readouts across300-301 callbacks. This is an instrumented small entry-panel canvas, NOT presented FPS/GPU timing or physical mobile performance. Active3 geometries/1 reported texture/1 program/5 owned materials/5 draws/352 triangles; all live counters/canvas/RAF/subscribers zero after each of8 Open/Close cycles, cleanup errors0. Legacy post-close JS heap11,783,628-15,075,120 bytes fluctuated; not retained-memory/GC/leak-free or15-minute soak proof. Four fresh actual native screenshots299,249 bytes; ID/EN, keyboard/settings/history/reload and injected context-loss retry passed.
+
+Hygiene: four old generated runs fully archived in two bounded ZIPs (41 files/393,822 compressed bytes), CRC/every-entry hashes verified before exact path/owner-checked dry-run/apply prune. Active cache now newest3 runs; original source/public media/macaw study/PRD transcriptions/historical docs receipts/Git rollback preserved. Measured directories roughly234MB logical including216.7MB dependencies; no filesystem-allocation/future-game-size claim. Owned tabs19/20 closed, viewport reset; PTY stop exited0 and ports4321/4322 independently free.
+
+Remaining limits: physical Android/touch/Safari/iOS, actual presented FPS, real network/startup, populated gameplay/save and soak remain UNRUN future gates. BASE-01/02 and M0-01 exact external Cloudflare config gap persist; no login/new permissions/Actions/push/deploy or public403 retry. M0-01 stays unchecked; the complete M0 milestone is not claimed closed. Next: M1-01 small tropical diorama. Verified V1 progress7/51 (13.73%); M7 deferred.
+
 ## V1 checklist (exact task wording from source-text handoff)
 
 - [ ] **M0-01** Audit repo, stack, Cloudflare Pages routing, existing content/SEO, analytics; catat apa yang boleh di-reuse. **Verify:** laporan audit dan baseline routes.
@@ -66,7 +78,7 @@ Limits: browser interaction/visual judgment is not an unattended driver or physi
 
 - [x] **M0-07** Setup unit, integration, local E2E + screenshot capture yang dijalankan tanpa GitHub Actions. **Verify:** reproducible test commands.
 
-- [ ] **M0-08** Tetapkan initial performance baseline, screen sizes &amp; artifact hygiene. **Verify:** baseline measurements recorded.
+- [x] **M0-08** Tetapkan initial performance baseline, screen sizes &amp; artifact hygiene. **Verify:** baseline measurements recorded.
 
 - [ ] **M1-01** Render small low-poly tropical diorama (tanah, creek, pohon, gate) dengan kamera isometrik. **Verify:** visual screenshot mobile/desktop.
 
