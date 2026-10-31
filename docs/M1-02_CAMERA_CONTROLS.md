@@ -1,6 +1,6 @@
 # M1-02 — Bounded isometric camera controls
 
-Verified locally on2026-10-31 UTC. Exact acceptance: mouse/touch pan/zoom, clamped, with no accidental page scrolling or camera escape. Implementation/evidence commit is recorded in the living PRD once the local checkpoint exists. No production changes; M1-03 picking/identity panels and all later gameplay remain unimplemented.
+Verified locally on2026-10-31 UTC. Exact acceptance: mouse/touch pan/zoom, clamped, with no accidental page scrolling or camera escape. Implementation/evidence commit: `9bc663d346364785ff4b0532de44da50810e337d` (local). Verified V1 progress9/51 (17.65%); M0-01 remains pending. No production changes; M1-03 picking/identity panels and all later gameplay remain unimplemented.
 
 Mouse drag pans, wheel zooms toward the cursor; one-finger drag and two-finger pinch share a Pointer Events grammar. Zoom stays1×–3×. Overview fits the whole scene and locks pan; zoom progressively exposes travel. A ground-plane focus bounded inside the actual12×10 map prevents an empty-world escape while preserving the isometric angle. Zoomed views intentionally crop parts of the island. A six-CSS-pixel threshold separates taps from drags; pinch/lift/cancel cannot create a future pick. Optional tap callback is a seam for M1-03, not an implemented picking feature.
 
