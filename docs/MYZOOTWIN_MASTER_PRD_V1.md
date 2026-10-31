@@ -319,7 +319,7 @@ Dot harus memperjelas typing dan validasi aktual sebelum implementasi; `unknown`
 - [x] **M0-02** Ambil baseline screenshots &amp; browser smoke existing homepage, navigation, mobile; kumpulkan rollback plan. **Verify:** snapshot dan baseline tests.
 - [x] **M0-03** Asset inventory + licenses + visual target; pilih model satu spesies burung tropis yang feasible dan legal. **Verify:** manifest asset, ukuran, attribution.
 - [x] **M0-04** Buat route `/play`, start screen, navigasi &amp; link dari site tanpa merusak routes lain. **Verify:** reload direct URL /play + original URLs.
-- [ ] **M0-05** Setup 3D canvas, loading, WebGL failure state; no blank screen. **Verify:** desktop/mobile render &amp; negative test.
+- [x] **M0-05** Setup 3D canvas, loading, WebGL failure state; no blank screen. **Verify:** desktop/mobile render &amp; negative test.
 - [ ] **M0-06** Tentukan typed game entities, simulation tick, event bus minimal, save schema version. **Verify:** architecture tests &amp; serialization sample.
 - [ ] **M0-07** Setup unit, integration, local E2E + screenshot capture yang dijalankan tanpa GitHub Actions. **Verify:** reproducible test commands.
 - [ ] **M0-08** Tetapkan initial performance baseline, screen sizes &amp; artifact hygiene. **Verify:** baseline measurements recorded.
@@ -571,11 +571,11 @@ Golden-path playable: NO / LOCAL ONLY / LIVE VERIFIED
 
 ## Execution status — 2026-10-31 UTC
 
-Verified V1 completion: **3/51 (5.88%)**; M7 **0/12 deferred**. Only M0-02, M0-03 and M0-04 are checked complete; M0-01 remains partial.
+Verified V1 completion: **4/51 (7.84%)**; M7 **0/12 deferred**. Only M0-02, M0-03, M0-04 and M0-05 are checked complete; M0-01 remains partial.
 
 M0-01 PARTIAL: repo/stack and public routes/SEO/analytics audit recorded in M0-01_AUDIT.md. Documentation checkpoint commit: 3a85cb01843c44fc1d0b56b319b13e69dceec2f3 (local only). Complete source-text transcription alternative is now saved with explicit provenance; no failed Library helper retry or metadata bypass occurred. Existing Wrangler OAuth access independently confirmed the MyZooTwin Pages project/domains, main production deployments, dist output and PUBLIC_GA4_ID variable name. Exact source-repository binding and build command remain unavailable through the supported CLI read surfaces used; see audit evidence and remaining verification gap.
 
-Local /play entry, navigation, guide and ID/EN preference UI are now implemented; no Three.js/canvas, game simulation, gameplay, game-save, dependency or production changes. No physical Android, true-touch, full localization or performance pass is claimed. Next: M0-05 3D canvas/loading/WebGL failure state. M0-01 external configuration verification remains pending and the production release gate stays closed.
+Local /play entry, navigation, guide, ID/EN preferences and optional lazy Three.js renderer/fallbacks are now implemented. No game simulation, gameplay, game-save or production changes. No physical Android, true-touch, full localization or performance pass is claimed. Next: M0-06 typed entities/fixed tick/event/save-schema contract. M0-01 external configuration verification remains pending and the production release gate stays closed.
 
 ### M0-02 completion record — 2026-10-31 UTC
 
@@ -602,3 +602,13 @@ Truthful scope: Play/Continue disabled until gameplay exists; How to play/Settin
 Verification: 8 native Node unit tests passed; Astro check 12 files/0 errors/warnings/hints; final build 9 pages and 6,379-byte entry bundle (2,628 gzip). 18 browser URL/reload scenarios, dialog/keyboard, language reload persistence, history back/forward, mobile horizontal nav, desktop/portrait/landscape visuals and final-bundle smoke recorded. Nine screenshots total 412,878 bytes. Owned 127.0.0.1:4321 preview stopped and shutdown verified; tabs closed/viewport reset.
 
 Limits/issues: BASE-01/02 unchanged; no physical Android/true touch/Safari/iOS/GPU/FPS/full localization pass. Optional Python public HTML comparison GET https://myzootwin.com/ returned HTTP 403 and was not retried; local regression uses saved M0-02 browser metadata plus unchanged source/media. M0-01 remains partial. Next: M0-05. V1 verified progress: 3/51 (5.88%); M7 deferred; no Actions/push/deploy.
+
+### M0-05 completion record - 2026-10-31 UTC
+
+Status: COMPLETE as the lazy renderer/fallback/lifecycle slice, 2026-10-31 UTC. Implementation/evidence commit: 585ffc6de5227ae21b382ab5f98000e8ba90c8c3 (local only). [Renderer report](M0-05_RENDERER_FOUNDATION.md), [tests/browser fixture](../tests/browser/README.md), [native/injected browser and route evidence](qa/m0-05/).
+
+Real optional Three.js WebGL2 canvas on /play, with lazy import, bilingual loading/ready/unsupported/error states, close, retry and import-failure reload. Minimal original abstract geometry is explicitly a renderer foundation, not a sanctuary world/animal/gameplay claim. One RAF visual loop and session owner; late imports/stale handles cancelled, all owned canvas/GPU/listener/resize resources released. Journal navigation, entry dialogs and future disabled Play/Continue preserved.
+
+Verification: 21/21 unit tests; Astro check 19 files, zero errors/warnings/hints; final build nine pages. Actual built native WebGL visually checked at DOM-verified 1366x768, 360x780 portrait and 780x360 landscape, ID/EN, keyboard, guide/settings/Escape, close/reopen and history return. 38 local-harness observations include five Open/Close and three remount/unmount cycles, explicit pause/resume, injected unsupported/constructor/import/delay/context-loss/render failures and recovery. Max one active session/pending RAF; zero after release; released geometries zero and cleanup errors zero. Seven screenshots 645,640 bytes. Eight old routes/metadata, original source/public files and analytics preserved; nine sitemap URLs. Exact three/@types/three 0.187.0; no existing dependency version changed. Lazy renderer 528,598 bytes / 131,488 gzip level 9, entry 13,475 / 5,068. Owned loopback ports 4321/4322 stopped, zero listeners checked; three owned tabs closed and viewport reset.
+
+Limits/issues: Vite lazy raw-chunk >500kB warning recorded, not suppressed. Negative failures injected, no physical Android/true touch/Safari/iOS, hardware GPU identity/FPS/network/15-minute soak/full-localization/gameplay pass. BASE-01/02 unchanged. Earlier public Python HTTP403 was not retried. M0-01 exact external deployment configuration remains partial and release gated. Next: M0-06 typed entities/fixed tick/event/save-schema contract. Verified V1: 4/51 (7.84%); M7 deferred. No Actions/push/deploy.

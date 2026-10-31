@@ -2,7 +2,7 @@
 
 Updated: 2026-10-31 UTC. Complete canonical working requirements: MYZOOTWIN_MASTER_PRD_V1.md. Immutable source-text transcriptions and original Library references: SOURCE_PROVENANCE.md. Native Library materialization failed; the explicitly authorized complete source-text alternative is saved and clearly labeled.
 
-Verified V1: **3/51 (5.88%)**. M7 excluded: **12 deferred items**. Local entry UI only; no gameplay or production changes.
+Verified V1: **4/51 (7.84%)**. M7 excluded: **12 deferred items**. Local entry UI and renderer foundation only; no gameplay or production changes.
 
 ## Current checkpoint: M0-01 PARTIAL / BLOCKED
 
@@ -10,7 +10,7 @@ Completed: local/GitHub audit; live route/sitemap/analytics baseline; complete P
 
 Remaining external configuration gap: supported CLI read surfaces used do not expose the exact GitHub source-repository binding or dashboard build command/root-directory/automatic deployment policy. The dashboard browser session requires login; no login/new grants authorized or attempted. README is not proof of these settings. Keep M0-01 unchecked until verified or the parent explicitly accepts the documented audit limit.
 
-M0-02 independently COMPLETE on 2026-10-31. Evidence commit: ec17bd19f4d4292eba269854ac4a512114737b0c (local only). Report: [M0-02_BASELINE.md](M0-02_BASELINE.md); screenshots and structured evidence: [qa/m0-02](qa/m0-02/). Check/build passed; 24 browser route/reload scenarios, navigation/keyboard, responsive screenshots and loopback shutdown verified. Existing BASE-01 mobile heading overflow and BASE-02 low quote contrast are recorded; no app fixes or physical Android/performance/gameplay claims. M0-02 remains complete; M0-03 is now independently complete as recorded below. M0-04 is now complete as recorded below. Next: M0-05 3D canvas/loading/WebGL failure state. M0-01 remains partial; production release stays gated on external configuration verification.
+M0-02 independently COMPLETE on 2026-10-31. Evidence commit: ec17bd19f4d4292eba269854ac4a512114737b0c (local only). Report: [M0-02_BASELINE.md](M0-02_BASELINE.md); screenshots and structured evidence: [qa/m0-02](qa/m0-02/). Check/build passed; 24 browser route/reload scenarios, navigation/keyboard, responsive screenshots and loopback shutdown verified. Existing BASE-01 mobile heading overflow and BASE-02 low quote contrast are recorded; no app fixes or physical Android/performance/gameplay claims. M0-02 remains complete; M0-03 is now independently complete as recorded below. M0-04 is now complete as recorded below. M0-05 is now complete as recorded below. Next: M0-06 typed entities/fixed tick/event/save-schema contract. M0-01 remains partial; production release stays gated on external configuration verification.
 
 ## M0-03 COMPLETE — 2026-10-31 UTC
 
@@ -19,6 +19,16 @@ Evidence commit: 01f61a4a5208ed66350e5c5a56f82df138945461 (local only). [Asset r
 ## M0-04 COMPLETE — 2026-10-31 UTC
 
 Implementation/evidence commit: b72795dbdc91a4442ef39a440e41bf3026c6aaef (local only). [Entry report](M0-04_PLAY_ENTRY.md), [browser/route/screenshot evidence](qa/m0-04/). Real local /play and /play/ with correct canonical, modest Play Zoo nav, disabled future Play/Continue, working guide/settings and entry ID/EN persistence. Original journal source/media/metadata and analytics source preserved; nine-page sitemap. 8 unit tests/check/build and 18 browser URL/reload scenarios passed; mobile/desktop visual and keyboard/history checks recorded; preview shut down. No renderer/gameplay/game-save/full-localization/physical-device pass and no production deployment. Optional public Python GET returned 403, not retried; saved baseline/source regression completed. M0-01 remains partial; next M0-05.
+
+## M0-05 COMPLETE - 2026-10-31 UTC
+
+Status: COMPLETE as the lazy renderer/fallback/lifecycle slice, 2026-10-31 UTC. Implementation/evidence commit: 585ffc6de5227ae21b382ab5f98000e8ba90c8c3 (local only). [Renderer report](M0-05_RENDERER_FOUNDATION.md), [tests/browser fixture](../tests/browser/README.md), [native/injected browser and route evidence](qa/m0-05/).
+
+Real optional Three.js WebGL2 canvas on /play, with lazy import, bilingual loading/ready/unsupported/error states, close, retry and import-failure reload. Minimal original abstract geometry is explicitly a renderer foundation, not a sanctuary world/animal/gameplay claim. One RAF visual loop and session owner; late imports/stale handles cancelled, all owned canvas/GPU/listener/resize resources released. Journal navigation, entry dialogs and future disabled Play/Continue preserved.
+
+Verification: 21/21 unit tests; Astro check 19 files, zero errors/warnings/hints; final build nine pages. Actual built native WebGL visually checked at DOM-verified 1366x768, 360x780 portrait and 780x360 landscape, ID/EN, keyboard, guide/settings/Escape, close/reopen and history return. 38 local-harness observations include five Open/Close and three remount/unmount cycles, explicit pause/resume, injected unsupported/constructor/import/delay/context-loss/render failures and recovery. Max one active session/pending RAF; zero after release; released geometries zero and cleanup errors zero. Seven screenshots 645,640 bytes. Eight old routes/metadata, original source/public files and analytics preserved; nine sitemap URLs. Exact three/@types/three 0.187.0; no existing dependency version changed. Lazy renderer 528,598 bytes / 131,488 gzip level 9, entry 13,475 / 5,068. Owned loopback ports 4321/4322 stopped, zero listeners checked; three owned tabs closed and viewport reset.
+
+Limits/issues: Vite lazy raw-chunk >500kB warning recorded, not suppressed. Negative failures injected, no physical Android/true touch/Safari/iOS, hardware GPU identity/FPS/network/15-minute soak/full-localization/gameplay pass. BASE-01/02 unchanged. Earlier public Python HTTP403 was not retried. M0-01 exact external deployment configuration remains partial and release gated. Next: M0-06 typed entities/fixed tick/event/save-schema contract. Verified V1: 4/51 (7.84%); M7 deferred. No Actions/push/deploy.
 
 ## V1 checklist (exact task wording from source-text handoff)
 
@@ -30,7 +40,7 @@ Implementation/evidence commit: b72795dbdc91a4442ef39a440e41bf3026c6aaef (local 
 
 - [x] **M0-04** Buat route `/play`, start screen, navigasi &amp; link dari site tanpa merusak routes lain. **Verify:** reload direct URL /play + original URLs.
 
-- [ ] **M0-05** Setup 3D canvas, loading, WebGL failure state; no blank screen. **Verify:** desktop/mobile render &amp; negative test.
+- [x] **M0-05** Setup 3D canvas, loading, WebGL failure state; no blank screen. **Verify:** desktop/mobile render &amp; negative test.
 
 - [ ] **M0-06** Tentukan typed game entities, simulation tick, event bus minimal, save schema version. **Verify:** architecture tests &amp; serialization sample.
 
