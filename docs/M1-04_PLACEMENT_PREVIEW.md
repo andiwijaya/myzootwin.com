@@ -1,6 +1,6 @@
 # M1-04 — Footprint preview, Confirm and Cancel
 
-Status: COMPLETE locally, 2026-10-31 UTC. This slice confirms a **session-local habitat plan**, not a built habitat, fence, occupancy transaction, coin debit or saved game. The entry still truthfully disables Play/Continue. M1-05 will consume the reusable typed proposal/validation contract for actual habitat placement. M0-01 exact external Cloudflare configuration remains partial.
+Status: COMPLETE locally, 2026-10-31 UTC. Implementation/evidence commit: c29a84cffba44131374039d81860fd852f56b43c (local only). This slice confirms a **session-local habitat plan**, not a built habitat, fence, occupancy transaction, coin debit or saved game. The entry still truthfully disables Play/Continue. M1-05 will consume the reusable typed proposal/validation contract for actual habitat placement. M0-01 exact external Cloudflare configuration remains partial.
 
 ## Result
 

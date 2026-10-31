@@ -2,7 +2,7 @@
 
 Updated: 2026-10-31 UTC. Complete canonical working requirements: MYZOOTWIN_MASTER_PRD_V1.md. Immutable source-text transcriptions and original Library references: SOURCE_PROVENANCE.md. Native Library materialization failed; the explicitly authorized complete source-text alternative is saved and clearly labeled.
 
-Verified V1: **10/51 (19.61%)**. M7 excluded: **12 deferred items**. Local entry/rendering/core/QA, measured baseline/retention, Tropical Creek diorama, bounded camera and bilingual tile/object selection; no gameplay or production changes.
+Verified V1: **11/51 (21.57%)**. M7 excluded: **12 deferred items**. Local entry/rendering/core/QA, measured baseline/retention, Tropical Creek diorama, bounded camera, bilingual tile/object selection and session-local validated footprint plans; no complete gameplay or production changes.
 
 ## Current checkpoint: M0-01 PARTIAL / BLOCKED
 
@@ -10,7 +10,7 @@ Completed: local/GitHub audit; live route/sitemap/analytics baseline; complete P
 
 Remaining external configuration gap: supported CLI read surfaces used do not expose the exact GitHub source-repository binding or dashboard build command/root-directory/automatic deployment policy. The dashboard browser session requires login; no login/new grants authorized or attempted. README is not proof of these settings. Keep M0-01 unchecked until verified or the parent explicitly accepts the documented audit limit.
 
-M0-02 independently COMPLETE on 2026-10-31. Evidence commit: ec17bd19f4d4292eba269854ac4a512114737b0c (local only). Report: [M0-02_BASELINE.md](M0-02_BASELINE.md); screenshots and structured evidence: [qa/m0-02](qa/m0-02/). Check/build passed; 24 browser route/reload scenarios, navigation/keyboard, responsive screenshots and loopback shutdown verified. Existing BASE-01 mobile heading overflow and BASE-02 low quote contrast are recorded; no app fixes or physical Android/performance/gameplay claims. M0-02 remains complete; M0-03 is now independently complete as recorded below. M0-04 is now complete as recorded below. M0-05 is now complete as recorded below. M0-06 is now complete as recorded below. M0-07 is now complete as recorded below. M0-08 is now complete as recorded below. M1-01 through M1-03 are now complete as recorded below. Next: M1-04 valid/invalid build preview with Confirm/Cancel. M0-01 remains partial; production release stays gated on external configuration verification.
+M0-02 independently COMPLETE on 2026-10-31. Evidence commit: ec17bd19f4d4292eba269854ac4a512114737b0c (local only). Report: [M0-02_BASELINE.md](M0-02_BASELINE.md); screenshots and structured evidence: [qa/m0-02](qa/m0-02/). Check/build passed; 24 browser route/reload scenarios, navigation/keyboard, responsive screenshots and loopback shutdown verified. Existing BASE-01 mobile heading overflow and BASE-02 low quote contrast are recorded; no app fixes or physical Android/performance/gameplay claims. M0-02 remains complete; M0-03 is now independently complete as recorded below. M0-04 is now complete as recorded below. M0-05 is now complete as recorded below. M0-06 is now complete as recorded below. M0-07 is now complete as recorded below. M0-08 is now complete as recorded below. M1-01 through M1-04 are now complete as recorded below. Next: M1-05 habitat/fence and occupancy. M0-01 remains partial; production release stays gated on external configuration verification.
 
 ## M0-03 COMPLETE — 2026-10-31 UTC
 
@@ -122,7 +122,7 @@ Known limits: physical Android/touch/pinch/Safari/iOS, actual FPS/network/soak, 
 
 - [x] **M1-03** Scene picking: pilih tile/object, show panel identitas. **Verify:** raycast mouse/touch akurat.
 
-- [ ] **M1-04** Build-mode preview dengan valid/invalid placement, Confirm/Cancel. **Verify:** cancel no side-effects.
+- [x] **M1-04** Build-mode preview dengan valid/invalid placement, Confirm/Cancel. **Verify:** cancel no side-effects.
 
 - [ ] **M1-05** Place valid habitat/fence dalam bounds; persist occupancy. **Verify:** tidak overlap/keluar map.
 
@@ -233,3 +233,14 @@ Known limits: physical Android/touch/pinch/Safari/iOS, actual FPS/network/soak, 
 ## Completion protocol
 
 One feature at a time: implement -> appropriate local tests and browser visual evidence -> fix -> local commit -> update full living PRD/checklist with date, commit, evidence, known issues and next ID. Do not count compile as a gameplay pass or viewport emulation as physical Android testing. No push/deploy before M6 release gate. No GitHub Actions added or run.
+
+
+### M1-04 completion record - 2026-10-31 UTC
+
+Status: COMPLETE for validated footprint preview and session-local plan confirmation only. Implementation/evidence commit: c29a84cffba44131374039d81860fd852f56b43c (local only). [Report](M1-04_PLACEMENT_PREVIEW.md); [raw tests/browser/screenshots/probes/failure receipts](qa/m1-04/). Ghost snaps2x2 to actual grid, green/red plus ID/EN reasons; Confirm revalidates current world/revision exactly once and keeps at most one blue plan, Cancel preserves authoritative world/save/currency and any prior plan. No real habitat/fence/occupancy/cost/save mutation is claimed; reusable pure rules/proposal contract feeds M1-05. Mouse/keyboard, tile arrows, overlay/pause/gesture guards, resize/retry/remount cleanup verified; one RAF/core remains.
+
+Final run20261031T205244Z-6b549c69:76/76 tests, Astro check51 files zero diagnostics, build9 pages, nine-route metadata/sitemap/direct-play regression, and qa:verify PASS at2026-10-31T20:59:57.512Z. Actual built desktop/portrait/landscape/wide ID/EN reviewed;6 screenshots723,883 bytes. Labelled fixture36 placement+27 camera+36 selection cases PASS; native mouse drag preserved anchor while camera moved, native keyboard confirmed/Escape cancelled. Held injected pointer1→0 after orientation without proposal revision change; pause144→144 then resume323. Context/render fault retry, remount/stale handle/unmount and6 cleanup snapshots zero all live ownership; max1 session/RAF. Owned tabs35-38 closed, viewport reset, servers4321/4322 stopped/free.
+
+Known preview615,988 raw/160,798 gzip9-estimate bytes (+13,208/+3,807 vsM1-03), lazy564,027 raw; >500kB warning retained. Ghost+plan12 draws/4,136tri vs world6/4,128; bounded2 geometries/3 materials added, observed8 GPUgeometries/11 ownedmaterials/6 programs/1 enginetexture. Three five-second probes ~60 callbackHz, p95 synchronous CPU-submit0.8/0.7/0.7ms,20 readouts each; not presentationFPS/GPU/physicalAndroid/network/soak. Two old runs17files/24,413compressedbytes archived and CRC/everySHA verified before scoped prune; newest3 retained. Preliminary optional-argument test mismatch and actual browser selector collision fixed/rebuilt/retested; failed screenshot and preliminary local receipts retained. Native product warn/error0; one Three cleanup warning after deliberate context loss preserved separately in injected-console.json, not suppressed.
+
+Limits: actual habitat/fence/occupancy, paths/economy/animals/missions/save, full localization, physicalAndroid/touch/Safari/iOS/FPS/network/soak and live production remain later UNRUN gates. BASE-01/02 and M0-01 exact external Cloudflare gap persist. No login/newgrant/Actions/push/deploy/public403 retry. Next:M1-05. Verified V1:11/51(21.57%); all12M7 deferred.
