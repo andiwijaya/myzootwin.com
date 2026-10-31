@@ -2,7 +2,7 @@
 
 Updated: 2026-10-31 UTC. Complete canonical working requirements: MYZOOTWIN_MASTER_PRD_V1.md. Immutable source-text transcriptions and original Library references: SOURCE_PROVENANCE.md. Native Library materialization failed; the explicitly authorized complete source-text alternative is saved and clearly labeled.
 
-Verified V1: **5/51 (9.80%)**. M7 excluded: **12 deferred items**. Local entry/rendering and typed simulation/save-codec foundation; no gameplay or production changes.
+Verified V1: **6/51 (11.76%)**. M7 excluded: **12 deferred items**. Local entry/rendering, typed core/save-codec and repeatable QA/browser-receipt foundation; no gameplay or production changes.
 
 ## Current checkpoint: M0-01 PARTIAL / BLOCKED
 
@@ -10,7 +10,7 @@ Completed: local/GitHub audit; live route/sitemap/analytics baseline; complete P
 
 Remaining external configuration gap: supported CLI read surfaces used do not expose the exact GitHub source-repository binding or dashboard build command/root-directory/automatic deployment policy. The dashboard browser session requires login; no login/new grants authorized or attempted. README is not proof of these settings. Keep M0-01 unchecked until verified or the parent explicitly accepts the documented audit limit.
 
-M0-02 independently COMPLETE on 2026-10-31. Evidence commit: ec17bd19f4d4292eba269854ac4a512114737b0c (local only). Report: [M0-02_BASELINE.md](M0-02_BASELINE.md); screenshots and structured evidence: [qa/m0-02](qa/m0-02/). Check/build passed; 24 browser route/reload scenarios, navigation/keyboard, responsive screenshots and loopback shutdown verified. Existing BASE-01 mobile heading overflow and BASE-02 low quote contrast are recorded; no app fixes or physical Android/performance/gameplay claims. M0-02 remains complete; M0-03 is now independently complete as recorded below. M0-04 is now complete as recorded below. M0-05 is now complete as recorded below. M0-06 is now complete as recorded below. Next: M0-07 reproducible local test/E2E/screenshot tooling. M0-01 remains partial; production release stays gated on external configuration verification.
+M0-02 independently COMPLETE on 2026-10-31. Evidence commit: ec17bd19f4d4292eba269854ac4a512114737b0c (local only). Report: [M0-02_BASELINE.md](M0-02_BASELINE.md); screenshots and structured evidence: [qa/m0-02](qa/m0-02/). Check/build passed; 24 browser route/reload scenarios, navigation/keyboard, responsive screenshots and loopback shutdown verified. Existing BASE-01 mobile heading overflow and BASE-02 low quote contrast are recorded; no app fixes or physical Android/performance/gameplay claims. M0-02 remains complete; M0-03 is now independently complete as recorded below. M0-04 is now complete as recorded below. M0-05 is now complete as recorded below. M0-06 is now complete as recorded below. M0-07 is now complete as recorded below. Next: M0-08 performance baseline/screen matrix/artifact budgets. M0-01 remains partial; production release stays gated on external configuration verification.
 
 ## M0-03 COMPLETE — 2026-10-31 UTC
 
@@ -40,6 +40,16 @@ Verification: 36/36 unit/integration tests, Astro check 28 files with zero error
 
 Limits/issues: This advances time/RNG only; care/AI/building/visitors/payments/missions and autosave/Continue/migration/recovery remain future features. No 10x UI, physical Android/touch/Safari/iOS/FPS/network/soak/full-localization pass. Reduced-motion logic separation and visibility handler are implemented; physical background behavior not claimed. Lazy chunk 539,637 bytes /135,451 gzip level9; recorded raw >500kB warning, no speculative optimization. BASE-01/02 and M0-01 external Cloudflare configuration gap remain pending; earlier public Python403 not retried. Next: M0-07 reproducible local test/E2E/screenshot tooling. V1 verified 5/51 (9.80%); M7 deferred; no Actions/push/deploy.
 
+## M0-07 COMPLETE - 2026-10-31 UTC
+
+Status: COMPLETE as reproducible local test/tooling and approved-runtime browser-receipt workflow, 2026-10-31 UTC. Implementation/evidence commit: 89e31a84b8cd1c4380eaeb0d17e149ca43ec1f3d (local only). [Feature report](M0-07_LOCAL_QA_WORKFLOW.md), [command/browser recipe](LOCAL_QA.md), [bounded final evidence and preliminary failure history](qa/m0-07/).
+
+Native Node test discovery consolidates all prior36 plus nine failure-detection checks. Commands: npm test; qa:local; qa:serve; qa:verify; qa:prune. Unique ignored runs record timestamps, baseline HEAD, test file/counts, complete bounded TAP/log hashes, source before/after and build identities. Failed/capped/stale/incomplete results cannot pass; absent browser evidence remains UNRUN. Actual browser control/visual review is manual through approved isolated cua_repl, with automated receipt consistency checks; no standalone browser driver/new package/security policy. Fixture visibly binds run/build/source. Owned loopback previews use normal stdin/PTY stop; bounded prune defaults to dry-run and never touches historical docs/qa or media.
+
+Executed final run 20261031T174545Z-942b4125: 45/45 tests, Astro check31 files zero errors/warnings/hints, nine-page build and all route/metadata/direct-play/sitemap checks PASS. Initial verification exited2 UNRUN; six actual browser cases later passed and final verification exited0 PASS. DOM-verified native1366x768/360x780/780x360, ID/EN, keyboard/settings/history/reload, core one-session/RAF/pause/cleanup and injected context-loss retry. Three new screenshots210,244 bytes; zero captured native warn/error messages at uncapped limit200. Prior HTML-entity/template-identity failures fixed, regression-tested and preserved; stale old source receipt rejected FAIL. Source/build manifests recorded, no old screenshots reused. Closed own tabs15/16, reset viewport; PTY stop exited0 with both ports4321/4322 independently free. No original product source/routes/assets/dependencies/immutable PRD source or older feature receipts changed.
+
+Limits: browser interaction/visual judgment is not an unattended driver or physical Android/touch/Safari/iOS/FPS/network/soak/gameplay/save/live-production pass. Those gates remain UNRUN. Raw >500kB lazy chunk warning and BASE-01/02 persist; prune apply not needed/performed. M0-01 exact external Cloudflare configuration still pending, no login attempted, no previous public403 retry. Next: M0-08 performance baseline/screen matrix/artifact budgets. V1 verified6/51 (11.76%); M7 deferred; no Actions/push/deploy.
+
 ## V1 checklist (exact task wording from source-text handoff)
 
 - [ ] **M0-01** Audit repo, stack, Cloudflare Pages routing, existing content/SEO, analytics; catat apa yang boleh di-reuse. **Verify:** laporan audit dan baseline routes.
@@ -54,7 +64,7 @@ Limits/issues: This advances time/RNG only; care/AI/building/visitors/payments/m
 
 - [x] **M0-06** Tentukan typed game entities, simulation tick, event bus minimal, save schema version. **Verify:** architecture tests &amp; serialization sample.
 
-- [ ] **M0-07** Setup unit, integration, local E2E + screenshot capture yang dijalankan tanpa GitHub Actions. **Verify:** reproducible test commands.
+- [x] **M0-07** Setup unit, integration, local E2E + screenshot capture yang dijalankan tanpa GitHub Actions. **Verify:** reproducible test commands.
 
 - [ ] **M0-08** Tetapkan initial performance baseline, screen sizes &amp; artifact hygiene. **Verify:** baseline measurements recorded.
 
