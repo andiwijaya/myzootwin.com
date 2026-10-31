@@ -2,7 +2,7 @@
   "schema_version": 1,
   "audited_at": "2026-10-31",
   "baseline_commit": "3b06c6d8d2a920ad5894868059885c98a58217a6",
-  "scope": "M0-03 inventory/model decision, M0-04 entry illustration and M0-05 original renderer foundation/Three.js notice; existing media retained.",
+  "scope": "Existing inventory retained; original M1-01 Tropical Creek procedural diorama added, no downloaded art.",
   "assets": [
     {
       "path": "public/images/myzootwin-beranda.png",
@@ -150,6 +150,21 @@
       "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
       "bytes": 1081,
       "usage_decision": "Lazy WebGL2 runtime; no external model assets. @types/three exact matching dev version. Eight added package metadata and existing-version comparison in qa/m0-05/verification.json; not a full transitive license audit."
+    },
+    {
+      "id": "tropical_creek_m1_01",
+      "path": "src/game/render3d/tropical-diorama.ts",
+      "bytes": 7612,
+      "sha256": "8064ad1cfcb86984d33061881a1153fae44c57efebc3e6b4a4c2457236f3f1fa",
+      "origin": "Original geometry authored in this repository for the owner, 2026-10-31",
+      "rights_status": "original_code_authored_geometry_no_third_party_art",
+      "provenance_evidence": "All ground, water, palms, broadleaf trees, rocks, reeds, gate roof/sign and contact shade generated from original vertex coordinates/transforms. Existing Three.js MIT engine notice retained. No external models/textures/audio/asset terms accepted.",
+      "usage_decision": "M1-01 scenery only; not final animals, player structures, traversable path, habitat or occupancy implementation.",
+      "rendered_geometry_triangles": 4128,
+      "static_draw_batches": 6,
+      "external_art_bytes": 0,
+      "visual_inspection": "Actual built WebGL pixels inspected desktop, portrait and landscape; evidence docs/qa/m1-01.",
+      "attribution": "No third-party art attribution required; engine attribution public/licenses/three-MIT.txt."
     }
   ],
   "direct_package_notice_spot_checks": [

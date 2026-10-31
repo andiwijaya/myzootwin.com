@@ -1,4 +1,7 @@
-import { AmbientLight, Color, CylinderGeometry, DirectionalLight, Mesh, MeshStandardMaterial, OctahedronGeometry, PerspectiveCamera, Scene, SRGBColorSpace, TorusGeometry, WebGLRenderer } from 'three';
+import { AmbientLight, BufferGeometry, Color, DirectionalLight, OrthographicCamera, Scene, SRGBColorSpace, WebGLRenderer, type Material } from 'three';
+import { createInitialState } from '../core/initial-state.ts';
+import { createTropicalDiorama } from './tropical-diorama.ts';
+import { fitIsometricCamera } from './isometric-camera.ts';
 import { createSimulation } from '../core/simulation.ts';
 import { createFrameLoop, type FrameDriver } from './frame-loop';
 import { PreviewFailure, type PreviewFailureKind, type PreviewSession } from './preview-controller';
@@ -9,7 +12,7 @@ interface FoundationOptions {
   createRenderer?: (canvas: HTMLCanvasElement, context: WebGL2RenderingContext) => WebGLRenderer;
 }
 
-/** Renderer workbench driven by the fixed-tick foundation; no sanctuary gameplay yet. */
+/** Read-only sanctuary world driven by the fixed-tick foundation; no gameplay yet. */
 export function mountFoundationScene(host: HTMLElement, onFailure: (kind: PreviewFailureKind) => void, options: FoundationOptions = {}): PreviewSession {
   const canvas = document.createElement('canvas');
   canvas.setAttribute('aria-hidden', 'true');
@@ -23,15 +26,13 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   let renderSubmissions = 0;
   let releasedMaterials = 0;
   let observer: ResizeObserver | undefined;
-  const geometries: Array<CylinderGeometry | OctahedronGeometry | TorusGeometry> = [];
-  const materials: MeshStandardMaterial[] = [];
+  const geometries: BufferGeometry[] = [];
+  const materials: Material[] = [];
   const scene = new Scene();
-  const camera = new PerspectiveCamera(38, 1, .1, 30);
-  camera.position.set(3.1, 2.6, 3.5);
-  camera.lookAt(0, .12, 0);
+  const camera = new OrthographicCamera();
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const frames = options.frames ?? { request: (fn) => requestAnimationFrame(fn), cancel: (id) => cancelAnimationFrame(id) };
-  let marker: Mesh | undefined;
+  let diorama: ReturnType<typeof createTropicalDiorama> | undefined;
   const simulation = createSimulation();
   let simulationTimeMs = 0;
   let simulationEvents = 0;
@@ -50,7 +51,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   function render() {
     if (disposed || lost) return;
     if (context?.isContextLost()) { notifyContextLoss(); return; }
-    if (marker && !motion.matches) marker.rotation.y = simulationTimeMs * .00025;
+    diorama?.update(simulationTimeMs, motion.matches);
     renderer?.render(scene, camera);
     if (renderer) renderSubmissions++;
   }
@@ -67,8 +68,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     const width = Math.max(1, Math.round(bounds.width));
     const height = Math.max(1, Math.round(bounds.height));
     renderer.setSize(width, height, false);
-    camera.aspect = width / height;
-    camera.updateProjectionMatrix();
+    if (diorama) fitIsometricCamera(camera, diorama.bounds, width / height);
     render();
   }
   function onResize() {
@@ -109,27 +109,13 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     renderer.outputColorSpace = SRGBColorSpace;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 1.5));
     scene.background = new Color('#edf3e5');
-    scene.add(new AmbientLight('#fff9e9', 2));
-    const sun = new DirectionalLight('#fff6d8', 3);
-    sun.position.set(-2, 5, 3);
+    scene.add(new AmbientLight('#e5f1dc', 1.7));
+    const sun = new DirectionalLight('#fff1d6', 2.5);
+    sun.position.set(-6, 10, 8);
     scene.add(sun);
-    const makeMaterial = (colour: string) => { const m = new MeshStandardMaterial({ color: colour, roughness: .9, metalness: 0 }); materials.push(m); return m; };
-    const baseGeometry = new CylinderGeometry(1.15, 1.15, .18, 6);
-    geometries.push(baseGeometry);
-    const base = new Mesh(baseGeometry, [makeMaterial('#8ba675'), makeMaterial('#b8d292'), makeMaterial('#789466')]);
-    base.rotation.y = Math.PI / 6;
-    scene.add(base);
-    const markerGeometry = new OctahedronGeometry(.29, 0);
-    geometries.push(markerGeometry);
-    marker = new Mesh(markerGeometry, makeMaterial('#e3ac47'));
-    marker.position.y = .48;
-    scene.add(marker);
-    const ringGeometry = new TorusGeometry(.43, .025, 5, 32);
-    geometries.push(ringGeometry);
-    const ring = new Mesh(ringGeometry, makeMaterial('#fff1c9'));
-    ring.rotation.x = Math.PI / 2;
-    ring.position.y = .11;
-    scene.add(ring);
+    diorama = createTropicalDiorama(createInitialState().world);
+    geometries.push(...diorama.geometries); materials.push(...diorama.materials);
+    scene.add(diorama.group);
     canvas.addEventListener('webglcontextlost', onLost);
     host.append(canvas);
     resize(); // Ready means a real first render completed, not merely an import.
@@ -149,6 +135,6 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   return {
     dispose,
     setPaused(value) { paused = value; updateRunning(); },
-    inspect: () => ({ disposed, lost, canvasAttached: canvas.isConnected, pendingFrames: loop.inspect().pendingFrames, geometries: renderer?.info.memory.geometries ?? 0, textures: renderer?.info.memory.textures ?? 0, programs: renderer?.info.programs?.length ?? 0, ownedMaterialsLive: materials.length - releasedMaterials, drawCallsLastRender: renderer?.info.render.calls ?? 0, trianglesLastRender: renderer?.info.render.triangles ?? 0, renderSubmissions, bufferWidth: canvas.width, bufferHeight: canvas.height, pixelRatio: renderer?.getPixelRatio() ?? 0, cleanupErrors, simulationTick: simulation.inspect().tick, simulationGameTimeMs: simulation.inspect().gameTimeMs, simulationPaused: simulation.inspect().paused, simulationDisposed: simulation.inspect().disposed, simulationSubscribers: simulation.inspect().subscribers, simulationEvents, markerRotation: marker?.rotation.y ?? 0 }),
+    inspect: () => ({ disposed, lost, canvasAttached: canvas.isConnected, pendingFrames: loop.inspect().pendingFrames, geometries: renderer?.info.memory.geometries ?? 0, textures: renderer?.info.memory.textures ?? 0, programs: renderer?.info.programs?.length ?? 0, ownedMaterialsLive: materials.length - releasedMaterials, drawCallsLastRender: renderer?.info.render.calls ?? 0, trianglesLastRender: renderer?.info.render.triangles ?? 0, renderSubmissions, bufferWidth: canvas.width, bufferHeight: canvas.height, pixelRatio: renderer?.getPixelRatio() ?? 0, cleanupErrors, simulationTick: simulation.inspect().tick, simulationGameTimeMs: simulation.inspect().gameTimeMs, simulationPaused: simulation.inspect().paused, simulationDisposed: simulation.inspect().disposed, simulationSubscribers: simulation.inspect().subscribers, simulationEvents, orthographicCamera: camera.isOrthographicCamera, ...diorama?.inspect() }),
   };
 }

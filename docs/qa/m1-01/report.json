@@ -1,0 +1,645 @@
+{
+  "schemaVersion": 1,
+  "runId": "20261031T190354Z-32c89857",
+  "startedAt": "2026-10-31T19:03:54.223Z",
+  "node": "v24.12.0",
+  "platform": "win32",
+  "head": "666cc0ca7d67582386907cf8da59f5241e9a333d",
+  "testFiles": [
+    "tests/entry-preferences.test.mjs",
+    "tests/performance-baseline.test.mjs",
+    "tests/preview-lifecycle.test.mjs",
+    "tests/qa-workflow.test.mjs",
+    "tests/simulation-contract.test.mjs",
+    "tests/tropical-diorama.test.mjs"
+  ],
+  "sourceStart": {
+    "id": "e4e769565d090a4f48839db0df046cf2cde301b1c1a80f39adfeea69e2a60bbe",
+    "entries": [
+      {
+        "path": "astro.config.mjs",
+        "sha256": "c7f6614f15599dd56e9a5767896405fa58ad2fa48ef64985c869703c80b44f7a"
+      },
+      {
+        "path": "docs/qa/m0-02/baseline-results.json",
+        "sha256": "64adcaaa0710ae3e18b6e9f7d87769334f051f483761d7aa5238e5e7e1de2da5"
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "db2f6b5c88fdf3e1df785752d434e6d4df91cb63767eb10ba45f924c82cfd2e8"
+      },
+      {
+        "path": "package.json",
+        "sha256": "1d99a26a029451b5236b51b1bf04bb40b0be0fe79e5aafd655163afe2ad316f9"
+      },
+      {
+        "path": "public/favicon.svg",
+        "sha256": "1e37371684103082a4662d9cd3c224c4c4f424ba0bbd0d53f55a1cc8572fef76"
+      },
+      {
+        "path": "public/images/myzootwin-beranda.png",
+        "sha256": "fd57bc337641b07eeae40a053e3db1032af805a553ecdddf81c99bcc2dc9e3b5"
+      },
+      {
+        "path": "public/licenses/three-MIT.txt",
+        "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+      },
+      {
+        "path": "public/robots.txt",
+        "sha256": "91803eeb5a8dbbbae903fce53e66d6f5856f8e0894e7d7d21465c532381dd147"
+      },
+      {
+        "path": "scripts/qa/bundle-analysis.mjs",
+        "sha256": "c14fd760401dbc451c58618c174d12ce1b91755ddd774c0fe5197709ec4799f5"
+      },
+      {
+        "path": "scripts/qa/payload.mjs",
+        "sha256": "9483ebe3db69d071c8ce2f7c8ce5fa2c0fa632fa14ecac8560d0d47c0b358cb7"
+      },
+      {
+        "path": "scripts/qa/qa.mjs",
+        "sha256": "28f50a8b33cc27d561fbd51be0672cced7755317cfb373b58141a0f0e7ce225e"
+      },
+      {
+        "path": "scripts/qa/tooling.mjs",
+        "sha256": "14dadb009b6d6bb31c447608ee87b9e7dd78e9b86bb0bd4402ab5655a9e9655e"
+      },
+      {
+        "path": "src/components/PlayEntry.astro",
+        "sha256": "d0bc3a340e9fa0272fca75be2b674a6238bcfab7e1510ea5ad88f08e10a65a1a"
+      },
+      {
+        "path": "src/game-entry/locale.ts",
+        "sha256": "87b49791c74fb9e5b7eff0c13994814a85fc7d68f14e34398765a6edaecc4566"
+      },
+      {
+        "path": "src/game-entry/preview-panel.ts",
+        "sha256": "01fe6a939eff0c79644c131ff59ed43ba2330c08a8936113aba1e0dd4c4a9fda"
+      },
+      {
+        "path": "src/game/core/events.ts",
+        "sha256": "927015a952b9446f90754cc4287cadf20045979cc63f407e89698a43de4d855a"
+      },
+      {
+        "path": "src/game/core/fixed-clock.ts",
+        "sha256": "48389e14172e555d3776a783b125f4cd5476a8800b9c1e4712edade983e5ebda"
+      },
+      {
+        "path": "src/game/core/initial-state.ts",
+        "sha256": "8a65b46c1a94c08ffda1093c34c6ddb6d4f1e46990e5802ad4e96d524d25b2c5"
+      },
+      {
+        "path": "src/game/core/random.ts",
+        "sha256": "0694052a666d05b0de2069cb5ead87ea3f65ce3031913b79c7f1170a72b34928"
+      },
+      {
+        "path": "src/game/core/simulation.ts",
+        "sha256": "37b08c5f3a2e9ddfcf6524f65855d20d3a55193eed1f8b6df4a7a2aaedd66fcb"
+      },
+      {
+        "path": "src/game/core/state.ts",
+        "sha256": "8cb3fa441f121e4bdaa45f5a3f9b9429af598a2c92866a882b3fce97a2f4e785"
+      },
+      {
+        "path": "src/game/persistence/save-v1.ts",
+        "sha256": "8775bd1cd4210ad5946b73ad9d46075237c371aeaae73bd74866a5764dd72193"
+      },
+      {
+        "path": "src/game/render3d/foundation-scene.ts",
+        "sha256": "9f1512fd3506d8d5281d20309dbc203fe195937cee7ccd2c346d91c4c6d079d4"
+      },
+      {
+        "path": "src/game/render3d/frame-loop.ts",
+        "sha256": "1acf909af55cb53a22cbb8fc72cf46643bb913d70e35f521c2ec83a8c27623ed"
+      },
+      {
+        "path": "src/game/render3d/isometric-camera.ts",
+        "sha256": "97f47bf43d78d873d3a2d270638927439e0c466580f7b95ce3fd704a4aa0553c"
+      },
+      {
+        "path": "src/game/render3d/preview-controller.ts",
+        "sha256": "457fa17c7e5446ec993f0d992145f0cbb0a9fa6136c90248afd610c6155c0e00"
+      },
+      {
+        "path": "src/game/render3d/tropical-diorama.ts",
+        "sha256": "8064ad1cfcb86984d33061881a1153fae44c57efebc3e6b4a4c2457236f3f1fa"
+      },
+      {
+        "path": "src/layouts/BaseLayout.astro",
+        "sha256": "53f726549e79052958eaa2c21ddffae148fefd9ce1cd0a3aebd7d913782a6b19"
+      },
+      {
+        "path": "src/pages/[section].astro",
+        "sha256": "cc9cb2e952b57b0db9a6f4c4c57185d3406a5df62942965b013d921c8292222d"
+      },
+      {
+        "path": "src/pages/about.astro",
+        "sha256": "7950e3b97905078372a0a067ea8e5c242a8a5f71c042c6b38889f8d67d8fa54b"
+      },
+      {
+        "path": "src/pages/animals/index.astro",
+        "sha256": "be813ca2c76f0a0c3c4f82e98db231a3a52fc1c5cf0bfcf7b147f8ed6c3391d3"
+      },
+      {
+        "path": "src/pages/index.astro",
+        "sha256": "83352a9c2070c64cc6681396a86c14b4914a7d586642e9ac43c09a747eeb7a69"
+      },
+      {
+        "path": "src/pages/play.astro",
+        "sha256": "272e64652fb59c9fafb69d09c21df49774ad3aaa51dd97d96432a3ef984d144c"
+      },
+      {
+        "path": "src/scripts/play-entry.ts",
+        "sha256": "4f6d7d9253f03f019797c0511ccc0ff81011e859262b9b70e99e19fb1e33e2b1"
+      },
+      {
+        "path": "tests/browser/.gitignore",
+        "sha256": "2ca99dacdf8870024dce15908b589ab4af26e80f7e1235a6d0f274dc2891efe0"
+      },
+      {
+        "path": "tests/browser/README.md",
+        "sha256": "d9e41db6a3508ee56cd0f57a59eb910a9147f651c396f40679e05ecc40cbface"
+      },
+      {
+        "path": "tests/browser/frame-metrics.mjs",
+        "sha256": "46e7fc15bb8f216632deef36e64df80f089ecba2e01aea385f9aae283236cad8"
+      },
+      {
+        "path": "tests/browser/prepare-preview-harness.mjs",
+        "sha256": "79db6b610d17dffc47def0189f5e804fdaf342b84128244a522580ada1f63d0a"
+      },
+      {
+        "path": "tests/browser/preview-harness.mjs",
+        "sha256": "a53c472f790e3496a3e69403e93cd97f013460af758649dc6833a56615e1d2c8"
+      },
+      {
+        "path": "tests/entry-preferences.test.mjs",
+        "sha256": "5e9a94fd9fcbc30ba6b1875337969ea241686ca275e135dcd9831f93e461b9d4"
+      },
+      {
+        "path": "tests/fixtures/populated-zoo-v1.mjs",
+        "sha256": "90011d430a443f546ff5403b4a3495ba99d1a7703caf113a40f58ad3dd6ff342"
+      },
+      {
+        "path": "tests/performance-baseline.test.mjs",
+        "sha256": "8ea2044edae3f0562ab3b6eca8613b825277d1bf1b5ff20869aadb2ffc5b4abb"
+      },
+      {
+        "path": "tests/preview-lifecycle.test.mjs",
+        "sha256": "e7bcf3f5763d23deb2e90986deecce5ec4b1c6137def5a03161dfc6a66493055"
+      },
+      {
+        "path": "tests/qa-workflow.test.mjs",
+        "sha256": "b1a5f9573a6c4bc0228565f8321a02c4dbb984130477d07b2c161e94067dc4a3"
+      },
+      {
+        "path": "tests/simulation-contract.test.mjs",
+        "sha256": "99a8707861929bc4e4ad53bdcb1f36fa3a5276def747189125ef7f7553600350"
+      },
+      {
+        "path": "tests/tropical-diorama.test.mjs",
+        "sha256": "051188d5ab5f2273f592d9c63b9da1d1cd36bad6d75fe61bdf561b4aab685326"
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "974b0a3b37e52f3649d9df63e72e374794e9e797c8ae61eca4812f844406f7ef"
+      }
+    ]
+  },
+  "stages": {
+    "unit": {
+      "status": "PASS",
+      "startedAt": "2026-10-31T19:03:54.269Z",
+      "finishedAt": "2026-10-31T19:03:54.624Z",
+      "exitCode": 0,
+      "log": "unit.log",
+      "logSha256": "ae4cbd6125e4f95a7bd66ebf27e22351ab92b1c2765904ca880c6e966a117d9d",
+      "logBytes": 12144,
+      "summary": {
+        "tests": 53,
+        "pass": 53,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    "check": {
+      "status": "PASS",
+      "startedAt": "2026-10-31T19:03:54.625Z",
+      "finishedAt": "2026-10-31T19:04:01.729Z",
+      "exitCode": 0,
+      "log": "check.log",
+      "logSha256": "ce4cb5c16e11daa2dc17ed88aaa965e7068791e4cdea623ebee9787ab32cf053",
+      "logBytes": 302,
+      "summary": null
+    },
+    "build": {
+      "status": "PASS",
+      "startedAt": "2026-10-31T19:04:01.730Z",
+      "finishedAt": "2026-10-31T19:04:05.687Z",
+      "exitCode": 0,
+      "log": "build.log",
+      "logSha256": "653619fab6334146211719e0c6040845ac42bf1402e02e9bfc9b8ca33f1ed1ca",
+      "logBytes": 1990,
+      "summary": null
+    },
+    "routes": {
+      "status": "PASS",
+      "observedAt": "2026-10-31T19:04:07.495Z",
+      "routes": [
+        {
+          "path": "/",
+          "status": 200,
+          "sha256": "f0f689497dc44c7527aef1838ff6a37dc82bf6a012d00e65736c421f6941998d",
+          "title": "MyZooTwin — Explore. Discover. Understand Animals.",
+          "canonical": "https://myzootwin.com/",
+          "h1": "Explore.Understand.Care more."
+        },
+        {
+          "path": "/animals/",
+          "status": 200,
+          "sha256": "c0e32706812a8ecf4eaf2f50a54a735edd8a3421357432fb4d109621f0190198",
+          "title": "Animals — MyZooTwin",
+          "canonical": "https://myzootwin.com/animals/",
+          "h1": "Meet theneighborhood."
+        },
+        {
+          "path": "/wildlife/",
+          "status": 200,
+          "sha256": "3d4402f5693f72126afee80724f7b831e003d5f225c22713339801c1d613dc11",
+          "title": "Into the wild — MyZooTwin",
+          "canonical": "https://myzootwin.com/wildlife/",
+          "h1": "Into the wild"
+        },
+        {
+          "path": "/pets/",
+          "status": 200,
+          "sha256": "0fe66ba99cadd38f0491506805b8e2b01bec20a952391b62591117c640b0a3a6",
+          "title": "Life with pets — MyZooTwin",
+          "canonical": "https://myzootwin.com/pets/",
+          "h1": "Life with pets"
+        },
+        {
+          "path": "/learn/",
+          "status": 200,
+          "sha256": "16e8fddc4a8c5dddd85d3dd682077baa281872964821d496fc7149c0d3b150c6",
+          "title": "Learn something wild — MyZooTwin",
+          "canonical": "https://myzootwin.com/learn/",
+          "h1": "Learn something wild"
+        },
+        {
+          "path": "/adventures/",
+          "status": 200,
+          "sha256": "806b0b0c32d526d7f66ea859151a7b718fa5c472a163fe47be2541cf4d8676db",
+          "title": "Field notes & adventures — MyZooTwin",
+          "canonical": "https://myzootwin.com/adventures/",
+          "h1": "Field notes & adventures"
+        },
+        {
+          "path": "/gear/",
+          "status": 200,
+          "sha256": "b2f12915dbe7298d2f204025b500ebe3bf22e4a650c71eb00bdc3152db6710b0",
+          "title": "Gear & field notes — MyZooTwin",
+          "canonical": "https://myzootwin.com/gear/",
+          "h1": "Gear & field notes"
+        },
+        {
+          "path": "/about/",
+          "status": 200,
+          "sha256": "4089d64d9c9d2a52e6d2406c2cf6e12d63af25e88da75d05cb1cb815c3441b3d",
+          "title": "About MyZooTwin — A curious animal learning journal",
+          "canonical": "https://myzootwin.com/about/",
+          "h1": "A little morecuriosity, every day."
+        },
+        {
+          "path": "/play/",
+          "status": 200,
+          "sha256": "636a55cf737890a9263c9a50ff8898385853fc783587f07f569c6bfc9f692d0d",
+          "title": "Play Zoo — Tropical Creek | MyZooTwin",
+          "canonical": "https://myzootwin.com/play/",
+          "h1": "A little world to care for."
+        }
+      ],
+      "directPlay": true,
+      "sitemapCount": 9,
+      "buildId": "19958b7e26a0687058a53dc09fad53c42003154ac788b57f7dd537713a4e0f8a"
+    },
+    "browser": {
+      "status": "PASS",
+      "errors": [],
+      "missing": [],
+      "verifiedAt": "2026-10-31T19:08:43.092Z",
+      "screenshots": [
+        {
+          "path": "screens/desktop-native.jpg",
+          "bytes": 90811,
+          "sha256": "cd4269498b30683b9f0b4a813e3c6f4661659584e874a05724dde629c2675040"
+        },
+        {
+          "path": "screens/portrait-native-id.jpg",
+          "bytes": 67872,
+          "sha256": "556c757f5bed60c7bacb74872ed08b4beb698dc2aca157a4505521a5cbfb194e"
+        },
+        {
+          "path": "screens/landscape-native-id.jpg",
+          "bytes": 72231,
+          "sha256": "603c027aa232d746c81d62e8b58ba4a67218facc2f766026801004909ab07090"
+        },
+        {
+          "path": "screens/desktop-wide-baseline.jpg",
+          "bytes": 104141,
+          "sha256": "7f44bf0a9aad30a64a6897eeed105bd053b3016d6179d79a90570ab9d19bcd42"
+        }
+      ],
+      "receiptSha256": "32caccef0b5a9eda429461d3a57bc6929c0fe414d4aa124a3f18b6e3f404360c",
+      "method": "manual approved-runtime observations + automated receipt consistency checks; not an automated browser driver"
+    },
+    "cleanup": {
+      "status": "PASS",
+      "observedAt": "2026-10-31T19:08:43.108Z",
+      "ports": [
+        4321,
+        4322
+      ],
+      "tabs": "Operator must close owned tabs and reset viewport; see browser receipt."
+    }
+  },
+  "status": "PASS",
+  "source": {
+    "id": "e4e769565d090a4f48839db0df046cf2cde301b1c1a80f39adfeea69e2a60bbe",
+    "entries": [
+      {
+        "path": "astro.config.mjs",
+        "sha256": "c7f6614f15599dd56e9a5767896405fa58ad2fa48ef64985c869703c80b44f7a"
+      },
+      {
+        "path": "docs/qa/m0-02/baseline-results.json",
+        "sha256": "64adcaaa0710ae3e18b6e9f7d87769334f051f483761d7aa5238e5e7e1de2da5"
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "db2f6b5c88fdf3e1df785752d434e6d4df91cb63767eb10ba45f924c82cfd2e8"
+      },
+      {
+        "path": "package.json",
+        "sha256": "1d99a26a029451b5236b51b1bf04bb40b0be0fe79e5aafd655163afe2ad316f9"
+      },
+      {
+        "path": "public/favicon.svg",
+        "sha256": "1e37371684103082a4662d9cd3c224c4c4f424ba0bbd0d53f55a1cc8572fef76"
+      },
+      {
+        "path": "public/images/myzootwin-beranda.png",
+        "sha256": "fd57bc337641b07eeae40a053e3db1032af805a553ecdddf81c99bcc2dc9e3b5"
+      },
+      {
+        "path": "public/licenses/three-MIT.txt",
+        "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+      },
+      {
+        "path": "public/robots.txt",
+        "sha256": "91803eeb5a8dbbbae903fce53e66d6f5856f8e0894e7d7d21465c532381dd147"
+      },
+      {
+        "path": "scripts/qa/bundle-analysis.mjs",
+        "sha256": "c14fd760401dbc451c58618c174d12ce1b91755ddd774c0fe5197709ec4799f5"
+      },
+      {
+        "path": "scripts/qa/payload.mjs",
+        "sha256": "9483ebe3db69d071c8ce2f7c8ce5fa2c0fa632fa14ecac8560d0d47c0b358cb7"
+      },
+      {
+        "path": "scripts/qa/qa.mjs",
+        "sha256": "28f50a8b33cc27d561fbd51be0672cced7755317cfb373b58141a0f0e7ce225e"
+      },
+      {
+        "path": "scripts/qa/tooling.mjs",
+        "sha256": "14dadb009b6d6bb31c447608ee87b9e7dd78e9b86bb0bd4402ab5655a9e9655e"
+      },
+      {
+        "path": "src/components/PlayEntry.astro",
+        "sha256": "d0bc3a340e9fa0272fca75be2b674a6238bcfab7e1510ea5ad88f08e10a65a1a"
+      },
+      {
+        "path": "src/game-entry/locale.ts",
+        "sha256": "87b49791c74fb9e5b7eff0c13994814a85fc7d68f14e34398765a6edaecc4566"
+      },
+      {
+        "path": "src/game-entry/preview-panel.ts",
+        "sha256": "01fe6a939eff0c79644c131ff59ed43ba2330c08a8936113aba1e0dd4c4a9fda"
+      },
+      {
+        "path": "src/game/core/events.ts",
+        "sha256": "927015a952b9446f90754cc4287cadf20045979cc63f407e89698a43de4d855a"
+      },
+      {
+        "path": "src/game/core/fixed-clock.ts",
+        "sha256": "48389e14172e555d3776a783b125f4cd5476a8800b9c1e4712edade983e5ebda"
+      },
+      {
+        "path": "src/game/core/initial-state.ts",
+        "sha256": "8a65b46c1a94c08ffda1093c34c6ddb6d4f1e46990e5802ad4e96d524d25b2c5"
+      },
+      {
+        "path": "src/game/core/random.ts",
+        "sha256": "0694052a666d05b0de2069cb5ead87ea3f65ce3031913b79c7f1170a72b34928"
+      },
+      {
+        "path": "src/game/core/simulation.ts",
+        "sha256": "37b08c5f3a2e9ddfcf6524f65855d20d3a55193eed1f8b6df4a7a2aaedd66fcb"
+      },
+      {
+        "path": "src/game/core/state.ts",
+        "sha256": "8cb3fa441f121e4bdaa45f5a3f9b9429af598a2c92866a882b3fce97a2f4e785"
+      },
+      {
+        "path": "src/game/persistence/save-v1.ts",
+        "sha256": "8775bd1cd4210ad5946b73ad9d46075237c371aeaae73bd74866a5764dd72193"
+      },
+      {
+        "path": "src/game/render3d/foundation-scene.ts",
+        "sha256": "9f1512fd3506d8d5281d20309dbc203fe195937cee7ccd2c346d91c4c6d079d4"
+      },
+      {
+        "path": "src/game/render3d/frame-loop.ts",
+        "sha256": "1acf909af55cb53a22cbb8fc72cf46643bb913d70e35f521c2ec83a8c27623ed"
+      },
+      {
+        "path": "src/game/render3d/isometric-camera.ts",
+        "sha256": "97f47bf43d78d873d3a2d270638927439e0c466580f7b95ce3fd704a4aa0553c"
+      },
+      {
+        "path": "src/game/render3d/preview-controller.ts",
+        "sha256": "457fa17c7e5446ec993f0d992145f0cbb0a9fa6136c90248afd610c6155c0e00"
+      },
+      {
+        "path": "src/game/render3d/tropical-diorama.ts",
+        "sha256": "8064ad1cfcb86984d33061881a1153fae44c57efebc3e6b4a4c2457236f3f1fa"
+      },
+      {
+        "path": "src/layouts/BaseLayout.astro",
+        "sha256": "53f726549e79052958eaa2c21ddffae148fefd9ce1cd0a3aebd7d913782a6b19"
+      },
+      {
+        "path": "src/pages/[section].astro",
+        "sha256": "cc9cb2e952b57b0db9a6f4c4c57185d3406a5df62942965b013d921c8292222d"
+      },
+      {
+        "path": "src/pages/about.astro",
+        "sha256": "7950e3b97905078372a0a067ea8e5c242a8a5f71c042c6b38889f8d67d8fa54b"
+      },
+      {
+        "path": "src/pages/animals/index.astro",
+        "sha256": "be813ca2c76f0a0c3c4f82e98db231a3a52fc1c5cf0bfcf7b147f8ed6c3391d3"
+      },
+      {
+        "path": "src/pages/index.astro",
+        "sha256": "83352a9c2070c64cc6681396a86c14b4914a7d586642e9ac43c09a747eeb7a69"
+      },
+      {
+        "path": "src/pages/play.astro",
+        "sha256": "272e64652fb59c9fafb69d09c21df49774ad3aaa51dd97d96432a3ef984d144c"
+      },
+      {
+        "path": "src/scripts/play-entry.ts",
+        "sha256": "4f6d7d9253f03f019797c0511ccc0ff81011e859262b9b70e99e19fb1e33e2b1"
+      },
+      {
+        "path": "tests/browser/.gitignore",
+        "sha256": "2ca99dacdf8870024dce15908b589ab4af26e80f7e1235a6d0f274dc2891efe0"
+      },
+      {
+        "path": "tests/browser/README.md",
+        "sha256": "d9e41db6a3508ee56cd0f57a59eb910a9147f651c396f40679e05ecc40cbface"
+      },
+      {
+        "path": "tests/browser/frame-metrics.mjs",
+        "sha256": "46e7fc15bb8f216632deef36e64df80f089ecba2e01aea385f9aae283236cad8"
+      },
+      {
+        "path": "tests/browser/prepare-preview-harness.mjs",
+        "sha256": "79db6b610d17dffc47def0189f5e804fdaf342b84128244a522580ada1f63d0a"
+      },
+      {
+        "path": "tests/browser/preview-harness.mjs",
+        "sha256": "a53c472f790e3496a3e69403e93cd97f013460af758649dc6833a56615e1d2c8"
+      },
+      {
+        "path": "tests/entry-preferences.test.mjs",
+        "sha256": "5e9a94fd9fcbc30ba6b1875337969ea241686ca275e135dcd9831f93e461b9d4"
+      },
+      {
+        "path": "tests/fixtures/populated-zoo-v1.mjs",
+        "sha256": "90011d430a443f546ff5403b4a3495ba99d1a7703caf113a40f58ad3dd6ff342"
+      },
+      {
+        "path": "tests/performance-baseline.test.mjs",
+        "sha256": "8ea2044edae3f0562ab3b6eca8613b825277d1bf1b5ff20869aadb2ffc5b4abb"
+      },
+      {
+        "path": "tests/preview-lifecycle.test.mjs",
+        "sha256": "e7bcf3f5763d23deb2e90986deecce5ec4b1c6137def5a03161dfc6a66493055"
+      },
+      {
+        "path": "tests/qa-workflow.test.mjs",
+        "sha256": "b1a5f9573a6c4bc0228565f8321a02c4dbb984130477d07b2c161e94067dc4a3"
+      },
+      {
+        "path": "tests/simulation-contract.test.mjs",
+        "sha256": "99a8707861929bc4e4ad53bdcb1f36fa3a5276def747189125ef7f7553600350"
+      },
+      {
+        "path": "tests/tropical-diorama.test.mjs",
+        "sha256": "051188d5ab5f2273f592d9c63b9da1d1cd36bad6d75fe61bdf561b4aab685326"
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "974b0a3b37e52f3649d9df63e72e374794e9e797c8ae61eca4812f844406f7ef"
+      }
+    ]
+  },
+  "build": {
+    "id": "19958b7e26a0687058a53dc09fad53c42003154ac788b57f7dd537713a4e0f8a",
+    "entries": [
+      {
+        "path": "dist/_astro/PlayEntry.astro_astro_type_script_index_0_lang.VErht9l4.js",
+        "sha256": "52a15c90f21c0fd6f75ae05eabb5de001b0cd10390ec33b9f0c5722f06e2b40e"
+      },
+      {
+        "path": "dist/_astro/foundation-scene.jg_z06Za.js",
+        "sha256": "0085c471610c8ce851fde4155af38ce409117c1bb9d46a0978f82280b85ef76e"
+      },
+      {
+        "path": "dist/_astro/index.Bv2xJ8v2.css",
+        "sha256": "0ae87e671fbacc99a294b12e1703004590af781b8015a6093c7fd07c6ce9ca65"
+      },
+      {
+        "path": "dist/_astro/play.G6UPYU5V.css",
+        "sha256": "c600cfd791611e0bfe9f9dc82511982c447483ae926fce39c6efd4305a4d0e81"
+      },
+      {
+        "path": "dist/about/index.html",
+        "sha256": "4089d64d9c9d2a52e6d2406c2cf6e12d63af25e88da75d05cb1cb815c3441b3d"
+      },
+      {
+        "path": "dist/adventures/index.html",
+        "sha256": "806b0b0c32d526d7f66ea859151a7b718fa5c472a163fe47be2541cf4d8676db"
+      },
+      {
+        "path": "dist/animals/index.html",
+        "sha256": "c0e32706812a8ecf4eaf2f50a54a735edd8a3421357432fb4d109621f0190198"
+      },
+      {
+        "path": "dist/favicon.svg",
+        "sha256": "1e37371684103082a4662d9cd3c224c4c4f424ba0bbd0d53f55a1cc8572fef76"
+      },
+      {
+        "path": "dist/gear/index.html",
+        "sha256": "b2f12915dbe7298d2f204025b500ebe3bf22e4a650c71eb00bdc3152db6710b0"
+      },
+      {
+        "path": "dist/images/myzootwin-beranda.png",
+        "sha256": "fd57bc337641b07eeae40a053e3db1032af805a553ecdddf81c99bcc2dc9e3b5"
+      },
+      {
+        "path": "dist/index.html",
+        "sha256": "f0f689497dc44c7527aef1838ff6a37dc82bf6a012d00e65736c421f6941998d"
+      },
+      {
+        "path": "dist/learn/index.html",
+        "sha256": "16e8fddc4a8c5dddd85d3dd682077baa281872964821d496fc7149c0d3b150c6"
+      },
+      {
+        "path": "dist/licenses/three-MIT.txt",
+        "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+      },
+      {
+        "path": "dist/pets/index.html",
+        "sha256": "0fe66ba99cadd38f0491506805b8e2b01bec20a952391b62591117c640b0a3a6"
+      },
+      {
+        "path": "dist/play/index.html",
+        "sha256": "636a55cf737890a9263c9a50ff8898385853fc783587f07f569c6bfc9f692d0d"
+      },
+      {
+        "path": "dist/robots.txt",
+        "sha256": "91803eeb5a8dbbbae903fce53e66d6f5856f8e0894e7d7d21465c532381dd147"
+      },
+      {
+        "path": "dist/sitemap-0.xml",
+        "sha256": "8b1b9a6746e7c7b26fc340892677f92f706153ef1c66a9d8f3049255b8621db4"
+      },
+      {
+        "path": "dist/sitemap-index.xml",
+        "sha256": "f956f18339cf090382bb71b5dadff01ca95c9bd0958046cef03c002851a7b550"
+      },
+      {
+        "path": "dist/wildlife/index.html",
+        "sha256": "3d4402f5693f72126afee80724f7b831e003d5f225c22713339801c1d613dc11"
+      }
+    ]
+  },
+  "entryScript": "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.VErht9l4.js",
+  "finishedAt": "2026-10-31T19:04:07.574Z"
+}
