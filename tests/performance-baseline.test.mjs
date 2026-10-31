@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { createFrameMetrics, legacyMemory, probeStatus } from './browser/frame-metrics.mjs';
+import { createFrameMetrics, legacyMemory, probeStatus, isRenderProbeActive } from './browser/frame-metrics.mjs';
 import { analysisMatches } from '../scripts/qa/payload.mjs';
 
 test('baseline reports callback/JS-submit statistics without promoting them to presentation FPS',()=>{
@@ -21,3 +21,5 @@ test('probe collection cannot finish successfully while closed, paused, hidden o
   const valid={callbacks:100,active:true,visible:true,elapsedMs:5000};assert.equal(probeStatus(valid),'COMPLETE');
   for(const change of [{active:false},{visible:false},{elapsedMs:100},{callbacks:0}])assert.notEqual(probeStatus({...valid,...change}),'COMPLETE');
 });
+
+test('renderer callback eligibility accepts an active model with paused world but rejects stopped/disposed/unready renderers',()=>{assert.equal(isRenderProbeActive('ready',{pendingFrames:1,disposed:false,simulationPaused:true,macawStudioActive:true}),true);assert.equal(isRenderProbeActive('ready',{pendingFrames:1,disposed:false,simulationPaused:false}),true);for(const [status,session]of [['ready',{pendingFrames:0,disposed:false}],['ready',{pendingFrames:1,disposed:true}],['closed',{pendingFrames:1,disposed:false}],['ready',undefined]])assert.equal(isRenderProbeActive(status,session),false);});

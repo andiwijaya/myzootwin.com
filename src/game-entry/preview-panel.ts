@@ -1,3 +1,4 @@
+import type {StudioView,StudioCommand} from '../game/render3d/macaw/studio-contract.ts';
 import type {EditView,RemovalQuote,EditTarget} from '../game/world/editing.ts';
 import type {AccessSummary} from '../game/world/paths.ts';
 import {sanctuarySessionFor} from '../game/core/session-state.ts';
@@ -29,6 +30,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   let state: PreviewState = { status: 'closed' };
   const events = new AbortController();
   let selected:SceneIdentity|null=null;
+  let studio:StudioView={active:false,habitat:false,clip:'perch',angle:'quarter',motionPaused:false,canHabitat:false};
   let editView:EditView={canUndo:false,reason:null,result:null};
   let removal:RemovalQuote|null=null;
   let removalName='';
@@ -37,7 +39,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const copy=entryMessages[locale],ready=state.status==='ready';
     root.querySelector('[data-entry-text="editHint"]')?.replaceChildren(copy.editHint);
     const remove=root.querySelector<HTMLButtonElement>('[data-edit-remove]');
-    if(remove){remove.hidden=!ready||!selected||!['habitat','path'].includes(selected.kind);remove.textContent=copy.editRemove;}
+    if(remove){remove.hidden=!ready||studio.active||!selected||!['habitat','path'].includes(selected.kind);remove.textContent=copy.editRemove;}
     const undo=root.querySelector<HTMLButtonElement>('[data-edit-undo]');if(undo){undo.hidden=!ready||!editView.canUndo;undo.textContent=copy.editUndo;}
     const keys={missing:'editMissing',protected:'editProtected','in-use':'editInUse',stale:'editStale',funds:'editFunds',command:'editCommand'} as const;
     root.querySelector('[data-edit-status]')?.replaceChildren(editView.reason?copy[keys[editView.reason]]:editView.result?copy[editView.result==='removed'?'editRemoved':'editRestored']:'');
@@ -51,7 +53,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   function renderSelection() {
     renderEdit();
     if(!selectionPanel)return;
-    selectionPanel.hidden=state.status!=='ready'||!selected;
+    selectionPanel.hidden=state.status!=='ready'||studio.active||!selected;
     const button=root.querySelector<HTMLButtonElement>('[data-clear-selection]');if(button)button.textContent=entryMessages[locale].selectionDismiss;
     if(selected&&state.status==='ready') {
       const view=presentSelection(selected,locale);
@@ -68,7 +70,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const placementTools=root.querySelector<HTMLElement>('[data-placement-tools]');
   function renderPlacement(){
     if(!placementTools)return;const copy=entryMessages[locale],active=Boolean(placement?.active),path=placement?.kind==='path';
-    placementTools.hidden=state.status!=='ready';placementTools.dataset.valid=String(placement?.reason==='ready');
+    placementTools.hidden=state.status!=='ready'||studio.active;placementTools.dataset.valid=String(placement?.reason==='ready');
     const start=root.querySelector<HTMLButtonElement>('[data-placement-command="begin"]');if(start){start.hidden=active;start.textContent=copy.placementStart;}
     const pathStart=root.querySelector<HTMLButtonElement>('[data-placement-command="begin-path"]');if(pathStart){pathStart.hidden=active;pathStart.textContent=copy.pathStart;}
     root.querySelector('[data-access-status]')?.replaceChildren(copy[!access?.habitats?'accessNoHabitat':access.connected?'accessConnected':'accessDisconnected'].replace('{n}',String(access?.pathTiles??1)).replace('{r}',String(access?.routeCells??0)));
@@ -90,13 +92,28 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]'))button.disabled=state.status!=='ready'||(button.dataset.cameraCommand==='zoom-in'?zoom>=3:button.dataset.cameraCommand==='zoom-out'?zoom<=1:zoom===1);
   }
 
+  function renderStudio(){
+    const copy=entryMessages[locale],ready=state.status==='ready',tools=root.querySelector<HTMLElement>('[data-macaw-tools]');if(!tools)return;
+    tools.hidden=!ready;const controls=root.querySelector<HTMLElement>('[data-macaw-controls]');if(controls)controls.hidden=!studio.active;
+    for(const button of tools.querySelectorAll<HTMLButtonElement>('[data-studio-command]')){const command=button.dataset.studioCommand as StudioCommand;const key=command==='pause'?(studio.motionPaused?'macawResume':'macawPause'):command==='open'?'macawOpen':command==='close'?'macawClose':command==='detail'?'macawDetail':'macawHabitat';button.textContent=copy[key];button.hidden=command==='open'?studio.active:command==='detail'?!studio.habitat:command==='habitat'?studio.habitat:false;if(command==='habitat')button.disabled=habitatCount===0;}
+    for(const el of tools.querySelectorAll<HTMLElement>('[data-entry-text]'))el.textContent=copy[el.dataset.entryText as EntryMessage];
+    for(const [selector,value]of [['[data-macaw-clip]',studio.clip],['[data-macaw-angle]',studio.angle]]){const select=root.querySelector<HTMLSelectElement>(selector);if(!select)continue;select.value=value;for(const option of select.options)option.textContent=copy[`macaw${option.value[0].toUpperCase()}${option.value.slice(1)}` as EntryMessage];}
+    root.querySelector('[data-macaw-status]')?.replaceChildren(copy[studio.motionPaused?'macawPaused':'macawPlaying']);root.querySelector('[data-macaw-scale]')?.replaceChildren(studio.habitat?copy.macawScaleHint:habitatCount===0?copy.macawNeedHabitat:'');
+    if(cameraControls)cameraControls.hidden=!ready||(studio.active&&!studio.habitat);
+    host?.setAttribute('aria-label',copy[studio.active?'macawCanvas':'previewCanvas']);
+    host?.setAttribute('aria-keyshortcuts',studio.active?(studio.habitat?'ArrowUp ArrowDown ArrowLeft ArrowRight Home Escape':'Escape'):'ArrowUp ArrowDown ArrowLeft ArrowRight Home Escape Enter');
+    root.querySelector('[data-camera-help]')?.replaceChildren(copy[studio.active&&studio.habitat?'macawScaleHint':'cameraHelp']);
+    if(caption)caption.textContent=copy[studio.active?'macawSubtitle':state.status==='ready'||state.status==='loading'?'previewCaption':'artCaption'];
+    if(ready){if(title)title.textContent=copy[studio.active?'macawTitle':'previewReady'];if(detail)detail.textContent=copy[studio.active?'macawSubtitle':'previewReadyDetail'];}
+  }
+
   function render(next: PreviewState) {
     const previous = state.status;
     state = next;
     if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) return;
     const copy = entryMessages[locale];
     panel.lang = locale;
-    if(next.status!=='ready'){selected=null;placement=null;habitatCount=0;access=null;editView={canUndo:false,reason:null,result:null};removal=null;if(editDialog?.open)editDialog.close();}
+    if(next.status!=='ready'){studio={...studio,active:false,habitat:false};selected=null;placement=null;habitatCount=0;access=null;editView={canUndo:false,reason:null,result:null};removal=null;if(editDialog?.open)editDialog.close();}
     renderPlacement();
     renderSelection();
     if(cameraControls){cameraControls.hidden=next.status!=='ready';cameraControls.setAttribute('aria-label',copy.cameraControls);}
@@ -135,6 +152,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     }
     title.textContent = copy[titleKey];
     detail.textContent = copy[detailKey];
+    renderStudio();
     if (previous !== next.status && next.status !== 'closed' && !root.querySelector('dialog[open]')) {
       (failed ? next.status === 'error' && next.reason === 'load' ? reload : retry : close).focus();
     }
@@ -145,6 +163,10 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     return (onFailure) => module.mountFoundationScene(host, onFailure,{stateStore:sanctuarySessionFor(root)});
   });
   const controller = createPreviewController(load, render);
+  host.addEventListener('scene-studio-change',event=>{studio=(event as CustomEvent<StudioView>).detail;renderPlacement();renderSelection();renderStudio();},{signal:events.signal});
+  for(const button of root.querySelectorAll<HTMLButtonElement>('[data-studio-command]'))button.addEventListener('click',()=>{const command=button.dataset.studioCommand as StudioCommand;controller.studio(command);host.focus({preventScroll:true});if(command!=='pause')host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});
+  root.querySelector<HTMLSelectElement>('[data-macaw-clip]')?.addEventListener('change',event=>{controller.studio('clip',(event.target as HTMLSelectElement).value);host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});
+  root.querySelector<HTMLSelectElement>('[data-macaw-angle]')?.addEventListener('change',event=>{controller.studio('angle',(event.target as HTMLSelectElement).value);host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});
   root.querySelector('[data-edit-remove]')?.addEventListener('click',()=>{
     if(!selected||removal||!editDialog)return;
     const target:EditTarget=selected.kind==='habitat'?{kind:'habitat',id:selected.id}:{kind:'path',cell:{...selected.cell}};
@@ -161,7 +183,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   host.addEventListener('scene-edit-change',event=>{editView=(event as CustomEvent<EditView>).detail;renderEdit();},{signal:events.signal});
   host.addEventListener('scene-selection-change' ,event=>{const had=Boolean(selected);selected=(event as CustomEvent<SceneIdentity|null>).detail;renderSelection();if(!selected&&had&&selectionStatus)selectionStatus.value=entryMessages[locale].selectionCleared;},{signal:events.signal});
   host.addEventListener('scene-access-change',event=>{access=(event as CustomEvent<AccessSummary>).detail;renderPlacement();},{signal:events.signal});
-  host.addEventListener('scene-habitat-change',event=>{habitatCount=(event as CustomEvent<{count:number}>).detail.count;renderPlacement();},{signal:events.signal});
+  host.addEventListener('scene-habitat-change',event=>{habitatCount=(event as CustomEvent<{count:number}>).detail.count;renderPlacement();renderStudio();},{signal:events.signal});
   host.addEventListener('scene-placement-change',event=>{placement=(event as CustomEvent<PlacementView>).detail;renderPlacement();},{signal:events.signal});
   for(const button of root.querySelectorAll<HTMLButtonElement>('[data-placement-command]'))button.addEventListener('click',()=>{const command=button.dataset.placementCommand as PlacementCommand;controller.placement(command,placement?.revision);if(command==='begin'||command==='begin-path'||command==='cancel'||command==='confirm')host.focus({preventScroll:true});},{signal:events.signal});
   placementTools?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();controller.placement('cancel');host.focus({preventScroll:true});}},{signal:events.signal});

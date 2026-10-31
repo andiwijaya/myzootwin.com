@@ -1,10 +1,11 @@
+import{runMacawDomScenarios}from'./macaw-dom-scenarios.mjs';
 import{runEditingDomScenarios}from'./editing-dom-scenarios.mjs';
 import{runPathDomScenarios}from'./path-dom-scenarios.mjs';
 import {sanctuarySessionFor} from '../../src/game/core/session-state.ts';
 import {runPlacementDomScenarios} from './placement-dom-scenarios.mjs';
 import { runSelectionDomScenarios,selectGateForFixture } from './selection-dom-scenarios.mjs';
 import { runCameraDomScenarios, beginInjectedCameraGesture } from './camera-dom-scenarios.mjs';
-import { createFrameMetrics, legacyMemory, probeStatus } from './frame-metrics.mjs';
+import { createFrameMetrics, legacyMemory, probeStatus, isRenderProbeActive } from './frame-metrics.mjs';
 import { mountPreviewPanel } from '../../src/game-entry/preview-panel.ts';
 import { mountFoundationScene } from '../../src/game/render3d/foundation-scene.ts';
 
@@ -33,6 +34,7 @@ function factory(onFailure){
   active++;maxActive=Math.max(maxActive,active);let ended=false;
   return {
     setPaused:value=>native.setPaused?.(value),
+    studio:(command,value)=>native.studio?.(command,value),
     camera:value=>native.camera?.(value),
     clearSelection:()=>native.clearSelection?.(),
     placement:(command,revision)=>native.placement?.(command,revision),
@@ -58,8 +60,9 @@ document.querySelector('#qa-pause').addEventListener('click',()=>{endProbe('ABOR
 document.querySelector('#qa-resume').addEventListener('click',()=>{handle?.setPaused(false);update();});
 document.querySelector('#qa-probe').addEventListener('click',()=>{
   endProbe('ABORTED_REPLACED');metrics.reset();
-  probe={status:'COLLECTING',startedAt:new Date().toISOString(),startedPerfMs:performance.now(),startReadoutWrites:readoutWrites,startVisibility:document.visibilityState};
-  probeTimer=setTimeout(()=>{probeTimer=undefined;probe={...probe,status:probeStatus({callbacks:metrics.summary().callbacksObserved,active:handle?.inspect().state.status==='ready'&&!handle?.inspect().session?.simulationPaused,visible:document.visibilityState==='visible',elapsedMs:performance.now()-probe.startedPerfMs}),elapsedMs:performance.now()-probe.startedPerfMs,readoutWritesDuringProbe:readoutWrites-probe.startReadoutWrites,finishedAt:new Date().toISOString(),metrics:metrics.summary()};update();},5000);
+  const s=handle?.inspect().session;
+  probe={scope:s?.macawStudioActive?(s.macawStudioInHabitat?'macaw-habitat-scale':'macaw-studio-detail'):'world-foundation',simulationPausedAtStart:s?.simulationPaused??null,status:'COLLECTING',startedAt:new Date().toISOString(),startedPerfMs:performance.now(),startReadoutWrites:readoutWrites,startVisibility:document.visibilityState};
+  probeTimer=setTimeout(()=>{probeTimer=undefined;probe={...probe,status:probeStatus({callbacks:metrics.summary().callbacksObserved,active:isRenderProbeActive(handle?.inspect().state.status,handle?.inspect().session),visible:document.visibilityState==='visible',elapsedMs:performance.now()-probe.startedPerfMs}),elapsedMs:performance.now()-probe.startedPerfMs,readoutWritesDuringProbe:readoutWrites-probe.startReadoutWrites,finishedAt:new Date().toISOString(),metrics:metrics.summary()};update();},5000);
   update();
 });
 document.querySelector('#qa-memory').addEventListener('click',()=>{if(heapSnapshots.length>=16){probe={...probe,heapSnapshotBudgetExceeded:true};}else heapSnapshots.push({observedAt:new Date().toISOString(),state:handle?.inspect().state,heap:heap()});update();});
@@ -79,6 +82,9 @@ pathRun.addEventListener('click',async()=>{let result;try{result=await runPathDo
 const editRun=document.createElement('button');editRun.id='qa-edit';editRun.textContent='Run injected editing checks';pathRun.after(editRun);
 const editOutput=document.createElement('output');editOutput.id='qa-edit-results';editRun.after(editOutput);
 editRun.addEventListener('click',async()=>{let result;try{result=await runEditingDomScenarios(root,()=>handle?.inspect().session,value=>{locale=value;handle?.setLocale(value);});}catch(error){result={status:'FAIL',error:String(error)};}editOutput.textContent=JSON.stringify(result);update();});
+const macawRun=document.createElement('button');macawRun.id='qa-macaw';macawRun.textContent='Run injected macaw checks';editRun.after(macawRun);
+const macawOutput=document.createElement('output');macawOutput.id='qa-macaw-results';macawRun.after(macawOutput);
+macawRun.addEventListener('click',async()=>{let result;try{result=await runMacawDomScenarios(root,()=>handle?.inspect().session,value=>{locale=value;handle?.setLocale(value);});}catch(error){result={status:'FAIL',error:String(error)};}macawOutput.textContent=JSON.stringify(result);update();});
 const observer=new MutationObserver(update);
 observer.observe(root,{subtree:true,childList:true,attributes:true,attributeFilter:['data-renderer-state']});
 const onVisibility=()=>{if(document.hidden){endProbe('ABORTED_HIDDEN');update();}};

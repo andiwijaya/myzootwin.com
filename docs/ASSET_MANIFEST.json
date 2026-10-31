@@ -2,7 +2,7 @@
   "schema_version": 1,
   "audited_at": "2026-10-31",
   "baseline_commit": "3b06c6d8d2a920ad5894868059885c98a58217a6",
-  "scope": "Original art retained. M1-07 records fixed habitat geometry/material reuse and released path/selection metadata for editing. No external assets or agreements.",
+  "scope": "Original M2-01 code-native articulated Ara ararauna model and procedural motions added; M0-03 study and old media/rights records retained. No external art, purchase, agreement or upload.",
   "assets": [
     {
       "path": "public/images/myzootwin-beranda.png",
@@ -305,6 +305,71 @@
         }
       ],
       "source_revision_note": "M1-07 updates lifecycle/metadata only, preserving original geometry silhouette and rights. Habitat uses two fixed reusable geometry/material slots; removed identities and tile metadata released. Actual final pixels in docs/qa/m1-07."
+    },
+    {
+      "id": "blue_yellow_macaw_v1_m2_01",
+      "path": "src/game/render3d/macaw/macaw-geometry.ts",
+      "bytes": 7950,
+      "sha256": "41c9a3298a77727cae838fd80659dabe567b3a555ca9ba2a62f3728c4f4fe73e",
+      "sources": [
+        {
+          "path": "src/game/render3d/macaw/macaw-geometry.ts",
+          "bytes": 7950,
+          "sha256": "41c9a3298a77727cae838fd80659dabe567b3a555ca9ba2a62f3728c4f4fe73e"
+        },
+        {
+          "path": "src/game/render3d/macaw/macaw-animation.ts",
+          "bytes": 3478,
+          "sha256": "789b351bd269f6ed1d0d1a7cbbe804c05fc1801688fa4933f533081855425dd5"
+        },
+        {
+          "path": "src/game/render3d/macaw/macaw-rig.ts",
+          "bytes": 2555,
+          "sha256": "9d4d60f5ed1f77f62dc4eb0f5698ae50a0ff7685efaac8c7a8deae982d94bf06"
+        },
+        {
+          "path": "src/game/render3d/macaw/macaw-studio.ts",
+          "bytes": 7898,
+          "sha256": "b39ab6da1a0b9c1580583df576c2162dfd7020013ba9e3069f3502ed58b127d0"
+        },
+        {
+          "path": "src/game/render3d/macaw/studio-contract.ts",
+          "bytes": 391,
+          "sha256": "f9f51da5da8255de6b67ec32e933e3df73aa25cc2a371f42a2edef00b9c9ed01"
+        }
+      ],
+      "speciesId": "ara-ararauna",
+      "scientificName": "Ara ararauna",
+      "origin": "Original project-authored parametric geometry/rig/poses, informed by M0-03 study review and primary species facts; not the study GLB renamed",
+      "rights_status": "original_project_authored_geometry_rig_and_motion_no_third_party_art",
+      "attribution": "Original project work; existing public/licenses/three-MIT.txt retained for engine. No new repository-wide art/code license assigned.",
+      "external_asset_inputs": [],
+      "materials": 1,
+      "textures": 0,
+      "maximum_triangles_per_bird": 3180,
+      "two_bird_maximum_triangles": 6360,
+      "owned_shared_geometries": 11,
+      "geometry_attribute_bytes_once": 343440,
+      "animation_clips": [
+        "perch",
+        "walk",
+        "hop",
+        "fly",
+        "eat",
+        "drink",
+        "rest"
+      ],
+      "runtime_game_scale": 0.62,
+      "asset_pack": "art/macaw-v1/README.md",
+      "measurements": "art/macaw-v1/model-stats.json",
+      "visual_evidence": "docs/qa/m2-01/screens/",
+      "usage_decision": "Final V1 stylized model/animation asset, one labelled presentation preview only. Two actual placed autonomous animals remain M2-02; no feeding/welfare/mission/game-save claim. Fine facial/foot detail uses close-up; overview bird intentionally small.",
+      "species_fact_sources": [
+        "https://www.torontozoo.com/animals/Blue%20and%20yellow%20macaw",
+        "https://www.zoonewengland.org/stone-zoo/animals/birds/blue-and-yellow-macaw/"
+      ],
+      "fact_check_date_utc": "2026-10-31",
+      "model_simplification_note": "Stylized game anatomy/scale and preview poses, not scientific illustration or husbandry advice. Sources inform identifying facts only; no source image/prose/mesh copied."
     }
   ],
   "direct_package_notice_spot_checks": [

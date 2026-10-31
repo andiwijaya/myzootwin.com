@@ -1,0 +1,239 @@
+{
+  "speciesId": "ara-ararauna",
+  "name": "Ara ararauna",
+  "scope": "Original V1 code-native articulated model; no autonomous animal simulation claim",
+  "origin": "Original project-authored parametric geometry/rig/poses, informed by M0-03 study review and primary species facts; not the study GLB renamed",
+  "externalArtInputs": [],
+  "textures": 0,
+  "materials": 1,
+  "ownedGeometries": 11,
+  "visibleMeshDraws": {
+    "awake": 10,
+    "closedEyes": 11
+  },
+  "maximumTrianglesPerBird": 3180,
+  "twoBirdMaximumTriangles": 6360,
+  "habitatScale": 0.62,
+  "clips": [
+    "perch",
+    "walk",
+    "hop",
+    "fly",
+    "eat",
+    "drink",
+    "rest"
+  ],
+  "footVariants": [
+    "flat ground sole",
+    "two forward/two rear gripping toes around radius0.035 branch"
+  ],
+  "geometryAttributeBytes": 343440,
+  "parts": {
+    "body": {
+      "triangles": 312,
+      "attributeBytes": 33696,
+      "bounds": {
+        "min": [
+          -0.16200000047683716,
+          -0.060000013560056686,
+          -0.15000000596046448
+        ],
+        "max": [
+          0.16200000047683716,
+          0.6199999451637268,
+          0.16419193148612976
+        ]
+      }
+    },
+    "head": {
+      "triangles": 1160,
+      "attributeBytes": 125280,
+      "bounds": {
+        "min": [
+          -0.16050000488758087,
+          -0.022999975830316544,
+          -0.09856513142585754
+        ],
+        "max": [
+          0.16050000488758087,
+          0.2600000202655792,
+          0.23899999260902405
+        ]
+      }
+    },
+    "jaw": {
+      "triangles": 100,
+      "attributeBytes": 10800,
+      "bounds": {
+        "min": [
+          -0.0430000014603138,
+          -0.035999979823827744,
+          -0.0392591692507267
+        ],
+        "max": [
+          0.0430000014603138,
+          0.01600000448524952,
+          0.06725917756557465
+        ]
+      }
+    },
+    "wingLeft": {
+      "triangles": 164,
+      "attributeBytes": 17712,
+      "bounds": {
+        "min": [
+          -0.25,
+          -0.04099999740719795,
+          -0.12999999523162842
+        ],
+        "max": [
+          0.03999999910593033,
+          0.016999999061226845,
+          0.08243728429079056
+        ]
+      }
+    },
+    "wingRight": {
+      "triangles": 164,
+      "attributeBytes": 17712,
+      "bounds": {
+        "min": [
+          -0.03999999910593033,
+          -0.04099999740719795,
+          -0.12999999523162842
+        ],
+        "max": [
+          0.25,
+          0.016999999061226845,
+          0.08243728429079056
+        ]
+      }
+    },
+    "foreLeft": {
+      "triangles": 196,
+      "attributeBytes": 21168,
+      "bounds": {
+        "min": [
+          -0.3199999928474426,
+          -0.029000001028180122,
+          -0.11490560322999954
+        ],
+        "max": [
+          0.044999994337558746,
+          0.01899999938905239,
+          0.05488874763250351
+        ]
+      }
+    },
+    "foreRight": {
+      "triangles": 196,
+      "attributeBytes": 21168,
+      "bounds": {
+        "min": [
+          -0.044999994337558746,
+          -0.029000001028180122,
+          -0.11490560322999954
+        ],
+        "max": [
+          0.3199999928474426,
+          0.01899999938905239,
+          0.05488874763250351
+        ]
+      }
+    },
+    "tail": {
+      "triangles": 80,
+      "attributeBytes": 8640,
+      "bounds": {
+        "min": [
+          -0.07373977452516556,
+          -0.6000000238418579,
+          -0.19099999964237213
+        ],
+        "max": [
+          0.07373977452516556,
+          0.0008938764804042876,
+          0.007000000216066837
+        ]
+      }
+    },
+    "flatFoot": {
+      "triangles": 288,
+      "attributeBytes": 31104,
+      "bounds": {
+        "min": [
+          -0.02737455628812313,
+          0.0006637782207690179,
+          -0.07199990004301071
+        ],
+        "max": [
+          0.02737455628812313,
+          0.21691282093524933,
+          0.07201240211725235
+        ]
+      }
+    },
+    "gripFoot": {
+      "triangles": 288,
+      "attributeBytes": 31104,
+      "bounds": {
+        "min": [
+          -0.027445927262306213,
+          -0.058779191225767136,
+          -0.042541779577732086
+        ],
+        "max": [
+          0.027445927262306213,
+          0.21691282093524933,
+          0.042956169694662094
+        ]
+      }
+    },
+    "eyelids": {
+      "triangles": 232,
+      "attributeBytes": 25056,
+      "bounds": {
+        "min": [
+          -0.16830000281333923,
+          0.1419999897480011,
+          0.09802781045436859
+        ],
+        "max": [
+          0.16830000281333923,
+          0.18200001120567322,
+          0.1379721760749817
+        ]
+      }
+    }
+  },
+  "sources": [
+    {
+      "path": "src/game/render3d/macaw/macaw-geometry.ts",
+      "bytes": 7950,
+      "sha256": "41c9a3298a77727cae838fd80659dabe567b3a555ca9ba2a62f3728c4f4fe73e"
+    },
+    {
+      "path": "src/game/render3d/macaw/macaw-animation.ts",
+      "bytes": 3478,
+      "sha256": "789b351bd269f6ed1d0d1a7cbbe804c05fc1801688fa4933f533081855425dd5"
+    },
+    {
+      "path": "src/game/render3d/macaw/macaw-rig.ts",
+      "bytes": 2555,
+      "sha256": "9d4d60f5ed1f77f62dc4eb0f5698ae50a0ff7685efaac8c7a8deae982d94bf06"
+    },
+    {
+      "path": "src/game/render3d/macaw/macaw-studio.ts",
+      "bytes": 7898,
+      "sha256": "b39ab6da1a0b9c1580583df576c2162dfd7020013ba9e3069f3502ed58b127d0"
+    },
+    {
+      "path": "src/game/render3d/macaw/studio-contract.ts",
+      "bytes": 391,
+      "sha256": "f9f51da5da8255de6b67ec32e933e3df73aa25cc2a371f42a2edef00b9c9ed01"
+    }
+  ],
+  "validation": "Node unit/integration finite/normals/nondegenerate/outward-hook/contact/pose bounds/shared ownership and lifecycle checks. Not a glTF/GLB export or official glTF certification.",
+  "physicalAndroid": "UNRUN",
+  "actualPresentedFPS": "UNMEASURED"
+}

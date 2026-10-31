@@ -60,6 +60,20 @@ import { english as copy } from '../game-entry/locale';
         <button type="button" data-camera-command="reset">{copy.cameraReset}</button>
         <p id="camera-help" data-camera-help>{copy.cameraHelp}</p>
       </div>
+      <section class="macaw-tools" data-macaw-tools hidden aria-labelledby="macaw-title">
+        <button type="button" data-studio-command="open">{copy.macawOpen}</button>
+        <div data-macaw-controls hidden>
+          <h3 id="macaw-title" data-entry-text="macawTitle">{copy.macawTitle}</h3>
+          <p data-entry-text="macawSubtitle">{copy.macawSubtitle}</p>
+          <p data-entry-text="macawNotice">{copy.macawNotice}</p>
+          <label for="macaw-animation" data-entry-text="macawAnimation">{copy.macawAnimation}</label>
+          <select id="macaw-animation" data-macaw-clip>{['perch','walk','hop','fly','eat','drink','rest'].map(clip=><option value={clip}>{copy[`macaw${clip[0].toUpperCase()}${clip.slice(1)}` as keyof typeof copy]}</option>)}</select>
+          <label for="macaw-angle" data-entry-text="macawView">{copy.macawView}</label>
+          <select id="macaw-angle" data-macaw-angle>{['quarter','front','side','back'].map(angle=><option value={angle}>{copy[`macaw${angle[0].toUpperCase()}${angle.slice(1)}` as keyof typeof copy]}</option>)}</select>
+          <div class="macaw-actions"><button type="button" data-studio-command="pause">{copy.macawPause}</button><button type="button" data-studio-command="habitat">{copy.macawHabitat}</button><button type="button" data-studio-command="detail" hidden>{copy.macawDetail}</button><button type="button" data-studio-command="close">{copy.macawClose}</button></div>
+          <p data-macaw-status role="status" aria-live="polite"></p><p data-macaw-scale></p>
+        </div>
+      </section>
       <section class="placement-tools" data-placement-tools hidden aria-labelledby="placement-title">
         <button type="button" data-placement-command="begin">{copy.placementStart}</button>
         <button type="button" data-placement-command="begin-path">{copy.pathStart}</button>
@@ -134,7 +148,9 @@ import { english as copy } from '../game-entry/locale';
   import '../scripts/play-entry';
 </script>
 
-<style>
+  <style>
+.macaw-tools{margin:0 .8rem .8rem;padding:.75rem;background:#fff9e8;border:1px solid #a5ae83;border-radius:12px;text-align:left}.macaw-tools h3{font:700 1rem/1.4 'DM Sans',sans-serif;margin:.3rem 0}.macaw-tools p,.macaw-tools label{font-size:.77rem;line-height:1.55;color:#344f40;margin:.4rem 0;overflow-wrap:anywhere}.macaw-tools label{display:block;font-weight:700}.macaw-tools button,.macaw-tools select{min-height:44px;max-width:100%;padding:.5rem .65rem;border:1px solid #52755d;border-radius:9px;background:#fffdf4;color:#183b32;font:700 .76rem/1.4 'DM Sans',sans-serif}.macaw-tools select{width:100%;margin:.15rem 0 .45rem}.macaw-tools button{cursor:pointer}.macaw-tools button:disabled{opacity:.5;cursor:default}.macaw-tools button:focus-visible,.macaw-tools select:focus-visible{outline:3px solid #ad7629;outline-offset:2px}.macaw-actions{display:flex;flex-wrap:wrap;gap:.4rem;margin:.4rem 0}
+
 .placement-tools{margin:0 .8rem .8rem;padding:.75rem;border:1px solid #8aa08c;border-radius:12px;text-align:left;background:#fffdf4}.placement-tools h3{margin:.2rem 0;font:700 1rem/1.4 'DM Sans',sans-serif}.placement-tools p{font-size:.75rem;line-height:1.5;margin:.45rem 0;color:#344f40;overflow-wrap:anywhere}.placement-tools [data-placement-reason]{font-weight:700}.placement-tools button{min-width:44px;min-height:44px;padding:.45rem .65rem;border:1px solid #52755d;border-radius:9px;background:#fffdf4;color:#183b32;font:700 .75rem/1.4 'DM Sans',sans-serif;cursor:pointer}.placement-tools button:disabled{opacity:.5;cursor:default}.placement-tools button:focus-visible{outline:3px solid #ad7629;outline-offset:2px}.placement-actions,.placement-arrows{display:flex;gap:.4rem;flex-wrap:wrap;margin:.5rem 0}.placement-actions button:first-child{background:#214f3c;color:white}.placement-tools[data-valid="false"] [data-placement-reason]{color:#94252d}
 
 .preview-stage{position:relative}.selection-crosshair{display:none;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;font:700 1.2rem/1 monospace;color:#183b32;text-shadow:0 0 2px #fff}.preview-stage:focus-visible .selection-crosshair{display:block}.scene-selection{margin:0 .8rem .8rem;padding:.75rem;background:#fff9e8;border:1px solid #b39d66;border-radius:12px;text-align:left}.scene-selection>div{display:flex;align-items:flex-start;justify-content:space-between;gap:.5rem}.scene-selection h3{margin:.2rem 0;font:700 1rem/1.3 'DM Sans',sans-serif;overflow-wrap:anywhere}.scene-selection button{min-height:44px;max-width:55%;border:1px solid #7e9981;border-radius:9px;background:var(--paper);color:var(--ink);font:700 .72rem/1.3 'DM Sans',sans-serif;padding:.45rem .6rem;cursor:pointer}.scene-selection p{margin:.3rem 0 0;font-size:.78rem;line-height:1.5;color:#425e50}.selection-announcement{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}

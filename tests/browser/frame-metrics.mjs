@@ -21,3 +21,6 @@ export function legacyMemory(memory) {
 export function probeStatus({callbacks,active,visible,elapsedMs}) {
   return callbacks>=20&&active&&visible&&elapsedMs>=4900?'COMPLETE':'INSUFFICIENT_CALLBACKS_OR_INACTIVE';
 }
+
+/** Renderer ownership, independent of a deliberately paused gameplay simulation. */
+export function isRenderProbeActive(status,session){return status==='ready'&&session?.pendingFrames===1&&session?.disposed===false;}
