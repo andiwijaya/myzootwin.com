@@ -1,0 +1,83 @@
+---
+import { english as copy } from '../game-entry/locale';
+---
+<section class="play-shell" data-play-entry data-preview-state="not-playable" lang="en" aria-labelledby="play-title">
+  <div class="entry-card">
+    <div class="entry-copy">
+      <span class="preview-badge"><span aria-hidden="true">✦</span> <span data-entry-text="status">{copy.status}</span></span>
+      <p class="sanctuary-name" data-entry-text="sanctuary">{copy.sanctuary}</p>
+      <h1 id="play-title" data-entry-text="title">{copy.title}</h1>
+      <p class="entry-intro" data-entry-text="intro">{copy.intro}</p>
+      <p class="availability" id="play-availability" data-entry-text="availability">{copy.availability}</p>
+      <div class="entry-actions">
+        <button type="button" class="unavailable" disabled aria-describedby="play-availability" data-entry-text="play">{copy.play}</button>
+        <button type="button" class="unavailable" disabled aria-describedby="play-availability" data-entry-text="continue">{copy.continue}</button>
+        <button type="button" class="guide-action" data-open-dialog="play-help" disabled data-entry-text="help">{copy.help}</button>
+        <button type="button" class="settings-action" data-open-dialog="play-settings" disabled data-entry-text="settings">{copy.settings}</button>
+      </div>
+      <a class="journal-return" href="/animals/"><span data-entry-text="journal">{copy.journal}</span><span aria-hidden="true">↗</span></a>
+      <noscript><p class="no-script">{copy.noScript}</p></noscript>
+    </div>
+    <figure class="sanctuary-art">
+      <svg viewBox="0 0 520 500" role="img" aria-labelledby="sanctuary-art-title">
+        <title id="sanctuary-art-title" data-entry-text="artTitle">{copy.artTitle}</title>
+        <defs><linearGradient id="creek-water" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#8ac9ce"/><stop offset="1" stop-color="#4a9fba"/></linearGradient></defs>
+        <circle cx="380" cy="104" r="54" fill="#f2d28a"/>
+        <path d="M40 281 254 158 479 285 263 416Z" fill="#bad39b"/>
+        <path d="M40 281 263 410 263 434 40 304Z" fill="#91ae74"/>
+        <path d="M263 410 479 285 479 309 263 434Z" fill="#789969"/>
+        <path d="M79 266C155 285 143 221 227 250S302 345 378 318L442 306 413 341C345 380 283 346 254 313S205 275 177 284 115 305 79 282Z" fill="url(#creek-water)"/>
+        <path d="M100 322 167 285 198 302 132 340Z" fill="#dbc397"/>
+        <path d="M157 288 222 252 245 265 180 302Z" fill="#e6d3aa"/>
+        <path d="M226 252 282 220 347 257 292 290Z" fill="#d0b781"/>
+        <path d="M238 245 282 220 333 250 289 275Z" fill="#c0d39b" stroke="#997448" stroke-width="3" stroke-dasharray="5 5"/>
+        <path d="M264 307 303 286 337 305 299 328Z" fill="#e8d3a9"/>
+        <path d="M118 197 118 269M383 196 383 273M330 145 330 215M188 151 188 212" stroke="#8c6b45" stroke-width="10" stroke-linecap="round"/>
+        <path d="M118 137 89 148 76 175 85 197 112 211 141 200 156 177 148 154Z" fill="#477b60"/>
+        <path d="M118 137 112 211 141 200 156 177 148 154Z" fill="#619771"/>
+        <path d="M383 159 348 145 334 160 365 174 345 190 356 204 382 180 407 204 422 190 402 174 434 160 420 145 391 158 393 126 378 126Z" fill="#477b60"/>
+        <path d="M383 159 382 180 407 204 422 190 402 174 434 160 420 145 391 158 393 126 383 126Z" fill="#73a37c"/>
+        <path d="M330 104 307 113 296 137 306 161 333 172 356 158 365 135 352 112Z" fill="#537f5d"/>
+        <path d="M188 104 166 113 156 137 166 158 191 171 214 156 223 134 211 112Z" fill="#6c9b6e"/>
+        <ellipse cx="215" cy="342" rx="15" ry="9" fill="#a5b091"/>
+        <ellipse cx="351" cy="357" rx="20" ry="11" fill="#9eab8b"/>
+        <path d="M78 242 85 226 91 244M446 265 453 248 458 267M367 291 372 276 379 291" fill="none" stroke="#548b64" stroke-width="5" stroke-linecap="round"/>
+        <path d="m270 113 8 8 9-8M294 99l7 6 7-6" fill="none" stroke="#6e8b75" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+      <figcaption data-entry-text="artCaption">{copy.artCaption}</figcaption>
+    </figure>
+  </div>
+
+  <dialog id="play-help" aria-labelledby="play-help-title">
+    <h2 id="play-help-title" tabindex="-1" data-dialog-heading data-entry-text="helpTitle">{copy.helpTitle}</h2>
+    <p data-entry-text="helpIntro">{copy.helpIntro}</p>
+    <ol class="guide-steps">
+      <li><strong data-entry-text="stepOneTitle">{copy.stepOneTitle}</strong><span data-entry-text="stepOne">{copy.stepOne}</span></li>
+      <li><strong data-entry-text="stepTwoTitle">{copy.stepTwoTitle}</strong><span data-entry-text="stepTwo">{copy.stepTwo}</span></li>
+      <li><strong data-entry-text="stepThreeTitle">{copy.stepThreeTitle}</strong><span data-entry-text="stepThree">{copy.stepThree}</span></li>
+      <li><strong data-entry-text="stepFourTitle">{copy.stepFourTitle}</strong><span data-entry-text="stepFour">{copy.stepFour}</span></li>
+    </ol>
+    <p class="guide-note" data-entry-text="guideNote">{copy.guideNote}</p>
+    <button type="button" class="dialog-close" data-close-dialog data-entry-text="close">{copy.close}</button>
+  </dialog>
+
+  <dialog id="play-settings" aria-labelledby="play-settings-title">
+    <h2 id="play-settings-title" tabindex="-1" data-dialog-heading data-entry-text="settingsTitle">{copy.settingsTitle}</h2>
+    <p data-entry-text="languageHint">{copy.languageHint}</p>
+    <label for="entry-language" data-entry-text="language">{copy.language}</label>
+    <select id="entry-language" data-entry-language><option value="en">English</option><option value="id">Bahasa Indonesia</option></select>
+    <p class="preference-status" role="status" data-preference-status>{copy.preferenceReady}</p>
+    <p class="storage-note" data-entry-text="storageNote">{copy.storageNote}</p>
+    <button type="button" class="dialog-close" data-close-dialog data-entry-text="close">{copy.close}</button>
+  </dialog>
+</section>
+
+<script>
+  import '../scripts/play-entry';
+</script>
+
+<style>
+.play-shell{padding:clamp(1.2rem,4vw,3.8rem) clamp(1rem,4vw,4rem);background:var(--cream);min-height:70vh}.entry-card{max-width:1240px;margin:auto;display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);align-items:center;gap:clamp(1.5rem,4vw,4rem);padding:clamp(1.3rem,3.2vw,3rem);border:1px solid #d9dfcf;border-radius:28px;background:var(--paper)}.entry-copy{min-width:0}.preview-badge{display:inline-flex;align-items:center;gap:.45rem;border:1px solid #d2bb80;border-radius:999px;padding:.28rem .7rem;background:#fbf2d7;font-size:.73rem;font-weight:700;color:#66502a}.preview-badge>span:first-child{color:#ad7629}.sanctuary-name{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--forest);margin:1.25rem 0 .65rem}.entry-copy h1{font-size:clamp(2.5rem,4.5vw,4.7rem);max-width:10ch}.entry-intro{font-size:1rem;color:#52665b;max-width:34rem;margin:1.2rem 0 .9rem}.availability{font-size:.86rem;color:#52645b;max-width:35rem;margin:0 0 1.4rem}.entry-actions{display:grid;grid-template-columns:1fr 1fr;gap:.65rem}.entry-actions button,.dialog-close{min-height:48px;border-radius:12px;font:700 .85rem/1.35 'DM Sans',sans-serif;padding:.7rem .8rem;border:1px solid var(--forest)}.entry-actions .unavailable{background:#e5e9e1;border-color:#d2dacd;color:#647063;cursor:not-allowed}.guide-action,.dialog-close{background:var(--ink);color:white;cursor:pointer}.settings-action{background:transparent;color:var(--ink);cursor:pointer}.guide-action:hover,.dialog-close:hover{background:var(--forest)}.settings-action:hover{background:#edf2e7}.journal-return{display:inline-flex;gap:.6rem;font-size:.83rem;font-weight:700;color:var(--forest);margin-top:1.25rem}.journal-return:hover{text-decoration:underline}.sanctuary-art{min-width:0;margin:0;padding:1rem 0;background:#edf3e5;border-radius:22px;overflow:hidden}.sanctuary-art svg{width:100%;height:auto;display:block}.sanctuary-art figcaption{text-align:center;font-size:.72rem;line-height:1.5;color:#586e5e;padding:0 .75rem 1rem}.no-script{padding:.8rem;border:1px solid #b7c5b0;border-radius:10px;font-size:.85rem}dialog{width:min(92vw,560px);max-height:calc(100dvh - 2rem);overflow-y:auto;border:1px solid #b9c9b3;border-radius:22px;padding:clamp(1.2rem,4vw,2rem);background:var(--paper);color:var(--ink);box-shadow:0 18px 80px #183b3230}dialog::backdrop{background:#142e267a}dialog h2{font-size:clamp(1.8rem,5vw,2.4rem);line-height:1.15;margin:0 0 1rem}dialog p{font-size:.92rem;color:#52645b}.guide-steps{padding-left:1.6rem;display:grid;gap:1rem}.guide-steps li{padding-left:.35rem}.guide-steps li::marker{color:#96651f;font-weight:700}.guide-steps strong,.guide-steps span{display:block}.guide-steps span{font-size:.9rem;color:#52645b;margin-top:.2rem}.guide-note{background:#f5efd9;border-radius:10px;padding:.8rem}.dialog-close{width:100%;margin-top:.6rem}dialog label{display:block;font-weight:700;font-size:.9rem;margin-top:1.2rem}dialog select{width:100%;min-height:48px;border:1px solid #879e87;border-radius:10px;background:white;color:var(--ink);padding:.7rem;font:inherit;margin-top:.4rem}dialog select:focus-visible{outline:3px solid var(--gold);outline-offset:3px}.preference-status{font-size:.82rem}.storage-note{font-size:.8rem;border-top:1px solid var(--line);padding-top:1rem}
+@media(max-width:760px){.entry-card{grid-template-columns:1fr;gap:1.5rem}.entry-copy h1{font-size:clamp(2.5rem,8.5vw,3.6rem);max-width:12ch}.sanctuary-art{max-width:430px;width:100%;justify-self:center}.sanctuary-art svg{max-height:340px}.availability{font-size:.83rem}}
+@media(max-width:390px){.entry-actions{gap:.5rem}.entry-actions button{font-size:.78rem;padding:.65rem .45rem}.entry-intro{font-size:.94rem}.entry-card{border-radius:20px}}
+</style>

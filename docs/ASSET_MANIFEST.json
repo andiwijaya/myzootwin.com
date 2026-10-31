@@ -2,7 +2,7 @@
   "schema_version": 1,
   "audited_at": "2026-10-31",
   "baseline_commit": "3b06c6d8d2a920ad5894868059885c98a58217a6",
-  "scope": "M0-03 inventory/model decision only; no application or production change",
+  "scope": "M0-03 asset inventory/model decision, updated by M0-04 original entry illustration; existing media retained.",
   "assets": [
     {
       "path": "public/images/myzootwin-beranda.png",
@@ -120,6 +120,17 @@
       "bytes": null,
       "rights_status": "none_downloaded_or_claimed",
       "usage_decision": "Optional original synthesis/recording or separately verified compatible source later; respect mute and browser gesture requirements."
+    },
+    {
+      "id": "play_entry_concept",
+      "path": "src/components/PlayEntry.astro",
+      "origin": "original_project_authored_inline_svg_M0-04",
+      "rights_status": "original_project_work_no_external_asset_inputs",
+      "usage_decision": "Static concept illustration on /play, explicitly labelled illustration; not a 3D world, final animal model or gameplay.",
+      "svg_template_bytes": 2385,
+      "svg_template_sha256": "077f1a47d7ec443b449fa6b63644694e7e3f9e96b1eb2c614c07c1a2a931692c",
+      "external_asset_inputs": [],
+      "license_note": "Original native vector/code work for this project; no third-party asset agreement or public license grant added."
     }
   ],
   "direct_package_notice_spot_checks": [

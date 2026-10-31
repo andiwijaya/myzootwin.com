@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PlayEntry from '../components/PlayEntry.astro';
+import { english } from '../game-entry/locale';
+---
+<BaseLayout title={english.pageTitle} description={english.description} canonical="https://myzootwin.com/play/">
+  <PlayEntry />
+</BaseLayout>

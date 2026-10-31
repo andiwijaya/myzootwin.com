@@ -1,0 +1,1039 @@
+{
+  "startedAt": "2026-10-31T16:10:02.168Z",
+  "browser": "isolated in-app browser",
+  "physicalAndroid": false,
+  "directRoutes": [
+    {
+      "path": "/play",
+      "before": {
+        "activeNav": "Play Zoo",
+        "buttons": [
+          {
+            "disabled": true,
+            "text": "Play \u2014 coming soon"
+          },
+          {
+            "disabled": true,
+            "text": "Continue \u2014 not available yet"
+          },
+          {
+            "disabled": false,
+            "text": "How to play"
+          },
+          {
+            "disabled": false,
+            "text": "Settings"
+          }
+        ],
+        "canonical": "https://myzootwin.com/play/",
+        "canvasCount": 0,
+        "documentLang": "en",
+        "documentWidth": 1351,
+        "h1": "A little world to care for.",
+        "previewState": "not-playable",
+        "title": "Play Zoo \u2014 Tropical Creek | MyZooTwin",
+        "url": "http://127.0.0.1:4321/play",
+        "viewport": {
+          "height": 768,
+          "width": 1366
+        }
+      },
+      "after": {
+        "canonical": "https://myzootwin.com/play/",
+        "h1": "A little world to care for.",
+        "previewState": "not-playable"
+      },
+      "reloadMatches": true,
+      "console": []
+    },
+    {
+      "path": "/play/",
+      "before": {
+        "activeNav": "Play Zoo",
+        "buttons": [
+          {
+            "disabled": true,
+            "text": "Play \u2014 coming soon"
+          },
+          {
+            "disabled": true,
+            "text": "Continue \u2014 not available yet"
+          },
+          {
+            "disabled": false,
+            "text": "How to play"
+          },
+          {
+            "disabled": false,
+            "text": "Settings"
+          }
+        ],
+        "canonical": "https://myzootwin.com/play/",
+        "canvasCount": 0,
+        "documentLang": "en",
+        "documentWidth": 1351,
+        "h1": "A little world to care for.",
+        "previewState": "not-playable",
+        "title": "Play Zoo \u2014 Tropical Creek | MyZooTwin",
+        "url": "http://127.0.0.1:4321/play/",
+        "viewport": {
+          "height": 768,
+          "width": 1366
+        }
+      },
+      "after": {
+        "canonical": "https://myzootwin.com/play/",
+        "h1": "A little world to care for.",
+        "previewState": "not-playable"
+      },
+      "reloadMatches": true,
+      "console": []
+    }
+  ],
+  "interactions": [
+    {
+      "name": "guide open",
+      "state": {
+        "focused": "play-help-title",
+        "open": true,
+        "plannedNote": "This guide describes the planned game. These actions are not playable yet.",
+        "steps": 4
+      }
+    },
+    {
+      "name": "guide keyboard focus",
+      "state": {
+        "focusedText": "Close",
+        "insideGuide": true
+      }
+    },
+    {
+      "name": "guide Escape closes and returns focus",
+      "state": {
+        "focusedText": "How to play",
+        "open": false
+      }
+    },
+    {
+      "name": "settings open",
+      "state": {
+        "focused": "play-settings-title",
+        "language": "en",
+        "open": true,
+        "status": "Changes are saved on this device when you choose a language."
+      }
+    },
+    {
+      "name": "change to Indonesian",
+      "state": {
+        "canonical": "https://myzootwin.com/play/",
+        "entryLang": "id",
+        "footerLang": "en",
+        "h1": "Dunia kecil untuk dirawat.",
+        "headerLang": "en",
+        "locale": "id",
+        "status": "Pilihan bahasamu tersimpan di perangkat ini.",
+        "title": "Main Zoo \u2014 Tropical Creek | MyZooTwin"
+      }
+    },
+    {
+      "name": "Indonesian survives reload",
+      "state": {
+        "h1": "Dunia kecil untuk dirawat.",
+        "helpButton": "Cara bermain",
+        "locale": "id"
+      }
+    },
+    {
+      "name": "journal link from Indonesian entry",
+      "state": {
+        "hasEntry": false,
+        "locale": "en",
+        "title": "Animals \u2014 MyZooTwin",
+        "url": "http://127.0.0.1:4321/animals/"
+      }
+    },
+    {
+      "name": "history back",
+      "state": {
+        "h1": "Dunia kecil untuk dirawat.",
+        "locale": "id",
+        "url": "http://127.0.0.1:4321/play/"
+      }
+    },
+    {
+      "name": "history forward",
+      "state": {
+        "h1": "Meet theneighborhood.",
+        "locale": "en",
+        "url": "http://127.0.0.1:4321/animals/"
+      }
+    },
+    {
+      "name": "mobile keyboard opens Indonesian guide",
+      "state": {
+        "bounds": {
+          "bottom": 764,
+          "height": 748,
+          "left": 19,
+          "right": 325.66668701171875,
+          "top": 16,
+          "width": 306.66668701171875,
+          "x": 19,
+          "y": 16
+        },
+        "focused": "play-help-title",
+        "open": true,
+        "title": "Satu langkah peduli setiap kali",
+        "viewportHeight": 780
+      }
+    },
+    {
+      "name": "mobile keyboard opens settings",
+      "state": {
+        "bounds": {
+          "bottom": 600.7916717529297,
+          "height": 421.59375,
+          "left": 19,
+          "right": 325.66668701171875,
+          "top": 179.1979217529297,
+          "width": 306.66668701171875,
+          "x": 19,
+          "y": 179.1979217529297
+        },
+        "focused": "play-settings-title",
+        "language": "id",
+        "open": true
+      }
+    },
+    {
+      "name": "landscape guide Close button",
+      "state": {
+        "focusedText": "How to play",
+        "open": false
+      }
+    },
+    {
+      "name": "mobile journal Play Zoo navigation",
+      "state": {
+        "canonical": "https://myzootwin.com/play/",
+        "entry": true,
+        "heading": "A little world to care for.",
+        "url": "http://127.0.0.1:4321/play/"
+      }
+    },
+    {
+      "name": "mobile horizontal navigation Gear click",
+      "state": {
+        "h1": "Gear & field notes",
+        "url": "http://127.0.0.1:4321/gear/"
+      }
+    },
+    {
+      "name": "English preference survives navigation and reload",
+      "state": {
+        "canonical": "https://myzootwin.com/play/",
+        "h1": "A little world to care for.",
+        "locale": "en",
+        "url": "http://127.0.0.1:4321/play/"
+      }
+    }
+  ],
+  "journalRoutes": [
+    {
+      "requestedViewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "path": "/",
+      "direct": {
+        "canonical": "https://myzootwin.com/",
+        "documentWidth": 1351,
+        "h1": "Explore.Understand.Care more.",
+        "hasEntry": false,
+        "lang": "en",
+        "playLinks": [
+          {
+            "href": "http://127.0.0.1:4321/play/",
+            "text": "Play Zoo"
+          }
+        ],
+        "scripts": [],
+        "title": "MyZooTwin \u2014 Explore. Discover. Understand Animals.",
+        "url": "http://127.0.0.1:4321/",
+        "viewport": {
+          "height": 768,
+          "width": 1366
+        }
+      },
+      "matchesBaseline": true,
+      "reloadMatches": true,
+      "console": []
+    },
+    {
+      "requestedViewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "path": "/animals/",
+      "direct": {
+        "canonical": "https://myzootwin.com/animals/",
+        "documentWidth": 1351,
+        "h1": "Meet theneighborhood.",
+        "hasEntry": false,
+        "lang": "en",
+        "playLinks": [
+          {
+            "href": "http://127.0.0.1:4321/play/",
+            "text": "Play Zoo"
+          }
+        ],
+        "scripts": [],
+        "title": "Animals \u2014 MyZooTwin",
+        "url": "http://127.0.0.1:4321/animals/",
+        "viewport": {
+          "height": 768,
+          "width": 1366
+        }
+      },
+      "matchesBaseline": true,
+      "reloadMatches": true,
+      "console": []
+    },
+    {
+      "requestedViewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "path": "/wildlife/",
+      "direct": {
+        "canonical": "https://myzootwin.com/wildlife/",
+        "documentWidth": 1351,
+        "h1": "Into the wild",
+        "hasEntry": false,
+        "lang": "en",
+        "playLinks": [
+          {
+            "href": "http://127.0.0.1:4321/play/",
+            "text": "Play Zoo"
+          }
+        ],
+        "scripts": [],
+        "title": "Into the wild \u2014 MyZooTwin",
+        "url": "http://127.0.0.1:4321/wildlife/",
+        "viewport": {
+          "height": 768,
+          "width": 1366
+        }
+      },
+      "matchesBaseline": true,
+      "reloadMatches": true,
+      "console": []
+    },
+    {
+      "requestedViewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "path": "/pets/",
+      "direct": {
+        "canonical": "https://myzootwin.com/pets/",
+        "documentWidth": 1351,
+        "h1": "Life with pets",
+        "hasEntry": false,
+        "lang": "en",
+        "playLinks": [
+          {
+            "href": "http://127.0.0.1:4321/play/",
+            "text": "Play Zoo"
+          }
+        ],
+        "scripts": [],
+        "title": "Life with pets \u2014 MyZooTwin",
+        "url": "http://127.0.0.1:4321/pets/",
+        "viewport": {
+          "height": 768,
+          "width": 1366
+        }
+      },
+      "matchesBaseline": true,
+      "reloadMatches": true,
+      "console": []
+    },
+    {
+      "requestedViewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "path": "/learn/",
+      "direct": {
+        "canonical": "https://myzootwin.com/learn/",
+        "documentWidth": 1351,
+        "h1": "Learn something wild",
+        "hasEntry": false,
+        "lang": "en",
+        "playLinks": [
+          {
+            "href": "http://127.0.0.1:4321/play/",
+            "text": "Play Zoo"
+          }
+        ],
+        "scripts": [],
+        "title": "Learn something wild \u2014 MyZooTwin",
+        "url": "http://127.0.0.1:4321/learn/",
+        "viewport": {
+          "height": 768,
+          "width": 1366
+        }
+      },
+      "matchesBaseline": true,
+      "reloadMatches": true,
+      "console": []
+    },
+    {
+      "requestedViewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "path": "/adventures/",
+      "direct": {
+        "canonical": "https://myzootwin.com/adventures/",
+        "documentWidth": 1351,
+        "h1": "Field notes & adventures",
+        "hasEntry": false,
+        "lang": "en",
+        "playLinks": [
+          {
+            "href": "http://127.0.0.1:4321/play/",
+            "text": "Play Zoo"
+          }
+        ],
+        "scripts": [],
+        "title": "Field notes & adventures \u2014 MyZooTwin",
+        "url": "http://127.0.0.1:4321/adventures/",
+        "viewport": {
+          "height": 768,
+          "width": 1366
+        }
+      },
+      "matchesBaseline": true,
+      "reloadMatches": true,
+      "console": []
+    },
+    {
+      "requestedViewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "path": "/gear/",
+      "direct": {
+        "canonical": "https://myzootwin.com/gear/",
+        "documentWidth": 1351,
+        "h1": "Gear & field notes",
+        "hasEntry": false,
+        "lang": "en",
+        "playLinks": [
+          {
+            "href": "http://127.0.0.1:4321/play/",
+            "text": "Play Zoo"
+          }
+        ],
+        "scripts": [],
+        "title": "Gear & field notes \u2014 MyZooTwin",
+        "url": "http://127.0.0.1:4321/gear/",
+        "viewport": {
+          "height": 768,
+          "width": 1366
+        }
+      },
+      "matchesBaseline": true,
+      "reloadMatches": true,
+      "console": []
+    },
+    {
+      "requestedViewport": {
+        "width": 1366,
+        "height": 768
+      },
+      "path": "/about/",
+      "direct": {
+        "canonical": "https://myzootwin.com/about/",
+        "documentWidth": 1351,
+        "h1": "A little morecuriosity, every day.",
+        "hasEntry": false,
+        "lang": "en",
+        "playLinks": [
+          {
+            "href": "http://127.0.0.1:4321/play/",
+            "text": "Play Zoo"
+          }
+        ],
+        "scripts": [],
+        "title": "About MyZooTwin \u2014 A curious animal learning journal",
+        "url": "http://127.0.0.1:4321/about/",
+        "viewport": {
+          "height": 768,
+          "width": 1366
+        }
+      },
+      "matchesBaseline": true,
+      "reloadMatches": true,
+      "console": []
+    },
+    {
+      "requestedViewport": {
+        "width": 360,
+        "height": 780
+      },
+      "path": "/",
+      "direct": {
+        "canonical": "https://myzootwin.com/",
+        "documentWidth": 345,
+        "h1": "Explore.Understand.Care more.",
+        "hasEntry": false,
+        "lang": "en",
+        "playLinks": [
+          {
+            "href": "http://127.0.0.1:4321/play/",
+            "text": "Play Zoo"
+          }
+        ],
+        "scripts": [],
+        "title": "MyZooTwin \u2014 Explore. Discover. Understand Animals.",
+        "url": "http://127.0.0.1:4321/",
+        "viewport": {
+          "height": 780,
+          "width": 360
+        }
+      },
+      "matchesBaseline": true,
+      "reloadMatches": true,
+      "console": []
+    },
+    {
+      "requestedViewport": {
+        "width": 360,
+        "height": 780
+      },
+      "path": "/animals/",
+      "direct": {
+        "canonical": "https://myzootwin.com/animals/",
+        "documentWidth": 387,
+        "h1": "Meet theneighborhood.",
+        "hasEntry": false,
+        "lang": "en",
+        "playLinks": [
+          {
+            "href": "http://127.0.0.1:4321/play/",
+            "text": "Play Zoo"
+          }
+        ],
+        "scripts": [],
+        "title": "Animals \u2014 MyZooTwin",
+        "url": "http://127.0.0.1:4321/animals/",
+        "viewport": {
+          "height": 780,
+          "width": 360
+        }
+      },
+      "matchesBaseline": true,
+      "reloadMatches": true,
+      "console": []
+    },
+    {
+      "requestedViewport": {
+        "width": 360,
+        "height": 780
+      },
+      "path": "/wildlife/",
+      "direct": {
+        "canonical": "https://myzootwin.com/wildlife/",
+        "documentWidth": 345,
+        "h1": "Into the wild",
+        "hasEntry": false,
+        "lang": "en",
+        "playLinks": [
+          {
+            "href": "http://127.0.0.1:4321/play/",
+            "text": "Play Zoo"
+          }
+        ],
+        "scripts": [],
+        "title": "Into the wild \u2014 MyZooTwin",
+        "url": "http://127.0.0.1:4321/wildlife/",
+        "viewport": {
+          "height": 780,
+          "width": 360
+        }
+      },
+      "matchesBaseline": true,
+      "reloadMatches": true,
+      "console": []
+    },
+    {
+      "requestedViewport": {
+        "width": 360,
+        "height": 780
+      },
+      "path": "/pets/",
+      "direct": {
+        "canonical": "https://myzootwin.com/pets/",
+        "documentWidth": 345,
+        "h1": "Life with pets",
+        "hasEntry": false,
+        "lang": "en",
+        "playLinks": [
+          {
+            "href": "http://127.0.0.1:4321/play/",
+            "text": "Play Zoo"
+          }
+        ],
+        "scripts": [],
+        "title": "Life with pets \u2014 MyZooTwin",
+        "url": "http://127.0.0.1:4321/pets/",
+        "viewport": {
+          "height": 780,
+          "width": 360
+        }
+      },
+      "matchesBaseline": true,
+      "reloadMatches": true,
+      "console": []
+    },
+    {
+      "requestedViewport": {
+        "width": 360,
+        "height": 780
+      },
+      "path": "/learn/",
+      "direct": {
+        "canonical": "https://myzootwin.com/learn/",
+        "documentWidth": 345,
+        "h1": "Learn something wild",
+        "hasEntry": false,
+        "lang": "en",
+        "playLinks": [
+          {
+            "href": "http://127.0.0.1:4321/play/",
+            "text": "Play Zoo"
+          }
+        ],
+        "scripts": [],
+        "title": "Learn something wild \u2014 MyZooTwin",
+        "url": "http://127.0.0.1:4321/learn/",
+        "viewport": {
+          "height": 780,
+          "width": 360
+        }
+      },
+      "matchesBaseline": true,
+      "reloadMatches": true,
+      "console": []
+    },
+    {
+      "requestedViewport": {
+        "width": 360,
+        "height": 780
+      },
+      "path": "/adventures/",
+      "direct": {
+        "canonical": "https://myzootwin.com/adventures/",
+        "documentWidth": 345,
+        "h1": "Field notes & adventures",
+        "hasEntry": false,
+        "lang": "en",
+        "playLinks": [
+          {
+            "href": "http://127.0.0.1:4321/play/",
+            "text": "Play Zoo"
+          }
+        ],
+        "scripts": [],
+        "title": "Field notes & adventures \u2014 MyZooTwin",
+        "url": "http://127.0.0.1:4321/adventures/",
+        "viewport": {
+          "height": 780,
+          "width": 360
+        }
+      },
+      "matchesBaseline": true,
+      "reloadMatches": true,
+      "console": []
+    },
+    {
+      "requestedViewport": {
+        "width": 360,
+        "height": 780
+      },
+      "path": "/gear/",
+      "direct": {
+        "canonical": "https://myzootwin.com/gear/",
+        "documentWidth": 345,
+        "h1": "Gear & field notes",
+        "hasEntry": false,
+        "lang": "en",
+        "playLinks": [
+          {
+            "href": "http://127.0.0.1:4321/play/",
+            "text": "Play Zoo"
+          }
+        ],
+        "scripts": [],
+        "title": "Gear & field notes \u2014 MyZooTwin",
+        "url": "http://127.0.0.1:4321/gear/",
+        "viewport": {
+          "height": 780,
+          "width": 360
+        }
+      },
+      "matchesBaseline": true,
+      "reloadMatches": true,
+      "console": []
+    },
+    {
+      "requestedViewport": {
+        "width": 360,
+        "height": 780
+      },
+      "path": "/about/",
+      "direct": {
+        "canonical": "https://myzootwin.com/about/",
+        "documentWidth": 345,
+        "h1": "A little morecuriosity, every day.",
+        "hasEntry": false,
+        "lang": "en",
+        "playLinks": [
+          {
+            "href": "http://127.0.0.1:4321/play/",
+            "text": "Play Zoo"
+          }
+        ],
+        "scripts": [],
+        "title": "About MyZooTwin \u2014 A curious animal learning journal",
+        "url": "http://127.0.0.1:4321/about/",
+        "viewport": {
+          "height": 780,
+          "width": 360
+        }
+      },
+      "matchesBaseline": true,
+      "reloadMatches": true,
+      "console": []
+    }
+  ],
+  "screenshots": [
+    "play-desktop-1366-en.jpg",
+    "play-desktop-1920-en.jpg",
+    "play-mobile-360-id.jpg",
+    "play-mobile-360-en.jpg",
+    "play-help-mobile-id.jpg",
+    "play-settings-mobile-id.jpg",
+    "play-landscape-780-en.jpg",
+    "play-help-landscape-en.jpg",
+    "journal-home-mobile-navigation.jpg"
+  ],
+  "mobileEntry": {
+    "actions": [
+      {
+        "disabled": true,
+        "height": 55.8125,
+        "text": "Main \u2014 segera hadir"
+      },
+      {
+        "disabled": true,
+        "height": 55.8125,
+        "text": "Lanjutkan \u2014 belum tersedia"
+      },
+      {
+        "disabled": false,
+        "height": 48,
+        "text": "Cara bermain"
+      },
+      {
+        "disabled": false,
+        "height": 48,
+        "text": "Pengaturan"
+      }
+    ],
+    "documentWidth": 360,
+    "h1": "Dunia kecil untuk dirawat.",
+    "locale": "id",
+    "navScrollWidth": 413,
+    "navWidth": 322,
+    "viewport": {
+      "height": 780,
+      "width": 360
+    }
+  },
+  "mobileKeyboard": [
+    {
+      "bounds": {
+        "bottom": 46.19791793823242,
+        "height": 30.197917938232425,
+        "left": 19.197917938232425,
+        "right": 153.7708396911621,
+        "top": 16,
+        "width": 134.5729217529297,
+        "x": 19.197917938232425,
+        "y": 16
+      },
+      "disabled": false,
+      "navScrollLeft": 0,
+      "outline": "solid",
+      "tag": "A",
+      "text": "\u2726MyZooTwin"
+    },
+    {
+      "bounds": {
+        "bottom": 82.67708587646484,
+        "height": 20.479167938232425,
+        "left": 19.197917938232425,
+        "right": 71.52083587646484,
+        "top": 62.19791793823242,
+        "width": 52.32291793823242,
+        "x": 19.197917938232425,
+        "y": 62.19791793823242
+      },
+      "disabled": false,
+      "navScrollLeft": 0,
+      "outline": "solid",
+      "tag": "A",
+      "text": "Play Zoo"
+    },
+    {
+      "bounds": {
+        "bottom": 82.67708587646484,
+        "height": 20.479167938232425,
+        "left": 90.71875,
+        "right": 137.29166793823242,
+        "top": 62.19791793823242,
+        "width": 46.57291793823242,
+        "x": 90.71875,
+        "y": 62.19791793823242
+      },
+      "disabled": false,
+      "navScrollLeft": 0,
+      "outline": "solid",
+      "tag": "A",
+      "text": "Animals"
+    },
+    {
+      "bounds": {
+        "bottom": 82.67708587646484,
+        "height": 20.479167938232425,
+        "left": 156.48959350585938,
+        "right": 200.1250114440918,
+        "top": 62.19791793823242,
+        "width": 43.63541793823242,
+        "x": 156.48959350585938,
+        "y": 62.19791793823242
+      },
+      "disabled": false,
+      "navScrollLeft": 0,
+      "outline": "solid",
+      "tag": "A",
+      "text": "Wildlife"
+    },
+    {
+      "bounds": {
+        "bottom": 82.67708587646484,
+        "height": 20.479167938232425,
+        "left": 219.3229217529297,
+        "right": 244.8750057220459,
+        "top": 62.19791793823242,
+        "width": 25.55208396911621,
+        "x": 219.3229217529297,
+        "y": 62.19791793823242
+      },
+      "disabled": false,
+      "navScrollLeft": 0,
+      "outline": "solid",
+      "tag": "A",
+      "text": "Pets"
+    },
+    {
+      "bounds": {
+        "bottom": 82.67708587646484,
+        "height": 20.479167938232425,
+        "left": 264.07293701171875,
+        "right": 296.8750228881836,
+        "top": 62.19791793823242,
+        "width": 32.802085876464844,
+        "x": 264.07293701171875,
+        "y": 62.19791793823242
+      },
+      "disabled": false,
+      "navScrollLeft": 0,
+      "outline": "solid",
+      "tag": "A",
+      "text": "Learn"
+    },
+    {
+      "bounds": {
+        "bottom": 82.67708587646484,
+        "height": 20.479167938232425,
+        "left": 316.07293701171875,
+        "right": 383.8437728881836,
+        "top": 62.19791793823242,
+        "width": 67.77083587646484,
+        "x": 316.07293701171875,
+        "y": 62.19791793823242
+      },
+      "disabled": false,
+      "navScrollLeft": 0,
+      "outline": "solid",
+      "tag": "A",
+      "text": "Adventures"
+    },
+    {
+      "bounds": {
+        "bottom": 82.67708587646484,
+        "height": 20.479167938232425,
+        "left": 296.375,
+        "right": 325.0520839691162,
+        "top": 62.19791793823242,
+        "width": 28.67708396911621,
+        "x": 296.375,
+        "y": 62.19791793823242
+      },
+      "disabled": false,
+      "navScrollLeft": 106.66666412353516,
+      "outline": "solid",
+      "tag": "A",
+      "text": "Gear"
+    },
+    {
+      "bounds": {
+        "bottom": 41.97916793823242,
+        "height": 21.760417938232425,
+        "left": 271.19793701171875,
+        "right": 325.4687728881836,
+        "top": 20.21875,
+        "width": 54.27083587646485,
+        "x": 271.19793701171875,
+        "y": 20.21875
+      },
+      "disabled": false,
+      "navScrollLeft": 106.66666412353516,
+      "outline": "solid",
+      "tag": "A",
+      "text": "About \u2197"
+    },
+    {
+      "bounds": {
+        "bottom": 646.1146240234375,
+        "height": 48,
+        "left": 37.45833587646485,
+        "right": 168.33333587646484,
+        "top": 598.1146240234375,
+        "width": 130.875,
+        "x": 37.45833587646485,
+        "y": 598.1146240234375
+      },
+      "disabled": false,
+      "navScrollLeft": 106.66666412353516,
+      "outline": "solid",
+      "tag": "BUTTON",
+      "text": "Cara bermain"
+    }
+  ],
+  "landscape": {
+    "dialog": {
+      "bottom": 344,
+      "height": 328,
+      "left": 102.33333587646484,
+      "right": 662.3333358764648,
+      "top": 16,
+      "width": 560,
+      "x": 102.33333587646484,
+      "y": 16
+    },
+    "dialogClientHeight": 327,
+    "dialogScrollHeight": 601,
+    "documentWidth": 765,
+    "focused": "play-help-title",
+    "viewport": {
+      "height": 360,
+      "width": 780
+    }
+  },
+  "desktop1920": {
+    "actions": [
+      {
+        "bounds": {
+          "bottom": 627.7604370117188,
+          "height": 48,
+          "left": 388.6666870117187,
+          "right": 674.7083740234375,
+          "top": 579.7604370117188,
+          "width": 286.04168701171875,
+          "x": 388.6666870117187,
+          "y": 579.7604370117188
+        },
+        "text": "Play \u2014 coming soon"
+      },
+      {
+        "bounds": {
+          "bottom": 627.7604370117188,
+          "height": 48,
+          "left": 685.1041870117188,
+          "right": 971.1458740234376,
+          "top": 579.7604370117188,
+          "width": 286.04168701171875,
+          "x": 685.1041870117188,
+          "y": 579.7604370117188
+        },
+        "text": "Continue \u2014 not available yet"
+      },
+      {
+        "bounds": {
+          "bottom": 686.15625,
+          "height": 48,
+          "left": 388.6666870117187,
+          "right": 674.7083740234375,
+          "top": 638.15625,
+          "width": 286.04168701171875,
+          "x": 388.6666870117187,
+          "y": 638.15625
+        },
+        "text": "How to play"
+      },
+      {
+        "bounds": {
+          "bottom": 686.15625,
+          "height": 48,
+          "left": 685.1041870117188,
+          "right": 971.1458740234376,
+          "top": 638.15625,
+          "width": 286.04168701171875,
+          "x": 685.1041870117188,
+          "y": 638.15625
+        },
+        "text": "Settings"
+      }
+    ],
+    "documentWidth": 1920,
+    "locale": "en",
+    "viewport": {
+      "height": 1080,
+      "width": 1920
+    }
+  },
+  "finalConsole": [],
+  "completedAt": "2026-10-31T16:17:39.938Z",
+  "finalBuildSmoke": {
+    "guideOpen": true,
+    "guideClosedByButton": true,
+    "settingsClosedByEscape": true,
+    "scripts": [
+      "http://127.0.0.1:4321/_astro/PlayEntry.astro_astro_type_script_index_0_lang.BotL6zRH.js"
+    ],
+    "console": []
+  },
+  "previewShutdown": {
+    "host": "127.0.0.1",
+    "port": 4321,
+    "observed_pid": 18096,
+    "no_listener_verified": true
+  }
+}
