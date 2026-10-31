@@ -1,6 +1,6 @@
 # M1-05 — Actual enclosed habitat and authoritative occupancy
 
-Status: COMPLETE locally, 2026-10-31 UTC. The M1-04 Confirm flow now constructs an actual enclosed habitat in the simulation and renderer. One starter habitat, four occupied cells, selectable bilingual identity. Full gameplay, paths, animal placement/care, economy and autosave remain later milestones. M0-01 exact external Cloudflare configuration remains partial; no production change.
+Status: COMPLETE locally, 2026-10-31 UTC. Implementation/evidence commit: 8f4405af5a63708c90906d031e6bb2800b97b538 (local only). The M1-04 Confirm flow now constructs an actual enclosed habitat in the simulation and renderer. One starter habitat, four occupied cells, selectable bilingual identity. Full gameplay, paths, animal placement/care, economy and autosave remain later milestones. M0-01 exact external Cloudflare configuration remains partial; no production change.
 
 ## Player outcome and state boundary
 
