@@ -9,6 +9,8 @@ This test fixture is not an Astro route and does not ship in dist. Use Node 24 a
 3. `node node_modules/vite/bin/vite.js --host 127.0.0.1 --port 4322 --strictPort`
 4. Open `http://127.0.0.1:4322/tests/browser/.generated/preview-harness.html` in the supported isolated browser. Stop the owned preview afterwards.
 
+M1-07 adds **Run injected editing checks**, after fresh camera → selection → habitat → path checks. It exercises destructive confirmation/cancel, pause, double confirm/Undo, path disconnection/restoration, habitat removal/replacement, bilingual critical copy and a bounded repeated geometry lifecycle. This labelled fixture uses synthetic touch and an HTML dialog cancel request; test real mouse/keyboard separately on the actual built product. The final edit intentionally leaves one removed path and a page-session Undo for remount/context-loss tests. No physical Android claim.
+
 The generated ignored HTML reuses actual built entry markup/CSS, removes production scripts, and adds visibly labelled QA controls. How/Settings are disabled only in this fixture. The real product entry is tested separately via Astro preview on loopback 4321.
 
 Native mode uses the actual Three scene and an instrumented RAF driver. Exercise Open/Close, pause/resume, remount, previous-handle disposal, unmount and late import. Check diagnostics: at most one session/canvas/pending RAF; zero after release. Negative modes use injected null context, constructor throw or loader rejection/delay. Context loss uses the native WEBGL_lose_context extension if present; render failure control injects the failure callback. These injected cases are not physical-device compatibility/FPS proof. RAF render exceptions are tested in preview-lifecycle.test.mjs.

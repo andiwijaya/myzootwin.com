@@ -2,7 +2,7 @@
   "schema_version": 1,
   "audited_at": "2026-10-31",
   "baseline_commit": "3b06c6d8d2a920ad5894868059885c98a58217a6",
-  "scope": "Existing art retained; M1-06 original visitor path pavers/viewing marker and generic one-cell ghost/connection-selection metadata recorded. No external art or agreement.",
+  "scope": "Original art retained. M1-07 records fixed habitat geometry/material reuse and released path/selection metadata for editing. No external assets or agreements.",
   "assets": [
     {
       "path": "public/images/myzootwin-beranda.png",
@@ -190,8 +190,8 @@
     {
       "id": "selection_indicator_m1_03",
       "path": "src/game/render3d/scene-picking.ts",
-      "bytes": 3712,
-      "sha256": "1eaea70ef0b3379f73c1ed938e09e5eb4b0b349712c5e5e6b185ee61bf4063dd",
+      "bytes": 3769,
+      "sha256": "2dafb17b0d2c3799ed98f8623c69c5e30d9c4dcf61b2f4e7bbff28aef79685c7",
       "origin": "Original selection UI configuration/procedural indicator authored in repository; Three.js Box3Helper/PlaneGeometry from existing MIT engine.",
       "rights_status": "original_configuration_using_existing_three_mit",
       "usage_decision": "Reusable selection bounds/ground cue only, not a habitat/fence/player structure. No external art/model/texture/audio.",
@@ -209,9 +209,15 @@
           "commit": "161bb94690b9542ed222d75372bb8a94a7f65c72",
           "bytes": 3495,
           "sha256": "2cbc146edfd693f3d003f9ef02c16881347fb91e56a1d38fdc4ca8c2a7862da8"
+        },
+        {
+          "feature": "M1-06",
+          "commit": "296fa207c4cd186ac09b2d1bbe3c1e3c3b5f5047",
+          "bytes": 3712,
+          "sha256": "1eaea70ef0b3379f73c1ed938e09e5eb4b0b349712c5e5e6b185ee61bf4063dd"
         }
       ],
-      "source_revision_note": "M1-06 records current source bytes, preserving known earlier revisions. Initial scenery shape/6 batches unchanged; restored player paths render in one dynamic batch. Ghost supports1x1 path or2x2 habitat; selection refreshes connection metadata. No external art."
+      "source_revision_note": "M1-07 updates lifecycle/metadata only, preserving original geometry silhouette and rights. Habitat uses two fixed reusable geometry/material slots; removed identities and tile metadata released. Actual final pixels in docs/qa/m1-07."
     },
     {
       "id": "placement_footprint_m1_04",
@@ -248,8 +254,8 @@
     {
       "id": "starter_macaw_habitat_m1_05",
       "path": "src/game/render3d/habitat-scene.ts",
-      "bytes": 3934,
-      "sha256": "8fea839b58695e0afcf9ee881d7909f59fd86610288871ae8b7f562203d15ac5",
+      "bytes": 4308,
+      "sha256": "ae7a00cb87c579102f9109c10113a8bd5fbda103be11ada488b1e9e81f384869",
       "origin": "Original procedural enclosed aviary authored in this repository: wooden perimeter posts/rails/sill, keeper door/latch, grass floor, closed wire walls and roof.",
       "rights_status": "original_code_authored_geometry_no_third_party_art",
       "usage_decision": "Actual2x2 starter habitat for two future Ara ararauna. No animal/care/path/economy claims; simplified game enclosure, not real husbandry guidance.",
@@ -262,13 +268,22 @@
         "wire_segments": 74,
         "starter_habitat_limit": 1
       },
-      "visual_inspection": "Actual built and selected habitat at1366x768/1920x1080/360x780/780x360; enlarged native camera detail and invalid overlap screenshot; docs/qa/m1-05."
+      "visual_inspection": "Actual built and selected habitat at1366x768/1920x1080/360x780/780x360; enlarged native camera detail and invalid overlap screenshot; docs/qa/m1-05.",
+      "source_revisions": [
+        {
+          "feature": "M1-06",
+          "commit": "296fa207c4cd186ac09b2d1bbe3c1e3c3b5f5047",
+          "bytes": 3934,
+          "sha256": "8fea839b58695e0afcf9ee881d7909f59fd86610288871ae8b7f562203d15ac5"
+        }
+      ],
+      "source_revision_note": "M1-07 updates lifecycle/metadata only, preserving original geometry silhouette and rights. Habitat uses two fixed reusable geometry/material slots; removed identities and tile metadata released. Actual final pixels in docs/qa/m1-07."
     },
     {
       "id": "visitor_paths_m1_06",
       "path": "src/game/render3d/path-scene.ts",
-      "bytes": 2828,
-      "sha256": "f6eb4e13f8ee8f72259010a956fba587c883f044cd20545ea18ad02fd639a848",
+      "bytes": 2866,
+      "sha256": "a69a9d8c3e7a6096a2fda1c0ac837256e6f8c5cd25d11897b9e06a3b4650c89b",
       "origin": "Original procedural sand pavers/three seams per tile plus small viewing sign; uses shared original Batch utility and existing Three MIT engine.",
       "rights_status": "original_code_authored_geometry_no_third_party_art",
       "usage_decision": "Actual visitor path ground and topology cue only; no guests/tickets/economy/autosave claim. Connected gold and disconnected muted pavers, text status supplies non-color feedback.",
@@ -280,7 +295,16 @@
         "triangles_per_path_tile": 48,
         "triangles_per_viewing_marker": 24
       },
-      "visual_inspection": "Actual desktop/portrait/landscape/wide path network, disconnected and connected status, selected path/habitat and enlarged pixels; docs/qa/m1-06."
+      "visual_inspection": "Actual desktop/portrait/landscape/wide path network, disconnected and connected status, selected path/habitat and enlarged pixels; docs/qa/m1-06.",
+      "source_revisions": [
+        {
+          "feature": "M1-06",
+          "commit": "296fa207c4cd186ac09b2d1bbe3c1e3c3b5f5047",
+          "bytes": 2828,
+          "sha256": "f6eb4e13f8ee8f72259010a956fba587c883f044cd20545ea18ad02fd639a848"
+        }
+      ],
+      "source_revision_note": "M1-07 updates lifecycle/metadata only, preserving original geometry silhouette and rights. Habitat uses two fixed reusable geometry/material slots; removed identities and tile metadata released. Actual final pixels in docs/qa/m1-07."
     }
   ],
   "direct_package_notice_spot_checks": [

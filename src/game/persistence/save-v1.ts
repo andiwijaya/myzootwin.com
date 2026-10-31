@@ -1,3 +1,4 @@
+import {validRefunds} from '../economy/refunds.ts';
 import { MAX_TICK, MISSION_IDS, SPECIES_ID, TICK_MS, type ZooSaveV1 } from '../core/state.ts';
 
 export const MAX_SAVE_CHARS = 1_000_000;
@@ -33,7 +34,7 @@ const schema = object({
   animals: array(object({ id, speciesId: oneOf(SPECIES_ID), habitatId: nullable(id), position: nullable(point), target: nullable(point), targetResourceId: nullable(id), hunger: percent, thirst: percent, energy: percent, habitatFit: percent, enrichment: percent, welfare: percent, currentBehavior: oneOf('idle','wander','perch','seek-food','eat','seek-water','drink','rest') }),2),
   visitors: array(object({ id, position: point, route: array(cell,1024), routeIndex: integer(1023), phase: oneOf('entering','viewing','leaving'), satisfaction: percent, admissionId: id }),32),
   admissions: array(object({ id, visitorId: id, tick, ledgerEntryId: id }),8192),
-  ledger: array(object({ id, operationId: id, kind: oneOf('starter','build','supplies','maintenance','ticket','reward','refund'), amount: number(-Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER,true), balanceAfter: integer(), tick, relatedId: nullable(referenceId) }),8192),
+  ledger: array(object({ id, operationId: id, kind: oneOf('starter','build','supplies','maintenance','ticket','reward','refund','restore'), amount: number(-Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER,true), balanceAfter: integer(), tick, relatedId: nullable(referenceId) }),8192),
   missions: object({ currentId: nullable(missionId), completedIds: array(missionId,4), rewards: array(object({ missionId, ledgerEntryId: id }),4),
     objectives: object({ habitatConnected: bool, birdsFedIds: array(id,2), birdsWateredIds: array(id,2), comfortableTicks: tick, viewedVisitorIds: array(id,8192), thrivingTicks: tick }),
   }),
@@ -86,10 +87,11 @@ function relationships(s: ZooSaveV1) {
   for(const e of s.ledger) {
     balance+=e.amount;
     requireValue(Number.isSafeInteger(balance) && balance>=0 && balance===e.balanceAfter && e.tick>=lastTick && e.tick<=s.tick,'$.ledger.balance');
-    requireValue(e.amount!==0 && (['build','supplies','maintenance'].includes(e.kind) ? e.amount<0 : e.amount>0),'$.ledger.amount');
+    requireValue(e.amount!==0 && (['build','supplies','maintenance','restore'].includes(e.kind) ? e.amount<0 : e.amount>0),'$.ledger.amount');
     lastTick=e.tick;
   }
   requireValue(balance===s.currency,'$.currency');
+  requireValue(validRefunds(s.ledger),'$.ledger.refund');
   unique(s.admissions.map(a=>a.id),'$.admissions.ids'); unique(s.admissions.map(a=>a.visitorId),'$.admissions.visitors'); unique(s.admissions.map(a=>a.ledgerEntryId),'$.admissions.ledger');
   const admissions=new Map(s.admissions.map(a=>[a.id,a]));
   for(const a of s.admissions) { const e=ledger.get(a.ledgerEntryId); requireValue(a.tick<=s.tick && e?.kind==='ticket' && e.relatedId===a.id && e.tick===a.tick,'$.admissions.reference'); }

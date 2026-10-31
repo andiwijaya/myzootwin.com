@@ -18,7 +18,7 @@ export interface Animal {
 }
 export interface Visitor { id: EntityId; position: Point; route: Point[]; routeIndex: number; phase: 'entering' | 'viewing' | 'leaving'; satisfaction: number; admissionId: EntityId; }
 export interface Admission { id: EntityId; visitorId: EntityId; tick: number; ledgerEntryId: EntityId; }
-export type LedgerKind = 'starter' | 'build' | 'supplies' | 'maintenance' | 'ticket' | 'reward' | 'refund';
+export type LedgerKind = 'starter' | 'build' | 'supplies' | 'maintenance' | 'ticket' | 'reward' | 'refund' | 'restore';
 export interface LedgerEntry { id: EntityId; operationId: EntityId; kind: LedgerKind; amount: number; balanceAfter: number; tick: number; relatedId: EntityId | null; }
 export interface Missions {
   currentId: MissionId | null; completedIds: MissionId[];

@@ -13,8 +13,8 @@ export function createPathScene(catalog:SceneCatalog){
   const box=(color:string,x:number,y:number,z:number,scale:number[])=>batch.add(new BoxGeometry(1,1,1),color,[x,y,z],scale);
   for(const tile of world.tiles){
    const id=`tile-${tile.cell.x}-${tile.cell.z}`,identity=catalog.identities.get(id);if(!identity)continue;
-   if(!tile.path&&tile.occupantId===null){identity.kind=tile.terrain;delete identity.connected;const bounds=catalog.bounds.get(id);if(bounds)bounds.max.y=.055;}
-   if(tile.path){identity.kind='path';identity.connected=reachable.has(cellKey(tile.cell));const bounds=catalog.bounds.get(id);if(bounds)bounds.max.y=.1;}
+   if(!tile.path&&tile.occupantId===null){identity.kind=tile.terrain;identity.ordinal=0;delete identity.connected;const bounds=catalog.bounds.get(id);if(bounds)bounds.max.y=.055;}
+   if(tile.path){identity.kind='path';identity.ordinal=0;identity.connected=reachable.has(cellKey(tile.cell));const bounds=catalog.bounds.get(id);if(bounds)bounds.max.y=.1;}
    if(!tile.path||cellKey(tile.cell)===cellKey(world.gate))continue;
    const x=tile.cell.x+.5-world.width/2,z=tile.cell.z+.5-world.height/2;batch.owner=id;tiles++;
    box(identity.connected?'#e3c78e':'#b9ac91',x,.055,z,[.95,.065,.95]);

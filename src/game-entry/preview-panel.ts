@@ -1,3 +1,4 @@
+import type {EditView,RemovalQuote,EditTarget} from '../game/world/editing.ts';
 import type {AccessSummary} from '../game/world/paths.ts';
 import {sanctuarySessionFor} from '../game/core/session-state.ts';
 import type { PlacementCommand, PlacementView } from '../game/world/placement-preview.ts';
@@ -28,9 +29,27 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   let state: PreviewState = { status: 'closed' };
   const events = new AbortController();
   let selected:SceneIdentity|null=null;
+  let editView:EditView={canUndo:false,reason:null,result:null};
+  let removal:RemovalQuote|null=null;
+  let removalName='';
+  const editDialog=root.querySelector<HTMLDialogElement>('[data-edit-dialog]');
+  function renderEdit(){
+    const copy=entryMessages[locale],ready=state.status==='ready';
+    root.querySelector('[data-entry-text="editHint"]')?.replaceChildren(copy.editHint);
+    const remove=root.querySelector<HTMLButtonElement>('[data-edit-remove]');
+    if(remove){remove.hidden=!ready||!selected||!['habitat','path'].includes(selected.kind);remove.textContent=copy.editRemove;}
+    const undo=root.querySelector<HTMLButtonElement>('[data-edit-undo]');if(undo){undo.hidden=!ready||!editView.canUndo;undo.textContent=copy.editUndo;}
+    const keys={missing:'editMissing',protected:'editProtected','in-use':'editInUse',stale:'editStale',funds:'editFunds',command:'editCommand'} as const;
+    root.querySelector('[data-edit-status]')?.replaceChildren(editView.reason?copy[keys[editView.reason]]:editView.result?copy[editView.result==='removed'?'editRemoved':'editRestored']:'');
+    root.querySelector('[data-edit-cancel]')?.replaceChildren(copy.editCancel);root.querySelector('[data-edit-confirm]')?.replaceChildren(copy.editConfirm);
+    root.querySelector('#edit-dialog-title')?.replaceChildren(copy.editTitle);root.querySelector('#edit-dialog-description')?.replaceChildren(copy.editIntro);
+    root.querySelector('[data-edit-object]')?.replaceChildren(removalName);
+    root.querySelector('[data-edit-refund]')?.replaceChildren(copy.editRefund.replace('{n}',String(removal?.refund??0)));
+  }
   const selectionPanel=root.querySelector<HTMLElement>('[data-scene-selection]');
   const selectionStatus=root.querySelector<HTMLOutputElement>('[data-selection-announcement]');
   function renderSelection() {
+    renderEdit();
     if(!selectionPanel)return;
     selectionPanel.hidden=state.status!=='ready'||!selected;
     const button=root.querySelector<HTMLButtonElement>('[data-clear-selection]');if(button)button.textContent=entryMessages[locale].selectionDismiss;
@@ -77,7 +96,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) return;
     const copy = entryMessages[locale];
     panel.lang = locale;
-    if(next.status!=='ready'){selected=null;placement=null;habitatCount=0;access=null;}
+    if(next.status!=='ready'){selected=null;placement=null;habitatCount=0;access=null;editView={canUndo:false,reason:null,result:null};removal=null;if(editDialog?.open)editDialog.close();}
     renderPlacement();
     renderSelection();
     if(cameraControls){cameraControls.hidden=next.status!=='ready';cameraControls.setAttribute('aria-label',copy.cameraControls);}
@@ -126,7 +145,21 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     return (onFailure) => module.mountFoundationScene(host, onFailure,{stateStore:sanctuarySessionFor(root)});
   });
   const controller = createPreviewController(load, render);
-  host.addEventListener('scene-selection-change',event=>{const had=Boolean(selected);selected=(event as CustomEvent<SceneIdentity|null>).detail;renderSelection();if(!selected&&had&&selectionStatus)selectionStatus.value=entryMessages[locale].selectionCleared;},{signal:events.signal});
+  root.querySelector('[data-edit-remove]')?.addEventListener('click',()=>{
+    if(!selected||removal||!editDialog)return;
+    const target:EditTarget=selected.kind==='habitat'?{kind:'habitat',id:selected.id}:{kind:'path',cell:{...selected.cell}};
+    const result=controller.quoteRemoval(target);if(!result)return;
+    if(!result.ok){editView={...editView,reason:result.reason,result:null};renderEdit();return;}
+    controller.placement('cancel');removal=result.quote;removalName=presentSelection(selected,locale).title;renderEdit();
+    editDialog.showModal();controller.setPaused(true);root.querySelector<HTMLElement>('[data-edit-cancel]')?.focus();
+  },{signal:events.signal});
+  function dismissRemoval(){removal=null;if(editDialog?.open)editDialog.close();controller.setPaused(false);if(state.status==='ready')host?.focus({preventScroll:true});}
+  root.querySelector('[data-edit-cancel]')?.addEventListener('click',dismissRemoval,{signal:events.signal});
+  root.querySelector('[data-edit-confirm]')?.addEventListener('click',()=>{const quote=removal;if(!quote)return;dismissRemoval();controller.edit('remove',quote);},{signal:events.signal});
+  editDialog?.addEventListener('close',()=>{removal=null;controller.setPaused(false);},{signal:events.signal});
+  root.querySelector('[data-edit-undo]')?.addEventListener('click',()=>{controller.edit('undo');host?.focus({preventScroll:true});},{signal:events.signal});
+  host.addEventListener('scene-edit-change',event=>{editView=(event as CustomEvent<EditView>).detail;renderEdit();},{signal:events.signal});
+  host.addEventListener('scene-selection-change' ,event=>{const had=Boolean(selected);selected=(event as CustomEvent<SceneIdentity|null>).detail;renderSelection();if(!selected&&had&&selectionStatus)selectionStatus.value=entryMessages[locale].selectionCleared;},{signal:events.signal});
   host.addEventListener('scene-access-change',event=>{access=(event as CustomEvent<AccessSummary>).detail;renderPlacement();},{signal:events.signal});
   host.addEventListener('scene-habitat-change',event=>{habitatCount=(event as CustomEvent<{count:number}>).detail.count;renderPlacement();},{signal:events.signal});
   host.addEventListener('scene-placement-change',event=>{placement=(event as CustomEvent<PlacementView>).detail;renderPlacement();},{signal:events.signal});
@@ -148,7 +181,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     setLocale(value: EntryLocale) { if (!disposed) { locale = value; render(state); } },
     setPaused(value: boolean) { if (!disposed) controller.setPaused(value); },
     close: () => { if (!disposed) controller.close(); },
-    dispose() { if (disposed) return; disposed = true; controller.dispose(); events.abort(); mounted.delete(root); },
+    dispose() { if (disposed) return; disposed = true; controller.dispose();if(editDialog?.open)editDialog.close(); events.abort(); mounted.delete(root); },
     inspect: () => ({ state: controller.getState(), session: controller.inspectSession() }),
   };
 }

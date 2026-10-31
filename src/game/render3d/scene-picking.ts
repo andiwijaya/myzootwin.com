@@ -35,6 +35,7 @@ export function createScenePicker(catalog:SceneCatalog,camera:Camera,rect:()=>Pi
   }
   return {group,geometries:[outline.geometry,fill.geometry],materials:[...outlineMaterials,fill.material],
     pick(point:{x:number;y:number}) {if(enabled&&!disposed)select(raycastScene(catalog,camera,point,rect(),raycaster));},
+    selection:()=>current?structuredClone(current):null,
     clear(){select(null);},
     refresh(){if(current){const next=catalog.identities.get(current.id);select(next?{...next,cell:{...next.cell}}:null,true);}},
     setEnabled(value:boolean){enabled=value;},

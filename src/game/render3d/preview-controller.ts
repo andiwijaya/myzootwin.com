@@ -1,3 +1,4 @@
+import type {EditTarget,RemovalQuote,EditView} from '../world/editing.ts';
 import type { PlacementCommand } from '../world/placement-preview.ts';
 import type { CameraCommand } from './camera-navigation.ts';
 export type PreviewFailureKind = 'unsupported' | 'load' | 'init' | 'context-lost' | 'render';
@@ -15,6 +16,8 @@ export interface PreviewSession {
   dispose(): void;
   camera?(command:CameraCommand):void;
   clearSelection?():void;
+  quoteRemoval?(target:EditTarget):{ok:true;quote:RemovalQuote}|{ok:false;reason:NonNullable<EditView['reason']>};
+  edit?(command:'remove'|'undo',quote?:RemovalQuote):void;
   placement?(command:PlacementCommand,revision?:number):void;
   setPaused?(paused: boolean): void;
   inspect?(): Record<string, number | boolean>;
@@ -74,6 +77,8 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     inspectSession: () => session?.inspect?.(),
     camera(command:CameraCommand) {if(!paused&&state.status==='ready')session?.camera?.(command);},
     clearSelection(){if(!paused&&state.status==='ready')session?.clearSelection?.();},
+    quoteRemoval:(target:EditTarget)=>!paused&&state.status==='ready'?session?.quoteRemoval?.(target):undefined,
+    edit(command:'remove'|'undo',quote?:RemovalQuote){if(!paused&&state.status==='ready')session?.edit?.(command,quote);},
     placement(command:PlacementCommand,revision?:number){if(!paused&&state.status==='ready')session?.placement?.(command,revision);},
   };
 }

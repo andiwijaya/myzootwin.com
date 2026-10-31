@@ -64,6 +64,9 @@ import { english as copy } from '../game-entry/locale';
         <button type="button" data-placement-command="begin">{copy.placementStart}</button>
         <button type="button" data-placement-command="begin-path">{copy.pathStart}</button>
         <p data-access-status role="status" aria-live="polite"></p>
+        <button type="button" data-edit-undo hidden>{copy.editUndo}</button>
+        <p data-entry-text="editHint">{copy.editHint}</p>
+        <p data-edit-status role="status" aria-live="polite"></p>
         <div data-placement-edit hidden>
           <h3 id="placement-title" data-placement-text="placementTitle">{copy.placementTitle}</h3>
           <p data-placement-text="placementHint">{copy.placementHint}</p>
@@ -81,6 +84,7 @@ import { english as copy } from '../game-entry/locale';
       <section class="scene-selection" data-scene-selection aria-labelledby="scene-selection-title" hidden>
         <div><h3 id="scene-selection-title" data-selection-title></h3><button type="button" data-clear-selection>{copy.selectionDismiss}</button></div>
         <p data-selection-location></p><p data-selection-detail></p>
+        <button type="button" data-edit-remove hidden>{copy.editRemove}</button>
       </section>
       <output class="selection-announcement" data-selection-announcement aria-live="polite" aria-atomic="true"></output>
       <figcaption data-preview-caption>{copy.artCaption}</figcaption>
@@ -94,6 +98,14 @@ import { english as copy } from '../game-entry/locale';
     </figure>
   </div>
 
+  <dialog data-edit-dialog aria-labelledby="edit-dialog-title" aria-describedby="edit-dialog-description edit-dialog-refund">
+    <h2 id="edit-dialog-title" tabindex="-1" data-entry-text="editTitle">{copy.editTitle}</h2>
+    <p data-edit-object></p>
+    <p id="edit-dialog-description" data-entry-text="editIntro">{copy.editIntro}</p>
+    <p id="edit-dialog-refund" data-edit-refund></p>
+    <button type="button" class="dialog-close" data-edit-cancel>{copy.editCancel}</button>
+    <button type="button" class="dialog-close" data-edit-confirm>{copy.editConfirm}</button>
+  </dialog>
   <dialog id="play-help" aria-labelledby="play-help-title">
     <h2 id="play-help-title" tabindex="-1" data-dialog-heading data-entry-text="helpTitle">{copy.helpTitle}</h2>
     <p data-entry-text="helpIntro">{copy.helpIntro}</p>

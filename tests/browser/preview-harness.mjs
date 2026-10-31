@@ -1,3 +1,4 @@
+import{runEditingDomScenarios}from'./editing-dom-scenarios.mjs';
 import{runPathDomScenarios}from'./path-dom-scenarios.mjs';
 import {sanctuarySessionFor} from '../../src/game/core/session-state.ts';
 import {runPlacementDomScenarios} from './placement-dom-scenarios.mjs';
@@ -35,6 +36,7 @@ function factory(onFailure){
     camera:value=>native.camera?.(value),
     clearSelection:()=>native.clearSelection?.(),
     placement:(command,revision)=>native.placement?.(command,revision),
+    quoteRemoval:target=>native.quoteRemoval?.(target),edit:(command,quote)=>native.edit?.(command,quote),
     inspect:()=>native.inspect?.(),
     dispose(){if(ended)return;ended=true;native.dispose();active--;disposed++;lastDisposed=native.inspect?.();update();},
   };
@@ -74,6 +76,9 @@ placementRun.addEventListener('click',async()=>{let result;try{result=await runP
 const pathRun=document.createElement('button');pathRun.id='qa-path';pathRun.textContent='Run injected path checks';document.querySelector('#qa-placement').after(pathRun);
 const pathOutput=document.createElement('output');pathOutput.id='qa-path-results';pathRun.after(pathOutput);
 pathRun.addEventListener('click',async()=>{let result;try{result=await runPathDomScenarios(root,()=>handle?.inspect().session,value=>handle?.setPaused(value),value=>{locale=value;handle?.setLocale(value);});}catch(error){result={status:'FAIL',error:String(error)};}pathOutput.textContent=JSON.stringify(result);update();});
+const editRun=document.createElement('button');editRun.id='qa-edit';editRun.textContent='Run injected editing checks';pathRun.after(editRun);
+const editOutput=document.createElement('output');editOutput.id='qa-edit-results';editRun.after(editOutput);
+editRun.addEventListener('click',async()=>{let result;try{result=await runEditingDomScenarios(root,()=>handle?.inspect().session,value=>{locale=value;handle?.setLocale(value);});}catch(error){result={status:'FAIL',error:String(error)};}editOutput.textContent=JSON.stringify(result);update();});
 const observer=new MutationObserver(update);
 observer.observe(root,{subtree:true,childList:true,attributes:true,attributeFilter:['data-renderer-state']});
 const onVisibility=()=>{if(document.hidden){endProbe('ABORTED_HIDDEN');update();}};

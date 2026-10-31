@@ -3,6 +3,23 @@ export type EntryLocale = 'en' | 'id';
 export const ENTRY_PREFERENCES_KEY = 'myzootwin.entry.preferences.v1';
 
 export const english = {
+  editRemove: 'Remove selected object',
+  editUndo: 'Undo last removal',
+  editTitle: 'Remove this object?',
+  editIntro: 'The object and its occupied cells will be removed. Removing a path may disconnect the habitat. You can undo this removal until the next successful build or edit.',
+  editRefund: 'Refund: {n} ZC. Current preview construction is free, so its refund is 0 ZC.',
+  editConfirm: 'Remove object',
+  editCancel: 'Keep object',
+  editHint: 'To correct a misplaced object, select it, remove it, then build in a new location. Changes and Undo last only while this page stays open.',
+  editRemoved: 'Object removed. Occupancy and path access updated. Undo is available.',
+  editRestored: 'Object restored. Its original occupancy and path access have been recalculated.',
+  editMissing: 'This object no longer exists. Select it again.',
+  editProtected: 'The entrance path cannot be removed.',
+  editInUse: 'Move animals, facilities or visitors away before removing this object.',
+  editStale: 'The world changed. Select the object again; no change was made.',
+  editFunds: 'This transaction cannot be completed safely with the current coins or ledger. No change was made.',
+  editCommand: 'This edit cannot be completed. No change was made.',
+
   pageTitle: 'Play Zoo — Tropical Creek | MyZooTwin',
   description: 'Visit the Tropical Creek sanctuary preview. Read the guide and choose your language while the playable zoo is being prepared.',
   status: 'Development preview',
@@ -116,6 +133,23 @@ export type EntryMessage = keyof typeof english;
 export const entryMessages: Record<EntryLocale, Record<EntryMessage, string>> = {
   en: english,
   id: {
+  editRemove: 'Hapus objek terpilih',
+  editUndo: 'Batalkan penghapusan terakhir',
+  editTitle: 'Hapus objek ini?',
+  editIntro: 'Objek dan sel yang ditempatinya akan dihapus. Menghapus jalan dapat memutus akses habitat. Penghapusan ini dapat dibatalkan hingga pembangunan atau penyuntingan berikutnya berhasil.',
+  editRefund: 'Pengembalian: {n} ZC. Konstruksi pratinjau saat ini gratis, sehingga pengembaliannya 0 ZC.',
+  editConfirm: 'Hapus objek',
+  editCancel: 'Pertahankan objek',
+  editHint: 'Untuk memperbaiki salah tempat, pilih objek, hapus, lalu bangun di lokasi baru. Perubahan dan pembatalan hanya bertahan selama halaman ini terbuka.',
+  editRemoved: 'Objek dihapus. Occupancy dan akses jalan diperbarui. Penghapusan dapat dibatalkan.',
+  editRestored: 'Objek dipulihkan. Occupancy semula dan akses jalannya telah dihitung ulang.',
+  editMissing: 'Objek ini sudah tidak ada. Pilih kembali objeknya.',
+  editProtected: 'Jalan di pintu masuk tidak dapat dihapus.',
+  editInUse: 'Pindahkan satwa, fasilitas, atau pengunjung terlebih dahulu sebelum menghapus objek ini.',
+  editStale: 'Dunia telah berubah. Pilih kembali objeknya; tidak ada perubahan dilakukan.',
+  editFunds: 'Transaksi ini tidak dapat diselesaikan dengan aman dengan koin atau ledger saat ini. Tidak ada perubahan dilakukan.',
+  editCommand: 'Penyuntingan ini tidak dapat diselesaikan. Tidak ada perubahan dilakukan.',
+
     pageTitle: 'Main Zoo — Tropical Creek | MyZooTwin',
     description: 'Kunjungi pratinjau suaka Tropical Creek. Baca panduan dan pilih bahasa sambil menunggu permainan kebun binatang siap.',
     status: 'Pratinjau pengembangan',

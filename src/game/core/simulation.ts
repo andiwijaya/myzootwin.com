@@ -1,3 +1,5 @@
+import {editLedger,refundable} from '../economy/refunds.ts';
+import {quoteRemoval,removedWorld,sameWorld,targetId,type EditTarget,type RemovalQuote,type EditorState} from '../world/editing.ts';
 import {preparePath,reconcilePathAccess,accessSummary} from '../world/paths.ts';
 import {prepareHabitat} from '../world/build-habitat.ts';
 import type {Point} from './state.ts';
@@ -9,13 +11,16 @@ import { MAX_TICK, TICK_MS, type ZooSaveV1 } from './state.ts';
 import { validateSave } from '../persistence/save-v1.ts';
 
 /** Fixed time plus atomic habitat occupancy. Care/money/mission rules remain later features. */
-export function createSimulation(initial: ZooSaveV1 = createInitialState()) {
+export function createSimulation(initial: ZooSaveV1 = createInitialState(), savedEditor?:EditorState) {
   const checked=validateSave(initial);
   if(!checked.ok)throw new Error(`Invalid initial state at ${checked.path}`);
   const reconciled=reconcilePathAccess(checked.value.world);
   const baseline={...checked.value,world:reconciled.world};
   let topology=reconciled.topology;
   let state=structuredClone(baseline);
+  let editor:EditorState={revision:0,undo:null};
+  if(savedEditor&&Number.isSafeInteger(savedEditor.revision)&&savedEditor.revision>=0&&savedEditor.revision<Number.MAX_SAFE_INTEGER){editor=structuredClone(savedEditor);if(editor.undo&&!sameWorld(editor.undo.after,state.world))editor.undo=null;}
+  const invalidateEdit=()=>{editor={revision:editor.revision+1,undo:null};};
   let disposed=false;
   let lastFrame:number|null=null;
   const bus=createEventBus<SimulationEvent>();
@@ -40,22 +45,48 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState()) {
       if(disposed||clock.inspect().paused)return {ok:false as const,reason:'command' as const};
       const prepared=prepareHabitat(state.world,anchor,operationId);
       if(!prepared.ok)return prepared;
-      if(!prepared.duplicate){const connected=reconcilePathAccess(prepared.world);const next=validateSave({...state,world:connected.world});if(!next.ok)return {ok:false as const,reason:'command' as const};state=next.value;topology=connected.topology;bus.emit(Object.freeze({type:'habitat-built',habitatId:prepared.habitatId,tick:state.tick,gameTimeMs:state.gameTimeMs}));}
+      if(!prepared.duplicate){const connected=reconcilePathAccess(prepared.world);const next=validateSave({...state,world:connected.world});if(!next.ok)return {ok:false as const,reason:'command' as const};state=next.value;topology=connected.topology;invalidateEdit();bus.emit(Object.freeze({type:'habitat-built',habitatId:prepared.habitatId,tick:state.tick,gameTimeMs:state.gameTimeMs}));}
       return {ok:true as const,habitatId:prepared.habitatId,duplicate:prepared.duplicate};
     },
     buildPath(cell:Point){
       if(disposed||clock.inspect().paused)return {ok:false as const,reason:'command' as const};
       const prepared=preparePath(state.world,cell);if(!prepared.ok)return prepared;
-      if(!prepared.duplicate){const connected=reconcilePathAccess(prepared.world);const next=validateSave({...state,world:connected.world});if(!next.ok)return {ok:false as const,reason:'command' as const};state=next.value;topology=connected.topology;bus.emit(Object.freeze({type:'path-built',cell:{...cell},tick:state.tick,gameTimeMs:state.gameTimeMs}));}
+      if(!prepared.duplicate){const connected=reconcilePathAccess(prepared.world);const next=validateSave({...state,world:connected.world});if(!next.ok)return {ok:false as const,reason:'command' as const};state=next.value;topology=connected.topology;invalidateEdit();bus.emit(Object.freeze({type:'path-built',cell:{...cell},tick:state.tick,gameTimeMs:state.gameTimeMs}));}
       return {ok:true as const,duplicate:prepared.duplicate};
+    },
+    editorSnapshot:()=>structuredClone(editor),
+    quoteRemoval:(target:EditTarget)=>quoteRemoval(state,target,editor.revision),
+    remove(quote:RemovalQuote,operationId:string){
+      if(disposed||clock.inspect().paused)return {ok:false as const,reason:'command' as const};
+      if(quote.revision!==editor.revision)return {ok:false as const,reason:'stale' as const};
+      const checked=quoteRemoval(state,quote.target,editor.revision);if(!checked.ok)return checked;
+      const transaction=editLedger(state,operationId,refundable(state,targetId(quote.target)).map(r=>({kind:'refund' as const,relatedId:r.paidId,amount:r.amount})));
+      if(!transaction)return {ok:false as const,reason:'funds' as const};
+      const connected=reconcilePathAccess(removedWorld(state.world,quote.target));
+      const next=validateSave({...state,world:connected.world,currency:transaction.currency,ledger:transaction.ledger});
+      if(!next.ok)return {ok:false as const,reason:'command' as const};
+      editor={revision:editor.revision+1,undo:{before:structuredClone(state.world),after:structuredClone(connected.world),refundIds:transaction.entries.map(e=>e.id)}};
+      state=next.value;topology=connected.topology;bus.emit(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));
+      return {ok:true as const};
+    },
+    undo(operationId:string){
+      if(disposed||clock.inspect().paused)return {ok:false as const,reason:'command' as const};
+      const undo=editor.undo;if(!undo||!sameWorld(undo.after,state.world))return {ok:false as const,reason:'stale' as const};
+      const refunds=undo.refundIds.map(id=>state.ledger.find(e=>e.id===id));
+      if(refunds.some(e=>!e||e.kind!=='refund'))return {ok:false as const,reason:'command' as const};
+      const transaction=editLedger(state,operationId,refunds.map(e=>({kind:'restore' as const,relatedId:e!.id,amount:-e!.amount})));
+      if(!transaction)return {ok:false as const,reason:'funds' as const};
+      const connected=reconcilePathAccess(undo.before),next=validateSave({...state,world:connected.world,currency:transaction.currency,ledger:transaction.ledger});
+      if(!next.ok)return {ok:false as const,reason:'command' as const};
+      state=next.value;topology=connected.topology;invalidateEdit();bus.emit(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};
     },
     pathTopology:()=>structuredClone(topology),
     access:()=>accessSummary(topology),
     subscribe: bus.subscribe,
     snapshot: ()=>structuredClone(state),
     setPaused(value:boolean) { if(clock.inspect().paused!==value) { lastFrame=null; clock.setPaused(value); } },
-    reset() { if(disposed)return; state=structuredClone(baseline);topology=reconcilePathAccess(state.world).topology; lastFrame=null; clock.reset(); bus.emit(Object.freeze({type:'reset',tick:state.tick,gameTimeMs:state.gameTimeMs})); },
+    reset() { if(disposed)return; state=structuredClone(baseline);invalidateEdit();topology=reconcilePathAccess(state.world).topology; lastFrame=null; clock.reset(); bus.emit(Object.freeze({type:'reset',tick:state.tick,gameTimeMs:state.gameTimeMs})); },
     dispose() { if(disposed)return; disposed=true; lastFrame=null; clock.dispose(); bus.dispose(); },
-    inspect: ()=>({tick:state.tick,gameTimeMs:state.gameTimeMs,randomState:state.randomState,currency:state.currency,birdCount:state.animals.length,pathTiles:topology.pathTiles,reachablePathTiles:topology.reachable.length,connectedHabitats:topology.habitats.filter(h=>h.connected).length,routeCells:accessSummary(topology).routeCells,habitatCount:state.world.habitats.length,occupiedTiles:state.world.tiles.filter(t=>t.occupantId!==null).length,...clock.inspect(),subscribers:bus.inspect().subscribers,listenerErrors:bus.inspect().listenerErrors}),
+    inspect: ()=>({editorRevision:editor.revision,canUndo:Boolean(editor.undo),tick:state.tick,gameTimeMs:state.gameTimeMs,randomState:state.randomState,currency:state.currency,birdCount:state.animals.length,pathTiles:topology.pathTiles,reachablePathTiles:topology.reachable.length,connectedHabitats:topology.habitats.filter(h=>h.connected).length,routeCells:accessSummary(topology).routeCells,habitatCount:state.world.habitats.length,occupiedTiles:state.world.tiles.filter(t=>t.occupantId!==null).length,...clock.inspect(),subscribers:bus.inspect().subscribers,listenerErrors:bus.inspect().listenerErrors}),
   };
 }

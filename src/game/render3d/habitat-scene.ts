@@ -5,8 +5,13 @@ import type {SceneCatalog} from './scene-selection.ts';
 /** Original compact enclosed aviary. Birds/resources/paths are deliberately not fabricated. */
 export function createHabitatScene(catalog:SceneCatalog,register:(geometry:BufferGeometry,material:MeshStandardMaterial|LineBasicMaterial)=>void){
   const group=new Group();group.name='Constructed macaw habitat';let ids:string[]=[],disposed=false;
+  const wood=new Mesh(new BufferGeometry(),new MeshStandardMaterial({vertexColors:true,roughness:1}));
+  const wire=new LineSegments(new BufferGeometry(),new LineBasicMaterial({color:'#57735e',transparent:true,opacity:.34,depthWrite:false}));
+  register(wood.geometry,wood.material);register(wire.geometry,wire.material);
+  function clear(){for(const id of ids){catalog.identities.delete(id);catalog.bounds.delete(id);}catalog.batches=catalog.batches.filter(b=>b.mesh!==wood);ids=[];group.clear();wood.geometry.dispose();wire.geometry.dispose();}
   function sync(world:WorldState){
     if(disposed)return;
+    if(ids.length&&(!world.habitats.length||world.habitats[0].id!==ids[0]))clear();
     for(const habitat of world.habitats){
       if(ids.includes(habitat.id))continue;
       const ordinal=ids.length+1,minX=Math.min(...habitat.cells.map(c=>c.x)),minZ=Math.min(...habitat.cells.map(c=>c.z));
@@ -24,7 +29,7 @@ export function createHabitatScene(catalog:SceneCatalog,register:(geometry:Buffe
       for(const dx of [-.27,.27])box('#654c32',[x+dx,.59,z+.96],[.04,1,.035]);
       for(const y of [.19,1.02])box('#654c32',[x,y,z+.96],[.58,.04,.035]);
       box('#e5bc65',[x+.18,.59,z+.982],[.07,.045,.025]);
-      const mesh=new Mesh(batch.geometry(),new MeshStandardMaterial({vertexColors:true,roughness:1}));mesh.name=habitat.id;group.add(mesh);register(mesh.geometry,mesh.material);
+      const mesh=wood,next=batch.geometry();mesh.geometry.dispose();mesh.geometry.copy(next);next.dispose();mesh.name=habitat.id;group.add(mesh);
       catalog.batches.push({mesh,ranges:batch.ranges});
       const bounds=new Box3(new Vector3(x-1,.035,z-1),new Vector3(x+1,1.18,z+1));
       catalog.identities.set(habitat.id,{id:habitat.id,category:'object',kind:'habitat',ordinal,cell:{x:minX,z:minZ}});catalog.bounds.set(habitat.id,bounds);
@@ -37,9 +42,9 @@ export function createHabitatScene(catalog:SceneCatalog,register:(geometry:Buffe
       }
       for(let j=0;j<=4;j++){const y=.19+j*.225;for(const side of [-.94,.94]){line([x-.94,y,z+side],[x+.94,y,z+side]);line([x+side,y,z-.94],[x+side,y,z+.94]);}}
       const netGeometry=new BufferGeometry();netGeometry.setAttribute('position',new Float32BufferAttribute(lines,3));
-      const net=new LineSegments(netGeometry,new LineBasicMaterial({color:'#57735e',transparent:true,opacity:.34,depthWrite:false}));net.name='Enclosing wire and roof';group.add(net);register(netGeometry,net.material);
+      const net=wire;net.geometry.dispose();net.geometry.copy(netGeometry);netGeometry.dispose();net.name='Enclosing wire and roof';group.add(net);
       ids.push(habitat.id);group.updateMatrixWorld(true);
     }
   }
-  return {group,sync,dispose(){if(disposed)return;disposed=true;for(const id of ids){catalog.identities.delete(id);catalog.bounds.delete(id);}catalog.batches=catalog.batches.filter(b=>!ids.includes(b.mesh.name));group.clear();},inspect:()=>({habitatMeshes:disposed?0:ids.length,habitatSceneDisposed:disposed})};
+  return {group,sync,dispose(){if(disposed)return;disposed=true;clear();},inspect:()=>({habitatMeshes:disposed?0:ids.length,habitatSceneDisposed:disposed})};
 }
