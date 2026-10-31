@@ -1,0 +1,188 @@
+{
+  "schema_version": 1,
+  "audited_at": "2026-10-31",
+  "baseline_commit": "3b06c6d8d2a920ad5894868059885c98a58217a6",
+  "scope": "M0-03 inventory/model decision only; no application or production change",
+  "assets": [
+    {
+      "path": "public/images/myzootwin-beranda.png",
+      "bytes": 3001357,
+      "sha256": "fd57bc337641b07eeae40a053e3db1032af805a553ecdddf81c99bcc2dc9e3b5",
+      "format": "PNG",
+      "dimensions": [
+        1024,
+        1536
+      ],
+      "mode": "RGB",
+      "metadata_keys": [],
+      "id": "journal_hero",
+      "origin": "existing_repo_initial_ad20f2b",
+      "rights_status": "unverified_existing_media",
+      "provenance_evidence": "No PNG metadata, asset attribution or repository license establishes source/ownership.",
+      "visual_inspection": "Original image opened and inspected; existing journal illustration.",
+      "usage_decision": "Preserve existing journal use and bytes; not selected for new game textures/model/export pack.",
+      "attribution": "Unknown; confirmation needed before independent redistribution."
+    },
+    {
+      "path": "public/favicon.svg",
+      "bytes": 328,
+      "sha256": "1e37371684103082a4662d9cd3c224c4c4f424ba0bbd0d53f55a1cc8572fef76",
+      "id": "site_favicon",
+      "origin": "existing_repo_initial_ad20f2b",
+      "rights_status": "unverified_existing_svg",
+      "provenance_evidence": "Source inspected; no external notice found; repository presence is not a license.",
+      "usage_decision": "Retain existing site integration; do not export as a separately licensed asset."
+    },
+    {
+      "path": "public/robots.txt",
+      "bytes": 73,
+      "sha256": "91803eeb5a8dbbbae903fce53e66d6f5856f8e0894e7d7d21465c532381dd147",
+      "id": "site_robots",
+      "origin": "existing_site_configuration",
+      "rights_status": "not_an_art_asset",
+      "usage_decision": "Preserve crawler configuration."
+    },
+    {
+      "id": "font_dm_sans",
+      "origin": "existing_external_google_fonts_css_import",
+      "local_binary": null,
+      "bytes": null,
+      "size_note": "Remote/user-agent-dependent transfer not measured, not zero.",
+      "family": "DM Sans",
+      "weights": [
+        400,
+        500,
+        600,
+        700
+      ],
+      "license": "SIL-OFL-1.1",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/main/ofl/dmsans/OFL.txt",
+      "rights_status": "upstream_license_verified_2026-10-31",
+      "attribution": "Retain DM Sans upstream copyright and license if vendoring; respect reserved-name conditions.",
+      "usage_decision": "Existing integration unchanged; no font binary downloaded or embedded by M0-03."
+    },
+    {
+      "id": "font_playfair_display",
+      "origin": "existing_external_google_fonts_css_import",
+      "local_binary": null,
+      "bytes": null,
+      "size_note": "Remote/user-agent-dependent transfer not measured, not zero.",
+      "family": "Playfair Display",
+      "weights": [
+        600,
+        700,
+        800
+      ],
+      "license": "SIL-OFL-1.1",
+      "license_source": "https://raw.githubusercontent.com/google/fonts/main/ofl/playfairdisplay/OFL.txt",
+      "rights_status": "upstream_license_verified_2026-10-31",
+      "reserved_font_name": "Playfair Display",
+      "attribution": "Retain upstream copyright/license if vendoring; modified-font naming restrictions apply.",
+      "usage_decision": "Existing integration unchanged; no font binary downloaded or embedded by M0-03."
+    },
+    {
+      "id": "macaw_original_study",
+      "path": "art/studies/macaw-m0-03/study/macaw-study.glb",
+      "origin": "original_project_authored_procedural_geometry_2026-10-31",
+      "rights_status": "original_project_work_no_external_asset_inputs",
+      "license_note": "No third-party art/model license required for this authored geometry; no repository-wide or public open-source license assigned.",
+      "attribution": "MyZooTwin original procedural study authored with Codex in this task; sources below supply factual checks only.",
+      "species_id": "blue_yellow_macaw",
+      "scientific_name": "Ara ararauna",
+      "bytes": 189816,
+      "sha256": "632a1f729d38b8481cb32ed32ec823faff6d3d8cc5f7f554f4f17b08a4219988",
+      "triangles": 2028,
+      "rigid_groups": 8,
+      "materials": 1,
+      "textures": 0,
+      "animations": 0,
+      "external_asset_inputs": [],
+      "usage_decision": "Selected model approach for one species/two animals; study only, not loaded by site and not final M2-01 art.",
+      "future_reuse": "Load one model; share geometry/material buffers across two independently transformed animal instances.",
+      "validation_limits": [
+        "No official glTF validator run",
+        "No WebGL/GLB loader test",
+        "No final animation/quality/mobile FPS pass"
+      ]
+    },
+    {
+      "id": "tropical_environment_plan",
+      "origin": "planned_original_procedural_work",
+      "path": null,
+      "bytes": null,
+      "rights_status": "not_yet_created_no_external_asset_selected",
+      "usage_decision": "Original terrain/creek/vegetation/path/perch/fence/resource props in later slices; no marketplace model copied."
+    },
+    {
+      "id": "optional_audio_plan",
+      "origin": "not_selected",
+      "path": null,
+      "bytes": null,
+      "rights_status": "none_downloaded_or_claimed",
+      "usage_decision": "Optional original synthesis/recording or separately verified compatible source later; respect mute and browser gesture requirements."
+    }
+  ],
+  "direct_package_notice_spot_checks": [
+    {
+      "name": "astro",
+      "version": "5.18.2",
+      "license": "MIT",
+      "notice_files": [
+        {
+          "name": "LICENSE",
+          "sha256": "4aa72be797aad0e5e21827eaae6a1df9e122d7a401f07d2c308a6b9a5f0e1278"
+        }
+      ]
+    },
+    {
+      "name": "typescript",
+      "version": "5.9.3",
+      "license": "Apache-2.0",
+      "notice_files": [
+        {
+          "name": "LICENSE.txt",
+          "sha256": "a7d00bfd54525bc694b6e32f64c7ebcf5e6b7ae3657be5cc12767bce74654a47"
+        }
+      ]
+    },
+    {
+      "name": "@astrojs/check",
+      "version": "0.9.10",
+      "license": "MIT",
+      "notice_files": [
+        {
+          "name": "LICENSE",
+          "sha256": "4aa72be797aad0e5e21827eaae6a1df9e122d7a401f07d2c308a6b9a5f0e1278"
+        }
+      ]
+    },
+    {
+      "name": "@astrojs/sitemap",
+      "version": "3.7.4",
+      "license": "MIT",
+      "notice_files": [
+        {
+          "name": "LICENSE",
+          "sha256": "4aa72be797aad0e5e21827eaae6a1df9e122d7a401f07d2c308a6b9a5f0e1278"
+        }
+      ]
+    }
+  ],
+  "full_transitive_license_audit_complete": false,
+  "primary_species_sources": [
+    "https://www.fws.gov/species/blue-and-yellow-macaw-ara-ararauna",
+    "https://www.zoonewengland.org/stone-zoo/animals/birds/blue-and-yellow-macaw/",
+    "https://www.torontozoo.com/animals/Blue%20and%20yellow%20macaw"
+  ],
+  "model_generation_source": "art/studies/macaw-m0-03/build_macaw_study.py",
+  "no_external_model_texture_audio_downloads": true,
+  "new_license_agreements_accepted": false,
+  "original_media_preserved": true,
+  "proposed_final_model_budget": {
+    "shared_model_bytes_max": 500000,
+    "triangles_per_animal_max": 4000,
+    "animals": 2,
+    "required_textures": 0
+  },
+  "performance_note": "Budgets only; actual first-play download <=20 MB and mobile/desktop FPS remain unverified until renderer exists."
+}
