@@ -328,7 +328,7 @@ Dot harus memperjelas typing dan validasi aktual sebelum implementasi; `unknown`
 
 ### M1 — Tiny world + building controls (7)
 
-- [ ] **M1-01** Render small low-poly tropical diorama (tanah, creek, pohon, gate) dengan kamera isometrik. **Verify:** visual screenshot mobile/desktop.
+- [x] **M1-01** Render small low-poly tropical diorama (tanah, creek, pohon, gate) dengan kamera isometrik. **Verify:** visual screenshot mobile/desktop.
 - [ ] **M1-02** Pan/zoom camera dengan mouse dan touch, clamped. **Verify:** gesture &amp; wheel tidak keluar map atau page-scroll tak sengaja.
 - [ ] **M1-03** Scene picking: pilih tile/object, show panel identitas. **Verify:** raycast mouse/touch akurat.
 - [ ] **M1-04** Build-mode preview dengan valid/invalid placement, Confirm/Cancel. **Verify:** cancel no side-effects.
@@ -571,11 +571,11 @@ Golden-path playable: NO / LOCAL ONLY / LIVE VERIFIED
 
 ## Execution status — 2026-10-31 UTC
 
-Verified V1 completion: **7/51 (13.73%)**; M7 **0/12 deferred**. Only M0-02, M0-03, M0-04, M0-05, M0-06, M0-07 and M0-08 are checked complete; M0-01 remains partial.
+Verified V1 completion: **8/51 (15.69%)**; M7 **0/12 deferred**. Only M0-02 through M0-08 and M1-01 are checked complete; M0-01 remains partial.
 
 M0-01 PARTIAL: repo/stack and public routes/SEO/analytics audit recorded in M0-01_AUDIT.md. Documentation checkpoint commit: 3a85cb01843c44fc1d0b56b319b13e69dceec2f3 (local only). Complete source-text transcription alternative is now saved with explicit provenance; no failed Library helper retry or metadata bypass occurred. Existing Wrangler OAuth access independently confirmed the MyZooTwin Pages project/domains, main production deployments, dist output and PUBLIC_GA4_ID variable name. Exact source-repository binding and build command remain unavailable through the supported CLI read surfaces used; see audit evidence and remaining verification gap.
 
-Local /play entry, renderer/fallbacks, ID/EN preferences, typed core/save-codec and repeatable QA now include a measured foundation payload/callback/resource/heap baseline, four-screen matrix and verified bounded artifact retention. No gameplay rules, persisted player save/Continue or production changes. Actual presented FPS, physical Android/true touch, populated-game/network/soak targets, unattended browser driver and full localization are not claimed passed. Next: M1-01 small tropical diorama. M0-01 external configuration verification remains pending and the production release gate stays closed.
+Local /play entry, renderer/fallbacks, ID/EN preferences, typed core/save-codec and repeatable QA now include a measured foundation payload/callback/resource/heap baseline, four-screen matrix and verified bounded artifact retention. No gameplay rules, persisted player save/Continue or production changes. Actual presented FPS, physical Android/true touch, populated-game/network/soak targets, unattended browser driver and full localization are not claimed passed. Next: M1-02 clamped mouse/touch camera pan and zoom. M0-01 external configuration verification remains pending and the production release gate stays closed.
 
 ### M0-02 completion record — 2026-10-31 UTC
 
@@ -644,3 +644,15 @@ Final run20261031T183101Z-7b5049b7: 50/50 unit/integration tests, Astro check35 
 Hygiene: four old generated runs fully archived in two bounded ZIPs (41 files/393,822 compressed bytes), CRC/every-entry hashes verified before exact path/owner-checked dry-run/apply prune. Active cache now newest3 runs; original source/public media/macaw study/PRD transcriptions/historical docs receipts/Git rollback preserved. Measured directories roughly234MB logical including216.7MB dependencies; no filesystem-allocation/future-game-size claim. Owned tabs19/20 closed, viewport reset; PTY stop exited0 and ports4321/4322 independently free.
 
 Remaining limits: physical Android/touch/Safari/iOS, actual presented FPS, real network/startup, populated gameplay/save and soak remain UNRUN future gates. BASE-01/02 and M0-01 exact external Cloudflare config gap persist; no login/new permissions/Actions/push/deploy or public403 retry. M0-01 stays unchecked; the complete M0 milestone is not claimed closed. Next: M1-01 small tropical diorama. Verified V1 progress7/51 (13.73%); M7 deferred.
+
+### M1-01 completion record - 2026-10-31 UTC
+
+Status: COMPLETE for the M1-01 read-only Tropical Creek diorama, 2026-10-31 UTC. Implementation/evidence commit: aae1e065fabae62c61f08c47efd5ea2ed358f9d1 (local only). [Report](M1-01_TROPICAL_DIORAMA.md), [original asset provenance](ASSET_MANIFEST.json), [raw evidence and four screenshots](qa/m1-01/).
+
+Original low-poly land/soil, creek/banks, six palms/four broadleaf trees, rocks/reeds, terracotta entrance and contact shade; fixed orthographic camera fits actual bounds. Initial typed world supplies120 cells/eight creek cells/gate; state unmodified. Six vertex-color batches,4,128 triangles, no external art/download/dependency. Single RAF/core tick retained; water reads fixed simulation time and respects reduced motion. Bilingual preview copy is truthful; controls/building/animals/visitors/gameplay/save remain later features.
+
+Final run20261031T190354Z-32c89857:53/53 unit/integration tests; check38 files0 diagnostics; build9 pages and all9 route/metadata/sitemap regression PASS. Actual built canvas pixels inspected at1366x768/1920x1080/360x780/780x360; four JPEGs335,055 bytes. ID/EN, keyboard Open, Settings, history/reload and injected context/render-failure retry passed. Pause holds tick/visual time, resume advances, max1 session/RAF/subscriber; eight close/remount snapshots return canvas/live GPU counters/owned materials/RAF/subscribers0, cleanupErrors0. Final qa:verify PASS/exit0; owned tabs25/26 closed, viewport reset, graceful serverstop0 and ports4321/4322 free.
+
+Same-basis preview-open579,339 raw/149,821 gzip9-estimate bytes (+3,756/+1,960 versus M0-08), lazy chunk543,537 raw; >500kB warning visible. Active6 geometries/6 materials/4 programs/1 engine texture/6 draws/4,128 triangles. Four five-second probes≈60 RAF callbacks/s and synchronous CPU-submit p95 0.8/1.1/0.9/0.9ms with20 readouts each; actual presented FPS/GPU time UNMEASURED, no physical Android/performance/network/soak claim. Optional post-close heap13,182,293–15,854,500 bytes fluctuates, no retained-memory proof.27 old cache files archived/CRC+every SHA verified (270,084-byte ZIP) before scoped prune; newest3 generated runs retained, prior source/media/evidence/rollback intact. Folder-specific -text preserves hashed QA bytes on future checkout; five newly authored metadata/transcript files normalized to LF after CRLF whitespace finding, no hashed stage/receipt bytes modified.
+
+Known limits: scenery is decorative, later placement must reconcile its bounds; no M1-02 controls/M1-05 habitat or M2 animal claim. BASE-01/02 and M0-01 exact Cloudflare configuration gap remain. No login/new grants/Actions/push/deploy/public403 retry. Next: M1-02 clamped mouse/touch pan and zoom. Verified V1:8/51 (15.69%); M7 deferred.

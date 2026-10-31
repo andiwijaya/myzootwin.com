@@ -2,7 +2,7 @@
 
 Updated: 2026-10-31 UTC. Complete canonical working requirements: MYZOOTWIN_MASTER_PRD_V1.md. Immutable source-text transcriptions and original Library references: SOURCE_PROVENANCE.md. Native Library materialization failed; the explicitly authorized complete source-text alternative is saved and clearly labeled.
 
-Verified V1: **7/51 (13.73%)**. M7 excluded: **12 deferred items**. Local entry/rendering/core/QA plus measured foundation baseline and retention; no gameplay or production changes.
+Verified V1: **8/51 (15.69%)**. M7 excluded: **12 deferred items**. Local entry/rendering/core/QA, measured baseline/retention and original Tropical Creek diorama; no gameplay or production changes.
 
 ## Current checkpoint: M0-01 PARTIAL / BLOCKED
 
@@ -10,7 +10,7 @@ Completed: local/GitHub audit; live route/sitemap/analytics baseline; complete P
 
 Remaining external configuration gap: supported CLI read surfaces used do not expose the exact GitHub source-repository binding or dashboard build command/root-directory/automatic deployment policy. The dashboard browser session requires login; no login/new grants authorized or attempted. README is not proof of these settings. Keep M0-01 unchecked until verified or the parent explicitly accepts the documented audit limit.
 
-M0-02 independently COMPLETE on 2026-10-31. Evidence commit: ec17bd19f4d4292eba269854ac4a512114737b0c (local only). Report: [M0-02_BASELINE.md](M0-02_BASELINE.md); screenshots and structured evidence: [qa/m0-02](qa/m0-02/). Check/build passed; 24 browser route/reload scenarios, navigation/keyboard, responsive screenshots and loopback shutdown verified. Existing BASE-01 mobile heading overflow and BASE-02 low quote contrast are recorded; no app fixes or physical Android/performance/gameplay claims. M0-02 remains complete; M0-03 is now independently complete as recorded below. M0-04 is now complete as recorded below. M0-05 is now complete as recorded below. M0-06 is now complete as recorded below. M0-07 is now complete as recorded below. M0-08 is now complete as recorded below. Next: M1-01 small tropical diorama. M0-01 remains partial; production release stays gated on external configuration verification.
+M0-02 independently COMPLETE on 2026-10-31. Evidence commit: ec17bd19f4d4292eba269854ac4a512114737b0c (local only). Report: [M0-02_BASELINE.md](M0-02_BASELINE.md); screenshots and structured evidence: [qa/m0-02](qa/m0-02/). Check/build passed; 24 browser route/reload scenarios, navigation/keyboard, responsive screenshots and loopback shutdown verified. Existing BASE-01 mobile heading overflow and BASE-02 low quote contrast are recorded; no app fixes or physical Android/performance/gameplay claims. M0-02 remains complete; M0-03 is now independently complete as recorded below. M0-04 is now complete as recorded below. M0-05 is now complete as recorded below. M0-06 is now complete as recorded below. M0-07 is now complete as recorded below. M0-08 is now complete as recorded below. M1-01 is now complete as recorded below. Next: M1-02 clamped mouse/touch pan and zoom. M0-01 remains partial; production release stays gated on external configuration verification.
 
 ## M0-03 COMPLETE — 2026-10-31 UTC
 
@@ -62,6 +62,18 @@ Hygiene: four old generated runs fully archived in two bounded ZIPs (41 files/39
 
 Remaining limits: physical Android/touch/Safari/iOS, actual presented FPS, real network/startup, populated gameplay/save and soak remain UNRUN future gates. BASE-01/02 and M0-01 exact external Cloudflare config gap persist; no login/new permissions/Actions/push/deploy or public403 retry. M0-01 stays unchecked; the complete M0 milestone is not claimed closed. Next: M1-01 small tropical diorama. Verified V1 progress7/51 (13.73%); M7 deferred.
 
+## M1-01 COMPLETE - 2026-10-31 UTC
+
+Status: COMPLETE for the M1-01 read-only Tropical Creek diorama, 2026-10-31 UTC. Implementation/evidence commit: aae1e065fabae62c61f08c47efd5ea2ed358f9d1 (local only). [Report](M1-01_TROPICAL_DIORAMA.md), [original asset provenance](ASSET_MANIFEST.json), [raw evidence and four screenshots](qa/m1-01/).
+
+Original low-poly land/soil, creek/banks, six palms/four broadleaf trees, rocks/reeds, terracotta entrance and contact shade; fixed orthographic camera fits actual bounds. Initial typed world supplies120 cells/eight creek cells/gate; state unmodified. Six vertex-color batches,4,128 triangles, no external art/download/dependency. Single RAF/core tick retained; water reads fixed simulation time and respects reduced motion. Bilingual preview copy is truthful; controls/building/animals/visitors/gameplay/save remain later features.
+
+Final run20261031T190354Z-32c89857:53/53 unit/integration tests; check38 files0 diagnostics; build9 pages and all9 route/metadata/sitemap regression PASS. Actual built canvas pixels inspected at1366x768/1920x1080/360x780/780x360; four JPEGs335,055 bytes. ID/EN, keyboard Open, Settings, history/reload and injected context/render-failure retry passed. Pause holds tick/visual time, resume advances, max1 session/RAF/subscriber; eight close/remount snapshots return canvas/live GPU counters/owned materials/RAF/subscribers0, cleanupErrors0. Final qa:verify PASS/exit0; owned tabs25/26 closed, viewport reset, graceful serverstop0 and ports4321/4322 free.
+
+Same-basis preview-open579,339 raw/149,821 gzip9-estimate bytes (+3,756/+1,960 versus M0-08), lazy chunk543,537 raw; >500kB warning visible. Active6 geometries/6 materials/4 programs/1 engine texture/6 draws/4,128 triangles. Four five-second probes≈60 RAF callbacks/s and synchronous CPU-submit p95 0.8/1.1/0.9/0.9ms with20 readouts each; actual presented FPS/GPU time UNMEASURED, no physical Android/performance/network/soak claim. Optional post-close heap13,182,293–15,854,500 bytes fluctuates, no retained-memory proof.27 old cache files archived/CRC+every SHA verified (270,084-byte ZIP) before scoped prune; newest3 generated runs retained, prior source/media/evidence/rollback intact. Folder-specific -text preserves hashed QA bytes on future checkout; five newly authored metadata/transcript files normalized to LF after CRLF whitespace finding, no hashed stage/receipt bytes modified.
+
+Known limits: scenery is decorative, later placement must reconcile its bounds; no M1-02 controls/M1-05 habitat or M2 animal claim. BASE-01/02 and M0-01 exact Cloudflare configuration gap remain. No login/new grants/Actions/push/deploy/public403 retry. Next: M1-02 clamped mouse/touch pan and zoom. Verified V1:8/51 (15.69%); M7 deferred.
+
 ## V1 checklist (exact task wording from source-text handoff)
 
 - [ ] **M0-01** Audit repo, stack, Cloudflare Pages routing, existing content/SEO, analytics; catat apa yang boleh di-reuse. **Verify:** laporan audit dan baseline routes.
@@ -80,7 +92,7 @@ Remaining limits: physical Android/touch/Safari/iOS, actual presented FPS, real 
 
 - [x] **M0-08** Tetapkan initial performance baseline, screen sizes &amp; artifact hygiene. **Verify:** baseline measurements recorded.
 
-- [ ] **M1-01** Render small low-poly tropical diorama (tanah, creek, pohon, gate) dengan kamera isometrik. **Verify:** visual screenshot mobile/desktop.
+- [x] **M1-01** Render small low-poly tropical diorama (tanah, creek, pohon, gate) dengan kamera isometrik. **Verify:** visual screenshot mobile/desktop.
 
 - [ ] **M1-02** Pan/zoom camera dengan mouse dan touch, clamped. **Verify:** gesture &amp; wheel tidak keluar map atau page-scroll tak sengaja.
 

@@ -1,6 +1,6 @@
 # M1-01 — Tropical Creek Sanctuary diorama
 
-Verified locally on 2026-10-31 UTC. Scope is the exact M1-01 criterion: a small low-poly tropical diorama with land, creek, trees and entrance gate in an isometric view, inspected in actual desktop/mobile browser pixels. Implementation/evidence commit is recorded in the living PRD completion record after the local checkpoint exists. No production changes.
+Verified locally on 2026-10-31 UTC. Scope is the exact M1-01 criterion: a small low-poly tropical diorama with land, creek, trees and entrance gate in an isometric view, inspected in actual desktop/mobile browser pixels. Implementation/evidence commit: `aae1e065fabae62c61f08c47efd5ea2ed358f9d1` (local). Verified V1 progress8/51 (15.69%); M0-01 remains pending. No production changes.
 
 The old diagnostic plinth/marker/ring is replaced by an original code-authored raised soil island, open grass lawn, sandy creek bed, blue water and subtle glints, six palms, four broadleaf trees, rocks/reeds, soft polygon contact shade, and a terracotta-roofed entrance. Colors, silhouettes and perimeter planting form one coherent scene. The actual initial typed world supplies all120 terrain cells, its8 creek cells and gate position; rendering does not alter the state. A fixed orthographic 3/4 camera fits the actual scene bounds at each panel aspect ratio. No gestures, placement, habitat, visitors, animal or gameplay feature is claimed.
 
@@ -44,3 +44,5 @@ Two old generated QA runs archived in full:27 files/270,084 compressed bytes; ZI
 ## Limits and next
 
 M0-01 exact external Cloudflare settings remain pending; no login/new permissions attempted, no public403 retry. No push/deploy/Actions. Physical Android, touch gestures, Safari/iOS, full gameplay, save/Continue, true FPS/network/soak remain untested future gates. **Next: M1-02 clamped mouse/touch pan and zoom**, not started. Do not count later controls/building/animals/gameplay as completed by this scene.
+
+QA archive portability: folder-specific `-text` preserves exact hashed log/receipt bytes in Git. A post-stage CRLF whitespace finding in five newly authored metadata/transcript files was corrected to LF; original hashed logs/receipt remained unchanged. Final staged whitespace checks passed before the documentation checkpoint.
