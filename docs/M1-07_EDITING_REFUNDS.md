@@ -1,6 +1,6 @@
 # M1-07 — Editing, removal and bounded refunds
 
-Status: COMPLETE locally, 2026-10-31 UTC. Implementation/evidence commit is recorded in the living completion record. Production has not been pushed or deployed.
+Status: COMPLETE locally, 2026-10-31 UTC. Implementation/evidence commit: 774f5ba639936039db73d8101a95dcec47f754bb (local only). Production has not been pushed or deployed.
 
 Selecting a constructed path or habitat exposes **Remove selected object**. A native modal names the object, explains the consequence and exact refund, focuses **Keep object** first, traps keyboard focus and pauses the renderer/simulation. Cancel or native Escape leaves authoritative data unchanged. Confirm commits one revision-checked removal; repeated/stale confirmation cannot remove a later replacement. Removed occupancy, catalog identities, selection/ghosts and derived viewing routes update together. Original gate path and scenery are protected; referenced animals/facilities or active visitor routes prevent removal rather than orphaning future data.
 
