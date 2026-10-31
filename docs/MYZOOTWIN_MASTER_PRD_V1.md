@@ -316,7 +316,7 @@ Dot harus memperjelas typing dan validasi aktual sebelum implementasi; `unknown`
 ### M0 — Existing-site audit &amp; safe foundation (8)
 
 - [ ] **M0-01** Audit repo, stack, Cloudflare Pages routing, existing content/SEO, analytics; catat apa yang boleh di-reuse. **Verify:** laporan audit dan baseline routes.
-- [ ] **M0-02** Ambil baseline screenshots &amp; browser smoke existing homepage, navigation, mobile; kumpulkan rollback plan. **Verify:** snapshot dan baseline tests.
+- [x] **M0-02** Ambil baseline screenshots &amp; browser smoke existing homepage, navigation, mobile; kumpulkan rollback plan. **Verify:** snapshot dan baseline tests.
 - [ ] **M0-03** Asset inventory + licenses + visual target; pilih model satu spesies burung tropis yang feasible dan legal. **Verify:** manifest asset, ukuran, attribution.
 - [ ] **M0-04** Buat route `/play`, start screen, navigasi &amp; link dari site tanpa merusak routes lain. **Verify:** reload direct URL /play + original URLs.
 - [ ] **M0-05** Setup 3D canvas, loading, WebGL failure state; no blank screen. **Verify:** desktop/mobile render &amp; negative test.
@@ -571,8 +571,16 @@ Golden-path playable: NO / LOCAL ONLY / LIVE VERIFIED
 
 ## Execution status — 2026-10-31 UTC
 
-Verified V1 completion: **0/51 (0.00%)**; M7 **0/12 deferred**. All feature checkboxes remain unchecked.
+Verified V1 completion: **1/51 (1.96%)**; M7 **0/12 deferred**. Only M0-02 is checked complete; M0-01 remains partial.
 
 M0-01 PARTIAL: repo/stack and public routes/SEO/analytics audit recorded in M0-01_AUDIT.md. Documentation checkpoint commit: 3a85cb01843c44fc1d0b56b319b13e69dceec2f3 (local only). Complete source-text transcription alternative is now saved with explicit provenance; no failed Library helper retry or metadata bypass occurred. Existing Wrangler OAuth access independently confirmed the MyZooTwin Pages project/domains, main production deployments, dist output and PUBLIC_GA4_ID variable name. Exact source-repository binding and build command remain unavailable through the supported CLI read surfaces used; see audit evidence and remaining verification gap.
 
-No app code, route, dependency, or production changes. No browser screenshot/mobile pass, gameplay test or performance claim. Next: finish M0-01 configuration verification if a supported existing-authorized read route is available; independently prepare M0-02 existing-site browser baseline and rollback plan without changing app code or claiming M0-01 complete.
+No app code, route, dependency, or production changes. M0-02 browser baseline is complete as recorded below; no gameplay, physical Android, true-touch or performance pass is claimed. Next: M0-03 asset inventory/licenses/visual target. M0-01 external configuration verification remains pending and the production release gate stays closed.
+
+### M0-02 completion record — 2026-10-31 UTC
+
+Status: COMPLETE as an existing-site baseline and rollback-plan task. Evidence commit: ec17bd19f4d4292eba269854ac4a512114737b0c (local only). Report: [M0-02_BASELINE.md](M0-02_BASELINE.md); structured route/keyboard/console evidence and eight actual screenshots: [qa/m0-02](qa/m0-02/).
+
+Verification: npm run check (0 errors/warnings/hints), npm run build (8 pages), 24 browser direct-route/reload scenarios across public desktop/public portrait/local desktop, header/CTA/keyboard navigation, visual portrait/landscape/desktop captures, unchanged application/media diff, and loopback preview shutdown verified. Screenshot files total 667,094 bytes; requested CSS sizes and actual capture pixels are distinguished in the manifest.
+
+Known pre-existing issues: BASE-01 /animals/ horizontal overflow at 360px (document 387px); BASE-02 journal quote contrast about 1.63:1. No application fixes were made. No physical Android/Safari/iOS, FPS/soak/save/gameplay or actual rollback eligibility pass. Rollback candidates are recorded without claiming a tested rollback. Next: M0-03. V1 verified progress: 1/51 (1.96%).

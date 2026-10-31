@@ -2,7 +2,7 @@
 
 Updated: 2026-10-31 UTC. Complete canonical working requirements: MYZOOTWIN_MASTER_PRD_V1.md. Immutable source-text transcriptions and original Library references: SOURCE_PROVENANCE.md. Native Library materialization failed; the explicitly authorized complete source-text alternative is saved and clearly labeled.
 
-Verified V1: **0/51 (0.00%)**. M7 excluded: **12 deferred items**. No gameplay implemented or production changed.
+Verified V1: **1/51 (1.96%)**. M7 excluded: **12 deferred items**. No gameplay implemented or production changed.
 
 ## Current checkpoint: M0-01 PARTIAL / BLOCKED
 
@@ -10,13 +10,13 @@ Completed: local/GitHub audit; live route/sitemap/analytics baseline; complete P
 
 Remaining external configuration gap: supported CLI read surfaces used do not expose the exact GitHub source-repository binding or dashboard build command/root-directory/automatic deployment policy. The dashboard browser session requires login; no login/new grants authorized or attempted. README is not proof of these settings. Keep M0-01 unchecked until verified or the parent explicitly accepts the documented audit limit.
 
-Documentation checkpoint already committed locally: 3a85cb01843c44fc1d0b56b319b13e69dceec2f3. No feature checkbox marked complete. No M0-02 execution yet. Next safe independent work: baseline screenshots + browser smoke of existing homepage/navigation/mobile and local rollback plan; no app changes or deployment required. Production release remains gated on actual Cloudflare configuration verification.
+M0-02 independently COMPLETE on 2026-10-31. Evidence commit: ec17bd19f4d4292eba269854ac4a512114737b0c (local only). Report: [M0-02_BASELINE.md](M0-02_BASELINE.md); screenshots and structured evidence: [qa/m0-02](qa/m0-02/). Check/build passed; 24 browser route/reload scenarios, navigation/keyboard, responsive screenshots and loopback shutdown verified. Existing BASE-01 mobile heading overflow and BASE-02 low quote contrast are recorded; no app fixes or physical Android/performance/gameplay claims. Only M0-02 is complete. Next: M0-03 asset inventory/licenses/visual target. M0-01 remains partial; production release stays gated on external configuration verification.
 
 ## V1 checklist (exact task wording from source-text handoff)
 
 - [ ] **M0-01** Audit repo, stack, Cloudflare Pages routing, existing content/SEO, analytics; catat apa yang boleh di-reuse. **Verify:** laporan audit dan baseline routes.
 
-- [ ] **M0-02** Ambil baseline screenshots &amp; browser smoke existing homepage, navigation, mobile; kumpulkan rollback plan. **Verify:** snapshot dan baseline tests.
+- [x] **M0-02** Ambil baseline screenshots &amp; browser smoke existing homepage, navigation, mobile; kumpulkan rollback plan. **Verify:** snapshot dan baseline tests.
 
 - [ ] **M0-03** Asset inventory + licenses + visual target; pilih model satu spesies burung tropis yang feasible dan legal. **Verify:** manifest asset, ukuran, attribution.
 

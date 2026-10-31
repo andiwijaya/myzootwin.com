@@ -1,6 +1,6 @@
 # MyZooTwin M0-01 audit checkpoint
 
-Observation date: 2026-10-31 UTC. Status: **PARTIAL / BLOCKED**; verified V1 remains **0/51**. Scope: audit and documentation only.
+Observation date: 2026-10-31 UTC. Status: **PARTIAL / BLOCKED**; verified V1 is **1/51**, from independently completed M0-02 only. Scope: audit and documentation only.
 
 ## Repository and history
 
@@ -73,4 +73,4 @@ Layout breakpoints include header/footer 820px/520px, homepage 900px/560px and A
 
 Reuse the existing Astro repository/build, static routing, visual identity/media when rights permit, journal pages, navigation, SEO and isolated existing analytics integration. Add a lazy-loaded /play module rather than replacing the whole site or introducing a second build/repository. Keep homepage emphasis unchanged until playable release readiness. Detailed proposed boundaries are in ARCHITECTURE.md.
 
-Source packaging is resolved through the parent's explicitly authorized complete source-text transcription alternative (SOURCE_PROVENANCE.md); no native Library materialization success is claimed. Before M0-01 completion: resolve the remaining Cloudflare source/build/canonical-pointer verification gap above or obtain explicit parent acceptance of the documented audit limit. Next independent safe feature work is M0-02 baseline screenshots + browser smoke homepage/navigation/mobile and rollback plan, without modifying app code or production and without claiming the whole audit complete. PRD test/runtime targets are requirements, not verified results. M7 remains deferred.
+Source packaging is resolved through the parent's explicitly authorized complete source-text transcription alternative (SOURCE_PROVENANCE.md); no native Library materialization success is claimed. Before M0-01 completion: resolve the remaining Cloudflare source/build/canonical-pointer verification gap above or obtain explicit parent acceptance of the documented audit limit. M0-02 baseline screenshots/browser smoke/rollback plan were independently completed without app or production changes; see M0-02_BASELINE.md. This does not close M0-01. Next feature is M0-03 asset inventory/licenses/visual target. PRD test/runtime targets are requirements, not verified results. M7 remains deferred.
