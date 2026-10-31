@@ -1,3 +1,4 @@
+import { createFrameMetrics, legacyMemory, probeStatus } from './frame-metrics.mjs';
 import { mountPreviewPanel } from '../../src/game-entry/preview-panel.ts';
 import { mountFoundationScene } from '../../src/game/render3d/foundation-scene.ts';
 
@@ -7,12 +8,17 @@ const output=document.querySelector('#qa-diagnostics');
 let handle, previousHandle, mode='native', locale='en', releaseDelayed, fault;
 let loads=0, active=0, maxActive=0, disposed=0, maxPending=0, lastDisposed=null, faultSource='none';
 const pending=new Set();
-function update(){output.textContent=JSON.stringify({mode,loads,activeSessions:active,maxActiveSessions:maxActive,pendingRAFs:pending.size,maxPendingRAFs:maxPending,canvasCount:root.querySelectorAll('canvas').length,state:handle?.inspect().state??'unmounted',session:handle?.inspect().session??null,lastDisposed,disposedSessions:disposed,faultSource});}
+const metrics=createFrameMetrics();
+let lastReadout=0,readoutWrites=0,probeTimer,probe={status:'UNRUN'},heapSnapshots=[];
+const heap=()=>{try{return legacyMemory(performance.memory);}catch{return legacyMemory(undefined);}};
+function endProbe(reason){if(probeTimer)clearTimeout(probeTimer);probeTimer=undefined;if(probe.status==='COLLECTING')probe={...probe,status:reason,finishedAt:new Date().toISOString(),metrics:metrics.summary()};}
+function update(){readoutWrites++;lastReadout=performance.now();output.textContent=JSON.stringify({mode,loads,activeSessions:active,maxActiveSessions:maxActive,pendingRAFs:pending.size,maxPendingRAFs:maxPending,canvasCount:root.querySelectorAll('canvas').length,state:handle?.inspect().state??'unmounted',session:handle?.inspect().session??null,lastDisposed,disposedSessions:disposed,faultSource,viewport:{width:innerWidth,height:innerHeight,dpr:devicePixelRatio,visibility:document.visibilityState},metrics:metrics.summary(),readoutWrites,probe,heap:heap(),heapSnapshots});}
 const frames={
-  request(callback){const id=requestAnimationFrame(time=>{pending.delete(id);callback(time);update();});pending.add(id);maxPending=Math.max(maxPending,pending.size);update();return id;},
+  request(callback){const id=requestAnimationFrame(time=>{pending.delete(id);const start=performance.now();callback(time);metrics.record(time,performance.now()-start);if(performance.now()-lastReadout>=250)update();});pending.add(id);maxPending=Math.max(maxPending,pending.size);return id;},
   cancel(id){pending.delete(id);cancelAnimationFrame(id);update();},
 };
 function factory(onFailure){
+  endProbe('ABORTED_NEW_SESSION');metrics.reset();
   fault=onFailure;
   const options={frames};
   if(mode==='unsupported')options.createContext=()=>null;
@@ -34,17 +40,26 @@ async function load(){
 function mount(){if(!root.firstElementChild)root.innerHTML=markup;previousHandle=handle;handle=mountPreviewPanel(root,{loadRenderer:load});handle.setLocale(locale);update();}
 document.querySelector('#qa-apply').addEventListener('click',()=>{mode=document.querySelector('#qa-mode').value;faultSource=mode==='native'?'none':mode;mount();});
 document.querySelector('#qa-release').addEventListener('click',()=>{releaseDelayed?.();releaseDelayed=undefined;queueMicrotask(update);});
-document.querySelector('#qa-context').addEventListener('click',()=>{const gl=root.querySelector('canvas')?.getContext('webgl2');const ext=gl?.getExtension('WEBGL_lose_context');faultSource=ext?'injected WEBGL_lose_context':'extension unavailable';ext?.loseContext();update();});
+document.querySelector('#qa-context').addEventListener('click',()=>{endProbe('ABORTED_CONTEXT');const gl=root.querySelector('canvas')?.getContext('webgl2');const ext=gl?.getExtension('WEBGL_lose_context');faultSource=ext?'injected WEBGL_lose_context':'extension unavailable';ext?.loseContext();update();});
 document.querySelector('#qa-render').addEventListener('click',()=>{faultSource='injected render failure callback';fault?.('render');update();});
-document.querySelector('#qa-unmount').addEventListener('click',()=>{handle?.dispose();handle=undefined;root.replaceChildren();update();});
+document.querySelector('#qa-unmount').addEventListener('click',()=>{endProbe('ABORTED_UNMOUNT');handle?.dispose();handle=undefined;root.replaceChildren();update();});
 document.querySelector('#qa-remount').addEventListener('click',mount);
-document.querySelector('#qa-pause').addEventListener('click',()=>{handle?.setPaused(true);update();});
+document.querySelector('#qa-pause').addEventListener('click',()=>{endProbe('ABORTED_PAUSE');handle?.setPaused(true);update();});
 document.querySelector('#qa-resume').addEventListener('click',()=>{handle?.setPaused(false);update();});
+document.querySelector('#qa-probe').addEventListener('click',()=>{
+  endProbe('ABORTED_REPLACED');metrics.reset();
+  probe={status:'COLLECTING',startedAt:new Date().toISOString(),startedPerfMs:performance.now(),startReadoutWrites:readoutWrites,startVisibility:document.visibilityState};
+  probeTimer=setTimeout(()=>{probeTimer=undefined;probe={...probe,status:probeStatus({callbacks:metrics.summary().callbacksObserved,active:handle?.inspect().state.status==='ready'&&!handle?.inspect().session?.simulationPaused,visible:document.visibilityState==='visible',elapsedMs:performance.now()-probe.startedPerfMs}),elapsedMs:performance.now()-probe.startedPerfMs,readoutWritesDuringProbe:readoutWrites-probe.startReadoutWrites,finishedAt:new Date().toISOString(),metrics:metrics.summary()};update();},5000);
+  update();
+});
+document.querySelector('#qa-memory').addEventListener('click',()=>{if(heapSnapshots.length>=16){probe={...probe,heapSnapshotBudgetExceeded:true};}else heapSnapshots.push({observedAt:new Date().toISOString(),state:handle?.inspect().state,heap:heap()});update();});
 document.querySelector('#qa-stale').addEventListener('click',()=>{previousHandle?.dispose();update();});
 document.querySelector('#qa-id').addEventListener('click',()=>{locale='id';handle?.setLocale(locale);update();});
 document.querySelector('#qa-en').addEventListener('click',()=>{locale='en';handle?.setLocale(locale);update();});
 const observer=new MutationObserver(update);
 observer.observe(root,{subtree:true,childList:true,attributes:true,attributeFilter:['data-renderer-state']});
-window.addEventListener('pagehide',()=>{observer.disconnect();handle?.dispose();});
-root.addEventListener('click',()=>queueMicrotask(update));
+const onVisibility=()=>{if(document.hidden){endProbe('ABORTED_HIDDEN');update();}};
+document.addEventListener('visibilitychange',onVisibility);
+window.addEventListener('pagehide',()=>{endProbe('ABORTED_PAGEHIDE');document.removeEventListener('visibilitychange',onVisibility);observer.disconnect();handle?.dispose();});
+root.addEventListener('click',()=>queueMicrotask(()=>{if(handle?.inspect().state.status!=='ready')endProbe('ABORTED_CLOSED');update();}));
 mount();

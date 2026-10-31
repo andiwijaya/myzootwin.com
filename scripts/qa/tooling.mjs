@@ -28,7 +28,7 @@ export async function fingerprint(root,paths) {
 }
 export async function sourceFingerprint(root) {
   const source=[];
-  for(const folder of ['src','tests','scripts'])source.push(...await files(join(root,folder),p=>p.includes(`${join('browser','.generated')}`)));
+  for(const folder of ['src','tests','scripts','public'])source.push(...await files(join(root,folder),p=>p.includes(`${join('browser','.generated')}`)));
   for(const file of ['package.json','package-lock.json','astro.config.mjs','tsconfig.json','docs/qa/m0-02/baseline-results.json'])source.push(join(root,file));
   return fingerprint(root,source);
 }
@@ -52,9 +52,9 @@ export function assessRun(result,kind) {
   return null;
 }
 /** Full capture up to a hard limit; reaching it always fails, never a capped-log PASS. */
-export function runNode(args,{cwd,limit=2_000_000,timeoutMs=180_000,children}={}) {
+export function runNode(args,{cwd,limit=2_000_000,timeoutMs=180_000,children,environment={}}={}) {
   return new Promise((done,reject)=>{
-    const child=spawn(process.execPath,args,{cwd,windowsHide:true,env:{...process.env,NO_COLOR:'1',FORCE_COLOR:'0'},stdio:['ignore','pipe','pipe']});
+    const child=spawn(process.execPath,args,{cwd,windowsHide:true,env:{...process.env,NO_COLOR:'1',FORCE_COLOR:'0',...environment},stdio:['ignore','pipe','pipe']});
     children?.add(child);
     let stdout='',stderr='',bytes=0,overflow=false,timedOut=false;
     const consume=key=>data=>{bytes+=data.length;if(bytes>limit){overflow=true;child.kill();return;}if(key==='stdout')stdout+=data.toString();else stderr+=data.toString();};

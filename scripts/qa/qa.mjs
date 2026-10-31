@@ -74,7 +74,7 @@ async function local() {
   try {
     for(const [kind,args] of [['unit',['--experimental-strip-types','--test','--test-reporter=tap',...testFiles]],['check',[astro,'check']],['build',[astro,'build']]]) {
       current=kind;const startedAt=now();console.log(`QA ${runId}: ${kind}...`);
-      const result=await runNode(args,{cwd:root,children:owned});
+      const result=await runNode(args,{cwd:root,children:owned,environment:kind==='build'?{MYZOO_QA_ANALYZE:'1'}:{}});
       const log=(result.stdout+'\n'+result.stderr).split(/\r?\n/).map(x=>x.trimEnd()).join('\n').trimEnd()+'\n';
       await writeFile(join(directory,kind+'.log'),log);
       const summary=assessRun(result,kind);

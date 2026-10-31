@@ -20,6 +20,8 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   let lost = false;
   let paused = false;
   let cleanupErrors = 0;
+  let renderSubmissions = 0;
+  let releasedMaterials = 0;
   let observer: ResizeObserver | undefined;
   const geometries: Array<CylinderGeometry | OctahedronGeometry | TorusGeometry> = [];
   const materials: MeshStandardMaterial[] = [];
@@ -50,6 +52,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     if (context?.isContextLost()) { notifyContextLoss(); return; }
     if (marker && !motion.matches) marker.rotation.y = simulationTimeMs * .00025;
     renderer?.render(scene, camera);
+    if (renderer) renderSubmissions++;
   }
   const loop = createFrameLoop(frames, time => { simulation.frame(time); render(); }, () => onFailure('render'));
   function updateRunning() {
@@ -86,7 +89,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     motion.removeEventListener('change', updateRunning);
     observer?.disconnect();
     for (const geometry of geometries) safe(() => geometry.dispose());
-    for (const material of materials) safe(() => material.dispose());
+    for (const material of materials) safe(() => { material.dispose(); releasedMaterials++; });
     scene.clear();
     if (renderer) {
       safe(() => renderer!.dispose());
@@ -146,6 +149,6 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   return {
     dispose,
     setPaused(value) { paused = value; updateRunning(); },
-    inspect: () => ({ disposed, lost, canvasAttached: canvas.isConnected, pendingFrames: loop.inspect().pendingFrames, geometries: renderer?.info.memory.geometries ?? 0, cleanupErrors, simulationTick: simulation.inspect().tick, simulationGameTimeMs: simulation.inspect().gameTimeMs, simulationPaused: simulation.inspect().paused, simulationDisposed: simulation.inspect().disposed, simulationSubscribers: simulation.inspect().subscribers, simulationEvents, markerRotation: marker?.rotation.y ?? 0 }),
+    inspect: () => ({ disposed, lost, canvasAttached: canvas.isConnected, pendingFrames: loop.inspect().pendingFrames, geometries: renderer?.info.memory.geometries ?? 0, textures: renderer?.info.memory.textures ?? 0, programs: renderer?.info.programs?.length ?? 0, ownedMaterialsLive: materials.length - releasedMaterials, drawCallsLastRender: renderer?.info.render.calls ?? 0, trianglesLastRender: renderer?.info.render.triangles ?? 0, renderSubmissions, bufferWidth: canvas.width, bufferHeight: canvas.height, pixelRatio: renderer?.getPixelRatio() ?? 0, cleanupErrors, simulationTick: simulation.inspect().tick, simulationGameTimeMs: simulation.inspect().gameTimeMs, simulationPaused: simulation.inspect().paused, simulationDisposed: simulation.inspect().disposed, simulationSubscribers: simulation.inspect().subscribers, simulationEvents, markerRotation: marker?.rotation.y ?? 0 }),
   };
 }
