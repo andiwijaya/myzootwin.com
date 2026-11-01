@@ -1,4 +1,5 @@
 export type SimulationEvent =
+  | {type:"mission-claimed";missionId:import("./state.ts").MissionId;amount:number;tick:number;gameTimeMs:number}
   | {type:"recovery-changed";tick:number;gameTimeMs:number}
   | {readonly type:'economy-changed';readonly tick:number;readonly gameTimeMs:number}
   | {type:'visitor-admitted';visitorId:string;admissionId:string;amount:number;tick:number;gameTimeMs:number}

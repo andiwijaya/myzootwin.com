@@ -1,3 +1,4 @@
+import {MISSION_RULES} from '../missions/engine.ts';
 import {ATTRACTION_RULES} from '../visitors/attraction.ts';
 import {coherentMoney,admissionProofs,ledgerProof,LEDGER_KINDS} from '../economy/journal.ts';
 import {PRICES,MONEY_RULES} from '../economy/prices.ts';
@@ -195,9 +196,11 @@ const inBounds=(p:{x:number;z:number}) => p.x < w.width && p.z < w.height;
   }
   const m=s.missions;
   requireValue(m.completedIds.every((id,i)=>id===MISSION_IDS[i]) && m.currentId===(MISSION_IDS[m.completedIds.length]??null),'$.missions.order');
+  requireValue(m.rewards.length===m.completedIds.length,'$.missions.claims');
   unique(m.rewards.map(r=>r.missionId),'$.missions.rewards'); unique(m.rewards.map(r=>r.ledgerEntryId),'$.missions.rewardLedger');
-  for(const r of m.rewards) { const e=ledger.get(r.ledgerEntryId); requireValue(m.completedIds.includes(r.missionId) && e?.kind==='reward' && e.relatedId===r.missionId,'$.missions.rewards.reference'); }
+  for(const r of m.rewards) { const e=ledger.get(r.ledgerEntryId); requireValue(m.completedIds.includes(r.missionId) && MISSION_RULES[r.missionId].enabled && e?.kind==='reward' && e.relatedId===r.missionId && e.amount===MISSION_RULES[r.missionId].coins,'$.missions.rewards.reference'); }
   for(const e of [...s.economy.checkpoint.rewards,...s.ledger])if(e.kind==='reward')requireValue(m.rewards.some(r=>r.ledgerEntryId===e.id),'$.ledger.reward');
+  requireValue(s.economy.checkpoint.rewards.length===s.economy.checkpoint.counts.reward,'$.missions.archivedRewards');
   const birdIds=new Set(s.animals.map(a=>a.id)); const visitorIds=new Set(allAdmissions.map(a=>a.visitorId));
   for(const values of [m.objectives.birdsFedIds,m.objectives.birdsWateredIds]) { unique(values,'$.missions.birds'); requireValue(values.every(id=>birdIds.has(id)),'$.missions.birds.reference'); }
   unique(m.objectives.viewedVisitorIds,'$.missions.visitors'); requireValue(m.objectives.viewedVisitorIds.every(id=>visitorIds.has(id)),'$.missions.visitors.reference');
