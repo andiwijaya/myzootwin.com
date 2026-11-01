@@ -1,3 +1,4 @@
+import type {RecoveryQuote} from '../economy/recovery.ts';
 import type {PerchCommand} from '../animals/resting.ts';
 import type {FoodCommand} from '../animals/feeding.ts';
 import type {BirdCommand} from '../animals/autonomy.ts';
@@ -17,6 +18,8 @@ export class PreviewFailure extends Error {
 }
 
 export interface PreviewSession {
+  recoveryQuote?():RecoveryQuote|undefined;
+  recover?(quote:RecoveryQuote):void;
   dispose(): void;
   visitors?(command:'open'|'close'|'focus'|'follow'):void;
   birds?(command:BirdCommand):void;
@@ -90,6 +93,8 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     food(command:FoodCommand,revision?:number){if(!paused&&state.status==='ready')session?.food?.(command,revision);},
     birds(command:BirdCommand){if(!paused&&state.status==='ready')session?.birds?.(command);},
     studio(command:StudioCommand,value?:string){if(!paused&&state.status==='ready')session?.studio?.(command,value);},
+    recoveryQuote:()=>!paused&&state.status==='ready'?session?.recoveryQuote?.():undefined,
+    recover(quote:RecoveryQuote){if(!paused&&state.status==='ready')session?.recover?.(quote);},
     visitors(command:'open'|'close'|'focus'|'follow'){if(!paused&&state.status==='ready')session?.visitors?.(command);},
     camera(command:CameraCommand) {if(!paused&&state.status==='ready')session?.camera?.(command);},
     clearSelection(){if(!paused&&state.status==='ready')session?.clearSelection?.();},

@@ -1,4 +1,5 @@
 export type SimulationEvent =
+  | {type:"recovery-changed";tick:number;gameTimeMs:number}
   | {readonly type:'economy-changed';readonly tick:number;readonly gameTimeMs:number}
   | {type:'visitor-admitted';visitorId:string;admissionId:string;amount:number;tick:number;gameTimeMs:number}
   | {type:'visitor-viewed';visitorId:string;habitatId:string;tick:number;gameTimeMs:number}

@@ -1,3 +1,4 @@
+import {recoveryView,supportTransaction,type RecoveryQuote} from '../economy/recovery.ts';
 import {attractionView} from '../visitors/attraction.ts';
 import {compactFinance,retireClosedProofs,ledgerProof,totals} from '../economy/journal.ts';
 import {PRICES,MONEY_RULES,moneyReason,debit,settleMaintenance,economyView} from '../economy/spending.ts';
@@ -53,7 +54,7 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
     for(const e of admitted)bus.emit(Object.freeze({type:'visitor-admitted',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     bus.emit(Object.freeze({type:'tick',tick:state.tick,gameTimeMs:state.gameTimeMs,randomSample:random.value}));
   });
-  return {
+  const api={
     advance: (deltaMs:number)=>clock.advance(deltaMs),
     frame(timeMs:number) {
       if(!Number.isFinite(timeMs) || timeMs<0)throw new RangeError('Invalid frame timestamp');
@@ -61,6 +62,25 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
       const previous=lastFrame;
       lastFrame=previous===null?timeMs:Math.max(previous,timeMs);
       return clock.advance(previous===null?0:Math.max(0,timeMs-previous));
+    },
+    recoveryView:()=>recoveryView(state),
+    recover(quote:RecoveryQuote):boolean{
+      if(disposed||clock.inspect().paused||!authorized(quote.command))return false;
+      const v=recoveryView(state);if(!v.low||!v.available||v.key!==quote.key)return false;
+      if(v.kind==='reclaim'&&v.cell){const q=api.quoteRemoval({kind:'path',cell:v.cell});return q.ok&&api.remove(q.quote,`edit-${state.economy.nextCommand.toString(16).padStart(32,'0')}`).ok;}
+      if(v.kind.startsWith('repair-')){const k=v.kind.slice(7)as'food'|'water'|'perch',r=state.world.resources.find(r=>r.kind===k);return Boolean(r&&api[k]('remove',r.revision,v.command).ok);}
+      if(!v.gift&&v.kind!=='rations'&&v.kind!=='open'&&v.kind!=='welcome'){
+        if(v.kind==='habitat'&&v.cell)return api.buildHabitat(v.cell,`habitat-guided-${v.command}`,v.command).ok;
+        if(v.kind==='path'&&v.cell)return api.buildPath(v.cell,v.command).ok;
+        if(v.kind==='food-refill'||v.kind==='water-refill'){const k=v.kind==='food-refill'?'food':'water';return api[k]('refill',api[k+'View' as'foodView'|'waterView']().revision,v.command).ok;}
+        if(v.kind==='food'||v.kind==='water'||v.kind==='perch')return api[v.kind]('place',0,v.command).ok;
+        return false;
+      }
+      const next=structuredClone(state);
+      if(v.kind==='path'&&v.cell&&v.gift){const p=preparePath(next.world,v.cell);if(!p.ok||p.duplicate||refundable(next,`path-${v.cell.x}-${v.cell.z}`).length)return false;next.world=p.world;next.economy.nextCommand++;next.economy.recovery.equipmentGrants++;}
+      else if(!supportTransaction(next,v))return false;
+      const connected=reconcilePathAccess(next.world),valid=validateSave(reconcileWelfare(reconcileJourneys({...next,world:connected.world})));if(!valid.ok)return false;
+      state=valid.value;topology=connected.topology;invalidateEdit();compactNow();bus.emit(Object.freeze({type:'recovery-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;
     },
     commandRevision:()=>state.economy.nextCommand,
     buildHabitat(anchor:Point,operationId:string,expectedCommand?:number){
@@ -124,7 +144,7 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
       if(refunds.some(e=>!e||e.kind!=='refund'))return {ok:false as const,reason:'command' as const};
       const transaction=editLedger(state,operationId,refunds.map(e=>({kind:'restore' as const,relatedId:e!.id,amount:-e!.amount})));
       if(!transaction)return {ok:false as const,reason:'funds' as const};
-      const connected=reconcilePathAccess(undo.before),next=validateSave(reconcileJourneys({...structuredClone(state),world:connected.world,currency:transaction.currency,ledger:transaction.ledger,economy:{...structuredClone(state.economy),nextCommand:state.economy.nextCommand+1}}));
+      const connected=reconcilePathAccess(undo.before),restored=structuredClone(state);if(restored.economy.recovery.habitatGrant&&connected.world.habitats.some(h=>h.id===restored.economy.recovery.habitatGrant!.id))restored.economy.recovery.habitatGrant.tick=state.tick;const next=validateSave(reconcileJourneys({...restored,world:connected.world,currency:transaction.currency,ledger:transaction.ledger,economy:{...restored.economy,nextCommand:state.economy.nextCommand+1}}));
       if(!next.ok)return {ok:false as const,reason:'command' as const};
       state=reconcileWelfare(next.value);topology=connected.topology;invalidateEdit();compactNow();bus.emit(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};
     },
@@ -137,6 +157,7 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
     setPaused(value:boolean) { if(clock.inspect().paused!==value) { lastFrame=null; clock.setPaused(value); } },
     reset() { if(disposed)return; state=reconcileWelfare(structuredClone(baseline));invalidateEdit();topology=reconcilePathAccess(state.world).topology; lastFrame=null; clock.reset();compactNow(); bus.emit(Object.freeze({type:'reset',tick:state.tick,gameTimeMs:state.gameTimeMs})); },
     dispose() { if(disposed)return; disposed=true; lastFrame=null; clock.dispose(); bus.dispose(); },
-    inspect: ()=>({editorRevision:editor.revision,canUndo:Boolean(editor.undo),undoCost:editor.undo?.refundIds.reduce((n,id)=>n+(ledgerProof(state,id)?.amount??0),0)??0,tick:state.tick,gameTimeMs:state.gameTimeMs,randomState:state.randomState,currency:state.currency,maintenancePeriod:state.economy.maintenancePeriod,maintenanceDue:economyView(state).maintenanceDue,economyGrants:economyView(state).grants,economySpent:economyView(state).spent,economyRefunds:economyView(state).refunds,ledgerEntries:totals(state).entries,journalRetained:state.ledger.length,journalArchived:state.economy.checkpoint.entries,journalCompactions:state.economy.checkpoint.compactions,commandRevision:state.economy.nextCommand,retiredVisitorThrough:state.economy.checkpoint.visitorThrough,retiredOpenCount:state.economy.checkpoint.openSerials.length,birdCount:state.animals.length,pathTiles:topology.pathTiles,reachablePathTiles:topology.reachable.length,connectedHabitats:topology.habitats.filter(h=>h.connected).length,routeCells:accessSummary(topology).routeCells,habitatCount:state.world.habitats.length,occupiedTiles:state.world.tiles.filter(t=>t.occupantId!==null).length,...clock.inspect(),subscribers:bus.inspect().subscribers,listenerErrors:bus.inspect().listenerErrors}),
+    inspect: ()=>({editorRevision:editor.revision,canUndo:Boolean(editor.undo),undoCost:editor.undo?.refundIds.reduce((n,id)=>n+(ledgerProof(state,id)?.amount??0),0)??0,tick:state.tick,gameTimeMs:state.gameTimeMs,randomState:state.randomState,currency:state.currency,maintenancePeriod:state.economy.maintenancePeriod,maintenanceDue:economyView(state).maintenanceDue,economyGrants:economyView(state).grants,economySpent:economyView(state).spent,economyRefunds:economyView(state).refunds,ledgerEntries:totals(state).entries,journalRetained:state.ledger.length,journalArchived:state.economy.checkpoint.entries,journalCompactions:state.economy.checkpoint.compactions,commandRevision:state.economy.nextCommand,retiredVisitorThrough:state.economy.checkpoint.visitorThrough,retiredOpenCount:state.economy.checkpoint.openSerials.length,recoveryHabitatTick:state.economy.recovery.habitatGrant?.tick??-1,recoveryHabitatNonce:Number(state.economy.recovery.habitatGrant?.id.split('-').at(-1)??0),recoveryGrants:state.economy.recovery.equipmentGrants,recoveryRations:state.economy.recovery.rationBatches,recoveryLastRation:state.economy.recovery.lastRationTick??-1,birdCount:state.animals.length,pathTiles:topology.pathTiles,reachablePathTiles:topology.reachable.length,connectedHabitats:topology.habitats.filter(h=>h.connected).length,routeCells:accessSummary(topology).routeCells,habitatCount:state.world.habitats.length,occupiedTiles:state.world.tiles.filter(t=>t.occupantId!==null).length,...clock.inspect(),subscribers:bus.inspect().subscribers,listenerErrors:bus.inspect().listenerErrors}),
   };
+  return api;
 }

@@ -1,3 +1,4 @@
+import type {RecoveryView,RecoveryQuote} from '../game/economy/recovery.ts';
 import type {EconomyView} from '../game/economy/spending.ts';
 import {renderTickets} from './ticket-feedback.ts';
 import {presentVisitorFeedback,renderVisitorSummary} from './visitor-feedback.ts';
@@ -33,6 +34,10 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const retry = root.querySelector<HTMLButtonElement>('[data-preview-retry]');
   const reload = root.querySelector<HTMLButtonElement>('[data-preview-reload]');
   if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) throw new Error('Incomplete preview panel');
+  let recovery:RecoveryView|undefined,recoveryPending:RecoveryQuote|null=null;
+  const recoveryDialog=root.querySelector<HTMLDialogElement>('[data-recovery-dialog]');
+  const recoveryText=()=>{if(!recovery)return'';const c=entryMessages[locale],key=({habitat:'recoveryHabitat',path:'recoveryPath',food:'recoveryFood',water:'recoveryWater',perch:'recoveryPerch','food-refill':'recoveryFoodRefill','water-refill':'recoveryWaterRefill',rations:'recoveryRations',welcome:'recoveryWelcome',open:'recoveryOpen',reclaim:'recoveryReclaim','repair-food':'recoveryRepairFood','repair-water':'recoveryRepairWater','repair-perch':'recoveryRepairPerch',wait:'recoveryWait',steady:'recoverySteady'}as const)[recovery.kind];return c[key].replace('{x}',String((recovery.cell?.x??0)+1)).replace('{z}',String((recovery.cell?.z??0)+1)).replace('{refund}',String(recovery.refund));};
+  function renderRecovery(){const section=root.querySelector<HTMLElement>('[data-recovery-tools]');if(!section||!recovery)return;section.hidden=state.status!=='ready'||studio.active||!recovery.low;section.dataset.kind=recovery.kind;section.dataset.gift=String(recovery.gift);section.dataset.command=String(recovery.command);section.dataset.wait=String(recovery.waitTicks);const c=entryMessages[locale],cost=recovery.gift?c.recoveryGift:c.recoveryCost.replace('{cost}',String(recovery.cost)).replace('{balance}',String(economy?.balance??0)),texts={'[data-recovery-title]':c.recoveryTitle,'[data-recovery-intro]':c.recoveryIntro,'[data-recovery-next]':recoveryText(),'[data-recovery-cost]':cost,'[data-recovery-wait]':recovery.waitTicks?c.recoveryCooldown.replace('{seconds}',String(Math.ceil(recovery.waitTicks/10))):!recovery.available&&recovery.kind!=='steady'?c.recoveryWait:'','[data-recovery-review]':c.recoveryAction,'#recovery-dialog-title':c.recoveryDialog,'[data-recovery-confirm-step]':recoveryText(),'[data-recovery-confirm-cost]':cost,'[data-recovery-cancel]':c.recoveryCancel,'[data-recovery-confirm]':c.recoveryConfirm};for(const[key,value]of Object.entries(texts)){const e=root.querySelector(key);if(e&&e.textContent!==value)e.textContent=value;}const button=root.querySelector<HTMLButtonElement>('[data-recovery-review]');if(button)button.disabled=!recovery.available;}
   let economy:EconomyView|null=null;
   let locale: EntryLocale = 'en';
   let disposed = false;
@@ -47,7 +52,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   let perch:PerchView={canPlace:false,habitat:false,exists:false,reachable:false,capacity:2,revision:0,preview:false,reason:null,resting:0,exploring:0};
   const perchDialog=root.querySelector<HTMLDialogElement>('[data-perch-dialog]');let perchRemovalRevision:number|null=null;
   let visitorView:ArrivalView={open:false,active:0,capacity:3,ready:false,total:0,reason:'closed',ids:[],people:[],queued:0,walking:0,viewing:0,returning:0,viewedTotal:0,feedback:{evaluated:0,scored:0,scoreSum:0,positive:0,negative:0,interrupted:0,recent:[]},attraction:{ready:false,reason:'closed',welfare:null,intervalTicks:900,level:'low'},tickets:{balance:1500,price:10,admissions:0,revenue:0,reason:'closed',last:null}};
-  function renderCosts(){if(!economy)return;const e=economy,c=entryMessages[locale],prices=e.prices;
+  function renderCosts(){renderRecovery();if(!economy)return;const e=economy,c=entryMessages[locale],prices=e.prices;
     const text=(value:string)=>value.replaceAll('{balance}',String(e.balance)).replaceAll('{fee}',String(prices.maintenance)).replaceAll('{due}',String(e.maintenanceDue));
     const status=root.querySelector<HTMLElement>('[data-economy-status]');if(status){status.dataset.balance=String(e.balance);status.dataset.spent=String(e.spent);status.dataset.refunds=String(e.refunds);status.dataset.maintenanceDue=String(e.maintenanceDue);const value=text(c[e.maintenanceDue?'economyDue':'economyReady']);if(status.textContent!==value)status.textContent=value;}
     const flow=root.querySelector<HTMLElement>('[data-cashflow]');if(flow){const signed=e.net>0?`+${e.net}`:String(e.net),lines=[c.cashflowTitle,c.cashflowIncome.replace('{tickets}',String(e.ticketIncome)).replace('{rewards}',String(e.rewards)),c.cashflowCosts.replace('{construction}',String(e.construction)).replace('{supplies}',String(e.supplies)).replace('{upkeep}',String(e.upkeep)),c.cashflowAdjustments.replace('{refunds}',String(e.refunds)).replace('{undo}',String(e.undo)),c.cashflowNet.replace('{net}',signed)];for(const key of ['ticketIncome','rewards','construction','supplies','upkeep','refunds','undo','net']as const)flow.dataset[key]=String(e[key]);if(flow.textContent!==lines.join(''))flow.replaceChildren(...lines.map(value=>{const p=document.createElement('p');p.textContent=value;p.style.marginBlock='.3rem';return p;}));}
@@ -189,7 +194,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) return;
     const copy = entryMessages[locale];
     panel.lang = locale;
-    if(next.status!=='ready'){perchRemovalRevision=null;if(perchDialog?.open)perchDialog.close();waterRemovalRevision=null;if(waterDialog?.open)waterDialog.close();foodRemovalRevision=null;if(foodDialog?.open)foodDialog.close();studio={...studio,active:false,habitat:false};selected=null;placement=null;habitatCount=0;access=null;editView={canUndo:false,reason:null,result:null};removal=null;if(editDialog?.open)editDialog.close();}
+    if(next.status!=='ready'){recoveryPending=null;if(recoveryDialog?.open)recoveryDialog.close();perchRemovalRevision=null;if(perchDialog?.open)perchDialog.close();waterRemovalRevision=null;if(waterDialog?.open)waterDialog.close();foodRemovalRevision=null;if(foodDialog?.open)foodDialog.close();studio={...studio,active:false,habitat:false};selected=null;placement=null;habitatCount=0;access=null;editView={canUndo:false,reason:null,result:null};removal=null;if(editDialog?.open)editDialog.close();}
     renderPlacement();
     renderSelection();renderVisitors();
     if(cameraControls){cameraControls.hidden=next.status!=='ready';cameraControls.setAttribute('aria-label',copy.cameraControls);}
@@ -242,6 +247,11 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   host.addEventListener('scene-food-change',event=>{food=(event as CustomEvent<FoodView>).detail;renderFood();renderPlacement();},{signal:events.signal});
   for(const b of root.querySelectorAll<HTMLButtonElement>('[data-food-command]')){b.addEventListener('keydown',event=>{if(event.repeat&&(event.key==='Enter'||event.key===' '))event.preventDefault();},{signal:events.signal});b.addEventListener('click',event=>{if(event.detail>1)return;const cmd=b.dataset.foodCommand as FoodCommand;controller.food(cmd,food.revision);host.focus({preventScroll:true});host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});}
   root.querySelector('[data-food-tools]')?.addEventListener('keydown',event=>{if((event as KeyboardEvent).key==='Escape')controller.food('cancel');},{signal:events.signal});
+  host.addEventListener('scene-recovery-change',event=>{recovery=(event as CustomEvent<RecoveryView>).detail;renderRecovery();},{signal:events.signal});
+  root.querySelector('[data-recovery-review]')?.addEventListener('click',()=>{if(!recoveryDialog||recoveryPending)return;const quote=controller.recoveryQuote();if(!quote)return;recoveryPending=quote;renderRecovery();recoveryDialog.showModal();controller.setPaused(true);root.querySelector<HTMLElement>('[data-recovery-cancel]')?.focus();},{signal:events.signal});
+  const dismissRecovery=()=>{recoveryPending=null;if(recoveryDialog?.open)recoveryDialog.close();controller.setPaused(false);};
+  root.querySelector('[data-recovery-cancel]')?.addEventListener('click',dismissRecovery,{signal:events.signal});recoveryDialog?.addEventListener('close',()=>{recoveryPending=null;controller.setPaused(false);},{signal:events.signal});
+  root.querySelector('[data-recovery-confirm]')?.addEventListener('click',()=>{const quote=recoveryPending;if(!quote)return;dismissRecovery();controller.recover(quote);host.focus({preventScroll:true});host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});
   root.querySelector('[data-food-remove]')?.addEventListener('click',()=>{if(!food.exists||!foodDialog)return;foodRemovalRevision=food.revision;foodDialog.showModal();controller.setPaused(true);root.querySelector<HTMLElement>('[data-food-keep]')?.focus();},{signal:events.signal});
   const dismissFood=()=>{foodRemovalRevision=null;foodDialog?.close();controller.setPaused(false);};
   root.querySelector('[data-food-keep]')?.addEventListener('click',dismissFood,{signal:events.signal});foodDialog?.addEventListener('close',()=>{foodRemovalRevision=null;controller.setPaused(false);},{signal:events.signal});
@@ -302,7 +312,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     setLocale(value: EntryLocale) { if (!disposed) { locale = value; render(state); } },
     setPaused(value: boolean) { if (!disposed) controller.setPaused(value); },
     close: () => { if (!disposed) controller.close(); },
-    dispose() { if (disposed) return; disposed = true; controller.dispose();if(editDialog?.open)editDialog.close(); events.abort(); if(foodDialog?.open)foodDialog.close();if(waterDialog?.open)waterDialog.close();if(perchDialog?.open)perchDialog.close();mounted.delete(root); },
+    dispose() { if (disposed) return; disposed = true; controller.dispose();if(recoveryDialog?.open)recoveryDialog.close();if(editDialog?.open)editDialog.close(); events.abort(); if(foodDialog?.open)foodDialog.close();if(waterDialog?.open)waterDialog.close();if(perchDialog?.open)perchDialog.close();mounted.delete(root); },
     inspect: () => ({ state: controller.getState(), session: controller.inspectSession() }),
   };
 }

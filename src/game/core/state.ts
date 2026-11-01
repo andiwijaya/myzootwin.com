@@ -44,7 +44,7 @@ export interface Preferences { locale: 'id' | 'en'; graphics: 'auto' | 'low' | '
 /** Serializable data only. No mesh/DOM/class references or runtime accumulator. */
 export interface ZooSaveV1 {
   schemaVersion: 1; randomSeed: number; randomState: number; tick: number; gameTimeMs: number;
-  currency: number; economy:{maintenancePeriod:number;nextCommand:number;checkpoint:FinanceCheckpoint}; world: WorldState; animals: Animal[]; visitors: Visitor[];
+  currency: number; economy:{maintenancePeriod:number;nextCommand:number;checkpoint:FinanceCheckpoint;recovery:{lastRationTick:number|null;rationBatches:number;equipmentGrants:number;habitatGrant:{id:EntityId;tick:number}|null}}; world: WorldState; animals: Animal[]; visitors: Visitor[];
   visitorFlow:{open:boolean;nextSerial:number;cooldownTicks:number;viewedTotal:number;feedback:VisitorFeedbackSummary};
   admissions: Admission[]; ledger: LedgerEntry[]; missions: Missions; preferences: Preferences;
 }
