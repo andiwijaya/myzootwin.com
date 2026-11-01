@@ -1,0 +1,49 @@
+{
+  "status": "RESOLVED_AND_REVERIFIED",
+  "nonAcceptanceArchive": "preliminary-artifacts.zip",
+  "files": [
+    {
+      "path": "preflight1-failed.json.txt",
+      "bytes": 43095,
+      "sha256": "d127729afac5d84ae8f6485768b3f19c6aa9570bd8e4867370d7c9ea5d5f22ce"
+    },
+    {
+      "path": "care-preflight2.json",
+      "bytes": 26481,
+      "sha256": "c4ee590eb01af0a2a27bbf59071f49d59b8737bfd49e6244bd4b386a1c2081a6"
+    },
+    {
+      "path": "native-preflight-ui.json",
+      "bytes": 2430,
+      "sha256": "3124470e29c69bbb2724819708e798a5e72799c7266ec768095f7fd526a39930"
+    },
+    {
+      "path": "candidate2-chain-aborted-for-UX-fix.json",
+      "bytes": 3949,
+      "sha256": "5f946b77238acc1644a6160a3556d3fdcae9812c8e6858e4c2457190290240b4"
+    },
+    {
+      "path": "candidate2-unaccepted-browser-receipt.json",
+      "bytes": 353,
+      "sha256": "a9cca0b67199ec057525e9a7c0ce7f89609596617988cefaec680c3a00973d4e"
+    },
+    {
+      "path": "candidate2-unaccepted-interaction-matrix.json",
+      "bytes": 9460,
+      "sha256": "04d4c5e6b52cf4e4bf5081fbf89a942dc3ee3fc52c6cd71dcadc22444c83bd7f"
+    }
+  ],
+  "findings": [
+    "Initial type check found the monetary journal needed a union guard for noncash proofs and the care target needed a literal union. Corrected without changing cash logic.",
+    "First pre-Q01 test incorrectly assumed welfare would remain above threshold for49 future ticks. Actual needs legitimately interrupted it. Test now proves no pre-prerequisite duration, at least50 subsequent fixed ticks and real consecutive completion; partial/reset tests stay strict.",
+    "First browser localization helper checked serialized JSON for an opening brace, which every object has. It now checks the actual string values for unresolved keys; failed capture retained.",
+    "QA-only long JSON outputs stretched document scroll width. Diagnostic outputs now wrap inside the existing QA toolbar; product layout unchanged.",
+    "A one-shot polish helper wrote the copy/focus method then stopped because there were two existing focus call sites, not one. It was not rerun; the remaining two call sites and recorder fixes resumed explicitly.",
+    "Native candidate2 reached a real5-second streak but lost readiness before claiming when supplies depleted. This product UX finding is fixed by retaining an achieved objective; unfinished streaks still reset. Final unit/browser tests prove qualification through later reserve/remount and delayed explicit claim. Candidate2 chains are ABORTED/not accepted, even though several prior suites passed.",
+    "Native selector assumed Fill water bowls, but actual visible action is Refill water. Reobserved the already-built bowls and did not rebuild. A busy perch confirmation was reobserved and cancelled or confirmed only when enabled. Care action labels legitimately changed with depletion; no forced input.",
+    "A persisted browser recorder closure referred to an already-closed candidate2 tab185 after new tab190 had completed setup. Reobserved190 at913/ready without repeating construction; redefined recorder/save helpers against final objects. Final receipt/source/build identities are independently verified."
+  ],
+  "finalRun": "20261101T142744Z-36858516",
+  "deniedOperations": false,
+  "productionChanged": false
+}

@@ -189,3 +189,8 @@ Verified implementation `e9de1c5cf283422dc871978d97461924d2e64b2e`, report M3-06
 ## M4-02 guided Q01 - 2026-11-01
 
 The pure firstMissionGuide derives legal habitat/BFS missing-path suggestions from actual state. Cached renderer presentation is keyed by command/currency/editor revision. Guide controls forward existing atomic preview/purchase and reward commands; no duplicate builder, RAF, ledger or persistence. Focused bilingual layout keeps world and controls separate. Retry/remount discards ephemeral drafts and preserves whole authoritative state. Q02 noncash outcome/codec remains the next dependency. See M4-02_Q01_ONBOARDING.md; implementation `fbb76d50f84404f04ae300733c2561eeb0cebc40`.
+
+
+## M4-03 care qualification and noncash reward - 2026-11-01
+
+Q02 reads actual lifetime consumption counters and recomputed welfare, including earlier/recovery care, but only50 consecutive fixed ticks after Q01 can qualify. Partial failures reset and pause freezes; completed qualification stays recorded before Claim. Cash and noncash reward shapes are exclusive; Q02 writes unlock/tick/command with ordered completion and no zero ledger entry. Financial compaction selects cash-proof IDs only; old cash logic otherwise unchanged. Original flower scene has separate reusable ownership/disposal and no simulation effect. Same-page snapshots/codec preserve, full reload is fresh until M5. Combined future Q03 coins/badge requires an explicit typed outcome extension. See M4-03_Q02_CARE.md, implementation `5e96e23b7b6485203c343031c0f67d96008b1d02`.

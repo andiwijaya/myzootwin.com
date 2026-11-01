@@ -1,0 +1,43 @@
+Γ£ö Q02 cannot skip Q01 and placed unused facilities do not satisfy real consumption (29.6096ms)
+Γ£ö actual two-bird consumption and50 consecutive fixed ticks enable a noncash claim without cash or ledger entries (38.1067ms)
+Γ£ö pause holds partial welfare streak and repeated reads/events never increment it (26.7063ms)
+Γ£ö resource removal drops real welfare and resets streak; refill and real use can recover (26.8817ms)
+Γ£ö reserve interrupts streak immediately and return requires a new consecutive duration (23.0827ms)
+Γ£û real care before Q01 counts consumption but earns no duration or progression until prerequisite claim (20.6006ms)
+Γ£ö partial streak codec handoff resumes exact time without granting offline or remount duration (21.6647ms)
+Γ£ö unlock replay/stale commands/repeated claims cannot change money, order or proof (20.9229ms)
+Γ£ö noncash unlock survives compacted monetary history and1000 build/refund operations with exact cash proof (1284.7818ms)
+Γ£ö malformed noncash proofs, future ticks/nonce, duplicate unlock and cash-substitution are rejected without repair (22.1598ms)
+Γ£ö fixed frame partitions produce identical care duration, needs and unlock proof (44.1974ms)
+Γ£ö Q02 reads actual derived welfare and counters rather than forged cached objective/display values (8.6135ms)
+Γä╣ tests 12
+Γä╣ suites 0
+Γä╣ pass 11
+Γä╣ fail 1
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 1738.6152
+
+Γ£û failing tests:
+
+test at tests\care-mission.test.mjs:12:1
+Γ£û real care before Q01 counts consumption but earns no duration or progression until prerequisite claim (20.6006ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  35 !== 49
+  
+      at TestContext.<anonymous> (file:///C:/MyZooTwin/tests/care-mission.test.mjs:12:353)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 35,
+    expected: 49,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

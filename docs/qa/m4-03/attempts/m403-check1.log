@@ -1,0 +1,23 @@
+21.08.30 [vite] Re-optimizing dependencies because vite config has changed
+21.08.30 [content] Syncing content
+21.08.30 [content] Synced content
+21.08.30 [types] Generated 149ms
+21.08.30 [check] Getting diagnostics for Astro files in C:\MyZooTwin...
+[96msrc/game/economy/journal.ts[0m:[93m57[0m:[93m54[0m - [91merror[0m[90m ts(2339): [0mProperty 'ledgerEntryId' does not exist on type '{ missionId: "Q01" | "Q02" | "Q03" | "Q04"; ledgerEntryId: string; } | { missionId: "Q01" | "Q02" | "Q03" | "Q04"; unlockId: "aviary-blossoms"; tick: number; command: number; }'.
+  Property 'ledgerEntryId' does not exist on type '{ missionId: "Q01" | "Q02" | "Q03" | "Q04"; unlockId: "aviary-blossoms"; tick: number; command: number; }'.
+
+[7m57[0m  const rewardIds=new Set(s.missions.rewards.map(r=>r.ledgerEntryId)),rewards=[...c.rewards,...s.ledger.filter(e=>e.kind==='reward')].filter(e=>rewardIds.has(e.id));
+[7m  [0m [91m                                                     ~~~~~~~~~~~~~[0m
+
+[96msrc/game-entry/care-mission-panel.ts[0m:[93m5[0m:[93m760[0m - [91merror[0m[90m ts(7053): [0mElement implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ title: string; unlocked: string; reward: string; done: string; rules: string; bird: string; food: string; water: string; yes: string; no: string; welfare: string; timer: string; hold: string; reset: string; ... 4 more ...; observe: string; } | { ...; }'.
+  No index signature with a parameter of type 'string' was found on type '{ title: string; unlocked: string; reward: string; done: string; rules: string; bird: string; food: string; water: string; yes: string; no: string; welfare: string; timer: string; hold: string; reset: string; ... 4 more ...; observe: string; } | { ...; }'.
+
+[7m5[0m export function renderCareMission(section:HTMLElement|null,view:MissionView,locale:EntryLocale){if(!section)return;const v=view.care;section.hidden=!v||(view.currentId!=='Q02'&&!v.unlocked);if(!v)return;const c=copy[locale];section.dataset.unlocked=String(v.unlocked);section.dataset.ticks=String(v.comfortableTicks);section.dataset.holding=String(v.holding);section.dataset.next=v.unlocked?'observe':v.next;const texts={'[data-care-mission-title]':v.unlocked?c.unlocked:c.title,'[data-care-mission-hint]':v.unlocked?c.done:c.rules,'[data-care-mission-reward]':c.reward,'[data-care-mission-timer]':c.timer.replace('{seconds}',(v.comfortableTicks/10).toFixed(1)),'[data-care-mission-status]':v.unlocked?'':v.holding?c.hold:c.reset,'[data-care-mission-action]':c[v.unlocked?'observe':v.next==='food'?'foodAction':v.next==='water'?'waterAction':v.next]};for(const[k,value]of Object.entries(texts)){const e=section.querySelector(k);if(e&&e.textContent!==value)e.textContent=value;}const list=section.querySelector('[data-care-mission-birds]');if(list)list.replaceChildren(...v.animals.map((a,i)=>{const li=document.createElement('li');li.dataset.animalId=a.id;li.textContent=`${c.bird} ${i+1}: ${c.food} ${c[a.fed?'yes':'no']} · ${c.water} ${c[a.watered?'yes':'no']} · ${c.welfare} ${Math.round(a.welfare)}%`;return li;}));}
+[7m [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+Result (132 files): 
+- 2 errors
+- 0 warnings
+- 0 hints
+
+
