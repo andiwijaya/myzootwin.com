@@ -3,7 +3,7 @@ import type {Point,WorldState,ZooSaveV1} from '../core/state.ts';
 import {refundable} from '../economy/refunds.ts';
 export type EditTarget={kind:'habitat';id:string}|{kind:'path';cell:Point};
 export type EditReason='missing'|'protected'|'in-use'|'stale'|'funds'|'command'|'visitor-route'|'visitor-occupied'|'capacity';
-export interface RemovalQuote {revision:number;target:EditTarget;refund:number;}
+export interface RemovalQuote {revision:number;command:number;target:EditTarget;refund:number;}
 export interface EditorState {revision:number;undo:null|{before:WorldState;after:WorldState;refundIds:string[]};}
 export interface EditView {canUndo:boolean;undoCost?:number;reason:EditReason|null;result:'removed'|'restored'|null;}
 export const targetId=(target:EditTarget)=>target.kind==='habitat'?target.id:`path-${target.cell.x}-${target.cell.z}`;
@@ -17,7 +17,7 @@ export function quoteRemoval(state:ZooSaveV1,target:EditTarget,revision:number):
     if(!tile?.path)return {ok:false,reason:'missing'};
     const visitorReason=visitorRemovalReason(state,removedWorld(state.world,target),c);if(visitorReason)return {ok:false,reason:visitorReason};
   }
-  return {ok:true,quote:{revision,target:structuredClone(target),refund:refundable(state,targetId(target)).reduce((n,r)=>n+r.amount,0)}};
+  return {ok:true,quote:{revision,command:state.economy.nextCommand,target:structuredClone(target),refund:refundable(state,targetId(target)).reduce((n,r)=>n+r.amount,0)}};
 }
 export function removedWorld(world:WorldState,target:EditTarget):WorldState{
   const next=structuredClone(world);

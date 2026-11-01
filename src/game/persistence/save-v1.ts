@@ -1,3 +1,5 @@
+import {ATTRACTION_RULES} from '../visitors/attraction.ts';
+import {coherentMoney,admissionProofs,ledgerProof,LEDGER_KINDS} from '../economy/journal.ts';
 import {PRICES,MONEY_RULES} from '../economy/prices.ts';
 import {SATISFACTION_RULES} from '../visitors/satisfaction.ts';
 import {visitorPaths,visitorRoute,visitorCell,ownsCorridor} from '../visitors/navigation.ts';
@@ -6,7 +8,6 @@ import {restPort,restGround} from '../animals/resting.ts';
 import {waterPort,waterHeading,isWaterPhase} from '../animals/watering.ts';
 import {foodPort} from '../animals/feeding.ts';
 import {BIRD_PERCH_HEIGHT,birdHome,supportsBirds} from '../animals/autonomy.ts';
-import {validRefunds} from '../economy/refunds.ts';
 import { MAX_TICK, MISSION_IDS, SPECIES_ID, TICK_MS, type ZooSaveV1 } from '../core/state.ts';
 
 export const MAX_SAVE_CHARS = 1_000_000;
@@ -33,8 +34,13 @@ const cell = object({ x: integer(31), z: integer(31) });
 const tick = integer(MAX_TICK);
 const missionId = oneOf(...MISSION_IDS);
 const feedback=object({visitorId:id,habitatId:nullable(id),tick,outcome:oneOf('comfortable','concerned','empty','no-habitat','unreachable','interrupted'),reason:oneOf('none','closed','access-lost','habitat-removed','time-limit'),score:nullable(integer(100)),observedWelfare:nullable(integer(100)),samples:integer(30),occupiedSamples:integer(30),welfareHundredths:integer(300000)});
+const ledgerEntry=object({ id, operationId: id, kind: oneOf('starter','build','supplies','maintenance','ticket','reward','refund','restore'), amount: number(-Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER,true), balanceAfter: integer(), tick, relatedId: nullable(referenceId) });
+const admissionRule=object({ id, visitorId: id, tick, ledgerEntryId: id,entry:nullable(object({habitatId:id,gate:cell,cell,price:number(1,Number.MAX_SAFE_INTEGER,true)})) });
+const ticketProof=object({admission:admissionRule,entry:ledgerEntry});
+const financeCheckpoint=object({version:oneOf(1),balance:integer(),entries:integer(),lastTick:tick,compactions:integer(),commandThrough:integer(),visitorThrough:tick,openSerials:array(number(1,MAX_TICK,true),3),maintenancePeriod:tick,
+totals:object(Object.fromEntries(LEDGER_KINDS.map(k=>[k,number(-Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER,true)]))),counts:object(Object.fromEntries(LEDGER_KINDS.map(k=>[k,integer()]))),purchases:array(object({entry:ledgerEntry,refunded:integer()}),256),refunds:array(object({entry:ledgerEntry,restored:integer()}),256),tickets:array(ticketProof,35),rewards:array(ledgerEntry,4),lastTicket:nullable(ticketProof)});
 const schema = object({
-  schemaVersion: oneOf(1), randomSeed: number(1,0xffffffff,true), randomState: number(1,0xffffffff,true), tick, gameTimeMs: integer(), currency: integer(), economy:object({maintenancePeriod:tick}),
+  schemaVersion: oneOf(1), randomSeed: number(1,0xffffffff,true), randomState: number(1,0xffffffff,true), tick, gameTimeMs: integer(), currency: integer(), economy:object({maintenancePeriod:tick,nextCommand:number(1,Number.MAX_SAFE_INTEGER,true),checkpoint:financeCheckpoint}),
   world: object({ width: number(1,32,true), height: number(1,32,true), gate: cell,
     tiles: array(object({ cell, terrain: oneOf('land','creek'), occupantId: nullable(id), path: bool }),1024),
     habitats: array(object({ id, cells: array(cell,256), viewingCell: nullable(cell) }),8),
@@ -42,11 +48,11 @@ const schema = object({
   }),
   animals: array(object({ id, speciesId: oneOf(SPECIES_ID), habitatId: nullable(id), position: nullable(point), target: nullable(point), targetResourceId: nullable(id), hunger: percent, thirst: percent, energy: percent, habitatFit: percent, enrichment: percent, welfare: percent, care:object({low:bool,hungry:bool,thirsty:bool,tired:bool,bored:bool}), currentBehavior: oneOf('idle','wander','perch','seek-food','eat','seek-water','drink','rest','enrich','seek-rest'),motion:object({phase:oneOf('idle','look','walk-out','walk-home','ascend','perch','descend','seek-food','eat','leave-food','seek-water','drink','water-back','water-hop','leave-water','water-home','water-abort','seek-rest','rest','enrich'),ticksLeft:integer(120),sequence:tick,heading:number(-Math.PI*2,Math.PI*2),elevation:number(0,.2604000001)}),foodEaten:tick,waterDrunk:tick,restedTicks:tick,enrichedTicks:tick }),2),
   visitors: array(object({ id, position: point, route: array(cell,1024), routeIndex: integer(1023), phase: oneOf('arrival','queued','entering','viewing','leaving','exiting'), satisfaction: nullable(percent),entry:nullable(object({status:oneOf('pending','paid','free'),tick:nullable(tick),reason:oneOf('none','no-animals')})),experience:nullable(object({samples:integer(30),occupiedSamples:integer(30),welfareHundredths:integer(300000),feedback:nullable(feedback)})), admissionId: nullable(id),arrival:nullable(object({serial:number(1,MAX_TICK,true),slot:integer(2),spawnTick:tick})),journey:nullable(object({habitatId:nullable(id),heading:number(-Math.PI,Math.PI),dwellTicks:integer(30),queuedTicks:integer(6000),viewed:bool,startedTick:nullable(tick)})) }),32),
-  visitorFlow:object({open:bool,nextSerial:number(1,MAX_TICK,true),cooldownTicks:integer(30),viewedTotal:tick,feedback:object({evaluated:tick,scored:tick,scoreSum:integer(),positive:tick,negative:tick,interrupted:tick,recent:array(feedback,4)})}),
-  admissions: array(object({ id, visitorId: id, tick, ledgerEntryId: id,entry:nullable(object({habitatId:id,gate:cell,cell,price:number(1,Number.MAX_SAFE_INTEGER,true)})) }),8192),
-  ledger: array(object({ id, operationId: id, kind: oneOf('starter','build','supplies','maintenance','ticket','reward','refund','restore'), amount: number(-Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER,true), balanceAfter: integer(), tick, relatedId: nullable(referenceId) }),8192),
+  visitorFlow:object({open:bool,nextSerial:number(1,MAX_TICK,true),cooldownTicks:integer(ATTRACTION_RULES.maxIntervalTicks),viewedTotal:tick,feedback:object({evaluated:tick,scored:tick,scoreSum:integer(),positive:tick,negative:tick,interrupted:tick,recent:array(feedback,4)})}),
+  admissions: array(admissionRule,8192),
+  ledger: array(ledgerEntry,8192),
   missions: object({ currentId: nullable(missionId), completedIds: array(missionId,4), rewards: array(object({ missionId, ledgerEntryId: id }),4),
-    objectives: object({ habitatConnected: bool, birdsFedIds: array(id,2), birdsWateredIds: array(id,2), comfortableTicks: tick, viewedVisitorIds: array(id,8192), thrivingTicks: tick }),
+    objectives: object({ habitatConnected: bool, birdsFedIds: array(id,2), birdsWateredIds: array(id,2), comfortableTicks: tick, viewedVisitorIds: array(id,32), thrivingTicks: tick }),
   }),
   preferences: object({ locale: oneOf('id','en'), graphics: oneOf('auto','low','high'), muted: bool, reducedMotion: bool }),
 });
@@ -57,7 +63,7 @@ function relationships(s: ZooSaveV1) {
   requireValue(s.gameTimeMs === s.tick * TICK_MS,'$.gameTimeMs');
   requireValue(s.economy.maintenancePeriod<=Math.floor(s.tick/MONEY_RULES.maintenanceTicks),'$.economy.maintenancePeriod');
   const w=s.world;
-  if(w.habitats.length&&s.economy.maintenancePeriod>0){const since=s.economy.maintenancePeriod*MONEY_RULES.maintenanceTicks,covered=s.ledger.some(e=>e.kind==='maintenance'&&e.operationId===`maintenance-${s.economy.maintenancePeriod}`&&e.tick>=since&&e.amount<=-PRICES.maintenance&&e.amount%PRICES.maintenance===0&&e.relatedId===null)||w.habitats.every(h=>s.ledger.some(e=>{if(e.tick<since)return false;if(e.kind==='build')return e.relatedId===h.id;if(e.kind!=='restore')return false;const refund=s.ledger.find(r=>r.id===e.relatedId),paid=s.ledger.find(p=>p.id===refund?.relatedId);return paid?.kind==='build'&&paid.relatedId===h.id;}));requireValue(covered,'$.economy.maintenanceProof');}
+  if(w.habitats.length&&s.economy.maintenancePeriod>0){const since=s.economy.maintenancePeriod*MONEY_RULES.maintenanceTicks,covered=s.economy.maintenancePeriod<=s.economy.checkpoint.maintenancePeriod||s.ledger.some(e=>e.kind==='maintenance'&&e.operationId===`maintenance-${s.economy.maintenancePeriod}`&&e.tick>=since&&e.amount<=-PRICES.maintenance&&e.amount%PRICES.maintenance===0&&e.relatedId===null)||w.habitats.every(h=>s.ledger.some(e=>{if(e.tick<since)return false;if(e.kind==='build')return e.relatedId===h.id;if(e.kind!=='restore')return false;const refund=e.relatedId?ledgerProof(s,e.relatedId):undefined,paid=refund?.relatedId?ledgerProof(s,refund.relatedId):undefined;return paid?.kind==='build'&&paid.relatedId===h.id;}));requireValue(covered,'$.economy.maintenanceProof');}
   const inBounds=(p:{x:number;z:number}) => p.x < w.width && p.z < w.height;
   requireValue(w.tiles.length === w.width*w.height,'$.world.tiles');
   unique(w.tiles.map(t=>key(t.cell)),'$.world.tiles');
@@ -109,26 +115,14 @@ function relationships(s: ZooSaveV1) {
       }
     }
   }
-  unique(s.ledger.map(e=>e.id),'$.ledger.ids'); unique(s.ledger.map(e=>e.operationId),'$.ledger.operations');
-  const ledger=new Map(s.ledger.map(e=>[e.id,e]));
-  let balance=0,lastTick=0;
-  for(const e of s.ledger) {
-    balance+=e.amount;
-    requireValue(Number.isSafeInteger(balance) && balance>=0 && balance===e.balanceAfter && e.tick>=lastTick && e.tick<=s.tick,'$.ledger.balance');
-    requireValue(e.amount!==0 && (['build','supplies','maintenance','restore'].includes(e.kind) ? e.amount<0 : e.amount>0),'$.ledger.amount');
-    lastTick=e.tick;
-  }
-  requireValue(balance===s.currency,'$.currency');
-  requireValue(validRefunds(s.ledger),'$.ledger.refund');
-  unique(s.admissions.map(a=>a.id),'$.admissions.ids'); unique(s.admissions.map(a=>a.visitorId),'$.admissions.visitors'); unique(s.admissions.map(a=>a.ledgerEntryId),'$.admissions.ledger');
-  const admissions=new Map(s.admissions.map(a=>[a.id,a]));
-  for(const a of s.admissions) { const e=ledger.get(a.ledgerEntryId); requireValue(a.tick<=s.tick && e?.kind==='ticket' && e.relatedId===a.id && e.tick===a.tick,'$.admissions.reference'); }
-  for(const a of s.admissions){
-    const e=ledger.get(a.ledgerEntryId)!;
+  requireValue(coherentMoney(s),'$.economy.journal');
+  const allAdmissions=admissionProofs(s),ledger=new Map<string,ZooSaveV1['ledger'][number]>();
+  for(const e of [...s.economy.checkpoint.purchases.map(p=>p.entry),...s.economy.checkpoint.refunds.map(p=>p.entry),...s.economy.checkpoint.tickets.map(p=>p.entry),...s.economy.checkpoint.rewards,...s.ledger])ledger.set(e.id,e);
+  const admissions=new Map(allAdmissions.map(a=>[a.id,a]));
+  for(const a of allAdmissions){const e=ledger.get(a.ledgerEntryId)!;requireValue(a.tick<=s.tick&&e?.kind==='ticket'&&e.relatedId===a.id&&e.tick===a.tick,'$.admissions.reference');
     if(a.entry){const p=a.entry,serial=Number(a.visitorId.slice(8));requireValue(/^arrival-[1-9][0-9]*$/.test(a.visitorId)&&Number.isSafeInteger(serial)&&serial<s.visitorFlow.nextSerial&&a.id===`admission-${a.visitorId}`&&e.id===`ticket-${a.visitorId}`&&e.operationId===`admit-${a.visitorId}`&&e.amount===p.price&&key(p.gate)===key(w.gate)&&inBounds(p.cell)&&p.cell.x===p.gate.x&&Math.abs(p.cell.z-p.gate.z)===1,'$.admissions.entry');}
     else requireValue(!a.visitorId.startsWith('arrival-'),'$.admissions.generatedProof');
   }
-  for(const e of s.ledger)if(e.kind==='ticket')requireValue(e.relatedId!==null && admissions.get(e.relatedId)?.ledgerEntryId===e.id,'$.ledger.ticket');
   const fs=s.visitorFlow.feedback;
   requireValue(fs.evaluated===fs.scored+fs.interrupted&&fs.scored===fs.positive+fs.negative&&fs.evaluated<s.visitorFlow.nextSerial&&fs.scoreSum>=fs.positive*SATISFACTION_RULES.comfortableThreshold&&fs.scoreSum<=fs.positive*100+fs.negative*(SATISFACTION_RULES.comfortableThreshold-1)&&fs.recent.length===Math.min(fs.evaluated,SATISFACTION_RULES.recentLimit),'$.visitorFlow.feedback');
   unique(fs.recent.map(f=>f.visitorId),'$.visitorFlow.feedback.ids');
@@ -156,7 +150,8 @@ function relationships(s: ZooSaveV1) {
       const a=v.arrival,j=v.journey,age=s.tick-a.spawnTick;
       requireValue(v.entry!==null&&v.experience!==null&&v.id===`arrival-${a.serial}`&&a.serial<s.visitorFlow.nextSerial&&age>=0,'$.visitors.generated');
       const entry=v.entry;requireValue(entry!==null,'$.visitors.entry');if(!entry)continue;
-      const receipt=s.admissions.find(a=>a.visitorId===v.id);
+      const receipt=allAdmissions.find(a=>a.visitorId===v.id);
+      requireValue(a.serial>s.economy.checkpoint.visitorThrough||s.economy.checkpoint.openSerials.includes(a.serial),'$.visitors.retired');
       if(entry.status==='paid')requireValue(receipt?.id===v.admissionId&&receipt.entry!==null&&entry.reason==='none'&&entry.tick===receipt.tick&&entry.tick>=a.spawnTick,'$.visitors.entry.paid');
       else{
         requireValue(v.admissionId===null&&!receipt,'$.visitors.entry.unpaid');
@@ -201,8 +196,8 @@ function relationships(s: ZooSaveV1) {
   requireValue(m.completedIds.every((id,i)=>id===MISSION_IDS[i]) && m.currentId===(MISSION_IDS[m.completedIds.length]??null),'$.missions.order');
   unique(m.rewards.map(r=>r.missionId),'$.missions.rewards'); unique(m.rewards.map(r=>r.ledgerEntryId),'$.missions.rewardLedger');
   for(const r of m.rewards) { const e=ledger.get(r.ledgerEntryId); requireValue(m.completedIds.includes(r.missionId) && e?.kind==='reward' && e.relatedId===r.missionId,'$.missions.rewards.reference'); }
-  for(const e of s.ledger)if(e.kind==='reward')requireValue(m.rewards.some(r=>r.ledgerEntryId===e.id),'$.ledger.reward');
-  const birdIds=new Set(s.animals.map(a=>a.id)); const visitorIds=new Set(s.admissions.map(a=>a.visitorId));
+  for(const e of [...s.economy.checkpoint.rewards,...s.ledger])if(e.kind==='reward')requireValue(m.rewards.some(r=>r.ledgerEntryId===e.id),'$.ledger.reward');
+  const birdIds=new Set(s.animals.map(a=>a.id)); const visitorIds=new Set(allAdmissions.map(a=>a.visitorId));
   for(const values of [m.objectives.birdsFedIds,m.objectives.birdsWateredIds]) { unique(values,'$.missions.birds'); requireValue(values.every(id=>birdIds.has(id)),'$.missions.birds.reference'); }
   unique(m.objectives.viewedVisitorIds,'$.missions.visitors'); requireValue(m.objectives.viewedVisitorIds.every(id=>visitorIds.has(id)),'$.missions.visitors.reference');
   requireValue(m.objectives.comfortableTicks<=s.tick && m.objectives.thrivingTicks<=s.tick,'$.missions.duration');

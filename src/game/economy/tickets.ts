@@ -1,25 +1,18 @@
-import {MONEY_RULES} from './prices.ts';
+import {coherentMoney,admissionProofs,ledgerProof,totals} from './journal.ts';
 import type {Admission,LedgerEntry,Point,Visitor,ZooSaveV1} from '../core/state.ts';
 import {VISITOR_STEP,visitorRoute,visitorPaths,visitTarget} from '../visitors/graph.ts';
 
 /** Fictional Zoo Coins only. Starting price, not final economy balancing. */
-export const TICKET_RULES=Object.freeze({price:10,receiptLimit:MONEY_RULES.normalLimit});
+export const TICKET_RULES=Object.freeze({price:10});
 const key=(p:Point)=>`${p.x},${p.z}`,cell=(p:Point)=>({x:Math.floor(p.x),z:Math.floor(p.z)});
-export function ticketLimit(s:ZooSaveV1):'capacity'|'balance'|null{return s.ledger.length>=TICKET_RULES.receiptLimit||s.admissions.length>=TICKET_RULES.receiptLimit?'capacity':!Number.isSafeInteger(s.currency+TICKET_RULES.price)?'balance':null;}
-function coherentMoney(s:ZooSaveV1):boolean{
- let balance=0,tick=0;const ids=new Set(),operations=new Set(),entries=new Map(s.ledger.map(e=>[e.id,e]));
- for(const e of s.ledger){balance+=e.amount;if(!Number.isSafeInteger(e.amount)||e.amount===0||(['build','supplies','maintenance','restore'].includes(e.kind)?e.amount>=0:e.amount<=0)||!Number.isSafeInteger(balance)||balance<0||balance!==e.balanceAfter||e.tick<tick||e.tick>s.tick||ids.has(e.id)||operations.has(e.operationId))return false;ids.add(e.id);operations.add(e.operationId);tick=e.tick;}
- if(balance!==s.currency)return false;
- const admissions=new Map(),visitors=new Set(),paidEntries=new Set();
- for(const a of s.admissions){const e=entries.get(a.ledgerEntryId);if(admissions.has(a.id)||visitors.has(a.visitorId)||paidEntries.has(a.ledgerEntryId)||!e||e.kind!=='ticket'||e.relatedId!==a.id||e.tick!==a.tick||(a.entry!==null&&e.amount!==a.entry.price))return false;admissions.set(a.id,a);visitors.add(a.visitorId);paidEntries.add(a.ledgerEntryId);}
- return s.ledger.every(e=>e.kind!=='ticket'||(e.relatedId!==null&&admissions.get(e.relatedId)?.ledgerEntryId===e.id));
-}
+export function ticketLimit(s:ZooSaveV1):'balance'|null{return !Number.isSafeInteger(s.currency+TICKET_RULES.price)?'balance':null;}
 /** Internal simulation transaction. A committed receipt is never repaired/recredited from a partial restore. */
 export function admitTicket(s:ZooSaveV1,v:Visitor,from:Point,next:Point):{ok:true;duplicate:boolean;paid:boolean}|{ok:false;reason:'ineligible'|'inconsistent'|'capacity'|'balance'}{
  if(!v.arrival||!v.entry||v.id!==`arrival-${v.arrival.serial}`||v.arrival.serial>=s.visitorFlow.nextSerial||v.arrival.spawnTick>s.tick||s.visitors.find(p=>p.id===v.id)!==v||!coherentMoney(s))return {ok:false,reason:'inconsistent'};
- const old=s.admissions.find(a=>a.visitorId===v.id);
+ if(v.arrival.serial<=s.economy.checkpoint.visitorThrough&&!s.economy.checkpoint.openSerials.includes(v.arrival.serial))return {ok:false,reason:'inconsistent'};
+ const old=admissionProofs(s).find(a=>a.visitorId===v.id);
  if(v.entry.status==='paid'){
-  const e=old?s.ledger.find(e=>e.id===old.ledgerEntryId):null;
+  const e=old?ledgerProof(s,old.ledgerEntryId):null;
   return old&&old.id===v.admissionId&&old.entry!==null&&e?.kind==='ticket'&&e.relatedId===old.id&&e.amount===old.entry.price&&e.tick===old.tick&&v.entry.tick===old.tick?{ok:true,duplicate:true,paid:true}:{ok:false,reason:'inconsistent'};
  }
  if(old||v.admissionId!==null||(v.entry.status==='pending'&&v.entry.tick!==null))return {ok:false,reason:'inconsistent'};
@@ -39,6 +32,6 @@ export function admitTicket(s:ZooSaveV1,v:Visitor,from:Point,next:Point):{ok:tru
 }
 export interface TicketView {balance:number;price:number;admissions:number;revenue:number;reason:'closed'|'habitat'|'animals'|'capacity'|'balance'|'ready';last:{visitorId:string;amount:number;tick:number}|null;}
 export function ticketView(s:ZooSaveV1):TicketView{
- const target=visitTarget(s.world),last=s.admissions.at(-1),e=last?s.ledger.find(e=>e.id===last.ledgerEntryId):null;
- return {balance:s.currency,price:TICKET_RULES.price,admissions:s.admissions.length,revenue:s.ledger.filter(e=>e.kind==='ticket').reduce((n,e)=>n+e.amount,0),reason:ticketLimit(s)??(!s.visitorFlow.open?'closed':!target?'habitat':!s.animals.some(a=>a.habitatId===target.habitatId&&a.position!==null)?'animals':'ready'),last:last&&e?{visitorId:last.visitorId,amount:e.amount,tick:last.tick}:null};
+ const target=visitTarget(s.world),last=s.admissions.at(-1)??s.economy.checkpoint.lastTicket?.admission,e=last?(ledgerProof(s,last.ledgerEntryId)??s.economy.checkpoint.lastTicket?.entry):null,t=totals(s);
+ return {balance:s.currency,price:TICKET_RULES.price,admissions:t.counts.ticket,revenue:t.amounts.ticket,reason:ticketLimit(s)??(!s.visitorFlow.open?'closed':!target?'habitat':!s.animals.some(a=>a.habitatId===target.habitatId&&a.position!==null)?'animals':'ready'),last:last&&e?{visitorId:last.visitorId,amount:e.amount,tick:last.tick}:null};
 }

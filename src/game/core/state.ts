@@ -27,6 +27,14 @@ export interface Visitor { id: EntityId; position: Point; route: Point[]; routeI
 export interface Admission { id: EntityId; visitorId: EntityId; tick: number; ledgerEntryId: EntityId; entry:{habitatId:EntityId;gate:Point;cell:Point;price:number}|null; }
 export type LedgerKind = 'starter' | 'build' | 'supplies' | 'maintenance' | 'ticket' | 'reward' | 'refund' | 'restore';
 export interface LedgerEntry { id: EntityId; operationId: EntityId; kind: LedgerKind; amount: number; balanceAfter: number; tick: number; relatedId: EntityId | null; }
+export interface PurchaseProof {entry:LedgerEntry;refunded:number;}
+export interface RefundProof {entry:LedgerEntry;restored:number;}
+export interface TicketProof {admission:Admission;entry:LedgerEntry;}
+export interface FinanceCheckpoint {
+ version:1;balance:number;entries:number;lastTick:number;compactions:number;commandThrough:number;visitorThrough:number;openSerials:number[];maintenancePeriod:number;
+ totals:Record<LedgerKind,number>;counts:Record<LedgerKind,number>;
+ purchases:PurchaseProof[];refunds:RefundProof[];tickets:TicketProof[];rewards:LedgerEntry[];lastTicket:TicketProof|null;
+}
 export interface Missions {
   currentId: MissionId | null; completedIds: MissionId[];
   rewards: Array<{ missionId: MissionId; ledgerEntryId: EntityId }>;
@@ -36,7 +44,7 @@ export interface Preferences { locale: 'id' | 'en'; graphics: 'auto' | 'low' | '
 /** Serializable data only. No mesh/DOM/class references or runtime accumulator. */
 export interface ZooSaveV1 {
   schemaVersion: 1; randomSeed: number; randomState: number; tick: number; gameTimeMs: number;
-  currency: number; economy:{maintenancePeriod:number}; world: WorldState; animals: Animal[]; visitors: Visitor[];
+  currency: number; economy:{maintenancePeriod:number;nextCommand:number;checkpoint:FinanceCheckpoint}; world: WorldState; animals: Animal[]; visitors: Visitor[];
   visitorFlow:{open:boolean;nextSerial:number;cooldownTicks:number;viewedTotal:number;feedback:VisitorFeedbackSummary};
   admissions: Admission[]; ledger: LedgerEntry[]; missions: Missions; preferences: Preferences;
 }
