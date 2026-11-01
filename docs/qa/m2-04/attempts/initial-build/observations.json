@@ -1,0 +1,147 @@
+{
+  "status": "SUPERSEDED_SOURCE_NOT_FINAL_PASS",
+  "reason": "Native inspection found food action visibility stale after water preview; source correction required",
+  "receipt": {
+    "runId": "20261101T015628Z-8529110b",
+    "sourceId": "ec952745dcb775a39da20565d3e2e739787f71bd714c63c17b6c07b665facc92",
+    "buildId": "8fb50fd204dd3fddbb5796ef470dd676567669f5b7f19fb416530f31cbba41f4",
+    "method": "approved-cua-isolated-browser",
+    "physicalDevice": false,
+    "startedAt": "2026-11-01T01:58:10.960Z",
+    "cases": [
+      {
+        "id": "desktop-native",
+        "status": "PASS",
+        "observedAt": "2026-11-01T01:58:32.018Z",
+        "screenshot": "screens/desktop-native.jpg",
+        "data": {
+          "birdText": "Macaw 1 · Looking around · Hunger 87% · Portions eaten 0 · Thirst 27% · Drinks 2Macaw 2 · Looking around · Hunger 87% · Portions eaten 0 · Thirst 27% · Drinks 2",
+          "canvas": 1,
+          "documentWidth": 1366,
+          "entryScript": "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.DtVoksIp.js",
+          "food": 0,
+          "height": 768,
+          "lang": "en",
+          "preview": false,
+          "state": "ready",
+          "stock": 4,
+          "water": "true",
+          "waterText": "Water: 4/8 portions (macaw 1: 2; macaw 2: 2). Stock decreases only when a bird finishes drinking.",
+          "width": 1366,
+          "visualReviewed": true
+        }
+      }
+    ]
+  },
+  "native": [
+    {
+      "id": "preview-before-cancel",
+      "data": {
+        "birdText": "Macaw 1 · Perching / short flight · Hunger 62% · Portions eaten 0 · Thirst 66% · Drinks 0Macaw 2 · Perching / short flight · Hunger 62% · Portions eaten 0 · Thirst 66% · Drinks 0",
+        "canvas": 1,
+        "documentWidth": 1351,
+        "entryScript": "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.DtVoksIp.js",
+        "food": 0,
+        "height": 768,
+        "lang": "en",
+        "preview": true,
+        "state": "ready",
+        "stock": 0,
+        "water": "false",
+        "waterText": "No water yet. Place bowls, then refill them.",
+        "width": 1366
+      }
+    },
+    {
+      "id": "native-cancel",
+      "data": {
+        "birdText": "Macaw 1 · Perching / short flight · Hunger 62% · Portions eaten 0 · Thirst 66% · Drinks 0Macaw 2 · Perching / short flight · Hunger 62% · Portions eaten 0 · Thirst 66% · Drinks 0",
+        "canvas": 1,
+        "documentWidth": 1351,
+        "entryScript": "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.DtVoksIp.js",
+        "food": 0,
+        "height": 768,
+        "lang": "en",
+        "preview": false,
+        "state": "ready",
+        "stock": 0,
+        "water": "false",
+        "waterText": "No water yet. Place bowls, then refill them.",
+        "width": 1366
+      }
+    },
+    {
+      "id": "native-empty-built",
+      "data": {
+        "birdText": "Macaw 1 · Perching / short flight · Hunger 63% · Portions eaten 0 · Thirst 67% · Drinks 0Macaw 2 · Perching / short flight · Hunger 63% · Portions eaten 0 · Thirst 67% · Drinks 0",
+        "canvas": 1,
+        "documentWidth": 1351,
+        "entryScript": "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.DtVoksIp.js",
+        "food": 0,
+        "height": 768,
+        "lang": "en",
+        "preview": false,
+        "state": "ready",
+        "stock": 0,
+        "water": "true",
+        "waterText": "Empty water bowls: 0/8 portions. Refill to help thirsty birds.",
+        "width": 1366
+      }
+    },
+    {
+      "id": "native-drank-and-relieved-thirst",
+      "observedAt": "2026-11-01T01:58:19.512Z",
+      "data": {
+        "birdText": "Macaw 1 · Walking · Hunger 72% · Portions eaten 0 · Thirst 43% · Drinks 1Macaw 2 · Walking · Hunger 72% · Portions eaten 0 · Thirst 43% · Drinks 1",
+        "canvas": 1,
+        "documentWidth": 1351,
+        "entryScript": "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.DtVoksIp.js",
+        "food": 0,
+        "height": 768,
+        "lang": "en",
+        "preview": false,
+        "state": "ready",
+        "stock": 6,
+        "water": "true",
+        "waterText": "Water: 6/8 portions (macaw 1: 3; macaw 2: 3). Stock decreases only when a bird finishes drinking.",
+        "width": 1366
+      }
+    },
+    {
+      "id": "native-confirmation-modal",
+      "data": {
+        "birdText": "Macaw 1 · Walking · Hunger 87% · Portions eaten 0 · Thirst 27% · Drinks 2Macaw 2 · Walking · Hunger 87% · Portions eaten 0 · Thirst 27% · Drinks 2",
+        "canvas": 1,
+        "documentWidth": 1351,
+        "entryScript": "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.DtVoksIp.js",
+        "food": 0,
+        "height": 768,
+        "lang": "en",
+        "preview": false,
+        "state": "ready",
+        "stock": 4,
+        "water": "true",
+        "waterText": "Water: 4/8 portions (macaw 1: 2; macaw 2: 2). Stock decreases only when a bird finishes drinking.",
+        "width": 1366
+      }
+    },
+    {
+      "id": "native-confirmed-remove",
+      "data": {
+        "birdText": "Macaw 1 · Looking around · Hunger 87% · Portions eaten 0 · Thirst 28% · Drinks 2Macaw 2 · Looking around · Hunger 87% · Portions eaten 0 · Thirst 28% · Drinks 2",
+        "canvas": 1,
+        "documentWidth": 1351,
+        "entryScript": "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.DtVoksIp.js",
+        "food": 0,
+        "height": 768,
+        "lang": "en",
+        "preview": false,
+        "state": "ready",
+        "stock": 0,
+        "water": "false",
+        "waterText": "No water yet. Place bowls, then refill them.",
+        "width": 1366
+      }
+    }
+  ]
+}

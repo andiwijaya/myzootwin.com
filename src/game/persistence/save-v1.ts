@@ -1,3 +1,4 @@
+import {waterPort,waterHeading,isWaterPhase} from '../animals/watering.ts';
 import {foodPort} from '../animals/feeding.ts';
 import {BIRD_PERCH_HEIGHT,birdHome,supportsBirds} from '../animals/autonomy.ts';
 import {validRefunds} from '../economy/refunds.ts';
@@ -33,7 +34,7 @@ const schema = object({
     habitats: array(object({ id, cells: array(cell,256), viewingCell: nullable(cell) }),8),
     resources: array(object({ id, kind: oneOf('food','water','perch'), habitatId: id, cell, stock: integer(10000), capacity: number(1,10000,true),revision:tick,portions:nullable(array(integer(10000),2)) }),32),
   }),
-  animals: array(object({ id, speciesId: oneOf(SPECIES_ID), habitatId: nullable(id), position: nullable(point), target: nullable(point), targetResourceId: nullable(id), hunger: percent, thirst: percent, energy: percent, habitatFit: percent, enrichment: percent, welfare: percent, currentBehavior: oneOf('idle','wander','perch','seek-food','eat','seek-water','drink','rest'),motion:object({phase:oneOf('idle','look','walk-out','walk-home','ascend','perch','descend','seek-food','eat','leave-food'),ticksLeft:integer(120),sequence:tick,heading:number(-Math.PI*2,Math.PI*2),elevation:number(0,.2604000001)}),foodEaten:tick }),2),
+  animals: array(object({ id, speciesId: oneOf(SPECIES_ID), habitatId: nullable(id), position: nullable(point), target: nullable(point), targetResourceId: nullable(id), hunger: percent, thirst: percent, energy: percent, habitatFit: percent, enrichment: percent, welfare: percent, currentBehavior: oneOf('idle','wander','perch','seek-food','eat','seek-water','drink','rest'),motion:object({phase:oneOf('idle','look','walk-out','walk-home','ascend','perch','descend','seek-food','eat','leave-food','seek-water','drink','water-back','water-hop','leave-water','water-home','water-abort'),ticksLeft:integer(120),sequence:tick,heading:number(-Math.PI*2,Math.PI*2),elevation:number(0,.2604000001)}),foodEaten:tick,waterDrunk:tick }),2),
   visitors: array(object({ id, position: point, route: array(cell,1024), routeIndex: integer(1023), phase: oneOf('entering','viewing','leaving'), satisfaction: percent, admissionId: id }),32),
   admissions: array(object({ id, visitorId: id, tick, ledgerEntryId: id }),8192),
   ledger: array(object({ id, operationId: id, kind: oneOf('starter','build','supplies','maintenance','ticket','reward','refund','restore'), amount: number(-Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER,true), balanceAfter: integer(), tick, relatedId: nullable(referenceId) }),8192),
@@ -68,24 +69,25 @@ function relationships(s: ZooSaveV1) {
   requireValue(inBounds(w.gate) && tiles.get(key(w.gate))?.path===true,'$.world.gate');
   unique(w.resources.map(r=>key(r.cell)),'$.world.resources.cells');
   for(const r of w.resources) requireValue(r.stock<=r.capacity && habitats.has(r.habitatId) && occupied.get(key(r.cell))===r.habitatId,`$.resource.${r.id}`);
-  for(const r of w.resources)requireValue(r.kind==='food'?r.portions!==null&&r.portions.length===2&&r.portions[0]+r.portions[1]===r.stock&&r.portions[0]<=Math.ceil(r.capacity/2)&&r.portions[1]<=Math.floor(r.capacity/2):r.portions===null,`$.resource.${r.id}.portions`);
+  for(const r of w.resources)requireValue(r.kind!=='perch'?r.portions!==null&&r.portions.length===2&&r.portions[0]+r.portions[1]===r.stock&&r.portions[0]<=Math.ceil(r.capacity/2)&&r.portions[1]<=Math.floor(r.capacity/2):r.portions===null,`$.resource.${r.id}.portions`);
   const resourceById=new Map(w.resources.map(r=>[r.id,r]));
   requireValue(s.animals.length===2,'$.animals');
   for(const a of s.animals) {
-    requireValue(a.foodEaten<=s.tick,`$.animal.${a.id}.foodEaten`);
+    requireValue(a.foodEaten<=s.tick&&a.waterDrunk<=s.tick,`$.animal.${a.id}.foodEaten`);
     const inHabitat=(p:{x:number;z:number})=>inBounds(p) && occupied.get(key({x:Math.floor(p.x),z:Math.floor(p.z)}))===a.habitatId;
     if(a.habitatId===null) requireValue(a.position===null && a.target===null && a.targetResourceId===null && a.currentBehavior==='idle' && a.motion.phase==='idle' && a.motion.ticksLeft===0 && a.motion.elevation===0,`$.animal.${a.id}.reserve`);
     else {
       requireValue(habitats.has(a.habitatId) && a.position!==null && inHabitat(a.position),`$.animal.${a.id}.position`);
       if(a.target)requireValue(inHabitat(a.target),`$.animal.${a.id}.target`);
-      if(a.motion.ticksLeft>0&&['idle','wander','perch','seek-food','eat'].includes(a.currentBehavior)){
+      if(a.motion.ticksLeft>0&&['idle','wander','perch','seek-food','eat','seek-water','drink'].includes(a.currentBehavior)){
         const h=habitats.get(a.habitatId)!,slot=[...s.animals].sort((a,b)=>a.id.localeCompare(b.id)).findIndex(b=>b.id===a.id),home=birdHome(h,slot),m=a.motion;
-        requireValue(supportsBirds(h)&&a.position!.x===home.ground.x&&a.position!.z>=home.perch.z&&a.position!.z<=home.ground.z+.25,`$.animal.${a.id}.motion.bounds`);
-        const grounded=['idle','look','walk-out','walk-home','seek-food','eat','leave-food'].includes(m.phase),walking=m.phase==='walk-out'||m.phase==='walk-home'||m.phase==='leave-food',feeding=m.phase==='seek-food'||m.phase==='eat';
-        requireValue(a.currentBehavior===(feeding?m.phase:grounded?(walking?'wander':'idle'):'perch')&&(!grounded||m.elevation===0),`$.animal.${a.id}.motion.phase`);
-        requireValue((walking||feeding||m.phase==='ascend'||m.phase==='descend')?a.target!==null:a.target===null,`$.animal.${a.id}.motion.target`);
-        if(a.target)requireValue(a.target.x===home.ground.x&&a.target.z>=home.perch.z&&a.target.z<=home.ground.z+.25,`$.animal.${a.id}.motion.targetBounds`);
+        requireValue(supportsBirds(h)&&Math.abs(a.position!.x-home.ground.x)<=.090001&&a.position!.z>=home.perch.z&&a.position!.z<=home.ground.z+.25,`$.animal.${a.id}.motion.bounds`);
+        const grounded=['idle','look','walk-out','walk-home','seek-food','eat','leave-food'].includes(m.phase),walking=m.phase==='walk-out'||m.phase==='walk-home'||m.phase==='leave-food',feeding=m.phase==='seek-food'||m.phase==='eat',watering=isWaterPhase(a);
+        requireValue(a.currentBehavior===(watering?(m.phase==='seek-water'||m.phase==='drink'?m.phase:'wander'):feeding?m.phase:grounded?(walking?'wander':'idle'):'perch')&&(!grounded||m.elevation===0),`$.animal.${a.id}.motion.phase`);
+        requireValue((watering||walking||feeding||m.phase==='ascend'||m.phase==='descend')?a.target!==null:a.target===null,`$.animal.${a.id}.motion.target`);
+        if(a.target)requireValue(Math.abs(a.target.x-home.ground.x)<=.090001&&a.target.z>=home.perch.z&&a.target.z<=home.ground.z+.25,`$.animal.${a.id}.motion.targetBounds`);
         if(grounded&&a.target)requireValue(a.target.z>=home.ground.z-.30,`$.animal.${a.id}.motion.groundTarget`);
+        if(watering){const p=waterPort(h,slot);requireValue(m.phase==='water-hop'?m.elevation<=.040001:m.elevation===0,`$.animal.${a.id}.waterHeight`);if(m.phase==='seek-water'||m.phase==='drink')requireValue(a.target?.x===p.x&&a.target.z===p.z,`$.animal.${a.id}.waterPort`);if(m.phase==='drink')requireValue(a.position!.x===p.x&&a.position!.z===p.z&&Math.abs(m.heading-waterHeading(slot))<.001,`$.animal.${a.id}.waterContact`);}
         if(feeding){const p=foodPort(h,slot);requireValue(a.target?.x===p.x&&a.target.z===p.z,`$.animal.${a.id}.foodPort`);if(m.phase==='eat')requireValue(a.position!.x===p.x&&a.position!.z===p.z&&Math.abs(m.heading)<.001,`$.animal.${a.id}.foodContact`);}
         if(m.phase==='perch')requireValue(m.elevation===BIRD_PERCH_HEIGHT&&a.position!.z===home.perch.z,`$.animal.${a.id}.motion.contact`);
       }

@@ -19,6 +19,7 @@ export interface PreviewSession {
   dispose(): void;
   birds?(command:BirdCommand):void;
   food?(command:FoodCommand,revision?:number):void;
+  water?(command:FoodCommand,revision?:number):void;
   studio?(command:StudioCommand,value?:string):void;
   camera?(command:CameraCommand):void;
   clearSelection?():void;
@@ -81,6 +82,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     dispose() { if (disposed) return; close(); disposed = true; },
     getState: () => state,
     inspectSession: () => session?.inspect?.(),
+    water(command:FoodCommand,revision?:number){if(!paused&&state.status==='ready')session?.water?.(command,revision);},
     food(command:FoodCommand,revision?:number){if(!paused&&state.status==='ready')session?.food?.(command,revision);},
     birds(command:BirdCommand){if(!paused&&state.status==='ready')session?.birds?.(command);},
     studio(command:StudioCommand,value?:string){if(!paused&&state.status==='ready')session?.studio?.(command,value);},

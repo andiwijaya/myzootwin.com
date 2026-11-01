@@ -1,3 +1,4 @@
+import {waterTransaction,waterView} from '../animals/watering.ts';
 import {foodTransaction,foodView,type FoodAction} from '../animals/feeding.ts';
 import {stepAnimals,welcomeBirds,reserveBird,birdsView,type BirdCommand} from '../animals/autonomy.ts';
 import {editLedger,refundable} from '../economy/refunds.ts';
@@ -32,7 +33,7 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
     state.gameTimeMs=state.tick*TICK_MS;
     const random=nextRandom(state.randomState);
     state.randomState=random.state;
-    const fed=stepAnimals(state);for(const e of fed)bus.emit(Object.freeze({type:'animal-fed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
+    const {fed,watered}=stepAnimals(state);for(const e of watered)bus.emit(Object.freeze({type:'animal-drank',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));for(const e of fed)bus.emit(Object.freeze({type:'animal-fed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     bus.emit(Object.freeze({type:'tick',tick:state.tick,gameTimeMs:state.gameTimeMs,randomSample:random.value}));
   });
   return {
@@ -57,8 +58,10 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
       if(!prepared.duplicate){const connected=reconcilePathAccess(prepared.world);const next=validateSave({...state,world:connected.world});if(!next.ok)return {ok:false as const,reason:'command' as const};state=next.value;topology=connected.topology;invalidateEdit();bus.emit(Object.freeze({type:'path-built',cell:{...cell},tick:state.tick,gameTimeMs:state.gameTimeMs}));}
       return {ok:true as const,duplicate:prepared.duplicate};
     },
-    birdInspect:()=>Object.fromEntries([...state.animals].sort((a,b)=>a.id.localeCompare(b.id)).flatMap((a,i)=>{const key=`bird${i+1}`;return [[`${key}X`,a.position?.x??-1],[`${key}Z`,a.position?.z??-1],[`${key}Height`,a.motion.elevation],[`${key}Phase`,['idle','walk-out','look','walk-home','ascend','perch','descend','seek-food','eat','leave-food'].indexOf(a.motion.phase)],[`${key}Sequence`,a.motion.sequence],[`${key}Hunger`,a.hunger],[`${key}FoodEaten`,a.foodEaten]];})),
+    birdInspect:()=>Object.fromEntries([...state.animals].sort((a,b)=>a.id.localeCompare(b.id)).flatMap((a,i)=>{const key=`bird${i+1}`;return [[`${key}X`,a.position?.x??-1],[`${key}Z`,a.position?.z??-1],[`${key}Height`,a.motion.elevation],[`${key}Phase`,['idle','walk-out','look','walk-home','ascend','perch','descend','seek-food','eat','leave-food','seek-water','drink','water-back','water-hop','leave-water','water-home','water-abort'].indexOf(a.motion.phase)],[`${key}Sequence`,a.motion.sequence],[`${key}Hunger`,a.hunger],[`${key}FoodEaten`,a.foodEaten],[`${key}Thirst`,a.thirst],[`${key}WaterDrunk`,a.waterDrunk]];})),
     birdSnapshot:()=>({animals:structuredClone(state.animals),habitats:structuredClone(state.world.habitats),width:state.world.width,height:state.world.height}),
+    waterView:()=>waterView(state),
+    water(action:FoodAction,revision:number){if(disposed||clock.inspect().paused||!Number.isSafeInteger(revision)||revision<0)return {ok:false as const,reason:'invalid' as const};const next=structuredClone(state),reason=waterTransaction(next,action,revision,editor.revision+1);if(reason!=='ok')return {ok:false as const,reason};const checked=validateSave(next);if(!checked.ok)return {ok:false as const,reason:'invalid' as const};state=checked.value;invalidateEdit();bus.emit(Object.freeze({type:'water-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};},
     foodView:()=>foodView(state),
     food(action:FoodAction,revision:number){if(disposed||clock.inspect().paused||!Number.isSafeInteger(revision)||revision<0)return {ok:false as const,reason:'invalid' as const};const next=structuredClone(state),reason=foodTransaction(next,action,revision,editor.revision+1);if(reason!=='ok')return {ok:false as const,reason};const checked=validateSave(next);if(!checked.ok)return {ok:false as const,reason:'invalid' as const};state=checked.value;invalidateEdit();bus.emit(Object.freeze({type:'food-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};},
     birdsView:()=>birdsView(state),

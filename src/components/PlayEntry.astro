@@ -76,6 +76,14 @@ import { english as copy } from '../game-entry/locale';
         <div data-food-actions hidden><button type="button" data-food-command="refill">{copy.foodFill}</button> <button type="button" data-food-remove>{copy.foodRemove}</button></div>
         <p data-food-status role="status" aria-live="polite"></p>
       </section>
+      <section class="macaw-tools" data-water-tools hidden aria-labelledby="water-title">
+        <h3 id="water-title" data-entry-text="waterTitle">{copy.waterTitle}</h3>
+        <p data-entry-text="waterHint">{copy.waterHint}</p>
+        <button type="button" data-water-command="preview" disabled>{copy.waterPlace}</button>
+        <div data-water-preview hidden><p data-entry-text="waterPreview">{copy.waterPreview}</p><button type="button" data-water-command="confirm">{copy.waterConfirm}</button> <button type="button" data-water-command="cancel">{copy.waterCancel}</button></div>
+        <div data-water-actions hidden><button type="button" data-water-command="refill">{copy.waterFill}</button> <button type="button" data-water-remove>{copy.waterRemove}</button></div>
+        <p data-water-status role="status" aria-live="polite"></p>
+      </section>
       <section class="macaw-tools" data-macaw-tools hidden aria-labelledby="macaw-title">
         <button type="button" data-studio-command="open">{copy.macawOpen}</button>
         <div data-macaw-controls hidden>
@@ -131,6 +139,10 @@ import { english as copy } from '../game-entry/locale';
   <dialog data-food-dialog aria-labelledby="food-dialog-title">
     <h2 id="food-dialog-title" tabindex="-1" data-entry-text="foodRemoveTitle">{copy.foodRemoveTitle}</h2><p data-entry-text="foodRemoveHint">{copy.foodRemoveHint}</p>
     <button type="button" class="dialog-close" data-food-keep>{copy.foodKeep}</button><button type="button" class="dialog-close" data-food-remove-confirm>{copy.foodRemoveConfirm}</button>
+  </dialog>
+  <dialog data-water-dialog aria-labelledby="water-dialog-title">
+    <h2 id="water-dialog-title" tabindex="-1" data-entry-text="waterRemoveTitle">{copy.waterRemoveTitle}</h2><p data-entry-text="waterRemoveHint">{copy.waterRemoveHint}</p>
+    <button type="button" class="dialog-close" data-water-keep>{copy.waterKeep}</button><button type="button" class="dialog-close" data-water-remove-confirm>{copy.waterRemoveConfirm}</button>
   </dialog>
   <dialog data-edit-dialog aria-labelledby="edit-dialog-title" aria-describedby="edit-dialog-description edit-dialog-refund">
     <h2 id="edit-dialog-title" tabindex="-1" data-entry-text="editTitle">{copy.editTitle}</h2>

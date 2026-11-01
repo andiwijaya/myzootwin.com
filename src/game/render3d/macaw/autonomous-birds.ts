@@ -5,8 +5,8 @@ import {createMacawAssets,MACAW_SCALE} from './macaw-geometry.ts';
 import {createMacawRig} from './macaw-rig.ts';
 import {sampleMacawPose,blendMacawPose,type MacawPose} from './macaw-animation.ts';
 export function autonomousPose(a:Animal,time:number):MacawPose{
- const m=a.motion,walking=m.phase==='walk-out'||m.phase==='walk-home'||m.phase==='seek-food'||m.phase==='leave-food',flying=m.phase==='ascend'||m.phase==='descend';
- const p=sampleMacawPose(m.phase==='eat'?'eat':walking?'walk':'perch',m.phase==='eat'?(20-m.ticksLeft)*100:time);
+ const m=a.motion,walking=m.phase==='walk-out'||m.phase==='walk-home'||m.phase==='seek-food'||m.phase==='leave-food'||['seek-water','water-back','leave-water','water-home','water-abort'].includes(m.phase),flying=m.phase==='ascend'||m.phase==='descend';
+ const p=sampleMacawPose(m.phase==='drink'?'drink':m.phase==='water-hop'?'hop':m.phase==='eat'?'eat':walking?'walk':'perch',m.phase==='eat'||m.phase==='drink'?(20-m.ticksLeft)*100:m.phase==='water-hop'?(8-m.ticksLeft)*100:time);
  if(m.phase!=='perch'){p.grip=0;p.tailPitch=1.15*(1-m.elevation/BIRD_PERCH_HEIGHT);}
  if(flying){const fly=sampleMacawPose('fly',time),edge=Math.min((24-m.ticksLeft)/4,m.ticksLeft/4,1);for(const key of ['wingLeft','wingRight','elbowLeft','elbowRight']as const)p[key]+=(fly[key]-p[key])*Math.max(0,edge);p.leftStep=p.rightStep=p.leftLift=p.rightLift=0;p.grip=m.elevation===BIRD_PERCH_HEIGHT&&m.ticksLeft<3?1:0;}
  p.lift=0;return p;

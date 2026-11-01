@@ -1,3 +1,4 @@
+import{runWaterDomScenarios}from'./watering-dom-scenarios.mjs';
 import{runFeedingDomScenarios}from'./feeding-dom-scenarios.mjs';
 import{runAnimalDomScenarios}from'./animal-dom-scenarios.mjs';
 import{runMacawDomScenarios}from'./macaw-dom-scenarios.mjs';
@@ -37,6 +38,7 @@ function factory(onFailure){
   return {
     setPaused:value=>native.setPaused?.(value),
     food:(command,revision)=>native.food?.(command,revision),
+    water:(command,revision)=>native.water?.(command,revision),
     birds:command=>native.birds?.(command),
     studio:(command,value)=>native.studio?.(command,value),
     camera:value=>native.camera?.(value),
@@ -95,9 +97,15 @@ animalRun.addEventListener('click',async()=>{animalOutput.textContent=JSON.strin
 const feedingRun=document.createElement('button');feedingRun.id='qa-feeding';feedingRun.textContent='Run real-time feeding checks';animalRun.after(feedingRun);
 const feedingOutput=document.createElement('output');feedingOutput.id='qa-feeding-results';feedingRun.after(feedingOutput);
 feedingRun.addEventListener('click',async()=>{feedingOutput.textContent=JSON.stringify({status:'RUNNING'});const result=await runFeedingDomScenarios(root,()=>handle?.inspect().session,value=>handle?.setPaused(value),value=>{locale=value;handle?.setLocale(value);});feedingOutput.textContent=JSON.stringify(result);update();});
+const waterRun=document.createElement('button');waterRun.id='qa-water';waterRun.textContent='Run real-time water checks';feedingRun.after(waterRun);
+const waterOutput=document.createElement('output');waterOutput.id='qa-water-results';waterRun.after(waterOutput);
+waterRun.addEventListener('click',async()=>{waterOutput.textContent=JSON.stringify({status:'RUNNING'});const result=await runWaterDomScenarios(root,()=>handle?.inspect().session,value=>handle?.setPaused(value),value=>{locale=value;handle?.setLocale(value);});waterOutput.textContent=JSON.stringify(result);update();});
 const eatingFreeze=document.createElement('button');eatingFreeze.id='qa-feeding-freeze';eatingFreeze.textContent='Pause next real eating pose';feedingRun.after(eatingFreeze);
 const eatingOutput=document.createElement('output');eatingOutput.id='qa-feeding-freeze-results';eatingFreeze.after(eatingOutput);
 eatingFreeze.addEventListener('click',async()=>{handle?.setPaused(false);eatingOutput.textContent=JSON.stringify({status:'WAITING_FOR_NATIVE_EATING_FRAME'});const start=performance.now(),entered=[null,null];while(performance.now()-start<35000){await new Promise(r=>requestAnimationFrame(r));const s=handle?.inspect().session;if(!s)break;for(let i=0;i<2;i++){const eat=s[`bird${i+1}Phase`]===8;if(eat&&entered[i]===null)entered[i]=s.simulationTick;if(!eat)entered[i]=null;}if(entered.some(t=>t!==null&&s.simulationTick-t>=13)){handle?.setPaused(true);eatingOutput.textContent=JSON.stringify({status:'OBSERVED_AND_PAUSED',method:'real simulation reached eat, then QA pause; no pose/state/time injection',observedAt:new Date().toISOString(),session:handle?.inspect().session});update();return;}}eatingOutput.textContent=JSON.stringify({status:'UNRUN_TIMEOUT_NO_EATING_FRAME'});update();});
+const waterFreeze=document.createElement('button');waterFreeze.id='qa-water-freeze';waterFreeze.textContent='Pause next real drinking pose';waterRun.after(waterFreeze);
+const waterFreezeOutput=document.createElement('output');waterFreezeOutput.id='qa-water-freeze-results';waterFreeze.after(waterFreezeOutput);
+waterFreeze.addEventListener('click',async()=>{handle?.setPaused(false);waterFreezeOutput.textContent=JSON.stringify({status:'WAITING_FOR_NATIVE_DRINKING_FRAME'});const start=performance.now(),entered=[null,null];while(performance.now()-start<35000){await new Promise(r=>requestAnimationFrame(r));const s=handle?.inspect().session;if(!s)break;for(let i=0;i<2;i++){const eat=s[`bird${i+1}Phase`]===11;if(eat&&entered[i]===null)entered[i]=s.simulationTick;if(!eat)entered[i]=null;}if(entered.some(t=>t!==null&&s.simulationTick-t>=4)){handle?.setPaused(true);waterFreezeOutput.textContent=JSON.stringify({status:'OBSERVED_AND_PAUSED',method:'real simulation reached drink, then QA pause; no pose/state/time injection',observedAt:new Date().toISOString(),session:handle?.inspect().session});update();return;}}waterFreezeOutput.textContent=JSON.stringify({status:'UNRUN_TIMEOUT_NO_DRINKING_FRAME'});update();});
 const observer=new MutationObserver(update);
 observer.observe(root,{subtree:true,childList:true,attributes:true,attributeFilter:['data-renderer-state']});
 const onVisibility=()=>{if(document.hidden){endProbe('ABORTED_HIDDEN');update();}};

@@ -10,12 +10,12 @@ export interface Habitat { id: EntityId; cells: Point[]; viewingCell: Point | nu
 export interface Resource { id: EntityId; kind: 'food' | 'water' | 'perch'; habitatId: EntityId; cell: Point; stock: number; capacity: number; revision:number; portions:[number,number]|null; }
 export interface WorldState { width: number; height: number; gate: Point; tiles: Tile[]; habitats: Habitat[]; resources: Resource[]; }
 export type AnimalBehavior = 'idle' | 'wander' | 'perch' | 'seek-food' | 'eat' | 'seek-water' | 'drink' | 'rest';
-export interface AnimalMotion {phase:'idle'|'look'|'walk-out'|'walk-home'|'ascend'|'perch'|'descend'|'seek-food'|'eat'|'leave-food';ticksLeft:number;sequence:number;heading:number;elevation:number;}
+export interface AnimalMotion {phase:'idle'|'look'|'walk-out'|'walk-home'|'ascend'|'perch'|'descend'|'seek-food'|'eat'|'leave-food'|'seek-water'|'drink'|'water-back'|'water-hop'|'leave-water'|'water-home'|'water-abort';ticksLeft:number;sequence:number;heading:number;elevation:number;}
 export interface Animal {
   id: EntityId; speciesId: typeof SPECIES_ID; habitatId: EntityId | null;
   position: Point | null; target: Point | null; targetResourceId: EntityId | null;
   hunger: number; thirst: number; energy: number; habitatFit: number; enrichment: number; welfare: number;
-  currentBehavior: AnimalBehavior; motion:AnimalMotion; foodEaten:number;
+  currentBehavior: AnimalBehavior; motion:AnimalMotion; foodEaten:number; waterDrunk:number;
 }
 export interface Visitor { id: EntityId; position: Point; route: Point[]; routeIndex: number; phase: 'entering' | 'viewing' | 'leaving'; satisfaction: number; admissionId: EntityId; }
 export interface Admission { id: EntityId; visitorId: EntityId; tick: number; ledgerEntryId: EntityId; }

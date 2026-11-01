@@ -1,0 +1,23 @@
+{
+  "status": "RESOLVED_AND_REVALIDATED_ON_FINAL_SOURCE",
+  "initialRun": "20261101T015628Z-8529110b",
+  "finalRun": "20261101T015958Z-4137168a",
+  "findings": [
+    {
+      "finding": "Actual tail bound exceeded inner fence clearance on right bird walk-home: maxX5.988554 versus allowed5.965.",
+      "resolution": "When side bowls exist, floor wandering stays .02/.04 units inward. Full900-tick geometry test passes for food+water; all21 anchors separately tested."
+    },
+    {
+      "finding": "Water preview could leave food action hidden when food view data had not changed. Observed in native product UI on initial build.",
+      "resolution": "Removed accidental cross-preview food visibility condition; native absence-of-food case plus fixture existing-food regression verified. Complete source-matched QA rerun; initial receipts explicitly superseded."
+    },
+    {
+      "finding": "Initial intended portrait fixture retained1366x768 while override applied to newer product tab.",
+      "resolution": "Wrong-size fixture image/matrix rejected from portrait PASS. Repeated matrix and contact on sole fresh tab, measured360x780; actual native product portrait evidence was correctly sized."
+    },
+    {
+      "finding": "Local helper UTF-8 decode and unit-test surface-scope/unused-import issues during development.",
+      "resolution": "Explicit UTF-8 resume; scope corrected and config actually asserted. Final automated174 tests and zero-diagnostic check required. These development attempts were not promoted as final PASS."
+    }
+  ]
+}
