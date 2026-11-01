@@ -1,0 +1,42 @@
+Γ£ö new game defaults1x and schema only accepts explicit1/10 numeric rate (7.5011ms)
+Γ£ö 10x executes all intermediate ticks with bounded25-step catch-up and saturated drop metrics (0.3714ms)
+Γ£û fast repeated switching retains sub-tick simulated remainder without minting ticks or transactions (12.7068ms)
+Γ£ö real speed input reanchors once; selecting current rate leaves frame anchor intact (1.2358ms)
+Γ£ö equal accepted simulated time is byte-identical across1x10x and fractional partitions (542.0923ms)
+Γ£ö 25 tick batches retain per-tick care events and identical missions economy and admissions (342.2488ms)
+Γ£ö pause background gap and codec preserve chosen rate but grant no elapsed offline progress (3.5868ms)
+Γ£ö constructor reset returns newgame1x or restored10x without duplicate speed events (1.0926ms)
+Γ£ö distressed legitimate support and exact cash reconciliation are equal at both speeds (754.7535ms)
+Γ£ö one RAF callback remains one render while fast rate executes ten fixed ticks (1.1277ms)
+Γ£ö speed controller forwards only valid ready unpaused commands to current generation (0.3847ms)
+Γä╣ tests 11
+Γä╣ suites 0
+Γä╣ pass 10
+Γä╣ fail 1
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 1847.9836
+
+Γ£û failing tests:
+
+test at tests\simulation-speed.test.mjs:8:1
+Γ£û fast repeated switching retains sub-tick simulated remainder without minting ticks or transactions (12.7068ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  1 !== 0
+  
+      at TestContext.<anonymous> (file:///C:/MyZooTwin/tests/simulation-speed.test.mjs:8:470)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 1,
+    expected: 0,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

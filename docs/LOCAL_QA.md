@@ -185,3 +185,7 @@ Current final gate359 tests/139 checked files; fresh21-suite chain260/view,780 t
 ## M4-05 sustained sanctuary and achievement - 2026-11-01
 
 Current final gate370 tests/146 checked files;22-suite fresh chain272/view,816 total,12 Q04 cases per viewport. Separate ordinary native fresh Q01-Q04 from whole labelled partial/critical/gap/history/archive fixtures. Verify30s care/access/open streak plus20 actual new ticket ZC/two admissions, exclusion/reset/pause, no pre-Q03 credit, no cash reward, visible original banner/achievement/details, malformed/replayed proof and archive/codec.127-field context/remount and exact five clock phases, uncapped actual consoles/closed tabs/free previews. Full chains must stop on obsolete assumptions too; keep failed/aborted receipts, rerun final source, never relabel earlier evidence. Callback probe not FPS. Physical/background/durable save/human study/full-game soak/live remain UNRUN. See M4-05_Q04_THRIVING.md, implementation `b4039c84a89ea7b2151b90aaf55c745a83bb21e7`.
+
+## M4-06 fixed simulation speed - 2026-11-01
+
+Final381 tests/150 files/23 suites280 per view. Verify native fresh Q01-Q04 at1x and10x, real care recovery, keyboard/IDEN44px control, rapid switches, pause/dialog/injected visibility and128-field context/true-unmount remount stability. No fast-time injection or physicalFPS claims. Preserve preflight failures and current explicit receipt writer; verify source/build and original bytes. See M4-06_SIMULATION_SPEED.md, implementation `e959fbd0b25b7f338a5697de739bef09b2ad8963`.

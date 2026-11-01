@@ -204,3 +204,7 @@ Q03 captures real unique eligible admission IDs and one completed paid occupied 
 ## M4-05 sustained sanctuary and achievement - 2026-11-01
 
 Q04 streak uses only final fixed ticks after Q03, actual causal welfare/resource/path/gate condition and checkpoint-aware lifetime ticket deltas. Bounded start/last tick and ticket baselines exclude earlier income and all other ledger kinds. Partial failures reset; pause freezes; earned proof retained. Exclusive noncash banner+achievement outcome and ordered command/tick proof join atomic mission completion without a zero ledger entry. Financial/visitor implementations unchanged, no additional RAF/subscriber. Original234-triangle banner has reusable/disposable ownership. Codec/remount preserve; full reload fresh until M5. See M4-05_Q04_THRIVING.md, implementation `b4039c84a89ea7b2151b90aaf55c745a83bb21e7`.
+
+## M4-06 fixed simulation speed - 2026-11-01
+
+Validated preferences.speed1|10 controls the existing100ms clock, with wall250ms clamp before scaling and max25 fast steps. Single RAF remains; real changes preserve fractional simulated remainder but reanchor browser timestamp, same-rate no-op. Typed speed event saves in-memory session, no command nonce/ledger change. New/restored constructor baseline reset, strict numeric codec, fullreload stillfresh untilM5. No animal/economy/mission/visitor rule changes. See M4-06_SIMULATION_SPEED.md, implementation `e959fbd0b25b7f338a5697de739bef09b2ad8963`.
