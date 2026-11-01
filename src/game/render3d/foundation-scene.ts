@@ -1,3 +1,5 @@
+import {createPerchScene} from './perch-scene.ts';
+import type {PerchReason} from '../animals/resting.ts';
 import {createWaterScene} from './water-scene.ts';
 import {createFeederScene} from './feeder-scene.ts';
 import type {FoodReason} from '../animals/feeding.ts';
@@ -50,11 +52,13 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   let picker: ReturnType<typeof createScenePicker> | undefined;
   let placement:ReturnType<typeof createPlacementPreview>|undefined;
   let habitats:ReturnType<typeof createHabitatScene>|undefined;
-  let habitatDirty=true,pathDirty=true,birdsDirty=true,foodDirty=true,waterDirty=true;
+  let habitatDirty=true,pathDirty=true,birdsDirty=true,foodDirty=true,waterDirty=true,perchDirty=true;
   let feeder:ReturnType<typeof createFeederScene>|undefined,foodPreview=false,foodPreviewHabitat:string|null=null,foodReason:FoodReason=null,previousFoodView='';
   function announceFood(){if(foodReason==='busy'&&simulation.foodView().canPlace)foodReason=null;const view={...simulation.foodView(),preview:foodPreview,reason:foodReason},key=JSON.stringify(view);if(key!==previousFoodView){previousFoodView=key;host.dispatchEvent(new CustomEvent('scene-food-change',{detail:view}));}host.dataset.foodStock=String(view.stock);host.dataset.foodExists=String(view.exists);}
   let waterStation:ReturnType<typeof createWaterScene>|undefined,waterPreview=false,waterPreviewHabitat:string|null=null,waterReason:FoodReason=null,previousWaterView='';
   function announceWater(){if(waterReason==='busy'&&simulation.waterView().canPlace)waterReason=null;const view={...simulation.waterView(),preview:waterPreview,reason:waterReason},key=JSON.stringify(view);if(key!==previousWaterView){previousWaterView=key;host.dispatchEvent(new CustomEvent('scene-water-change',{detail:view}));}host.dataset.waterStock=String(view.stock);host.dataset.waterExists=String(view.exists);}
+  let restKit:ReturnType<typeof createPerchScene>|undefined,perchPreview=false,perchPreviewHabitat:string|null=null,perchReason:PerchReason=null,previousPerchView='';
+  function announcePerch(){if(perchReason==='busy'&&simulation.perchView().canPlace)perchReason=null;const view={...simulation.perchView(),preview:perchPreview,reason:perchReason},key=JSON.stringify(view);if(key!==previousPerchView){previousPerchView=key;host.dispatchEvent(new CustomEvent('scene-perch-change',{detail:view}));}host.dataset.perchExists=String(view.exists);}
   let birds:ReturnType<typeof createAutonomousBirds>|undefined;
   let previousBirdView='';
   function announceBirds(){const view=simulation.birdsView(),key=JSON.stringify(view);if(key!==previousBirdView){previousBirdView=key;host.dispatchEvent(new CustomEvent('scene-birds-change',{detail:view}));}host.dataset.placedBirds=String(view.placed);}
@@ -68,7 +72,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   const unsubscribe = simulation.subscribe(event => {
     simulationTimeMs = event.gameTimeMs;
     if (event.type === 'tick') simulationEvents++;
-    birdsDirty=true;foodDirty=true;waterDirty=true;
+    birdsDirty=true;foodDirty=true;waterDirty=true;perchDirty=true;
     if(event.type==='habitat-built'){habitatDirty=true;pathDirty=true;}
     if(event.type==='path-built')pathDirty=true;
     if(event.type==='world-edited'){habitatDirty=true;pathDirty=true;}
@@ -89,6 +93,8 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     if(birdsDirty&&birds){const s=simulation.birdSnapshot();birds.sync(s.animals,s.habitats,s.width,s.height,simulationTimeMs);birdsDirty=false;announceBirds();}
     if(foodDirty){feeder?.sync(simulation.snapshot().world,foodPreview,simulation.foodView().canPlace);announceFood();foodDirty=false;}
     if(waterDirty){waterStation?.sync(simulation.snapshot().world,waterPreview,simulation.waterView().canPlace);announceWater();waterDirty=false;}
+    if(perchDirty){const view=simulation.perchView();restKit?.sync(simulation.snapshot().world,perchPreview,view.canPlace);birds?.setPerchesVisible(!view.reachable&&!perchPreview);announcePerch();perchDirty=false;}
+    restKit?.update(simulationTimeMs,simulation.perchView().exploring,motion.matches);
     const remainder=simulation.inspect().accumulatorMs;
     birds?.update(remainder/100,simulationTimeMs+remainder);
     diorama?.update(simulationTimeMs, motion.matches);
@@ -101,8 +107,8 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     const model=macaw?.view();
     simulation.setPaused(shouldPause||Boolean(model?.active));
     controls?.setEnabled(!shouldPause&&(!model?.active||model.habitat));
-    picker?.setEnabled(!shouldPause&&!model?.active&&!foodPreview&&!waterPreview);
-    placement?.setEnabled(!shouldPause&&!model?.active&&!foodPreview&&!waterPreview);
+    picker?.setEnabled(!shouldPause&&!model?.active&&!foodPreview&&!waterPreview&&!perchPreview);
+    placement?.setEnabled(!shouldPause&&!model?.active&&!foodPreview&&!waterPreview&&!perchPreview);
     const stopped=shouldPause||Boolean(model?.active&&model.motionPaused);macaw?.setRunning(!stopped);
     if (stopped) loop.stop();
     else loop.start();
@@ -121,7 +127,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     catch { onFailure('render'); }
   }
   function onMotionChange(){if(motion.matches)macaw?.pauseForReducedMotion();updateRunning();}
-  function onStudioKey(event:KeyboardEvent){if(event.key==='Escape'&&waterPreview){event.preventDefault();event.stopImmediatePropagation();waterPreview=false;waterPreviewHabitat=null;waterDirty=true;updateRunning();render();return;}if(event.key==='Escape'&&foodPreview){event.preventDefault();event.stopImmediatePropagation();foodPreview=false;foodPreviewHabitat=null;foodDirty=true;updateRunning();render();return;}if(event.key==='Escape'&&!event.repeat&&macaw?.view().active){event.preventDefault();event.stopImmediatePropagation();macaw.command('close');}}
+  function onStudioKey(event:KeyboardEvent){if(event.key==='Escape'&&perchPreview){event.preventDefault();event.stopImmediatePropagation();perchPreview=false;perchPreviewHabitat=null;perchDirty=true;updateRunning();render();return;}if(event.key==='Escape'&&waterPreview){event.preventDefault();event.stopImmediatePropagation();waterPreview=false;waterPreviewHabitat=null;waterDirty=true;updateRunning();render();return;}if(event.key==='Escape'&&foodPreview){event.preventDefault();event.stopImmediatePropagation();foodPreview=false;foodPreviewHabitat=null;foodDirty=true;updateRunning();render();return;}if(event.key==='Escape'&&!event.repeat&&macaw?.view().active){event.preventDefault();event.stopImmediatePropagation();macaw.command('close');}}
   function onLost(event: Event) { event.preventDefault(); notifyContextLoss(); }
   function safe(action: () => void) { try { action(); } catch { cleanupErrors++; } }
   function dispose() {
@@ -133,7 +139,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     safe(() => placement?.dispose());
     safe(() => habitats?.dispose());
     safe(() => paths?.dispose());
-    safe(()=>feeder?.dispose());safe(()=>waterStation?.dispose());
+    safe(()=>feeder?.dispose());safe(()=>waterStation?.dispose());safe(()=>restKit?.dispose());
     safe(()=>birds?.dispose());
     safe(()=>macaw?.dispose());host.removeEventListener('keydown',onStudioKey,true);
     safe(saveSession);
@@ -170,7 +176,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     sun.position.set(-6, 10, 8);
     scene.add(sun);
     const initialWorld=simulation.snapshot().world;
-    feeder=createFeederScene();worldLayer.add(feeder.group);waterStation=createWaterScene();worldLayer.add(waterStation.group);
+    feeder=createFeederScene();worldLayer.add(feeder.group);waterStation=createWaterScene();worldLayer.add(waterStation.group);restKit=createPerchScene();worldLayer.add(restKit.group);
     birds=createAutonomousBirds();worldLayer.add(birds.group);
     diorama = createTropicalDiorama(initialWorld);
     geometries.push(...diorama.geometries); materials.push(...diorama.materials);
@@ -211,14 +217,21 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
 
   return {
     dispose,
-    water:(command,revision=0)=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');picker?.clear();foodPreview=false;foodPreviewHabitat=null;foodDirty=true;
+    perch:(command,revision=0)=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');picker?.clear();foodPreview=false;foodPreviewHabitat=null;foodDirty=true;waterPreview=false;waterPreviewHabitat=null;waterDirty=true;
+      const h=simulation.snapshot().world.habitats[0];perchReason=null;
+      if(command==='preview'){if(!h||simulation.perchView().exists)perchReason=h?'exists':'missing';else{perchPreview=true;perchPreviewHabitat=h.id;}}
+      else if(command==='cancel'){perchPreview=false;perchPreviewHabitat=null;}
+      else if(command==='confirm'&&(!perchPreview||h?.id!==perchPreviewHabitat)){perchPreview=false;perchReason='stale';}
+      else{const action=command==='confirm'?'place':command==='remove'?'remove':null;if(action){const result=simulation.perch(action,revision);perchReason=result.ok?null:result.reason;if(result.ok){perchPreview=false;perchPreviewHabitat=null;saveSession();announceEdit();}}}
+      perchDirty=true;updateRunning();render();announcePerch();},
+    water:(command,revision=0)=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');picker?.clear();perchPreview=false;perchPreviewHabitat=null;perchDirty=true;foodPreview=false;foodPreviewHabitat=null;foodDirty=true;
       const h=simulation.snapshot().world.habitats[0];waterReason=null;
       if(command==='preview'){if(!h||simulation.waterView().exists){waterReason=h?'exists':'missing';}else{waterPreview=true;waterPreviewHabitat=h.id;}}
       else if(command==='cancel'){waterPreview=false;waterPreviewHabitat=null;}
       else if(command==='confirm'&&(!waterPreview||h?.id!==waterPreviewHabitat)){waterPreview=false;waterReason='stale';}
       else {const action=command==='confirm'?'place':command==='refill'?'refill':command==='remove'?'remove':null;if(action){const result=simulation.water(action,revision);waterReason=result.ok?null:result.reason;if(result.ok){waterPreview=false;waterPreviewHabitat=null;saveSession();announceEdit();}}}
       waterDirty=true;updateRunning();render();announceWater();},
-    food:(command,revision=0)=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');picker?.clear();waterPreview=false;waterPreviewHabitat=null;waterDirty=true;
+    food:(command,revision=0)=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');picker?.clear();perchPreview=false;perchPreviewHabitat=null;perchDirty=true;waterPreview=false;waterPreviewHabitat=null;waterDirty=true;
       const h=simulation.snapshot().world.habitats[0];foodReason=null;
       if(command==='preview'){if(!h||simulation.foodView().exists){foodReason=h?'exists':'missing';}else{foodPreview=true;foodPreviewHabitat=h.id;}}
       else if(command==='cancel'){foodPreview=false;foodPreviewHabitat=null;}
@@ -226,10 +239,10 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
       else {const action=command==='confirm'?'place':command==='refill'?'refill':command==='remove'?'remove':null;if(action){const result=simulation.food(action,revision);foodReason=result.ok?null:result.reason;if(result.ok){foodPreview=false;foodPreviewHabitat=null;saveSession();announceEdit();}}}
       foodDirty=true;updateRunning();render();announceFood();},
     birds:command=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');if(simulation.birds(command)){picker?.clear();saveSession();render();announceEdit();}},
-    studio:(command,value)=>{if(disposed||paused||lost||document.hidden)return;try{if(command==='open'){waterPreview=false;waterPreviewHabitat=null;waterDirty=true;foodPreview=false;foodPreviewHabitat=null;foodDirty=true;placement?.command('cancel');picker?.clear();}macaw?.command(command,value);}catch{onFailure('render');}},
+    studio:(command,value)=>{if(disposed||paused||lost||document.hidden)return;try{if(command==='open'){perchPreview=false;perchPreviewHabitat=null;perchDirty=true;waterPreview=false;waterPreviewHabitat=null;waterDirty=true;foodPreview=false;foodPreviewHabitat=null;foodDirty=true;placement?.command('cancel');picker?.clear();}macaw?.command(command,value);}catch{onFailure('render');}},
     camera: value => controls?.command(value),
     clearSelection:()=>picker?.clear(),
-    placement:(command,revision)=>{if(macaw?.view().active)return;foodPreview=false;foodPreviewHabitat=null;foodDirty=true;waterPreview=false;waterPreviewHabitat=null;waterDirty=true;if(command==='begin'||command==='begin-path')picker?.clear();placement?.command(command,revision);},
+    placement:(command,revision)=>{if(macaw?.view().active)return;perchPreview=false;perchPreviewHabitat=null;perchDirty=true;foodPreview=false;foodPreviewHabitat=null;foodDirty=true;waterPreview=false;waterPreviewHabitat=null;waterDirty=true;if(command==='begin'||command==='begin-path')picker?.clear();placement?.command(command,revision);},
     quoteRemoval:target=>simulation.quoteRemoval(target),
     edit:(command,quote)=>{
       if(disposed||paused||lost||document.hidden||macaw?.view().active)return;
@@ -240,6 +253,6 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
       announceEdit(result.ok?null:result.reason,result.ok?(command==='undo'?'restored':'removed'):null);
     },
     setPaused(value) { paused = value; updateRunning(); },
-    inspect: () => ({ canUndo:simulation.inspect().canUndo,editorRevision:simulation.inspect().editorRevision,disposed, lost, canvasAttached: canvas.isConnected, pendingFrames: loop.inspect().pendingFrames, geometries: renderer?.info.memory.geometries ?? 0, textures: renderer?.info.memory.textures ?? 0, programs: renderer?.info.programs?.length ?? 0, ownedMaterialsLive: materials.length - releasedMaterials+(macaw?.inspect().macawOwnedMaterialsLive??0)+(birds?.inspect().birdOwnedMaterials??0)+(feeder?.inspect().feederOwnedMaterials??0)+(waterStation?.inspect().waterOwnedMaterials??0), drawCallsLastRender: renderer?.info.render.calls ?? 0, trianglesLastRender: renderer?.info.render.triangles ?? 0, renderSubmissions, bufferWidth: canvas.width, bufferHeight: canvas.height, pixelRatio: renderer?.getPixelRatio() ?? 0, cleanupErrors, simulationTick: simulation.inspect().tick, simulationGameTimeMs: simulation.inspect().gameTimeMs, simulationPaused: simulation.inspect().paused, simulationDisposed: simulation.inspect().disposed, simulationSubscribers: simulation.inspect().subscribers, simulationEvents, simulationStartTick, habitatCount:simulation.inspect().habitatCount, occupiedTiles:simulation.inspect().occupiedTiles, currency:simulation.inspect().currency, waterStock:simulation.waterView().stock,waterBowl1:simulation.waterView().portions[0],waterBowl2:simulation.waterView().portions[1],waterRevision:simulation.waterView().revision,waterExists:simulation.waterView().exists,waterPreview,...waterStation?.inspect(),foodStock:simulation.foodView().stock,foodBowl1:simulation.foodView().portions[0],foodBowl2:simulation.foodView().portions[1],foodRevision:simulation.foodView().revision,foodExists:simulation.foodView().exists,foodPreview,...feeder?.inspect(),...simulation.birdInspect(),placedBirds:simulation.birdsView().placed,...birds?.inspect(),...macaw?.inspect(),...habitats?.inspect(), ...paths?.inspect(), pathTiles:simulation.inspect().pathTiles,reachablePathTiles:simulation.inspect().reachablePathTiles,connectedHabitats:simulation.inspect().connectedHabitats,routeCells:simulation.inspect().routeCells, orthographicCamera: camera.isOrthographicCamera, ...diorama?.inspect(), ...controls?.inspect(), ...picker?.inspect(), ...placement?.inspect() }),
+    inspect: () => ({ canUndo:simulation.inspect().canUndo,editorRevision:simulation.inspect().editorRevision,disposed, lost, canvasAttached: canvas.isConnected, pendingFrames: loop.inspect().pendingFrames, geometries: renderer?.info.memory.geometries ?? 0, textures: renderer?.info.memory.textures ?? 0, programs: renderer?.info.programs?.length ?? 0, ownedMaterialsLive: materials.length - releasedMaterials+(macaw?.inspect().macawOwnedMaterialsLive??0)+(birds?.inspect().birdOwnedMaterials??0)+(feeder?.inspect().feederOwnedMaterials??0)+(waterStation?.inspect().waterOwnedMaterials??0)+(restKit?.inspect().perchOwnedMaterials??0), drawCallsLastRender: renderer?.info.render.calls ?? 0, trianglesLastRender: renderer?.info.render.triangles ?? 0, renderSubmissions, bufferWidth: canvas.width, bufferHeight: canvas.height, pixelRatio: renderer?.getPixelRatio() ?? 0, cleanupErrors, simulationTick: simulation.inspect().tick, simulationGameTimeMs: simulation.inspect().gameTimeMs, simulationPaused: simulation.inspect().paused, simulationDisposed: simulation.inspect().disposed, simulationSubscribers: simulation.inspect().subscribers, simulationEvents, simulationStartTick, habitatCount:simulation.inspect().habitatCount, occupiedTiles:simulation.inspect().occupiedTiles, currency:simulation.inspect().currency, perchExists:simulation.perchView().exists,perchRevision:simulation.perchView().revision,perchResting:simulation.perchView().resting,perchExploring:simulation.perchView().exploring,perchPreview,...restKit?.inspect(),waterStock:simulation.waterView().stock,waterBowl1:simulation.waterView().portions[0],waterBowl2:simulation.waterView().portions[1],waterRevision:simulation.waterView().revision,waterExists:simulation.waterView().exists,waterPreview,...waterStation?.inspect(),foodStock:simulation.foodView().stock,foodBowl1:simulation.foodView().portions[0],foodBowl2:simulation.foodView().portions[1],foodRevision:simulation.foodView().revision,foodExists:simulation.foodView().exists,foodPreview,...feeder?.inspect(),...simulation.birdInspect(),placedBirds:simulation.birdsView().placed,...birds?.inspect(),...macaw?.inspect(),...habitats?.inspect(), ...paths?.inspect(), pathTiles:simulation.inspect().pathTiles,reachablePathTiles:simulation.inspect().reachablePathTiles,connectedHabitats:simulation.inspect().connectedHabitats,routeCells:simulation.inspect().routeCells, orthographicCamera: camera.isOrthographicCamera, ...diorama?.inspect(), ...controls?.inspect(), ...picker?.inspect(), ...placement?.inspect() }),
   };
 }

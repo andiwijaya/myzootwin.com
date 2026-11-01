@@ -1,4 +1,5 @@
 export type SimulationEvent =
+  | {type:'perch-changed';tick:number;gameTimeMs:number}
   | {type:'water-changed';tick:number;gameTimeMs:number}
   | {type:'animal-drank';animalId:string;resourceId:string;tick:number;gameTimeMs:number}
   | {type:'food-changed';tick:number;gameTimeMs:number}

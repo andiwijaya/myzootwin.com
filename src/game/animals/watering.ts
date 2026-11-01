@@ -32,7 +32,7 @@ export function stepWater(s:ZooSaveV1,a:Animal,h:Habitat,slot:number,allowSeek=t
 export function waterTransaction(s:ZooSaveV1,action:FoodAction,revision:number,generation=0):FoodReason|'ok'{
  const h=s.world.habitats[0];if(!h||h.cells.length!==4)return 'missing';const p=waterAnchor(h);if(![0,1].every(dx=>[0,1].every(dz=>h.cells.some(c=>c.x===p.x-1+dx&&c.z===p.z+dz))))return 'invalid';
  const resources=s.world.resources.filter(r=>r.habitatId===h.id),r=resources.find(r=>r.kind==='water');
- if(action==='place'){if(resources.some(r=>r.kind!=='food'))return 'exists';if(!waterClear(s,h))return 'busy';if(!s.world.tiles.some(t=>t.occupantId===h.id&&t.cell.x===p.x&&t.cell.z===p.z))return 'invalid';s.world.resources.push({id:`water-${p.x}-${p.z}`,kind:'water',habitatId:h.id,cell:p,stock:0,capacity:WATER_RULES.capacity,revision:generation,portions:[0,0]});return 'ok';}
+ if(action==='place'){if(resources.some(r=>r.kind==='water'))return 'exists';if(!waterClear(s,h))return 'busy';if(!s.world.tiles.some(t=>t.occupantId===h.id&&t.cell.x===p.x&&t.cell.z===p.z))return 'invalid';s.world.resources.push({id:`water-${p.x}-${p.z}`,kind:'water',habitatId:h.id,cell:p,stock:0,capacity:WATER_RULES.capacity,revision:generation,portions:[0,0]});return 'ok';}
  if(!r)return 'missing';if(revision!==r.revision)return 'stale';if(action==='refill'){if(r.stock>=r.capacity)return 'full';r.stock=r.capacity;r.portions=[Math.ceil(r.capacity/2),Math.floor(r.capacity/2)];r.revision++;return 'ok';}
  if(action==='remove'){s.world.resources=s.world.resources.filter(p=>p.id!==r.id);for(const [slot,a]of [...s.animals].sort((a,b)=>a.id.localeCompare(b.id)).entries())if(a.targetResourceId===r.id)cancelWater(a,h,slot);return 'ok';}return 'invalid';
 }

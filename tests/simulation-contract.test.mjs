@@ -1,3 +1,4 @@
+import {REST_RULES} from '../src/game/animals/resting.ts';
 import { createFrameLoop } from '../src/game/render3d/frame-loop.ts';
 import test from 'node:test';
 import assert from 'node:assert/strict';
@@ -21,7 +22,7 @@ test('initial and populated version-1 save roundtrip preserve every reference wi
   for(const original of [createInitialState(),populated()]) {
     const text=serializeSave(original),loaded=parseSave(text);
     assert.equal(loaded.ok,true);assert.deepEqual(loaded.value,original);
-    loaded.value.animals[0].energy=0;assert.equal(original.animals[0].energy,100);
+    loaded.value.animals[0].energy=0;assert.equal(original.animals[0].energy,REST_RULES.startingEnergy);
   }
 });
 test('seeded RNG has a known uint32 vector, reproducibility and valid fraction range',()=>{
@@ -98,7 +99,7 @@ test('range/reference/invariant corruptions are rejected without mutating their 
 test('simulation ownership rejects invalid input and snapshots cannot change authoritative currency/needs',()=>{
   const invalid=createInitialState();invalid.currency=-1;assert.throws(()=>createSimulation(invalid));
   const initial=createInitialState();const sim=createSimulation(initial);initial.currency=0;const view=sim.snapshot();view.animals[0].energy=0;
-  sim.advance(100);assert.equal(sim.snapshot().currency,1500);assert.equal(sim.snapshot().animals[0].energy,100);
+  sim.advance(100);assert.equal(sim.snapshot().currency,1500);assert.equal(sim.snapshot().animals[0].energy,REST_RULES.startingEnergy);
   assert.equal(sim.snapshot().ledger.length,1);assert.equal(sim.snapshot().visitors.length,0);assert.deepEqual(sim.snapshot().missions.completedIds,[]);
 });
 

@@ -1,3 +1,4 @@
+import{runRestDomScenarios}from'./resting-dom-scenarios.mjs';
 import{runWaterDomScenarios}from'./watering-dom-scenarios.mjs';
 import{runFeedingDomScenarios}from'./feeding-dom-scenarios.mjs';
 import{runAnimalDomScenarios}from'./animal-dom-scenarios.mjs';
@@ -39,6 +40,7 @@ function factory(onFailure){
     setPaused:value=>native.setPaused?.(value),
     food:(command,revision)=>native.food?.(command,revision),
     water:(command,revision)=>native.water?.(command,revision),
+    perch:(command,revision)=>native.perch?.(command,revision),
     birds:command=>native.birds?.(command),
     studio:(command,value)=>native.studio?.(command,value),
     camera:value=>native.camera?.(value),
@@ -106,6 +108,10 @@ eatingFreeze.addEventListener('click',async()=>{handle?.setPaused(false);eatingO
 const waterFreeze=document.createElement('button');waterFreeze.id='qa-water-freeze';waterFreeze.textContent='Pause next real drinking pose';waterRun.after(waterFreeze);
 const waterFreezeOutput=document.createElement('output');waterFreezeOutput.id='qa-water-freeze-results';waterFreeze.after(waterFreezeOutput);
 waterFreeze.addEventListener('click',async()=>{handle?.setPaused(false);waterFreezeOutput.textContent=JSON.stringify({status:'WAITING_FOR_NATIVE_DRINKING_FRAME'});const start=performance.now(),entered=[null,null];while(performance.now()-start<35000){await new Promise(r=>requestAnimationFrame(r));const s=handle?.inspect().session;if(!s)break;for(let i=0;i<2;i++){const eat=s[`bird${i+1}Phase`]===11;if(eat&&entered[i]===null)entered[i]=s.simulationTick;if(!eat)entered[i]=null;}if(entered.some(t=>t!==null&&s.simulationTick-t>=4)){handle?.setPaused(true);waterFreezeOutput.textContent=JSON.stringify({status:'OBSERVED_AND_PAUSED',method:'real simulation reached drink, then QA pause; no pose/state/time injection',observedAt:new Date().toISOString(),session:handle?.inspect().session});update();return;}}waterFreezeOutput.textContent=JSON.stringify({status:'UNRUN_TIMEOUT_NO_DRINKING_FRAME'});update();});
+const restRun=document.createElement('button');restRun.id='qa-rest';restRun.textContent='Run real rest and enrichment checks';waterRun.after(restRun);
+const restOutput=document.createElement('output');restOutput.id='qa-rest-results';restRun.after(restOutput);
+restRun.addEventListener('click',async()=>{restOutput.textContent=JSON.stringify({status:'RUNNING'});const result=await runRestDomScenarios(root,()=>handle?.inspect().session,value=>handle?.setPaused(value),value=>{locale=value;handle?.setLocale(value);});restOutput.textContent=JSON.stringify(result);update();});
+for(const [name,phase]of [['rest',18],['enrich',19]]){const button=document.createElement('button');button.id=`qa-${name}-freeze`;button.textContent=`Pause next real ${name} pose`;restRun.after(button);const out=document.createElement('output');out.id=`qa-${name}-freeze-results`;button.after(out);button.addEventListener('click',async()=>{handle?.setPaused(false);out.textContent=JSON.stringify({status:'WAITING_FOR_REAL_'+name.toUpperCase()});const start=performance.now(),entered=[null,null];while(performance.now()-start<90000){await new Promise(r=>requestAnimationFrame(r));const s=handle?.inspect().session;if(!s)break;for(let i=0;i<2;i++){const active=s[`bird${i+1}Phase`]===phase;if(active&&entered[i]===null)entered[i]=s.simulationTick;if(!active)entered[i]=null;}if(entered.some(t=>t!==null&&s.simulationTick-t>=4)){handle?.setPaused(true);out.textContent=JSON.stringify({status:'OBSERVED_AND_PAUSED',method:'Real simulation reached '+name+', then QA pause after4ticks; no state/time/pose injection',observedAt:new Date().toISOString(),session:handle?.inspect().session});update();return;}}out.textContent=JSON.stringify({status:'UNRUN_TIMEOUT_NO_'+name.toUpperCase()});update();});}
 const observer=new MutationObserver(update);
 observer.observe(root,{subtree:true,childList:true,attributes:true,attributeFilter:['data-renderer-state']});
 const onVisibility=()=>{if(document.hidden){endProbe('ABORTED_HIDDEN');update();}};

@@ -1,3 +1,4 @@
+import type {PerchCommand} from '../animals/resting.ts';
 import type {FoodCommand} from '../animals/feeding.ts';
 import type {BirdCommand} from '../animals/autonomy.ts';
 import type {StudioCommand} from './macaw/studio-contract.ts';
@@ -20,6 +21,7 @@ export interface PreviewSession {
   birds?(command:BirdCommand):void;
   food?(command:FoodCommand,revision?:number):void;
   water?(command:FoodCommand,revision?:number):void;
+  perch?(command:PerchCommand,revision?:number):void;
   studio?(command:StudioCommand,value?:string):void;
   camera?(command:CameraCommand):void;
   clearSelection?():void;
@@ -82,6 +84,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     dispose() { if (disposed) return; close(); disposed = true; },
     getState: () => state,
     inspectSession: () => session?.inspect?.(),
+    perch(command:PerchCommand,revision?:number){if(!paused&&state.status==='ready')session?.perch?.(command,revision);},
     water(command:FoodCommand,revision?:number){if(!paused&&state.status==='ready')session?.water?.(command,revision);},
     food(command:FoodCommand,revision?:number){if(!paused&&state.status==='ready')session?.food?.(command,revision);},
     birds(command:BirdCommand){if(!paused&&state.status==='ready')session?.birds?.(command);},

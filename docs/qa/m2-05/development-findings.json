@@ -1,0 +1,32 @@
+{
+  "status": "RESOLVED_FINAL_SOURCE_BOUND_QA_PASS",
+  "supersededRun": "20261101T024909Z-348e5b38",
+  "finalRun": "20261101T030218Z-3b5ee56f",
+  "findings": [
+    {
+      "type": "expected-baseline-test-update",
+      "finding": "The new configured initial energy55 made two old ownership tests hardcoded to100 fail.",
+      "resolution": "Ownership tests now compare against REST_RULES.startingEnergy and still assert cloned snapshots cannot mutate authority. No game recovery from food/water alone; updated tests prove energy declines with no rest."
+    },
+    {
+      "type": "static-QA-review",
+      "finding": "An initial fixture assertion demanded new food/water consumption during a short rest even when birds could already be satisfied.",
+      "resolution": "Removed that incorrect demand before browser acceptance. Strict sustained-needs and urgent food AND water interruption remain separately tested; browser verifies independent conserved stock and nondecreasing real consumption counters."
+    },
+    {
+      "type": "actual-browser-validation-failure",
+      "finding": "Rest test reached6PASS cases (real rest/enrichment) then expected normal status wording after deliberately issuing duplicate Confirm. UI correctly displayed translated stale-command feedback instead.",
+      "resolution": "Fixture now verifies the actual localized normal or stale feedback. Full source-bound QA rerun; same production build, new validation-source identity. Original FAIL/partial receipts and actual native photo preserved separately, never promoted as final PASS."
+    },
+    {
+      "type": "invalid-overlapping-QA-attempt",
+      "finding": "Engineer started the landscape feeding scenario while the animal scenario was still RUNNING. The mixed result was invalidated, not used for acceptance.",
+      "resolution": "Raw overlap receipt retained at attempts/landscape-overlap-attempt.json. Closed the session and reloaded; complete landscape matrix rerun sequentially, waiting for each final PASS before starting the next. Final source/build identities remained unchanged."
+    },
+    {
+      "type": "receipt-schema-metadata",
+      "finding": "First qa:verify rejected the empty console receipt because it used limitPerRead instead of the required numeric limit field.",
+      "resolution": "Added limit:200, matching the actual uncapped browser log calls. No observations, screenshots, timestamps, source or build changed. Verification-attempts.jsonl preserves the FAIL and subsequent PASS."
+    }
+  ]
+}

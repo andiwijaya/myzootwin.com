@@ -1,3 +1,4 @@
+import type {PerchView,PerchCommand} from '../game/animals/resting.ts';
 import type {FoodView,FoodCommand} from '../game/animals/feeding.ts';
 import type {BirdsView,BirdCommand} from '../game/animals/autonomy.ts';
 import type {StudioView,StudioCommand} from '../game/render3d/macaw/studio-contract.ts';
@@ -37,6 +38,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const foodDialog=root.querySelector<HTMLDialogElement>('[data-food-dialog]');let foodRemovalRevision:number|null=null;
   let water:FoodView={canPlace:false,habitat:false,exists:false,reachable:false,stock:0,capacity:8,revision:0,portions:[0,0],preview:false,reason:null};
   const waterDialog=root.querySelector<HTMLDialogElement>('[data-water-dialog]');let waterRemovalRevision:number|null=null;
+  let perch:PerchView={canPlace:false,habitat:false,exists:false,reachable:false,capacity:2,revision:0,preview:false,reason:null,resting:0,exploring:0};
+  const perchDialog=root.querySelector<HTMLDialogElement>('[data-perch-dialog]');let perchRemovalRevision:number|null=null;
   let birds:BirdsView={habitat:false,placed:0,birds:[]};
   let editView:EditView={canUndo:false,reason:null,result:null};
   let removal:RemovalQuote|null=null;
@@ -77,7 +80,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const placementTools=root.querySelector<HTMLElement>('[data-placement-tools]');
   function renderPlacement(){
     if(!placementTools)return;const copy=entryMessages[locale],active=Boolean(placement?.active),path=placement?.kind==='path';
-    placementTools.hidden=state.status!=='ready'||studio.active||food.preview||water.preview;placementTools.dataset.valid=String(placement?.reason==='ready');
+    placementTools.hidden=state.status!=='ready'||studio.active||food.preview||water.preview||perch.preview;placementTools.dataset.valid=String(placement?.reason==='ready');
     const start=root.querySelector<HTMLButtonElement>('[data-placement-command="begin"]');if(start){start.hidden=active;start.textContent=copy.placementStart;}
     const pathStart=root.querySelector<HTMLButtonElement>('[data-placement-command="begin-path"]');if(pathStart){pathStart.hidden=active;pathStart.textContent=copy.pathStart;}
     root.querySelector('[data-access-status]')?.replaceChildren(copy[!access?.habitats?'accessNoHabitat':access.connected?'accessConnected':'accessDisconnected'].replace('{n}',String(access?.pathTiles??1)).replace('{r}',String(access?.routeCells??0)));
@@ -105,7 +108,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const welcome=tools.querySelector<HTMLButtonElement>('[data-birds-command="welcome"]'),reserve=tools.querySelector<HTMLButtonElement>('[data-birds-command="reserve"]');
     if(welcome){welcome.hidden=birds.placed>0;welcome.disabled=!birds.habitat;welcome.textContent=copy.birdsWelcome;}if(reserve){reserve.hidden=birds.placed===0;reserve.textContent=copy.birdsReserve;}
     tools.querySelector('[data-birds-status]')?.replaceChildren(copy[birds.placed?'birdsPlaced':birds.habitat?'birdsWaiting':'birdsNeedHabitat']);
-    const list=tools.querySelector('[data-birds-list]');if(list){list.replaceChildren();if(birds.placed)for(const [i,b]of birds.birds.entries()){const row=document.createElement('li');row.dataset.birdId=b.id;row.textContent=copy.birdStatus.replace('{name}',copy.birdName.replace('{n}',String(i+1))).replace('{behavior}',copy[b.behavior==='drink'?'birdDrink':b.behavior==='seek-water'?'birdSeekWater':b.behavior==='eat'?'birdEat':b.behavior==='seek-food'?'birdSeekFood':b.behavior==='wander'?'birdWander':b.behavior==='perch'?'birdPerch':'birdIdle']).replace('{t}',String(b.thirst)).replace('{d}',String(b.waterDrunk)).replace('{h}',String(b.hunger)).replace('{n}',String(b.foodEaten));list.append(row);}}
+    const list=tools.querySelector('[data-birds-list]');if(list){list.replaceChildren();if(birds.placed)for(const [i,b]of birds.birds.entries()){const row=document.createElement('li');row.dataset.birdId=b.id;row.textContent=copy.birdStatus.replace('{name}',copy.birdName.replace('{n}',String(i+1))).replace('{behavior}',copy[b.behavior==='rest'?'birdRest':b.behavior==='enrich'?'birdEnrich':b.behavior==='seek-rest'?'birdSeekRest':b.behavior==='drink'?'birdDrink':b.behavior==='seek-water'?'birdSeekWater':b.behavior==='eat'?'birdEat':b.behavior==='seek-food'?'birdSeekFood':b.behavior==='wander'?'birdWander':b.behavior==='perch'?'birdPerch':'birdIdle']).replace('{e}',String(b.energy)).replace('{b}',String(b.enrichment)).replace('{t}',String(b.thirst)).replace('{d}',String(b.waterDrunk)).replace('{h}',String(b.hunger)).replace('{n}',String(b.foodEaten));list.append(row);}}
   }
   function renderFood(){const tools=root.querySelector<HTMLElement>('[data-food-tools]');if(!tools)return;const c=entryMessages[locale];tools.hidden=state.status!=='ready'||studio.active;
     for(const el of tools.querySelectorAll<HTMLElement>('[data-entry-text]'))el.textContent=c[el.dataset.entryText as EntryMessage];
@@ -127,6 +130,15 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const text=c[water.reason?reasons[water.reason]:water.preview&&!water.canPlace?'waterBusy':!water.habitat?'waterNeedHabitat':!water.exists?'waterReady':!water.reachable?'waterUnreachable':water.stock===0?'waterEmpty':water.portions.some(n=>n===0)?'waterOneEmpty':'waterStock'].replace('{n}',String(water.stock)).replace('{cap}',String(water.capacity)).replace('{a}',String(water.portions[0])).replace('{b}',String(water.portions[1]));const status=tools.querySelector('[data-water-status]');if(status?.textContent!==text)status?.replaceChildren(text);
     root.querySelector('[data-water-keep]')?.replaceChildren(c.waterKeep);root.querySelector('[data-water-remove-confirm]')?.replaceChildren(c.waterRemoveConfirm);root.querySelector('#water-dialog-title')?.replaceChildren(c.waterRemoveTitle);root.querySelector('[data-entry-text="waterRemoveHint"]')?.replaceChildren(c.waterRemoveHint);
   }
+  function renderPerch(){const tools=root.querySelector<HTMLElement>('[data-perch-tools]');if(!tools)return;const c=entryMessages[locale];tools.hidden=state.status!=='ready'||studio.active;
+    for(const el of tools.querySelectorAll<HTMLElement>('[data-entry-text]'))el.textContent=c[el.dataset.entryText as EntryMessage];
+    const place=tools.querySelector<HTMLButtonElement>('[data-perch-command="preview"]');if(place){place.hidden=perch.exists||perch.preview;place.disabled=!perch.habitat;place.textContent=c.perchPlace;}
+    const preview=tools.querySelector<HTMLElement>('[data-perch-preview]');if(preview)preview.hidden=!perch.preview;const actions=tools.querySelector<HTMLElement>('[data-perch-actions]');if(actions)actions.hidden=!perch.exists||perch.preview;
+    const confirm=tools.querySelector<HTMLButtonElement>('[data-perch-command="confirm"]');if(confirm){confirm.textContent=c.perchConfirm;confirm.disabled=!perch.canPlace;}tools.querySelector('[data-perch-command="cancel"]')?.replaceChildren(c.perchCancel);tools.querySelector('[data-perch-remove]')?.replaceChildren(c.perchRemove);
+    const reasons={missing:'perchMissing',exists:'perchExists',stale:'perchStale',invalid:'perchInvalid',busy:'perchBusy'}as const;
+    const text=c[perch.reason?reasons[perch.reason]:perch.preview&&!perch.canPlace?'perchBusy':!perch.habitat?'perchNeedHabitat':!perch.exists?'perchReady':!perch.reachable?'perchUnreachable':'perchStatus'].replace('{r}',String(perch.resting)).replace('{g}',String(perch.exploring)).replaceAll('{cap}',String(perch.capacity));const status=tools.querySelector('[data-perch-status]');if(status?.textContent!==text)status?.replaceChildren(text);
+    root.querySelector('[data-perch-keep]')?.replaceChildren(c.perchKeep);root.querySelector('[data-perch-remove-confirm]')?.replaceChildren(c.perchRemoveConfirm);root.querySelector('#perch-dialog-title')?.replaceChildren(c.perchRemoveTitle);root.querySelector('[data-entry-text="perchRemoveHint"]')?.replaceChildren(c.perchRemoveHint);
+  }
   function renderStudio(){
     const copy=entryMessages[locale],ready=state.status==='ready',tools=root.querySelector<HTMLElement>('[data-macaw-tools]');if(!tools)return;
     tools.hidden=!ready;const controls=root.querySelector<HTMLElement>('[data-macaw-controls]');if(controls)controls.hidden=!studio.active;
@@ -139,7 +151,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     host?.setAttribute('aria-keyshortcuts',studio.active?(studio.habitat?'ArrowUp ArrowDown ArrowLeft ArrowRight Home Escape':'Escape'):'ArrowUp ArrowDown ArrowLeft ArrowRight Home Escape Enter');
     root.querySelector('[data-camera-help]')?.replaceChildren(copy[studio.active&&studio.habitat?'macawScaleHint':'cameraHelp']);
     if(caption)caption.textContent=copy[studio.active?'macawSubtitle':state.status==='ready'||state.status==='loading'?'previewCaption':'artCaption'];
-    renderBirds();renderFood();renderWater();
+    renderBirds();renderFood();renderWater();renderPerch();
     if(ready){if(title)title.textContent=copy[studio.active?'macawTitle':'previewReady'];if(detail)detail.textContent=copy[studio.active?'macawSubtitle':'previewReadyDetail'];}
   }
 
@@ -149,7 +161,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) return;
     const copy = entryMessages[locale];
     panel.lang = locale;
-    if(next.status!=='ready'){waterRemovalRevision=null;if(waterDialog?.open)waterDialog.close();foodRemovalRevision=null;if(foodDialog?.open)foodDialog.close();studio={...studio,active:false,habitat:false};selected=null;placement=null;habitatCount=0;access=null;editView={canUndo:false,reason:null,result:null};removal=null;if(editDialog?.open)editDialog.close();}
+    if(next.status!=='ready'){perchRemovalRevision=null;if(perchDialog?.open)perchDialog.close();waterRemovalRevision=null;if(waterDialog?.open)waterDialog.close();foodRemovalRevision=null;if(foodDialog?.open)foodDialog.close();studio={...studio,active:false,habitat:false};selected=null;placement=null;habitatCount=0;access=null;editView={canUndo:false,reason:null,result:null};removal=null;if(editDialog?.open)editDialog.close();}
     renderPlacement();
     renderSelection();
     if(cameraControls){cameraControls.hidden=next.status!=='ready';cameraControls.setAttribute('aria-label',copy.cameraControls);}
@@ -213,6 +225,13 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const dismissWater=()=>{waterRemovalRevision=null;waterDialog?.close();controller.setPaused(false);};
   root.querySelector('[data-water-keep]')?.addEventListener('click',dismissWater,{signal:events.signal});waterDialog?.addEventListener('close',()=>{waterRemovalRevision=null;controller.setPaused(false);},{signal:events.signal});
   root.querySelector('[data-water-remove-confirm]')?.addEventListener('click',()=>{const rev=waterRemovalRevision;waterRemovalRevision=null;dismissWater();if(rev!==null)controller.water('remove',rev);host.focus({preventScroll:true});host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});
+  host.addEventListener('scene-perch-change',event=>{perch=(event as CustomEvent<PerchView>).detail;renderPerch();renderPlacement();},{signal:events.signal});
+  for(const b of root.querySelectorAll<HTMLButtonElement>('[data-perch-command]')){b.addEventListener('keydown',event=>{if(event.repeat&&(event.key==='Enter'||event.key===' '))event.preventDefault();},{signal:events.signal});b.addEventListener('click',event=>{if(event.detail>1)return;controller.perch(b.dataset.perchCommand as PerchCommand,perch.revision);host.focus({preventScroll:true});host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});}
+  root.querySelector('[data-perch-tools]')?.addEventListener('keydown',event=>{if((event as KeyboardEvent).key==='Escape')controller.perch('cancel');},{signal:events.signal});
+  root.querySelector('[data-perch-remove]')?.addEventListener('click',()=>{if(!perch.exists||!perchDialog)return;perchRemovalRevision=perch.revision;perchDialog.showModal();controller.setPaused(true);root.querySelector<HTMLElement>('[data-perch-keep]')?.focus();},{signal:events.signal});
+  const dismissPerch=()=>{perchRemovalRevision=null;perchDialog?.close();controller.setPaused(false);};
+  root.querySelector('[data-perch-keep]')?.addEventListener('click',dismissPerch,{signal:events.signal});perchDialog?.addEventListener('close',()=>{perchRemovalRevision=null;controller.setPaused(false);},{signal:events.signal});
+  root.querySelector('[data-perch-remove-confirm]')?.addEventListener('click',()=>{const rev=perchRemovalRevision;perchRemovalRevision=null;dismissPerch();if(rev!==null)controller.perch('remove',rev);host.focus({preventScroll:true});host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});
   host.addEventListener('scene-birds-change' ,event=>{birds=(event as CustomEvent<BirdsView>).detail;renderBirds();},{signal:events.signal});
   for(const button of root.querySelectorAll<HTMLButtonElement>('[data-birds-command]'))button.addEventListener('click',()=>{controller.birds(button.dataset.birdsCommand as BirdCommand);host.focus({preventScroll:true});host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});
   host.addEventListener('scene-studio-change' ,event=>{studio=(event as CustomEvent<StudioView>).detail;renderPlacement();renderSelection();renderStudio();},{signal:events.signal});
@@ -255,7 +274,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     setLocale(value: EntryLocale) { if (!disposed) { locale = value; render(state); } },
     setPaused(value: boolean) { if (!disposed) controller.setPaused(value); },
     close: () => { if (!disposed) controller.close(); },
-    dispose() { if (disposed) return; disposed = true; controller.dispose();if(editDialog?.open)editDialog.close(); events.abort(); if(foodDialog?.open)foodDialog.close();if(waterDialog?.open)waterDialog.close();mounted.delete(root); },
+    dispose() { if (disposed) return; disposed = true; controller.dispose();if(editDialog?.open)editDialog.close(); events.abort(); if(foodDialog?.open)foodDialog.close();if(waterDialog?.open)waterDialog.close();if(perchDialog?.open)perchDialog.close();mounted.delete(root); },
     inspect: () => ({ state: controller.getState(), session: controller.inspectSession() }),
   };
 }

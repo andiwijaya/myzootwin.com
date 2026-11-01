@@ -84,6 +84,14 @@ import { english as copy } from '../game-entry/locale';
         <div data-water-actions hidden><button type="button" data-water-command="refill">{copy.waterFill}</button> <button type="button" data-water-remove>{copy.waterRemove}</button></div>
         <p data-water-status role="status" aria-live="polite"></p>
       </section>
+      <section class="macaw-tools" data-perch-tools hidden aria-labelledby="perch-title">
+        <h3 id="perch-title" data-entry-text="perchTitle">{copy.perchTitle}</h3>
+        <p data-entry-text="perchHint">{copy.perchHint}</p>
+        <button type="button" data-perch-command="preview" disabled>{copy.perchPlace}</button>
+        <div data-perch-preview hidden><p data-entry-text="perchPreview">{copy.perchPreview}</p><button type="button" data-perch-command="confirm">{copy.perchConfirm}</button> <button type="button" data-perch-command="cancel">{copy.perchCancel}</button></div>
+        <div data-perch-actions hidden><button type="button" data-perch-remove>{copy.perchRemove}</button></div>
+        <p data-perch-status role="status" aria-live="polite"></p>
+      </section>
       <section class="macaw-tools" data-macaw-tools hidden aria-labelledby="macaw-title">
         <button type="button" data-studio-command="open">{copy.macawOpen}</button>
         <div data-macaw-controls hidden>
@@ -143,6 +151,10 @@ import { english as copy } from '../game-entry/locale';
   <dialog data-water-dialog aria-labelledby="water-dialog-title">
     <h2 id="water-dialog-title" tabindex="-1" data-entry-text="waterRemoveTitle">{copy.waterRemoveTitle}</h2><p data-entry-text="waterRemoveHint">{copy.waterRemoveHint}</p>
     <button type="button" class="dialog-close" data-water-keep>{copy.waterKeep}</button><button type="button" class="dialog-close" data-water-remove-confirm>{copy.waterRemoveConfirm}</button>
+  </dialog>
+  <dialog data-perch-dialog aria-labelledby="perch-dialog-title">
+    <h2 id="perch-dialog-title" tabindex="-1" data-entry-text="perchRemoveTitle">{copy.perchRemoveTitle}</h2><p data-entry-text="perchRemoveHint">{copy.perchRemoveHint}</p>
+    <button type="button" class="dialog-close" data-perch-keep>{copy.perchKeep}</button><button type="button" class="dialog-close" data-perch-remove-confirm>{copy.perchRemoveConfirm}</button>
   </dialog>
   <dialog data-edit-dialog aria-labelledby="edit-dialog-title" aria-describedby="edit-dialog-description edit-dialog-refund">
     <h2 id="edit-dialog-title" tabindex="-1" data-entry-text="editTitle">{copy.editTitle}</h2>
