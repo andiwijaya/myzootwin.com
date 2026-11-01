@@ -1,0 +1,128 @@
+{
+  "status": "PASS_REPRODUCTION",
+  "method": "Explicit legal whole starting-state fixture, idle birds near their own food ports; two accepted250ms frame partitions before observation, then real100ms fixed updates. Not native GPU evidence.",
+  "finding": "A browser observer beginning two frames after refill can miss the earlier seek phase even though real seeking, Eat and consumption succeed. Exact failed-run starting positions were not retained, so this demonstrates the sampling boundary rather than fabricating an exact replay.",
+  "phases": [
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "eat",
+      "eat"
+    ],
+    [
+      "leave-food",
+      "leave-food"
+    ],
+    [
+      "leave-food",
+      "leave-food"
+    ],
+    [
+      "leave-food",
+      "leave-food"
+    ]
+  ],
+  "before": [
+    {
+      "id": "macaw-1",
+      "hunger": 80,
+      "eaten": 1,
+      "position": {
+        "x": 4.5,
+        "z": 5.29
+      }
+    },
+    {
+      "id": "macaw-2",
+      "hunger": 80,
+      "eaten": 1,
+      "position": {
+        "x": 5.5,
+        "z": 5.29
+      }
+    }
+  ],
+  "after": [
+    {
+      "id": "macaw-1",
+      "hunger": 53.24,
+      "eaten": 2
+    },
+    {
+      "id": "macaw-2",
+      "hunger": 53.24,
+      "eaten": 2
+    }
+  ],
+  "foodStock": 6
+}

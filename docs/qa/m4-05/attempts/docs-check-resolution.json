@@ -1,0 +1,11 @@
+{
+  "status": "RESOLVED",
+  "action": "local docs checkpoint",
+  "initial": "git diff --cached --check rejected CRLF as trailing whitespace in raw PowerShell art-facts JSON; no docs commit executed",
+  "resolution": "Preserved exact original bytes in art-facts-raw.zip with CRC/SHA; reserialized same JSON values with LF and reran unchanged whitespace guard",
+  "rawSha256": "b5ff1f76a013878e7beadd606ae680a2614d98a531d7dc3aaaaa22a59b4fffeb",
+  "archive": "art-facts-raw.zip",
+  "prematureFinalCheck": "An independent final checker ran after the unsuccessful docs commit, correctly stopped on missing checkpoint JSON; it is rerun only after commit succeeds",
+  "productSourceUnchanged": true,
+  "deniedPermission": false
+}

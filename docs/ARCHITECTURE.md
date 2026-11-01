@@ -199,3 +199,8 @@ Q02 reads actual lifetime consumption counters and recomputed welfare, including
 ## M4-04 visitor objective and combined reward - 2026-11-01
 
 Q03 captures real unique eligible admission IDs and one completed paid occupied feedback proof before ticket retirement. First3 admission IDs plus1 viewing receipt stay pinned in the existing35-proof bound; references are not unique-person counts. A typed combined cash/badge outcome atomically joins40 ZC reward ledger, command/tick proof and ordered mission state. Earlier genuine visits count, but Q02 prerequisite claim is required. Strict codec and bounded journal reconciliation/replay tests preserve it through compaction/handoff. No new RAF/subscriber/assets or autosave; full reload remains fresh. Q04 remains planned. See M4-04_Q03_VISITORS.md, implementation `fa2b78842d40237f398141803aa38abf5aaee3a8`.
+
+
+## M4-05 sustained sanctuary and achievement - 2026-11-01
+
+Q04 streak uses only final fixed ticks after Q03, actual causal welfare/resource/path/gate condition and checkpoint-aware lifetime ticket deltas. Bounded start/last tick and ticket baselines exclude earlier income and all other ledger kinds. Partial failures reset; pause freezes; earned proof retained. Exclusive noncash banner+achievement outcome and ordered command/tick proof join atomic mission completion without a zero ledger entry. Financial/visitor implementations unchanged, no additional RAF/subscriber. Original234-triangle banner has reusable/disposable ownership. Codec/remount preserve; full reload fresh until M5. See M4-05_Q04_THRIVING.md, implementation `b4039c84a89ea7b2151b90aaf55c745a83bb21e7`.

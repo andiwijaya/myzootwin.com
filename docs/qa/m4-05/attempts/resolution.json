@@ -1,0 +1,89 @@
+{
+  "status": "RESOLVED_AND_REVERIFIED",
+  "finalRun": "20261101T163523Z-c0444b8c",
+  "nonAcceptanceArchive": "preliminary-artifacts.zip",
+  "files": [
+    {
+      "path": "candidate1-aborted-preflight.json",
+      "bytes": 544,
+      "sha256": "cf0c285641670ff2981ea644181a72af7cffd5eb0a4203de8ac058957f97af1e"
+    },
+    {
+      "path": "candidate2-unaccepted-browser-receipt.json",
+      "bytes": 47226,
+      "sha256": "10e1654e3771fd604c402ac33033f124dc5c3c7aef826c12409b27e4e2d6aa1b"
+    },
+    {
+      "path": "candidate2-unaccepted-interaction-matrix.json",
+      "bytes": 1452981,
+      "sha256": "a8b1ee6531f57ed28818316b3240ed7df0d1fb1e27cc9ca8d9c9daa1effe4bf5"
+    },
+    {
+      "path": "candidate2-screens/desktop-native.jpg",
+      "bytes": 420942,
+      "sha256": "b6f08cc0bebd2abbe3d291ca6e060cf927ee3417441b939e9e59ad2999be599f"
+    },
+    {
+      "path": "candidate2-screens/portrait-native-id.jpg",
+      "bytes": 388188,
+      "sha256": "3e0527f686bdf41a09c47278962bd8651d524d4786140711d276e711596ff569"
+    },
+    {
+      "path": "candidate2-screens/landscape-native-id.jpg",
+      "bytes": 407353,
+      "sha256": "86f1b6d578f722837b4e23637100f632014e3a22962ca85ec58516462fa1669e"
+    },
+    {
+      "path": "candidate3-unaccepted-browser-receipt.json",
+      "bytes": 47126,
+      "sha256": "d11f40c4c7ea5162377bceb8c9bc0fa484247f064e51458f2200b6ae0f25c54c"
+    },
+    {
+      "path": "candidate3-unaccepted-interaction-matrix.json",
+      "bytes": 1874518,
+      "sha256": "80b8055ee26ad12b96012ad0e211899d236db4bee081f9f322902b1c30de0605"
+    },
+    {
+      "path": "candidate3-screens/desktop-native.jpg",
+      "bytes": 415588,
+      "sha256": "0e48d84bfc98980d1df2ab9d9bddf0fa1f76175a4f1693b1e184dbd82ee3b26d"
+    },
+    {
+      "path": "candidate3-screens/portrait-native-id.jpg",
+      "bytes": 389184,
+      "sha256": "9872e90440054e10e7a3b7ebcb46a7fe266429204169f507296a5bd51d600eb2"
+    },
+    {
+      "path": "candidate3-screens/landscape-native-id.jpg",
+      "bytes": 399276,
+      "sha256": "5f04b59637d6f8d132a27aa4dcb82f252ca5c6d7246ad35f762402fe5683fa24"
+    },
+    {
+      "path": "candidate4-unaccepted-browser-receipt.json",
+      "bytes": 600,
+      "sha256": "fed7205f4995518c46b890b3af94701e81cdbad5137fc8327433e9244d976a23"
+    },
+    {
+      "path": "candidate4-unaccepted-interaction-matrix.json",
+      "bytes": 1308183,
+      "sha256": "54206a58114a838d7ca1eecba821f8876eefa3d51e9f96871ef69fd28743a4bf"
+    }
+  ],
+  "findings": [
+    "Initial Q04 codec validation omitted the explicit totals import, so targeted fixtures were rejected at root. Added the required import and all10 targeted integration scenarios passed.",
+    "Initial core-only check reported one unused imported view helper; the test now checks the actual view. Final146-file check has zero diagnostics.",
+    "First UI author invocation used a relative helper path from the repository and did not execute. Ran its verified absolute workspace path; no repeated or partial UI mutation.",
+    "A source proof-order/history-test edit triggered Vite reload during candidate1 preflight. That incomplete browser run is ABORTED/not acceptance. Stopped and closed it, reran all local stages and fresh final-source browser verification.",
+    "Q04 reward command must follow Q03 command; corruption coverage includes equal prerequisite command. Earlier Q03 history localization test uses the actual full-tools control when focus advances to Q04.",
+    "A transient empty QA JSON read during that reload raised read-only JSON parse failure. Reobserved fresh zero-load UI instead of inventing a result.",
+    "Candidate2 full chains rejected an obsolete being-prepared hint expectation. Replaced only that expected copy, retaining locked ordering and zero reward.",
+    "Candidate3 full chains rejected an obsolete hidden-next-button expectation after Q03. Q04 is now visible but disabled; corrected assertion additionally requires incomplete Q04, unchanged currency/nonce and no duplicate badge.",
+    "Candidate4 landscape feeding really consumed two portions (0->1 each, stock8->6) and hunger76.44->49.44, but per-render transient seek-phase coverage failed. Exact failed seek samples/starting positions were not retained. A separate explicit legal core fixture demonstrates that two accepted250ms frame partitions before sampling can miss seeking while actual Eat/consumption succeed; this is a sampling-boundary reproduction, not a fabricated exact browser replay.",
+    "Feeding assertion still requires each real Eat pose and both actual meals/hunger reduction/per-bowl conservation. Short seek samples remain recorded without a false per-render coverage claim; bounded failure meal/phase samples were added. No animal/visitor/financial implementation changed.",
+    "First near-port reproduction setup selected an idle state at the serving port, correctly triggering existing leave-food clearance and failing the hypothesis; retained. Refined legal idle near-port plus two-frame start demonstrates the actual observation boundary.",
+    "The five-run QA hygiene guard held gate5 before execution and left latest run unchanged. CRC/every-entry-SHA archives and scoped retention resolved the guard; gate5b proceeded normally, no bypass.",
+    "Workspace audit-patch context mismatch and read-only relative log-path misses made no repository mutation. Corrected explicit paths/context. Uncertain browser transport pause outcomes were inspected before continuing."
+  ],
+  "deniedOperations": false,
+  "productionChanged": false
+}
