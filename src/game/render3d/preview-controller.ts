@@ -39,6 +39,7 @@ export interface PreviewSession {
   edit?(command:'remove'|'undo',quote?:RemovalQuote):void;
   placement?(command:PlacementCommand,revision?:number):void;
   setPaused?(paused: boolean): void;
+  cancelInput?(): void;
   inspect?(): Record<string, number | boolean>;
 }
 
@@ -94,6 +95,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
       }
     },
     close,
+    cancelInput() { if (!disposed) session?.cancelInput?.(); },
     setPaused(value: boolean) { paused = value; session?.setPaused?.(isPaused()); },
     setExternalPaused(value: boolean) { externalPaused = value; session?.setPaused?.(isPaused()); },
     dispose() { if (disposed) return; close(); disposed = true; },

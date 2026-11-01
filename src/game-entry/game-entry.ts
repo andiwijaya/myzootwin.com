@@ -1,3 +1,4 @@
+import { mountHudLayout } from './hud-layout.ts';
 import { createPauseGate } from './pause-gate.ts';
 import { mountRestartPanel } from './restart-panel.ts';
 import { mountRecoveryPanel } from './recovery-panel.ts';
@@ -170,11 +171,7 @@ export function mountGameEntry(root: HTMLElement, options: {
             gate.hidden = !resumePending;
         root.querySelector('[data-save-resume-note]')?.replaceChildren(c.resumeNote);
         root.querySelector('[data-save-resume-button]')?.replaceChildren(c.resume);
-        for (const selector of ['[data-guide-layout]', '[data-speed-tools]', '[data-guide-toolbar]']) {
-            const el = root.querySelector<HTMLElement>(selector);
-            if (el)
-                el.inert = selector === '[data-guide-toolbar]' ? resumePending || ['conflict', 'unreadable'].includes(view.phase) || view.restartBusy : pauseGate.paused();
-        }
+        gateGameplay(pauseGate.paused(), resumePending || ['conflict','unreadable'].includes(view.phase) || view.restartBusy);
     }
     root.querySelector('[data-continue]')?.addEventListener('click', async () => {
         if (disposed || resumePending)
@@ -218,6 +215,16 @@ export function mountGameEntry(root: HTMLElement, options: {
         }, { signal: events.signal });
     }
     recoveryPanel = mountRecoveryPanel(root, { save: durable, allowDownload: options.allowRecoveryDownload !== false, locale: () => locale, pause: () => pauseGate.hold('dialog', true), closeGame: () => { resumePending = false; preview?.close(); }, restored: () => { locale = durable.savedLocale() ?? locale; render(locale); } });
+    function gateGameplay(paused: boolean, hard: boolean) {
+        const hud = root.dataset.hudActive === 'true';
+        const layout = root.querySelector<HTMLElement>('[data-guide-layout]'), stage = root.querySelector<HTMLElement>('[data-preview-stage]');
+        if (layout) layout.inert = hud ? hard : paused;
+        if (stage) stage.inert = hud && paused;
+        for (const gate of root.querySelectorAll<HTMLFieldSetElement>('[data-hud-controls]')) gate.disabled = hud && paused;
+        const speed = root.querySelector<HTMLElement>('[data-speed-tools]'), toolbar = root.querySelector<HTMLElement>('[data-guide-toolbar]');
+        if (speed) speed.inert = paused;
+        if (toolbar) toolbar.inert = hard;
+    }
     function syncPause() {
         const v = durable.view();
         pauseGate.update({ continue: resumePending, dialog: Boolean(root.querySelector('#play-help[open],#play-settings[open],[data-save-recovery-dialog][open],[data-reset-dialog][open]')), storage: ['conflict', 'unreadable'].includes(v.phase), restart: v.restartBusy });
@@ -241,12 +248,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         }
         if (status)
             status.textContent = locale === 'id' ? (pauseGate.has('background') ? 'Dijeda saat kamu pergi. Lanjutkan saat siap; tidak ada progres offline.' : paused ? 'Suaka dijeda. Satwa, pengunjung, uang dan misi tidak berjalan.' : 'Suaka berjalan. Jeda kapan saja untuk berhenti dengan aman.') : (pauseGate.has('background') ? 'Paused while you were away. Resume when ready; no offline progress.' : paused ? 'Zoo paused. Animals, visitors, money and missions are frozen.' : 'Zoo running. Pause any time to stop safely.');
-        for (const selector of ['[data-guide-layout]', '[data-speed-tools]', '[data-guide-toolbar]']) {
-            const el = root.querySelector<HTMLElement>(selector);
-            if (el)
-                // Inner care dialogs already own a local controller hold; keep their modal controls outside the external inert gate.
-                el.inert = selector === '[data-guide-toolbar]' ? resumePending || blocked : pauseGate.paused();
-        }
+        gateGameplay(pauseGate.paused(), resumePending || blocked);
     }
     root.querySelector('[data-pause-toggle]')?.addEventListener('click', () => {
         if (['conflict', 'unreadable'].includes(durable.view().phase) || durable.view().restartBusy || root.querySelector('dialog[open]'))
@@ -260,11 +262,13 @@ export function mountGameEntry(root: HTMLElement, options: {
         syncPause();
         renderSave();
     }, { signal: events.signal });
+    root.addEventListener('hud-layout-change',syncPause,{signal:events.signal});
     const pauseObserver = new MutationObserver(syncPause);
     pauseObserver.observe(root, { subtree: true, attributes: true, attributeFilter: ['open', 'data-renderer-state'] });
     if (document.hidden)
         pauseGate.hold('background', true);
     restartPanel = mountRestartPanel(root, { save: durable, locale: () => locale, pause: () => pauseGate.hold('manual', true), closeGame: () => { resumePending = false; preview?.close(); }, replaced: () => { locale = durable.savedLocale() ?? locale; render(locale); } });
+    const hudLayout = mountHudLayout(root);
     const ready = (async () => {
         await durable.load();
         if (disposed)
@@ -278,6 +282,7 @@ export function mountGameEntry(root: HTMLElement, options: {
             if (disposed)
                 return;
             disposed = true;
+            hudLayout.dispose();
             pauseObserver.disconnect();
             restartPanel?.dispose();
             recoveryPanel?.dispose();
@@ -288,7 +293,7 @@ export function mountGameEntry(root: HTMLElement, options: {
             events.abort();
             delete root.dataset.enhanced;
             mounted.delete(root);
-        }, inspect: () => durable.inspect() };
+        }, inspect: () => durable.inspect(), inspectRenderer: () => preview?.inspect() };
     mounted.set(root, handle);
     return handle;
 }

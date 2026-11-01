@@ -1,3 +1,4 @@
+import { revealHudTarget, scrollHudTarget } from './hud-layout.ts';
 import type {BirdsView,BirdInfo} from '../game/animals/autonomy.ts';
 import type {CareCause} from '../game/animals/welfare.ts';
 import {entryMessages,type EntryLocale,type EntryMessage} from './locale.ts';
@@ -27,9 +28,9 @@ export function mountAnimalInfo(root:HTMLElement,signal:AbortSignal){
   const signature=b.id+':'+b.low+':'+b.alerts.map(a=>a.cause).join(',')+':'+locale;if(signature!==lastSignature&&view.tick-lastAnnouncedTick>=30){set(announcement,c.careAnnouncement.replace('{name}',name(b)).replace('{status}',c[b.low?'careLow':'careGood']).replace('{cause}',b.alerts[0]?c[causes[b.alerts[0].cause]]:c.careNoIssues));lastSignature=signature;lastAnnouncedTick=view.tick;}
  }
  root.addEventListener('click',event=>{const target=event.target as HTMLElement,inspect=target.closest<HTMLButtonElement>('[data-animal-info]'),dismiss=target.closest('[data-care-dismiss]'),care=target.closest<HTMLButtonElement>('[data-care-target]');if(!active)return;
-  if(inspect){selected=inspect.dataset.animalInfo??null;lastAnnouncedTick=view.tick-30;draw();root.querySelector<HTMLElement>('[data-care-name]')?.focus({preventScroll:true});panel?.scrollIntoView({block:'nearest',behavior:'instant'});}
+  if(inspect){selected=inspect.dataset.animalInfo??null;lastAnnouncedTick=view.tick-30;draw();root.querySelector<HTMLElement>('[data-care-name]')?.focus({preventScroll:true});scrollHudTarget(panel);}
   if(dismiss){const old=selected;selected=null;draw();nodes.get(old??'')?.button.focus({preventScroll:true});}
-  if(care){const kind=care.dataset.careTarget,tools=root.closest('[data-play-entry]')?.querySelector<HTMLElement>(kind==='habitat'?'[data-placement-tools]':`[data-${kind}-tools]`),button=Array.from(tools?.querySelectorAll<HTMLButtonElement>('button:not(:disabled)')??[]).find(b=>!b.closest('[hidden]'));tools?.scrollIntoView({block:'nearest',behavior:'instant'});button?.focus({preventScroll:true});}
+  if(care){const kind=care.dataset.careTarget,tools=root.closest('[data-play-entry]')?.querySelector<HTMLElement>(kind==='habitat'?'[data-placement-tools]':`[data-${kind}-tools]`);revealHudTarget(tools??null);const button=Array.from(tools?.querySelectorAll<HTMLButtonElement>('button:not(:disabled)')??[]).find(b=>!b.closest('[hidden]'));scrollHudTarget(tools);button?.focus({preventScroll:true});scrollHudTarget(button??null);}
  },{signal});
  panel?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();const old=selected;selected=null;draw();nodes.get(old??'')?.button.focus({preventScroll:true});}},{signal});
  return {update(next:BirdsView,l:EntryLocale,ready:boolean){if(locale!==l||active!==ready||next.tick<view.tick){lastSignature='';lastAnnouncedTick=next.tick-30;}view=next;locale=l;active=ready;if(!ready)set(announcement,'');draw();}};
