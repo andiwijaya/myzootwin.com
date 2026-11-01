@@ -229,3 +229,8 @@ Explicit pause reasons are independent; preview-controller local dialog holds an
 ## M5-04 responsive HUD/input - 2026-11-01
 
 Responsive HUD is a presentation-only subscriber with one abort/observer lifecycle and no extra RAF/simulation. Native disclosures/tabs, contained scrolling and distinct pointer-focus ordering retain authoritative pause/storage holds; a single cancelInput bridge releases gestures on UI/resize. All world/money/mission/save rules and schema remain unchanged. See M5-04_RESPONSIVE_HUD.md and qa/m5-04.
+
+
+## M5-05 complete bilingual game UI - 2026-11-01
+
+Language presentation now has one bounded cached Intl formatter; raw numeric state/IDs stay unformatted. Latest manual locale wins over older saved locale, while browser/default/saved fallback is explicit. Test mount options isolate preferences/browser-language inputs; production defaults remain browser storage/language. No core/simulation/save-schema change. See M5-05_BILINGUAL_UI.md and qa/m5-05.

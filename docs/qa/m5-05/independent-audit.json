@@ -1,0 +1,189 @@
+{
+  "status": "PASS",
+  "verifiedAt": "2026-11-01T23:54:49.718Z",
+  "implementationCommit": "5b4b21cc46a4dd3482d0d15c4327cce555b6fe7e",
+  "runId": "20261101T233501Z-11e5d1e5",
+  "sourceId": "bf989197c795ed935bb5d57668983d1ff19c0f4d00dc42125a674867afa91528",
+  "buildId": "6ef8b618b7a6ecd16c027c8df480c640004fd846daa8e58c83cdb52c2dac6189",
+  "tests": 443,
+  "checkedFiles": 170,
+  "routes": 9,
+  "pairedEntryMessages": 382,
+  "pairedPanelMessages": 196,
+  "panelDictionaries": 10,
+  "browserLanguageCases": 39,
+  "hudCases": 57,
+  "storageCases": 129,
+  "totalLabelledBrowserCases": 225,
+  "cases": [
+    {
+      "name": "desktop",
+      "kind": "locale",
+      "cases": 13,
+      "status": "PASS"
+    },
+    {
+      "name": "desktop",
+      "kind": "hud",
+      "cases": 19,
+      "status": "PASS"
+    },
+    {
+      "name": "desktop",
+      "kind": "restart",
+      "cases": 16,
+      "status": "PASS"
+    },
+    {
+      "name": "desktop",
+      "kind": "recovery",
+      "cases": 18,
+      "status": "PASS"
+    },
+    {
+      "name": "desktop",
+      "kind": "autosave",
+      "cases": 9,
+      "status": "PASS"
+    },
+    {
+      "name": "portrait",
+      "kind": "locale",
+      "cases": 13,
+      "status": "PASS"
+    },
+    {
+      "name": "portrait",
+      "kind": "hud",
+      "cases": 19,
+      "status": "PASS"
+    },
+    {
+      "name": "portrait",
+      "kind": "restart",
+      "cases": 16,
+      "status": "PASS"
+    },
+    {
+      "name": "portrait",
+      "kind": "recovery",
+      "cases": 18,
+      "status": "PASS"
+    },
+    {
+      "name": "portrait",
+      "kind": "autosave",
+      "cases": 9,
+      "status": "PASS"
+    },
+    {
+      "name": "landscape",
+      "kind": "locale",
+      "cases": 13,
+      "status": "PASS"
+    },
+    {
+      "name": "landscape",
+      "kind": "hud",
+      "cases": 19,
+      "status": "PASS"
+    },
+    {
+      "name": "landscape",
+      "kind": "restart",
+      "cases": 16,
+      "status": "PASS"
+    },
+    {
+      "name": "landscape",
+      "kind": "recovery",
+      "cases": 18,
+      "status": "PASS"
+    },
+    {
+      "name": "landscape",
+      "kind": "autosave",
+      "cases": 9,
+      "status": "PASS"
+    }
+  ],
+  "native": [
+    {
+      "label": "desktop-EN",
+      "coins": 975,
+      "ticketIncome": 50,
+      "missionCoins": 60,
+      "tick": "1509",
+      "missions": 4
+    },
+    {
+      "label": "portrait-ID",
+      "coins": 975,
+      "ticketIncome": 50,
+      "missionCoins": 60,
+      "tick": "1499",
+      "missions": 4
+    },
+    {
+      "label": "landscape-ID",
+      "coins": 975,
+      "ticketIncome": 50,
+      "missionCoins": 60,
+      "tick": "1472",
+      "missions": 4
+    }
+  ],
+  "nativeManualPreferenceOverridesOldSave": true,
+  "nativeProgressPreservedAcrossLanguage": true,
+  "layoutCombinations": 16,
+  "stableFields": 117,
+  "remounts": 3,
+  "ownedResourceCleanup": "PASS",
+  "sourceFormatting": "PASS (four prior whitespace findings fixed)",
+  "nativeConsole": {
+    "entries": [],
+    "limit": 200,
+    "capped": false
+  },
+  "ports": [
+    {
+      "port": 4321,
+      "free": true
+    },
+    {
+      "port": 4322,
+      "free": true
+    },
+    {
+      "port": 4343,
+      "free": true
+    }
+  ],
+  "generatedRuns": [
+    "20261101T224859Z-760b0c92",
+    "20261101T225427Z-898c4bd8",
+    "20261101T233501Z-11e5d1e5"
+  ],
+  "coreJournalMediaAndRequirementsPreserved": true,
+  "checklist": {
+    "complete": 39,
+    "total": 51,
+    "percent": 76.47,
+    "M5": "5/7",
+    "M7Deferred": 12,
+    "partial": [
+      "M0-01",
+      "M4-07"
+    ],
+    "next": "M5-06"
+  },
+  "evidencePolicy": "Scoped -text rule installed before staging. Raw logs retain bytes/terminal blank lines; prose and raw-byte checks are separate.",
+  "limitations": [
+    "Native IAB EN default observed; ID/non-ID defaults explicitly injected",
+    "Physical device/native touch/background/browser-process restart/FPS/GPU/network/15min populated soak/human unaided/live UNRUN",
+    "Recovery download BLOCKED/UNRUN, not retried",
+    "M0-01 external config and M4-07 recording partial"
+  ],
+  "hardStop": "2026-11-02T01:00:00Z",
+  "production": "not deployed"
+}

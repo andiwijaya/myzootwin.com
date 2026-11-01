@@ -210,3 +210,8 @@ Final433/check163/9routes; restart16×3=48, recovery18×3=54, autosave9×3=27. N
 ## M5-04 responsive HUD/input - 2026-11-01
 
 Final438/check167/9routes plus19 HUD cases per viewport (57),16 size/language observations and129 storage regressions. Use the supported isolated runtime only; native fresh complete flows, keyboard/contained PageDown, reset/restore/reload and117-field cleanup are separate from labelled seeded/injected fixtures. Read actual viewport dimensions and settled geometry before acting. Keep per-run writer objects immutable, harvest before source edits/Vite hot refresh, never retry recovery download. Five JPEGs/bounded CRC-SHA archives and three generated runs; format WARN recorded separately. See M5-04_RESPONSIVE_HUD.md and qa/m5-04.
+
+
+## M5-05 complete bilingual game UI - 2026-11-01
+
+Final443/check170/9routes;13-case localization fixture x3=39 plus19 HUD x3=57 and129 storage regressions. Explicit injected ID/non-ID browser argument is not a changed native browser locale. Native actual settings/old-game precedence/Continue and full three-viewport Q01-Q04 flows are separate. Localized decimal UI must never be parsed as authoritative money/time; use raw data. All fixtures disable optional downloads; preserve exact bytes using the scoped Git attribute. See M5-05_BILINGUAL_UI.md and qa/m5-05.
