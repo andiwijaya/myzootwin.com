@@ -224,3 +224,8 @@ State schema1 unchanged; strict codec remains the game boundary. Storage envelop
 ## M5-03 pause ownership and recoverable restart - 2026-11-01
 
 Explicit pause reasons are independent; preview-controller local dialog holds and embedding-app external holds combine without overriding each other. Background remains held until explicit Resume. Reset/recovery metadata reads are serial-guarded. Atomic reset keeps a fourth bounded restart record, preserves earlier original-recovery data, rotates generation and offers one confirmed full-state restoration; no merge/reward replay. State1/envelope2 and one simulation/RAF remain. See M5-03_PAUSE_RESTART.md.
+
+
+## M5-04 responsive HUD/input - 2026-11-01
+
+Responsive HUD is a presentation-only subscriber with one abort/observer lifecycle and no extra RAF/simulation. Native disclosures/tabs, contained scrolling and distinct pointer-focus ordering retain authoritative pause/storage holds; a single cancelInput bridge releases gestures on UI/resize. All world/money/mission/save rules and schema remain unchanged. See M5-04_RESPONSIVE_HUD.md and qa/m5-04.

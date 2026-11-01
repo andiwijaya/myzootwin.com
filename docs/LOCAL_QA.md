@@ -205,3 +205,8 @@ Final-source418/check159/9routes, recovery18x3=54 and prior storage9x3=27, nativ
 ## M5-03 pause ownership and recoverable restart - 2026-11-01
 
 Final433/check163/9routes; restart16×3=48, recovery18×3=54, autosave9×3=27. New restart-harness uses only bounded own QA databases and labels injected visibility/pagehide/quota. Native fresh Q01–Q04/reset/restore/reload/cold-tab/conflict and three-viewport UI pass. Native background probe reports visible throughout: UNRUN, not a pass. All fixtures disable downloads; prior owner cancellation stays blocked/unrun. Evidence helper closure scope corrected by exact final entry-script/timestamps, raw log preserved and extraction independently checked; never reassign captured writer state for later runs. See writer-scope-provenance.json and M5-03_PAUSE_RESTART.md.
+
+
+## M5-04 responsive HUD/input - 2026-11-01
+
+Final438/check167/9routes plus19 HUD cases per viewport (57),16 size/language observations and129 storage regressions. Use the supported isolated runtime only; native fresh complete flows, keyboard/contained PageDown, reset/restore/reload and117-field cleanup are separate from labelled seeded/injected fixtures. Read actual viewport dimensions and settled geometry before acting. Keep per-run writer objects immutable, harvest before source edits/Vite hot refresh, never retry recovery download. Five JPEGs/bounded CRC-SHA archives and three generated runs; format WARN recorded separately. See M5-04_RESPONSIVE_HUD.md and qa/m5-04.

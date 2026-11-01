@@ -1,0 +1,241 @@
+{
+  "status": "PASS",
+  "verifiedAt": "2026-11-01T23:13:33.900Z",
+  "implementationCommit": "5be6cd84362caac65f16dce02a4f125e25468765",
+  "runId": "20261101T225427Z-898c4bd8",
+  "sourceId": "7cc3c9b94b841914f76fe9fcc5577bb267c26b2fa56d4337039859dbae4d509e",
+  "buildId": "79b68f2fbd334ebcc0c4faaee601256427728e2e9507b37019c1e0593e44d352",
+  "tests": {
+    "status": "PASS",
+    "startedAt": "2026-11-01T22:54:28.036Z",
+    "finishedAt": "2026-11-01T22:55:22.095Z",
+    "exitCode": 0,
+    "log": "unit.log",
+    "logSha256": "3117a8c8b92adb218242f847e04af4d5d909884aca9ea38121815d829942d734",
+    "logBytes": 117546,
+    "summary": {
+      "tests": 438,
+      "pass": 438,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    }
+  },
+  "checkedFiles": 167,
+  "routes": 9,
+  "browserReceipt": "PASS",
+  "hudCases": 57,
+  "storageCases": 129,
+  "fixtures": [
+    {
+      "name": "desktop",
+      "cases": 19,
+      "status": "PASS"
+    },
+    {
+      "name": "portrait",
+      "cases": 19,
+      "status": "PASS"
+    },
+    {
+      "name": "landscape",
+      "cases": 19,
+      "status": "PASS"
+    }
+  ],
+  "regressions": [
+    {
+      "name": "desktop",
+      "kind": "restart",
+      "cases": 16,
+      "status": "PASS"
+    },
+    {
+      "name": "desktop",
+      "kind": "recovery",
+      "cases": 18,
+      "status": "PASS"
+    },
+    {
+      "name": "desktop",
+      "kind": "autosave",
+      "cases": 9,
+      "status": "PASS"
+    },
+    {
+      "name": "portrait",
+      "kind": "restart",
+      "cases": 16,
+      "status": "PASS"
+    },
+    {
+      "name": "portrait",
+      "kind": "recovery",
+      "cases": 18,
+      "status": "PASS"
+    },
+    {
+      "name": "portrait",
+      "kind": "autosave",
+      "cases": 9,
+      "status": "PASS"
+    },
+    {
+      "name": "landscape",
+      "kind": "restart",
+      "cases": 16,
+      "status": "PASS"
+    },
+    {
+      "name": "landscape",
+      "kind": "recovery",
+      "cases": 18,
+      "status": "PASS"
+    },
+    {
+      "name": "landscape",
+      "kind": "autosave",
+      "cases": 9,
+      "status": "PASS"
+    }
+  ],
+  "native": [
+    {
+      "label": "desktop-EN",
+      "balance": 975,
+      "ticketIncome": 50,
+      "missionCoins": 60,
+      "missions": 4,
+      "savedTick": "1670",
+      "reloadExact": true,
+      "cancelFree": true
+    },
+    {
+      "label": "portrait-ID",
+      "balance": 975,
+      "ticketIncome": 50,
+      "missionCoins": 60,
+      "missions": 4,
+      "savedTick": "1496",
+      "reloadExact": true,
+      "cancelFree": true
+    },
+    {
+      "label": "landscape-ID",
+      "balance": 975,
+      "ticketIncome": 50,
+      "missionCoins": 60,
+      "missions": 4,
+      "savedTick": "1534",
+      "reloadExact": true,
+      "cancelFree": true
+    }
+  ],
+  "layoutCombinations": 16,
+  "stableFields": 117,
+  "threeRemounts": true,
+  "ownedResourceCleanup": "PASS",
+  "nativeConsole": {
+    "entries": [],
+    "limit": 200,
+    "capped": false
+  },
+  "ports": [
+    {
+      "port": 4321,
+      "free": true
+    },
+    {
+      "port": 4322,
+      "free": true
+    },
+    {
+      "port": 4335,
+      "free": true
+    },
+    {
+      "port": 4336,
+      "free": true
+    },
+    {
+      "port": 4337,
+      "free": true
+    },
+    {
+      "port": 4338,
+      "free": true
+    },
+    {
+      "port": 4339,
+      "free": true
+    },
+    {
+      "port": 4340,
+      "free": true
+    },
+    {
+      "port": 4341,
+      "free": true
+    },
+    {
+      "port": 4342,
+      "free": true
+    }
+  ],
+  "checklist": {
+    "verified": 38,
+    "total": 51,
+    "percent": 74.51,
+    "M5": "4/7",
+    "M7Deferred": 12,
+    "partial": [
+      "M0-01",
+      "M4-07"
+    ],
+    "next": "M5-05"
+  },
+  "sourceAndMediaPreserved": true,
+  "formatCheck": {
+    "status": "WARN",
+    "severity": "nonblocking whitespace-only",
+    "output": "src/components/PlayEntry.astro:11: trailing whitespace.\n+  \nsrc/components/PlayEntry.astro:13: trailing whitespace.\n+  \nsrc/components/PlayEntry.astro:14: trailing whitespace.\n+  \nsrc/components/PlayEntry.astro:157: trailing whitespace.\n+        \n",
+    "notClaimedPassed": true
+  },
+  "payload": {
+    "shellRaw": 339980,
+    "firstPreviewRaw": 973664,
+    "gzipLevel9Estimate": 257577,
+    "delta": {
+      "shell": 25254,
+      "firstPreviewOpen": 25292,
+      "firstPreviewGzipEstimate": 4921
+    }
+  },
+  "limitations": [
+    "Recovery download BLOCKED/UNRUN; not retried",
+    "Physical devices/native touch/background/browser-process restart UNRUN",
+    "PresentedFPS/GPU/network/15min populated soak/unaided-human/live UNRUN",
+    "M0-01 external Cloudflare settings partial",
+    "M4-07 recording unavailable"
+  ],
+  "hardStop": "2026-11-02T01:00:00Z",
+  "production": "not deployed",
+  "rawEvidenceFormatting": {
+    "status": "EXPECTED_RAW_OUTPUT",
+    "fullDocsDiffCheck": "WARN",
+    "exactFindings": [
+      "docs/qa/m5-04/browser-preview-1.log:5: new blank line at EOF.",
+      "docs/qa/m5-04/fresh-preview.log:5: new blank line at EOF.",
+      "docs/qa/m5-04/preview.log:5: new blank line at EOF."
+    ],
+    "rawBytesUnchanged": true,
+    "proseAndStructuredDocsCheck": "PASS",
+    "checkExcludesOnlyTheseRawLogs": [
+      "docs/qa/m5-04/browser-preview-1.log",
+      "docs/qa/m5-04/fresh-preview.log",
+      "docs/qa/m5-04/preview.log"
+    ],
+    "reason": "Do not trim actual captured stdout solely to remove terminal-blank-line Git warnings."
+  }
+}
