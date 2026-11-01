@@ -1,0 +1,20 @@
+{
+  "status": "RESOLVED_AND_REVERIFIED",
+  "findings": [
+    {
+      "method": "Initial full unit run225/227",
+      "finding": "Two old preview-only assertions required satisfaction to remain null after every visit. New real access/empty feedback correctly produces0; assertions now distinguish pending/unscored from actual legitimate empty/access outcomes and retain no-admission/no-income checks."
+    },
+    {
+      "method": "Targeted12/13",
+      "finding": "A forged scoreSum within broad aggregate bounds passed validation even when all outcomes remained in the recent buffer. Added exact totals for complete retained history and reran13/13."
+    },
+    {
+      "method": "Source review after preliminary full local gate",
+      "finding": "Per-person view feedback aliased authoritative state. Added clone at the public view boundary and a mutation-isolation regression. Final complete gate241 tests rerun; no browser pass borrowed from the preliminary240-test gate."
+    }
+  ],
+  "nativeSafetyObservation": "Water preview was initially unsafe because a real macaw occupied its placement area. Cancelled without confirmation; later rechecked actual enabled state, placed/refilled safely and observed later satisfied visits. This was an expected existing guard, not bypassed or left blocked.",
+  "finalRun": "20261101T074853Z-1b4925ca",
+  "productionChange": false
+}

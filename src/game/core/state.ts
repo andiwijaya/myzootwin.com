@@ -18,7 +18,12 @@ export interface Animal {
   care:{low:boolean;hungry:boolean;thirsty:boolean;tired:boolean;bored:boolean};
   currentBehavior: AnimalBehavior; motion:AnimalMotion; foodEaten:number; waterDrunk:number; restedTicks:number; enrichedTicks:number;
 }
-export interface Visitor { id: EntityId; position: Point; route: Point[]; routeIndex: number; phase: 'arrival' | 'queued' | 'entering' | 'viewing' | 'leaving' | 'exiting'; satisfaction: number|null; admissionId: EntityId|null; arrival:{serial:number;slot:number;spawnTick:number}|null; journey:{habitatId:EntityId|null;heading:number;dwellTicks:number;queuedTicks:number;viewed:boolean;startedTick:number|null}|null; }
+export type VisitorOutcome='comfortable'|'concerned'|'empty'|'no-habitat'|'unreachable'|'interrupted';
+export type VisitorInterruption='none'|'closed'|'access-lost'|'habitat-removed'|'time-limit';
+export interface VisitorFeedback {visitorId:EntityId;habitatId:EntityId|null;tick:number;outcome:VisitorOutcome;reason:VisitorInterruption;score:number|null;observedWelfare:number|null;samples:number;occupiedSamples:number;welfareHundredths:number;}
+export interface VisitorExperience {samples:number;occupiedSamples:number;welfareHundredths:number;feedback:VisitorFeedback|null;}
+export interface VisitorFeedbackSummary {evaluated:number;scored:number;scoreSum:number;positive:number;negative:number;interrupted:number;recent:VisitorFeedback[];}
+export interface Visitor { id: EntityId; position: Point; route: Point[]; routeIndex: number; phase: 'arrival' | 'queued' | 'entering' | 'viewing' | 'leaving' | 'exiting'; satisfaction: number|null; experience:VisitorExperience|null; admissionId: EntityId|null; arrival:{serial:number;slot:number;spawnTick:number}|null; journey:{habitatId:EntityId|null;heading:number;dwellTicks:number;queuedTicks:number;viewed:boolean;startedTick:number|null}|null; }
 export interface Admission { id: EntityId; visitorId: EntityId; tick: number; ledgerEntryId: EntityId; }
 export type LedgerKind = 'starter' | 'build' | 'supplies' | 'maintenance' | 'ticket' | 'reward' | 'refund' | 'restore';
 export interface LedgerEntry { id: EntityId; operationId: EntityId; kind: LedgerKind; amount: number; balanceAfter: number; tick: number; relatedId: EntityId | null; }
@@ -32,6 +37,6 @@ export interface Preferences { locale: 'id' | 'en'; graphics: 'auto' | 'low' | '
 export interface ZooSaveV1 {
   schemaVersion: 1; randomSeed: number; randomState: number; tick: number; gameTimeMs: number;
   currency: number; world: WorldState; animals: Animal[]; visitors: Visitor[];
-  visitorFlow:{open:boolean;nextSerial:number;cooldownTicks:number;viewedTotal:number};
+  visitorFlow:{open:boolean;nextSerial:number;cooldownTicks:number;viewedTotal:number;feedback:VisitorFeedbackSummary};
   admissions: Admission[]; ledger: LedgerEntry[]; missions: Missions; preferences: Preferences;
 }

@@ -15,7 +15,7 @@ export function createInitialState(seed = 0x5a17c0de): ZooSaveV1 {
       const cell = { x: index % 12, z: Math.floor(index / 12) };
       return { cell, terrain: cell.x === 9 && cell.z > 0 && cell.z < 9 ? 'creek' : 'land', occupantId: null, path: cell.x === gate.x && cell.z === gate.z };
     }), habitats: [], resources: [] },
-    animals, visitors: [], visitorFlow:{open:false,nextSerial:1,cooldownTicks:0,viewedTotal:0}, admissions: [],
+    animals, visitors: [], visitorFlow:{open:false,nextSerial:1,cooldownTicks:0,viewedTotal:0,feedback:{evaluated:0,scored:0,scoreSum:0,positive:0,negative:0,interrupted:0,recent:[]}}, admissions: [],
     ledger: [{ id: 'ledger-starter', operationId: 'starter-grant', kind: 'starter', amount: 1500, balanceAfter: 1500, tick: 0, relatedId: null }],
     missions: { currentId: MISSION_IDS[0], completedIds: [], rewards: [], objectives: { habitatConnected: false, birdsFedIds: [], birdsWateredIds: [], comfortableTicks: 0, viewedVisitorIds: [], thrivingTicks: 0 } },
     preferences: { locale: 'en', graphics: 'auto', muted: true, reducedMotion: false },

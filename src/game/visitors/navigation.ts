@@ -1,10 +1,11 @@
+import {SATISFACTION_RULES,observeHabitat,resetObservation,completeFeedback,interruptedFeedback} from './satisfaction.ts';
 import type {Point,Visitor,WorldState,ZooSaveV1} from '../core/state.ts';
 import {habitatBlockerKeys} from '../world/build-habitat.ts';
 import {cellKey} from '../world/placement-preview.ts';
 
 /** One excursion owns the narrow corridor; two side bays wait FIFO at the entrance.
  * Positions and headings are simulation data. Rendering never advances navigation. */
-export const VISIT_RULES=Object.freeze({speed:.05,turn:.22,viewTicks:30,maxQueueTicks:6000,maxJourneyTicks:2400,footprint:.16});
+export const VISIT_RULES=Object.freeze({speed:.05,turn:.22,viewTicks:SATISFACTION_RULES.observationTicks,maxQueueTicks:6000,maxJourneyTicks:2400,footprint:.16});
 const blockers=habitatBlockerKeys();
 const same=(a:Point,b:Point)=>a.x===b.x&&a.z===b.z;
 export const visitorCell=(v:Visitor):Point=>({x:Math.floor(v.position.x),z:Math.floor(v.position.z)});
@@ -33,10 +34,10 @@ export function reconcileJourneys(s:ZooSaveV1):ZooSaveV1{
  const target=visitTarget(s.world);
  for(const v of s.visitors){const j=v.journey;if(!j||!ownsCorridor(v)||v.phase==='exiting')continue;
   if(v.phase==='leaving'){returnHome(s,v);continue;}
-  if(!s.visitorFlow.open||!target||target.habitatId!==j.habitatId){returnHome(s,v);continue;}
-  const route=visitorRoute(s.world,visitorCell(v),target.cell);if(!route.length){returnHome(s,v);continue;}
+  if(!s.visitorFlow.open||!target||target.habitatId!==j.habitatId){interruptedFeedback(s,v,!s.visitorFlow.open?'closed':s.world.habitats.some(h=>h.id===j.habitatId)?'access-lost':'habitat-removed');returnHome(s,v);continue;}
+  const route=visitorRoute(s.world,visitorCell(v),target.cell);if(!route.length){interruptedFeedback(s,v,'access-lost');returnHome(s,v);continue;}
   if(v.phase==='viewing'&&same(visitorCell(v),target.cell))continue;
-  setRoute(v,route,'entering');j.dwellTicks=0;
+  setRoute(v,route,'entering');j.dwellTicks=0;resetObservation(v);
  }return s;
 }
 export function visitorRemovalReason(s:ZooSaveV1,world:WorldState,cell:Point):'visitor-route'|'visitor-occupied'|'in-use'|null{
@@ -60,19 +61,19 @@ export function stepJourneys(s:ZooSaveV1):Array<{visitorId:string;habitatId:stri
  for(const v of s.visitors){const j=v.journey;if(!j)continue;
   if(v.phase==='queued'){
    j.queuedTicks++;
-   if(!s.visitorFlow.open||!target||j.queuedTicks>=VISIT_RULES.maxQueueTicks)v.phase='exiting';
+   if(!s.visitorFlow.open||!target||j.queuedTicks>=VISIT_RULES.maxQueueTicks){interruptedFeedback(s,v,!s.visitorFlow.open?'closed':!target?s.world.habitats.length?'access-lost':'habitat-removed':'time-limit');v.phase='exiting';}
   }
-  if(ownsCorridor(v)&&(v.phase==='entering'||v.phase==='viewing')&&(!s.visitorFlow.open||!target||target.habitatId!==j.habitatId||s.tick-j.startedTick!>=VISIT_RULES.maxJourneyTicks))returnHome(s,v);
+  if(ownsCorridor(v)&&(v.phase==='entering'||v.phase==='viewing')&&(!s.visitorFlow.open||!target||target.habitatId!==j.habitatId||s.tick-j.startedTick!>=VISIT_RULES.maxJourneyTicks)){interruptedFeedback(s,v,!s.visitorFlow.open?'closed':!s.world.habitats.some(h=>h.id===j.habitatId)?'habitat-removed':!target?'access-lost':'time-limit');returnHome(s,v);}
   if(v.phase==='entering'||v.phase==='leaving'){
    const p=v.route[v.routeIndex];if(!p)continue;
-   if(move(v,center(p))){if(v.routeIndex<v.route.length-1)v.routeIndex++;else if(v.phase==='entering'){v.phase='viewing';j.dwellTicks=0;}else v.phase='exiting';}
+   if(move(v,center(p))){if(v.routeIndex<v.route.length-1)v.routeIndex++;else if(v.phase==='entering'){v.phase='viewing';j.dwellTicks=0;resetObservation(v);}else v.phase='exiting';}
   }else if(v.phase==='viewing'){
-   const habitat=s.world.habitats.find(h=>h.id===j.habitatId);if(!habitat){returnHome(s,v);continue;}
+   const habitat=s.world.habitats.find(h=>h.id===j.habitatId);if(!habitat){interruptedFeedback(s,v,'habitat-removed');returnHome(s,v);continue;}
    const mid=habitat.cells.reduce((p,c)=>({x:p.x+c.x+.5,z:p.z+c.z+.5}),{x:0,z:0}),desired=Math.atan2(mid.x/habitat.cells.length-v.position.x,mid.z/habitat.cells.length-v.position.z),delta=Math.atan2(Math.sin(desired-j.heading),Math.cos(desired-j.heading));
    j.heading=Math.atan2(Math.sin(j.heading+Math.max(-VISIT_RULES.turn,Math.min(VISIT_RULES.turn,delta))),Math.cos(j.heading+Math.max(-VISIT_RULES.turn,Math.min(VISIT_RULES.turn,delta))));
    if(Math.abs(delta)>.1)continue;
-   j.dwellTicks++;
-   if(j.dwellTicks>=VISIT_RULES.viewTicks){if(!j.viewed&&j.habitatId){j.viewed=true;s.visitorFlow.viewedTotal++;viewed.push({visitorId:v.id,habitatId:j.habitatId});}returnHome(s,v);}
+   j.dwellTicks++;observeHabitat(s,v);
+   if(j.dwellTicks>=VISIT_RULES.viewTicks){if(!j.viewed&&j.habitatId){j.viewed=true;completeFeedback(s,v);s.visitorFlow.viewedTotal++;viewed.push({visitorId:v.id,habitatId:j.habitatId});}returnHome(s,v);}
   }else if(v.phase==='exiting'){
    const x=s.world.gate.x+(ownsCorridor(v)?.5:.19+v.arrival!.slot*.31);
    if(move(v,{x,z:s.world.gate.z+.88}))remove.add(v.id);

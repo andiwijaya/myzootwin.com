@@ -64,7 +64,7 @@ import { english as copy } from '../game-entry/locale';
         <h3 id="visitors-title" data-entry-text="visitorsTitle">{copy.visitorsTitle}</h3>
         <p data-entry-text="visitorsHint">{copy.visitorsHint}</p>
         <div class="macaw-actions"><button type="button" data-visitors-command="open">{copy.visitorsOpen}</button><button type="button" data-visitors-command="close" hidden>{copy.visitorsClose}</button><button type="button" data-visitors-command="focus">{copy.visitorsFocus}</button><button type="button" data-visitors-command="follow">{copy.visitorsFollow}</button></div>
-        <p data-visitors-status role="status" aria-live="polite"></p><ul data-visitor-list aria-live="off"></ul>
+        <p data-visitors-status role="status" aria-live="polite"></p><ul data-visitor-list aria-live="off"></ul><p data-visitor-satisfaction role="status" aria-live="polite"></p><ul data-visitor-recent aria-label={copy.visitorRecentLabel}></ul>
       </section>
       <section class="bird-tools macaw-tools" data-bird-tools hidden aria-labelledby="birds-title">
         <h3 id="birds-title" data-entry-text="birdsTitle">{copy.birdsTitle}</h3>
