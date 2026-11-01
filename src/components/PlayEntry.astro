@@ -1,7 +1,7 @@
 ---
 import { english as copy } from '../game-entry/locale';
 ---
-<section class="play-shell" data-play-entry data-preview-state="not-playable" lang="en" aria-labelledby="play-title">
+<section class="play-shell" data-play-entry data-preview-state="first-mission-preview" lang="en" aria-labelledby="play-title">
   <div class="entry-card">
     <div class="entry-copy">
       <span class="preview-badge"><span aria-hidden="true">✦</span> <span data-entry-text="status">{copy.status}</span></span>
@@ -10,7 +10,7 @@ import { english as copy } from '../game-entry/locale';
       <p class="entry-intro" data-entry-text="intro">{copy.intro}</p>
       <p class="availability" id="play-availability" data-entry-text="availability">{copy.availability}</p>
       <div class="entry-actions">
-        <button type="button" class="unavailable" disabled aria-describedby="play-availability" data-entry-text="play">{copy.play}</button>
+        <button type="button" class="guide-action" disabled data-onboarding-start aria-describedby="play-availability" data-entry-text="play">{copy.play}</button>
         <button type="button" class="unavailable" disabled aria-describedby="play-availability" data-entry-text="continue">{copy.continue}</button>
         <button type="button" class="guide-action" data-open-dialog="play-help" disabled data-entry-text="help">{copy.help}</button>
         <button type="button" class="settings-action" data-open-dialog="play-settings" disabled data-entry-text="settings">{copy.settings}</button>
@@ -19,6 +19,8 @@ import { english as copy } from '../game-entry/locale';
       <noscript><p class="no-script">{copy.noScript}</p></noscript>
     </div>
     <figure class="sanctuary-art" data-renderer-panel data-renderer-state="closed">
+      <div class="guide-toolbar" data-guide-toolbar><span data-entry-text="guideToolbar">{copy.guideToolbar}</span><select data-guide-language aria-label={copy.language}><option value="en">English</option><option value="id">Bahasa Indonesia</option></select><button type="button" data-open-dialog="play-help" data-entry-text="help" disabled>{copy.help}</button><button type="button" data-onboarding-exit data-entry-text="guideExit">{copy.guideExit}</button><small data-entry-text="guideSession">{copy.guideSession}</small></div>
+      <div data-guide-layout>
       <div class="preview-frame">
       <div data-preview-illustration>
       <svg viewBox="0 0 520 500" role="img" aria-labelledby="sanctuary-art-title">
@@ -60,7 +62,8 @@ import { english as copy } from '../game-entry/locale';
         <button type="button" data-camera-command="reset">{copy.cameraReset}</button>
         <p id="camera-help" data-camera-help>{copy.cameraHelp}</p>
       </div>
-      <section class="macaw-tools" data-mission-tools hidden aria-labelledby="missions-title"><h3 id="missions-title" data-missions-title></h3><p data-missions-hint></p><ol data-missions-list></ol><div data-missions-objective></div><p data-missions-status tabindex="-1" role="status" aria-live="polite"></p><button type="button" data-mission-claim disabled></button><p data-missions-total></p><p data-missions-note></p></section>
+      <section class="macaw-tools" data-mission-tools hidden aria-labelledby="missions-title"><h3 id="missions-title" data-missions-title></h3><p data-missions-hint></p><section data-onboarding-tools hidden aria-labelledby="onboarding-title"><h4 id="onboarding-title" data-onboarding-title></h4><ol data-onboarding-steps></ol><p data-onboarding-hint></p><p data-onboarding-price></p><p data-onboarding-reason role="status" aria-live="polite"></p><div class="macaw-actions"><button type="button" data-onboarding-action></button><button type="button" data-onboarding-confirm hidden></button><button type="button" data-onboarding-cancel hidden></button></div></section><div data-missions-objective hidden></div><p data-missions-status tabindex="-1" role="status" aria-live="polite"></p><button type="button" data-mission-claim disabled></button><p data-missions-total></p><details data-missions-roadmap><summary data-missions-summary></summary><ol data-missions-list></ol></details><p data-missions-note hidden></p></section>
+      </div>
       <section class="macaw-tools" data-visitor-tools hidden aria-labelledby="visitors-title">
         <h3 id="visitors-title" data-entry-text="visitorsTitle">{copy.visitorsTitle}</h3>
         <p data-entry-text="visitorsHint">{copy.visitorsHint}</p>
@@ -213,6 +216,10 @@ import { english as copy } from '../game-entry/locale';
 </script>
 
   <style>
+  [data-onboarding-confirm],[data-onboarding-action]{background:#183b32!important;color:#fffdf4!important}
+  [data-onboarding-tools] h4{margin:.3rem 0;font:700 .95rem/1.4 'DM Sans',sans-serif}[data-onboarding-steps]{display:flex;gap:.5rem;flex-wrap:wrap;list-style:none;padding:0;margin:.4rem 0;font-size:.72rem}:global([data-onboarding-steps] li){border:1px solid #7e9981;border-radius:20px;padding:.2rem .45rem;background:#fffdf4}[data-missions-roadmap]{font-size:.78rem;margin-top:.6rem}[data-missions-roadmap] summary{min-height:44px;cursor:pointer;padding:.6rem 0}.guide-toolbar{display:none;align-items:center;gap:.4rem;flex-wrap:wrap;padding:0 .8rem .6rem;font-size:.78rem}.guide-toolbar select,.guide-toolbar button{min-height:44px;max-width:100%;font:inherit;border:1px solid #52755d;border-radius:9px;padding:.45rem;background:#fffdf4;color:#183b32}.guide-toolbar span{font-weight:700}.guide-toolbar small{flex-basis:100%;font-size:.7rem;color:#344f40}.play-shell[data-guided="true"] [data-missions-hint],.play-shell[data-guided="true"] [data-missions-roadmap],.play-shell[data-guided="true"] [data-missions-objective]{display:none}.play-shell[data-guided="true"] [data-mission-tools][data-completed="0"] [data-missions-total]{display:none}.play-shell[data-guided="true"]{padding:.5rem}.play-shell[data-guided="true"] .entry-card{display:block;padding:.65rem;max-width:1100px}.play-shell[data-guided="true"] .entry-copy{display:none}.play-shell[data-guided="true"] .sanctuary-art{width:100%;max-width:none}.play-shell[data-guided="true"] .guide-toolbar{display:flex}.play-shell[data-guided="true"] .camera-controls p{display:none}.play-shell[data-guided="true"] .sanctuary-art[data-renderer-state="ready"] .preview-feedback{display:none}
+  @media(min-width:640px) and (max-height:500px){.play-shell[data-guided="true"] [data-guide-layout]{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(250px,1fr);gap:.5rem;padding:.5rem}.play-shell[data-guided="true"] [data-guide-layout]>.preview-frame{grid-column:1;grid-row:1}.play-shell[data-guided="true"] .camera-controls{grid-column:1;grid-row:2}.play-shell[data-guided="true"] [data-mission-tools]{grid-column:2;grid-row:1/3;margin:0}.play-shell[data-guided="true"] .preview-stage{height:210px}}
+
   :global([data-birds-list] button),:global([data-care-alerts] button){display:inline-block;min-width:44px;min-height:44px;padding:.5rem .65rem;border:1px solid #52755d;border-radius:9px;background:#fffdf4;color:#183b32;font:700 .75rem/1.4 'DM Sans',sans-serif;cursor:pointer;white-space:normal;overflow-wrap:anywhere}
   :global([data-birds-list] button:focus-visible),:global([data-care-alerts] button:focus-visible){outline:3px solid #ad7629;outline-offset:2px}
   :global([data-birds-list]>li){padding:.5rem 0;border-bottom:1px solid #ccd7bc;overflow-wrap:anywhere}:global([data-birds-list] p){margin:.25rem 0}:global([data-bird-wellbeing]){font-weight:700;color:#214f3c}:global([data-welfare-low="true"]>[data-bird-wellbeing]){color:#842c25}:global([data-care-alerts] li){margin:.6rem 0}:global([data-care-alerts] button){display:block;margin-top:.35rem}

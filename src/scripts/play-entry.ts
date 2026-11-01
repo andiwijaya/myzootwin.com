@@ -34,6 +34,7 @@ if (root && root.dataset.enhanced !== 'true') {
     preview.setLocale(locale);
   }
 
+  root.addEventListener('entry-locale-request',event=>{const value=(event as CustomEvent<unknown>).detail;if(!isEntryLocale(value))return;preferenceState=saveEntryLocale(storage,value)?'saved':'temporary';render(value);});
   render(initial.locale);
 
   select?.addEventListener('change', () => {

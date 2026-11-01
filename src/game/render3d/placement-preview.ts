@@ -27,6 +27,7 @@ export function createPlacementPreview(world:()=>WorldState,catalog:SceneCatalog
   },commit?{validate:(w,a,kind)=>{const checked=kind==='path'?validatePathPlacement(w,a):validateHabitatPlacement(w,a);return checked.reason==='ready'?{...checked,reason:purchaseReason?.(kind)??'ready'}:checked;},commit}:{});
   const raycaster=new Raycaster(),ground=new Plane(new Vector3(0,1,0),0),intersection=new Vector3();
   return {group,geometries:[edges,plane],materials:[ghostMaterial,edgeMaterial,confirmedMaterial],
+    guide(kind:'habitat'|'path',target:{x:number;z:number}){planner.cancel();planner.begin(kind);planner.choose(target);},
     command(value:PlacementCommand,expectedRevision?:number){if(value==='begin')planner.begin();else if(value==='begin-path')planner.begin('path');else if(value==='confirm')planner.confirm(expectedRevision??-1);else if(value==='cancel')planner.cancel();else planner.move(value==='left'?-1:value==='right'?1:0,value==='up'?-1:value==='down'?1:0);},
     pick(point:{x:number;y:number}){
       const b=rect();if(b.width<=0||b.height<=0)return;

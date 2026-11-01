@@ -1,3 +1,4 @@
+import type {GuideCommand} from '../missions/onboarding.ts';
 import type {MissionQuote} from '../missions/engine.ts';
 import type {RecoveryQuote} from '../economy/recovery.ts';
 import type {PerchCommand} from '../animals/resting.ts';
@@ -19,6 +20,7 @@ export class PreviewFailure extends Error {
 }
 
 export interface PreviewSession {
+  guide?(command:GuideCommand,revision?:number):void;
   claimMission?(quote:MissionQuote):void;
   recoveryQuote?():RecoveryQuote|undefined;
   recover?(quote:RecoveryQuote):void;
@@ -95,6 +97,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     food(command:FoodCommand,revision?:number){if(!paused&&state.status==='ready')session?.food?.(command,revision);},
     birds(command:BirdCommand){if(!paused&&state.status==='ready')session?.birds?.(command);},
     studio(command:StudioCommand,value?:string){if(!paused&&state.status==='ready')session?.studio?.(command,value);},
+    guide(command:GuideCommand,revision?:number){if(!paused&&state.status==='ready')session?.guide?.(command,revision);},
     claimMission(quote:MissionQuote){if(!paused&&state.status==='ready')session?.claimMission?.(quote);},
     recoveryQuote:()=>!paused&&state.status==='ready'?session?.recoveryQuote?.():undefined,
     recover(quote:RecoveryQuote){if(!paused&&state.status==='ready')session?.recover?.(quote);},

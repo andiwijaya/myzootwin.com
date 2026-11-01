@@ -1,3 +1,4 @@
+import {firstMissionGuide} from '../missions/onboarding.ts';
 import {evaluateMissions,missionView,claimMission,type MissionQuote} from '../missions/engine.ts';
 import {recoveryView,supportTransaction,type RecoveryQuote} from '../economy/recovery.ts';
 import {attractionView} from '../visitors/attraction.ts';
@@ -65,6 +66,7 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
       lastFrame=previous===null?timeMs:Math.max(previous,timeMs);
       return clock.advance(previous===null?0:Math.max(0,timeMs-previous));
     },
+    onboardingView:()=>firstMissionGuide(state),
     missionView:()=>missionView(state),
     claimMission(quote:MissionQuote){
       if(disposed||clock.inspect().paused||!authorized(quote?.command))return {ok:false as const,reason:'stale' as const};

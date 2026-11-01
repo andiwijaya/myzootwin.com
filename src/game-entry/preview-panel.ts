@@ -1,3 +1,5 @@
+import {mountOnboardingPanel} from './onboarding-panel.ts';
+import type {FirstMissionGuide} from '../game/missions/onboarding.ts';
 import {mountMissionPanel} from './mission-panel.ts';
 import type {MissionView} from '../game/missions/engine.ts';
 import type {RecoveryView,RecoveryQuote} from '../game/economy/recovery.ts';
@@ -45,6 +47,9 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   let disposed = false;
   let state: PreviewState = { status: 'closed' };
   const events = new AbortController();
+  let guidedStart=false;
+  const onboardingPanel=mountOnboardingPanel(root.querySelector('[data-onboarding-tools]'),events.signal,(c,r)=>controller.guide(c,r),()=>reviewRecovery(),()=>{root.dataset.guided='false';host.focus({preventScroll:true});host.scrollIntoView({block:'nearest'});});
+  host.addEventListener('scene-onboarding-change',event=>onboardingPanel.update((event as CustomEvent<FirstMissionGuide>).detail),{signal:events.signal});
   const missionPanel=mountMissionPanel(root.querySelector('[data-mission-tools]'),events.signal,q=>controller.claimMission(q));
   host.addEventListener('scene-missions-change',event=>missionPanel.update((event as CustomEvent<MissionView>).detail),{signal:events.signal});
   host.addEventListener('scene-mission-result',event=>missionPanel.result((event as CustomEvent<{ok:boolean}>).detail.ok),{signal:events.signal});
@@ -177,7 +182,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const text=c[perch.reason?reasons[perch.reason]:perch.preview&&!perch.canPlace?'perchBusy':!perch.habitat?'perchNeedHabitat':!perch.exists?'perchReady':!perch.reachable?'perchUnreachable':'perchStatus'].replace('{r}',String(perch.resting)).replace('{g}',String(perch.exploring)).replaceAll('{cap}',String(perch.capacity));const status=tools.querySelector('[data-perch-status]');if(status?.textContent!==text)status?.replaceChildren(text);
     root.querySelector('[data-perch-keep]')?.replaceChildren(c.perchKeep);root.querySelector('[data-perch-remove-confirm]')?.replaceChildren(c.perchRemoveConfirm);root.querySelector('#perch-dialog-title')?.replaceChildren(c.perchRemoveTitle);root.querySelector('[data-entry-text="perchRemoveHint"]')?.replaceChildren(c.perchRemoveHint);renderCosts();
   }
-  function renderStudio(){renderVisitors();missionPanel.show(state.status==='ready'&&!studio.active,locale);
+  function renderStudio(){renderVisitors();missionPanel.show(state.status==='ready'&&!studio.active,locale);onboardingPanel.show(state.status==='ready'&&!studio.active,locale);const guideLanguage=root.querySelector<HTMLSelectElement>('[data-guide-language]');if(guideLanguage){guideLanguage.value=locale;guideLanguage.setAttribute('aria-label',entryMessages[locale].language);}
     const copy=entryMessages[locale],ready=state.status==='ready',tools=root.querySelector<HTMLElement>('[data-macaw-tools]');if(!tools)return;
     tools.hidden=!ready;const controls=root.querySelector<HTMLElement>('[data-macaw-controls]');if(controls)controls.hidden=!studio.active;
     for(const button of tools.querySelectorAll<HTMLButtonElement>('[data-studio-command]')){const command=button.dataset.studioCommand as StudioCommand;const key=command==='pause'?(studio.motionPaused?'macawResume':'macawPause'):command==='open'?'macawOpen':command==='close'?'macawClose':command==='detail'?'macawDetail':'macawHabitat';button.textContent=copy[key];button.hidden=command==='open'?studio.active:command==='detail'?!studio.habitat:command==='habitat'?studio.habitat:false;if(command==='habitat')button.disabled=habitatCount===0;}
@@ -198,8 +203,10 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     state = next;
     if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) return;
     const copy = entryMessages[locale];
+    for(const el of root.querySelectorAll<HTMLElement>('[data-guide-toolbar] [data-entry-text]'))el.textContent=copy[el.dataset.entryText as EntryMessage];
     panel.lang = locale;
-    if(next.status!=='ready'){recoveryPending=null;if(recoveryDialog?.open)recoveryDialog.close();perchRemovalRevision=null;if(perchDialog?.open)perchDialog.close();waterRemovalRevision=null;if(waterDialog?.open)waterDialog.close();foodRemovalRevision=null;if(foodDialog?.open)foodDialog.close();studio={...studio,active:false,habitat:false};selected=null;placement=null;habitatCount=0;access=null;editView={canUndo:false,reason:null,result:null};removal=null;if(editDialog?.open)editDialog.close();}
+    if(next.status==='closed')root.dataset.guided='false';
+    if(next.status!=='ready'){recoveryPending=null;if(recoveryDialog?.open)recoveryDialog.close();perchRemovalRevision=null;if(perchDialog?.open)perchDialog.close();waterRemovalRevision=null;if(waterDialog?.open)waterDialog.close();foodRemovalRevision=null;if(foodDialog?.open)foodDialog.close();studio={...studio,active:false,habitat:false};selected=null;placement=null;missionPanel.setPreviewActive(false);onboardingPanel.placement(null);habitatCount=0;access=null;editView={canUndo:false,reason:null,result:null};removal=null;if(editDialog?.open)editDialog.close();}
     renderPlacement();
     renderSelection();renderVisitors();
     if(cameraControls){cameraControls.hidden=next.status!=='ready';cameraControls.setAttribute('aria-label',copy.cameraControls);}
@@ -239,7 +246,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     title.textContent = copy[titleKey];
     detail.textContent = copy[detailKey];
     renderStudio();
-    if (previous !== next.status && next.status !== 'closed' && !root.querySelector('dialog[open]')) {
+    if(next.status==='ready'&&guidedStart){guidedStart=false;onboardingPanel.focus();}
+    if (previous !== next.status && next.status !== 'closed' && (root.dataset.guided!=='true'||failed) && !root.querySelector('dialog[open]')) {
       (failed ? next.status === 'error' && next.reason === 'load' ? reload : retry : close).focus();
     }
   }
@@ -252,8 +260,9 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   host.addEventListener('scene-food-change',event=>{food=(event as CustomEvent<FoodView>).detail;renderFood();renderPlacement();},{signal:events.signal});
   for(const b of root.querySelectorAll<HTMLButtonElement>('[data-food-command]')){b.addEventListener('keydown',event=>{if(event.repeat&&(event.key==='Enter'||event.key===' '))event.preventDefault();},{signal:events.signal});b.addEventListener('click',event=>{if(event.detail>1)return;const cmd=b.dataset.foodCommand as FoodCommand;controller.food(cmd,food.revision);host.focus({preventScroll:true});host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});}
   root.querySelector('[data-food-tools]')?.addEventListener('keydown',event=>{if((event as KeyboardEvent).key==='Escape')controller.food('cancel');},{signal:events.signal});
-  host.addEventListener('scene-recovery-change',event=>{recovery=(event as CustomEvent<RecoveryView>).detail;renderRecovery();},{signal:events.signal});
-  root.querySelector('[data-recovery-review]')?.addEventListener('click',()=>{if(!recoveryDialog||recoveryPending)return;const quote=controller.recoveryQuote();if(!quote)return;recoveryPending=quote;renderRecovery();recoveryDialog.showModal();controller.setPaused(true);root.querySelector<HTMLElement>('[data-recovery-cancel]')?.focus();},{signal:events.signal});
+  host.addEventListener('scene-recovery-change',event=>{recovery=(event as CustomEvent<RecoveryView>).detail;renderRecovery();onboardingPanel.support(recovery.low&&recovery.available);},{signal:events.signal});
+  function reviewRecovery(){if(!recoveryDialog||recoveryPending)return;const quote=controller.recoveryQuote();if(!quote){const help=root.querySelector<HTMLElement>('[data-recovery-tools]');help?.scrollIntoView({block:'center'});help?.setAttribute('tabindex','-1');help?.focus({preventScroll:true});return;}recoveryPending=quote;renderRecovery();recoveryDialog.showModal();controller.setPaused(true);root.querySelector<HTMLElement>('[data-recovery-cancel]')?.focus();}
+  root.querySelector('[data-recovery-review]')?.addEventListener('click',reviewRecovery,{signal:events.signal});
   const dismissRecovery=()=>{recoveryPending=null;if(recoveryDialog?.open)recoveryDialog.close();controller.setPaused(false);};
   root.querySelector('[data-recovery-cancel]')?.addEventListener('click',dismissRecovery,{signal:events.signal});recoveryDialog?.addEventListener('close',()=>{recoveryPending=null;controller.setPaused(false);},{signal:events.signal});
   root.querySelector('[data-recovery-confirm]')?.addEventListener('click',()=>{const quote=recoveryPending;if(!quote)return;dismissRecovery();controller.recover(quote);host.focus({preventScroll:true});host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});
@@ -298,7 +307,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   host.addEventListener('scene-selection-change' ,event=>{const had=Boolean(selected);selected=(event as CustomEvent<SceneIdentity|null>).detail;renderSelection();if(!selected&&had&&selectionStatus)selectionStatus.value=entryMessages[locale].selectionCleared;},{signal:events.signal});
   host.addEventListener('scene-access-change',event=>{access=(event as CustomEvent<AccessSummary>).detail;renderPlacement();},{signal:events.signal});
   host.addEventListener('scene-habitat-change',event=>{habitatCount=(event as CustomEvent<{count:number}>).detail.count;renderPlacement();renderStudio();},{signal:events.signal});
-  host.addEventListener('scene-placement-change',event=>{placement=(event as CustomEvent<PlacementView>).detail;renderPlacement();},{signal:events.signal});
+  host.addEventListener('scene-placement-change',event=>{placement=(event as CustomEvent<PlacementView>).detail;missionPanel.setPreviewActive(placement.active);onboardingPanel.placement(placement);renderPlacement();},{signal:events.signal});
   for(const button of root.querySelectorAll<HTMLButtonElement>('[data-placement-command]'))button.addEventListener('click',()=>{const command=button.dataset.placementCommand as PlacementCommand;controller.placement(command,placement?.revision);if(command==='begin'||command==='begin-path'||command==='cancel'||command==='confirm')host.focus({preventScroll:true});},{signal:events.signal});
   placementTools?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();controller.placement('cancel');host.focus({preventScroll:true});}},{signal:events.signal});
   const dismiss=()=>{controller.clearSelection();host.focus({preventScroll:true});};
@@ -306,6 +315,9 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   selectionPanel?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();dismiss();}},{signal:events.signal});
   host.addEventListener('camera-view-change',()=>cameraState(),{signal:events.signal});
   for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]'))button.addEventListener('click',()=>controller.camera(button.dataset.cameraCommand as CameraCommand),{signal:events.signal});
+  const guidedButton=root.querySelector<HTMLButtonElement>('[data-onboarding-start]');if(guidedButton){guidedButton.disabled=false;guidedButton.addEventListener('click',()=>{root.dataset.guided='true';guidedStart=true;if(state.status==='ready'){guidedStart=false;onboardingPanel.focus();}else void controller.open();},{signal:events.signal});}
+  root.querySelector('[data-onboarding-exit]')?.addEventListener('click',()=>{root.dataset.guided='false';host.focus({preventScroll:true});host.scrollIntoView({block:'nearest'});},{signal:events.signal});
+  root.querySelector<HTMLSelectElement>('[data-guide-language]')?.addEventListener('change',event=>{const value=(event.target as HTMLSelectElement).value;if(value!=='en'&&value!=='id')return;locale=value;render(state);root.dispatchEvent(new CustomEvent('entry-locale-request',{detail:value}));},{signal:events.signal});
   open.addEventListener('click', () => { void controller.open(); }, { signal: events.signal });
   retry.addEventListener('click', () => { void controller.open(); }, { signal: events.signal });
   close.addEventListener('click', () => { controller.close(); open.focus(); }, { signal: events.signal });
