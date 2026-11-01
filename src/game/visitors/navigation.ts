@@ -1,31 +1,13 @@
+import {admitTicket} from '../economy/tickets.ts';
+import {VISITOR_STEP,visitorCell,visitorRoute,visitTarget} from './graph.ts';
+export {visitorCell,visitorPaths,visitorRoute,visitTarget} from './graph.ts';
 import {SATISFACTION_RULES,observeHabitat,resetObservation,completeFeedback,interruptedFeedback} from './satisfaction.ts';
 import type {Point,Visitor,WorldState,ZooSaveV1} from '../core/state.ts';
-import {habitatBlockerKeys} from '../world/build-habitat.ts';
-import {cellKey} from '../world/placement-preview.ts';
 
 /** One excursion owns the narrow corridor; two side bays wait FIFO at the entrance.
  * Positions and headings are simulation data. Rendering never advances navigation. */
-export const VISIT_RULES=Object.freeze({speed:.05,turn:.22,viewTicks:SATISFACTION_RULES.observationTicks,maxQueueTicks:6000,maxJourneyTicks:2400,footprint:.16});
-const blockers=habitatBlockerKeys();
+export const VISIT_RULES=Object.freeze({speed:VISITOR_STEP,turn:.22,viewTicks:SATISFACTION_RULES.observationTicks,maxQueueTicks:6000,maxJourneyTicks:2400,footprint:.16});
 const same=(a:Point,b:Point)=>a.x===b.x&&a.z===b.z;
-export const visitorCell=(v:Visitor):Point=>({x:Math.floor(v.position.x),z:Math.floor(v.position.z)});
-export function visitorPaths(w:WorldState):Map<string,Point>{return new Map(w.tiles.filter(t=>t.path&&t.terrain==='land'&&t.occupantId===null&&(same(t.cell,w.gate)||!blockers.has(cellKey(t.cell)))).map(t=>[cellKey(t.cell),t.cell]));}
-export function visitorRoute(w:WorldState,from:Point,to:Point):Point[]{
- const paths=visitorPaths(w),start=cellKey(from),end=cellKey(to);if(!paths.has(start)||!paths.has(end))return [];
- const queue=[from],parents=new Map<string,string|null>([[start,null]]);
- for(let i=0;i<queue.length&&!parents.has(end);i++){const c=queue[i];for(const n of [{x:c.x,z:c.z-1},{x:c.x-1,z:c.z},{x:c.x+1,z:c.z},{x:c.x,z:c.z+1}]){const k=cellKey(n);if(!paths.has(k)||parents.has(k))continue;
- // Gate columns occupy east/west approaches; use the actual open north/south lane.
- if((same(c,w.gate)||same(n,w.gate))&&n.x!==c.x)continue;
- parents.set(k,cellKey(c));queue.push(n);}}
- if(!parents.has(end))return [];const result:Point[]=[];let k:string|null=end;while(k!==null){result.unshift({...paths.get(k)!});k=parents.get(k)??null;}return result;
-}
-export function visitTarget(w:WorldState):{habitatId:string;cell:Point;route:Point[]}|null{
- const candidates:Array<{habitatId:string;cell:Point;route:Point[]}>=[],paths=visitorPaths(w);
- for(const h of w.habitats)for(const c of h.cells)for(const n of [{x:c.x,z:c.z-1},{x:c.x-1,z:c.z},{x:c.x+1,z:c.z},{x:c.x,z:c.z+1}]){
-  if(!paths.has(cellKey(n)))continue;const route=visitorRoute(w,w.gate,n);if(route.length>1)candidates.push({habitatId:h.id,cell:n,route});
- }
- candidates.sort((a,b)=>a.route.length-b.route.length||a.cell.z-b.cell.z||a.cell.x-b.cell.x||a.habitatId.localeCompare(b.habitatId));return candidates[0]??null;
-}
 export const ownsCorridor=(v:Visitor)=>v.journey?.startedTick!==null&&v.journey?.startedTick!==undefined;
 function setRoute(v:Visitor,route:Point[],phase:Visitor['phase']){v.route=route;v.routeIndex=0;v.phase=phase;}
 function returnHome(s:ZooSaveV1,v:Visitor){const route=visitorRoute(s.world,visitorCell(v),s.world.gate);if(route.length)setRoute(v,route,'leaving');}
@@ -48,12 +30,13 @@ export function visitorRemovalReason(s:ZooSaveV1,world:WorldState,cell:Point):'v
  }return null;
 }
 const center=(p:Point)=>({x:p.x+.5,z:p.z+.5});
-function move(v:Visitor,to:Point):boolean{
+function move(v:Visitor,to:Point,guard?:(from:Point,next:Point)=>boolean):boolean{
  const j=v.journey!,dx=to.x-v.position.x,dz=to.z-v.position.z,d=Math.hypot(dx,dz);if(d<1e-9)return true;
  const desired=Math.atan2(dx,dz),delta=Math.atan2(Math.sin(desired-j.heading),Math.cos(desired-j.heading));
  j.heading=Math.atan2(Math.sin(j.heading+Math.max(-VISIT_RULES.turn,Math.min(VISIT_RULES.turn,delta))),Math.cos(j.heading+Math.max(-VISIT_RULES.turn,Math.min(VISIT_RULES.turn,delta))));
  if(Math.abs(delta)>.1)return false;
- const amount=Math.min(d,VISIT_RULES.speed);v.position={x:v.position.x+dx/d*amount,z:v.position.z+dz/d*amount};
+ const amount=Math.min(d,VISIT_RULES.speed);const next={x:v.position.x+dx/d*amount,z:v.position.z+dz/d*amount};
+ if(guard&&!guard(v.position,next))return false;v.position=next;
  if(d<=VISIT_RULES.speed+1e-9){v.position={...to};return true;}return false;
 }
 export function stepJourneys(s:ZooSaveV1):Array<{visitorId:string;habitatId:string}>{
@@ -66,7 +49,7 @@ export function stepJourneys(s:ZooSaveV1):Array<{visitorId:string;habitatId:stri
   if(ownsCorridor(v)&&(v.phase==='entering'||v.phase==='viewing')&&(!s.visitorFlow.open||!target||target.habitatId!==j.habitatId||s.tick-j.startedTick!>=VISIT_RULES.maxJourneyTicks)){interruptedFeedback(s,v,!s.visitorFlow.open?'closed':!s.world.habitats.some(h=>h.id===j.habitatId)?'habitat-removed':!target?'access-lost':'time-limit');returnHome(s,v);}
   if(v.phase==='entering'||v.phase==='leaving'){
    const p=v.route[v.routeIndex];if(!p)continue;
-   if(move(v,center(p))){if(v.routeIndex<v.route.length-1)v.routeIndex++;else if(v.phase==='entering'){v.phase='viewing';j.dwellTicks=0;resetObservation(v);}else v.phase='exiting';}
+   if(move(v,center(p),v.phase==='entering'?(from,next)=>{const g=s.world.gate,c={x:Math.floor(next.x),z:Math.floor(next.z)};if(Math.floor(from.x)!==g.x||Math.floor(from.z)!==g.z||(c.x===g.x&&c.z===g.z))return true;const paid=admitTicket(s,v,from,next);if(paid.ok)return true;if(paid.reason==='capacity'||paid.reason==='balance'){s.visitorFlow.open=false;s.visitorFlow.cooldownTicks=0;interruptedFeedback(s,v,'closed');}else interruptedFeedback(s,v,'access-lost');returnHome(s,v);return false;}:undefined)){if(v.routeIndex<v.route.length-1)v.routeIndex++;else if(v.phase==='entering'){v.phase='viewing';j.dwellTicks=0;resetObservation(v);}else v.phase='exiting';}
   }else if(v.phase==='viewing'){
    const habitat=s.world.habitats.find(h=>h.id===j.habitatId);if(!habitat){interruptedFeedback(s,v,'habitat-removed');returnHome(s,v);continue;}
    const mid=habitat.cells.reduce((p,c)=>({x:p.x+c.x+.5,z:p.z+c.z+.5}),{x:0,z:0}),desired=Math.atan2(mid.x/habitat.cells.length-v.position.x,mid.z/habitat.cells.length-v.position.z),delta=Math.atan2(Math.sin(desired-j.heading),Math.cos(desired-j.heading));

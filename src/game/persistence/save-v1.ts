@@ -40,9 +40,9 @@ const schema = object({
     resources: array(object({ id, kind: oneOf('food','water','perch'), habitatId: id, cell, stock: integer(10000), capacity: number(1,10000,true),revision:tick,portions:nullable(array(integer(10000),2)) }),32),
   }),
   animals: array(object({ id, speciesId: oneOf(SPECIES_ID), habitatId: nullable(id), position: nullable(point), target: nullable(point), targetResourceId: nullable(id), hunger: percent, thirst: percent, energy: percent, habitatFit: percent, enrichment: percent, welfare: percent, care:object({low:bool,hungry:bool,thirsty:bool,tired:bool,bored:bool}), currentBehavior: oneOf('idle','wander','perch','seek-food','eat','seek-water','drink','rest','enrich','seek-rest'),motion:object({phase:oneOf('idle','look','walk-out','walk-home','ascend','perch','descend','seek-food','eat','leave-food','seek-water','drink','water-back','water-hop','leave-water','water-home','water-abort','seek-rest','rest','enrich'),ticksLeft:integer(120),sequence:tick,heading:number(-Math.PI*2,Math.PI*2),elevation:number(0,.2604000001)}),foodEaten:tick,waterDrunk:tick,restedTicks:tick,enrichedTicks:tick }),2),
-  visitors: array(object({ id, position: point, route: array(cell,1024), routeIndex: integer(1023), phase: oneOf('arrival','queued','entering','viewing','leaving','exiting'), satisfaction: nullable(percent),experience:nullable(object({samples:integer(30),occupiedSamples:integer(30),welfareHundredths:integer(300000),feedback:nullable(feedback)})), admissionId: nullable(id),arrival:nullable(object({serial:number(1,MAX_TICK,true),slot:integer(2),spawnTick:tick})),journey:nullable(object({habitatId:nullable(id),heading:number(-Math.PI,Math.PI),dwellTicks:integer(30),queuedTicks:integer(6000),viewed:bool,startedTick:nullable(tick)})) }),32),
+  visitors: array(object({ id, position: point, route: array(cell,1024), routeIndex: integer(1023), phase: oneOf('arrival','queued','entering','viewing','leaving','exiting'), satisfaction: nullable(percent),entry:nullable(object({status:oneOf('pending','paid','free'),tick:nullable(tick),reason:oneOf('none','no-animals')})),experience:nullable(object({samples:integer(30),occupiedSamples:integer(30),welfareHundredths:integer(300000),feedback:nullable(feedback)})), admissionId: nullable(id),arrival:nullable(object({serial:number(1,MAX_TICK,true),slot:integer(2),spawnTick:tick})),journey:nullable(object({habitatId:nullable(id),heading:number(-Math.PI,Math.PI),dwellTicks:integer(30),queuedTicks:integer(6000),viewed:bool,startedTick:nullable(tick)})) }),32),
   visitorFlow:object({open:bool,nextSerial:number(1,MAX_TICK,true),cooldownTicks:integer(30),viewedTotal:tick,feedback:object({evaluated:tick,scored:tick,scoreSum:integer(),positive:tick,negative:tick,interrupted:tick,recent:array(feedback,4)})}),
-  admissions: array(object({ id, visitorId: id, tick, ledgerEntryId: id }),8192),
+  admissions: array(object({ id, visitorId: id, tick, ledgerEntryId: id,entry:nullable(object({habitatId:id,gate:cell,cell,price:number(1,Number.MAX_SAFE_INTEGER,true)})) }),8192),
   ledger: array(object({ id, operationId: id, kind: oneOf('starter','build','supplies','maintenance','ticket','reward','refund','restore'), amount: number(-Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER,true), balanceAfter: integer(), tick, relatedId: nullable(referenceId) }),8192),
   missions: object({ currentId: nullable(missionId), completedIds: array(missionId,4), rewards: array(object({ missionId, ledgerEntryId: id }),4),
     objectives: object({ habitatConnected: bool, birdsFedIds: array(id,2), birdsWateredIds: array(id,2), comfortableTicks: tick, viewedVisitorIds: array(id,8192), thrivingTicks: tick }),
@@ -120,6 +120,11 @@ function relationships(s: ZooSaveV1) {
   unique(s.admissions.map(a=>a.id),'$.admissions.ids'); unique(s.admissions.map(a=>a.visitorId),'$.admissions.visitors'); unique(s.admissions.map(a=>a.ledgerEntryId),'$.admissions.ledger');
   const admissions=new Map(s.admissions.map(a=>[a.id,a]));
   for(const a of s.admissions) { const e=ledger.get(a.ledgerEntryId); requireValue(a.tick<=s.tick && e?.kind==='ticket' && e.relatedId===a.id && e.tick===a.tick,'$.admissions.reference'); }
+  for(const a of s.admissions){
+    const e=ledger.get(a.ledgerEntryId)!;
+    if(a.entry){const p=a.entry,serial=Number(a.visitorId.slice(8));requireValue(/^arrival-[1-9][0-9]*$/.test(a.visitorId)&&Number.isSafeInteger(serial)&&serial<s.visitorFlow.nextSerial&&a.id===`admission-${a.visitorId}`&&e.id===`ticket-${a.visitorId}`&&e.operationId===`admit-${a.visitorId}`&&e.amount===p.price&&key(p.gate)===key(w.gate)&&inBounds(p.cell)&&p.cell.x===p.gate.x&&Math.abs(p.cell.z-p.gate.z)===1,'$.admissions.entry');}
+    else requireValue(!a.visitorId.startsWith('arrival-'),'$.admissions.generatedProof');
+  }
   for(const e of s.ledger)if(e.kind==='ticket')requireValue(e.relatedId!==null && admissions.get(e.relatedId)?.ledgerEntryId===e.id,'$.ledger.ticket');
   const fs=s.visitorFlow.feedback;
   requireValue(fs.evaluated===fs.scored+fs.interrupted&&fs.scored===fs.positive+fs.negative&&fs.evaluated<s.visitorFlow.nextSerial&&fs.scoreSum>=fs.positive*SATISFACTION_RULES.comfortableThreshold&&fs.scoreSum<=fs.positive*100+fs.negative*(SATISFACTION_RULES.comfortableThreshold-1)&&fs.recent.length===Math.min(fs.evaluated,SATISFACTION_RULES.recentLimit),'$.visitorFlow.feedback');
@@ -146,7 +151,15 @@ function relationships(s: ZooSaveV1) {
   for(const v of s.visitors) {
     if(v.arrival){
       const a=v.arrival,j=v.journey,age=s.tick-a.spawnTick;
-      requireValue(v.admissionId===null&&v.experience!==null&&v.id===`arrival-${a.serial}`&&a.serial<s.visitorFlow.nextSerial&&age>=0,'$.visitors.generated');
+      requireValue(v.entry!==null&&v.experience!==null&&v.id===`arrival-${a.serial}`&&a.serial<s.visitorFlow.nextSerial&&age>=0,'$.visitors.generated');
+      const entry=v.entry;requireValue(entry!==null,'$.visitors.entry');if(!entry)continue;
+      const receipt=s.admissions.find(a=>a.visitorId===v.id);
+      if(entry.status==='paid')requireValue(receipt?.id===v.admissionId&&receipt.entry!==null&&entry.reason==='none'&&entry.tick===receipt.tick&&entry.tick>=a.spawnTick,'$.visitors.entry.paid');
+      else{
+        requireValue(v.admissionId===null&&!receipt,'$.visitors.entry.unpaid');
+        if(entry.status==='pending')requireValue(entry.tick===null&&entry.reason==='none'&&key(visitorCell(v))===key(w.gate),'$.visitors.entry.pending');
+        else requireValue(entry.tick!==null&&entry.tick>=a.spawnTick&&entry.tick<=s.tick&&entry.reason==='no-animals','$.visitors.entry.free');
+      }
       const e=v.experience;if(!e)continue;
       requireValue(e.occupiedSamples<=e.samples&&e.welfareHundredths<=e.occupiedSamples*10000,'$.visitors.experience');
       if(e.feedback){feedbackValid(e.feedback);const f=e.feedback;requireValue(f.visitorId===v.id&&f.score===v.satisfaction&&f.samples===e.samples&&f.occupiedSamples===e.occupiedSamples&&f.welfareHundredths===e.welfareHundredths,'$.visitors.experience.feedback');}
@@ -176,7 +189,7 @@ function relationships(s: ZooSaveV1) {
       }
       continue;
     }
-    requireValue(v.journey===null&&v.experience===null,'$.visitors.legacyJourney');
+    requireValue(v.journey===null&&v.experience===null&&v.entry===null,'$.visitors.legacyJourney');
     requireValue(v.arrival===null&&v.satisfaction!==null&&v.admissionId!==null,'$.visitors.admission');
     requireValue(inBounds(v.position) && tiles.get(key({x:Math.floor(v.position.x),z:Math.floor(v.position.z)}))?.path===true && admissions.get(v.admissionId!)?.visitorId===v.id && v.route.length>0 && v.routeIndex<v.route.length,'$.visitors.reference');
     for(let i=0;i<v.route.length;i++) { const p=v.route[i]; requireValue(tiles.get(key(p))?.path===true,'$.visitors.route'); if(i)requireValue(Math.abs(p.x-v.route[i-1].x)+Math.abs(p.z-v.route[i-1].z)===1,'$.visitors.route.adjacency'); }

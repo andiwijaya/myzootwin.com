@@ -75,6 +75,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   const unsubscribe = simulation.subscribe(event => {
     simulationTimeMs = event.gameTimeMs;
     if (event.type === 'tick') simulationEvents++;
+    if(event.type==='visitor-admitted')saveSession();
     birdsDirty=true;foodDirty=true;waterDirty=true;perchDirty=true;visitorsDirty=true;
     if(event.type==='habitat-built'){habitatDirty=true;pathDirty=true;}
     if(event.type==='path-built')pathDirty=true;
