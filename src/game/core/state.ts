@@ -15,6 +15,7 @@ export interface Animal {
   id: EntityId; speciesId: typeof SPECIES_ID; habitatId: EntityId | null;
   position: Point | null; target: Point | null; targetResourceId: EntityId | null;
   hunger: number; thirst: number; energy: number; habitatFit: number; enrichment: number; welfare: number;
+  care:{low:boolean;hungry:boolean;thirsty:boolean;tired:boolean;bored:boolean};
   currentBehavior: AnimalBehavior; motion:AnimalMotion; foodEaten:number; waterDrunk:number; restedTicks:number; enrichedTicks:number;
 }
 export interface Visitor { id: EntityId; position: Point; route: Point[]; routeIndex: number; phase: 'entering' | 'viewing' | 'leaving'; satisfaction: number; admissionId: EntityId; }

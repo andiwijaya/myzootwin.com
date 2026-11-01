@@ -1,0 +1,50 @@
+{
+  "status": "RESOLVED_FINAL_SOURCE_BOUND_QA_PASS",
+  "finalRun": "20261101T043552Z-cc6d8870",
+  "findings": [
+    {
+      "type": "baseline-expectation-update",
+      "finding": "Earlier features intentionally left welfare at zero, and four old tests encoded that unfinished state.",
+      "resolution": "Tests now retain original care/authority invariants while checking bounded or exact real welfare. New14tests independently verify formula, access and recovery."
+    },
+    {
+      "type": "test-numeric-tolerance",
+      "finding": "Binary floating-point weight sum was0.9999999999999999 instead of exact1.",
+      "resolution": "Weight sum tolerance1e-12; exact rounded individual formula examples remain strict."
+    },
+    {
+      "type": "recovery-scenario-timing",
+      "finding": "Neglect recovery initially assumed850ticks and unchecked resource placement; actual existing care behavior needed around1000ticks.",
+      "resolution": "Isolated deterministic two-bird reproduction showed real care and recovery. Test respects bounded safe-placement waits and allows1300ticks, still requiring real consumption, enrichment and recovered welfare. No production care balance changed."
+    },
+    {
+      "type": "strict-check-hints",
+      "run": "20261101T035522Z-da33b131",
+      "finding": "203unit tests passed but strict check rejected2unused test-import hints.",
+      "resolution": "Removed unused imports, reran complete source-bound QA. Originalcheck/unit receipts retained."
+    },
+    {
+      "type": "actual-visual-control-defect",
+      "run": "20261101T035646Z-d17d2adb",
+      "finding": "Logic pilot11PASS and automated gates passed, but actual pixels showed JS-created Inspect buttons did not receive Astro scoped button styles and were too small.",
+      "resolution": "Scoped global selectors provide real44px minimum size/focus style. Fresh finalrun203tests/check/build/routes and complete browser matrix validate correctedsource. Originalimage/observations remain NOT_ACCEPTED evidence."
+    },
+    {
+      "type": "actual-native-copy-inconsistency",
+      "run": "20261101T035931Z-8af2b128",
+      "finding": "Actual native product screenshot showed the old English hint still saying full welfare arrives later, inconsistent with the new working information panel.",
+      "resolution": "Corrected the hint to inspect either bird for welfare/causes. Complete new source-bound QA run041131 and browser observations required; previous desktop132-case observations/images retained as superseded, not accepted for new source."
+    },
+    {
+      "type": "actual-same-root-remount-defect",
+      "run": "20261101T041131Z-18f0791d",
+      "finding": "A supported same-root remount showed4identity rows while the authoritative simulation still had exactly2birds. New keyed UI had retained old DOM at component reinitialization.",
+      "resolution": "Mount initialization now clears old keyed rows, selected details and alert DOM. A dedicated real DOM remount regression was added. Fresh complete source-bound QA run041652 and399browser cases include36welfare cases; old failure diagnostics remain separate."
+    },
+    {
+      "type": "verified-low-score-without-causal-alert",
+      "finding": "Moderate hunger55/thirst55/enrichment45 produced low welfare56 but no individual threshold alert. A tired-only alert could also fail to explain the weighted welfare deficit.",
+      "resolution": "Low welfare now always explains the larger weighted food/water deficit when no food/water cause already exists, alongside separate energy/enrichment alerts. A1331-combination invariant and actual moderate-low DOM scenario cover the counterexample. Final204tests and402browser cases include15welfare tests/39welfare UI cases."
+    }
+  ]
+}

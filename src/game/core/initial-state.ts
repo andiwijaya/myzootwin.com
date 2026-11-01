@@ -1,3 +1,4 @@
+import {emptyCare} from '../animals/welfare.ts';
 import {REST_RULES} from '../animals/resting.ts';
 import {WATER_RULES} from '../animals/watering.ts';
 import {FOOD_RULES} from '../animals/feeding.ts';
@@ -7,7 +8,7 @@ import { MISSION_IDS, SPECIES_ID, type Animal, type ZooSaveV1 } from './state.ts
 export function createInitialState(seed = 0x5a17c0de): ZooSaveV1 {
   if (!Number.isInteger(seed) || seed < 1 || seed > 0xffffffff) throw new RangeError('Seed must be a nonzero uint32');
   const gate = { x: 1, z: 8 };
-  const animals: Animal[] = ['macaw-1', 'macaw-2'].map(id => ({ id, speciesId: SPECIES_ID, habitatId: null, position: null, target: null, targetResourceId: null, hunger: FOOD_RULES.startingHunger, thirst: WATER_RULES.startingThirst, energy: REST_RULES.startingEnergy, habitatFit: 0, enrichment: 0, welfare: 0, currentBehavior: 'idle',motion:emptyMotion(),foodEaten:0,waterDrunk:0,restedTicks:0,enrichedTicks:0 }));
+  const animals: Animal[] = ['macaw-1', 'macaw-2'].map(id => ({ id, speciesId: SPECIES_ID, habitatId: null, position: null, target: null, targetResourceId: null, hunger: FOOD_RULES.startingHunger, thirst: WATER_RULES.startingThirst, energy: REST_RULES.startingEnergy, habitatFit: 0, enrichment: 0, welfare: 0, care:emptyCare(), currentBehavior: 'idle',motion:emptyMotion(),foodEaten:0,waterDrunk:0,restedTicks:0,enrichedTicks:0 }));
   return {
     schemaVersion: 1, randomSeed: seed, randomState: seed, tick: 0, gameTimeMs: 0, currency: 1500,
     world: { width: 12, height: 10, gate, tiles: Array.from({ length: 120 }, (_, index) => {

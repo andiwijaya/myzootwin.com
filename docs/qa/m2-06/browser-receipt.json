@@ -1,0 +1,3142 @@
+{
+  "runId": "20261101T043552Z-cc6d8870",
+  "sourceId": "b7944555b10aa3b28feb864a01f1e3744f6ca01862df76d8462c5d8da2ccf97f",
+  "buildId": "23db2bab10d378755ddde839ac17a02f2c5723ff2161d67d3f7db92309d45e2d",
+  "method": "approved-cua-isolated-browser",
+  "physicalDevice": false,
+  "startedAt": "2026-11-01T04:38:10.459Z",
+  "cases": [
+    {
+      "id": "desktop-healthy-info",
+      "status": "PASS",
+      "observedAt": "2026-11-01T04:38:36.477Z",
+      "screenshot": "screens/desktop-healthy-info.jpg",
+      "data": {
+        "announcement": "Macaw 1: ✓ Comfortable. No current care alert. Keep supplies available and watch each bird’s needs.",
+        "canvas": 1,
+        "causes": [],
+        "documentWidth": 22706,
+        "entryScript": null,
+        "focused": "H4",
+        "height": 768,
+        "lang": "en",
+        "low": "false",
+        "panelHidden": false,
+        "parts": [
+          {
+            "part": "food",
+            "text": "Food 90% × 35%"
+          },
+          {
+            "part": "water",
+            "text": "Water 90% × 30%"
+          },
+          {
+            "part": "habitat",
+            "text": "Habitat 100% × 20%"
+          },
+          {
+            "part": "enrichment",
+            "text": "Enrichment 85% × 15%"
+          }
+        ],
+        "rows": [
+          {
+            "id": "macaw-1",
+            "text": "Macaw 1 · Looking around · Hunger 10% · Portions eaten 0 · Thirst 10% · Drinks 0 · Energy 85% · Enrichment 85%Welfare 91% · ✓ ComfortableInspect Macaw 1"
+          },
+          {
+            "id": "macaw-2",
+            "text": "Macaw 2 · Looking around · Hunger 10% · Portions eaten 0 · Thirst 10% · Drinks 0 · Energy 85% · Enrichment 85%Welfare 91% · ✓ ComfortableInspect Macaw 2"
+          }
+        ],
+        "selected": "macaw-1",
+        "state": "ready",
+        "status": "Welfare: 91.25% · ✓ Comfortable",
+        "title": "Macaw 1 · Blue-and-yellow macaw · macaw-1",
+        "welfare": 91.25,
+        "width": 1366,
+        "buttons": [
+          {
+            "height": 44,
+            "id": "macaw-1",
+            "text": "Inspect Macaw 1",
+            "width": 118.46875
+          },
+          {
+            "height": 44,
+            "id": "macaw-2",
+            "text": "Inspect Macaw 2",
+            "width": 121.02083587646484
+          },
+          {
+            "height": 44,
+            "id": "dismiss",
+            "text": "Close animal details",
+            "width": 141.6875
+          }
+        ],
+        "method": "Final source: explicitly labelled healthy state, actual paused welfare91.25 and two stable identities",
+        "visualReviewed": true,
+        "capture": {
+          "beforeAt": "2026-11-01T04:38:36.391Z",
+          "afterAt": "2026-11-01T04:38:36.477Z",
+          "after": {
+            "announcement": "Macaw 1: ✓ Comfortable. No current care alert. Keep supplies available and watch each bird’s needs.",
+            "canvas": 1,
+            "causes": [],
+            "documentWidth": 22706,
+            "entryScript": null,
+            "focused": "H4",
+            "height": 768,
+            "lang": "en",
+            "low": "false",
+            "panelHidden": false,
+            "parts": [
+              {
+                "part": "food",
+                "text": "Food 90% × 35%"
+              },
+              {
+                "part": "water",
+                "text": "Water 90% × 30%"
+              },
+              {
+                "part": "habitat",
+                "text": "Habitat 100% × 20%"
+              },
+              {
+                "part": "enrichment",
+                "text": "Enrichment 85% × 15%"
+              }
+            ],
+            "rows": [
+              {
+                "id": "macaw-1",
+                "text": "Macaw 1 · Looking around · Hunger 10% · Portions eaten 0 · Thirst 10% · Drinks 0 · Energy 85% · Enrichment 85%Welfare 91% · ✓ ComfortableInspect Macaw 1"
+              },
+              {
+                "id": "macaw-2",
+                "text": "Macaw 2 · Looking around · Hunger 10% · Portions eaten 0 · Thirst 10% · Drinks 0 · Energy 85% · Enrichment 85%Welfare 91% · ✓ ComfortableInspect Macaw 2"
+              }
+            ],
+            "selected": "macaw-1",
+            "state": "ready",
+            "status": "Welfare: 91.25% · ✓ Comfortable",
+            "title": "Macaw 1 · Blue-and-yellow macaw · macaw-1",
+            "welfare": 91.25,
+            "width": 1366,
+            "buttons": [
+              {
+                "height": 44,
+                "id": "macaw-1",
+                "text": "Inspect Macaw 1",
+                "width": 118.46875
+              },
+              {
+                "height": 44,
+                "id": "macaw-2",
+                "text": "Inspect Macaw 2",
+                "width": 121.02083587646484
+              },
+              {
+                "height": 44,
+                "id": "dismiss",
+                "text": "Close animal details",
+                "width": 141.6875
+              }
+            ]
+          },
+          "note": "Native simulation continues during screenshot; pre/post DOM values recorded. Injected QA scenarios paused."
+        }
+      }
+    },
+    {
+      "id": "desktop-critical-info",
+      "status": "PASS",
+      "observedAt": "2026-11-01T04:38:45.863Z",
+      "screenshot": "screens/desktop-critical-info.jpg",
+      "data": {
+        "announcement": "Macaw 1: ! Needs care. This bird’s food bowl is empty. Refill the feeder, even if the other bowl still has fruit.",
+        "canvas": 1,
+        "causes": [
+          {
+            "code": "food-empty",
+            "text": "This bird’s food bowl is empty. Refill the feeder, even if the other bowl still has fruit.Go to feeder"
+          },
+          {
+            "code": "tired",
+            "text": "Energy is low. The rest garden is accessible: allow sleep to finish; urgent food/water takes priority."
+          },
+          {
+            "code": "bored",
+            "text": "Enrichment is low. The garden is accessible: after rest and urgent care, let the bird explore its foliage."
+          }
+        ],
+        "documentWidth": 22706,
+        "entryScript": null,
+        "focused": "H4",
+        "height": 768,
+        "lang": "en",
+        "low": "true",
+        "panelHidden": false,
+        "parts": [
+          {
+            "part": "food",
+            "text": "Food 10% × 35%"
+          },
+          {
+            "part": "water",
+            "text": "Water 80% × 30%"
+          },
+          {
+            "part": "habitat",
+            "text": "Habitat 100% × 20%"
+          },
+          {
+            "part": "enrichment",
+            "text": "Enrichment 0% × 15%"
+          }
+        ],
+        "rows": [
+          {
+            "id": "macaw-1",
+            "text": "Macaw 1 · Looking around · Hunger 90% · Portions eaten 0 · Thirst 20% · Drinks 0 · Energy 20% · Enrichment 0%Welfare 48% · ! Needs careInspect Macaw 1"
+          },
+          {
+            "id": "macaw-2",
+            "text": "Macaw 2 · Looking around · Hunger 10% · Portions eaten 0 · Thirst 90% · Drinks 0 · Energy 85% · Enrichment 85%Welfare 67% · ✓ ComfortableInspect Macaw 2"
+          }
+        ],
+        "selected": "macaw-1",
+        "state": "ready",
+        "status": "Welfare: 47.5% · ! Needs care",
+        "title": "Macaw 1 · Blue-and-yellow macaw · macaw-1",
+        "welfare": 47.5,
+        "width": 1366,
+        "buttons": [
+          {
+            "height": 44,
+            "id": "macaw-1",
+            "text": "Inspect Macaw 1",
+            "width": 118.46875
+          },
+          {
+            "height": 44,
+            "id": "macaw-2",
+            "text": "Inspect Macaw 2",
+            "width": 121.02083587646484
+          },
+          {
+            "height": 44,
+            "id": "dismiss",
+            "text": "Close animal details",
+            "width": 141.6875
+          },
+          {
+            "height": 44,
+            "id": "food",
+            "text": "Go to feeder",
+            "width": 95.44792175292967
+          }
+        ],
+        "method": "Final source: labelled asymmetric critical state, real own-bowl access and Macaw1score47.5",
+        "visualReviewed": true,
+        "capture": {
+          "beforeAt": "2026-11-01T04:38:45.774Z",
+          "afterAt": "2026-11-01T04:38:45.863Z",
+          "after": {
+            "announcement": "Macaw 1: ! Needs care. This bird’s food bowl is empty. Refill the feeder, even if the other bowl still has fruit.",
+            "canvas": 1,
+            "causes": [
+              {
+                "code": "food-empty",
+                "text": "This bird’s food bowl is empty. Refill the feeder, even if the other bowl still has fruit.Go to feeder"
+              },
+              {
+                "code": "tired",
+                "text": "Energy is low. The rest garden is accessible: allow sleep to finish; urgent food/water takes priority."
+              },
+              {
+                "code": "bored",
+                "text": "Enrichment is low. The garden is accessible: after rest and urgent care, let the bird explore its foliage."
+              }
+            ],
+            "documentWidth": 22706,
+            "entryScript": null,
+            "focused": "H4",
+            "height": 768,
+            "lang": "en",
+            "low": "true",
+            "panelHidden": false,
+            "parts": [
+              {
+                "part": "food",
+                "text": "Food 10% × 35%"
+              },
+              {
+                "part": "water",
+                "text": "Water 80% × 30%"
+              },
+              {
+                "part": "habitat",
+                "text": "Habitat 100% × 20%"
+              },
+              {
+                "part": "enrichment",
+                "text": "Enrichment 0% × 15%"
+              }
+            ],
+            "rows": [
+              {
+                "id": "macaw-1",
+                "text": "Macaw 1 · Looking around · Hunger 90% · Portions eaten 0 · Thirst 20% · Drinks 0 · Energy 20% · Enrichment 0%Welfare 48% · ! Needs careInspect Macaw 1"
+              },
+              {
+                "id": "macaw-2",
+                "text": "Macaw 2 · Looking around · Hunger 10% · Portions eaten 0 · Thirst 90% · Drinks 0 · Energy 85% · Enrichment 85%Welfare 67% · ✓ ComfortableInspect Macaw 2"
+              }
+            ],
+            "selected": "macaw-1",
+            "state": "ready",
+            "status": "Welfare: 47.5% · ! Needs care",
+            "title": "Macaw 1 · Blue-and-yellow macaw · macaw-1",
+            "welfare": 47.5,
+            "width": 1366,
+            "buttons": [
+              {
+                "height": 44,
+                "id": "macaw-1",
+                "text": "Inspect Macaw 1",
+                "width": 118.46875
+              },
+              {
+                "height": 44,
+                "id": "macaw-2",
+                "text": "Inspect Macaw 2",
+                "width": 121.02083587646484
+              },
+              {
+                "height": 44,
+                "id": "dismiss",
+                "text": "Close animal details",
+                "width": 141.6875
+              },
+              {
+                "height": 44,
+                "id": "food",
+                "text": "Go to feeder",
+                "width": 95.44792175292967
+              }
+            ]
+          },
+          "note": "Native simulation continues during screenshot; pre/post DOM values recorded. Injected QA scenarios paused."
+        }
+      }
+    },
+    {
+      "id": "injected-failure-retry",
+      "status": "PASS",
+      "observedAt": "2026-11-01T04:39:07.902Z",
+      "data": {
+        "source": "WEBGL_lose_context",
+        "failedState": "error",
+        "failedReason": "context-lost",
+        "failedCanvas": 0,
+        "failedSubscribers": 0,
+        "retryState": "ready",
+        "retryCanvas": 1
+      }
+    },
+    {
+      "id": "native-lifecycle",
+      "status": "PASS",
+      "observedAt": "2026-11-01T04:39:10.042Z",
+      "data": {
+        "harnessRunId": "20261101T043552Z-cc6d8870",
+        "harnessBuildId": "23db2bab10d378755ddde839ac17a02f2c5723ff2161d67d3f7db92309d45e2d",
+        "harnessSourceId": "b7944555b10aa3b28feb864a01f1e3744f6ca01862df76d8462c5d8da2ccf97f",
+        "samples": [
+          {
+            "name": "ready",
+            "activeSessions": 1,
+            "canvasCount": 1,
+            "disposedSessions": 5,
+            "faultSource": "none",
+            "heap": {
+              "jsHeapSizeLimit": 4395630592,
+              "note": "Potentially shared/quantized JS heap estimate; not tab-exclusive retained memory, GPU bytes or a leak proof",
+              "status": "OBSERVED_NONSTANDARD",
+              "totalJSHeapSize": 31724505,
+              "usedJSHeapSize": 19859149
+            },
+            "heapSnapshots": [],
+            "lastDisposed": {
+              "bird1Energy": 85,
+              "bird1EnrichedTicks": 0,
+              "bird1Enrichment": 85,
+              "bird1FoodEaten": 0,
+              "bird1HabitatFit": 100,
+              "bird1Height": 0,
+              "bird1Hunger": 10,
+              "bird1Phase": 0,
+              "bird1RestedTicks": 0,
+              "bird1Sequence": 0,
+              "bird1Thirst": 10,
+              "bird1WaterDrunk": 0,
+              "bird1Welfare": 91.25,
+              "bird1WelfareLow": 0,
+              "bird1X": 4.5,
+              "bird1Z": 5.25,
+              "bird2Energy": 85,
+              "bird2EnrichedTicks": 0,
+              "bird2Enrichment": 85,
+              "bird2FoodEaten": 0,
+              "bird2HabitatFit": 100,
+              "bird2Height": 0,
+              "bird2Hunger": 10,
+              "bird2Phase": 0,
+              "bird2RestedTicks": 0,
+              "bird2Sequence": 0,
+              "bird2Thirst": 10,
+              "bird2WaterDrunk": 0,
+              "bird2Welfare": 91.25,
+              "bird2WelfareLow": 0,
+              "bird2X": 5.5,
+              "bird2Z": 5.25,
+              "birdAssetsGeometries": 0,
+              "birdModelTriangles": 0,
+              "birdOwnedMaterials": 0,
+              "birdPerchTriangles": 0,
+              "birdPerchesVisible": false,
+              "birdSceneDisposed": true,
+              "broadleafTrees": 4,
+              "bufferHeight": 350,
+              "bufferWidth": 504,
+              "cameraControlsDisposed": true,
+              "cameraFocusX": -0.848692394219912,
+              "cameraFocusZ": -1.0092307237478404,
+              "cameraInputEnabled": false,
+              "cameraMaxPanX": 0,
+              "cameraMaxPanZ": 0,
+              "cameraMinPanX": 0,
+              "cameraMinPanZ": 0,
+              "cameraPanX": 0,
+              "cameraPanZ": 0,
+              "cameraPinching": false,
+              "cameraPointers": 0,
+              "cameraZoom": 1,
+              "canUndo": false,
+              "canvasAttached": false,
+              "cleanupErrors": 0,
+              "connectedHabitats": 0,
+              "creekTiles": 8,
+              "currency": 1500,
+              "disposed": true,
+              "drawCallsLastRender": 42,
+              "editorRevision": 0,
+              "entranceGates": 1,
+              "feederBowl1Fruit": 0,
+              "feederBowl2Fruit": 0,
+              "feederFruitCount": 0,
+              "feederGeometries": 0,
+              "feederOwnedMaterials": 0,
+              "feederSceneDisposed": true,
+              "feederTriangles": 0,
+              "feederVisible": false,
+              "foodBowl1": 4,
+              "foodBowl2": 4,
+              "foodExists": true,
+              "foodPreview": false,
+              "foodRevision": 3,
+              "foodStock": 8,
+              "geometries": 0,
+              "habitatCount": 1,
+              "habitatMeshes": 0,
+              "habitatSceneDisposed": true,
+              "leafSway": 0,
+              "liveBirdModels": 0,
+              "lost": false,
+              "macawAngleIndex": 0,
+              "macawAnimationTimeMs": 0,
+              "macawAssetGeometries": 0,
+              "macawClipIndex": 0,
+              "macawGeometryBytes": 0,
+              "macawMaterials": 0,
+              "macawModelTriangles": 0,
+              "macawOwnedMaterialsLive": 0,
+              "macawRigDisposed": true,
+              "macawRigMeshes": 0,
+              "macawStageGeometries": 0,
+              "macawStudioActive": false,
+              "macawStudioDisposed": true,
+              "macawStudioInHabitat": false,
+              "macawStudioMotionPaused": false,
+              "macawTextures": 0,
+              "occupiedTiles": 4,
+              "orthographicCamera": true,
+              "ownedMaterialsLive": 0,
+              "palmTrees": 6,
+              "pathMeshes": 0,
+              "pathSceneDisposed": true,
+              "pathSceneRevision": 1,
+              "pathTiles": 1,
+              "pendingFrames": 0,
+              "perchExists": true,
+              "perchExploring": 0,
+              "perchGeometries": 0,
+              "perchOwnedMaterials": 0,
+              "perchPreview": false,
+              "perchResting": 0,
+              "perchRevision": 6,
+              "perchSceneDisposed": true,
+              "perchTriangles": 0,
+              "pixelRatio": 1.0000000298023224,
+              "placedBirds": 2,
+              "placementActive": false,
+              "placementBlockedCells": 77,
+              "placementConfirmations": 0,
+              "placementConfirmedCount": 0,
+              "placementDisposed": true,
+              "placementGhostVisible": false,
+              "placementPathMode": false,
+              "placementPlanVisible": false,
+              "placementRevision": 1,
+              "placementValid": false,
+              "programs": 0,
+              "reachablePathTiles": 1,
+              "renderSubmissions": 2,
+              "renderedPathTiles": 0,
+              "restKitVisible": false,
+              "routeCells": 0,
+              "selectableObjects": 22,
+              "selectableTiles": 120,
+              "selectionActive": false,
+              "selectionDisposed": true,
+              "selectionMarkerVisible": false,
+              "selectionRevision": 0,
+              "simulationDisposed": true,
+              "simulationEvents": 0,
+              "simulationGameTimeMs": 0,
+              "simulationPaused": true,
+              "simulationStartTick": 0,
+              "simulationSubscribers": 0,
+              "simulationTick": 0,
+              "terrainTiles": 120,
+              "textures": 0,
+              "trianglesLastRender": 11996,
+              "visualGameTimeMs": 0,
+              "waterBowl1": 4,
+              "waterBowl2": 4,
+              "waterExists": true,
+              "waterFlowOffset": 0,
+              "waterGeometries": 0,
+              "waterOwnedMaterials": 0,
+              "waterPreview": false,
+              "waterRevision": 5,
+              "waterSceneDisposed": true,
+              "waterStock": 8,
+              "waterSurface1": false,
+              "waterSurface2": false,
+              "waterTriangles": 0,
+              "waterVisible": false
+            },
+            "loads": 6,
+            "maxActiveSessions": 1,
+            "maxPendingRAFs": 1,
+            "metrics": {
+              "actualPresentationFPS": "UNMEASURED",
+              "callbackHz": null,
+              "callbacksObserved": 0,
+              "capacity": 300,
+              "cpuP50Ms": null,
+              "cpuP95Ms": null,
+              "intervalP50Ms": null,
+              "intervalP95Ms": null,
+              "kind": "RAF callback intervals and synchronous JS/core/render-submit duration; NOT presented FPS or GPU time",
+              "retainedCpuSamples": 0,
+              "retainedIntervals": 0,
+              "retainedWindowMs": 0
+            },
+            "mode": "native",
+            "pendingRAFs": 0,
+            "probe": {
+              "status": "UNRUN"
+            },
+            "readoutWrites": 76,
+            "session": {
+              "bird1Energy": 20,
+              "bird1EnrichedTicks": 0,
+              "bird1Enrichment": 0,
+              "bird1FoodEaten": 0,
+              "bird1HabitatFit": 100,
+              "bird1Height": 0,
+              "bird1Hunger": 90,
+              "bird1Phase": 0,
+              "bird1RestedTicks": 0,
+              "bird1Sequence": 0,
+              "bird1Thirst": 20,
+              "bird1WaterDrunk": 0,
+              "bird1Welfare": 47.5,
+              "bird1WelfareLow": 1,
+              "bird1X": 4.5,
+              "bird1Z": 5.25,
+              "bird2Energy": 85,
+              "bird2EnrichedTicks": 0,
+              "bird2Enrichment": 85,
+              "bird2FoodEaten": 0,
+              "bird2HabitatFit": 100,
+              "bird2Height": 0,
+              "bird2Hunger": 10,
+              "bird2Phase": 0,
+              "bird2RestedTicks": 0,
+              "bird2Sequence": 0,
+              "bird2Thirst": 90,
+              "bird2WaterDrunk": 0,
+              "bird2Welfare": 67.25,
+              "bird2WelfareLow": 0,
+              "bird2X": 5.5,
+              "bird2Z": 5.25,
+              "birdAssetsGeometries": 11,
+              "birdModelTriangles": 6360,
+              "birdOwnedMaterials": 2,
+              "birdPerchTriangles": 0,
+              "birdPerchesVisible": false,
+              "birdSceneDisposed": false,
+              "broadleafTrees": 4,
+              "bufferHeight": 350,
+              "bufferWidth": 504,
+              "cameraControlsDisposed": false,
+              "cameraFocusX": -0.848692394219912,
+              "cameraFocusZ": -1.0092307237478404,
+              "cameraInputEnabled": false,
+              "cameraMaxPanX": 0,
+              "cameraMaxPanZ": 0,
+              "cameraMinPanX": 0,
+              "cameraMinPanZ": 0,
+              "cameraPanX": 0,
+              "cameraPanZ": 0,
+              "cameraPinching": false,
+              "cameraPointers": 0,
+              "cameraZoom": 1,
+              "canUndo": false,
+              "canvasAttached": true,
+              "cleanupErrors": 0,
+              "connectedHabitats": 0,
+              "creekTiles": 8,
+              "currency": 1500,
+              "disposed": false,
+              "drawCallsLastRender": 37,
+              "editorRevision": 0,
+              "entranceGates": 1,
+              "feederBowl1Fruit": 0,
+              "feederBowl2Fruit": 4,
+              "feederFruitCount": 4,
+              "feederGeometries": 2,
+              "feederOwnedMaterials": 2,
+              "feederSceneDisposed": false,
+              "feederTriangles": 364,
+              "feederVisible": true,
+              "foodBowl1": 0,
+              "foodBowl2": 4,
+              "foodExists": true,
+              "foodPreview": false,
+              "foodRevision": 3,
+              "foodStock": 4,
+              "geometries": 23,
+              "habitatCount": 1,
+              "habitatMeshes": 1,
+              "habitatSceneDisposed": false,
+              "leafSway": 0,
+              "liveBirdModels": 2,
+              "lost": false,
+              "macawAngleIndex": 0,
+              "macawAnimationTimeMs": 0,
+              "macawAssetGeometries": 0,
+              "macawClipIndex": 0,
+              "macawGeometryBytes": 0,
+              "macawMaterials": 0,
+              "macawModelTriangles": 0,
+              "macawOwnedMaterialsLive": 0,
+              "macawRigDisposed": true,
+              "macawRigMeshes": 0,
+              "macawStageGeometries": 0,
+              "macawStudioActive": false,
+              "macawStudioDisposed": false,
+              "macawStudioInHabitat": false,
+              "macawStudioMotionPaused": false,
+              "macawTextures": 0,
+              "occupiedTiles": 4,
+              "orthographicCamera": true,
+              "ownedMaterialsLive": 21,
+              "palmTrees": 6,
+              "pathMeshes": 0,
+              "pathSceneDisposed": false,
+              "pathSceneRevision": 1,
+              "pathTiles": 1,
+              "pendingFrames": 0,
+              "perchExists": true,
+              "perchExploring": 0,
+              "perchGeometries": 2,
+              "perchOwnedMaterials": 1,
+              "perchPreview": false,
+              "perchResting": 0,
+              "perchRevision": 6,
+              "perchSceneDisposed": false,
+              "perchTriangles": 512,
+              "pixelRatio": 1.0000000298023224,
+              "placedBirds": 2,
+              "placementActive": false,
+              "placementBlockedCells": 77,
+              "placementConfirmations": 0,
+              "placementConfirmedCount": 0,
+              "placementDisposed": false,
+              "placementGhostVisible": false,
+              "placementPathMode": false,
+              "placementPlanVisible": false,
+              "placementRevision": 0,
+              "placementValid": false,
+              "programs": 7,
+              "reachablePathTiles": 1,
+              "renderSubmissions": 2,
+              "renderedPathTiles": 0,
+              "restKitVisible": true,
+              "routeCells": 0,
+              "selectableObjects": 23,
+              "selectableTiles": 120,
+              "selectionActive": false,
+              "selectionDisposed": false,
+              "selectionMarkerVisible": false,
+              "selectionRevision": 0,
+              "simulationDisposed": false,
+              "simulationEvents": 0,
+              "simulationGameTimeMs": 0,
+              "simulationPaused": true,
+              "simulationStartTick": 0,
+              "simulationSubscribers": 1,
+              "simulationTick": 0,
+              "terrainTiles": 120,
+              "textures": 1,
+              "trianglesLastRender": 11756,
+              "visualGameTimeMs": 0,
+              "waterBowl1": 4,
+              "waterBowl2": 0,
+              "waterExists": true,
+              "waterFlowOffset": 0,
+              "waterGeometries": 2,
+              "waterOwnedMaterials": 2,
+              "waterPreview": false,
+              "waterRevision": 5,
+              "waterSceneDisposed": false,
+              "waterStock": 4,
+              "waterSurface1": true,
+              "waterSurface2": false,
+              "waterTriangles": 352,
+              "waterVisible": true
+            },
+            "state": {
+              "status": "ready"
+            },
+            "viewport": {
+              "dpr": 1.0000000298023224,
+              "height": 768,
+              "visibility": "visible",
+              "width": 1366
+            }
+          },
+          {
+            "name": "paused",
+            "activeSessions": 1,
+            "canvasCount": 1,
+            "disposedSessions": 5,
+            "faultSource": "none",
+            "heap": {
+              "jsHeapSizeLimit": 4395630592,
+              "note": "Potentially shared/quantized JS heap estimate; not tab-exclusive retained memory, GPU bytes or a leak proof",
+              "status": "OBSERVED_NONSTANDARD",
+              "totalJSHeapSize": 31994634,
+              "usedJSHeapSize": 20953138
+            },
+            "heapSnapshots": [],
+            "lastDisposed": {
+              "bird1Energy": 85,
+              "bird1EnrichedTicks": 0,
+              "bird1Enrichment": 85,
+              "bird1FoodEaten": 0,
+              "bird1HabitatFit": 100,
+              "bird1Height": 0,
+              "bird1Hunger": 10,
+              "bird1Phase": 0,
+              "bird1RestedTicks": 0,
+              "bird1Sequence": 0,
+              "bird1Thirst": 10,
+              "bird1WaterDrunk": 0,
+              "bird1Welfare": 91.25,
+              "bird1WelfareLow": 0,
+              "bird1X": 4.5,
+              "bird1Z": 5.25,
+              "bird2Energy": 85,
+              "bird2EnrichedTicks": 0,
+              "bird2Enrichment": 85,
+              "bird2FoodEaten": 0,
+              "bird2HabitatFit": 100,
+              "bird2Height": 0,
+              "bird2Hunger": 10,
+              "bird2Phase": 0,
+              "bird2RestedTicks": 0,
+              "bird2Sequence": 0,
+              "bird2Thirst": 10,
+              "bird2WaterDrunk": 0,
+              "bird2Welfare": 91.25,
+              "bird2WelfareLow": 0,
+              "bird2X": 5.5,
+              "bird2Z": 5.25,
+              "birdAssetsGeometries": 0,
+              "birdModelTriangles": 0,
+              "birdOwnedMaterials": 0,
+              "birdPerchTriangles": 0,
+              "birdPerchesVisible": false,
+              "birdSceneDisposed": true,
+              "broadleafTrees": 4,
+              "bufferHeight": 350,
+              "bufferWidth": 504,
+              "cameraControlsDisposed": true,
+              "cameraFocusX": -0.848692394219912,
+              "cameraFocusZ": -1.0092307237478404,
+              "cameraInputEnabled": false,
+              "cameraMaxPanX": 0,
+              "cameraMaxPanZ": 0,
+              "cameraMinPanX": 0,
+              "cameraMinPanZ": 0,
+              "cameraPanX": 0,
+              "cameraPanZ": 0,
+              "cameraPinching": false,
+              "cameraPointers": 0,
+              "cameraZoom": 1,
+              "canUndo": false,
+              "canvasAttached": false,
+              "cleanupErrors": 0,
+              "connectedHabitats": 0,
+              "creekTiles": 8,
+              "currency": 1500,
+              "disposed": true,
+              "drawCallsLastRender": 42,
+              "editorRevision": 0,
+              "entranceGates": 1,
+              "feederBowl1Fruit": 0,
+              "feederBowl2Fruit": 0,
+              "feederFruitCount": 0,
+              "feederGeometries": 0,
+              "feederOwnedMaterials": 0,
+              "feederSceneDisposed": true,
+              "feederTriangles": 0,
+              "feederVisible": false,
+              "foodBowl1": 4,
+              "foodBowl2": 4,
+              "foodExists": true,
+              "foodPreview": false,
+              "foodRevision": 3,
+              "foodStock": 8,
+              "geometries": 0,
+              "habitatCount": 1,
+              "habitatMeshes": 0,
+              "habitatSceneDisposed": true,
+              "leafSway": 0,
+              "liveBirdModels": 0,
+              "lost": false,
+              "macawAngleIndex": 0,
+              "macawAnimationTimeMs": 0,
+              "macawAssetGeometries": 0,
+              "macawClipIndex": 0,
+              "macawGeometryBytes": 0,
+              "macawMaterials": 0,
+              "macawModelTriangles": 0,
+              "macawOwnedMaterialsLive": 0,
+              "macawRigDisposed": true,
+              "macawRigMeshes": 0,
+              "macawStageGeometries": 0,
+              "macawStudioActive": false,
+              "macawStudioDisposed": true,
+              "macawStudioInHabitat": false,
+              "macawStudioMotionPaused": false,
+              "macawTextures": 0,
+              "occupiedTiles": 4,
+              "orthographicCamera": true,
+              "ownedMaterialsLive": 0,
+              "palmTrees": 6,
+              "pathMeshes": 0,
+              "pathSceneDisposed": true,
+              "pathSceneRevision": 1,
+              "pathTiles": 1,
+              "pendingFrames": 0,
+              "perchExists": true,
+              "perchExploring": 0,
+              "perchGeometries": 0,
+              "perchOwnedMaterials": 0,
+              "perchPreview": false,
+              "perchResting": 0,
+              "perchRevision": 6,
+              "perchSceneDisposed": true,
+              "perchTriangles": 0,
+              "pixelRatio": 1.0000000298023224,
+              "placedBirds": 2,
+              "placementActive": false,
+              "placementBlockedCells": 77,
+              "placementConfirmations": 0,
+              "placementConfirmedCount": 0,
+              "placementDisposed": true,
+              "placementGhostVisible": false,
+              "placementPathMode": false,
+              "placementPlanVisible": false,
+              "placementRevision": 1,
+              "placementValid": false,
+              "programs": 0,
+              "reachablePathTiles": 1,
+              "renderSubmissions": 2,
+              "renderedPathTiles": 0,
+              "restKitVisible": false,
+              "routeCells": 0,
+              "selectableObjects": 22,
+              "selectableTiles": 120,
+              "selectionActive": false,
+              "selectionDisposed": true,
+              "selectionMarkerVisible": false,
+              "selectionRevision": 0,
+              "simulationDisposed": true,
+              "simulationEvents": 0,
+              "simulationGameTimeMs": 0,
+              "simulationPaused": true,
+              "simulationStartTick": 0,
+              "simulationSubscribers": 0,
+              "simulationTick": 0,
+              "terrainTiles": 120,
+              "textures": 0,
+              "trianglesLastRender": 11996,
+              "visualGameTimeMs": 0,
+              "waterBowl1": 4,
+              "waterBowl2": 4,
+              "waterExists": true,
+              "waterFlowOffset": 0,
+              "waterGeometries": 0,
+              "waterOwnedMaterials": 0,
+              "waterPreview": false,
+              "waterRevision": 5,
+              "waterSceneDisposed": true,
+              "waterStock": 8,
+              "waterSurface1": false,
+              "waterSurface2": false,
+              "waterTriangles": 0,
+              "waterVisible": false
+            },
+            "loads": 6,
+            "maxActiveSessions": 1,
+            "maxPendingRAFs": 1,
+            "metrics": {
+              "actualPresentationFPS": "UNMEASURED",
+              "callbackHz": null,
+              "callbacksObserved": 0,
+              "capacity": 300,
+              "cpuP50Ms": null,
+              "cpuP95Ms": null,
+              "intervalP50Ms": null,
+              "intervalP95Ms": null,
+              "kind": "RAF callback intervals and synchronous JS/core/render-submit duration; NOT presented FPS or GPU time",
+              "retainedCpuSamples": 0,
+              "retainedIntervals": 0,
+              "retainedWindowMs": 0
+            },
+            "mode": "native",
+            "pendingRAFs": 0,
+            "probe": {
+              "status": "UNRUN"
+            },
+            "readoutWrites": 77,
+            "session": {
+              "bird1Energy": 20,
+              "bird1EnrichedTicks": 0,
+              "bird1Enrichment": 0,
+              "bird1FoodEaten": 0,
+              "bird1HabitatFit": 100,
+              "bird1Height": 0,
+              "bird1Hunger": 90,
+              "bird1Phase": 0,
+              "bird1RestedTicks": 0,
+              "bird1Sequence": 0,
+              "bird1Thirst": 20,
+              "bird1WaterDrunk": 0,
+              "bird1Welfare": 47.5,
+              "bird1WelfareLow": 1,
+              "bird1X": 4.5,
+              "bird1Z": 5.25,
+              "bird2Energy": 85,
+              "bird2EnrichedTicks": 0,
+              "bird2Enrichment": 85,
+              "bird2FoodEaten": 0,
+              "bird2HabitatFit": 100,
+              "bird2Height": 0,
+              "bird2Hunger": 10,
+              "bird2Phase": 0,
+              "bird2RestedTicks": 0,
+              "bird2Sequence": 0,
+              "bird2Thirst": 90,
+              "bird2WaterDrunk": 0,
+              "bird2Welfare": 67.25,
+              "bird2WelfareLow": 0,
+              "bird2X": 5.5,
+              "bird2Z": 5.25,
+              "birdAssetsGeometries": 11,
+              "birdModelTriangles": 6360,
+              "birdOwnedMaterials": 2,
+              "birdPerchTriangles": 0,
+              "birdPerchesVisible": false,
+              "birdSceneDisposed": false,
+              "broadleafTrees": 4,
+              "bufferHeight": 350,
+              "bufferWidth": 504,
+              "cameraControlsDisposed": false,
+              "cameraFocusX": -0.848692394219912,
+              "cameraFocusZ": -1.0092307237478404,
+              "cameraInputEnabled": false,
+              "cameraMaxPanX": 0,
+              "cameraMaxPanZ": 0,
+              "cameraMinPanX": 0,
+              "cameraMinPanZ": 0,
+              "cameraPanX": 0,
+              "cameraPanZ": 0,
+              "cameraPinching": false,
+              "cameraPointers": 0,
+              "cameraZoom": 1,
+              "canUndo": false,
+              "canvasAttached": true,
+              "cleanupErrors": 0,
+              "connectedHabitats": 0,
+              "creekTiles": 8,
+              "currency": 1500,
+              "disposed": false,
+              "drawCallsLastRender": 37,
+              "editorRevision": 0,
+              "entranceGates": 1,
+              "feederBowl1Fruit": 0,
+              "feederBowl2Fruit": 4,
+              "feederFruitCount": 4,
+              "feederGeometries": 2,
+              "feederOwnedMaterials": 2,
+              "feederSceneDisposed": false,
+              "feederTriangles": 364,
+              "feederVisible": true,
+              "foodBowl1": 0,
+              "foodBowl2": 4,
+              "foodExists": true,
+              "foodPreview": false,
+              "foodRevision": 3,
+              "foodStock": 4,
+              "geometries": 23,
+              "habitatCount": 1,
+              "habitatMeshes": 1,
+              "habitatSceneDisposed": false,
+              "leafSway": 0,
+              "liveBirdModels": 2,
+              "lost": false,
+              "macawAngleIndex": 0,
+              "macawAnimationTimeMs": 0,
+              "macawAssetGeometries": 0,
+              "macawClipIndex": 0,
+              "macawGeometryBytes": 0,
+              "macawMaterials": 0,
+              "macawModelTriangles": 0,
+              "macawOwnedMaterialsLive": 0,
+              "macawRigDisposed": true,
+              "macawRigMeshes": 0,
+              "macawStageGeometries": 0,
+              "macawStudioActive": false,
+              "macawStudioDisposed": false,
+              "macawStudioInHabitat": false,
+              "macawStudioMotionPaused": false,
+              "macawTextures": 0,
+              "occupiedTiles": 4,
+              "orthographicCamera": true,
+              "ownedMaterialsLive": 21,
+              "palmTrees": 6,
+              "pathMeshes": 0,
+              "pathSceneDisposed": false,
+              "pathSceneRevision": 1,
+              "pathTiles": 1,
+              "pendingFrames": 0,
+              "perchExists": true,
+              "perchExploring": 0,
+              "perchGeometries": 2,
+              "perchOwnedMaterials": 1,
+              "perchPreview": false,
+              "perchResting": 0,
+              "perchRevision": 6,
+              "perchSceneDisposed": false,
+              "perchTriangles": 512,
+              "pixelRatio": 1.0000000298023224,
+              "placedBirds": 2,
+              "placementActive": false,
+              "placementBlockedCells": 77,
+              "placementConfirmations": 0,
+              "placementConfirmedCount": 0,
+              "placementDisposed": false,
+              "placementGhostVisible": false,
+              "placementPathMode": false,
+              "placementPlanVisible": false,
+              "placementRevision": 0,
+              "placementValid": false,
+              "programs": 7,
+              "reachablePathTiles": 1,
+              "renderSubmissions": 2,
+              "renderedPathTiles": 0,
+              "restKitVisible": true,
+              "routeCells": 0,
+              "selectableObjects": 23,
+              "selectableTiles": 120,
+              "selectionActive": false,
+              "selectionDisposed": false,
+              "selectionMarkerVisible": false,
+              "selectionRevision": 0,
+              "simulationDisposed": false,
+              "simulationEvents": 0,
+              "simulationGameTimeMs": 0,
+              "simulationPaused": true,
+              "simulationStartTick": 0,
+              "simulationSubscribers": 1,
+              "simulationTick": 0,
+              "terrainTiles": 120,
+              "textures": 1,
+              "trianglesLastRender": 11756,
+              "visualGameTimeMs": 0,
+              "waterBowl1": 4,
+              "waterBowl2": 0,
+              "waterExists": true,
+              "waterFlowOffset": 0,
+              "waterGeometries": 2,
+              "waterOwnedMaterials": 2,
+              "waterPreview": false,
+              "waterRevision": 5,
+              "waterSceneDisposed": false,
+              "waterStock": 4,
+              "waterSurface1": true,
+              "waterSurface2": false,
+              "waterTriangles": 352,
+              "waterVisible": true
+            },
+            "state": {
+              "status": "ready"
+            },
+            "viewport": {
+              "dpr": 1.0000000298023224,
+              "height": 768,
+              "visibility": "visible",
+              "width": 1366
+            }
+          },
+          {
+            "name": "still-paused",
+            "activeSessions": 1,
+            "canvasCount": 1,
+            "disposedSessions": 5,
+            "faultSource": "none",
+            "heap": {
+              "jsHeapSizeLimit": 4395630592,
+              "note": "Potentially shared/quantized JS heap estimate; not tab-exclusive retained memory, GPU bytes or a leak proof",
+              "status": "OBSERVED_NONSTANDARD",
+              "totalJSHeapSize": 31994634,
+              "usedJSHeapSize": 20953138
+            },
+            "heapSnapshots": [],
+            "lastDisposed": {
+              "bird1Energy": 85,
+              "bird1EnrichedTicks": 0,
+              "bird1Enrichment": 85,
+              "bird1FoodEaten": 0,
+              "bird1HabitatFit": 100,
+              "bird1Height": 0,
+              "bird1Hunger": 10,
+              "bird1Phase": 0,
+              "bird1RestedTicks": 0,
+              "bird1Sequence": 0,
+              "bird1Thirst": 10,
+              "bird1WaterDrunk": 0,
+              "bird1Welfare": 91.25,
+              "bird1WelfareLow": 0,
+              "bird1X": 4.5,
+              "bird1Z": 5.25,
+              "bird2Energy": 85,
+              "bird2EnrichedTicks": 0,
+              "bird2Enrichment": 85,
+              "bird2FoodEaten": 0,
+              "bird2HabitatFit": 100,
+              "bird2Height": 0,
+              "bird2Hunger": 10,
+              "bird2Phase": 0,
+              "bird2RestedTicks": 0,
+              "bird2Sequence": 0,
+              "bird2Thirst": 10,
+              "bird2WaterDrunk": 0,
+              "bird2Welfare": 91.25,
+              "bird2WelfareLow": 0,
+              "bird2X": 5.5,
+              "bird2Z": 5.25,
+              "birdAssetsGeometries": 0,
+              "birdModelTriangles": 0,
+              "birdOwnedMaterials": 0,
+              "birdPerchTriangles": 0,
+              "birdPerchesVisible": false,
+              "birdSceneDisposed": true,
+              "broadleafTrees": 4,
+              "bufferHeight": 350,
+              "bufferWidth": 504,
+              "cameraControlsDisposed": true,
+              "cameraFocusX": -0.848692394219912,
+              "cameraFocusZ": -1.0092307237478404,
+              "cameraInputEnabled": false,
+              "cameraMaxPanX": 0,
+              "cameraMaxPanZ": 0,
+              "cameraMinPanX": 0,
+              "cameraMinPanZ": 0,
+              "cameraPanX": 0,
+              "cameraPanZ": 0,
+              "cameraPinching": false,
+              "cameraPointers": 0,
+              "cameraZoom": 1,
+              "canUndo": false,
+              "canvasAttached": false,
+              "cleanupErrors": 0,
+              "connectedHabitats": 0,
+              "creekTiles": 8,
+              "currency": 1500,
+              "disposed": true,
+              "drawCallsLastRender": 42,
+              "editorRevision": 0,
+              "entranceGates": 1,
+              "feederBowl1Fruit": 0,
+              "feederBowl2Fruit": 0,
+              "feederFruitCount": 0,
+              "feederGeometries": 0,
+              "feederOwnedMaterials": 0,
+              "feederSceneDisposed": true,
+              "feederTriangles": 0,
+              "feederVisible": false,
+              "foodBowl1": 4,
+              "foodBowl2": 4,
+              "foodExists": true,
+              "foodPreview": false,
+              "foodRevision": 3,
+              "foodStock": 8,
+              "geometries": 0,
+              "habitatCount": 1,
+              "habitatMeshes": 0,
+              "habitatSceneDisposed": true,
+              "leafSway": 0,
+              "liveBirdModels": 0,
+              "lost": false,
+              "macawAngleIndex": 0,
+              "macawAnimationTimeMs": 0,
+              "macawAssetGeometries": 0,
+              "macawClipIndex": 0,
+              "macawGeometryBytes": 0,
+              "macawMaterials": 0,
+              "macawModelTriangles": 0,
+              "macawOwnedMaterialsLive": 0,
+              "macawRigDisposed": true,
+              "macawRigMeshes": 0,
+              "macawStageGeometries": 0,
+              "macawStudioActive": false,
+              "macawStudioDisposed": true,
+              "macawStudioInHabitat": false,
+              "macawStudioMotionPaused": false,
+              "macawTextures": 0,
+              "occupiedTiles": 4,
+              "orthographicCamera": true,
+              "ownedMaterialsLive": 0,
+              "palmTrees": 6,
+              "pathMeshes": 0,
+              "pathSceneDisposed": true,
+              "pathSceneRevision": 1,
+              "pathTiles": 1,
+              "pendingFrames": 0,
+              "perchExists": true,
+              "perchExploring": 0,
+              "perchGeometries": 0,
+              "perchOwnedMaterials": 0,
+              "perchPreview": false,
+              "perchResting": 0,
+              "perchRevision": 6,
+              "perchSceneDisposed": true,
+              "perchTriangles": 0,
+              "pixelRatio": 1.0000000298023224,
+              "placedBirds": 2,
+              "placementActive": false,
+              "placementBlockedCells": 77,
+              "placementConfirmations": 0,
+              "placementConfirmedCount": 0,
+              "placementDisposed": true,
+              "placementGhostVisible": false,
+              "placementPathMode": false,
+              "placementPlanVisible": false,
+              "placementRevision": 1,
+              "placementValid": false,
+              "programs": 0,
+              "reachablePathTiles": 1,
+              "renderSubmissions": 2,
+              "renderedPathTiles": 0,
+              "restKitVisible": false,
+              "routeCells": 0,
+              "selectableObjects": 22,
+              "selectableTiles": 120,
+              "selectionActive": false,
+              "selectionDisposed": true,
+              "selectionMarkerVisible": false,
+              "selectionRevision": 0,
+              "simulationDisposed": true,
+              "simulationEvents": 0,
+              "simulationGameTimeMs": 0,
+              "simulationPaused": true,
+              "simulationStartTick": 0,
+              "simulationSubscribers": 0,
+              "simulationTick": 0,
+              "terrainTiles": 120,
+              "textures": 0,
+              "trianglesLastRender": 11996,
+              "visualGameTimeMs": 0,
+              "waterBowl1": 4,
+              "waterBowl2": 4,
+              "waterExists": true,
+              "waterFlowOffset": 0,
+              "waterGeometries": 0,
+              "waterOwnedMaterials": 0,
+              "waterPreview": false,
+              "waterRevision": 5,
+              "waterSceneDisposed": true,
+              "waterStock": 8,
+              "waterSurface1": false,
+              "waterSurface2": false,
+              "waterTriangles": 0,
+              "waterVisible": false
+            },
+            "loads": 6,
+            "maxActiveSessions": 1,
+            "maxPendingRAFs": 1,
+            "metrics": {
+              "actualPresentationFPS": "UNMEASURED",
+              "callbackHz": null,
+              "callbacksObserved": 0,
+              "capacity": 300,
+              "cpuP50Ms": null,
+              "cpuP95Ms": null,
+              "intervalP50Ms": null,
+              "intervalP95Ms": null,
+              "kind": "RAF callback intervals and synchronous JS/core/render-submit duration; NOT presented FPS or GPU time",
+              "retainedCpuSamples": 0,
+              "retainedIntervals": 0,
+              "retainedWindowMs": 0
+            },
+            "mode": "native",
+            "pendingRAFs": 0,
+            "probe": {
+              "status": "UNRUN"
+            },
+            "readoutWrites": 77,
+            "session": {
+              "bird1Energy": 20,
+              "bird1EnrichedTicks": 0,
+              "bird1Enrichment": 0,
+              "bird1FoodEaten": 0,
+              "bird1HabitatFit": 100,
+              "bird1Height": 0,
+              "bird1Hunger": 90,
+              "bird1Phase": 0,
+              "bird1RestedTicks": 0,
+              "bird1Sequence": 0,
+              "bird1Thirst": 20,
+              "bird1WaterDrunk": 0,
+              "bird1Welfare": 47.5,
+              "bird1WelfareLow": 1,
+              "bird1X": 4.5,
+              "bird1Z": 5.25,
+              "bird2Energy": 85,
+              "bird2EnrichedTicks": 0,
+              "bird2Enrichment": 85,
+              "bird2FoodEaten": 0,
+              "bird2HabitatFit": 100,
+              "bird2Height": 0,
+              "bird2Hunger": 10,
+              "bird2Phase": 0,
+              "bird2RestedTicks": 0,
+              "bird2Sequence": 0,
+              "bird2Thirst": 90,
+              "bird2WaterDrunk": 0,
+              "bird2Welfare": 67.25,
+              "bird2WelfareLow": 0,
+              "bird2X": 5.5,
+              "bird2Z": 5.25,
+              "birdAssetsGeometries": 11,
+              "birdModelTriangles": 6360,
+              "birdOwnedMaterials": 2,
+              "birdPerchTriangles": 0,
+              "birdPerchesVisible": false,
+              "birdSceneDisposed": false,
+              "broadleafTrees": 4,
+              "bufferHeight": 350,
+              "bufferWidth": 504,
+              "cameraControlsDisposed": false,
+              "cameraFocusX": -0.848692394219912,
+              "cameraFocusZ": -1.0092307237478404,
+              "cameraInputEnabled": false,
+              "cameraMaxPanX": 0,
+              "cameraMaxPanZ": 0,
+              "cameraMinPanX": 0,
+              "cameraMinPanZ": 0,
+              "cameraPanX": 0,
+              "cameraPanZ": 0,
+              "cameraPinching": false,
+              "cameraPointers": 0,
+              "cameraZoom": 1,
+              "canUndo": false,
+              "canvasAttached": true,
+              "cleanupErrors": 0,
+              "connectedHabitats": 0,
+              "creekTiles": 8,
+              "currency": 1500,
+              "disposed": false,
+              "drawCallsLastRender": 37,
+              "editorRevision": 0,
+              "entranceGates": 1,
+              "feederBowl1Fruit": 0,
+              "feederBowl2Fruit": 4,
+              "feederFruitCount": 4,
+              "feederGeometries": 2,
+              "feederOwnedMaterials": 2,
+              "feederSceneDisposed": false,
+              "feederTriangles": 364,
+              "feederVisible": true,
+              "foodBowl1": 0,
+              "foodBowl2": 4,
+              "foodExists": true,
+              "foodPreview": false,
+              "foodRevision": 3,
+              "foodStock": 4,
+              "geometries": 23,
+              "habitatCount": 1,
+              "habitatMeshes": 1,
+              "habitatSceneDisposed": false,
+              "leafSway": 0,
+              "liveBirdModels": 2,
+              "lost": false,
+              "macawAngleIndex": 0,
+              "macawAnimationTimeMs": 0,
+              "macawAssetGeometries": 0,
+              "macawClipIndex": 0,
+              "macawGeometryBytes": 0,
+              "macawMaterials": 0,
+              "macawModelTriangles": 0,
+              "macawOwnedMaterialsLive": 0,
+              "macawRigDisposed": true,
+              "macawRigMeshes": 0,
+              "macawStageGeometries": 0,
+              "macawStudioActive": false,
+              "macawStudioDisposed": false,
+              "macawStudioInHabitat": false,
+              "macawStudioMotionPaused": false,
+              "macawTextures": 0,
+              "occupiedTiles": 4,
+              "orthographicCamera": true,
+              "ownedMaterialsLive": 21,
+              "palmTrees": 6,
+              "pathMeshes": 0,
+              "pathSceneDisposed": false,
+              "pathSceneRevision": 1,
+              "pathTiles": 1,
+              "pendingFrames": 0,
+              "perchExists": true,
+              "perchExploring": 0,
+              "perchGeometries": 2,
+              "perchOwnedMaterials": 1,
+              "perchPreview": false,
+              "perchResting": 0,
+              "perchRevision": 6,
+              "perchSceneDisposed": false,
+              "perchTriangles": 512,
+              "pixelRatio": 1.0000000298023224,
+              "placedBirds": 2,
+              "placementActive": false,
+              "placementBlockedCells": 77,
+              "placementConfirmations": 0,
+              "placementConfirmedCount": 0,
+              "placementDisposed": false,
+              "placementGhostVisible": false,
+              "placementPathMode": false,
+              "placementPlanVisible": false,
+              "placementRevision": 0,
+              "placementValid": false,
+              "programs": 7,
+              "reachablePathTiles": 1,
+              "renderSubmissions": 2,
+              "renderedPathTiles": 0,
+              "restKitVisible": true,
+              "routeCells": 0,
+              "selectableObjects": 23,
+              "selectableTiles": 120,
+              "selectionActive": false,
+              "selectionDisposed": false,
+              "selectionMarkerVisible": false,
+              "selectionRevision": 0,
+              "simulationDisposed": false,
+              "simulationEvents": 0,
+              "simulationGameTimeMs": 0,
+              "simulationPaused": true,
+              "simulationStartTick": 0,
+              "simulationSubscribers": 1,
+              "simulationTick": 0,
+              "terrainTiles": 120,
+              "textures": 1,
+              "trianglesLastRender": 11756,
+              "visualGameTimeMs": 0,
+              "waterBowl1": 4,
+              "waterBowl2": 0,
+              "waterExists": true,
+              "waterFlowOffset": 0,
+              "waterGeometries": 2,
+              "waterOwnedMaterials": 2,
+              "waterPreview": false,
+              "waterRevision": 5,
+              "waterSceneDisposed": false,
+              "waterStock": 4,
+              "waterSurface1": true,
+              "waterSurface2": false,
+              "waterTriangles": 352,
+              "waterVisible": true
+            },
+            "state": {
+              "status": "ready"
+            },
+            "viewport": {
+              "dpr": 1.0000000298023224,
+              "height": 768,
+              "visibility": "visible",
+              "width": 1366
+            }
+          },
+          {
+            "name": "resumed",
+            "activeSessions": 1,
+            "canvasCount": 1,
+            "disposedSessions": 5,
+            "faultSource": "none",
+            "heap": {
+              "jsHeapSizeLimit": 4395630592,
+              "note": "Potentially shared/quantized JS heap estimate; not tab-exclusive retained memory, GPU bytes or a leak proof",
+              "status": "OBSERVED_NONSTANDARD",
+              "totalJSHeapSize": 24734423,
+              "usedJSHeapSize": 20621591
+            },
+            "heapSnapshots": [],
+            "lastDisposed": {
+              "bird1Energy": 85,
+              "bird1EnrichedTicks": 0,
+              "bird1Enrichment": 85,
+              "bird1FoodEaten": 0,
+              "bird1HabitatFit": 100,
+              "bird1Height": 0,
+              "bird1Hunger": 10,
+              "bird1Phase": 0,
+              "bird1RestedTicks": 0,
+              "bird1Sequence": 0,
+              "bird1Thirst": 10,
+              "bird1WaterDrunk": 0,
+              "bird1Welfare": 91.25,
+              "bird1WelfareLow": 0,
+              "bird1X": 4.5,
+              "bird1Z": 5.25,
+              "bird2Energy": 85,
+              "bird2EnrichedTicks": 0,
+              "bird2Enrichment": 85,
+              "bird2FoodEaten": 0,
+              "bird2HabitatFit": 100,
+              "bird2Height": 0,
+              "bird2Hunger": 10,
+              "bird2Phase": 0,
+              "bird2RestedTicks": 0,
+              "bird2Sequence": 0,
+              "bird2Thirst": 10,
+              "bird2WaterDrunk": 0,
+              "bird2Welfare": 91.25,
+              "bird2WelfareLow": 0,
+              "bird2X": 5.5,
+              "bird2Z": 5.25,
+              "birdAssetsGeometries": 0,
+              "birdModelTriangles": 0,
+              "birdOwnedMaterials": 0,
+              "birdPerchTriangles": 0,
+              "birdPerchesVisible": false,
+              "birdSceneDisposed": true,
+              "broadleafTrees": 4,
+              "bufferHeight": 350,
+              "bufferWidth": 504,
+              "cameraControlsDisposed": true,
+              "cameraFocusX": -0.848692394219912,
+              "cameraFocusZ": -1.0092307237478404,
+              "cameraInputEnabled": false,
+              "cameraMaxPanX": 0,
+              "cameraMaxPanZ": 0,
+              "cameraMinPanX": 0,
+              "cameraMinPanZ": 0,
+              "cameraPanX": 0,
+              "cameraPanZ": 0,
+              "cameraPinching": false,
+              "cameraPointers": 0,
+              "cameraZoom": 1,
+              "canUndo": false,
+              "canvasAttached": false,
+              "cleanupErrors": 0,
+              "connectedHabitats": 0,
+              "creekTiles": 8,
+              "currency": 1500,
+              "disposed": true,
+              "drawCallsLastRender": 42,
+              "editorRevision": 0,
+              "entranceGates": 1,
+              "feederBowl1Fruit": 0,
+              "feederBowl2Fruit": 0,
+              "feederFruitCount": 0,
+              "feederGeometries": 0,
+              "feederOwnedMaterials": 0,
+              "feederSceneDisposed": true,
+              "feederTriangles": 0,
+              "feederVisible": false,
+              "foodBowl1": 4,
+              "foodBowl2": 4,
+              "foodExists": true,
+              "foodPreview": false,
+              "foodRevision": 3,
+              "foodStock": 8,
+              "geometries": 0,
+              "habitatCount": 1,
+              "habitatMeshes": 0,
+              "habitatSceneDisposed": true,
+              "leafSway": 0,
+              "liveBirdModels": 0,
+              "lost": false,
+              "macawAngleIndex": 0,
+              "macawAnimationTimeMs": 0,
+              "macawAssetGeometries": 0,
+              "macawClipIndex": 0,
+              "macawGeometryBytes": 0,
+              "macawMaterials": 0,
+              "macawModelTriangles": 0,
+              "macawOwnedMaterialsLive": 0,
+              "macawRigDisposed": true,
+              "macawRigMeshes": 0,
+              "macawStageGeometries": 0,
+              "macawStudioActive": false,
+              "macawStudioDisposed": true,
+              "macawStudioInHabitat": false,
+              "macawStudioMotionPaused": false,
+              "macawTextures": 0,
+              "occupiedTiles": 4,
+              "orthographicCamera": true,
+              "ownedMaterialsLive": 0,
+              "palmTrees": 6,
+              "pathMeshes": 0,
+              "pathSceneDisposed": true,
+              "pathSceneRevision": 1,
+              "pathTiles": 1,
+              "pendingFrames": 0,
+              "perchExists": true,
+              "perchExploring": 0,
+              "perchGeometries": 0,
+              "perchOwnedMaterials": 0,
+              "perchPreview": false,
+              "perchResting": 0,
+              "perchRevision": 6,
+              "perchSceneDisposed": true,
+              "perchTriangles": 0,
+              "pixelRatio": 1.0000000298023224,
+              "placedBirds": 2,
+              "placementActive": false,
+              "placementBlockedCells": 77,
+              "placementConfirmations": 0,
+              "placementConfirmedCount": 0,
+              "placementDisposed": true,
+              "placementGhostVisible": false,
+              "placementPathMode": false,
+              "placementPlanVisible": false,
+              "placementRevision": 1,
+              "placementValid": false,
+              "programs": 0,
+              "reachablePathTiles": 1,
+              "renderSubmissions": 2,
+              "renderedPathTiles": 0,
+              "restKitVisible": false,
+              "routeCells": 0,
+              "selectableObjects": 22,
+              "selectableTiles": 120,
+              "selectionActive": false,
+              "selectionDisposed": true,
+              "selectionMarkerVisible": false,
+              "selectionRevision": 0,
+              "simulationDisposed": true,
+              "simulationEvents": 0,
+              "simulationGameTimeMs": 0,
+              "simulationPaused": true,
+              "simulationStartTick": 0,
+              "simulationSubscribers": 0,
+              "simulationTick": 0,
+              "terrainTiles": 120,
+              "textures": 0,
+              "trianglesLastRender": 11996,
+              "visualGameTimeMs": 0,
+              "waterBowl1": 4,
+              "waterBowl2": 4,
+              "waterExists": true,
+              "waterFlowOffset": 0,
+              "waterGeometries": 0,
+              "waterOwnedMaterials": 0,
+              "waterPreview": false,
+              "waterRevision": 5,
+              "waterSceneDisposed": true,
+              "waterStock": 8,
+              "waterSurface1": false,
+              "waterSurface2": false,
+              "waterTriangles": 0,
+              "waterVisible": false
+            },
+            "loads": 6,
+            "maxActiveSessions": 1,
+            "maxPendingRAFs": 1,
+            "metrics": {
+              "actualPresentationFPS": "UNMEASURED",
+              "callbackHz": 60,
+              "callbacksObserved": 913,
+              "capacity": 300,
+              "cpuP50Ms": 1.399999976158142,
+              "cpuP95Ms": 4.5,
+              "intervalP50Ms": 16.69999999999709,
+              "intervalP95Ms": 16.900000000001455,
+              "kind": "RAF callback intervals and synchronous JS/core/render-submit duration; NOT presented FPS or GPU time",
+              "retainedCpuSamples": 300,
+              "retainedIntervals": 300,
+              "retainedWindowMs": 5000
+            },
+            "mode": "native",
+            "pendingRAFs": 1,
+            "probe": {
+              "status": "UNRUN"
+            },
+            "readoutWrites": 230,
+            "session": {
+              "bird1Energy": 78.24,
+              "bird1EnrichedTicks": 44,
+              "bird1Enrichment": 65.97,
+              "bird1FoodEaten": 0,
+              "bird1HabitatFit": 100,
+              "bird1Height": 0.26039999999999996,
+              "bird1Hunger": 100,
+              "bird1Phase": 19,
+              "bird1RestedTicks": 80,
+              "bird1Sequence": 0,
+              "bird1Thirst": 42.8,
+              "bird1WaterDrunk": 0,
+              "bird1Welfare": 47.06,
+              "bird1WelfareLow": 1,
+              "bird1X": 4.5,
+              "bird1Z": 4.5,
+              "bird2Energy": 72.84,
+              "bird2EnrichedTicks": 0,
+              "bird2Enrichment": 80.44,
+              "bird2FoodEaten": 0,
+              "bird2HabitatFit": 100,
+              "bird2Height": 0.26039999999999996,
+              "bird2Hunger": 28.24,
+              "bird2Phase": 5,
+              "bird2RestedTicks": 0,
+              "bird2Sequence": 0,
+              "bird2Thirst": 100,
+              "bird2WaterDrunk": 0,
+              "bird2Welfare": 57.18,
+              "bird2WelfareLow": 1,
+              "bird2X": 5.5,
+              "bird2Z": 4.5,
+              "birdAssetsGeometries": 11,
+              "birdModelTriangles": 6360,
+              "birdOwnedMaterials": 2,
+              "birdPerchTriangles": 0,
+              "birdPerchesVisible": false,
+              "birdSceneDisposed": false,
+              "broadleafTrees": 4,
+              "bufferHeight": 350,
+              "bufferWidth": 504,
+              "cameraControlsDisposed": false,
+              "cameraFocusX": -0.848692394219912,
+              "cameraFocusZ": -1.0092307237478404,
+              "cameraInputEnabled": true,
+              "cameraMaxPanX": 0,
+              "cameraMaxPanZ": 0,
+              "cameraMinPanX": 0,
+              "cameraMinPanZ": 0,
+              "cameraPanX": 0,
+              "cameraPanZ": 0,
+              "cameraPinching": false,
+              "cameraPointers": 0,
+              "cameraZoom": 1,
+              "canUndo": false,
+              "canvasAttached": true,
+              "cleanupErrors": 0,
+              "connectedHabitats": 0,
+              "creekTiles": 8,
+              "currency": 1500,
+              "disposed": false,
+              "drawCallsLastRender": 37,
+              "editorRevision": 0,
+              "entranceGates": 1,
+              "feederBowl1Fruit": 0,
+              "feederBowl2Fruit": 4,
+              "feederFruitCount": 4,
+              "feederGeometries": 2,
+              "feederOwnedMaterials": 2,
+              "feederSceneDisposed": false,
+              "feederTriangles": 364,
+              "feederVisible": true,
+              "foodBowl1": 0,
+              "foodBowl2": 4,
+              "foodExists": true,
+              "foodPreview": false,
+              "foodRevision": 3,
+              "foodStock": 4,
+              "geometries": 25,
+              "habitatCount": 1,
+              "habitatMeshes": 1,
+              "habitatSceneDisposed": false,
+              "leafSway": 0.003586492761828457,
+              "liveBirdModels": 2,
+              "lost": false,
+              "macawAngleIndex": 0,
+              "macawAnimationTimeMs": 0,
+              "macawAssetGeometries": 0,
+              "macawClipIndex": 0,
+              "macawGeometryBytes": 0,
+              "macawMaterials": 0,
+              "macawModelTriangles": 0,
+              "macawOwnedMaterialsLive": 0,
+              "macawRigDisposed": true,
+              "macawRigMeshes": 0,
+              "macawStageGeometries": 0,
+              "macawStudioActive": false,
+              "macawStudioDisposed": false,
+              "macawStudioInHabitat": false,
+              "macawStudioMotionPaused": false,
+              "macawTextures": 0,
+              "occupiedTiles": 4,
+              "orthographicCamera": true,
+              "ownedMaterialsLive": 21,
+              "palmTrees": 6,
+              "pathMeshes": 0,
+              "pathSceneDisposed": false,
+              "pathSceneRevision": 1,
+              "pathTiles": 1,
+              "pendingFrames": 1,
+              "perchExists": true,
+              "perchExploring": 1,
+              "perchGeometries": 2,
+              "perchOwnedMaterials": 1,
+              "perchPreview": false,
+              "perchResting": 0,
+              "perchRevision": 6,
+              "perchSceneDisposed": false,
+              "perchTriangles": 512,
+              "pixelRatio": 1.0000000298023224,
+              "placedBirds": 2,
+              "placementActive": false,
+              "placementBlockedCells": 77,
+              "placementConfirmations": 0,
+              "placementConfirmedCount": 0,
+              "placementDisposed": false,
+              "placementGhostVisible": false,
+              "placementPathMode": false,
+              "placementPlanVisible": false,
+              "placementRevision": 0,
+              "placementValid": false,
+              "programs": 7,
+              "reachablePathTiles": 1,
+              "renderSubmissions": 915,
+              "renderedPathTiles": 0,
+              "restKitVisible": true,
+              "routeCells": 0,
+              "selectableObjects": 23,
+              "selectableTiles": 120,
+              "selectionActive": false,
+              "selectionDisposed": false,
+              "selectionMarkerVisible": false,
+              "selectionRevision": 0,
+              "simulationDisposed": false,
+              "simulationEvents": 152,
+              "simulationGameTimeMs": 15200,
+              "simulationPaused": false,
+              "simulationStartTick": 0,
+              "simulationSubscribers": 1,
+              "simulationTick": 152,
+              "terrainTiles": 120,
+              "textures": 1,
+              "trianglesLastRender": 11756,
+              "visualGameTimeMs": 15200,
+              "waterBowl1": 4,
+              "waterBowl2": 0,
+              "waterExists": true,
+              "waterFlowOffset": 0.018004882581905097,
+              "waterGeometries": 2,
+              "waterOwnedMaterials": 2,
+              "waterPreview": false,
+              "waterRevision": 5,
+              "waterSceneDisposed": false,
+              "waterStock": 4,
+              "waterSurface1": true,
+              "waterSurface2": false,
+              "waterTriangles": 352,
+              "waterVisible": true
+            },
+            "state": {
+              "status": "ready"
+            },
+            "viewport": {
+              "dpr": 1.0000000298023224,
+              "height": 768,
+              "visibility": "visible",
+              "width": 1366
+            }
+          },
+          {
+            "name": "closed",
+            "activeSessions": 0,
+            "canvasCount": 0,
+            "disposedSessions": 10,
+            "faultSource": "injected WEBGL_lose_context",
+            "heap": {
+              "jsHeapSizeLimit": 4395630592,
+              "note": "Potentially shared/quantized JS heap estimate; not tab-exclusive retained memory, GPU bytes or a leak proof",
+              "status": "OBSERVED_NONSTANDARD",
+              "totalJSHeapSize": 56288272,
+              "usedJSHeapSize": 21001532
+            },
+            "heapSnapshots": [],
+            "lastDisposed": {
+              "bird1Energy": 78.24,
+              "bird1EnrichedTicks": 44,
+              "bird1Enrichment": 65.97,
+              "bird1FoodEaten": 0,
+              "bird1HabitatFit": 100,
+              "bird1Height": 0.26039999999999996,
+              "bird1Hunger": 100,
+              "bird1Phase": 19,
+              "bird1RestedTicks": 80,
+              "bird1Sequence": 0,
+              "bird1Thirst": 42.8,
+              "bird1WaterDrunk": 0,
+              "bird1Welfare": 47.06,
+              "bird1WelfareLow": 1,
+              "bird1X": 4.5,
+              "bird1Z": 4.5,
+              "bird2Energy": 72.84,
+              "bird2EnrichedTicks": 0,
+              "bird2Enrichment": 80.44,
+              "bird2FoodEaten": 0,
+              "bird2HabitatFit": 100,
+              "bird2Height": 0.26039999999999996,
+              "bird2Hunger": 28.24,
+              "bird2Phase": 5,
+              "bird2RestedTicks": 0,
+              "bird2Sequence": 0,
+              "bird2Thirst": 100,
+              "bird2WaterDrunk": 0,
+              "bird2Welfare": 57.18,
+              "bird2WelfareLow": 1,
+              "bird2X": 5.5,
+              "bird2Z": 4.5,
+              "birdAssetsGeometries": 0,
+              "birdModelTriangles": 0,
+              "birdOwnedMaterials": 0,
+              "birdPerchTriangles": 0,
+              "birdPerchesVisible": false,
+              "birdSceneDisposed": true,
+              "broadleafTrees": 4,
+              "bufferHeight": 350,
+              "bufferWidth": 504,
+              "cameraControlsDisposed": true,
+              "cameraFocusX": -0.848692394219912,
+              "cameraFocusZ": -1.0092307237478404,
+              "cameraInputEnabled": false,
+              "cameraMaxPanX": 0,
+              "cameraMaxPanZ": 0,
+              "cameraMinPanX": 0,
+              "cameraMinPanZ": 0,
+              "cameraPanX": 0,
+              "cameraPanZ": 0,
+              "cameraPinching": false,
+              "cameraPointers": 0,
+              "cameraZoom": 1,
+              "canUndo": false,
+              "canvasAttached": false,
+              "cleanupErrors": 0,
+              "connectedHabitats": 0,
+              "creekTiles": 8,
+              "currency": 1500,
+              "disposed": true,
+              "drawCallsLastRender": 37,
+              "editorRevision": 0,
+              "entranceGates": 1,
+              "feederBowl1Fruit": 0,
+              "feederBowl2Fruit": 0,
+              "feederFruitCount": 0,
+              "feederGeometries": 0,
+              "feederOwnedMaterials": 0,
+              "feederSceneDisposed": true,
+              "feederTriangles": 0,
+              "feederVisible": false,
+              "foodBowl1": 0,
+              "foodBowl2": 4,
+              "foodExists": true,
+              "foodPreview": false,
+              "foodRevision": 3,
+              "foodStock": 4,
+              "geometries": 0,
+              "habitatCount": 1,
+              "habitatMeshes": 0,
+              "habitatSceneDisposed": true,
+              "leafSway": 0.003586492761828457,
+              "liveBirdModels": 0,
+              "lost": false,
+              "macawAngleIndex": 0,
+              "macawAnimationTimeMs": 0,
+              "macawAssetGeometries": 0,
+              "macawClipIndex": 0,
+              "macawGeometryBytes": 0,
+              "macawMaterials": 0,
+              "macawModelTriangles": 0,
+              "macawOwnedMaterialsLive": 0,
+              "macawRigDisposed": true,
+              "macawRigMeshes": 0,
+              "macawStageGeometries": 0,
+              "macawStudioActive": false,
+              "macawStudioDisposed": true,
+              "macawStudioInHabitat": false,
+              "macawStudioMotionPaused": false,
+              "macawTextures": 0,
+              "occupiedTiles": 4,
+              "orthographicCamera": true,
+              "ownedMaterialsLive": 0,
+              "palmTrees": 6,
+              "pathMeshes": 0,
+              "pathSceneDisposed": true,
+              "pathSceneRevision": 1,
+              "pathTiles": 1,
+              "pendingFrames": 0,
+              "perchExists": true,
+              "perchExploring": 1,
+              "perchGeometries": 0,
+              "perchOwnedMaterials": 0,
+              "perchPreview": false,
+              "perchResting": 0,
+              "perchRevision": 6,
+              "perchSceneDisposed": true,
+              "perchTriangles": 0,
+              "pixelRatio": 1.0000000298023224,
+              "placedBirds": 2,
+              "placementActive": false,
+              "placementBlockedCells": 77,
+              "placementConfirmations": 0,
+              "placementConfirmedCount": 0,
+              "placementDisposed": true,
+              "placementGhostVisible": false,
+              "placementPathMode": false,
+              "placementPlanVisible": false,
+              "placementRevision": 1,
+              "placementValid": false,
+              "programs": 0,
+              "reachablePathTiles": 1,
+              "renderSubmissions": 2,
+              "renderedPathTiles": 0,
+              "restKitVisible": false,
+              "routeCells": 0,
+              "selectableObjects": 22,
+              "selectableTiles": 120,
+              "selectionActive": false,
+              "selectionDisposed": true,
+              "selectionMarkerVisible": false,
+              "selectionRevision": 0,
+              "simulationDisposed": true,
+              "simulationEvents": 0,
+              "simulationGameTimeMs": 15200,
+              "simulationPaused": true,
+              "simulationStartTick": 152,
+              "simulationSubscribers": 0,
+              "simulationTick": 152,
+              "terrainTiles": 120,
+              "textures": 0,
+              "trianglesLastRender": 11756,
+              "visualGameTimeMs": 15200,
+              "waterBowl1": 4,
+              "waterBowl2": 0,
+              "waterExists": true,
+              "waterFlowOffset": 0.018004882581905097,
+              "waterGeometries": 0,
+              "waterOwnedMaterials": 0,
+              "waterPreview": false,
+              "waterRevision": 5,
+              "waterSceneDisposed": true,
+              "waterStock": 4,
+              "waterSurface1": false,
+              "waterSurface2": false,
+              "waterTriangles": 0,
+              "waterVisible": false
+            },
+            "loads": 10,
+            "maxActiveSessions": 1,
+            "maxPendingRAFs": 1,
+            "metrics": {
+              "actualPresentationFPS": "UNMEASURED",
+              "callbackHz": null,
+              "callbacksObserved": 0,
+              "capacity": 300,
+              "cpuP50Ms": null,
+              "cpuP95Ms": null,
+              "intervalP50Ms": null,
+              "intervalP95Ms": null,
+              "kind": "RAF callback intervals and synchronous JS/core/render-submit duration; NOT presented FPS or GPU time",
+              "retainedCpuSamples": 0,
+              "retainedIntervals": 0,
+              "retainedWindowMs": 0
+            },
+            "mode": "native",
+            "pendingRAFs": 0,
+            "probe": {
+              "status": "UNRUN"
+            },
+            "readoutWrites": 267,
+            "session": null,
+            "state": {
+              "status": "closed"
+            },
+            "viewport": {
+              "dpr": 1.0000000298023224,
+              "height": 768,
+              "visibility": "visible",
+              "width": 1366
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "desktop-native",
+      "status": "PASS",
+      "observedAt": "2026-11-01T04:44:52.928Z",
+      "screenshot": "screens/desktop-native.jpg",
+      "data": {
+        "announcement": "Macaw 1: ✓ Comfortable. No current care alert. Keep supplies available and watch each bird’s needs.",
+        "canvas": 1,
+        "causes": [],
+        "documentWidth": 1351,
+        "entryScript": "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.BKNq_JBk.js",
+        "focused": "H4",
+        "height": 768,
+        "lang": "en",
+        "low": "false",
+        "panelHidden": false,
+        "parts": [
+          {
+            "part": "food",
+            "text": "Food 42.52% × 35%"
+          },
+          {
+            "part": "water",
+            "text": "Water 71.9% × 30%"
+          },
+          {
+            "part": "habitat",
+            "text": "Habitat 100% × 20%"
+          },
+          {
+            "part": "enrichment",
+            "text": "Enrichment 86.97% × 15%"
+          }
+        ],
+        "rows": [
+          {
+            "id": "macaw-1",
+            "text": "Macaw 1 · Walking · Hunger 57% · Portions eaten 1 · Thirst 28% · Drinks 2 · Energy 72% · Enrichment 87%Welfare 70% · ✓ ComfortableInspect Macaw 1"
+          },
+          {
+            "id": "macaw-2",
+            "text": "Macaw 2 · Walking · Hunger 57% · Portions eaten 1 · Thirst 28% · Drinks 2 · Energy 72% · Enrichment 87%Welfare 70% · ✓ ComfortableInspect Macaw 2"
+          }
+        ],
+        "selected": "macaw-1",
+        "state": "ready",
+        "status": "Welfare: 69.5% · ✓ Comfortable",
+        "title": "Macaw 1 · Blue-and-yellow macaw · macaw-1",
+        "welfare": 69.5,
+        "width": 1366,
+        "buttons": [
+          {
+            "height": 44,
+            "id": "macaw-1",
+            "text": "Inspect Macaw 1",
+            "width": 118.46875
+          },
+          {
+            "height": 44,
+            "id": "macaw-2",
+            "text": "Inspect Macaw 2",
+            "width": 121.02083587646484
+          },
+          {
+            "height": 44,
+            "id": "dismiss",
+            "text": "Close animal details",
+            "width": 141.6875
+          }
+        ],
+        "method": "Native actual final product, EN controls, fresh real care increased welfare; DOM before/after capture retained as simulation continues",
+        "visualReviewed": true,
+        "capture": {
+          "beforeAt": "2026-11-01T04:44:51.503Z",
+          "afterAt": "2026-11-01T04:44:52.928Z",
+          "after": {
+            "announcement": "Macaw 1: ✓ Comfortable. No current care alert. Keep supplies available and watch each bird’s needs.",
+            "canvas": 1,
+            "causes": [],
+            "documentWidth": 1351,
+            "entryScript": "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.BKNq_JBk.js",
+            "focused": "H4",
+            "height": 768,
+            "lang": "en",
+            "low": "false",
+            "panelHidden": false,
+            "parts": [
+              {
+                "part": "food",
+                "text": "Food 40.84% × 35%"
+              },
+              {
+                "part": "water",
+                "text": "Water 69.8% × 30%"
+              },
+              {
+                "part": "habitat",
+                "text": "Habitat 100% × 20%"
+              },
+              {
+                "part": "enrichment",
+                "text": "Enrichment 86.55% × 15%"
+              }
+            ],
+            "rows": [
+              {
+                "id": "macaw-1",
+                "text": "Macaw 1 · Eating · Hunger 59% · Portions eaten 1 · Thirst 30% · Drinks 2 · Energy 71% · Enrichment 87%Welfare 68% · ✓ ComfortableInspect Macaw 1"
+              },
+              {
+                "id": "macaw-2",
+                "text": "Macaw 2 · Eating · Hunger 59% · Portions eaten 1 · Thirst 30% · Drinks 2 · Energy 71% · Enrichment 87%Welfare 68% · ✓ ComfortableInspect Macaw 2"
+              }
+            ],
+            "selected": "macaw-1",
+            "state": "ready",
+            "status": "Welfare: 68.22% · ✓ Comfortable",
+            "title": "Macaw 1 · Blue-and-yellow macaw · macaw-1",
+            "welfare": 68.22,
+            "width": 1366,
+            "buttons": [
+              {
+                "height": 44,
+                "id": "macaw-1",
+                "text": "Inspect Macaw 1",
+                "width": 118.46875
+              },
+              {
+                "height": 44,
+                "id": "macaw-2",
+                "text": "Inspect Macaw 2",
+                "width": 121.02083587646484
+              },
+              {
+                "height": 44,
+                "id": "dismiss",
+                "text": "Close animal details",
+                "width": 141.6875
+              }
+            ]
+          },
+          "note": "Native simulation continues during screenshot; pre/post DOM values recorded. Injected QA scenarios paused."
+        }
+      }
+    },
+    {
+      "id": "navigation-reload",
+      "status": "PASS",
+      "observedAt": "2026-11-01T04:45:18.784Z",
+      "data": {
+        "journalPath": "/animals/",
+        "returnPath": "/play/",
+        "returnCanvas": 0,
+        "reloadCanvas": 0,
+        "canonical": "https://myzootwin.com/play/"
+      }
+    },
+    {
+      "id": "portrait-healthy-info",
+      "status": "PASS",
+      "observedAt": "2026-11-01T04:45:48.165Z",
+      "screenshot": "screens/portrait-healthy-info.jpg",
+      "data": {
+        "announcement": "Makaw 1: ✓ Nyaman. Tidak ada alert perawatan saat ini. Jaga suplai dan perhatikan kebutuhan tiap burung.",
+        "canvas": 1,
+        "causes": [],
+        "documentWidth": 22706,
+        "entryScript": null,
+        "focused": "H4",
+        "height": 780,
+        "lang": "en",
+        "low": "false",
+        "panelHidden": false,
+        "parts": [
+          {
+            "part": "food",
+            "text": "Pakan 90% × 35%"
+          },
+          {
+            "part": "water",
+            "text": "Air 90% × 30%"
+          },
+          {
+            "part": "habitat",
+            "text": "Habitat 100% × 20%"
+          },
+          {
+            "part": "enrichment",
+            "text": "Pengayaan 85% × 15%"
+          }
+        ],
+        "rows": [
+          {
+            "id": "macaw-1",
+            "text": "Makaw 1 · Melihat sekitar · Lapar 10% · Porsi dimakan 0 · Haus 10% · Porsi diminum 0 · Energi 85% · Pengayaan 85%Kesejahteraan 91% · ✓ NyamanPeriksa Makaw 1"
+          },
+          {
+            "id": "macaw-2",
+            "text": "Makaw 2 · Melihat sekitar · Lapar 10% · Porsi dimakan 0 · Haus 10% · Porsi diminum 0 · Energi 85% · Pengayaan 85%Kesejahteraan 91% · ✓ NyamanPeriksa Makaw 2"
+          }
+        ],
+        "selected": "macaw-1",
+        "state": "ready",
+        "status": "Kesejahteraan: 91,25% · ✓ Nyaman",
+        "title": "Makaw 1 · Makaw biru-kuning · macaw-1",
+        "welfare": 91.25,
+        "width": 360,
+        "buttons": [
+          {
+            "height": 44,
+            "id": "macaw-1",
+            "text": "Periksa Makaw 1",
+            "width": 115.89583587646484
+          },
+          {
+            "height": 44,
+            "id": "macaw-2",
+            "text": "Periksa Makaw 2",
+            "width": 118.45833587646484
+          },
+          {
+            "height": 44,
+            "id": "dismiss",
+            "text": "Tutup rincian satwa",
+            "width": 139.42709350585938
+          }
+        ],
+        "method": "Final source: labelled healthy fixture, actual ID preview strings with91.25score and44pxcontrols",
+        "visualReviewed": true,
+        "capture": {
+          "beforeAt": "2026-11-01T04:45:48.089Z",
+          "afterAt": "2026-11-01T04:45:48.165Z",
+          "after": {
+            "announcement": "Makaw 1: ✓ Nyaman. Tidak ada alert perawatan saat ini. Jaga suplai dan perhatikan kebutuhan tiap burung.",
+            "canvas": 1,
+            "causes": [],
+            "documentWidth": 22706,
+            "entryScript": null,
+            "focused": "H4",
+            "height": 780,
+            "lang": "en",
+            "low": "false",
+            "panelHidden": false,
+            "parts": [
+              {
+                "part": "food",
+                "text": "Pakan 90% × 35%"
+              },
+              {
+                "part": "water",
+                "text": "Air 90% × 30%"
+              },
+              {
+                "part": "habitat",
+                "text": "Habitat 100% × 20%"
+              },
+              {
+                "part": "enrichment",
+                "text": "Pengayaan 85% × 15%"
+              }
+            ],
+            "rows": [
+              {
+                "id": "macaw-1",
+                "text": "Makaw 1 · Melihat sekitar · Lapar 10% · Porsi dimakan 0 · Haus 10% · Porsi diminum 0 · Energi 85% · Pengayaan 85%Kesejahteraan 91% · ✓ NyamanPeriksa Makaw 1"
+              },
+              {
+                "id": "macaw-2",
+                "text": "Makaw 2 · Melihat sekitar · Lapar 10% · Porsi dimakan 0 · Haus 10% · Porsi diminum 0 · Energi 85% · Pengayaan 85%Kesejahteraan 91% · ✓ NyamanPeriksa Makaw 2"
+              }
+            ],
+            "selected": "macaw-1",
+            "state": "ready",
+            "status": "Kesejahteraan: 91,25% · ✓ Nyaman",
+            "title": "Makaw 1 · Makaw biru-kuning · macaw-1",
+            "welfare": 91.25,
+            "width": 360,
+            "buttons": [
+              {
+                "height": 44,
+                "id": "macaw-1",
+                "text": "Periksa Makaw 1",
+                "width": 115.89583587646484
+              },
+              {
+                "height": 44,
+                "id": "macaw-2",
+                "text": "Periksa Makaw 2",
+                "width": 118.45833587646484
+              },
+              {
+                "height": 44,
+                "id": "dismiss",
+                "text": "Tutup rincian satwa",
+                "width": 139.42709350585938
+              }
+            ]
+          },
+          "note": "Native simulation continues during screenshot; pre/post DOM values recorded. Injected QA scenarios paused."
+        }
+      }
+    },
+    {
+      "id": "portrait-critical-info",
+      "status": "PASS",
+      "observedAt": "2026-11-01T04:45:55.397Z",
+      "screenshot": "screens/portrait-critical-info.jpg",
+      "data": {
+        "announcement": "Makaw 1: ! Perlu perawatan. Mangkuk pakan burung ini kosong. Isi feeder meski mangkuk burung lain masih berbuah.",
+        "canvas": 1,
+        "causes": [
+          {
+            "code": "food-empty",
+            "text": "Mangkuk pakan burung ini kosong. Isi feeder meski mangkuk burung lain masih berbuah.Ke tempat pakan"
+          },
+          {
+            "code": "tired",
+            "text": "Energi rendah. Taman terjangkau: biarkan tidur selesai; makan/minum mendesak diprioritaskan."
+          },
+          {
+            "code": "bored",
+            "text": "Pengayaan rendah. Taman terjangkau: setelah tidur dan perawatan mendesak, biarkan burung mengamati daun."
+          }
+        ],
+        "documentWidth": 22706,
+        "entryScript": null,
+        "focused": "H4",
+        "height": 780,
+        "lang": "en",
+        "low": "true",
+        "panelHidden": false,
+        "parts": [
+          {
+            "part": "food",
+            "text": "Pakan 10% × 35%"
+          },
+          {
+            "part": "water",
+            "text": "Air 80% × 30%"
+          },
+          {
+            "part": "habitat",
+            "text": "Habitat 100% × 20%"
+          },
+          {
+            "part": "enrichment",
+            "text": "Pengayaan 0% × 15%"
+          }
+        ],
+        "rows": [
+          {
+            "id": "macaw-1",
+            "text": "Makaw 1 · Melihat sekitar · Lapar 90% · Porsi dimakan 0 · Haus 20% · Porsi diminum 0 · Energi 20% · Pengayaan 0%Kesejahteraan 48% · ! Perlu perawatanPeriksa Makaw 1"
+          },
+          {
+            "id": "macaw-2",
+            "text": "Makaw 2 · Melihat sekitar · Lapar 10% · Porsi dimakan 0 · Haus 90% · Porsi diminum 0 · Energi 85% · Pengayaan 85%Kesejahteraan 67% · ✓ NyamanPeriksa Makaw 2"
+          }
+        ],
+        "selected": "macaw-1",
+        "state": "ready",
+        "status": "Kesejahteraan: 47,5% · ! Perlu perawatan",
+        "title": "Makaw 1 · Makaw biru-kuning · macaw-1",
+        "welfare": 47.5,
+        "width": 360,
+        "buttons": [
+          {
+            "height": 44,
+            "id": "macaw-1",
+            "text": "Periksa Makaw 1",
+            "width": 115.89583587646484
+          },
+          {
+            "height": 44,
+            "id": "macaw-2",
+            "text": "Periksa Makaw 2",
+            "width": 118.45833587646484
+          },
+          {
+            "height": 44,
+            "id": "dismiss",
+            "text": "Tutup rincian satwa",
+            "width": 139.42709350585938
+          },
+          {
+            "height": 44,
+            "id": "food",
+            "text": "Ke tempat pakan",
+            "width": 121.92708587646484
+          }
+        ],
+        "method": "Final source: labelled asymmetric critical state, actual ID causes and own empty bowl corrective action",
+        "visualReviewed": true,
+        "capture": {
+          "beforeAt": "2026-11-01T04:45:55.318Z",
+          "afterAt": "2026-11-01T04:45:55.397Z",
+          "after": {
+            "announcement": "Makaw 1: ! Perlu perawatan. Mangkuk pakan burung ini kosong. Isi feeder meski mangkuk burung lain masih berbuah.",
+            "canvas": 1,
+            "causes": [
+              {
+                "code": "food-empty",
+                "text": "Mangkuk pakan burung ini kosong. Isi feeder meski mangkuk burung lain masih berbuah.Ke tempat pakan"
+              },
+              {
+                "code": "tired",
+                "text": "Energi rendah. Taman terjangkau: biarkan tidur selesai; makan/minum mendesak diprioritaskan."
+              },
+              {
+                "code": "bored",
+                "text": "Pengayaan rendah. Taman terjangkau: setelah tidur dan perawatan mendesak, biarkan burung mengamati daun."
+              }
+            ],
+            "documentWidth": 22706,
+            "entryScript": null,
+            "focused": "H4",
+            "height": 780,
+            "lang": "en",
+            "low": "true",
+            "panelHidden": false,
+            "parts": [
+              {
+                "part": "food",
+                "text": "Pakan 10% × 35%"
+              },
+              {
+                "part": "water",
+                "text": "Air 80% × 30%"
+              },
+              {
+                "part": "habitat",
+                "text": "Habitat 100% × 20%"
+              },
+              {
+                "part": "enrichment",
+                "text": "Pengayaan 0% × 15%"
+              }
+            ],
+            "rows": [
+              {
+                "id": "macaw-1",
+                "text": "Makaw 1 · Melihat sekitar · Lapar 90% · Porsi dimakan 0 · Haus 20% · Porsi diminum 0 · Energi 20% · Pengayaan 0%Kesejahteraan 48% · ! Perlu perawatanPeriksa Makaw 1"
+              },
+              {
+                "id": "macaw-2",
+                "text": "Makaw 2 · Melihat sekitar · Lapar 10% · Porsi dimakan 0 · Haus 90% · Porsi diminum 0 · Energi 85% · Pengayaan 85%Kesejahteraan 67% · ✓ NyamanPeriksa Makaw 2"
+              }
+            ],
+            "selected": "macaw-1",
+            "state": "ready",
+            "status": "Kesejahteraan: 47,5% · ! Perlu perawatan",
+            "title": "Makaw 1 · Makaw biru-kuning · macaw-1",
+            "welfare": 47.5,
+            "width": 360,
+            "buttons": [
+              {
+                "height": 44,
+                "id": "macaw-1",
+                "text": "Periksa Makaw 1",
+                "width": 115.89583587646484
+              },
+              {
+                "height": 44,
+                "id": "macaw-2",
+                "text": "Periksa Makaw 2",
+                "width": 118.45833587646484
+              },
+              {
+                "height": 44,
+                "id": "dismiss",
+                "text": "Tutup rincian satwa",
+                "width": 139.42709350585938
+              },
+              {
+                "height": 44,
+                "id": "food",
+                "text": "Ke tempat pakan",
+                "width": 121.92708587646484
+              }
+            ]
+          },
+          "note": "Native simulation continues during screenshot; pre/post DOM values recorded. Injected QA scenarios paused."
+        }
+      }
+    },
+    {
+      "id": "portrait-native-id",
+      "status": "PASS",
+      "observedAt": "2026-11-01T04:52:48.054Z",
+      "screenshot": "screens/portrait-native-id.jpg",
+      "data": {
+        "announcement": "Makaw 1: ✓ Nyaman. Tidak ada alert perawatan saat ini. Jaga suplai dan perhatikan kebutuhan tiap burung.",
+        "canvas": 1,
+        "causes": [],
+        "documentWidth": 345,
+        "entryScript": "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.BKNq_JBk.js",
+        "focused": "H4",
+        "height": 780,
+        "lang": "id",
+        "low": "false",
+        "panelHidden": false,
+        "parts": [
+          {
+            "part": "food",
+            "text": "Pakan 78,64% × 35%"
+          },
+          {
+            "part": "water",
+            "text": "Air 77,05% × 30%"
+          },
+          {
+            "part": "habitat",
+            "text": "Habitat 100% × 20%"
+          },
+          {
+            "part": "enrichment",
+            "text": "Pengayaan 81% × 15%"
+          }
+        ],
+        "rows": [
+          {
+            "id": "macaw-1",
+            "text": "Makaw 1 · Tidur di tenggeran · Lapar 21% · Porsi dimakan 3 · Haus 23% · Porsi diminum 3 · Energi 69% · Pengayaan 81%Kesejahteraan 83% · ✓ NyamanPeriksa Makaw 1"
+          },
+          {
+            "id": "macaw-2",
+            "text": "Makaw 2 · Tidur di tenggeran · Lapar 21% · Porsi dimakan 3 · Haus 23% · Porsi diminum 3 · Energi 69% · Pengayaan 81%Kesejahteraan 83% · ✓ NyamanPeriksa Makaw 2"
+          }
+        ],
+        "selected": "macaw-1",
+        "state": "ready",
+        "status": "Kesejahteraan: 82,79% · ✓ Nyaman",
+        "title": "Makaw 1 · Makaw biru-kuning · macaw-1",
+        "welfare": 82.79,
+        "width": 360,
+        "buttons": [
+          {
+            "height": 44,
+            "id": "macaw-1",
+            "text": "Periksa Makaw 1",
+            "width": 115.89583587646484
+          },
+          {
+            "height": 44,
+            "id": "macaw-2",
+            "text": "Periksa Makaw 2",
+            "width": 118.45833587646484
+          },
+          {
+            "height": 44,
+            "id": "dismiss",
+            "text": "Tutup rincian satwa",
+            "width": 139.42709350585938
+          }
+        ],
+        "method": "Native actual final ID product, fresh real care improves welfare; true DOM360x780, not physical Android",
+        "visualReviewed": true,
+        "capture": {
+          "beforeAt": "2026-11-01T04:52:46.631Z",
+          "afterAt": "2026-11-01T04:52:48.054Z",
+          "after": {
+            "announcement": "Makaw 1: ✓ Nyaman. Tidak ada alert perawatan saat ini. Jaga suplai dan perhatikan kebutuhan tiap burung.",
+            "canvas": 1,
+            "causes": [],
+            "documentWidth": 345,
+            "entryScript": "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.BKNq_JBk.js",
+            "focused": "H4",
+            "height": 780,
+            "lang": "id",
+            "low": "false",
+            "panelHidden": false,
+            "parts": [
+              {
+                "part": "food",
+                "text": "Pakan 76,84% × 35%"
+              },
+              {
+                "part": "water",
+                "text": "Air 74,8% × 30%"
+              },
+              {
+                "part": "habitat",
+                "text": "Habitat 100% × 20%"
+              },
+              {
+                "part": "enrichment",
+                "text": "Pengayaan 80,55% × 15%"
+              }
+            ],
+            "rows": [
+              {
+                "id": "macaw-1",
+                "text": "Makaw 1 · Tidur di tenggeran · Lapar 23% · Porsi dimakan 3 · Haus 25% · Porsi diminum 3 · Energi 81% · Pengayaan 81%Kesejahteraan 81% · ✓ NyamanPeriksa Makaw 1"
+              },
+              {
+                "id": "macaw-2",
+                "text": "Makaw 2 · Tidur di tenggeran · Lapar 23% · Porsi dimakan 3 · Haus 25% · Porsi diminum 3 · Energi 81% · Pengayaan 81%Kesejahteraan 81% · ✓ NyamanPeriksa Makaw 2"
+              }
+            ],
+            "selected": "macaw-1",
+            "state": "ready",
+            "status": "Kesejahteraan: 81,42% · ✓ Nyaman",
+            "title": "Makaw 1 · Makaw biru-kuning · macaw-1",
+            "welfare": 81.42,
+            "width": 360,
+            "buttons": [
+              {
+                "height": 44,
+                "id": "macaw-1",
+                "text": "Periksa Makaw 1",
+                "width": 115.89583587646484
+              },
+              {
+                "height": 44,
+                "id": "macaw-2",
+                "text": "Periksa Makaw 2",
+                "width": 118.45833587646484
+              },
+              {
+                "height": 44,
+                "id": "dismiss",
+                "text": "Tutup rincian satwa",
+                "width": 139.42709350585938
+              }
+            ]
+          },
+          "note": "Native simulation continues during screenshot; pre/post DOM values recorded. Injected QA scenarios paused."
+        }
+      }
+    },
+    {
+      "id": "landscape-critical-info",
+      "status": "PASS",
+      "observedAt": "2026-11-01T04:53:51.804Z",
+      "screenshot": "screens/landscape-critical-info.jpg",
+      "data": {
+        "announcement": "Makaw 1: ! Perlu perawatan. Mangkuk pakan burung ini kosong. Isi feeder meski mangkuk burung lain masih berbuah.",
+        "canvas": 1,
+        "causes": [
+          {
+            "code": "food-empty",
+            "text": "Mangkuk pakan burung ini kosong. Isi feeder meski mangkuk burung lain masih berbuah.Ke tempat pakan"
+          },
+          {
+            "code": "tired",
+            "text": "Energi rendah. Taman terjangkau: biarkan tidur selesai; makan/minum mendesak diprioritaskan."
+          },
+          {
+            "code": "bored",
+            "text": "Pengayaan rendah. Taman terjangkau: setelah tidur dan perawatan mendesak, biarkan burung mengamati daun."
+          }
+        ],
+        "documentWidth": 22706,
+        "entryScript": null,
+        "focused": "H4",
+        "height": 360,
+        "lang": "en",
+        "low": "true",
+        "panelHidden": false,
+        "parts": [
+          {
+            "part": "food",
+            "text": "Pakan 10% × 35%"
+          },
+          {
+            "part": "water",
+            "text": "Air 80% × 30%"
+          },
+          {
+            "part": "habitat",
+            "text": "Habitat 100% × 20%"
+          },
+          {
+            "part": "enrichment",
+            "text": "Pengayaan 0% × 15%"
+          }
+        ],
+        "rows": [
+          {
+            "id": "macaw-1",
+            "text": "Makaw 1 · Melihat sekitar · Lapar 90% · Porsi dimakan 0 · Haus 20% · Porsi diminum 0 · Energi 20% · Pengayaan 0%Kesejahteraan 48% · ! Perlu perawatanPeriksa Makaw 1"
+          },
+          {
+            "id": "macaw-2",
+            "text": "Makaw 2 · Melihat sekitar · Lapar 10% · Porsi dimakan 0 · Haus 90% · Porsi diminum 0 · Energi 85% · Pengayaan 85%Kesejahteraan 67% · ✓ NyamanPeriksa Makaw 2"
+          }
+        ],
+        "selected": "macaw-1",
+        "state": "ready",
+        "status": "Kesejahteraan: 47,5% · ! Perlu perawatan",
+        "title": "Makaw 1 · Makaw biru-kuning · macaw-1",
+        "welfare": 47.5,
+        "width": 780,
+        "buttons": [
+          {
+            "height": 44,
+            "id": "macaw-1",
+            "text": "Periksa Makaw 1",
+            "width": 115.89583587646484
+          },
+          {
+            "height": 44,
+            "id": "macaw-2",
+            "text": "Periksa Makaw 2",
+            "width": 118.45833587646484
+          },
+          {
+            "height": 44,
+            "id": "dismiss",
+            "text": "Tutup rincian satwa",
+            "width": 139.42709350585938
+          },
+          {
+            "height": 44,
+            "id": "food",
+            "text": "Ke tempat pakan",
+            "width": 121.92708587646484
+          }
+        ],
+        "method": "Final source: labelled asymmetric critical condition, actual ID landscape information and corrective causes",
+        "visualReviewed": true,
+        "capture": {
+          "beforeAt": "2026-11-01T04:53:51.741Z",
+          "afterAt": "2026-11-01T04:53:51.804Z",
+          "after": {
+            "announcement": "Makaw 1: ! Perlu perawatan. Mangkuk pakan burung ini kosong. Isi feeder meski mangkuk burung lain masih berbuah.",
+            "canvas": 1,
+            "causes": [
+              {
+                "code": "food-empty",
+                "text": "Mangkuk pakan burung ini kosong. Isi feeder meski mangkuk burung lain masih berbuah.Ke tempat pakan"
+              },
+              {
+                "code": "tired",
+                "text": "Energi rendah. Taman terjangkau: biarkan tidur selesai; makan/minum mendesak diprioritaskan."
+              },
+              {
+                "code": "bored",
+                "text": "Pengayaan rendah. Taman terjangkau: setelah tidur dan perawatan mendesak, biarkan burung mengamati daun."
+              }
+            ],
+            "documentWidth": 22706,
+            "entryScript": null,
+            "focused": "H4",
+            "height": 360,
+            "lang": "en",
+            "low": "true",
+            "panelHidden": false,
+            "parts": [
+              {
+                "part": "food",
+                "text": "Pakan 10% × 35%"
+              },
+              {
+                "part": "water",
+                "text": "Air 80% × 30%"
+              },
+              {
+                "part": "habitat",
+                "text": "Habitat 100% × 20%"
+              },
+              {
+                "part": "enrichment",
+                "text": "Pengayaan 0% × 15%"
+              }
+            ],
+            "rows": [
+              {
+                "id": "macaw-1",
+                "text": "Makaw 1 · Melihat sekitar · Lapar 90% · Porsi dimakan 0 · Haus 20% · Porsi diminum 0 · Energi 20% · Pengayaan 0%Kesejahteraan 48% · ! Perlu perawatanPeriksa Makaw 1"
+              },
+              {
+                "id": "macaw-2",
+                "text": "Makaw 2 · Melihat sekitar · Lapar 10% · Porsi dimakan 0 · Haus 90% · Porsi diminum 0 · Energi 85% · Pengayaan 85%Kesejahteraan 67% · ✓ NyamanPeriksa Makaw 2"
+              }
+            ],
+            "selected": "macaw-1",
+            "state": "ready",
+            "status": "Kesejahteraan: 47,5% · ! Perlu perawatan",
+            "title": "Makaw 1 · Makaw biru-kuning · macaw-1",
+            "welfare": 47.5,
+            "width": 780,
+            "buttons": [
+              {
+                "height": 44,
+                "id": "macaw-1",
+                "text": "Periksa Makaw 1",
+                "width": 115.89583587646484
+              },
+              {
+                "height": 44,
+                "id": "macaw-2",
+                "text": "Periksa Makaw 2",
+                "width": 118.45833587646484
+              },
+              {
+                "height": 44,
+                "id": "dismiss",
+                "text": "Tutup rincian satwa",
+                "width": 139.42709350585938
+              },
+              {
+                "height": 44,
+                "id": "food",
+                "text": "Ke tempat pakan",
+                "width": 121.92708587646484
+              }
+            ]
+          },
+          "note": "Native simulation continues during screenshot; pre/post DOM values recorded. Injected QA scenarios paused."
+        }
+      }
+    },
+    {
+      "id": "landscape-native-id",
+      "status": "PASS",
+      "observedAt": "2026-11-01T05:02:08.897Z",
+      "screenshot": "screens/landscape-native-id.jpg",
+      "data": {
+        "announcement": "Makaw 1: ! Perlu perawatan. Mangkuk air burung ini kosong. Isi ulang meski mangkuk burung lain masih berair.",
+        "canvas": 1,
+        "causes": [
+          {
+            "code": "water-empty",
+            "text": "Mangkuk air burung ini kosong. Isi ulang meski mangkuk burung lain masih berair.Ke tempat air"
+          },
+          {
+            "code": "food-empty",
+            "text": "Mangkuk pakan burung ini kosong. Isi feeder meski mangkuk burung lain masih berbuah.Ke tempat pakan"
+          }
+        ],
+        "documentWidth": 765,
+        "entryScript": "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.BKNq_JBk.js",
+        "focused": "H4",
+        "height": 360,
+        "lang": "id",
+        "low": "true",
+        "panelHidden": false,
+        "parts": [
+          {
+            "part": "food",
+            "text": "Pakan 40% × 35%"
+          },
+          {
+            "part": "water",
+            "text": "Air 40% × 30%"
+          },
+          {
+            "part": "habitat",
+            "text": "Habitat 100% × 20%"
+          },
+          {
+            "part": "enrichment",
+            "text": "Pengayaan 74,4% × 15%"
+          }
+        ],
+        "rows": [
+          {
+            "id": "macaw-1",
+            "text": "Makaw 1 · Melihat sekitar · Lapar 18% · Porsi dimakan 4 · Haus 21% · Porsi diminum 4 · Energi 70% · Pengayaan 74%Kesejahteraan 57% · ! Perlu perawatanPeriksa Makaw 1"
+          },
+          {
+            "id": "macaw-2",
+            "text": "Makaw 2 · Melihat sekitar · Lapar 18% · Porsi dimakan 4 · Haus 21% · Porsi diminum 4 · Energi 70% · Pengayaan 74%Kesejahteraan 57% · ! Perlu perawatanPeriksa Makaw 2"
+          }
+        ],
+        "selected": "macaw-1",
+        "state": "ready",
+        "status": "Kesejahteraan: 57,16% · ! Perlu perawatan",
+        "title": "Makaw 1 · Makaw biru-kuning · macaw-1",
+        "welfare": 57.16,
+        "width": 780,
+        "buttons": [
+          {
+            "height": 44,
+            "id": "macaw-1",
+            "text": "Periksa Makaw 1",
+            "width": 115.89583587646484
+          },
+          {
+            "height": 44,
+            "id": "macaw-2",
+            "text": "Periksa Makaw 2",
+            "width": 118.45833587646484
+          },
+          {
+            "height": 44,
+            "id": "dismiss",
+            "text": "Tutup rincian satwa",
+            "width": 139.42709350585938
+          },
+          {
+            "height": 44,
+            "id": "water",
+            "text": "Ke tempat air",
+            "width": 101.13542175292967
+          },
+          {
+            "height": 44,
+            "id": "food",
+            "text": "Ke tempat pakan",
+            "width": 121.92708587646484
+          }
+        ],
+        "method": "Native final ID product after actual care and later supply depletion; actual empty-bowl causes/actions. Native capture pre/post values retained.",
+        "visualReviewed": true,
+        "capture": {
+          "beforeAt": "2026-11-01T05:02:07.426Z",
+          "afterAt": "2026-11-01T05:02:08.897Z",
+          "after": {
+            "announcement": "Makaw 1: ! Perlu perawatan. Mangkuk air burung ini kosong. Isi ulang meski mangkuk burung lain masih berair.",
+            "canvas": 1,
+            "causes": [
+              {
+                "code": "water-empty",
+                "text": "Mangkuk air burung ini kosong. Isi ulang meski mangkuk burung lain masih berair.Ke tempat air"
+              },
+              {
+                "code": "food-empty",
+                "text": "Mangkuk pakan burung ini kosong. Isi feeder meski mangkuk burung lain masih berbuah.Ke tempat pakan"
+              }
+            ],
+            "documentWidth": 780,
+            "entryScript": "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.BKNq_JBk.js",
+            "focused": "H4",
+            "height": 360,
+            "lang": "id",
+            "low": "true",
+            "panelHidden": false,
+            "parts": [
+              {
+                "part": "food",
+                "text": "Pakan 40% × 35%"
+              },
+              {
+                "part": "water",
+                "text": "Air 40% × 30%"
+              },
+              {
+                "part": "habitat",
+                "text": "Habitat 100% × 20%"
+              },
+              {
+                "part": "enrichment",
+                "text": "Pengayaan 73,98% × 15%"
+              }
+            ],
+            "rows": [
+              {
+                "id": "macaw-1",
+                "text": "Makaw 1 · Melihat sekitar · Lapar 19% · Porsi dimakan 4 · Haus 23% · Porsi diminum 4 · Energi 69% · Pengayaan 74%Kesejahteraan 57% · ! Perlu perawatanPeriksa Makaw 1"
+              },
+              {
+                "id": "macaw-2",
+                "text": "Makaw 2 · Melihat sekitar · Lapar 19% · Porsi dimakan 4 · Haus 23% · Porsi diminum 4 · Energi 69% · Pengayaan 74%Kesejahteraan 57% · ! Perlu perawatanPeriksa Makaw 2"
+              }
+            ],
+            "selected": "macaw-1",
+            "state": "ready",
+            "status": "Kesejahteraan: 57,1% · ! Perlu perawatan",
+            "title": "Makaw 1 · Makaw biru-kuning · macaw-1",
+            "welfare": 57.1,
+            "width": 780,
+            "buttons": [
+              {
+                "height": 44,
+                "id": "macaw-1",
+                "text": "Periksa Makaw 1",
+                "width": 115.89583587646484
+              },
+              {
+                "height": 44,
+                "id": "macaw-2",
+                "text": "Periksa Makaw 2",
+                "width": 118.45833587646484
+              },
+              {
+                "height": 44,
+                "id": "dismiss",
+                "text": "Tutup rincian satwa",
+                "width": 139.42709350585938
+              },
+              {
+                "height": 44,
+                "id": "water",
+                "text": "Ke tempat air",
+                "width": 101.13542175292967
+              },
+              {
+                "height": 44,
+                "id": "food",
+                "text": "Ke tempat pakan",
+                "width": 121.92708587646484
+              }
+            ]
+          },
+          "note": "Native simulation continues during screenshot; pre/post DOM values recorded. Injected QA scenarios paused."
+        }
+      }
+    }
+  ],
+  "ownedTabsClosed": true,
+  "viewportReset": true,
+  "finishedAt": "2026-11-01T05:05:37.308Z",
+  "console": {
+    "entries": [],
+    "limit": 200,
+    "capped": false,
+    "levels": [
+      "warn",
+      "error"
+    ]
+  }
+}

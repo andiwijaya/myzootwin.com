@@ -1,3 +1,4 @@
+import {mountAnimalInfo} from './animal-info.ts';
 import type {PerchView,PerchCommand} from '../game/animals/resting.ts';
 import type {FoodView,FoodCommand} from '../game/animals/feeding.ts';
 import type {BirdsView,BirdCommand} from '../game/animals/autonomy.ts';
@@ -40,7 +41,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const waterDialog=root.querySelector<HTMLDialogElement>('[data-water-dialog]');let waterRemovalRevision:number|null=null;
   let perch:PerchView={canPlace:false,habitat:false,exists:false,reachable:false,capacity:2,revision:0,preview:false,reason:null,resting:0,exploring:0};
   const perchDialog=root.querySelector<HTMLDialogElement>('[data-perch-dialog]');let perchRemovalRevision:number|null=null;
-  let birds:BirdsView={habitat:false,placed:0,birds:[]};
+  let birds:BirdsView={tick:0,habitat:false,placed:0,birds:[]};
+  const animalInfo=mountAnimalInfo(root.querySelector<HTMLElement>('[data-bird-tools]')!,events.signal);
   let editView:EditView={canUndo:false,reason:null,result:null};
   let removal:RemovalQuote|null=null;
   let removalName='';
@@ -108,7 +110,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const welcome=tools.querySelector<HTMLButtonElement>('[data-birds-command="welcome"]'),reserve=tools.querySelector<HTMLButtonElement>('[data-birds-command="reserve"]');
     if(welcome){welcome.hidden=birds.placed>0;welcome.disabled=!birds.habitat;welcome.textContent=copy.birdsWelcome;}if(reserve){reserve.hidden=birds.placed===0;reserve.textContent=copy.birdsReserve;}
     tools.querySelector('[data-birds-status]')?.replaceChildren(copy[birds.placed?'birdsPlaced':birds.habitat?'birdsWaiting':'birdsNeedHabitat']);
-    const list=tools.querySelector('[data-birds-list]');if(list){list.replaceChildren();if(birds.placed)for(const [i,b]of birds.birds.entries()){const row=document.createElement('li');row.dataset.birdId=b.id;row.textContent=copy.birdStatus.replace('{name}',copy.birdName.replace('{n}',String(i+1))).replace('{behavior}',copy[b.behavior==='rest'?'birdRest':b.behavior==='enrich'?'birdEnrich':b.behavior==='seek-rest'?'birdSeekRest':b.behavior==='drink'?'birdDrink':b.behavior==='seek-water'?'birdSeekWater':b.behavior==='eat'?'birdEat':b.behavior==='seek-food'?'birdSeekFood':b.behavior==='wander'?'birdWander':b.behavior==='perch'?'birdPerch':'birdIdle']).replace('{e}',String(b.energy)).replace('{b}',String(b.enrichment)).replace('{t}',String(b.thirst)).replace('{d}',String(b.waterDrunk)).replace('{h}',String(b.hunger)).replace('{n}',String(b.foodEaten));list.append(row);}}
+    animalInfo.update(birds,locale,state.status==='ready'&&!studio.active);
   }
   function renderFood(){const tools=root.querySelector<HTMLElement>('[data-food-tools]');if(!tools)return;const c=entryMessages[locale];tools.hidden=state.status!=='ready'||studio.active;
     for(const el of tools.querySelectorAll<HTMLElement>('[data-entry-text]'))el.textContent=c[el.dataset.entryText as EntryMessage];

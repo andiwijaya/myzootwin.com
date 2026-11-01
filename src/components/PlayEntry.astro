@@ -66,7 +66,18 @@ import { english as copy } from '../game-entry/locale';
         <button type="button" data-birds-command="welcome" disabled>{copy.birdsWelcome}</button>
         <button type="button" data-birds-command="reserve" hidden>{copy.birdsReserve}</button>
         <p data-birds-status role="status" aria-live="polite"></p>
+        <p data-entry-text="careHint">{copy.careHint}</p>
         <ul data-birds-list aria-live="off"></ul>
+        <section id="animal-details" class="animal-details" data-animal-detail hidden aria-labelledby="animal-info-title">
+          <h4 id="animal-info-title" data-care-name tabindex="-1"></h4>
+          <button type="button" data-care-dismiss data-entry-text="careDismiss">{copy.careDismiss}</button>
+          <p data-care-welfare aria-live="off"></p>
+          <ul class="care-parts" aria-live="off">{['food','water','habitat','enrichment'].map(part=><li data-care-part={part}></li>)}</ul>
+          <p data-entry-text="careFormula">{copy.careFormula}</p>
+          <p data-entry-text="careAccess">{copy.careAccess}</p>
+          <ul data-care-alerts aria-live="off"></ul>
+        </section>
+        <output class="selection-announcement" data-care-announcement aria-live="polite" aria-atomic="true"></output>
       </section>
       <section class="macaw-tools" data-food-tools hidden aria-labelledby="food-title">
         <h3 id="food-title" data-entry-text="foodTitle">{copy.foodTitle}</h3>
@@ -193,6 +204,12 @@ import { english as copy } from '../game-entry/locale';
 </script>
 
   <style>
+  :global([data-birds-list] button),:global([data-care-alerts] button){display:inline-block;min-width:44px;min-height:44px;padding:.5rem .65rem;border:1px solid #52755d;border-radius:9px;background:#fffdf4;color:#183b32;font:700 .75rem/1.4 'DM Sans',sans-serif;cursor:pointer;white-space:normal;overflow-wrap:anywhere}
+  :global([data-birds-list] button:focus-visible),:global([data-care-alerts] button:focus-visible){outline:3px solid #ad7629;outline-offset:2px}
+  :global([data-birds-list]>li){padding:.5rem 0;border-bottom:1px solid #ccd7bc;overflow-wrap:anywhere}:global([data-birds-list] p){margin:.25rem 0}:global([data-bird-wellbeing]){font-weight:700;color:#214f3c}:global([data-welfare-low="true"]>[data-bird-wellbeing]){color:#842c25}:global([data-care-alerts] li){margin:.6rem 0}:global([data-care-alerts] button){display:block;margin-top:.35rem}
+
+  [data-birds-list]{padding-left:1.1rem}[data-birds-list]>li{padding:.5rem 0;border-bottom:1px solid #ccd7bc;overflow-wrap:anywhere}[data-birds-list] p{margin:.25rem 0}[data-bird-wellbeing]{font-weight:700;color:#214f3c}[data-welfare-low="true"]>[data-bird-wellbeing]{color:#842c25}.animal-details{padding:.75rem;border:1px solid #6c885e;border-radius:10px;background:#fffdf4;margin-top:.75rem;overflow-wrap:anywhere}.animal-details h4{font-size:.9rem;margin:.2rem 0 .6rem}.animal-details p,.animal-details li{font-size:.75rem;line-height:1.6}.animal-details ul{padding-left:1.1rem}.animal-details button{margin:.35rem 0}.care-parts{list-style:none;padding-left:0!important}.animal-details [data-care-welfare]{font-weight:700}.animal-details[data-welfare-low="true"] [data-care-welfare]{color:#842c25}
+
 .macaw-tools{margin:0 .8rem .8rem;padding:.75rem;background:#fff9e8;border:1px solid #a5ae83;border-radius:12px;text-align:left}.macaw-tools h3{font:700 1rem/1.4 'DM Sans',sans-serif;margin:.3rem 0}.macaw-tools p,.macaw-tools label{font-size:.77rem;line-height:1.55;color:#344f40;margin:.4rem 0;overflow-wrap:anywhere}.macaw-tools label{display:block;font-weight:700}.macaw-tools button,.macaw-tools select{min-height:44px;max-width:100%;padding:.5rem .65rem;border:1px solid #52755d;border-radius:9px;background:#fffdf4;color:#183b32;font:700 .76rem/1.4 'DM Sans',sans-serif}.macaw-tools select{width:100%;margin:.15rem 0 .45rem}.macaw-tools button{cursor:pointer}.macaw-tools button:disabled{opacity:.5;cursor:default}.macaw-tools button:focus-visible,.macaw-tools select:focus-visible{outline:3px solid #ad7629;outline-offset:2px}.bird-tools ul{padding-left:1.25rem;font-size:.8rem;line-height:1.6;color:#183b32}.macaw-actions{display:flex;flex-wrap:wrap;gap:.4rem;margin:.4rem 0}
 
 .placement-tools{margin:0 .8rem .8rem;padding:.75rem;border:1px solid #8aa08c;border-radius:12px;text-align:left;background:#fffdf4}.placement-tools h3{margin:.2rem 0;font:700 1rem/1.4 'DM Sans',sans-serif}.placement-tools p{font-size:.75rem;line-height:1.5;margin:.45rem 0;color:#344f40;overflow-wrap:anywhere}.placement-tools [data-placement-reason]{font-weight:700}.placement-tools button{min-width:44px;min-height:44px;padding:.45rem .65rem;border:1px solid #52755d;border-radius:9px;background:#fffdf4;color:#183b32;font:700 .75rem/1.4 'DM Sans',sans-serif;cursor:pointer}.placement-tools button:disabled{opacity:.5;cursor:default}.placement-tools button:focus-visible{outline:3px solid #ad7629;outline-offset:2px}.placement-actions,.placement-arrows{display:flex;gap:.4rem;flex-wrap:wrap;margin:.5rem 0}.placement-actions button:first-child{background:#214f3c;color:white}.placement-tools[data-valid="false"] [data-placement-reason]{color:#94252d}

@@ -1,0 +1,114 @@
+TAP version 13
+# Subtest: welfare follows real occupied habitat and reserve never shows a fabricated comfortable animal
+ok 1 - welfare follows real occupied habitat and reserve never shows a fabricated comfortable animal
+  ---
+  duration_ms: 25.3089
+  type: 'test'
+  ...
+# Subtest: known asymmetric needs produce exact PRD weighted values for stable individual identities
+ok 2 - known asymmetric needs produce exact PRD weighted values for stable individual identities
+  ---
+  duration_ms: 11.6573
+  type: 'test'
+  ...
+# Subtest: score requires an actual reachable serving for each bird, never just a feeder button or the other bowl
+ok 3 - score requires an actual reachable serving for each bird, never just a feeder button or the other bowl
+  ---
+  duration_ms: 9.7218
+  type: 'test'
+  ...
+# Subtest: refill restores access immediately without faking hunger relief, meal or durable reward
+ok 4 - refill restores access immediately without faking hunger relief, meal or durable reward
+  ---
+  duration_ms: 6.8268
+  type: 'test'
+  ...
+# Subtest: causes distinguish missing, empty, unreachable and actual high-need accessible resources
+ok 5 - causes distinguish missing, empty, unreachable and actual high-need accessible resources
+  ---
+  duration_ms: 6.9939
+  type: 'test'
+  ...
+# Subtest: welfare Schmitt thresholds prevent repeated low/comfortable flicker and serialize the recovery band
+ok 6 - welfare Schmitt thresholds prevent repeated low/comfortable flicker and serialize the recovery band
+  ---
+  duration_ms: 11.3173
+  type: 'test'
+  ...
+# Subtest: need alerts have explicit recovery thresholds independent of current render frames
+ok 7 - need alerts have explicit recovery thresholds independent of current render frames
+  ---
+  duration_ms: 8.3667
+  type: 'test'
+  ...
+# Subtest: energy influences genuine rest alerts but does not invent a fifth welfare weight
+ok 8 - energy influences genuine rest alerts but does not invent a fifth welfare weight
+  ---
+  duration_ms: 10.0778
+  type: 'test'
+  ...
+# Subtest: forged stored display values are recomputed on load, snapshots and views cannot mutate authoritative welfare
+ok 9 - forged stored display values are recomputed on load, snapshots and views cannot mutate authoritative welfare
+  ---
+  duration_ms: 9.7541
+  type: 'test'
+  ...
+# Subtest: real missing-care decline and actual consumption/rest/exploration recover welfare without a claim button
+not ok 10 - real missing-care decline and actual consumption/rest/exploration recover welfare without a claim button
+  ---
+  duration_ms: 260.2505
+  type: 'test'
+  location: 'C:\\MyZooTwin\\tests\\welfare.test.mjs:18:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(recovered)
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/welfare.test.mjs:18:857)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+    Test.postRun (node:internal/test_runner/test:1235:19)
+    Test.run (node:internal/test_runner/test:1163:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: paused scores, causes and hysteresis survive exact remount, fixed partitions and repeated reconciliation
+ok 11 - paused scores, causes and hysteresis survive exact remount, fixed partitions and repeated reconciliation
+  ---
+  duration_ms: 38.6146
+  type: 'test'
+  ...
+# Subtest: resource removal immediately changes causes/access but never resets unrelated needs, identity or history
+ok 12 - resource removal immediately changes causes/access but never resets unrelated needs, identity or history
+  ---
+  duration_ms: 11.3601
+  type: 'test'
+  ...
+# Subtest: welfare formula and causal action messages are fully bilingual and never concatenate untranslated placeholders
+ok 13 - welfare formula and causal action messages are fully bilingual and never concatenate untranslated placeholders
+  ---
+  duration_ms: 1.0165
+  type: 'test'
+  ...
+# Subtest: identity and own-bowl access are stable after reversing serialization entity array order
+ok 14 - identity and own-bowl access are stable after reversing serialization entity array order
+  ---
+  duration_ms: 9.2317
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 13
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 676.8463

@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: welfare follows real occupied habitat and reserve never shows a fabricated comfortable animal
+ok 1 - welfare follows real occupied habitat and reserve never shows a fabricated comfortable animal
+  ---
+  duration_ms: 27.872
+  type: 'test'
+  ...
+# Subtest: known asymmetric needs produce exact PRD weighted values for stable individual identities
+ok 2 - known asymmetric needs produce exact PRD weighted values for stable individual identities
+  ---
+  duration_ms: 12.0773
+  type: 'test'
+  ...
+# Subtest: score requires an actual reachable serving for each bird, never just a feeder button or the other bowl
+ok 3 - score requires an actual reachable serving for each bird, never just a feeder button or the other bowl
+  ---
+  duration_ms: 9.5424
+  type: 'test'
+  ...
+# Subtest: refill restores access immediately without faking hunger relief, meal or durable reward
+ok 4 - refill restores access immediately without faking hunger relief, meal or durable reward
+  ---
+  duration_ms: 7.2216
+  type: 'test'
+  ...
+# Subtest: causes distinguish missing, empty, unreachable and actual high-need accessible resources
+ok 5 - causes distinguish missing, empty, unreachable and actual high-need accessible resources
+  ---
+  duration_ms: 8.2366
+  type: 'test'
+  ...
+# Subtest: welfare Schmitt thresholds prevent repeated low/comfortable flicker and serialize the recovery band
+ok 6 - welfare Schmitt thresholds prevent repeated low/comfortable flicker and serialize the recovery band
+  ---
+  duration_ms: 11.7914
+  type: 'test'
+  ...
+# Subtest: need alerts have explicit recovery thresholds independent of current render frames
+ok 7 - need alerts have explicit recovery thresholds independent of current render frames
+  ---
+  duration_ms: 7.7142
+  type: 'test'
+  ...
+# Subtest: energy influences genuine rest alerts but does not invent a fifth welfare weight
+ok 8 - energy influences genuine rest alerts but does not invent a fifth welfare weight
+  ---
+  duration_ms: 14.4937
+  type: 'test'
+  ...
+# Subtest: forged stored display values are recomputed on load, snapshots and views cannot mutate authoritative welfare
+ok 9 - forged stored display values are recomputed on load, snapshots and views cannot mutate authoritative welfare
+  ---
+  duration_ms: 9.8646
+  type: 'test'
+  ...
+# Subtest: real missing-care decline and actual consumption/rest/exploration recover welfare without a claim button
+ok 10 - real missing-care decline and actual consumption/rest/exploration recover welfare without a claim button
+  ---
+  duration_ms: 374.4376
+  type: 'test'
+  ...
+# Subtest: paused scores, causes and hysteresis survive exact remount, fixed partitions and repeated reconciliation
+ok 11 - paused scores, causes and hysteresis survive exact remount, fixed partitions and repeated reconciliation
+  ---
+  duration_ms: 32.0175
+  type: 'test'
+  ...
+# Subtest: resource removal immediately changes causes/access but never resets unrelated needs, identity or history
+ok 12 - resource removal immediately changes causes/access but never resets unrelated needs, identity or history
+  ---
+  duration_ms: 10.1987
+  type: 'test'
+  ...
+# Subtest: welfare formula and causal action messages are fully bilingual and never concatenate untranslated placeholders
+ok 13 - welfare formula and causal action messages are fully bilingual and never concatenate untranslated placeholders
+  ---
+  duration_ms: 0.6886
+  type: 'test'
+  ...
+# Subtest: identity and own-bowl access are stable after reversing serialization entity array order
+ok 14 - identity and own-bowl access are stable after reversing serialization entity array order
+  ---
+  duration_ms: 9.366
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 787.5939
