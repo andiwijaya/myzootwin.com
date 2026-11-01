@@ -1,0 +1,14 @@
+{
+  "status": "RESOLVED_QA_FIXTURE",
+  "initialResult": {
+    "tests": 3,
+    "pass": 2,
+    "fail": 1,
+    "reason": "Invalid initial state at $.world.resources.cells"
+  },
+  "cause": "QA setup put three resources in the same cell; strict save validation correctly rejected it.",
+  "correction": "Permute the three resource cells uniquely to preserve occupied-cell invariants while keeping each source unreachable.",
+  "finalResult": "All three combined-action tests pass in the final source-bound unit gate.",
+  "rawLog": "First targeted run was observed in tool output; this is an explicit transcription, not a fabricated raw log.",
+  "productDefect": false
+}
