@@ -9,7 +9,7 @@ export const targetId=(target:EditTarget)=>target.kind==='habitat'?target.id:`pa
 export function quoteRemoval(state:ZooSaveV1,target:EditTarget,revision:number):{ok:true;quote:RemovalQuote}|{ok:false;reason:EditReason}{
   if(target.kind==='habitat'){
     if(!state.world.habitats.some(h=>h.id===target.id))return {ok:false,reason:'missing'};
-    if(state.animals.some(a=>a.habitatId===target.id)||state.world.resources.some(r=>r.habitatId===target.id)||state.visitors.length)return {ok:false,reason:'in-use'};
+    if(state.animals.some(a=>a.habitatId===target.id)||state.world.resources.some(r=>r.habitatId===target.id)||state.visitors.some(v=>v.phase!=='arrival'))return {ok:false,reason:'in-use'};
   }else{
     const c=target.cell,tile=state.world.tiles.find(t=>t.cell.x===c.x&&t.cell.z===c.z);
     if(c.x===state.world.gate.x&&c.z===state.world.gate.z)return {ok:false,reason:'protected'};

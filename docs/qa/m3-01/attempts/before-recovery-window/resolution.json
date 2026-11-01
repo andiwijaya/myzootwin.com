@@ -1,0 +1,20 @@
+{
+  "status": "RESOLVED_QA_DEADLINE",
+  "startingState": {
+    "energy": [
+      0,
+      0
+    ],
+    "hunger": [
+      100,
+      100
+    ],
+    "foodStock": 0,
+    "waterStock": 0,
+    "tick": 3108
+  },
+  "observation": "The old60s enrichment window expired after actual rest began. Later unchanged product observation at tick4627 showed60 enrichment ticks per bird and enrichment70.32/71.46.",
+  "fix": "Bound real recovery by1800 accepted ticks/210 wall seconds; observe actual gain/cap and benefit ticks, retain tail/failure diagnostics, pause after rest and offer a guarded fresh sequential chain to avoid manual idle depletion.",
+  "productBehaviorChangedForThisFix": false,
+  "finalProof": "Fresh final-source full local gates plus all three full sequential browser chains."
+}

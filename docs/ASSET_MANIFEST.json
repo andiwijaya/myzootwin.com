@@ -2,7 +2,7 @@
   "schema_version": 1,
   "audited_at": "2026-10-31",
   "baseline_commit": "3b06c6d8d2a920ad5894868059885c98a58217a6",
-  "scope": "Original M2-01 model, M2-02 autonomous pair and M2-03 feeder/eating integration. Earlier study/media/provenance and unresolved legacy-media rights records remain preserved.",
+  "scope": "Original M2-01 model, M2-02 autonomous pair and M2-03 feeder/eating integration. Earlier study/media/provenance and unresolved legacy-media rights records remain preserved. M3-01 adds original, texture-free shared entrance visitor models; prior media and unresolved legacy rights records retained unchanged.",
   "assets": [
     {
       "path": "public/images/myzootwin-beranda.png",
@@ -507,6 +507,45 @@
       "external_asset_inputs": [],
       "usage_decision": "Two independent stable supported rest slots. Original landing supports are hidden only while the same-position kit/ghost supplies visible supports; cancel/removal restores them without a contact gap. Energy/enrichment benefits occur only during actual supported rest/exploration at the reachable kit. Full welfare, prices, missions and durable saves remain later gates.",
       "attribution": "Original project work. Existing Three.js MIT notice retained. No new art license acceptance, purchase, upload or repository-wide license grant."
+    },
+    {
+      "id": "original_entrance_visitors_v1",
+      "createdAt": "2026-11-01",
+      "provenance": "Original procedural geometry and rig authored in this repository. No downloaded models, textures, audio, purchases or new licence agreements.",
+      "rights": "Original project artwork/code intended for commercial game use; underlying Three.js MIT notice retained at public/licenses/three-MIT.txt.",
+      "scope": "Three colour variants, shared mesh geometry/material pool, default1x entrance arrival preview only; no habitat visit, satisfaction or revenue claim.",
+      "sources": [
+        {
+          "path": "src/game/render3d/visitor-scene.ts",
+          "bytes": 5064,
+          "sha256": "896f7777b531d922b5058a66259d5440a32fd0eabf4e8e6a2a714bbafa65cb30"
+        },
+        {
+          "path": "src/game/visitors/arrivals.ts",
+          "bytes": 2405,
+          "sha256": "99b7171f41add4861dd12b6a38a10ebe91311f9a07c3ace089881bce55f02bd7"
+        }
+      ],
+      "measuredAtCap": {
+        "visitorModels": 3,
+        "visitorGeometries": 8,
+        "visitorOwnedMaterials": 2,
+        "visitorModelTriangles": 362,
+        "visitorTextures": 0,
+        "visitorSceneDisposed": false
+      },
+      "trianglesForThree": 1086,
+      "requiredTextureBytes": 0,
+      "externalAssetBytes": 0,
+      "sourceBytes": 7469,
+      "animation": "Simulation positions and ages; restrained four-limb walk rig, rest stance and direction. Reduced motion removes cosmetic swings while gameplay continues.",
+      "measuredBuffers": {
+        "geometryBufferBytes": 106572,
+        "uniqueGeometryBuffers": 8,
+        "uniqueMaterials": 2,
+        "visibleMeshesAtCap": 18,
+        "measurement": "CPU BufferGeometry attribute/index allocation, shared pool at three people; not GPU driver memory or presented draw calls"
+      }
     }
   ],
   "direct_package_notice_spot_checks": [

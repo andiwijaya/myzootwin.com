@@ -56,6 +56,7 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
       const right=new Vector3(1,0,0).applyQuaternion(camera.quaternion),up=new Vector3(0,1,0).applyQuaternion(camera.quaternion),center=bounds.getCenter(new Vector3());
       navigation.configure({width,height,halfWidth:frame.halfWidth,halfHeight:frame.halfHeight,rightX:right.x,rightZ:right.z,upX:up.x,upZ:up.z,originX:center.x-14*center.y/13,originZ:center.z-16*center.y/13,mapWidth:map.width,mapHeight:map.height});
     },
+    focus(point:{x:number;z:number}){if(enabled&&!disposed){cancelAll();navigation.focus(point);}},
     command(value:CameraCommand) {if(enabled&&!disposed){cancelAll();navigation.command(value);}},
     setEnabled(value:boolean) {enabled=value;if(!enabled)cancelAll();},
     dispose(){if(disposed)return;cancelAll();disposed=true;events.abort();delete host.dataset.cameraZoom;delete host.dataset.cameraPanX;delete host.dataset.cameraPanZ;},

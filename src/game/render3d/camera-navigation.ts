@@ -35,6 +35,7 @@ export function createCameraNavigation(onChange:()=>void = ()=>{}) {
       if(!frame||![dx,dy].every(Number.isFinite))return;
       const p=ground(-dx*2*frame.halfWidth/(zoom*frame.width),dy*2*frame.halfHeight/(zoom*frame.height));x+=p.x;z+=p.z;commit();
     },
+    focus(point:{x:number;z:number}){if(!frame||![point.x,point.z].every(Number.isFinite))return;zoom=2.5;x=point.x-frame.originX;z=point.z-frame.originZ;commit();},
     zoomBy,
     command(command:CameraCommand) {if(command==='reset'){zoom=1;x=z=0;commit();}else zoomBy(command==='zoom-in'?1.25:.8);},
     inspect:()=>({zoom,x,z,focusX:(frame?.originX??0)+x,focusZ:(frame?.originZ??0)+z,...limits()}),

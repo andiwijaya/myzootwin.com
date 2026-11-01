@@ -18,6 +18,7 @@ export class PreviewFailure extends Error {
 
 export interface PreviewSession {
   dispose(): void;
+  visitors?(command:'open'|'close'|'focus'):void;
   birds?(command:BirdCommand):void;
   food?(command:FoodCommand,revision?:number):void;
   water?(command:FoodCommand,revision?:number):void;
@@ -89,6 +90,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     food(command:FoodCommand,revision?:number){if(!paused&&state.status==='ready')session?.food?.(command,revision);},
     birds(command:BirdCommand){if(!paused&&state.status==='ready')session?.birds?.(command);},
     studio(command:StudioCommand,value?:string){if(!paused&&state.status==='ready')session?.studio?.(command,value);},
+    visitors(command:'open'|'close'|'focus'){if(!paused&&state.status==='ready')session?.visitors?.(command);},
     camera(command:CameraCommand) {if(!paused&&state.status==='ready')session?.camera?.(command);},
     clearSelection(){if(!paused&&state.status==='ready')session?.clearSelection?.();},
     quoteRemoval:(target:EditTarget)=>!paused&&state.status==='ready'?session?.quoteRemoval?.(target):undefined,

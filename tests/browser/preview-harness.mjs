@@ -1,3 +1,4 @@
+import {runVisitorDomScenarios} from './visitor-dom-scenarios.mjs';
 import {welfareFixture,runWelfareDomScenarios} from './welfare-dom-scenarios.mjs';
 import{runRestDomScenarios}from'./resting-dom-scenarios.mjs';
 import{runWaterDomScenarios}from'./watering-dom-scenarios.mjs';
@@ -43,6 +44,7 @@ function factory(onFailure){
     water:(command,revision)=>native.water?.(command,revision),
     perch:(command,revision)=>native.perch?.(command,revision),
     birds:command=>native.birds?.(command),
+    visitors:command=>native.visitors?.(command),
     studio:(command,value)=>native.studio?.(command,value),
     camera:value=>native.camera?.(value),
     clearSelection:()=>native.clearSelection?.(),
@@ -93,7 +95,7 @@ const editOutput=document.createElement('output');editOutput.id='qa-edit-results
 editRun.addEventListener('click',async()=>{let result;try{result=await runEditingDomScenarios(root,()=>handle?.inspect().session,value=>{locale=value;handle?.setLocale(value);});}catch(error){result={status:'FAIL',error:String(error)};}editOutput.textContent=JSON.stringify(result);update();});
 const macawRun=document.createElement('button');macawRun.id='qa-macaw';macawRun.textContent='Run injected macaw checks';editRun.after(macawRun);
 const macawOutput=document.createElement('output');macawOutput.id='qa-macaw-results';macawRun.after(macawOutput);
-macawRun.addEventListener('click',async()=>{let result;try{result=await runMacawDomScenarios(root,()=>handle?.inspect().session,value=>{locale=value;handle?.setLocale(value);});}catch(error){result={status:'FAIL',error:String(error)};}macawOutput.textContent=JSON.stringify(result);update();});
+macawRun.addEventListener('click',async()=>{if(macawRun.disabled)return;macawRun.disabled=true;macawOutput.textContent=JSON.stringify({status:'RUNNING'});let result;try{result=await runMacawDomScenarios(root,()=>handle?.inspect().session,value=>{locale=value;handle?.setLocale(value);});}catch(error){result={status:'FAIL',error:String(error)};}macawOutput.textContent=JSON.stringify(result);macawRun.disabled=false;update();});
 const animalRun=document.createElement('button');animalRun.id='qa-animals';animalRun.textContent='Run live two-bird checks';macawRun.after(animalRun);
 const animalOutput=document.createElement('output');animalOutput.id='qa-animal-results';animalRun.after(animalOutput);
 animalRun.addEventListener('click',async()=>{animalOutput.textContent=JSON.stringify({status:'RUNNING'});const result=await runAnimalDomScenarios(root,()=>handle?.inspect().session,value=>handle?.setPaused(value),value=>{locale=value;handle?.setLocale(value);});animalOutput.textContent=JSON.stringify(result);update();});
@@ -123,6 +125,20 @@ let injectedHidden=false;
 function restoreVisibility(){for(const key of ['hidden','visibilityState']){const descriptor=visibilityDescriptors[key];if(descriptor)Object.defineProperty(document,key,descriptor);else delete document[key];}injectedHidden=false;document.dispatchEvent(new Event('visibilitychange'));update();}
 for(const hidden of [true,false]){const button=document.createElement('button');button.id=hidden?'qa-hidden':'qa-visible';button.textContent=hidden?'Inject document hidden (QA only)':'Restore native visibility (QA only)';document.querySelector('#qa-toolbar').append(button);button.addEventListener('click',()=>{if(hidden){Object.defineProperty(document,'hidden',{configurable:true,get:()=>true});Object.defineProperty(document,'visibilityState',{configurable:true,get:()=>'hidden'});injectedHidden=true;document.dispatchEvent(new Event('visibilitychange'));update();}else restoreVisibility();});}
 window.addEventListener('pagehide',()=>{if(injectedHidden)restoreVisibility();},{once:true});
+const visitorRun=document.createElement('button');visitorRun.id='qa-visitors';visitorRun.textContent='Run real entrance-arrival checks';welfareRun.after(visitorRun);const visitorOutput=document.createElement('output');visitorOutput.id='qa-visitors-results';visitorRun.after(visitorOutput);visitorRun.addEventListener('click',async()=>{if(visitorRun.disabled)return;visitorRun.disabled=true;visitorOutput.textContent=JSON.stringify({status:'RUNNING'});try{visitorOutput.textContent=JSON.stringify(await runVisitorDomScenarios(root,()=>handle?.inspect().session,v=>handle?.setPaused(v),v=>{locale=v;handle?.setLocale(v);}));}finally{visitorRun.disabled=false;update();}});
+// Approved local fixture orchestration: actual product/scenario buttons, no browser driver.
+const chainRun=document.createElement('button');chainRun.id='qa-chain';chainRun.textContent='Run fresh sequential regression chain (QA only)';document.querySelector('#qa-toolbar').append(chainRun);
+const chainOutput=document.createElement('output');chainOutput.id='qa-chain-results';chainOutput.style.display='block';chainRun.after(chainOutput);
+chainRun.addEventListener('click',async()=>{if(chainRun.disabled)return;chainRun.disabled=true;const steps=[];let current='opening';chainOutput.textContent=JSON.stringify({status:'RUNNING',current,steps});
+ const pairs=[['camera','camera'],['selection','selection'],['placement','placement'],['path','path'],['edit','edit'],['macaw','macaw'],['animals','animal'],['feeding','feeding'],['water','water'],['rest','rest'],['welfare','welfare'],['visitors','visitors']];
+ const result=id=>{try{return JSON.parse(document.querySelector('#qa-'+id+'-results').textContent);}catch{return {status:'UNRUN'};}};
+ const wait=async(predicate,budget)=>{const end=performance.now()+budget;while(performance.now()<end){if(predicate())return;await new Promise(r=>requestAnimationFrame(r));}throw Error('Bounded QA chain timeout: '+current);};
+ try{if(handle?.inspect().state.status!=='closed'||pairs.some(([,id])=>result(id).status!=='UNRUN'))throw Error('Use a fresh fixture page for the chain');root.querySelector('[data-preview-open]').click();await wait(()=>handle?.inspect().state.status==='ready',20000);
+  for(const[buttonId,outputId]of pairs){current=outputId;const start=performance.now();document.querySelector('#qa-'+buttonId).click();await wait(()=>['PASS','FAIL'].includes(result(outputId).status),outputId==='rest'?330000:180000);const r=result(outputId);steps.push({id:outputId,status:r.status,cases:r.cases?.length??0,elapsedMs:performance.now()-start});chainOutput.textContent=JSON.stringify({status:'RUNNING',current,steps});if(r.status!=='PASS')throw Error(outputId+': '+r.error);}
+  chainOutput.textContent=JSON.stringify({status:'PASS',method:'fresh sequential labelled fixture buttons; real fixed ticks; no accelerated time/state injection',steps});
+ }catch(error){handle?.setPaused(true);chainOutput.textContent=JSON.stringify({status:'FAIL',current,error:String(error),steps,diagnostics:handle?.inspect().session});}
+ finally{chainRun.disabled=false;update();}
+});
 const observer=new MutationObserver(update);
 observer.observe(root,{subtree:true,childList:true,attributes:true,attributeFilter:['data-renderer-state']});
 const onVisibility=()=>{if(document.hidden){endProbe('ABORTED_HIDDEN');update();}};

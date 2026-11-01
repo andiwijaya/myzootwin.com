@@ -1,3 +1,4 @@
+import {stepArrivals,arrivalsView} from '../visitors/arrivals.ts';
 import {reconcileWelfare} from '../animals/welfare.ts';
 import {perchTransaction,perchView,type PerchAction} from '../animals/resting.ts';
 import {waterTransaction,waterView} from '../animals/watering.ts';
@@ -33,6 +34,7 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
     if(state.tick>=MAX_TICK)throw new RangeError('Simulation tick limit reached');
     state.tick++;
     state.gameTimeMs=state.tick*TICK_MS;
+    stepArrivals(state);
     const random=nextRandom(state.randomState);
     state.randomState=random.state;
     const {fed,watered}=stepAnimals(state);reconcileWelfare(state);for(const e of watered)bus.emit(Object.freeze({type:'animal-drank',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));for(const e of fed)bus.emit(Object.freeze({type:'animal-fed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
@@ -60,6 +62,10 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
       if(!prepared.duplicate){const connected=reconcilePathAccess(prepared.world);const next=validateSave({...state,world:connected.world});if(!next.ok)return {ok:false as const,reason:'command' as const};state=reconcileWelfare(next.value);topology=connected.topology;invalidateEdit();bus.emit(Object.freeze({type:'path-built',cell:{...cell},tick:state.tick,gameTimeMs:state.gameTimeMs}));}
       return {ok:true as const,duplicate:prepared.duplicate};
     },
+    visitors(open:boolean){if(disposed||clock.inspect().paused||typeof open!=='boolean'||state.visitorFlow.open===open)return false;state.visitorFlow.open=open;state.visitorFlow.cooldownTicks=0;bus.emit(Object.freeze({type:'visitor-entrance-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;},
+    visitorView:()=>arrivalsView(state),
+    visitorInspect:()=>Object.fromEntries([0,1,2].flatMap(i=>{const v=state.visitors.find(v=>v.arrival?.slot===i),a=v?.arrival,k=`visitor${i+1}`;return [[`${k}Serial`,a?.serial??0],[`${k}Age`,a?state.tick-a.spawnTick:0],[`${k}X`,v?.position.x??-1],[`${k}Z`,v?.position.z??-1]];})),
+    visitorSnapshot:()=>({visitors:structuredClone(state.visitors),width:state.world.width,height:state.world.height,tick:state.tick}),
     birdInspect:()=>Object.fromEntries([...state.animals].sort((a,b)=>a.id.localeCompare(b.id)).flatMap((a,i)=>{const key=`bird${i+1}`;return [[`${key}X`,a.position?.x??-1],[`${key}Z`,a.position?.z??-1],[`${key}Height`,a.motion.elevation],[`${key}Phase`,['idle','walk-out','look','walk-home','ascend','perch','descend','seek-food','eat','leave-food','seek-water','drink','water-back','water-hop','leave-water','water-home','water-abort','seek-rest','rest','enrich'].indexOf(a.motion.phase)],[`${key}Sequence`,a.motion.sequence],[`${key}Welfare`,a.welfare],[`${key}HabitatFit`,a.habitatFit],[`${key}WelfareLow`,a.care.low?1:0],[`${key}Hunger`,a.hunger],[`${key}FoodEaten`,a.foodEaten],[`${key}Thirst`,a.thirst],[`${key}WaterDrunk`,a.waterDrunk],[`${key}Energy`,a.energy],[`${key}Enrichment`,a.enrichment],[`${key}RestedTicks`,a.restedTicks],[`${key}EnrichedTicks`,a.enrichedTicks]];})),
     birdSnapshot:()=>({animals:structuredClone(state.animals),habitats:structuredClone(state.world.habitats),width:state.world.width,height:state.world.height}),
     perchView:()=>perchView(state),

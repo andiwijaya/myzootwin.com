@@ -1,3 +1,4 @@
+import type {ArrivalView} from '../game/visitors/arrivals.ts';
 import {mountAnimalInfo} from './animal-info.ts';
 import type {PerchView,PerchCommand} from '../game/animals/resting.ts';
 import type {FoodView,FoodCommand} from '../game/animals/feeding.ts';
@@ -41,6 +42,15 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const waterDialog=root.querySelector<HTMLDialogElement>('[data-water-dialog]');let waterRemovalRevision:number|null=null;
   let perch:PerchView={canPlace:false,habitat:false,exists:false,reachable:false,capacity:2,revision:0,preview:false,reason:null,resting:0,exploring:0};
   const perchDialog=root.querySelector<HTMLDialogElement>('[data-perch-dialog]');let perchRemovalRevision:number|null=null;
+  let visitorView:ArrivalView={open:false,active:0,capacity:3,ready:false,total:0,reason:'closed',ids:[]};
+  function renderVisitors(){const section=root.querySelector<HTMLElement>('[data-visitor-tools]');if(!section)return;section.hidden=state.status!=='ready'||studio.active;const copy=entryMessages[locale];
+    for(const b of section.querySelectorAll<HTMLButtonElement>('[data-visitors-command]')){const c=b.dataset.visitorsCommand;b.textContent=copy[c==='open'?'visitorsOpen':c==='close'?'visitorsClose':'visitorsFocus'];b.hidden=c==='open'?visitorView.open:c==='close'?!visitorView.open:false;}
+    section.querySelector('[data-entry-text="visitorsTitle"]')?.replaceChildren(copy.visitorsTitle);section.querySelector('[data-entry-text="visitorsHint"]')?.replaceChildren(copy.visitorsHint);
+    const key={closed:'visitorsClosed',departing:'visitorsDeparting',path:'visitorsPath',limit:'visitorsLimit',ready:'visitorsReady'}as const,text=copy[key[visitorView.reason]].replace('{n}',String(visitorView.active)).replace('{cap}',String(visitorView.capacity)).replace('{total}',String(visitorView.total));const status=section.querySelector('[data-visitors-status]');if(status&&status.textContent!==text)status.textContent=text;
+    const list=section.querySelector('[data-visitor-list]');if(list){const ids=visitorView.ids.join(',');if(list.getAttribute('data-ids')!==ids||list.getAttribute('lang')!==locale){list.setAttribute('data-ids',ids);list.setAttribute('lang',locale);list.replaceChildren(...visitorView.ids.map(id=>{const li=document.createElement('li');li.dataset.visitorId=id;li.textContent=copy.visitorsName.replace('{id}',id.replace('arrival-',''));return li;}));}}
+  }
+  host.addEventListener('scene-visitors-change',event=>{visitorView=(event as CustomEvent<ArrivalView>).detail;renderVisitors();},{signal:events.signal});
+  for(const b of root.querySelectorAll<HTMLButtonElement>('[data-visitors-command]'))b.addEventListener('click',()=>{controller.visitors(b.dataset.visitorsCommand as 'open'|'close'|'focus');host.focus({preventScroll:true});host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});
   let birds:BirdsView={tick:0,habitat:false,placed:0,birds:[]};
   const animalInfo=mountAnimalInfo(root.querySelector<HTMLElement>('[data-bird-tools]')!,events.signal);
   let editView:EditView={canUndo:false,reason:null,result:null};
@@ -141,7 +151,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const text=c[perch.reason?reasons[perch.reason]:perch.preview&&!perch.canPlace?'perchBusy':!perch.habitat?'perchNeedHabitat':!perch.exists?'perchReady':!perch.reachable?'perchUnreachable':'perchStatus'].replace('{r}',String(perch.resting)).replace('{g}',String(perch.exploring)).replaceAll('{cap}',String(perch.capacity));const status=tools.querySelector('[data-perch-status]');if(status?.textContent!==text)status?.replaceChildren(text);
     root.querySelector('[data-perch-keep]')?.replaceChildren(c.perchKeep);root.querySelector('[data-perch-remove-confirm]')?.replaceChildren(c.perchRemoveConfirm);root.querySelector('#perch-dialog-title')?.replaceChildren(c.perchRemoveTitle);root.querySelector('[data-entry-text="perchRemoveHint"]')?.replaceChildren(c.perchRemoveHint);
   }
-  function renderStudio(){
+  function renderStudio(){renderVisitors();
     const copy=entryMessages[locale],ready=state.status==='ready',tools=root.querySelector<HTMLElement>('[data-macaw-tools]');if(!tools)return;
     tools.hidden=!ready;const controls=root.querySelector<HTMLElement>('[data-macaw-controls]');if(controls)controls.hidden=!studio.active;
     for(const button of tools.querySelectorAll<HTMLButtonElement>('[data-studio-command]')){const command=button.dataset.studioCommand as StudioCommand;const key=command==='pause'?(studio.motionPaused?'macawResume':'macawPause'):command==='open'?'macawOpen':command==='close'?'macawClose':command==='detail'?'macawDetail':'macawHabitat';button.textContent=copy[key];button.hidden=command==='open'?studio.active:command==='detail'?!studio.habitat:command==='habitat'?studio.habitat:false;if(command==='habitat')button.disabled=habitatCount===0;}
@@ -165,7 +175,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     panel.lang = locale;
     if(next.status!=='ready'){perchRemovalRevision=null;if(perchDialog?.open)perchDialog.close();waterRemovalRevision=null;if(waterDialog?.open)waterDialog.close();foodRemovalRevision=null;if(foodDialog?.open)foodDialog.close();studio={...studio,active:false,habitat:false};selected=null;placement=null;habitatCount=0;access=null;editView={canUndo:false,reason:null,result:null};removal=null;if(editDialog?.open)editDialog.close();}
     renderPlacement();
-    renderSelection();
+    renderSelection();renderVisitors();
     if(cameraControls){cameraControls.hidden=next.status!=='ready';cameraControls.setAttribute('aria-label',copy.cameraControls);}
     root.querySelector('[data-camera-help]')?.replaceChildren(copy.cameraHelp);
     for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]')) {
