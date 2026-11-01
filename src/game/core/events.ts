@@ -1,4 +1,5 @@
 export type SimulationEvent =
+  | {type:'visitor-viewed';visitorId:string;habitatId:string;tick:number;gameTimeMs:number}
   | {type:'visitor-entrance-changed';tick:number;gameTimeMs:number}
   | {type:'perch-changed';tick:number;gameTimeMs:number}
   | {type:'water-changed';tick:number;gameTimeMs:number}

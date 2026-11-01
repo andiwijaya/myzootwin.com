@@ -1,0 +1,81 @@
+Γ£ö real topology chooses shortest adjacent viewing cell; gaps, diagonals, creek, scenery and occupied land never form a route (19.1673ms)
+Γ£ö full outbound/view/return cycles are exactly once, FIFO bounded, position-continuous and never create satisfaction, admission or money (1635.9552ms)
+Γ£ö all21 legal aviaries have an actual legal route, a completed visit and a safe return (1078.9434ms)
+Γ£û occupied path and final escape bridge cannot be removed; unused/ahead branch edits replan safely and Undo restores topology (29.7459ms)
+Γ£û alternate return branch allows safe removal behind a guest without walking across deleted tiles (31.845ms)
+Γ£ö habitat removal and gate closure preserve positions then return without false viewing or stranded queues; empty restoration recovers (84.8285ms)
+Γ£ö a full preexisting three-bay greeting clears center first when a habitat path becomes connected (131.0846ms)
+Γ£ö moving/viewing state roundtrips exactly, deterministic frame partitions agree and pause/reconstruction never duplicate viewed events (266.3068ms)
+Γ£ö journey codec rejects unsafe positions, missing targets, multiple corridor owners, future ticks, disconnected escape and fake progress (8.7972ms)
+Γ£û actual animated rigs on turns, viewing and two-way shared corridor remain separated, supported and bounded with unchanged asset pool (94.4815ms)
+Γä╣ tests 10
+Γä╣ suites 0
+Γä╣ pass 7
+Γä╣ fail 3
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 3575.1018
+
+Γ£û failing tests:
+
+test at tests\visitor-navigation.test.mjs:18:1
+Γ£û occupied path and final escape bridge cannot be removed; unused/ahead branch edits replan safely and Undo restores topology (29.7459ms)
+  AssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:
+  
+    assert.ok(s.undo('undo-00000000000000000000000000000001').ok)
+  
+      at TestContext.<anonymous> (file:///C:/MyZooTwin/tests/visitor-navigation.test.mjs:18:645)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\visitor-navigation.test.mjs:19:1
+Γ£û alternate return branch allows safe removal behind a guest without walking across deleted tiles (31.845ms)
+  AssertionError [ERR_ASSERTION]: {"ok":false,"reason":"in-use"}
+      at remove (file:///C:/MyZooTwin/tests/visitor-navigation.test.mjs:14:65)
+      at TestContext.<anonymous> (file:///C:/MyZooTwin/tests/visitor-navigation.test.mjs:19:309)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\visitor-navigation.test.mjs:24:1
+Γ£û actual animated rigs on turns, viewing and two-way shared corridor remain separated, supported and bounded with unchanged asset pool (94.4815ms)
+  AssertionError [ERR_ASSERTION]: {"t":306,"visitors":[{"id":"arrival-2","phase":"entering","position":{"x":1.22,"z":8.58},"route":[{"x":1,"z":8},{"x":1,"z":7},{"x":2,"z":7},{"x":3,"z":7},{"x":3,"z":6},{"x":3,"z":5}],"routeIndex":0,"satisfaction":null,"admissionId":null,"arrival":{"serial":2,"slot":0,"spawnTick":31},"journey":{"habitatId":"habitat-one","heading":2.4815926535897925,"dwellTicks":0,"queuedTicks":254,"viewed":false,"startedTick":304}},{"id":"arrival-3","phase":"queued","position":{"x":1.78,"z":8.58},"route":[{"x":1,"z":8}],"routeIndex":0,"satisfaction":null,"admissionId":null,"arrival":{"serial":3,"slot":2,"spawnTick":61},"journey":{"habitatId":null,"heading":3.141592653589793,"dwellTicks":0,"queuedTicks":227,"viewed":false,"startedTick":null}},{"id":"arrival-4","phase":"arrival","position":{"x":1.22,"z":8.835},"route":[{"x":1,"z":8}],"routeIndex":0,"satisfaction":null,"admissionId":null,"arrival":{"serial":4,"slot":0,"spawnTick":304},"journey":null}]}
+  
+  true !== false
+  
+      at TestContext.<anonymous> (file:///C:/MyZooTwin/tests/visitor-navigation.test.mjs:24:781)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: true,
+    expected: false,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

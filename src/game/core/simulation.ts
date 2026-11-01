@@ -1,3 +1,4 @@
+import {reconcileJourneys} from '../visitors/navigation.ts';
 import {stepArrivals,arrivalsView} from '../visitors/arrivals.ts';
 import {reconcileWelfare} from '../animals/welfare.ts';
 import {perchTransaction,perchView,type PerchAction} from '../animals/resting.ts';
@@ -34,7 +35,7 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
     if(state.tick>=MAX_TICK)throw new RangeError('Simulation tick limit reached');
     state.tick++;
     state.gameTimeMs=state.tick*TICK_MS;
-    stepArrivals(state);
+    for(const e of stepArrivals(state))bus.emit(Object.freeze({type:'visitor-viewed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     const random=nextRandom(state.randomState);
     state.randomState=random.state;
     const {fed,watered}=stepAnimals(state);reconcileWelfare(state);for(const e of watered)bus.emit(Object.freeze({type:'animal-drank',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));for(const e of fed)bus.emit(Object.freeze({type:'animal-fed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
@@ -53,19 +54,20 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
       if(disposed||clock.inspect().paused)return {ok:false as const,reason:'command' as const};
       const prepared=prepareHabitat(state.world,anchor,operationId);
       if(!prepared.ok)return prepared;
-      if(!prepared.duplicate){const connected=reconcilePathAccess(prepared.world);const next=validateSave({...state,world:connected.world});if(!next.ok)return {ok:false as const,reason:'command' as const};state=reconcileWelfare(next.value);topology=connected.topology;invalidateEdit();bus.emit(Object.freeze({type:'habitat-built',habitatId:prepared.habitatId,tick:state.tick,gameTimeMs:state.gameTimeMs}));}
+      if(!prepared.duplicate){const connected=reconcilePathAccess(prepared.world);const next=validateSave(reconcileJourneys({...structuredClone(state),world:connected.world}));if(!next.ok)return {ok:false as const,reason:'command' as const};state=reconcileWelfare(next.value);topology=connected.topology;invalidateEdit();bus.emit(Object.freeze({type:'habitat-built',habitatId:prepared.habitatId,tick:state.tick,gameTimeMs:state.gameTimeMs}));}
       return {ok:true as const,habitatId:prepared.habitatId,duplicate:prepared.duplicate};
     },
     buildPath(cell:Point){
       if(disposed||clock.inspect().paused)return {ok:false as const,reason:'command' as const};
       const prepared=preparePath(state.world,cell);if(!prepared.ok)return prepared;
-      if(!prepared.duplicate){const connected=reconcilePathAccess(prepared.world);const next=validateSave({...state,world:connected.world});if(!next.ok)return {ok:false as const,reason:'command' as const};state=reconcileWelfare(next.value);topology=connected.topology;invalidateEdit();bus.emit(Object.freeze({type:'path-built',cell:{...cell},tick:state.tick,gameTimeMs:state.gameTimeMs}));}
+      if(!prepared.duplicate){const connected=reconcilePathAccess(prepared.world);const next=validateSave(reconcileJourneys({...structuredClone(state),world:connected.world}));if(!next.ok)return {ok:false as const,reason:'command' as const};state=reconcileWelfare(next.value);topology=connected.topology;invalidateEdit();bus.emit(Object.freeze({type:'path-built',cell:{...cell},tick:state.tick,gameTimeMs:state.gameTimeMs}));}
       return {ok:true as const,duplicate:prepared.duplicate};
     },
     visitors(open:boolean){if(disposed||clock.inspect().paused||typeof open!=='boolean'||state.visitorFlow.open===open)return false;state.visitorFlow.open=open;state.visitorFlow.cooldownTicks=0;bus.emit(Object.freeze({type:'visitor-entrance-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;},
     visitorView:()=>arrivalsView(state),
-    visitorInspect:()=>Object.fromEntries([0,1,2].flatMap(i=>{const v=state.visitors.find(v=>v.arrival?.slot===i),a=v?.arrival,k=`visitor${i+1}`;return [[`${k}Serial`,a?.serial??0],[`${k}Age`,a?state.tick-a.spawnTick:0],[`${k}X`,v?.position.x??-1],[`${k}Z`,v?.position.z??-1]];})),
-    visitorSnapshot:()=>({visitors:structuredClone(state.visitors),width:state.world.width,height:state.world.height,tick:state.tick}),
+    visitorInspect:()=>({...(()=>{const v=state.visitors.find(v=>v.journey?.startedTick!==null&&v.journey?.startedTick!==undefined);return {visitorWalkerSerial:v?.arrival?.serial??0,visitorWalkerX:v?.position.x??-1,visitorWalkerZ:v?.position.z??-1,visitorWalkerHeading:v?.journey?.heading??0,visitorWalkerRouteIndex:v?.routeIndex??-1};})(),...Object.fromEntries([0,1,2].flatMap(i=>{const v=state.visitors.find(v=>v.arrival?.slot===i),a=v?.arrival,k=`visitor${i+1}`;return [[`${k}Serial`,a?.serial??0],[`${k}Age`,a?state.tick-a.spawnTick:0],[`${k}X`,v?.position.x??-1],[`${k}Z`,v?.position.z??-1]];}))}),
+    visitorFocus:()=>{const v=state.visitors.find(v=>v.journey?.startedTick!==null&&v.journey?.startedTick!==undefined)??state.visitors[0];return v?{...v.position}:null;},
+    visitorSnapshot:()=>({visitors:structuredClone(state.visitors),width:state.world.width,height:state.world.height,tick:state.tick,gate:{...state.world.gate}}),
     birdInspect:()=>Object.fromEntries([...state.animals].sort((a,b)=>a.id.localeCompare(b.id)).flatMap((a,i)=>{const key=`bird${i+1}`;return [[`${key}X`,a.position?.x??-1],[`${key}Z`,a.position?.z??-1],[`${key}Height`,a.motion.elevation],[`${key}Phase`,['idle','walk-out','look','walk-home','ascend','perch','descend','seek-food','eat','leave-food','seek-water','drink','water-back','water-hop','leave-water','water-home','water-abort','seek-rest','rest','enrich'].indexOf(a.motion.phase)],[`${key}Sequence`,a.motion.sequence],[`${key}Welfare`,a.welfare],[`${key}HabitatFit`,a.habitatFit],[`${key}WelfareLow`,a.care.low?1:0],[`${key}Hunger`,a.hunger],[`${key}FoodEaten`,a.foodEaten],[`${key}Thirst`,a.thirst],[`${key}WaterDrunk`,a.waterDrunk],[`${key}Energy`,a.energy],[`${key}Enrichment`,a.enrichment],[`${key}RestedTicks`,a.restedTicks],[`${key}EnrichedTicks`,a.enrichedTicks]];})),
     birdSnapshot:()=>({animals:structuredClone(state.animals),habitats:structuredClone(state.world.habitats),width:state.world.width,height:state.world.height}),
     perchView:()=>perchView(state),
@@ -90,7 +92,7 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
       const transaction=editLedger(state,operationId,refundable(state,targetId(quote.target)).map(r=>({kind:'refund' as const,relatedId:r.paidId,amount:r.amount})));
       if(!transaction)return {ok:false as const,reason:'funds' as const};
       const connected=reconcilePathAccess(removedWorld(state.world,quote.target));
-      const next=validateSave({...state,world:connected.world,currency:transaction.currency,ledger:transaction.ledger});
+      const next=validateSave(reconcileJourneys({...structuredClone(state),world:connected.world,currency:transaction.currency,ledger:transaction.ledger}));
       if(!next.ok)return {ok:false as const,reason:'command' as const};
       editor={revision:editor.revision+1,undo:{before:structuredClone(state.world),after:structuredClone(connected.world),refundIds:transaction.entries.map(e=>e.id)}};
       state=reconcileWelfare(next.value);topology=connected.topology;bus.emit(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));
@@ -103,7 +105,7 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
       if(refunds.some(e=>!e||e.kind!=='refund'))return {ok:false as const,reason:'command' as const};
       const transaction=editLedger(state,operationId,refunds.map(e=>({kind:'restore' as const,relatedId:e!.id,amount:-e!.amount})));
       if(!transaction)return {ok:false as const,reason:'funds' as const};
-      const connected=reconcilePathAccess(undo.before),next=validateSave({...state,world:connected.world,currency:transaction.currency,ledger:transaction.ledger});
+      const connected=reconcilePathAccess(undo.before),next=validateSave(reconcileJourneys({...structuredClone(state),world:connected.world,currency:transaction.currency,ledger:transaction.ledger}));
       if(!next.ok)return {ok:false as const,reason:'command' as const};
       state=reconcileWelfare(next.value);topology=connected.topology;invalidateEdit();bus.emit(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};
     },

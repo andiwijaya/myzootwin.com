@@ -15,7 +15,7 @@ export function populated() {
   s.currency=1530;
   s.ledger.push({id:'ledger-ticket-1',operationId:'admit-visitor-1',kind:'ticket',amount:10,balanceAfter:1510,tick:0,relatedId:'admission-1'});
   s.admissions.push({id:'admission-1',visitorId:'visitor-1',tick:0,ledgerEntryId:'ledger-ticket-1'});
-  s.visitors.push({id:'visitor-1',position:{x:1.5,z:8.5},route:path,routeIndex:0,phase:'entering',satisfaction:80,admissionId:'admission-1',arrival:null});
+  s.visitors.push({id:'visitor-1',position:{x:1.5,z:8.5},route:path,routeIndex:0,phase:'entering',satisfaction:80,admissionId:'admission-1',arrival:null,journey:null});
   s.missions.completedIds=['Q01'];s.missions.currentId='Q02';s.missions.objectives.habitatConnected=true;
   s.missions.rewards.push({missionId:'Q01',ledgerEntryId:'ledger-reward-1'});
   s.ledger.push({id:'ledger-reward-1',operationId:'claim-q01',kind:'reward',amount:20,balanceAfter:1530,tick:0,relatedId:'Q01'});

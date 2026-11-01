@@ -1,3 +1,4 @@
+import {visitorPaths,visitorRoute,visitorCell,ownsCorridor} from '../visitors/navigation.ts';
 import {arrivalPosition,ARRIVAL_RULES} from '../visitors/arrivals.ts';
 import {restPort,restGround} from '../animals/resting.ts';
 import {waterPort,waterHeading,isWaterPhase} from '../animals/watering.ts';
@@ -37,8 +38,8 @@ const schema = object({
     resources: array(object({ id, kind: oneOf('food','water','perch'), habitatId: id, cell, stock: integer(10000), capacity: number(1,10000,true),revision:tick,portions:nullable(array(integer(10000),2)) }),32),
   }),
   animals: array(object({ id, speciesId: oneOf(SPECIES_ID), habitatId: nullable(id), position: nullable(point), target: nullable(point), targetResourceId: nullable(id), hunger: percent, thirst: percent, energy: percent, habitatFit: percent, enrichment: percent, welfare: percent, care:object({low:bool,hungry:bool,thirsty:bool,tired:bool,bored:bool}), currentBehavior: oneOf('idle','wander','perch','seek-food','eat','seek-water','drink','rest','enrich','seek-rest'),motion:object({phase:oneOf('idle','look','walk-out','walk-home','ascend','perch','descend','seek-food','eat','leave-food','seek-water','drink','water-back','water-hop','leave-water','water-home','water-abort','seek-rest','rest','enrich'),ticksLeft:integer(120),sequence:tick,heading:number(-Math.PI*2,Math.PI*2),elevation:number(0,.2604000001)}),foodEaten:tick,waterDrunk:tick,restedTicks:tick,enrichedTicks:tick }),2),
-  visitors: array(object({ id, position: point, route: array(cell,1024), routeIndex: integer(1023), phase: oneOf('arrival','entering','viewing','leaving'), satisfaction: nullable(percent), admissionId: nullable(id),arrival:nullable(object({serial:number(1,MAX_TICK,true),slot:integer(2),spawnTick:tick})) }),32),
-  visitorFlow:object({open:bool,nextSerial:number(1,MAX_TICK,true),cooldownTicks:integer(30)}),
+  visitors: array(object({ id, position: point, route: array(cell,1024), routeIndex: integer(1023), phase: oneOf('arrival','queued','entering','viewing','leaving','exiting'), satisfaction: nullable(percent), admissionId: nullable(id),arrival:nullable(object({serial:number(1,MAX_TICK,true),slot:integer(2),spawnTick:tick})),journey:nullable(object({habitatId:nullable(id),heading:number(-Math.PI,Math.PI),dwellTicks:integer(30),queuedTicks:integer(6000),viewed:bool,startedTick:nullable(tick)})) }),32),
+  visitorFlow:object({open:bool,nextSerial:number(1,MAX_TICK,true),cooldownTicks:integer(30),viewedTotal:tick}),
   admissions: array(object({ id, visitorId: id, tick, ledgerEntryId: id }),8192),
   ledger: array(object({ id, operationId: id, kind: oneOf('starter','build','supplies','maintenance','ticket','reward','refund','restore'), amount: number(-Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER,true), balanceAfter: integer(), tick, relatedId: nullable(referenceId) }),8192),
   missions: object({ currentId: nullable(missionId), completedIds: array(missionId,4), rewards: array(object({ missionId, ledgerEntryId: id }),4),
@@ -119,14 +120,40 @@ function relationships(s: ZooSaveV1) {
   for(const a of s.admissions) { const e=ledger.get(a.ledgerEntryId); requireValue(a.tick<=s.tick && e?.kind==='ticket' && e.relatedId===a.id && e.tick===a.tick,'$.admissions.reference'); }
   for(const e of s.ledger)if(e.kind==='ticket')requireValue(e.relatedId!==null && admissions.get(e.relatedId)?.ledgerEntryId===e.id,'$.ledger.ticket');
   requireValue(s.visitors.length<=ARRIVAL_RULES.capacity,'$.visitors.capacity');
-  unique(s.visitors.flatMap(v=>v.arrival?[String(v.arrival.slot)]:[]),'$.visitors.slots');
+  requireValue(s.visitorFlow.viewedTotal<s.visitorFlow.nextSerial,'$.visitorFlow.viewedTotal');
+  unique(s.visitors.flatMap(v=>v.arrival&&!ownsCorridor(v)?[String(v.arrival.slot)]:[]),'$.visitors.slots');
+  requireValue(s.visitors.filter(ownsCorridor).length<=1,'$.visitors.corridor');
+  const safePaths=visitorPaths(w);
   for(const v of s.visitors) {
-    if(v.phase==='arrival'){
-      const a=v.arrival;requireValue(a!==null&&v.admissionId===null&&v.satisfaction===null,'$.visitors.arrival');
-      if(!a)continue;const age=s.tick-a.spawnTick,p=arrivalPosition(w.gate,a.slot,age);
-      requireValue(v.id===`arrival-${a.serial}`&&a.serial<s.visitorFlow.nextSerial&&age>=0&&age<ARRIVAL_RULES.lifetimeTicks&&Math.abs(v.position.x-p.x)<1e-9&&Math.abs(v.position.z-p.z)<1e-9&&v.routeIndex===0&&v.route.length===1&&key(v.route[0])===key(w.gate),'$.visitors.arrival.position');
+    if(v.arrival){
+      const a=v.arrival,j=v.journey,age=s.tick-a.spawnTick;
+      requireValue(v.admissionId===null&&v.satisfaction===null&&v.id===`arrival-${a.serial}`&&a.serial<s.visitorFlow.nextSerial&&age>=0,'$.visitors.generated');
+      if(v.phase==='arrival'){
+        const p=arrivalPosition(w.gate,a.slot,age);
+        requireValue(j===null&&age<ARRIVAL_RULES.lifetimeTicks&&Math.abs(v.position.x-p.x)<1e-9&&Math.abs(v.position.z-p.z)<1e-9&&v.routeIndex===0&&v.route.length===1&&key(v.route[0])===key(w.gate),'$.visitors.arrival.position');
+        continue;
+      }
+      requireValue(j!==null,'$.visitors.journey');if(!j)continue;
+      requireValue(j.startedTick===null||j.startedTick<=s.tick,'$.visitors.journey.tick');
+      requireValue(inBounds(v.position)&&safePaths.has(key(visitorCell(v)))&&v.route.length>0&&v.routeIndex<v.route.length,'$.visitors.journey.position');
+      for(let i=0;i<v.route.length;i++){requireValue(safePaths.has(key(v.route[i])),'$.visitors.route');if(i)requireValue(Math.abs(v.route[i].x-v.route[i-1].x)+Math.abs(v.route[i].z-v.route[i-1].z)===1,'$.visitors.route.adjacency');}
+      requireValue(visitorRoute(w,visitorCell(v),w.gate).length>0,'$.visitors.escape');
+      const waypoint=v.route[v.routeIndex],previous=v.route[Math.max(0,v.routeIndex-1)],p=v.position;
+      if(v.phase==='entering'||v.phase==='leaving'){
+        if(v.routeIndex===0)requireValue(key(visitorCell(v))===key(waypoint),'$.visitors.route.start');
+        else requireValue((previous.x===waypoint.x&&Math.abs(p.x-waypoint.x-.5)<1e-9&&p.z>=Math.min(previous.z,waypoint.z)+.5-1e-9&&p.z<=Math.max(previous.z,waypoint.z)+.5+1e-9)||(previous.z===waypoint.z&&Math.abs(p.z-waypoint.z-.5)<1e-9&&p.x>=Math.min(previous.x,waypoint.x)+.5-1e-9&&p.x<=Math.max(previous.x,waypoint.x)+.5+1e-9),'$.visitors.route.segment');
+      }
+
+      if(!ownsCorridor(v)){
+        requireValue((v.phase==='queued'||v.phase==='exiting')&&j.habitatId===null&&!j.viewed&&key(visitorCell(v))===key(w.gate)&&Math.abs(v.position.x-(w.gate.x+.19+a.slot*.31))<1e-9&&v.position.z>=w.gate.z+.58-1e-9&&v.position.z<=w.gate.z+.88+1e-9,'$.visitors.queue');
+      }else{
+        requireValue(['entering','viewing','leaving','exiting'].includes(v.phase),'$.visitors.phase');
+        if(v.phase==='entering'||v.phase==='viewing')requireValue(j.habitatId!==null&&habitats.has(j.habitatId),'$.visitors.target');
+        if(v.phase==='viewing')requireValue(v.routeIndex===v.route.length-1&&Math.abs(v.position.x-v.route.at(-1)!.x-.5)<1e-9&&Math.abs(v.position.z-v.route.at(-1)!.z-.5)<1e-9,'$.visitors.viewing');
+      }
       continue;
     }
+    requireValue(v.journey===null,'$.visitors.legacyJourney');
     requireValue(v.arrival===null&&v.satisfaction!==null&&v.admissionId!==null,'$.visitors.admission');
     requireValue(inBounds(v.position) && tiles.get(key({x:Math.floor(v.position.x),z:Math.floor(v.position.z)}))?.path===true && admissions.get(v.admissionId!)?.visitorId===v.id && v.route.length>0 && v.routeIndex<v.route.length,'$.visitors.reference');
     for(let i=0;i<v.route.length;i++) { const p=v.route[i]; requireValue(tiles.get(key(p))?.path===true,'$.visitors.route'); if(i)requireValue(Math.abs(p.x-v.route[i-1].x)+Math.abs(p.z-v.route[i-1].z)===1,'$.visitors.route.adjacency'); }
