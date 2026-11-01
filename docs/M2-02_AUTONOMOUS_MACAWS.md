@@ -1,6 +1,6 @@
 # M2-02 - two autonomous sanctuary macaws
 
-Status: COMPLETE on 2026-11-01 UTC for two actual placed animals and idle/wander/perch locomotion. Implementation/evidence commit is recorded in the living completion record. Local only; no production deployment. M0-01 external configuration remains partial. Next: M2-03 feeder placement, stock/consumption and seek-food.
+Status: COMPLETE on 2026-11-01 UTC for two actual placed animals and idle/wander/perch locomotion. Implementation/evidence commit: cb0c9304720529cf763ac867e37ae730e4c14cf3 (local only). Local only; no production deployment. M0-01 external configuration remains partial. Next: M2-03 feeder placement, stock/consumption and seek-food.
 
 ## Player outcome
 
@@ -44,4 +44,4 @@ Original journal pages/layouts/assets/SEO, dependencies, world/economy rules, or
 
 Superseded evidence is kept under `qa/m2-02/preliminary/`. An initially invalid transaction ID in a test was corrected; stricter saved-motion guards and whitespace cleanup preceded verification. Actual product inspection caught outdated empty-habitat/no-birds copy; both dictionaries were corrected and the full source-matched workflow repeated. One helper assertion made no partial source write. A locator deadline was followed by an outcome check rather than duplicate dispatch; ResizeObserver's later settled diagnostic confirmed interrupted-pointer release. No old/stale/RUNNING/compile-only result was promoted to final PASS.
 
-Verified completion is **16/51 (31.37%)** once the implementation/evidence commit and living checklist update are recorded. M7 remains12 deferred items. No push, deploy, GitHub Actions, login, new access grants or public-site403 retry.
+Verified completion is **16/51 (31.37%)**; implementation/evidence committed locally and living checklists updated. M7 remains12 deferred items. No push, deploy, GitHub Actions, login, new access grants or public-site403 retry.
