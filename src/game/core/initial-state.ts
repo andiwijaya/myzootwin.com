@@ -1,9 +1,10 @@
+import {emptyMotion} from '../animals/autonomy.ts';
 import { MISSION_IDS, SPECIES_ID, type Animal, type ZooSaveV1 } from './state.ts';
 
 export function createInitialState(seed = 0x5a17c0de): ZooSaveV1 {
   if (!Number.isInteger(seed) || seed < 1 || seed > 0xffffffff) throw new RangeError('Seed must be a nonzero uint32');
   const gate = { x: 1, z: 8 };
-  const animals: Animal[] = ['macaw-1', 'macaw-2'].map(id => ({ id, speciesId: SPECIES_ID, habitatId: null, position: null, target: null, targetResourceId: null, hunger: 0, thirst: 0, energy: 100, habitatFit: 0, enrichment: 0, welfare: 0, currentBehavior: 'idle' }));
+  const animals: Animal[] = ['macaw-1', 'macaw-2'].map(id => ({ id, speciesId: SPECIES_ID, habitatId: null, position: null, target: null, targetResourceId: null, hunger: 0, thirst: 0, energy: 100, habitatFit: 0, enrichment: 0, welfare: 0, currentBehavior: 'idle',motion:emptyMotion() }));
   return {
     schemaVersion: 1, randomSeed: seed, randomState: seed, tick: 0, gameTimeMs: 0, currency: 1500,
     world: { width: 12, height: 10, gate, tiles: Array.from({ length: 120 }, (_, index) => {

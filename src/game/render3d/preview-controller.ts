@@ -1,3 +1,4 @@
+import type {BirdCommand} from '../animals/autonomy.ts';
 import type {StudioCommand} from './macaw/studio-contract.ts';
 import type {EditTarget,RemovalQuote,EditView} from '../world/editing.ts';
 import type { PlacementCommand } from '../world/placement-preview.ts';
@@ -15,6 +16,7 @@ export class PreviewFailure extends Error {
 
 export interface PreviewSession {
   dispose(): void;
+  birds?(command:BirdCommand):void;
   studio?(command:StudioCommand,value?:string):void;
   camera?(command:CameraCommand):void;
   clearSelection?():void;
@@ -77,6 +79,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     dispose() { if (disposed) return; close(); disposed = true; },
     getState: () => state,
     inspectSession: () => session?.inspect?.(),
+    birds(command:BirdCommand){if(!paused&&state.status==='ready')session?.birds?.(command);},
     studio(command:StudioCommand,value?:string){if(!paused&&state.status==='ready')session?.studio?.(command,value);},
     camera(command:CameraCommand) {if(!paused&&state.status==='ready')session?.camera?.(command);},
     clearSelection(){if(!paused&&state.status==='ready')session?.clearSelection?.();},

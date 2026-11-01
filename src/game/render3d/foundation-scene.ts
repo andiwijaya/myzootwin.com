@@ -1,3 +1,4 @@
+import {createAutonomousBirds} from './macaw/autonomous-birds.ts';
 import {createMacawStudio} from './macaw/macaw-studio.ts';
 import {createPathScene} from './path-scene.ts';
 import {releaseLiveContext} from './webgl-cleanup.ts';
@@ -19,7 +20,7 @@ interface FoundationOptions {
   createRenderer?: (canvas: HTMLCanvasElement, context: WebGL2RenderingContext) => WebGLRenderer;
 }
 
-/** Fixed-tick sanctuary with authoritative habitat construction; later animal/economy loop pending. */
+/** Fixed-tick world with two autonomous macaws. Care, visitors, economy and durable saves remain later features. */
 export function mountFoundationScene(host: HTMLElement, onFailure: (kind: PreviewFailureKind) => void, options: FoundationOptions = {}): PreviewSession {
   const canvas = document.createElement('canvas');
   canvas.setAttribute('aria-hidden', 'true');
@@ -46,7 +47,10 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   let picker: ReturnType<typeof createScenePicker> | undefined;
   let placement:ReturnType<typeof createPlacementPreview>|undefined;
   let habitats:ReturnType<typeof createHabitatScene>|undefined;
-  let habitatDirty=true,pathDirty=true;
+  let habitatDirty=true,pathDirty=true,birdsDirty=true;
+  let birds:ReturnType<typeof createAutonomousBirds>|undefined;
+  let previousBirdView='';
+  function announceBirds(){const view=simulation.birdsView(),key=JSON.stringify(view);if(key!==previousBirdView){previousBirdView=key;host.dispatchEvent(new CustomEvent('scene-birds-change',{detail:view}));}host.dataset.placedBirds=String(view.placed);}
   let paths:ReturnType<typeof createPathScene>|undefined;
   const simulation = createSimulation(options.stateStore?.read(),options.stateStore?.readEditor());
   function saveSession(){options.stateStore?.write(simulation.snapshot());options.stateStore?.writeEditor(simulation.editorSnapshot());}
@@ -57,6 +61,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   const unsubscribe = simulation.subscribe(event => {
     simulationTimeMs = event.gameTimeMs;
     if (event.type === 'tick') simulationEvents++;
+    birdsDirty=true;
     if(event.type==='habitat-built'){habitatDirty=true;pathDirty=true;}
     if(event.type==='path-built')pathDirty=true;
     if(event.type==='world-edited'){habitatDirty=true;pathDirty=true;}
@@ -74,6 +79,9 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     if (context?.isContextLost()) { notifyContextLoss(); return; }
     if(habitatDirty&&habitats){habitats.sync(simulation.snapshot().world);habitatDirty=false;}
     if(pathDirty&&paths){paths.sync(simulation.snapshot().world);picker?.refresh();pathDirty=false;}
+    if(birdsDirty&&birds){const s=simulation.birdSnapshot();birds.sync(s.animals,s.habitats,s.width,s.height,simulationTimeMs);birdsDirty=false;announceBirds();}
+    const remainder=simulation.inspect().accumulatorMs;
+    birds?.update(remainder/100,simulationTimeMs+remainder);
     diorama?.update(simulationTimeMs, motion.matches);
     renderer?.render(scene, macaw?.view().active&&!macaw.view().habitat?macaw.camera:camera);
     if (renderer) renderSubmissions++;
@@ -116,6 +124,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     safe(() => placement?.dispose());
     safe(() => habitats?.dispose());
     safe(() => paths?.dispose());
+    safe(()=>birds?.dispose());
     safe(()=>macaw?.dispose());host.removeEventListener('keydown',onStudioKey,true);
     safe(saveSession);
     unsubscribe();
@@ -151,6 +160,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     sun.position.set(-6, 10, 8);
     scene.add(sun);
     const initialWorld=simulation.snapshot().world;
+    birds=createAutonomousBirds();worldLayer.add(birds.group);
     diorama = createTropicalDiorama(initialWorld);
     geometries.push(...diorama.geometries); materials.push(...diorama.materials);
     worldLayer.add(diorama.group);
@@ -171,7 +181,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     },(proposal,operationId)=>{const result=proposal.kind==='path'?simulation.buildPath(proposal.anchor):simulation.buildHabitat(proposal.anchor,operationId);if(result.ok){saveSession();announceHabitat();return true;}return false;});
     geometries.push(...placement.geometries);materials.push(...placement.materials);worldLayer.add(placement.group);
     controls=mountCameraControls(host,canvas,camera,diorama.bounds,initialWorld,point=>{if(!macaw?.view().active){if(placement?.active())placement.pick(point);else picker?.pick(point);}},()=>placement?.active()?placement.command('cancel'):picker?.clear());
-    macaw=createMacawStudio(()=>simulation.snapshot().world,view=>{worldLayer.visible=!view.active||view.habitat;host.dispatchEvent(new CustomEvent('scene-studio-change',{detail:view}));updateRunning();resize();},()=>motion.matches);scene.add(macaw.group);host.addEventListener('keydown',onStudioKey,true);
+    macaw=createMacawStudio(()=>simulation.snapshot().world,view=>{birds?.setVisible(!view.active);worldLayer.visible=!view.active||view.habitat;host.dispatchEvent(new CustomEvent('scene-studio-change',{detail:view}));updateRunning();resize();},()=>motion.matches);scene.add(macaw.group);host.addEventListener('keydown',onStudioKey,true);
     canvas.addEventListener('webglcontextlost', onLost);
     host.append(canvas);
     resize(); // Ready means a real first render completed, not merely an import.
@@ -190,6 +200,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
 
   return {
     dispose,
+    birds:command=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');if(simulation.birds(command)){picker?.clear();saveSession();render();announceEdit();}},
     studio:(command,value)=>{if(disposed||paused||lost||document.hidden)return;try{if(command==='open'){placement?.command('cancel');picker?.clear();}macaw?.command(command,value);}catch{onFailure('render');}},
     camera: value => controls?.command(value),
     clearSelection:()=>picker?.clear(),
@@ -204,6 +215,6 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
       announceEdit(result.ok?null:result.reason,result.ok?(command==='undo'?'restored':'removed'):null);
     },
     setPaused(value) { paused = value; updateRunning(); },
-    inspect: () => ({ canUndo:simulation.inspect().canUndo,editorRevision:simulation.inspect().editorRevision,disposed, lost, canvasAttached: canvas.isConnected, pendingFrames: loop.inspect().pendingFrames, geometries: renderer?.info.memory.geometries ?? 0, textures: renderer?.info.memory.textures ?? 0, programs: renderer?.info.programs?.length ?? 0, ownedMaterialsLive: materials.length - releasedMaterials+(macaw?.inspect().macawOwnedMaterialsLive??0), drawCallsLastRender: renderer?.info.render.calls ?? 0, trianglesLastRender: renderer?.info.render.triangles ?? 0, renderSubmissions, bufferWidth: canvas.width, bufferHeight: canvas.height, pixelRatio: renderer?.getPixelRatio() ?? 0, cleanupErrors, simulationTick: simulation.inspect().tick, simulationGameTimeMs: simulation.inspect().gameTimeMs, simulationPaused: simulation.inspect().paused, simulationDisposed: simulation.inspect().disposed, simulationSubscribers: simulation.inspect().subscribers, simulationEvents, simulationStartTick, habitatCount:simulation.inspect().habitatCount, occupiedTiles:simulation.inspect().occupiedTiles, currency:simulation.inspect().currency, ...macaw?.inspect(),...habitats?.inspect(), ...paths?.inspect(), pathTiles:simulation.inspect().pathTiles,reachablePathTiles:simulation.inspect().reachablePathTiles,connectedHabitats:simulation.inspect().connectedHabitats,routeCells:simulation.inspect().routeCells, orthographicCamera: camera.isOrthographicCamera, ...diorama?.inspect(), ...controls?.inspect(), ...picker?.inspect(), ...placement?.inspect() }),
+    inspect: () => ({ canUndo:simulation.inspect().canUndo,editorRevision:simulation.inspect().editorRevision,disposed, lost, canvasAttached: canvas.isConnected, pendingFrames: loop.inspect().pendingFrames, geometries: renderer?.info.memory.geometries ?? 0, textures: renderer?.info.memory.textures ?? 0, programs: renderer?.info.programs?.length ?? 0, ownedMaterialsLive: materials.length - releasedMaterials+(macaw?.inspect().macawOwnedMaterialsLive??0)+(birds?.inspect().birdOwnedMaterials??0), drawCallsLastRender: renderer?.info.render.calls ?? 0, trianglesLastRender: renderer?.info.render.triangles ?? 0, renderSubmissions, bufferWidth: canvas.width, bufferHeight: canvas.height, pixelRatio: renderer?.getPixelRatio() ?? 0, cleanupErrors, simulationTick: simulation.inspect().tick, simulationGameTimeMs: simulation.inspect().gameTimeMs, simulationPaused: simulation.inspect().paused, simulationDisposed: simulation.inspect().disposed, simulationSubscribers: simulation.inspect().subscribers, simulationEvents, simulationStartTick, habitatCount:simulation.inspect().habitatCount, occupiedTiles:simulation.inspect().occupiedTiles, currency:simulation.inspect().currency, ...simulation.birdInspect(),placedBirds:simulation.birdsView().placed,...birds?.inspect(),...macaw?.inspect(),...habitats?.inspect(), ...paths?.inspect(), pathTiles:simulation.inspect().pathTiles,reachablePathTiles:simulation.inspect().reachablePathTiles,connectedHabitats:simulation.inspect().connectedHabitats,routeCells:simulation.inspect().routeCells, orthographicCamera: camera.isOrthographicCamera, ...diorama?.inspect(), ...controls?.inspect(), ...picker?.inspect(), ...placement?.inspect() }),
   };
 }

@@ -1,4 +1,5 @@
 export type SimulationEvent =
+  | {type:'birds-changed';tick:number;gameTimeMs:number}
   | {type:'world-edited';tick:number;gameTimeMs:number}
   | { type: 'tick'; tick: number; gameTimeMs: number; randomSample: number }
   | { type: 'path-built'; cell:{x:number;z:number}; tick:number; gameTimeMs:number }

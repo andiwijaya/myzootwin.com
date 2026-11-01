@@ -1,3 +1,4 @@
+import type {BirdsView,BirdCommand} from '../game/animals/autonomy.ts';
 import type {StudioView,StudioCommand} from '../game/render3d/macaw/studio-contract.ts';
 import type {EditView,RemovalQuote,EditTarget} from '../game/world/editing.ts';
 import type {AccessSummary} from '../game/world/paths.ts';
@@ -31,6 +32,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const events = new AbortController();
   let selected:SceneIdentity|null=null;
   let studio:StudioView={active:false,habitat:false,clip:'perch',angle:'quarter',motionPaused:false,canHabitat:false};
+  let birds:BirdsView={habitat:false,placed:0,birds:[]};
   let editView:EditView={canUndo:false,reason:null,result:null};
   let removal:RemovalQuote|null=null;
   let removalName='';
@@ -92,6 +94,14 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]'))button.disabled=state.status!=='ready'||(button.dataset.cameraCommand==='zoom-in'?zoom>=3:button.dataset.cameraCommand==='zoom-out'?zoom<=1:zoom===1);
   }
 
+  function renderBirds(){
+    const tools=root.querySelector<HTMLElement>('[data-bird-tools]');if(!tools)return;const copy=entryMessages[locale];tools.hidden=state.status!=='ready'||studio.active;
+    for(const el of tools.querySelectorAll<HTMLElement>('[data-entry-text]'))el.textContent=copy[el.dataset.entryText as EntryMessage];
+    const welcome=tools.querySelector<HTMLButtonElement>('[data-birds-command="welcome"]'),reserve=tools.querySelector<HTMLButtonElement>('[data-birds-command="reserve"]');
+    if(welcome){welcome.hidden=birds.placed>0;welcome.disabled=!birds.habitat;welcome.textContent=copy.birdsWelcome;}if(reserve){reserve.hidden=birds.placed===0;reserve.textContent=copy.birdsReserve;}
+    tools.querySelector('[data-birds-status]')?.replaceChildren(copy[birds.placed?'birdsPlaced':birds.habitat?'birdsWaiting':'birdsNeedHabitat']);
+    const list=tools.querySelector('[data-birds-list]');if(list){list.replaceChildren();if(birds.placed)for(const [i,b]of birds.birds.entries()){const row=document.createElement('li');row.dataset.birdId=b.id;row.textContent=copy.birdName.replace('{n}',String(i+1))+' · '+copy[b.behavior==='wander'?'birdWander':b.behavior==='perch'?'birdPerch':'birdIdle'];list.append(row);}}
+  }
   function renderStudio(){
     const copy=entryMessages[locale],ready=state.status==='ready',tools=root.querySelector<HTMLElement>('[data-macaw-tools]');if(!tools)return;
     tools.hidden=!ready;const controls=root.querySelector<HTMLElement>('[data-macaw-controls]');if(controls)controls.hidden=!studio.active;
@@ -104,6 +114,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     host?.setAttribute('aria-keyshortcuts',studio.active?(studio.habitat?'ArrowUp ArrowDown ArrowLeft ArrowRight Home Escape':'Escape'):'ArrowUp ArrowDown ArrowLeft ArrowRight Home Escape Enter');
     root.querySelector('[data-camera-help]')?.replaceChildren(copy[studio.active&&studio.habitat?'macawScaleHint':'cameraHelp']);
     if(caption)caption.textContent=copy[studio.active?'macawSubtitle':state.status==='ready'||state.status==='loading'?'previewCaption':'artCaption'];
+    renderBirds();
     if(ready){if(title)title.textContent=copy[studio.active?'macawTitle':'previewReady'];if(detail)detail.textContent=copy[studio.active?'macawSubtitle':'previewReadyDetail'];}
   }
 
@@ -163,7 +174,9 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     return (onFailure) => module.mountFoundationScene(host, onFailure,{stateStore:sanctuarySessionFor(root)});
   });
   const controller = createPreviewController(load, render);
-  host.addEventListener('scene-studio-change',event=>{studio=(event as CustomEvent<StudioView>).detail;renderPlacement();renderSelection();renderStudio();},{signal:events.signal});
+  host.addEventListener('scene-birds-change',event=>{birds=(event as CustomEvent<BirdsView>).detail;renderBirds();},{signal:events.signal});
+  for(const button of root.querySelectorAll<HTMLButtonElement>('[data-birds-command]'))button.addEventListener('click',()=>{controller.birds(button.dataset.birdsCommand as BirdCommand);host.focus({preventScroll:true});host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});
+  host.addEventListener('scene-studio-change' ,event=>{studio=(event as CustomEvent<StudioView>).detail;renderPlacement();renderSelection();renderStudio();},{signal:events.signal});
   for(const button of root.querySelectorAll<HTMLButtonElement>('[data-studio-command]'))button.addEventListener('click',()=>{const command=button.dataset.studioCommand as StudioCommand;controller.studio(command);host.focus({preventScroll:true});if(command!=='pause')host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});
   root.querySelector<HTMLSelectElement>('[data-macaw-clip]')?.addEventListener('change',event=>{controller.studio('clip',(event.target as HTMLSelectElement).value);host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});
   root.querySelector<HTMLSelectElement>('[data-macaw-angle]')?.addEventListener('change',event=>{controller.studio('angle',(event.target as HTMLSelectElement).value);host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});

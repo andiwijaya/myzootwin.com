@@ -1,0 +1,47 @@
+# M2-02 - two autonomous sanctuary macaws
+
+Status: COMPLETE on 2026-11-01 UTC for two actual placed animals and idle/wander/perch locomotion. Implementation/evidence commit is recorded in the living completion record. Local only; no production deployment. M0-01 external configuration remains partial. Next: M2-03 feeder placement, stock/consumption and seek-food.
+
+## Player outcome
+
+Open `/play`, open the 3D preview, build an aviary, then choose **Welcome two macaws / Sambut dua makaw**. The original final M2-01 Ara ararauna rig now renders two actual simulation animals, `macaw-1` and `macaw-2`, with stable bilingual identity/status rows. They look around, walk, approach supported branches, perch and return to the floor independently. They are not the model studio's demonstration position offsets. The full Play/Continue loop remains unavailable and labelled honestly.
+
+Both birds have separate safe interior lanes in the actual 2 x 2 aviary. Seed, cycle sequence, phase/counter, heading, height, position and target are serializable typed data. Only the existing100ms fixed tick changes authoritative movement. Rendering interpolates the most recent states and poses through the existing single RAF; it does not drive navigation or RNG. Bounded turning/movement and finite phases prevent indefinite waiting. Ascent gains height before approaching the branch; departure leaves the branch before lowering. Floor/perch root heights, feet, folded tails, wings and roof/fence bounds were checked against actual model vertices and rendered pixels. This is simplified game locomotion, not a real-animal husbandry claim.
+
+Welcome is explicit and atomic. Missing/unsupported habitats and duplicate commands do not spawn birds; paused/disposed sessions reject commands. Occupied habitat deletion is refused, including stale quotes. **Return both birds to reserve** safely clears assignments/targets/locomotion, releases their rendered assets, and allows existing editing/Undo; welcoming again uses the same two IDs. Successful bird moves invalidate an older removal Undo/quote rather than allowing a world-only restore to orphan animals. No animal is silently deleted or replaced when editing is attempted.
+
+The in-page memento preserves both birds through close/reopen, context/render failures and renderer remount. A full page reload still resets the development preview: this is not autosave/Continue. The pre-release schema1 contract now includes concrete motion data and rejects invalid lane targets, phase/height/contact data and out-of-range counters; no published player-save migration is claimed. The model studio pauses and hides sanctuary birds while showing its one clearly labelled demonstration model, then restores the live pair. No third visible animal is admitted to the world.
+
+## Verified evidence
+
+Final run `20261101T000714Z-8570f664`; qa:verify **PASS** at `2026-11-01T00:17:55.031Z`.
+
+- `npm run qa:local`:140/140 unit/integration tests; Astro check77 files with zero errors/warnings/hints;9 built pages; all9 direct route/title/H1/canonical/sitemap checks. `npm run qa:verify` validates exact source/build identities, raw log hashes, browser receipt, six actual JPEGs and stopped ports.
+- New rule/geometry tests cover4000 fixed ticks of independent multi-cycle behavior, different frame partitions/entity ordering, mid-walk/midair save-codec roundtrips, pause/resume, invalid motion data, stable exactly-two welcome/reserve, deletion/Undo protection, shared ownership/disposal, and movement in **all21 legal aviary anchors**. These accelerated simulation checks are not a real-time browser soak.
+- Approved isolated IAB, actual WebGL:1366x768,360x780 and780x360. **267 per-case PASS**:24 new animal cases plus51 model,45 edit,42 path,42 placement,36 selection and27 camera regressions. Animal scenarios use real fixed ticks/native frames without injecting state or simulation time. Pointer-event coverage is explicitly injected, not physical touch.
+- **9 native product scenarios**, including actual build/welcome, native mouse drag without accidental selection, keyboard Escape, refusing occupied removal, return/rewelcome, close/reopen, ID persistence/phone layouts and journal/back/direct reload. **13 lifecycle observations /12 full zero-resource cleanup snapshots** cover context loss, render failure, unsupported fallback, late-import cancellation, repeated close/reopen, stale handles, orientation and unmount/remount. Console warning/error observations were empty and uncapped. All owned tabs closed, viewport reset, loopback4321/4322 verified free.
+- Six actual product screenshots,515588 bytes total: [desktop](qa/m2-02/screens/desktop-native.jpg), [desktop canvas](qa/m2-02/screens/desktop-native-two-birds.jpg), [portrait ID](qa/m2-02/screens/portrait-native-id.jpg), [landscape ID](qa/m2-02/screens/landscape-native-id.jpg). The two birds are small in whole-map overview; normal inspection zoom2.44 shows both silhouettes/contact. Fine face/foot details still use the M2-01 model close-up. Camera posts/wire and foliage can occlude small portions at this fixed isometric angle.
+
+Source identity: `dd5a5295e4bffa3b9f15891b48e3dc5362f529488dc7406e31031ad666421ed7`. Build identity: `9c698526a85f6a3ba1c7d8b9d86eff174906953506df2e9f0d93f4d437d8beff`. [Structured independent audit](qa/m2-02/independent-audit.json), [interaction matrix](qa/m2-02/interaction-matrix.json), [receipt](qa/m2-02/browser-receipt.json), [cleanup snapshots](qa/m2-02/cleanup-snapshots.json), [payload](qa/m2-02/payload-baseline.json).
+
+## Resources and limits
+
+The unchanged original M2-01 bird asset is shared by two independent rigs:11 owned geometries/one palette material/zero textures; maximum6360 bird triangles. Six simple supported-branch meshes share one additional geometry/material and add192 triangles. Provenance/source hashes are recorded in ASSET_MANIFEST.json; no external art, download, purchase, license agreement, dependency upgrade or upload.
+
+Retained two-bird world profile samples had25 GPU geometries,16 owned materials,35-36 draw calls and10720-10952 submitted triangles. Per-case snapshots across all scenarios observed up to32 GPU geometries,16 owned materials,36 calls and10952 triangles; this is **not** a continuously sampled global peak, and intermediate simultaneous model-studio/animal allocations were not separately profiled. Every full renderer cleanup verified zero GPU geometries/textures/programs, owned materials, bird rigs/assets, subscribers, RAFs and captured pointers. Shared/quantized JS heap diagnostics are retained but do not prove a GC or memory-leak result.
+
+Three5-second steady callback probes observed59.99-60.00Hz, synchronous JS/core/render-submit p95 about1.3/1.6/1.6ms,20-21 diagnostic readout writes. **Presented FPS and GPU duration remain unmeasured**, and these IAB viewport samples do not certify physical Android or a populated-game performance target.
+
+Final same-origin first-preview built bytes684407 raw /181697 gzip9 estimate; shell76997 raw; lazy renderer607410 raw. Relative to M2-01, +12878 raw /+4104 gzip-estimated bytes. The existing >500KB lazy-chunk warning remains explicit. This excludes external font/network timing and is not a full-game20MB release-budget or cold-start claim.
+
+Food/water/resource consumption, hunger/thirst/energy/welfare/enrichment effects, visitors, economy, missions, durable storage and full V1 UX remain their later gates. The built-in landing branches provide locomotion contact only; they do not complete M2-05 rest/energy/enrichment. This locomotion slice currently requires the resource-free starter aviary; M2-03 must introduce reachable facility interaction rather than letting animals pass through resources. Unsupported changed layouts/facilities fail safe to reserve; there is no player facility-placement control in this slice.
+
+Physical Android/touch, Safari/iOS, presentedFPS/GPU timing, network first-interaction target,15-minute rendered soak and live production remain UNRUN. Preexisting BASE-01 animals-heading overflow and BASE-02 quote contrast remain recorded. M0-01 exact external Cloudflare/GitHub settings remain pending; no login/new grant or production action attempted.
+
+## Hygiene and honest refinements
+
+Original journal pages/layouts/assets/SEO, dependencies, world/economy rules, original model/study/media and source transcriptions were preserved. Four old owned generated runs,50 files, were archived in two ZIPs(561762 compressed bytes), CRC/every SHA checked before scoped pruning; newest3 caches retained. Historical docs/QA receipts and rollback commits remain intact.
+
+Superseded evidence is kept under `qa/m2-02/preliminary/`. An initially invalid transaction ID in a test was corrected; stricter saved-motion guards and whitespace cleanup preceded verification. Actual product inspection caught outdated empty-habitat/no-birds copy; both dictionaries were corrected and the full source-matched workflow repeated. One helper assertion made no partial source write. A locator deadline was followed by an outcome check rather than duplicate dispatch; ResizeObserver's later settled diagnostic confirmed interrupted-pointer release. No old/stale/RUNNING/compile-only result was promoted to final PASS.
+
+Verified completion is **16/51 (31.37%)** once the implementation/evidence commit and living checklist update are recorded. M7 remains12 deferred items. No push, deploy, GitHub Actions, login, new access grants or public-site403 retry.

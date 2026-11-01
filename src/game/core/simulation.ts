@@ -1,3 +1,4 @@
+import {stepAnimals,welcomeBirds,reserveBird,birdsView,type BirdCommand} from '../animals/autonomy.ts';
 import {editLedger,refundable} from '../economy/refunds.ts';
 import {quoteRemoval,removedWorld,sameWorld,targetId,type EditTarget,type RemovalQuote,type EditorState} from '../world/editing.ts';
 import {preparePath,reconcilePathAccess,accessSummary} from '../world/paths.ts';
@@ -30,6 +31,7 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
     state.gameTimeMs=state.tick*TICK_MS;
     const random=nextRandom(state.randomState);
     state.randomState=random.state;
+    stepAnimals(state);
     bus.emit(Object.freeze({type:'tick',tick:state.tick,gameTimeMs:state.gameTimeMs,randomSample:random.value}));
   });
   return {
@@ -53,6 +55,15 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
       const prepared=preparePath(state.world,cell);if(!prepared.ok)return prepared;
       if(!prepared.duplicate){const connected=reconcilePathAccess(prepared.world);const next=validateSave({...state,world:connected.world});if(!next.ok)return {ok:false as const,reason:'command' as const};state=next.value;topology=connected.topology;invalidateEdit();bus.emit(Object.freeze({type:'path-built',cell:{...cell},tick:state.tick,gameTimeMs:state.gameTimeMs}));}
       return {ok:true as const,duplicate:prepared.duplicate};
+    },
+    birdInspect:()=>Object.fromEntries([...state.animals].sort((a,b)=>a.id.localeCompare(b.id)).flatMap((a,i)=>{const key=`bird${i+1}`;return [[`${key}X`,a.position?.x??-1],[`${key}Z`,a.position?.z??-1],[`${key}Height`,a.motion.elevation],[`${key}Phase`,['idle','walk-out','look','walk-home','ascend','perch','descend'].indexOf(a.motion.phase)],[`${key}Sequence`,a.motion.sequence]];})),
+    birdSnapshot:()=>({animals:structuredClone(state.animals),habitats:structuredClone(state.world.habitats),width:state.world.width,height:state.world.height}),
+    birdsView:()=>birdsView(state),
+    birds(command:BirdCommand){
+      if(disposed||clock.inspect().paused)return false;
+      const next=structuredClone(state);
+      if(command==='welcome'){if(!welcomeBirds(next))return false;}else if(command==='reserve'){if(!next.animals.some(a=>a.habitatId))return false;next.animals.forEach(reserveBird);}else return false;
+      const checked=validateSave(next);if(!checked.ok)return false;state=checked.value;invalidateEdit();bus.emit(Object.freeze({type:'birds-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;
     },
     editorSnapshot:()=>structuredClone(editor),
     quoteRemoval:(target:EditTarget)=>quoteRemoval(state,target,editor.revision),

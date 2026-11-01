@@ -2,7 +2,7 @@ import {Box3,BoxGeometry,BufferGeometry,Float32BufferAttribute,Group,LineBasicMa
 import {Batch} from './tropical-diorama.ts';
 import type {WorldState} from '../core/state.ts';
 import type {SceneCatalog} from './scene-selection.ts';
-/** Original compact enclosed aviary. Birds/resources/paths are deliberately not fabricated. */
+/** Original compact enclosed aviary. Animal instances and resource facilities have separate owners. */
 export function createHabitatScene(catalog:SceneCatalog,register:(geometry:BufferGeometry,material:MeshStandardMaterial|LineBasicMaterial)=>void){
   const group=new Group();group.name='Constructed macaw habitat';let ids:string[]=[],disposed=false;
   const wood=new Mesh(new BufferGeometry(),new MeshStandardMaterial({vertexColors:true,roughness:1}));

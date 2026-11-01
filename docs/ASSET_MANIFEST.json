@@ -370,6 +370,34 @@
       ],
       "fact_check_date_utc": "2026-10-31",
       "model_simplification_note": "Stylized game anatomy/scale and preview poses, not scientific illustration or husbandry advice. Sources inform identifying facts only; no source image/prose/mesh copied."
+    },
+    {
+      "id": "autonomous_macaw_pair_m2_02",
+      "sources": [
+        {
+          "path": "src/game/animals/autonomy.ts",
+          "bytes": 4844,
+          "sha256": "52deb80369e202eb887d8354d22fd57d46aae9da32ef1e328a766a6b7d248bcd"
+        },
+        {
+          "path": "src/game/render3d/macaw/autonomous-birds.ts",
+          "bytes": 4613,
+          "sha256": "11da1d10846f970b1993281a1b1c4b7d1bbc4f38a5a8f7f7f5dc06f6716214ca"
+        }
+      ],
+      "origin": "Original project-authored deterministic movement, transforms, and simple supported landing branches. Reuses unchanged M2-01 original Ara ararauna geometry/rig/palette.",
+      "rights_status": "original_project_work_no_new_external_art",
+      "model_asset_id": "blue_yellow_macaw_v1_m2_01",
+      "external_asset_inputs": [],
+      "maximum_two_bird_triangles": 6360,
+      "landing_branch_triangles": 192,
+      "shared_bird_geometries": 11,
+      "shared_bird_materials": 1,
+      "landing_branch_geometries": 1,
+      "landing_branch_materials": 1,
+      "textures": 0,
+      "usage_decision": "Two actual animals with stable IDs inside the built aviary. Landing branches support idle/wander/perch locomotion only; food/water/energy/enrichment, visitors, economy and durable saves are later milestones.",
+      "attribution": "Original project work. Three.js software notice retained; no new third-party art agreement or repository-wide license granted."
     }
   ],
   "direct_package_notice_spot_checks": [

@@ -1,3 +1,4 @@
+import{runAnimalDomScenarios}from'./animal-dom-scenarios.mjs';
 import{runMacawDomScenarios}from'./macaw-dom-scenarios.mjs';
 import{runEditingDomScenarios}from'./editing-dom-scenarios.mjs';
 import{runPathDomScenarios}from'./path-dom-scenarios.mjs';
@@ -34,6 +35,7 @@ function factory(onFailure){
   active++;maxActive=Math.max(maxActive,active);let ended=false;
   return {
     setPaused:value=>native.setPaused?.(value),
+    birds:command=>native.birds?.(command),
     studio:(command,value)=>native.studio?.(command,value),
     camera:value=>native.camera?.(value),
     clearSelection:()=>native.clearSelection?.(),
@@ -85,6 +87,9 @@ editRun.addEventListener('click',async()=>{let result;try{result=await runEditin
 const macawRun=document.createElement('button');macawRun.id='qa-macaw';macawRun.textContent='Run injected macaw checks';editRun.after(macawRun);
 const macawOutput=document.createElement('output');macawOutput.id='qa-macaw-results';macawRun.after(macawOutput);
 macawRun.addEventListener('click',async()=>{let result;try{result=await runMacawDomScenarios(root,()=>handle?.inspect().session,value=>{locale=value;handle?.setLocale(value);});}catch(error){result={status:'FAIL',error:String(error)};}macawOutput.textContent=JSON.stringify(result);update();});
+const animalRun=document.createElement('button');animalRun.id='qa-animals';animalRun.textContent='Run live two-bird checks';macawRun.after(animalRun);
+const animalOutput=document.createElement('output');animalOutput.id='qa-animal-results';animalRun.after(animalOutput);
+animalRun.addEventListener('click',async()=>{animalOutput.textContent=JSON.stringify({status:'RUNNING'});const result=await runAnimalDomScenarios(root,()=>handle?.inspect().session,value=>handle?.setPaused(value),value=>{locale=value;handle?.setLocale(value);});animalOutput.textContent=JSON.stringify(result);update();});
 const observer=new MutationObserver(update);
 observer.observe(root,{subtree:true,childList:true,attributes:true,attributeFilter:['data-renderer-state']});
 const onVisibility=()=>{if(document.hidden){endProbe('ABORTED_HIDDEN');update();}};
