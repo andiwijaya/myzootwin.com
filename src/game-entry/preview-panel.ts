@@ -1,3 +1,4 @@
+import {mountSpeedPanel,type SpeedView} from './speed-panel.ts';
 import {mountOnboardingPanel} from './onboarding-panel.ts';
 import type {FirstMissionGuide} from '../game/missions/onboarding.ts';
 import {mountMissionPanel} from './mission-panel.ts';
@@ -47,6 +48,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   let disposed = false;
   let state: PreviewState = { status: 'closed' };
   const events = new AbortController();
+  const speedPanel=mountSpeedPanel(root.querySelector('[data-speed-tools]'),events.signal,value=>controller.speed(value));
+  host.addEventListener('scene-speed-change',event=>speedPanel.update((event as CustomEvent<SpeedView>).detail),{signal:events.signal});
   let guidedStart=false;
   const onboardingPanel=mountOnboardingPanel(root.querySelector('[data-onboarding-tools]'),events.signal,(c,r)=>controller.guide(c,r),()=>reviewRecovery(),()=>{root.dataset.guided='false';host.focus({preventScroll:true});host.scrollIntoView({block:'nearest'});});
   host.addEventListener('scene-onboarding-change',event=>onboardingPanel.update((event as CustomEvent<FirstMissionGuide>).detail),{signal:events.signal});
@@ -183,7 +186,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const text=c[perch.reason?reasons[perch.reason]:perch.preview&&!perch.canPlace?'perchBusy':!perch.habitat?'perchNeedHabitat':!perch.exists?'perchReady':!perch.reachable?'perchUnreachable':'perchStatus'].replace('{r}',String(perch.resting)).replace('{g}',String(perch.exploring)).replaceAll('{cap}',String(perch.capacity));const status=tools.querySelector('[data-perch-status]');if(status?.textContent!==text)status?.replaceChildren(text);
     root.querySelector('[data-perch-keep]')?.replaceChildren(c.perchKeep);root.querySelector('[data-perch-remove-confirm]')?.replaceChildren(c.perchRemoveConfirm);root.querySelector('#perch-dialog-title')?.replaceChildren(c.perchRemoveTitle);root.querySelector('[data-entry-text="perchRemoveHint"]')?.replaceChildren(c.perchRemoveHint);renderCosts();
   }
-  function renderStudio(){renderVisitors();missionPanel.show(state.status==='ready'&&!studio.active,locale);onboardingPanel.show(state.status==='ready'&&!studio.active,locale);const guideLanguage=root.querySelector<HTMLSelectElement>('[data-guide-language]');if(guideLanguage){guideLanguage.value=locale;guideLanguage.setAttribute('aria-label',entryMessages[locale].language);}
+  function renderStudio(){
+    speedPanel.show(state.status==='ready'&&!studio.active,locale);renderVisitors();missionPanel.show(state.status==='ready'&&!studio.active,locale);onboardingPanel.show(state.status==='ready'&&!studio.active,locale);const guideLanguage=root.querySelector<HTMLSelectElement>('[data-guide-language]');if(guideLanguage){guideLanguage.value=locale;guideLanguage.setAttribute('aria-label',entryMessages[locale].language);}
     const copy=entryMessages[locale],ready=state.status==='ready',tools=root.querySelector<HTMLElement>('[data-macaw-tools]');if(!tools)return;
     tools.hidden=!ready;const controls=root.querySelector<HTMLElement>('[data-macaw-controls]');if(controls)controls.hidden=!studio.active;
     for(const button of tools.querySelectorAll<HTMLButtonElement>('[data-studio-command]')){const command=button.dataset.studioCommand as StudioCommand;const key=command==='pause'?(studio.motionPaused?'macawResume':'macawPause'):command==='open'?'macawOpen':command==='close'?'macawClose':command==='detail'?'macawDetail':'macawHabitat';button.textContent=copy[key];button.hidden=command==='open'?studio.active:command==='detail'?!studio.habitat:command==='habitat'?studio.habitat:false;if(command==='habitat')button.disabled=habitatCount===0;}
@@ -200,6 +204,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   }
 
   function render(next: PreviewState) {
+    speedPanel.show(next.status==='ready'&&!studio.active,locale);
     const previous = state.status;
     state = next;
     if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) return;

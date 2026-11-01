@@ -20,6 +20,7 @@ export class PreviewFailure extends Error {
 }
 
 export interface PreviewSession {
+  speed?(value:1|10):void;
   guide?(command:GuideCommand,revision?:number):void;
   claimMission?(quote:MissionQuote):void;
   recoveryQuote?():RecoveryQuote|undefined;
@@ -92,6 +93,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     dispose() { if (disposed) return; close(); disposed = true; },
     getState: () => state,
     inspectSession: () => session?.inspect?.(),
+    speed(value:number){if(!paused&&state.status==='ready'&&(value===1||value===10))session?.speed?.(value);},
     perch(command:PerchCommand,revision?:number){if(!paused&&state.status==='ready')session?.perch?.(command,revision);},
     water(command:FoodCommand,revision?:number){if(!paused&&state.status==='ready')session?.water?.(command,revision);},
     food(command:FoodCommand,revision?:number){if(!paused&&state.status==='ready')session?.food?.(command,revision);},

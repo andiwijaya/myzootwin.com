@@ -59,7 +59,7 @@ const schema = object({
   missions: object({ currentId: nullable(missionId), completedIds: array(missionId,4), rewards: array(missionReward,4),
     objectives: object({ habitatConnected: bool, birdsFedIds: array(id,2), birdsWateredIds: array(id,2), comfortableTicks: tick, viewedVisitorIds: array(id,1), admittedVisitorIds:array(id,3), viewingEvidence:nullable(feedback), thrivingTicks: integer(THRIVING_RULES.durationTicks), thriving:nullable(object({startTick:tick,lastTick:tick,baselineRevenue:integer(),baselineAdmissions:integer(),earnedRevenue:integer(),earnedAdmissions:integer()})) }),
   }),
-  preferences: object({ locale: oneOf('id','en'), graphics: oneOf('auto','low','high'), muted: bool, reducedMotion: bool }),
+  preferences: object({ speed:oneOf(1,10), locale: oneOf('id','en'), graphics: oneOf('auto','low','high'), muted: bool, reducedMotion: bool }),
 });
 
 const key = (p: {x:number;z:number}) => `${p.x},${p.z}`;

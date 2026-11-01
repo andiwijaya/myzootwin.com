@@ -41,7 +41,8 @@ export interface Missions {
   rewards: Array<{ missionId: MissionId; ledgerEntryId: EntityId } | { missionId: MissionId; unlockId: "aviary-blossoms"; tick:number; command:number } | { missionId: MissionId; ledgerEntryId:EntityId; badgeId:"first-visitors"; tick:number; command:number } | {missionId:MissionId;unlockId:"sanctuary-banner";badgeId:"thriving-sanctuary";tick:number;command:number}>;
   objectives: { habitatConnected: boolean; birdsFedIds: EntityId[]; birdsWateredIds: EntityId[]; comfortableTicks: number; viewedVisitorIds: EntityId[]; admittedVisitorIds:EntityId[]; viewingEvidence:VisitorFeedback|null; thrivingTicks: number; thriving:ThrivingProof|null; };
 }
-export interface Preferences { locale: 'id' | 'en'; graphics: 'auto' | 'low' | 'high'; muted: boolean; reducedMotion: boolean; }
+export type SimulationSpeed=1|10;
+export interface Preferences { speed:SimulationSpeed; locale: 'id' | 'en'; graphics: 'auto' | 'low' | 'high'; muted: boolean; reducedMotion: boolean; }
 /** Serializable data only. No mesh/DOM/class references or runtime accumulator. */
 export interface ZooSaveV1 {
   schemaVersion: 1; randomSeed: number; randomState: number; tick: number; gameTimeMs: number;

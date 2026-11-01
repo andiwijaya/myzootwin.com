@@ -56,7 +56,7 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
     for(const e of viewed)publish(Object.freeze({type:'visitor-viewed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     for(const e of admitted)publish(Object.freeze({type:'visitor-admitted',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     publish(Object.freeze({type:'tick',tick:state.tick,gameTimeMs:state.gameTimeMs,randomSample:random.value}));
-  });
+  },state.preferences.speed);
   const api={
     advance: (deltaMs:number)=>clock.advance(deltaMs),
     frame(timeMs:number) {
@@ -66,6 +66,8 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
       lastFrame=previous===null?timeMs:Math.max(previous,timeMs);
       return clock.advance(previous===null?0:Math.max(0,timeMs-previous));
     },
+    /** A real rate change reanchors the browser frame adapter, so it cannot retroactively accelerate time before the input. Sub-tick simulation remainder is retained. */
+    setSpeed(value:number){if(disposed||(value!==1&&value!==10)||clock.inspect().speed===value)return false;state.preferences.speed=value;clock.setSpeed(value);lastFrame=null;publish(Object.freeze({type:'speed-changed',speed:value,tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;},
     onboardingView:()=>firstMissionGuide(state),
     missionView:()=>missionView(state),
     claimMission(quote:MissionQuote){
@@ -166,7 +168,7 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
     subscribe: bus.subscribe,
     snapshot: ()=>structuredClone(state),
     setPaused(value:boolean) { if(clock.inspect().paused!==value) { lastFrame=null; clock.setPaused(value); } },
-    reset() { if(disposed)return; state=reconcileWelfare(structuredClone(baseline));invalidateEdit();topology=reconcilePathAccess(state.world).topology; lastFrame=null; clock.reset();compactNow(); publish(Object.freeze({type:'reset',tick:state.tick,gameTimeMs:state.gameTimeMs})); },
+    reset() { if(disposed)return; state=reconcileWelfare(structuredClone(baseline));invalidateEdit();topology=reconcilePathAccess(state.world).topology; lastFrame=null; clock.setSpeed(state.preferences.speed);clock.reset();compactNow(); publish(Object.freeze({type:'reset',tick:state.tick,gameTimeMs:state.gameTimeMs})); },
     dispose() { if(disposed)return; disposed=true; lastFrame=null; clock.dispose(); bus.dispose(); },
     inspect: ()=>({editorRevision:editor.revision,canUndo:Boolean(editor.undo),undoCost:editor.undo?.refundIds.reduce((n,id)=>n+(ledgerProof(state,id)?.amount??0),0)??0,tick:state.tick,gameTimeMs:state.gameTimeMs,randomState:state.randomState,currency:state.currency,maintenancePeriod:state.economy.maintenancePeriod,maintenanceDue:economyView(state).maintenanceDue,economyGrants:economyView(state).grants,economySpent:economyView(state).spent,economyRefunds:economyView(state).refunds,ledgerEntries:totals(state).entries,journalRetained:state.ledger.length,journalArchived:state.economy.checkpoint.entries,journalCompactions:state.economy.checkpoint.compactions,commandRevision:state.economy.nextCommand,retiredVisitorThrough:state.economy.checkpoint.visitorThrough,retiredOpenCount:state.economy.checkpoint.openSerials.length,recoveryHabitatTick:state.economy.recovery.habitatGrant?.tick??-1,recoveryHabitatNonce:Number(state.economy.recovery.habitatGrant?.id.split('-').at(-1)??0),recoveryGrants:state.economy.recovery.equipmentGrants,recoveryRations:state.economy.recovery.rationBatches,recoveryLastRation:state.economy.recovery.lastRationTick??-1,birdCount:state.animals.length,pathTiles:topology.pathTiles,reachablePathTiles:topology.reachable.length,connectedHabitats:topology.habitats.filter(h=>h.connected).length,routeCells:accessSummary(topology).routeCells,habitatCount:state.world.habitats.length,occupiedTiles:state.world.tiles.filter(t=>t.occupantId!==null).length,...clock.inspect(),subscribers:bus.inspect().subscribers,listenerErrors:bus.inspect().listenerErrors}),
   };
