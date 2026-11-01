@@ -1,0 +1,18 @@
+
+> myzootwin.com@0.1.0 check
+> astro check
+
+22.01.48 [content] Syncing content
+22.01.48 [content] Synced content
+22.01.48 [types] Generated 45ms
+22.01.48 [check] Getting diagnostics for Astro files in C:\MyZooTwin...
+[96mtests/visitor-mission.test.mjs[0m:[93m2[0m:[93m65[0m - [93mwarning[0m[90m ts(6133): [0m'createInitialState' is declared but its value is never read.
+
+[7m2[0m import {createSimulation} from '../src/game/core/simulation.ts';import {createInitialState} from '../src/game/core/initial-state.ts';import {visitorMissionView,captureVisitorObjective,VISITOR_MISSION_RULES} from '../src/game/missions/visitor-objective.ts';import {evaluateMissions} from '../src/game/missions/engine.ts';import {validateSave,serializeSave,parseSave} from '../src/game/persistence/save-v1.ts';import {compactFinance,totals,admissionProofs} from '../src/game/economy/journal.ts';
+[7m [0m [93m                                                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+Result (138 files): 
+- 0 errors
+- 0 warnings
+- 1 hint
+

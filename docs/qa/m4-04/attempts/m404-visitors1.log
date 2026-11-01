@@ -1,0 +1,44 @@
+Γ£ö Q03 is prerequisite-locked and synthetic cached IDs/counts cannot qualify an empty sanctuary (11.9096ms)
+Γ£ö arrivals/queues pay nothing; one eligible gate crossing records one identity and no viewing (50.8312ms)
+Γ£ö actual three paid identities and completed occupied observation permit atomic40-ZC-plus-badge outcome (104.9233ms)
+Γ£ö three paid but gate-cancelled journeys cannot substitute for a real completed viewing (71.0363ms)
+Γ£û free empty-habitat visits never count as eligible admissions or paid bird observations (1082.302ms)
+Γ£ö safe path disconnection interrupts a paid journey; Undo and a later genuine visit recover progress (65.9425ms)
+Γ£ö preexisting genuine admission/view evidence counts while claims still respect Q01-Q02 ordering (68.1791ms)
+Γ£ö incomplete progress and completed badge survive whole codec remount without double admission or reward (70.7475ms)
+Γ£ö pinned identities/viewing and combined reward survive compaction plus1000 paid build/refund operations (1388.8066ms)
+Γ£ö viewing completion is counted once through repeated reads, events and later visits; proof stays bounded (389.8979ms)
+Γ£ö paused/stale/duplicate/future reward claims cannot separate badge from money or skip Q04 (68.7186ms)
+Γ£ö badges, missing payment, forged viewing, duplicates and wrong reward shape are rejected without repair (72.7466ms)
+Γ£ö overflow refuses both coin and badge atomically; spending creates room for a later valid claim (70.9666ms)
+Γ£ö fixed frame partitions produce identical visitor mission evidence and combined reward (189.5678ms)
+Γ£ö mutable snapshot reads reject fake duplicate admission flags and interrupted viewing evidence (72.456ms)
+Γä╣ tests 15
+Γä╣ suites 0
+Γä╣ pass 14
+Γä╣ fail 1
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 3963.9782
+
+Γ£û failing tests:
+
+test at tests\visitor-mission.test.mjs:12:1
+Γ£û free empty-habitat visits never count as eligible admissions or paid bird observations (1082.302ms)
+  AssertionError [ERR_ASSERTION]: bounded visitor condition did not occur
+      at until (file:///C:/MyZooTwin/tests/visitor-mission.test.mjs:4:115)
+      at TestContext.<anonymous> (file:///C:/MyZooTwin/tests/visitor-mission.test.mjs:12:166)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

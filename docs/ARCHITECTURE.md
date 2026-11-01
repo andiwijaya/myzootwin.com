@@ -194,3 +194,8 @@ The pure firstMissionGuide derives legal habitat/BFS missing-path suggestions fr
 ## M4-03 care qualification and noncash reward - 2026-11-01
 
 Q02 reads actual lifetime consumption counters and recomputed welfare, including earlier/recovery care, but only50 consecutive fixed ticks after Q01 can qualify. Partial failures reset and pause freezes; completed qualification stays recorded before Claim. Cash and noncash reward shapes are exclusive; Q02 writes unlock/tick/command with ordered completion and no zero ledger entry. Financial compaction selects cash-proof IDs only; old cash logic otherwise unchanged. Original flower scene has separate reusable ownership/disposal and no simulation effect. Same-page snapshots/codec preserve, full reload is fresh until M5. Combined future Q03 coins/badge requires an explicit typed outcome extension. See M4-03_Q02_CARE.md, implementation `5e96e23b7b6485203c343031c0f67d96008b1d02`.
+
+
+## M4-04 visitor objective and combined reward - 2026-11-01
+
+Q03 captures real unique eligible admission IDs and one completed paid occupied feedback proof before ticket retirement. First3 admission IDs plus1 viewing receipt stay pinned in the existing35-proof bound; references are not unique-person counts. A typed combined cash/badge outcome atomically joins40 ZC reward ledger, command/tick proof and ordered mission state. Earlier genuine visits count, but Q02 prerequisite claim is required. Strict codec and bounded journal reconciliation/replay tests preserve it through compaction/handoff. No new RAF/subscriber/assets or autosave; full reload remains fresh. Q04 remains planned. See M4-04_Q03_VISITORS.md, implementation `fa2b78842d40237f398141803aa38abf5aaee3a8`.
