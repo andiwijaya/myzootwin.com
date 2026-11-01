@@ -344,7 +344,7 @@ Dot harus memperjelas typing dan validasi aktual sebelum implementasi; `unknown`
 - [x] **M2-02** Place dua bird instances di habitat; idle/wander/perch autonomous. **Verify:** bergerak, tidak clipping/keluar pagar.
 - [x] **M2-03** Feeder dapat di-place, diisi, dikonsumsi; animal seek-food. **Verify:** aksi care berdampak terhadap model kebutuhan &amp; animasi.
 - [x] **M2-04** Water source dapat di-place, diisi, dikonsumsi; seek-water. **Verify:** thirst response dapat diobservasi.
-- [ ] **M2-05** Rest/perch + energy behavior + enrichment sederhana. **Verify:** state transition tidak macet.
+- [x] **M2-05** Rest/perch + energy behavior + enrichment sederhana. **Verify:** state transition tidak macet.
 - [ ] **M2-06** Animal info &amp; welfare formula + alert dengan sebab yang jelas. **Verify:** low/high welfare test scenarios.
 - [ ] **M2-07** Full animal action QA: tidak teleport, sumber inaccessible tidak dipakai, tab pause/resume aman. **Verify:** multi-cycle E2E dan visual evidence.
 
@@ -571,11 +571,11 @@ Golden-path playable: NO / LOCAL ONLY / LIVE VERIFIED
 
 ## Execution status — 2026-10-31 UTC
 
-Verified V1 completion: **18/51 (35.29%)**; M7 **0/12 deferred**. Only M0-02 through M0-08 and M1-01 through M1-07 plus M2-01 through M2-04 are checked complete; M0-01 remains partial.
+Verified V1 completion: **19/51 (37.25%)**; M7 **0/12 deferred**. Only M0-02 through M0-08 and M1-01 through M1-07 plus M2-01 through M2-05 are checked complete; M0-01 remains partial.
 
 M0-01 PARTIAL: repo/stack and public routes/SEO/analytics audit recorded in M0-01_AUDIT.md. Documentation checkpoint commit: 3a85cb01843c44fc1d0b56b319b13e69dceec2f3 (local only). Complete source-text transcription alternative is now saved with explicit provenance; no failed Library helper retry or metadata bypass occurred. Existing Wrangler OAuth access independently confirmed the MyZooTwin Pages project/domains, main production deployments, dist output and PUBLIC_GA4_ID variable name. Exact source-repository binding and build command remain unavailable through the supported CLI read surfaces used; see audit evidence and remaining verification gap.
 
-Local /play entry, renderer/fallbacks, ID/EN preferences, typed fixed-tick core/save-codec, repeatable QA and measured payload/resource/callback baseline are verified. Tropical Creek world, bounded camera, selection, habitat/path construction, entrance connectivity, confirmed deletion/Undo and capped refund contracts are working. Original final macaw model/animation preview and two stable autonomous macaws now include actual feeding and drinking with independent per-bowl stocks, hunger/thirst effects, competing needs and safe resource removal. Page-session state survives renderer retry/remount; full reload still resets the preview until M5 durable persistence. Rest/energy/enrichment/full welfare/visitors/economy/missions, full mobile UX/localization and the full gameplay loop remain later. Native product and injected fixture evidence are distinguished; physical Android/true touch/Safari/iOS/presentedFPS/GPU timing/network/soak/live production are not claimed passed. Next: M2-05 rest/perch energy and simple enrichment. M0-01 external configuration verification remains pending and the production release gate stays closed.
+Local /play entry, renderer/fallbacks, ID/EN preferences, typed fixed-tick core/save-codec, repeatable QA and measured payload/resource/callback baseline are verified. Tropical Creek world, bounded camera, selection, habitat/path construction, entrance connectivity, confirmed deletion/Undo and capped refund contracts are working. Original final macaw model/animation preview and two stable autonomous macaws now include actual feeding and drinking with independent per-bowl stocks, hunger/thirst effects, competing needs and safe resource removal. Page-session state survives renderer retry/remount; full reload still resets the preview until M5 durable persistence. Functional supported rest/energy recovery and foliage exploration/enrichment are verified. Full welfare/visitors/economy/missions, full mobile UX/localization and the full gameplay loop remain later. Native product and injected fixture evidence are distinguished; physical Android/true touch/Safari/iOS/presentedFPS/GPU timing/network/soak/live production are not claimed passed. Next: M2-06 animal info, full welfare and causal alerts. M0-01 external configuration verification remains pending and the production release gate stays closed.
 
 ### M0-02 completion record — 2026-10-31 UTC
 
@@ -788,3 +788,16 @@ Source f6d855f733e91049df68b413f4f6812d893feeb2787f3c1b5301d6e4eea7da10; build8b
 Original journal/layouts/public/media/dependencies/world/path/economy rules/original model/study/immutable PRD sources and previous receipts unchanged. Original water provenance appended.14files in2old owned generated QA runs archived into34967compressed bytes; CRC/everySHA verified before scoped prune, newest3 runs retained. All owned QA/product tabs closed, viewport reset, both owned loopback previews stopped with4321/4322 free. No push/deploy/Actions/login/new grants/purchase/license acceptance/upload or unrelated Pelatuk changes.
 
 Next:M2-05 rest/perch energy behavior and simple enrichment. Existing branches currently support locomotion/contact only; extend resource/access/energy rules before claiming functional rest or adding a perch resource. M0-01 exact external Cloudflare/GitHub configuration remains partial; BASE-01/02 persist. V1 verified18/51(35.29%); all12M7 deferred. Production remains NOT DEPLOYED.
+
+
+### M2-05 completion record - 2026-11-01 UTC
+
+Implementation and evidence commit: **dce81aa37b78d5da936958a556ffa92af752394f** (local only). [Report](M2-05_REST_ENRICHMENT.md) and [source-bound evidence](qa/m2-05/).
+
+A real leafy two-perch kit now supports energy recovery during actual sleep and enrichment during actual foliage exploration. Two stable bird slots, needs priority, safe occupied removal, revision-checked placement/cancel, bilingual status and exact pause/retry/remount are verified. Ordinary branches and unused decorations grant no benefit. Full welfare remains M2-06; pricing, missions and durable save remain later.
+
+Final run `20261101T030218Z-3b5ee56f`: **189/189 tests**, Astro check of **89 files** with zero diagnostics, all **9 built routes** and SEO checks, **363 accepted browser fixture cases** (33 rest), **12 native observations**, **12 additional lifecycle observations**, **20 zero-resource snapshots** and **8 actual JPEGs** (1,094,126 bytes). `qa:verify` and independent audit PASS at `2026-11-01T03:38:54.591Z`. Real desktop/portrait/landscape poses were observed, not injected; phone UI is ID. Physical Android/touch and presented FPS are untested. Invalid/failed preliminary attempts and receipt metadata correction remain transparent in the findings.
+
+Original kit: 512 triangles, two geometries, one material, no textures. Original model/rig unchanged. Actual grip/branch contact, 1,100 mixed-care mesh ticks and all 21 legal anchors pass. First preview: 741,202 raw / 195,132 estimated gzip bytes; shell 105,646 bytes. Existing lazy-chunk warning remains. Callback measurements, resource sampling and device/network/soak limitations are recorded in the report.
+
+Protected source/media/previous evidence remain intact; old owned caches were archived and verified before pruning. Owned tabs closed, viewport reset, owned preview ports free. No push/deploy/Actions/login/new grants. M0-01 stays partial; BASE-01/02 persist. **19/51 (37.25%)** verified; all 12 M7 items deferred. Next: **M2-06** welfare/info/alerts. Production **NOT DEPLOYED**.
