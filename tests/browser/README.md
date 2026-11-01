@@ -18,3 +18,7 @@ The generated ignored HTML reuses actual built entry markup/CSS, removes product
 Native mode uses the actual Three scene and an instrumented RAF driver. Exercise Open/Close, pause/resume, remount, previous-handle disposal, unmount and late import. Check diagnostics: at most one session/canvas/pending RAF; zero after release. Negative modes use injected null context, constructor throw or loader rejection/delay. Context loss uses the native WEBGL_lose_context extension if present; render failure control injects the failure callback. These injected cases are not physical-device compatibility/FPS proof. RAF render exceptions are tested in preview-lifecycle.test.mjs.
 
 Use only fixture buttons for mutations; supported browser evaluate may read the diagnostic output. No product globals/debug URLs or browser security settings are required. Saved evidence under docs/qa/m0-05 records native vs injected sources explicitly.
+
+## Recovery download gate
+
+Both storage fixtures set `allowRecoveryDownload:false`. Routine QA must not register download waiters or click recovery export. An attempted download from the local recovery harness triggered repeated browser permission cards; the owner cancelled approval. No retry, permission broadening, alternate origin/driver or indirect file retrieval is allowed without new relevant authorization. Core migration/recovery tests do not export anything and assert zero export requests. Actual download completion remains BLOCKED/UNRUN; this is not a passed control.
