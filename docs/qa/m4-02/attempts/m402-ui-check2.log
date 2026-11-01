@@ -1,0 +1,18 @@
+
+> myzootwin.com@0.1.0 check
+> astro check
+
+20.24.54 [content] Syncing content
+20.24.54 [content] Synced content
+20.24.54 [types] Generated 48ms
+20.24.54 [check] Getting diagnostics for Astro files in C:\MyZooTwin...
+[96msrc/game-entry/onboarding-panel.ts[0m:[93m9[0m:[93m760[0m - [93mwarning[0m[90m ts(6133): [0m'i' is declared but its value is never read.
+
+[7m9[0m  const action=section.querySelector<HTMLButtonElement>('[data-onboarding-action]');if(action)action.hidden=active||view.stage==='claim';const confirm=section.querySelector<HTMLButtonElement>('[data-onboarding-confirm]');if(confirm){confirm.hidden=!active;confirm.disabled=placement?.reason!=='ready';}const cancel=section.querySelector<HTMLButtonElement>('[data-onboarding-cancel]');if(cancel)cancel.hidden=!active;const price=section.querySelector<HTMLElement>('[data-onboarding-price]');if(price)price.hidden=view.stage==='claim'||view.stage==='done';const steps=section.querySelector('[data-onboarding-steps]');if(steps){steps.replaceChildren(...[['habitatStep',view.habitat],['pathStep',view.connected],['rewardStep',view.stage==='done']].map(([key,done],i)=>{const li=document.createElement('li');const complete=Boolean(done)||view!.stage==='done';li.textContent=(complete?'Γ£ô ':'')+c[key as'habitatStep'|'pathStep'|'rewardStep'];li.setAttribute('aria-label',c[key as'habitatStep'|'pathStep'|'rewardStep']+': '+c[complete?'yes':'next']);return li;}));}const summary=section.closest('[data-mission-tools]')?.querySelector('[data-missions-summary]');if(summary)summary.textContent=c.summary;
+[7m [0m [93m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ~[0m
+
+Result (128 files): 
+- 0 errors
+- 0 warnings
+- 1 hint
+

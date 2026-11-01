@@ -1,0 +1,35 @@
+
+> myzootwin.com@0.1.0 check
+> astro check
+
+20.19.56 [vite] Re-optimizing dependencies because vite config has changed
+20.19.56 [content] Syncing content
+20.19.56 [content] Synced content
+20.19.56 [types] Generated 182ms
+20.19.56 [check] Getting diagnostics for Astro files in C:\MyZooTwin...
+[96msrc/game/missions/onboarding.ts[0m:[93m15[0m:[93m443[0m - [91merror[0m[90m ts(2322): [0mType '0' is not assignable to type '300'.
+
+[7m15[0m  else{stage='path';kind='path';cost=PRICES.path;const potential=structuredClone(s.world);for(const t of potential.tiles)if(validatePathPlacement(potential,t.cell).reason==='ready')t.path=true;const route=analyzePaths(potential).habitats.find(h=>h.connected)?.route??[],missing=route.filter(c=>!s.world.tiles.find(t=>t.cell.x===c.x&&t.cell.z===c.z)?.path);remaining=missing.length;target=missing[0]??null;if(!target){stage='blocked';kind=null;cost=0;reason='access';}}
+[7m  [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                          ~~~~[0m
+[96msrc/game/missions/onboarding.ts[0m:[93m15[0m:[93m32[0m - [91merror[0m[90m ts(2322): [0mType '15' is not assignable to type '300'.
+
+[7m15[0m  else{stage='path';kind='path';cost=PRICES.path;const potential=structuredClone(s.world);for(const t of potential.tiles)if(validatePathPlacement(potential,t.cell).reason==='ready')t.path=true;const route=analyzePaths(potential).habitats.find(h=>h.connected)?.route??[],missing=route.filter(c=>!s.world.tiles.find(t=>t.cell.x===c.x&&t.cell.z===c.z)?.path);remaining=missing.length;target=missing[0]??null;if(!target){stage='blocked';kind=null;cost=0;reason='access';}}
+[7m  [0m [91m                               ~~~~[0m
+[96msrc/game/missions/onboarding.ts[0m:[93m14[0m:[93m370[0m - [91merror[0m[90m ts(2322): [0mType '0' is not assignable to type '300'.
+
+[7m14[0m  else if(!habitat){const center={x:Math.floor(s.world.width/2)-2,z:Math.floor(s.world.height/2)-1};target=s.world.tiles.map(t=>t.cell).filter(c=>validateHabitatPlacement(s.world,c).reason==='ready').sort((a,b)=>Math.abs(a.x-center.x)+Math.abs(a.z-center.z)-Math.abs(b.x-center.x)-Math.abs(b.z-center.z)||a.z-b.z||a.x-b.x)[0]??null;if(!target){stage='blocked';kind=null;cost=0;reason='space';}}
+[7m  [0m [91m                                                                                                                                                                                                                                                                                                                                                                                 ~~~~[0m
+[96msrc/game/missions/onboarding.ts[0m:[93m13[0m:[93m45[0m - [91merror[0m[90m ts(2322): [0mType '0' is not assignable to type '300'.
+
+[7m13[0m  else if(connected){stage='claim';kind=null;cost=0;}
+[7m  [0m [91m                                            ~~~~[0m
+[96msrc/game/missions/onboarding.ts[0m:[93m12[0m:[93m69[0m - [91merror[0m[90m ts(2322): [0mType '0' is not assignable to type '300'.
+
+[7m12[0m  if(s.missions.completedIds.includes('Q01')){stage='done';kind=null;cost=0;const h=s.world.habitats[0];target=h?{x:h.cells.reduce((n,p)=>n+p.x,0)/h.cells.length,z:h.cells.reduce((n,p)=>n+p.z,0)/h.cells.length}:null;}
+[7m  [0m [91m                                                                    ~~~~[0m
+
+Result (127 files): 
+- 5 errors
+- 0 warnings
+- 0 hints
+

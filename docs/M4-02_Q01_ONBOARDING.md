@@ -1,0 +1,45 @@
+# M4-02 - Q01 habitat and path onboarding
+
+COMPLETE - 2026-11-01 UTC. Implementation `fbb76d50f84404f04ae300733c2561eeb0cebc40` local only. V1 **30/51 (58.82%)**, M4 **2/7**. Next **M4-03 Q02 care**. No push/deployment/Actions/login/access change. M0-01 exact external Cloudflare configuration remains partial.
+
+## Player outcome
+
+The entry now offers **Try the first mission / Coba misi pertama**. It opens the real world with three concise bilingual steps: preview and confirm a safe habitat, preview and confirm missing entrance-path tiles, then claim20 Zoo Coins once. Each preview identifies its actual price and balance, presents the real green/invalid placement reason, and has adjacent Confirm/Cancel controls. Nothing is constructed automatically. Camera focus follows the proposed footprint; another legal tile remains selectable. Cancel costs0 and leaves the authoritative world unchanged. Critical status has text as well as color, controls are at least44 CSS pixels, keyboard confirmation works, and overlays cannot place objects beneath themselves.
+
+The focused view removes the large entry introduction and duplicate construction prose. Portrait stacks the world above its contextual action; short landscape puts world and instructions side by side. Language/Help/full-tools remain accessible, and the existing development tools follow below. The on-screen notice explicitly says progress lasts only while this page stays open. Continue stays disabled. This slice is a real first mission, not a claim of the full V1 loop, Q02-Q04 or durable save.
+
+## Authoritative suggestions and safety
+
+`game/missions/onboarding.ts` derives a read-only guide from actual world topology, balances and mission completion. It suggests a legal aviary footprint, then computes a four-neighbor route through legally constructible tiles and returns the first missing path tile. Existing paths are reused; all21 legal habitat locations are exercised. No proximity, cancelled preview, cached presentation-ready flag or disconnected chain can qualify. The renderer's guide cache is keyed by actual durable command/currency/editor revision; the pure core view rechecks mutable snapshots. Suggestions never write state, currency, RNG or time.
+
+Guide Confirm uses the existing quoted placement/atomic paid construction command, not a second builder. Prices come from shared configuration. Successful confirmation ends only the ephemeral draft and recomputes the next step. Invalid/stale/duplicate input cannot build or debit. Genuine low funds open the existing noncash starter-support review; cancellation is safe and legitimate recovery-built habitat/access qualifies for the same mission. No new cash gifts or monetary shortcuts. If no legal space/route exists, guidance explains the blockage and provides real editing/support actions.
+
+Preexisting connected builds skip to Claim. Paths built before the habitat are reused. Deletion, gaps and Undo recompute real progress; readiness can be revoked before a claim. Claimed Q01 stays complete after edits and its reward remains unique through repeated events, compaction, codec roundtrip and page-session handoff. Q02 remains planned and unclaimable. Its noncash unlock contract must be implemented before enabling it in M4-03; no zero-value fake ledger transaction is introduced.
+
+Renderer error/retry clears uncommitted preview UI and geometry while preserving the whole built-world/ledger/mission snapshot. A full reload still creates a completely fresh1500-ZC preview; only language preference persists. M5 storage and migrations are not claimed.
+
+## Final verification and evidence
+
+Run `20261101T134104Z-6e2fdd39`; source `0afe6ccfbf4eae1c2321172128609b55c051de42b2248907204e52f6ed7f3503`; build `c9bbda10428cadd72712705cfcc9b7f3ab60e2dd701b7bdd6317fe87d8d52ee1`; entry `/_astro/PlayEntry.astro_astro_type_script_index_0_lang.Bp8Nyp-d.js`. No product source changed after this gate.
+
+- `npm run qa:local`: **330/330 tests**,0 failures/skips; **130 checked files**,0 errors/warnings/hints; all **9 routes**, canonicals and sitemap PASS.12 new targeted tests cover read-only suggestions, all21 legal habitats, paths first, cancel/invalid/stale input, repeated confirmation, gaps/removal/Undo, low-budget assistance, fully blocked space, partial-step codec handoff and deterministic pause/time behavior. Existing ledger longevity/replay/recovery/mission tests remain intact.
+- Approved isolated browser fresh **19-suite** chains at verified1366x768,360x780,780x360: **696/696 cases**,232/view, including **42 onboarding cases**. Existing654 cases pass, including food/water/rest/welfare, path editing, visitor navigation, actual tickets, atomic costs, compacted journal/recovery and mission exactly-once checks. New cases exercise actual controls against labelled whole fixtures, both languages, invalid creek footprints, free cancel, real prices/claims, preexisting/archived/reordered/gap/zero-budget/partial-rehydration states and nonoverlapping responsive controls. Injected pointer/touch and fixtures are labelled; they are not physical Android evidence.
+- Actual native mouse/keyboard product runs independently complete Q01 on **all three viewports** using visible contextual controls, without fixture coordinates or state injection:1500 ->1200 after habitat ->1125 after five path purchases ->**1145 after one20-ZC reward**. Desktop uses Enter for construction/claim. Portrait also cancels a real path draft at1200 with no charge. Same-page close/reenter keeps one claimed reward; actual full reload returns1500/no reward. This is an agent scripted first-run walkthrough, **not an external unaided human user study**; M5-07 remains pending.
+- **109 explicitly present authoritative fields** match across **three paused remounts and one injected WebGL context-loss retry** during an uncommitted path draft. Draft is discarded, remaining5/currency1200/actual habitat retained. Separate ready/paused/still-paused/resumed/closed samples reconcile event count and visual/core clock exactly; paused14 stays14 then resumes. Injected document visibility is separately labelled, not a native-background pass. Accepted failed/closed teardowns release geometries/textures/programs/materials/subscribers/RAF with0 cleanup errors; max sessions/RAF1.
+- Three actual EN/ID screenshots **402,012 bytes**, native warn/error logs empty at limit200 and uncapped. Actual Animals/back/reload and canonical `/play/` pass. `npm run qa:verify` plus independent source/build/log/financial/lifecycle audit **PASS**. Owned tabs closed, viewport reset, owned loopback4321/4322 stopped and both ports free.
+
+See [audit](qa/m4-02/independent-audit.json), [browser receipt](qa/m4-02/browser-receipt.json), [interaction matrix](qa/m4-02/interaction-matrix.json), [screenshots](qa/m4-02/screenshot-manifest.json), and preserved attempts/retention receipts.
+
+## Payload and limits
+
+Shell **174,113 raw bytes** (+14,882 versus M4-01); first preview **872,658 raw** (+17,295), **231,877** level9 gzip estimate (+4,560); lazy chunk **698,545** (+2,413). Existing >500KB warning remains M6 profiling work. No dependency, model/media, existing journal content/URLs/SEO/analytics or deployment changes. Fonts/network/first-interaction time are excluded from byte estimates.
+
+The source-bound guided-construction observation (one empty aviary, a path ghost, no birds/guests) reports10 last-render draws/4,394 triangles,10 geometries/1 texture/7 programs/14 owned materials. The separate five-second callback probe has no active draft and is retained verbatim in the interaction matrix; callback cadence and synchronous submission are **not presented FPS/GPU time**, a populated-game comparison or physical mobile benchmark. Heap observations are shared/nonstandard, not a leak certificate. Model/asset code is unchanged.
+
+Physical Android/iOS/Safari, native background, presentationFPS/GPU time, full-game15-minute soak, human unaided playtest,10x UI, durable autosave and production smoke remain UNRUN. Q02-Q04 and the full gameplay sequence remain incomplete. M7 stays12 deferred items.
+
+## Failure preservation and retention
+
+Initial literal-type and unused-index diagnostics were fixed before the final gate. A one-shot authoring helper stopped at an ASCII/typographic exact-label mismatch; it was not rerun, and only remaining UTF-8 edits resumed. Two native automation label assumptions (berikutnya versus visible berikut; Retry versus visible Try again) failed before acting; current state was reobserved before continuing, so no successful construction was repeated. Logs and nonacceptance preflight are preserved. No denied operation, bypass, new permission, personal-browser access or production change occurred.
+
+Original source/media and historical evidence remain intact. CRC/every-entry SHA-verified archive precedes pruning only the oldest owned generated run; three runs remain. See retention-final.json. Next M4-03 adds real Q02 food/water-use and sustained welfare objectives plus typed noncash unlock, not another placeholder mission button.
