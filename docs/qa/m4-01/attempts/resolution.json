@@ -1,0 +1,57 @@
+{
+  "status": "RESOLVED_AND_REVERIFIED",
+  "preliminary": [
+    {
+      "archive": "mission-preflight.json.zip",
+      "entry": "mission-preflight.json",
+      "rawBytes": 78908,
+      "sha256": "c0dd41cb566c7e94c0e9a5fc6ab775f8e8063b11c40489cf73535a8b2428a8e1",
+      "acceptance": false,
+      "note": "Preflight only; accepted evidence is final fixed-viewport chain"
+    },
+    {
+      "archive": "viewport-preflight-aborted.json.zip",
+      "entry": "viewport-preflight-aborted.json",
+      "rawBytes": 5665,
+      "sha256": "34b32226dfe98c41ea358df81294240c3d729e95a297b03412f55dac911a2752",
+      "acceptance": false,
+      "note": "Preflight only; accepted evidence is final fixed-viewport chain"
+    }
+  ],
+  "findings": [
+    "Initial UI check caught Element.hidden typing; corrected query to HTMLElement before final gate.",
+    "First existing regression correctly differed from the historical inert mission objective flag expectation: real connected paths now update descriptive habitatConnected. One assertion changed from false to true; geometry, money, idempotence and serialization checks remain.",
+    "A partial authoring helper used the Windows default encoding on a new UTF-8 file then stopped before reading existing PlayEntry. Only that newly authored file was corrected exactly, unexecuted steps resumed with explicit UTF-8, and final tests/check/build passed.",
+    "First native habitat confirmation already completed; an unnecessary click on its now-hidden Cancel timed out. State was checked first (one habitat,1200 ZC); construction was not repeated. Reusable path helper now cancels only when visible. No product change required.",
+    "Browser viewport capability applies to the last created tab. First chains changed dimensions after starting; saved as ABORTED/not accepted. New tabs were resized and their actual dimensions checked before starting each accepted full chain.",
+    "Large nested diagnostic objects are read as existing DOM JSON text then parsed outside page scope, avoiding the earlier transport property cap without substituting missing values. Mandatory lifecycle clock fields are additionally captured explicitly.",
+    "Two browser evidence batches timed out, resetting JS bindings. Existing final PASS DOMs and initial native screenshots survived. Actions with uncertain outcome were inspected; fresh small lifecycle/native captures were persisted after each bounded batch.",
+    "A200000-character transport string cap made a large JSON read invalid. That invalid capture is preserved and not used; source-bound result cases now retain specific structured fields (25 per case) and small separate102-field lifecycle snapshots. No validator weakened or missing field inferred.",
+    "One QA remount helper did not preset pause on the new controller, so real time advanced and strict equality failed. Preset pause before Open, then five corrected remounts pass. Failed observation retained in interaction-matrix.",
+    "A callback probe reports COMPLETE, not PASS. The helper corrected its expected instrumentation status after reading actual metrics; no quality/FPS pass inferred.",
+    "After a tool reset, browser IDs were reassigned. Inventory identified the same isolated IAB under3; personal Chrome/Edge tabs were not accessed."
+  ],
+  "finalRun": "20261101T123821Z-86c7b147",
+  "noProductionChange": true,
+  "toolingArtifacts": {
+    "archive": "tooling-recovery-original-artifacts.zip",
+    "entries": [
+      {
+        "path": "attempts/initial-desktop-native.jpg",
+        "bytes": 490525,
+        "sha256": "285cc791e5b9fb603a52db82a86e70bbb0ca3e7040fcae55d1df2a0c4548c4b1"
+      },
+      {
+        "path": "attempts/initial-native-mission-detail.jpg",
+        "bytes": 39828,
+        "sha256": "16ec2fc431b41d3cac1d6473ff8ce6991263b8fe05ef16515d9bb70ee7936607"
+      },
+      {
+        "path": "desktop-results-capped.json.txt",
+        "bytes": 200012,
+        "sha256": "8d261799512618c47e94e530a1a5cb0e6b6a2ed8878743e32dbfc7e60bf879ed"
+      }
+    ],
+    "crcAndShaVerified": true
+  }
+}
