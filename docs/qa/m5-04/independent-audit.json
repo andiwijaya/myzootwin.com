@@ -237,5 +237,20 @@
       "docs/qa/m5-04/preview.log"
     ],
     "reason": "Do not trim actual captured stdout solely to remove terminal-blank-line Git warnings."
+  },
+  "evidenceGitPolicy": {
+    "path": ".gitattributes",
+    "rule": "docs/qa/m5-04/** -text",
+    "reason": "Post-commit byte check found Git auto-CRLF normalization in some generated metadata. Retain original working capture bytes in a narrow evidence-only follow-up checkpoint; no game code/build changes.",
+    "verification": "Final Git blobs must equal every manifest file and manifest itself byte for byte.",
+    "proseWhitespaceCheckScope": [
+      ".gitattributes",
+      "docs/ARCHITECTURE.md",
+      "docs/LOCAL_QA.md",
+      "docs/MYZOOTWIN_MASTER_PRD_V1.md",
+      "docs/MYZOOTWIN_PROGRESS.md",
+      "docs/M5-04_RESPONSIVE_HUD.md"
+    ],
+    "rawEvidenceWhitespaceNotClaimedPassed": true
   }
 }
