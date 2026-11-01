@@ -35,10 +35,11 @@ export interface FinanceCheckpoint {
  totals:Record<LedgerKind,number>;counts:Record<LedgerKind,number>;
  purchases:PurchaseProof[];refunds:RefundProof[];tickets:TicketProof[];rewards:LedgerEntry[];lastTicket:TicketProof|null;
 }
+export interface ThrivingProof {startTick:number;lastTick:number;baselineRevenue:number;baselineAdmissions:number;earnedRevenue:number;earnedAdmissions:number;}
 export interface Missions {
   currentId: MissionId | null; completedIds: MissionId[];
-  rewards: Array<{ missionId: MissionId; ledgerEntryId: EntityId } | { missionId: MissionId; unlockId: "aviary-blossoms"; tick:number; command:number } | { missionId: MissionId; ledgerEntryId:EntityId; badgeId:"first-visitors"; tick:number; command:number }>;
-  objectives: { habitatConnected: boolean; birdsFedIds: EntityId[]; birdsWateredIds: EntityId[]; comfortableTicks: number; viewedVisitorIds: EntityId[]; admittedVisitorIds:EntityId[]; viewingEvidence:VisitorFeedback|null; thrivingTicks: number; };
+  rewards: Array<{ missionId: MissionId; ledgerEntryId: EntityId } | { missionId: MissionId; unlockId: "aviary-blossoms"; tick:number; command:number } | { missionId: MissionId; ledgerEntryId:EntityId; badgeId:"first-visitors"; tick:number; command:number } | {missionId:MissionId;unlockId:"sanctuary-banner";badgeId:"thriving-sanctuary";tick:number;command:number}>;
+  objectives: { habitatConnected: boolean; birdsFedIds: EntityId[]; birdsWateredIds: EntityId[]; comfortableTicks: number; viewedVisitorIds: EntityId[]; admittedVisitorIds:EntityId[]; viewingEvidence:VisitorFeedback|null; thrivingTicks: number; thriving:ThrivingProof|null; };
 }
 export interface Preferences { locale: 'id' | 'en'; graphics: 'auto' | 'low' | 'high'; muted: boolean; reducedMotion: boolean; }
 /** Serializable data only. No mesh/DOM/class references or runtime accumulator. */
