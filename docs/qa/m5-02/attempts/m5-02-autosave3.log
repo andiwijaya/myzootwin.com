@@ -1,0 +1,31 @@
+Γ£ö empty read does not write or create progress; Continue needs a real saved game (3.8358ms)
+Γ£ö new game durably stores full versioned starter state and exposes truthful saved summary (7.4483ms)
+Γ£ö saved game blocks fresh overwrite and Continue restores all data with no elapsed-time catchup (19.1405ms)
+Γ£ö many tick checkpoints coalesce to one bounded timer and latest snapshot, not one write per tick (11.4347ms)
+Γ£ö critical checkpoint replaces a delayed timer without dropping latest committed transaction state (4.9208ms)
+Γ£ö one in-flight write serializes latest dirty progress and revision; saving never means pending data is saved (4.9703ms)
+Γ£ö quota failure keeps primary and previous bytes, stops automatic retries and retries latest state explicitly (4.8237ms)
+Γ£ö unreadable stored data is never erased replaced or silently loaded as new game (2.0326ms)
+Γ£ö blocked storage permits explicitly temporary play without claiming a save or retrying each tick (0.3857ms)
+Γ£ö retry after unavailable access cannot overwrite an existing hidden save with temporary progress (1.4759ms)
+Γ£ö retry after unavailable empty storage can persist temporary progress safely (3.0459ms)
+Γ£ö two writers cannot both replace the same revision; loser pauses with conflict and winner proof remains (10.6664ms)
+Γ£ö external revision notification freezes active writer but refreshes inactive Continue metadata (6.9649ms)
+Γ£ö dispose drains in-flight and latest state before close, cancels timers and cannot schedule afterward (5.1944ms)
+Γ£ö invalid in-memory checkpoint does not reach backend or damage valid primary (1.9635ms)
+Γ£ö all four missions compacted economy birds visitors resources RNG speed and required settings roundtrip intact (709.515ms)
+Γ£ö envelope bounds reject future format extra fields malformed writer and invalid revisions (1.6622ms)
+Γ£ö no IndexedDB capability rejects explicitly and cannot claim a successful write (1.1153ms)
+Γ£ö closing an unresolved IDB open rejects its reader and closes a late connection without hanging (0.1917ms)
+Γ£ö locale changes while paused preserve time money commands and serialize once as an actual preference (2.3212ms)
+Γ£ö unavailable temporary session freezes safely if retry discovers unreadable stored data (1.7918ms)
+Γ£ö closed-tab notification failure cannot report a successful commit as failure or prevent latest drain (8.8378ms)
+Γ£ö out-of-range saved timestamps are unreadable and never reach locale date formatting (1.9683ms)
+Γä╣ tests 23
+Γä╣ suites 0
+Γä╣ pass 23
+Γä╣ fail 0
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 1039.2328

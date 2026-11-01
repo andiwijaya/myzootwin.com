@@ -1,0 +1,20 @@
+03.08.44 [vite] Re-optimizing dependencies because vite config has changed
+03.08.44 [content] Syncing content
+03.08.44 [content] Synced content
+03.08.44 [types] Generated 155ms
+03.08.44 [check] Getting diagnostics for Astro files in C:\MyZooTwin...
+[96msrc/game/persistence/autosave.ts[0m:[93m67[0m:[93m26[0m - [91merror[0m[90m ts(2367): [0mThis comparison appears to be unintentional because the types '"saving"' and '"conflict"' have no overlap.
+
+[7m67[0m         const conflicted=phase==='conflict';
+[7m  [0m [91m                         ~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/game/persistence/durable-backend.ts[0m:[93m18[0m:[93m118[0m - [93mwarning[0m[90m ts(6133): [0m'tx' is declared but its value is never read.
+
+[7m18[0m  async function records(){return transaction<{primary:unknown;previous:unknown;preserved:unknown}>('readonly',(store,tx,set)=>{const a=store.get('primary'),b=store.get('previous'),c=store.get('preserved');c.onsuccess=()=>set({primary:a.result,previous:b.result,preserved:c.result});});}
+[7m  [0m [93m                                                                                                                     ~~[0m
+
+Result (157 files): 
+- 1 error
+- 0 warnings
+- 1 hint
+

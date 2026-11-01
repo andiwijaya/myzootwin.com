@@ -1,0 +1,11 @@
+{
+  "status": "BLOCKED_UNVERIFIED_NOT_RETRIED",
+  "action": "Register waitForEvent(download), then attempt one click on [data-save-recovery-download]",
+  "target": "http://127.0.0.1:4322/tests/browser/.generated/recovery-harness.html",
+  "reason": "Browser security check was unavailable; permission request was dismissed/cancelled; authority to download files was not granted. Owner reported repeated approval card; parent cancelled it.",
+  "observed": "The waiter/action call took253.2104s and ended in unhandled rejection/kernel reset. After rebind, source tab still showed migration/restore-ready notice, no download success; file outcome unverified. All four owned tabs then closed.",
+  "sourceAudit": "One app click handler, one anchor.click per action, no loop/retry/export in18-case harness. One timer only revokes the URL. Runtime approval/waiter behavior may explain repeated prompts, but internal cause is not exposed.",
+  "fix": "Disable recovery export in local harness options, omit all download waiters/clicks from routine QA, change production notice to prepared rather than asserting completion. No alternative download route or permission expansion.",
+  "verification": "Actual download remains BLOCKED/UNRUN. Independent migration/recovery validation retained.",
+  "deadline": "2026-11-02T01:00:00Z /08:00WIB"
+}

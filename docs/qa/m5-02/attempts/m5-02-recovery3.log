@@ -1,0 +1,44 @@
+Γ£ö empty read does not write or create progress; Continue needs a real saved game (3.7109ms)
+Γ£ö new game durably stores full versioned starter state and exposes truthful saved summary (7.6384ms)
+Γ£ö saved game blocks fresh overwrite and Continue restores all data with no elapsed-time catchup (20.8128ms)
+Γ£ö many tick checkpoints coalesce to one bounded timer and latest snapshot, not one write per tick (11.6854ms)
+Γ£ö critical checkpoint replaces a delayed timer without dropping latest committed transaction state (5.7193ms)
+Γ£ö one in-flight write serializes latest dirty progress and revision; saving never means pending data is saved (5.4535ms)
+Γ£ö quota failure keeps primary and previous bytes, stops automatic retries and retries latest state explicitly (4.9914ms)
+Γ£ö unreadable stored data is never erased replaced or silently loaded as new game (2.0424ms)
+Γ£ö blocked storage permits explicitly temporary play without claiming a save or retrying each tick (0.3958ms)
+Γ£ö retry after unavailable access cannot overwrite an existing hidden save with temporary progress (1.3604ms)
+Γ£ö retry after unavailable empty storage can persist temporary progress safely (2.9086ms)
+Γ£ö two writers cannot both replace the same revision; loser pauses with conflict and winner proof remains (10.8092ms)
+Γ£ö external revision notification freezes active writer but refreshes inactive Continue metadata (10.0549ms)
+Γ£ö dispose drains in-flight and latest state before close, cancels timers and cannot schedule afterward (5.9251ms)
+Γ£ö invalid in-memory checkpoint does not reach backend or damage valid primary (2.3122ms)
+Γ£ö all four missions compacted economy birds visitors resources RNG speed and required settings roundtrip intact (743.3284ms)
+Γ£ö envelope bounds reject future format extra fields malformed writer and invalid revisions (1.5942ms)
+Γ£ö no IndexedDB capability rejects explicitly and cannot claim a successful write (1.0851ms)
+Γ£ö closing an unresolved IDB open rejects its reader and closes a late connection without hanging (0.203ms)
+Γ£ö locale changes while paused preserve time money commands and serialize once as an actual preference (2.1481ms)
+Γ£ö unavailable temporary session freezes safely if retry discovers unreadable stored data (1.6916ms)
+Γ£ö closed-tab notification failure cannot report a successful commit as failure or prevent latest drain (8.756ms)
+Γ£ö out-of-range saved timestamps are unreadable and never reach locale date formatting (1.3147ms)
+Γ£ö format1 legacy and format2 generation envelopes preserve full four-mission compacted state exactly (8.8079ms)
+Γ£ö unsupported envelope or game schema stays explicitly unsupported instead of inventing defaults (4.3198ms)
+Γ£ö truncated malformed empty oversized and nonfinite JSON never passes the load boundary (6.6574ms)
+Γ£ö envelope generations timestamps revisions extra fields and non-data prototypes are rejected (6.5419ms)
+Γ£ö impossible occupancy references routes ledger claims and missing fields are rejected without mutating source (18.3347ms)
+Γ£ö exact recovery signature distinguishes undefined missing null nonfinite and negative zero (0.3709ms)
+Γ£ö unsafe cyclic custom and enormous raw archives refuse bounded automatic recovery encoding (0.214ms)
+Γ£ö legacy save cannot open or start over until explicit migration confirms and reloads (16.2881ms)
+Γ£ö cancel or forged recovery quote cannot transition or overwrite progress (4.153ms)
+Γ£ö restore requires validated previous source and no state runs before Continue (9.6932ms)
+Γ£ö quota failure during migration retains legacy original and continues blocking new-game overwrite (6.3837ms)
+Γ£ö generation change freezes active writer even with lower numeric revision after recovery (8.789ms)
+Γ£ö external conflict arriving while a successful write settles cannot be cleared by that older success (3.9707ms)
+Γä╣ tests 36
+Γä╣ suites 0
+Γä╣ pass 36
+Γä╣ fail 0
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 1080.2377

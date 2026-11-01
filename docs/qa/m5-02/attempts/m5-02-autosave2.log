@@ -1,0 +1,40 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+file:///C:/MyZooTwin/src/game/persistence/checkpoint.ts:4
+export type StorageFault='unavailable'|'unreadable'|'quota'|'conflict'|'write';
+export class SaveFault extends Error {constructor(public code:StorageFault){super(code);}}
+                                                         ^^^^^^^^^^^^^^^^^
+export interface StoredCheckpoint {format:1|2;generation?:string;revision:number;writtenAt:number;writer:string;payload:string;}
+
+SyntaxError [ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX]: TypeScript parameter property is not supported in strip-only mode
+    at parseTypeScript (node:internal/modules/typescript:68:40)
+    at processTypeScriptCode (node:internal/modules/typescript:146:42)
+    at stripTypeScriptModuleTypes (node:internal/modules/typescript:209:22)
+    at ModuleLoader.<anonymous> (node:internal/modules/esm/translators:663:29)
+    at #translate (node:internal/modules/esm/loader:473:20)
+    at afterLoad (node:internal/modules/esm/loader:529:29)
+    at ModuleLoader.loadAndTranslate (node:internal/modules/esm/loader:534:12)
+    at #getOrCreateModuleJobAfterResolve (node:internal/modules/esm/loader:571:36)
+    at afterResolve (node:internal/modules/esm/loader:624:52)
+    at ModuleLoader.getOrCreateModuleJob (node:internal/modules/esm/loader:630:12) {
+  code: 'ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX'
+}
+
+Node.js v24.12.0
+Γ£û tests\autosave.test.mjs (191.1266ms)
+Γä╣ tests 1
+Γä╣ suites 0
+Γä╣ pass 0
+Γä╣ fail 1
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 198.4187
+
+Γ£û failing tests:
+
+test at tests\autosave.test.mjs:1:1
+Γ£û tests\autosave.test.mjs (191.1266ms)
+  'test failed'

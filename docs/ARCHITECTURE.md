@@ -216,3 +216,7 @@ No app changes in M4-07. Observed aggregate money/mission/bird/visitor invariant
 ## M5-01 durable local checkpoints - 2026-11-01
 
 The existing version1 state codec is reused by a dedicated IndexedDB primary/previous-good atomic CAS transaction. Autosave owns one 2s timer/inflight write/latest reader; synchronous rule execution completes before deferred snapshot, no second simulation/RAF. Actual logical checkpoints, paused Continue/no offline catch-up, stale-writer conflict, strict no-wipe unreadable boundary and safe late-open/dispose. Full progress/proofs/preferences persist; transient Undo/camera/ghost do not. Detailed migration/recovery remainsM5-02. See M5-01_AUTOSAVE_CONTINUE.md and qa/m5-01.
+
+## M5-02 protected migration and recovery - 2026-11-01
+
+State schema1 unchanged; strict codec remains the game boundary. Storage envelope1 migrates explicitly to generation-aware2; primary/previous/preserved keys are bounded. One-use quote compares exact raw primary+previous inside atomic archive/replacement transaction. Generation+revision CAS and sticky external conflicts prevent ABA and inflight stale-tab races. Explicit recovery preserves unreadable data; future/no-valid-backup data remains protected. No new sim/RAF. Routine QA disables optional download; actual download completion remains blocked/unrun. See M5-02_SAVE_RECOVERY.md and qa/m5-02.
