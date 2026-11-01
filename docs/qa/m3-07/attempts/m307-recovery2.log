@@ -1,0 +1,102 @@
+TAP version 13
+# Subtest: fresh funded game hides low-cash help and quotes cannot mutate it or issue cash support
+ok 1 - fresh funded game hides low-cash help and quotes cannot mutate it or issue cash support
+  ---
+  duration_ms: 29.4413
+  type: 'test'
+  ...
+# Subtest: zero-cash empty world obtains only missing noncash basics, actual paths, two birds and open entrance
+ok 2 - zero-cash empty world obtains only missing noncash basics, actual paths, two birds and open entrance
+  ---
+  duration_ms: 40.0536
+  type: 'test'
+  ...
+# Subtest: zero and near-zero distressed budgets recover through real care, admissions and sustainable paid supplies
+ok 3 - zero and near-zero distressed budgets recover through real care, admissions and sustainable paid supplies
+  ---
+  duration_ms: 1145.4885
+  type: 'test'
+  ...
+# Subtest: support action consumes a durable quote and repeated/paused/stale confirmations leave state unchanged
+ok 4 - support action consumes a durable quote and repeated/paused/stale confirmations leave state unchanged
+  ---
+  duration_ms: 20.6308
+  type: 'test'
+  ...
+# Subtest: support equipment cannot be sold for cash, repurchased to harvest original refunds, or duplicated through Undo
+ok 5 - support equipment cannot be sold for cash, repurchased to harvest original refunds, or duplicated through Undo
+  ---
+  duration_ms: 254.1729
+  type: 'test'
+  ...
+# Subtest: food/water support rations improve actual needs, cannot mint coins and cannot refill repeatedly within cooldown or across codec
+not ok 6 - food/water support rations improve actual needs, cannot mint coins and cannot refill repeatedly within cooldown or across codec
+  ---
+  duration_ms: 37.8189
+  type: 'test'
+  location: 'C:\\MyZooTwin\\tests\\recovery.test.mjs:16:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(s.snapshot().animals.every((a,i)=>a.foodEaten>before.animals[i].foodEaten&&a.waterDrunk>before.animals[i].waterDrunk))
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/recovery.test.mjs:16:534)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+    Test.postRun (node:internal/test_runner/test:1235:19)
+    Test.run (node:internal/test_runner/test:1163:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: fully paved legal land has safe one-tile reclaim with actual paid refund and Undo, then recovers from zero
+ok 7 - fully paved legal land has safe one-tile reclaim with actual paid refund and Undo, then recovers from zero
+  ---
+  duration_ms: 695.9297
+  type: 'test'
+  ...
+# Subtest: closed gate and disconnected zero-budget habitat are repaired through actual topology before any ticket income
+ok 8 - closed gate and disconnected zero-budget habitat are repaired through actual topology before any ticket income
+  ---
+  duration_ms: 31.063
+  type: 'test'
+  ...
+# Subtest: gift habitat after absent maintenance periods and Undo after absence have valid grant coverage but do not erase earned costs
+ok 9 - gift habitat after absent maintenance periods and Undo after absence have valid grant coverage but do not erase earned costs
+  ---
+  duration_ms: 34.241
+  type: 'test'
+  ...
+# Subtest: malformed future/counter/grant recovery state is rejected instead of silently resetting its ration timer
+ok 10 - malformed future/counter/grant recovery state is rejected instead of silently resetting its ration timer
+  ---
+  duration_ms: 20.8228
+  type: 'test'
+  ...
+# Subtest: read-only recovery quotes and snapshots cannot mutate the cached habitat plan or authoritative state
+ok 11 - read-only recovery quotes and snapshots cannot mutate the cached habitat plan or authoritative state
+  ---
+  duration_ms: 16.0718
+  type: 'test'
+  ...
+# Subtest: recovery remains deterministic through fixed frame partitions, checkpoints, pause and complete codec recreation
+ok 12 - recovery remains deterministic through fixed frame partitions, checkpoints, pause and complete codec recreation
+  ---
+  duration_ms: 268.4582
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 11
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2766.3131

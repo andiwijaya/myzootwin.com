@@ -1,0 +1,22 @@
+
+> myzootwin.com@0.1.0 check
+> astro check
+
+18.37.23 [content] Syncing content
+18.37.23 [content] Synced content
+18.37.23 [types] Generated 45ms
+18.37.23 [check] Getting diagnostics for Astro files in C:\MyZooTwin...
+[96mtests/recovery.test.mjs[0m:[93m2[0m:[93m235[0m - [93mwarning[0m[90m ts(6133): [0m'recoveryView' is declared but its value is never read.
+
+[7m2[0m import{createSimulation}from'../src/game/core/simulation.ts';import{createInitialState}from'../src/game/core/initial-state.ts';import{parseSave,serializeSave,validateSave}from'../src/game/persistence/save-v1.ts';import{RECOVERY_RULES,recoveryView}from'../src/game/economy/recovery.ts';import{totals}from'../src/game/economy/journal.ts';import{validatePathPlacement}from'../src/game/world/paths.ts';
+[7m [0m [93m                                                                                                                                                                                                                                          ~~~~~~~~~~~~[0m
+[96mtests/recovery.test.mjs[0m:[93m2[0m:[93m62[0m - [93mwarning[0m[90m ts(6133): [0m'createInitialState' is declared but its value is never read.
+
+[7m2[0m import{createSimulation}from'../src/game/core/simulation.ts';import{createInitialState}from'../src/game/core/initial-state.ts';import{parseSave,serializeSave,validateSave}from'../src/game/persistence/save-v1.ts';import{RECOVERY_RULES,recoveryView}from'../src/game/economy/recovery.ts';import{totals}from'../src/game/economy/journal.ts';import{validatePathPlacement}from'../src/game/world/paths.ts';
+[7m [0m [93m                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+Result (121 files): 
+- 0 errors
+- 0 warnings
+- 2 hints
+
