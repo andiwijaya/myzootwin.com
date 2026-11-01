@@ -2,6 +2,7 @@
 import { english as copy } from '../game-entry/locale';
 ---
 <section class="play-shell" data-play-entry data-preview-state="first-mission-preview" lang="en" aria-labelledby="play-title">
+  <section class="save-panel" data-save-panel aria-label="Local game progress"><p data-save-status role="status" aria-live="off">Checking local progress...</p><small data-save-detail></small><p data-save-error role="alert" hidden></p><button type="button" data-save-retry hidden>Retry save</button><button type="button" data-save-reload hidden>Reload saved progress</button><div data-save-resume hidden><p data-save-resume-note></p><button type="button" data-save-resume-button>Resume zoo</button></div></section>
   <div class="entry-card">
     <div class="entry-copy">
       <span class="preview-badge"><span aria-hidden="true">✦</span> <span data-entry-text="status">{copy.status}</span></span>
@@ -11,7 +12,7 @@ import { english as copy } from '../game-entry/locale';
       <p class="availability" id="play-availability" data-entry-text="availability">{copy.availability}</p>
       <div class="entry-actions">
         <button type="button" class="guide-action" disabled data-onboarding-start aria-describedby="play-availability" data-entry-text="play">{copy.play}</button>
-        <button type="button" class="unavailable" disabled aria-describedby="play-availability" data-entry-text="continue">{copy.continue}</button>
+        <button type="button" class="guide-action" disabled data-continue aria-describedby="play-availability" data-entry-text="continue">{copy.continue}</button>
         <button type="button" class="guide-action" data-open-dialog="play-help" disabled data-entry-text="help">{copy.help}</button>
         <button type="button" class="settings-action" data-open-dialog="play-settings" disabled data-entry-text="settings">{copy.settings}</button>
       </div>
@@ -217,6 +218,8 @@ import { english as copy } from '../game-entry/locale';
 </script>
 
   <style>
+  .save-panel{padding:.7rem 1rem;border:1px solid #aabfa7;border-radius:14px;background:#f7f7e8;margin-bottom:.8rem;color:#234c3b;overflow-wrap:anywhere}.save-panel p{margin:.25rem 0}.save-panel small{display:block}.save-panel button{font:inherit;min-height:44px;padding:.6rem .9rem;border:1px solid #54765d;border-radius:8px;background:#fffdf4;color:#183b32;margin:.4rem .4rem 0 0}.save-panel [hidden]{display:none}.save-panel[data-save-phase="error"],.save-panel[data-save-phase="conflict"],.save-panel[data-save-phase="unreadable"]{border:2px solid #955a31}.save-panel [data-save-resume-button]{background:#183b32;color:#fffdf4;font-weight:700}
+
   .simulation-speed{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem 1rem;padding:.6rem .75rem;background:#f3f4e6;border:1px solid #b8c9ae;border-radius:12px;margin:.5rem 0}.simulation-speed[hidden]{display:none}.simulation-speed label{font-weight:700;display:flex;align-items:center;flex-wrap:wrap;gap:.5rem}.simulation-speed select{font:inherit;min-height:44px;max-width:100%;padding:.45rem;border:1px solid #74866b;border-radius:8px;background:#fffdf4;color:#244c3b}.simulation-speed p{flex-basis:100%;font-size:.8rem;margin:0}.simulation-speed [data-speed-status]{font-size:.85rem}
   .play-shell[data-guided="true"] [data-mission-tools]:is([data-current="Q04"],[data-current="complete"]) [data-visitor-mission]{display:none}.play-shell[data-guided="true"] [data-mission-tools][data-current="complete"] [data-care-mission]{display:none}[data-thriving-mission] h4{font-size:.95rem;margin:.3rem 0}[data-thriving-timer],[data-thriving-income]{font-weight:700}[data-thriving-badge]{display:inline-block;border:2px solid #39745e;border-radius:24px;padding:.45rem .7rem;background:#dcecc3;color:#244d3a;font-weight:700}[data-thriving-badge][hidden],[data-thriving-expansion][hidden]{display:none}[data-thriving-expansion]{margin-top:.7rem;padding:.6rem;border:1px solid #a3b98e;border-radius:10px}[data-thriving-expansion] summary{cursor:pointer;min-height:44px;display:flex;align-items:center}
   .play-shell[data-guided="true"] [data-mission-tools]:is([data-current="Q03"],[data-current="Q04"]) [data-care-mission]{display:none}[data-visitor-mission] h4{font-size:.95rem;margin:.3rem 0}[data-visitor-mission-admissions],[data-visitor-mission-viewings]{font-weight:700}[data-visitor-mission-badge]{display:inline-block;border:2px solid #977329;border-radius:24px;padding:.45rem .7rem;background:#f5e5ad;color:#3c4c31;font-weight:700}[data-visitor-mission-badge][hidden]{display:none}

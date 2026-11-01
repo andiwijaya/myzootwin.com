@@ -1,4 +1,5 @@
 export type SimulationEvent =
+  | {type:"preferences-changed";tick:number;gameTimeMs:number}
   | {type:"speed-changed";speed:import("./state.ts").SimulationSpeed;tick:number;gameTimeMs:number}
   | {type:"mission-claimed";missionId:import("./state.ts").MissionId;amount:number;tick:number;gameTimeMs:number}
   | {type:"recovery-changed";tick:number;gameTimeMs:number}

@@ -80,6 +80,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   const unsubscribe = simulation.subscribe(event => {
     simulationTimeMs = event.gameTimeMs;
     if (event.type === 'tick') simulationEvents++;
+    options.stateStore?.checkpoint?.(()=>simulation.snapshot(),!['tick','animal-fed','animal-drank','visitor-viewed'].includes(event.type));
     if(event.type==='visitor-admitted'||event.type==='economy-changed'||event.type==='recovery-changed'||event.type==='mission-claimed'||event.type==='speed-changed')saveSession();
     birdsDirty=true;foodDirty=true;waterDirty=true;perchDirty=true;visitorsDirty=true;
     if(event.type==='habitat-built'){habitatDirty=true;pathDirty=true;}
@@ -126,6 +127,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     const shouldPause = disposed || lost || paused || document.hidden;
     const model=macaw?.view();
     simulation.setPaused(shouldPause||Boolean(model?.active));announceSpeed();
+    if(shouldPause){saveSession();options.stateStore?.checkpoint?.(()=>simulation.snapshot(),true);options.stateStore?.flush?.();}
     controls?.setEnabled(!shouldPause&&(!model?.active||model.habitat));
     picker?.setEnabled(!shouldPause&&!model?.active&&!foodPreview&&!waterPreview&&!perchPreview);
     placement?.setEnabled(!shouldPause&&!model?.active&&!foodPreview&&!waterPreview&&!perchPreview);
@@ -162,7 +164,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     safe(()=>feeder?.dispose());safe(()=>waterStation?.dispose());safe(()=>restKit?.dispose());
     safe(()=>birds?.dispose());safe(()=>visitors?.dispose());
     safe(()=>macaw?.dispose());host.removeEventListener('keydown',onStudioKey,true);
-    safe(saveSession);
+    safe(saveSession);safe(()=>options.stateStore?.checkpoint?.(()=>simulation.snapshot(),true));safe(()=>options.stateStore?.flush?.());
     unsubscribe();
     simulation.dispose();
     canvas.removeEventListener('webglcontextlost', onLost);
@@ -246,6 +248,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
         else if(view.kind&&view.target&&view.affordable){controls?.setEnabled(false);controls?.setEnabled(true);foodPreview=false;waterPreview=false;perchPreview=false;foodDirty=true;waterDirty=true;perchDirty=true;picker?.clear();placementCommand=simulation.commandRevision();placement.guide(view.kind,view.target);const w=simulation.snapshot().world;controls?.focus({x:view.target.x+(view.kind==='habitat'?1:.5)-w.width/2,z:view.target.z+(view.kind==='habitat'?1:.5)-w.height/2});}}
       render();
     },
+    locale:value=>{simulation.setLocale(value);},
     speed:value=>{if(disposed||lost||paused||document.hidden||macaw?.view().active)return;simulation.setSpeed(value);announceSpeed(true);render();},
     claimMission:quote=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;const result=simulation.claimMission(quote);previousMission='';render();host.dispatchEvent(new CustomEvent('scene-mission-result',{detail:result}));},
     recoveryQuote:()=>{const v=simulation.recoveryView();host.dispatchEvent(new CustomEvent('scene-recovery-change',{detail:v}));return !disposed&&!paused&&!lost&&!document.hidden&&!macaw?.view().active&&v.low&&v.available?{command:v.command,key:v.key}:undefined;},

@@ -21,3 +21,7 @@ const output=resolve(root,'tests/browser/.generated');
 await mkdir(output,{recursive:true});
 await writeFile(resolve(output,'preview-harness.html'),html);
 console.log('Prepared ignored local-only harness from actual built /play markup; production scripts removed.');
+
+let saveHtml=await readFile(resolve(root,'dist/play/index.html'),'utf8');saveHtml=saveHtml.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replaceAll('href="/_astro/','href="/dist/_astro/');
+const saveToolbar=`<section style="padding:1rem;background:#e4edf4;color:#19364b;min-width:0;max-width:100%;overflow-wrap:anywhere"><strong>LOCAL STORAGE QA ONLY - labelled whole fixtures and injected failures; not a product route</strong><p>Run <code id="qa-save-run-id">${runId}</code> · Build ${buildId} · Source ${sourceId}</p><button id="qa-save-run">Run bounded IndexedDB autosave checks</button><button id="qa-save-normalize">Disable injected failure</button><button id="qa-save-error-view">Show injected quota error for visual review</button><output id="qa-save-results" style="display:block;overflow-wrap:anywhere"></output><output id="qa-save-inspect" style="display:block;overflow-wrap:anywhere"></output></section>`;
+saveHtml=saveHtml.replace('<main>',saveToolbar+'<main>').replace('</body>','<script type="module" src="/tests/browser/autosave-harness.mjs"></script></body>');await writeFile(resolve(output,'autosave-harness.html'),saveHtml);

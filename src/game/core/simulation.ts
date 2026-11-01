@@ -68,6 +68,7 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
     },
     /** A real rate change reanchors the browser frame adapter, so it cannot retroactively accelerate time before the input. Sub-tick simulation remainder is retained. */
     setSpeed(value:number){if(disposed||(value!==1&&value!==10)||clock.inspect().speed===value)return false;state.preferences.speed=value;clock.setSpeed(value);lastFrame=null;publish(Object.freeze({type:'speed-changed',speed:value,tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;},
+    setLocale(value:unknown){if(disposed||(value!=='en'&&value!=='id')||state.preferences.locale===value)return false;state.preferences.locale=value;publish(Object.freeze({type:'preferences-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;},
     onboardingView:()=>firstMissionGuide(state),
     missionView:()=>missionView(state),
     claimMission(quote:MissionQuote){

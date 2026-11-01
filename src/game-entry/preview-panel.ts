@@ -23,7 +23,7 @@ import type { CameraCommand } from '../game/render3d/camera-navigation.ts';
 import { createPreviewController, type PreviewLoader, type PreviewState } from '../game/render3d/preview-controller';
 import { entryMessages, type EntryLocale, type EntryMessage } from './locale';
 
-export interface PreviewPanelOptions { loadRenderer?: PreviewLoader; }
+export interface PreviewPanelOptions { loadRenderer?: PreviewLoader; stateStore?:import("../game/core/session-state.ts").SanctuarySessionState;canOpen?:()=>boolean;beforeOpen?:()=>boolean; }
 const mounted = new WeakMap<HTMLElement, ReturnType<typeof createPanel>>();
 
 function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
@@ -225,6 +225,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     cameraState();
     const failed = next.status === 'unsupported' || next.status === 'error';
     panel.dataset.rendererState = next.status;
+    const startButton=root.querySelector<HTMLButtonElement>('[data-onboarding-start]');if(startButton)startButton.disabled=next.status==='loading'||options.canOpen?.()===false;
     illustration.hidden = next.status === 'loading' || next.status === 'ready';
     host.hidden = next.status !== 'loading' && next.status !== 'ready';
     host.setAttribute('aria-label', copy.previewCanvas);
@@ -232,7 +233,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     feedback.hidden = next.status === 'closed';
     feedback.setAttribute('role', failed ? 'alert' : 'status');
     open.hidden = next.status !== 'closed';
-    open.disabled = false;
+    open.disabled = options.canOpen?.()===false;
     open.textContent = copy.previewOpen;
     close.hidden = next.status === 'closed';
     close.textContent = copy[failed ? 'previewBack' : 'previewClose'];
@@ -260,7 +261,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
 
   const load: PreviewLoader = options.loadRenderer ?? (async () => {
     const module = await import('../game/render3d/foundation-scene');
-    return (onFailure) => module.mountFoundationScene(host, onFailure,{stateStore:sanctuarySessionFor(root)});
+    return (onFailure) => module.mountFoundationScene(host, onFailure,{stateStore:options.stateStore??sanctuarySessionFor(root)});
   });
   const controller = createPreviewController(load, render);
   host.addEventListener('scene-food-change',event=>{food=(event as CustomEvent<FoodView>).detail;renderFood();renderPlacement();},{signal:events.signal});
@@ -321,19 +322,22 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   selectionPanel?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();dismiss();}},{signal:events.signal});
   host.addEventListener('camera-view-change',()=>cameraState(),{signal:events.signal});
   for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]'))button.addEventListener('click',()=>controller.camera(button.dataset.cameraCommand as CameraCommand),{signal:events.signal});
-  const guidedButton=root.querySelector<HTMLButtonElement>('[data-onboarding-start]');if(guidedButton){guidedButton.disabled=false;guidedButton.addEventListener('click',()=>{root.dataset.guided='true';guidedStart=true;if(state.status==='ready'){guidedStart=false;if(!missionPanel.focusCare())onboardingPanel.focus();}else void controller.open();},{signal:events.signal});}
+  const guidedButton=root.querySelector<HTMLButtonElement>('[data-onboarding-start]');if(guidedButton){guidedButton.disabled=false;guidedButton.addEventListener('click',()=>{if(!mayOpen())return;root.dataset.guided='true';guidedStart=true;if(state.status==='ready'){guidedStart=false;if(!missionPanel.focusCare())onboardingPanel.focus();}else void controller.open();},{signal:events.signal});}
   root.querySelector('[data-onboarding-exit]')?.addEventListener('click',()=>{root.dataset.guided='false';host.focus({preventScroll:true});host.scrollIntoView({block:'nearest'});},{signal:events.signal});
   root.querySelector<HTMLSelectElement>('[data-guide-language]')?.addEventListener('change',event=>{const value=(event.target as HTMLSelectElement).value;if(value!=='en'&&value!=='id')return;locale=value;render(state);root.dispatchEvent(new CustomEvent('entry-locale-request',{detail:value}));},{signal:events.signal});
-  open.addEventListener('click', () => { void controller.open(); }, { signal: events.signal });
-  retry.addEventListener('click', () => { void controller.open(); }, { signal: events.signal });
+  const mayOpen=()=>options.canOpen?.()!==false&&options.beforeOpen?.()!==false;
+  open.addEventListener('click', () => { if(mayOpen())void controller.open(); }, { signal: events.signal });
+  retry.addEventListener('click', () => { if(mayOpen())void controller.open(); }, { signal: events.signal });
   close.addEventListener('click', () => { controller.close(); open.focus(); }, { signal: events.signal });
   reload.addEventListener('click', () => window.location.reload(), { signal: events.signal });
   // Close GPU resources on navigation while keeping entry controls usable in BFCache.
   window.addEventListener('pagehide', () => controller.close(), { signal: events.signal });
 
   return {
-    setLocale(value: EntryLocale) { if (!disposed) { locale = value; render(state); } },
+    setLocale(value: EntryLocale) { if (!disposed) { locale = value; controller.locale(value);render(state); } },
     setPaused(value: boolean) { if (!disposed) controller.setPaused(value); },
+    refresh:()=>{if(!disposed)render(state);},
+    async openGame(paused=false){if(disposed||!mayOpen())return;guidedStart=true;root.dataset.guided='true';controller.setPaused(paused);await controller.open();},
     close: () => { if (!disposed) controller.close(); },
     dispose() { if (disposed) return; disposed = true; controller.dispose();if(recoveryDialog?.open)recoveryDialog.close();if(editDialog?.open)editDialog.close(); events.abort(); if(foodDialog?.open)foodDialog.close();if(waterDialog?.open)waterDialog.close();if(perchDialog?.open)perchDialog.close();mounted.delete(root); },
     inspect: () => ({ state: controller.getState(), session: controller.inspectSession() }),

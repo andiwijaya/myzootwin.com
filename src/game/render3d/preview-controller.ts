@@ -20,6 +20,7 @@ export class PreviewFailure extends Error {
 }
 
 export interface PreviewSession {
+  locale?(value:"en"|"id"):void;
   speed?(value:1|10):void;
   guide?(command:GuideCommand,revision?:number):void;
   claimMission?(quote:MissionQuote):void;
@@ -51,6 +52,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
   let generation = 0;
   let disposed = false;
   let paused = false;
+  let locale:"en"|"id"="en";
 
   function emit(next: PreviewState) { state = next; onState(next); }
   function release() { const old = session; session = undefined; old?.dispose(); }
@@ -83,6 +85,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
         if (disposed || token !== generation) { created.dispose(); return; }
         session = created;
         session.setPaused?.(paused);
+        session.locale?.(locale);
         emit({ status: 'ready' });
       } catch (error) {
         fail(token, error instanceof PreviewFailure ? error.kind : 'init');
@@ -93,6 +96,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     dispose() { if (disposed) return; close(); disposed = true; },
     getState: () => state,
     inspectSession: () => session?.inspect?.(),
+    locale(value:"en"|"id"){locale=value;session?.locale?.(value);},
     speed(value:number){if(!paused&&state.status==='ready'&&(value===1||value===10))session?.speed?.(value);},
     perch(command:PerchCommand,revision?:number){if(!paused&&state.status==='ready')session?.perch?.(command,revision);},
     water(command:FoodCommand,revision?:number){if(!paused&&state.status==='ready')session?.water?.(command,revision);},

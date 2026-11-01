@@ -1,6 +1,6 @@
 import type {EditorState} from '../world/editing.ts';
 import type { ZooSaveV1 } from './state.ts';
-export interface SanctuarySessionState {read():ZooSaveV1|undefined;write(state:ZooSaveV1):void;readEditor():EditorState|undefined;writeEditor(state:EditorState):void;}
+export interface SanctuarySessionState {checkpoint?(reader:()=>ZooSaveV1,critical?:boolean):void;flush?():void;read():ZooSaveV1|undefined;write(state:ZooSaveV1):void;readEditor():EditorState|undefined;writeEditor(state:EditorState):void;}
 const sessions=new WeakMap<object,SanctuarySessionState>();
 /** In-memory data only; survives renderer replacement, never browser reload or storage. */
 export function sanctuarySessionFor(owner:object):SanctuarySessionState{
