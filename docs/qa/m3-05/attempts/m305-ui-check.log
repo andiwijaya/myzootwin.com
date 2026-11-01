@@ -1,0 +1,18 @@
+
+> myzootwin.com@0.1.0 check
+> astro check
+
+16.19.37 [content] Syncing content
+16.19.37 [content] Synced content
+16.19.37 [types] Generated 49ms
+16.19.37 [check] Getting diagnostics for Astro files in C:\MyZooTwin...
+[96msrc/game-entry/preview-panel.ts[0m:[93m54[0m:[93m418[0m - [91merror[0m[90m ts(1005): [0m')' expected.
+
+[7m54[0m     for(const name of ['food','water','perch']as const){const cost=root.querySelector(`[data-economy-cost="${name}"]`),fee=prices[name],refill=name==='water'?prices.waterRefill:prices.foodRefill;if(cost)cost.textContent=text(c[name==='perch'?'economyPerchPrice':'economyCarePrice'].replace('{build}',String(fee)).replace('{refill}',String(refill))+(e.blocked?' '+c.economyCapacity:e.balance<fee?' '+c.economyFunds:'');
+[7m  [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                 ~[0m
+
+Result (111 files): 
+- 1 error
+- 0 warnings
+- 0 hints
+

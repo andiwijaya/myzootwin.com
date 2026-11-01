@@ -1,5 +1,5 @@
 import type { Point, WorldState } from '../core/state.ts';
-export type PlacementReason = 'choose' | 'ready' | 'outside' | 'creek' | 'path' | 'occupied' | 'scenery' | 'limit' | 'command';
+export type PlacementReason = 'choose' | 'ready' | 'outside' | 'creek' | 'path' | 'occupied' | 'scenery' | 'limit' | 'command' | 'funds' | 'capacity';
 export type PlacementKind='habitat'|'path';
 export interface PlacementProposal { kind:PlacementKind; anchor:Point; width:1|2; height:1|2; cells:Point[]; }
 export interface PlacementView { kind:PlacementKind; active:boolean; revision:number; proposal:PlacementProposal|null; reason:PlacementReason; confirmed:PlacementProposal|null; confirmations:number; }
@@ -35,6 +35,7 @@ export function createPlacementPlanner(world:()=>WorldState,blocked:ReadonlySet<
     confirm(expectedRevision:number){if(!enabled||disposed||!active||revision!==expectedRevision)return false;const checked=validate(anchor);if(checked.reason!=='ready'||!checked.proposal){emit();return false;}if(options.commit&&!options.commit(checked.proposal,operationId)){emit();return false;}confirmed=structuredClone(checked.proposal);confirmations++;lastPathCell=kind==='path'?{...checked.proposal.anchor}:null;active=kind==='path';anchor=null;emit();return true;},
     cancel(){if(!enabled||disposed||!active)return;active=false;anchor=null;emit();},
     setEnabled(value:boolean){enabled=value;},
+    refresh(){if(active&&!disposed)emit();},
     snapshot:view,
     dispose(){if(disposed)return;active=false;anchor=null;confirmed=null;disposed=true;emit();},
     inspect:()=>({placementActive:active,placementPathMode:kind==='path',placementRevision:revision,placementValid:active&&view().reason==='ready',placementConfirmedCount:confirmed?1:0,placementConfirmations:confirmations,placementDisposed:disposed}),

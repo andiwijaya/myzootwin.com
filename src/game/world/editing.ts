@@ -2,10 +2,10 @@ import {visitorRemovalReason} from '../visitors/navigation.ts';
 import type {Point,WorldState,ZooSaveV1} from '../core/state.ts';
 import {refundable} from '../economy/refunds.ts';
 export type EditTarget={kind:'habitat';id:string}|{kind:'path';cell:Point};
-export type EditReason='missing'|'protected'|'in-use'|'stale'|'funds'|'command'|'visitor-route'|'visitor-occupied';
+export type EditReason='missing'|'protected'|'in-use'|'stale'|'funds'|'command'|'visitor-route'|'visitor-occupied'|'capacity';
 export interface RemovalQuote {revision:number;target:EditTarget;refund:number;}
 export interface EditorState {revision:number;undo:null|{before:WorldState;after:WorldState;refundIds:string[]};}
-export interface EditView {canUndo:boolean;reason:EditReason|null;result:'removed'|'restored'|null;}
+export interface EditView {canUndo:boolean;undoCost?:number;reason:EditReason|null;result:'removed'|'restored'|null;}
 export const targetId=(target:EditTarget)=>target.kind==='habitat'?target.id:`path-${target.cell.x}-${target.cell.z}`;
 export function quoteRemoval(state:ZooSaveV1,target:EditTarget,revision:number):{ok:true;quote:RemovalQuote}|{ok:false;reason:EditReason}{
   if(target.kind==='habitat'){

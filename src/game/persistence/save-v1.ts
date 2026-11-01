@@ -1,3 +1,4 @@
+import {PRICES,MONEY_RULES} from '../economy/prices.ts';
 import {SATISFACTION_RULES} from '../visitors/satisfaction.ts';
 import {visitorPaths,visitorRoute,visitorCell,ownsCorridor} from '../visitors/navigation.ts';
 import {arrivalPosition,ARRIVAL_RULES} from '../visitors/arrivals.ts';
@@ -33,7 +34,7 @@ const tick = integer(MAX_TICK);
 const missionId = oneOf(...MISSION_IDS);
 const feedback=object({visitorId:id,habitatId:nullable(id),tick,outcome:oneOf('comfortable','concerned','empty','no-habitat','unreachable','interrupted'),reason:oneOf('none','closed','access-lost','habitat-removed','time-limit'),score:nullable(integer(100)),observedWelfare:nullable(integer(100)),samples:integer(30),occupiedSamples:integer(30),welfareHundredths:integer(300000)});
 const schema = object({
-  schemaVersion: oneOf(1), randomSeed: number(1,0xffffffff,true), randomState: number(1,0xffffffff,true), tick, gameTimeMs: integer(), currency: integer(),
+  schemaVersion: oneOf(1), randomSeed: number(1,0xffffffff,true), randomState: number(1,0xffffffff,true), tick, gameTimeMs: integer(), currency: integer(), economy:object({maintenancePeriod:tick}),
   world: object({ width: number(1,32,true), height: number(1,32,true), gate: cell,
     tiles: array(object({ cell, terrain: oneOf('land','creek'), occupantId: nullable(id), path: bool }),1024),
     habitats: array(object({ id, cells: array(cell,256), viewingCell: nullable(cell) }),8),
@@ -54,7 +55,9 @@ const key = (p: {x:number;z:number}) => `${p.x},${p.z}`;
 function unique(values: string[], path: string) { requireValue(new Set(values).size === values.length,path); }
 function relationships(s: ZooSaveV1) {
   requireValue(s.gameTimeMs === s.tick * TICK_MS,'$.gameTimeMs');
+  requireValue(s.economy.maintenancePeriod<=Math.floor(s.tick/MONEY_RULES.maintenanceTicks),'$.economy.maintenancePeriod');
   const w=s.world;
+  if(w.habitats.length&&s.economy.maintenancePeriod>0){const since=s.economy.maintenancePeriod*MONEY_RULES.maintenanceTicks,covered=s.ledger.some(e=>e.kind==='maintenance'&&e.operationId===`maintenance-${s.economy.maintenancePeriod}`&&e.tick>=since&&e.amount<=-PRICES.maintenance&&e.amount%PRICES.maintenance===0&&e.relatedId===null)||w.habitats.every(h=>s.ledger.some(e=>{if(e.tick<since)return false;if(e.kind==='build')return e.relatedId===h.id;if(e.kind!=='restore')return false;const refund=s.ledger.find(r=>r.id===e.relatedId),paid=s.ledger.find(p=>p.id===refund?.relatedId);return paid?.kind==='build'&&paid.relatedId===h.id;}));requireValue(covered,'$.economy.maintenanceProof');}
   const inBounds=(p:{x:number;z:number}) => p.x < w.width && p.z < w.height;
   requireValue(w.tiles.length === w.width*w.height,'$.world.tiles');
   unique(w.tiles.map(t=>key(t.cell)),'$.world.tiles');

@@ -64,7 +64,7 @@ import { english as copy } from '../game-entry/locale';
         <h3 id="visitors-title" data-entry-text="visitorsTitle">{copy.visitorsTitle}</h3>
         <p data-entry-text="visitorsHint">{copy.visitorsHint}</p>
         <div class="macaw-actions"><button type="button" data-visitors-command="open">{copy.visitorsOpen}</button><button type="button" data-visitors-command="close" hidden>{copy.visitorsClose}</button><button type="button" data-visitors-command="focus">{copy.visitorsFocus}</button><button type="button" data-visitors-command="follow">{copy.visitorsFollow}</button></div>
-        <p data-ticket-balance style="font-weight:700"></p><p data-ticket-status></p><p data-ticket-last role="status" aria-live="polite"></p><p data-ticket-note style="font-size:.9em"></p><p data-visitors-status role="status" aria-live="polite"></p><ul data-visitor-list aria-live="off"></ul><p data-visitor-satisfaction role="status" aria-live="polite"></p><ul data-visitor-recent aria-label={copy.visitorRecentLabel}></ul>
+        <p data-economy-status role="status" aria-live="polite"></p><p data-ticket-balance style="font-weight:700"></p><p data-ticket-status></p><p data-ticket-last role="status" aria-live="polite"></p><p data-ticket-note style="font-size:.9em"></p><p data-visitors-status role="status" aria-live="polite"></p><ul data-visitor-list aria-live="off"></ul><p data-visitor-satisfaction role="status" aria-live="polite"></p><ul data-visitor-recent aria-label={copy.visitorRecentLabel}></ul>
       </section>
       <section class="bird-tools macaw-tools" data-bird-tools hidden aria-labelledby="birds-title">
         <h3 id="birds-title" data-entry-text="birdsTitle">{copy.birdsTitle}</h3>
@@ -91,7 +91,7 @@ import { english as copy } from '../game-entry/locale';
         <button type="button" data-food-command="preview" disabled>{copy.foodPlace}</button>
         <div data-food-preview hidden><p data-entry-text="foodPreview">{copy.foodPreview}</p><button type="button" data-food-command="confirm">{copy.foodConfirm}</button> <button type="button" data-food-command="cancel">{copy.foodCancel}</button></div>
         <div data-food-actions hidden><button type="button" data-food-command="refill">{copy.foodFill}</button> <button type="button" data-food-remove>{copy.foodRemove}</button></div>
-        <p data-food-status role="status" aria-live="polite"></p>
+        <p data-economy-cost="food"></p><p data-food-status role="status" aria-live="polite"></p>
       </section>
       <section class="macaw-tools" data-water-tools hidden aria-labelledby="water-title">
         <h3 id="water-title" data-entry-text="waterTitle">{copy.waterTitle}</h3>
@@ -99,7 +99,7 @@ import { english as copy } from '../game-entry/locale';
         <button type="button" data-water-command="preview" disabled>{copy.waterPlace}</button>
         <div data-water-preview hidden><p data-entry-text="waterPreview">{copy.waterPreview}</p><button type="button" data-water-command="confirm">{copy.waterConfirm}</button> <button type="button" data-water-command="cancel">{copy.waterCancel}</button></div>
         <div data-water-actions hidden><button type="button" data-water-command="refill">{copy.waterFill}</button> <button type="button" data-water-remove>{copy.waterRemove}</button></div>
-        <p data-water-status role="status" aria-live="polite"></p>
+        <p data-economy-cost="water"></p><p data-water-status role="status" aria-live="polite"></p>
       </section>
       <section class="macaw-tools" data-perch-tools hidden aria-labelledby="perch-title">
         <h3 id="perch-title" data-entry-text="perchTitle">{copy.perchTitle}</h3>
@@ -107,7 +107,7 @@ import { english as copy } from '../game-entry/locale';
         <button type="button" data-perch-command="preview" disabled>{copy.perchPlace}</button>
         <div data-perch-preview hidden><p data-entry-text="perchPreview">{copy.perchPreview}</p><button type="button" data-perch-command="confirm">{copy.perchConfirm}</button> <button type="button" data-perch-command="cancel">{copy.perchCancel}</button></div>
         <div data-perch-actions hidden><button type="button" data-perch-remove>{copy.perchRemove}</button></div>
-        <p data-perch-status role="status" aria-live="polite"></p>
+        <p data-economy-cost="perch"></p><p data-perch-status role="status" aria-live="polite"></p>
       </section>
       <section class="macaw-tools" data-macaw-tools hidden aria-labelledby="macaw-title">
         <button type="button" data-studio-command="open">{copy.macawOpen}</button>
@@ -126,7 +126,7 @@ import { english as copy } from '../game-entry/locale';
       <section class="placement-tools" data-placement-tools hidden aria-labelledby="placement-title">
         <button type="button" data-placement-command="begin">{copy.placementStart}</button>
         <button type="button" data-placement-command="begin-path">{copy.pathStart}</button>
-        <p data-access-status role="status" aria-live="polite"></p>
+        <p data-economy-cost="placement"></p><p data-access-status role="status" aria-live="polite"></p>
         <button type="button" data-edit-undo hidden>{copy.editUndo}</button>
         <p data-entry-text="editHint">{copy.editHint}</p>
         <p data-edit-status role="status" aria-live="polite"></p>

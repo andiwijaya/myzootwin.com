@@ -36,7 +36,7 @@ export function stepRest(s:ZooSaveV1,a:Animal,h:Habitat,slot:number,urgent:numbe
 }
 export type PerchAction='place'|'remove';
 export type PerchCommand='preview'|'confirm'|'cancel'|'remove';
-export type PerchReason='missing'|'exists'|'stale'|'invalid'|'busy'|null;
+export type PerchReason='missing'|'exists'|'stale'|'invalid'|'busy'|'funds'|'capacity'|null;
 export function perchTransaction(s:ZooSaveV1,action:PerchAction,revision:number,generation=0):PerchReason|'ok'{
  const h=s.world.habitats[0];if(!h||h.cells.length!==4)return 'missing';const p=perchAnchor(h);if(![0,1].every(dx=>[0,1].every(dz=>h.cells.some(c=>c.x===p.x+dx&&c.z===p.z+dz))))return 'invalid';const r=s.world.resources.find(r=>r.kind==='perch'&&r.habitatId===h.id);
  if(action==='place'){if(r)return 'exists';if(!perchClear(s,h))return 'busy';if(s.world.resources.some(r=>r.cell.x===p.x&&r.cell.z===p.z))return 'invalid';s.world.resources.push({id:`rest-${p.x}-${p.z}`,kind:'perch',habitatId:h.id,cell:p,stock:0,capacity:2,revision:generation,portions:null});return 'ok';}

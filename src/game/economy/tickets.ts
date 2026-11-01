@@ -1,8 +1,9 @@
+import {MONEY_RULES} from './prices.ts';
 import type {Admission,LedgerEntry,Point,Visitor,ZooSaveV1} from '../core/state.ts';
 import {VISITOR_STEP,visitorRoute,visitorPaths,visitTarget} from '../visitors/graph.ts';
 
 /** Fictional Zoo Coins only. Starting price, not final economy balancing. */
-export const TICKET_RULES=Object.freeze({price:10,receiptLimit:1024});
+export const TICKET_RULES=Object.freeze({price:10,receiptLimit:MONEY_RULES.normalLimit});
 const key=(p:Point)=>`${p.x},${p.z}`,cell=(p:Point)=>({x:Math.floor(p.x),z:Math.floor(p.z)});
 export function ticketLimit(s:ZooSaveV1):'capacity'|'balance'|null{return s.ledger.length>=TICKET_RULES.receiptLimit||s.admissions.length>=TICKET_RULES.receiptLimit?'capacity':!Number.isSafeInteger(s.currency+TICKET_RULES.price)?'balance':null;}
 function coherentMoney(s:ZooSaveV1):boolean{

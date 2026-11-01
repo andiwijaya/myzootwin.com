@@ -1,3 +1,4 @@
+import type {EconomyView} from '../game/economy/spending.ts';
 import {renderTickets} from './ticket-feedback.ts';
 import {presentVisitorFeedback,renderVisitorSummary} from './visitor-feedback.ts';
 import type {ArrivalView} from '../game/visitors/arrivals.ts';
@@ -32,6 +33,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const retry = root.querySelector<HTMLButtonElement>('[data-preview-retry]');
   const reload = root.querySelector<HTMLButtonElement>('[data-preview-reload]');
   if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) throw new Error('Incomplete preview panel');
+  let economy:EconomyView|null=null;
   let locale: EntryLocale = 'en';
   let disposed = false;
   let state: PreviewState = { status: 'closed' };
@@ -45,6 +47,15 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   let perch:PerchView={canPlace:false,habitat:false,exists:false,reachable:false,capacity:2,revision:0,preview:false,reason:null,resting:0,exploring:0};
   const perchDialog=root.querySelector<HTMLDialogElement>('[data-perch-dialog]');let perchRemovalRevision:number|null=null;
   let visitorView:ArrivalView={open:false,active:0,capacity:3,ready:false,total:0,reason:'closed',ids:[],people:[],queued:0,walking:0,viewing:0,returning:0,viewedTotal:0,feedback:{evaluated:0,scored:0,scoreSum:0,positive:0,negative:0,interrupted:0,recent:[]},tickets:{balance:1500,price:10,admissions:0,revenue:0,reason:'closed',last:null}};
+  function renderCosts(){if(!economy)return;const e=economy,c=entryMessages[locale],prices=e.prices;
+    const text=(value:string)=>value.replaceAll('{balance}',String(e.balance)).replaceAll('{n}',String(e.remaining)).replaceAll('{corrections}',String(e.correctionRemaining)).replaceAll('{fee}',String(prices.maintenance)).replaceAll('{due}',String(e.maintenanceDue));
+    const status=root.querySelector<HTMLElement>('[data-economy-status]');if(status){status.dataset.balance=String(e.balance);status.dataset.spent=String(e.spent);status.dataset.refunds=String(e.refunds);status.dataset.remaining=String(e.remaining);status.dataset.maintenanceDue=String(e.maintenanceDue);const value=text(c[e.blocked?'economyCapacity':e.maintenanceDue?'economyDue':e.warning?'economyWarning':'economyReady']);if(status.textContent!==value)status.textContent=value;}
+    const placementCost=root.querySelector('[data-economy-cost="placement"]');if(placementCost)placementCost.textContent=text(c.economyPlacementPrice.replace('{habitat}',String(prices.habitat)).replace('{path}',String(prices.path)));
+    for(const name of ['food','water','perch']as const){const cost=root.querySelector(`[data-economy-cost="${name}"]`),fee=prices[name],refill=name==='water'?prices.waterRefill:prices.foodRefill;const refundHint=root.querySelector(`[data-entry-text="${name}RemoveHint"]`);if(refundHint){const value=c[name==='food'?'foodRemoveHint':name==='water'?'waterRemoveHint':'perchRemoveHint']+' '+c.economyRefund.replace('{n}',String(e.resourceRefunds[name]));if(refundHint.textContent!==value)refundHint.textContent=value;}const current=name==='food'?food:name==='water'?water:perch,needed=current.exists?(name==='perch'?0:refill):fee;if(cost)cost.textContent=text(c[name==='perch'?'economyPerchPrice':'economyCarePrice'].replace('{build}',String(fee)).replace('{refill}',String(refill)))+(e.blocked?' '+c.economyCapacity:e.balance<needed?' '+c.economyFunds:'');
+      for(const command of ['confirm','refill']as const){const b=root.querySelector<HTMLButtonElement>(`[data-${name}-command="${command}"]`);if(!b)continue;const amount=command==='confirm'?fee:refill,basic=c[name==='food'?(command==='confirm'?'foodConfirm':'foodFill'):name==='water'?(command==='confirm'?'waterConfirm':'waterFill'):'perchConfirm'];b.textContent=basic+` · ${amount} ZC`;if(e.blocked||e.balance<amount)b.disabled=true;}}
+    for(const [command,key,amount]of [['begin','placementStart',prices.habitat],['begin-path','pathStart',prices.path],['confirm',placement?.kind==='path'?'pathConfirm':'placementConfirm',placement?.kind==='path'?prices.path:prices.habitat]]as const){const b=root.querySelector<HTMLButtonElement>(`[data-placement-command="${command}"]`);if(b){b.textContent=c[key]+` · ${amount} ZC`;if(command==='confirm'&&(e.blocked||e.balance<amount))b.disabled=true;}}
+  }
+  host.addEventListener('scene-economy-change',event=>{economy=(event as CustomEvent<EconomyView>).detail;renderFood();renderWater();renderPerch();renderPlacement();renderEdit();renderCosts();},{signal:events.signal});
   function renderVisitors(){const section=root.querySelector<HTMLElement>('[data-visitor-tools]');if(!section)return;section.hidden=state.status!=='ready'||studio.active;const copy=entryMessages[locale];
     for(const b of section.querySelectorAll<HTMLButtonElement>('[data-visitors-command]')){const c=b.dataset.visitorsCommand;b.textContent=copy[c==='open'?'visitorsOpen':c==='close'?'visitorsClose':c==='follow'?'visitorsFollow':'visitorsFocus'];b.disabled=c==='follow'&&visitorView.active===0||c==='open'&&['capacity','balance'].includes(visitorView.tickets.reason);b.hidden=c==='open'?visitorView.open:c==='close'?!visitorView.open:false;}
     section.querySelector('[data-entry-text="visitorsTitle"]')?.replaceChildren(copy.visitorsTitle);section.querySelector('[data-entry-text="visitorsHint"]')?.replaceChildren(copy.visitorsHint);
@@ -65,13 +76,13 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     root.querySelector('[data-entry-text="editHint"]')?.replaceChildren(copy.editHint);
     const remove=root.querySelector<HTMLButtonElement>('[data-edit-remove]');
     if(remove){remove.hidden=!ready||studio.active||!selected||!['habitat','path'].includes(selected.kind);remove.textContent=copy.editRemove;}
-    const undo=root.querySelector<HTMLButtonElement>('[data-edit-undo]');if(undo){undo.hidden=!ready||!editView.canUndo;undo.textContent=copy.editUndo;}
-    const keys={missing:'editMissing',protected:'editProtected','in-use':'editInUse','visitor-route':'editVisitorRoute','visitor-occupied':'editVisitorOccupied',stale:'editStale',funds:'editFunds',command:'editCommand'} as const;
+    const undo=root.querySelector<HTMLButtonElement>('[data-edit-undo]');if(undo){undo.hidden=!ready||!editView.canUndo;undo.textContent=copy.editUndo+` · ${editView.undoCost??0} ZC`;undo.disabled=Boolean(economy&&economy.balance<(editView.undoCost??0));}
+    const keys={missing:'editMissing',protected:'editProtected','in-use':'editInUse','visitor-route':'editVisitorRoute','visitor-occupied':'editVisitorOccupied',stale:'editStale',funds:'editFunds',capacity:'economyCapacity',command:'editCommand'} as const;
     root.querySelector('[data-edit-status]')?.replaceChildren(editView.reason?copy[keys[editView.reason]]:editView.result?copy[editView.result==='removed'?'editRemoved':'editRestored']:'');
     root.querySelector('[data-edit-cancel]')?.replaceChildren(copy.editCancel);root.querySelector('[data-edit-confirm]')?.replaceChildren(copy.editConfirm);
     root.querySelector('#edit-dialog-title')?.replaceChildren(copy.editTitle);root.querySelector('#edit-dialog-description')?.replaceChildren(copy.editIntro);
     root.querySelector('[data-edit-object]')?.replaceChildren(removalName);
-    root.querySelector('[data-edit-refund]')?.replaceChildren(copy.editRefund.replace('{n}',String(removal?.refund??0)));
+    root.querySelector('[data-edit-refund]')?.replaceChildren(copy.editRefund.replace('{n}',String(removal?.refund??0)));renderCosts();
   }
   const selectionPanel=root.querySelector<HTMLElement>('[data-scene-selection]');
   const selectionStatus=root.querySelector<HTMLOutputElement>('[data-selection-announcement]');
@@ -108,7 +119,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     root.querySelector('.placement-arrows')?.setAttribute('aria-label',path?copy.pathTitle:copy.placementTitle);
     const anchor=placement?.proposal?.anchor;
     root.querySelector('[data-placement-location]')?.replaceChildren(active&&anchor?copy.placementLocation.replace('{x}',String(anchor.x+1)).replace('{z}',String(anchor.z+1)):'');
-    const confirmed=root.querySelector<HTMLElement>('[data-placement-confirmed]');if(confirmed){confirmed.hidden=habitatCount===0||active;confirmed.textContent=copy.placementConfirmed;}
+    const confirmed=root.querySelector<HTMLElement>('[data-placement-confirmed]');if(confirmed){confirmed.hidden=habitatCount===0||active;confirmed.textContent=copy.placementConfirmed;}renderCosts();
   }
   const cameraControls=root.querySelector<HTMLElement>('[data-camera-controls]');
   const zoomOutput=root.querySelector<HTMLOutputElement>('[data-camera-zoom]');
@@ -131,9 +142,9 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const preview=tools.querySelector<HTMLElement>('[data-food-preview]');if(preview)preview.hidden=!food.preview;const actions=tools.querySelector<HTMLElement>('[data-food-actions]');if(actions)actions.hidden=!food.exists||food.preview;
     for(const [cmd,key]of [['confirm','foodConfirm'],['cancel','foodCancel'],['refill','foodFill']]as const){const b=tools.querySelector<HTMLButtonElement>(`[data-food-command="${cmd}"]`);if(b){b.textContent=c[key];if(cmd==='refill')b.disabled=food.stock>=food.capacity;if(cmd==='confirm')b.disabled=!food.canPlace;}}
     tools.querySelector('[data-food-remove]')?.replaceChildren(c.foodRemove);
-    const reasons={missing:'foodMissing',exists:'foodExists',stale:'foodStale',full:'foodFull',invalid:'foodInvalid',busy:'foodBusy'}as const;
+    const reasons={missing:'foodMissing',exists:'foodExists',stale:'foodStale',full:'foodFull',invalid:'foodInvalid',busy:'foodBusy',funds:'economyFunds',capacity:'economyCapacity'}as const;
     const text=c[food.reason?reasons[food.reason]:food.preview&&!food.canPlace?'foodBusy':!food.habitat?'foodNeedHabitat':!food.exists?'foodReady':!food.reachable?'foodUnreachable':food.stock===0?'foodEmpty':food.portions.some(n=>n===0)?'foodOneEmpty':'foodStock'].replace('{n}',String(food.stock)).replace('{cap}',String(food.capacity)).replace('{a}',String(food.portions[0])).replace('{b}',String(food.portions[1]));const status=tools.querySelector('[data-food-status]');if(status?.textContent!==text)status?.replaceChildren(text);
-    root.querySelector('[data-food-keep]')?.replaceChildren(c.foodKeep);root.querySelector('[data-food-remove-confirm]')?.replaceChildren(c.foodRemoveConfirm);root.querySelector('#food-dialog-title')?.replaceChildren(c.foodRemoveTitle);root.querySelector('[data-entry-text="foodRemoveHint"]')?.replaceChildren(c.foodRemoveHint);
+    root.querySelector('[data-food-keep]')?.replaceChildren(c.foodKeep);root.querySelector('[data-food-remove-confirm]')?.replaceChildren(c.foodRemoveConfirm);root.querySelector('#food-dialog-title')?.replaceChildren(c.foodRemoveTitle);root.querySelector('[data-entry-text="foodRemoveHint"]')?.replaceChildren(c.foodRemoveHint);renderCosts();
   }
   function renderWater(){const tools=root.querySelector<HTMLElement>('[data-water-tools]');if(!tools)return;const c=entryMessages[locale];tools.hidden=state.status!=='ready'||studio.active;
     for(const el of tools.querySelectorAll<HTMLElement>('[data-entry-text]'))el.textContent=c[el.dataset.entryText as EntryMessage];
@@ -141,18 +152,18 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const preview=tools.querySelector<HTMLElement>('[data-water-preview]');if(preview)preview.hidden=!water.preview;const actions=tools.querySelector<HTMLElement>('[data-water-actions]');if(actions)actions.hidden=!water.exists||water.preview;
     for(const [cmd,key]of [['confirm','waterConfirm'],['cancel','waterCancel'],['refill','waterFill']]as const){const b=tools.querySelector<HTMLButtonElement>(`[data-water-command="${cmd}"]`);if(b){b.textContent=c[key];if(cmd==='refill')b.disabled=water.stock>=water.capacity;if(cmd==='confirm')b.disabled=!water.canPlace;}}
     tools.querySelector('[data-water-remove]')?.replaceChildren(c.waterRemove);
-    const reasons={missing:'waterMissing',exists:'waterExists',stale:'waterStale',full:'waterFull',invalid:'waterInvalid',busy:'waterBusy'}as const;
+    const reasons={missing:'waterMissing',exists:'waterExists',stale:'waterStale',full:'waterFull',invalid:'waterInvalid',busy:'waterBusy',funds:'economyFunds',capacity:'economyCapacity'}as const;
     const text=c[water.reason?reasons[water.reason]:water.preview&&!water.canPlace?'waterBusy':!water.habitat?'waterNeedHabitat':!water.exists?'waterReady':!water.reachable?'waterUnreachable':water.stock===0?'waterEmpty':water.portions.some(n=>n===0)?'waterOneEmpty':'waterStock'].replace('{n}',String(water.stock)).replace('{cap}',String(water.capacity)).replace('{a}',String(water.portions[0])).replace('{b}',String(water.portions[1]));const status=tools.querySelector('[data-water-status]');if(status?.textContent!==text)status?.replaceChildren(text);
-    root.querySelector('[data-water-keep]')?.replaceChildren(c.waterKeep);root.querySelector('[data-water-remove-confirm]')?.replaceChildren(c.waterRemoveConfirm);root.querySelector('#water-dialog-title')?.replaceChildren(c.waterRemoveTitle);root.querySelector('[data-entry-text="waterRemoveHint"]')?.replaceChildren(c.waterRemoveHint);
+    root.querySelector('[data-water-keep]')?.replaceChildren(c.waterKeep);root.querySelector('[data-water-remove-confirm]')?.replaceChildren(c.waterRemoveConfirm);root.querySelector('#water-dialog-title')?.replaceChildren(c.waterRemoveTitle);root.querySelector('[data-entry-text="waterRemoveHint"]')?.replaceChildren(c.waterRemoveHint);renderCosts();
   }
   function renderPerch(){const tools=root.querySelector<HTMLElement>('[data-perch-tools]');if(!tools)return;const c=entryMessages[locale];tools.hidden=state.status!=='ready'||studio.active;
     for(const el of tools.querySelectorAll<HTMLElement>('[data-entry-text]'))el.textContent=c[el.dataset.entryText as EntryMessage];
     const place=tools.querySelector<HTMLButtonElement>('[data-perch-command="preview"]');if(place){place.hidden=perch.exists||perch.preview;place.disabled=!perch.habitat;place.textContent=c.perchPlace;}
     const preview=tools.querySelector<HTMLElement>('[data-perch-preview]');if(preview)preview.hidden=!perch.preview;const actions=tools.querySelector<HTMLElement>('[data-perch-actions]');if(actions)actions.hidden=!perch.exists||perch.preview;
     const confirm=tools.querySelector<HTMLButtonElement>('[data-perch-command="confirm"]');if(confirm){confirm.textContent=c.perchConfirm;confirm.disabled=!perch.canPlace;}tools.querySelector('[data-perch-command="cancel"]')?.replaceChildren(c.perchCancel);tools.querySelector('[data-perch-remove]')?.replaceChildren(c.perchRemove);
-    const reasons={missing:'perchMissing',exists:'perchExists',stale:'perchStale',invalid:'perchInvalid',busy:'perchBusy'}as const;
+    const reasons={missing:'perchMissing',exists:'perchExists',stale:'perchStale',invalid:'perchInvalid',busy:'perchBusy',funds:'economyFunds',capacity:'economyCapacity'}as const;
     const text=c[perch.reason?reasons[perch.reason]:perch.preview&&!perch.canPlace?'perchBusy':!perch.habitat?'perchNeedHabitat':!perch.exists?'perchReady':!perch.reachable?'perchUnreachable':'perchStatus'].replace('{r}',String(perch.resting)).replace('{g}',String(perch.exploring)).replaceAll('{cap}',String(perch.capacity));const status=tools.querySelector('[data-perch-status]');if(status?.textContent!==text)status?.replaceChildren(text);
-    root.querySelector('[data-perch-keep]')?.replaceChildren(c.perchKeep);root.querySelector('[data-perch-remove-confirm]')?.replaceChildren(c.perchRemoveConfirm);root.querySelector('#perch-dialog-title')?.replaceChildren(c.perchRemoveTitle);root.querySelector('[data-entry-text="perchRemoveHint"]')?.replaceChildren(c.perchRemoveHint);
+    root.querySelector('[data-perch-keep]')?.replaceChildren(c.perchKeep);root.querySelector('[data-perch-remove-confirm]')?.replaceChildren(c.perchRemoveConfirm);root.querySelector('#perch-dialog-title')?.replaceChildren(c.perchRemoveTitle);root.querySelector('[data-entry-text="perchRemoveHint"]')?.replaceChildren(c.perchRemoveHint);renderCosts();
   }
   function renderStudio(){renderVisitors();
     const copy=entryMessages[locale],ready=state.status==='ready',tools=root.querySelector<HTMLElement>('[data-macaw-tools]');if(!tools)return;

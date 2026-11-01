@@ -1,0 +1,158 @@
+TAP version 13
+# Subtest: starter1500 buys actual habitat five paths all care objects and two filled sources with893 remaining
+ok 1 - starter1500 buys actual habitat five paths all care objects and two filled sources with893 remaining
+  ---
+  duration_ms: 26.0168
+  type: 'test'
+  ...
+# Subtest: build debit and world publish together; duplicate operation, invalid anchor and quote cancellation never debit
+ok 2 - build debit and world publish together; duplicate operation, invalid anchor and quote cancellation never debit
+  ---
+  duration_ms: 8.3438
+  type: 'test'
+  ...
+# Subtest: insufficient habitat and path balances reject atomically even when geometry is legal
+ok 3 - insufficient habitat and path balances reject atomically even when geometry is legal
+  ---
+  duration_ms: 4.683
+  type: 'test'
+  ...
+# Subtest: every care object refuses unaffordable placement without object stock mutation or partial ledger
+ok 4 - every care object refuses unaffordable placement without object stock mutation or partial ledger
+  ---
+  duration_ms: 9.5741
+  type: 'test'
+  ...
+# Subtest: food and water refill use displayed fixed service fee and reject full stale insufficient or paused requests without spending
+not ok 5 - food and water refill use displayed fixed service fee and reject full stale insufficient or paused requests without spending
+  ---
+  duration_ms: 4.5487
+  type: 'test'
+  location: 'C:\\MyZooTwin\\tests\\spending.test.mjs:15:1'
+  failureType: 'testCodeFailure'
+  error: 'Invalid initial state at $.ledger.ids'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    createSimulation (file:///C:/MyZooTwin/src/game/core/simulation.ts:25:24)
+    budget (file:///C:/MyZooTwin/tests/spending.test.mjs:9:289)
+    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/spending.test.mjs:15:390)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+    Test.postRun (node:internal/test_runner/test:1235:19)
+    Test.run (node:internal/test_runner/test:1163:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: refill of a partly used bowl still has the same disclosed service fee, never a hidden per-portion race
+ok 6 - refill of a partly used bowl still has the same disclosed service fee, never a hidden per-portion race
+  ---
+  duration_ms: 4.5563
+  type: 'test'
+  ...
+# Subtest: resource removal refunds only actual structure debit, not supplies; repeated removal or rebuild cannot harvest refunds
+ok 7 - resource removal refunds only actual structure debit, not supplies; repeated removal or rebuild cannot harvest refunds
+  ---
+  duration_ms: 99.8363
+  type: 'test'
+  ...
+# Subtest: paid world remove/Undo cycles reconcile occupancy balance and original debit without duplicate refunds
+ok 8 - paid world remove/Undo cycles reconcile occupancy balance and original debit without duplicate refunds
+  ---
+  duration_ms: 53.9297
+  type: 'test'
+  ...
+# Subtest: Undo refuses insufficient repayment and keeps both undo record and authoritative state unchanged
+ok 9 - Undo refuses insufficient repayment and keeps both undo record and authoritative state unchanged
+  ---
+  duration_ms: 4.4684
+  type: 'test'
+  ...
+# Subtest: care transaction identities survive codec recreation without editor metadata and do not collide with world-edit IDs
+ok 10 - care transaction identities survive codec recreation without editor metadata and do not collide with world-edit IDs
+  ---
+  duration_ms: 8.3047
+  type: 'test'
+  ...
+# Subtest: maintenance charges once each600 accepted ticks with actual due settlement and no frame based duplicate fee
+ok 11 - maintenance charges once each600 accepted ticks with actual due settlement and no frame based duplicate fee
+  ---
+  duration_ms: 17.6462
+  type: 'test'
+  ...
+# Subtest: unaffordable maintenance remains explicitly due without negative coins; later funds settle debt exactly once
+not ok 12 - unaffordable maintenance remains explicitly due without negative coins; later funds settle debt exactly once
+  ---
+  duration_ms: 10.342
+  type: 'test'
+  location: 'C:\\MyZooTwin\\tests\\spending.test.mjs:22:1'
+  failureType: 'testCodeFailure'
+  error: 'Invalid initial state at $.ledger.ids'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    createSimulation (file:///C:/MyZooTwin/src/game/core/simulation.ts:25:24)
+    budget (file:///C:/MyZooTwin/tests/spending.test.mjs:9:289)
+    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/spending.test.mjs:22:301)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+    Test.postRun (node:internal/test_runner/test:1235:19)
+    Test.run (node:internal/test_runner/test:1163:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: no habitat incurs no maintenance and future construction does not inherit absent-world periods
+ok 13 - no habitat incurs no maintenance and future construction does not inherit absent-world periods
+  ---
+  duration_ms: 9.9744
+  type: 'test'
+  ...
+# Subtest: maintenance is deterministic across frame partitions, pause and complete save reload, with bounded large-frame catchup
+ok 14 - maintenance is deterministic across frame partitions, pause and complete save reload, with bounded large-frame catchup
+  ---
+  duration_ms: 23.7146
+  type: 'test'
+  ...
+# Subtest: normal-history cap protects64 correction slots, blocks actual purchases and admission intake clearly and keeps receipts
+ok 15 - normal-history cap protects64 correction slots, blocks actual purchases and admission intake clearly and keeps receipts
+  ---
+  duration_ms: 29.6861
+  type: 'test'
+  ...
+# Subtest: absolute history cap refuses further paid corrections atomically with no discarded transaction or money
+ok 16 - absolute history cap refuses further paid corrections atomically with no discarded transaction or money
+  ---
+  duration_ms: 14.8893
+  type: 'test'
+  ...
+# Subtest: early history warning is deterministic and derived without truncation or an automatic wipe
+ok 17 - early history warning is deterministic and derived without truncation or an automatic wipe
+  ---
+  duration_ms: 6.6241
+  type: 'test'
+  ...
+# Subtest: maintenance period cannot be forged beyond current simulation time and all critical cost reasons are bilingual
+ok 18 - maintenance period cannot be forged beyond current simulation time and all critical cost reasons are bilingual
+  ---
+  duration_ms: 0.3033
+  type: 'test'
+  ...
+# Subtest: paid spending does not disturb ticket admission identity, and all observational callbacks see fully valid state
+ok 19 - paid spending does not disturb ticket admission identity, and all observational callbacks see fully valid state
+  ---
+  duration_ms: 188.3929
+  type: 'test'
+  ...
+# Subtest: accelerated15-minute starter economic loop can buy real supplies and maintain birds without negative coins or history exhaustion
+ok 20 - accelerated15-minute starter economic loop can buy real supplies and maintain birds without negative coins or history exhaustion
+  ---
+  duration_ms: 353.7668
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 18
+# fail 2
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1080.0151

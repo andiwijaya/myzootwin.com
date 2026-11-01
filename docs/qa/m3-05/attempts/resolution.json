@@ -1,0 +1,38 @@
+{
+  "status": "RESOLVED_AND_REVERIFIED",
+  "preflight": {
+    "archive": "preflight-before-final-disclosure.zip",
+    "entry": "preflight-before-final-disclosure.json",
+    "rawBytes": 5690638,
+    "sha256": "12ed4a64fc14d6dd680942d09e871ec7ec92a254d3839d0efa281cb295a8ce7b",
+    "status": "PRELIMINARY_ONLY_NOT_FINAL_ACCEPTANCE"
+  },
+  "findings": [
+    {
+      "finding": "Initial type checks preceded UI reason-map wiring; complete checks rerun after all financial reason labels existed."
+    },
+    {
+      "finding": "Initial UI patch read encountered Windows default encoding; resumed only the unexecuted section using explicit UTF-8, preserving earlier edits. Initial syntax error corrected."
+    },
+    {
+      "finding": "Old free-preview assertions changed to explicit paid300/15/80/60 costs and actual financial conservation; cancel/failure/replay checks remain. Paid legacy fixtures are explicitly synthetic where arbitrary historical amounts are tested."
+    },
+    {
+      "finding": "Mixed6000-tick care regression found collision between generated resource refund IDs and world editing IDs. Separate namespaces and ledger-based care transaction identities now survive codec recreation without editor metadata; targeted regressions added."
+    },
+    {
+      "finding": "New budget test reused a synthetic adjustment ID. Fixed fixture identity rather than weakening validation."
+    },
+    {
+      "finding": "First fresh viewport chain failed obsolete exact localized label without its new300 ZC price; all three failures preserved. Corrected assertion requires the actual priced ID label. Preliminary576-case PASS retained separately, never used as final evidence."
+    },
+    {
+      "finding": "Final review added precise resource refund and Undo repayment disclosure, maintenance settlement proof and empty-period Undo coverage. Final281-test gate and all576 browser cases rerun afterwards."
+    },
+    {
+      "finding": "A native operator assertion assumed1200 after real elapsed time. Actual maintenance debited2 ZC correctly. Subsequent cancel/refund/Undo checks capture the paused pre-confirm balance and prove unchanged cancel /+300/-300; raw native note remains in final matrix."
+    }
+  ],
+  "finalRun": "20261101T094143Z-22338488",
+  "productionChange": false
+}

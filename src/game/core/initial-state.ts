@@ -10,7 +10,7 @@ export function createInitialState(seed = 0x5a17c0de): ZooSaveV1 {
   const gate = { x: 1, z: 8 };
   const animals: Animal[] = ['macaw-1', 'macaw-2'].map(id => ({ id, speciesId: SPECIES_ID, habitatId: null, position: null, target: null, targetResourceId: null, hunger: FOOD_RULES.startingHunger, thirst: WATER_RULES.startingThirst, energy: REST_RULES.startingEnergy, habitatFit: 0, enrichment: 0, welfare: 0, care:emptyCare(), currentBehavior: 'idle',motion:emptyMotion(),foodEaten:0,waterDrunk:0,restedTicks:0,enrichedTicks:0 }));
   return {
-    schemaVersion: 1, randomSeed: seed, randomState: seed, tick: 0, gameTimeMs: 0, currency: 1500,
+    schemaVersion: 1, randomSeed: seed, randomState: seed, tick: 0, gameTimeMs: 0, currency: 1500, economy:{maintenancePeriod:0},
     world: { width: 12, height: 10, gate, tiles: Array.from({ length: 120 }, (_, index) => {
       const cell = { x: index % 12, z: Math.floor(index / 12) };
       return { cell, terrain: cell.x === 9 && cell.z > 0 && cell.z < 9 ? 'creek' : 'land', occupantId: null, path: cell.x === gate.x && cell.z === gate.z };

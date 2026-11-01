@@ -1,3 +1,4 @@
+import {MONEY_RULES} from './prices.ts';
 import type {LedgerEntry,ZooSaveV1} from '../core/state.ts';
 /** Refunds are traceable to real build debits. Undo repays that exact refund. */
 export function validRefunds(ledger:LedgerEntry[]):boolean {
@@ -28,7 +29,7 @@ export function refundable(state:ZooSaveV1,targetId:string){
   }).filter(e=>e.amount>0);
 }
 export function editLedger(state:ZooSaveV1,operationId:string,items:Array<{kind:'refund'|'restore';relatedId:string;amount:number}>){
-  if(!/^edit-[a-f0-9]{32}$/.test(operationId)||state.ledger.length+items.length>8192)return null;
+  if(!/^(edit-[a-f0-9]{32}|care-remove-(food|water|perch)-[0-9]+)$/.test(operationId)||state.ledger.length+items.length>MONEY_RULES.historyLimit)return null;
   let balance=state.currency;
   const entries:LedgerEntry[]=[];
   for(const [index,item]of items.entries()){

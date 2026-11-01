@@ -1,0 +1,1748 @@
+TAP version 13
+# Subtest: mixed care interruptions: 6000 deterministic ticks preserve serving/event conservation, continuity, atomic replay and codec/editor resume
+not ok 1 - mixed care interruptions: 6000 deterministic ticks preserve serving/event conservation, continuity, atomic replay and codec/editor resume
+  ---
+  duration_ms: 13404.5971
+  type: 'test'
+  location: 'C:\\MyZooTwin\\tests\\animal-actions-qa.test.mjs:12:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(s.remove(q.quote,op(++operation)).ok)
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/animal-actions-qa.test.mjs:21:294)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.start (node:internal/test_runner/test:1003:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17)
+  ...
+# Subtest: all three unreachable resources grant no benefits; actual remove/rebuild recovers both severely needy birds within a bounded combined-care window
+ok 2 - all three unreachable resources grant no benefits; actual remove/rebuild recovers both severely needy birds within a bounded combined-care window
+  ---
+  duration_ms: 1700.6781
+  type: 'test'
+  ...
+# Subtest: mid-cycle cold reconstruction and irregular render partitions preserve complete animal/resource state and exact care event sequence
+ok 3 - mid-cycle cold reconstruction and irregular render partitions preserve complete animal/resource state and exact care event sequence
+  ---
+  duration_ms: 1597.1165
+  type: 'test'
+  ...
+# Subtest: welcome is explicit, atomic and exactly two stable identities; absent habitat, duplicates, pause and disposal cannot spawn
+ok 4 - welcome is explicit, atomic and exactly two stable identities; absent habitat, duplicates, pause and disposal cannot spawn
+  ---
+  duration_ms: 38.8249
+  type: 'test'
+  ...
+# Subtest: independent birds complete repeated idle, walking, ascent, perch and descent cycles without escaping or teleporting
+ok 5 - independent birds complete repeated idle, walking, ascent, perch and descent cycles without escaping or teleporting
+  ---
+  duration_ms: 3939.8979
+  type: 'test'
+  ...
+# Subtest: bird state is byte-identical under distinct accepted frame partitions and stable entity array order
+ok 6 - bird state is byte-identical under distinct accepted frame partitions and stable entity array order
+  ---
+  duration_ms: 88.6089
+  type: 'test'
+  ...
+# Subtest: midair and mid-walk save codec roundtrips resume exact autonomous behavior without retaining renderer state
+ok 7 - midair and mid-walk save codec roundtrips resume exact autonomous behavior without retaining renderer state
+  ---
+  duration_ms: 232.4646
+  type: 'test'
+  ...
+# Subtest: pause/background anchoring freezes positions, phases, counters and resume grants no offline movement
+ok 8 - pause/background anchoring freezes positions, phases, counters and resume grants no offline movement
+  ---
+  duration_ms: 3.8723
+  type: 'test'
+  ...
+# Subtest: occupied habitat cannot be removed by a stale or new quote; reserve then removal and undo never orphan or duplicate birds
+ok 9 - occupied habitat cannot be removed by a stale or new quote; reserve then removal and undo never orphan or duplicate birds
+  ---
+  duration_ms: 11.3383
+  type: 'test'
+  ...
+# Subtest: all legally constructible aviary anchors support the same bounded home layout and safe autonomous movement
+ok 10 - all legally constructible aviary anchors support the same bounded home layout and safe autonomous movement
+  ---
+  duration_ms: 7579.941
+  type: 'test'
+  ...
+# Subtest: motion schema rejects non-finite height, unknown phase, excessive counters and reserve references without rewriting input
+ok 11 - motion schema rejects non-finite height, unknown phase, excessive counters and reserve references without rewriting input
+  ---
+  duration_ms: 8.2683
+  type: 'test'
+  ...
+# Subtest: original geometry at every autonomous phase stays inside fence/roof and above floor; perching feet contact the supported branch
+ok 12 - original geometry at every autonomous phase stays inside fence/roof and above floor; perching feet contact the supported branch
+  ---
+  duration_ms: 558.7433
+  type: 'test'
+  ...
+# Subtest: two rigs share exactly one asset set, release on reserve and repeated remount without growing geometry/material ownership
+ok 13 - two rigs share exactly one asset set, release on reserve and repeated remount without growing geometry/material ownership
+  ---
+  duration_ms: 68.0309
+  type: 'test'
+  ...
+# Subtest: bird commands reach only a ready unpaused live renderer and cannot resurrect a closed session
+ok 14 - bird commands reach only a ready unpaused live renderer and cannot resurrect a closed session
+  ---
+  duration_ms: 0.6565
+  type: 'test'
+  ...
+# Subtest: active movement rejects corrupted lane targets and contradictory floor/perch data
+ok 15 - active movement rejects corrupted lane targets and contradictory floor/perch data
+  ---
+  duration_ms: 15.3142
+  type: 'test'
+  ...
+# Subtest: camera overview, zoom and adversarial panning keep the ground focus inside actual map at every aspect
+ok 16 - camera overview, zoom and adversarial panning keep the ground focus inside actual map at every aspect
+  ---
+  duration_ms: 9.5319
+  type: 'test'
+  ...
+# Subtest: anchored zoom keeps the pointed ground position stable away from clamps; bad data does not poison navigation
+ok 17 - anchored zoom keeps the pointed ground position stable away from clamps; bad data does not poison navigation
+  ---
+  duration_ms: 4.0434
+  type: 'test'
+  ...
+# Subtest: tap/drag threshold, pinch, third finger and lifting a pinch never create false taps or jumps
+ok 18 - tap/drag threshold, pinch, third finger and lifting a pinch never create false taps or jumps
+  ---
+  duration_ms: 2.0618
+  type: 'test'
+  ...
+# Subtest: pointer cancellation and reset invalidate all late moves/ups and never deliver a pick
+ok 19 - pointer cancellation and reset invalidate all late moves/ups and never deliver a pick
+  ---
+  duration_ms: 0.6855
+  type: 'test'
+  ...
+# Subtest: real input adapter isolates canvas wheel/keys and releases capture on cancel, pause, resize, blur and disposal
+ok 20 - real input adapter isolates canvas wheel/keys and releases capture on cancel, pause, resize, blur and disposal
+  ---
+  duration_ms: 6.5238
+  type: 'test'
+  ...
+# Subtest: actual orthographic view-center ray stays on the ground map at zoom/pan bounds and after orientation changes
+ok 21 - actual orthographic view-center ray stays on the ground map at zoom/pan bounds and after orientation changes
+  ---
+  duration_ms: 38.4378
+  type: 'test'
+  ...
+# Subtest: keyboard center inspection/cancel callbacks work without repeats,modifiers or disposed input
+ok 22 - keyboard center inspection/cancel callbacks work without repeats,modifiers or disposed input
+  ---
+  duration_ms: 1.6809
+  type: 'test'
+  ...
+# Subtest: browser Indonesian preference and other-language fallback
+ok 23 - browser Indonesian preference and other-language fallback
+  ---
+  duration_ms: 1.5172
+  type: 'test'
+  ...
+# Subtest: valid saved choice overrides browser language
+ok 24 - valid saved choice overrides browser language
+  ---
+  duration_ms: 1.2967
+  type: 'test'
+  ...
+# Subtest: malformed preferences fall back without deleting or rewriting storage
+ok 25 - malformed preferences fall back without deleting or rewriting storage
+  ---
+  duration_ms: 0.337
+  type: 'test'
+  ...
+# Subtest: unsupported schemas and locales are ignored
+ok 26 - unsupported schemas and locales are ignored
+  ---
+  duration_ms: 0.3871
+  type: 'test'
+  ...
+# Subtest: blocked storage remains usable for the current visit
+ok 27 - blocked storage remains usable for the current visit
+  ---
+  duration_ms: 0.375
+  type: 'test'
+  ...
+# Subtest: saving writes only the entry preference namespace and versioned locale
+ok 28 - saving writes only the entry preference namespace and versioned locale
+  ---
+  duration_ms: 0.3544
+  type: 'test'
+  ...
+# Subtest: unavailable persistence and invalid runtime locale never claim success
+ok 29 - unavailable persistence and invalid runtime locale never claim success
+  ---
+  duration_ms: 0.3008
+  type: 'test'
+  ...
+# Subtest: entry dictionaries have complete matching keys and truthful preview copy
+ok 30 - entry dictionaries have complete matching keys and truthful preview copy
+  ---
+  duration_ms: 0.9179
+  type: 'test'
+  ...
+# Subtest: feeder construction is atomic, empty, exactly once, in the safe habitat footprint and debits80 ZC exactly once without changing occupancy
+ok 31 - feeder construction is atomic, empty, exactly once, in the safe habitat footprint and debits80 ZC exactly once without changing occupancy
+  ---
+  duration_ms: 68.8932
+  type: 'test'
+  ...
+# Subtest: refill revisions reject replay after consumption or replacement, full refills and paused/disposed/bad commands
+ok 32 - refill revisions reject replay after consumption or replacement, full refills and paused/disposed/bad commands
+  ---
+  duration_ms: 50.077
+  type: 'test'
+  ...
+# Subtest: empty and absent feeders never reduce hunger or fake a meal; reachable stock causes both birds to seek, eat and improve
+ok 33 - empty and absent feeders never reduce hunger or fake a meal; reachable stock causes both birds to seek, eat and improve
+  ---
+  duration_ms: 268.8911
+  type: 'test'
+  ...
+# Subtest: two birds finishing the final shared portion cannot double-consume or get stuck and the deprived bird recovers on refill
+ok 34 - two birds finishing the final shared portion cannot double-consume or get stuck and the deprived bird recovers on refill
+  ---
+  duration_ms: 32.8475
+  type: 'test'
+  ...
+# Subtest: mid-seek/mid-eat serialization and different frame partitions continue exactly without duplicate portions
+ok 35 - mid-seek/mid-eat serialization and different frame partitions continue exactly without duplicate portions
+  ---
+  duration_ms: 64.0235
+  type: 'test'
+  ...
+# Subtest: pause freezes food/hunger/phase and resume never creates offline meals
+ok 36 - pause freezes food/hunger/phase and resume never creates offline meals
+  ---
+  duration_ms: 24.8074
+  type: 'test'
+  ...
+# Subtest: removing food during approach/eating clears targets safely and no meals occur until a new feeder is reachable
+ok 37 - removing food during approach/eating clears targets safely and no meals occur until a new feeder is reachable
+  ---
+  duration_ms: 78.4305
+  type: 'test'
+  ...
+# Subtest: a missing or unreachable resource is never consumed and does not strand or remove the animals
+ok 38 - a missing or unreachable resource is never consumed and does not strand or remove the animals
+  ---
+  duration_ms: 25.3516
+  type: 'test'
+  ...
+# Subtest: hungry perched macaws descend through their bounded route before approaching food, without teleporting
+ok 39 - hungry perched macaws descend through their bounded route before approaching food, without teleporting
+  ---
+  duration_ms: 125.0195
+  type: 'test'
+  ...
+# Subtest: starvation is bounded at100 and affordable supplies restore actual hunger
+ok 40 - starvation is bounded at100 and affordable supplies restore actual hunger
+  ---
+  duration_ms: 42.0588
+  type: 'test'
+  ...
+# Subtest: feeder mesh is lazy, cancel releases ownership, stock visibility is real, and repeated place/remove reuses bounded resources
+ok 41 - feeder mesh is lazy, cancel releases ownership, stock visibility is real, and repeated place/remove reuses bounded resources
+  ---
+  duration_ms: 88.6279
+  type: 'test'
+  ...
+# Subtest: feeding beak reaches the actual fruit bowl and supported feeder geometry stays inside the aviary
+ok 42 - feeding beak reaches the actual fruit bowl and supported feeder geometry stays inside the aviary
+  ---
+  duration_ms: 48.036
+  type: 'test'
+  ...
+# Subtest: schema rejects invalid food revisions, future meal counters and inconsistent eating references
+ok 43 - schema rejects invalid food revisions, future meal counters and inconsistent eating references
+  ---
+  duration_ms: 27.9771
+  type: 'test'
+  ...
+# Subtest: food controller forwards only to a current ready unpaused session
+ok 44 - food controller forwards only to a current ready unpaused session
+  ---
+  duration_ms: 1.1043
+  type: 'test'
+  ...
+# Subtest: both macaws eat safely at all21 legal aviary anchors and the rendered feeder remains inside each real footprint
+ok 45 - both macaws eat safely at all21 legal aviary anchors and the rendered feeder remains inside each real footprint
+  ---
+  duration_ms: 365.2334
+  type: 'test'
+  ...
+# Subtest: unsafe occupied feeder placement rejects atomically then becomes available when the bird clears the edge
+ok 46 - unsafe occupied feeder placement rejects atomically then becomes available when the bird clears the edge
+  ---
+  duration_ms: 13.5939
+  type: 'test'
+  ...
+# Subtest: long tails stay clear of actual feeder supports through eating, backwards withdrawal and normal post-meal turns
+ok 47 - long tails stay clear of actual feeder supports through eating, backwards withdrawal and normal post-meal turns
+  ---
+  duration_ms: 399.8189
+  type: 'test'
+  ...
+# Subtest: each visible bowl has its own conserved portions; a hungry bird never eats an empty bowl while its partner has food
+ok 48 - each visible bowl has its own conserved portions; a hungry bird never eats an empty bowl while its partner has food
+  ---
+  duration_ms: 19.1375
+  type: 'test'
+  ...
+# Subtest: eating jaw makes physical fruit contact during a real chew cycle without lowering the model through the floor
+ok 49 - eating jaw makes physical fruit contact during a real chew cycle without lowering the model through the floor
+  ---
+  duration_ms: 51.7526
+  type: 'test'
+  ...
+# Subtest: habitat preparation atomically clones four occupancy cells without modifying source or unrelated tiles
+ok 50 - habitat preparation atomically clones four occupancy cells without modifying source or unrelated tiles
+  ---
+  duration_ms: 4.5129
+  type: 'test'
+  ...
+# Subtest: authoritative command rejects out-of-bounds, creek, entrance, scenery, malformed IDs and excess habitat with no partial writes
+ok 51 - authoritative command rejects out-of-bounds, creek, entrance, scenery, malformed IDs and excess habitat with no partial writes
+  ---
+  duration_ms: 38.8214
+  type: 'test'
+  ...
+# Subtest: duplicate operation IDs are exactly-once across a real save-codec roundtrip and conflicting reuse is rejected
+ok 52 - duplicate operation IDs are exactly-once across a real save-codec roundtrip and conflicting reuse is rejected
+  ---
+  duration_ms: 96.9407
+  type: 'test'
+  ...
+# Subtest: building changes only habitat/occupancy, debits300 ZC and leaves missions birds RNG and time intact and emits after valid commit
+ok 53 - building changes only habitat/occupancy, debits300 ZC and leaves missions birds RNG and time intact and emits after valid commit
+  ---
+  duration_ms: 6.6489
+  type: 'test'
+  ...
+# Subtest: paused/disposed command rejects construction and mutable returned snapshots cannot change occupancy
+ok 54 - paused/disposed command rejects construction and mutable returned snapshots cannot change occupancy
+  ---
+  duration_ms: 10.0168
+  type: 'test'
+  ...
+# Subtest: preview Cancel and invalid/repeated/stale confirmation cannot issue a habitat transaction
+ok 55 - preview Cancel and invalid/repeated/stale confirmation cannot issue a habitat transaction
+  ---
+  duration_ms: 7.533
+  type: 'test'
+  ...
+# Subtest: in-tab memento owns cloned serializable state, survives owner remount and keeps unrelated owners isolated
+ok 56 - in-tab memento owns cloned serializable state, survives owner remount and keeps unrelated owners isolated
+  ---
+  duration_ms: 8.9264
+  type: 'test'
+  ...
+# Subtest: pure scenery exclusion mask exactly matches current rendered bounds; caller copies cannot alter authoritative rules
+ok 57 - pure scenery exclusion mask exactly matches current rendered bounds; caller copies cannot alter authoritative rules
+  ---
+  duration_ms: 168.5315
+  type: 'test'
+  ...
+# Subtest: built aviary mesh is bounded, roof/closed wall wires exist, catalog occupancy and repeated sync remain coherent
+ok 58 - built aviary mesh is bounded, roof/closed wall wires exist, catalog occupancy and repeated sync remain coherent
+  ---
+  duration_ms: 51.741
+  type: 'test'
+  ...
+# Subtest: actual habitat triangles are pickable and bilingual at all target canvas aspects
+ok 59 - actual habitat triangles are pickable and bilingual at all target canvas aspects
+  ---
+  duration_ms: 93.0791
+  type: 'test'
+  ...
+# Subtest: context cleanup skips already-lost/null contexts and releases only a live context without querying extensions
+ok 60 - context cleanup skips already-lost/null contexts and releases only a live context without querying extensions
+  ---
+  duration_ms: 0.8383
+  type: 'test'
+  ...
+# Subtest: original macaw has finite nondegenerate closed-part triangles, linear palette, one material and no textures under4000-triangle design budget
+ok 61 - original macaw has finite nondegenerate closed-part triangles, linear palette, one material and no textures under4000-triangle design budget
+  ---
+  duration_ms: 129.1554
+  type: 'test'
+  ...
+# Subtest: hooked bill outside faces point outward rather than vanishing under backface culling
+ok 62 - hooked bill outside faces point outward rather than vanishing under backface culling
+  ---
+  duration_ms: 20.333
+  type: 'test'
+  ...
+# Subtest: perch body and long tail clear the floor, both grip feet touch the same branch curve with two forward/two rear toes
+ok 63 - perch body and long tail clear the floor, both grip feet touch the same branch curve with two forward/two rear toes
+  ---
+  duration_ms: 71.4003
+  type: 'test'
+  ...
+# Subtest: every ground gait, hop, care preview and rest pose stays finite and visible without ground penetration over whole cycles
+ok 64 - every ground gait, hop, care preview and rest pose stays finite and visible without ground penetration over whole cycles
+  ---
+  duration_ms: 365.4103
+  type: 'test'
+  ...
+# Subtest: two future birds share immutable geometry/material but own independent poses and root positions
+ok 65 - two future birds share immutable geometry/material but own independent poses and root positions
+  ---
+  duration_ms: 46.289
+  type: 'test'
+  ...
+# Subtest: all maximum wing/long-tail poses fit the V1 habitat scale and perching bird clears its roof/floor
+ok 66 - all maximum wing/long-tail poses fit the V1 habitat scale and perching bird clears its roof/floor
+  ---
+  duration_ms: 133.5215
+  type: 'test'
+  ...
+# Subtest: pose sampling reproduces exact phase, rejects invalid data and provides distinct food/water/rest/flight/gait states
+ok 67 - pose sampling reproduces exact phase, rejects invalid data and provides distinct food/water/rest/flight/gait states
+  ---
+  duration_ms: 0.8466
+  type: 'test'
+  ...
+# Subtest: interrupted blends are continuous and renderer-independent; paused caller does not advance and resume delta is bounded
+ok 68 - interrupted blends are continuous and renderer-independent; paused caller does not advance and resume delta is bounded
+  ---
+  duration_ms: 1.0182
+  type: 'test'
+  ...
+# Subtest: asset owner disposes exactly once; releasing either borrowed rig never disposes shared buffers/material
+ok 69 - asset owner disposes exactly once; releasing either borrowed rig never disposes shared buffers/material
+  ---
+  duration_ms: 13.7778
+  type: 'test'
+  ...
+# Subtest: studio owns no timer, leaves world/animals/coins untouched and reopens a bounded clean asset set through all clips and angles
+ok 70 - studio owns no timer, leaves world/animals/coins untouched and reopens a bounded clean asset set through all clips and angles
+  ---
+  duration_ms: 142.2205
+  type: 'test'
+  ...
+# Subtest: studio pause/reduced-motion freeze exact visual time, background reset cannot accumulate an offline animation jump
+ok 71 - studio pause/reduced-motion freeze exact visual time, background reset cannot accumulate an offline animation jump
+  ---
+  duration_ms: 13.8259
+  type: 'test'
+  ...
+# Subtest: model control forwards only to the current ready unpaused session and cannot resurrect disposed renderer
+ok 72 - model control forwards only to the current ready unpaused session and cannot resurrect disposed renderer
+  ---
+  duration_ms: 0.9553
+  type: 'test'
+  ...
+# Subtest: path build validates one cell, rejects water/scenery/bounds/habitat and repeated target emits once with exactly one15 ZC debit and no mission changes
+ok 73 - path build validates one cell, rejects water/scenery/bounds/habitat and repeated target emits once with exactly one15 ZC debit and no mission changes
+  ---
+  duration_ms: 52.2438
+  type: 'test'
+  ...
+# Subtest: nearby path and diagonal chains never connect; a gap and cycles use real four-neighbor topology
+ok 74 - nearby path and diagonal chains never connect; a gap and cycles use real four-neighbor topology
+  ---
+  duration_ms: 0.81
+  type: 'test'
+  ...
+# Subtest: disconnected viewing-side segment stays disconnected until the actual missing gate bridge is built
+ok 75 - disconnected viewing-side segment stays disconnected until the actual missing gate bridge is built
+  ---
+  duration_ms: 31.0012
+  type: 'test'
+  ...
+# Subtest: branching and loops choose a deterministic shortest route; every step is a path and no habitat/water crossing occurs
+ok 76 - branching and loops choose a deterministic shortest route; every step is a path and no habitat/water crossing occurs
+  ---
+  duration_ms: 0.7306
+  type: 'test'
+  ...
+# Subtest: paths-first then habitat computes access, and constructor distrusts stale cached viewingCell
+ok 77 - paths-first then habitat computes access, and constructor distrusts stale cached viewingCell
+  ---
+  duration_ms: 14.8118
+  type: 'test'
+  ...
+# Subtest: path flags and valid viewing cell survive codec roundtrip; duplicate after load does not mutate/emit or mint income
+ok 78 - path flags and valid viewing cell survive codec roundtrip; duplicate after load does not mutate/emit or mint income
+  ---
+  duration_ms: 20.3288
+  type: 'test'
+  ...
+# Subtest: paused/disposed path commands are inert and reset recomputes topology without retaining listeners
+ok 79 - paused/disposed path commands are inert and reset recomputes topology without retaining listeners
+  ---
+  duration_ms: 5.7201
+  type: 'test'
+  ...
+# Subtest: path preview uses one tile, repeat-confirm stays in tool with no duplicate and cancellation never removes built cells
+ok 80 - path preview uses one tile, repeat-confirm stays in tool with no duplicate and cancellation never removes built cells
+  ---
+  duration_ms: 13.0816
+  type: 'test'
+  ...
+# Subtest: dynamic path mesh reuses one geometry/material/catalog entry across builds and marks connected identity at actual pixels
+ok 81 - dynamic path mesh reuses one geometry/material/catalog entry across builds and marks connected identity at actual pixels
+  ---
+  duration_ms: 452.515
+  type: 'test'
+  ...
+# Subtest: selected path metadata refreshes after a bridge rather than retaining a disconnected panel
+ok 82 - selected path metadata refreshes after a bridge rather than retaining a disconnected panel
+  ---
+  duration_ms: 71.305
+  type: 'test'
+  ...
+# Subtest: all21 legal starter habitat placements admit a legal real path route; gaps fail and bridging connects each one
+ok 83 - all21 legal starter habitat placements admit a legal real path route; gaps fail and bridging connects each one
+  ---
+  duration_ms: 366.6172
+  type: 'test'
+  ...
+# Subtest: baseline reports callback/JS-submit statistics without promoting them to presentation FPS
+ok 84 - baseline reports callback/JS-submit statistics without promoting them to presentation FPS
+  ---
+  duration_ms: 2.5794
+  type: 'test'
+  ...
+# Subtest: baseline collector rejects invalid/backward samples and reset discards the preceding window
+ok 85 - baseline collector rejects invalid/backward samples and reset discards the preceding window
+  ---
+  duration_ms: 0.7661
+  type: 'test'
+  ...
+# Subtest: unsupported memory remains unavailable and supported heap numbers retain their uncertainty label
+ok 86 - unsupported memory remains unavailable and supported heap numbers retain their uncertainty label
+  ---
+  duration_ms: 0.5006
+  type: 'test'
+  ...
+# Subtest: payload baseline refuses stale module-analysis bytes for the current built chunks
+ok 87 - payload baseline refuses stale module-analysis bytes for the current built chunks
+  ---
+  duration_ms: 2.2939
+  type: 'test'
+  ...
+# Subtest: probe collection cannot finish successfully while closed, paused, hidden or too short
+ok 88 - probe collection cannot finish successfully while closed, paused, hidden or too short
+  ---
+  duration_ms: 0.4542
+  type: 'test'
+  ...
+# Subtest: renderer callback eligibility accepts an active model with paused world but rejects stopped/disposed/unready renderers
+ok 89 - renderer callback eligibility accepts an active model with paused world but rejects stopped/disposed/unready renderers
+  ---
+  duration_ms: 0.3428
+  type: 'test'
+  ...
+# Subtest: footprint validates grid bounds, water, path, occupancy and scenery with precise reasons
+ok 90 - footprint validates grid bounds, water, path, occupancy and scenery with precise reasons
+  ---
+  duration_ms: 3.4002
+  type: 'test'
+  ...
+# Subtest: cancel never changes world, save or previously confirmed session plan
+ok 91 - cancel never changes world, save or previously confirmed session plan
+  ---
+  duration_ms: 5.8513
+  type: 'test'
+  ...
+# Subtest: confirm revalidates latest world and revision, invalid and repeated calls cannot commit
+ok 92 - confirm revalidates latest world and revision, invalid and repeated calls cannot commit
+  ---
+  duration_ms: 0.7737
+  type: 'test'
+  ...
+# Subtest: paused/disposed planner rejects all mutations and snapshots cannot mutate internal plans
+ok 93 - paused/disposed planner rejects all mutations and snapshots cannot mutate internal plans
+  ---
+  duration_ms: 0.7574
+  type: 'test'
+  ...
+# Subtest: one bounded session plan is replaced without accumulating duplicate objects
+ok 94 - one bounded session plan is replaced without accumulating duplicate objects
+  ---
+  duration_ms: 40.2324
+  type: 'test'
+  ...
+# Subtest: actual scene ground snaps at desktop/portrait/landscape; ghost valid/invalid and confirmed cue reuse fixed pool
+ok 95 - actual scene ground snaps at desktop/portrait/landscape; ghost valid/invalid and confirmed cue reuse fixed pool
+  ---
+  duration_ms: 316.146
+  type: 'test'
+  ...
+# Subtest: scenery and outside-world ray hits yield rejected ghost; stale resize has no cached screen coordinates
+ok 96 - scenery and outside-world ray hits yield rejected ghost; stale resize has no cached screen coordinates
+  ---
+  duration_ms: 30.5775
+  type: 'test'
+  ...
+# Subtest: controller only forwards placement to live ready unpaused session and old session is released
+ok 97 - controller only forwards placement to live ready unpaused session and old session is released
+  ---
+  duration_ms: 1.417
+  type: 'test'
+  ...
+# Subtest: all placement reasons and controls have nonempty ID/EN messages
+ok 98 - all placement reasons and controls have nonempty ID/EN messages
+  ---
+  duration_ms: 0.4417
+  type: 'test'
+  ...
+# Subtest: RAF start is idempotent and stale cancelled callbacks cannot duplicate a restarted loop
+ok 99 - RAF start is idempotent and stale cancelled callbacks cannot duplicate a restarted loop
+  ---
+  duration_ms: 3.0403
+  type: 'test'
+  ...
+# Subtest: disposed RAF loop cannot render or restart
+ok 100 - disposed RAF loop cannot render or restart
+  ---
+  duration_ms: 0.4694
+  type: 'test'
+  ...
+# Subtest: render exceptions stop the RAF chain and report once
+ok 101 - render exceptions stop the RAF chain and report once
+  ---
+  duration_ms: 0.3345
+  type: 'test'
+  ...
+# Subtest: request failures become an explicit stopped error
+ok 102 - request failures become an explicit stopped error
+  ---
+  duration_ms: 0.2835
+  type: 'test'
+  ...
+# Subtest: lazy session opens once, closes once, and can reopen without overlap
+ok 103 - lazy session opens once, closes once, and can reopen without overlap
+  ---
+  duration_ms: 6.1224
+  type: 'test'
+  ...
+# Subtest: closing during import prevents a late mount and ready transition
+ok 104 - closing during import prevents a late mount and ready transition
+  ---
+  duration_ms: 0.5799
+  type: 'test'
+  ...
+# Subtest: a failed lazy load is visible and a later attempt can recover
+ok 105 - a failed lazy load is visible and a later attempt can recover
+  ---
+  duration_ms: 3.6413
+  type: 'test'
+  ...
+# Subtest: unsupported WebGL has its own fallback and retry state
+ok 106 - unsupported WebGL has its own fallback and retry state
+  ---
+  duration_ms: 0.5753
+  type: 'test'
+  ...
+# Subtest: initialization exceptions do not become false ready states
+ok 107 - initialization exceptions do not become false ready states
+  ---
+  duration_ms: 0.5336
+  type: 'test'
+  ...
+# Subtest: context loss disposes the active session once and supports a fresh retry
+ok 108 - context loss disposes the active session once and supports a fresh retry
+  ---
+  duration_ms: 1.1536
+  type: 'test'
+  ...
+# Subtest: synchronous failure while mounting still disposes the late-created session
+ok 109 - synchronous failure while mounting still disposes the late-created session
+  ---
+  duration_ms: 0.6285
+  type: 'test'
+  ...
+# Subtest: pause state is applied to newly loaded sessions without changing lifecycle status
+ok 110 - pause state is applied to newly loaded sessions without changing lifecycle status
+  ---
+  duration_ms: 1.1134
+  type: 'test'
+  ...
+# Subtest: disposing a pending import prevents later renderer creation
+ok 111 - disposing a pending import prevents later renderer creation
+  ---
+  duration_ms: 0.447
+  type: 'test'
+  ...
+# Subtest: QA cannot pass from failed process, truncated/capped TAP, duplicate summary or skipped tests
+ok 112 - QA cannot pass from failed process, truncated/capped TAP, duplicate summary or skipped tests
+  ---
+  duration_ms: 3.1982
+  type: 'test'
+  ...
+# Subtest: QA requires completed check/build receipts; successful compile text alone is insufficient
+ok 113 - QA requires completed check/build receipts; successful compile text alone is insufficient
+  ---
+  duration_ms: 0.6549
+  type: 'test'
+  ...
+# Subtest: QA capture actually marks overflowing or timed-out child output as failure
+ok 114 - QA capture actually marks overflowing or timed-out child output as failure
+  ---
+  duration_ms: 411.4947
+  type: 'test'
+  ...
+# Subtest: QA paths cannot escape a named output directory or point to its root
+ok 115 - QA paths cannot escape a named output directory or point to its root
+  ---
+  duration_ms: 1.3097
+  type: 'test'
+  ...
+# Subtest: browser checks remain UNRUN until all six approved-runtime cases are recorded
+ok 116 - browser checks remain UNRUN until all six approved-runtime cases are recorded
+  ---
+  duration_ms: 3.0484
+  type: 'test'
+  ...
+# Subtest: stale identity/time, capped console and missing cleanup can never produce browser PASS
+ok 117 - stale identity/time, capped console and missing cleanup can never produce browser PASS
+  ---
+  duration_ms: 0.8589
+  type: 'test'
+  ...
+# Subtest: a claimed mobile PASS must match the measured viewport, rendered canvas and built script
+ok 118 - a claimed mobile PASS must match the measured viewport, rendered canvas and built script
+  ---
+  duration_ms: 0.4863
+  type: 'test'
+  ...
+# Subtest: route comparison decodes actual journal HTML entities before checking the browser baseline
+ok 119 - route comparison decodes actual journal HTML entities before checking the browser baseline
+  ---
+  duration_ms: 1.0988
+  type: 'test'
+  ...
+# Subtest: generated fixture must carry exact visible run/build/source IDs before browser work starts
+ok 120 - generated fixture must carry exact visible run/build/source IDs before browser work starts
+  ---
+  duration_ms: 0.6486
+  type: 'test'
+  ...
+# Subtest: resumed simulation receipts account for initial tick without accepting missing or fabricated events
+ok 121 - resumed simulation receipts account for initial tick without accepting missing or fabricated events
+  ---
+  duration_ms: 2.3363
+  type: 'test'
+  ...
+# Subtest: scenario recorder owns verdict/ID even when observed UI contains a status field
+ok 122 - scenario recorder owns verdict/ID even when observed UI contains a status field
+  ---
+  duration_ms: 0.6185
+  type: 'test'
+  ...
+# Subtest: rest kit is atomic, exactly once, real distinct occupied cell, no fake stock/currency or bird spawning
+ok 123 - rest kit is atomic, exactly once, real distinct occupied cell, no fake stock/currency or bird spawning
+  ---
+  duration_ms: 48.7472
+  type: 'test'
+  ...
+# Subtest: ordinary landing branches and merely present kit never grant idle energy/enrichment; actual rest and exploration do
+ok 124 - ordinary landing branches and merely present kit never grant idle energy/enrichment; actual rest and exploration do
+  ---
+  duration_ms: 823.0459
+  type: 'test'
+  ...
+# Subtest: two birds share two stable separate perches and each benefit ticks exactly once at real branch contact
+ok 125 - two birds share two stable separate perches and each benefit ticks exactly once at real branch contact
+  ---
+  duration_ms: 145.3748
+  type: 'test'
+  ...
+# Subtest: food/water/rest/enrichment all progress under sustained needs and no high-priority supply starves behind rest
+ok 126 - food/water/rest/enrichment all progress under sustained needs and no high-priority supply starves behind rest
+  ---
+  duration_ms: 2717.5588
+  type: 'test'
+  ...
+# Subtest: urgent available food or water interrupts real rest and completes care within bounded descent/approach time
+ok 127 - urgent available food or water interrupts real rest and completes care within bounded descent/approach time
+  ---
+  duration_ms: 33.9651
+  type: 'test'
+  ...
+# Subtest: deleting occupied kit while seeking/ascent/rest/enrich stops benefits and recovers safely without moving birds instantly
+ok 128 - deleting occupied kit while seeking/ascent/rest/enrich stops benefits and recovers safely without moving birds instantly
+  ---
+  duration_ms: 1099.6842
+  type: 'test'
+  ...
+# Subtest: unreachable kit has no benefits and available food/water continue without reserving or stranding birds
+ok 129 - unreachable kit has no benefits and available food/water continue without reserving or stranding birds
+  ---
+  duration_ms: 18.3837
+  type: 'test'
+  ...
+# Subtest: rest/enrich/approach/ascent exact codec continuation and frame partitions do not duplicate benefit ticks
+ok 130 - rest/enrich/approach/ascent exact codec continuation and frame partitions do not duplicate benefit ticks
+  ---
+  duration_ms: 109.6447
+  type: 'test'
+  ...
+# Subtest: pause freezes recovery and elapsed time; stale, repeated, invalid and disposed kit commands are atomic
+ok 131 - pause freezes recovery and elapsed time; stale, repeated, invalid and disposed kit commands are atomic
+  ---
+  duration_ms: 9.7615
+  type: 'test'
+  ...
+# Subtest: all21 legal aviaries support bounded rest/enrichment and no teleport through the food/water lane
+ok 132 - all21 legal aviaries support bounded rest/enrichment and no teleport through the food/water lane
+  ---
+  duration_ms: 10039.8079
+  type: 'test'
+  ...
+# Subtest: rest save validation rejects future/double benefit ticks, zero active counters, missing support and incorrect foot contact
+ok 133 - rest save validation rejects future/double benefit ticks, zero active counters, missing support and incorrect foot contact
+  ---
+  duration_ms: 22.9385
+  type: 'test'
+  ...
+# Subtest: rest geometry is original, bounded, lazy and released on cancel/removal; foliage moves only during real exploration
+ok 134 - rest geometry is original, bounded, lazy and released on cancel/removal; foliage moves only during real exploration
+  ---
+  duration_ms: 107.3993
+  type: 'test'
+  ...
+# Subtest: actual sleeping/exploring grips contact the real supported branch, with original floor/roof/fence and foliage clearance through all care phases
+ok 135 - actual sleeping/exploring grips contact the real supported branch, with original floor/roof/fence and foliage clearance through all care phases
+  ---
+  duration_ms: 1940.9354
+  type: 'test'
+  ...
+# Subtest: rest kit and original landing branches never render duplicate supports, and remove restores original safe contact
+ok 136 - rest kit and original landing branches never render duplicate supports, and remove restores original safe contact
+  ---
+  duration_ms: 16.6678
+  type: 'test'
+  ...
+# Subtest: rest commands reach only the current ready unpaused controller and closed handles cannot change the scene
+ok 137 - rest commands reach only the current ready unpaused controller and closed handles cannot change the scene
+  ---
+  duration_ms: 0.5205
+  type: 'test'
+  ...
+# Subtest: batched triangle ownership covers actual geometry,120 tiles and22 distinct scenery objects without changing state
+ok 138 - batched triangle ownership covers actual geometry,120 tiles and22 distinct scenery objects without changing state
+  ---
+  duration_ms: 134.7799
+  type: 'test'
+  ...
+# Subtest: actual visible triangles resolve exact grass,water,gate,palm,tree,rock and reed identities at all viewport sizes
+ok 139 - actual visible triangles resolve exact grass,water,gate,palm,tree,rock and reed identities at all viewport sizes
+  ---
+  duration_ms: 80.8553
+  type: 'test'
+  ...
+# Subtest: nearest unowned soil and empty/outside/invalid coordinates do not select hidden tiles
+ok 140 - nearest unowned soil and empty/outside/invalid coordinates do not select hidden tiles
+  ---
+  duration_ms: 46.0709
+  type: 'test'
+  ...
+# Subtest: mouse/touch tap path selects once,while camera drag,pinch,cancel and late events never select
+ok 141 - mouse/touch tap path selects once,while camera drag,pinch,cancel and late events never select
+  ---
+  duration_ms: 44.9239
+  type: 'test'
+  ...
+# Subtest: selection marker/data remain coherent across camera movement/resize,clear,pausing and disposal with bounded resources
+ok 142 - selection marker/data remain coherent across camera movement/resize,clear,pausing and disposal with bounded resources
+  ---
+  duration_ms: 83.7209
+  type: 'test'
+  ...
+# Subtest: every actual scene identity has complete bilingual presentation with1-based locations and no unresolved keys
+ok 143 - every actual scene identity has complete bilingual presentation with1-based locations and no unresolved keys
+  ---
+  duration_ms: 48.4622
+  type: 'test'
+  ...
+# Subtest: UI dismissal forwards only to a live unpaused renderer and never a stale or closed session
+ok 144 - UI dismissal forwards only to a live unpaused renderer and never a stale or closed session
+  ---
+  duration_ms: 1.107
+  type: 'test'
+  ...
+# Subtest: initial state has two reserve macaws, concrete bounded grid, reconciled starter ledger and no fake gameplay
+ok 145 - initial state has two reserve macaws, concrete bounded grid, reconciled starter ledger and no fake gameplay
+  ---
+  duration_ms: 9.1446
+  type: 'test'
+  ...
+# Subtest: initial and populated version-1 save roundtrip preserve every reference without sharing mutable data
+ok 146 - initial and populated version-1 save roundtrip preserve every reference without sharing mutable data
+  ---
+  duration_ms: 10.8731
+  type: 'test'
+  ...
+# Subtest: seeded RNG has a known uint32 vector, reproducibility and valid fraction range
+ok 147 - seeded RNG has a known uint32 vector, reproducibility and valid fraction range
+  ---
+  duration_ms: 1.9762
+  type: 'test'
+  ...
+# Subtest: same accepted time produces byte-identical state under integer and fractional frame partitions
+ok 148 - same accepted time produces byte-identical state under integer and fractional frame partitions
+  ---
+  duration_ms: 36.6438
+  type: 'test'
+  ...
+# Subtest: frame adapter ignores first frame and repeated timestamps; simulation is independent of render calls
+ok 149 - frame adapter ignores first frame and repeated timestamps; simulation is independent of render calls
+  ---
+  duration_ms: 3.7337
+  type: 'test'
+  ...
+# Subtest: bounded catch-up drops long gaps instead of granting unlimited offline progress
+ok 150 - bounded catch-up drops long gaps instead of granting unlimited offline progress
+  ---
+  duration_ms: 3.1713
+  type: 'test'
+  ...
+# Subtest: pause resets fractional catch-up, ignores hidden elapsed time and resumes from a fresh anchor
+ok 151 - pause resets fractional catch-up, ignores hidden elapsed time and resumes from a fresh anchor
+  ---
+  duration_ms: 2.351
+  type: 'test'
+  ...
+# Subtest: snapshot and reload continue deterministic RNG/time without storing RAF timestamps or accumulator
+ok 152 - snapshot and reload continue deterministic RNG/time without storing RAF timestamps or accumulator
+  ---
+  duration_ms: 22.2877
+  type: 'test'
+  ...
+# Subtest: restart preserves one subscriber, emits baseline reset time and cannot revive disposed simulation
+ok 153 - restart preserves one subscriber, emits baseline reset time and cannot revive disposed simulation
+  ---
+  duration_ms: 3.963
+  type: 'test'
+  ...
+# Subtest: event unsubscribe during dispatch, throwing listener and bus disposal are safe and observable
+ok 154 - event unsubscribe during dispatch, throwing listener and bus disposal are safe and observable
+  ---
+  duration_ms: 0.7634
+  type: 'test'
+  ...
+# Subtest: invalid deltas/timestamps are rejected and paused/disposed clocks never step
+ok 155 - invalid deltas/timestamps are rejected and paused/disposed clocks never step
+  ---
+  duration_ms: 2.2163
+  type: 'test'
+  ...
+# Subtest: schema rejection is explicit for malformed JSON, future schema, oversize and non-data objects
+ok 156 - schema rejection is explicit for malformed JSON, future schema, oversize and non-data objects
+  ---
+  duration_ms: 3.1147
+  type: 'test'
+  ...
+# Subtest: range/reference/invariant corruptions are rejected without mutating their source
+ok 157 - range/reference/invariant corruptions are rejected without mutating their source
+  ---
+  duration_ms: 152.7272
+  type: 'test'
+  ...
+# Subtest: simulation ownership rejects invalid input and snapshots cannot change authoritative currency/needs
+ok 158 - simulation ownership rejects invalid input and snapshots cannot change authoritative currency/needs
+  ---
+  duration_ms: 7.4309
+  type: 'test'
+  ...
+# Subtest: existing RAF owner drives fixed steps through pause/restart without a second loop or late updates
+ok 159 - existing RAF owner drives fixed steps through pause/restart without a second loop or late updates
+  ---
+  duration_ms: 3.4082
+  type: 'test'
+  ...
+# Subtest: only a real eligible gate crossing pays: no admission at spawn/queue/promotion and payment precedes viewing
+ok 160 - only a real eligible gate crossing pays: no admission at spawn/queue/promotion and payment precedes viewing
+  ---
+  duration_ms: 142.3597
+  type: 'test'
+  ...
+# Subtest: the atomic internal transaction moves across the gate and commits exactly one stable receipt, operation, balance and paid decision
+ok 161 - the atomic internal transaction moves across the gate and commits exactly one stable receipt, operation, balance and paid decision
+  ---
+  duration_ms: 52.5468
+  type: 'test'
+  ...
+# Subtest: closing before admission and queued-only cancellations never pay; already paid interrupted visits retain their one genuine admission
+ok 162 - closing before admission and queued-only cancellations never pay; already paid interrupted visits retain their one genuine admission
+  ---
+  duration_ms: 157.294
+  type: 'test'
+  ...
+# Subtest: empty tours, absent habitats and disconnected routes never generate ticket income; adding birds after free entry cannot charge late
+ok 163 - empty tours, absent habitats and disconnected routes never generate ticket income; adding birds after free entry cannot charge late
+  ---
+  duration_ms: 330.7917
+  type: 'test'
+  ...
+# Subtest: forged detached, noncrossing, oversized, closed, invalid-target or already-linked pending commands are rejected without partial mutation
+ok 164 - forged detached, noncrossing, oversized, closed, invalid-target or already-linked pending commands are rejected without partial mutation
+  ---
+  duration_ms: 199.091
+  type: 'test'
+  ...
+# Subtest: ledger capacity and safe-integer balance limits refuse admission without truncating receipts or moving/crediting the guest
+ok 165 - ledger capacity and safe-integer balance limits refuse admission without truncating receipts or moving/crediting the guest
+  ---
+  duration_ms: 225.125
+  type: 'test'
+  ...
+# Subtest: duplicate observers, Open clicks and post-view transitions never award extra tickets
+ok 166 - duplicate observers, Open clicks and post-view transitions never award extra tickets
+  ---
+  duration_ms: 453.1839
+  type: 'test'
+  ...
+# Subtest: frame partition equivalence and dropped/large/zero/old frames cannot duplicate admission or create unbounded offline income
+ok 167 - frame partition equivalence and dropped/large/zero/old frames cannot duplicate admission or create unbounded offline income
+  ---
+  duration_ms: 163.13
+  type: 'test'
+  ...
+# Subtest: pause freezes complete paid state and resuming cannot repay an existing ID
+ok 168 - pause freezes complete paid state and resuming cannot repay an existing ID
+  ---
+  duration_ms: 41.9145
+  type: 'test'
+  ...
+# Subtest: full save codec/rehydration retains receipt identity and exact economics across future steps; pending crossing resumes once
+ok 169 - full save codec/rehydration retains receipt identity and exact economics across future steps; pending crossing resumes once
+  ---
+  duration_ms: 981.9937
+  type: 'test'
+  ...
+# Subtest: in-memory page memento clones all money/receipt data; a new owner starts wholly fresh rather than reviving unpaid copies
+ok 170 - in-memory page memento clones all money/receipt data; a new owner starts wholly fresh rather than reviving unpaid copies
+  ---
+  duration_ms: 28.0398
+  type: 'test'
+  ...
+# Subtest: paid visitor without its full ledger/admission proof, duplicate receipt or regressed serial is rejected rather than silently repaired/recredited
+ok 171 - paid visitor without its full ledger/admission proof, duplicate receipt or regressed serial is rejected rather than silently repaired/recredited
+  ---
+  duration_ms: 30.1699
+  type: 'test'
+  ...
+# Subtest: retired paid receipts survive path/habitat removal as immutable history with no live stale references
+ok 172 - retired paid receipts survive path/habitat removal as immutable history with no live stale references
+  ---
+  duration_ms: 36.2075
+  type: 'test'
+  ...
+# Subtest: ticket public view is derived from the actual ledger and cannot mutate authoritative receipts or balance
+ok 173 - ticket public view is derived from the actual ledger and cannot mutate authoritative receipts or balance
+  ---
+  duration_ms: 25.381
+  type: 'test'
+  ...
+# Subtest: all21 legal inhabited aviaries admit and charge once from actual legally built routes
+ok 174 - all21 legal inhabited aviaries admit and charge once from actual legally built routes
+  ---
+  duration_ms: 508.9793
+  type: 'test'
+  ...
+# Subtest: the physical south gate exit also charges on its actual crossing, never on the return crossing
+ok 175 - the physical south gate exit also charges on its actual crossing, never on the return crossing
+  ---
+  duration_ms: 47.6999
+  type: 'test'
+  ...
+# Subtest: unbalanced or orphaned historical ticket money is refused without repairing or adding any payment
+ok 176 - unbalanced or orphaned historical ticket money is refused without repairing or adding any payment
+  ---
+  duration_ms: 34.5884
+  type: 'test'
+  ...
+# Subtest: scenery follows terrain and gate without mutating placement, animals, economy or missions
+ok 177 - scenery follows terrain and gate without mutating placement, animals, economy or missions
+  ---
+  duration_ms: 130.4873
+  type: 'test'
+  ...
+# Subtest: fixed isometric framing contains the entire original world at all target aspect ratios
+ok 178 - fixed isometric framing contains the entire original world at all target aspect ratios
+  ---
+  duration_ms: 42.5822
+  type: 'test'
+  ...
+# Subtest: scenery is reproducible and its ambient water reads fixed simulation time; reduced motion freezes the effect
+ok 179 - scenery is reproducible and its ambient water reads fixed simulation time; reduced motion freezes the effect
+  ---
+  duration_ms: 91.0776
+  type: 'test'
+  ...
+# Subtest: entrance is closed by default; missing/disconnected paths block arrivals without free tickets, coins or cooldown debt
+ok 180 - entrance is closed by default; missing/disconnected paths block arrivals without free tickets, coins or cooldown debt
+  ---
+  duration_ms: 84.6741
+  type: 'test'
+  ...
+# Subtest: 6000 ticks yield stable distinct identities, bounded separated safe footprints and lifecycle removal with no economic side effects
+not ok 181 - 6000 ticks yield stable distinct identities, bounded separated safe footprints and lifecycle removal with no economic side effects
+  ---
+  duration_ms: 11.0596
+  type: 'test'
+  location: 'C:\\MyZooTwin\\tests\\visitor-arrivals.test.mjs:15:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1485 !== 1500
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1500
+  actual: 1485
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/visitor-arrivals.test.mjs:15:1113)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+    Test.postRun (node:internal/test_runner/test:1235:19)
+    Test.run (node:internal/test_runner/test:1163:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)
+  ...
+# Subtest: close drains existing visitors without teleport or replacements; repeated commands cannot duplicate spawning
+ok 182 - close drains existing visitors without teleport or replacements; repeated commands cannot duplicate spawning
+  ---
+  duration_ms: 33.1007
+  type: 'test'
+  ...
+# Subtest: removing the only adjacent path halts intake, existing gate visitors exit safely, and actual rebuilding recovers intake
+ok 183 - removing the only adjacent path halts intake, existing gate visitors exit safely, and actual rebuilding recovers intake
+  ---
+  duration_ms: 25.1994
+  type: 'test'
+  ...
+# Subtest: pause and exact codec/editor reconstruction preserve serial/cooldown/positions and equivalent irregular clock partitions
+ok 184 - pause and exact codec/editor reconstruction preserve serial/cooldown/positions and equivalent irregular clock partitions
+  ---
+  duration_ms: 778.2319
+  type: 'test'
+  ...
+# Subtest: schema rejects duplicate slots, impossible positions/ages/serials, paid arrival fiction and excessive cap
+ok 185 - schema rejects duplicate slots, impossible positions/ages/serials, paid arrival fiction and excessive cap
+  ---
+  duration_ms: 14.1985
+  type: 'test'
+  ...
+# Subtest: original visitor rig is bounded, texture-free and shared; real animation bounds do not hit gate posts, roof, neighbors or ground
+ok 186 - original visitor rig is bounded, texture-free and shared; real animation bounds do not hit gate posts, roof, neighbors or ground
+  ---
+  duration_ms: 541.9484
+  type: 'test'
+  ...
+# Subtest: visitor controls reach only the current ready unpaused controller and stale/closed handles do not change intake
+ok 187 - visitor controls reach only the current ready unpaused controller and stale/closed handles do not change intake
+  ---
+  duration_ms: 0.8037
+  type: 'test'
+  ...
+# Subtest: view entrance targets the actual gate with clamped camera focus, ignores non-finite inputs and remains valid after resize/reset
+ok 188 - view entrance targets the actual gate with clamped camera focus, ignores non-finite inputs and remains valid after resize/reset
+  ---
+  duration_ms: 0.9318
+  type: 'test'
+  ...
+# Subtest: real topology chooses shortest adjacent viewing cell; gaps, diagonals, creek, scenery and occupied land never form a route
+ok 189 - real topology chooses shortest adjacent viewing cell; gaps, diagonals, creek, scenery and occupied land never form a route
+  ---
+  duration_ms: 82.7838
+  type: 'test'
+  ...
+# Subtest: full outbound/view/return cycles are exactly once, FIFO bounded, position-continuous and evaluate empty habitat honestly without admission or money
+not ok 190 - full outbound/view/return cycles are exactly once, FIFO bounded, position-continuous and evaluate empty habitat honestly without admission or money
+  ---
+  duration_ms: 30.0026
+  type: 'test'
+  location: 'C:\\MyZooTwin\\tests\\visitor-navigation.test.mjs:17:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1125 !== 1500
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1500
+  actual: 1125
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/visitor-navigation.test.mjs:17:960)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+    Test.postRun (node:internal/test_runner/test:1235:19)
+    Test.run (node:internal/test_runner/test:1163:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)
+  ...
+# Subtest: all21 legal aviaries have an actual legal route, a completed visit and a safe return
+ok 191 - all21 legal aviaries have an actual legal route, a completed visit and a safe return
+  ---
+  duration_ms: 2378.7914
+  type: 'test'
+  ...
+# Subtest: occupied path and final escape bridge cannot be removed; unused/ahead branch edits replan safely and Undo restores topology
+ok 192 - occupied path and final escape bridge cannot be removed; unused/ahead branch edits replan safely and Undo restores topology
+  ---
+  duration_ms: 125.38
+  type: 'test'
+  ...
+# Subtest: alternate return branch allows safe removal behind a guest without walking across deleted tiles
+ok 193 - alternate return branch allows safe removal behind a guest without walking across deleted tiles
+  ---
+  duration_ms: 779.7877
+  type: 'test'
+  ...
+# Subtest: habitat removal and gate closure preserve positions then return without false viewing or stranded queues; empty restoration recovers
+ok 194 - habitat removal and gate closure preserve positions then return without false viewing or stranded queues; empty restoration recovers
+  ---
+  duration_ms: 127.408
+  type: 'test'
+  ...
+# Subtest: a full preexisting three-bay greeting clears center first when a habitat path becomes connected
+ok 195 - a full preexisting three-bay greeting clears center first when a habitat path becomes connected
+  ---
+  duration_ms: 213.4643
+  type: 'test'
+  ...
+# Subtest: moving/viewing state roundtrips exactly, deterministic frame partitions agree and pause/reconstruction never duplicate viewed events
+ok 196 - moving/viewing state roundtrips exactly, deterministic frame partitions agree and pause/reconstruction never duplicate viewed events
+  ---
+  duration_ms: 408.216
+  type: 'test'
+  ...
+# Subtest: journey codec rejects unsafe positions, missing targets, multiple corridor owners, future ticks, disconnected escape and fake progress
+ok 197 - journey codec rejects unsafe positions, missing targets, multiple corridor owners, future ticks, disconnected escape and fake progress
+  ---
+  duration_ms: 19.2318
+  type: 'test'
+  ...
+# Subtest: actual animated rigs on turns, viewing and two-way shared corridor remain separated, supported and bounded with unchanged asset pool
+ok 198 - actual animated rigs on turns, viewing and two-way shared corridor remain separated, supported and bounded with unchanged asset pool
+  ---
+  duration_ms: 444.2736
+  type: 'test'
+  ...
+# Subtest: exclusive narrow-corridor policy provides bounded FIFO service to both waiting bays and repeated fresh visits
+ok 199 - exclusive narrow-corridor policy provides bounded FIFO service to both waiting bays and repeated fresh visits
+  ---
+  duration_ms: 2254.9333
+  type: 'test'
+  ...
+# Subtest: pending is unscored; completed healthy and poor visits use actual sampled habitat welfare, never a global current value
+not ok 200 - pending is unscored; completed healthy and poor visits use actual sampled habitat welfare, never a global current value
+  ---
+  duration_ms: 210.8096
+  type: 'test'
+  location: 'C:\\MyZooTwin\\tests\\visitor-satisfaction.test.mjs:13:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    903 !== 1510
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1510
+  actual: 903
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/visitor-satisfaction.test.mjs:13:622)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.start (node:internal/test_runner/test:1003:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17)
+  ...
+# Subtest: observation averages changing and asymmetric real per-animal values over the full viewing period, not the final frame
+ok 201 - observation averages changing and asymmetric real per-animal values over the full viewing period, not the final frame
+  ---
+  duration_ms: 27.8019
+  type: 'test'
+  ...
+# Subtest: partial animal presence lowers the actual visit score while preserving the welfare genuinely observed
+ok 202 - partial animal presence lowers the actual visit score while preserving the welfare genuinely observed
+  ---
+  duration_ms: 34.006
+  type: 'test'
+  ...
+# Subtest: no habitat, inaccessible habitat and an actually empty viewed habitat have distinct negative causes
+ok 203 - no habitat, inaccessible habitat and an actually empty viewed habitat have distinct negative causes
+  ---
+  duration_ms: 167.2231
+  type: 'test'
+  ...
+# Subtest: closing during real viewing records one unscored interrupted outcome and preserves genuine partial observations
+ok 204 - closing during real viewing records one unscored interrupted outcome and preserves genuine partial observations
+  ---
+  duration_ms: 100.8773
+  type: 'test'
+  ...
+# Subtest: failed live escape edits leave all satisfaction data unchanged; real access loss or target removal records interruption safely
+ok 205 - failed live escape edits leave all satisfaction data unchanged; real access loss or target removal records interruption safely
+  ---
+  duration_ms: 138.9099
+  type: 'test'
+  ...
+# Subtest: completed feedback cannot be re-evaluated by later welfare changes, repeated close/open or terminal replay
+ok 206 - completed feedback cannot be re-evaluated by later welfare changes, repeated close/open or terminal replay
+  ---
+  duration_ms: 130.6133
+  type: 'test'
+  ...
+# Subtest: real care recovery improves later guest experience without rewriting earlier poor outcomes
+ok 207 - real care recovery improves later guest experience without rewriting earlier poor outcomes
+  ---
+  duration_ms: 450.313
+  type: 'test'
+  ...
+# Subtest: FIFO wait is recorded by navigation but does not secretly change satisfaction scoring
+ok 208 - FIFO wait is recorded by navigation but does not secretly change satisfaction scoring
+  ---
+  duration_ms: 44.4666
+  type: 'test'
+  ...
+# Subtest: history stays bounded and every visitor contributes once to integer summary counts and sums without income
+not ok 209 - history stays bounded and every visitor contributes once to integer summary counts and sums without income
+  ---
+  duration_ms: 2734.9276
+  type: 'test'
+  location: 'C:\\MyZooTwin\\tests\\visitor-satisfaction.test.mjs:22:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    1485 !== 1500
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1500
+  actual: 1485
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/visitor-satisfaction.test.mjs:22:645)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+    Test.postRun (node:internal/test_runner/test:1235:19)
+    Test.run (node:internal/test_runner/test:1163:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: partial observation and terminal history survive codec, pause and irregular fixed-frame reconstruction exactly
+ok 210 - partial observation and terminal history survive codec, pause and irregular fixed-frame reconstruction exactly
+  ---
+  duration_ms: 624.775
+  type: 'test'
+  ...
+# Subtest: strict save rejects forged scores, impossible sample totals, duplicate history IDs and inconsistent aggregates without wiping source
+ok 211 - strict save rejects forged scores, impossible sample totals, duplicate history IDs and inconsistent aggregates without wiping source
+  ---
+  duration_ms: 82.0622
+  type: 'test'
+  ...
+# Subtest: every outcome and interruption reason has bilingual non-color score/cause feedback with no unresolved message tokens
+ok 212 - every outcome and interruption reason has bilingual non-color score/cause feedback with no unresolved message tokens
+  ---
+  duration_ms: 19.3552
+  type: 'test'
+  ...
+# Subtest: visitor feedback views and snapshots cannot mutate authoritative scores, records or running totals
+ok 213 - visitor feedback views and snapshots cannot mutate authoritative scores, records or running totals
+  ---
+  duration_ms: 129.2859
+  type: 'test'
+  ...
+# Subtest: water builds empty exactly once in its own safe cell, with no hidden food/currency/occupancy changes
+ok 214 - water builds empty exactly once in its own safe cell, with no hidden food/currency/occupancy changes
+  ---
+  duration_ms: 42.9217
+  type: 'test'
+  ...
+# Subtest: food can also be placed after water without merging their stock or revisions
+ok 215 - food can also be placed after water without merging their stock or revisions
+  ---
+  duration_ms: 24.8832
+  type: 'test'
+  ...
+# Subtest: empty or absent bowls increase thirst without fake sips; actual drinking conserves per-bird water and relieves thirst only
+ok 216 - empty or absent bowls increase thirst without fake sips; actual drinking conserves per-bird water and relieves thirst only
+  ---
+  duration_ms: 461.4763
+  type: 'test'
+  ...
+# Subtest: competing hunger and thirst both get served across repeated cycles and empty water never blocks food
+ok 217 - competing hunger and thirst both get served across repeated cycles and empty water never blocks food
+  ---
+  duration_ms: 1342.3804
+  type: 'test'
+  ...
+# Subtest: last per-bowl water cannot be double-consumed and the other thirsty bird recovers after refill
+ok 218 - last per-bowl water cannot be double-consumed and the other thirsty bird recovers after refill
+  ---
+  duration_ms: 18.7905
+  type: 'test'
+  ...
+# Subtest: mid-seek/drink/backoff/hop save roundtrips and frame partitions resume byte-identically
+ok 219 - mid-seek/drink/backoff/hop save roundtrips and frame partitions resume byte-identically
+  ---
+  duration_ms: 161.1933
+  type: 'test'
+  ...
+# Subtest: removed or unreachable bowls stop consumption safely, keep both birds and recover after replacement
+ok 220 - removed or unreachable bowls stop consumption safely, keep both birds and recover after replacement
+  ---
+  duration_ms: 666.4693
+  type: 'test'
+  ...
+# Subtest: stale revisions, duplicate refill/remove and paused/disposed/bad water commands leave state unchanged
+ok 221 - stale revisions, duplicate refill/remove and paused/disposed/bad water commands leave state unchanged
+  ---
+  duration_ms: 15.9287
+  type: 'test'
+  ...
+# Subtest: water placement waits until actual animals clear the side area, while reserve or perch is safe
+ok 222 - water placement waits until actual animals clear the side area, while reserve or perch is safe
+  ---
+  duration_ms: 7.1159
+  type: 'test'
+  ...
+# Subtest: water surfaces follow real separate bowl stock, allocate lazily and dispose across repeated ghosts/removal
+ok 223 - water surfaces follow real separate bowl stock, allocate lazily and dispose across repeated ghosts/removal
+  ---
+  duration_ms: 39.3238
+  type: 'test'
+  ...
+# Subtest: both birds drink at every21 legal anchor; geometry and movement remain inside the aviary without teleporting
+ok 224 - both birds drink at every21 legal anchor; geometry and movement remain inside the aviary without teleporting
+  ---
+  duration_ms: 4512.2431
+  type: 'test'
+  ...
+# Subtest: drinking jaw actually crosses full and last-portion water surfaces within the real bowl rim
+ok 225 - drinking jaw actually crosses full and last-portion water surfaces within the real bowl rim
+  ---
+  duration_ms: 117.68
+  type: 'test'
+  ...
+# Subtest: schema rejects future drinking counts, contradictory contact, corrupt water stock and motion
+ok 226 - schema rejects future drinking counts, contradictory contact, corrupt water stock and motion
+  ---
+  duration_ms: 20.3732
+  type: 'test'
+  ...
+# Subtest: water commands forward only to ready unpaused current controller, never a stale session
+ok 227 - water commands forward only to ready unpaused current controller, never a stale session
+  ---
+  duration_ms: 0.827
+  type: 'test'
+  ...
+# Subtest: actual water/feed movement geometry stays inside walls/roof/floor and tail clears real roost posts
+ok 228 - actual water/feed movement geometry stays inside walls/roof/floor and tail clears real roost posts
+  ---
+  duration_ms: 1288.5798
+  type: 'test'
+  ...
+# Subtest: welfare follows real occupied habitat and reserve never shows a fabricated comfortable animal
+ok 229 - welfare follows real occupied habitat and reserve never shows a fabricated comfortable animal
+  ---
+  duration_ms: 56.33
+  type: 'test'
+  ...
+# Subtest: known asymmetric needs produce exact PRD weighted values for stable individual identities
+ok 230 - known asymmetric needs produce exact PRD weighted values for stable individual identities
+  ---
+  duration_ms: 21.5303
+  type: 'test'
+  ...
+# Subtest: score requires an actual reachable serving for each bird, never just a feeder button or the other bowl
+ok 231 - score requires an actual reachable serving for each bird, never just a feeder button or the other bowl
+  ---
+  duration_ms: 18.5531
+  type: 'test'
+  ...
+# Subtest: refill restores access immediately without faking hunger relief, meal or durable reward
+not ok 232 - refill restores access immediately without faking hunger relief, meal or durable reward
+  ---
+  duration_ms: 12.0421
+  type: 'test'
+  location: 'C:\\MyZooTwin\\tests\\welfare.test.mjs:12:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly deep-equal:
+    + actual - expected
+    ... Skipped lines
+    
+      [
+        {
+          amount: 1500,
+          balanceAfter: 1500,
+          id: 'ledger-starter',
+    ...
+        },
+    +   {
+    +     amount: -8,
+    +     balanceAfter: 1112,
+    +     id: 'care-food-4-refill',
+    +     kind: 'supplies',
+    +     operationId: 'care-food-4-refill',
+    +     relatedId: 'feeder-4-5',
+    +     tick: 0
+    +   }
+      ]
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected:
+    0:
+      id: 'ledger-starter'
+      operationId: 'starter-grant'
+      kind: 'starter'
+      amount: 1500
+      balanceAfter: 1500
+      tick: 0
+      relatedId: ~
+    1:
+      id: 'buy-one'
+      operationId: 'buy-one'
+      kind: 'build'
+      amount: -300
+      balanceAfter: 1200
+      tick: 0
+      relatedId: 'habitat-one'
+    2:
+      id: 'care-food-3-place'
+      operationId: 'care-food-3-place'
+      kind: 'build'
+      amount: -80
+      balanceAfter: 1120
+      tick: 0
+      relatedId: 'feeder-4-5'
+  actual:
+    0:
+      id: 'ledger-starter'
+      operationId: 'starter-grant'
+      kind: 'starter'
+      amount: 1500
+      balanceAfter: 1500
+      tick: 0
+      relatedId: ~
+    1:
+      id: 'buy-one'
+      operationId: 'buy-one'
+      kind: 'build'
+      amount: -300
+      balanceAfter: 1200
+      tick: 0
+      relatedId: 'habitat-one'
+    2:
+      id: 'care-food-3-place'
+      operationId: 'care-food-3-place'
+      kind: 'build'
+      amount: -80
+      balanceAfter: 1120
+      tick: 0
+      relatedId: 'feeder-4-5'
+    3:
+      id: 'care-food-4-refill'
+      operationId: 'care-food-4-refill'
+      kind: 'supplies'
+      amount: -8
+      balanceAfter: 1112
+      tick: 0
+      relatedId: 'feeder-4-5'
+  operator: 'deepStrictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/welfare.test.mjs:12:432)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+    Test.postRun (node:internal/test_runner/test:1235:19)
+    Test.run (node:internal/test_runner/test:1163:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: causes distinguish missing, empty, unreachable and actual high-need accessible resources
+ok 233 - causes distinguish missing, empty, unreachable and actual high-need accessible resources
+  ---
+  duration_ms: 9.3981
+  type: 'test'
+  ...
+# Subtest: welfare Schmitt thresholds prevent repeated low/comfortable flicker and serialize the recovery band
+ok 234 - welfare Schmitt thresholds prevent repeated low/comfortable flicker and serialize the recovery band
+  ---
+  duration_ms: 23.4578
+  type: 'test'
+  ...
+# Subtest: need alerts have explicit recovery thresholds independent of current render frames
+ok 235 - need alerts have explicit recovery thresholds independent of current render frames
+  ---
+  duration_ms: 11.1486
+  type: 'test'
+  ...
+# Subtest: energy influences genuine rest alerts but does not invent a fifth welfare weight
+ok 236 - energy influences genuine rest alerts but does not invent a fifth welfare weight
+  ---
+  duration_ms: 13.681
+  type: 'test'
+  ...
+# Subtest: forged stored display values are recomputed on load, snapshots and views cannot mutate authoritative welfare
+ok 237 - forged stored display values are recomputed on load, snapshots and views cannot mutate authoritative welfare
+  ---
+  duration_ms: 11.6136
+  type: 'test'
+  ...
+# Subtest: real missing-care decline and actual consumption/rest/exploration recover welfare without a claim button
+ok 238 - real missing-care decline and actual consumption/rest/exploration recover welfare without a claim button
+  ---
+  duration_ms: 565.6845
+  type: 'test'
+  ...
+# Subtest: paused scores, causes and hysteresis survive exact remount, fixed partitions and repeated reconciliation
+ok 239 - paused scores, causes and hysteresis survive exact remount, fixed partitions and repeated reconciliation
+  ---
+  duration_ms: 44.6083
+  type: 'test'
+  ...
+# Subtest: resource removal immediately changes causes/access but never resets unrelated needs, identity or history
+ok 240 - resource removal immediately changes causes/access but never resets unrelated needs, identity or history
+  ---
+  duration_ms: 21.9961
+  type: 'test'
+  ...
+# Subtest: welfare formula and causal action messages are fully bilingual and never concatenate untranslated placeholders
+ok 241 - welfare formula and causal action messages are fully bilingual and never concatenate untranslated placeholders
+  ---
+  duration_ms: 0.7717
+  type: 'test'
+  ...
+# Subtest: identity and own-bowl access are stable after reversing serialization entity array order
+ok 242 - identity and own-bowl access are stable after reversing serialization entity array order
+  ---
+  duration_ms: 15.8166
+  type: 'test'
+  ...
+# Subtest: every low-welfare combination has a concrete real cause even below individual alert thresholds
+ok 243 - every low-welfare combination has a concrete real cause even below individual alert thresholds
+  ---
+  duration_ms: 37.49
+  type: 'test'
+  ...
+# Subtest: quote/cancel is read-only; protected entrance and missing objects have no mutation
+ok 244 - quote/cancel is read-only; protected entrance and missing objects have no mutation
+  ---
+  duration_ms: 52.463
+  type: 'test'
+  ...
+# Subtest: bridge deletion disconnects real topology; undo restores connectivity occupancy and free balance exactly once
+ok 245 - bridge deletion disconnects real topology; undo restores connectivity occupancy and free balance exactly once
+  ---
+  duration_ms: 45.4904
+  type: 'test'
+  ...
+# Subtest: habitat deletion frees all four cells and stale identity; undo or rebuild cannot overlap
+ok 246 - habitat deletion frees all four cells and stale identity; undo or rebuild cannot overlap
+  ---
+  duration_ms: 21.7488
+  type: 'test'
+  ...
+# Subtest: failed builds preserve Undo, successful builds invalidate it; old quote never edits a new object at same cell
+ok 247 - failed builds preserve Undo, successful builds invalidate it; old quote never edits a new object at same cell
+  ---
+  duration_ms: 19.0106
+  type: 'test'
+  ...
+# Subtest: paused/disposed and invalid command IDs cannot remove or restore with partial changes
+ok 248 - paused/disposed and invalid command IDs cannot remove or restore with partial changes
+  ---
+  duration_ms: 24.5377
+  type: 'test'
+  ...
+# Subtest: paid fixture refund capped by actual purchase, double confirmation rejected, Undo repays refund, cycles never mint coins
+ok 249 - paid fixture refund capped by actual purchase, double confirmation rejected, Undo repays refund, cycles never mint coins
+  ---
+  duration_ms: 128.469
+  type: 'test'
+  ...
+# Subtest: paid rebuild after paid removal cannot refund the same expense twice
+ok 250 - paid rebuild after paid removal cannot refund the same expense twice
+  ---
+  duration_ms: 25.417
+  type: 'test'
+  ...
+# Subtest: Undo cannot overdraw coins already spent; failure leaves data and undo record unchanged
+ok 251 - Undo cannot overdraw coins already spent; failure leaves data and undo record unchanged
+  ---
+  duration_ms: 30.4704
+  type: 'test'
+  ...
+# Subtest: save validator rejects nonexistent/wrong/over-refund and over-restoration provenance
+ok 252 - save validator rejects nonexistent/wrong/over-refund and over-restoration provenance
+  ---
+  duration_ms: 80.5022
+  type: 'test'
+  ...
+# Subtest: two paid debit references refund independently without relying on displayed quote amount
+ok 253 - two paid debit references refund independently without relying on displayed quote amount
+  ---
+  duration_ms: 20.9056
+  type: 'test'
+  ...
+# Subtest: occupied animal/resource habitat deletion refused without orphaning data
+ok 254 - occupied animal/resource habitat deletion refused without orphaning data
+  ---
+  duration_ms: 35.9221
+  type: 'test'
+  ...
+# Subtest: active visitor route protects occupied path and habitat
+ok 255 - active visitor route protects occupied path and habitat
+  ---
+  duration_ms: 16.5459
+  type: 'test'
+  ...
+# Subtest: editor page-session memento clones Undo, resumes safely, and drops it if world no longer matches
+ok 256 - editor page-session memento clones Undo, resumes safely, and drops it if world no longer matches
+  ---
+  duration_ms: 28.4281
+  type: 'test'
+  ...
+# Subtest: edit event delivered only after valid atomic state, reset drops stale Undo without duplicate subscribers
+ok 257 - edit event delivered only after valid atomic state, reset drops stale Undo without duplicate subscribers
+  ---
+  duration_ms: 22.0929
+  type: 'test'
+  ...
+# Subtest: repeated habitat delete/Undo/rebuild removes stale catalog meshes and uses fixed two-geometry/material pool
+ok 258 - repeated habitat delete/Undo/rebuild removes stale catalog meshes and uses fixed two-geometry/material pool
+  ---
+  duration_ms: 458.5704
+  type: 'test'
+  ...
+1..258
+# tests 258
+# suites 0
+# pass 252
+# fail 6
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 18248.155

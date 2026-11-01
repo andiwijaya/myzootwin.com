@@ -1,3 +1,4 @@
+import {assertConserved}from'./financial-assertions.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createSimulation} from '../src/game/core/simulation.ts';
@@ -18,7 +19,7 @@ test('mixed care interruptions: 6000 deterministic ticks preserve serving/event 
    if(t%137===0){const k=['food','water','perch'][Math.floor(t/137)%3],v=s[k+'View']();if(v.exists){const before=s.snapshot();assert.ok(s[k]('remove',v.revision).ok);assert.deepEqual(s.snapshot().animals.map(a=>a.position),before.animals.map(a=>a.position));assert.equal(s[k]('remove',v.revision).ok,false);removals++;}}
    if(t%199===0){const before=s.snapshot();s.setPaused(true);for(let j=0;j<5;j++)s.advance(1000);s.frame(900000+t);assert.deepEqual(s.snapshot(),before);for(const k of ['food','water','perch'])assert.equal(s[k]('remove',s[k+'View']().revision).ok,false);s.setPaused(false);s.frame(900000+t);assert.deepEqual(s.snapshot(),before);pauses++;}
    if(t%251===0){const state=parseSave(serializeSave(s.snapshot())),editor=s.editorSnapshot();assert.ok(state.ok);unsubscribe();s.dispose();assert.equal(s.inspect().subscribers,0);s=createSimulation(state.value,editor);unsubscribe=subscribe();assert.deepEqual(s.snapshot(),state.value);resumes++;}
-   if(t%1000===0){assert.equal(s.quoteRemoval(habitat).reason,'in-use');assert.ok(s.birds('reserve'));for(const k of ['food','water','perch'])if(s[k+'View']().exists)assert.ok(s[k]('remove',s[k+'View']().revision).ok);const before=s.snapshot(),q=s.quoteRemoval(habitat);assert.ok(q.ok);assert.ok(s.remove(q.quote,op(++operation)).ok);assert.equal(s.remove(q.quote,op(++operation)).ok,false);assert.ok(s.undo(op(++operation)).ok);assert.deepEqual(s.snapshot(),before);replenish(s);assert.ok(s.birds('welcome'));assert.equal(s.birds('welcome'),false);last=s.snapshot();}
+   if(t%1000===0){assert.equal(s.quoteRemoval(habitat).reason,'in-use');assert.ok(s.birds('reserve'));for(const k of ['food','water','perch'])if(s[k+'View']().exists)assert.ok(s[k]('remove',s[k+'View']().revision).ok);const before=s.snapshot(),q=s.quoteRemoval(habitat);assert.ok(q.ok);assert.ok(s.remove(q.quote,op(++operation)).ok);assert.equal(s.remove(q.quote,op(++operation)).ok,false);assert.ok(s.undo(op(++operation)).ok);assert.deepEqual({...s.snapshot(),ledger:before.ledger},before);replenish(s);assert.ok(s.birds('welcome'));assert.equal(s.birds('welcome'),false);last=s.snapshot();}
    if(t%31===0)replenish(s);
    const before=s.snapshot(),eventCount=events.size;s.advance(100);const state=s.snapshot();valid(s);
    state.animals.forEach((a,i)=>{const b=before.animals[i];seen[i].add(a.motion.phase);assert.ok(a.position&&a.habitatId);assert.ok(Math.hypot(a.position.x-b.position.x,a.position.z-b.position.z)<.064,`${t} ${a.motion.phase}`);assert.ok(Math.abs(a.motion.elevation-b.motion.elevation)<.022);assert.ok(a.foodEaten-b.foodEaten>=0&&a.foodEaten-b.foodEaten<=1);assert.ok(a.waterDrunk-b.waterDrunk>=0&&a.waterDrunk-b.waterDrunk<=1);});
@@ -26,7 +27,7 @@ test('mixed care interruptions: 6000 deterministic ticks preserve serving/event 
    const total=state.animals.reduce((n,a)=>n+a.foodEaten+a.waterDrunk,0);assert.equal(events.size,total);assert.ok(events.size>=eventCount);assert.ok(events.size>=previousEvents);previousEvents=events.size;last=state;
  }
  assert.equal(fed,last.animals.reduce((n,a)=>n+a.foodEaten,0));assert.equal(drank,last.animals.reduce((n,a)=>n+a.waterDrunk,0));assert.ok(fed>20&&drank>20&&removals>30&&resumes>20&&pauses>20);
- assert.ok(seen.every(x=>['eat','drink','rest','enrich','ascend','descend'].every(p=>x.has(p))));assert.equal(s.inspect().currency,1500);
+ assert.ok(seen.every(x=>['eat','drink','rest','enrich','ascend','descend'].every(p=>x.has(p))));assertConserved(s.snapshot());
  }finally{unsubscribe();s.dispose();}assert.equal(s.inspect().subscribers,0);
 });
 

@@ -26,7 +26,7 @@ export function stepFood(s:ZooSaveV1,a:Animal,h:Habitat,slot:number,allowSeek=tr
 }
 export type FoodAction='place'|'refill'|'remove';
 export type FoodCommand='preview'|'confirm'|'cancel'|'refill'|'remove';
-export type FoodReason='missing'|'exists'|'stale'|'full'|'invalid'|'busy'|null;
+export type FoodReason='missing'|'exists'|'stale'|'full'|'invalid'|'busy'|'funds'|'capacity'|null;
 export function foodTransaction(s:ZooSaveV1,action:FoodAction,revision:number,generation=0):FoodReason|'ok'{
  const h=s.world.habitats[0];if(!h||h.cells.length!==4)return 'missing';const anchor0=feederAnchor(h);if(![0,1].every(dx=>[0,1].every(dz=>h.cells.some(c=>c.x===anchor0.x+dx&&c.z===anchor0.z-1+dz))))return 'invalid';const resources=s.world.resources.filter(r=>r.habitatId===h.id),r=resources.find(r=>r.kind==='food');
  if(action==='place'){if(resources.some(r=>r.kind==='food'))return 'exists';if(!feederClear(s,h))return 'busy';const anchor=feederAnchor(h);if(!s.world.tiles.some(t=>t.cell.x===anchor.x&&t.cell.z===anchor.z&&t.occupantId===h.id))return 'invalid';s.world.resources.push({id:`feeder-${anchor.x}-${anchor.z}`,kind:'food',habitatId:h.id,cell:anchor,stock:0,capacity:FOOD_RULES.capacity,revision:generation,portions:[0,0]});return 'ok';}
