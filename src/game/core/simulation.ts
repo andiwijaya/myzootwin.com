@@ -1,5 +1,5 @@
 import {firstMissionGuide} from '../missions/onboarding.ts';
-import {evaluateMissions,missionView,claimMission,type MissionQuote} from '../missions/engine.ts';
+import {MISSION_RULES,evaluateMissions,missionView,claimMission,type MissionQuote} from '../missions/engine.ts';
 import {recoveryView,supportTransaction,type RecoveryQuote} from '../economy/recovery.ts';
 import {attractionView} from '../visitors/attraction.ts';
 import {compactFinance,retireClosedProofs,ledgerProof,totals} from '../economy/journal.ts';
@@ -41,7 +41,7 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
   let disposed=false;
   let lastFrame:number|null=null;
   const bus=createEventBus<SimulationEvent>();
-  const publish=(event:SimulationEvent)=>{evaluateMissions(state);bus.emit(event);};
+  const publish=(event:SimulationEvent)=>{evaluateMissions(state,event.type==='tick');bus.emit(event);};
   const clock=createFixedClock(()=>{
     if(state.tick>=MAX_TICK)throw new RangeError('Simulation tick limit reached');
     state.tick++;
@@ -72,7 +72,7 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
       if(disposed||clock.inspect().paused||!authorized(quote?.command))return {ok:false as const,reason:'stale' as const};
       const next=structuredClone(state),reason=claimMission(next,quote);if(reason)return {ok:false as const,reason};
       const valid=validateSave(next);if(!valid.ok)return {ok:false as const,reason:'stale' as const};
-      state=valid.value;compactNow();publish(Object.freeze({type:'mission-claimed',missionId:quote.id,amount:ledgerProof(state,`mission-${quote.id.toLowerCase()}`)!.amount,tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};
+      state=valid.value;compactNow();publish(Object.freeze({type:'mission-claimed',missionId:quote.id,amount:MISSION_RULES[quote.id].coins,tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};
     },
     recoveryView:()=>recoveryView(state),
     recover(quote:RecoveryQuote):boolean{

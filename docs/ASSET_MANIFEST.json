@@ -2,7 +2,7 @@
   "schema_version": 1,
   "audited_at": "2026-10-31",
   "baseline_commit": "3b06c6d8d2a920ad5894868059885c98a58217a6",
-  "scope": "Original M2-01 model, M2-02 autonomous pair and M2-03 feeder/eating integration. Earlier study/media/provenance and unresolved legacy-media rights records remain preserved. M3-01 adds original, texture-free shared entrance visitor models; prior media and unresolved legacy rights records retained unchanged.",
+  "scope": "Original M2-01 model, M2-02 autonomous pair and M2-03 feeder/eating integration. Earlier study/media/provenance and unresolved legacy-media rights records remain preserved. M3-01 adds original, texture-free shared entrance visitor models; prior media and unresolved legacy rights records retained unchanged. M4-03 adds original texture-free Q02 aviary flower trim; prior source/media/provenance records retained.",
   "assets": [
     {
       "path": "public/images/myzootwin-beranda.png",
@@ -585,6 +585,23 @@
       "externalAssetBytes": 0,
       "requiredTextureBytes": 0,
       "scope": "One corridor owner, two separate entrance waiting bays, real outbound/view/return state; no ticket, satisfaction or persistent-save claim."
+    },
+    {
+      "id": "q02_aviary_blossoms",
+      "path": "src/game/render3d/reward-decoration.ts",
+      "bytes": 1722,
+      "sha256": "076730d4edeeffbf69ffac57fb52402e44eca6f169cd7c409208cf45135caac1",
+      "format": "Original procedural Three.js TypeScript",
+      "origin": "Authored in this repository for MyZooTwin M4-03; no external asset or model downloaded",
+      "rights_status": "original_project_code_no_third_party_asset",
+      "usage_decision": "Q02 cosmetic aviary flower trim; no simulation, welfare or economic effect. Retain existing third-party software notices.",
+      "triangles": 1120,
+      "materials": 1,
+      "textures": 0,
+      "draw_meshes": 1,
+      "geometry_validation": "m4-03 QA art-check.json:200 repeated syncs reuse one mesh; geometry/material releases balanced on habitat removal and disposal; no world mutation.",
+      "visual_inspection": "Actual final-source native WebGL desktop, portrait and landscape images inspected. Small pastel blossom trim around the existing aviary, separate from birds and care facilities.",
+      "external_license_accepted": false
     }
   ],
   "direct_package_notice_spot_checks": [

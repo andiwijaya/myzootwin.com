@@ -1,0 +1,8 @@
+import {CylinderGeometry,Group,IcosahedronGeometry,Mesh,MeshStandardMaterial} from 'three';
+import {Batch} from './tropical-diorama.ts';
+import type {WorldState} from '../core/state.ts';
+/** Original texture-free Q02 flower trim. Cosmetic only; no welfare/economic effect. */
+export function createRewardDecoration(){const group=new Group();group.name='Unlocked aviary blossoms';let geometry:ReturnType<Batch['geometry']>|undefined,material:MeshStandardMaterial|undefined,disposed=false;
+ function release(){group.clear();geometry?.dispose();material?.dispose();geometry=undefined;material=undefined;}
+ function sync(w:WorldState,unlocked:boolean){if(disposed)return;const h=w.habitats[0];group.visible=Boolean(unlocked&&h);if(!group.visible){release();return;}if(!geometry){const b=new Batch();for(const x of[-.80,-.55,.55,.80])for(const z of[-1.045,1.045]){b.add(new CylinderGeometry(.009,.009,.14,5),'#598447',[x,.15,z]);for(let i=0;i<5;i++){const t=i*Math.PI*2/5;b.add(new IcosahedronGeometry(1,0),x<0?'#eead73':'#dc87a1',[x+Math.cos(t)*.035,.235,z+Math.sin(t)*.035],[.032,.014,.024],t);}b.add(new IcosahedronGeometry(1,0),'#f6d766',[x,.249,z],[.020,.012,.020]);}geometry=b.geometry();material=new MeshStandardMaterial({vertexColors:true,roughness:1});group.add(new Mesh(geometry,material));}group.position.set(Math.min(...h!.cells.map(c=>c.x))+1-w.width/2,0,Math.min(...h!.cells.map(c=>c.z))+1-w.height/2);group.updateMatrixWorld(true);}
+ return{group,sync,dispose(){if(disposed)return;disposed=true;release();},inspect:()=>({rewardDecorationVisible:!disposed&&group.visible&&Boolean(geometry),rewardDecorationMaterials:material?1:0,rewardDecorationTriangles:geometry?geometry.getAttribute('position').count/3:0})};}

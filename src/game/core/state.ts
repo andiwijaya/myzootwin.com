@@ -37,7 +37,7 @@ export interface FinanceCheckpoint {
 }
 export interface Missions {
   currentId: MissionId | null; completedIds: MissionId[];
-  rewards: Array<{ missionId: MissionId; ledgerEntryId: EntityId }>;
+  rewards: Array<{ missionId: MissionId; ledgerEntryId: EntityId } | { missionId: MissionId; unlockId: "aviary-blossoms"; tick:number; command:number }>;
   objectives: { habitatConnected: boolean; birdsFedIds: EntityId[]; birdsWateredIds: EntityId[]; comfortableTicks: number; viewedVisitorIds: EntityId[]; thrivingTicks: number; };
 }
 export interface Preferences { locale: 'id' | 'en'; graphics: 'auto' | 'low' | 'high'; muted: boolean; reducedMotion: boolean; }

@@ -50,7 +50,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   let guidedStart=false;
   const onboardingPanel=mountOnboardingPanel(root.querySelector('[data-onboarding-tools]'),events.signal,(c,r)=>controller.guide(c,r),()=>reviewRecovery(),()=>{root.dataset.guided='false';host.focus({preventScroll:true});host.scrollIntoView({block:'nearest'});});
   host.addEventListener('scene-onboarding-change',event=>onboardingPanel.update((event as CustomEvent<FirstMissionGuide>).detail),{signal:events.signal});
-  const missionPanel=mountMissionPanel(root.querySelector('[data-mission-tools]'),events.signal,q=>controller.claimMission(q));
+  const missionPanel=mountMissionPanel(root.querySelector('[data-mission-tools]'),events.signal,q=>controller.claimMission(q),target=>{if(root.querySelector('dialog[open]'))return;if(target==='observe'){controller.guide('focus');host.focus({preventScroll:true});host.scrollIntoView({block:'center',behavior:'instant'});return;}const selector=target==='birds'?'[data-bird-tools]':`[data-${target}-tools]`,tool=root.querySelector<HTMLElement>(selector);tool?.scrollIntoView({block:'center',behavior:'instant'});const action=tool?.querySelector<HTMLButtonElement>('button:not([hidden]):not(:disabled)');if(action)action.focus({preventScroll:true});else{tool?.setAttribute('tabindex','-1');tool?.focus({preventScroll:true});}});
   host.addEventListener('scene-missions-change',event=>missionPanel.update((event as CustomEvent<MissionView>).detail),{signal:events.signal});
   host.addEventListener('scene-mission-result',event=>missionPanel.result((event as CustomEvent<{ok:boolean}>).detail.ok),{signal:events.signal});
   let selected:SceneIdentity|null=null;
@@ -246,7 +246,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     title.textContent = copy[titleKey];
     detail.textContent = copy[detailKey];
     renderStudio();
-    if(next.status==='ready'&&guidedStart){guidedStart=false;onboardingPanel.focus();}
+    if(next.status==='ready'&&guidedStart){guidedStart=false;if(!missionPanel.focusCare())onboardingPanel.focus();}
     if (previous !== next.status && next.status !== 'closed' && (root.dataset.guided!=='true'||failed) && !root.querySelector('dialog[open]')) {
       (failed ? next.status === 'error' && next.reason === 'load' ? reload : retry : close).focus();
     }
@@ -315,7 +315,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   selectionPanel?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();dismiss();}},{signal:events.signal});
   host.addEventListener('camera-view-change',()=>cameraState(),{signal:events.signal});
   for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]'))button.addEventListener('click',()=>controller.camera(button.dataset.cameraCommand as CameraCommand),{signal:events.signal});
-  const guidedButton=root.querySelector<HTMLButtonElement>('[data-onboarding-start]');if(guidedButton){guidedButton.disabled=false;guidedButton.addEventListener('click',()=>{root.dataset.guided='true';guidedStart=true;if(state.status==='ready'){guidedStart=false;onboardingPanel.focus();}else void controller.open();},{signal:events.signal});}
+  const guidedButton=root.querySelector<HTMLButtonElement>('[data-onboarding-start]');if(guidedButton){guidedButton.disabled=false;guidedButton.addEventListener('click',()=>{root.dataset.guided='true';guidedStart=true;if(state.status==='ready'){guidedStart=false;if(!missionPanel.focusCare())onboardingPanel.focus();}else void controller.open();},{signal:events.signal});}
   root.querySelector('[data-onboarding-exit]')?.addEventListener('click',()=>{root.dataset.guided='false';host.focus({preventScroll:true});host.scrollIntoView({block:'nearest'});},{signal:events.signal});
   root.querySelector<HTMLSelectElement>('[data-guide-language]')?.addEventListener('change',event=>{const value=(event.target as HTMLSelectElement).value;if(value!=='en'&&value!=='id')return;locale=value;render(state);root.dispatchEvent(new CustomEvent('entry-locale-request',{detail:value}));},{signal:events.signal});
   open.addEventListener('click', () => { void controller.open(); }, { signal: events.signal });

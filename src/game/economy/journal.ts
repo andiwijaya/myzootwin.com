@@ -54,7 +54,7 @@ export function compactFinance(s:ZooSaveV1,pinRefundIds:readonly string[]=[],for
  if(purchases.length>256||refunds.length>256)throw new Error('Financial proof exceeds bounded world contract');
  const tickets=admissionProofs(s).filter(a=>active.has(a.visitorId)||mission.has(a.visitorId)).map(admission=>({admission:structuredClone(admission),entry:{...ledgerProof(s,admission.ledgerEntryId)!}}));
  const recent=s.admissions.at(-1),lastTicket:TicketProof|null=recent?{admission:structuredClone(recent),entry:{...ledgerProof(s,recent.ledgerEntryId)!}}:c.lastTicket?structuredClone(c.lastTicket):null;
- const rewardIds=new Set(s.missions.rewards.map(r=>r.ledgerEntryId)),rewards=[...c.rewards,...s.ledger.filter(e=>e.kind==='reward')].filter(e=>rewardIds.has(e.id));
+ const rewardIds=new Set(s.missions.rewards.flatMap(r=>'ledgerEntryId'in r?[r.ledgerEntryId]:[])),rewards=[...c.rewards,...s.ledger.filter(e=>e.kind==='reward')].filter(e=>rewardIds.has(e.id));
  s.economy.checkpoint={version:1,balance:s.currency,entries:amounts.entries,lastTick:s.tick,compactions:c.compactions+1,commandThrough:s.economy.nextCommand-1,visitorThrough:s.visitorFlow.nextSerial-1,openSerials:s.visitors.flatMap(v=>v.arrival?[v.arrival.serial]:[]),maintenancePeriod:s.economy.maintenancePeriod,totals:amounts.amounts,counts:amounts.counts,purchases,refunds,tickets,rewards,lastTicket};
  s.ledger=[];s.admissions=[];return true;
 }

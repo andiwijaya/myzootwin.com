@@ -1,4 +1,4 @@
-import {MISSION_RULES} from '../missions/engine.ts';
+import {CARE_MISSION_RULES,MISSION_RULES} from '../missions/engine.ts';
 import {ATTRACTION_RULES} from '../visitors/attraction.ts';
 import {coherentMoney,admissionProofs,ledgerProof,LEDGER_KINDS} from '../economy/journal.ts';
 import {PRICES,MONEY_RULES} from '../economy/prices.ts';
@@ -40,6 +40,7 @@ const admissionRule=object({ id, visitorId: id, tick, ledgerEntryId: id,entry:nu
 const ticketProof=object({admission:admissionRule,entry:ledgerEntry});
 const financeCheckpoint=object({version:oneOf(1),balance:integer(),entries:integer(),lastTick:tick,compactions:integer(),commandThrough:integer(),visitorThrough:tick,openSerials:array(number(1,MAX_TICK,true),3),maintenancePeriod:tick,
 totals:object(Object.fromEntries(LEDGER_KINDS.map(k=>[k,number(-Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER,true)]))),counts:object(Object.fromEntries(LEDGER_KINDS.map(k=>[k,integer()]))),purchases:array(object({entry:ledgerEntry,refunded:integer()}),256),refunds:array(object({entry:ledgerEntry,restored:integer()}),256),tickets:array(ticketProof,35),rewards:array(ledgerEntry,4),lastTicket:nullable(ticketProof)});
+const missionReward:Rule=(v,p)=>{if(typeof v==='object'&&v!==null&&'unlockId'in v)object({missionId,unlockId:oneOf(CARE_MISSION_RULES.unlockId),tick,command:number(1,Number.MAX_SAFE_INTEGER-1,true)})(v,p);else object({missionId,ledgerEntryId:id})(v,p);};
 const schema = object({
   schemaVersion: oneOf(1), randomSeed: number(1,0xffffffff,true), randomState: number(1,0xffffffff,true), tick, gameTimeMs: integer(), currency: integer(), economy:object({maintenancePeriod:tick,nextCommand:number(1,Number.MAX_SAFE_INTEGER,true),checkpoint:financeCheckpoint,recovery:object({lastRationTick:nullable(tick),rationBatches:integer(),equipmentGrants:integer(),habitatGrant:nullable(object({id,tick}))})}),
   world: object({ width: number(1,32,true), height: number(1,32,true), gate: cell,
@@ -52,7 +53,7 @@ const schema = object({
   visitorFlow:object({open:bool,nextSerial:number(1,MAX_TICK,true),cooldownTicks:integer(ATTRACTION_RULES.maxIntervalTicks),viewedTotal:tick,feedback:object({evaluated:tick,scored:tick,scoreSum:integer(),positive:tick,negative:tick,interrupted:tick,recent:array(feedback,4)})}),
   admissions: array(admissionRule,8192),
   ledger: array(ledgerEntry,8192),
-  missions: object({ currentId: nullable(missionId), completedIds: array(missionId,4), rewards: array(object({ missionId, ledgerEntryId: id }),4),
+  missions: object({ currentId: nullable(missionId), completedIds: array(missionId,4), rewards: array(missionReward,4),
     objectives: object({ habitatConnected: bool, birdsFedIds: array(id,2), birdsWateredIds: array(id,2), comfortableTicks: tick, viewedVisitorIds: array(id,32), thrivingTicks: tick }),
   }),
   preferences: object({ locale: oneOf('id','en'), graphics: oneOf('auto','low','high'), muted: bool, reducedMotion: bool }),
@@ -197,14 +198,16 @@ const inBounds=(p:{x:number;z:number}) => p.x < w.width && p.z < w.height;
   const m=s.missions;
   requireValue(m.completedIds.every((id,i)=>id===MISSION_IDS[i]) && m.currentId===(MISSION_IDS[m.completedIds.length]??null),'$.missions.order');
   requireValue(m.rewards.length===m.completedIds.length,'$.missions.claims');
-  unique(m.rewards.map(r=>r.missionId),'$.missions.rewards'); unique(m.rewards.map(r=>r.ledgerEntryId),'$.missions.rewardLedger');
-  for(const r of m.rewards) { const e=ledger.get(r.ledgerEntryId); requireValue(m.completedIds.includes(r.missionId) && MISSION_RULES[r.missionId].enabled && e?.kind==='reward' && e.relatedId===r.missionId && e.amount===MISSION_RULES[r.missionId].coins,'$.missions.rewards.reference'); }
-  for(const e of [...s.economy.checkpoint.rewards,...s.ledger])if(e.kind==='reward')requireValue(m.rewards.some(r=>r.ledgerEntryId===e.id),'$.ledger.reward');
+  unique(m.rewards.map(r=>r.missionId),'$.missions.rewards'); unique(m.rewards.flatMap(r=>'ledgerEntryId'in r?[r.ledgerEntryId]:[]),'$.missions.rewardLedger');
+  for(const r of m.rewards) { const rule=MISSION_RULES[r.missionId];requireValue(m.completedIds.includes(r.missionId)&&rule.enabled,'$.missions.rewards.reference');if('unlockId'in r){const prior=ledger.get('mission-q01');requireValue(rule.unlockId===r.unlockId&&r.missionId==='Q02'&&r.tick<=s.tick&&r.command<s.economy.nextCommand&&Boolean(prior)&&r.tick>=prior!.tick+CARE_MISSION_RULES.durationTicks&&m.objectives.comfortableTicks===CARE_MISSION_RULES.durationTicks,'$.missions.unlock.reference');}else{const e=ledger.get(r.ledgerEntryId);requireValue(!rule.unlockId&&e?.kind==='reward'&&e.relatedId===r.missionId&&e.amount===rule.coins,'$.missions.rewards.reference');} }
+  for(const e of [...s.economy.checkpoint.rewards,...s.ledger])if(e.kind==='reward')requireValue(m.rewards.some(r=>'ledgerEntryId'in r&&r.ledgerEntryId===e.id),'$.ledger.reward');
   requireValue(s.economy.checkpoint.rewards.length===s.economy.checkpoint.counts.reward,'$.missions.archivedRewards');
   const birdIds=new Set(s.animals.map(a=>a.id)); const visitorIds=new Set(allAdmissions.map(a=>a.visitorId));
   for(const values of [m.objectives.birdsFedIds,m.objectives.birdsWateredIds]) { unique(values,'$.missions.birds'); requireValue(values.every(id=>birdIds.has(id)),'$.missions.birds.reference'); }
   unique(m.objectives.viewedVisitorIds,'$.missions.visitors'); requireValue(m.objectives.viewedVisitorIds.every(id=>visitorIds.has(id)),'$.missions.visitors.reference');
-  requireValue(m.objectives.comfortableTicks<=s.tick && m.objectives.thrivingTicks<=s.tick,'$.missions.duration');
+  requireValue(m.objectives.comfortableTicks<=Math.min(s.tick,CARE_MISSION_RULES.durationTicks)&&m.objectives.thrivingTicks<=s.tick,'$.missions.duration');
+  if(m.objectives.comfortableTicks>0){const prior=ledger.get('mission-q01');requireValue(m.completedIds.includes('Q01')&&Boolean(prior)&&m.objectives.comfortableTicks<=s.tick-prior!.tick&&s.animals.every(a=>a.foodEaten>0&&a.waterDrunk>0),'$.missions.careDuration');}
+  requireValue(m.objectives.birdsFedIds.every(id=>s.animals.some(a=>a.id===id&&a.foodEaten>0))&&m.objectives.birdsWateredIds.every(id=>s.animals.some(a=>a.id===id&&a.waterDrunk>0)),'$.missions.consumption');
 }
 
 export type SaveResult = {ok:true;value:ZooSaveV1} | {ok:false;code:'invalid-json'|'unsupported-schema'|'invalid-state'|'too-large';path:string};
