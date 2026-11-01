@@ -3,7 +3,7 @@ import { generationOf } from './checkpoint.ts';
 import type { ZooSaveV1 } from '../core/state.ts';
 import type { SanctuarySessionState } from '../core/session-state.ts';
 import type { EditorState } from '../world/editing.ts';
-import { SaveFault, checkedCheckpoint, stateFromCheckpoint, encodeCheckpointState, type RecoveryInspection, type DurableBackend, type StoredCheckpoint, type StorageFault } from './durable-backend.ts';
+import { SaveFault, checkedCheckpoint, stateFromCheckpoint, encodeCheckpointState, type RecoveryInspection, type RestartInspection, type DurableBackend, type StoredCheckpoint, type StorageFault } from './durable-backend.ts';
 export const AUTOSAVE_DELAY_MS = 2000;
 export type SavePhase = 'loading' | 'empty' | 'available' | 'dirty' | 'saving' | 'saved' | 'unavailable' | 'unreadable' | 'error' | 'conflict';
 export interface SaveView {
@@ -20,6 +20,8 @@ export interface SaveView {
     generation: string;
     recovery: RecoveryInspection | null;
     recoveryBusy: boolean;
+    restartBusy: boolean;
+    restartAvailable: boolean;
 }
 interface Options {
     writer: string;
@@ -33,8 +35,8 @@ interface Options {
 export function createAutosave(backend: DurableBackend, options: Options) {
     const now = options.now ?? Date.now, schedule = options.schedule ?? ((f, ms) => setTimeout(f, ms)), cancel = options.cancel ?? (id => clearTimeout(id as ReturnType<typeof setTimeout>));
     let phase: SavePhase = 'loading', active = false, record: StoredCheckpoint | null = null, data: ZooSaveV1 | undefined, editor: EditorState | undefined, revision = 0, savedTick: number | null = null, savedAt: number | null = null, savedCurrency: number | null = null, savedMissions: number | null = null, savedBirds: number | null = null, error: StorageFault | null = null, disposed = false, closing = false, storageReady = false, dirty = false, reader: (() => ZooSaveV1) | undefined, timer: unknown, pendingCritical = false, inflight: Promise<void> | undefined, loadSerial = 0;
-    const view = (): SaveView => ({ phase, active, hasSave: Boolean(record), revision, savedTick, savedAt, savedCurrency, savedMissions, savedBirds, fault: error, generation: generationOf(record), recovery, recoveryBusy });
-    let recovery: RecoveryInspection | null = null, recoveryBusy = false;
+    const view = (): SaveView => ({ phase, active, hasSave: Boolean(record), revision, savedTick, savedAt, savedCurrency, savedMissions, savedBirds, fault: error, generation: generationOf(record), recovery, recoveryBusy, restartBusy, restartAvailable });
+    let recovery: RecoveryInspection | null = null, recoveryBusy = false, restartBusy = false, restartAvailable = false;
     let previous = '';
     const notify = () => {
         if (disposed)
@@ -53,7 +55,7 @@ export function createAutosave(backend: DurableBackend, options: Options) {
     };
     const failed = (e: unknown) => { error = e instanceof SaveFault ? e.code : 'write'; phase = error === 'conflict' ? 'conflict' : error === 'unreadable' ? 'unreadable' : 'error'; stopTimer(); notify(); };
     const requiresTransition = () => Boolean(recovery && recovery.kind !== 'none');
-    const blocked = () => disposed || recoveryBusy || phase === 'conflict' || phase === 'unreadable';
+    const blocked = () => disposed || recoveryBusy || restartBusy || phase === 'conflict' || phase === 'unreadable';
     function queue(critical = false) {
         if (closing || blocked() || !storageReady || phase === 'error')
             return;
@@ -122,7 +124,7 @@ export function createAutosave(backend: DurableBackend, options: Options) {
             await flush();
     }
     async function load() {
-        if (active || disposed)
+        if (active || disposed || recoveryBusy || restartBusy)
             return;
         const serial = ++loadSerial;
         phase = 'loading';
@@ -130,6 +132,10 @@ export function createAutosave(backend: DurableBackend, options: Options) {
         notify();
         try {
             const found = await backend.read();
+            if (disposed || serial !== loadSerial)
+                return;
+            const inspected = backend.inspectRecovery ? await backend.inspectRecovery() : null;
+            const restartInfo = backend.inspectRestart ? await backend.inspectRestart('undo-reset') : null;
             if (disposed || serial !== loadSerial)
                 return;
             record = found ? checkedCheckpoint(found) : null;
@@ -141,7 +147,8 @@ export function createAutosave(backend: DurableBackend, options: Options) {
             savedMissions = loaded?.missions.completedIds.length ?? null;
             savedBirds = loaded?.animals.filter(a => a.habitatId !== null).length ?? null;
             storageReady = true;
-            recovery = backend.inspectRecovery ? await backend.inspectRecovery() : null;
+            recovery = inspected;
+            restartAvailable = restartInfo?.hasBackup ?? false;
             phase = record ? 'available' : 'empty';
         }
         catch (e) {
@@ -154,6 +161,7 @@ export function createAutosave(backend: DurableBackend, options: Options) {
             revision = 0;
             savedTick = savedAt = savedCurrency = savedMissions = savedBirds = null;
             recovery = null;
+            restartAvailable = false;
             if (error === 'unreadable' && backend.inspectRecovery) {
                 try {
                     recovery = await backend.inspectRecovery();
@@ -237,7 +245,7 @@ export function createAutosave(backend: DurableBackend, options: Options) {
             await flush();
         },
         async reviewRecovery() {
-            if (disposed || recoveryBusy || !backend.inspectRecovery)
+            if (disposed || recoveryBusy || restartBusy || !backend.inspectRecovery)
                 return null;
             try {
                 recovery = await backend.inspectRecovery();
@@ -256,9 +264,10 @@ export function createAutosave(backend: DurableBackend, options: Options) {
             }
         },
         async recover(quote: string) {
-            if (disposed || recoveryBusy || !backend.transition || quote !== recovery?.quote)
+            if (disposed || recoveryBusy || restartBusy || !backend.transition || quote !== recovery?.quote)
                 return false;
             recoveryBusy = true;
+            loadSerial++;
             notify();
             try {
                 const restored = await backend.transition(quote, options.writer, now());
@@ -281,6 +290,53 @@ export function createAutosave(backend: DurableBackend, options: Options) {
             }
             catch (e) {
                 recoveryBusy = false;
+                failed(e);
+                return false;
+            }
+        },
+        async reviewRestart(kind: 'reset' | 'undo-reset'): Promise<RestartInspection | null> {
+            if (disposed || recoveryBusy || restartBusy || !backend.inspectRestart || blocked())
+                return null;
+            await drain();
+            if (phase === 'error' || phase === 'unavailable' || blocked())
+                return null;
+            try {
+                return await backend.inspectRestart(kind);
+            }
+            catch (e) {
+                failed(e);
+                return null;
+            }
+        },
+        async restart(quote: string) {
+            if (disposed || recoveryBusy || restartBusy || blocked() || !backend.restart)
+                return false;
+            // This hold is synchronous before the caller closes the old renderer.
+            restartBusy = true;
+            loadSerial++;
+            stopTimer();
+            notify();
+            try {
+                const next = await backend.restart(quote, options.writer, now());
+                record = next;
+                revision = next.revision;
+                active = false;
+                dirty = false;
+                reader = undefined;
+                data = undefined;
+                editor = undefined;
+                storageReady = false;
+                try {
+                    options.committed?.(revision, generationOf(next));
+                }
+                catch { /* Best effort; CAS is authoritative. */ }
+                restartBusy = false;
+                await load();
+                return view().phase === 'available';
+            }
+            catch (e) {
+                restartBusy = false;
+                dirty = active;
                 failed(e);
                 return false;
             }

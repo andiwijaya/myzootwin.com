@@ -52,6 +52,8 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
   let generation = 0;
   let disposed = false;
   let paused = false;
+  let externalPaused = false;
+  const isPaused = () => paused || externalPaused;
   let locale:"en"|"id"="en";
 
   function emit(next: PreviewState) { state = next; onState(next); }
@@ -84,7 +86,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
         const created = factory((kind) => fail(token, kind));
         if (disposed || token !== generation) { created.dispose(); return; }
         session = created;
-        session.setPaused?.(paused);
+        session.setPaused?.(isPaused());
         session.locale?.(locale);
         emit({ status: 'ready' });
       } catch (error) {
@@ -92,26 +94,27 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
       }
     },
     close,
-    setPaused(value: boolean) { paused = value; session?.setPaused?.(value); },
+    setPaused(value: boolean) { paused = value; session?.setPaused?.(isPaused()); },
+    setExternalPaused(value: boolean) { externalPaused = value; session?.setPaused?.(isPaused()); },
     dispose() { if (disposed) return; close(); disposed = true; },
     getState: () => state,
     inspectSession: () => session?.inspect?.(),
     locale(value:"en"|"id"){locale=value;session?.locale?.(value);},
-    speed(value:number){if(!paused&&state.status==='ready'&&(value===1||value===10))session?.speed?.(value);},
-    perch(command:PerchCommand,revision?:number){if(!paused&&state.status==='ready')session?.perch?.(command,revision);},
-    water(command:FoodCommand,revision?:number){if(!paused&&state.status==='ready')session?.water?.(command,revision);},
-    food(command:FoodCommand,revision?:number){if(!paused&&state.status==='ready')session?.food?.(command,revision);},
-    birds(command:BirdCommand){if(!paused&&state.status==='ready')session?.birds?.(command);},
-    studio(command:StudioCommand,value?:string){if(!paused&&state.status==='ready')session?.studio?.(command,value);},
-    guide(command:GuideCommand,revision?:number){if(!paused&&state.status==='ready')session?.guide?.(command,revision);},
-    claimMission(quote:MissionQuote){if(!paused&&state.status==='ready')session?.claimMission?.(quote);},
-    recoveryQuote:()=>!paused&&state.status==='ready'?session?.recoveryQuote?.():undefined,
-    recover(quote:RecoveryQuote){if(!paused&&state.status==='ready')session?.recover?.(quote);},
-    visitors(command:'open'|'close'|'focus'|'follow'){if(!paused&&state.status==='ready')session?.visitors?.(command);},
-    camera(command:CameraCommand) {if(!paused&&state.status==='ready')session?.camera?.(command);},
-    clearSelection(){if(!paused&&state.status==='ready')session?.clearSelection?.();},
-    quoteRemoval:(target:EditTarget)=>!paused&&state.status==='ready'?session?.quoteRemoval?.(target):undefined,
-    edit(command:'remove'|'undo',quote?:RemovalQuote){if(!paused&&state.status==='ready')session?.edit?.(command,quote);},
-    placement(command:PlacementCommand,revision?:number){if(!paused&&state.status==='ready')session?.placement?.(command,revision);},
+    speed(value:number){if(!isPaused()&&state.status==='ready'&&(value===1||value===10))session?.speed?.(value);},
+    perch(command:PerchCommand,revision?:number){if(!isPaused()&&state.status==='ready')session?.perch?.(command,revision);},
+    water(command:FoodCommand,revision?:number){if(!isPaused()&&state.status==='ready')session?.water?.(command,revision);},
+    food(command:FoodCommand,revision?:number){if(!isPaused()&&state.status==='ready')session?.food?.(command,revision);},
+    birds(command:BirdCommand){if(!isPaused()&&state.status==='ready')session?.birds?.(command);},
+    studio(command:StudioCommand,value?:string){if(!isPaused()&&state.status==='ready')session?.studio?.(command,value);},
+    guide(command:GuideCommand,revision?:number){if(!isPaused()&&state.status==='ready')session?.guide?.(command,revision);},
+    claimMission(quote:MissionQuote){if(!isPaused()&&state.status==='ready')session?.claimMission?.(quote);},
+    recoveryQuote:()=>!isPaused()&&state.status==='ready'?session?.recoveryQuote?.():undefined,
+    recover(quote:RecoveryQuote){if(!isPaused()&&state.status==='ready')session?.recover?.(quote);},
+    visitors(command:'open'|'close'|'focus'|'follow'){if(!isPaused()&&state.status==='ready')session?.visitors?.(command);},
+    camera(command:CameraCommand) {if(!isPaused()&&state.status==='ready')session?.camera?.(command);},
+    clearSelection(){if(!isPaused()&&state.status==='ready')session?.clearSelection?.();},
+    quoteRemoval:(target:EditTarget)=>!isPaused()&&state.status==='ready'?session?.quoteRemoval?.(target):undefined,
+    edit(command:'remove'|'undo',quote?:RemovalQuote){if(!isPaused()&&state.status==='ready')session?.edit?.(command,quote);},
+    placement(command:PlacementCommand,revision?:number){if(!isPaused()&&state.status==='ready')session?.placement?.(command,revision);},
   };
 }

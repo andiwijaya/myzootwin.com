@@ -1,3 +1,4 @@
+import { createInitialState } from '../core/initial-state.ts';
 import { parseSave } from './save-v1.ts';
 import { SaveFault, checkedCheckpoint, inspectCheckpoint, stateFromCheckpoint, encodeCheckpointState, generationOf, summarize, rawSignature, type StorageFault, type StoredCheckpoint, type CheckpointProblem, type CheckpointSummary } from './checkpoint.ts';
 export { SaveFault, checkedCheckpoint, stateFromCheckpoint, encodeCheckpointState };
@@ -10,12 +11,20 @@ export interface RecoveryInspection {
     source: CheckpointSummary | null;
     hasPreserved: boolean;
 }
+export interface RestartInspection {
+    kind: 'reset' | 'undo-reset' | 'blocked';
+    quote: string | null;
+    source: CheckpointSummary | null;
+    hasBackup: boolean;
+}
 export interface DurableBackend {
     read(): Promise<StoredCheckpoint | null>;
     commit(expected: number, payload: string, writer: string, writtenAt: number): Promise<StoredCheckpoint>;
     inspectRecovery?(): Promise<RecoveryInspection>;
     transition?(quote: string, writer: string, writtenAt: number): Promise<StoredCheckpoint>;
     exportPreserved?(): Promise<string>;
+    inspectRestart?(kind: 'reset' | 'undo-reset'): Promise<RestartInspection>;
+    restart?(quote: string, writer: string, writtenAt: number): Promise<StoredCheckpoint>;
     close(): void;
 }
 const fault = (e: unknown): SaveFault => e instanceof SaveFault ? e : new SaveFault(e instanceof DOMException && e.name === 'QuotaExceededError' ? 'quota' : e instanceof DOMException && e.name === 'VersionError' ? 'unreadable' : 'unavailable');
@@ -27,6 +36,14 @@ export function createIndexedDbBackend(factory: IDBFactory | undefined, database
         primary: string;
         previous: string;
         source: StoredCheckpoint;
+    } | undefined;
+    let restartQuote: {
+        id: string;
+        kind: 'reset' | 'undo-reset';
+        primary: string;
+        previous: string;
+        backup: string;
+        payload: string;
     } | undefined;
     function open(): Promise<IDBDatabase> {
         if (closed || !factory)
@@ -104,12 +121,13 @@ export function createIndexedDbBackend(factory: IDBFactory | undefined, database
             primary: unknown;
             previous: unknown;
             preserved: unknown;
-        }>('readonly', (store, _tx, set) => { const a = store.get('primary'), b = store.get('previous'), c = store.get('preserved'); c.onsuccess = () => set({ primary: a.result, previous: b.result, preserved: c.result }); });
+            restart: unknown;
+        }>('readonly', (store, _tx, set) => { const a = store.get('primary'), b = store.get('previous'), c = store.get('preserved'), d = store.get('restart'); d.onsuccess = () => set({ primary: a.result, previous: b.result, preserved: c.result, restart: d.result }); });
     }
-    async function mutate(run: (raw: unknown, previous: unknown, store: IDBObjectStore, tx: IDBTransaction, set: (x: StoredCheckpoint) => void) => void) {
+    async function mutate(run: (raw: unknown, previous: unknown, store: IDBObjectStore, tx: IDBTransaction, set: (x: StoredCheckpoint) => void, backup: unknown) => void) {
         try {
             const db = await open();
-            return await new Promise<StoredCheckpoint>((resolve, reject) => { const tx = db.transaction(SAVE_STORE, 'readwrite'), store = tx.objectStore(SAVE_STORE), a = store.get('primary'), b = store.get('previous'); let result: StoredCheckpoint; tx.oncomplete = () => resolve(result); tx.onabort = tx.onerror = () => reject(fault(throwLater.get(tx) ?? tx.error)); b.onsuccess = () => guarded(tx, () => run(a.result, b.result, store, tx, v => { result = v; })); });
+            return await new Promise<StoredCheckpoint>((resolve, reject) => { const tx = db.transaction(SAVE_STORE, 'readwrite'), store = tx.objectStore(SAVE_STORE), a = store.get('primary'), b = store.get('previous'), c = store.get('restart'); let result: StoredCheckpoint; tx.oncomplete = () => resolve(result); tx.onabort = tx.onerror = () => reject(fault(throwLater.get(tx) ?? tx.error)); c.onsuccess = () => guarded(tx, () => run(a.result, b.result, store, tx, v => { result = v; }, c.result)); });
         }
         catch (e) {
             throw fault(e);
@@ -117,8 +135,8 @@ export function createIndexedDbBackend(factory: IDBFactory | undefined, database
     }
     return {
         async read() {
-            const { primary, previous, preserved } = await records();
-            if (primary === undefined && (previous !== undefined || preserved !== undefined))
+            const { primary, previous, preserved, restart } = await records();
+            if (primary === undefined && (previous !== undefined || preserved !== undefined || restart !== undefined))
                 throw new SaveFault('unreadable');
             const value = primary === undefined ? null : checkedCheckpoint(primary);
             observedGeneration = generationOf(value);
@@ -153,7 +171,7 @@ export function createIndexedDbBackend(factory: IDBFactory | undefined, database
             else if (main.record) {
                 kind = 'none';
             }
-            else if (main.problem === 'missing' && previous.problem === 'missing' && raw.preserved === undefined) {
+            else if (main.problem === 'missing' && previous.problem === 'missing' && raw.preserved === undefined && raw.restart === undefined) {
                 kind = 'none';
             }
             else if (main.problem === 'unsupported-format' || main.problem === 'unsupported-schema') {
@@ -196,6 +214,56 @@ export function createIndexedDbBackend(factory: IDBFactory | undefined, database
             observedGeneration = generationOf(value);
             return value;
         },
+        async inspectRestart(kind) {
+            restartQuote = undefined;
+            const raw = await records(), current = inspectCheckpoint(raw.primary);
+            const backup = raw.restart as {
+                format?: number;
+                used?: boolean;
+                primary?: unknown;
+                previous?: unknown;
+            } | undefined;
+            const safeBackup = Boolean(backup && Object.getPrototypeOf(backup) === Object.prototype && Object.keys(backup).sort().join(',') === 'format,previous,primary,used' && backup.format === 1 && typeof backup.used === 'boolean' && inspectCheckpoint(backup.primary).record);
+            if (!current.record || current.record.format !== 2 || (kind === 'undo-reset' && (!safeBackup || backup!.used)))
+                return { kind: 'blocked', quote: null, source: null, hasBackup: safeBackup && !backup!.used };
+            const source = kind === 'reset' ? current.record : checkedCheckpoint(backup!.primary);
+            let payload = source.payload;
+            if (kind === 'reset') {
+                const fresh = createInitialState(), old = stateFromCheckpoint(source);
+                fresh.preferences = { ...old.preferences, speed: 1 };
+                payload = encodeCheckpointState(fresh);
+            }
+            try {
+                restartQuote = { id: crypto.randomUUID(), kind, primary: rawSignature(raw.primary), previous: rawSignature(raw.previous), backup: rawSignature(raw.restart), payload };
+            }
+            catch {
+                return { kind: 'blocked', quote: null, source: null, hasBackup: safeBackup && !backup!.used };
+            }
+            return { kind, quote: restartQuote.id, source: summarize(source), hasBackup: safeBackup && !backup!.used };
+        },
+        async restart(id, writer, writtenAt) {
+            const quote = restartQuote;
+            if (!quote || quote.id !== id)
+                throw new SaveFault('conflict');
+            restartQuote = undefined;
+            const value = await mutate((raw, previous, store, _tx, set, backup) => {
+                if (rawSignature(raw) !== quote.primary || rawSignature(previous) !== quote.previous || rawSignature(backup) !== quote.backup)
+                    throw new SaveFault('conflict');
+                const current = checkedCheckpoint(raw);
+                if (current.format !== 2)
+                    throw new SaveFault('conflict');
+                const next = checkedCheckpoint({ format: 2, generation: crypto.randomUUID(), revision: 1, writtenAt, writer, payload: quote.payload });
+                if (quote.kind === 'reset')
+                    store.put({ format: 1, used: false, primary: raw, previous }, 'restart');
+                else
+                    store.put({ ...(backup as object), used: true }, 'restart');
+                store.put(current, 'previous');
+                store.put(next, 'primary');
+                set(next);
+            });
+            observedGeneration = generationOf(value);
+            return value;
+        },
         async exportPreserved() {
             const { preserved } = await records();
             if (preserved === undefined)
@@ -203,6 +271,6 @@ export function createIndexedDbBackend(factory: IDBFactory | undefined, database
             const out = rawSignature(preserved);
             return JSON.stringify({ type: 'myzootwin-recovery-copy', encoding: 'bounded-tagged-data', data: JSON.parse(out) });
         },
-        close() { closed = true; quoted = undefined; connection?.close(); connection = undefined; }
+        close() { closed = true; quoted = undefined; restartQuote = undefined; connection?.close(); connection = undefined; }
     };
 }

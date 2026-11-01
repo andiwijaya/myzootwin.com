@@ -335,9 +335,9 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
 
   return {
     setLocale(value: EntryLocale) { if (!disposed) { locale = value; controller.locale(value);render(state); } },
-    setPaused(value: boolean) { if (!disposed) controller.setPaused(value); },
+    setPaused(value: boolean) { if (!disposed) controller.setExternalPaused(value); },
     refresh:()=>{if(!disposed)render(state);},
-    async openGame(paused=false){if(disposed||!mayOpen())return;guidedStart=true;root.dataset.guided='true';controller.setPaused(paused);await controller.open();},
+    async openGame(paused=false){if(disposed||!mayOpen())return;guidedStart=true;root.dataset.guided='true';controller.setExternalPaused(paused);await controller.open();},
     close: () => { if (!disposed) controller.close(); },
     dispose() { if (disposed) return; disposed = true; controller.dispose();if(recoveryDialog?.open)recoveryDialog.close();if(editDialog?.open)editDialog.close(); events.abort(); if(foodDialog?.open)foodDialog.close();if(waterDialog?.open)waterDialog.close();if(perchDialog?.open)perchDialog.close();mounted.delete(root); },
     inspect: () => ({ state: controller.getState(), session: controller.inspectSession() }),

@@ -1,3 +1,5 @@
+import { createPauseGate } from './pause-gate.ts';
+import { mountRestartPanel } from './restart-panel.ts';
 import { mountRecoveryPanel } from './recovery-panel.ts';
 import { entryMessages, isEntryLocale, readEntryLocale, saveEntryLocale, type EntryLocale, type EntryMessage } from './locale';
 import { mountPreviewPanel } from './preview-panel';
@@ -35,14 +37,15 @@ export function mountGameEntry(root: HTMLElement, options: {
     let locale: EntryLocale = initial.locale;
     let resumePending = false;
     let recoveryPanel: ReturnType<typeof mountRecoveryPanel> | undefined;
+    let restartPanel: ReturnType<typeof mountRestartPanel> | undefined;
+    const pauseGate = createPauseGate(value => { preview?.setPaused(value); renderPause(); });
     const events = new AbortController();
     let channel: BroadcastChannel | undefined;
     const writer = crypto.randomUUID();
     const durable = createAutosave(options.backend ?? createIndexedDbBackend(browserFactory()), { writer, changed: () => {
             if (disposed)
                 return;
-            if (['conflict', 'unreadable'].includes(durable.view().phase))
-                preview?.setPaused(true);
+            syncPause();
             render(locale);
         }, committed: (revision, generation) => channel?.postMessage({ writer, revision, generation }) });
     function render(language: EntryLocale) {
@@ -72,6 +75,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         preview?.refresh();
         renderSave();
         recoveryPanel?.render();
+        restartPanel?.render();
     }
     root.addEventListener('entry-locale-request', event => {
         const value = (event as CustomEvent<unknown>).detail;
@@ -96,7 +100,7 @@ export function mountGameEntry(root: HTMLElement, options: {
                 dialog.showModal();
             else
                 dialog.setAttribute('open', '');
-            preview?.setPaused(true);
+            syncPause();
             dialog.querySelector<HTMLElement>('[data-dialog-heading]')?.focus();
         }, { signal: events.signal });
     }
@@ -109,15 +113,16 @@ export function mountGameEntry(root: HTMLElement, options: {
                 dialog.close();
             else {
                 dialog.removeAttribute('open');
-                preview?.setPaused(resumePending || ['conflict', 'unreadable'].includes(durable.view().phase));
+                syncPause();
             }
         }, { signal: events.signal });
     }
     for (const dialog of root.querySelectorAll<HTMLDialogElement>('dialog')) {
-        dialog.addEventListener('close', () => preview?.setPaused(resumePending || ['conflict', 'unreadable'].includes(durable.view().phase)), { signal: events.signal });
+        dialog.addEventListener('close', () => syncPause(), { signal: events.signal });
     }
     const copySave = { en: { loading: 'Checking local progress...', empty: 'No saved sanctuary yet. Play to begin.', available: 'Saved sanctuary found on this device. Continue to open it.', dirty: 'Changes pending. Autosave will update shortly.', saving: 'Saving local progress...', saved: 'Progress saved on this device.', unavailable: 'Local storage is unavailable. Progress is temporary for this visit.', unreadable: 'Stored progress cannot be read. It has been kept unchanged; starting over is blocked to protect it.', error: 'Progress is not saved. The last good save is kept.', conflict: 'Another tab changed this sanctuary. This tab is paused; reload the saved progress before playing.', retry: 'Retry saving / storage', reload: 'Reload saved progress', resume: 'Resume zoo', resumeNote: 'Your saved world is loaded and paused. Nothing progressed while you were away.', detail: 'Last save: {time} · {coins} ZC · {missions} missions · {birds} birds. This device only; no cloud backup.' }, id: { loading: 'Memeriksa progres lokal...', empty: 'Belum ada suaka tersimpan. Main untuk memulai.', available: 'Suaka tersimpan ditemukan di perangkat ini. Lanjutkan untuk membukanya.', dirty: 'Ada perubahan. Autosave akan segera diperbarui.', saving: 'Menyimpan progres lokal...', saved: 'Progres tersimpan di perangkat ini.', unavailable: 'Penyimpanan lokal tidak tersedia. Progres hanya sementara selama kunjungan ini.', unreadable: 'Progres tersimpan tidak dapat dibaca. Data tetap utuh; mulai baru diblokir untuk melindunginya.', error: 'Progres belum tersimpan. Save terakhir yang valid tetap disimpan.', conflict: 'Tab lain mengubah suaka ini. Tab ini dijeda; muat ulang progres tersimpan sebelum bermain.', retry: 'Coba lagi simpan / akses', reload: 'Muat ulang progres tersimpan', resume: 'Lanjut bermain', resumeNote: 'Dunia tersimpan sudah dimuat dan dijeda. Tidak ada progres selama kamu pergi.', detail: 'Save terakhir: {time} · {coins} ZC · {missions} misi · {birds} burung. Hanya perangkat ini; tanpa cadangan cloud.' } };
     function renderSave() {
+        syncPause();
         const view = durable.view(), c = copySave[locale], panel = root.querySelector<HTMLElement>('[data-save-panel]');
         if (!panel)
             return;
@@ -154,7 +159,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         }
         const continueButton = root.querySelector<HTMLButtonElement>('[data-continue]');
         if (continueButton)
-            continueButton.disabled = resumePending || view.recoveryBusy || Boolean(view.recovery && view.recovery.kind !== 'none') || ['loading', 'unreadable', 'conflict'].includes(view.phase) || (!view.hasSave && !view.active);
+            continueButton.disabled = resumePending || view.recoveryBusy || view.restartBusy || Boolean(view.recovery && view.recovery.kind !== 'none') || ['loading', 'unreadable', 'conflict'].includes(view.phase) || (!view.hasSave && !view.active);
         for (const selector of ['[data-onboarding-start]', '[data-preview-open]']) {
             const b = root.querySelector<HTMLButtonElement>(selector);
             if (b)
@@ -168,7 +173,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         for (const selector of ['[data-guide-layout]', '[data-speed-tools]', '[data-guide-toolbar]']) {
             const el = root.querySelector<HTMLElement>(selector);
             if (el)
-                el.inert = resumePending || ['conflict', 'unreadable'].includes(view.phase);
+                el.inert = selector === '[data-guide-toolbar]' ? resumePending || ['conflict', 'unreadable'].includes(view.phase) || view.restartBusy : pauseGate.paused();
         }
     }
     root.querySelector('[data-continue]')?.addEventListener('click', async () => {
@@ -188,16 +193,22 @@ export function mountGameEntry(root: HTMLElement, options: {
         if (!resumePending || ['conflict', 'unreadable'].includes(durable.view().phase))
             return;
         resumePending = false;
-        preview?.setPaused(false);
+        pauseGate.resume();
+        syncPause();
         render(locale);
     }, { signal: events.signal });
     root.querySelector('[data-save-retry]')?.addEventListener('click', () => { void durable.retry(); }, { signal: events.signal });
     root.querySelector('[data-save-reload]')?.addEventListener('click', () => window.location.reload(), { signal: events.signal });
     document.addEventListener('visibilitychange', () => {
-        if (document.hidden)
+        if (document.hidden) {
+            pauseGate.hold('background', true);
+            syncPause();
             void durable.flush();
+        }
+        else
+            syncPause();
     }, { signal: events.signal });
-    window.addEventListener('pagehide', () => { void durable.flush(); }, { signal: events.signal });
+    window.addEventListener('pagehide', () => { pauseGate.hold('background', true); syncPause(); void durable.flush(); }, { signal: events.signal });
     if (options.broadcast !== false && typeof BroadcastChannel !== 'undefined') {
         channel = new BroadcastChannel('myzootwin-progress-v1');
         channel.addEventListener('message', event => {
@@ -206,19 +217,69 @@ export function mountGameEntry(root: HTMLElement, options: {
                 durable.externalRevision(value.revision, typeof value.generation === 'string' ? value.generation : undefined);
         }, { signal: events.signal });
     }
-    recoveryPanel = mountRecoveryPanel(root, { save: durable, allowDownload: options.allowRecoveryDownload !== false, locale: () => locale, pause: () => preview?.setPaused(true), closeGame: () => { resumePending = false; preview?.close(); }, restored: () => { locale = durable.savedLocale() ?? locale; render(locale); } });
+    recoveryPanel = mountRecoveryPanel(root, { save: durable, allowDownload: options.allowRecoveryDownload !== false, locale: () => locale, pause: () => pauseGate.hold('dialog', true), closeGame: () => { resumePending = false; preview?.close(); }, restored: () => { locale = durable.savedLocale() ?? locale; render(locale); } });
+    function syncPause() {
+        const v = durable.view();
+        pauseGate.update({ continue: resumePending, dialog: Boolean(root.querySelector('#play-help[open],#play-settings[open],[data-save-recovery-dialog][open],[data-reset-dialog][open]')), storage: ['conflict', 'unreadable'].includes(v.phase), restart: v.restartBusy });
+        renderPause();
+    }
+    function renderPause() {
+        if (disposed)
+            return;
+        const panel = root.querySelector<HTMLElement>('[data-session-panel]'), toggle = root.querySelector<HTMLButtonElement>('[data-pause-toggle]'), status = root.querySelector<HTMLElement>('[data-pause-status]');
+        const v = durable.view(), dialogOpen = Boolean(root.querySelector('dialog[open]')), paused = pauseGate.paused() || dialogOpen, ready = preview?.inspect().state.status === 'ready', blocked = ['conflict', 'unreadable'].includes(v.phase) || v.restartBusy;
+        root.dataset.sessionPaused = String(paused);
+        root.dataset.pauseReasons = [...pauseGate.reasons(), ...(dialogOpen && !pauseGate.has('dialog') ? ['dialog'] : [])].join(',');
+        if (panel) {
+            panel.hidden = !v.active || !ready || resumePending;
+            panel.setAttribute('aria-label', locale === 'id' ? 'Kontrol sesi' : 'Session controls');
+        }
+        if (toggle) {
+            toggle.textContent = locale === 'id' ? (paused ? 'Lanjut bermain' : 'Jeda suaka') : (paused ? 'Resume zoo' : 'Pause zoo');
+            toggle.disabled = blocked || Boolean(root.querySelector('dialog[open]'));
+            toggle.setAttribute('aria-pressed', String(paused));
+        }
+        if (status)
+            status.textContent = locale === 'id' ? (pauseGate.has('background') ? 'Dijeda saat kamu pergi. Lanjutkan saat siap; tidak ada progres offline.' : paused ? 'Suaka dijeda. Satwa, pengunjung, uang dan misi tidak berjalan.' : 'Suaka berjalan. Jeda kapan saja untuk berhenti dengan aman.') : (pauseGate.has('background') ? 'Paused while you were away. Resume when ready; no offline progress.' : paused ? 'Zoo paused. Animals, visitors, money and missions are frozen.' : 'Zoo running. Pause any time to stop safely.');
+        for (const selector of ['[data-guide-layout]', '[data-speed-tools]', '[data-guide-toolbar]']) {
+            const el = root.querySelector<HTMLElement>(selector);
+            if (el)
+                // Inner care dialogs already own a local controller hold; keep their modal controls outside the external inert gate.
+                el.inert = selector === '[data-guide-toolbar]' ? resumePending || blocked : pauseGate.paused();
+        }
+    }
+    root.querySelector('[data-pause-toggle]')?.addEventListener('click', () => {
+        if (['conflict', 'unreadable'].includes(durable.view().phase) || durable.view().restartBusy || root.querySelector('dialog[open]'))
+            return;
+        if (pauseGate.paused()) {
+            resumePending = false;
+            pauseGate.resume();
+        }
+        else
+            pauseGate.hold('manual', true);
+        syncPause();
+        renderSave();
+    }, { signal: events.signal });
+    const pauseObserver = new MutationObserver(syncPause);
+    pauseObserver.observe(root, { subtree: true, attributes: true, attributeFilter: ['open', 'data-renderer-state'] });
+    if (document.hidden)
+        pauseGate.hold('background', true);
+    restartPanel = mountRestartPanel(root, { save: durable, locale: () => locale, pause: () => pauseGate.hold('manual', true), closeGame: () => { resumePending = false; preview?.close(); }, replaced: () => { locale = durable.savedLocale() ?? locale; render(locale); } });
     const ready = (async () => {
         await durable.load();
         if (disposed)
             return;
         locale = durable.savedLocale() ?? locale;
         preview = mountPreviewPanel(root, { stateStore: durable.session, canOpen: () => durable.canOpen(), beforeOpen: () => durable.view().active || durable.startNew(locale) });
+        preview.setPaused(pauseGate.paused());
         render(locale);
     })();
     const handle = { ready, dispose() {
             if (disposed)
                 return;
             disposed = true;
+            pauseObserver.disconnect();
+            restartPanel?.dispose();
             recoveryPanel?.dispose();
             preview?.dispose();
             durable.dispose();
