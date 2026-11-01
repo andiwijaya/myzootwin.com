@@ -1,0 +1,244 @@
+TAP version 13
+# Subtest: 12000 real build/refund transactions cross94 checkpoints without freeze, growing proof, money creation or old quote replay; codec resumes
+ok 1 - 12000 real build/refund transactions cross94 checkpoints without freeze, growing proof, money creation or old quote replay; codec resumes
+  ---
+  duration_ms: 16769.0501
+  type: 'test'
+  ...
+# Subtest: archived refundable construction and pending Undo proof survive many folds and codec; duplicate refunds never mint coins
+ok 2 - archived refundable construction and pending Undo proof survive many folds and codec; duplicate refunds never mint coins
+  ---
+  duration_ms: 614.1952
+  type: 'test'
+  ...
+# Subtest: command and resource generation proof rejects pre-checkpoint replay after codec even when the target cell is reused
+ok 3 - command and resource generation proof rejects pre-checkpoint replay after codec even when the target cell is reused
+  ---
+  duration_ms: 195.3995
+  type: 'test'
+  ...
+# Subtest: 10000 actual eligible atomic admissions checkpoint bounded receipts, exact income and active proof; retired visitor replay is rejected
+ok 4 - 10000 actual eligible atomic admissions checkpoint bounded receipts, exact income and active proof; retired visitor replay is rejected
+  ---
+  duration_ms: 2390.5679
+  type: 'test'
+  ...
+# Subtest: checkpoint corruption is rejected without mutation: sums, counts, nonce, live proof, maintenance and replay watermarks
+ok 5 - checkpoint corruption is rejected without mutation: sums, counts, nonce, live proof, maintenance and replay watermarks
+  ---
+  duration_ms: 17.5313
+  type: 'test'
+  ...
+# Subtest: lifetime cashflow excludes starter income and exactly reconciles after archive, construction refund, Undo and supplies
+ok 6 - lifetime cashflow excludes starter income and exactly reconciles after archive, construction refund, Undo and supplies
+  ---
+  duration_ms: 50.9151
+  type: 'test'
+  ...
+# Subtest: attraction curve is configurable and depends on actual target access and welfare, not arbitrary display score
+ok 7 - attraction curve is configurable and depends on actual target access and welfare, not arbitrary display score
+  ---
+  duration_ms: 13.8034
+  type: 'test'
+  ...
+# Subtest: healthy/poor/recovered care changes real arrival pacing; disconnect or closure stops intake without offline catchup
+ok 8 - healthy/poor/recovered care changes real arrival pacing; disconnect or closure stops intake without offline catchup
+  ---
+  duration_ms: 98.5955
+  type: 'test'
+  ...
+# Subtest: two15-minute simulated starter sessions at different frame partitions preserve cashflow and care without starvation or freeze
+ok 9 - two15-minute simulated starter sessions at different frame partitions preserve cashflow and care without starvation or freeze
+  ---
+  duration_ms: 1191.2894
+  type: 'test'
+  ...
+# Subtest: closed, absent access and uninhabited habitat suppress intake without cooldown debt or false money
+ok 10 - closed, absent access and uninhabited habitat suppress intake without cooldown debt or false money
+  ---
+  duration_ms: 21.0972
+  type: 'test'
+  ...
+# Subtest: 6000 deterministic ticks preserve distinct identities, bounded safe agents and eventual repeated visits
+ok 11 - 6000 deterministic ticks preserve distinct identities, bounded safe agents and eventual repeated visits
+  ---
+  duration_ms: 7154.7958
+  type: 'test'
+  ...
+# Subtest: close drains all agents safely, repeated commands do not duplicate and reopening uses fresh serials
+ok 12 - close drains all agents safely, repeated commands do not duplicate and reopening uses fresh serials
+  ---
+  duration_ms: 317.5164
+  type: 'test'
+  ...
+# Subtest: emptying the habitat stops new arrivals and birds restored later recover actual intake
+ok 13 - emptying the habitat stops new arrivals and birds restored later recover actual intake
+  ---
+  duration_ms: 45.3626
+  type: 'test'
+  ...
+# Subtest: pause and exact codec/editor reconstruction preserve serial, cooldown, positions and irregular frame equivalence
+ok 14 - pause and exact codec/editor reconstruction preserve serial, cooldown, positions and irregular frame equivalence
+  ---
+  duration_ms: 765.7671
+  type: 'test'
+  ...
+# Subtest: codec rejects impossible positions, serials, fake paid state, duplicate slots and cooldown outside configured curve
+not ok 15 - codec rejects impossible positions, serials, fake paid state, duplicate slots and cooldown outside configured curve
+  ---
+  duration_ms: 214.6724
+  type: 'test'
+  location: 'C:\\MyZooTwin\\tests\\visitor-arrivals.test.mjs:10:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/visitor-arrivals.test.mjs:10:608)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+    Test.postRun (node:internal/test_runner/test:1235:19)
+    Test.run (node:internal/test_runner/test:1163:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: actual visitor rig is shared texture-free and bounded with cleanup after repeated full paths
+ok 16 - actual visitor rig is shared texture-free and bounded with cleanup after repeated full paths
+  ---
+  duration_ms: 395.8765
+  type: 'test'
+  ...
+# Subtest: visitor controls reach only current unpaused ready controller and stale handles do nothing
+ok 17 - visitor controls reach only current unpaused ready controller and stale handles do nothing
+  ---
+  duration_ms: 0.6454
+  type: 'test'
+  ...
+# Subtest: entrance camera focus stays clamped across screen sizes and ignores nonfinite targets
+ok 18 - entrance camera focus stays clamped across screen sizes and ignores nonfinite targets
+  ---
+  duration_ms: 0.7921
+  type: 'test'
+  ...
+# Subtest: real topology chooses shortest adjacent viewing cell; gaps, diagonals, creek, scenery and occupied land never form a route
+ok 19 - real topology chooses shortest adjacent viewing cell; gaps, diagonals, creek, scenery and occupied land never form a route
+  ---
+  duration_ms: 27.3573
+  type: 'test'
+  ...
+# Subtest: full outbound/view/return cycles are exactly once, FIFO bounded, position-continuous and evaluate real inhabited habitat with actual admission
+not ok 20 - full outbound/view/return cycles are exactly once, FIFO bounded, position-continuous and evaluate real inhabited habitat with actual admission
+  ---
+  duration_ms: 2613.5032
+  type: 'test'
+  location: 'C:\\MyZooTwin\\tests\\visitor-navigation.test.mjs:17:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(seen.size>events.length)
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/visitor-navigation.test.mjs:17:1251)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+    Test.postRun (node:internal/test_runner/test:1235:19)
+    Test.run (node:internal/test_runner/test:1163:12)
+    async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)
+  ...
+# Subtest: all21 legal aviaries have an actual legal route, a completed visit and a safe return
+ok 21 - all21 legal aviaries have an actual legal route, a completed visit and a safe return
+  ---
+  duration_ms: 1561.2232
+  type: 'test'
+  ...
+# Subtest: occupied path and final escape bridge cannot be removed; unused/ahead branch edits replan safely and Undo restores topology
+ok 22 - occupied path and final escape bridge cannot be removed; unused/ahead branch edits replan safely and Undo restores topology
+  ---
+  duration_ms: 113.6956
+  type: 'test'
+  ...
+# Subtest: alternate return branch allows safe removal behind a guest without walking across deleted tiles
+ok 23 - alternate return branch allows safe removal behind a guest without walking across deleted tiles
+  ---
+  duration_ms: 592.3803
+  type: 'test'
+  ...
+# Subtest: habitat removal and gate closure preserve positions then return without false viewing or stranded queues; empty restoration recovers
+ok 24 - habitat removal and gate closure preserve positions then return without false viewing or stranded queues; empty restoration recovers
+  ---
+  duration_ms: 110.8474
+  type: 'test'
+  ...
+# Subtest: missing access admits no new greetings; actual connected inhabited restoration recovers intake
+ok 25 - missing access admits no new greetings; actual connected inhabited restoration recovers intake
+  ---
+  duration_ms: 220.4465
+  type: 'test'
+  ...
+# Subtest: moving/viewing state roundtrips exactly, deterministic frame partitions agree and pause/reconstruction never duplicate viewed events
+ok 26 - moving/viewing state roundtrips exactly, deterministic frame partitions agree and pause/reconstruction never duplicate viewed events
+  ---
+  duration_ms: 369.4118
+  type: 'test'
+  ...
+# Subtest: journey codec rejects unsafe positions, missing targets, multiple corridor owners, future ticks, disconnected escape and fake progress
+not ok 27 - journey codec rejects unsafe positions, missing targets, multiple corridor owners, future ticks, disconnected escape and fake progress
+  ---
+  duration_ms: 135.8152
+  type: 'test'
+  location: 'C:\\MyZooTwin\\tests\\visitor-navigation.test.mjs:25:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/visitor-navigation.test.mjs:25:938)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+    Test.postRun (node:internal/test_runner/test:1235:19)
+    Test.run (node:internal/test_runner/test:1163:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: actual animated rigs on turns, viewing and two-way shared corridor remain separated, supported and bounded with unchanged asset pool
+ok 28 - actual animated rigs on turns, viewing and two-way shared corridor remain separated, supported and bounded with unchanged asset pool
+  ---
+  duration_ms: 307.0217
+  type: 'test'
+  ...
+# Subtest: exclusive narrow-corridor policy provides bounded FIFO service to both waiting bays and repeated fresh visits
+ok 29 - exclusive narrow-corridor policy provides bounded FIFO service to both waiting bays and repeated fresh visits
+  ---
+  duration_ms: 1787.4571
+  type: 'test'
+  ...
+1..29
+# tests 29
+# suites 0
+# pass 26
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 21568.9199

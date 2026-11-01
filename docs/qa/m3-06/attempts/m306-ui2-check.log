@@ -1,0 +1,27 @@
+
+> myzootwin.com@0.1.0 check
+> astro check
+
+17.35.26 [content] Syncing content
+17.35.26 [content] Synced content
+17.35.26 [types] Generated 49ms
+17.35.26 [check] Getting diagnostics for Astro files in C:\MyZooTwin...
+[96msrc/game-entry/preview-panel.ts[0m:[93m64[0m:[93m427[0m - [91merror[0m[90m ts(2538): [0mType 'undefined' cannot be used as an index type.
+
+[7m64[0m       const attraction=section.querySelector<HTMLElement>('[data-attraction]'),a=visitorView.attraction;if(attraction){attraction.dataset.reason=a.reason;attraction.dataset.welfare=String(a.welfare??'');attraction.dataset.interval=String(a.intervalTicks);const key=({closed:'attractionClosed',path:'attractionPath',habitat:'attractionHabitat',animals:'attractionAnimals',ready:'attractionReady'}as const)[a.reason],value=copy[key].replace('{w}',String(a.welfare)).replace('{seconds}',(a.intervalTicks/10).toFixed(1));if(attraction.textContent!==value)attraction.textContent=value;}
+[7m  [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                          ~~~[0m
+
+[96mtests/spending.test.mjs[0m:[93m11[0m:[93m10[0m - [93mwarning[0m[90m ts(6133): [0m'history' is declared but its value is never read.
+
+[7m11[0m function history(s,n){const x=s.snapshot();s.dispose();for(let i=x.ledger.length;i<n;i++){x.currency++;x.ledger.push({id:`fixture-credit-${i}`,operationId:`fixture-credit-${i}`,kind:'starter',amount:1,balanceAfter:x.currency,tick:x.tick,relatedId:null});}return createSimulation(x);}
+[7m  [0m [93m         ~~~~~~~[0m
+[96mtests/spending.test.mjs[0m:[93m4[0m:[93m15[0m - [93mwarning[0m[90m ts(6133): [0m'MONEY_RULES' is declared but its value is never read.
+
+[7m4[0m import{PRICES,MONEY_RULES}from'../src/game/economy/spending.ts';import{ticketView}from'../src/game/economy/tickets.ts';
+[7m [0m [93m              ~~~~~~~~~~~[0m
+
+Result (118 files): 
+- 1 error
+- 0 warnings
+- 2 hints
+

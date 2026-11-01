@@ -1,0 +1,150 @@
+TAP version 13
+# Subtest: closed, absent access and uninhabited habitat suppress intake without cooldown debt or false money
+ok 1 - closed, absent access and uninhabited habitat suppress intake without cooldown debt or false money
+  ---
+  duration_ms: 21.7299
+  type: 'test'
+  ...
+# Subtest: 6000 deterministic ticks preserve distinct identities, bounded safe agents and eventual repeated visits
+ok 2 - 6000 deterministic ticks preserve distinct identities, bounded safe agents and eventual repeated visits
+  ---
+  duration_ms: 6133.7361
+  type: 'test'
+  ...
+# Subtest: close drains all agents safely, repeated commands do not duplicate and reopening uses fresh serials
+ok 3 - close drains all agents safely, repeated commands do not duplicate and reopening uses fresh serials
+  ---
+  duration_ms: 144.0003
+  type: 'test'
+  ...
+# Subtest: emptying the habitat stops new arrivals and birds restored later recover actual intake
+ok 4 - emptying the habitat stops new arrivals and birds restored later recover actual intake
+  ---
+  duration_ms: 25.7019
+  type: 'test'
+  ...
+# Subtest: pause and exact codec/editor reconstruction preserve serial, cooldown, positions and irregular frame equivalence
+ok 5 - pause and exact codec/editor reconstruction preserve serial, cooldown, positions and irregular frame equivalence
+  ---
+  duration_ms: 387.701
+  type: 'test'
+  ...
+# Subtest: codec rejects impossible positions, serials, fake paid state, duplicate slots and cooldown outside configured curve
+ok 6 - codec rejects impossible positions, serials, fake paid state, duplicate slots and cooldown outside configured curve
+  ---
+  duration_ms: 108.4259
+  type: 'test'
+  ...
+# Subtest: actual visitor rig is shared texture-free and bounded with cleanup after repeated full paths
+ok 7 - actual visitor rig is shared texture-free and bounded with cleanup after repeated full paths
+  ---
+  duration_ms: 223.9735
+  type: 'test'
+  ...
+# Subtest: visitor controls reach only current unpaused ready controller and stale handles do nothing
+ok 8 - visitor controls reach only current unpaused ready controller and stale handles do nothing
+  ---
+  duration_ms: 0.7667
+  type: 'test'
+  ...
+# Subtest: entrance camera focus stays clamped across screen sizes and ignores nonfinite targets
+ok 9 - entrance camera focus stays clamped across screen sizes and ignores nonfinite targets
+  ---
+  duration_ms: 0.5835
+  type: 'test'
+  ...
+# Subtest: real topology chooses shortest adjacent viewing cell; gaps, diagonals, creek, scenery and occupied land never form a route
+ok 10 - real topology chooses shortest adjacent viewing cell; gaps, diagonals, creek, scenery and occupied land never form a route
+  ---
+  duration_ms: 24.9702
+  type: 'test'
+  ...
+# Subtest: full outbound/view/return cycles are exactly once, FIFO bounded, position-continuous and evaluate real inhabited habitat with actual admission
+ok 11 - full outbound/view/return cycles are exactly once, FIFO bounded, position-continuous and evaluate real inhabited habitat with actual admission
+  ---
+  duration_ms: 2288.1616
+  type: 'test'
+  ...
+# Subtest: all21 legal aviaries have an actual legal route, a completed visit and a safe return
+ok 12 - all21 legal aviaries have an actual legal route, a completed visit and a safe return
+  ---
+  duration_ms: 1360.4611
+  type: 'test'
+  ...
+# Subtest: occupied path and final escape bridge cannot be removed; unused/ahead branch edits replan safely and Undo restores topology
+ok 13 - occupied path and final escape bridge cannot be removed; unused/ahead branch edits replan safely and Undo restores topology
+  ---
+  duration_ms: 88.0679
+  type: 'test'
+  ...
+# Subtest: alternate return branch allows safe removal behind a guest without walking across deleted tiles
+ok 14 - alternate return branch allows safe removal behind a guest without walking across deleted tiles
+  ---
+  duration_ms: 523.8681
+  type: 'test'
+  ...
+# Subtest: habitat removal and gate closure preserve positions then return without false viewing or stranded queues; empty restoration recovers
+ok 15 - habitat removal and gate closure preserve positions then return without false viewing or stranded queues; empty restoration recovers
+  ---
+  duration_ms: 118.4067
+  type: 'test'
+  ...
+# Subtest: missing access admits no new greetings; actual connected inhabited restoration recovers intake
+ok 16 - missing access admits no new greetings; actual connected inhabited restoration recovers intake
+  ---
+  duration_ms: 206.7916
+  type: 'test'
+  ...
+# Subtest: moving/viewing state roundtrips exactly, deterministic frame partitions agree and pause/reconstruction never duplicate viewed events
+ok 17 - moving/viewing state roundtrips exactly, deterministic frame partitions agree and pause/reconstruction never duplicate viewed events
+  ---
+  duration_ms: 329.0819
+  type: 'test'
+  ...
+# Subtest: journey codec rejects unsafe positions, missing targets, multiple corridor owners, future ticks, disconnected escape and fake progress
+not ok 18 - journey codec rejects unsafe positions, missing targets, multiple corridor owners, future ticks, disconnected escape and fake progress
+  ---
+  duration_ms: 117.3298
+  type: 'test'
+  location: 'C:\\MyZooTwin\\tests\\visitor-navigation.test.mjs:25:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    negative journey 1
+    
+    true !== false
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: false
+  actual: true
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/visitor-navigation.test.mjs:25:956)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+    Test.postRun (node:internal/test_runner/test:1235:19)
+    Test.run (node:internal/test_runner/test:1163:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: actual animated rigs on turns, viewing and two-way shared corridor remain separated, supported and bounded with unchanged asset pool
+ok 19 - actual animated rigs on turns, viewing and two-way shared corridor remain separated, supported and bounded with unchanged asset pool
+  ---
+  duration_ms: 287.0676
+  type: 'test'
+  ...
+# Subtest: exclusive narrow-corridor policy provides bounded FIFO service to both waiting bays and repeated fresh visits
+ok 20 - exclusive narrow-corridor policy provides bounded FIFO service to both waiting bays and repeated fresh visits
+  ---
+  duration_ms: 1079.3705
+  type: 'test'
+  ...
+1..20
+# tests 20
+# suites 0
+# pass 19
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 7285.0466

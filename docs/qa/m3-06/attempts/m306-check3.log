@@ -1,0 +1,22 @@
+
+> myzootwin.com@0.1.0 check
+> astro check
+
+17.38.34 [content] Syncing content
+17.38.34 [content] Synced content
+17.38.34 [types] Generated 49ms
+17.38.34 [check] Getting diagnostics for Astro files in C:\MyZooTwin...
+[96mtests/cashflow.test.mjs[0m:[93m2[0m:[93m466[0m - [93mwarning[0m[90m ts(6133): [0m'PRICES' is declared but its value is never read.
+
+[7m2[0m import{createSimulation}from'../src/game/core/simulation.ts';import{createInitialState}from'../src/game/core/initial-state.ts';import{serializeSave,parseSave,validateSave}from'../src/game/persistence/save-v1.ts';import{compactFinance,coherentMoney,totals,retireClosedProofs}from'../src/game/economy/journal.ts';import{attractionView,ATTRACTION_RULES}from'../src/game/visitors/attraction.ts';import{admitTicket,ticketView}from'../src/game/economy/tickets.ts';import{PRICES,MONEY_RULES}from'../src/game/economy/prices.ts';
+[7m [0m [93m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 ~~~~~~[0m
+[96mtests/cashflow.test.mjs[0m:[93m2[0m:[93m62[0m - [93mwarning[0m[90m ts(6133): [0m'createInitialState' is declared but its value is never read.
+
+[7m2[0m import{createSimulation}from'../src/game/core/simulation.ts';import{createInitialState}from'../src/game/core/initial-state.ts';import{serializeSave,parseSave,validateSave}from'../src/game/persistence/save-v1.ts';import{compactFinance,coherentMoney,totals,retireClosedProofs}from'../src/game/economy/journal.ts';import{attractionView,ATTRACTION_RULES}from'../src/game/visitors/attraction.ts';import{admitTicket,ticketView}from'../src/game/economy/tickets.ts';import{PRICES,MONEY_RULES}from'../src/game/economy/prices.ts';
+[7m [0m [93m                                                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+Result (119 files): 
+- 0 errors
+- 0 warnings
+- 2 hints
+

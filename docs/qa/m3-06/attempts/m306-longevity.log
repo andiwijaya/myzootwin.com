@@ -1,0 +1,86 @@
+TAP version 13
+# Subtest: 12000 real build/refund transactions cross94 checkpoints without freeze, growing proof, money creation or old quote replay; codec resumes
+ok 1 - 12000 real build/refund transactions cross94 checkpoints without freeze, growing proof, money creation or old quote replay; codec resumes
+  ---
+  duration_ms: 12825.7945
+  type: 'test'
+  ...
+# Subtest: archived refundable construction and pending Undo proof survive many folds and codec; duplicate refunds never mint coins
+ok 2 - archived refundable construction and pending Undo proof survive many folds and codec; duplicate refunds never mint coins
+  ---
+  duration_ms: 476.8963
+  type: 'test'
+  ...
+# Subtest: command and resource generation proof rejects pre-checkpoint replay after codec even when the target cell is reused
+ok 3 - command and resource generation proof rejects pre-checkpoint replay after codec even when the target cell is reused
+  ---
+  duration_ms: 155.4234
+  type: 'test'
+  ...
+# Subtest: 10000 actual eligible atomic admissions checkpoint bounded receipts, exact income and active proof; retired visitor replay is rejected
+ok 4 - 10000 actual eligible atomic admissions checkpoint bounded receipts, exact income and active proof; retired visitor replay is rejected
+  ---
+  duration_ms: 1740.5767
+  type: 'test'
+  ...
+# Subtest: checkpoint corruption is rejected without mutation: sums, counts, nonce, live proof, maintenance and replay watermarks
+ok 5 - checkpoint corruption is rejected without mutation: sums, counts, nonce, live proof, maintenance and replay watermarks
+  ---
+  duration_ms: 14.0592
+  type: 'test'
+  ...
+# Subtest: lifetime cashflow excludes starter income and exactly reconciles after archive, construction refund, Undo and supplies
+not ok 6 - lifetime cashflow excludes starter income and exactly reconciles after archive, construction refund, Undo and supplies
+  ---
+  duration_ms: 10.3118
+  type: 'test'
+  location: 'C:\\MyZooTwin\\tests\\cashflow.test.mjs:11:1'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + -0
+    - 0
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 0
+  actual: -0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/cashflow.test.mjs:11:442)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+    Test.postRun (node:internal/test_runner/test:1235:19)
+    Test.run (node:internal/test_runner/test:1163:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+  ...
+# Subtest: attraction curve is configurable and depends on actual target access and welfare, not arbitrary display score
+ok 7 - attraction curve is configurable and depends on actual target access and welfare, not arbitrary display score
+  ---
+  duration_ms: 7.4869
+  type: 'test'
+  ...
+# Subtest: healthy/poor/recovered care changes real arrival pacing; disconnect or closure stops intake without offline catchup
+ok 8 - healthy/poor/recovered care changes real arrival pacing; disconnect or closure stops intake without offline catchup
+  ---
+  duration_ms: 92.8447
+  type: 'test'
+  ...
+# Subtest: two15-minute simulated starter sessions at different frame partitions preserve cashflow and care without starvation or freeze
+ok 9 - two15-minute simulated starter sessions at different frame partitions preserve cashflow and care without starvation or freeze
+  ---
+  duration_ms: 914.8661
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 8
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 16420.0231
