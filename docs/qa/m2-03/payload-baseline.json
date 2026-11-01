@@ -1,0 +1,385 @@
+{
+  "generatedAt": "2026-11-01T00:58:15.673Z",
+  "source": "fa2e9581078fe4020a2d718c6aa0b594bf20957d339fe5ddf6f734fec1308010",
+  "buildId": "fc623488e7eb71084183de28cc88be6d09ffbab4399c04c273ae06f31bc3c130",
+  "scope": "Current read-only renderer preview. Same-origin built bytes/gzip estimates, not measured network transfer, first-interaction latency or future populated-game payload",
+  "shell": {
+    "files": [
+      {
+        "path": "play/index.html",
+        "bytes": 25513,
+        "gzipLevel9Bytes": 7028,
+        "sha256": "25f1a6d6fe243891c942115424f26a1683a04d468f086086a298b639741c7133"
+      },
+      {
+        "path": "_astro/play.DZN8E05K.css",
+        "bytes": 12794,
+        "gzipLevel9Bytes": 2522,
+        "sha256": "a5a3ebc5e1ce5beb1c25cff8e816cdbc73d28b3445dbf2fb00867f296a391345"
+      },
+      {
+        "path": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.BgnuD06f.js",
+        "bytes": 48071,
+        "gzipLevel9Bytes": 15194,
+        "sha256": "7a46df5d23d0f2ebc8194945e380bfebd6a58dfbe57835ff9acd331683559fac"
+      }
+    ],
+    "rawBytes": 86378,
+    "gzipLevel9EstimateBytes": 24744
+  },
+  "firstPreviewOpen": {
+    "files": [
+      {
+        "path": "play/index.html",
+        "bytes": 25513,
+        "gzipLevel9Bytes": 7028,
+        "sha256": "25f1a6d6fe243891c942115424f26a1683a04d468f086086a298b639741c7133"
+      },
+      {
+        "path": "_astro/play.DZN8E05K.css",
+        "bytes": 12794,
+        "gzipLevel9Bytes": 2522,
+        "sha256": "a5a3ebc5e1ce5beb1c25cff8e816cdbc73d28b3445dbf2fb00867f296a391345"
+      },
+      {
+        "path": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.BgnuD06f.js",
+        "bytes": 48071,
+        "gzipLevel9Bytes": 15194,
+        "sha256": "7a46df5d23d0f2ebc8194945e380bfebd6a58dfbe57835ff9acd331683559fac"
+      },
+      {
+        "path": "_astro/foundation-scene.BSYQZ-CI.js",
+        "bytes": 616388,
+        "gzipLevel9Bytes": 162292,
+        "sha256": "c09752a45fc9877ae2c4196cd39040fc700c42af46899f163e4511af5313c591"
+      }
+    ],
+    "rawBytes": 702766,
+    "gzipLevel9EstimateBytes": 187036
+  },
+  "externalRuntimeAssets": "Existing Google Fonts stylesheet/fonts are remote and not measured; no external game model/texture/audio loaded",
+  "dist": {
+    "files": 19,
+    "rawBytes": 3768712
+  },
+  "analysis": {
+    "generatedAt": "2026-11-01T00:54:48.582Z",
+    "scope": "Client bundle only; module renderedLength is retained pre-minification code, not additive minified/transfer attribution",
+    "chunks": [
+      {
+        "fileName": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.BgnuD06f.js",
+        "name": "PlayEntry.astro_astro_type_script_index_0_lang",
+        "bytes": 48071,
+        "sha256": "7a46df5d23d0f2ebc8194945e380bfebd6a58dfbe57835ff9acd331683559fac",
+        "isEntry": true,
+        "isDynamicEntry": false,
+        "imports": [],
+        "dynamicImports": [
+          "_astro/foundation-scene.BSYQZ-CI.js"
+        ],
+        "modules": [
+          {
+            "id": "src/game-entry/locale.ts",
+            "renderedLength": 28396,
+            "originalLength": 28805
+          },
+          {
+            "id": "src/game-entry/preview-panel.ts",
+            "renderedLength": 26507,
+            "originalLength": 26547
+          },
+          {
+            "id": "src/scripts/play-entry.ts",
+            "renderedLength": 2804,
+            "originalLength": 3260
+          },
+          {
+            "id": "src/game/render3d/preview-controller.ts",
+            "renderedLength": 2748,
+            "originalLength": 4308
+          },
+          {
+            "id": "\u0000vite/preload-helper.js",
+            "renderedLength": 2206,
+            "originalLength": 2542
+          },
+          {
+            "id": "src/game-entry/selection-presentation.ts",
+            "renderedLength": 1011,
+            "originalLength": 1199
+          },
+          {
+            "id": "src/game/core/session-state.ts",
+            "renderedLength": 494,
+            "originalLength": 862
+          },
+          {
+            "id": "src/components/PlayEntry.astro?astro&type=script&index=0&lang.ts",
+            "renderedLength": 0,
+            "originalLength": 36260
+          }
+        ]
+      },
+      {
+        "fileName": "_astro/foundation-scene.BSYQZ-CI.js",
+        "name": "foundation-scene",
+        "bytes": 616388,
+        "sha256": "c09752a45fc9877ae2c4196cd39040fc700c42af46899f163e4511af5313c591",
+        "isEntry": false,
+        "isDynamicEntry": true,
+        "imports": [
+          "_astro/PlayEntry.astro_astro_type_script_index_0_lang.BgnuD06f.js"
+        ],
+        "dynamicImports": [],
+        "modules": [
+          {
+            "id": "node_modules/three/build/three.core.js",
+            "renderedLength": 682851,
+            "originalLength": 1474762
+          },
+          {
+            "id": "node_modules/three/build/three.module.js",
+            "renderedLength": 647861,
+            "originalLength": 658900
+          },
+          {
+            "id": "src/game/render3d/foundation-scene.ts",
+            "renderedLength": 18348,
+            "originalLength": 18532
+          },
+          {
+            "id": "src/game/persistence/save-v1.ts",
+            "renderedLength": 13363,
+            "originalLength": 13871
+          },
+          {
+            "id": "src/game/core/simulation.ts",
+            "renderedLength": 9392,
+            "originalLength": 9721
+          },
+          {
+            "id": "src/game/render3d/tropical-diorama.ts",
+            "renderedLength": 9278,
+            "originalLength": 9223
+          },
+          {
+            "id": "src/game/render3d/macaw/macaw-geometry.ts",
+            "renderedLength": 8707,
+            "originalLength": 7950
+          },
+          {
+            "id": "src/game/render3d/macaw/macaw-studio.ts",
+            "renderedLength": 8486,
+            "originalLength": 7898
+          },
+          {
+            "id": "src/game/animals/feeding.ts",
+            "renderedLength": 5908,
+            "originalLength": 5701
+          },
+          {
+            "id": "src/game/render3d/camera-controls.ts",
+            "renderedLength": 5789,
+            "originalLength": 5608
+          },
+          {
+            "id": "src/game/animals/autonomy.ts",
+            "renderedLength": 5653,
+            "originalLength": 5453
+          },
+          {
+            "id": "src/game/render3d/macaw/autonomous-birds.ts",
+            "renderedLength": 4866,
+            "originalLength": 4719
+          },
+          {
+            "id": "src/game/render3d/habitat-scene.ts",
+            "renderedLength": 4383,
+            "originalLength": 4316
+          },
+          {
+            "id": "src/game/render3d/placement-preview.ts",
+            "renderedLength": 4052,
+            "originalLength": 4332
+          },
+          {
+            "id": "src/game/world/placement-preview.ts",
+            "renderedLength": 3800,
+            "originalLength": 4509
+          },
+          {
+            "id": "src/game/world/paths.ts",
+            "renderedLength": 3723,
+            "originalLength": 4205
+          },
+          {
+            "id": "src/game/render3d/scene-picking.ts",
+            "renderedLength": 3624,
+            "originalLength": 3769
+          },
+          {
+            "id": "src/game/render3d/macaw/macaw-animation.ts",
+            "renderedLength": 3392,
+            "originalLength": 3478
+          },
+          {
+            "id": "src/game/render3d/feeder-scene.ts",
+            "renderedLength": 3321,
+            "originalLength": 3256
+          },
+          {
+            "id": "src/game/render3d/path-scene.ts",
+            "renderedLength": 2901,
+            "originalLength": 2866
+          },
+          {
+            "id": "src/game/render3d/macaw/macaw-rig.ts",
+            "renderedLength": 2678,
+            "originalLength": 2555
+          },
+          {
+            "id": "src/game/render3d/camera-navigation.ts",
+            "renderedLength": 2338,
+            "originalLength": 2525
+          },
+          {
+            "id": "src/game/render3d/camera-gestures.ts",
+            "renderedLength": 2280,
+            "originalLength": 2444
+          },
+          {
+            "id": "src/game/world/build-habitat.ts",
+            "renderedLength": 2201,
+            "originalLength": 2692
+          },
+          {
+            "id": "src/game/economy/refunds.ts",
+            "renderedLength": 2192,
+            "originalLength": 2273
+          },
+          {
+            "id": "src/game/world/editing.ts",
+            "renderedLength": 1570,
+            "originalLength": 2120
+          },
+          {
+            "id": "src/game/core/initial-state.ts",
+            "renderedLength": 1511,
+            "originalLength": 1693
+          },
+          {
+            "id": "src/game/core/fixed-clock.ts",
+            "renderedLength": 1235,
+            "originalLength": 1440
+          },
+          {
+            "id": "src/game/render3d/frame-loop.ts",
+            "renderedLength": 1083,
+            "originalLength": 1350
+          },
+          {
+            "id": "src/game/render3d/isometric-camera.ts",
+            "renderedLength": 949,
+            "originalLength": 1123
+          },
+          {
+            "id": "src/game/core/events.ts",
+            "renderedLength": 690,
+            "originalLength": 1318
+          },
+          {
+            "id": "src/game/core/random.ts",
+            "renderedLength": 321,
+            "originalLength": 416
+          },
+          {
+            "id": "src/game/core/state.ts",
+            "renderedLength": 169,
+            "originalLength": 2978
+          },
+          {
+            "id": "src/game/render3d/webgl-cleanup.ts",
+            "renderedLength": 97,
+            "originalLength": 230
+          },
+          {
+            "id": "src/game/render3d/macaw/studio-contract.ts",
+            "renderedLength": 58,
+            "originalLength": 391
+          }
+        ]
+      }
+    ]
+  },
+  "disk": {
+    "src": {
+      "files": 47,
+      "logicalBytes": 250565,
+      "skippedSymlinks": 0
+    },
+    "public": {
+      "files": 4,
+      "logicalBytes": 3002839,
+      "skippedSymlinks": 0
+    },
+    "art": {
+      "files": 13,
+      "logicalBytes": 912681,
+      "skippedSymlinks": 0
+    },
+    "docs": {
+      "files": 427,
+      "logicalBytes": 27035664,
+      "skippedSymlinks": 0
+    },
+    ".git": {
+      "files": 1030,
+      "logicalBytes": 19534605,
+      "skippedSymlinks": 0
+    },
+    "node_modules": {
+      "files": 17183,
+      "logicalBytes": 220807753,
+      "skippedSymlinks": 0
+    },
+    "dist": {
+      "files": 19,
+      "logicalBytes": 3768712,
+      "skippedSymlinks": 0
+    },
+    ".qa": {
+      "files": 43,
+      "logicalBytes": 871036,
+      "skippedSymlinks": 0
+    }
+  },
+  "budgets": {
+    "futureFirstPlayBytes": 20000000,
+    "futurePhysicalAndroidPresentationFPS": 30,
+    "futureDesktopPresentationFPS": 60,
+    "screenCSS": [
+      [
+        360,
+        780
+      ],
+      [
+        780,
+        360
+      ],
+      [
+        1366,
+        768
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "qaRunsMax": 5,
+    "qaPruneKeep": 3,
+    "qaLogMaxBytes": 2000000,
+    "qaScreenshotMaxBytes": 2000000,
+    "qaScreenshotMaxCount": 8,
+    "repoPreferredMaxBytes": 10000000000
+  }
+}

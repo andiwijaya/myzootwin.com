@@ -1,0 +1,18 @@
+07.38.21 [content] Syncing content
+07.38.21 [content] Synced content
+07.38.21 [types] Generated 45ms
+07.38.21 [check] Getting diagnostics for Astro files in C:\MyZooTwin...
+[96mtests/feeding.test.mjs[0m:[93m7[0m:[93m20[0m - [93mwarning[0m[90m ts(6133): [0m'foodPort' is declared but its value is never read.
+
+[7m7[0m import {FOOD_RULES,foodPort,feederAnchor} from '../src/game/animals/feeding.ts';
+[7m [0m [93m                   ~~~~~~~~[0m
+
+[96mtests/browser/feeding-dom-scenarios.mjs[0m:[93m7[0m:[93m8[0m - [93mwarning[0m[90m ts(6133): [0m'wait' is declared but its value is never read.
+
+[7m7[0m  const wait=async(predicate,ms=18000)=>{const start=performance.now();while(!predicate(inspect())&&performance.now()-start<ms)await frames(1);check(predicate(inspect()),'real-time condition timed out');};
+[7m [0m [93m       ~~~~[0m
+
+Result (81 files):
+- 0 errors
+- 0 warnings
+- 2 hints

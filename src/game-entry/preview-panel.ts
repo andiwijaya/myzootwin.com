@@ -1,3 +1,4 @@
+import type {FoodView,FoodCommand} from '../game/animals/feeding.ts';
 import type {BirdsView,BirdCommand} from '../game/animals/autonomy.ts';
 import type {StudioView,StudioCommand} from '../game/render3d/macaw/studio-contract.ts';
 import type {EditView,RemovalQuote,EditTarget} from '../game/world/editing.ts';
@@ -32,6 +33,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const events = new AbortController();
   let selected:SceneIdentity|null=null;
   let studio:StudioView={active:false,habitat:false,clip:'perch',angle:'quarter',motionPaused:false,canHabitat:false};
+  let food:FoodView={canPlace:false,habitat:false,exists:false,reachable:false,stock:0,capacity:8,revision:0,portions:[0,0],preview:false,reason:null};
+  const foodDialog=root.querySelector<HTMLDialogElement>('[data-food-dialog]');let foodRemovalRevision:number|null=null;
   let birds:BirdsView={habitat:false,placed:0,birds:[]};
   let editView:EditView={canUndo:false,reason:null,result:null};
   let removal:RemovalQuote|null=null;
@@ -72,7 +75,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const placementTools=root.querySelector<HTMLElement>('[data-placement-tools]');
   function renderPlacement(){
     if(!placementTools)return;const copy=entryMessages[locale],active=Boolean(placement?.active),path=placement?.kind==='path';
-    placementTools.hidden=state.status!=='ready'||studio.active;placementTools.dataset.valid=String(placement?.reason==='ready');
+    placementTools.hidden=state.status!=='ready'||studio.active||food.preview;placementTools.dataset.valid=String(placement?.reason==='ready');
     const start=root.querySelector<HTMLButtonElement>('[data-placement-command="begin"]');if(start){start.hidden=active;start.textContent=copy.placementStart;}
     const pathStart=root.querySelector<HTMLButtonElement>('[data-placement-command="begin-path"]');if(pathStart){pathStart.hidden=active;pathStart.textContent=copy.pathStart;}
     root.querySelector('[data-access-status]')?.replaceChildren(copy[!access?.habitats?'accessNoHabitat':access.connected?'accessConnected':'accessDisconnected'].replace('{n}',String(access?.pathTiles??1)).replace('{r}',String(access?.routeCells??0)));
@@ -100,7 +103,17 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const welcome=tools.querySelector<HTMLButtonElement>('[data-birds-command="welcome"]'),reserve=tools.querySelector<HTMLButtonElement>('[data-birds-command="reserve"]');
     if(welcome){welcome.hidden=birds.placed>0;welcome.disabled=!birds.habitat;welcome.textContent=copy.birdsWelcome;}if(reserve){reserve.hidden=birds.placed===0;reserve.textContent=copy.birdsReserve;}
     tools.querySelector('[data-birds-status]')?.replaceChildren(copy[birds.placed?'birdsPlaced':birds.habitat?'birdsWaiting':'birdsNeedHabitat']);
-    const list=tools.querySelector('[data-birds-list]');if(list){list.replaceChildren();if(birds.placed)for(const [i,b]of birds.birds.entries()){const row=document.createElement('li');row.dataset.birdId=b.id;row.textContent=copy.birdName.replace('{n}',String(i+1))+' · '+copy[b.behavior==='wander'?'birdWander':b.behavior==='perch'?'birdPerch':'birdIdle'];list.append(row);}}
+    const list=tools.querySelector('[data-birds-list]');if(list){list.replaceChildren();if(birds.placed)for(const [i,b]of birds.birds.entries()){const row=document.createElement('li');row.dataset.birdId=b.id;row.textContent=copy.birdStatus.replace('{name}',copy.birdName.replace('{n}',String(i+1))).replace('{behavior}',copy[b.behavior==='eat'?'birdEat':b.behavior==='seek-food'?'birdSeekFood':b.behavior==='wander'?'birdWander':b.behavior==='perch'?'birdPerch':'birdIdle']).replace('{h}',String(b.hunger)).replace('{n}',String(b.foodEaten));list.append(row);}}
+  }
+  function renderFood(){const tools=root.querySelector<HTMLElement>('[data-food-tools]');if(!tools)return;const c=entryMessages[locale];tools.hidden=state.status!=='ready'||studio.active;
+    for(const el of tools.querySelectorAll<HTMLElement>('[data-entry-text]'))el.textContent=c[el.dataset.entryText as EntryMessage];
+    const place=tools.querySelector<HTMLButtonElement>('[data-food-command="preview"]');if(place){place.hidden=food.exists||food.preview;place.disabled=!food.habitat;place.textContent=c.foodPlace;}
+    const preview=tools.querySelector<HTMLElement>('[data-food-preview]');if(preview)preview.hidden=!food.preview;const actions=tools.querySelector<HTMLElement>('[data-food-actions]');if(actions)actions.hidden=!food.exists||food.preview;
+    for(const [cmd,key]of [['confirm','foodConfirm'],['cancel','foodCancel'],['refill','foodFill']]as const){const b=tools.querySelector<HTMLButtonElement>(`[data-food-command="${cmd}"]`);if(b){b.textContent=c[key];if(cmd==='refill')b.disabled=food.stock>=food.capacity;if(cmd==='confirm')b.disabled=!food.canPlace;}}
+    tools.querySelector('[data-food-remove]')?.replaceChildren(c.foodRemove);
+    const reasons={missing:'foodMissing',exists:'foodExists',stale:'foodStale',full:'foodFull',invalid:'foodInvalid',busy:'foodBusy'}as const;
+    const text=c[food.reason?reasons[food.reason]:food.preview&&!food.canPlace?'foodBusy':!food.habitat?'foodNeedHabitat':!food.exists?'foodReady':!food.reachable?'foodUnreachable':food.stock===0?'foodEmpty':food.portions.some(n=>n===0)?'foodOneEmpty':'foodStock'].replace('{n}',String(food.stock)).replace('{cap}',String(food.capacity)).replace('{a}',String(food.portions[0])).replace('{b}',String(food.portions[1]));const status=tools.querySelector('[data-food-status]');if(status?.textContent!==text)status?.replaceChildren(text);
+    root.querySelector('[data-food-keep]')?.replaceChildren(c.foodKeep);root.querySelector('[data-food-remove-confirm]')?.replaceChildren(c.foodRemoveConfirm);root.querySelector('#food-dialog-title')?.replaceChildren(c.foodRemoveTitle);root.querySelector('[data-entry-text="foodRemoveHint"]')?.replaceChildren(c.foodRemoveHint);
   }
   function renderStudio(){
     const copy=entryMessages[locale],ready=state.status==='ready',tools=root.querySelector<HTMLElement>('[data-macaw-tools]');if(!tools)return;
@@ -114,7 +127,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     host?.setAttribute('aria-keyshortcuts',studio.active?(studio.habitat?'ArrowUp ArrowDown ArrowLeft ArrowRight Home Escape':'Escape'):'ArrowUp ArrowDown ArrowLeft ArrowRight Home Escape Enter');
     root.querySelector('[data-camera-help]')?.replaceChildren(copy[studio.active&&studio.habitat?'macawScaleHint':'cameraHelp']);
     if(caption)caption.textContent=copy[studio.active?'macawSubtitle':state.status==='ready'||state.status==='loading'?'previewCaption':'artCaption'];
-    renderBirds();
+    renderBirds();renderFood();
     if(ready){if(title)title.textContent=copy[studio.active?'macawTitle':'previewReady'];if(detail)detail.textContent=copy[studio.active?'macawSubtitle':'previewReadyDetail'];}
   }
 
@@ -124,7 +137,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) return;
     const copy = entryMessages[locale];
     panel.lang = locale;
-    if(next.status!=='ready'){studio={...studio,active:false,habitat:false};selected=null;placement=null;habitatCount=0;access=null;editView={canUndo:false,reason:null,result:null};removal=null;if(editDialog?.open)editDialog.close();}
+    if(next.status!=='ready'){foodRemovalRevision=null;if(foodDialog?.open)foodDialog.close();studio={...studio,active:false,habitat:false};selected=null;placement=null;habitatCount=0;access=null;editView={canUndo:false,reason:null,result:null};removal=null;if(editDialog?.open)editDialog.close();}
     renderPlacement();
     renderSelection();
     if(cameraControls){cameraControls.hidden=next.status!=='ready';cameraControls.setAttribute('aria-label',copy.cameraControls);}
@@ -174,7 +187,14 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     return (onFailure) => module.mountFoundationScene(host, onFailure,{stateStore:sanctuarySessionFor(root)});
   });
   const controller = createPreviewController(load, render);
-  host.addEventListener('scene-birds-change',event=>{birds=(event as CustomEvent<BirdsView>).detail;renderBirds();},{signal:events.signal});
+  host.addEventListener('scene-food-change',event=>{food=(event as CustomEvent<FoodView>).detail;renderFood();renderPlacement();},{signal:events.signal});
+  for(const b of root.querySelectorAll<HTMLButtonElement>('[data-food-command]')){b.addEventListener('keydown',event=>{if(event.repeat&&(event.key==='Enter'||event.key===' '))event.preventDefault();},{signal:events.signal});b.addEventListener('click',event=>{if(event.detail>1)return;const cmd=b.dataset.foodCommand as FoodCommand;controller.food(cmd,food.revision);host.focus({preventScroll:true});host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});}
+  root.querySelector('[data-food-tools]')?.addEventListener('keydown',event=>{if((event as KeyboardEvent).key==='Escape')controller.food('cancel');},{signal:events.signal});
+  root.querySelector('[data-food-remove]')?.addEventListener('click',()=>{if(!food.exists||!foodDialog)return;foodRemovalRevision=food.revision;foodDialog.showModal();controller.setPaused(true);root.querySelector<HTMLElement>('[data-food-keep]')?.focus();},{signal:events.signal});
+  const dismissFood=()=>{foodRemovalRevision=null;foodDialog?.close();controller.setPaused(false);};
+  root.querySelector('[data-food-keep]')?.addEventListener('click',dismissFood,{signal:events.signal});foodDialog?.addEventListener('close',()=>{foodRemovalRevision=null;controller.setPaused(false);},{signal:events.signal});
+  root.querySelector('[data-food-remove-confirm]')?.addEventListener('click',()=>{const rev=foodRemovalRevision;foodRemovalRevision=null;dismissFood();if(rev!==null)controller.food('remove',rev);host.focus({preventScroll:true});host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});
+  host.addEventListener('scene-birds-change' ,event=>{birds=(event as CustomEvent<BirdsView>).detail;renderBirds();},{signal:events.signal});
   for(const button of root.querySelectorAll<HTMLButtonElement>('[data-birds-command]'))button.addEventListener('click',()=>{controller.birds(button.dataset.birdsCommand as BirdCommand);host.focus({preventScroll:true});host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});
   host.addEventListener('scene-studio-change' ,event=>{studio=(event as CustomEvent<StudioView>).detail;renderPlacement();renderSelection();renderStudio();},{signal:events.signal});
   for(const button of root.querySelectorAll<HTMLButtonElement>('[data-studio-command]'))button.addEventListener('click',()=>{const command=button.dataset.studioCommand as StudioCommand;controller.studio(command);host.focus({preventScroll:true});if(command!=='pause')host.scrollIntoView({block:'nearest',behavior:'instant'});},{signal:events.signal});
@@ -216,7 +236,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     setLocale(value: EntryLocale) { if (!disposed) { locale = value; render(state); } },
     setPaused(value: boolean) { if (!disposed) controller.setPaused(value); },
     close: () => { if (!disposed) controller.close(); },
-    dispose() { if (disposed) return; disposed = true; controller.dispose();if(editDialog?.open)editDialog.close(); events.abort(); mounted.delete(root); },
+    dispose() { if (disposed) return; disposed = true; controller.dispose();if(editDialog?.open)editDialog.close(); events.abort(); if(foodDialog?.open)foodDialog.close();mounted.delete(root); },
     inspect: () => ({ state: controller.getState(), session: controller.inspectSession() }),
   };
 }

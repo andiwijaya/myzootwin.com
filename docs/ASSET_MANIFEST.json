@@ -2,7 +2,7 @@
   "schema_version": 1,
   "audited_at": "2026-10-31",
   "baseline_commit": "3b06c6d8d2a920ad5894868059885c98a58217a6",
-  "scope": "Original M2-01 code-native articulated Ara ararauna model and procedural motions added; M0-03 study and old media/rights records retained. No external art, purchase, agreement or upload.",
+  "scope": "Original M2-01 model, M2-02 autonomous pair and M2-03 feeder/eating integration. Earlier study/media/provenance and unresolved legacy-media rights records remain preserved.",
   "assets": [
     {
       "path": "public/images/myzootwin-beranda.png",
@@ -398,6 +398,40 @@
       "textures": 0,
       "usage_decision": "Two actual animals with stable IDs inside the built aviary. Landing branches support idle/wander/perch locomotion only; food/water/energy/enrichment, visitors, economy and durable saves are later milestones.",
       "attribution": "Original project work. Three.js software notice retained; no new third-party art agreement or repository-wide license granted."
+    },
+    {
+      "id": "two_port_feeder_and_consuming_macaws_m2_03",
+      "sources": [
+        {
+          "path": "src/game/animals/feeding.ts",
+          "bytes": 5701,
+          "sha256": "ca791acbf4ffe545d0c1ad19c881694e9a02853571924829aaa8a0b340f905e2"
+        },
+        {
+          "path": "src/game/render3d/feeder-scene.ts",
+          "bytes": 3256,
+          "sha256": "c25533965dc9480b3a9b07839492e18f41e1cab1f22d6db0c8694ea8b8a354b1"
+        },
+        {
+          "path": "src/game/render3d/macaw/autonomous-birds.ts",
+          "bytes": 4719,
+          "sha256": "2b49ee9beab6fd14750c0a5e989a9984d03194cbcd7350b004f30d8c717ce509"
+        }
+      ],
+      "origin": "Original code-native raised terracotta feeding bowls/supports/fruit and state-driven reuse of the unchanged M2-01 original eating rig/pose. No external art input.",
+      "rights_status": "original_project_work_no_new_external_art",
+      "model_asset_id": "blue_yellow_macaw_v1_m2_01",
+      "updates_runtime_of": "autonomous_macaw_pair_m2_02",
+      "station_triangles": 364,
+      "fruit_triangles_each": 56,
+      "maximum_fruit_instances": 8,
+      "maximum_station_plus_fruit_triangles": 812,
+      "owned_shared_geometries": 2,
+      "materials": 2,
+      "textures": 0,
+      "external_asset_inputs": [],
+      "usage_decision": "One safe front-edge two-bowl feeder, independently conserved portions per macaw, visible stock and actual seek/eat/hunger effects. Price/ledger effects, water, rest/energy and full welfare remain later milestones.",
+      "attribution": "Original project work. Existing Three.js MIT software notice retained. No new third-party purchase, art agreement, external upload or repository-wide license grant."
     }
   ],
   "direct_package_notice_spot_checks": [

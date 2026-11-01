@@ -9,7 +9,7 @@ export function populated() {
     if(cells.some(p=>p.x===t.cell.x&&p.z===t.cell.z))t.occupantId='habitat-1';
     if(path.some(p=>p.x===t.cell.x&&p.z===t.cell.z))t.path=true;
   }
-  s.world.resources.push({id:'feeder-1',kind:'food',habitatId:'habitat-1',cell:{x:3,z:3},stock:5,capacity:10});
+  s.world.resources.push({id:'feeder-1',kind:'food',habitatId:'habitat-1',cell:{x:3,z:3},stock:5,capacity:10,revision:0,portions:[3,2]});
   s.animals.forEach((a,i)=>{a.habitatId='habitat-1';a.position={x:3.2+i,z:3.4};a.habitatFit=80;});
   s.animals[0].currentBehavior='seek-food';s.animals[0].target={x:3.5,z:3.5};s.animals[0].targetResourceId='feeder-1';
   s.currency=1530;

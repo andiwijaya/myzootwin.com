@@ -68,6 +68,14 @@ import { english as copy } from '../game-entry/locale';
         <p data-birds-status role="status" aria-live="polite"></p>
         <ul data-birds-list aria-live="off"></ul>
       </section>
+      <section class="macaw-tools" data-food-tools hidden aria-labelledby="food-title">
+        <h3 id="food-title" data-entry-text="foodTitle">{copy.foodTitle}</h3>
+        <p data-entry-text="foodHint">{copy.foodHint}</p>
+        <button type="button" data-food-command="preview" disabled>{copy.foodPlace}</button>
+        <div data-food-preview hidden><p data-entry-text="foodPreview">{copy.foodPreview}</p><button type="button" data-food-command="confirm">{copy.foodConfirm}</button> <button type="button" data-food-command="cancel">{copy.foodCancel}</button></div>
+        <div data-food-actions hidden><button type="button" data-food-command="refill">{copy.foodFill}</button> <button type="button" data-food-remove>{copy.foodRemove}</button></div>
+        <p data-food-status role="status" aria-live="polite"></p>
+      </section>
       <section class="macaw-tools" data-macaw-tools hidden aria-labelledby="macaw-title">
         <button type="button" data-studio-command="open">{copy.macawOpen}</button>
         <div data-macaw-controls hidden>
@@ -120,6 +128,10 @@ import { english as copy } from '../game-entry/locale';
     </figure>
   </div>
 
+  <dialog data-food-dialog aria-labelledby="food-dialog-title">
+    <h2 id="food-dialog-title" tabindex="-1" data-entry-text="foodRemoveTitle">{copy.foodRemoveTitle}</h2><p data-entry-text="foodRemoveHint">{copy.foodRemoveHint}</p>
+    <button type="button" class="dialog-close" data-food-keep>{copy.foodKeep}</button><button type="button" class="dialog-close" data-food-remove-confirm>{copy.foodRemoveConfirm}</button>
+  </dialog>
   <dialog data-edit-dialog aria-labelledby="edit-dialog-title" aria-describedby="edit-dialog-description edit-dialog-refund">
     <h2 id="edit-dialog-title" tabindex="-1" data-entry-text="editTitle">{copy.editTitle}</h2>
     <p data-edit-object></p>

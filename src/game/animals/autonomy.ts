@@ -1,3 +1,4 @@
+import {stepFood} from './feeding.ts';
 import type {Animal,AnimalMotion,Habitat,Point,ZooSaveV1} from '../core/state.ts';
 export const BIRD_PERCH_HEIGHT=.42*.62;
 export const emptyMotion=():AnimalMotion=>({phase:'idle',ticksLeft:0,sequence:0,heading:0,elevation:0});
@@ -8,15 +9,17 @@ function sample(seed:number,sequence:number,slot:number){let v=(seed^Math.imul(s
 const mix=(a:number,b:number,t:number)=>a+(b-a)*t;
 const angle=(a:number,b:number)=>Math.atan2(Math.sin(b-a),Math.cos(b-a));
 export function reserveBird(a:Animal){a.habitatId=null;a.position=null;a.target=null;a.targetResourceId=null;a.currentBehavior='idle';a.motion=emptyMotion();}
-export function welcomeBirds(s:ZooSaveV1){const h=s.world.habitats[0];if(!h||!supportsBirds(h)||s.world.resources.some(r=>r.habitatId===h.id))return false;if(s.animals.some(a=>a.habitatId!==null))return false;for(const [slot,a]of [...s.animals].sort((a,b)=>a.id.localeCompare(b.id)).entries()){a.habitatId=h.id;a.position=birdHome(h,slot).ground;a.target=null;a.targetResourceId=null;a.currentBehavior='idle';a.motion={...emptyMotion(),ticksLeft:15+sample(s.randomSeed,0,slot)%35};}return true;}
+export function welcomeBirds(s:ZooSaveV1){const h=s.world.habitats[0];if(!h||!supportsBirds(h)||s.world.resources.some(r=>r.habitatId===h.id&&r.kind!=='food'))return false;if(s.animals.some(a=>a.habitatId!==null))return false;for(const [slot,a]of [...s.animals].sort((a,b)=>a.id.localeCompare(b.id)).entries()){a.habitatId=h.id;a.position=birdHome(h,slot).ground;a.target=null;a.targetResourceId=null;a.currentBehavior='idle';a.motion={...emptyMotion(),ticksLeft:15+sample(s.randomSeed,0,slot)%35};}return true;}
 function phase(a:Animal,value:AnimalMotion['phase'],ticks:number,target:Point|null){a.motion.phase=value;a.motion.ticksLeft=ticks;a.target=target;a.currentBehavior=value==='idle'||value==='look'?'idle':value==='walk-out'||value==='walk-home'?'wander':'perch';}
 /** Only fixed ticks change authoritative location. Animation never supplies movement or timing. */
-export function stepAnimals(s:ZooSaveV1){const birds=[...s.animals].sort((a,b)=>a.id.localeCompare(b.id));for(const [slot,a]of birds.entries()){
+export function stepAnimals(s:ZooSaveV1){const fed:Array<{animalId:string;resourceId:string}>=[];const birds=[...s.animals].sort((a,b)=>a.id.localeCompare(b.id));for(const [slot,a]of birds.entries()){
  if(!a.habitatId)continue;const h=s.world.habitats.find(h=>h.id===a.habitatId);if(!h||!supportsBirds(h)||!a.position){reserveBird(a);continue;}
  const home=birdHome(h,slot),m=a.motion,p=a.position;
- // Future facilities need a reachability plan before sharing these lanes. A safe reserve is preferable to clipping.
- if(s.world.resources.some(r=>r.habitatId===h.id)){reserveBird(a);continue;}
+ // Food uses verified front-row ports; unsupported future facilities still fail safe.
+ if(s.world.resources.some(r=>r.habitatId===h.id&&r.kind!=='food')){reserveBird(a);continue;}
+ const feeding=stepFood(s,a,h,slot);if(feeding.ate)fed.push({animalId:a.id,resourceId:feeding.ate});if(feeding.handled)continue;
  if(m.phase==='walk-out'||m.phase==='walk-home'){
+  if(s.world.resources.some(r=>r.kind==='food'&&r.habitatId===h.id)&&a.target)a.target.z=Math.min(a.target.z,home.ground.z);
   const t=a.target??home.ground,dx=t.x-p.x,dz=t.z-p.z,d=Math.hypot(dx,dz),desired=d>.001?Math.atan2(dx,dz):m.heading;
   m.heading+=Math.max(-.24,Math.min(.24,angle(m.heading,desired)));
   if(Math.abs(angle(m.heading,desired))<.25&&d>.001){const step=Math.min(.035,d);p.x+=dx/d*step;p.z+=dz/d*step;}
@@ -31,11 +34,11 @@ export function stepAnimals(s:ZooSaveV1){const birds=[...s.animals].sort((a,b)=>
   const desired=up?Math.PI:0;m.heading+=Math.max(-.24,Math.min(.24,angle(m.heading,desired)));
   if(--m.ticksLeft===0){if(up){a.position={...home.perch};m.elevation=BIRD_PERCH_HEIGHT;m.heading=Math.PI;phase(a,'perch',40+sample(s.randomSeed,m.sequence,slot)%60,null);}else{a.position={...home.ground};m.elevation=0;m.heading=0;m.sequence++;phase(a,'idle',22+sample(s.randomSeed,m.sequence,slot)%45,null);}}
  }else if(--m.ticksLeft<=0){
-  if(m.phase==='idle'){const n=sample(s.randomSeed,m.sequence,slot),z=Math.min(...h.cells.map(c=>c.z))+(n%2?1.48:.98);phase(a,'walk-out',120,{x:home.ground.x,z});}
+  if(m.phase==='idle'){const n=sample(s.randomSeed,m.sequence,slot),z=Math.min(...h.cells.map(c=>c.z))+(n%2?(s.world.resources.some(r=>r.kind==='food'&&r.habitatId===h.id)?1.15:1.48):.98);phase(a,'walk-out',120,{x:home.ground.x,z});}
   else if(m.phase==='look')phase(a,'walk-home',120,{...home.ground});
   else phase(a,'descend',24,{...home.ground});
  }
-}}
+}return fed;}
 export type BirdCommand='welcome'|'reserve';
-export interface BirdsView {habitat:boolean;placed:number;birds:Array<{id:string;behavior:'idle'|'wander'|'perch'}>;}
-export function birdsView(s:ZooSaveV1):BirdsView{return {habitat:s.world.habitats.some(supportsBirds),placed:s.animals.filter(a=>a.habitatId!==null).length,birds:s.animals.map(a=>({id:a.id,behavior:a.currentBehavior==='wander'?'wander':a.currentBehavior==='perch'?'perch':'idle'}))};}
+export interface BirdsView {habitat:boolean;placed:number;birds:Array<{id:string;behavior:'idle'|'wander'|'perch'|'seek-food'|'eat';hunger:number;foodEaten:number}>;}
+export function birdsView(s:ZooSaveV1):BirdsView{return {habitat:s.world.habitats.some(supportsBirds),placed:s.animals.filter(a=>a.habitatId!==null).length,birds:s.animals.map(a=>({id:a.id,behavior:a.currentBehavior==='wander'?'wander':a.currentBehavior==='perch'?'perch':a.currentBehavior==='seek-food'?'seek-food':a.currentBehavior==='eat'?'eat':'idle',hunger:Math.round(a.hunger),foodEaten:a.foodEaten}))};}
