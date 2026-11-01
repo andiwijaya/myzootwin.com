@@ -220,3 +220,7 @@ The existing version1 state codec is reused by a dedicated IndexedDB primary/pre
 ## M5-02 protected migration and recovery - 2026-11-01
 
 State schema1 unchanged; strict codec remains the game boundary. Storage envelope1 migrates explicitly to generation-aware2; primary/previous/preserved keys are bounded. One-use quote compares exact raw primary+previous inside atomic archive/replacement transaction. Generation+revision CAS and sticky external conflicts prevent ABA and inflight stale-tab races. Explicit recovery preserves unreadable data; future/no-valid-backup data remains protected. No new sim/RAF. Routine QA disables optional download; actual download completion remains blocked/unrun. See M5-02_SAVE_RECOVERY.md and qa/m5-02.
+
+## M5-03 pause ownership and recoverable restart - 2026-11-01
+
+Explicit pause reasons are independent; preview-controller local dialog holds and embedding-app external holds combine without overriding each other. Background remains held until explicit Resume. Reset/recovery metadata reads are serial-guarded. Atomic reset keeps a fourth bounded restart record, preserves earlier original-recovery data, rotates generation and offers one confirmed full-state restoration; no merge/reward replay. State1/envelope2 and one simulation/RAF remain. See M5-03_PAUSE_RESTART.md.
