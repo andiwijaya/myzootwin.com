@@ -208,3 +208,7 @@ Q04 streak uses only final fixed ticks after Q03, actual causal welfare/resource
 ## M4-06 fixed simulation speed - 2026-11-01
 
 Validated preferences.speed1|10 controls the existing100ms clock, with wall250ms clamp before scaling and max25 fast steps. Single RAF remains; real changes preserve fractional simulated remainder but reanchor browser timestamp, same-rate no-op. Typed speed event saves in-memory session, no command nonce/ledger change. New/restored constructor baseline reset, strict numeric codec, fullreload stillfresh untilM5. No animal/economy/mission/visitor rule changes. See M4-06_SIMULATION_SPEED.md, implementation `e959fbd0b25b7f338a5697de739bef09b2ad8963`.
+
+## M4-07 native real-time QA - 2026-11-01
+
+No app changes in M4-07. Observed aggregate money/mission/bird/visitor invariants hold through three real10-15minute native sessions, speed changes, pause/close, gate closure and actual care recovery. Full reload remains fresh untilM5. Native aggregates do not expose individual journal entries; white-box and fixture checks remain separate evidence. No unsupported recorder/instrumentation or second loop added. See M4-07_GAMEPLAY_QA.md.

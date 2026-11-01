@@ -189,3 +189,7 @@ Current final gate370 tests/146 checked files;22-suite fresh chain272/view,816 t
 ## M4-06 fixed simulation speed - 2026-11-01
 
 Final381 tests/150 files/23 suites280 per view. Verify native fresh Q01-Q04 at1x and10x, real care recovery, keyboard/IDEN44px control, rapid switches, pause/dialog/injected visibility and128-field context/true-unmount remount stability. No fast-time injection or physicalFPS claims. Preserve preflight failures and current explicit receipt writer; verify source/build and original bytes. See M4-06_SIMULATION_SPEED.md, implementation `e959fbd0b25b7f338a5697de739bef09b2ad8963`.
+
+## M4-07 native real-time QA - 2026-11-01
+
+M4-07 uses actual native wall-clock UTC sessions (not simulated minutes) with complete product-action traces, cashflow invariants and genuine interruptions/recovery.381/check/build/routes pass without repeating the historical840 browser suite. Supported runtime has no recording: preserve timestamped original screenshots and keep exact recording acceptance UNAVAILABLE, feature unchecked. Label separate diagnostic fixtures and optional CPU/heap observations honestly. See M4-07_GAMEPLAY_QA.md.
