@@ -1,0 +1,30 @@
+
+> myzootwin.com@0.1.0 check
+> astro check
+
+01.12.56 [vite] Re-optimizing dependencies because vite config has changed
+01.12.56 [content] Syncing content
+01.12.56 [content] Synced content
+01.12.56 [types] Generated 169ms
+01.12.56 [check] Getting diagnostics for Astro files in C:\MyZooTwin...
+[96msrc/game/persistence/autosave.ts[0m:[93m11[0m:[93m686[0m - [91merror[0m[90m ts(2367): [0mThis comparison appears to be unintentional because the types '"dirty" | "saving" | "saved"' and '"error"' have no overlap.
+
+[7m11[0m  async function flush(){stopTimer();if(blocked()||!storageReady||!active||!dirty||!reader)return;if(inflight)return inflight;let payload:string,snapshot:ZooSaveV1;try{snapshot=reader();payload=encodeCheckpointState(snapshot);data=structuredClone(snapshot);}catch(e){failed(e);return;}dirty=false;pendingCritical=false;phase='saving';error=null;notify();inflight=(async()=>{try{const next=checkedCheckpoint(await backend.commit(revision,payload,options.writer,now()));record=next;revision=next.revision;savedTick=snapshot.tick;savedAt=next.writtenAt;phase=dirty?'dirty':'saved';options.committed?.(revision);}catch(e){dirty=true;failed(e);}finally{inflight=undefined;notify();if(dirty&&phase!=='error'&&!blocked())queue(pendingCritical);}})();return inflight;}
+[7m  [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ~~~~~~~~~~~~~~~[0m
+
+[96msrc/game/persistence/durable-backend.ts[0m:[93m15[0m:[93m839[0m - [91merror[0m[90m ts(2322): [0mType 'Promise<IDBDatabase> | undefined' is not assignable to type 'Promise<IDBDatabase>'.
+  Type 'undefined' is not assignable to type 'Promise<IDBDatabase>'.
+
+[7m15[0m  function open():Promise<IDBDatabase>{if(closed||!factory)return Promise.reject(new SaveFault('unavailable'));if(connection)return Promise.resolve(connection);if(opening)return opening;opening=new Promise((resolve,reject)=>{let settled=false;const request=factory.open(SAVE_DATABASE,1);const fail=(e:unknown)=>{if(settled)return;settled=true;reject(fault(e));};request.onupgradeneeded=()=>{if(!request.result.objectStoreNames.contains(SAVE_STORE))request.result.createObjectStore(SAVE_STORE);};request.onblocked=()=>fail(new SaveFault('unavailable'));request.onerror=()=>fail(request.error);request.onsuccess=()=>{if(settled||closed){request.result.close();return;}settled=true;connection=request.result;connection.onversionchange=()=>{connection?.close();connection=undefined;};resolve(connection);};}).finally(()=>{opening=undefined;});return opening;}
+[7m  [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      ~~~~~~[0m
+[96msrc/game/persistence/durable-backend.ts[0m:[93m15[0m:[93m186[0m - [91merror[0m[90m ts(2322): [0mType 'Promise<unknown>' is not assignable to type 'Promise<IDBDatabase>'.
+  Type 'unknown' is not assignable to type 'IDBDatabase'.
+
+[7m15[0m  function open():Promise<IDBDatabase>{if(closed||!factory)return Promise.reject(new SaveFault('unavailable'));if(connection)return Promise.resolve(connection);if(opening)return opening;opening=new Promise((resolve,reject)=>{let settled=false;const request=factory.open(SAVE_DATABASE,1);const fail=(e:unknown)=>{if(settled)return;settled=true;reject(fault(e));};request.onupgradeneeded=()=>{if(!request.result.objectStoreNames.contains(SAVE_STORE))request.result.createObjectStore(SAVE_STORE);};request.onblocked=()=>fail(new SaveFault('unavailable'));request.onerror=()=>fail(request.error);request.onsuccess=()=>{if(settled||closed){request.result.close();return;}settled=true;connection=request.result;connection.onversionchange=()=>{connection?.close();connection=undefined;};resolve(connection);};}).finally(()=>{opening=undefined;});return opening;}
+[7m  [0m [91m                                                                                                                                                                                         ~~~~~~~[0m
+
+Result (152 files): 
+- 3 errors
+- 0 warnings
+- 0 hints
+

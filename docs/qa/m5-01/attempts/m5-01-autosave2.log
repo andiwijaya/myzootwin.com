@@ -1,0 +1,26 @@
+Γ£ö empty read does not write or create progress; Continue needs a real saved game (3.1399ms)
+Γ£ö new game durably stores full versioned starter state and exposes truthful saved summary (7.0845ms)
+Γ£ö saved game blocks fresh overwrite and Continue restores all data with no elapsed-time catchup (18.643ms)
+Γ£ö many tick checkpoints coalesce to one bounded timer and latest snapshot, not one write per tick (11.8924ms)
+Γ£ö critical checkpoint replaces a delayed timer without dropping latest committed transaction state (4.845ms)
+Γ£ö one in-flight write serializes latest dirty progress and revision; saving never means pending data is saved (5.0922ms)
+Γ£ö quota failure keeps primary and previous bytes, stops automatic retries and retries latest state explicitly (5.1785ms)
+Γ£ö unreadable stored data is never erased replaced or silently loaded as new game (2.0623ms)
+Γ£ö blocked storage permits explicitly temporary play without claiming a save or retrying each tick (0.401ms)
+Γ£ö retry after unavailable access cannot overwrite an existing hidden save with temporary progress (1.3666ms)
+Γ£ö retry after unavailable empty storage can persist temporary progress safely (2.4584ms)
+Γ£ö two writers cannot both replace the same revision; loser pauses with conflict and winner proof remains (10.6256ms)
+Γ£ö external revision notification freezes active writer but refreshes inactive Continue metadata (6.5658ms)
+Γ£ö dispose drains in-flight and latest state before close, cancels timers and cannot schedule afterward (5.2558ms)
+Γ£ö invalid in-memory checkpoint does not reach backend or damage valid primary (1.9551ms)
+Γ£ö all four missions compacted economy birds visitors resources RNG speed and required settings roundtrip intact (705.4466ms)
+Γ£ö envelope bounds reject future format extra fields malformed writer and invalid revisions (1.7163ms)
+Γ£ö no IndexedDB capability rejects explicitly and cannot claim a successful write (1.0381ms)
+Γä╣ tests 18
+Γä╣ suites 0
+Γä╣ pass 18
+Γä╣ fail 0
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 988.0203

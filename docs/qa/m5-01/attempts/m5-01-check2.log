@@ -1,0 +1,18 @@
+
+> myzootwin.com@0.1.0 check
+> astro check
+
+01.16.35 [content] Syncing content
+01.16.35 [content] Synced content
+01.16.35 [types] Generated 62ms
+01.16.35 [check] Getting diagnostics for Astro files in C:\MyZooTwin...
+[96msrc/game/persistence/autosave.ts[0m:[93m11[0m:[93m686[0m - [91merror[0m[90m ts(2367): [0mThis comparison appears to be unintentional because the types '"dirty" | "saving" | "saved"' and '"error"' have no overlap.
+
+[7m11[0m  async function flush(){stopTimer();if(blocked()||!storageReady||!active||!dirty||!reader)return;if(inflight)return inflight;let payload:string,snapshot:ZooSaveV1;try{snapshot=reader();payload=encodeCheckpointState(snapshot);data=structuredClone(snapshot);}catch(e){failed(e);return;}dirty=false;pendingCritical=false;phase='saving';error=null;notify();inflight=(async()=>{try{const next=checkedCheckpoint(await backend.commit(revision,payload,options.writer,now()));record=next;revision=next.revision;savedTick=snapshot.tick;savedAt=next.writtenAt;phase=dirty?'dirty':'saved';options.committed?.(revision);}catch(e){dirty=true;failed(e);}finally{inflight=undefined;notify();if(dirty&&phase!=='error'&&!blocked())queue(pendingCritical);}})();return inflight;}
+[7m  [0m [91m                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             ~~~~~~~~~~~~~~~[0m
+
+Result (153 files): 
+- 1 error
+- 0 warnings
+- 0 hints
+

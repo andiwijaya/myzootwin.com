@@ -1,0 +1,27 @@
+{
+  "status": "PASS_WITH_EXPLICIT_SOURCE_BOUNDARY",
+  "freshNativeMissionReloadRun": "20261101T191016Z-e0106a3a",
+  "freshNativeMissionReloadSource": "174cf07efdfcd73a1a89086a4fed338169ad5c92d9e7cf1045f5773f0ff26754",
+  "freshNativeMissionReloadBuild": "614627de1b19db2ed053244ee07dd637ebd89100fb678e90c846bed5bc03acc2",
+  "missionReloads": 4,
+  "coldTabReopen": true,
+  "visibleFields": [
+    "balance",
+    "cashflow",
+    "mission",
+    "birds",
+    "world",
+    "speed"
+  ],
+  "savedTickExact": true,
+  "finalSourceRun": "20261101T194003Z-fdf1450b",
+  "changedFilesAfterFreshRun": [
+    "src/game-entry/locale.ts",
+    "src/game-entry/thriving-mission-panel.ts",
+    "src/game/persistence/durable-backend.ts",
+    "tests/autosave.test.mjs",
+    "tests/browser/prepare-preview-harness.mjs",
+    "tests/browser/ticket-dom-scenarios.mjs"
+  ],
+  "changeDescription": "Obsolete no-autosave ID/EN text corrected; timestamp envelope range guarded with regression; matching ticket-test expectation and QA diagnostic wrapping corrected. All other game/core/renderer and persistence code identical. Final source has 404 tests, 27 actual-IDB fixture cases, actual complete-save reload/reopen/settings/conflict/care and 280 renderer cases. Candidate evidence is not relabeled as final-source evidence."
+}

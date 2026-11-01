@@ -212,3 +212,7 @@ Validated preferences.speed1|10 controls the existing100ms clock, with wall250ms
 ## M4-07 native real-time QA - 2026-11-01
 
 No app changes in M4-07. Observed aggregate money/mission/bird/visitor invariants hold through three real10-15minute native sessions, speed changes, pause/close, gate closure and actual care recovery. Full reload remains fresh untilM5. Native aggregates do not expose individual journal entries; white-box and fixture checks remain separate evidence. No unsupported recorder/instrumentation or second loop added. See M4-07_GAMEPLAY_QA.md.
+
+## M5-01 durable local checkpoints - 2026-11-01
+
+The existing version1 state codec is reused by a dedicated IndexedDB primary/previous-good atomic CAS transaction. Autosave owns one 2s timer/inflight write/latest reader; synchronous rule execution completes before deferred snapshot, no second simulation/RAF. Actual logical checkpoints, paused Continue/no offline catch-up, stale-writer conflict, strict no-wipe unreadable boundary and safe late-open/dispose. Full progress/proofs/preferences persist; transient Undo/camera/ghost do not. Detailed migration/recovery remainsM5-02. See M5-01_AUTOSAVE_CONTINUE.md and qa/m5-01.

@@ -193,3 +193,7 @@ Final381 tests/150 files/23 suites280 per view. Verify native fresh Q01-Q04 at1x
 ## M4-07 native real-time QA - 2026-11-01
 
 M4-07 uses actual native wall-clock UTC sessions (not simulated minutes) with complete product-action traces, cashflow invariants and genuine interruptions/recovery.381/check/build/routes pass without repeating the historical840 browser suite. Supported runtime has no recording: preserve timestamped original screenshots and keep exact recording acceptance UNAVAILABLE, feature unchecked. Label separate diagnostic fixtures and optional CPU/heap observations honestly. See M4-07_GAMEPLAY_QA.md.
+
+## M5-01 durable local checkpoints - 2026-11-01
+
+M5-01 adds tests/autosave.test.mjs and the generated autosave-harness.html (not a product route). Run the nine explicitly labelled actual-IDB scenarios via #qa-save-run in three viewport sizes and capture real quota-error visuals via #qa-save-error-view. Native product reload/Continue/tab reopening and two-tab conflicts use actual product controls; never replace them with fixture roundtrips. Preserve original source IDs for superseded candidate evidence; final-source404/check/build/9routes/27storage/280renderer plus real complete-save restore/care/settings/conflict all pass. No fake native injection, physical-device or process-restart claim. See M5-01_AUTOSAVE_CONTINUE.md and qa/m5-01.

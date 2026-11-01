@@ -1,0 +1,8 @@
+{
+  "status": "RESOLVED_FORMAT_CHECK_ONLY",
+  "failedAction": "git diff --cached --check before docs commit",
+  "result": "exit2: preserved CRLF archive-index JSON under -text was seen as trailing CR whitespace. No docs commit occurred.",
+  "resolution": "Add folder-scoped *.json whitespace=cr-at-eol. Exact evidence and archive-index bytes retained; no global Git setting, source change or check bypass. Re-run actual scoped whitespace check.",
+  "sourceAndBuildUnchanged": true,
+  "permissionDenied": false
+}
