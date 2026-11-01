@@ -37,8 +37,8 @@ export interface FinanceCheckpoint {
 }
 export interface Missions {
   currentId: MissionId | null; completedIds: MissionId[];
-  rewards: Array<{ missionId: MissionId; ledgerEntryId: EntityId } | { missionId: MissionId; unlockId: "aviary-blossoms"; tick:number; command:number }>;
-  objectives: { habitatConnected: boolean; birdsFedIds: EntityId[]; birdsWateredIds: EntityId[]; comfortableTicks: number; viewedVisitorIds: EntityId[]; thrivingTicks: number; };
+  rewards: Array<{ missionId: MissionId; ledgerEntryId: EntityId } | { missionId: MissionId; unlockId: "aviary-blossoms"; tick:number; command:number } | { missionId: MissionId; ledgerEntryId:EntityId; badgeId:"first-visitors"; tick:number; command:number }>;
+  objectives: { habitatConnected: boolean; birdsFedIds: EntityId[]; birdsWateredIds: EntityId[]; comfortableTicks: number; viewedVisitorIds: EntityId[]; admittedVisitorIds:EntityId[]; viewingEvidence:VisitorFeedback|null; thrivingTicks: number; };
 }
 export interface Preferences { locale: 'id' | 'en'; graphics: 'auto' | 'low' | 'high'; muted: boolean; reducedMotion: boolean; }
 /** Serializable data only. No mesh/DOM/class references or runtime accumulator. */

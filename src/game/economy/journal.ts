@@ -42,12 +42,12 @@ export function coherentMoney(s:ZooSaveV1):boolean{
  return purchaseBook(s.ledger,c)!==null;
 }
 /** Only active visitor proof remains live; retired serials cannot be revived after compaction. */
-export function retireClosedProofs(s:ZooSaveV1){const c=s.economy.checkpoint,active=new Set(s.visitors.map(v=>v.id)),mission=new Set(s.missions.objectives.viewedVisitorIds);c.openSerials=c.openSerials.filter(n=>active.has(`arrival-${n}`));c.tickets=c.tickets.filter(p=>active.has(p.admission.visitorId)||mission.has(p.admission.visitorId));}
+export function retireClosedProofs(s:ZooSaveV1){const c=s.economy.checkpoint,active=new Set(s.visitors.map(v=>v.id)),mission=new Set([...s.missions.objectives.viewedVisitorIds,...s.missions.objectives.admittedVisitorIds]);c.openSerials=c.openSerials.filter(n=>active.has(`arrival-${n}`));c.tickets=c.tickets.filter(p=>active.has(p.admission.visitorId)||mission.has(p.admission.visitorId));}
 /** Fold complete accepted transactions, never arbitrary raw deletion. Proof and replay barriers remain bounded. */
 export function compactFinance(s:ZooSaveV1,pinRefundIds:readonly string[]=[],force=false):boolean{
  if(!s.ledger.length||!force&&s.ledger.length<MONEY_RULES.journalEntries)return false;
  if(!coherentMoney(s))throw new Error('Cannot checkpoint inconsistent finances');
- const c=s.economy.checkpoint,book=purchaseBook(s.ledger,c)!;const amounts=totals(s),active=new Set(s.visitors.map(v=>v.id)),mission=new Set(s.missions.objectives.viewedVisitorIds);
+ const c=s.economy.checkpoint,book=purchaseBook(s.ledger,c)!;const amounts=totals(s),active=new Set(s.visitors.map(v=>v.id)),mission=new Set([...s.missions.objectives.viewedVisitorIds,...s.missions.objectives.admittedVisitorIds]);
  const refunds=[...book.refunds.values()].filter(f=>pinRefundIds.includes(f.entry.id)),pinned=new Set(refunds.map(f=>f.entry.relatedId));
  if(pinRefundIds.some(id=>!book.refunds.has(id)))throw new Error('Missing Undo refund proof');
  const purchases=[...book.purchases.values()].filter(p=>pinned.has(p.entry.id)||p.refunded<-p.entry.amount);
