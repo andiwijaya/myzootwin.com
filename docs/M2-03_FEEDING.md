@@ -1,6 +1,6 @@
 # M2-03 - functional feeding
 
-Status: COMPLETE on2026-11-01 UTC for the player-to-bird feeding loop. Implementation/evidence commit is recorded in the living completion record. Local only; no push/deployment. M0-01 external configuration remains partial. Next:M2-04 water placement, supply and seek-water.
+Status: COMPLETE on2026-11-01 UTC for the player-to-bird feeding loop. Implementation/evidence commit: db73fcaacabcbbe7b9f9d16b4faa44282e9e37ad (local only). Local only; no push/deployment. M0-01 external configuration remains partial. Next:M2-04 water placement, supply and seek-water.
 
 ## Player outcome
 
@@ -63,4 +63,4 @@ Original journal pages/layouts/public assets/SEO, dependencies, world/path/refun
 
 This slice deliberately uses one fixed safe station with two approach lanes, not a general facility editor. Fine details use camera inspection/model close-up; whole-map phone birds remain small and wire/posts may occlude parts. Water, rest/energy/enrichment, full welfare, economy, missions, durable saves/full localization/release remain their later gates. **M2-04 must extend the current non-food facility fail-safe and define reachable water geometry/availability**; currently unsupported non-food facilities return birds safely to reserve. Existing BASE-01/BASE-02 remain recorded. Physical Android/true touch, Safari/iOS, presentedFPS/GPU, network and live production are UNRUN. M0-01 exact external Cloudflare/GitHub configuration remains pending; no login/new grant attempted.
 
-Verified V1 completion becomes **17/51 (33.33%)** when implementation/evidence commit and living records are written. M7 remains12 deferred items. No push/deploy/GitHub Actions or unrelated Pelatuk changes.
+Verified V1 completion: **17/51 (33.33%)**; implementation/evidence committed locally and living records updated. M7 remains12 deferred items. No push/deploy/GitHub Actions or unrelated Pelatuk changes.
