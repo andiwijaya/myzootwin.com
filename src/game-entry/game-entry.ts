@@ -1,3 +1,5 @@
+import {chooseGameLocale} from './i18n-format.ts';
+import {formatNumber} from './i18n-format.ts';
 import { mountHudLayout } from './hud-layout.ts';
 import { createPauseGate } from './pause-gate.ts';
 import { mountRestartPanel } from './restart-panel.ts';
@@ -21,21 +23,24 @@ export function mountGameEntry(root: HTMLElement, options: {
     backend?: DurableBackend;
     broadcast?: boolean;
     allowRecoveryDownload?: boolean;
+    preferenceStorage?: Pick<Storage, 'getItem' | 'setItem'> | null;
+    browserLanguage?: string;
 } = {}) {
     mounted.get(root)?.dispose();
     let disposed = false;
     root.dataset.enhanced = 'true';
-    let storage: Storage | undefined;
+    let storage: Pick<Storage, 'getItem' | 'setItem'> | undefined;
     try {
-        storage = window.localStorage;
+        storage = 'preferenceStorage' in options ? options.preferenceStorage ?? undefined : window.localStorage;
     }
     catch { /* Storage may be blocked. */ }
-    const initial = readEntryLocale(storage, navigator.language);
+    const initial = readEntryLocale(storage, options.browserLanguage ?? navigator.language);
     let preferenceState: 'ready' | 'saved' | 'temporary' = !initial.storageAvailable ? 'temporary' : initial.source === 'saved' ? 'saved' : 'ready';
     const select = root.querySelector<HTMLSelectElement>('[data-entry-language]');
     const status = root.querySelector<HTMLElement>('[data-preference-status]');
     let preview: ReturnType<typeof mountPreviewPanel> | undefined;
     let locale: EntryLocale = initial.locale;
+    let manualLocale = initial.source === 'saved';
     let resumePending = false;
     let recoveryPanel: ReturnType<typeof mountRecoveryPanel> | undefined;
     let restartPanel: ReturnType<typeof mountRestartPanel> | undefined;
@@ -68,8 +73,8 @@ export function mountGameEntry(root: HTMLElement, options: {
         for (const selector of ['meta[property="og:title"]', 'meta[name="twitter:title"]']) {
             document.querySelector<HTMLMetaElement>(selector)?.setAttribute('content', copy.pageTitle);
         }
-        if (select)
-            select.value = locale;
+        for (const element of root.querySelectorAll<HTMLElement>('[data-entry-aria]')) { const key = element.dataset.entryAria as EntryMessage; if(key in copy)element.setAttribute('aria-label',copy[key]); }
+        if (select) { select.value = locale; select.setAttribute('aria-label',copy.language); }
         if (status)
             status.textContent = copy[preferenceState === 'saved' ? 'preferenceSaved' : preferenceState === 'temporary' ? 'preferenceTemporary' : 'preferenceReady'];
         preview?.setLocale(locale);
@@ -82,12 +87,14 @@ export function mountGameEntry(root: HTMLElement, options: {
         const value = (event as CustomEvent<unknown>).detail;
         if (!isEntryLocale(value))
             return;
+        manualLocale = true;
         preferenceState = saveEntryLocale(storage, value) ? 'saved' : 'temporary';
         render(value);
     }, { signal: events.signal });
     select?.addEventListener('change', () => {
         if (!isEntryLocale(select.value))
             return;
+        manualLocale = true;
         preferenceState = saveEntryLocale(storage, select.value) ? 'saved' : 'temporary';
         render(select.value);
     }, { signal: events.signal });
@@ -121,7 +128,7 @@ export function mountGameEntry(root: HTMLElement, options: {
     for (const dialog of root.querySelectorAll<HTMLDialogElement>('dialog')) {
         dialog.addEventListener('close', () => syncPause(), { signal: events.signal });
     }
-    const copySave = { en: { loading: 'Checking local progress...', empty: 'No saved sanctuary yet. Play to begin.', available: 'Saved sanctuary found on this device. Continue to open it.', dirty: 'Changes pending. Autosave will update shortly.', saving: 'Saving local progress...', saved: 'Progress saved on this device.', unavailable: 'Local storage is unavailable. Progress is temporary for this visit.', unreadable: 'Stored progress cannot be read. It has been kept unchanged; starting over is blocked to protect it.', error: 'Progress is not saved. The last good save is kept.', conflict: 'Another tab changed this sanctuary. This tab is paused; reload the saved progress before playing.', retry: 'Retry saving / storage', reload: 'Reload saved progress', resume: 'Resume zoo', resumeNote: 'Your saved world is loaded and paused. Nothing progressed while you were away.', detail: 'Last save: {time} · {coins} ZC · {missions} missions · {birds} birds. This device only; no cloud backup.' }, id: { loading: 'Memeriksa progres lokal...', empty: 'Belum ada suaka tersimpan. Main untuk memulai.', available: 'Suaka tersimpan ditemukan di perangkat ini. Lanjutkan untuk membukanya.', dirty: 'Ada perubahan. Autosave akan segera diperbarui.', saving: 'Menyimpan progres lokal...', saved: 'Progres tersimpan di perangkat ini.', unavailable: 'Penyimpanan lokal tidak tersedia. Progres hanya sementara selama kunjungan ini.', unreadable: 'Progres tersimpan tidak dapat dibaca. Data tetap utuh; mulai baru diblokir untuk melindunginya.', error: 'Progres belum tersimpan. Save terakhir yang valid tetap disimpan.', conflict: 'Tab lain mengubah suaka ini. Tab ini dijeda; muat ulang progres tersimpan sebelum bermain.', retry: 'Coba lagi simpan / akses', reload: 'Muat ulang progres tersimpan', resume: 'Lanjut bermain', resumeNote: 'Dunia tersimpan sudah dimuat dan dijeda. Tidak ada progres selama kamu pergi.', detail: 'Save terakhir: {time} · {coins} ZC · {missions} misi · {birds} burung. Hanya perangkat ini; tanpa cadangan cloud.' } };
+    const copySave = { en: { loading: 'Checking local progress...', empty: 'No saved sanctuary yet. Play to begin.', available: 'Saved sanctuary found on this device. Continue to open it.', dirty: 'Changes pending. Autosave will update shortly.', saving: 'Saving local progress...', saved: 'Progress saved on this device.', unavailable: 'Local storage is unavailable. Progress is temporary for this visit.', unreadable: 'Stored progress cannot be read. It has been kept unchanged; starting over is blocked to protect it.', error: 'Progress is not saved. The last good save is kept.', conflict: 'Another tab changed this sanctuary. This tab is paused; reload the saved progress before playing.', retry: 'Retry saving / storage', reload: 'Reload saved progress', resume: 'Resume zoo', resumeNote: 'Your saved world is loaded and paused. Nothing progressed while you were away.', detail: 'Last save: {time} · {coins} ZC · {missions} missions · {birds} birds. This device only; no cloud backup.' }, id: { loading: 'Memeriksa progres lokal...', empty: 'Belum ada suaka tersimpan. Main untuk memulai.', available: 'Suaka tersimpan ditemukan di perangkat ini. Lanjutkan untuk membukanya.', dirty: "Ada perubahan. Simpan otomatis akan segera diperbarui.", saving: 'Menyimpan progres lokal...', saved: 'Progres tersimpan di perangkat ini.', unavailable: 'Penyimpanan lokal tidak tersedia. Progres hanya sementara selama kunjungan ini.', unreadable: 'Progres tersimpan tidak dapat dibaca. Data tetap utuh; mulai baru diblokir untuk melindunginya.', error: "Progres belum tersimpan. Simpanan terakhir yang valid tetap disimpan.", conflict: 'Tab lain mengubah suaka ini. Tab ini dijeda; muat ulang progres tersimpan sebelum bermain.', retry: 'Coba lagi simpan / akses', reload: 'Muat ulang progres tersimpan', resume: 'Lanjut bermain', resumeNote: 'Dunia tersimpan sudah dimuat dan dijeda. Tidak ada progres selama kamu pergi.', detail: "Simpanan terakhir: {time} · {coins} ZC · {missions} misi · {birds} burung. Hanya perangkat ini; tanpa cadangan daring." } };
     function renderSave() {
         syncPause();
         const view = durable.view(), c = copySave[locale], panel = root.querySelector<HTMLElement>('[data-save-panel]');
@@ -140,7 +147,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         panel.setAttribute('aria-label', locale === 'id' ? 'Progres game lokal' : 'Local game progress');
         root.querySelector('[data-save-status]')?.replaceChildren(c[view.phase]);
         const detail = root.querySelector('[data-save-detail]');
-        detail?.replaceChildren(view.savedAt === null ? '' : c.detail.replace('{time}', new Intl.DateTimeFormat(locale, { hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(view.savedAt)).replace('{coins}', String(view.savedCurrency)).replace('{missions}', String(view.savedMissions)).replace('{birds}', String(view.savedBirds)));
+        detail?.replaceChildren(view.savedAt === null ? '' : c.detail.replace('{time}', new Intl.DateTimeFormat(locale, { hour: '2-digit', minute: '2-digit', second: '2-digit' }).format(view.savedAt)).replace('{coins}', formatNumber(view.savedCurrency,locale)).replace('{missions}', formatNumber(view.savedMissions,locale)).replace('{birds}', formatNumber(view.savedBirds,locale)));
         const bad = ['error', 'unreadable', 'conflict', 'unavailable'].includes(view.phase), error = root.querySelector<HTMLElement>('[data-save-error]');
         if (error) {
             error.hidden = !bad;
@@ -214,7 +221,7 @@ export function mountGameEntry(root: HTMLElement, options: {
                 durable.externalRevision(value.revision, typeof value.generation === 'string' ? value.generation : undefined);
         }, { signal: events.signal });
     }
-    recoveryPanel = mountRecoveryPanel(root, { save: durable, allowDownload: options.allowRecoveryDownload !== false, locale: () => locale, pause: () => pauseGate.hold('dialog', true), closeGame: () => { resumePending = false; preview?.close(); }, restored: () => { locale = durable.savedLocale() ?? locale; render(locale); } });
+    recoveryPanel = mountRecoveryPanel(root, { save: durable, allowDownload: options.allowRecoveryDownload !== false, locale: () => locale, pause: () => pauseGate.hold('dialog', true), closeGame: () => { resumePending = false; preview?.close(); }, restored: () => { locale = chooseGameLocale(locale, manualLocale, durable.savedLocale()); render(locale); } });
     function gateGameplay(paused: boolean, hard: boolean) {
         const hud = root.dataset.hudActive === 'true';
         const layout = root.querySelector<HTMLElement>('[data-guide-layout]'), stage = root.querySelector<HTMLElement>('[data-preview-stage]');
@@ -267,13 +274,13 @@ export function mountGameEntry(root: HTMLElement, options: {
     pauseObserver.observe(root, { subtree: true, attributes: true, attributeFilter: ['open', 'data-renderer-state'] });
     if (document.hidden)
         pauseGate.hold('background', true);
-    restartPanel = mountRestartPanel(root, { save: durable, locale: () => locale, pause: () => pauseGate.hold('manual', true), closeGame: () => { resumePending = false; preview?.close(); }, replaced: () => { locale = durable.savedLocale() ?? locale; render(locale); } });
+    restartPanel = mountRestartPanel(root, { save: durable, locale: () => locale, pause: () => pauseGate.hold('manual', true), closeGame: () => { resumePending = false; preview?.close(); }, replaced: () => { locale = chooseGameLocale(locale, manualLocale, durable.savedLocale()); render(locale); } });
     const hudLayout = mountHudLayout(root);
     const ready = (async () => {
         await durable.load();
         if (disposed)
             return;
-        locale = durable.savedLocale() ?? locale;
+        locale = chooseGameLocale(locale, manualLocale, durable.savedLocale());
         preview = mountPreviewPanel(root, { stateStore: durable.session, canOpen: () => durable.canOpen(), beforeOpen: () => durable.view().active || durable.startNew(locale) });
         preview.setPaused(pauseGate.paused());
         render(locale);

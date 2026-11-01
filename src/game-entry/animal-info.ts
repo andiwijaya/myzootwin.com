@@ -1,3 +1,4 @@
+import {formatNumber} from './i18n-format.ts';
 import { revealHudTarget, scrollHudTarget } from './hud-layout.ts';
 import type {BirdsView,BirdInfo} from '../game/animals/autonomy.ts';
 import type {CareCause} from '../game/animals/welfare.ts';
@@ -10,13 +11,13 @@ export function mountAnimalInfo(root:HTMLElement,signal:AbortSignal){
  list?.replaceChildren();if(panel){panel.hidden=true;panel.removeAttribute('data-animal-id');}set(announcement,'');const oldAlerts=root.querySelector('[data-care-alerts]');oldAlerts?.replaceChildren();oldAlerts?.removeAttribute('data-signature');oldAlerts?.removeAttribute('lang');
  let view:BirdsView={habitat:false,placed:0,birds:[],tick:0},locale:EntryLocale='en',active=false,selected:string|null=null,lastSignature='',lastAnnouncedTick=-100;
  const nodes=new Map<string,{row:HTMLLIElement;summary:HTMLParagraphElement;status:HTMLParagraphElement;button:HTMLButtonElement}>();
- const name=(b:BirdInfo)=>entryMessages[locale].birdName.replace('{n}',String(b.ordinal));
+ const name=(b:BirdInfo)=>entryMessages[locale].birdName.replace('{n}',formatNumber(b.ordinal,locale));
  function draw(){const c=entryMessages[locale];
   for(const [id,n]of nodes)if(!view.placed||!view.birds.some(b=>b.id===id)){n.row.remove();nodes.delete(id);}
   if(!view.placed){selected=null;lastSignature='';set(announcement,'');}
   if(view.placed)for(const b of view.birds){let n=nodes.get(b.id);if(!n){const row=document.createElement('li'),summary=document.createElement('p'),status=document.createElement('p'),button=document.createElement('button');row.dataset.birdId=b.id;summary.dataset.birdSummary='';status.dataset.birdWellbeing='';status.setAttribute('aria-live','off');button.type='button';button.dataset.animalInfo=b.id;button.setAttribute('aria-controls','animal-details');row.append(summary,status,button);list?.append(row);n={row,summary,status,button};nodes.set(b.id,n);}
-   set(n.summary,c.birdStatus.replace('{name}',name(b)).replace('{behavior}',c[b.behavior==='rest'?'birdRest':b.behavior==='enrich'?'birdEnrich':b.behavior==='seek-rest'?'birdSeekRest':b.behavior==='drink'?'birdDrink':b.behavior==='seek-water'?'birdSeekWater':b.behavior==='eat'?'birdEat':b.behavior==='seek-food'?'birdSeekFood':b.behavior==='wander'?'birdWander':b.behavior==='perch'?'birdPerch':'birdIdle']).replace('{e}',String(b.energy)).replace('{b}',String(b.enrichment)).replace('{t}',String(b.thirst)).replace('{d}',String(b.waterDrunk)).replace('{h}',String(b.hunger)).replace('{n}',String(b.foodEaten)));
-   set(n.status,c.careSummary.replace('{w}',String(Math.round(b.welfare))).replace('{status}',c[b.low?'careLow':'careGood']));n.row.dataset.welfareLow=String(b.low);n.button.setAttribute('aria-expanded',String(selected===b.id));n.button.disabled=!active;set(n.button,c.careInspect.replace('{name}',name(b)));
+   set(n.summary,c.birdStatus.replace('{name}',name(b)).replace('{behavior}',c[b.behavior==='rest'?'birdRest':b.behavior==='enrich'?'birdEnrich':b.behavior==='seek-rest'?'birdSeekRest':b.behavior==='drink'?'birdDrink':b.behavior==='seek-water'?'birdSeekWater':b.behavior==='eat'?'birdEat':b.behavior==='seek-food'?'birdSeekFood':b.behavior==='wander'?'birdWander':b.behavior==='perch'?'birdPerch':'birdIdle']).replace('{e}',formatNumber(b.energy,locale)).replace('{b}',formatNumber(b.enrichment,locale)).replace('{t}',formatNumber(b.thirst,locale)).replace('{d}',formatNumber(b.waterDrunk,locale)).replace('{h}',formatNumber(b.hunger,locale)).replace('{n}',formatNumber(b.foodEaten,locale)));
+   set(n.status,c.careSummary.replace('{w}',formatNumber(Math.round(b.welfare),locale)).replace('{status}',c[b.low?'careLow':'careGood']));n.row.dataset.welfareLow=String(b.low);n.button.setAttribute('aria-expanded',String(selected===b.id));n.button.disabled=!active;set(n.button,c.careInspect.replace('{name}',name(b)));
   }
   const b=view.birds.find(b=>b.id===selected);if(panel)panel.hidden=!active||!view.placed||!b;
   if(!active||!view.placed||!b){if(!view.birds.some(b=>b.id===selected))selected=null;return;}
