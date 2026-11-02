@@ -1,27 +1,28 @@
 # MyZooTwin.com
 
-An independent, English-language animal learning journal for curious people who care about wildlife, pets, and the living world.
+An animal learning journal with a local, playable Tropical Creek Sanctuary at `/play`: build a habitat/path, care for two macaws, welcome visitors, earn virtual tickets and complete four missions. Progress uses versioned local storage. V1 is still undergoing its documented quality/release gates.
 
 ## Development
 
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 
-## Build
+The committed lockfile fixes the installed dependency graph. Do not install or upgrade packages merely to run the existing local audit.
+
+## Verification and build
 
 ```bash
+npm test
 npm run check
 npm run build
 ```
 
-The static output is written to `dist/`. Set `PUBLIC_GA4_ID` only when the dedicated MyZooTwin GA4 web stream is confirmed.
+The default build writes `dist/`. Preserve a running owner preview by using an isolated QA build/output instead. The current supported isolated procedure is in [docs/LOCAL_QA.md](docs/LOCAL_QA.md); milestone evidence distinguishes targeted integration checks from the generic browser-template verdict, physical devices and live production tests.
 
-Production deploys are built automatically from `main` by Cloudflare Pages.
+Cloudflare Pages project/main deployments were observed during M0-01. Exact source binding, dashboard build/root settings and automatic-deployment policy remain partially unverified; this README is not deployment proof. Set `PUBLIC_GA4_ID` only for the verified MyZooTwin stream/configuration. No release push/deployment is authorized by these development commands.
 
-Analytics is configured for the dedicated MyZooTwin web stream.
+## Assets and audit
 
-## Local QA
-
-Run `npm test` or the full local workflow `npm run qa:local`. Browser checks remain UNRUN until the approved isolated-browser recipe is completed and `npm run qa:verify` passes. See [docs/LOCAL_QA.md](docs/LOCAL_QA.md) for commands, evidence, cleanup and explicit limits. No Actions or production deployment is involved.
+[Living requirements](docs/MYZOOTWIN_MASTER_PRD_V1.md), [progress](docs/MYZOOTWIN_PROGRESS.md), [asset provenance](docs/ASSET_MANIFEST.json). Original procedural game art/audio uses no downloaded models or recordings. Existing journal hero/favicon rights remain unverified; repository presence is not a redistribution license. Three.js's exact MIT notice is in `public/licenses/three-MIT.txt`. Do not publish dependency folders, QA fixtures or owner saves with the static website.

@@ -2,7 +2,7 @@
   "schema_version": 1,
   "audited_at": "2026-10-31",
   "baseline_commit": "3b06c6d8d2a920ad5894868059885c98a58217a6",
-  "scope": "Original M2-01 model, M2-02 autonomous pair and M2-03 feeder/eating integration. Earlier study/media/provenance and unresolved legacy-media rights records remain preserved. M3-01 adds original, texture-free shared entrance visitor models; prior media and unresolved legacy rights records retained unchanged. M4-03 adds original texture-free Q02 aviary flower trim; prior source/media/provenance records retained.",
+  "scope": "Living asset provenance inventory through M6-05; historical creation measurements retained with current hash observations and explicit unresolved legacy rights.",
   "assets": [
     {
       "path": "public/images/myzootwin-beranda.png",
@@ -154,8 +154,8 @@
     {
       "id": "tropical_creek_m1_01",
       "path": "src/game/render3d/tropical-diorama.ts",
-      "bytes": 9223,
-      "sha256": "0c3851724f37e26f2631d7470f9bc5a982c1637eaf581470e21b3763c3d82e2a",
+      "bytes": 9687,
+      "sha256": "ec8715d555b4b2fcf707a1fc06871d00f4464b82ea603ec682205f476ec78ea6",
       "origin": "Original geometry authored in this repository for the owner, 2026-10-31",
       "rights_status": "original_code_authored_geometry_no_third_party_art",
       "provenance_evidence": "All ground, water, palms, broadleaf trees, rocks, reeds, gate roof/sign and contact shade generated from original vertex coordinates/transforms. Existing Three.js MIT engine notice retained. No external models/textures/audio/asset terms accepted.",
@@ -185,7 +185,8 @@
           "sha256": "915ad3f835e7229857fce60cec1978153340cccc2befc0831f7f7970bb948cd1"
         }
       ],
-      "source_revision_note": "M1-06 records current source bytes, preserving known earlier revisions. Initial scenery shape/6 batches unchanged; restored player paths render in one dynamic batch. Ghost supports1x1 path or2x2 habitat; selection refreshes connection metadata. No external art."
+      "source_revision_note": "M1-06 records current source bytes, preserving known earlier revisions. Initial scenery shape/6 batches unchanged; restored player paths render in one dynamic batch. Ghost supports1x1 path or2x2 habitat; selection refreshes connection metadata. No external art.",
+      "hash_checked_at": "2026-11-02"
     },
     {
       "id": "selection_indicator_m1_03",
@@ -222,8 +223,8 @@
     {
       "id": "placement_footprint_m1_04",
       "path": "src/game/render3d/placement-preview.ts",
-      "bytes": 4332,
-      "sha256": "5bba195dc9dfe36986d4d30135bbf8bdfbfa942d4e7a8467d0b7bd96bc5a970c",
+      "bytes": 4659,
+      "sha256": "6a931702fc5aaf1c033dd5faf7679fa42622e2c41406e4532d18a8ac9ab04649",
       "origin": "Original procedural footprint configuration authored in repository using existing Three.js MIT primitives.",
       "rights_status": "original_configuration_using_existing_three_mit",
       "usage_decision": "Green/red 2x2 ghost and blue session-local approved planning outline; not a constructed habitat or saved player progress.",
@@ -249,13 +250,14 @@
           "sha256": "ad3e774c330c62c3798fb8ef1e3819d674578be360ffc678c4dacda6a24017ec"
         }
       ],
-      "source_revision_note": "M1-06 records current source bytes, preserving known earlier revisions. Initial scenery shape/6 batches unchanged; restored player paths render in one dynamic batch. Ghost supports1x1 path or2x2 habitat; selection refreshes connection metadata. No external art."
+      "source_revision_note": "M1-06 records current source bytes, preserving known earlier revisions. Initial scenery shape/6 batches unchanged; restored player paths render in one dynamic batch. Ghost supports1x1 path or2x2 habitat; selection refreshes connection metadata. No external art.",
+      "hash_checked_at": "2026-11-02"
     },
     {
       "id": "starter_macaw_habitat_m1_05",
       "path": "src/game/render3d/habitat-scene.ts",
-      "bytes": 4308,
-      "sha256": "ae7a00cb87c579102f9109c10113a8bd5fbda103be11ada488b1e9e81f384869",
+      "bytes": 4316,
+      "sha256": "f25520f76c1d970ddcd52e919ed8a0d5bd8fc30d077d0f6ddb80017521cc61f4",
       "origin": "Original procedural enclosed aviary authored in this repository: wooden perimeter posts/rails/sill, keeper door/latch, grass floor, closed wire walls and roof.",
       "rights_status": "original_code_authored_geometry_no_third_party_art",
       "usage_decision": "Actual2x2 starter habitat for two future Ara ararauna. No animal/care/path/economy claims; simplified game enclosure, not real husbandry guidance.",
@@ -277,7 +279,8 @@
           "sha256": "8fea839b58695e0afcf9ee881d7909f59fd86610288871ae8b7f562203d15ac5"
         }
       ],
-      "source_revision_note": "M1-07 updates lifecycle/metadata only, preserving original geometry silhouette and rights. Habitat uses two fixed reusable geometry/material slots; removed identities and tile metadata released. Actual final pixels in docs/qa/m1-07."
+      "source_revision_note": "M1-07 updates lifecycle/metadata only, preserving original geometry silhouette and rights. Habitat uses two fixed reusable geometry/material slots; removed identities and tile metadata released. Actual final pixels in docs/qa/m1-07.",
+      "hash_checked_at": "2026-11-02"
     },
     {
       "id": "visitor_paths_m1_06",
@@ -376,13 +379,15 @@
       "sources": [
         {
           "path": "src/game/animals/autonomy.ts",
-          "bytes": 4844,
-          "sha256": "52deb80369e202eb887d8354d22fd57d46aae9da32ef1e328a766a6b7d248bcd"
+          "bytes": 7965,
+          "sha256": "fcf91e07e8f42d48aab9cc47399f90c678e3625763a381f1dea33c17d238bb3b",
+          "hash_checked_at": "2026-11-02"
         },
         {
           "path": "src/game/render3d/macaw/autonomous-birds.ts",
-          "bytes": 4613,
-          "sha256": "11da1d10846f970b1993281a1b1c4b7d1bbc4f38a5a8f7f7f5dc06f6716214ca"
+          "bytes": 5484,
+          "sha256": "942a58552651d090f98fcf5455a3423ecce1a51852a770de148c2114b2a481bd",
+          "hash_checked_at": "2026-11-02"
         }
       ],
       "origin": "Original project-authored deterministic movement, transforms, and simple supported landing branches. Reuses unchanged M2-01 original Ara ararauna geometry/rig/palette.",
@@ -404,8 +409,9 @@
       "sources": [
         {
           "path": "src/game/animals/feeding.ts",
-          "bytes": 5701,
-          "sha256": "ca791acbf4ffe545d0c1ad19c881694e9a02853571924829aaa8a0b340f905e2"
+          "bytes": 5684,
+          "sha256": "263985f5f67b7a2c8bf3487b7bbbaff1827d6e80c81fcb9b394820c4a1bce66f",
+          "hash_checked_at": "2026-11-02"
         },
         {
           "path": "src/game/render3d/feeder-scene.ts",
@@ -414,8 +420,9 @@
         },
         {
           "path": "src/game/render3d/macaw/autonomous-birds.ts",
-          "bytes": 4719,
-          "sha256": "2b49ee9beab6fd14750c0a5e989a9984d03194cbcd7350b004f30d8c717ce509"
+          "bytes": 5484,
+          "sha256": "942a58552651d090f98fcf5455a3423ecce1a51852a770de148c2114b2a481bd",
+          "hash_checked_at": "2026-11-02"
         }
       ],
       "origin": "Original code-native raised terracotta feeding bowls/supports/fruit and state-driven reuse of the unchanged M2-01 original eating rig/pose. No external art input.",
@@ -438,13 +445,15 @@
       "sources": [
         {
           "path": "src/game/animals/watering.ts",
-          "bytes": 6568,
-          "sha256": "23c86f09f1278b9e2188479a612c6403aba41ecda3852438100bf28f301fb6e7"
+          "bytes": 6530,
+          "sha256": "e88d0d776aa4d512227cea2f30b0a46dd508dc992d6b52109236fcf0a09d895d",
+          "hash_checked_at": "2026-11-02"
         },
         {
           "path": "src/game/animals/autonomy.ts",
-          "bytes": 6512,
-          "sha256": "2a8cef7e2f1282dc249690398255b1939de45a5b6b1dac48adb1a0223ca85511"
+          "bytes": 7965,
+          "sha256": "fcf91e07e8f42d48aab9cc47399f90c678e3625763a381f1dea33c17d238bb3b",
+          "hash_checked_at": "2026-11-02"
         },
         {
           "path": "src/game/render3d/water-scene.ts",
@@ -453,8 +462,9 @@
         },
         {
           "path": "src/game/render3d/macaw/autonomous-birds.ts",
-          "bytes": 4962,
-          "sha256": "be69c3bf9e7bae67d04a63cc1a8f5b9a55d8288b4c81f7e2a326a182ee10609f"
+          "bytes": 5484,
+          "sha256": "942a58552651d090f98fcf5455a3423ecce1a51852a770de148c2114b2a481bd",
+          "hash_checked_at": "2026-11-02"
         }
       ],
       "origin": "Original code-native blue ceramic side bowls/supports and visible stock-level water surfaces. Existing unchanged M2-01 macaw geometry/rig/drink pose; original deterministic care navigation and pose mapping. No external art input.",
@@ -477,13 +487,15 @@
       "sources": [
         {
           "path": "src/game/animals/resting.ts",
-          "bytes": 6442,
-          "sha256": "6c91bf2c06d06229d96e50250279ff1fd7fa70a36e882dcd9a09cc4ef775c52a"
+          "bytes": 6461,
+          "sha256": "ab5698c1922771e084b1b8a6a24b25de1051170b4f05abb1d2e5f3c4e6133656",
+          "hash_checked_at": "2026-11-02"
         },
         {
           "path": "src/game/animals/autonomy.ts",
-          "bytes": 7365,
-          "sha256": "a8ec29315ff1f21f005f7f0d04e3f350e0567e20324f27d80781470c64901372"
+          "bytes": 7965,
+          "sha256": "fcf91e07e8f42d48aab9cc47399f90c678e3625763a381f1dea33c17d238bb3b",
+          "hash_checked_at": "2026-11-02"
         },
         {
           "path": "src/game/render3d/perch-scene.ts",
@@ -517,13 +529,15 @@
       "sources": [
         {
           "path": "src/game/render3d/visitor-scene.ts",
-          "bytes": 5064,
-          "sha256": "896f7777b531d922b5058a66259d5440a32fd0eabf4e8e6a2a714bbafa65cb30"
+          "bytes": 5518,
+          "sha256": "3613f3713e822a673d3b4be318085a7f23aa066b2d77fea946ce966c62aea9c9",
+          "hash_checked_at": "2026-11-02"
         },
         {
           "path": "src/game/visitors/arrivals.ts",
-          "bytes": 2405,
-          "sha256": "99b7171f41add4861dd12b6a38a10ebe91311f9a07c3ace089881bce55f02bd7"
+          "bytes": 5067,
+          "sha256": "e6134c1509bdd48d58ad7b13d4b6dd7ec918966107d95483eac0f5204ecb1122",
+          "hash_checked_at": "2026-11-02"
         }
       ],
       "measuredAtCap": {
@@ -557,18 +571,21 @@
       "sources": [
         {
           "path": "src/game/render3d/visitor-scene.ts",
-          "bytes": 5240,
-          "sha256": "55c969c5bfb92521f20ce8126c81e145c166749f628bf4c220f8b1fea10d8a91"
+          "bytes": 5518,
+          "sha256": "3613f3713e822a673d3b4be318085a7f23aa066b2d77fea946ce966c62aea9c9",
+          "hash_checked_at": "2026-11-02"
         },
         {
           "path": "src/game/visitors/arrivals.ts",
-          "bytes": 3632,
-          "sha256": "77cd667f5d2d99d90598a28f3d0826aff6fe376447710cd1dd5386885831cb36"
+          "bytes": 5067,
+          "sha256": "e6134c1509bdd48d58ad7b13d4b6dd7ec918966107d95483eac0f5204ecb1122",
+          "hash_checked_at": "2026-11-02"
         },
         {
           "path": "src/game/visitors/navigation.ts",
-          "bytes": 7104,
-          "sha256": "85509661b05be29b9937c02c5f1353a5d6788b43a98044ea456c2c6cbc86270e"
+          "bytes": 7211,
+          "sha256": "ac1b2475ecfc607e1c8bd5eb41f5dccef9c06f25535203a524609a0388073d4d",
+          "hash_checked_at": "2026-11-02"
         }
       ],
       "measuredAtCap": {
@@ -614,6 +631,22 @@
       "textures": 0,
       "instances": 1,
       "scope": "Cosmetic entrance celebration unlocked by genuine Q04; no gameplay or visitor logic."
+    },
+    {
+      "id": "original_procedural_ambience_m5_06",
+      "path": "src/game/audio/ambience.ts",
+      "bytes": 5654,
+      "sha256": "64d149d6ee70197d9e5af34e7d8ef0b336f37b6ba2cc4d581e9b4cd9a9edf8c0",
+      "origin": "Original repository-authored seeded creek noise and four synthesized bird-like chirps; no external samples or recordings",
+      "rights_status": "original_project_work_no_external_asset_inputs",
+      "attribution": "MyZooTwin original task-authored code; no repository-wide open-source or public asset license assigned",
+      "external_asset_inputs": [],
+      "generated_pcm_seconds": 8,
+      "sample_rate": 22050,
+      "runtime_audio_buffer_bytes": 705600,
+      "activation": "Optional, initially muted, explicit user gesture; no microphone or camera",
+      "evidence": "M5-06_SETTINGS.md and M6-02_MEMORY_PAYLOAD.md; physical speaker audibility not certified",
+      "external_sample_download_bytes": 0
     }
   ],
   "direct_package_notice_spot_checks": [
@@ -678,5 +711,326 @@
     "animals": 2,
     "required_textures": 0
   },
-  "performance_note": "Budgets only; actual first-play download <=20 MB and mobile/desktop FPS remain unverified until renderer exists."
+  "performance_note": "Current first-party first-play graph is approximately1MB raw and below20MB distribution design budget; exact final measurements in M6-02/M6-05 reports. External Google Fonts/network excluded; physical Android/presentedFPS and M6-01 GPU attribution remain unverified.",
+  "historical_hash_observations": [
+    {
+      "jsonPointer": "/assets/11",
+      "path": "src/game/render3d/tropical-diorama.ts",
+      "previousHash": "0c3851724f37e26f2631d7470f9bc5a982c1637eaf581470e21b3763c3d82e2a",
+      "previousBytes": 9223,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    },
+    {
+      "jsonPointer": "/assets/13",
+      "path": "src/game/render3d/placement-preview.ts",
+      "previousHash": "5bba195dc9dfe36986d4d30135bbf8bdfbfa942d4e7a8467d0b7bd96bc5a970c",
+      "previousBytes": 4332,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    },
+    {
+      "jsonPointer": "/assets/14",
+      "path": "src/game/render3d/habitat-scene.ts",
+      "previousHash": "ae7a00cb87c579102f9109c10113a8bd5fbda103be11ada488b1e9e81f384869",
+      "previousBytes": 4308,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    },
+    {
+      "jsonPointer": "/assets/17/sources/0",
+      "path": "src/game/animals/autonomy.ts",
+      "previousHash": "52deb80369e202eb887d8354d22fd57d46aae9da32ef1e328a766a6b7d248bcd",
+      "previousBytes": 4844,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    },
+    {
+      "jsonPointer": "/assets/17/sources/1",
+      "path": "src/game/render3d/macaw/autonomous-birds.ts",
+      "previousHash": "11da1d10846f970b1993281a1b1c4b7d1bbc4f38a5a8f7f7f5dc06f6716214ca",
+      "previousBytes": 4613,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    },
+    {
+      "jsonPointer": "/assets/18/sources/0",
+      "path": "src/game/animals/feeding.ts",
+      "previousHash": "ca791acbf4ffe545d0c1ad19c881694e9a02853571924829aaa8a0b340f905e2",
+      "previousBytes": 5701,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    },
+    {
+      "jsonPointer": "/assets/18/sources/2",
+      "path": "src/game/render3d/macaw/autonomous-birds.ts",
+      "previousHash": "2b49ee9beab6fd14750c0a5e989a9984d03194cbcd7350b004f30d8c717ce509",
+      "previousBytes": 4719,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    },
+    {
+      "jsonPointer": "/assets/19/sources/0",
+      "path": "src/game/animals/watering.ts",
+      "previousHash": "23c86f09f1278b9e2188479a612c6403aba41ecda3852438100bf28f301fb6e7",
+      "previousBytes": 6568,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    },
+    {
+      "jsonPointer": "/assets/19/sources/1",
+      "path": "src/game/animals/autonomy.ts",
+      "previousHash": "2a8cef7e2f1282dc249690398255b1939de45a5b6b1dac48adb1a0223ca85511",
+      "previousBytes": 6512,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    },
+    {
+      "jsonPointer": "/assets/19/sources/3",
+      "path": "src/game/render3d/macaw/autonomous-birds.ts",
+      "previousHash": "be69c3bf9e7bae67d04a63cc1a8f5b9a55d8288b4c81f7e2a326a182ee10609f",
+      "previousBytes": 4962,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    },
+    {
+      "jsonPointer": "/assets/20/sources/0",
+      "path": "src/game/animals/resting.ts",
+      "previousHash": "6c91bf2c06d06229d96e50250279ff1fd7fa70a36e882dcd9a09cc4ef775c52a",
+      "previousBytes": 6442,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    },
+    {
+      "jsonPointer": "/assets/20/sources/1",
+      "path": "src/game/animals/autonomy.ts",
+      "previousHash": "a8ec29315ff1f21f005f7f0d04e3f350e0567e20324f27d80781470c64901372",
+      "previousBytes": 7365,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    },
+    {
+      "jsonPointer": "/assets/21/sources/0",
+      "path": "src/game/render3d/visitor-scene.ts",
+      "previousHash": "896f7777b531d922b5058a66259d5440a32fd0eabf4e8e6a2a714bbafa65cb30",
+      "previousBytes": 5064,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    },
+    {
+      "jsonPointer": "/assets/21/sources/1",
+      "path": "src/game/visitors/arrivals.ts",
+      "previousHash": "99b7171f41add4861dd12b6a38a10ebe91311f9a07c3ace089881bce55f02bd7",
+      "previousBytes": 2405,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    },
+    {
+      "jsonPointer": "/assets/22/sources/0",
+      "path": "src/game/render3d/visitor-scene.ts",
+      "previousHash": "55c969c5bfb92521f20ce8126c81e145c166749f628bf4c220f8b1fea10d8a91",
+      "previousBytes": 5240,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    },
+    {
+      "jsonPointer": "/assets/22/sources/1",
+      "path": "src/game/visitors/arrivals.ts",
+      "previousHash": "77cd667f5d2d99d90598a28f3d0826aff6fe376447710cd1dd5386885831cb36",
+      "previousBytes": 3632,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    },
+    {
+      "jsonPointer": "/assets/22/sources/2",
+      "path": "src/game/visitors/navigation.ts",
+      "previousHash": "85509661b05be29b9937c02c5f1353a5d6788b43a98044ea456c2c6cbc86270e",
+      "previousBytes": 7104,
+      "scope": "Historical creation snapshot; retained, not current-file verification"
+    }
+  ],
+  "audit_2026_11_02": {
+    "scope": "M6-05 current asset/source inventory. Earlier creation budgets/feature claims remain historical and are superseded by dated milestone reports. Current file hashes do not by themselves establish rights.",
+    "previous_manifest_sha256": "9989eaa055e23c7955f124c74a04e655fb95a8b9a531b6240d7bfb00e6c91fa4",
+    "baseline_commit": "e6023d75e2cfb98cdbc48eabeab16592dec012d4",
+    "current_renderer_sources": [
+      {
+        "path": "src/game/render3d/camera-controls.ts",
+        "bytes": 5708,
+        "sha256": "c22b8ee29605302ef8dc1627d04a2e235c8f9956edd0f93910869127d901271b",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/camera-gestures.ts",
+        "bytes": 2444,
+        "sha256": "5a49ef54071338c3d1feca8b9f86b771f5065cd5687498250a38ebfb4385d348",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/camera-navigation.ts",
+        "bytes": 2691,
+        "sha256": "46b5847be2deb628e6d593a758227da7ec9db5b5485d1be28a455756d6069019",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/feeder-scene.ts",
+        "bytes": 3256,
+        "sha256": "c25533965dc9480b3a9b07839492e18f41e1cab1f22d6db0c8694ea8b8a354b1",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/foundation-scene.ts",
+        "bytes": 36992,
+        "sha256": "90464cb81618c211da07f5c74498ed1d1f53f4ba81312d803f5c1869205c16cc",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/frame-loop.ts",
+        "bytes": 1350,
+        "sha256": "1acf909af55cb53a22cbb8fc72cf46643bb913d70e35f521c2ec83a8c27623ed",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/habitat-scene.ts",
+        "bytes": 4316,
+        "sha256": "f25520f76c1d970ddcd52e919ed8a0d5bd8fc30d077d0f6ddb80017521cc61f4",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/isometric-camera.ts",
+        "bytes": 1123,
+        "sha256": "584e4da6d5b6238b399605459cee4d2c0eb2a6ff13eb4c2d2139fd7167145cfd",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/macaw/autonomous-birds.ts",
+        "bytes": 5484,
+        "sha256": "942a58552651d090f98fcf5455a3423ecce1a51852a770de148c2114b2a481bd",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/macaw/macaw-animation.ts",
+        "bytes": 3478,
+        "sha256": "789b351bd269f6ed1d0d1a7cbbe804c05fc1801688fa4933f533081855425dd5",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/macaw/macaw-geometry.ts",
+        "bytes": 7950,
+        "sha256": "41c9a3298a77727cae838fd80659dabe567b3a555ca9ba2a62f3728c4f4fe73e",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/macaw/macaw-rig.ts",
+        "bytes": 2555,
+        "sha256": "9d4d60f5ed1f77f62dc4eb0f5698ae50a0ff7685efaac8c7a8deae982d94bf06",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/macaw/macaw-studio.ts",
+        "bytes": 7898,
+        "sha256": "b39ab6da1a0b9c1580583df576c2162dfd7020013ba9e3069f3502ed58b127d0",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/macaw/studio-contract.ts",
+        "bytes": 391,
+        "sha256": "f9f51da5da8255de6b67ec32e933e3df73aa25cc2a371f42a2edef00b9c9ed01",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/path-scene.ts",
+        "bytes": 2866,
+        "sha256": "a69a9d8c3e7a6096a2fda1c0ac837256e6f8c5cd25d11897b9e06a3b4650c89b",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/perch-scene.ts",
+        "bytes": 3045,
+        "sha256": "6d6dbeb1dc0788b5d0595005a73b5451b4dfbb20403cdd133e21c9c3cd10754e",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/placement-preview.ts",
+        "bytes": 4659,
+        "sha256": "6a931702fc5aaf1c033dd5faf7679fa42622e2c41406e4532d18a8ac9ab04649",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/preview-controller.ts",
+        "bytes": 6912,
+        "sha256": "8d91e7c83a27269989213612ade6253638b7befda989195259a849967f755561",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/reward-decoration.ts",
+        "bytes": 1722,
+        "sha256": "076730d4edeeffbf69ffac57fb52402e44eca6f169cd7c409208cf45135caac1",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/scene-picking.ts",
+        "bytes": 3769,
+        "sha256": "2dafb17b0d2c3799ed98f8623c69c5e30d9c4dcf61b2f4e7bbff28aef79685c7",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/scene-selection.ts",
+        "bytes": 578,
+        "sha256": "3138d717f4080a0d4472846790fd71b00efb2e8791a9493a1a1797513be03a66",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/thriving-banner.ts",
+        "bytes": 1697,
+        "sha256": "c7b784d9e0addb4daf9678fdf0a68f1fda393deecefe4faa45c277b7c7fa0ab1",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/tropical-diorama.ts",
+        "bytes": 9687,
+        "sha256": "ec8715d555b4b2fcf707a1fc06871d00f4464b82ea603ec682205f476ec78ea6",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/visitor-scene.ts",
+        "bytes": 5518,
+        "sha256": "3613f3713e822a673d3b4be318085a7f23aa066b2d77fea946ce966c62aea9c9",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/water-scene.ts",
+        "bytes": 2891,
+        "sha256": "b5c272264c50309a138b30c8ef0ef21a3b6f23be2e1cb091bc83079a24db3f92",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      },
+      {
+        "path": "src/game/render3d/webgl-cleanup.ts",
+        "bytes": 230,
+        "sha256": "e38f9d6d87d935bded231635db366eb77841119445c0a06f43c245d66f8c553c",
+        "role": "Original project renderer/model/motion/input code; uses separately licensed Three.js API"
+      }
+    ],
+    "public_files": [
+      {
+        "path": "public/favicon.svg",
+        "bytes": 328,
+        "sha256": "1e37371684103082a4662d9cd3c224c4c4f424ba0bbd0d53f55a1cc8572fef76"
+      },
+      {
+        "path": "public/images/myzootwin-beranda.png",
+        "bytes": 3001357,
+        "sha256": "fd57bc337641b07eeae40a053e3db1032af805a553ecdddf81c99bcc2dc9e3b5"
+      },
+      {
+        "path": "public/licenses/three-MIT.txt",
+        "bytes": 1081,
+        "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+      },
+      {
+        "path": "public/robots.txt",
+        "bytes": 73,
+        "sha256": "91803eeb5a8dbbbae903fce53e66d6f5856f8e0894e7d7d21465c532381dd147"
+      }
+    ],
+    "historical_hashes_refreshed": 17,
+    "original_audio_now_implemented": "original_procedural_ambience_m5_06",
+    "environment_plan_now_implemented": "tropical_creek_m1_01 and later world/gameplay reports",
+    "legacy_rights_unresolved": [
+      "journal_hero",
+      "site_favicon"
+    ],
+    "legacy_policy": "Retain existing journal/site use and exact original bytes; no new export-pack rights, no assertion of ownership from repository presence. Release/privacy/legal review must retain this gap.",
+    "installed_dependencies_audited": 369,
+    "effective_zod_to_ts_license": "MIT based on installed LICENSE despite missing package.json license field",
+    "client_third_party": "Final Rollup emitted client modules identify Three.js only; full local MIT notice byte-matches public/licenses/three-MIT.txt. Sharp/native build tools are not browser artifacts.",
+    "dependency_report": "qa/m6-05/dependencies.json",
+    "commercial_rights_clearance": "NOT a legal sign-off or permission for new licensing agreements; no new agreements/downloaded media"
+  },
+  "installed_dependency_license_inventory_complete": true,
+  "transitive_license_audit_limit": "All369 installed packages inventoried with package/license metadata and local notices.13 packages lack a standalone notice file; full source/native-package redistribution notice clearance is not claimed. Only Three.js is present in measured client chunks and its exact MIT notice is retained."
 }

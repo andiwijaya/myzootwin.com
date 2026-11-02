@@ -29,7 +29,7 @@ interface FoundationOptions {
   createRenderer?: (canvas: HTMLCanvasElement, context: WebGL2RenderingContext) => WebGLRenderer;
 }
 
-/** Fixed-tick world with two autonomous macaws. Care is playable; entrance arrivals are bounded. Habitat visits, economy and durable saves remain later features. */
+/** Fixed-tick sanctuary with two autonomous macaws, topology-based visits and authoritative economy. Session state integrates with the versioned durable save controller. */
 export function mountFoundationScene(host: HTMLElement, onFailure: (kind: PreviewFailureKind) => void, options: FoundationOptions = {}): PreviewSession {
   const canvas = document.createElement('canvas');
   canvas.setAttribute('aria-hidden', 'true');
