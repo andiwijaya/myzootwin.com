@@ -1,0 +1,62 @@
+[
+  {
+    "at": "2026-11-02T13:55:40.341Z",
+    "step": "Native first Tab and Enter skip to main",
+    "observation": {
+      "focus": "MAIN",
+      "hash": "#main-content",
+      "id": "main-content"
+    }
+  },
+  {
+    "at": "2026-11-02T13:56:35.961Z",
+    "step": "Native seventh Tab escapes Settings to BODY",
+    "focus": [
+      {
+        "inside": true,
+        "label": "Bahasa",
+        "tag": "SELECT"
+      },
+      {
+        "inside": true,
+        "label": "Kualitas grafis",
+        "tag": "SELECT"
+      },
+      {
+        "inside": true,
+        "label": "",
+        "tag": "INPUT"
+      },
+      {
+        "inside": true,
+        "label": "",
+        "tag": "INPUT"
+      },
+      {
+        "inside": true,
+        "label": "Terapkan pengaturan",
+        "tag": "BUTTON"
+      },
+      {
+        "inside": true,
+        "label": "Tutup / abaikan perubahan",
+        "tag": "BUTTON"
+      },
+      {
+        "inside": false,
+        "label": "Skip to main content✦MyZooTwinPlay ZooAnimalsWildlifePetsLearnAdventuresGearAbou",
+        "tag": "BODY"
+      }
+    ],
+    "originalStepLabel": "Seven native Tab steps stay in Settings and wrap",
+    "verdict": "FAIL-before-fix"
+  },
+  {
+    "at": "2026-11-02T13:56:36.907Z",
+    "step": "Native Escape closes Settings and restores opener",
+    "observation": {
+      "dialogs": 0,
+      "focus": "<button type=\"button\" class=\"settings-action\" data-open-dialog=\"play-settings\" data-entry-text=\"settings\" data-astro-cid-d56su4gk=\"\">Pengaturan</button>"
+    }
+  }
+]

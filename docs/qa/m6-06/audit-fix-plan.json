@@ -1,0 +1,870 @@
+change zod 4.6.5 => 4.6.7
+change vite 6.4.3 => 6.4.5
+change undici 8.11.0 => 8.12.3
+change source-map-js 1.2.1 => 1.2.2
+change smol-toml 1.8.0 => 1.9.1
+change fast-uri 3.1.8 => 3.1.9
+{
+  "add": [],
+  "added": 0,
+  "audited": 370,
+  "change": [
+    {
+      "from": {
+        "name": "zod",
+        "version": "4.6.5",
+        "path": "C:\\MyZooTwin\\node_modules\\zod"
+      },
+      "to": {
+        "name": "zod",
+        "version": "4.6.7",
+        "path": "C:\\MyZooTwin\\node_modules\\zod"
+      }
+    },
+    {
+      "from": {
+        "name": "vite",
+        "version": "6.4.3",
+        "path": "C:\\MyZooTwin\\node_modules\\vite"
+      },
+      "to": {
+        "name": "vite",
+        "version": "6.4.5",
+        "path": "C:\\MyZooTwin\\node_modules\\vite"
+      }
+    },
+    {
+      "from": {
+        "name": "undici",
+        "version": "8.11.0",
+        "path": "C:\\MyZooTwin\\node_modules\\undici"
+      },
+      "to": {
+        "name": "undici",
+        "version": "8.12.3",
+        "path": "C:\\MyZooTwin\\node_modules\\undici"
+      }
+    },
+    {
+      "from": {
+        "name": "source-map-js",
+        "version": "1.2.1",
+        "path": "C:\\MyZooTwin\\node_modules\\source-map-js"
+      },
+      "to": {
+        "name": "source-map-js",
+        "version": "1.2.2",
+        "path": "C:\\MyZooTwin\\node_modules\\source-map-js"
+      }
+    },
+    {
+      "from": {
+        "name": "smol-toml",
+        "version": "1.8.0",
+        "path": "C:\\MyZooTwin\\node_modules\\smol-toml"
+      },
+      "to": {
+        "name": "smol-toml",
+        "version": "1.9.1",
+        "path": "C:\\MyZooTwin\\node_modules\\smol-toml"
+      }
+    },
+    {
+      "from": {
+        "name": "fast-uri",
+        "version": "3.1.8",
+        "path": "C:\\MyZooTwin\\node_modules\\fast-uri"
+      },
+      "to": {
+        "name": "fast-uri",
+        "version": "3.1.9",
+        "path": "C:\\MyZooTwin\\node_modules\\fast-uri"
+      }
+    }
+  ],
+  "changed": 6,
+  "funding": 159,
+  "remove": [],
+  "removed": 0,
+  "audit": {
+    "auditReportVersion": 2,
+    "vulnerabilities": {
+      "astro": {
+        "name": "astro",
+        "severity": "critical",
+        "isDirect": true,
+        "via": [
+          {
+            "source": 1117141,
+            "name": "astro",
+            "dependency": "astro",
+            "title": "Astro: XSS in define:vars via incomplete </script> tag sanitization",
+            "url": "https://github.com/advisories/GHSA-j687-52p2-xcff",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-79"
+            ],
+            "cvss": {
+              "score": 6.1,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+            },
+            "range": "<6.1.6"
+          },
+          {
+            "source": 1118920,
+            "name": "astro",
+            "dependency": "astro",
+            "title": "Astro: Server island encrypted parameters vulnerable to cross-component replay",
+            "url": "https://github.com/advisories/GHSA-xr5h-phrj-8vxv",
+            "severity": "low",
+            "cwe": [
+              "CWE-79",
+              "CWE-323"
+            ],
+            "cvss": {
+              "score": 6.1,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+            },
+            "range": "<6.1.10"
+          },
+          {
+            "source": 1123700,
+            "name": "astro",
+            "dependency": "astro",
+            "title": "Astro: XSS via Unescaped Attribute Names in Spread Props",
+            "url": "https://github.com/advisories/GHSA-jrpj-wcv7-9fh9",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-79"
+            ],
+            "cvss": {
+              "score": 4.2,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:R/S:U/C:L/I:L/A:N"
+            },
+            "range": "<6.4.6"
+          },
+          {
+            "source": 1139373,
+            "name": "astro",
+            "dependency": "astro",
+            "title": "Astro: XSS via unescaped spread attribute names in renderHTMLElement (incomplete fix for CVE-2026-54298)",
+            "url": "https://github.com/advisories/GHSA-f48w-9m4c-m7f5",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-79"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": "<7.0.6"
+          },
+          {
+            "source": 1139375,
+            "name": "astro",
+            "dependency": "astro",
+            "title": "Astro: Cross-site scripting via unescaped transition:* directive values on hydrated islands",
+            "url": "https://github.com/advisories/GHSA-7pw4-f3q4-r2p2",
+            "severity": "low",
+            "cwe": [
+              "CWE-79",
+              "CWE-83",
+              "CWE-116"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": ">=3.10.0 <7.0.4"
+          },
+          {
+            "source": 1139376,
+            "name": "astro",
+            "dependency": "astro",
+            "title": "Astro: Reflected XSS via unescaped View Transition animation properties",
+            "url": "https://github.com/advisories/GHSA-4g3v-8h47-v7g6",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-79"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": ">=2.9.0 <=7.0.9"
+          },
+          {
+            "source": 1139377,
+            "name": "astro",
+            "dependency": "astro",
+            "title": "Astro: Host header SSRF in prerendered error page fetch",
+            "url": "https://github.com/advisories/GHSA-2pvr-wf23-7pc7",
+            "severity": "high",
+            "cwe": [
+              "CWE-20",
+              "CWE-918"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:C/C:H/I:L/A:N"
+            },
+            "range": "<6.4.6"
+          },
+          {
+            "source": 1139378,
+            "name": "astro",
+            "dependency": "astro",
+            "title": "Astro: Reflected XSS via unescaped slot name",
+            "url": "https://github.com/advisories/GHSA-8hv8-536x-4wqp",
+            "severity": "high",
+            "cwe": [
+              "CWE-79",
+              "CWE-80"
+            ],
+            "cvss": {
+              "score": 7.1,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:L/I:H/A:N"
+            },
+            "range": "<6.3.3"
+          },
+          {
+            "source": 1193723,
+            "name": "astro",
+            "dependency": "astro",
+            "title": "Astro: Remote code execution through AVIF image optimization",
+            "url": "https://github.com/advisories/GHSA-26w7-cxv4-gfx2",
+            "severity": "critical",
+            "cwe": [
+              "CWE-125",
+              "CWE-787"
+            ],
+            "cvss": {
+              "score": 9.8,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H"
+            },
+            "range": "<7.2.8"
+          },
+          {
+            "source": 1193724,
+            "name": "astro",
+            "dependency": "astro",
+            "title": "Astro: Authorization bypass from missing path-segment boundary check when stripping the configured base",
+            "url": "https://github.com/advisories/GHSA-376h-93r7-7g6f",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-187"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": "<=7.2.3"
+          },
+          {
+            "source": 1242877,
+            "name": "astro",
+            "dependency": "astro",
+            "title": "Astro: Reflected/Stored XSS via unescaped <script>/<style> tag content in JSX/MDX rendering",
+            "url": "https://github.com/advisories/GHSA-98hj-9722-w3j8",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-79"
+            ],
+            "cvss": {
+              "score": 6.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:U/C:N/I:H/A:N"
+            },
+            "range": "<7.3.2"
+          },
+          "esbuild",
+          "sharp",
+          "zod",
+          "zod-to-ts"
+        ],
+        "effects": [],
+        "range": "<=7.3.1",
+        "nodes": [
+          "node_modules/astro"
+        ],
+        "fixAvailable": {
+          "name": "astro",
+          "version": "7.4.4",
+          "isSemVerMajor": true
+        }
+      },
+      "esbuild": {
+        "name": "esbuild",
+        "severity": "low",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1120680,
+            "name": "esbuild",
+            "dependency": "esbuild",
+            "title": "esbuild allows arbitrary file read when running the development server on Windows",
+            "url": "https://github.com/advisories/GHSA-g7r4-m6w7-qqqr",
+            "severity": "low",
+            "cwe": [
+              "CWE-22"
+            ],
+            "cvss": {
+              "score": 2.5,
+              "vectorString": "CVSS:3.1/AV:L/AC:H/PR:L/UI:N/S:U/C:N/I:L/A:N"
+            },
+            "range": ">=0.27.3 <0.28.1"
+          }
+        ],
+        "effects": [
+          "astro"
+        ],
+        "range": "0.27.3 - 0.28.0",
+        "nodes": [
+          "node_modules/esbuild"
+        ],
+        "fixAvailable": {
+          "name": "astro",
+          "version": "7.4.4",
+          "isSemVerMajor": true
+        }
+      },
+      "fast-uri": {
+        "name": "fast-uri",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1243098,
+            "name": "fast-uri",
+            "dependency": "fast-uri",
+            "title": "fast-uri vulnerable to URI scheme spoofing via percent-encoded scheme decoding",
+            "url": "https://github.com/advisories/GHSA-w74x-v6f9-j3xg",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-172",
+              "CWE-180"
+            ],
+            "cvss": {
+              "score": 6.1,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N"
+            },
+            "range": ">=3.0.0 <3.1.9"
+          },
+          {
+            "source": 1243101,
+            "name": "fast-uri",
+            "dependency": "fast-uri",
+            "title": "fast-uri vulnerable to improper path equivalence in relative reference normalization",
+            "url": "https://github.com/advisories/GHSA-xhq7-xmqj-769h",
+            "severity": "low",
+            "cwe": [
+              "CWE-41"
+            ],
+            "cvss": {
+              "score": 3.7,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+            },
+            "range": ">=3.0.0 <3.1.9"
+          },
+          {
+            "source": 1243104,
+            "name": "fast-uri",
+            "dependency": "fast-uri",
+            "title": "fast-uri vulnerable to host confusion via unchecked WHATWG host canonicalization",
+            "url": "https://github.com/advisories/GHSA-wjr9-j795-jxcr",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-20",
+              "CWE-436"
+            ],
+            "cvss": {
+              "score": 4.8,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:L/I:L/A:N"
+            },
+            "range": ">=3.1.3 <3.1.9"
+          },
+          {
+            "source": 1243107,
+            "name": "fast-uri",
+            "dependency": "fast-uri",
+            "title": "fast-uri vulnerable to scheme injection via an unescaped first-segment colon in suffix references",
+            "url": "https://github.com/advisories/GHSA-333x-w4r6-6crp",
+            "severity": "low",
+            "cwe": [
+              "CWE-41",
+              "CWE-116"
+            ],
+            "cvss": {
+              "score": 3.7,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:L/A:N"
+            },
+            "range": ">=3.0.0 <3.1.9"
+          }
+        ],
+        "effects": [],
+        "range": "3.0.0 - 3.1.8",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "sharp": {
+        "name": "sharp",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1124066,
+            "name": "sharp",
+            "dependency": "sharp",
+            "title": "sharp inherited vulnerabilities in libvips: CVE-2026-33327, CVE-2026-33328, CVE-2026-35590, CVE-2026-35591",
+            "url": "https://github.com/advisories/GHSA-f88m-g3jw-g9cj",
+            "severity": "high",
+            "cwe": [
+              "CWE-1395"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": "<0.35.0"
+          },
+          {
+            "source": 1193725,
+            "name": "sharp",
+            "dependency": "sharp",
+            "title": "sharp: Vulnerabilities in libheif: GHSA-g89c-p67h-r497 and GHSA-2jg2-4ch7-h545",
+            "url": "https://github.com/advisories/GHSA-rgj7-g3m4-5g8c",
+            "severity": "high",
+            "cwe": [
+              "CWE-122"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": "<0.35.4"
+          },
+          {
+            "source": 1241331,
+            "name": "sharp",
+            "dependency": "sharp",
+            "title": "sharp : Vulnerability in librsvg dependency CVE-2026-96889",
+            "url": "https://github.com/advisories/GHSA-wq5f-xc86-pv6w",
+            "severity": "high",
+            "cwe": [
+              "CWE-416",
+              "CWE-1395"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": "<0.35.5"
+          }
+        ],
+        "effects": [
+          "astro"
+        ],
+        "range": "<=0.35.5-rc.1",
+        "nodes": [
+          "node_modules/sharp"
+        ],
+        "fixAvailable": {
+          "name": "astro",
+          "version": "7.4.4",
+          "isSemVerMajor": true
+        }
+      },
+      "smol-toml": {
+        "name": "smol-toml",
+        "severity": "moderate",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1241205,
+            "name": "smol-toml",
+            "dependency": "smol-toml",
+            "title": "smol-toml: Quadratic-time parse() from parseKey rescanning to end of document on each key line",
+            "url": "https://github.com/advisories/GHSA-r4xh-jqrq-34v2",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-407"
+            ],
+            "cvss": {
+              "score": 5.3,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:L"
+            },
+            "range": "<=1.8.0"
+          }
+        ],
+        "effects": [],
+        "range": "<=1.8.0",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "source-map-js": {
+        "name": "source-map-js",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1241209,
+            "name": "source-map-js",
+            "dependency": "source-map-js",
+            "title": "source-map-js allows event-loop denial of service through indexed source-map section offsets",
+            "url": "https://github.com/advisories/GHSA-68fv-2mgg-jv7q",
+            "severity": "high",
+            "cwe": [
+              "CWE-1284"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": ">=1.0.0 <1.2.2"
+          }
+        ],
+        "effects": [],
+        "range": "1.0.0 - 1.2.1",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "undici": {
+        "name": "undici",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1243077,
+            "name": "undici",
+            "dependency": "undici",
+            "title": "undici vulnerable to Denial of Service via unbounded memory in the EventSource parser",
+            "url": "https://github.com/advisories/GHSA-4qv8-2p9j-2685",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-770"
+            ],
+            "cvss": {
+              "score": 5.9,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": ">=8.0.0 <8.12.2"
+          },
+          {
+            "source": 1243080,
+            "name": "undici",
+            "dependency": "undici",
+            "title": "undici vulnerable to Subresource Integrity bypass via non-lowercase algorithm tokens",
+            "url": "https://github.com/advisories/GHSA-f72v-6w45-q472",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-178"
+            ],
+            "cvss": {
+              "score": 5.9,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:H/A:N"
+            },
+            "range": ">=8.0.0 <8.12.2"
+          },
+          {
+            "source": 1243112,
+            "name": "undici",
+            "dependency": "undici",
+            "title": "undici vulnerable to Denial of Service via unhandled error on excessive content-encodings",
+            "url": "https://github.com/advisories/GHSA-xjj6-f33q-929c",
+            "severity": "high",
+            "cwe": [
+              "CWE-248",
+              "CWE-459"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": ">=8.0.0 <8.12.2"
+          },
+          {
+            "source": 1243454,
+            "name": "undici",
+            "dependency": "undici",
+            "title": "undici WebSocket client vulnerable to Denial of Service via failed HTTP/2 handshake",
+            "url": "https://github.com/advisories/GHSA-qq8j-7v2v-3rwp",
+            "severity": "high",
+            "cwe": [
+              "CWE-248",
+              "CWE-754"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": ">=8.11.0 <8.11.2"
+          },
+          {
+            "source": 1243472,
+            "name": "undici",
+            "dependency": "undici",
+            "title": "undici vulnerable to cache poisoning and cross-user disclosure via cross-origin redirects",
+            "url": "https://github.com/advisories/GHSA-4w7w-5xrc-9h26",
+            "severity": "high",
+            "cwe": [
+              "CWE-346",
+              "CWE-524"
+            ],
+            "cvss": {
+              "score": 7.4,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+            },
+            "range": ">=8.0.0 <8.12.2"
+          },
+          {
+            "source": 1243474,
+            "name": "undici",
+            "dependency": "undici",
+            "title": "undici vulnerable to TLS certificate validation bypass via dropped tls options in Agent",
+            "url": "https://github.com/advisories/GHSA-2m5v-pch6-74hx",
+            "severity": "high",
+            "cwe": [
+              "CWE-295"
+            ],
+            "cvss": {
+              "score": 7.4,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:H/I:H/A:N"
+            },
+            "range": ">=8.0.0 <8.12.2"
+          },
+          {
+            "source": 1243477,
+            "name": "undici",
+            "dependency": "undici",
+            "title": "undici vulnerable to Denial of Service via TLS 1.2 certificate-changing renegotiation",
+            "url": "https://github.com/advisories/GHSA-qrxm-fqhp-jwvm",
+            "severity": "high",
+            "cwe": [
+              "CWE-248",
+              "CWE-617"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": ">=8.0.0 <8.12.2"
+          },
+          {
+            "source": 1243480,
+            "name": "undici",
+            "dependency": "undici",
+            "title": "undici WebSocket client vulnerable to Denial of Service via unbounded automatic PONG buffering",
+            "url": "https://github.com/advisories/GHSA-9fm3-97px-rjf6",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-400",
+              "CWE-405",
+              "CWE-770"
+            ],
+            "cvss": {
+              "score": 5.9,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": ">=8.0.0 <8.12.2"
+          },
+          {
+            "source": 1243483,
+            "name": "undici",
+            "dependency": "undici",
+            "title": "undici vulnerable to Denial of Service via unhandled exception in the decompress interceptor",
+            "url": "https://github.com/advisories/GHSA-55wc-3pg8-jfw6",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-248"
+            ],
+            "cvss": {
+              "score": 5.9,
+              "vectorString": "CVSS:3.1/AV:N/AC:H/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": ">=8.0.0 <8.12.2"
+          }
+        ],
+        "effects": [],
+        "range": "8.0.0 - 8.12.1",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "vite": {
+        "name": "vite",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1242622,
+            "name": "vite",
+            "dependency": "vite",
+            "title": "launch-editor: escapeCmdArgs() omits % escaping on Windows",
+            "url": "https://github.com/advisories/GHSA-698v-4r3x-3vcv",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-78"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": "<=6.4.3"
+          },
+          {
+            "source": 1242651,
+            "name": "vite",
+            "dependency": "vite",
+            "title": "launch-editor: Editor CLI flag misinterpretation causing arbitrary command execution for some editors",
+            "url": "https://github.com/advisories/GHSA-r825-w8mm-5pxw",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-88"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": "<=6.4.3"
+          },
+          {
+            "source": 1242658,
+            "name": "vite",
+            "dependency": "vite",
+            "title": "launch-editor: `fs.existsSync()` existence check can be bypassed on Windows",
+            "url": "https://github.com/advisories/GHSA-587h-7wmj-h5pm",
+            "severity": "high",
+            "cwe": [
+              "CWE-77"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": "<=6.4.3"
+          },
+          {
+            "source": 1242724,
+            "name": "vite",
+            "dependency": "vite",
+            "title": "Vite: Cross origin script execution through Vite custom middleware",
+            "url": "https://github.com/advisories/GHSA-9jrq-w75r-8gcw",
+            "severity": "low",
+            "cwe": [
+              "CWE-80"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": "<=6.4.3"
+          },
+          {
+            "source": 1242730,
+            "name": "vite",
+            "dependency": "vite",
+            "title": "Vite: Files outside `server.fs.allow` could be served when project paths match system paths on non-Windows machine",
+            "url": "https://github.com/advisories/GHSA-rq7h-c2jc-7f22",
+            "severity": "moderate",
+            "cwe": [
+              "CWE-22",
+              "CWE-284"
+            ],
+            "cvss": {
+              "score": 0,
+              "vectorString": null
+            },
+            "range": "<=6.4.3"
+          }
+        ],
+        "effects": [],
+        "range": "<=6.4.3",
+        "nodes": [
+          ""
+        ],
+        "fixAvailable": true
+      },
+      "zod": {
+        "name": "zod",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          {
+            "source": 1243066,
+            "name": "zod",
+            "dependency": "zod",
+            "title": "Zod can exhaust memory while validating oversized constrained collections",
+            "url": "https://github.com/advisories/GHSA-mrhx-c7xc-m3w5",
+            "severity": "high",
+            "cwe": [
+              "CWE-770"
+            ],
+            "cvss": {
+              "score": 7.5,
+              "vectorString": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H"
+            },
+            "range": "<4.6.6"
+          }
+        ],
+        "effects": [
+          "astro",
+          "zod-to-ts"
+        ],
+        "range": "<4.6.6",
+        "nodes": [
+          "",
+          "node_modules/astro/node_modules/zod"
+        ],
+        "fixAvailable": {
+          "name": "astro",
+          "version": "7.4.4",
+          "isSemVerMajor": true
+        }
+      },
+      "zod-to-ts": {
+        "name": "zod-to-ts",
+        "severity": "high",
+        "isDirect": false,
+        "via": [
+          "zod"
+        ],
+        "effects": [
+          "astro"
+        ],
+        "range": "<=1.2.0",
+        "nodes": [
+          "node_modules/astro/node_modules/zod-to-ts"
+        ],
+        "fixAvailable": {
+          "name": "astro",
+          "version": "7.4.4",
+          "isSemVerMajor": true
+        }
+      }
+    },
+    "metadata": {
+      "vulnerabilities": {
+        "info": 0,
+        "low": 1,
+        "moderate": 2,
+        "high": 6,
+        "critical": 1,
+        "total": 10
+      },
+      "dependencies": {
+        "prod": 276,
+        "dev": 80,
+        "optional": 8,
+        "peer": 9,
+        "peerOptional": 0,
+        "total": 369
+      }
+    }
+  }
+}

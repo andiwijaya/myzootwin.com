@@ -1044,5 +1044,20 @@
     "later_notice_update": "M6-06 adds an exact installed-license public notice wrapper; original public assets and earlier dated evidence remain unchanged."
   },
   "installed_dependency_license_inventory_complete": true,
-  "transitive_license_audit_limit": "All369 installed packages inventoried with package/license metadata and local notices.13 packages lack a standalone notice file; full source/native-package redistribution notice clearance is not claimed. Only Three.js is present in measured client chunks and its exact MIT notice is retained."
+  "transitive_license_audit_limit": "Historical M6-05 inventory:369 packages/13 standalone-notice gaps. Current M6-06 graph:281 installed packages/12 standalone-notice gaps, all recorded package metadata present. No full source/native redistribution legal clearance; measured browser third-party code is Three.js with exact public MIT text. See audit_m6_06_2026_11_02 and its current dependency report.",
+  "audit_m6_06_2026_11_02": {
+    "dependency_inventory": "qa/m6-06/dependency-notice-current.json",
+    "installed_packages": 281,
+    "lock_entries": 351,
+    "standalone_notice_gaps": 12,
+    "historical_13_gap_transitions": {
+      "absent_from_current_graph": 8,
+      "remain": 5,
+      "new": 7
+    },
+    "browser_distribution": "Only Three.js is emitted among third-party client modules; full exact MIT license in both retained three-MIT.txt and new third-party-notices.txt wrapper.",
+    "current_full_transitive_legal_clearance": false,
+    "legacy_artwork_rights": "Unresolved, original hero/favicon retained",
+    "previous_audit": "audit_2026_11_02 is the preserved earlier M6-05 inventory, before the Astro dependency update."
+  }
 }

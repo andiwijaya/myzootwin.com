@@ -1,0 +1,193 @@
+{
+  "at": "2026-11-02T14:23:15.100687+00:00",
+  "method": "Anonymous read-only exact vendor GitHub advisory API, one call per ID, no auth or retries",
+  "advisories": [
+    {
+      "id": "GHSA-j687-52p2-xcff",
+      "vendorURL": "https://github.com/withastro/astro/security/advisories/GHSA-j687-52p2-xcff",
+      "apiURL": "https://api.github.com/repos/withastro/astro/security-advisories/GHSA-j687-52p2-xcff",
+      "title": "XSS via incomplete `</script>` sanitization in `define:vars` allows case-insensitive and whitespace-based bypass",
+      "vendorSeverity": "medium",
+      "npmSeverity": "moderate",
+      "npmAffectedRange": "<6.1.6",
+      "vendorVersions": [
+        {
+          "affected": "<= 6.1.1",
+          "patched": "6.1.6"
+        }
+      ],
+      "publishedAt": "2026-04-20T12:11:11Z",
+      "status": "VENDOR_API_VERIFIED"
+    },
+    {
+      "id": "GHSA-xr5h-phrj-8vxv",
+      "vendorURL": "https://github.com/withastro/astro/security/advisories/GHSA-xr5h-phrj-8vxv",
+      "apiURL": "https://api.github.com/repos/withastro/astro/security-advisories/GHSA-xr5h-phrj-8vxv",
+      "title": "Server island encrypted parameters vulnerable to cross-component replay",
+      "vendorSeverity": "low",
+      "npmSeverity": "low",
+      "npmAffectedRange": "<6.1.10",
+      "vendorVersions": [
+        {
+          "affected": "< 6.1.10",
+          "patched": "6.1.10"
+        }
+      ],
+      "publishedAt": "2026-05-07T19:07:13Z",
+      "status": "VENDOR_API_VERIFIED"
+    },
+    {
+      "id": "GHSA-jrpj-wcv7-9fh9",
+      "vendorURL": "https://github.com/withastro/astro/security/advisories/GHSA-jrpj-wcv7-9fh9",
+      "apiURL": "https://api.github.com/repos/withastro/astro/security-advisories/GHSA-jrpj-wcv7-9fh9",
+      "title": "XSS via Unescaped Attribute Names in Spread Props",
+      "vendorSeverity": "medium",
+      "npmSeverity": "moderate",
+      "npmAffectedRange": "<6.4.6",
+      "vendorVersions": [
+        {
+          "affected": "<= 6.4.2",
+          "patched": "6.4.6"
+        }
+      ],
+      "publishedAt": "2026-06-12T16:48:25Z",
+      "status": "VENDOR_API_VERIFIED"
+    },
+    {
+      "id": "GHSA-f48w-9m4c-m7f5",
+      "vendorURL": "https://github.com/withastro/astro/security/advisories/GHSA-f48w-9m4c-m7f5",
+      "apiURL": "https://api.github.com/repos/withastro/astro/security-advisories/GHSA-f48w-9m4c-m7f5",
+      "title": "XSS via unescaped spread attribute names in custom element rendering",
+      "vendorSeverity": "low",
+      "npmSeverity": "moderate",
+      "npmAffectedRange": "<7.0.6",
+      "vendorVersions": [
+        {
+          "affected": "<=7.0.3",
+          "patched": "7.0.5"
+        }
+      ],
+      "publishedAt": "2026-07-17T13:54:42Z",
+      "status": "VENDOR_API_VERIFIED"
+    },
+    {
+      "id": "GHSA-7pw4-f3q4-r2p2",
+      "vendorURL": "https://github.com/withastro/astro/security/advisories/GHSA-7pw4-f3q4-r2p2",
+      "apiURL": "https://api.github.com/repos/withastro/astro/security-advisories/GHSA-7pw4-f3q4-r2p2",
+      "title": "Cross-site scripting via unescaped transition:* directive values on hydrated islands",
+      "vendorSeverity": "low",
+      "npmSeverity": "low",
+      "npmAffectedRange": ">=3.10.0 <7.0.4",
+      "vendorVersions": [
+        {
+          "affected": ">= 3.10.0, < 7.0.4",
+          "patched": "7.0.4"
+        }
+      ],
+      "publishedAt": "2026-07-17T13:54:26Z",
+      "status": "VENDOR_API_VERIFIED"
+    },
+    {
+      "id": "GHSA-4g3v-8h47-v7g6",
+      "vendorURL": "https://github.com/withastro/astro/security/advisories/GHSA-4g3v-8h47-v7g6",
+      "apiURL": "https://api.github.com/repos/withastro/astro/security-advisories/GHSA-4g3v-8h47-v7g6",
+      "title": "Reflected XSS via unescaped View Transition animation properties",
+      "vendorSeverity": "medium",
+      "npmSeverity": "moderate",
+      "npmAffectedRange": ">=2.9.0 <=7.0.9",
+      "vendorVersions": [
+        {
+          "affected": ">= 2.9.0, <= 7.0.9",
+          "patched": "7.1.0"
+        }
+      ],
+      "publishedAt": "2026-07-17T13:55:36Z",
+      "status": "VENDOR_API_VERIFIED"
+    },
+    {
+      "id": "GHSA-2pvr-wf23-7pc7",
+      "vendorURL": "https://github.com/withastro/astro/security/advisories/GHSA-2pvr-wf23-7pc7",
+      "apiURL": "https://api.github.com/repos/withastro/astro/security-advisories/GHSA-2pvr-wf23-7pc7",
+      "title": "Host header SSRF in prerendered error page fetch",
+      "vendorSeverity": "high",
+      "npmSeverity": "high",
+      "npmAffectedRange": "<6.4.6",
+      "vendorVersions": [
+        {
+          "affected": "<= 6.4.4 (core; the chain is present on main HEAD)",
+          "patched": "6.4.6"
+        }
+      ],
+      "publishedAt": "2026-06-12T16:48:22Z",
+      "status": "VENDOR_API_VERIFIED"
+    },
+    {
+      "id": "GHSA-8hv8-536x-4wqp",
+      "vendorURL": "https://github.com/withastro/astro/security/advisories/GHSA-8hv8-536x-4wqp",
+      "apiURL": "https://api.github.com/repos/withastro/astro/security-advisories/GHSA-8hv8-536x-4wqp",
+      "title": "Reflected XSS via unescaped slot name",
+      "vendorSeverity": "high",
+      "npmSeverity": "high",
+      "npmAffectedRange": "<6.3.3",
+      "vendorVersions": [
+        {
+          "affected": "6.3.1",
+          "patched": ">= 6.3.3"
+        }
+      ],
+      "publishedAt": "2026-06-12T16:47:18Z",
+      "status": "VENDOR_API_VERIFIED"
+    },
+    {
+      "id": "GHSA-26w7-cxv4-gfx2",
+      "vendorURL": "https://github.com/withastro/astro/security/advisories/GHSA-26w7-cxv4-gfx2",
+      "apiURL": "https://api.github.com/repos/withastro/astro/security-advisories/GHSA-26w7-cxv4-gfx2",
+      "title": "Remote code execution through AVIF image optimization",
+      "vendorSeverity": "critical",
+      "npmSeverity": "critical",
+      "npmAffectedRange": "<7.2.8",
+      "vendorVersions": [
+        {
+          "affected": "< 7.2.8",
+          "patched": "7.2.8"
+        }
+      ],
+      "publishedAt": "2026-08-27T12:41:06Z",
+      "status": "VENDOR_API_VERIFIED"
+    },
+    {
+      "id": "GHSA-376h-93r7-7g6f",
+      "vendorURL": "https://github.com/withastro/astro/security/advisories/GHSA-376h-93r7-7g6f",
+      "apiURL": "https://api.github.com/repos/withastro/astro/security-advisories/GHSA-376h-93r7-7g6f",
+      "title": "Authorization bypass from missing path-segment boundary check when stripping the configured base",
+      "vendorSeverity": "medium",
+      "npmSeverity": "moderate",
+      "npmAffectedRange": "<=7.2.3",
+      "vendorVersions": [
+        {
+          "affected": "<= 7.2.3",
+          "patched": "7.2.4"
+        }
+      ],
+      "publishedAt": "2026-08-27T12:34:09Z",
+      "status": "VENDOR_API_VERIFIED"
+    },
+    {
+      "id": "GHSA-98hj-9722-w3j8",
+      "vendorURL": "https://github.com/withastro/astro/security/advisories/GHSA-98hj-9722-w3j8",
+      "apiURL": "https://api.github.com/repos/withastro/astro/security-advisories/GHSA-98hj-9722-w3j8",
+      "title": "XSS via unescaped dynamic content in JSX and MDX script or style elements",
+      "vendorSeverity": "medium",
+      "npmSeverity": "moderate",
+      "npmAffectedRange": "<7.3.2",
+      "vendorVersions": [
+        {
+          "affected": "< 7.3.2",
+          "patched": "7.3.2"
+        }
+      ],
+      "publishedAt": "2026-10-12T18:13:35Z",
+      "status": "VENDOR_API_VERIFIED"
+    }
+  ]
+}

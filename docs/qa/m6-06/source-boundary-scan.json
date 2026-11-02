@@ -1,0 +1,23 @@
+{
+  "method": "Scoped first-party source token inventory, manually classified; not a formal static analyzer or exploit-completeness proof",
+  "hits": [
+    {
+      "path": "src/game-entry/game-entry.ts",
+      "line": 19,
+      "token": "indexedDB",
+      "excerpt": "return window.indexedDB;"
+    },
+    {
+      "path": "src/game-entry/game-entry.ts",
+      "line": 42,
+      "token": "localStorage",
+      "excerpt": "storage = 'preferenceStorage' in options ? options.preferenceStorage ?? undefined : window.localStorage;"
+    },
+    {
+      "path": "src/game-entry/game-entry.ts",
+      "line": 69,
+      "token": "postMessage",
+      "excerpt": "}, committed: (revision, generation) => channel?.postMessage({ writer, revision, generation }) });"
+    }
+  ]
+}

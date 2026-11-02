@@ -1,0 +1,27 @@
+{
+  "name": "myzootwin.com",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "qa:local": "node scripts/qa/qa.mjs local",
+    "qa:serve": "node scripts/qa/qa.mjs serve",
+    "qa:verify": "node scripts/qa/qa.mjs verify",
+    "qa:prune": "node scripts/qa/qa.mjs prune"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
+    "astro": "^5.2.0",
+    "three": "0.187.0",
+    "typescript": "^5.7.2"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "@types/three": "0.187.0"
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "area": "No game account/PII collection",
+    "status": "PASS for inspected local game",
+    "evidence": "source-boundary-scan.json, security-privacy.test.mjs, security-fixture-final.json",
+    "limits": "No account/login/backend/free-text personal fields or game telemetry endpoint. Hosting IP/request logs, existing browser/site cookies and journal integrations are not certified absent."
+  },
+  {
+    "area": "Storage transparency",
+    "status": "PASS",
+    "evidence": "privacy-portrait.jpg, privacy-landscape.jpg, native-reload-continue.json, recovery-final.json",
+    "limits": "ID/EN settings explain local profile saves/backups, shared-profile access and clearing site-data consequences. Browser-process restart and physical devices remain UNRUN."
+  },
+  {
+    "area": "Safe errors and active content boundary",
+    "status": "PASS for tested scope",
+    "evidence": "security-fixture-final.json, security-fixture-final-console.json, npm-audit-final-graph.json",
+    "limits": "Injected harmless inline canary is blocked by real meta CSP; policy-violation event retained, captured console only Vite debug entries. Generic backend failures do not expose canary details. No penetration-test or full HTTP-header certification."
+  },
+  {
+    "area": "Accessibility",
+    "status": "PASS targeted fixes; full conformance NOT claimed",
+    "evidence": "focus-before-fix.json, focus-after-fix.json, homepage-a11y.json, final-guard.json, portrait.json, landscape.json",
+    "limits": "Native Settings Tab/ShiftTab/Escape, focus restoration, skip-to-main, ID/EN fit and selected contrast checked. No screen-reader/physical-touch audit."
+  },
+  {
+    "area": "Vulnerable dependencies",
+    "status": "PASS current local advisory remediation",
+    "evidence": "vendor-astro-advisories.json, npm-audit-initial.json, npm-audit-final-graph.json, npm-ls-final.json, final-local",
+    "limits": "0 npm advisories is a time-bound database observation, not proof of no vulnerabilities. Actual Cloudflare Node/build configuration remains unknown."
+  },
+  {
+    "area": "Sign-off notes",
+    "status": "WITHHELD / M6-06 PARTIAL",
+    "evidence": "risk-register.json, dependency-notice-current.json, configured-ga.json",
+    "limits": "Legacy artwork rights, source/native package notice gaps, journal consent/privacy and external hosting configuration remain open. Do not claim legal/security release clearance."
+  }
+]

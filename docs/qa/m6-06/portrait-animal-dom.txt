@@ -1,0 +1,129 @@
+- link "Skip to main content":
+  - /url: "#main-content"
+- banner:
+  - link "MyZooTwin home":
+    - /url: /
+    - generic: ✦
+    - generic: MyZooTwin
+  - navigation "Main navigation":
+    - link "Play Zoo":
+      - /url: /play/
+    - link "Animals":
+      - /url: /animals/
+    - link "Wildlife":
+      - /url: /wildlife/
+    - link "Pets":
+      - /url: /pets/
+    - link "Learn":
+      - /url: /learn/
+    - link "Adventures":
+      - /url: /adventures/
+    - link "Gear":
+      - /url: /gear/
+  - link "About":
+    - /url: /about/
+    - text: About ↗
+- main:
+  - region "A little world to care for.":
+    - generic "Sanctuary status":
+      - strong: 1,057 ZC
+      - generic: Welfare 84%
+      - generic: Guests 2
+      - generic "All missions complete": ✓
+      - generic "Simulation speed 10×. Open options": 10×
+    - region "Local game progress":
+      - generic "Save details":
+        - status: Saved on this device
+        - generic: Save details
+    - region "Session controls":
+      - button "Resume zoo" [pressed]
+      - status: Zoo paused. Animals, visitors, money and missions are frozen.
+    - generic "Options"
+    - option "English" [selected]
+    - option "Bahasa Indonesia"
+    - option "1× · normal"
+    - option "10× · faster care" [selected]
+    - figure "Tropical Creek · living sanctuary":
+      - 'group "Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions."'
+      - group "Game actions":
+        - generic: Game actions
+        - group "World camera controls":
+          - button "Zoom out" [disabled]: −
+          - status: 100%
+          - button "Zoom in" [disabled]: +
+          - button "Overview" [disabled]
+      - tablist "Zoo tools":
+        - tab "Missions"
+        - tab "Care" [selected]
+        - tab "Guests"
+        - tab "Build"
+      - tabpanel "Care":
+        - region "Two curious macaws":
+          - heading "Two curious macaws" [level=3]
+          - paragraph: Welcome both macaws, then provide food, water and rest below. Inspect a bird for the reasons behind its welfare and the next care action.
+          - group "Two curious macaws":
+            - button "Move birds to reserve for habitat edits" [disabled]
+          - status: Two macaws live in this aviary. Occupied habitats cannot be removed.
+          - paragraph: "Hunger and thirst: lower is better. Energy, enrichment and welfare: higher is better. Inspect either bird for the actual causes and next action."
+          - list:
+            - paragraph: Macaw 1 · Looking around · Hunger 9% · Portions eaten 20 · Thirst 33% · Drinks 19 · Energy 79% · Enrichment 81%
+            - paragraph: Welfare 84% · ✓ Comfortable
+            - button "Inspect Macaw 1" [expanded]
+            - paragraph: Macaw 2 · Looking around · Hunger 10% · Portions eaten 20 · Thirst 34% · Drinks 19 · Energy 79% · Enrichment 80%
+            - paragraph: Welfare 83% · ✓ Comfortable
+            - button "Inspect Macaw 2"
+          - region "Macaw 1 · Blue-and-yellow macaw · macaw-1":
+            - heading "Macaw 1 · Blue-and-yellow macaw · macaw-1" [active] [level=4]
+            - button "Close animal details"
+            - paragraph: "Welfare: 84% · ✓ Comfortable"
+            - list:
+              - listitem: Food 90.96% × 35%
+              - listitem: Water 66.95% × 30%
+              - listitem: Habitat 100% × 20%
+              - listitem: Enrichment 80.53% × 15%
+            - paragraph: "Game model: 35% food + 30% water + 20% habitat + 15% enrichment. Energy affects rest decisions; it is not a separate weight. Needs care below 60%; recovers at 65%. This is a simplified game, not animal care advice."
+            - paragraph: Without a reachable serving in this bird’s bowl, food/water score is capped at 40%. Refilling restores access; only eating/drinking relieves the actual need.
+            - list:
+              - listitem: No current care alert. Keep supplies available and watch each bird’s needs.
+          - status: "Macaw 1: ✓ Comfortable. No current care alert. Keep supplies available and watch each bird’s needs."
+        - region "Fruit feeder":
+          - heading "Fruit feeder" [level=3]
+          - group "Fruit feeder":
+            - paragraph: Place a two-port feeder on the marked front edge, then fill it. Hungry macaws walk to a bowl and eat real portions. Hunger runs from 0% (full) to 100% (very hungry). Refill service has the displayed Zoo Coin cost.
+            - button "Fill feeder · 8 ZC" [disabled]
+            - button "Remove feeder" [disabled]
+            - paragraph: Build 80 ZC · Refill service 8 ZC · Balance 1,057 ZC. Removal returns only actual construction spending; refill fees are not refunded.
+            - status: "Food: 3/8 portions (macaw 1: 1; macaw 2: 2). Consumption happens only when a bird finishes eating."
+        - region "Fresh water":
+          - heading "Fresh water" [level=3]
+          - group "Fresh water":
+            - paragraph: Place two blue water bowls at the sides of the aviary, then refill them. Thirsty macaws approach and drink real portions. Thirst runs from 0% (hydrated) to 100% (very thirsty). Refill service has the displayed Zoo Coin cost.
+            - button "Refill water · 4 ZC" [disabled]
+            - button "Remove water bowls" [disabled]
+            - paragraph: Build 60 ZC · Refill service 4 ZC · Balance 1,057 ZC. Removal returns only actual construction spending; refill fees are not refunded.
+            - status: "Water: 5/8 portions (macaw 1: 2; macaw 2: 3). Stock decreases only when a bird finishes drinking."
+        - region "Rest & enrichment":
+          - heading "Rest & enrichment" [level=3]
+          - group "Rest & enrichment":
+            - paragraph: Prepare two supported leafy perches. Tired macaws sleep to recover energy; awake macaws look around the plants to improve enrichment. Both scores run from 0% to 100% (higher is better). Benefits happen only while the bird uses a prepared perch. Food and water still need care. Construction has the displayed Zoo Coin cost.
+            - button "Remove rest garden" [disabled]
+            - paragraph: Build 80 ZC · Balance 1,057 ZC. Removal returns actual construction spending.
+            - status: "Prepared perches: resting 0/2; exploring 0/2. Energy rises only during sleep; enrichment rises only during exploration. Urgent food/water can interrupt safely."
+      - status
+- contentinfo:
+  - link "✦ MyZooTwin":
+    - /url: /
+    - generic: ✦
+    - generic: MyZooTwin
+  - paragraph: A curious field guide to the animals we share this planet with.
+  - link "Animals":
+    - /url: /animals/
+  - link "Wildlife":
+    - /url: /wildlife/
+  - link "Pets":
+    - /url: /pets/
+  - link "Learn":
+    - /url: /learn/
+  - link "About":
+    - /url: /about/
+  - generic: © 2026 MyZooTwin. Made for curious minds.
