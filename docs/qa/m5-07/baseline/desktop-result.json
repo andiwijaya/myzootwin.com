@@ -1,0 +1,53 @@
+{
+  "result": {
+    "missions": 3,
+    "currency": "1573",
+    "birds": "2",
+    "tick": "42118",
+    "reloadExact": true,
+    "Q04": "in progress, not claimed complete",
+    "languages": [
+      "en",
+      "id"
+    ],
+    "note": "Agent used visible UI and10x/1x; timing includes tool/analysis delays, not a human usability metric"
+  },
+  "findings": [
+    {
+      "id": "UX-507-01",
+      "status": "OBSERVED",
+      "scope": "Guided Q01 path requires 10 clicks for 5 tiles (Preview + Confirm each), prices and Cancel clear; consider auto-preparing next preview while retaining explicit Confirm."
+    },
+    {
+      "id": "UX-507-02",
+      "status": "OBSERVED",
+      "scope": "Q02 low welfare after ate/drank yes: mission View birds and aviary only moves camera; concrete cause reachable via extra Care then Inspect steps. No human-impact claim."
+    },
+    {
+      "id": "UX-507-03",
+      "status": "OBSERVED",
+      "scope": "After arrival the first Care action becomes Return both birds to reserve; edit purpose is buried in surrounding copy. Consider secondary emphasis/clear edit-purpose label."
+    },
+    {
+      "id": "QA-507-selector",
+      "type": "TEST_TOOLING",
+      "status": "RESOLVED",
+      "note": "Language role locator matched Options and modal controls; failed before mutation. Scoped actual Settings dialog control instead; not claimed as product defect."
+    },
+    {
+      "id": "UX-507-04",
+      "status": "OBSERVED",
+      "scope": "Normal pause disables Inspect/Close animal details and Go to care navigation, although these are read-only UI; this prevents safe exploration of welfare causes while paused."
+    },
+    {
+      "id": "UX-507-05",
+      "status": "OBSERVED",
+      "scope": "English Q04 visible text has welfare60 / for30 / Earn20 / least2 spacing errors."
+    },
+    {
+      "id": "UX-507-06",
+      "status": "OBSERVED",
+      "scope": "Options exit says Close3Dpreview and entry secondaryOpen3Dpreview; technical wording obscures return/start intent. Help mentions visual settings but omits the implemented sound setting."
+    }
+  ]
+}

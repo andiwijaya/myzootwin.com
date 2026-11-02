@@ -1,0 +1,167 @@
+{
+  "folder": "C:/Users/andi_/Documents/Codex/2026-10-31/task/m5-07-native-final1",
+  "startedAt": "2026-11-02T05:15:01.472Z",
+  "method": "Familiar agent follows visible product guidance using native browser controls; no state fixtures, not an unaided human study",
+  "tabs": [
+    "36",
+    "37",
+    "38"
+  ],
+  "results": [
+    {
+      "scenario": "portrait-ID primary / EN Help+Settings+Continue",
+      "status": "PASS",
+      "pausedReadOnlySameSave": true,
+      "before": {
+        "astroCidEafzghoe": "",
+        "hasSave": "true",
+        "resumePending": "false",
+        "saveActive": "true",
+        "savePanel": "",
+        "savePhase": "saved",
+        "savedBirds": "2",
+        "savedCurrency": "927",
+        "savedGeneration": "3093f5a1-48d3-4e28-93a1-dd70940f6228",
+        "savedMissions": "3",
+        "savedRevision": "214",
+        "savedTick": "9043"
+      },
+      "after": {
+        "astroCidEafzghoe": "",
+        "hasSave": "true",
+        "resumePending": "true",
+        "saveActive": "true",
+        "savePanel": "",
+        "savePhase": "saved",
+        "savedBirds": "2",
+        "savedCurrency": "927",
+        "savedGeneration": "3093f5a1-48d3-4e28-93a1-dd70940f6228",
+        "savedMissions": "3",
+        "savedRevision": "218",
+        "savedTick": "9043"
+      },
+      "threeMissions": true,
+      "actualReload": true,
+      "physicalDevice": false
+    },
+    {
+      "scenario": "landscape-EN primary / ID Help+Settings+Continue",
+      "status": "PASS",
+      "before": {
+        "astroCidEafzghoe": "",
+        "hasSave": "true",
+        "resumePending": "false",
+        "saveActive": "true",
+        "savePanel": "",
+        "savePhase": "saved",
+        "savedBirds": "2",
+        "savedCurrency": "975",
+        "savedGeneration": "6d03a1ad-a1ff-4f86-840b-103455e1f5a3",
+        "savedMissions": "3",
+        "savedRevision": "76",
+        "savedTick": "2223"
+      },
+      "after": {
+        "astroCidEafzghoe": "",
+        "hasSave": "true",
+        "resumePending": "true",
+        "saveActive": "true",
+        "savePanel": "",
+        "savePhase": "saved",
+        "savedBirds": "2",
+        "savedCurrency": "975",
+        "savedGeneration": "6d03a1ad-a1ff-4f86-840b-103455e1f5a3",
+        "savedMissions": "3",
+        "savedRevision": "80",
+        "savedTick": "2223"
+      },
+      "threeMissions": true,
+      "actualReload": true,
+      "physicalDevice": false
+    },
+    {
+      "scenario": "desktop-EN primary / ID Help+Settings+Continue",
+      "status": "PASS",
+      "before": {
+        "astroCidEafzghoe": "",
+        "hasSave": "true",
+        "resumePending": "false",
+        "saveActive": "true",
+        "savePanel": "",
+        "savePhase": "saved",
+        "savedBirds": "2",
+        "savedCurrency": "985",
+        "savedGeneration": "ee39243c-3281-4f72-8a84-478ee5e7a6b1",
+        "savedMissions": "3",
+        "savedRevision": "49",
+        "savedTick": "1952"
+      },
+      "after": {
+        "astroCidEafzghoe": "",
+        "hasSave": "true",
+        "resumePending": "true",
+        "saveActive": "true",
+        "savePanel": "",
+        "savePhase": "saved",
+        "savedBirds": "2",
+        "savedCurrency": "985",
+        "savedGeneration": "ee39243c-3281-4f72-8a84-478ee5e7a6b1",
+        "savedMissions": "3",
+        "savedRevision": "53",
+        "savedTick": "1952"
+      },
+      "threeMissions": true,
+      "actualReload": true,
+      "physicalDevice": false,
+      "keyboardDismiss": true
+    }
+  ],
+  "screens": [
+    "portrait-paused-inspection-id.jpg",
+    "landscape-paused-inspection-en.jpg",
+    "desktop-paused-inspection-en.jpg"
+  ],
+  "logs": [
+    {
+      "label": "portrait",
+      "logs": [],
+      "cap": 200,
+      "capped": false
+    },
+    {
+      "label": "landscape",
+      "logs": [],
+      "cap": 200,
+      "capped": false
+    },
+    {
+      "label": "desktop",
+      "logs": [],
+      "cap": 200,
+      "capped": false
+    }
+  ],
+  "finishedAt": "2026-11-02T05:27:49.547Z",
+  "qaErrors": [
+    {
+      "action": "Close speed options",
+      "reason": "QA guessed nonexistent data-session-options; speed had changed, then actual summary[data-hud-text=options] used after inspection",
+      "productDefect": false
+    },
+    {
+      "action": "Q02 check needs at 10x",
+      "reason": "Live resources depleted before stale label click; current food guidance inspected/refilled at1x",
+      "productDefect": false
+    },
+    {
+      "action": "English Settings dismissal",
+      "reason": "QA expected Close/discard changes instead of visible Close/discard edits; corrected after inspection",
+      "productDefect": false
+    },
+    {
+      "action": "Reload wait",
+      "reason": "QA expected saved at entry; actual available status is correct before Continue; inspected and continued once",
+      "productDefect": false
+    }
+  ]
+}
