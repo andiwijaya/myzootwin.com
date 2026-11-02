@@ -86,7 +86,6 @@ export function createAutosave(backend: DurableBackend, options: Options) {
         pendingCritical = false;
         phase = 'saving';
         error = null;
-        notify();
         inflight = (async () => {
             try {
                 const next = checkedCheckpoint(await backend.commit(revision, payload, options.writer, now()));
@@ -116,6 +115,9 @@ export function createAutosave(backend: DurableBackend, options: Options) {
                     queue(pendingCritical);
             }
         })();
+        // Publish the in-flight guard before a UI notification can synchronously
+        // pause/checkpoint/flush again (for example while a dialog changes owners).
+        notify();
         return inflight;
     }
     async function drain() {

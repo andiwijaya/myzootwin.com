@@ -30,3 +30,38 @@ test('unavailable temporary session freezes safely if retry discovers unreadable
 test('closed-tab notification failure cannot report a successful commit as failure or prevent latest drain',async()=>{const m=memory(),save=createAutosave(m.backend,{writer:'tab-notification',committed(){throw new DOMException('closed channel','InvalidStateError');}});await save.load();save.startNew('en');await save.flush();assert.equal(save.view().phase,'saved');assert.equal(save.view().revision,1);const s=createSimulation();let release;m.data.held=new Promise(r=>release=r);s.advance(100);save.session.checkpoint(()=>s.snapshot(),true);const pending=save.flush();s.advance(100);save.session.checkpoint(()=>s.snapshot(),true);m.data.held=null;release();await pending;assert.equal(save.view().phase,'saved');assert.equal(save.view().savedTick,2);assert.equal(stateFromCheckpoint(m.data.record).tick,2);save.dispose();s.dispose();await turn();});
 
 test('out-of-range saved timestamps are unreadable and never reach locale date formatting',async()=>{const good=seed(createInitialState());assert.equal(checkedCheckpoint({...good,writtenAt:8640000000000000}).writtenAt,8640000000000000);const bad={...good,writtenAt:Number.MAX_SAFE_INTEGER},h=harness(memory(bad));await h.save.load();assert.equal(h.save.view().phase,'unreadable');assert.equal(h.save.canOpen(),false);assert.equal(h.data.writes,0);assert.deepEqual(h.data.record,bad);h.save.dispose();await turn();});
+
+
+test('reentrant saving notification serializes pause checkpoints instead of conflicting with its own revision', async () => {
+    let record = null, writes = 0, reentered = false, save;
+    const latest = createInitialState();
+    const backend = {
+        async read() { return record; },
+        async commit(expected, payload, writer, writtenAt) {
+            writes++;
+            if ((record?.revision ?? 0) !== expected) throw new SaveFault('conflict');
+            record = checkedCheckpoint({format: 1, revision: expected + 1, payload, writer, writtenAt});
+            return record;
+        },
+        close() {}
+    };
+    save = createAutosave(backend, {writer: 'reentrant-test', changed(view) {
+        if (view.phase === 'saving' && !reentered) {
+            reentered = true;
+            latest.preferences.locale = 'id';
+            save.session.checkpoint(() => latest, true);
+            save.session.flush();
+        }
+    }});
+    await save.load();
+    save.startNew('en');
+    await save.flush();
+    await turn();
+    assert.equal(save.view().phase, 'saved');
+    assert.equal(save.view().fault, null);
+    assert.equal(save.view().revision, 2);
+    assert.equal(writes, 2);
+    assert.equal(record.payload, encodeCheckpointState(latest));
+    save.dispose();
+    await turn();
+});
