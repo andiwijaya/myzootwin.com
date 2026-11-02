@@ -1,0 +1,511 @@
+{
+  "phase": "LIGHTING_LOCALLY_VERIFIED; fullvisualpassinprogress",
+  "run": "s20261102T230708Z",
+  "source": "9410742079ee2b6a9f6720833aed73814c91e692def8ac3b09c8c37fc5cf16d3",
+  "build": "00f6c1f1164a76be42dd62e7c1ee184eeafd4565e816486ae8f2ab17bedef96e",
+  "unitCounts": {
+    "tests": 487,
+    "pass": 487,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "stages": {
+    "unit": "PASS",
+    "check": "PASS",
+    "build": "PASS",
+    "routes": "UNRUN",
+    "browser": "UNRUN",
+    "cleanup": "UNRUN"
+  },
+  "ownerBuildPreserved": true,
+  "comparison": [
+    {
+      "graphics": "high",
+      "speed": 1,
+      "sameWholeStartingState": true,
+      "sameBuffer": true,
+      "beforeCPU": {
+        "samples": 301,
+        "p50Ms": 2.699999988079071,
+        "p95Ms": 5.200000047683716,
+        "maxMs": 17.19999998807907
+      },
+      "lightingCPU": {
+        "samples": 301,
+        "p50Ms": 2.800000011920929,
+        "p95Ms": 5,
+        "maxMs": 15.600000023841858
+      },
+      "beforeGPU": {
+        "status": "OBSERVED_GPU_ELAPSED",
+        "counterBits": 64,
+        "disjoint": 0,
+        "overflow": false,
+        "glError": 0,
+        "submitted": 301,
+        "completed": 301,
+        "pending": 0,
+        "invalidValues": 0,
+        "all": {
+          "samples": 301,
+          "p50Ms": 1.945728,
+          "p95Ms": 2.764374,
+          "maxMs": 5.15901
+        },
+        "rafOnly": {
+          "samples": 301,
+          "p50Ms": 1.945728,
+          "p95Ms": 2.764374,
+          "maxMs": 5.15901
+        },
+        "cameraOnly": {
+          "samples": 0,
+          "p50Ms": null,
+          "p95Ms": null,
+          "maxMs": null
+        },
+        "replayOnly": {
+          "samples": 0,
+          "p50Ms": null,
+          "p95Ms": null,
+          "maxMs": null
+        },
+        "legacyRetained": {
+          "samples": 300,
+          "p50Ms": 1.945572,
+          "p95Ms": 2.764374,
+          "maxMs": 5.15901
+        },
+        "legacyExcludedLate": 1,
+        "legacyNote": "Same current-window rows: completion while collecting and last300 emulate old retention only; not the denied historical build or a full old-probe A/B.",
+        "presentationFPS": "UNMEASURED"
+      },
+      "lightingGPU": {
+        "status": "OBSERVED_GPU_ELAPSED",
+        "counterBits": 64,
+        "disjoint": 0,
+        "overflow": false,
+        "glError": 0,
+        "submitted": 301,
+        "completed": 301,
+        "pending": 0,
+        "invalidValues": 0,
+        "all": {
+          "samples": 301,
+          "p50Ms": 2.129895,
+          "p95Ms": 2.963229,
+          "maxMs": 5.769427
+        },
+        "rafOnly": {
+          "samples": 301,
+          "p50Ms": 2.129895,
+          "p95Ms": 2.963229,
+          "maxMs": 5.769427
+        },
+        "cameraOnly": {
+          "samples": 0,
+          "p50Ms": null,
+          "p95Ms": null,
+          "maxMs": null
+        },
+        "replayOnly": {
+          "samples": 0,
+          "p50Ms": null,
+          "p95Ms": null,
+          "maxMs": null
+        },
+        "legacyRetained": {
+          "samples": 300,
+          "p50Ms": 2.129791,
+          "p95Ms": 2.963229,
+          "maxMs": 5.769427
+        },
+        "legacyExcludedLate": 1,
+        "legacyNote": "Same current-window rows: completion while collecting and last300 emulate old retention only; not the denied historical build or a full old-probe A/B.",
+        "presentationFPS": "UNMEASURED"
+      },
+      "beforeCalls": 63,
+      "lightingCalls": 63,
+      "shadowRefreshRequestsBefore": 2,
+      "shadowRefreshRequestsAfter": 2
+    },
+    {
+      "graphics": "low",
+      "speed": 10,
+      "sameWholeStartingState": true,
+      "sameBuffer": true,
+      "beforeCPU": {
+        "samples": 301,
+        "p50Ms": 4.5,
+        "p95Ms": 6.600000023841858,
+        "maxMs": 9.099999964237213
+      },
+      "lightingCPU": {
+        "samples": 301,
+        "p50Ms": 4.599999964237213,
+        "p95Ms": 7.699999988079071,
+        "maxMs": 13
+      },
+      "beforeGPU": {
+        "status": "OBSERVED_GPU_ELAPSED",
+        "counterBits": 64,
+        "disjoint": 0,
+        "overflow": false,
+        "glError": 0,
+        "submitted": 301,
+        "completed": 301,
+        "pending": 0,
+        "invalidValues": 0,
+        "all": {
+          "samples": 301,
+          "p50Ms": 1.879114,
+          "p95Ms": 2.629791,
+          "maxMs": 5.413437
+        },
+        "rafOnly": {
+          "samples": 301,
+          "p50Ms": 1.879114,
+          "p95Ms": 2.629791,
+          "maxMs": 5.413437
+        },
+        "cameraOnly": {
+          "samples": 0,
+          "p50Ms": null,
+          "p95Ms": null,
+          "maxMs": null
+        },
+        "replayOnly": {
+          "samples": 0,
+          "p50Ms": null,
+          "p95Ms": null,
+          "maxMs": null
+        },
+        "legacyRetained": {
+          "samples": 300,
+          "p50Ms": 1.879114,
+          "p95Ms": 2.629791,
+          "maxMs": 5.413437
+        },
+        "legacyExcludedLate": 1,
+        "legacyNote": "Same current-window rows: completion while collecting and last300 emulate old retention only; not the denied historical build or a full old-probe A/B.",
+        "presentationFPS": "UNMEASURED"
+      },
+      "lightingGPU": {
+        "status": "OBSERVED_GPU_ELAPSED",
+        "counterBits": 64,
+        "disjoint": 0,
+        "overflow": false,
+        "glError": 0,
+        "submitted": 301,
+        "completed": 301,
+        "pending": 0,
+        "invalidValues": 0,
+        "all": {
+          "samples": 301,
+          "p50Ms": 1.903958,
+          "p95Ms": 2.696197,
+          "maxMs": 5.956562
+        },
+        "rafOnly": {
+          "samples": 301,
+          "p50Ms": 1.903958,
+          "p95Ms": 2.696197,
+          "maxMs": 5.956562
+        },
+        "cameraOnly": {
+          "samples": 0,
+          "p50Ms": null,
+          "p95Ms": null,
+          "maxMs": null
+        },
+        "replayOnly": {
+          "samples": 0,
+          "p50Ms": null,
+          "p95Ms": null,
+          "maxMs": null
+        },
+        "legacyRetained": {
+          "samples": 300,
+          "p50Ms": 1.903958,
+          "p95Ms": 2.696197,
+          "maxMs": 5.956562
+        },
+        "legacyExcludedLate": 1,
+        "legacyNote": "Same current-window rows: completion while collecting and last300 emulate old retention only; not the denied historical build or a full old-probe A/B.",
+        "presentationFPS": "UNMEASURED"
+      },
+      "beforeCalls": 47,
+      "lightingCalls": 48,
+      "shadowRefreshRequestsBefore": 0,
+      "shadowRefreshRequestsAfter": 0
+    },
+    {
+      "graphics": "high",
+      "speed": 10,
+      "sameWholeStartingState": true,
+      "sameBuffer": true,
+      "beforeCPU": {
+        "samples": 301,
+        "p50Ms": 4.300000011920929,
+        "p95Ms": 6.400000035762787,
+        "maxMs": 8.599999964237213
+      },
+      "lightingCPU": {
+        "samples": 301,
+        "p50Ms": 4.300000011920929,
+        "p95Ms": 6.300000011920929,
+        "maxMs": 10.800000011920929
+      },
+      "beforeGPU": {
+        "status": "OBSERVED_GPU_ELAPSED",
+        "counterBits": 64,
+        "disjoint": 0,
+        "overflow": false,
+        "glError": 0,
+        "submitted": 301,
+        "completed": 301,
+        "pending": 0,
+        "invalidValues": 0,
+        "all": {
+          "samples": 301,
+          "p50Ms": 1.880364,
+          "p95Ms": 2.691562,
+          "maxMs": 5.955677
+        },
+        "rafOnly": {
+          "samples": 301,
+          "p50Ms": 1.880364,
+          "p95Ms": 2.691562,
+          "maxMs": 5.955677
+        },
+        "cameraOnly": {
+          "samples": 0,
+          "p50Ms": null,
+          "p95Ms": null,
+          "maxMs": null
+        },
+        "replayOnly": {
+          "samples": 0,
+          "p50Ms": null,
+          "p95Ms": null,
+          "maxMs": null
+        },
+        "legacyRetained": {
+          "samples": 300,
+          "p50Ms": 1.880364,
+          "p95Ms": 2.691562,
+          "maxMs": 5.955677
+        },
+        "legacyExcludedLate": 1,
+        "legacyNote": "Same current-window rows: completion while collecting and last300 emulate old retention only; not the denied historical build or a full old-probe A/B.",
+        "presentationFPS": "UNMEASURED"
+      },
+      "lightingGPU": {
+        "status": "OBSERVED_GPU_ELAPSED",
+        "counterBits": 64,
+        "disjoint": 0,
+        "overflow": false,
+        "glError": 0,
+        "submitted": 301,
+        "completed": 301,
+        "pending": 0,
+        "invalidValues": 0,
+        "all": {
+          "samples": 301,
+          "p50Ms": 2.119479,
+          "p95Ms": 2.95276,
+          "maxMs": 6.453333
+        },
+        "rafOnly": {
+          "samples": 301,
+          "p50Ms": 2.119479,
+          "p95Ms": 2.95276,
+          "maxMs": 6.453333
+        },
+        "cameraOnly": {
+          "samples": 0,
+          "p50Ms": null,
+          "p95Ms": null,
+          "maxMs": null
+        },
+        "replayOnly": {
+          "samples": 0,
+          "p50Ms": null,
+          "p95Ms": null,
+          "maxMs": null
+        },
+        "legacyRetained": {
+          "samples": 300,
+          "p50Ms": 2.119479,
+          "p95Ms": 2.95276,
+          "maxMs": 6.453333
+        },
+        "legacyExcludedLate": 1,
+        "legacyNote": "Same current-window rows: completion while collecting and last300 emulate old retention only; not the denied historical build or a full old-probe A/B.",
+        "presentationFPS": "UNMEASURED"
+      },
+      "beforeCalls": 61,
+      "lightingCalls": 61,
+      "shadowRefreshRequestsBefore": 2,
+      "shadowRefreshRequestsAfter": 2
+    },
+    {
+      "graphics": "low",
+      "speed": 1,
+      "sameWholeStartingState": true,
+      "sameBuffer": true,
+      "beforeCPU": {
+        "samples": 301,
+        "p50Ms": 2.400000035762787,
+        "p95Ms": 4.5,
+        "maxMs": 15.5
+      },
+      "lightingCPU": {
+        "samples": 301,
+        "p50Ms": 2.400000035762787,
+        "p95Ms": 4.699999988079071,
+        "maxMs": 15.800000011920929
+      },
+      "beforeGPU": {
+        "status": "OBSERVED_GPU_ELAPSED",
+        "counterBits": 64,
+        "disjoint": 0,
+        "overflow": false,
+        "glError": 0,
+        "submitted": 301,
+        "completed": 301,
+        "pending": 0,
+        "invalidValues": 0,
+        "all": {
+          "samples": 301,
+          "p50Ms": 1.980572,
+          "p95Ms": 2.863593,
+          "maxMs": 5.250364
+        },
+        "rafOnly": {
+          "samples": 301,
+          "p50Ms": 1.980572,
+          "p95Ms": 2.863593,
+          "maxMs": 5.250364
+        },
+        "cameraOnly": {
+          "samples": 0,
+          "p50Ms": null,
+          "p95Ms": null,
+          "maxMs": null
+        },
+        "replayOnly": {
+          "samples": 0,
+          "p50Ms": null,
+          "p95Ms": null,
+          "maxMs": null
+        },
+        "legacyRetained": {
+          "samples": 300,
+          "p50Ms": 1.980572,
+          "p95Ms": 2.863593,
+          "maxMs": 5.250364
+        },
+        "legacyExcludedLate": 1,
+        "legacyNote": "Same current-window rows: completion while collecting and last300 emulate old retention only; not the denied historical build or a full old-probe A/B.",
+        "presentationFPS": "UNMEASURED"
+      },
+      "lightingGPU": {
+        "status": "OBSERVED_GPU_ELAPSED",
+        "counterBits": 64,
+        "disjoint": 0,
+        "overflow": false,
+        "glError": 0,
+        "submitted": 301,
+        "completed": 301,
+        "pending": 0,
+        "invalidValues": 0,
+        "all": {
+          "samples": 301,
+          "p50Ms": 1.948436,
+          "p95Ms": 2.837498,
+          "maxMs": 5.018697
+        },
+        "rafOnly": {
+          "samples": 301,
+          "p50Ms": 1.948436,
+          "p95Ms": 2.837498,
+          "maxMs": 5.018697
+        },
+        "cameraOnly": {
+          "samples": 0,
+          "p50Ms": null,
+          "p95Ms": null,
+          "maxMs": null
+        },
+        "replayOnly": {
+          "samples": 0,
+          "p50Ms": null,
+          "p95Ms": null,
+          "maxMs": null
+        },
+        "legacyRetained": {
+          "samples": 300,
+          "p50Ms": 1.948436,
+          "p95Ms": 2.837498,
+          "maxMs": 5.018697
+        },
+        "legacyExcludedLate": 1,
+        "legacyNote": "Same current-window rows: completion while collecting and last300 emulate old retention only; not the denied historical build or a full old-probe A/B.",
+        "presentationFPS": "UNMEASURED"
+      },
+      "beforeCalls": 49,
+      "lightingCalls": 50,
+      "shadowRefreshRequestsBefore": 0,
+      "shadowRefreshRequestsAfter": 0
+    }
+  ],
+  "rawProfiles": "lighting-profiles.zip",
+  "maxActiveRenderers": 1,
+  "maxPendingRAF": 1,
+  "released": [
+    {
+      "geometries": 0,
+      "textures": 0,
+      "programs": 1,
+      "cleanupErrors": 0,
+      "pendingFrames": 0,
+      "simulationSubscribers": 0
+    },
+    {
+      "geometries": 0,
+      "textures": 0,
+      "programs": 1,
+      "cleanupErrors": 0,
+      "pendingFrames": 0,
+      "simulationSubscribers": 0
+    },
+    {
+      "geometries": 0,
+      "textures": 0,
+      "programs": 0,
+      "cleanupErrors": 0,
+      "pendingFrames": 0,
+      "simulationSubscribers": 0
+    },
+    {
+      "geometries": 0,
+      "textures": 0,
+      "programs": 1,
+      "cleanupErrors": 0,
+      "pendingFrames": 0,
+      "simulationSubscribers": 0
+    },
+    {
+      "geometries": 0,
+      "textures": 0,
+      "programs": 0,
+      "cleanupErrors": 0,
+      "pendingFrames": 0,
+      "simulationSubscribers": 0
+    }
+  ],
+  "limits": "Source fixture actual rendered pixels/elapsedGPUqueries/CPUcallbacks, not compilednative product, physicalA56 or presentationFPS. Same seed/settings/buffer verified. GPUhigh+about0.2ms is visible-quality cost, not a speedup. Low10xCPU p95 varied; no hardwareheadroom claim. Existing historicalGPUuncertainty remains."
+}

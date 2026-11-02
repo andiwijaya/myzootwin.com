@@ -4,7 +4,7 @@ import type {MacawPose} from './macaw-animation.ts';
 /** Independent transforms; immutable geometry/material borrowed from one explicitly owned asset set. */
 export function createMacawRig(assets:MacawAssets){
  const root=new Group(),motion=new Group(),body=new Group();root.name='Ara ararauna';root.add(motion);motion.add(body);
- const mesh=(name:MacawPart)=>{const m=new Mesh(assets.geometries[name],assets.material);m.name=name;return m;};
+ const mesh=(name:MacawPart)=>{const m=new Mesh(assets.geometries[name],assets.material);m.name=name;m.receiveShadow=true;return m;};
  body.position.set(...MACAW_PIVOTS.body);body.add(mesh('body'));
  const pivot=(name:keyof typeof MACAW_PIVOTS)=>{const p=new Group(),v=MACAW_PIVOTS[name];p.name=name;p.position.set(v[0],v[1]-MACAW_PIVOTS.body[1],v[2]);body.add(p);return p;};
  const head=pivot('head');head.add(mesh('head'));const lids=mesh('eyelids');head.add(lids);

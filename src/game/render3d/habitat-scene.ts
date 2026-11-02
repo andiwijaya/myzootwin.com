@@ -7,6 +7,7 @@ export function createHabitatScene(catalog:SceneCatalog,register:(geometry:Buffe
   const group=new Group();group.name='Constructed macaw habitat';let ids:string[]=[],disposed=false;
   const wood=new Mesh(new BufferGeometry(),new MeshStandardMaterial({vertexColors:true,roughness:1}));
   const wire=new LineSegments(new BufferGeometry(),new LineBasicMaterial({color:'#57735e',transparent:true,opacity:.34,depthWrite:false}));
+  wood.castShadow=true;wood.receiveShadow=true;
   register(wood.geometry,wood.material);register(wire.geometry,wire.material);
   function clear(){for(const id of ids){catalog.identities.delete(id);catalog.bounds.delete(id);}catalog.batches=catalog.batches.filter(b=>b.mesh!==wood);ids=[];group.clear();wood.geometry.dispose();wire.geometry.dispose();}
   function sync(world:WorldState){

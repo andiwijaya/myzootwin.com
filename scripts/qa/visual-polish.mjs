@@ -1,0 +1,13 @@
+import{readFile,writeFile,mkdir}from'node:fs/promises';
+import{resolve}from'node:path';import{fileURLToPath}from'node:url';import{execFileSync}from'node:child_process';
+import{sourceFingerprint,fingerprint,files}from'./tooling.mjs';
+const root=fileURLToPath(new URL('../../',import.meta.url)),phase=process.argv[2],buildDirectory=process.argv[3]??'.qa/builds/s20261102T192224Z';
+if(!['before','lighting','final'].includes(phase)||!/^\.qa\/builds\/[a-z0-9TZ-]+$/.test(buildDirectory))throw Error('Expected owned phase/build directory');
+const runId='visual-'+phase+'-'+new Date().toISOString().replace(/[-:]/g,'').replace(/\.\d+Z$/,'Z');
+const directory=resolve(root,'.qa/visual-v1',runId);await mkdir(directory,{recursive:true});
+const source=await sourceFingerprint(root),build=await fingerprint(root,await files(resolve(root,buildDirectory)));
+const record={runId,phase,head:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8',windowsHide:true}).trim(),at:new Date().toISOString(),source,markupBuild:build,buildDirectory,kind:'SOURCE FIXTURE, using actual compiled markup/CSS. Compiled product/native journeys verified separately; no physical/FPS claim'};
+await writeFile(resolve(directory,'identity.json'),JSON.stringify(record,null,2));await writeFile(resolve(root,'.qa/visual-v1/current.json'),JSON.stringify({runId,directory,sourceId:source.id,markupBuildId:build.id}));
+let html=await readFile(resolve(root,buildDirectory,'play/index.html'),'utf8');html=html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replaceAll('href="/_astro/','href="/'+buildDirectory+'/_astro/');
+html=html.replace('<main id="main-content" tabindex="-1">',`<section style="padding:1rem;background:#e4edf4;overflow-wrap:anywhere"><strong>VISUAL POLISH SOURCE FIXTURE ONLY — ${phase}. Four bounded current before/after windows. No historical denied route, download, native-product or physicalFPS claim.</strong><p>Run <code id="qa-polish-run-id">${runId}</code> - Markup build <code id="qa-polish-build-id">${build.id}</code> - Source <code id="qa-polish-source-id">${source.id}</code></p><button id="qa-polish-run">Run four visual profile windows</button><button id="qa-polish-review">Open populated visual inspection</button><button id="qa-polish-stop">Stop owned QA</button><span id="qa-polish-status">UNRUN</span><output id="qa-polish-results" hidden></output></section><main id="main-content" tabindex="-1">`).replace('</body>','<script type="module" src="/tests/browser/visual-polish-harness.mjs"></script></body>');
+await writeFile(resolve(root,'tests/browser/.generated/visual-polish.html'),html);console.log(JSON.stringify({runId,directory,sourceId:source.id,markupBuildId:build.id}));
