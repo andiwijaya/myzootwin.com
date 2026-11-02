@@ -70,3 +70,8 @@ Owned Chrome tabs567531595/567531599/567531603 closed; a subsequent authorized `
 3. **Optional explicit acceptance decisions:** Firefox is already owner-excluded. Any further test deferral/scope change must be explicitly recorded as waived/UNRUN with residual risk, never as PASS. No further waiver is assumed. Historical GPU and fixture-import causes remain inconclusive; new green tests do not explain them retroactively.
 
 Whole M6-03 remains unchecked; **44/51**, M6 **4/8**. M0-01/M4-07/M5-07/M6-01/M6-06/M6-08 also remain partial/unreleased. Stop for parent review; no next feature or external release work started.
+
+
+## Fresh final-source coverage follow-up — 2026-11-02 UTC
+
+[New native golden proof](M4-07_FINAL_SOURCE_GOLDEN.md) closes this report’s earlier Q01 source-bridge coverage gap: one fresh exact-final-sourceQ01-Q04 pluscoldContinue951ZC/4missions/2birds. This is120.572seconds toQ04 atnative10x, not a10-15minute/recording pass. Older receipts remain historical; wholeM6-03/release staypartial44/51. [Seven-item handoff](MYZOOTWIN_V1_RELEASE_HANDOFF.md).
