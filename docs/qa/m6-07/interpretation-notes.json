@@ -1,0 +1,23 @@
+{
+  "finalRun": "s20261102T151611Z",
+  "finalNative": "verified-native-final.json, actual final compiled source with external BaseLayout module; final desktop/portrait screenshots",
+  "candidateNative": "native-navigation.json and candidate-native-before-CSP-fix.json keep earlier source/timestamps; not relabelled as final CSP proof",
+  "candidateScreenshot": "guide-en.jpg illustrates English text from a prior candidate; final English navigation also repeated natively after the CSP fix. Other redundant successful screenshots omitted from Git, retained in original working directory.",
+  "sourceFixture": "signal-fixture.json is authored programmatic source-handler coverage; signal-native.json adds native click/Enter in that fixture with navigation intentionally cancelled",
+  "compiledFixture": "compiled-signals.json uses the exact emitted BaseLayout module and real game CSP with two trusted inputs; PlayEntry module removed to avoid IDB/game ownership. Product navigation tested separately.",
+  "failures": "Original stale-disposer FAIL, two timing-dependent native observation mistakes, image-format mistake, Git line-ending guard mistake, unsuitable first clip and processed-script inlining/CSP failure all preserved. None establishes the root cause of the old unrelated M6-03 import failure.",
+  "captureCleanup": "Initial capture runner stdin had closed. Confirmed exact owned port/PID, stopped its first owned child; runner then auto-closed the second before the next identity check. Follow-up verified both absent and ports free. Not an approval denial, no owner process touched.",
+  "runnerOwnerLabel": "Raw serve.json field Left running is a generic runner template. Actual owner4345 was absent throughout, not restarted/accessed.",
+  "omittedSuccessfulWorkingCopies": [
+    "final-game-landscape.jpg",
+    "guide-id.jpg",
+    "guide-portrait-id.jpg",
+    "home-desktop.jpg",
+    "home-landscape.jpg",
+    "home-portrait.jpg",
+    "learn-desktop.jpg",
+    "learn-portrait.jpg",
+    "tropical-creek-game.jpg"
+  ],
+  "priorRollbackArchiveSHA": "e175b4be5c2e1880886123779c3d358cca6b3d9fc7d64ddf12b7a1aeb5c3aec3"
+}

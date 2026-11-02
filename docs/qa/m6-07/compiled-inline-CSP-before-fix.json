@@ -1,0 +1,13 @@
+{
+  "status": "FAIL-before-fix",
+  "buildRun": "s20261102T150647Z",
+  "check": "Game CSP permits only self-hosted scripts; Astro auto-inlined new792-byte module without an allowed hash/nonce. Source fixture success did not prove compiled compatibility.",
+  "inlineScripts": [
+    {
+      "attrs": " type=\"module\"",
+      "bodyBytes": 792,
+      "source": "function e(e,t){if(![`home`,`learn`,`game-guide`,`nav`].includes(t??``))return null;let n=e===`/play/`?`play`:e===`/learn/`?`learn`:null;return n?Object.freeze({destination:n,source:t}):null}var t=new WeakMap;function n(n){let r=t.get(n);if(r)return r;let i=new AbortController;n.addEventListener(`click`,t=>{if(t.defaultPrevented||!(t.target instanceof Element)||t instanceof MouseEvent&&(t.button!==0||t.ctrlKey||t.metaKey||t.altKey||t.shiftKey))return;let r=t.target.closest(`a[data-site-source]`);if(!r||!n.contains(r))return;let i=e(r.getAttribute(`href`),r.getAttribute(`data-site-source`));i&&r.dispatchEvent(new CustomEvent(`myzootwin:navigate`,{bubbles:!0,detail:i}))},{signal:i.signal});let a=!1,o=()=>{a||(a=!0,i.abort(),t.get(n)===o&&t.delete(n))};return t.set(n,o),o}n(document);"
+    }
+  ],
+  "fix": "Astro/Vite supported assetsInlineLimit callback returns false only for emitted .js, leaves other default asset thresholds; no CSP relaxation."
+}
