@@ -1,7 +1,7 @@
 <!-- CANONICAL WORKING REQUIREMENTS: complete text transcription from owner-supplied Library source libfile_95d9687acd708191a8960074770c3410 (MYZOOTWIN_MASTER_PRD_V1(1).md), provided as source-text handoff on 2026-10-31. Not a byte-exact native materialization. Immutable text transcript: sources/MYZOOTWIN_MASTER_PRD_V1.transcript.md. -->
 
 
-Current verified status (2026-11-02 UTC): **43/51 (84.31%)**, M6 **3/8**. Historical execution records retain their original dates/counts. Latest report: [M6-05](M6-05_REPO_LICENSE_AUDIT.md).
+Current verified status (2026-11-02 UTC): **45/51 (88.24%)**, M0 **8/8**, M6 **4/8**. Historical records retain original counts. Latest: [release configuration audit](RELEASE_CONFIGURATION_FACT_AUDIT.md); six open release gates remain.
 
 # MYZOOTWIN.COM — MASTER PRODUCT REQUIREMENTS DOCUMENT
 ## Living Zoo Simulator | Game-First, Browser-First
@@ -318,7 +318,7 @@ Dot harus memperjelas typing dan validasi aktual sebelum implementasi; `unknown`
 
 ### M0 — Existing-site audit &amp; safe foundation (8)
 
-- [ ] **M0-01** Audit repo, stack, Cloudflare Pages routing, existing content/SEO, analytics; catat apa yang boleh di-reuse. **Verify:** laporan audit dan baseline routes.
+- [x] **M0-01** Audit repo, stack, Cloudflare Pages routing, existing content/SEO, analytics; catat apa yang boleh di-reuse. **Verify:** laporan audit dan baseline routes.
 - [x] **M0-02** Ambil baseline screenshots &amp; browser smoke existing homepage, navigation, mobile; kumpulkan rollback plan. **Verify:** snapshot dan baseline tests.
 - [x] **M0-03** Asset inventory + licenses + visual target; pilih model satu spesies burung tropis yang feasible dan legal. **Verify:** manifest asset, ukuran, attribution.
 - [x] **M0-04** Buat route `/play`, start screen, navigasi &amp; link dari site tanpa merusak routes lain. **Verify:** reload direct URL /play + original URLs.
@@ -1156,3 +1156,12 @@ Exactly7unchecked IDs readfromactualPRD: M0-01,M4-07,M5-07,M6-01,M6-03,M6-06,M6-
 [Durationproof](M4-07_FINAL_SOURCE_DURATION.md), [acceptance](qa/m4-07-duration/acceptance.json), [updatedreleasehandoff](MYZOOTWIN_V1_RELEASE_HANDOFF.md). OneboundednativeChromecontinued1xsoak onunchanged8e5af7f95ca28262b5fc8e3ae5f84e999682d1ccc0e9e060892c4b446fdbcd91/buildb39d78e351cdba467a937aa8db78de32a5c006a01040f23b23b78722d8ffd9ab.20:08:48.731–20:25:02.737UTC=974.006swall,34.656sexplicitpauseexcluded,939.350sunpaused. Naturalcare/economy,manualpausefreeze,gateclose/reopen,camera/inspector,autosavepass. Displayedcashflow957→1083 reconciles+300tickets−144supplies−30upkeep;30newpaidreceipts. ActualcoldContinue1083ZC/4missions/2birds/16fields match,paused. No productchanges; exactsource486tests/207check/build reused,notrerun.
 
 Duration/soak gapclosed; **M4-07recording UNRUN, sevencheckboxesstillunchecked;44/51 (86.27%)**. Thiscontinuedsoak andfreshgolden areseparateepisodes, no singlevideo fabricated. Otherhuman/device/FPS/native/facts/rights/releasegates unchanged;historicalGPU/importinconclusive notactiveprovenbugs. OwnQAclosed,7portsfree,ownerbuild/5archivesexact; no datareset/push/deploy/Actions/login/permissions/Cloudflare/deniedretry. **STOP awaitingowner-dependentgates; no further validationloop/feature dispatch.**
+
+
+## M0-01 external configuration audit COMPLETE - 2026-11-02 UTC
+
+Local evidence checkpoint **8ff706ba35ae2dbebdd7c0dd02c2325687790f19**. [configuration audit](RELEASE_CONFIGURATION_FACT_AUDIT.md), [facts](qa/release-facts/configuration-facts.json), [safe dashboard captures](qa/release-facts/), [current six open gates](qa/release-facts/six-open-gates.json). Existing authenticated owner tab verifies Pages myzootwin-com, GitHub andiwijaya/myzootwin.com, main, npm run build, dist, blank/repository root, watch*, autoEnabled, v3, production PUBLIC_GA4_ID name/preview no variables, apex/www activeSSL. Production pointer5a755ea7 sourcead20f2b successful; remote mainf10d037 unchanged; local game remains undeployed. No unknown source/build/root/pointer facts remain in M0-01. Known operational warning: Git account disconnected despite autoEnabled; no reconnect/grant attempted. Current vendor v3 defaultNode22.23.4 meets Astro7.4.4 minimum; old deployedNode22.16.0 is historical, actual future candidateCloudflarebuildUNRUN. Audit completion is not a healthy-delivery or release claim.
+
+Read-only hash checks match219current source entries/25candidate artifacts and all attributed chunks; emitted third-party code onlyThree, matching fullMITnotice. Three unresolved tooling texts remain a source/toolchain evidence scope issue, not an evidenced missing browser notice in this static output; no legal blanket clearance. Minimumprivacy facts and test-scope decisions are explicitly grouped in report. Existing exact-source486tests/207check/build/nineroutes/golden/duration reused, not rerun. Product/config/dependencies unchanged.
+
+**45/51 (88.24%); M0 8/8, M6 4/8.** Six remaining unchecked: M4-07,M5-07,M6-01,M6-03,M6-06,M6-08. Recording/human/device/FPS/native/privacy facts and finalrelease gates remain; historical GPU/import causes inconclusive, fixedautosaverace remains fixed. OwnerCloudflaretab28 preserved on Deployments, viewportreset; no servicesstarted, saves/ownerbuild/archives unedited. No push/deploy/Actions/login/permission or deniedoperation retry. Stop for parent review.
