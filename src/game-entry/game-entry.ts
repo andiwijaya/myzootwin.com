@@ -1,3 +1,4 @@
+import type {PreviewLoader} from '../game/render3d/preview-controller.ts';
 import {createAmbience} from '../game/audio/ambience.ts';
 import {readMutedPreference} from '../game/core/audio-settings.ts';
 import {readVisualSettings,type VisualSettings} from '../game/core/visual-settings.ts';
@@ -30,6 +31,7 @@ export function mountGameEntry(root: HTMLElement, options: {
     preferenceStorage?: Pick<Storage, 'getItem' | 'setItem'> | null;
     browserLanguage?: string;
     audioFactory?:()=>AudioContext;
+    loadRenderer?:(store:import("../game/core/session-state.ts").SanctuarySessionState)=>ReturnType<PreviewLoader>;
 } = {}) {
     mounted.get(root)?.dispose();
     let disposed = false;
@@ -294,7 +296,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         if (disposed)
             return;
         locale = chooseGameLocale(locale, manualLocale, durable.savedLocale());
-        preview = mountPreviewPanel(root, { stateStore: durable.session, canOpen: () => durable.canOpen(), beforeOpen: () => durable.view().active || durable.startNew(locale) });
+        preview = mountPreviewPanel(root, { loadRenderer:options.loadRenderer?()=>options.loadRenderer!(durable.session):undefined, stateStore: durable.session, canOpen: () => durable.canOpen(), beforeOpen: () => durable.view().active || durable.startNew(locale) });
         preview.setPaused(pauseGate.paused());
         const currentVisual=()=>visualChoice??durable.savedVisualSettings()??{graphics:'auto' as const,reducedMotion:false};
         const currentMuted=()=>mutedChoice??durable.savedMuted()??true;
