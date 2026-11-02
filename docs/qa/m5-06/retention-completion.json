@@ -1,0 +1,45 @@
+{
+  "before": {
+    "mode": "DRY RUN",
+    "keep": 3,
+    "remove": [
+      "C:\\MyZooTwin\\.qa\\runs\\20261101T233501Z-11e5d1e5",
+      "C:\\MyZooTwin\\.qa\\runs\\20261102T001057Z-b230d718"
+    ],
+    "scope": ".qa/runs only; never docs/qa, source, media or rollback history"
+  },
+  "apply": {
+    "mode": "APPLY",
+    "keep": 3,
+    "remove": [
+      "C:\\MyZooTwin\\.qa\\runs\\20261101T233501Z-11e5d1e5",
+      "C:\\MyZooTwin\\.qa\\runs\\20261102T001057Z-b230d718"
+    ],
+    "scope": ".qa/runs only; never docs/qa, source, media or rollback history"
+  },
+  "after": {
+    "mode": "DRY RUN",
+    "keep": 3,
+    "remove": [],
+    "scope": ".qa/runs only; never docs/qa, source, media or rollback history"
+  },
+  "archiveVerifiedBeforePrune": true,
+  "generalRunsRetained": [
+    "20261102T001340Z-4c04df95",
+    "20261102T001724Z-35a758b5",
+    "20261102T002108Z-a1433477"
+  ],
+  "isolatedRunsRetained": [
+    "s20261102T030608Z",
+    "s20261102T030734Z",
+    "s20261102T030906Z",
+    "s20261102T031857Z",
+    "s20261102T032631Z"
+  ],
+  "isolatedBuildsRetained": [
+    "s20261102T030906Z",
+    "s20261102T031857Z",
+    "s20261102T032631Z"
+  ],
+  "ownerDistAndAllSourceMediaSaves": "Never pruned"
+}

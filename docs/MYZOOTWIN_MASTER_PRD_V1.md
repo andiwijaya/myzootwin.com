@@ -381,7 +381,7 @@ Dot harus memperjelas typing dan validasi aktual sebelum implementasi; `unknown`
 - [x] **M5-03** Pause/resume &amp; background tab, restart/reset with confirmation. **Verify:** no double updates or unbounded offline income.
 - [x] **M5-04** Responsive HUD for phone portrait, landscape and desktop; pointer/touch pass. **Verify:** viewport matrix screenshot.
 - [x] **M5-05** Full UI ID/EN with language switch persistence. **Verify:** no untranslated mission or error critical.
-- [ ] **M5-06** Help, settings, mute, reduce-motion/low-graphics options. **Verify:** functional settings, no inert buttons.
+- [x] **M5-06** Help, settings, mute, reduce-motion/low-graphics options. **Verify:** functional settings, no inert buttons.
 - [ ] **M5-07** First-run user testing &amp; UX fix of confusing steps; minimize clicks. **Verify:** unaided test notes and corrections.
 
 **Exit M5:** playable and resumable without assistance across target device classes.
@@ -1002,3 +1002,12 @@ V1 **39/51 (76.47%)**, M5 **5/7**. M0-01/M4-07 stay partial,12 M7 deferred. Reco
 ## M5-06 PARTIAL — recovered checkpoint, 2026-11-02 UTC
 
 [Settings checkpoint](M5-06_SETTINGS.md). Visual quality/reduced motion/Apply/Cancel preference slice recovered with 447 tests, typecheck/build/nine routes and 27 targeted browser cases. Audio/mute unfinished; full browser gate UNRUN. Laptop interruption left last native reload uncertain. V1 remains **39/51 (76.47%)**, M5 **5/7**; M5-06 stays unchecked. Owner preview4345 runs unchanged; future builds isolated. No push/deploy.
+
+
+## M5-06 COMPLETE — 2026-11-02 UTC
+
+Implementation `3b8d98263cf3dc7a032b1b973da698ee391bf561` (local only), following recovered partial checkpoint `2ad431479d1fc10d1590619aafdd4a1843a7979f`. [Settings/sound report](M5-06_SETTINGS.md), [independent audit](qa/m5-06/independent-audit.json), [source-bound browser matrix](qa/m5-06/final/matrix.json). Functional Help, Auto/Low/High, reduced decorative motion and original gesture-activated ambient sound/mute; bilingual Apply/Cancel/Escape, durable/device preference fallback and truthful errors. Initial loading Settings gate, one AudioContext independent of simulation, pause/background/close cleanup, audio-on reset preserving preferences. No external samples/microphone/new dependency/permissions.
+
+Final source `8c722eec8ae4be97c9a78f872d26d0acd61b2f3bb56eedfc5df0982a7c426faa`, isolated build `b566df0fdbea675809fa75297d4cbf692ae327a167fb259cd562d95b64665600`, run `s20261102T032631Z`: 454 tests / 179 files/zero diagnostics,9 routes;27 targeted browser cases plus 8 explicit checks/35 observations, native actual habitat/save/reload/Continue, both mute/quality values, Help/Escape, reset Cancel/fresh, true audio graph/signal, unsupported fallback and 3 close/Continue cycles. Audio nodes/contexts return to 0; uncapped native consoles empty. Generic 6-case browser verdict remains UNRUN; targeted gate evidence is explicit. Three final screenshots, bounded historical archives and SHA/CRC-verified retention. Shell + renderer 988,288 raw/262,587 gzip estimate, no network/FPS or physical-audibility claim.
+
+Owner 4345 / PID18816 and earlier dist remain unchanged/running; only QA contexts closed. Runtime retention marking unsupported (`browser.user unavailable`), owner tab last verified present, no navigation/reset/close. M0-01/M4-07 stay partial; physical/native background/speaker/FPS/soak/unaided/live remain UNRUN. Recovery download BLOCKED/UNRUN, never retried. No push/deploy/Actions/login/access change. V1 **40/51 (78.43%)**, M5 **6/7**; 12 M7 deferred. Next **M5-07** after parent review.
