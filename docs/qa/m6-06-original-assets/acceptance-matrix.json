@@ -1,0 +1,63 @@
+[
+  {
+    "criterion": "Original artwork/provenance, no external art inputs",
+    "status": "PASS",
+    "evidence": [
+      "art/site-assets/generate.mjs",
+      "art/site-assets/generated-manifest.json",
+      "source-asset-audit.json",
+      "docs/ASSET_MANIFEST.json"
+    ]
+  },
+  {
+    "criterion": "Recoverable originals outside new distribution",
+    "status": "PASS",
+    "evidence": [
+      "legacy-preservation.json",
+      "final-audit.json",
+      "cleanup.json"
+    ],
+    "qualification": "Actual restore to new empty workspace. Historical owner build/rollback/Git retain old bytes intentionally."
+  },
+  {
+    "criterion": "Preserve journal text,9routes/canonicals/social and legacy image URLs",
+    "status": "PASS",
+    "evidence": [
+      "final-audit.json"
+    ],
+    "qualification": "All9 main-token sequences/metadata equal prior build; source/dim/alt intentional. Local only, not remote hosting."
+  },
+  {
+    "criterion": "Desktop/portrait/landscape actual pixels and favicon",
+    "status": "PASS scoped IAB",
+    "evidence": [
+      "browser-final.json",
+      "home-journal-desktop.jpg",
+      "home-journal-portrait.jpg",
+      "home-journal-landscape.jpg",
+      "favicon-and-exports-desktop.jpg",
+      "favicon-mobile-swatches.jpg"
+    ],
+    "qualification": "16/32/64CSSpx swatches and allroute icon links/HTTP; native OS/tab-chrome bitmap and physical devices not certified. Journal remains English, no new visible translatable art text."
+  },
+  {
+    "criterion": "Final-source automated gates",
+    "status": "PASS",
+    "evidence": [
+      "s20261102T190218Z/report.json",
+      "s20261102T190218Z/unit.log",
+      "s20261102T190218Z/check.log",
+      "s20261102T190218Z/build.log"
+    ],
+    "qualification": "485tests,207checkedfiles. Source-mismatch intermediate run retained asFAIL, not product test failure or final evidence."
+  },
+  {
+    "criterion": "Whole M6-06 security/privacy/legal signoff and release",
+    "status": "PARTIAL / HOLD",
+    "evidence": [
+      "risk-register.json",
+      "next-gates-plan.json"
+    ],
+    "qualification": "Current asset mitigation is complete; three notice texts/legal/contact/hosting/Cloudflare/device/GPU/human/recording/import gates remain.44/51unchanged."
+  }
+]

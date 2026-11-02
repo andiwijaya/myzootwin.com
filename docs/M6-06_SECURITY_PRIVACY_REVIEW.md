@@ -69,3 +69,6 @@ See [current privacy/notice report](M6-06_PRIVACY_NOTICE_GAP_CLOSURE.md). The ea
 ## Later four-package notice review - 2026-11-02 UTC
 
 [Current review](M6-06_FOUR_PACKAGE_NOTICES.md) adds a qualified matching-version/code boolbase1.0.0 ISC source notice.9/12original directfindings accounted;3fulltexts remain,not the earlier4. Earlier evidence stays historical/immutable. Installed9physicalfileabsences remain;no wholelegal/native clearance. M6-06 stillPARTIAL.
+
+
+Current bounded asset follow-up: [Original site artwork remediation](M6-06_ORIGINAL_SITE_ASSETS.md). Legacy artwork retired from the new candidate and recoverably archived; historical findings above remain historical. Whole M6-06 stays PARTIAL,44/51; consult current risk register, no blanket clearance.
