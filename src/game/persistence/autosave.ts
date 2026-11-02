@@ -182,7 +182,7 @@ export function createAutosave(backend: DurableBackend, options: Options) {
             notify();
             queue(critical);
         }, flush: () => { void drain(); } };
-    return { session, view, load, flush: drain, savedVisualSettings: () => record ? {graphics:stateFromCheckpoint(record).preferences.graphics,reducedMotion:stateFromCheckpoint(record).preferences.reducedMotion} : null, savedLocale: () => record ? stateFromCheckpoint(record).preferences.locale : undefined, canOpen: () => !blocked() && phase !== 'loading' && !requiresTransition() && (active || !record),
+    return { session, view, load, flush: drain, savedMuted: () => record ? stateFromCheckpoint(record).preferences.muted : null, savedVisualSettings: () => record ? {graphics:stateFromCheckpoint(record).preferences.graphics,reducedMotion:stateFromCheckpoint(record).preferences.reducedMotion} : null, savedLocale: () => record ? stateFromCheckpoint(record).preferences.locale : undefined, canOpen: () => !blocked() && phase !== 'loading' && !requiresTransition() && (active || !record),
         startNew(locale: 'en' | 'id') {
             if (blocked() || phase === 'loading' || record || active || requiresTransition())
                 return false;

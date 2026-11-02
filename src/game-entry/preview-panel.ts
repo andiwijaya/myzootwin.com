@@ -339,6 +339,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   window.addEventListener('pagehide', () => controller.close(), { signal: events.signal });
 
   return {
+    setMuted(value:boolean){if(!disposed)controller.muted(value);},
     setVisualSettings(value:VisualSettings){if(!disposed)controller.visualSettings(value);},
     setLocale(value: EntryLocale) { if (!disposed) { locale = value; controller.locale(value);render(state); } },
     setPaused(value: boolean) { if (!disposed) controller.setExternalPaused(value); },

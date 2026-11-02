@@ -1,3 +1,5 @@
+import {createAmbience} from '../game/audio/ambience.ts';
+import {readMutedPreference} from '../game/core/audio-settings.ts';
 import {readVisualSettings,type VisualSettings} from '../game/core/visual-settings.ts';
 import {mountVisualSettings} from './visual-settings-panel.ts';
 import {chooseGameLocale} from './i18n-format.ts';
@@ -27,6 +29,7 @@ export function mountGameEntry(root: HTMLElement, options: {
     allowRecoveryDownload?: boolean;
     preferenceStorage?: Pick<Storage, 'getItem' | 'setItem'> | null;
     browserLanguage?: string;
+    audioFactory?:()=>AudioContext;
 } = {}) {
     mounted.get(root)?.dispose();
     let disposed = false;
@@ -44,6 +47,8 @@ export function mountGameEntry(root: HTMLElement, options: {
     let locale: EntryLocale = initial.locale;
     let manualLocale = initial.source === 'saved';
     let visualChoice:VisualSettings|null=readVisualSettings(storage);
+    let mutedChoice:boolean|null=readMutedPreference(storage);
+    const ambience=createAmbience({factory:options.audioFactory,changed:()=>visualPanel?.render()});
     let visualPanel:ReturnType<typeof mountVisualSettings>|undefined;
     let resumePending = false;
     let recoveryPanel: ReturnType<typeof mountRecoveryPanel> | undefined;
@@ -104,7 +109,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         render(select.value);
     }, { signal: events.signal });
     for (const button of root.querySelectorAll<HTMLButtonElement>('[data-open-dialog]')) {
-        button.disabled = false;
+        button.disabled = button.dataset.openDialog === 'play-settings';
         button.addEventListener('click', () => {
             const dialog = root.querySelector<HTMLDialogElement>(`#${button.dataset.openDialog}`);
             if (!dialog || dialog.open)
@@ -261,6 +266,8 @@ export function mountGameEntry(root: HTMLElement, options: {
         if (status)
             status.textContent = locale === 'id' ? (pauseGate.has('background') ? 'Dijeda saat kamu pergi. Lanjutkan saat siap; tidak ada progres offline.' : paused ? 'Suaka dijeda. Satwa, pengunjung, uang dan misi tidak berjalan.' : 'Suaka berjalan. Jeda kapan saja untuk berhenti dengan aman.') : (pauseGate.has('background') ? 'Paused while you were away. Resume when ready; no offline progress.' : paused ? 'Zoo paused. Animals, visitors, money and missions are frozen.' : 'Zoo running. Pause any time to stop safely.');
         gateGameplay(pauseGate.paused(), resumePending || blocked);
+        ambience.setPlaying(v.active && ready && !paused && !document.hidden && !blocked);
+        if(!ready && ambience.inspect().liveContexts)ambience.stopSession();
     }
     root.querySelector('[data-pause-toggle]')?.addEventListener('click', () => {
         if (['conflict', 'unreadable'].includes(durable.view().phase) || durable.view().restartBusy || root.querySelector('dialog[open]'))
@@ -274,6 +281,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         syncPause();
         renderSave();
     }, { signal: events.signal });
+    root.addEventListener('click',event=>{if(event.isTrusted&&preview?.inspect().state.status==='ready'&&durable.view().active)ambience.gesture();},{signal:events.signal});
     root.addEventListener('hud-layout-change',syncPause,{signal:events.signal});
     const pauseObserver = new MutationObserver(syncPause);
     pauseObserver.observe(root, { subtree: true, attributes: true, attributeFilter: ['open', 'data-renderer-state'] });
@@ -289,8 +297,11 @@ export function mountGameEntry(root: HTMLElement, options: {
         preview = mountPreviewPanel(root, { stateStore: durable.session, canOpen: () => durable.canOpen(), beforeOpen: () => durable.view().active || durable.startNew(locale) });
         preview.setPaused(pauseGate.paused());
         const currentVisual=()=>visualChoice??durable.savedVisualSettings()??{graphics:'auto' as const,reducedMotion:false};
-        visualPanel=mountVisualSettings(root,storage,{locale:()=>locale,current:currentVisual,apply:value=>{visualChoice={...value};preview?.setVisualSettings(value);}});
+        const currentMuted=()=>mutedChoice??durable.savedMuted()??true;
+        visualPanel=mountVisualSettings(root,storage,{locale:()=>locale,current:currentVisual,currentMuted,audioStatus:()=>ambience.inspect().status,apply:(value,muted)=>{visualChoice={...value};mutedChoice=muted;preview?.setVisualSettings(value);preview?.setMuted(muted);ambience.setMuted(muted);}});
+        ambience.setMuted(currentMuted());preview.setMuted(currentMuted());
         preview.setVisualSettings(currentVisual());
+        for(const button of root.querySelectorAll<HTMLButtonElement>('[data-open-dialog="play-settings"]'))button.disabled=false;
         render(locale);
     })();
     const handle = { ready, dispose() {
@@ -298,6 +309,7 @@ export function mountGameEntry(root: HTMLElement, options: {
                 return;
             disposed = true;
             visualPanel?.dispose();
+            ambience.dispose();
             hudLayout.dispose();
             pauseObserver.disconnect();
             restartPanel?.dispose();
@@ -309,7 +321,7 @@ export function mountGameEntry(root: HTMLElement, options: {
             events.abort();
             delete root.dataset.enhanced;
             mounted.delete(root);
-        }, inspect: () => durable.inspect(), inspectRenderer: () => preview?.inspect() };
+        }, inspect: () => durable.inspect(), inspectRenderer: () => preview?.inspect(), inspectAudio:()=>ambience.inspect() };
     mounted.set(root, handle);
     return handle;
 }

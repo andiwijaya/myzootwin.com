@@ -111,3 +111,8 @@ test('disposing a pending import prevents later renderer creation', async () => 
   const opening=controller.open();controller.dispose();load.resolve(()=>{mounts++;return {dispose(){}};});await opening;
   assert.equal(mounts,0);assert.equal(controller.getState().status,'closed');
 });
+
+test('latest visual and mute choices reach every new session, including retry while paused',async()=>{
+ const rows=[];const c=createPreviewController(async()=>()=>({dispose(){},muted:v=>rows.push(['mute',v]),visualSettings:v=>rows.push(['visual',v])}),()=>{});
+ c.setExternalPaused(true);c.muted(false);c.visualSettings({graphics:'low',reducedMotion:true});await c.open();c.close();c.muted(true);await c.open();assert.deepEqual(rows,[['visual',{graphics:'low',reducedMotion:true}],['mute',false],['visual',{graphics:'low',reducedMotion:true}],['mute',true]]);c.dispose();
+});

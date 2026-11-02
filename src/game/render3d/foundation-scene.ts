@@ -252,6 +252,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
         else if(view.kind&&view.target&&view.affordable){controls?.setEnabled(false);controls?.setEnabled(true);foodPreview=false;waterPreview=false;perchPreview=false;foodDirty=true;waterDirty=true;perchDirty=true;picker?.clear();placementCommand=simulation.commandRevision();placement.guide(view.kind,view.target);const w=simulation.snapshot().world;controls?.focus({x:view.target.x+(view.kind==='habitat'?1:.5)-w.width/2,z:view.target.z+(view.kind==='habitat'?1:.5)-w.height/2});}}
       render();
     },
+    muted:value=>{if(!disposed&&!lost)simulation.setMuted(value);},
     visualSettings:value=>{if(disposed||lost)return;if(simulation.setVisualSettings(value)){saveSession();if(visual().reducedMotion)macaw?.pauseForReducedMotion();resize();render();}},
     locale:value=>{simulation.setLocale(value);},
     speed:value=>{if(disposed||lost||paused||document.hidden||macaw?.view().active)return;simulation.setSpeed(value);announceSpeed(true);render();},

@@ -22,6 +22,7 @@ export class PreviewFailure extends Error {
 
 export interface PreviewSession {
   visualSettings?(value:VisualSettings):void;
+  muted?(value:boolean):void;
   locale?(value:"en"|"id"):void;
   speed?(value:1|10):void;
   guide?(command:GuideCommand,revision?:number):void;
@@ -59,6 +60,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
   const isPaused = () => paused || externalPaused;
   let locale:"en"|"id"="en";
   let visual:VisualSettings|null=null;
+  let muted:boolean|null=null;
 
   function emit(next: PreviewState) { state = next; onState(next); }
   function release() { const old = session; session = undefined; old?.dispose(); }
@@ -93,6 +95,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
         session.setPaused?.(isPaused());
         session.locale?.(locale);
         if(visual)session.visualSettings?.(visual);
+      if(muted!==null)session.muted?.(muted);
         emit({ status: 'ready' });
       } catch (error) {
         fail(token, error instanceof PreviewFailure ? error.kind : 'init');
@@ -105,6 +108,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     dispose() { if (disposed) return; close(); disposed = true; },
     getState: () => state,
     inspectSession: () => session?.inspect?.(),
+    muted(value:boolean){muted=value;session?.muted?.(value);},
     visualSettings(value:VisualSettings){visual={...value};session?.visualSettings?.(visual);},
     locale(value:"en"|"id"){locale=value;session?.locale?.(value);},
     speed(value:number){if(!isPaused()&&state.status==='ready'&&(value===1||value===10))session?.speed?.(value);},
