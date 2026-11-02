@@ -6,5 +6,7 @@ export default defineConfig({
   site: 'https://myzootwin.com',
   integrations: [sitemap()],
   output: 'static',
-  vite: { plugins: [bundleAnalysis()] }
+  // Keep processed modules external so /play's self-only CSP remains effective.
+  // Returning undefined preserves the vendor default for non-script assets.
+  vite: { plugins: [bundleAnalysis()], build: { assetsInlineLimit: (path) => path.endsWith('.js') ? false : undefined } }
 });

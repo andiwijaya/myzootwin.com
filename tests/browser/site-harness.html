@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Local navigation-signal QA</title>
+<style>body{font:16px system-ui;max-width:55rem;margin:2rem auto;padding:1rem}a,button{display:inline-block;padding:1rem;margin:.4rem;border:1px solid #28594a;color:#183b32}pre{white-space:pre-wrap}</style>
+<h1>Local navigation-signal QA</h1><p>Explicit programmatic event fixtures; no owner storage, network sink, analytics or download. Fixture links are cancelled after the product listener so this page remains open. Native product navigation is checked separately.</p>
+<button id="run">Run local navigation signal checks</button>
+<section id="fixture"><a href="/play/" data-site-source="home"><span>Home Play Zoo</span></a><a href="/learn/" data-site-source="game-guide">Guide Learn</a><a href="/play/" data-site-source="learn">Learn Play</a><a href="/play/?private=not-sent" data-site-source="home">Ignored unsafe destination</a></section>
+<pre id="results" role="status">UNRUN</pre><pre id="native" aria-label="Native click observations"></pre>
+<script type="module">
+import{mountSiteEvents}from'../../src/site-events.ts';
+const root=document.querySelector('#fixture'),out=document.querySelector('#results'),native=document.querySelector('#native'),links=[...root.querySelectorAll('a')],events=[],nativeClicks=[];
+let nativeOrigin;
+root.addEventListener('click',e=>{nativeOrigin=e.isTrusted?{text:e.target.textContent}:null;},{capture:true});
+root.addEventListener('myzootwin:navigate',e=>{events.push({detail:e.detail,frozen:Object.isFrozen(e.detail)});if(nativeOrigin){nativeClicks.push({trusted:true,text:nativeOrigin.text,eventsObserved:events.length,latest:events.at(-1)});native.textContent=JSON.stringify(nativeClicks);}});
+window.addEventListener('click',e=>{if(e.target.closest('#fixture a'))e.preventDefault();});
+let dispose=mountSiteEvents(root);const check=(v,m)=>{if(!v)throw Error(m);};
+document.querySelector('#run').addEventListener('click',()=>{const cases=[];events.length=0;try{
+ mountSiteEvents(root);links[0].querySelector('span').click();check(events.length===1&&events[0].frozen&&Object.keys(events[0].detail).join(',')==='destination,source','duplicate or unsafe detail');cases.push({id:'one-sanitized-signal-after-duplicate-mount-and-nested-target',status:'PASS',detail:events[0].detail});
+ links[1].click();links[2].click();links[3].click();check(events.length===3&&events[1].detail.destination==='learn'&&events[2].detail.source==='learn','wrong destination/source');cases.push({id:'guide-learn-and-return-actions-only-fixed-destinations',status:'PASS'});
+ for(const options of [{ctrlKey:true},{metaKey:true},{shiftKey:true},{altKey:true},{button:1}])links[0].dispatchEvent(new MouseEvent('click',{bubbles:true,cancelable:true,...options}));const blocked=new MouseEvent('click',{bubbles:true,cancelable:true});blocked.preventDefault();links[0].dispatchEvent(blocked);check(events.length===3,'modified or cancelled click emitted');cases.push({id:'modified-and-prevented-navigation-ignored',status:'PASS'});
+ const oldDispose=dispose;oldDispose();links[0].click();check(events.length===3,'disposed listener emitted');dispose=mountSiteEvents(root);oldDispose();mountSiteEvents(root);links[0].click();check(events.length===4,'stale disposer allowed duplicate remount signals');cases.push({id:'disposal-and-remount-no-duplicate-listener',status:'PASS'});
+ out.textContent=JSON.stringify({status:'PASS',cases,method:'Authored source fixture, programmatic clicks/MouseEvents; no real navigation',exports:0,storage:'NONE',remoteTransport:'NONE',physicalDevice:false});
+}catch(error){out.textContent=JSON.stringify({status:'FAIL',cases,error:String(error)});}});
+</script></html>

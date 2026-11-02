@@ -3,6 +3,8 @@ export type EntryLocale = 'en' | 'id';
 export const ENTRY_PREFERENCES_KEY = 'myzootwin.entry.preferences.v1';
 
 export const english = {
+  learnBridge: 'Game needs and welfare are simplified rules, not wildlife-care instructions. The journal’s Learn section explains this distinction while researched articles are being prepared.',
+  learnLink: 'Explore Learn',
   restartControls:'Restart sanctuary',
   guideSession:'Local autosave status is shown above. Continue restores saved progress without offline time.',guideToolbar:'First mission preview',guideExit:'Show full preview tools',
   recoveryTitle:"Low Zoo Coins — restore the essentials",recoveryIntro:"Follow one safe step at a time. Missing basic equipment can be supplied when you cannot afford it; free equipment has no sale value. Coins still come from real admitted visitors.",recoveryHabitat:"Prepare a starter aviary at map tile {x}, {z}.",recoveryPath:"Connect the next path tile {x}, {z} to the habitat.",recoveryFood:"Place the missing feeder in the marked aviary spot.",recoveryWater:"Place the missing water bowls in the aviary.",recoveryPerch:"Prepare the missing rest perches to restore energy and enrichment.",recoveryFoodRefill:"Buy a full feeder refill so both birds can eat.",recoveryWaterRefill:"Buy fresh water so both birds can drink.",recoveryRations:"Request rescue rations: up to two food and water portions per bird. Only available below12 ZC with an urgent empty bowl; at most once per30 simulation seconds.",recoveryWelcome:"Welcome the two macaws to their prepared habitat.",recoveryOpen:"Open the entrance. Visitors must cross the real gate before paying.",recoveryReclaim:"Reclaim path tile {x}, {z} to make room for a starter aviary. Actual construction refund: {refund} ZC. Confirm removes only this tile; Undo remains available.",recoveryRepairFood:"Remove the unreachable feeder, then place it in its marked spot. Construction refund: {refund} ZC.",recoveryRepairWater:"Remove the unreachable water bowls, then rebuild in their marked spot. Construction refund: {refund} ZC.",recoveryRepairPerch:"Remove unreachable rest equipment, then prepare it in the correct spot. Construction refund: {refund} ZC.",recoveryWait:"Wait for a safe building spot or return the birds to reserve using the control below. Existing objects and coins remain unchanged.",recoverySteady:"The route and entrance are ready. Care for the birds and wait for actual admissions. Queued guests do not pay; upkeep remains due until affordable.",recoveryCooldown:"Next rescue ration request in {seconds} simulation seconds. Time pauses with this page or a confirmation dialog.",recoveryGift:"Starter equipment support:0 ZC. No cash is granted and this free equipment refunds0 ZC.",recoveryCost:"This step costs {cost} ZC. Your balance is {balance} ZC.",recoveryAction:"Review next recovery step",recoveryDialog:"Confirm this recovery step",recoveryConfirm:"Confirm step",recoveryCancel:"Keep everything as it is",
@@ -194,7 +196,7 @@ export const english = {
   editCommand: 'This edit cannot be completed. No change was made.',
 
   pageTitle: 'Play Zoo — Tropical Creek | MyZooTwin',
-  description: 'Visit the Tropical Creek sanctuary preview. Read the guide and choose your language while the playable zoo is being prepared.',
+  description: 'Build an aviary, care for two macaws, welcome visitors and complete four missions in the Tropical Creek development preview. Local progress; no account required.',
   status: 'Development preview',
   sanctuary: 'Tropical Creek Sanctuary',
   title: 'A little world to care for.',
@@ -499,8 +501,10 @@ export const entryMessages: Record<EntryLocale, Record<EntryMessage, string>> = 
   editFunds: 'Transaksi ini tidak dapat diselesaikan dengan aman dengan koin atau ledger saat ini. Tidak ada perubahan dilakukan.',
   editCommand: 'Penyuntingan ini tidak dapat diselesaikan. Tidak ada perubahan dilakukan.',
 
+    learnBridge: 'Kebutuhan dan kesejahteraan dalam game adalah aturan sederhana, bukan petunjuk merawat satwa nyata. Bagian Learn menjelaskan perbedaan ini sambil menyiapkan artikel berbasis sumber.',
+    learnLink: 'Jelajahi Learn',
     pageTitle: 'Main Zoo — Tropical Creek | MyZooTwin',
-    description: 'Kunjungi pratinjau suaka Tropical Creek. Baca panduan dan pilih bahasa sambil menunggu permainan kebun binatang siap.',
+    description: 'Bangun habitat, rawat dua makaw, sambut pengunjung dan selesaikan empat misi dalam pratinjau pengembangan Tropical Creek. Progres lokal; tanpa akun.',
     status: 'Pratinjau pengembangan',
     sanctuary: 'Suaka Tropical Creek',
     title: 'Dunia kecil untuk dirawat.',

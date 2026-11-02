@@ -2,6 +2,7 @@
 import {pagePrivacy} from '../site-policy';
 const { title = 'MyZooTwin — Explore. Discover. Understand Animals.', description = 'MyZooTwin is an international animal learning journal for curious people who care about wildlife, pets, and the living world.' } = Astro.props;
 const canonical = Astro.props.canonical ?? new URL(Astro.url.pathname, 'https://myzootwin.com').toString();
+const socialImage = Astro.props.socialImage;
 const gaId = import.meta.env.PUBLIC_GA4_ID;
 const privacy = pagePrivacy(Astro.url.pathname, Boolean(gaId));
 ---
@@ -24,6 +25,10 @@ const privacy = pagePrivacy(Astro.url.pathname, Boolean(gaId));
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    {socialImage && <meta property="og:image" content={new URL(socialImage.src, 'https://myzootwin.com').href} />}
+    {socialImage && <meta property="og:image:alt" content={socialImage.alt} />}
+    {socialImage && <meta name="twitter:image" content={new URL(socialImage.src, 'https://myzootwin.com').href} />}
+    {socialImage && <meta name="twitter:image:alt" content={socialImage.alt} />}
     <title>{title}</title>
     {privacy.analytics && <script async src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}></script>}
     {privacy.analytics && <script is:inline define:vars={{ gaId }}>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config',gaId);</script>}
@@ -33,7 +38,7 @@ const privacy = pagePrivacy(Astro.url.pathname, Boolean(gaId));
     <header class="site-header" lang="en">
       <a class="brand" href="/" aria-label="MyZooTwin home"><span class="brand-mark">✦</span><span>MyZoo<span class="brand-accent">Twin</span></span></a>
       <nav aria-label="Main navigation">
-        <a class="play-link" href="/play/" aria-current={Astro.url.pathname.replace(/\/$/, '') === '/play' ? 'page' : undefined}>Play Zoo</a>
+        <a class="play-link" href="/play/" data-site-source="nav" aria-current={Astro.url.pathname.replace(/\/$/, '') === '/play' ? 'page' : undefined}>Play Zoo</a>
         <a href="/animals/">Animals</a><a href="/wildlife/">Wildlife</a><a href="/pets/">Pets</a><a href="/learn/">Learn</a><a href="/adventures/">Adventures</a><a href="/gear/">Gear</a>
       </nav>
       <a class="header-link" href="/about/">About <span aria-hidden="true">↗</span></a>
@@ -42,6 +47,10 @@ const privacy = pagePrivacy(Astro.url.pathname, Boolean(gaId));
     <footer class="site-footer" lang="en"><div><a class="brand" href="/"><span class="brand-mark">✦</span><span>MyZoo<span class="brand-accent">Twin</span></span></a><p>A curious field guide to the animals we share this planet with.</p></div><div class="footer-links"><a href="/animals/">Animals</a><a href="/wildlife/">Wildlife</a><a href="/pets/">Pets</a><a href="/learn/">Learn</a><a href="/about/">About</a></div><small>© {new Date().getFullYear()} MyZooTwin. Made for curious minds.</small></footer>
   </body>
 </html>
+<script>
+  import {mountSiteEvents} from '../site-events';
+  mountSiteEvents(document);
+</script>
 <style is:global>
 
 .skip-link{position:absolute;z-index:20;top:.5rem;left:.5rem;transform:translateY(-180%);padding:.75rem 1rem;background:var(--ink);color:white;min-height:44px;border-radius:8px}.skip-link:focus{transform:none}
