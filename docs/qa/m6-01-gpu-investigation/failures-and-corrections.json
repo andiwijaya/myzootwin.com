@@ -1,0 +1,16 @@
+{
+  "initialNewHarnessCheck": {
+    "run": "s20261102T172218Z",
+    "unit": "485PASS",
+    "check": "FAIL strict0hintgate; actualAstro0errors/0warnings/1hint",
+    "cause": "Unused replay callback parameter time, ts6133, not a game failure. Removed unused parameter; final205files/0errors/warnings/hints PASS.",
+    "evidence": "initial-failed-check/check.log"
+  },
+  "initialHypothesisCorrection": "historical-audit.json records a pre-sampling concern that camera renders might mix outsideRAF. Current3606taggedrows and source inspection show camera commands update transform for nextRAF; no separate camera submissions. This concern is not used to explain historical increase; old report sentence is corrected. Pre-sampling audit retained rather than rewritten.",
+  "inheritedDeniedAction": {
+    "exactAction": "Navigate existing QA46 to http://127.0.0.1:4323/tests/browser/.generated/populated-performance-harness.html",
+    "reason": "After original connection-error document, URL policy rejected its data:text/html browser-generated error context; optional historical repeat BLOCKED/UNRUN. Later viewport cleanup was denied and Close UNRUN.",
+    "thisPass": "No navigation/viewport/close/retry/new old-source route or historical runtime executed. Existing recovery download also not retried."
+  },
+  "newDenialsPendingUncertain": "None. New current-only probes and read-only result review completed, exact output/cleanup verified. Historical causal outcome remains epistemically inconclusive, not an uncertain mutation."
+}

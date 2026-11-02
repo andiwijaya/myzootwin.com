@@ -1,0 +1,38 @@
+[
+  {
+    "requirement": "Bounded defensible comparison plan",
+    "status": "PASS execution",
+    "evidence": "comparison-plan.json,raw-current.json",
+    "detail": "Plan written before sampling; exactly8live current windows and4frozen current-pose windows,2s warm/5s sample/<=1s drain,desktop1366x768/DPR1.5. Reverse order controls current repeated configurations. No denied baseline execution or alternative old-source route."
+  },
+  {
+    "requirement": "Like-for-like and timing validity",
+    "status": "PASS current comparisons; historical causal comparability INCOMPLETE",
+    "evidence": "independent-analysis.json,historical-audit.json",
+    "detail": "Matched current starting-save hashes and buffers by pair. Live warm-up ticks differ0-2ticks, animations/draw phases can differ. Frozen repeats have equal core hash/tick and one identical62call/14820triangle/1192x957 signature. Original before/after summaries lack raw query distributions/host data; new2s warm/current code are not historical1s warm/frozen builds."
+  },
+  {
+    "requirement": "CPU submission versus GPU elapsed/presentedFPS",
+    "status": "PASS separation; presentedFPS UNRUN",
+    "evidence": "raw-current.json,final-local/unit.log",
+    "detail": "3606complete64bit queries,0disjoint/errors/overflow/skip/pending; perquery async latency/origin/counters retained. Independent nearest-rank recomputation matches every summary. CPU callback and synchronous render-submit separate.4unit cases cover delayed/truncated/invalid/disjoint/zero-bit/error/overflow paths with labelled synthetic rows. No FPS conversion or physical device pass."
+  },
+  {
+    "requirement": "Historical regression/artifact diagnosis",
+    "status": "INCONCLUSIVE; gate retained",
+    "evidence": "independent-analysis.json,review.html,review.jpg",
+    "detail": "Current GPU p95 high1 4.517/4.509ms,high10 4.485/6.232,low1 2.684/2.685,low10 2.674/2.687. Frozen3.878-4.055ms (4.56%range). Retention difference<=0.209634ms current,13late results recovered, not retroactive old bias. Camera-immediate-render hypothesis rejected by current rows/source; earlier report corrected. No confirmed product GPU regression or pure artifact explanation."
+  },
+  {
+    "requirement": "Final source verification/preservation",
+    "status": "PASS",
+    "evidence": "final-local/report.json,final-local/routes.json,final-guard.json,browser-cleanup.json",
+    "detail": "485tests,205checkedfiles/0diagnostics,9route/direct/sitemap PASS. All24 emitted artifacts byte-identical to preceding privacy build; QA tooling only.8contexts disposed/zero resources/errors,product pending<=1,frozen diagnostic only while product paused.64original M6-01receipt hashes preserved; ownerdist/3rollback archives unchanged. Owned24/25closed,viewportreset,QAserversstopped,ports4322/4323/4345/4346/4347free."
+  },
+  {
+    "requirement": "Whole M6-01 and release",
+    "status": "PARTIAL;44/51 unchanged",
+    "evidence": "risk-register.json,next-step.json",
+    "detail": "Historical cause and target physical/presentationFPS remain open. Package/art/legal/config/human/recording/cross-browser/import gates unchanged. No push/deploy/Actions/newlogin/credentials/permissions. Inherited download and QA46 actions remain BLOCKED/UNRUN, not retried."
+  }
+]

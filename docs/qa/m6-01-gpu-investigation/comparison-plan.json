@@ -1,0 +1,42 @@
+{
+  "writtenBeforeNewSamplingAt": "2026-11-02T17:22:17.912111+00:00",
+  "baselineHEAD": "7cb633c5f7e6b13e0b45b6567905bda917e5036f",
+  "V1": "44/51;M6-01 remains PARTIAL",
+  "question": "Do original mixed GPU summaries prove an optimization regression? Assess measurement attribution and current repeatability without executing denied baseline.",
+  "hardBound": {
+    "liveWindows": 8,
+    "frozenCurrentPoseWindows": 4,
+    "warmupMs": 2000,
+    "measurementMs": 5000,
+    "queryDrainBudgetMs": 1000,
+    "repeatBatches": 1,
+    "viewport": {
+      "width": 1366,
+      "height": 768
+    },
+    "liveOrder": [
+      "high1",
+      "low10",
+      "high10",
+      "low1",
+      "low1",
+      "high10",
+      "low10",
+      "high1"
+    ],
+    "frozen": "Same final current high1 scene/camera/pose/tick replayed4times while product RAF paused; QA replay is separate, never concurrent product loop."
+  },
+  "controls": [
+    "Current source/build identity, paired exact starting fixture perconfig, DPR/buffer/counts/env/visibility recorded.",
+    "No concurrent unit/build/CPU benchmarks during GPU collection. Other host/driver/power/thermal load unobservable/uncontrolled, not claimed absent.",
+    "Queries use counter bits, async completion/disjoint, GLerror,overflow/pending/skip validity and per-submit RAF/camera/replay labels. Retain<=1200raw records, flag overflow rather than silently truncate.",
+    "Compute old last300/collecting-only retention and complete/drained/RAF-only summaries from SAME new rows, not historical execution.",
+    "No new production game/renderer/economy changes planned absent confirmed defect."
+  ],
+  "decisionRule": "Historical causal regression cannot be established from current-only samples plus old summaries. If current repeated samework varies materially, report variability as supporting confounding, not proof that old increase was an artifact. Report any exact attribution/retention bias found. Do not convert timing or callback cadence into presentedFPS.",
+  "forbidden": [
+    "No frozen historical baseline execution, snapshot restoration/server/new alternative route/tab/browser for denied comparison.",
+    "No QA46 navigation/viewport/close, recovery download, credential/permission/login/deploy/push/Actions changes.",
+    "No physicalAndroid/presentationFPS pass from viewport or queries."
+  ]
+}

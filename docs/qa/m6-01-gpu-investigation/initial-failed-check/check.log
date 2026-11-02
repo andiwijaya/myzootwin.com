@@ -1,0 +1,12 @@
+00.22.55 [types] Generated 96ms
+00.22.55 [check] Getting diagnostics for Astro files in C:\MyZooTwin...
+[96mtests/browser/gpu-attribution-harness.mjs[0m:[93m29[0m:[93m13[0m - [93mwarning[0m[90m ts(6133): [0m'time' is declared but its value is never read.
+
+[7m29[0m  const draw=time=>{replayPending=null;poll();origin='replay';renderer.render(...args);origin='other';if(!stopped)replayPending=requestAnimationFrame(draw);};replayPending=requestAnimationFrame(draw);await sleep(2000);resetWindow();await sleep(5000);if(replayPending!==null){cancelAnimationFrame(replayPending);replayPending=null;}const data=await finishWindow();check(stateBefore===serializeSave(store.read())&&session.inspect().simulationTick===tick&&productPending.size===0,'Frozen replay mutated sim');results.push({phase:'frozen-current-replay',index,graphics:'high',speed:1,frozenStateHash:await hash(stateBefore),tick,before:session.inspect(),...data});output();}
+[7m  [0m [93m            ~~~~[0m
+
+Result (205 files): 
+- 0 errors
+- 0 warnings
+- 1 hint
+
