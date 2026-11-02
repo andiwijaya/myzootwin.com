@@ -1,0 +1,100 @@
+{
+  "at": "2026-11-02T21:46:22.346362+00:00",
+  "startingCommit": "717f50bf0e74766e083f9397aa0233376f2fdb6e",
+  "localRepo": "C:\\MyZooTwin",
+  "origin": "https://github.com/andiwijaya/myzootwin.com.git",
+  "branch": "main",
+  "liveRemote": {
+    "method": "git ls-remote --symref origin HEAD refs/heads/main; no fetch",
+    "defaultBranch": "main",
+    "sha": "f10d037e84ad504e8f70b4908d20375a11c08917",
+    "remoteOnlyCommits": 0,
+    "localOnlyBeforeAuditCommits": 115
+  },
+  "githubConnector": {
+    "repository": "andiwijaya/myzootwin.com",
+    "visibility": "public",
+    "defaultBranch": "main",
+    "archived": false,
+    "authentication": "existing authorized; no login/grant"
+  },
+  "pages": {
+    "project": "myzootwin-com",
+    "repository": "andiwijaya/myzootwin.com",
+    "productionBranch": "main",
+    "automaticDeployments": "Enabled",
+    "gitWarning": "This project is disconnected from your Git account. This may cause deployments to fail.",
+    "command": "npm run build",
+    "output": "dist",
+    "rootDisplayed": "blank",
+    "rootInterpretation": "repository root; historical log output /opt/buildhome/repo/dist/ corroborates",
+    "watchInclude": [
+      "*"
+    ],
+    "buildComments": "Enabled",
+    "buildCache": "Disabled",
+    "buildSystem": 3,
+    "deployHooks": [],
+    "productionVariableNames": [
+      "PUBLIC_GA4_ID"
+    ],
+    "previewVariableNames": [],
+    "nodeOverride": null,
+    "previewBranches": "All non-production branches",
+    "productionDomains": {
+      "myzootwin.com": "Active; SSL enabled",
+      "www.myzootwin.com": "Active; SSL enabled",
+      "myzootwin-com.pages.dev": "listed production domain"
+    },
+    "pagesWebAnalytics": "Disabled in Metrics UI; zone/account injection not audited",
+    "canonicalProduction": {
+      "id": "5a755ea7-3513-41a8-8908-7dab1fa2b2cf",
+      "source": "ad20f2b90fc110e5f8a886174b3ddb816070df7d",
+      "status": "success",
+      "url": "https://5a755ea7.myzootwin-com.pages.dev",
+      "buildLogStartUTC": "2026-09-22T08:05:16.617561Z",
+      "publishedSuccessUTC": "2026-09-22T08:05:37.34381Z",
+      "durationUI": "23s",
+      "node": "22.16.0",
+      "npm": "10.9.2",
+      "pagesBuilt": 8,
+      "functions": "No functions dir found",
+      "redirectsHeaders": "UI shows creation instructions, no rules listed; not a zone-level override audit"
+    },
+    "rollbackCandidate": "c3fd7754-64a8-40ee-8096-fd6f8fa7138a is listed; rollback eligibility/execution not tested"
+  },
+  "buildCompatibility": {
+    "astro": "7.4.4",
+    "requiredNode": ">=22.23.4",
+    "requiredNpm": ">=9.6.5",
+    "localNode": "24.12.0",
+    "localNpm": "11.6.2",
+    "selectionFiles": [],
+    "vendorDefaultAtAudit": "v3 Node22.23.4/npm10.9.9, docs updated2026-10-26",
+    "vendorSource": "https://developers.cloudflare.com/pages/configuration/build-image/",
+    "vendorLimit": "v3 does not detect Node/package managers from package.json engines",
+    "inference": "Current documented default meets exact minimum, unlike historical22.16.0. Actual next builder and Astro7.4.4 Cloudflare build UNRUN; do not claim failed current default or verified candidate deployment.",
+    "futureRecommendation": "Consider repository .node-version pinned to tested24.12.0 in a separate authorized change; no config changed here."
+  },
+  "userEvidence": {
+    "at": "2026-11-02T21:33Z",
+    "statement": "deplloy otomatis kalau kamu push ke main repo remote",
+    "interpretation": "Treat main push as production deployment, not authorization to push. Dashboard autoEnabled is independently observed; disconnect warning prevents a guarantee."
+  },
+  "operationStatus": {
+    "deniedThisPass": false,
+    "pendingApproval": false,
+    "uncertainMutation": false,
+    "remoteWrites": false,
+    "servicesStarted": false,
+    "ownerCloudflareTab": 28,
+    "ownerTabPreserved": true,
+    "temporaryViewportReset": true,
+    "loginOrGrants": false
+  },
+  "recoveredReadFailures": [
+    "Settings initially misidentified as link; corrected using observed tab role. Navigation-read timing timeout resolved through fresh state before another click. No settings mutation attempted.",
+    "Sandbox git status could not access worktree; existing authorized elevated read succeeded. One report-field introspection and Unicode stdout read failed; bounded JSON reads recovered."
+  ],
+  "inheritedRestrictions": "Denied recovery download, QA46, frozen baseline/public GET not retried. No browser login or config change."
+}
