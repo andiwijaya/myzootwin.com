@@ -27,6 +27,7 @@ import { createPreviewController, type PreviewLoader, type PreviewState } from '
 import { entryMessages, type EntryLocale, type EntryMessage } from './locale';
 
 export interface PreviewPanelOptions { loadRenderer?: PreviewLoader; stateStore?:import("../game/core/session-state.ts").SanctuarySessionState;canOpen?:()=>boolean;beforeOpen?:()=>boolean; }
+const setText=(element:Element|null,value:string)=>{if(element&&element.textContent!==value)element.textContent=value;};
 const mounted = new WeakMap<HTMLElement, ReturnType<typeof createPanel>>();
 
 function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
@@ -164,10 +165,10 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
 
   function renderBirds(){
     const tools=root.querySelector<HTMLElement>('[data-bird-tools]');if(!tools)return;const copy=entryMessages[locale];tools.hidden=state.status!=='ready'||studio.active;
-    for(const el of tools.querySelectorAll<HTMLElement>('[data-entry-text]'))el.textContent=copy[el.dataset.entryText as EntryMessage];
+    for(const el of tools.querySelectorAll<HTMLElement>('[data-entry-text]'))setText(el,copy[el.dataset.entryText as EntryMessage]);
     const welcome=tools.querySelector<HTMLButtonElement>('[data-birds-command="welcome"]'),reserve=tools.querySelector<HTMLButtonElement>('[data-birds-command="reserve"]');
     if(welcome){welcome.hidden=birds.placed>0;welcome.disabled=!birds.habitat;welcome.textContent=copy.birdsWelcome;}if(reserve){reserve.hidden=birds.placed===0;reserve.textContent=copy.birdsReserve;}
-    tools.querySelector('[data-birds-status]')?.replaceChildren(copy[birds.placed?'birdsPlaced':birds.habitat?'birdsWaiting':'birdsNeedHabitat']);
+    setText(tools.querySelector('[data-birds-status]'),copy[birds.placed?'birdsPlaced':birds.habitat?'birdsWaiting':'birdsNeedHabitat']);
     animalInfo.update(birds,locale,state.status==='ready'&&!studio.active);
   }
   function renderFood(){const tools=root.querySelector<HTMLElement>('[data-food-tools]');if(!tools)return;const c=entryMessages[locale];tools.hidden=state.status!=='ready'||studio.active;
@@ -204,7 +205,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const copy=entryMessages[locale],ready=state.status==='ready',tools=root.querySelector<HTMLElement>('[data-macaw-tools]');if(!tools)return;
     tools.hidden=!ready;const controls=root.querySelector<HTMLElement>('[data-macaw-controls]');if(controls)controls.hidden=!studio.active;
     for(const button of tools.querySelectorAll<HTMLButtonElement>('[data-studio-command]')){const command=button.dataset.studioCommand as StudioCommand;const key=command==='pause'?(studio.motionPaused?'macawResume':'macawPause'):command==='open'?'macawOpen':command==='close'?'macawClose':command==='detail'?'macawDetail':'macawHabitat';button.textContent=copy[key];button.hidden=command==='open'?studio.active:command==='detail'?!studio.habitat:command==='habitat'?studio.habitat:false;if(command==='habitat')button.disabled=habitatCount===0;}
-    for(const el of tools.querySelectorAll<HTMLElement>('[data-entry-text]'))el.textContent=copy[el.dataset.entryText as EntryMessage];
+    for(const el of tools.querySelectorAll<HTMLElement>('[data-entry-text]'))setText(el,copy[el.dataset.entryText as EntryMessage]);
     for(const [selector,value]of [['[data-macaw-clip]',studio.clip],['[data-macaw-angle]',studio.angle]]){const select=root.querySelector<HTMLSelectElement>(selector);if(!select)continue;select.value=value;for(const option of select.options)option.textContent=copy[`macaw${option.value[0].toUpperCase()}${option.value.slice(1)}` as EntryMessage];}
     root.querySelector('[data-macaw-status]')?.replaceChildren(copy[studio.motionPaused?'macawPaused':'macawPlaying']);root.querySelector('[data-macaw-scale]')?.replaceChildren(studio.habitat?copy.macawScaleHint:habitatCount===0?copy.macawNeedHabitat:'');
     if(cameraControls)cameraControls.hidden=!ready||(studio.active&&!studio.habitat);

@@ -50,7 +50,8 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   let macaw:ReturnType<typeof createMacawStudio>|undefined;
   const camera = new OrthographicCamera();
   const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const visual=()=>visualPolicy(simulation.visualSettings(),motion.matches,window.innerWidth,window.matchMedia('(pointer:coarse)').matches,window.devicePixelRatio||1);
+  const coarse = window.matchMedia('(pointer:coarse)');
+  const visual=()=>visualPolicy(simulation.visualSettings(),motion.matches,window.innerWidth,coarse.matches,window.devicePixelRatio||1);
   const frames = options.frames ?? { request: (fn) => requestAnimationFrame(fn), cancel: (id) => cancelAnimationFrame(id) };
   let diorama: ReturnType<typeof createTropicalDiorama> | undefined;
   let controls: ReturnType<typeof mountCameraControls> | undefined;
@@ -98,30 +99,33 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     loop.stop();
     onFailure('context-lost');
   }
-  function readGuide(){const s=simulation.inspect(),key=[s.commandRevision,s.currency,s.editorRevision].join(':');if(key!==guideReadKey||!guideRead){guideReadKey=key;guideRead=simulation.onboardingView();}return guideRead;}
+  function readGuide(s=simulation.inspect()){const key=[s.commandRevision,s.currency,s.editorRevision].join(':');if(key!==guideReadKey||!guideRead){guideReadKey=key;guideRead=simulation.onboardingView();}return guideRead;}
   let previousSpeed='';
-  function announceSpeed(force=false){const s=simulation.inspect(),value={speed:s.speed,paused:s.paused},key=JSON.stringify(value);if(force||key!==previousSpeed){previousSpeed=key;host.dataset.simulationRate=String(s.speed);host.dispatchEvent(new CustomEvent('scene-speed-change',{detail:value}));}}
+  function announceSpeed(force=false,s=simulation.inspect()){const value={speed:s.speed,paused:s.paused},key=JSON.stringify(value);if(force||key!==previousSpeed){previousSpeed=key;host.dataset.simulationRate=String(s.speed);host.dispatchEvent(new CustomEvent('scene-speed-change',{detail:value}));}}
   function render() {
+    if (disposed || lost) return;
+    const frame=simulation.inspect();
     const policy=visual();diorama?.setLowGraphics(policy.low);visitors?.setVisibleCap(policy.low?1:3);
-    announceSpeed();
-    const guide=readGuide(),guideKey=JSON.stringify(guide);if(guideKey!==previousGuide){previousGuide=guideKey;host.dispatchEvent(new CustomEvent('scene-onboarding-change',{detail:guide}));}
+    announceSpeed(false,frame);
+    const guide=readGuide(frame),guideKey=JSON.stringify(guide);if(guideKey!==previousGuide){previousGuide=guideKey;host.dispatchEvent(new CustomEvent('scene-onboarding-change',{detail:guide}));}
     const missions=simulation.missionView(),missionKey=JSON.stringify(missions);if(missionKey!==previousMission){previousMission=missionKey;host.dispatchEvent(new CustomEvent('scene-missions-change',{detail:missions}));}
-    const recoveryKey=[simulation.inspect().tick,simulation.commandRevision(),simulation.inspect().editorRevision,simulation.visitorView().open].join(':');if(recoveryKey!==recoveryReadKey){recoveryReadKey=recoveryKey;recoveryRead=simulation.recoveryView();}const nextRecovery=JSON.stringify(recoveryRead);if(nextRecovery!==previousRecovery){previousRecovery=nextRecovery;host.dispatchEvent(new CustomEvent('scene-recovery-change',{detail:recoveryRead}));}
+    const recoveryKey=[frame.tick,frame.commandRevision,frame.editorRevision,simulation.visitorView().open].join(':');if(recoveryKey!==recoveryReadKey){recoveryReadKey=recoveryKey;recoveryRead=simulation.recoveryView();}const nextRecovery=JSON.stringify(recoveryRead);if(nextRecovery!==previousRecovery){previousRecovery=nextRecovery;host.dispatchEvent(new CustomEvent('scene-recovery-change',{detail:recoveryRead}));}
     const money=simulation.economyView(),moneyKey=JSON.stringify(money);if(moneyKey!==previousEconomy){previousEconomy=moneyKey;placement?.refresh();host.dispatchEvent(new CustomEvent('scene-economy-change',{detail:money}));}
     if (disposed || lost) return;
     if (context?.isContextLost()) { notifyContextLoss(); return; }
-    if(habitatDirty&&habitats){const world=simulation.snapshot().world;habitats.sync(world);decoration?.sync(world,simulation.missionView().care.unlocked);banner?.sync(world,simulation.missionView().thriving.unlocked);habitatDirty=false;}
-    if(pathDirty&&paths){paths.sync(simulation.snapshot().world);picker?.refresh();pathDirty=false;}
+    const world=habitatDirty||pathDirty||foodDirty||waterDirty||perchDirty?simulation.worldSnapshot():undefined;
+    if(habitatDirty&&habitats){habitats.sync(world!);decoration?.sync(world!,simulation.missionView().care.unlocked);banner?.sync(world!,simulation.missionView().thriving.unlocked);habitatDirty=false;}
+    if(pathDirty&&paths){paths.sync(world!);picker?.refresh();pathDirty=false;}
     if(birdsDirty&&birds){const s=simulation.birdSnapshot();birds.sync(s.animals,s.habitats,s.width,s.height,simulationTimeMs);birdsDirty=false;announceBirds();}
-    if(foodDirty){feeder?.sync(simulation.snapshot().world,foodPreview,simulation.foodView().canPlace);announceFood();foodDirty=false;}
-    if(waterDirty){waterStation?.sync(simulation.snapshot().world,waterPreview,simulation.waterView().canPlace);announceWater();waterDirty=false;}
-    if(perchDirty){const view=simulation.perchView();restKit?.sync(simulation.snapshot().world,perchPreview,view.canPlace);birds?.setPerchesVisible(!view.reachable&&!perchPreview);announcePerch();perchDirty=false;}
-    restKit?.update(simulationTimeMs,simulation.perchView().exploring,visual().reducedMotion);
+    if(foodDirty){feeder?.sync(world!,foodPreview,simulation.foodView().canPlace);announceFood();foodDirty=false;}
+    if(waterDirty){waterStation?.sync(world!,waterPreview,simulation.waterView().canPlace);announceWater();waterDirty=false;}
+    if(perchDirty){const view=simulation.perchView();restKit?.sync(world!,perchPreview,view.canPlace);birds?.setPerchesVisible(!view.reachable&&!perchPreview);announcePerch();perchDirty=false;}
+    restKit?.update(simulationTimeMs,simulation.perchView().exploring,policy.reducedMotion);
     if(visitorsDirty&&visitors){const v=simulation.visitorSnapshot();visitors.sync(v.visitors,v.width,v.height,v.tick,v.gate);visitorsDirty=false;announceVisitors();}
-    const remainder=simulation.inspect().accumulatorMs;
-    visitors?.update(remainder/100,simulationTimeMs+remainder,visual().reducedMotion);
+    const remainder=frame.accumulatorMs;
+    visitors?.update(remainder/100,simulationTimeMs+remainder,policy.reducedMotion);
     birds?.update(remainder/100,simulationTimeMs+remainder);
-    diorama?.update(simulationTimeMs, visual().reducedMotion);
+    diorama?.update(simulationTimeMs, policy.reducedMotion);
     renderer?.render(scene, macaw?.view().active&&!macaw.view().habitat?macaw.camera:camera);
     if (renderer) renderSubmissions++;
   }
