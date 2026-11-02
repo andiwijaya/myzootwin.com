@@ -80,3 +80,8 @@ Hard stop **2026-11-02 10:00UTC /17:00WIB** remains. M0-01/M4-07/M5-07/M6-01/M6-
 ## Later bounded import investigation - 2026-11-02 UTC
 
 [Investigation](M6-03_IMPORT_FAILURE_INVESTIGATION.md) establishes loader rejection before factory, but historical cause remains INCONCLUSIVE.46archive members verified; original exception/request/timing/cache details missing. No new browser rerun or speculative fix. Current485tests/205check/9staticroutes/24identicalartifacts are regression evidence only. M6-03 remains PARTIAL;currentV1 44/51.
+
+
+## Later supported Chrome desktop pass — 2026-11-02 UTC
+
+[Current desktop report](M6-03_SUPPORTED_DESKTOP_VERIFICATION.md) adds actual authorized Chrome coverage and fixes a separately reproduced autosave reentrancy defect. Edge/physical/native-background/process-restart gates remainUNRUN;Firefox owner-excluded. Historical initial fixture-import cause above remainsINCONCLUSIVE and is not explained by the new defect. M6-03 remainsPARTIAL;44/51.

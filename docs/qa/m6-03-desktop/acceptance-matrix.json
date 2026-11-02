@@ -1,0 +1,108 @@
+[
+  {
+    "id": "DESKTOP-01",
+    "criterion": "Supported browser discovery",
+    "status": "PASS scoped inventory",
+    "evidence": "engine-matrix-initial.json",
+    "limits": "Chromeextension3 available. Edge absent from offered surfaces; IAB2 not counted as another browser. No version/profile/system-setting inspection. Firefox owner-excluded."
+  },
+  {
+    "id": "DESKTOP-02",
+    "criterion": "Native Chrome main game loop",
+    "status": "PASS with source bridge",
+    "evidence": [
+      "steps.json",
+      "source-bridge.json"
+    ],
+    "limits": "Q01 before small autosave fix, Q02-Q04 final source. No external human/physical device/full fresh final-source golden-path claim."
+  },
+  {
+    "id": "DESKTOP-03",
+    "criterion": "Repeated dialog saves, cancellation, paid edit/refund/undo",
+    "status": "PASS final source",
+    "evidence": [
+      "independent-comparisons.json",
+      "final-gate/report.json",
+      "autosave-after.log"
+    ],
+    "limits": "Confirmed reentrant writer defect fixed. Initial native call stack was not instrumented, so no sole-cause claim beyond reproduced code defect and successful affected native reruns."
+  },
+  {
+    "id": "DESKTOP-04",
+    "criterion": "Pause/settings Apply/Discard/persistent ID/EN",
+    "status": "PASS final source",
+    "evidence": [
+      "steps.json",
+      "C23-settings-1920-ID.jpg"
+    ],
+    "limits": "Sound stayed muted; no speaker-output certification. Actual1366 and1920CSS layouts, extra default1036coldtab; full-page captures handle cropped viewport bitmap."
+  },
+  {
+    "id": "DESKTOP-05",
+    "criterion": "Actual close/new tab/Continue, journal and Back/Forward",
+    "status": "PASS final source",
+    "evidence": [
+      "independent-comparisons.json",
+      "steps.json"
+    ],
+    "limits": "No full browser-process restart; exact compared visible/DOM fields only."
+  },
+  {
+    "id": "DESKTOP-06",
+    "criterion": "Privacy refusal and withdrawal",
+    "status": "PASS local-choice UI under QA shield",
+    "evidence": [
+      "steps.json",
+      "routes-final.json",
+      "executed-server.mjs"
+    ],
+    "limits": "Syntheticproperty plus enforced QA-only selfCSP. ActualGoogle delivery/cookies/retention not tested or legally certified. No permission changes or network-panel proof invented."
+  },
+  {
+    "id": "DESKTOP-07",
+    "criterion": "Final tests/check/build and nine routes",
+    "status": "PASS",
+    "evidence": [
+      "final-gate/report.json",
+      "routes-final.json"
+    ],
+    "limits": "486tests,207checkedfiles; metadata matches previous candidate, exactbody hashes. No deploy/live test."
+  },
+  {
+    "id": "DESKTOP-08",
+    "criterion": "Edge / physical Android / real touch / presentedFPS",
+    "status": "UNRUN",
+    "evidence": "browser-identities.json",
+    "limits": "No supportedEdge surface/hardware supplied; no install or permissions. Firefox excluded, not a waived pass."
+  },
+  {
+    "id": "DESKTOP-09",
+    "criterion": "Native background and browser-process restart",
+    "status": "UNRUN",
+    "evidence": [
+      "steps.json",
+      "browser-identities.json"
+    ],
+    "limits": "Neutral-tab attempt left documentvisible. No isolated process-lifecycle API; no owner process restart or injected substitute."
+  },
+  {
+    "id": "DESKTOP-10",
+    "criterion": "Cleanup and owner preservation",
+    "status": "PASS scoped; viewport reset unconfirmed",
+    "evidence": [
+      "cleanup-guard.json",
+      "server-final.json"
+    ],
+    "limits": "OwnChrome tabs.list empty;6namedports free;ownerbuild/5archives exact. Final reset called after last tab close returned detached; no liveownedtarget remains, no workaround. HistoricQA46close remains unverified."
+  },
+  {
+    "id": "DESKTOP-11",
+    "criterion": "Overall M6-03/release gates",
+    "status": "PARTIAL / HOLD",
+    "evidence": [
+      "risk-register.json",
+      "owner-dependent-gates.json"
+    ],
+    "limits": "44/51 unchanged. No wholesale legal/security/device/performance/release claim."
+  }
+]

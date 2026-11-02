@@ -1,0 +1,30 @@
+Γ£û saving notification cannot start a second same-revision writer when pause synchronously checkpoints and flushes (11.8111ms)
+Γä╣ tests 1
+Γä╣ suites 0
+Γä╣ pass 0
+Γä╣ fail 1
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 165.2531
+
+Γ£û failing tests:
+
+test at desktop-autosave-reentrant.test.mjs:3:1
+Γ£û saving notification cannot start a second same-revision writer when pause synchronously checkpoints and flushes (11.8111ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+  
+  + 'conflict'
+  - 'saved'
+  
+      at TestContext.<anonymous> (file:///C:/Users/andi_/Documents/Codex/2026-10-31/task/desktop-autosave-reentrant.test.mjs:3:766)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 'conflict',
+    expected: 'saved',
+    operator: 'strictEqual',
+    diff: 'simple'
+  }
