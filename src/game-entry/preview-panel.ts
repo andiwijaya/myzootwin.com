@@ -226,7 +226,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     for(const el of root.querySelectorAll<HTMLElement>('[data-guide-toolbar] [data-entry-text]'))el.textContent=copy[el.dataset.entryText as EntryMessage];
     panel.lang = locale;
     if(next.status==='closed')root.dataset.guided='false';
-    if(next.status!=='ready'){recoveryPending=null;if(recoveryDialog?.open)recoveryDialog.close();perchRemovalRevision=null;if(perchDialog?.open)perchDialog.close();waterRemovalRevision=null;if(waterDialog?.open)waterDialog.close();foodRemovalRevision=null;if(foodDialog?.open)foodDialog.close();studio={...studio,active:false,habitat:false};selected=null;placement=null;missionPanel.setPreviewActive(false);onboardingPanel.placement(null);habitatCount=0;access=null;editView={canUndo:false,reason:null,result:null};removal=null;if(editDialog?.open)editDialog.close();}
+    if(next.status!=='ready'&&previous!==next.status){recoveryPending=null;if(recoveryDialog?.open)recoveryDialog.close();perchRemovalRevision=null;if(perchDialog?.open)perchDialog.close();waterRemovalRevision=null;if(waterDialog?.open)waterDialog.close();foodRemovalRevision=null;if(foodDialog?.open)foodDialog.close();studio={...studio,active:false,habitat:false};selected=null;placement=null;missionPanel.setPreviewActive(false);onboardingPanel.placement(null);habitatCount=0;access=null;editView={canUndo:false,reason:null,result:null};removal=null;if(editDialog?.open)editDialog.close();}
     renderPlacement();
     renderSelection();renderVisitors();
     if(cameraControls){cameraControls.hidden=next.status!=='ready';cameraControls.setAttribute('aria-label',copy.cameraControls);}
