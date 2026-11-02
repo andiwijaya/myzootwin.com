@@ -1,0 +1,79 @@
+{
+  "status": "STOPPED",
+  "at": "2026-11-02T08:01:41.202Z",
+  "runId": "s20261102T075747Z",
+  "sourceId": "b2e3d2ff8b1241286b4c721dfa79f15e2724f983f1819803eefad461d3f3f777",
+  "buildId": "ccdd04d96b7a500089c939b4d15ac139406d20ffa2e1fa778a6c86df071d7fe5",
+  "port": 4356,
+  "phase": "first-play-ready",
+  "markers": [
+    {
+      "label": "cold-native",
+      "at": "2026-11-02T08:00:20.252Z",
+      "requestCount": 1
+    },
+    {
+      "label": "before-continue",
+      "at": "2026-11-02T08:01:19.095Z",
+      "requestCount": 4
+    },
+    {
+      "label": "first-play-ready",
+      "at": "2026-11-02T08:01:41.126Z",
+      "requestCount": 5
+    }
+  ],
+  "requests": [
+    {
+      "at": "2026-11-02T07:59:29.489Z",
+      "phase": "health",
+      "path": "/play/",
+      "status": 200,
+      "rawBytes": 48712,
+      "encodedBodyBytes": 11047,
+      "encoding": "gzip",
+      "rawSHA256": "e20b1e42d498064207685ec657936f4dd7e7bd7416780c42e7ed89212c8f3f44"
+    },
+    {
+      "at": "2026-11-02T08:00:28.665Z",
+      "phase": "cold-native",
+      "path": "/play/",
+      "status": 200,
+      "rawBytes": 48712,
+      "encodedBodyBytes": 11047,
+      "encoding": "gzip",
+      "rawSHA256": "e20b1e42d498064207685ec657936f4dd7e7bd7416780c42e7ed89212c8f3f44"
+    },
+    {
+      "at": "2026-11-02T08:00:28.699Z",
+      "phase": "cold-native",
+      "path": "/_astro/play.D-f-4_Vw.css",
+      "status": 200,
+      "rawBytes": 38184,
+      "encodedBodyBytes": 5634,
+      "encoding": "gzip",
+      "rawSHA256": "05764f6546e7a1110bde27712b13978b77f21317a2c84a0650410266f01a5775"
+    },
+    {
+      "at": "2026-11-02T08:00:28.702Z",
+      "phase": "cold-native",
+      "path": "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.DLNJIF86.js",
+      "status": 200,
+      "rawBytes": 267545,
+      "encodedBodyBytes": 80218,
+      "encoding": "gzip",
+      "rawSHA256": "f6b933f7badf2f15df3242afa871817f515ffbb272304dcfdf80840d5f1a7a3b"
+    },
+    {
+      "at": "2026-11-02T08:01:27.856Z",
+      "phase": "before-continue",
+      "path": "/_astro/foundation-scene.D_RcSTdr.js",
+      "status": 200,
+      "rawBytes": 635344,
+      "encodedBodyBytes": 166810,
+      "encoding": "gzip",
+      "rawSHA256": "783558a4a6f3550ba9e12419efabe874861acb0be6d69ead7bb3d582852857b7"
+    }
+  ],
+  "scope": "Exact built bytes from a bounded loopback static server; actual encoded response body sizes only, excludes headers/external fonts/cache/production latency. No browser profile/cache/private API access."
+}

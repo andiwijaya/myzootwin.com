@@ -1,0 +1,126 @@
+{
+  "status": "M6-02 COMPLETE: measured first-party payload, final 15-minute source-app soak, native compiled smoke and recovery verified",
+  "implementationCommit": "54aa5b87e48f982f8ce93244386e7ae956d9a1fb",
+  "run": "s20261102T080144Z",
+  "sourceId": "fbfd5750dd265ae81847d3f2d82d087f5493de986daf295abf9e783b65a25027",
+  "buildId": "5ce3d9d208270702ee9c71b77e0ed45a3367aa672f6377de6eda06527579d0c7",
+  "unit": 457,
+  "checkedFiles": 186,
+  "routes": 9,
+  "genericBrowserTemplateGate": "UNRUN; targeted raw evidence is separate",
+  "browserFixtureCases": 63,
+  "payload": {
+    "shellRaw": 354769,
+    "firstPlayRaw": 990113,
+    "gzip9Estimate": 263201,
+    "brotli11Estimate": 221628,
+    "budget": "PASS first-party graph only",
+    "observedFinalBodies": 263709,
+    "observedFinalRaw": 989785,
+    "observedFinalResponses": 4,
+    "missingFromObservedBodies": [
+      "favicon.svg"
+    ],
+    "bridge": "Delivery preceding fixture-assertion-only change; every observed final compiled file SHA matches final graph exactly. Favicon not re-requested on reused QA origin. Headers/external fonts/production excluded."
+  },
+  "allocation": {
+    "inspections": 10000,
+    "beforeSampleArrays": 10000,
+    "afterSampleArrays": 0,
+    "transientBytesAvoided": 20480000,
+    "scope": "Unstarted graph inspection only; not all JS allocations or retained heap"
+  },
+  "soak": {
+    "realContinuousMs": 900674.8000000119,
+    "totalWallMs": 956237.1999999881,
+    "samples": 184,
+    "roundtrips": 9,
+    "releasedSessions": 10,
+    "maxActive": 1,
+    "maxPending": 1,
+    "finalActive": 0,
+    "finalPending": 0,
+    "heapMin": 25431471,
+    "heapMax": 59656525,
+    "lastScene": {
+      "simulationTick": 37455,
+      "simulationGameTimeMs": 3745500,
+      "simulationSpeed": 1,
+      "simulationDroppedSimMs": 0,
+      "currency": 1467,
+      "missionCompleted": 4,
+      "missionRewardCoins": 60,
+      "placedBirds": 2,
+      "bird1Welfare": 72.45,
+      "bird2Welfare": 72.6,
+      "foodStock": 6,
+      "waterStock": 4,
+      "visitorCount": 3,
+      "ticketAdmissions": 125,
+      "ticketRevenue": 1250,
+      "journalRetained": 48,
+      "journalArchived": 256,
+      "journalCompactions": 2,
+      "geometries": 28,
+      "textures": 1,
+      "programs": 7,
+      "ownedMaterialsLive": 25,
+      "drawCallsLastRender": 47,
+      "trianglesLastRender": 13144,
+      "pendingFrames": 0,
+      "simulationSubscribers": 1,
+      "cleanupErrors": 0,
+      "graphicsLow": true,
+      "bufferWidth": 795,
+      "bufferHeight": 528
+    },
+    "limits": "Whole validated starting fixture, real source app/RAF/IDB with authored visible care/settings actions; not minified-bundle memory profiling. Optional heap shared/quantized, no forced GC/post-disposal heap reading/leak proof."
+  },
+  "recoveryFix": "Adopt effective saved visual/audio/locale preferences after replacement and before Continue, retaining explicit menu precedence. Full-state equality and original corruption preservation verified.",
+  "GPURisk": "UNRESOLVED M6-01 desktop GPU-query increase; no GPU/presentedFPS improvement claimed or denied-baseline retry.",
+  "ownerPreview": {
+    "url": "http://127.0.0.1:4345/play/",
+    "expectedPID": 18816,
+    "http": 200,
+    "unchangedBuild": "e06d975a30b49470a1e80e915fbe39ce22ba102f16447dbef8776e7088d38b05",
+    "browserActions": "NONE",
+    "saveAccess": "NONE"
+  },
+  "cleanup": {
+    "ports": [
+      {
+        "port": 4322,
+        "free": true
+      },
+      {
+        "port": 4323,
+        "free": true
+      },
+      {
+        "port": 4346,
+        "free": true
+      },
+      {
+        "port": 4354,
+        "free": true
+      },
+      {
+        "port": 4355,
+        "free": true
+      },
+      {
+        "port": 4356,
+        "free": true
+      }
+    ],
+    "normalQATabs": "Closed and viewport reset on valid QA context",
+    "oldQATab46": "Close UNRUN after previous policy block; not revisited",
+    "download": "BLOCKED/UNRUN, not attempted"
+  },
+  "blockedRecoveryDownload": "BLOCKED/UNRUN, no attempt",
+  "nativeBackgroundPhysicalAndroidSpeakerPresentedFPS": "UNRUN",
+  "production": "Not deployed",
+  "V1": 41,
+  "total": 51,
+  "next": "M6-03 black-box after parent review"
+}
