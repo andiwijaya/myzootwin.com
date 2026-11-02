@@ -65,6 +65,15 @@ export function mountGameEntry(root: HTMLElement, options: {
             syncPause();
             render(locale);
         }, committed: (revision, generation) => channel?.postMessage({ writer, revision, generation }) });
+    const currentVisual=()=>visualChoice??durable.savedVisualSettings()??{graphics:'auto' as const,reducedMotion:false};
+    const currentMuted=()=>mutedChoice??durable.savedMuted()??true;
+    // A recovery/reset can replace the checkpoint after the renderer cached defaults.
+    // Refresh its preferences before opening the recovered state, retaining explicit menu choices.
+    function syncEffectivePreferences() {
+        preview?.setVisualSettings(currentVisual());
+        preview?.setMuted(currentMuted());
+        ambience.setMuted(currentMuted());
+    }
     function render(language: EntryLocale) {
         if (disposed)
             return;
@@ -198,7 +207,9 @@ export function mountGameEntry(root: HTMLElement, options: {
         if (!await durable.continueSaved())
             return;
         resumePending = true;
-        renderSave();
+        locale = chooseGameLocale(locale, manualLocale, durable.savedLocale());
+        syncEffectivePreferences();
+        render(locale);
         await preview?.openGame(true);
         if (disposed)
             return;
@@ -233,7 +244,7 @@ export function mountGameEntry(root: HTMLElement, options: {
                 durable.externalRevision(value.revision, typeof value.generation === 'string' ? value.generation : undefined);
         }, { signal: events.signal });
     }
-    recoveryPanel = mountRecoveryPanel(root, { save: durable, allowDownload: options.allowRecoveryDownload !== false, locale: () => locale, pause: () => pauseGate.hold('dialog', true), closeGame: () => { resumePending = false; preview?.close(); }, restored: () => { locale = chooseGameLocale(locale, manualLocale, durable.savedLocale()); render(locale); } });
+    recoveryPanel = mountRecoveryPanel(root, { save: durable, allowDownload: options.allowRecoveryDownload !== false, locale: () => locale, pause: () => pauseGate.hold('dialog', true), closeGame: () => { resumePending = false; preview?.close(); }, restored: () => { locale = chooseGameLocale(locale, manualLocale, durable.savedLocale()); syncEffectivePreferences(); render(locale); } });
     function gateGameplay(paused: boolean, hard: boolean) {
         const hud = root.dataset.hudActive === 'true';
         const layout = root.querySelector<HTMLElement>('[data-guide-layout]'), stage = root.querySelector<HTMLElement>('[data-preview-stage]');
@@ -289,7 +300,7 @@ export function mountGameEntry(root: HTMLElement, options: {
     pauseObserver.observe(root, { subtree: true, attributes: true, attributeFilter: ['open', 'data-renderer-state'] });
     if (document.hidden)
         pauseGate.hold('background', true);
-    restartPanel = mountRestartPanel(root, { save: durable, locale: () => locale, pause: () => pauseGate.hold('manual', true), closeGame: () => { resumePending = false; preview?.close(); }, replaced: () => { locale = chooseGameLocale(locale, manualLocale, durable.savedLocale()); render(locale); } });
+    restartPanel = mountRestartPanel(root, { save: durable, locale: () => locale, pause: () => pauseGate.hold('manual', true), closeGame: () => { resumePending = false; preview?.close(); }, replaced: () => { locale = chooseGameLocale(locale, manualLocale, durable.savedLocale()); syncEffectivePreferences(); render(locale); } });
     const hudLayout = mountHudLayout(root);
     const ready = (async () => {
         await durable.load();
@@ -298,11 +309,8 @@ export function mountGameEntry(root: HTMLElement, options: {
         locale = chooseGameLocale(locale, manualLocale, durable.savedLocale());
         preview = mountPreviewPanel(root, { loadRenderer:options.loadRenderer?()=>options.loadRenderer!(durable.session):undefined, stateStore: durable.session, canOpen: () => durable.canOpen(), beforeOpen: () => durable.view().active || durable.startNew(locale) });
         preview.setPaused(pauseGate.paused());
-        const currentVisual=()=>visualChoice??durable.savedVisualSettings()??{graphics:'auto' as const,reducedMotion:false};
-        const currentMuted=()=>mutedChoice??durable.savedMuted()??true;
         visualPanel=mountVisualSettings(root,storage,{locale:()=>locale,current:currentVisual,currentMuted,audioStatus:()=>ambience.inspect().status,apply:(value,muted)=>{visualChoice={...value};mutedChoice=muted;preview?.setVisualSettings(value);preview?.setMuted(muted);ambience.setMuted(muted);}});
-        ambience.setMuted(currentMuted());preview.setMuted(currentMuted());
-        preview.setVisualSettings(currentVisual());
+        syncEffectivePreferences();
         for(const button of root.querySelectorAll<HTMLButtonElement>('[data-open-dialog="play-settings"]'))button.disabled=false;
         render(locale);
     })();

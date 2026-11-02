@@ -88,9 +88,13 @@ export function createAmbience(options: {factory?: () => AudioContext; changed?:
     stopSession() { if(disposed)return;allowed=false;unlocked=false;release();notify(); },
     dispose() { if(disposed)return;disposed=true;allowed=false;release(); },
     inspect() {
-      const values = new Float32Array(512);
-      if(graph)graph.analyser.getFloatTimeDomainData(values);
-      const rms = Math.sqrt(values.reduce((sum,value)=>sum+value*value,0)/values.length);
+      let rms = 0;
+      // Muted/unstarted and disposed sessions have no graph to sample.
+      if (graph) {
+        const values = new Float32Array(512);
+        graph.analyser.getFloatTimeDomainData(values);
+        rms = Math.sqrt(values.reduce((sum,value)=>sum+value*value,0)/values.length);
+      }
       return {status:status(),muted,allowed,unlocked,contextState:graph?.context.state??'absent',contextsCreated:created,contextsClosed:closed,liveContexts:graph?1:0,liveNodes:graph?3:0,looping:graph?.source.loop??false,gain:graph?.gain.gain.value??0,signalRms:rms,analyserSampleActive:graph?.context.state==='running',disposed,failed};
     },
   };
