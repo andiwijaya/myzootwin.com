@@ -62,7 +62,7 @@ export function createSimulation(initial: ZooSaveV1 = createInitialState(), save
     advance: (deltaMs:number)=>clock.advance(deltaMs),
     frame(timeMs:number) {
       if(!Number.isFinite(timeMs) || timeMs<0)throw new RangeError('Invalid frame timestamp');
-      if(disposed || clock.inspect().paused)return 0;
+      if(disposed || clock.inspect().paused || clock.isAdvancing())return 0;
       const previous=lastFrame;
       lastFrame=previous===null?timeMs:Math.max(previous,timeMs);
       return clock.advance(previous===null?0:Math.max(0,timeMs-previous));

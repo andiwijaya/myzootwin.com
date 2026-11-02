@@ -1,5 +1,5 @@
 import {admitTicket} from '../economy/tickets.ts';
-import {VISITOR_STEP,visitorCell,visitorRoute,visitTarget} from './graph.ts';
+import {VISITOR_STEP,visitorCell,visitorPaths,visitorRoute,visitTarget} from './graph.ts';
 export {visitorCell,visitorPaths,visitorRoute,visitTarget} from './graph.ts';
 import {SATISFACTION_RULES,observeHabitat,resetObservation,completeFeedback,interruptedFeedback} from './satisfaction.ts';
 import type {Point,Visitor,WorldState,ZooSaveV1} from '../core/state.ts';
@@ -10,7 +10,9 @@ export const VISIT_RULES=Object.freeze({speed:VISITOR_STEP,turn:.22,viewTicks:SA
 const same=(a:Point,b:Point)=>a.x===b.x&&a.z===b.z;
 export const ownsCorridor=(v:Visitor)=>v.journey?.startedTick!==null&&v.journey?.startedTick!==undefined;
 function setRoute(v:Visitor,route:Point[],phase:Visitor['phase']){v.route=route;v.routeIndex=0;v.phase=phase;}
-function returnHome(s:ZooSaveV1,v:Visitor){const route=visitorRoute(s.world,visitorCell(v),s.world.gate);if(route.length)setRoute(v,route,'leaving');}
+/** Preserve progress when an unrelated transaction leaves the existing route valid. */
+function validRoute(s:ZooSaveV1,v:Visitor,destination:Point){const paths=visitorPaths(s.world);return v.route.length>0&&same(v.route[v.route.length-1],destination)&&v.route.every((p,i)=>paths.has(p.x+','+p.z)&&(i===0||Math.abs(p.x-v.route[i-1].x)+Math.abs(p.z-v.route[i-1].z)===1));}
+function returnHome(s:ZooSaveV1,v:Visitor){if(v.phase==='leaving'&&validRoute(s,v,s.world.gate))return;const route=visitorRoute(s.world,visitorCell(v),s.world.gate);if(route.length)setRoute(v,route,'leaving');}
 /** Run on a cloned transaction before validation, without changing positions or money. */
 export function reconcileJourneys(s:ZooSaveV1):ZooSaveV1{
  const target=visitTarget(s.world);
@@ -19,6 +21,7 @@ export function reconcileJourneys(s:ZooSaveV1):ZooSaveV1{
   if(!s.visitorFlow.open||!target||target.habitatId!==j.habitatId){interruptedFeedback(s,v,!s.visitorFlow.open?'closed':s.world.habitats.some(h=>h.id===j.habitatId)?'access-lost':'habitat-removed');returnHome(s,v);continue;}
   const route=visitorRoute(s.world,visitorCell(v),target.cell);if(!route.length){interruptedFeedback(s,v,'access-lost');returnHome(s,v);continue;}
   if(v.phase==='viewing'&&same(visitorCell(v),target.cell))continue;
+  if(v.phase==='entering'&&validRoute(s,v,target.cell))continue;
   setRoute(v,route,'entering');j.dwellTicks=0;resetObservation(v);
  }return s;
 }
