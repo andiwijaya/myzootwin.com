@@ -1,0 +1,1076 @@
+{
+  "folder": "C:/Users/andi_/Documents/Codex/2026-10-31/task/m6-01-native",
+  "startedAt": "2026-11-02T06:06:40.845Z",
+  "actions": [
+    {
+      "at": "2026-11-02T06:06:41.486Z",
+      "label": "Verify actual fresh entry",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "false",
+          "resumePending": "false",
+          "saveActive": "false",
+          "savePanel": "",
+          "savePhase": "empty",
+          "savedBirds": "-1",
+          "savedCurrency": "-1",
+          "savedGeneration": "empty",
+          "savedMissions": "-1",
+          "savedRevision": "0",
+          "savedTick": "-1"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: No saved sanctuary yet. Play to begin.\n        - generic: Save details\n    - generic: ✦\n    - generic: Development preview\n    - paragraph: Tropical Creek Sanctuary\n    - heading \"A little world to care for.\" [level=1]\n    - paragraph: A quiet creek, a future home for two curious macaws, and a sanctuary waiting to grow.\n    - paragraph: Build, care, welcome visitors and complete four missions. Progress autosaves on this device when storage is available.\n    - button \"Try the first mission\"\n    - button \"Continue\" [disabled]\n    - button \"How to play\"\n    - button \"Settings\"\n    - link \"Explore the animal journal\":\n      - /url: /animals/\n      - generic: Explore the animal journal\n      - generic: ↗\n    - figure \"Sanctuary concept · illustration only\":\n      - img \"Concept illustration of a tropical creek, trees and a future habitat.\"\n      - group \"Game actions\":\n        - generic: Game actions\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n      - tabpanel \"Care\"\n      - tabpanel \"Guests\":\n        - group \"Game actions\":\n          - generic: Game actions\n      - tabpanel \"Build\":\n        - group \"Game actions\":\n          - generic: Game actions\n      - button \"Explore the sanctuary\"\n      - generic: Sanctuary concept · illustration only\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:06:42.822Z",
+      "label": "Start visible first mission",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "0",
+          "savedCurrency": "1500",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "0",
+          "savedRevision": "1",
+          "savedTick": "0"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,500 ZC\n      - generic: No birds\n      - generic: Guests 0\n      - generic \"Current mission Q01\": Q01\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\" [disabled]: −\n          - status: 100%\n          - button \"Zoom in\": +\n          - button \"Overview\" [disabled]\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"1. Build a safe home\":\n              - heading \"1. Build a safe home\" [level=4]\n              - list:\n                - 'listitem \"Habitat: next\"': Habitat\n                - 'listitem \"Path: next\"': Path\n                - 'listitem \"Reward: next\"': Reward\n              - paragraph: Preview the suggested aviary, then confirm. You can tap another legal tile instead. Cancel is free.\n              - paragraph: Cost 300 ZC · Balance 1,500 ZC\n              - status\n              - button \"Preview habitat · 300 ZC\" [active]\n            - status: In progress\n            - button \"Claim 20 ZC\" [disabled]\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:06:43.826Z",
+      "label": "Preview habitat",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "0",
+          "savedCurrency": "1500",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "0",
+          "savedRevision": "1",
+          "savedTick": "0"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,500 ZC\n      - generic: No birds\n      - generic: Guests 0\n      - generic \"Current mission Q01\": Q01\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"1. Build a safe home\":\n              - heading \"1. Build a safe home\" [level=4]\n              - list:\n                - 'listitem \"Habitat: next\"': Habitat\n                - 'listitem \"Path: next\"': Path\n                - 'listitem \"Reward: next\"': Reward\n              - paragraph: Check the highlighted footprint. Green with “Valid” can be confirmed; red needs a different tile or Cancel.\n              - paragraph: Cost 300 ZC · Balance 1,500 ZC\n              - status: Valid placement\n              - button \"Confirm · 300 ZC\" [active]\n              - button \"Cancel · 0 ZC\"\n            - status: In progress\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:06:44.842Z",
+      "label": "Confirm habitat",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "0",
+          "savedCurrency": "1200",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "0",
+          "savedRevision": "2",
+          "savedTick": "18"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,200 ZC\n      - generic: No birds\n      - generic: Guests 0\n      - generic \"Current mission Q01\": Q01\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"2. Connect the entrance\":\n              - heading \"2. Connect the entrance\" [level=4]\n              - list:\n                - 'listitem \"Habitat: done\"': ✓ Habitat\n                - 'listitem \"Path: next\"': Path\n                - 'listitem \"Reward: next\"': Reward\n              - paragraph: Add 5 missing path tiles. Preview and confirm one tile at a time, from the entrance to the fence.\n              - paragraph: Cost 15 ZC · Balance 1,200 ZC\n              - status\n              - button \"Preview next path tile · 15 ZC\" [active]\n            - status: In progress\n            - button \"Claim 20 ZC\" [disabled]\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:06:45.839Z",
+      "label": "Preview path 1",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "0",
+          "savedCurrency": "1200",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "0",
+          "savedRevision": "2",
+          "savedTick": "18"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,200 ZC\n      - generic: No birds\n      - generic: Guests 0\n      - generic \"Current mission Q01\": Q01\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"2. Connect the entrance\":\n              - heading \"2. Connect the entrance\" [level=4]\n              - list:\n                - 'listitem \"Habitat: done\"': ✓ Habitat\n                - 'listitem \"Path: next\"': Path\n                - 'listitem \"Reward: next\"': Reward\n              - paragraph: Check the highlighted footprint. Green with “Valid” can be confirmed; red needs a different tile or Cancel.\n              - paragraph: Cost 15 ZC · Balance 1,200 ZC\n              - status: Valid placement\n              - button \"Confirm · 15 ZC\" [active]\n              - button \"Cancel · 0 ZC\"\n            - status: In progress\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:06:46.731Z",
+      "label": "Confirm path 1",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "0",
+          "savedCurrency": "1185",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "0",
+          "savedRevision": "3",
+          "savedTick": "38"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,185 ZC\n      - generic: No birds\n      - generic: Guests 0\n      - generic \"Current mission Q01\": Q01\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"2. Connect the entrance\":\n              - heading \"2. Connect the entrance\" [level=4]\n              - list:\n                - 'listitem \"Habitat: done\"': ✓ Habitat\n                - 'listitem \"Path: next\"': Path\n                - 'listitem \"Reward: next\"': Reward\n              - paragraph: Add 4 missing path tiles. Preview and confirm one tile at a time, from the entrance to the fence.\n              - paragraph: Cost 15 ZC · Balance 1,185 ZC\n              - status\n              - button \"Preview next path tile · 15 ZC\" [active]\n            - status: In progress\n            - button \"Claim 20 ZC\" [disabled]\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:06:47.678Z",
+      "label": "Preview path 2",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "0",
+          "savedCurrency": "1185",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "0",
+          "savedRevision": "3",
+          "savedTick": "38"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,185 ZC\n      - generic: No birds\n      - generic: Guests 0\n      - generic \"Current mission Q01\": Q01\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"2. Connect the entrance\":\n              - heading \"2. Connect the entrance\" [level=4]\n              - list:\n                - 'listitem \"Habitat: done\"': ✓ Habitat\n                - 'listitem \"Path: next\"': Path\n                - 'listitem \"Reward: next\"': Reward\n              - paragraph: Check the highlighted footprint. Green with “Valid” can be confirmed; red needs a different tile or Cancel.\n              - paragraph: Cost 15 ZC · Balance 1,185 ZC\n              - status: Valid placement\n              - button \"Confirm · 15 ZC\" [active]\n              - button \"Cancel · 0 ZC\"\n            - status: In progress\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:06:48.636Z",
+      "label": "Confirm path 2",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "0",
+          "savedCurrency": "1170",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "0",
+          "savedRevision": "4",
+          "savedTick": "56"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,170 ZC\n      - generic: No birds\n      - generic: Guests 0\n      - generic \"Current mission Q01\": Q01\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"2. Connect the entrance\":\n              - heading \"2. Connect the entrance\" [level=4]\n              - list:\n                - 'listitem \"Habitat: done\"': ✓ Habitat\n                - 'listitem \"Path: next\"': Path\n                - 'listitem \"Reward: next\"': Reward\n              - paragraph: Add 3 missing path tiles. Preview and confirm one tile at a time, from the entrance to the fence.\n              - paragraph: Cost 15 ZC · Balance 1,170 ZC\n              - status\n              - button \"Preview next path tile · 15 ZC\" [active]\n            - status: In progress\n            - button \"Claim 20 ZC\" [disabled]\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:06:49.633Z",
+      "label": "Preview path 3",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "0",
+          "savedCurrency": "1170",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "0",
+          "savedRevision": "4",
+          "savedTick": "56"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,170 ZC\n      - generic: No birds\n      - generic: Guests 0\n      - generic \"Current mission Q01\": Q01\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"2. Connect the entrance\":\n              - heading \"2. Connect the entrance\" [level=4]\n              - list:\n                - 'listitem \"Habitat: done\"': ✓ Habitat\n                - 'listitem \"Path: next\"': Path\n                - 'listitem \"Reward: next\"': Reward\n              - paragraph: Check the highlighted footprint. Green with “Valid” can be confirmed; red needs a different tile or Cancel.\n              - paragraph: Cost 15 ZC · Balance 1,170 ZC\n              - status: Valid placement\n              - button \"Confirm · 15 ZC\" [active]\n              - button \"Cancel · 0 ZC\"\n            - status: In progress\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:06:50.722Z",
+      "label": "Confirm path 3",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "0",
+          "savedCurrency": "1155",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "0",
+          "savedRevision": "5",
+          "savedTick": "77"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,155 ZC\n      - generic: No birds\n      - generic: Guests 0\n      - generic \"Current mission Q01\": Q01\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"2. Connect the entrance\":\n              - heading \"2. Connect the entrance\" [level=4]\n              - list:\n                - 'listitem \"Habitat: done\"': ✓ Habitat\n                - 'listitem \"Path: next\"': Path\n                - 'listitem \"Reward: next\"': Reward\n              - paragraph: Add 2 missing path tiles. Preview and confirm one tile at a time, from the entrance to the fence.\n              - paragraph: Cost 15 ZC · Balance 1,155 ZC\n              - status\n              - button \"Preview next path tile · 15 ZC\" [active]\n            - status: In progress\n            - button \"Claim 20 ZC\" [disabled]\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:06:51.755Z",
+      "label": "Preview path 4",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "0",
+          "savedCurrency": "1155",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "0",
+          "savedRevision": "5",
+          "savedTick": "77"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,155 ZC\n      - generic: No birds\n      - generic: Guests 0\n      - generic \"Current mission Q01\": Q01\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"2. Connect the entrance\":\n              - heading \"2. Connect the entrance\" [level=4]\n              - list:\n                - 'listitem \"Habitat: done\"': ✓ Habitat\n                - 'listitem \"Path: next\"': Path\n                - 'listitem \"Reward: next\"': Reward\n              - paragraph: Check the highlighted footprint. Green with “Valid” can be confirmed; red needs a different tile or Cancel.\n              - paragraph: Cost 15 ZC · Balance 1,155 ZC\n              - status: Valid placement\n              - button \"Confirm · 15 ZC\" [active]\n              - button \"Cancel · 0 ZC\"\n            - status: In progress\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:06:52.651Z",
+      "label": "Confirm path 4",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "0",
+          "savedCurrency": "1140",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "0",
+          "savedRevision": "6",
+          "savedTick": "97"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,140 ZC\n      - generic: No birds\n      - generic: Guests 0\n      - generic \"Current mission Q01\": Q01\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"2. Connect the entrance\":\n              - heading \"2. Connect the entrance\" [level=4]\n              - list:\n                - 'listitem \"Habitat: done\"': ✓ Habitat\n                - 'listitem \"Path: next\"': Path\n                - 'listitem \"Reward: next\"': Reward\n              - paragraph: Add 1 missing path tiles. Preview and confirm one tile at a time, from the entrance to the fence.\n              - paragraph: Cost 15 ZC · Balance 1,140 ZC\n              - status\n              - button \"Preview next path tile · 15 ZC\" [active]\n            - status: In progress\n            - button \"Claim 20 ZC\" [disabled]\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:06:53.651Z",
+      "label": "Preview path 5",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "0",
+          "savedCurrency": "1140",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "0",
+          "savedRevision": "6",
+          "savedTick": "97"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,140 ZC\n      - generic: No birds\n      - generic: Guests 0\n      - generic \"Current mission Q01\": Q01\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"2. Connect the entrance\":\n              - heading \"2. Connect the entrance\" [level=4]\n              - list:\n                - 'listitem \"Habitat: done\"': ✓ Habitat\n                - 'listitem \"Path: next\"': Path\n                - 'listitem \"Reward: next\"': Reward\n              - paragraph: Check the highlighted footprint. Green with “Valid” can be confirmed; red needs a different tile or Cancel.\n              - paragraph: Cost 15 ZC · Balance 1,140 ZC\n              - status: Valid placement\n              - button \"Confirm · 15 ZC\" [active]\n              - button \"Cancel · 0 ZC\"\n            - status: In progress\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:06:54.695Z",
+      "label": "Confirm path 5",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "0",
+          "savedCurrency": "1125",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "0",
+          "savedRevision": "7",
+          "savedTick": "116"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,125 ZC\n      - generic: No birds\n      - generic: Guests 0\n      - generic \"Current mission Q01\": Q01\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"3. Claim your first reward\":\n              - heading \"3. Claim your first reward\" [level=4]\n              - list:\n                - 'listitem \"Habitat: done\"': ✓ Habitat\n                - 'listitem \"Path: done\"': ✓ Path\n                - 'listitem \"Reward: next\"': Reward\n              - paragraph: The real habitat is reachable. Claim 20 ZC once to finish Q01.\n              - status\n            - status: Ready to claim\n            - button \"Claim 20 ZC\" [active]\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:06:55.759Z",
+      "label": "Claim actual Q01",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "0",
+          "savedCurrency": "1145",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "1",
+          "savedRevision": "8",
+          "savedTick": "127"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,145 ZC\n      - generic: No birds\n      - generic: Guests 0\n      - generic \"Current mission Q02\": Q02\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"Q02 · Make your birds comfortable\":\n              - heading \"Q02 · Make your birds comfortable\" [level=4]\n              - paragraph: Let both macaws eat and drink, then keep each welfare at 60% or above for 5 consecutive simulation seconds. Pause freezes time; a low score or reserve resets an unfinished streak. Reaching 5 seconds records this objective.\n              - list:\n                - listitem: \"Macaw 1: ate not yet · drank not yet · welfare 0%\"\n                - listitem: \"Macaw 2: ate not yet · drank not yet · welfare 0%\"\n              - paragraph: \"Comfort streak: 0.0 / 5s\"\n              - paragraph: Not holding yet. Correct the missing need below; placed but unused objects do not count.\n              - paragraph: \"Reward: aviary flower trim. No coins charged or granted; essential care stays available.\"\n              - button \"Open bird controls\"\n            - status [active]: In progress\n            - button \"Unlock aviary flowers\" [disabled]\n            - paragraph: \"Mission rewards received: 20 ZC\"\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:07:09.239Z",
+      "label": "Open care and welcome birds",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "2",
+          "savedCurrency": "1145",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "1",
+          "savedRevision": "15",
+          "savedTick": "261"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,145 ZC\n      - generic: Welfare 46%\n      - generic: Guests 0\n      - generic \"Current mission Q02\": Q02\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\" [active]'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\"\n        - tab \"Care\" [selected]\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Care\":\n        - region \"Two curious macaws\":\n          - heading \"Two curious macaws\" [level=3]\n          - paragraph: Welcome both macaws, then provide food, water and rest below. Inspect a bird for the reasons behind its welfare and the next care action.\n          - group \"Two curious macaws\":\n            - button \"Move birds to reserve for habitat edits\"\n          - status: Two macaws live in this aviary. Occupied habitats cannot be removed.\n          - paragraph: \"Hunger and thirst: lower is better. Energy, enrichment and welfare: higher is better. Inspect either bird for the actual causes and next action.\"\n          - list:\n            - paragraph: Macaw 1 · Looking around · Hunger 46% · Portions eaten 0 · Thirst 46% · Drinks 0 · Energy 54% · Enrichment 0%\n            - paragraph: Welfare 46% · ! Needs care\n            - button \"Inspect Macaw 1\"\n            - paragraph: Macaw 2 · Looking around · Hunger 46% · Portions eaten 0 · Thirst 46% · Drinks 0 · Energy 54% · Enrichment 0%\n            - paragraph: Welfare 46% · ! Needs care\n            - button \"Inspect Macaw 2\"\n          - status\n        - region \"Fruit feeder\":\n          - heading \"Fruit feeder\" [level=3]\n          - group \"Fruit feeder\":\n            - paragraph: Place a two-port feeder on the marked front edge, then fill it. Hungry macaws walk to a bowl and eat real portions. Hunger runs from 0% (full) to 100% (very hungry). Refill service has the displayed Zoo Coin cost.\n            - button \"Place feeder\"\n            - paragraph: Build 80 ZC · Refill service 8 ZC · Balance 1,145 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: No feeder yet. Place one, then add food.\n        - region \"Fresh water\":\n          - heading \"Fresh water\" [level=3]\n          - group \"Fresh water\":\n            - paragraph: Place two blue water bowls at the sides of the aviary, then refill them. Thirsty macaws approach and drink real portions. Thirst runs from 0% (hydrated) to 100% (very thirsty). Refill service has the displayed Zoo Coin cost.\n            - button \"Place water bowls\"\n            - paragraph: Build 60 ZC · Refill service 4 ZC · Balance 1,145 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: No water yet. Place bowls, then refill them.\n        - region \"Rest & enrichment\":\n          - heading \"Rest & enrichment\" [level=3]\n          - group \"Rest & enrichment\":\n            - paragraph: Prepare two supported leafy perches. Tired macaws sleep to recover energy; awake macaws look around the plants to improve enrichment. Both scores run from 0% to 100% (higher is better). Benefits happen only while the bird uses a prepared perch. Food and water still need care. Construction has the displayed Zoo Coin cost.\n            - button \"Prepare rest perches\"\n            - paragraph: Build 80 ZC · Balance 1,145 ZC. Removal returns actual construction spending.\n            - status: Ordinary landing branches give no energy or enrichment. Add the leafy rest garden to help tired birds.\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:07:10.267Z",
+      "label": "Preview feeder",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "2",
+          "savedCurrency": "1145",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "1",
+          "savedRevision": "15",
+          "savedTick": "261"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,145 ZC\n      - generic: Welfare 46%\n      - generic: Guests 0\n      - generic \"Current mission Q02\": Q02\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\" [active]'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\"\n        - tab \"Care\" [selected]\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Care\":\n        - region \"Two curious macaws\":\n          - heading \"Two curious macaws\" [level=3]\n          - paragraph: Welcome both macaws, then provide food, water and rest below. Inspect a bird for the reasons behind its welfare and the next care action.\n          - group \"Two curious macaws\":\n            - button \"Move birds to reserve for habitat edits\"\n          - status: Two macaws live in this aviary. Occupied habitats cannot be removed.\n          - paragraph: \"Hunger and thirst: lower is better. Energy, enrichment and welfare: higher is better. Inspect either bird for the actual causes and next action.\"\n          - list:\n            - paragraph: Macaw 1 · Looking around · Hunger 47% · Portions eaten 0 · Thirst 48% · Drinks 0 · Energy 54% · Enrichment 0%\n            - paragraph: Welfare 46% · ! Needs care\n            - button \"Inspect Macaw 1\"\n            - paragraph: Macaw 2 · Looking around · Hunger 47% · Portions eaten 0 · Thirst 48% · Drinks 0 · Energy 54% · Enrichment 0%\n            - paragraph: Welfare 46% · ! Needs care\n            - button \"Inspect Macaw 2\"\n          - status\n        - region \"Fruit feeder\":\n          - heading \"Fruit feeder\" [level=3]\n          - group \"Fruit feeder\":\n            - paragraph: Place a two-port feeder on the marked front edge, then fill it. Hungry macaws walk to a bowl and eat real portions. Hunger runs from 0% (full) to 100% (very hungry). Refill service has the displayed Zoo Coin cost.\n            - paragraph: The ghost shows the only safe starter position. Confirm to build an empty feeder; Cancel leaves the world unchanged.\n            - button \"Build feeder · 80 ZC\"\n            - button \"Cancel feeder\"\n            - paragraph: Build 80 ZC · Refill service 8 ZC · Balance 1,145 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: No feeder yet. Place one, then add food.\n        - region \"Fresh water\":\n          - heading \"Fresh water\" [level=3]\n          - group \"Fresh water\":\n            - paragraph: Place two blue water bowls at the sides of the aviary, then refill them. Thirsty macaws approach and drink real portions. Thirst runs from 0% (hydrated) to 100% (very thirsty). Refill service has the displayed Zoo Coin cost.\n            - button \"Place water bowls\"\n            - paragraph: Build 60 ZC · Refill service 4 ZC · Balance 1,145 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: No water yet. Place bowls, then refill them.\n        - region \"Rest & enrichment\":\n          - heading \"Rest & enrichment\" [level=3]\n          - group \"Rest & enrichment\":\n            - paragraph: Prepare two supported leafy perches. Tired macaws sleep to recover energy; awake macaws look around the plants to improve enrichment. Both scores run from 0% to 100% (higher is better). Benefits happen only while the bird uses a prepared perch. Food and water still need care. Construction has the displayed Zoo Coin cost.\n            - button \"Prepare rest perches\"\n            - paragraph: Build 80 ZC · Balance 1,145 ZC. Removal returns actual construction spending.\n            - status: Ordinary landing branches give no energy or enrichment. Add the leafy rest garden to help tired birds.\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:07:11.287Z",
+      "label": "Build feeder",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "2",
+          "savedCurrency": "1065",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "1",
+          "savedRevision": "16",
+          "savedTick": "283"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,065 ZC\n      - generic: Welfare 46%\n      - generic: Guests 0\n      - generic \"Current mission Q02\": Q02\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\" [active]'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\"\n        - tab \"Care\" [selected]\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Care\":\n        - region \"Two curious macaws\":\n          - heading \"Two curious macaws\" [level=3]\n          - paragraph: Welcome both macaws, then provide food, water and rest below. Inspect a bird for the reasons behind its welfare and the next care action.\n          - group \"Two curious macaws\":\n            - button \"Move birds to reserve for habitat edits\"\n          - status: Two macaws live in this aviary. Occupied habitats cannot be removed.\n          - paragraph: \"Hunger and thirst: lower is better. Energy, enrichment and welfare: higher is better. Inspect either bird for the actual causes and next action.\"\n          - list:\n            - paragraph: Macaw 1 · Looking around · Hunger 48% · Portions eaten 0 · Thirst 49% · Drinks 0 · Energy 53% · Enrichment 0%\n            - paragraph: Welfare 46% · ! Needs care\n            - button \"Inspect Macaw 1\"\n            - paragraph: Macaw 2 · Looking around · Hunger 48% · Portions eaten 0 · Thirst 49% · Drinks 0 · Energy 53% · Enrichment 0%\n            - paragraph: Welfare 46% · ! Needs care\n            - button \"Inspect Macaw 2\"\n          - status\n        - region \"Fruit feeder\":\n          - heading \"Fruit feeder\" [level=3]\n          - group \"Fruit feeder\":\n            - paragraph: Place a two-port feeder on the marked front edge, then fill it. Hungry macaws walk to a bowl and eat real portions. Hunger runs from 0% (full) to 100% (very hungry). Refill service has the displayed Zoo Coin cost.\n            - button \"Fill feeder · 8 ZC\"\n            - button \"Remove feeder\"\n            - paragraph: Build 80 ZC · Refill service 8 ZC · Balance 1,065 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: \"Empty feeder: 0/8 portions. Fill it to attract hungry birds.\"\n        - region \"Fresh water\":\n          - heading \"Fresh water\" [level=3]\n          - group \"Fresh water\":\n            - paragraph: Place two blue water bowls at the sides of the aviary, then refill them. Thirsty macaws approach and drink real portions. Thirst runs from 0% (hydrated) to 100% (very thirsty). Refill service has the displayed Zoo Coin cost.\n            - button \"Place water bowls\"\n            - paragraph: Build 60 ZC · Refill service 4 ZC · Balance 1,065 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: No water yet. Place bowls, then refill them.\n        - region \"Rest & enrichment\":\n          - heading \"Rest & enrichment\" [level=3]\n          - group \"Rest & enrichment\":\n            - paragraph: Prepare two supported leafy perches. Tired macaws sleep to recover energy; awake macaws look around the plants to improve enrichment. Both scores run from 0% to 100% (higher is better). Benefits happen only while the bird uses a prepared perch. Food and water still need care. Construction has the displayed Zoo Coin cost.\n            - button \"Prepare rest perches\"\n            - paragraph: Build 80 ZC · Balance 1,065 ZC. Removal returns actual construction spending.\n            - status: Ordinary landing branches give no energy or enrichment. Add the leafy rest garden to help tired birds.\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:07:12.682Z",
+      "label": "Supply food and preview water",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "2",
+          "savedCurrency": "1057",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "1",
+          "savedRevision": "17",
+          "savedTick": "293"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,057 ZC\n      - generic: Welfare 49%\n      - generic: Guests 0\n      - generic \"Current mission Q02\": Q02\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\" [active]'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\"\n        - tab \"Care\" [selected]\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Care\":\n        - region \"Two curious macaws\":\n          - heading \"Two curious macaws\" [level=3]\n          - paragraph: Welcome both macaws, then provide food, water and rest below. Inspect a bird for the reasons behind its welfare and the next care action.\n          - group \"Two curious macaws\":\n            - button \"Move birds to reserve for habitat edits\"\n          - status: Two macaws live in this aviary. Occupied habitats cannot be removed.\n          - paragraph: \"Hunger and thirst: lower is better. Energy, enrichment and welfare: higher is better. Inspect either bird for the actual causes and next action.\"\n          - list:\n            - paragraph: Macaw 1 · Eating · Hunger 50% · Portions eaten 0 · Thirst 51% · Drinks 0 · Energy 52% · Enrichment 0%\n            - paragraph: Welfare 49% · ! Needs care\n            - button \"Inspect Macaw 1\"\n            - paragraph: Macaw 2 · Eating · Hunger 50% · Portions eaten 0 · Thirst 51% · Drinks 0 · Energy 52% · Enrichment 0%\n            - paragraph: Welfare 49% · ! Needs care\n            - button \"Inspect Macaw 2\"\n          - status\n        - region \"Fruit feeder\":\n          - heading \"Fruit feeder\" [level=3]\n          - group \"Fruit feeder\":\n            - paragraph: Place a two-port feeder on the marked front edge, then fill it. Hungry macaws walk to a bowl and eat real portions. Hunger runs from 0% (full) to 100% (very hungry). Refill service has the displayed Zoo Coin cost.\n            - button \"Fill feeder · 8 ZC\" [disabled]\n            - button \"Remove feeder\"\n            - paragraph: Build 80 ZC · Refill service 8 ZC · Balance 1,057 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: \"Food: 8/8 portions (macaw 1: 4; macaw 2: 4). Consumption happens only when a bird finishes eating.\"\n        - region \"Fresh water\":\n          - heading \"Fresh water\" [level=3]\n          - group \"Fresh water\":\n            - paragraph: Place two blue water bowls at the sides of the aviary, then refill them. Thirsty macaws approach and drink real portions. Thirst runs from 0% (hydrated) to 100% (very thirsty). Refill service has the displayed Zoo Coin cost.\n            - paragraph: Two side bowls leave the food and roost accessible. Confirm to build empty bowls; Cancel leaves the world unchanged.\n            - button \"Build water bowls · 60 ZC\"\n            - button \"Cancel water bowls\"\n            - paragraph: Build 60 ZC · Refill service 4 ZC · Balance 1,057 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: No water yet. Place bowls, then refill them.\n        - region \"Rest & enrichment\":\n          - heading \"Rest & enrichment\" [level=3]\n          - group \"Rest & enrichment\":\n            - paragraph: Prepare two supported leafy perches. Tired macaws sleep to recover energy; awake macaws look around the plants to improve enrichment. Both scores run from 0% to 100% (higher is better). Benefits happen only while the bird uses a prepared perch. Food and water still need care. Construction has the displayed Zoo Coin cost.\n            - button \"Prepare rest perches\"\n            - paragraph: Build 80 ZC · Balance 1,057 ZC. Removal returns actual construction spending.\n            - status: Ordinary landing branches give no energy or enrichment. Add the leafy rest garden to help tired birds.\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:07:13.665Z",
+      "label": "Build water bowls",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "2",
+          "savedCurrency": "997",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "1",
+          "savedRevision": "18",
+          "savedTick": "307"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 997 ZC\n      - generic: Welfare 49%\n      - generic: Guests 0\n      - generic \"Current mission Q02\": Q02\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\" [active]'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\"\n        - tab \"Care\" [selected]\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Care\":\n        - region \"Two curious macaws\":\n          - heading \"Two curious macaws\" [level=3]\n          - paragraph: Welcome both macaws, then provide food, water and rest below. Inspect a bird for the reasons behind its welfare and the next care action.\n          - group \"Two curious macaws\":\n            - button \"Move birds to reserve for habitat edits\"\n          - status: Two macaws live in this aviary. Occupied habitats cannot be removed.\n          - paragraph: \"Hunger and thirst: lower is better. Energy, enrichment and welfare: higher is better. Inspect either bird for the actual causes and next action.\"\n          - list:\n            - paragraph: Macaw 1 · Eating · Hunger 51% · Portions eaten 0 · Thirst 53% · Drinks 0 · Energy 51% · Enrichment 0%\n            - paragraph: Welfare 49% · ! Needs care\n            - button \"Inspect Macaw 1\"\n            - paragraph: Macaw 2 · Eating · Hunger 51% · Portions eaten 0 · Thirst 53% · Drinks 0 · Energy 51% · Enrichment 0%\n            - paragraph: Welfare 49% · ! Needs care\n            - button \"Inspect Macaw 2\"\n          - status\n        - region \"Fruit feeder\":\n          - heading \"Fruit feeder\" [level=3]\n          - group \"Fruit feeder\":\n            - paragraph: Place a two-port feeder on the marked front edge, then fill it. Hungry macaws walk to a bowl and eat real portions. Hunger runs from 0% (full) to 100% (very hungry). Refill service has the displayed Zoo Coin cost.\n            - button \"Fill feeder · 8 ZC\" [disabled]\n            - button \"Remove feeder\"\n            - paragraph: Build 80 ZC · Refill service 8 ZC · Balance 997 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: \"Food: 8/8 portions (macaw 1: 4; macaw 2: 4). Consumption happens only when a bird finishes eating.\"\n        - region \"Fresh water\":\n          - heading \"Fresh water\" [level=3]\n          - group \"Fresh water\":\n            - paragraph: Place two blue water bowls at the sides of the aviary, then refill them. Thirsty macaws approach and drink real portions. Thirst runs from 0% (hydrated) to 100% (very thirsty). Refill service has the displayed Zoo Coin cost.\n            - button \"Refill water · 4 ZC\"\n            - button \"Remove water bowls\"\n            - paragraph: Build 60 ZC · Refill service 4 ZC · Balance 997 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: \"Empty water bowls: 0/8 portions. Refill to help thirsty birds.\"\n        - region \"Rest & enrichment\":\n          - heading \"Rest & enrichment\" [level=3]\n          - group \"Rest & enrichment\":\n            - paragraph: Prepare two supported leafy perches. Tired macaws sleep to recover energy; awake macaws look around the plants to improve enrichment. Both scores run from 0% to 100% (higher is better). Benefits happen only while the bird uses a prepared perch. Food and water still need care. Construction has the displayed Zoo Coin cost.\n            - button \"Prepare rest perches\"\n            - paragraph: Build 80 ZC · Balance 997 ZC. Removal returns actual construction spending.\n            - status: Ordinary landing branches give no energy or enrichment. Add the leafy rest garden to help tired birds.\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:07:15.014Z",
+      "label": "Supply water and preview rest",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "2",
+          "savedCurrency": "993",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "1",
+          "savedRevision": "19",
+          "savedTick": "316"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 993 ZC\n      - generic: Welfare 61%\n      - generic: Guests 0\n      - generic \"Current mission Q02\": Q02\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\" [active]'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\"\n        - tab \"Care\" [selected]\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Care\":\n        - region \"Two curious macaws\":\n          - heading \"Two curious macaws\" [level=3]\n          - paragraph: Welcome both macaws, then provide food, water and rest below. Inspect a bird for the reasons behind its welfare and the next care action.\n          - group \"Two curious macaws\":\n            - button \"Move birds to reserve for habitat edits\"\n          - status: Two macaws live in this aviary. Occupied habitats cannot be removed.\n          - paragraph: \"Hunger and thirst: lower is better. Energy, enrichment and welfare: higher is better. Inspect either bird for the actual causes and next action.\"\n          - list:\n            - paragraph: Macaw 1 · Approaching water · Hunger 23% · Portions eaten 1 · Thirst 55% · Drinks 0 · Energy 50% · Enrichment 0%\n            - paragraph: Welfare 61% · ! Needs care\n            - button \"Inspect Macaw 1\"\n            - paragraph: Macaw 2 · Approaching water · Hunger 23% · Portions eaten 1 · Thirst 55% · Drinks 0 · Energy 50% · Enrichment 0%\n            - paragraph: Welfare 61% · ! Needs care\n            - button \"Inspect Macaw 2\"\n          - status\n        - region \"Fruit feeder\":\n          - heading \"Fruit feeder\" [level=3]\n          - group \"Fruit feeder\":\n            - paragraph: Place a two-port feeder on the marked front edge, then fill it. Hungry macaws walk to a bowl and eat real portions. Hunger runs from 0% (full) to 100% (very hungry). Refill service has the displayed Zoo Coin cost.\n            - button \"Fill feeder · 8 ZC\"\n            - button \"Remove feeder\"\n            - paragraph: Build 80 ZC · Refill service 8 ZC · Balance 993 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: \"Food: 6/8 portions (macaw 1: 3; macaw 2: 3). Consumption happens only when a bird finishes eating.\"\n        - region \"Fresh water\":\n          - heading \"Fresh water\" [level=3]\n          - group \"Fresh water\":\n            - paragraph: Place two blue water bowls at the sides of the aviary, then refill them. Thirsty macaws approach and drink real portions. Thirst runs from 0% (hydrated) to 100% (very thirsty). Refill service has the displayed Zoo Coin cost.\n            - button \"Refill water · 4 ZC\" [disabled]\n            - button \"Remove water bowls\"\n            - paragraph: Build 60 ZC · Refill service 4 ZC · Balance 993 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: \"Water: 8/8 portions (macaw 1: 4; macaw 2: 4). Stock decreases only when a bird finishes drinking.\"\n        - region \"Rest & enrichment\":\n          - heading \"Rest & enrichment\" [level=3]\n          - group \"Rest & enrichment\":\n            - paragraph: Prepare two supported leafy perches. Tired macaws sleep to recover energy; awake macaws look around the plants to improve enrichment. Both scores run from 0% to 100% (higher is better). Benefits happen only while the bird uses a prepared perch. Food and water still need care. Construction has the displayed Zoo Coin cost.\n            - paragraph: The ghost marks the safe starter branches and leafy garden. Confirm builds the kit; Cancel leaves the world unchanged.\n            - button \"Build rest garden · 80 ZC\"\n            - button \"Cancel rest garden\"\n            - paragraph: Build 80 ZC · Balance 993 ZC. Removal returns actual construction spending.\n            - status: Ordinary landing branches give no energy or enrichment. Add the leafy rest garden to help tired birds.\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:07:16.035Z",
+      "label": "Build rest garden",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "2",
+          "savedCurrency": "913",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "1",
+          "savedRevision": "20",
+          "savedTick": "330"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 913 ZC\n      - generic: Welfare 60%\n      - generic: Guests 0\n      - generic \"Current mission Q02\": Q02\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\" [active]'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\"\n        - tab \"Care\" [selected]\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Care\":\n        - region \"Two curious macaws\":\n          - heading \"Two curious macaws\" [level=3]\n          - paragraph: Welcome both macaws, then provide food, water and rest below. Inspect a bird for the reasons behind its welfare and the next care action.\n          - group \"Two curious macaws\":\n            - button \"Move birds to reserve for habitat edits\"\n          - status: Two macaws live in this aviary. Occupied habitats cannot be removed.\n          - paragraph: \"Hunger and thirst: lower is better. Energy, enrichment and welfare: higher is better. Inspect either bird for the actual causes and next action.\"\n          - list:\n            - paragraph: Macaw 1 · Approaching water · Hunger 24% · Portions eaten 1 · Thirst 56% · Drinks 0 · Energy 49% · Enrichment 0%\n            - paragraph: Welfare 60% · ! Needs care\n            - button \"Inspect Macaw 1\"\n            - paragraph: Macaw 2 · Approaching water · Hunger 24% · Portions eaten 1 · Thirst 56% · Drinks 0 · Energy 49% · Enrichment 0%\n            - paragraph: Welfare 60% · ! Needs care\n            - button \"Inspect Macaw 2\"\n          - status\n        - region \"Fruit feeder\":\n          - heading \"Fruit feeder\" [level=3]\n          - group \"Fruit feeder\":\n            - paragraph: Place a two-port feeder on the marked front edge, then fill it. Hungry macaws walk to a bowl and eat real portions. Hunger runs from 0% (full) to 100% (very hungry). Refill service has the displayed Zoo Coin cost.\n            - button \"Fill feeder · 8 ZC\"\n            - button \"Remove feeder\"\n            - paragraph: Build 80 ZC · Refill service 8 ZC · Balance 913 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: \"Food: 6/8 portions (macaw 1: 3; macaw 2: 3). Consumption happens only when a bird finishes eating.\"\n        - region \"Fresh water\":\n          - heading \"Fresh water\" [level=3]\n          - group \"Fresh water\":\n            - paragraph: Place two blue water bowls at the sides of the aviary, then refill them. Thirsty macaws approach and drink real portions. Thirst runs from 0% (hydrated) to 100% (very thirsty). Refill service has the displayed Zoo Coin cost.\n            - button \"Refill water · 4 ZC\" [disabled]\n            - button \"Remove water bowls\"\n            - paragraph: Build 60 ZC · Refill service 4 ZC · Balance 913 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: \"Water: 8/8 portions (macaw 1: 4; macaw 2: 4). Stock decreases only when a bird finishes drinking.\"\n        - region \"Rest & enrichment\":\n          - heading \"Rest & enrichment\" [level=3]\n          - group \"Rest & enrichment\":\n            - paragraph: Prepare two supported leafy perches. Tired macaws sleep to recover energy; awake macaws look around the plants to improve enrichment. Both scores run from 0% to 100% (higher is better). Benefits happen only while the bird uses a prepared perch. Food and water still need care. Construction has the displayed Zoo Coin cost.\n            - button \"Remove rest garden\"\n            - paragraph: Build 80 ZC · Balance 913 ZC. Removal returns actual construction spending.\n            - status: \"Prepared perches: resting 0/2; exploring 0/2. Energy rises only during sleep; enrichment rises only during exploration. Urgent food/water can interrupt safely.\"\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:07:17.192Z",
+      "label": "Inspect paused actual bird",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "saved",
+          "savedBirds": "2",
+          "savedCurrency": "913",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "1",
+          "savedRevision": "21",
+          "savedTick": "340"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 913 ZC\n      - generic: Welfare 59%\n      - generic: Guests 0\n      - generic \"Current mission Q02\": Q02\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Saved on this device\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Resume zoo\" [pressed]\n      - status: Zoo paused. Animals, visitors, money and missions are frozen.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\" [disabled]: −\n          - status: 250%\n          - button \"Zoom in\" [disabled]: +\n          - button \"Overview\" [disabled]\n      - tablist \"Zoo tools\":\n        - tab \"Missions\"\n        - tab \"Care\" [selected]\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Care\":\n        - region \"Two curious macaws\":\n          - heading \"Two curious macaws\" [level=3]\n          - paragraph: Welcome both macaws, then provide food, water and rest below. Inspect a bird for the reasons behind its welfare and the next care action.\n          - group \"Two curious macaws\":\n            - button \"Move birds to reserve for habitat edits\" [disabled]\n          - status: Two macaws live in this aviary. Occupied habitats cannot be removed.\n          - paragraph: \"Hunger and thirst: lower is better. Energy, enrichment and welfare: higher is better. Inspect either bird for the actual causes and next action.\"\n          - list:\n            - paragraph: Macaw 1 · Approaching water · Hunger 24% · Portions eaten 1 · Thirst 57% · Drinks 0 · Energy 49% · Enrichment 0%\n            - paragraph: Welfare 59% · ! Needs care\n            - button \"Inspect Macaw 1\" [expanded]\n            - paragraph: Macaw 2 · Approaching water · Hunger 24% · Portions eaten 1 · Thirst 57% · Drinks 0 · Energy 49% · Enrichment 0%\n            - paragraph: Welfare 59% · ! Needs care\n            - button \"Inspect Macaw 2\"\n          - region \"Macaw 1 · Blue-and-yellow macaw · macaw-1\":\n            - heading \"Macaw 1 · Blue-and-yellow macaw · macaw-1\" [active] [level=4]\n            - button \"Close animal details\"\n            - paragraph: \"Welfare: 59.38% · ! Needs care\"\n            - list:\n              - listitem: Food 75.52% × 35%\n              - listitem: Water 43.15% × 30%\n              - listitem: Habitat 100% × 20%\n              - listitem: Enrichment 0% × 15%\n            - paragraph: \"Game model: 35% food + 30% water + 20% habitat + 15% enrichment. Energy affects rest decisions; it is not a separate weight. Needs care below 60%; recovers at 65%. This is a simplified game, not animal care advice.\"\n            - paragraph: Without a reachable serving in this bird’s bowl, food/water score is capped at 40%. Refilling restores access; only eating/drinking relieves the actual need.\n            - list:\n              - listitem: \"Water need lowers this bird’s welfare. Water is accessible: let this bird approach and finish drinking; keep its bowl supplied.\"\n              - listitem: \"Enrichment is low. The garden is accessible: after rest and urgent care, let the bird explore its foliage.\"\n          - status: \"Macaw 1: ! Needs care. Water need lowers this bird’s welfare. Water is accessible: let this bird approach and finish drinking; keep its bowl supplied.\"\n        - region \"Fruit feeder\":\n          - heading \"Fruit feeder\" [level=3]\n          - group \"Fruit feeder\":\n            - paragraph: Place a two-port feeder on the marked front edge, then fill it. Hungry macaws walk to a bowl and eat real portions. Hunger runs from 0% (full) to 100% (very hungry). Refill service has the displayed Zoo Coin cost.\n            - button \"Fill feeder · 8 ZC\" [disabled]\n            - button \"Remove feeder\" [disabled]\n            - paragraph: Build 80 ZC · Refill service 8 ZC · Balance 913 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: \"Food: 6/8 portions (macaw 1: 3; macaw 2: 3). Consumption happens only when a bird finishes eating.\"\n        - region \"Fresh water\":\n          - heading \"Fresh water\" [level=3]\n          - group \"Fresh water\":\n            - paragraph: Place two blue water bowls at the sides of the aviary, then refill them. Thirsty macaws approach and drink real portions. Thirst runs from 0% (hydrated) to 100% (very thirsty). Refill service has the displayed Zoo Coin cost.\n            - button \"Refill water · 4 ZC\" [disabled]\n            - button \"Remove water bowls\" [disabled]\n            - paragraph: Build 60 ZC · Refill service 4 ZC · Balance 913 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: \"Water: 8/8 portions (macaw 1: 4; macaw 2: 4). Stock decreases only when a bird finishes drinking.\"\n        - region \"Rest & enrichment\":\n          - heading \"Rest & enrichment\" [level=3]\n          - group \"Rest & enrichment\":\n            - paragraph: Prepare two supported leafy perches. Tired macaws sleep to recover energy; awake macaws look around the plants to improve enrichment. Both scores run from 0% to 100% (higher is better). Benefits happen only while the bird uses a prepared perch. Food and water still need care. Construction has the displayed Zoo Coin cost.\n            - button \"Remove rest garden\" [disabled]\n            - paragraph: Build 80 ZC · Balance 913 ZC. Removal returns actual construction spending.\n            - status: \"Prepared perches: resting 0/2; exploring 0/2. Energy rises only during sleep; enrichment rises only during exploration. Urgent food/water can interrupt safely.\"\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:07:40.243Z",
+      "label": "Resume and use native keyboard camera pan",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "2",
+          "savedCurrency": "913",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "1",
+          "savedRevision": "21",
+          "savedTick": "340"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 913 ZC\n      - generic: Welfare 59%\n      - generic: Guests 0\n      - generic \"Current mission Q02\": Q02\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\" [active]':\n        - generic: +\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\"\n        - tab \"Care\" [selected]\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Care\":\n        - region \"Two curious macaws\":\n          - heading \"Two curious macaws\" [level=3]\n          - paragraph: Welcome both macaws, then provide food, water and rest below. Inspect a bird for the reasons behind its welfare and the next care action.\n          - group \"Two curious macaws\":\n            - button \"Move birds to reserve for habitat edits\"\n          - status: Two macaws live in this aviary. Occupied habitats cannot be removed.\n          - paragraph: \"Hunger and thirst: lower is better. Energy, enrichment and welfare: higher is better. Inspect either bird for the actual causes and next action.\"\n          - list:\n            - paragraph: Macaw 1 · Approaching water · Hunger 25% · Portions eaten 1 · Thirst 58% · Drinks 0 · Energy 48% · Enrichment 0%\n            - paragraph: Welfare 59% · ! Needs care\n            - button \"Inspect Macaw 1\" [expanded]\n            - paragraph: Macaw 2 · Approaching water · Hunger 25% · Portions eaten 1 · Thirst 58% · Drinks 0 · Energy 48% · Enrichment 0%\n            - paragraph: Welfare 59% · ! Needs care\n            - button \"Inspect Macaw 2\"\n          - region \"Macaw 1 · Blue-and-yellow macaw · macaw-1\":\n            - heading \"Macaw 1 · Blue-and-yellow macaw · macaw-1\" [level=4]\n            - button \"Close animal details\"\n            - paragraph: \"Welfare: 58.68% · ! Needs care\"\n            - list:\n              - listitem: Food 74.56% × 35%\n              - listitem: Water 41.95% × 30%\n              - listitem: Habitat 100% × 20%\n              - listitem: Enrichment 0% × 15%\n            - paragraph: \"Game model: 35% food + 30% water + 20% habitat + 15% enrichment. Energy affects rest decisions; it is not a separate weight. Needs care below 60%; recovers at 65%. This is a simplified game, not animal care advice.\"\n            - paragraph: Without a reachable serving in this bird’s bowl, food/water score is capped at 40%. Refilling restores access; only eating/drinking relieves the actual need.\n            - list:\n              - listitem: \"Water need lowers this bird’s welfare. Water is accessible: let this bird approach and finish drinking; keep its bowl supplied.\"\n              - listitem: \"Enrichment is low. The garden is accessible: after rest and urgent care, let the bird explore its foliage.\"\n          - status: \"Macaw 1: ! Needs care. Water need lowers this bird’s welfare. Water is accessible: let this bird approach and finish drinking; keep its bowl supplied.\"\n        - region \"Fruit feeder\":\n          - heading \"Fruit feeder\" [level=3]\n          - group \"Fruit feeder\":\n            - paragraph: Place a two-port feeder on the marked front edge, then fill it. Hungry macaws walk to a bowl and eat real portions. Hunger runs from 0% (full) to 100% (very hungry). Refill service has the displayed Zoo Coin cost.\n            - button \"Fill feeder · 8 ZC\"\n            - button \"Remove feeder\"\n            - paragraph: Build 80 ZC · Refill service 8 ZC · Balance 913 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: \"Food: 6/8 portions (macaw 1: 3; macaw 2: 3). Consumption happens only when a bird finishes eating.\"\n        - region \"Fresh water\":\n          - heading \"Fresh water\" [level=3]\n          - group \"Fresh water\":\n            - paragraph: Place two blue water bowls at the sides of the aviary, then refill them. Thirsty macaws approach and drink real portions. Thirst runs from 0% (hydrated) to 100% (very thirsty). Refill service has the displayed Zoo Coin cost.\n            - button \"Refill water · 4 ZC\" [disabled]\n            - button \"Remove water bowls\"\n            - paragraph: Build 60 ZC · Refill service 4 ZC · Balance 913 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: \"Water: 8/8 portions (macaw 1: 4; macaw 2: 4). Stock decreases only when a bird finishes drinking.\"\n        - region \"Rest & enrichment\":\n          - heading \"Rest & enrichment\" [level=3]\n          - group \"Rest & enrichment\":\n            - paragraph: Prepare two supported leafy perches. Tired macaws sleep to recover energy; awake macaws look around the plants to improve enrichment. Both scores run from 0% to 100% (higher is better). Benefits happen only while the bird uses a prepared perch. Food and water still need care. Construction has the displayed Zoo Coin cost.\n            - button \"Remove rest garden\"\n            - paragraph: Build 80 ZC · Balance 913 ZC. Removal returns actual construction spending.\n            - status: \"Prepared perches: resting 0/2; exploring 0/2. Energy rises only during sleep; enrichment rises only during exploration. Urgent food/water can interrupt safely.\"\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:07:41.313Z",
+      "label": "Return to live Q02",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "2",
+          "savedCurrency": "913",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "1",
+          "savedRevision": "21",
+          "savedTick": "340"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 913 ZC\n      - generic: Welfare 58%\n      - generic: Guests 0\n      - generic \"Current mission Q02\": Q02\n      - generic \"Simulation speed 1×. Open options\": 1×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\" [selected]\n    - option \"10× · faster care\"\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [active] [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"Q02 · Make your birds comfortable\":\n              - heading \"Q02 · Make your birds comfortable\" [level=4]\n              - paragraph: Let both macaws eat and drink, then keep each welfare at 60% or above for 5 consecutive simulation seconds. Pause freezes time; a low score or reserve resets an unfinished streak. Reaching 5 seconds records this objective.\n              - list:\n                - listitem: \"Macaw 1: ate yes · drank not yet · welfare 58%\"\n                - listitem: \"Macaw 2: ate yes · drank not yet · welfare 58%\"\n              - paragraph: \"Comfort streak: 0.0 / 5s\"\n              - paragraph: Check each bird’s needs for the cause and next care action. You can pause while reading; past meals and drinks do not keep welfare high forever.\n              - paragraph: \"Reward: aviary flower trim. No coins charged or granted; essential care stays available.\"\n              - button \"Check bird needs\"\n            - status: In progress\n            - button \"Unlock aviary flowers\" [disabled]\n            - paragraph: \"Mission rewards received: 20 ZC\"\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:08:08.082Z",
+      "label": "Use native10x after supplying care",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "2",
+          "savedCurrency": "899",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "1",
+          "savedRevision": "36",
+          "savedTick": "615"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 899 ZC\n      - generic: Welfare 70%\n      - generic: Guests 0\n      - generic \"Current mission Q02\": Q02\n      - generic \"Simulation speed 10×. Open options\": 10×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\" [active]\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\"\n    - option \"10× · faster care\" [selected]\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"Q02 · Make your birds comfortable\":\n              - heading \"Q02 · Make your birds comfortable\" [level=4]\n              - paragraph: Let both macaws eat and drink, then keep each welfare at 60% or above for 5 consecutive simulation seconds. Pause freezes time; a low score or reserve resets an unfinished streak. Reaching 5 seconds records this objective.\n              - list:\n                - listitem: \"Macaw 1: ate yes · drank yes · welfare 70%\"\n                - listitem: \"Macaw 2: ate yes · drank yes · welfare 70%\"\n              - paragraph: \"Comfort streak: 5.0 / 5s\"\n              - paragraph: The 5-second objective is recorded. Claim your reward; continue caring for current needs.\n              - paragraph: \"Reward: aviary flower trim. No coins charged or granted; essential care stays available.\"\n              - button \"Check bird needs\"\n            - status: Ready to claim\n            - button \"Unlock aviary flowers\"\n            - paragraph: \"Mission rewards received: 20 ZC\"\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:08:09.206Z",
+      "label": "Claim actual Q02",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "2",
+          "savedCurrency": "899",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "2",
+          "savedRevision": "37",
+          "savedTick": "773"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 899 ZC\n      - generic: Welfare 80%\n      - generic: Guests 0\n      - generic \"Current mission Q03\": Q03\n      - generic \"Simulation speed 10×. Open options\": 10×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\"\n    - option \"10× · faster care\" [selected]\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"Q03 · Welcome your first visitors\":\n              - heading \"Q03 · Welcome your first visitors\" [level=4]\n              - paragraph: Welcome 3 unique paid visitors and let one finish watching the birds. Earlier genuine visits count. Waiting, free entry and interrupted viewing do not.\n              - paragraph: \"Paid admissions: 0 / 3\"\n              - paragraph: \"Completed bird viewing: 0 / 1\"\n              - paragraph: Open the entrance. Payment happens at the real gate crossing; the queue has not paid.\n              - paragraph: \"Reward: 40 ZC + First Visitors badge\"\n              - button \"Open entrance\"\n            - status [active]: In progress\n            - button \"Claim 40 ZC + badge\" [disabled]\n            - paragraph: \"Mission rewards received: 20 ZC\"\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:08:10.353Z",
+      "label": "Open real entrance",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "2",
+          "savedCurrency": "909",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "2",
+          "savedRevision": "39",
+          "savedTick": "903"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 909 ZC\n      - generic: Welfare 81%\n      - generic: Guests 1\n      - generic \"Current mission Q03\": Q03\n      - generic \"Simulation speed 10×. Open options\": 10×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\"\n    - option \"10× · faster care\" [selected]\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"Q03 · Welcome your first visitors\":\n              - heading \"Q03 · Welcome your first visitors\" [level=4]\n              - paragraph: Welcome 3 unique paid visitors and let one finish watching the birds. Earlier genuine visits count. Waiting, free entry and interrupted viewing do not.\n              - paragraph: \"Paid admissions: 1 / 3\"\n              - paragraph: \"Completed bird viewing: 0 / 1\"\n              - paragraph: Keep the entrance open while guests walk, watch and return. One guest uses the narrow path at a time.\n              - paragraph: \"Reward: 40 ZC + First Visitors badge\"\n              - button \"View entrance and guests\" [active]\n            - status: In progress\n            - button \"Claim 40 ZC + badge\" [disabled]\n            - paragraph: \"Mission rewards received: 20 ZC\"\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:08:27.256Z",
+      "label": "Claim real Q03 with unique admissions and viewing",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "2",
+          "savedCurrency": "993",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "3",
+          "savedRevision": "53",
+          "savedTick": "2567"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 993 ZC\n      - generic: Welfare 30%\n      - generic: Guests 3\n      - generic \"Current mission Q04\": Q04\n      - generic \"Simulation speed 10×. Open options\": 10×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\"\n    - option \"10× · faster care\" [selected]\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"Q04 · Keep the sanctuary thriving\":\n              - heading \"Q04 · Keep the sanctuary thriving\" [level=4]\n              - paragraph: After Q03, keep both birds at welfare 60 or higher, food/water accessible, path connected and entrance open for 30 consecutive simulation seconds. Earn 20 ZC from at least 2 new paid visitors in that same streak. Earlier tickets, mission rewards, refunds and support do not count.\n              - paragraph: \"Healthy open streak: 0.0 /30s\"\n              - paragraph: \"New ticket income this streak: 0 /20 ZC · 0 /2 paid visitors\"\n              - paragraph: An unfinished streak resets if welfare, resources, access or the open entrance fail. Pause freezes it. Keep caring while guests use the narrow path.\n              - paragraph: \"Reward: sanctuary entrance banner + Thriving Sanctuary achievement + expansion-goal preview\"\n              - button \"Open food care\"\n            - status [active]: In progress\n            - button \"Unlock banner and achievement\" [disabled]\n            - paragraph: \"Mission rewards received: 60 ZC\"\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:08:28.174Z",
+      "label": "Pause progressed product",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "saved",
+          "savedBirds": "2",
+          "savedCurrency": "993",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "3",
+          "savedRevision": "54",
+          "savedTick": "2678"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 993 ZC\n      - generic: Welfare 30%\n      - generic: Guests 3\n      - generic \"Current mission Q04\": Q04\n      - generic \"Simulation speed 10×. Open options\": 10×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Saved on this device\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Resume zoo\" [active] [pressed]\n      - status: Zoo paused. Animals, visitors, money and missions are frozen.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\"\n    - option \"10× · faster care\" [selected]\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\" [disabled]: −\n          - status: 250%\n          - button \"Zoom in\" [disabled]: +\n          - button \"Overview\" [disabled]\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"Q04 · Keep the sanctuary thriving\":\n              - heading \"Q04 · Keep the sanctuary thriving\" [level=4]\n              - paragraph: After Q03, keep both birds at welfare 60 or higher, food/water accessible, path connected and entrance open for 30 consecutive simulation seconds. Earn 20 ZC from at least 2 new paid visitors in that same streak. Earlier tickets, mission rewards, refunds and support do not count.\n              - paragraph: \"Healthy open streak: 0.0 /30s\"\n              - paragraph: \"New ticket income this streak: 0 /20 ZC · 0 /2 paid visitors\"\n              - paragraph: An unfinished streak resets if welfare, resources, access or the open entrance fail. Pause freezes it. Keep caring while guests use the narrow path.\n              - paragraph: \"Reward: sanctuary entrance banner + Thriving Sanctuary achievement + expansion-goal preview\"\n              - button \"Open food care\" [disabled]\n            - status: In progress\n            - button \"Unlock banner and achievement\" [disabled]\n            - paragraph: \"Mission rewards received: 60 ZC\"\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:09:14.908Z",
+      "label": "Supply real care for Q04 at10x",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "dirty",
+          "savedBirds": "2",
+          "savedCurrency": "991",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "3",
+          "savedRevision": "57",
+          "savedTick": "2862"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 991 ZC\n      - generic: Welfare 57%\n      - generic: Guests 1\n      - generic \"Current mission Q04\": Q04\n      - generic \"Simulation speed 10×. Open options\": 10×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Changes pending\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Pause zoo\"\n      - status: Zoo running. Pause any time to stop safely.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\"\n    - option \"10× · faster care\" [selected]\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\": −\n          - status: 250%\n          - button \"Zoom in\": +\n          - button \"Overview\"\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [active] [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"Q04 · Keep the sanctuary thriving\":\n              - heading \"Q04 · Keep the sanctuary thriving\" [level=4]\n              - paragraph: After Q03, keep both birds at welfare 60 or higher, food/water accessible, path connected and entrance open for 30 consecutive simulation seconds. Earn 20 ZC from at least 2 new paid visitors in that same streak. Earlier tickets, mission rewards, refunds and support do not count.\n              - paragraph: \"Healthy open streak: 0.0 /30s\"\n              - paragraph: \"New ticket income this streak: 0 /20 ZC · 0 /2 paid visitors\"\n              - paragraph: An unfinished streak resets if welfare, resources, access or the open entrance fail. Pause freezes it. Keep caring while guests use the narrow path.\n              - paragraph: \"Reward: sanctuary entrance banner + Thriving Sanctuary achievement + expansion-goal preview\"\n              - button \"View entrance and guests\"\n            - status: In progress\n            - button \"Unlock banner and achievement\" [disabled]\n            - paragraph: \"Mission rewards received: 60 ZC\"\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:10:30.461Z",
+      "label": "Pause after real active-care cycles",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "saved",
+          "savedBirds": "2",
+          "savedCurrency": "1115",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "3",
+          "savedRevision": "118",
+          "savedTick": "10471"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,115 ZC\n      - generic: Welfare 89%\n      - generic: Guests 2\n      - generic \"Current mission Q04\": Q04\n      - generic \"Simulation speed 10×. Open options\": 10×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Saved on this device\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Resume zoo\" [active] [pressed]\n      - status: Zoo paused. Animals, visitors, money and missions are frozen.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\"\n    - option \"10× · faster care\" [selected]\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\" [disabled]: −\n          - status: 250%\n          - button \"Zoom in\" [disabled]: +\n          - button \"Overview\" [disabled]\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"Q04 · Keep the sanctuary thriving\":\n              - heading \"Q04 · Keep the sanctuary thriving\" [level=4]\n              - paragraph: After Q03, keep both birds at welfare 60 or higher, food/water accessible, path connected and entrance open for 30 consecutive simulation seconds. Earn 20 ZC from at least 2 new paid visitors in that same streak. Earlier tickets, mission rewards, refunds and support do not count.\n              - paragraph: \"Healthy open streak: 30.0 /30s\"\n              - paragraph: \"New ticket income this streak: 20 /20 ZC · 2 /2 paid visitors\"\n              - paragraph: Objective recorded. Claim your banner and achievement once; no coins are added.\n              - paragraph: \"Reward: sanctuary entrance banner + Thriving Sanctuary achievement + expansion-goal preview\"\n              - button \"View entrance and guests\" [disabled]\n            - status: Ready to claim\n            - button \"Unlock banner and achievement\" [disabled]\n            - paragraph: \"Mission rewards received: 60 ZC\"\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:10:40.693Z",
+      "label": "Claim actual Q04 and freeze completed game",
+      "meta": {
+        "documentWidth": 1351,
+        "height": 768,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "saved",
+          "savedBirds": "2",
+          "savedCurrency": "1125",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "4",
+          "savedRevision": "121",
+          "savedTick": "10580"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 1366
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,125 ZC\n      - generic: Welfare 79%\n      - generic: Guests 3\n      - generic \"All missions complete\": ✓\n      - generic \"Simulation speed 10×. Open options\": 10×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Saved on this device\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Resume zoo\" [active] [pressed]\n      - status: Zoo paused. Animals, visitors, money and missions are frozen.\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\"\n    - option \"10× · faster care\" [selected]\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\" [disabled]: −\n          - status: 250%\n          - button \"Zoom in\" [disabled]: +\n          - button \"Overview\" [disabled]\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"Thriving Sanctuary achievement\":\n              - heading \"Thriving Sanctuary achievement\" [level=4]\n              - paragraph: Your entrance now wears celebration pennants. The achievement and next-goal preview are included in local autosave when storage is available.\n              - paragraph: \"Healthy open streak: 30.0 /30s\"\n              - paragraph: \"New ticket income this streak: 20 /20 ZC · 2 /2 paid visitors\"\n              - paragraph\n              - paragraph: \"Reward: sanctuary entrance banner + Thriving Sanctuary achievement + expansion-goal preview\"\n              - status: Thriving Sanctuary · earned\n              - button \"View your celebration banner\" [disabled]\n              - generic \"Your next sanctuary goal\"\n            - status: Reward received\n            - paragraph: \"Mission rewards received: 60 ZC\"\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:11:11.196Z",
+      "label": "Inspect paused ID portrait with actual Low graphics",
+      "meta": {
+        "documentWidth": 345,
+        "height": 780,
+        "lang": "id",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "saved",
+          "savedBirds": "2",
+          "savedCurrency": "1125",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "4",
+          "savedRevision": "126",
+          "savedTick": "10580"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 360
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"Dunia kecil untuk dirawat.\":\n    - generic \"Status suaka\":\n      - strong: 1.125 ZC\n      - generic: Satwa 79%\n      - generic: Tamu 3\n      - generic \"Semua misi selesai\": ✓\n      - generic \"Kecepatan simulasi 10×. Buka opsi\": 10×\n    - region \"Progres game lokal\":\n      - generic \"Detail simpanan\":\n        - status: Tersimpan di perangkat\n        - generic: Detail simpanan\n    - region \"Kontrol sesi\":\n      - button \"Lanjut bermain\" [pressed]\n      - status: Suaka dijeda. Satwa, pengunjung, uang dan misi tidak berjalan.\n    - generic \"Opsi\"\n    - option \"English\"\n    - option \"Bahasa Indonesia\" [selected]\n    - option \"1× · normal\"\n    - option \"10× · perawatan lebih cepat\" [selected]\n    - figure \"Tropical Creek · suaka hidup\":\n      - 'group \"Tropical Creek: pulau 3D dengan palem, sungai, dan gerbang. Bangun habitat makaw tertutup atau periksa dunia; rawat burung, sambungkan jalur dan selesaikan misi suaka.\"'\n      - group \"Aksi permainan\":\n        - generic: Aksi permainan\n        - group \"Kontrol kamera dunia\":\n          - button \"Perkecil\" [disabled]: −\n          - status: 250%\n          - button \"Perbesar\" [disabled]: +\n          - button \"Lihat semua\" [disabled]\n      - tablist \"Alat suaka\":\n        - tab \"Misi\"\n        - tab \"Rawat\" [selected]\n        - tab \"Tamu\"\n        - tab \"Bangun\"\n      - tabpanel \"Rawat\":\n        - region \"Dua makaw yang penasaran\":\n          - heading \"Dua makaw yang penasaran\" [level=3]\n          - paragraph: Sambut kedua makaw, lalu sediakan pakan, air dan istirahat di bawah. Periksa burung untuk melihat penyebab kesejahteraannya dan tindakan perawatan berikutnya.\n          - group \"Dua makaw yang penasaran\":\n            - button \"Pindahkan ke cadangan untuk edit habitat\" [disabled]\n          - status: Dua makaw tinggal di aviari ini. Habitat berpenghuni tidak dapat dihapus.\n          - paragraph: \"Lapar dan haus: lebih rendah lebih baik. Energi, pengayaan dan kesejahteraan: lebih tinggi lebih baik. Periksa tiap burung untuk sebab dan tindakan nyata.\"\n          - list:\n            - paragraph: Makaw 1 · Bertengger / terbang pendek · Lapar 33% · Porsi dimakan 17 · Haus 24% · Porsi diminum 17 · Energi 58% · Pengayaan 85%\n            - paragraph: Kesejahteraan 79% · ✓ Nyaman\n            - button \"Periksa Makaw 1\"\n            - paragraph: Makaw 2 · Bertengger / terbang pendek · Lapar 32% · Porsi dimakan 17 · Haus 26% · Porsi diminum 17 · Energi 64% · Pengayaan 85%\n            - paragraph: Kesejahteraan 79% · ✓ Nyaman\n            - button \"Periksa Makaw 2\" [expanded]\n          - region \"Makaw 2 · Makaw biru-kuning · macaw-2\":\n            - heading \"Makaw 2 · Makaw biru-kuning · macaw-2\" [active] [level=4]\n            - button \"Tutup rincian satwa\"\n            - paragraph: \"Kesejahteraan: 78,72% · ✓ Nyaman\"\n            - list:\n              - listitem: Pakan 68,28% × 35%\n              - listitem: Air 73,6% × 30%\n              - listitem: Habitat 100% × 20%\n              - listitem: Pengayaan 84,94% × 15%\n            - paragraph: \"Model permainan: 35% pakan + 30% air + 20% habitat + 15% pengayaan. Energi memengaruhi keputusan istirahat; bukan bobot terpisah. Perlu perawatan di bawah 60%; pulih pada 65%. Ini penyederhanaan permainan, bukan saran merawat satwa.\"\n            - paragraph: Tanpa porsi terjangkau di mangkuk burung ini, skor pakan/air maksimal 40%. Isi ulang memulihkan akses; hanya makan/minum yang mengurangi kebutuhan sebenarnya.\n            - list:\n              - listitem: Tidak ada alert perawatan saat ini. Jaga suplai dan perhatikan kebutuhan tiap burung.\n          - status: \"Makaw 2: ✓ Nyaman. Tidak ada alert perawatan saat ini. Jaga suplai dan perhatikan kebutuhan tiap burung.\"\n        - region \"Tempat pakan buah\":\n          - heading \"Tempat pakan buah\" [level=3]\n          - group \"Tempat pakan buah\":\n            - paragraph: Tempatkan tempat pakan dua mangkuk di sisi depan yang ditandai, lalu isi. Makaw lapar akan mendekat dan memakan porsi sungguhan. Lapar 0% berarti kenyang; 100% sangat lapar. Layanan isi ulang memakai biaya Zoo Coins yang ditampilkan.\n            - button \"Isi tempat pakan · 8 ZC\" [disabled]\n            - button \"Hapus tempat pakan\" [disabled]\n            - paragraph: Bangun 80 ZC · Layanan isi ulang 8 ZC · Saldo 1.125 ZC. Hapus hanya mengembalikan biaya konstruksi yang dibayar; biaya isi ulang tidak dikembalikan.\n            - status: \"Makanan: 6/8 porsi (makaw 1: 3; makaw 2: 3). Stok berkurang hanya setelah burung selesai makan.\"\n        - region \"Air segar\":\n          - heading \"Air segar\" [level=3]\n          - group \"Air segar\":\n            - paragraph: Tempatkan dua mangkuk biru di sisi aviari, lalu isi air. Makaw yang haus mendekat dan meminum porsi sungguhan. Haus berkisar dari 0% (cukup air) hingga 100% (sangat haus). Layanan isi ulang memakai biaya Zoo Coins yang ditampilkan.\n            - button \"Isi air · 4 ZC\" [disabled]\n            - button \"Hapus mangkuk air\" [disabled]\n            - paragraph: Bangun 60 ZC · Layanan isi ulang 4 ZC · Saldo 1.125 ZC. Hapus hanya mengembalikan biaya konstruksi yang dibayar; biaya isi ulang tidak dikembalikan.\n            - status: \"Air: 6/8 porsi (makaw 1: 3; makaw 2: 3). Stok berkurang hanya setelah burung selesai minum.\"\n        - region \"Istirahat & pengayaan\":\n          - heading \"Istirahat & pengayaan\" [level=3]\n          - group \"Istirahat & pengayaan\":\n            - paragraph: Siapkan dua tenggeran berdaun dengan penyangga. Makaw lelah tidur untuk memulihkan energi; makaw terjaga mengamati tanaman untuk meningkatkan pengayaan. Kedua nilai berkisar 0–100% (lebih tinggi lebih baik). Manfaat hanya muncul saat burung memakai tenggeran yang disiapkan. Makanan dan air tetap perlu dirawat. Konstruksi memakai biaya Zoo Coins yang ditampilkan.\n            - button \"Hapus taman istirahat\" [disabled]\n            - paragraph: Bangun 80 ZC · Saldo 1.125 ZC. Hapus mengembalikan biaya konstruksi yang dibayar.\n            - status: \"Tenggeran siap: tidur 0/2; mengamati 0/2. Energi naik hanya saat tidur; pengayaan naik hanya saat mengamati. Kebutuhan makan/minum mendesak bisa menyela dengan aman.\"\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:11:43.134Z",
+      "label": "Inspect actual EN landscape High graphics while paused",
+      "meta": {
+        "documentWidth": 765,
+        "height": 360,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "saved",
+          "savedBirds": "2",
+          "savedCurrency": "1125",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "4",
+          "savedRevision": "130",
+          "savedTick": "10580"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 780
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,125 ZC\n      - generic: Welfare 79%\n      - generic: Guests 3\n      - generic \"All missions complete\": ✓\n      - generic \"Simulation speed 10×. Open options\": 10×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Saved on this device\n        - generic: Save details\n    - region \"Session controls\":\n      - button \"Resume zoo\" [pressed]\n      - status: Zoo paused. Animals, visitors, money and missions are frozen.\n    - generic \"Options\" [active]\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\"\n    - option \"10× · faster care\" [selected]\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\" [disabled]: −\n          - status: 250%\n          - button \"Zoom in\" [disabled]: +\n          - button \"Overview\" [disabled]\n      - tablist \"Zoo tools\":\n        - tab \"Missions\"\n        - tab \"Care\" [selected]\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Care\":\n        - region \"Two curious macaws\":\n          - heading \"Two curious macaws\" [level=3]\n          - paragraph: Welcome both macaws, then provide food, water and rest below. Inspect a bird for the reasons behind its welfare and the next care action.\n          - group \"Two curious macaws\":\n            - button \"Move birds to reserve for habitat edits\" [disabled]\n          - status: Two macaws live in this aviary. Occupied habitats cannot be removed.\n          - paragraph: \"Hunger and thirst: lower is better. Energy, enrichment and welfare: higher is better. Inspect either bird for the actual causes and next action.\"\n          - list:\n            - paragraph: Macaw 1 · Perching / short flight · Hunger 33% · Portions eaten 17 · Thirst 24% · Drinks 17 · Energy 58% · Enrichment 85%\n            - paragraph: Welfare 79% · ✓ Comfortable\n            - button \"Inspect Macaw 1\"\n            - paragraph: Macaw 2 · Perching / short flight · Hunger 32% · Portions eaten 17 · Thirst 26% · Drinks 17 · Energy 64% · Enrichment 85%\n            - paragraph: Welfare 79% · ✓ Comfortable\n            - button \"Inspect Macaw 2\" [expanded]\n          - region \"Macaw 2 · Blue-and-yellow macaw · macaw-2\":\n            - heading \"Macaw 2 · Blue-and-yellow macaw · macaw-2\" [level=4]\n            - button \"Close animal details\"\n            - paragraph: \"Welfare: 78.72% · ✓ Comfortable\"\n            - list:\n              - listitem: Food 68.28% × 35%\n              - listitem: Water 73.6% × 30%\n              - listitem: Habitat 100% × 20%\n              - listitem: Enrichment 84.94% × 15%\n            - paragraph: \"Game model: 35% food + 30% water + 20% habitat + 15% enrichment. Energy affects rest decisions; it is not a separate weight. Needs care below 60%; recovers at 65%. This is a simplified game, not animal care advice.\"\n            - paragraph: Without a reachable serving in this bird’s bowl, food/water score is capped at 40%. Refilling restores access; only eating/drinking relieves the actual need.\n            - list:\n              - listitem: No current care alert. Keep supplies available and watch each bird’s needs.\n          - status: \"Macaw 2: ✓ Comfortable. No current care alert. Keep supplies available and watch each bird’s needs.\"\n        - region \"Fruit feeder\":\n          - heading \"Fruit feeder\" [level=3]\n          - group \"Fruit feeder\":\n            - paragraph: Place a two-port feeder on the marked front edge, then fill it. Hungry macaws walk to a bowl and eat real portions. Hunger runs from 0% (full) to 100% (very hungry). Refill service has the displayed Zoo Coin cost.\n            - button \"Fill feeder · 8 ZC\" [disabled]\n            - button \"Remove feeder\" [disabled]\n            - paragraph: Build 80 ZC · Refill service 8 ZC · Balance 1,125 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: \"Food: 6/8 portions (macaw 1: 3; macaw 2: 3). Consumption happens only when a bird finishes eating.\"\n        - region \"Fresh water\":\n          - heading \"Fresh water\" [level=3]\n          - group \"Fresh water\":\n            - paragraph: Place two blue water bowls at the sides of the aviary, then refill them. Thirsty macaws approach and drink real portions. Thirst runs from 0% (hydrated) to 100% (very thirsty). Refill service has the displayed Zoo Coin cost.\n            - button \"Refill water · 4 ZC\" [disabled]\n            - button \"Remove water bowls\" [disabled]\n            - paragraph: Build 60 ZC · Refill service 4 ZC · Balance 1,125 ZC. Removal returns only actual construction spending; refill fees are not refunded.\n            - status: \"Water: 6/8 portions (macaw 1: 3; macaw 2: 3). Stock decreases only when a bird finishes drinking.\"\n        - region \"Rest & enrichment\":\n          - heading \"Rest & enrichment\" [level=3]\n          - group \"Rest & enrichment\":\n            - paragraph: Prepare two supported leafy perches. Tired macaws sleep to recover energy; awake macaws look around the plants to improve enrichment. Both scores run from 0% to 100% (higher is better). Benefits happen only while the bird uses a prepared perch. Food and water still need care. Construction has the displayed Zoo Coin cost.\n            - button \"Remove rest garden\" [disabled]\n            - paragraph: Build 80 ZC · Balance 1,125 ZC. Removal returns actual construction spending.\n            - status: \"Prepared perches: resting 0/2; exploring 0/2. Energy rises only during sleep; enrichment rises only during exploration. Urgent food/water can interrupt safely.\"\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:12:16.956Z",
+      "label": "Return to entry without deleting progress",
+      "meta": {
+        "documentWidth": 765,
+        "height": 360,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "saved",
+          "savedBirds": "2",
+          "savedCurrency": "1125",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "4",
+          "savedRevision": "132",
+          "savedTick": "10580"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 780
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Progress saved on this device.\n        - generic: Save details\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - generic: ✦\n    - generic: Development preview\n    - paragraph: Tropical Creek Sanctuary\n    - heading \"A little world to care for.\" [level=1]\n    - paragraph: A quiet creek, a future home for two curious macaws, and a sanctuary waiting to grow.\n    - paragraph: Build, care, welcome visitors and complete four missions. Progress autosaves on this device when storage is available.\n    - button \"Try the first mission\"\n    - button \"Continue\"\n    - button \"How to play\"\n    - button \"Settings\"\n    - link \"Explore the animal journal\":\n      - /url: /animals/\n      - generic: Explore the animal journal\n      - generic: ↗\n    - figure \"Sanctuary concept · illustration only\":\n      - img \"Concept illustration of a tropical creek, trees and a future habitat.\"\n      - group \"Game actions\":\n        - generic: Game actions\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n      - tabpanel \"Care\"\n      - tabpanel \"Guests\":\n        - group \"Game actions\":\n          - generic: Game actions\n      - tabpanel \"Build\":\n        - group \"Game actions\":\n          - generic: Game actions\n      - button \"Explore the sanctuary\"\n      - generic: Sanctuary concept · illustration only\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:12:18.046Z",
+      "label": "Actual product reload",
+      "meta": {
+        "documentWidth": 765,
+        "height": 360,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "false",
+          "saveActive": "false",
+          "savePanel": "",
+          "savePhase": "available",
+          "savedBirds": "2",
+          "savedCurrency": "1125",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "4",
+          "savedRevision": "132",
+          "savedTick": "10580"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 780
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Saved sanctuary found on this device. Continue to open it.\n        - generic: Save details\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - generic: ✦\n    - generic: Development preview\n    - paragraph: Tropical Creek Sanctuary\n    - heading \"A little world to care for.\" [level=1]\n    - paragraph: A quiet creek, a future home for two curious macaws, and a sanctuary waiting to grow.\n    - paragraph: Build, care, welcome visitors and complete four missions. Progress autosaves on this device when storage is available.\n    - button \"Try the first mission\" [disabled]\n    - button \"Continue\"\n    - button \"How to play\"\n    - button \"Settings\"\n    - link \"Explore the animal journal\":\n      - /url: /animals/\n      - generic: Explore the animal journal\n      - generic: ↗\n    - figure \"Sanctuary concept · illustration only\":\n      - img \"Concept illustration of a tropical creek, trees and a future habitat.\"\n      - group \"Game actions\":\n        - generic: Game actions\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n      - tabpanel \"Care\"\n      - tabpanel \"Guests\":\n        - group \"Game actions\":\n          - generic: Game actions\n      - tabpanel \"Build\":\n        - group \"Game actions\":\n          - generic: Game actions\n      - button \"Explore the sanctuary\" [disabled]\n      - generic: Sanctuary concept · illustration only\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    },
+    {
+      "at": "2026-11-02T06:12:19.550Z",
+      "label": "Continue completed authoritative save",
+      "meta": {
+        "documentWidth": 765,
+        "height": 360,
+        "lang": "en",
+        "save": {
+          "astroCidEafzghoe": "",
+          "hasSave": "true",
+          "resumePending": "true",
+          "saveActive": "true",
+          "savePanel": "",
+          "savePhase": "saved",
+          "savedBirds": "2",
+          "savedCurrency": "1125",
+          "savedGeneration": "22d48c53-c36c-4d5f-a6a5-4e04f140ec8e",
+          "savedMissions": "4",
+          "savedRevision": "133",
+          "savedTick": "10580"
+        },
+        "scripts": [
+          "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.WvQEko9m.js"
+        ],
+        "width": 780
+      },
+      "snapshot": "- banner:\n  - link \"MyZooTwin home\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - navigation \"Main navigation\":\n    - link \"Play Zoo\":\n      - /url: /play/\n    - link \"Animals\":\n      - /url: /animals/\n    - link \"Wildlife\":\n      - /url: /wildlife/\n    - link \"Pets\":\n      - /url: /pets/\n    - link \"Learn\":\n      - /url: /learn/\n    - link \"Adventures\":\n      - /url: /adventures/\n    - link \"Gear\":\n      - /url: /gear/\n  - link \"About\":\n    - /url: /about/\n    - text: About ↗\n- main:\n  - region \"A little world to care for.\":\n    - generic \"Sanctuary status\":\n      - strong: 1,125 ZC\n      - generic: Welfare 79%\n      - generic: Guests 3\n      - generic \"All missions complete\": ✓\n      - generic \"Simulation speed 10×. Open options\": 10×\n    - region \"Local game progress\":\n      - generic \"Save details\":\n        - status: Saved on this device\n        - generic: Save details\n      - paragraph: Your saved world is loaded and paused. Nothing progressed while you were away.\n      - button \"Resume zoo\" [active]\n    - generic \"Options\"\n    - option \"English\" [selected]\n    - option \"Bahasa Indonesia\"\n    - option \"1× · normal\"\n    - option \"10× · faster care\" [selected]\n    - figure \"Tropical Creek · living sanctuary\":\n      - 'group \"Tropical Creek: a 3D island with palms, a creek and an entrance gate. Build an enclosed macaw habitat or inspect the world; care for the birds, connect visitor paths and complete sanctuary missions.\"'\n      - group \"Game actions\":\n        - generic: Game actions\n        - group \"World camera controls\":\n          - button \"Zoom out\" [disabled]: −\n          - status: 100%\n          - button \"Zoom in\" [disabled]: +\n          - button \"Overview\" [disabled]\n      - tablist \"Zoo tools\":\n        - tab \"Missions\" [selected]\n        - tab \"Care\"\n        - tab \"Guests\"\n        - tab \"Build\"\n      - tabpanel \"Missions\":\n        - group \"Game actions\":\n          - generic: Game actions\n          - region \"Sanctuary missions\":\n            - heading \"Sanctuary missions\" [level=3]\n            - region \"Thriving Sanctuary achievement\":\n              - heading \"Thriving Sanctuary achievement\" [level=4]\n              - paragraph: Your entrance now wears celebration pennants. The achievement and next-goal preview are included in local autosave when storage is available.\n              - paragraph: \"Healthy open streak: 30.0 /30s\"\n              - paragraph: \"New ticket income this streak: 20 /20 ZC · 2 /2 paid visitors\"\n              - paragraph\n              - paragraph: \"Reward: sanctuary entrance banner + Thriving Sanctuary achievement + expansion-goal preview\"\n              - status: Thriving Sanctuary · earned\n              - button \"View your celebration banner\" [disabled]\n              - generic \"Your next sanctuary goal\"\n            - status: Reward received\n            - paragraph: \"Mission rewards received: 60 ZC\"\n      - status\n- contentinfo:\n  - link \"✦ MyZooTwin\":\n    - /url: /\n    - generic: ✦\n    - generic: MyZooTwin\n  - paragraph: A curious field guide to the animals we share this planet with.\n  - link \"Animals\":\n    - /url: /animals/\n  - link \"Wildlife\":\n    - /url: /wildlife/\n  - link \"Pets\":\n    - /url: /pets/\n  - link \"Learn\":\n    - /url: /learn/\n  - link \"About\":\n    - /url: /about/\n  - generic: © 2026 MyZooTwin. Made for curious minds."
+    }
+  ],
+  "screens": [
+    "desktop-actual-paused-bird.jpg",
+    "portrait-id-low-actual.jpg",
+    "landscape-en-high-actual.jpg"
+  ],
+  "method": "Native product controls on fresh QA origin4354; no fixtures/time injection; familiar agent, not human study"
+}
