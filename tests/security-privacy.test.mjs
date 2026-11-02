@@ -6,10 +6,10 @@ import {parseSave,serializeSave} from '../src/game/persistence/save-v1.ts';
 import {inspectCheckpoint} from '../src/game/persistence/checkpoint.ts';
 import {createAutosave} from '../src/game/persistence/autosave.ts';
 
-test('configured site analytics and remote fonts never opt the game in; original journal integration remains available',()=>{
+test('analytics eligibility never opts the game in; all external font loading is disabled',()=>{
  for(const configured of [true,false]){
   for(const path of ['/play','/play/']){const p=pagePrivacy(path,configured);assert.equal(p.analytics,false);assert.equal(p.remoteFonts,false);assert.equal(p.referrer,'no-referrer');}
-  for(const path of ['/','/animals/','/wildlife/','/pets/','/learn/','/adventures/','/gear/','/about/','/playground/']){const p=pagePrivacy(path,configured);assert.equal(p.analytics,configured);assert.equal(p.remoteFonts,true);assert.equal(p.csp,null);}
+  for(const path of ['/','/animals/','/wildlife/','/pets/','/learn/','/adventures/','/gear/','/about/','/playground/']){const p=pagePrivacy(path,configured);assert.equal(p.analytics,configured);assert.equal(p.remoteFonts,false);assert.equal(p.csp,null);}
  }
 });
 test('game CSP restricts active script, connection, font, form and object boundaries while retaining needed inline styles',()=>{

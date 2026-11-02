@@ -3,6 +3,7 @@ export type EntryLocale = 'en' | 'id';
 export const ENTRY_PREFERENCES_KEY = 'myzootwin.entry.preferences.v1';
 
 export const english = {
+  sitePrivacy: 'Site privacy choices',
   learnBridge: 'Game needs and welfare are simplified rules, not wildlife-care instructions. The journal’s Learn section explains this distinction while researched articles are being prepared.',
   learnLink: 'Explore Learn',
   restartControls:'Restart sanctuary',
@@ -501,6 +502,7 @@ export const entryMessages: Record<EntryLocale, Record<EntryMessage, string>> = 
   editFunds: 'Transaksi ini tidak dapat diselesaikan dengan aman dengan koin atau ledger saat ini. Tidak ada perubahan dilakukan.',
   editCommand: 'Penyuntingan ini tidak dapat diselesaikan. Tidak ada perubahan dilakukan.',
 
+    sitePrivacy: 'Pilihan privasi situs',
     learnBridge: 'Kebutuhan dan kesejahteraan dalam game adalah aturan sederhana, bukan petunjuk merawat satwa nyata. Bagian Learn menjelaskan perbedaan ini sambil menyiapkan artikel berbasis sumber.',
     learnLink: 'Jelajahi Learn',
     pageTitle: 'Main Zoo — Tropical Creek | MyZooTwin',

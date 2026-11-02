@@ -257,16 +257,17 @@ export function mountGameEntry(root: HTMLElement, options: {
         if (speed) speed.inert = paused;
         if (toolbar) toolbar.inert = hard;
     }
+    function anyDialogOpen() { return Boolean(root.querySelector('dialog[open]') || root.ownerDocument.querySelector('#site-privacy-dialog[open]')); }
     function syncPause() {
         const v = durable.view();
-        pauseGate.update({ continue: resumePending, dialog: Boolean(root.querySelector('#play-help[open],#play-settings[open],[data-save-recovery-dialog][open],[data-reset-dialog][open]')), storage: ['conflict', 'unreadable'].includes(v.phase), restart: v.restartBusy });
+        pauseGate.update({ continue: resumePending, dialog: anyDialogOpen(), storage: ['conflict', 'unreadable'].includes(v.phase), restart: v.restartBusy });
         renderPause();
     }
     function renderPause() {
         if (disposed)
             return;
         const panel = root.querySelector<HTMLElement>('[data-session-panel]'), toggle = root.querySelector<HTMLButtonElement>('[data-pause-toggle]'), status = root.querySelector<HTMLElement>('[data-pause-status]');
-        const v = durable.view(), dialogOpen = Boolean(root.querySelector('dialog[open]')), paused = pauseGate.paused() || dialogOpen, ready = preview?.inspect().state.status === 'ready', blocked = ['conflict', 'unreadable'].includes(v.phase) || v.restartBusy;
+        const v = durable.view(), dialogOpen = anyDialogOpen(), paused = pauseGate.paused() || dialogOpen, ready = preview?.inspect().state.status === 'ready', blocked = ['conflict', 'unreadable'].includes(v.phase) || v.restartBusy;
         root.dataset.sessionPaused = String(paused);
         root.dataset.pauseReasons = [...pauseGate.reasons(), ...(dialogOpen && !pauseGate.has('dialog') ? ['dialog'] : [])].join(',');
         if (panel) {
@@ -285,7 +286,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         if(!ready && ambience.inspect().liveContexts)ambience.stopSession();
     }
     root.querySelector('[data-pause-toggle]')?.addEventListener('click', () => {
-        if (['conflict', 'unreadable'].includes(durable.view().phase) || durable.view().restartBusy || root.querySelector('dialog[open]'))
+        if (['conflict', 'unreadable'].includes(durable.view().phase) || durable.view().restartBusy || anyDialogOpen())
             return;
         if (pauseGate.paused()) {
             resumePending = false;
@@ -304,6 +305,8 @@ export function mountGameEntry(root: HTMLElement, options: {
         pauseGate.hold('background', true);
     restartPanel = mountRestartPanel(root, { save: durable, locale: () => locale, pause: () => pauseGate.hold('manual', true), closeGame: () => { resumePending = false; preview?.close(); }, replaced: () => { locale = chooseGameLocale(locale, manualLocale, durable.savedLocale()); syncEffectivePreferences(); render(locale); } });
     const hudLayout = mountHudLayout(root);
+    root.ownerDocument.addEventListener('myzootwin:privacy-modal', () => syncPause(), { signal: events.signal });
+    syncPause();
     const ready = (async () => {
         await durable.load();
         if (disposed)
