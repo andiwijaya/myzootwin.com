@@ -1,0 +1,12 @@
+import ts from'file:///C:/MyZooTwin/node_modules/typescript/lib/typescript.js';
+import{readFile,writeFile}from'node:fs/promises';
+const root='C:/MyZooTwin',current=JSON.parse(await readFile(root+'/tsconfig.json','utf8'));
+const prior=ts.parseJsonConfigFileContent({extends:'astro/tsconfigs/strict'},ts.sys,root,undefined,root+'/tsconfig.json');
+const final=ts.parseJsonConfigFileContent(current,ts.sys,root,undefined,root+'/tsconfig.json');
+if(prior.errors.length||final.errors.length)throw Error('Config parse diagnostics');
+const normalized=x=>x.replaceAll('\\','/'),before=prior.fileNames.map(normalized),after=new Set(final.fileNames.map(normalized));
+const live=before.filter(p=>['src/','tests/','scripts/'].some(prefix=>p.startsWith(root+'/'+prefix))),lost=live.filter(p=>!after.has(p));
+const removed=before.filter(p=>!after.has(p));
+const result={status:lost.length===0&&current.extends==='astro/tsconfigs/strict'?'PASS':'FAIL',beforeFiles:before.length,afterFiles:after.size,liveFilesPreserved:live.length,liveFilesLost:lost,removed,scope:'TypeScript resolved file-list comparison: all previously included live src/tests/scripts remain; archived immutable docs/qa are not application source.'};
+if(result.status!=='PASS'||removed.some(p=>!p.startsWith(root+'/docs/qa/')&&!p.startsWith(root+'/node_modules/')))throw Error('Unexpected compiler coverage reduction');
+await writeFile(new URL('./m6-03-blackbox/compiler-inclusion.json',import.meta.url),JSON.stringify(result,null,2));console.log(JSON.stringify(result));
