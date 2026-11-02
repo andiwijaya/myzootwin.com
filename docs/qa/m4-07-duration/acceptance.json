@@ -1,0 +1,112 @@
+{
+  "status": "PASS scoped final-source duration/soak; recording UNRUN",
+  "sourceId": "8e5af7f95ca28262b5fc8e3ae5f84e999682d1ccc0e9e060892c4b446fdbcd91",
+  "buildId": "b39d78e351cdba467a937aa8db78de32a5c006a01040f23b23b78722d8ffd9ab",
+  "sourceAfter": "8e5af7f95ca28262b5fc8e3ae5f84e999682d1ccc0e9e060892c4b446fdbcd91",
+  "wallSeconds": 974.006,
+  "excludedPauseSeconds": 34.656,
+  "conservativeUnpausedWindowSeconds": 939.35,
+  "startUTC": "2026-11-02T20:08:48.731Z",
+  "endUTC": "2026-11-02T20:25:02.737Z",
+  "manualPauses": [
+    {
+      "startRequestUTC": "2026-11-02T20:13:09.973Z",
+      "pausedConfirmedUTC": "2026-11-02T20:13:10.516Z",
+      "resumeRequestUTC": "2026-11-02T20:13:44.228Z",
+      "resumedConfirmedUTC": "2026-11-02T20:13:44.629Z",
+      "method": "ManualPause + Settings read/CloseDiscard. No setting applied."
+    }
+  ],
+  "speed": "1x native throughout measured duration; wall time is not a claim of presentedFPS or exactsimseconds.",
+  "economyBaseline": {
+    "balance": 957,
+    "tickets": 150,
+    "missionRewards": 60,
+    "construction": 595,
+    "supplies": 132,
+    "upkeep": 26,
+    "paidAdmissions": 15
+  },
+  "economyFinal": {
+    "balance": 1083,
+    "tickets": 450,
+    "missionRewards": 60,
+    "construction": 595,
+    "supplies": 276,
+    "upkeep": 56,
+    "paidAdmissions": 45
+  },
+  "economyDeltaReconciles": true,
+  "gateClosure": {
+    "start": "2026-11-02T20:16:06.253Z",
+    "end": "2026-11-02T20:16:54.067Z",
+    "before": {
+      "balance": 1015,
+      "tickets": 280,
+      "missionRewards": 60,
+      "construction": 595,
+      "supplies": 192,
+      "upkeep": 38,
+      "paidAdmissions": 28
+    },
+    "after": {
+      "balance": 1013,
+      "tickets": 280,
+      "missionRewards": 60,
+      "construction": 595,
+      "supplies": 192,
+      "upkeep": 40,
+      "paidAdmissions": 28
+    },
+    "newTickets": 0,
+    "agentsReturned": "0"
+  },
+  "observedHeaderWelfareRange": [
+    45,
+    88
+  ],
+  "pauseFieldsFrozen": [
+    "builtHabitats",
+    "occupiedTiles",
+    "placedBirds",
+    "foodExists",
+    "foodStock",
+    "waterExists",
+    "waterStock",
+    "perchExists",
+    "simulationRate",
+    "worldConnected",
+    "worldPathCount",
+    "worldRouteCells",
+    "visitorCount",
+    "visitorViewed",
+    "visitorViewing",
+    "visitorWalking"
+  ],
+  "coldTabFieldsMatch": [
+    "builtHabitats",
+    "occupiedTiles",
+    "placedBirds",
+    "foodExists",
+    "foodStock",
+    "waterExists",
+    "waterStock",
+    "perchExists",
+    "simulationRate",
+    "worldConnected",
+    "worldPathCount",
+    "worldRouteCells",
+    "visitorCount",
+    "visitorViewed",
+    "visitorViewing",
+    "visitorWalking"
+  ],
+  "coldBalance": 1083,
+  "coldMissions": 4,
+  "coldBirds": 2,
+  "noProductChanges": true,
+  "automatedEvidence": "Same-source486tests/207check/build froms20261102T192224Z reused, not rerun.",
+  "recording": "Unavailable in approved runtime; no fabricatedvideo, M4-07 remainsunchecked.",
+  "limits": "NativeChrome desktop only; no newEdge/device/background/FPS/human/speaker/processrestart claim. Currentheap/GPU not measured; earlier profiles remain separate.",
+  "consoleCoverage": "Boundedfinalcoldtabquery returned[]; originalsoaktab console notcaptured beforeclose. No fullsessionconsole-clean claim; timestampedDOM/serverlogs preserved."
+}

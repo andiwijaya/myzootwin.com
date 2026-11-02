@@ -45,3 +45,8 @@ Both owned tabs closed; immediate post-close list briefly reflected asynchronous
 The evidence reader initially expected collapsed save-detail text in the accessibility snapshot. It was corrected after independently inspecting visible “All missions complete” and the recorded save-summary DOM fields before/after; game state and source were not changed or rerun. A fresh browser REPL also required reinitializing the known authorized Chrome handle before any UI action. These are evidence/setup issues, not product failures. No new policy denial or unresolved action occurred. Inherited QA46/frozen-baseline/recovery-download restrictions remain untouched.
 
 **V1 remains44/51 (86.27%)**. The seven actual unchecked PRD items and minimum actions are in the [release handoff](MYZOOTWIN_V1_RELEASE_HANDOFF.md) and [exact criterion mapping](qa/final-source-golden/seven-open-gates.json). No active P0/P1 was reproduced in this scoped run; that is not an overall zero-defect, legal, device or release certification. Stop for parent review, no push/deploy/Actions/login/permissions or further loop.
+
+
+## Later independent duration closure — 2026-11-02 UTC
+
+[Current1×durationproof](M4-07_FINAL_SOURCE_DURATION.md) adds15m39.350s unpaused continuedgameplay on identicalfinalsource, plus finalcoldContinue. It does not rewrite the shortfreshjourney timestamps above or invent a singlevideo. M4-07 staysPARTIAL forrecording/evidence-formatacceptance;durationwork complete. STOP; owner-dependentgates next.
