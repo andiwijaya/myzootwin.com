@@ -59,3 +59,8 @@ New public third-party notice includes the **exact installed Three MIT license t
 Overall sign-off is withheld for those legal gaps, journal consent/privacy review and external hosting/build configuration, alongside the previously open physical/cross-browser, GPU, human-study and recording gates. Original M6-03 first import failure remains unexplained; current passing Vite8 tests do not establish its cause. Blocked recovery download and QA46 actions were not retried, broadened or bypassed. Browser-process restart, native background, physical speaker and physicalAndroid/presentationFPS remain UNRUN.
 
 Only owned QA tabs closed; viewport reset. Ports 4322/4346 free; owner 4345 was absent, not restarted or accessed. Protected olddist SHA`e06d975a30b49470a1e80e915fbe39ce22ba102f16447dbef8776e7088d38b05` is exact unchanged; owner saves/media/local rollback archive untouched.20 output artifacts contain no test/docs/node_modules/.env/source-map files. Historical failures/source transcriptions retained; current evidence is bounded. No GitHubActions/push/deploy/login/grants. Stop after parent review; next independent recommendation is M6-07, with M6-08 release still held.
+
+
+## Later bounded gap closure - 2026-11-02 UTC
+
+See [current privacy/notice report](M6-06_PRIVACY_NOTICE_GAP_CLOSURE.md). The earlier12-notice/journal integration observations above remain historical, not the latest status: optional tracking is now gated, remote fonts removed,8/12 direct findings accounted and4 remain. M6-06 stays PARTIAL; no overall legal/release clearance. Exact vendor advisory ranges and upgrade exposure analysis above are unchanged.

@@ -1,0 +1,80 @@
+[
+  {
+    "area": "Affirmative consent loading boundary",
+    "status": "PASS local",
+    "evidence": [
+      "final-local/unit.log",
+      "consent-fixture-first.json",
+      "native-fake-opt-in.json",
+      "native-fake-withdrawal.json",
+      "native-compiled.json"
+    ],
+    "detail": "Strict bounded versioned preference; no tag/commands before affirmative stored grant, one initial start per document; persisted opt-in/withdrawal refresh, pending and cross-tab races, storage failure and cleanup. Positive provider is fake; native compiled tests only reject/default-off."
+  },
+  {
+    "area": "Game exclusion and truthful disclosure",
+    "status": "PASS local technical implementation; legal review OPEN",
+    "evidence": [
+      "structural-audit.json",
+      "native-compiled.json",
+      "compiled-privacy-game-id-portrait.jpg",
+      "compiled-privacy-game-id-landscape.jpg"
+    ],
+    "detail": "Game always excludes provider; ID/EN disclosure of local saves/backups, sharing/clearing, optional Google identifiers/page/device/network, ordinary hosting requests and withdrawal limits. No Google Fonts. No assertion of anonymity, jurisdiction compliance or hosting retention."
+  },
+  {
+    "area": "Pause, dialog accessibility and preferences",
+    "status": "PASS targeted native/injected coverage",
+    "evidence": [
+      "consent-fixture-first.json",
+      "native-compiled.json",
+      "compiled-console.json"
+    ],
+    "detail": "Actual keyboard Tab boundary/Escape/focus return, portrait/landscape scroll, nested Settings/privacy pause and manual pause ownership, actual reload/Continue with1500ZC/ID and one canvas. Source fixture tests disposal/remount/late transport. No real physical touch/background/process restart."
+  },
+  {
+    "area": "Routes, SEO, build and network boundary",
+    "status": "PASS final local source",
+    "evidence": [
+      "final-local/report.json",
+      "final-local/routes.json",
+      "structural-audit.json",
+      "http-artifacts.json",
+      "compiled-observed-assets.json",
+      "compiled-game-assets.json",
+      "final-local/network-locked-serve.json"
+    ],
+    "detail": "481 tests,201 checked files/zero diagnostics,9routes and24 exact served artifacts plus direct/play/sitemap. All journal main text and metadata retained against M6-07. No static Google tags/fonts; compiled observed resources self-only under QA-only external-blocking header. PUBLIC_GA4_ID retained with synthetic G-QACONSENT000 in test build. Provider delivery intentionally UNRUN."
+  },
+  {
+    "area": "Authoritative notice evidence",
+    "status": "PARTIAL:8/12 original findings accounted,4 full permission texts unresolved",
+    "evidence": [
+      "notice-resolution.json",
+      "corrected-installed-notice-scan.json",
+      "staged-notice-bytes.json",
+      "../../licenses/build-tooling/manifest.json",
+      "bundle-analysis.json"
+    ],
+    "detail": "281 installed packages; LICENCE fixes3 scanner false positives,5 missing direct texts supplemented from pinned upstream/matching installed parent;9 physical standalone-file absences remain in unmodified node_modules. Nine exact text files include vendor Rolldown external-project notice. Only Three is emitted among current browser dependency modules; no exhaustive native/source redistribution clearance."
+  },
+  {
+    "area": "Preservation and cleanup",
+    "status": "PASS",
+    "evidence": [
+      "candidate-build-archive.json",
+      "final-guard.json",
+      "browser-cleanup.json"
+    ],
+    "detail": "Five superseded generated candidates archived with50 unique blobs and every CRC/SHA verified before bounded removal;10 loose builds remain,16,688,839bytes net reclaimed. Final build, original source/media/failures/owner saves/old dist and two existing rollback archives preserved. Only owned tabs22/23 and QA servers closed;4322/4345/4346/4347 free. Owner4345 already absent, not restarted."
+  },
+  {
+    "area": "Whole M6-06 / release sign-off",
+    "status": "PARTIAL / NOT CLEARED",
+    "evidence": [
+      "risk-register.json",
+      "next-gates-plan.json"
+    ],
+    "detail": "Legacy hero/favicon rights,4 direct notice texts/native transitive scope, privacy/hosting/legal facts and exact Cloudflare build environment remain open, with inherited device/GPU/human/recording/import gaps. No checkbox completion/progress increment;44/51."
+  }
+]
