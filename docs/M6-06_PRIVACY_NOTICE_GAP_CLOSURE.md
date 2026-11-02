@@ -55,3 +55,8 @@ Prioritized next work, subject to parent dispatch:
 5. **External deployment configuration:** exact Cloudflare source/build/root/autodeploy and builder Node; local Node24.12.0 meets Astro7.4.4's >=22.23.4 requirement, remote compatibility remains unknown. Existing exact11 vendor advisory ranges remain in the prior audit; no dependency change or new audit-zero claim in this slice. M6-08 requires a separate release dispatch after unresolved gates close.
 
 Inherited recovery download and QA46 remain **BLOCKED/UNRUN, never retried**. No new denial/pending permission or uncertain mutation remains in this slice. Stop here for parent review. M0-01/M4-07/M5-07/M6-01/M6-03/M6-06/M6-08 remain unchecked.
+
+
+## Later four-package notice review - 2026-11-02 UTC
+
+[Current review](M6-06_FOUR_PACKAGE_NOTICES.md) adds a qualified matching-version/code boolbase1.0.0 ISC source notice.9/12original directfindings accounted;3fulltexts remain,not the earlier4. Earlier evidence stays historical/immutable. Installed9physicalfileabsences remain;no wholelegal/native clearance. M6-06 stillPARTIAL.

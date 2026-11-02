@@ -1,0 +1,162 @@
+{
+  "method": "Read-only installed package-lock dependency resolution, dependencies/optional edges plus rootdev. One shortest path, all direct declared dependents; no package code/CLI run.",
+  "installedPackageEntries": 281,
+  "packages": [
+    {
+      "name": "am-i-vibing",
+      "version": "0.5.0",
+      "lockDevFlag": false,
+      "location": "node_modules/am-i-vibing",
+      "shortestDeclaredPath": [
+        {
+          "parent": "",
+          "child": "node_modules/astro",
+          "declaredName": "astro",
+          "range": "7.4.4",
+          "field": "dependencies"
+        },
+        {
+          "parent": "node_modules/astro",
+          "child": "node_modules/am-i-vibing",
+          "declaredName": "am-i-vibing",
+          "range": "^0.5.0",
+          "field": "dependencies"
+        }
+      ],
+      "directDependents": [
+        {
+          "parent": "node_modules/astro",
+          "child": "node_modules/am-i-vibing",
+          "declaredName": "am-i-vibing",
+          "range": "^0.5.0",
+          "field": "dependencies"
+        }
+      ],
+      "browserExposure": "Verify final emitted module/chunk evidence separately; lockDev:false is not evidence of browser shipment."
+    },
+    {
+      "name": "boolbase",
+      "version": "1.0.0",
+      "lockDevFlag": false,
+      "location": "node_modules/boolbase",
+      "shortestDeclaredPath": [
+        {
+          "parent": "",
+          "child": "node_modules/astro",
+          "declaredName": "astro",
+          "range": "7.4.4",
+          "field": "dependencies"
+        },
+        {
+          "parent": "node_modules/astro",
+          "child": "node_modules/svgo",
+          "declaredName": "svgo",
+          "range": "^4.1.0",
+          "field": "dependencies"
+        },
+        {
+          "parent": "node_modules/svgo",
+          "child": "node_modules/css-select",
+          "declaredName": "css-select",
+          "range": "^6.0.0",
+          "field": "dependencies"
+        },
+        {
+          "parent": "node_modules/css-select",
+          "child": "node_modules/boolbase",
+          "declaredName": "boolbase",
+          "range": "^1.0.0",
+          "field": "dependencies"
+        }
+      ],
+      "directDependents": [
+        {
+          "parent": "node_modules/css-select",
+          "child": "node_modules/boolbase",
+          "declaredName": "boolbase",
+          "range": "^1.0.0",
+          "field": "dependencies"
+        },
+        {
+          "parent": "node_modules/nth-check",
+          "child": "node_modules/boolbase",
+          "declaredName": "boolbase",
+          "range": "^1.0.0",
+          "field": "dependencies"
+        }
+      ],
+      "browserExposure": "Verify final emitted module/chunk evidence separately; lockDev:false is not evidence of browser shipment."
+    },
+    {
+      "name": "piccolore",
+      "version": "0.1.3",
+      "lockDevFlag": false,
+      "location": "node_modules/piccolore",
+      "shortestDeclaredPath": [
+        {
+          "parent": "",
+          "child": "node_modules/astro",
+          "declaredName": "astro",
+          "range": "7.4.4",
+          "field": "dependencies"
+        },
+        {
+          "parent": "node_modules/astro",
+          "child": "node_modules/piccolore",
+          "declaredName": "piccolore",
+          "range": "^0.1.3",
+          "field": "dependencies"
+        }
+      ],
+      "directDependents": [
+        {
+          "parent": "node_modules/astro",
+          "child": "node_modules/piccolore",
+          "declaredName": "piccolore",
+          "range": "^0.1.3",
+          "field": "dependencies"
+        }
+      ],
+      "browserExposure": "Verify final emitted module/chunk evidence separately; lockDev:false is not evidence of browser shipment."
+    },
+    {
+      "name": "process-ancestry",
+      "version": "0.1.0",
+      "lockDevFlag": false,
+      "location": "node_modules/process-ancestry",
+      "shortestDeclaredPath": [
+        {
+          "parent": "",
+          "child": "node_modules/astro",
+          "declaredName": "astro",
+          "range": "7.4.4",
+          "field": "dependencies"
+        },
+        {
+          "parent": "node_modules/astro",
+          "child": "node_modules/am-i-vibing",
+          "declaredName": "am-i-vibing",
+          "range": "^0.5.0",
+          "field": "dependencies"
+        },
+        {
+          "parent": "node_modules/am-i-vibing",
+          "child": "node_modules/process-ancestry",
+          "declaredName": "process-ancestry",
+          "range": "^0.1.0",
+          "field": "dependencies"
+        }
+      ],
+      "directDependents": [
+        {
+          "parent": "node_modules/am-i-vibing",
+          "child": "node_modules/process-ancestry",
+          "declaredName": "process-ancestry",
+          "range": "^0.1.0",
+          "field": "dependencies"
+        }
+      ],
+      "browserExposure": "Verify final emitted module/chunk evidence separately; lockDev:false is not evidence of browser shipment."
+    }
+  ]
+}

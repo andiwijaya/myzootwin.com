@@ -64,3 +64,8 @@ Only owned QA tabs closed; viewport reset. Ports 4322/4346 free; owner 4345 was 
 ## Later bounded gap closure - 2026-11-02 UTC
 
 See [current privacy/notice report](M6-06_PRIVACY_NOTICE_GAP_CLOSURE.md). The earlier12-notice/journal integration observations above remain historical, not the latest status: optional tracking is now gated, remote fonts removed,8/12 direct findings accounted and4 remain. M6-06 stays PARTIAL; no overall legal/release clearance. Exact vendor advisory ranges and upgrade exposure analysis above are unchanged.
+
+
+## Later four-package notice review - 2026-11-02 UTC
+
+[Current review](M6-06_FOUR_PACKAGE_NOTICES.md) adds a qualified matching-version/code boolbase1.0.0 ISC source notice.9/12original directfindings accounted;3fulltexts remain,not the earlier4. Earlier evidence stays historical/immutable. Installed9physicalfileabsences remain;no wholelegal/native clearance. M6-06 stillPARTIAL.

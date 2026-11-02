@@ -1,0 +1,16 @@
+import pathlib,json,urllib.request,urllib.parse,urllib.error,base64,hashlib,datetime
+w=pathlib.Path(r'C:\Users\andi_\Documents\Codex\2026-10-31\task\m6-06-notice-four');history=json.loads((w/'boolbase-license-history.json').read_text());assert history['status']=='READ' and history['eligibleOldestObservedCommit'];commit=history['eligibleOldestObservedCommit'];pkg=next(x for x in json.loads((w/'registry-tarball-audit.json').read_text())['packages'] if x['name']=='boolbase');folder=w/'upstream-candidates';row={'at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'name':'boolbase','version':'1.0.0','commit':commit,'basis':'Observed license creation commit from bounded official repository path history; verify exact package version and every archive runtime-code member, no retroactive terms inferred.','requests':[],'files':[]}
+try:
+ for path in ['LICENSE','package.json']+[x['path'] for x in pkg['codeFiles']]:
+  url='https://api.github.com/repos/fb55/boolbase/contents/'+urllib.parse.quote(path,safe='/')+'?ref='+commit;request=urllib.request.Request(url,headers={'Accept':'application/vnd.github+json','User-Agent':'MyZooTwin-local-license-audit'})
+  with urllib.request.urlopen(request,timeout=20) as response:
+   raw=response.read(1_000_001);assert len(raw)<=1_000_000;data=json.loads(raw);content=base64.b64decode(data['content']);assert hashlib.sha1(b'blob '+str(len(content)).encode()+b'\0'+content).hexdigest()==data['sha'];local=folder/('boolbase-'+commit+'-'+path.replace('/','__'));assert not local.exists();local.write_bytes(content)
+   item={'path':path,'sourceURL':data['html_url'],'url':url,'HTTP':response.status,'blobSHA1':data['sha'],'sha256':hashlib.sha256(content).hexdigest(),'bytes':len(content),'local':str(local)};row['requests'].append({'url':url,'responseSHA256':hashlib.sha256(raw).hexdigest()})
+   if path=='package.json':sourcePkg=json.loads(content);item['identity']={k:sourcePkg.get(k) for k in ['name','version','license']};assert sourcePkg['name']=='boolbase' and sourcePkg['version']=='1.0.0' and sourcePkg['license']=='ISC'
+   elif path!='LICENSE':expected=next(x['sha256'] for x in pkg['codeFiles'] if x['path']==path);item['exactArchiveAndInstalledCodeMatch']=item['sha256']==expected;assert item['exactArchiveAndInstalledCodeMatch'],'Runtime code does not match exact archive'
+   else:assert b'Permission to use, copy, modify' in content and b'THE SOFTWARE IS PROVIDED' in content
+   row['files'].append(item)
+ row.update(status='MATCHING_VERSION_SOURCE_NOTICE_VERIFIED',allRuntimeCodeMembersMatched=True,scope='Supplemental exact upstream full ISC notice for matching boolbase1.0.0 source with byte-identical125byte runtimecode. The npm archive itself still has no license file; no blanket ownership/transitive/legal sign-off.')
+except urllib.error.HTTPError as e:row.update(status='UNRESOLVED_BRIDGE_READ_FAILED_NO_RETRY',target=e.url,HTTP=e.code,denied=e.code in [401,403],reason=str(e))
+except Exception as e:row.update(status='UNRESOLVED_BRIDGE_MISMATCH_OR_READ_ERROR',reason=str(e))
+(w/'boolbase-source-bridge.json').write_text(json.dumps(row,indent=2)+'\n',encoding='utf-8');print(json.dumps({'status':row['status'],'commit':commit,'files':[{k:x.get(k) for k in ['path','sha256','identity','exactArchiveAndInstalledCodeMatch']} for x in row['files']]}))

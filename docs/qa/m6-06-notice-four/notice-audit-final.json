@@ -1,0 +1,113 @@
+{
+  "at": "2026-11-02T18:16:29.535528+00:00",
+  "status": "PASS bounded notice audit; wholeM6-06PARTIAL",
+  "packages": [
+    {
+      "name": "am-i-vibing",
+      "version": "0.5.0",
+      "publisher": "GitHub Actions",
+      "archiveIntegrityAndInstalledSourceRechecked": true,
+      "standaloneNoticeInArchive": false,
+      "emittedBrowserCode": false,
+      "status": "UNRESOLVED_NO_FULL_PERMISSION_TEXT_AT_INSPECTED_SOURCES"
+    },
+    {
+      "name": "boolbase",
+      "version": "1.0.0",
+      "publisher": "feedic",
+      "archiveIntegrityAndInstalledSourceRechecked": true,
+      "standaloneNoticeInArchive": false,
+      "emittedBrowserCode": false,
+      "status": "MATCHING_VERSION_SOURCE_FULL_NOTICE_ACCOUNTED"
+    },
+    {
+      "name": "piccolore",
+      "version": "0.1.3",
+      "publisher": "GitHub Actions",
+      "archiveIntegrityAndInstalledSourceRechecked": true,
+      "standaloneNoticeInArchive": false,
+      "emittedBrowserCode": false,
+      "status": "UNRESOLVED_NO_FULL_PERMISSION_TEXT_AT_INSPECTED_SOURCES"
+    },
+    {
+      "name": "process-ancestry",
+      "version": "0.1.0",
+      "publisher": "ascorbic",
+      "archiveIntegrityAndInstalledSourceRechecked": true,
+      "standaloneNoticeInArchive": false,
+      "emittedBrowserCode": false,
+      "status": "UNRESOLVED_NO_FULL_PERMISSION_TEXT_AT_INSPECTED_SOURCES"
+    }
+  ],
+  "directTextsAccounted": 9,
+  "totalOriginalFindings": 12,
+  "exactTextFiles": [
+    "astrojs-compiler-binding-win32-x64-msvc-0.5.2-LICENSE.txt",
+    "bruits-satteri-win32-x64-msvc-0.10.5-LICENSE.txt",
+    "napi-rs-wasm-runtime-1.2.4-LICENSE.txt",
+    "rolldown-binding-win32-x64-msvc-1.2.16-LICENSE.txt",
+    "vscode-l10n-0.0.18-LICENSE.txt",
+    "boolbase-1.0.0-LICENSE.txt",
+    "fnv1a-64-0.1.2-LICENCE.txt",
+    "std-env-4.3.0-LICENCE.txt",
+    "unifont-1.0.3-LICENCE.txt",
+    "rolldown-1.2.16-THIRD-PARTY-LICENSE.txt"
+  ],
+  "physicalStandaloneAbsencesInUnmodifiedInstalledTree": 9,
+  "remaining": [
+    "am-i-vibing@0.5.0",
+    "piccolore@0.1.3",
+    "process-ancestry@0.1.0"
+  ],
+  "qualification": "boolbase full notice is from observedmatching-version officialsource, sole runtimefile exactarchivebytes, source packageJSON scripts field differs; not originalarchive license-file presence or inferredretroactivegrant.",
+  "requiredNoticeCoverage": {
+    "currentBrowserArtifacts": "OnlyThree among emitted dependency modules; keep existing public fullMIT notices. None of auditedfour emitted, so do not present them as shipped browser libraries.",
+    "buildSourceComplianceRecord": "docs/licenses/build-tooling/boolbase-1.0.0-LICENSE.txt plus manifest source bridge; existing notice files retained. Repository placement is a project choice, not a legalfilename requirement.",
+    "redistributionContainingPackageCode": "Carry applicable copyright/permission notices with code according to actual license. Three remaining fulltexts unresolved; this audit grants no source/native/legalclearance."
+  },
+  "freshBuild": {
+    "runId": "n20261102T181134Z",
+    "status": "PASS",
+    "sourceId": "45145f5fac6380f8a011ad78a3576613f42e388ca76bf5b2f4009287ff113e6e",
+    "artifactsByteIdentical": 24,
+    "browserThirdParty": [
+      "three"
+    ],
+    "unitCheckReuse": {
+      "run": "s20261102T174805Z",
+      "sourceId": "45145f5fac6380f8a011ad78a3576613f42e388ca76bf5b2f4009287ff113e6e",
+      "unitCounts": {
+        "tests": 485,
+        "pass": 485,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "unitLogSHA256": "159d2588cbc653b70c3327bba0410105a7e6545250de6384be844c728822600d",
+      "checkLogSHA256": "424f90442467d2aff2cd302f768f254ce966260c1649bcbcbb012156ed403599",
+      "reason": "Only docs/notices changed, outside app/test/script/public source fingerprint. No redundant test rerun or new browser pass claimed."
+    }
+  },
+  "protectedArchives": [
+    {
+      "path": ".qa/archives/m6-05/superseded-builds.zip",
+      "sha256": "e175b4be5c2e1880886123779c3d358cca6b3d9fc7d64ddf12b7a1aeb5c3aec3"
+    },
+    {
+      "path": ".qa/archives/m6-07/candidate-builds.zip",
+      "sha256": "722252b7841a16eaa1a72274868f194b37e7ae9ad3776fc9905545d9e9d96f08"
+    },
+    {
+      "path": "C:\\MyZooTwin\\.qa\\archives\\m6-06-gap\\superseded-builds.zip",
+      "sha256": "f2b40b323123f5ba1e2d81da06db59f192b5755f7c2e1d8a8e17c4e80522cc56"
+    }
+  ],
+  "ownerBuildPreserved": true,
+  "noVersionGraphOrAuditedInstalledSourceChange": true,
+  "noArtReplacement": true,
+  "noDownloadedTarballOrAuditedPackageBinDebugInvocation": true,
+  "normalizedArchivePermissionClauseScan": "No full-clause token match in any audited archive member; filenames and declaration-only text inspected separately.",
+  "V1": "44/51 (86.27%)",
+  "legalClearance": false
+}
