@@ -1,0 +1,30 @@
+TAP version 13
+# Subtest: seeded mixed public-command traces preserve independent money/topology oracles, exact events and codec replay across speed partitions and journal folds
+not ok 1 - seeded mixed public-command traces preserve independent money/topology oracles, exact events and codec replay across speed partitions and journal folds
+  ---
+  duration_ms: 2140.8786
+  type: 'test'
+  location: 'C:\\MyZooTwin\\tests\\mixed-invariants.test.mjs:28:1'
+  failureType: 'testCodeFailure'
+  error: '{"admissions":0,"visitor":{"open":true,"active":1,"capacity":3,"ready":true,"total":1,"reason":"ready","ids":["arrival-1"],"people":[{"id":"arrival-1","phase":"entering","feedback":null,"entry":"pending","ticketAmount":null}],"queued":0,"walking":1,"viewing":0,"returning":0,"viewedTotal":0,"feedback":{"evaluated":0,"scored":0,"scoreSum":0,"positive":0,"negative":0,"interrupted":0,"recent":[]},"tickets":{"balance":885,"price":10,"admissions":0,"revenue":0,"reason":"ready","last":null},"attraction":{"ready":true,"reason":"ready","welfare":76,"intervalTicks":94,"level":"steady"}},"mission":{"currentId":"Q03","command":378,"completed":2,"rewards":20,"habitat":true,"connected":true,"care":{"animals":[{"id":"macaw-1","placed":true,"fed":true,"watered":true,"welfare":75.89,"foodAccess":true,"waterAccess":true,"perchAccess":true},{"id":"macaw-2","placed":true,"fed":true,"watered":true,"welfare":75.89,"foodAccess":true,"waterAccess":true,"perchAccess":true}],"placed":2,"fed":2,"watered":2,"holding":true,"unlocked":true,"next":"observe","threshold":60,"durationTicks":50,"comfortableTicks":50},"visit":{"admissions":0,"viewings":0,"requiredAdmissions":3,"requiredViewings":1,"ids":[],"viewedId":null,"badged":false,"qualified":false,"connected":true,"open":true,"next":"observe","coins":40,"badgeId":"first-visitors"},"thriving":{"ticks":0,"durationTicks":300,"revenue":0,"requiredRevenue":20,"admissions":0,"requiredAdmissions":2,"holding":true,"qualified":false,"unlocked":false,"next":"observe","threshold":60,"birds":[{"id":"macaw-1","welfare":75.89},{"id":"macaw-2","welfare":75.89}],"unlockId":"sanctuary-banner","badgeId":"thriving-sanctuary"},"rows":[{"id":"Q01","status":"claimed","coins":20,"unlockId":null,"badgeId":null},{"id":"Q02","status":"claimed","coins":0,"unlockId":"aviary-blossoms","badgeId":null},{"id":"Q03","status":"active","coins":40,"unlockId":null,"badgeId":"first-visitors"},{"id":"Q04","status":"locked","coins":0,"unlockId":"sanctuary-banner","badgeId":"thriving-sanctuary"}]},"birds":{"bird1X":4.5,"bird1Z":5.25,"bird1Height":0.043400000000000015,"bird1Phase":6,"bird1Sequence":5,"bird1Welfare":75.89,"bird1HabitatFit":100,"bird1WelfareLow":0,"bird1Hunger":45,"bird1FoodEaten":6,"bird1Thirst":25,"bird1WaterDrunk":7,"bird1Energy":83.72,"bird1Enrichment":94.24,"bird1RestedTicks":169,"bird1EnrichedTicks":90,"bird2X":5.5,"bird2Z":5.25,"bird2Height":0.08679999999999997,"bird2Phase":6,"bird2Sequence":5,"bird2Welfare":75.89,"bird2HabitatFit":100,"bird2WelfareLow":0,"bird2Hunger":45,"bird2FoodEaten":6,"bird2Thirst":25,"bird2WaterDrunk":7,"bird2Energy":83.72,"bird2Enrichment":94.27,"bird2RestedTicks":169,"bird2EnrichedTicks":90}}'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/mixed-invariants.test.mjs:54:55)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1106:25)
+    Test.start (node:internal/test_runner/test:1003:17)
+    startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17)
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2336.9043

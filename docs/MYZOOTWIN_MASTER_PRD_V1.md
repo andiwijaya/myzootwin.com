@@ -1,5 +1,8 @@
 <!-- CANONICAL WORKING REQUIREMENTS: complete text transcription from owner-supplied Library source libfile_95d9687acd708191a8960074770c3410 (MYZOOTWIN_MASTER_PRD_V1(1).md), provided as source-text handoff on 2026-10-31. Not a byte-exact native materialization. Immutable text transcript: sources/MYZOOTWIN_MASTER_PRD_V1.transcript.md. -->
 
+
+Current verified status (2026-11-02 UTC): **42/51 (82.35%)**, M6 **2/8**. Historical execution records retain their original dates/counts. Latest report: [M6-04](M6-04_WHITE_BOX_INVARIANTS.md).
+
 # MYZOOTWIN.COM — MASTER PRODUCT REQUIREMENTS DOCUMENT
 ## Living Zoo Simulator | Game-First, Browser-First
 
@@ -391,7 +394,7 @@ Dot harus memperjelas typing dan validasi aktual sebelum implementasi; `unknown`
 - [ ] **M6-01** GPU/browser profiling; optimize only measured bottlenecks; meet mobile FPS target or document measured limitations. **Verify:** FPS metrics and before/after profile.
 - [x] **M6-02** Compress/lazy-load game assets, review initial payload / memory leak / error boundary. **Verify:** measured bundle and soak test.
 - [ ] **M6-03** Black-box end-user tests across devices, including failure/recovery. **Verify:** full test evidence.
-- [ ] **M6-04** White-box state/invariants tests: welfare ranges, money ledger, path validity, mission idempotence, speed. **Verify:** automated test report.
+- [x] **M6-04** White-box state/invariants tests: welfare ranges, money ledger, path validity, mission idempotence, speed. **Verify:** automated test report.
 - [ ] **M6-05** Dead-code/dependency/asset/license audit; repo, build, QA artifact cleanup (keep usable licensed media). **Verify:** audit summary and repo size.
 - [ ] **M6-06** Security &amp; privacy review: no PII/login, storage transparency, safe errors, accessibility. **Verify:** sign-off notes.
 - [ ] **M6-07** Update homepage game CTA, metadata, in-site Learn relationship, preserve existing public URLs; minimal privacy-safe telemetry where compliant. **Verify:** SEO route regression &amp; events.
@@ -1055,3 +1058,12 @@ BB-603-01 fixed: repeated loading refresh erased restored Build access cache alt
 Final `s20261102T091845Z`, source `bf1db4be44ad9d776020d2ce4ae8d26f9dfcd67208787704a1dda399625c6e56`, build `24c50c02179cddb4ef329d0c3c091ed97f10881fc15815e4ec489eab4a9205d5`:457 tests,182checked files/zero diagnostics,9routes,48affected browser cases. First source-HUD import failure retained with unproven cause; later serial20PASS and compiled native3PASS. Full raw history CRC/SHA archived,3generated runs kept. Native viewport capture limitation at1920 and known lower UX issues recorded.
 
 **Actual Android/real touch/distinct Chrome/Edge/Safari device matrix UNRUN**, so M6-03 remains unchecked; agent walkthrough is not a human study or release pass. V1 **41/51 (80.39%)**, M6 **1/8**. M0-01/M4-07/M5-07/M6-01 partial; GPU risk unresolved. Owner4345/PID18816/build/saves untouched/HTTP200; normalQA closed before09:45UTC. Prior download BLOCKED/UNRUN and QA46 close UNRUN, no retries. No push/deploy/Actions/login/grants. Hard stop10:00UTC/17:00WIBtoday; nextM6-04 only after parent dispatch.
+
+
+## M6-04 COMPLETE - 2026-11-02 UTC
+
+Implementation **`9e7990ed23bbff3fe57ba9a76b1480d43e2aaa5c`**, local only. [Report](M6-04_WHITE_BOX_INVARIANTS.md), [automated audit](qa/m6-04/independent-audit.json), [acceptance mapping](qa/m6-04/acceptance-matrix.json). Fixed reentrant clock/frame accounting and unrelated-edit visitor backtracking, with7 new regression cases and independent combined balance/topology oracles. Three1500-tick schedules each complete Q01-Q04,5 tickets,3 journal folds,360 edit operations and6 codec resumes with full-state/event equality across1x/10x partitions.
+
+Final `s20261102T125154Z`:464 tests,184 checked files/zero diagnostics,9routes;20HUD+19recovery browser integration cases,0exports. Native compiled actual purchase/Pause/10x/reload/Continue preserves1habitat/1200ZC/10x, desktop/portrait/landscape screenshots; no fresh final-source full-loop/physical-device claim. Source `4fa4e01cb3534645a9d23a1cbcb06dd1291102756cd015e869e69f6825f11995`, build `370f59c574e63db5a4196a7fba86afd7b8ad5eee6ab3dbd7b7d6a76d5bd9155a`. Original failed reproductions/fixture mistakes retained; M6-03 initial import failure cause remains unproven. Generic browser-template gate UNRUN.
+
+V1 **42/51 (82.35%)**, M6 **2/8**. M0-01/M4-07/M5-07/M6-01/M6-03 remain partial; GPU risk and native/physical/recording/human gates persist. Owner4345/PID18816 already absent at initial check; no restart/tab/save access, olddist exact unchanged. Owned QA tabs/servers closed, viewport reset and ports free. Blocked download/QA46 not retried. No push/deploy/Actions/login/grants. Next **M6-05**, await parent review/dispatch; earlier stop superseded by explicit resume.

@@ -1,0 +1,83 @@
+TAP version 13
+# Subtest: seeded mixed public-command traces preserve independent money/topology oracles, exact events and codec replay across speed partitions and journal folds
+ok 1 - seeded mixed public-command traces preserve independent money/topology oracles, exact events and codec replay across speed partitions and journal folds
+  ---
+  duration_ms: 8129.406
+  type: 'test'
+  ...
+# {"scope":"Three seeded cross-module traces; actual fixed ticks, commands and codec, not real-time play or physical FPS","summaries":[{"seed":270544960,"groups":150,"simulationTicks":1500,"successfulEditOperations":360,"staleChecks":150,"resumes":6,"admissions":5,"completed":["Q01","Q02","Q03","Q04"],"compactions":3,"currency":975,"eventSHA256":"46c3efbebc485ac134b065343297a5f6b5244e9b535061a36589d8e306957103","saveSHA256":"240d9c62e384563b729ddea16f271a6ca34f0b8173bd3197ef4c88bc0b552e23"},{"seed":2654435769,"groups":150,"simulationTicks":1500,"successfulEditOperations":360,"staleChecks":150,"resumes":6,"admissions":5,"completed":["Q01","Q02","Q03","Q04"],"compactions":3,"currency":975,"eventSHA256":"e6811ccc74ba3f0f5401a258c95a1e13e7baa5e992bc07c61ecd9cd73874fa66","saveSHA256":"0f83ab2bda981939bf682c47884bef77738e685a587e24db14e1ab6ae35db205"},{"seed":101916710,"groups":150,"simulationTicks":1500,"successfulEditOperations":360,"staleChecks":150,"resumes":6,"admissions":5,"completed":["Q01","Q02","Q03","Q04"],"compactions":3,"currency":975,"eventSHA256":"46c3efbebc485ac134b065343297a5f6b5244e9b535061a36589d8e306957103","saveSHA256":"240d9c62e384563b729ddea16f271a6ca34f0b8173bd3197ef4c88bc0b552e23"}]}
+# Subtest: real topology chooses shortest adjacent viewing cell; gaps, diagonals, creek, scenery and occupied land never form a route
+ok 2 - real topology chooses shortest adjacent viewing cell; gaps, diagonals, creek, scenery and occupied land never form a route
+  ---
+  duration_ms: 26.248
+  type: 'test'
+  ...
+# Subtest: full outbound/view/return cycles are exactly once, FIFO bounded, position-continuous and evaluate real inhabited habitat with actual admission
+ok 3 - full outbound/view/return cycles are exactly once, FIFO bounded, position-continuous and evaluate real inhabited habitat with actual admission
+  ---
+  duration_ms: 2292.7378
+  type: 'test'
+  ...
+# Subtest: all21 legal aviaries have an actual legal route, a completed visit and a safe return
+ok 4 - all21 legal aviaries have an actual legal route, a completed visit and a safe return
+  ---
+  duration_ms: 1629.6648
+  type: 'test'
+  ...
+# Subtest: occupied path and final escape bridge cannot be removed; unused/ahead branch edits replan safely and Undo restores topology
+ok 5 - occupied path and final escape bridge cannot be removed; unused/ahead branch edits replan safely and Undo restores topology
+  ---
+  duration_ms: 132.6178
+  type: 'test'
+  ...
+# Subtest: alternate return branch allows safe removal behind a guest without walking across deleted tiles
+ok 6 - alternate return branch allows safe removal behind a guest without walking across deleted tiles
+  ---
+  duration_ms: 722.9788
+  type: 'test'
+  ...
+# Subtest: habitat removal and gate closure preserve positions then return without false viewing or stranded queues; empty restoration recovers
+ok 7 - habitat removal and gate closure preserve positions then return without false viewing or stranded queues; empty restoration recovers
+  ---
+  duration_ms: 161.0501
+  type: 'test'
+  ...
+# Subtest: missing access admits no new greetings; actual connected inhabited restoration recovers intake
+ok 8 - missing access admits no new greetings; actual connected inhabited restoration recovers intake
+  ---
+  duration_ms: 288.2398
+  type: 'test'
+  ...
+# Subtest: moving/viewing state roundtrips exactly, deterministic frame partitions agree and pause/reconstruction never duplicate viewed events
+ok 9 - moving/viewing state roundtrips exactly, deterministic frame partitions agree and pause/reconstruction never duplicate viewed events
+  ---
+  duration_ms: 434.1324
+  type: 'test'
+  ...
+# Subtest: journey codec rejects unsafe positions, missing targets, multiple corridor owners, future ticks, disconnected escape and fake progress
+ok 10 - journey codec rejects unsafe positions, missing targets, multiple corridor owners, future ticks, disconnected escape and fake progress
+  ---
+  duration_ms: 95.0935
+  type: 'test'
+  ...
+# Subtest: actual animated rigs on turns, viewing and two-way shared corridor remain separated, supported and bounded with unchanged asset pool
+ok 11 - actual animated rigs on turns, viewing and two-way shared corridor remain separated, supported and bounded with unchanged asset pool
+  ---
+  duration_ms: 403.81
+  type: 'test'
+  ...
+# Subtest: exclusive narrow-corridor policy provides bounded FIFO service to both waiting bays and repeated fresh visits
+ok 12 - exclusive narrow-corridor policy provides bounded FIFO service to both waiting bays and repeated fresh visits
+  ---
+  duration_ms: 1456.4145
+  type: 'test'
+  ...
+1..12
+# tests 12
+# suites 0
+# pass 12
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 8344.9141

@@ -1,0 +1,25 @@
+{
+  "at": "2026-11-02T12:38:29.862Z",
+  "scope": "Bounded single nested callback, no recursive loop or owner data",
+  "clock": {
+    "acceptedMs": 100,
+    "outerSteps": 2,
+    "nestedSteps": 1,
+    "inspect": {
+      "accumulatorMs": 0,
+      "paused": false,
+      "disposed": false,
+      "droppedMs": 0,
+      "droppedSimulationMs": 0,
+      "speed": 1,
+      "lastAdvanceSteps": 2
+    }
+  },
+  "simulation": {
+    "expectedTicksAfter100": 1,
+    "expectedTicksAfter200": 2,
+    "afterFirst": 4,
+    "afterSecond": 4,
+    "nestedFrameSteps": 3
+  }
+}

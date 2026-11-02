@@ -1,0 +1,165 @@
+{
+  "status": "M6-04 COMPLETE: automated white-box requirement met; not overall release pass",
+  "implementationCommit": "9e7990ed23bbff3fe57ba9a76b1480d43e2aaa5c",
+  "runId": "s20261102T125154Z",
+  "sourceId": "4fa4e01cb3534645a9d23a1cbcb06dd1291102756cd015e869e69f6825f11995",
+  "buildId": "370f59c574e63db5a4196a7fba86afd7b8ad5eee6ab3dbd7b7d6a76d5bd9155a",
+  "unitTests": 464,
+  "checkedFiles": 184,
+  "diagnostics": {
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0
+  },
+  "routes": 9,
+  "targetedBrowser": {
+    "HUD": 20,
+    "recovery": 19,
+    "genericTemplateGate": "UNRUN",
+    "fixtureScope": "Owned whole starting save and labelled event/context/storage injection; not fresh human/device study"
+  },
+  "newTests": 7,
+  "newMixedTrace": {
+    "seeds": 3,
+    "ticksPerSeed": 1500,
+    "successfulEditOperationsPerSeed": 360,
+    "staleReplayChecksPerSeed": 150,
+    "codecResumesPerSeed": 6,
+    "admissionsPerSeed": 5,
+    "completedPerSeed": [
+      "Q01",
+      "Q02",
+      "Q03",
+      "Q04"
+    ],
+    "journalCompactionsPerSeed": 3,
+    "finalCoinsPerSeed": 975,
+    "randomization": "Seeded action schedule; same product seed, not different animal RNG-seed coverage",
+    "timeScope": "Deterministic simulated ticks, not real-time soak"
+  },
+  "fixedDefects": [
+    "WB-604-01: reentrant elapsed time can mint ticks and future frame can poison anchor",
+    "WB-604-02: repeated unrelated path edits rewind still-valid visitor route and can prevent admissions"
+  ],
+  "coverage": [
+    {
+      "requirement": "Welfare and needs ranges; real resource state transitions",
+      "tests": [
+        "welfare",
+        "animal-actions-qa",
+        "feeding",
+        "watering",
+        "resting",
+        "mixed-invariants"
+      ],
+      "checks": "Finite0..100 needs/welfare; causal formula, accessibility, portions/stock, two-bird contention and recovery"
+    },
+    {
+      "requirement": "Money ledger and idempotent tickets/spending/refunds",
+      "tests": [
+        "cashflow",
+        "spending",
+        "ticket-admission",
+        "world-editing",
+        "recovery",
+        "mixed-invariants"
+      ],
+      "checks": "Independent running-balance oracle, checkpoint reconciliation, stale nonce/revision rejection,12000 build/refund and10000 eligible internal admission regression, protected undo and recovery"
+    },
+    {
+      "requirement": "Path/occupancy validity",
+      "tests": [
+        "path-connectivity",
+        "habitat-construction",
+        "visitor-navigation",
+        "mixed-invariants"
+      ],
+      "checks": "Independent cell-set floodfill, exact occupant map, orthogonal route membership;21 legal habitats and edits/disconnections; unaffected entering/viewing/leaving progress preserved"
+    },
+    {
+      "requirement": "Mission reward exactly-once",
+      "tests": [
+        "missions",
+        "onboarding",
+        "care-mission",
+        "visitor-mission",
+        "thriving-mission",
+        "mixed-invariants"
+      ],
+      "checks": "Real prerequisite/duration/consumption/admission conditions, repeated claim unchanged, cash and noncash proof after codec/checkpoint"
+    },
+    {
+      "requirement": "Deterministic speed and interruptions",
+      "tests": [
+        "simulation-speed",
+        "simulation-contract",
+        "clock-reentrancy",
+        "mixed-invariants"
+      ],
+      "checks": "Seeded full-state and full-event equality across1x/10x wall partitions, pause, bounded catchup, nested-clock/frame protection, disposed observers"
+    },
+    {
+      "requirement": "Serialization migration, validation and recovery",
+      "tests": [
+        "save-recovery",
+        "autosave",
+        "pause-restart",
+        "mixed-invariants"
+      ],
+      "checks": "Strict schema/relationship/reward/ledger validation, migration/future/invalid data, original/lastgood preservation, interrupted writes/CAS; browser19 owned real-IDB checks"
+    },
+    {
+      "requirement": "Lifecycle cleanup and repeated flows",
+      "tests": [
+        "preview-lifecycle",
+        "clock-reentrancy",
+        "mixed-invariants"
+      ],
+      "checks": "Unsubscribe/dispose/RAF ownership and retry; browser20 HUD cases include contextloss, remount, exact payload reset/restore, zero export requests"
+    }
+  ],
+  "failureRetention": [
+    "Original bounded reentrancy-before.json",
+    "Mixed fixture failures: scenery-blocked cell and unmatched editor revision corrected without product changes",
+    "Actual no-admission mixed trace before navigation fix retained",
+    "M6-03 first import failure remains cause-unproven; this serial HUD run passed first invocation, no forced reload/retry"
+  ],
+  "ownerPreview": {
+    "initial": "4345free / PID18816 absent / ECONNREFUSED",
+    "final": "4345free, no restart attempted",
+    "buildPreserved": "e06d975a30b49470a1e80e915fbe39ce22ba102f16447dbef8776e7088d38b05",
+    "browserAndSaveAccess": "NONE",
+    "rawServeTemplateCaveat": "serve.json says Left running as stock template text; not an observed owner status. Scoped initial/final guards are authoritative."
+  },
+  "cleanup": {
+    "ownedTabs": [
+      "2",
+      "3",
+      "4"
+    ],
+    "closed": true,
+    "viewportReset": true,
+    "portsFree": [
+      4322,
+      4346
+    ]
+  },
+  "limits": [
+    "M0-01 externalCloudflare settings partial",
+    "M4-07 recording unsupported",
+    "M5-07 unaided human study UNRUN",
+    "M6-01 GPU timing increase cause unresolved, physical/presentedFPS UNRUN",
+    "M6-03 physical Android/real touch/distinct browsers UNRUN",
+    "Native background, physical speaker and browser-process restart UNRUN",
+    "Blocked recovery download and QA46 action/close not retried",
+    "No full fresh final-source golden path or new15-minute soak claimed"
+  ],
+  "production": "Not pushed/deployed; no Actions/login/grants",
+  "verifiedV1": {
+    "completed": 42,
+    "total": 51,
+    "percent": "82.35%",
+    "M6": "2/8"
+  },
+  "next": "M6-05 dependency/dead-code/asset/license/repository audit after parent review"
+}

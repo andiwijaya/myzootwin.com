@@ -1,0 +1,77 @@
+[
+  {
+    "requirement": "Welfare and needs ranges; real resource state transitions",
+    "tests": [
+      "welfare",
+      "animal-actions-qa",
+      "feeding",
+      "watering",
+      "resting",
+      "mixed-invariants"
+    ],
+    "checks": "Finite0..100 needs/welfare; causal formula, accessibility, portions/stock, two-bird contention and recovery"
+  },
+  {
+    "requirement": "Money ledger and idempotent tickets/spending/refunds",
+    "tests": [
+      "cashflow",
+      "spending",
+      "ticket-admission",
+      "world-editing",
+      "recovery",
+      "mixed-invariants"
+    ],
+    "checks": "Independent running-balance oracle, checkpoint reconciliation, stale nonce/revision rejection,12000 build/refund and10000 eligible internal admission regression, protected undo and recovery"
+  },
+  {
+    "requirement": "Path/occupancy validity",
+    "tests": [
+      "path-connectivity",
+      "habitat-construction",
+      "visitor-navigation",
+      "mixed-invariants"
+    ],
+    "checks": "Independent cell-set floodfill, exact occupant map, orthogonal route membership;21 legal habitats and edits/disconnections; unaffected entering/viewing/leaving progress preserved"
+  },
+  {
+    "requirement": "Mission reward exactly-once",
+    "tests": [
+      "missions",
+      "onboarding",
+      "care-mission",
+      "visitor-mission",
+      "thriving-mission",
+      "mixed-invariants"
+    ],
+    "checks": "Real prerequisite/duration/consumption/admission conditions, repeated claim unchanged, cash and noncash proof after codec/checkpoint"
+  },
+  {
+    "requirement": "Deterministic speed and interruptions",
+    "tests": [
+      "simulation-speed",
+      "simulation-contract",
+      "clock-reentrancy",
+      "mixed-invariants"
+    ],
+    "checks": "Seeded full-state and full-event equality across1x/10x wall partitions, pause, bounded catchup, nested-clock/frame protection, disposed observers"
+  },
+  {
+    "requirement": "Serialization migration, validation and recovery",
+    "tests": [
+      "save-recovery",
+      "autosave",
+      "pause-restart",
+      "mixed-invariants"
+    ],
+    "checks": "Strict schema/relationship/reward/ledger validation, migration/future/invalid data, original/lastgood preservation, interrupted writes/CAS; browser19 owned real-IDB checks"
+  },
+  {
+    "requirement": "Lifecycle cleanup and repeated flows",
+    "tests": [
+      "preview-lifecycle",
+      "clock-reentrancy",
+      "mixed-invariants"
+    ],
+    "checks": "Unsubscribe/dispose/RAF ownership and retry; browser20 HUD cases include contextloss, remount, exact payload reset/restore, zero export requests"
+  }
+]

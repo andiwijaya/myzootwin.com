@@ -1,0 +1,91 @@
+- banner:
+  - link "MyZooTwin home":
+    - /url: /
+    - generic: ✦
+    - generic: MyZooTwin
+  - navigation "Main navigation":
+    - link "Play Zoo":
+      - /url: /play/
+    - link "Animals":
+      - /url: /animals/
+    - link "Wildlife":
+      - /url: /wildlife/
+    - link "Pets":
+      - /url: /pets/
+    - link "Learn":
+      - /url: /learn/
+    - link "Adventures":
+      - /url: /adventures/
+    - link "Gear":
+      - /url: /gear/
+  - link "About":
+    - /url: /about/
+    - text: About ↗
+- main:
+  - region "Dunia kecil untuk dirawat.":
+    - generic "Status suaka":
+      - strong: 1.200 ZC
+      - generic: Belum ada satwa
+      - generic: Tamu 0
+      - generic "Misi saat ini Q01": Q01
+      - generic "Kecepatan simulasi 10×. Buka opsi": 10×
+    - region "Progres game lokal":
+      - generic "Detail simpanan":
+        - status: Tersimpan di perangkat
+        - generic: Detail simpanan
+      - paragraph: Dunia tersimpan sudah dimuat dan dijeda. Tidak ada progres selama kamu pergi.
+      - button "Lanjut bermain"
+    - generic "Opsi"
+    - option "English"
+    - option "Bahasa Indonesia" [selected]
+    - option "1× · normal"
+    - option "10× · perawatan lebih cepat" [selected]
+    - figure "Tropical Creek · suaka hidup":
+      - 'group "Tropical Creek: pulau 3D dengan palem, sungai, dan gerbang. Bangun habitat makaw tertutup atau periksa dunia; rawat burung, sambungkan jalur dan selesaikan misi suaka."'
+      - group "Aksi permainan":
+        - generic: Aksi permainan
+        - group "Kontrol kamera dunia":
+          - button "Perkecil" [disabled]: −
+          - status: 100%
+          - button "Perbesar" [disabled]: +
+          - button "Lihat semua" [disabled]
+      - tablist "Alat suaka":
+        - tab "Misi" [selected]
+        - tab "Rawat"
+        - tab "Tamu"
+        - tab "Bangun"
+      - tabpanel "Misi":
+        - group "Aksi permainan":
+          - generic: Aksi permainan
+          - region "Misi suaka":
+            - heading "Misi suaka" [level=3]
+            - region "2. Sambungkan gerbang":
+              - heading "2. Sambungkan gerbang" [level=4]
+              - list:
+                - 'listitem "Habitat: selesai"': ✓ Habitat
+                - 'listitem "Jalur: berikut"': Jalur
+                - 'listitem "Hadiah: berikut"': Hadiah
+              - paragraph: Tambahkan 5 petak jalur yang belum ada. Pratinjau dan konfirmasi satu per satu, dari gerbang sampai pagar.
+              - paragraph: Biaya 15 ZC · Saldo 1.200 ZC
+              - status
+              - button "Pratinjau petak jalur berikut · 15 ZC" [disabled]
+            - status: Sedang dikerjakan
+            - button "Klaim 20 ZC" [disabled]
+      - status
+- contentinfo:
+  - link "✦ MyZooTwin":
+    - /url: /
+    - generic: ✦
+    - generic: MyZooTwin
+  - paragraph: A curious field guide to the animals we share this planet with.
+  - link "Animals":
+    - /url: /animals/
+  - link "Wildlife":
+    - /url: /wildlife/
+  - link "Pets":
+    - /url: /pets/
+  - link "Learn":
+    - /url: /learn/
+  - link "About":
+    - /url: /about/
+  - generic: © 2026 MyZooTwin. Made for curious minds.
