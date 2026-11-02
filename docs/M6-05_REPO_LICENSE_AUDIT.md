@@ -1,0 +1,41 @@
+# M6-05 repository, dependency and asset audit - COMPLETE
+
+2026-11-02 UTC. Requirement: dead-code/dependency/asset/license audit and repo/build/QA hygiene, with summary and measured size. **43/51 (84.31%)**, M6 **3/8**. Audit completion records known rights/notice gaps; it is not blanket legal clearance or release readiness. [Acceptance mapping](qa/m6-05/acceptance-matrix.json), [structured report](qa/m6-05/independent-audit.json).
+
+Implementation **`5806587e3cbaf13818c4f4bdf917f35ed36ad03a`**, local only. Final run `s20261102T131415Z`, source `0f650b3c249e40477847b2b51f291aabd9737aa195fd367dbef387629e653e9c`, build `4aeee8cba4afe045d248a898c4e8ab592df2ceb20cc071cec49b5e829319e63b`. No dependency install, update, new media/license agreement or gameplay change. The only runtime-source edit corrects an obsolete comment; compiled output remains identical.
+
+## Code and dependency findings
+
+Conservative installed-TypeScript AST import graph, with Astro page/frontmatter/scripts and dynamic imports:92 source files reachable from5 page modules (dynamic pages produce9 routes),0 unresolved local imports,0 orphan candidates. Type-only edges retained intentionally; this does not prove every export is used. Installed compiler noUnusedLocals/noUnusedParameters audit:177 files,0 unused declarations and0 other diagnostics. Final Astro check separately covers184 files with0 errors/warnings/hints. No source was deleted just because it lacked a textual reference. [Graph](qa/m6-05/source-graph.json), [compiler audit](qa/m6-05/no-unused.json).
+
+`npm ls --all --json` exits0;369 installed packages inventoried against the lock, no missing required package and no install/upgrade. Six direct packages have actual purposes: Astro/site build, sitemap integration, Three.js client rendering, TypeScript checking, Astro checker and Three.js types. No arbitrary dependency removal/reclassification. [Dependency inventory](qa/m6-05/dependencies.json), [exact installed tree](qa/m6-05/npm-ls-all.json).
+
+One missing package.json license field (`astro/node_modules/zod-to-ts`1.2.0) is resolved from its installed full MIT LICENSE/copyright; metadata itself is not patched.13 packages have declared licenses but no standalone notice file in their installed folder. Their names and notice gaps remain explicit for any future source/native-tool redistribution. This is a metadata/local-notice audit, not an advisory scan or a blanket transitive redistribution sign-off; `full_transitive_license_audit_complete` remains false. The sharp Windows native package declares Apache-2.0 AND LGPL-3.0-or-later; its DLL is build tooling, absent from the measured19-file static output. No claim is made about distributing that tool binary.
+
+Rollup's final emitted client-module evidence contains only Three.js from node_modules (three.core, three.module and BufferGeometryUtils); the entry chunk contains project code. The publicly served Three.js MIT notice byte-matches installed LICENSE. External Google Fonts remain the preexisting integration and previously verified OFL references; no font binary was vendored or newly measured.
+
+## Asset provenance corrections
+
+[Living asset manifest](ASSET_MANIFEST.json) now contains26 entries,67 exact current file references including26 renderer-source files and4 public files.17 historical source hashes drifted as the game evolved; their original hashes/bytes and JSON pointers are retained as historical observations, with current values refreshed. Creation-time model/performance figures remain dated observations, not newly measured hardware results. Original gesture-activated synthetic ambience is now recorded with its source, seed-based synthesis and no external sample inputs. Obsolete environment/audio plans and early renderer descriptions are explicitly superseded by dated reports.
+
+Legacy journal hero PNG and favicon SVG hashes remain exact. Their independent origin/rights remain **unverified**; repository presence does not establish ownership or permission to export them in an asset pack. Existing site use is preserved, no new reuse/publishing is authorized here. The original macaw study, reusable model/art source and all meaningful previous QA evidence are retained. This gap must remain visible during M6-06/release review. [Before integrity](qa/m6-05/existing-asset-integrity.json), [manifest changes](qa/m6-05/manifest-changes.json).
+
+README now describes the actual local journal/game and isolated QA, rather than asserting unverified automatic Cloudflare deployment settings. Exact dashboard source binding/build/root policy is still M0-01 pending; no login or production change occurred.
+
+## Reversible artifact cleanup and size
+
+Before: **575,945,392 logical bytes** including.git, dependencies, QA and historical documentation. After cleanup/final build, before these new audit receipts: **547,570,707 bytes** (about0.55GB), comfortably below the PRD10GB preference. These are file-byte observations, not filesystem allocated blocks; final receipts/commit add a small amount. No Git history rewrite or dependency-folder purge.
+
+Eight exact superseded generated build directories held32,441,658 bytes. A content-addressed ZIP stores38 unique blobs plus per-build manifests in4,787,973 bytes; **27,653,685 bytes net reclaimed**. All152 archived file bodies were read back and checked by CRC/size/SHA both before and after the original generated copies were removed. No filesystem restore was performed or claimed. Six previous milestone-final builds, the M6-01 investigation baseline, all frozen snapshots and new final build remain; ownerdist was never selected.
+
+Local rollback archive: `.qa/archives/m6-05/superseded-builds.zip`, SHA256 **`e175b4be5c2e1880886123779c3d358cca6b3d9fc7d64ddf12b7a1aeb5c3aec3`**. **Ignored/local only, not included in this Git commit.** [Committed manifest/receipt](qa/m6-05/build-archive.json) identifies every original path/blob and safe restoration into a NEW `.qa/restored/<run>` tree. It is not a conventional directly extractable site tree; do not restore overdist/source/owner data. The archive itself remains on this laptop; source commits and earlier tracked receipts remain separate rollback evidence.
+
+Only eight resolved direct children of `C:\MyZooTwin\.qa\builds` were removed with native PowerShell, after archive, root/no-reparse/no-in-use checks. An initial parameter-set error in the preflight caused no removal; the corrected parent-path check completed the same target list. No source/media/docs/failure receipt was deleted. Audit helper initially rejected an external-font null path, then corrected its metadata handling; neither issue is hidden as a product failure or test pass.
+
+## Verification, reuse and remaining gates
+
+`$env:MYZOO_QA_SCOPE='hygiene-m6-05'; node scripts/qa/settings-isolated.mjs local` passes464/464 tests,184 Astro checked files/zero diagnostics, isolated build. `serve` verifies9 exact routes/canonicals, direct/play and9 sitemap entries. All19 known output files, including license/body hashes, pass actual loopback HTTP checks. **All19 final output files are byte-identical to M6-04**; its cited native/HUD/recovery browser evidence is reused explicitly. No new browser UI/device test or inflated browser verdict: generic browser template remainsUNRUN. [Final local report](qa/m6-05/final-local/report.json), [served artifacts](qa/m6-05/served-artifacts.json), [byte comparison](qa/m6-05/final-audit.json).
+
+Owner4345 already absent and remains free; no owner browser/save access or restart. Olddist fingerprint remains `e06d975a30b49470a1e80e915fbe39ce22ba102f16447dbef8776e7088d38b05`. Only owned QA servers closed;4322/4346 free, no QA tabs opened. The reusable raw serve template's “Left running” text is not a live owner-status observation. [Final guard](qa/m6-05/final-guard.json).
+
+M0-01/M4-07/M5-07/M6-01/M6-03 remain partial. Physical Android/real touch/distinct browsers, presentedFPS/GPU attribution, native background, speaker output, browser-process restart and independent human/recording evidence are not promoted. M6-03's first import failure remains unexplained. Blocked recovery download and denied QA46/baseline route were not retried. No push/deploy/Actions/login/grants. Next recommendation **M6-06** after parent review.

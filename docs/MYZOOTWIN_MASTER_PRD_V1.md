@@ -1,7 +1,7 @@
 <!-- CANONICAL WORKING REQUIREMENTS: complete text transcription from owner-supplied Library source libfile_95d9687acd708191a8960074770c3410 (MYZOOTWIN_MASTER_PRD_V1(1).md), provided as source-text handoff on 2026-10-31. Not a byte-exact native materialization. Immutable text transcript: sources/MYZOOTWIN_MASTER_PRD_V1.transcript.md. -->
 
 
-Current verified status (2026-11-02 UTC): **42/51 (82.35%)**, M6 **2/8**. Historical execution records retain their original dates/counts. Latest report: [M6-04](M6-04_WHITE_BOX_INVARIANTS.md).
+Current verified status (2026-11-02 UTC): **43/51 (84.31%)**, M6 **3/8**. Historical execution records retain their original dates/counts. Latest report: [M6-05](M6-05_REPO_LICENSE_AUDIT.md).
 
 # MYZOOTWIN.COM — MASTER PRODUCT REQUIREMENTS DOCUMENT
 ## Living Zoo Simulator | Game-First, Browser-First
@@ -395,7 +395,7 @@ Dot harus memperjelas typing dan validasi aktual sebelum implementasi; `unknown`
 - [x] **M6-02** Compress/lazy-load game assets, review initial payload / memory leak / error boundary. **Verify:** measured bundle and soak test.
 - [ ] **M6-03** Black-box end-user tests across devices, including failure/recovery. **Verify:** full test evidence.
 - [x] **M6-04** White-box state/invariants tests: welfare ranges, money ledger, path validity, mission idempotence, speed. **Verify:** automated test report.
-- [ ] **M6-05** Dead-code/dependency/asset/license audit; repo, build, QA artifact cleanup (keep usable licensed media). **Verify:** audit summary and repo size.
+- [x] **M6-05** Dead-code/dependency/asset/license audit; repo, build, QA artifact cleanup (keep usable licensed media). **Verify:** audit summary and repo size.
 - [ ] **M6-06** Security &amp; privacy review: no PII/login, storage transparency, safe errors, accessibility. **Verify:** sign-off notes.
 - [ ] **M6-07** Update homepage game CTA, metadata, in-site Learn relationship, preserve existing public URLs; minimal privacy-safe telemetry where compliant. **Verify:** SEO route regression &amp; events.
 - [ ] **M6-08** Final local build → authorized main push/deploy → live production smoke test desktop/mobile → rollback-ready V1 report. **Verify:** actual production URL, commit hash, test timestamps.
@@ -1067,3 +1067,14 @@ Implementation **`9e7990ed23bbff3fe57ba9a76b1480d43e2aaa5c`**, local only. [Repo
 Final `s20261102T125154Z`:464 tests,184 checked files/zero diagnostics,9routes;20HUD+19recovery browser integration cases,0exports. Native compiled actual purchase/Pause/10x/reload/Continue preserves1habitat/1200ZC/10x, desktop/portrait/landscape screenshots; no fresh final-source full-loop/physical-device claim. Source `4fa4e01cb3534645a9d23a1cbcb06dd1291102756cd015e869e69f6825f11995`, build `370f59c574e63db5a4196a7fba86afd7b8ad5eee6ab3dbd7b7d6a76d5bd9155a`. Original failed reproductions/fixture mistakes retained; M6-03 initial import failure cause remains unproven. Generic browser-template gate UNRUN.
 
 V1 **42/51 (82.35%)**, M6 **2/8**. M0-01/M4-07/M5-07/M6-01/M6-03 remain partial; GPU risk and native/physical/recording/human gates persist. Owner4345/PID18816 already absent at initial check; no restart/tab/save access, olddist exact unchanged. Owned QA tabs/servers closed, viewport reset and ports free. Blocked download/QA46 not retried. No push/deploy/Actions/login/grants. Next **M6-05**, await parent review/dispatch; earlier stop superseded by explicit resume.
+
+
+## M6-05 COMPLETE - 2026-11-02 UTC
+
+Implementation **`5806587e3cbaf13818c4f4bdf917f35ed36ad03a`**, local only. [Audit](M6-05_REPO_LICENSE_AUDIT.md), [acceptance mapping](qa/m6-05/acceptance-matrix.json), [structured evidence](qa/m6-05/independent-audit.json). Conservative92-source import graph and177-file unused-declaration audit find no safe dead-code deletion candidate;369 installed dependencies inventoried. Full MIT text resolves missing zod-to-ts metadata;13 standalone-notice gaps and legacy hero/favicon rights remain explicit, no blanket legal sign-off. Only Three.js appears in emitted client dependency modules; exact public MIT notice retained. Manifest26entries/67current references now preserves/refreshed17historical hashes and records original synthetic audio; README corrects unverified deployment assertions.
+
+Eight exact superseded generated builds archived locally with38unique blobs/152file SHA+CRC checks before removal, net27,653,685bytes reclaimed. Archive ignored/local only, exact SHA/manifest committed; no in-place restore claimed. Prior final builds, frozen baseline, ownerdist, source/media and historical failures retained. Repo measured575,945,392 ->547,570,707logical bytes before added audit receipts/commit; below10GB budget.
+
+Final `s20261102T131415Z`:464tests/184checked files/zero diagnostics,9routes and19HTTP bodies pass. All19 output files byte-identical to M6-04; prior native browser evidence reused explicitly, no new browser/device gate. Source `0f650b3c249e40477847b2b51f291aabd9737aa195fd367dbef387629e653e9c`, build `4aeee8cba4afe045d248a898c4e8ab592df2ceb20cc071cec49b5e829319e63b`. QA closed/ports free; owner4345 already absent, no restart/tab/save access, dist unchanged. Prior blocked download/QA46 not retried, M6-03 first import failure still unexplained. No installs/push/deploy/Actions/login/grants.
+
+V1 **43/51 (84.31%)**, M6 **3/8**. M0-01/M4-07/M5-07/M6-01/M6-03 remain partial; physical/native/human/recording/GPU and remaining release gates persist. Next **M6-06**, await parent review/dispatch.

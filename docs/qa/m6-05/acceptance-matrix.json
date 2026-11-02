@@ -1,0 +1,32 @@
+[
+  {
+    "area": "Dead code",
+    "result": "AUDIT COMPLETE",
+    "evidence": "source-graph.json, no-unused.json, final-local/check.log",
+    "finding": "92 conservative page-root-reachable source files,0 unresolved relative imports/candidates;177 TS audit files0 unused local/parameter or other diagnostics;184 Astro checked files0 diagnostics. No proof that every exported symbol is used; no safe source deletion candidate identified."
+  },
+  {
+    "area": "Dependencies",
+    "result": "AUDIT COMPLETE WITH NOTICE GAPS",
+    "evidence": "dependencies.json, npm-ls-all.json, final-audit.json",
+    "finding": "369 installed packages, exact lock graph/no missing required packages; all effective license metadata resolved, including zod-to-ts MIT LICENSE.13 missing standalone notice files remain for broader package redistribution; no update/advisory scan or legal clearance claimed. Six direct dependencies retained for known build/type/runtime purposes."
+  },
+  {
+    "area": "Assets/licenses",
+    "result": "AUDIT COMPLETE WITH LEGACY RIGHTS GAPS",
+    "evidence": "manifest-changes.json, final-audit.json, ../../ASSET_MANIFEST.json",
+    "finding": "26 asset entries,67 exact current file references;17 old source hashes retained as historical observations then refreshed; original synthetic ambience now recorded. Public legacy hero/favicon unchanged, rights unresolved. Only Three.js in emitted client modules; exact MIT notice retained. No new media acquisition or license agreement."
+  },
+  {
+    "area": "Repo/build/QA hygiene",
+    "result": "VERIFIED REVERSIBLE CLEANUP",
+    "evidence": "before.json, build-archive.json, final-audit.json",
+    "finding": "8 superseded generated copies32,441,658 bytes archived to local ignored4,787,973-byte content-addressed ZIP,38 blobs; CRC/every152 file SHA verified before and after removal.27,653,685 bytes net reclaimed. Six milestone-final builds plus new final retained; original docs/failures/media/dist kept."
+  },
+  {
+    "area": "Final verification",
+    "result": "PASS FOR APPLICABLE SCOPE",
+    "evidence": "final-local/report.json, served-artifacts.json, final-guard.json",
+    "finding": "464 tests,184 checked files0 diagnostics, build,9 route/canonical/directplay/sitemap checks,19 exact HTTP artifact bodies. All19 output files byte-identical to M6-04; native browser evidence reused explicitly, no new browser/device/performance certification."
+  }
+]

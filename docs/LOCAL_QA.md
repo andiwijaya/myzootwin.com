@@ -215,3 +215,10 @@ Final438/check167/9routes plus19 HUD cases per viewport (57),16 size/language ob
 ## M5-05 complete bilingual game UI - 2026-11-01
 
 Final443/check170/9routes;13-case localization fixture x3=39 plus19 HUD x3=57 and129 storage regressions. Explicit injected ID/non-ID browser argument is not a changed native browser locale. Native actual settings/old-game precedence/Continue and full three-viewport Q01-Q04 flows are separate. Localized decimal UI must never be parsed as authoritative money/time; use raw data. All fixtures disable optional downloads; preserve exact bytes using the scoped Git attribute. See M5-05_BILINGUAL_UI.md and qa/m5-05.
+
+
+## M6-05 scoped hygiene - 2026-11-02
+
+Current isolated audit gate uses `MYZOO_QA_SCOPE=hygiene-m6-05` with `node scripts/qa/settings-isolated.mjs local` and `serve`; default `qa:local` still writesdist and must not replace an owner-served build.464tests/184checked files,9routes; M6-05 output bytes equal M6-04 so browser evidence is explicitly reused, not rerun. See M6-05_REPO_LICENSE_AUDIT.md.
+
+Keep final milestone builds/ownerdist/investigation baselines, original media/saves and meaningful failures. Review redundant generated candidates before more than12loose isolated builds or100MB generated QA; this is a review threshold, not automatic permission to delete. Archive exact candidate bodies with CRC/every-file SHA, verify root/no-reparse/no-live-use, then remove only named copies. Committed receipts remain, local archive location/SHA/manifest must be stated; never pretend an ignored archive is in Git. Existing `qa:prune` acts only on its own `.qa/runs`, not every isolated build scope. Eight superseded copies are locally archived under `.qa/archives/m6-05`; no restore overdist/source. Legacy rights and13package-notice gaps remain for review; no license/physical/performance gate is cleared by hygiene.
