@@ -116,7 +116,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     if (disposed || lost) return;
     if (context?.isContextLost()) { notifyContextLoss(); return; }
     const world=habitatDirty||pathDirty||foodDirty||waterDirty||perchDirty?simulation.worldSnapshot():undefined;
-    if(habitatDirty&&habitats){lighting?.invalidate();habitats.sync(world!);decoration?.sync(world!,simulation.missionView().care.unlocked);banner?.sync(world!,simulation.missionView().thriving.unlocked);habitatDirty=false;}
+    if(habitatDirty&&habitats){habitats.sync(world!);lighting?.invalidate();decoration?.sync(world!,simulation.missionView().care.unlocked);banner?.sync(world!,simulation.missionView().thriving.unlocked);habitatDirty=false;}
     if(pathDirty&&paths){paths.sync(world!);picker?.refresh();pathDirty=false;}
     if(birdsDirty&&birds){const s=simulation.birdSnapshot();birds.sync(s.animals,s.habitats,s.width,s.height,simulationTimeMs);birdsDirty=false;announceBirds();}
     if(foodDirty){feeder?.sync(world!,foodPreview,simulation.foodView().canPlace);announceFood();foodDirty=false;}

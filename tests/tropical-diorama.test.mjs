@@ -51,3 +51,13 @@ test('quality toggles reuse owned material and retain geometry, catalog and auth
   }
   assert.deepEqual(world.geometries,geometries); assert.deepEqual(world.materials,materials); assert.equal(materials.length,6); assert.equal(JSON.stringify(world.catalog),catalog); assert.equal(JSON.stringify(state),before);dispose(world);
 });
+
+// River and understory polish is presentation-only: no new placement obstacles or water outside real creek cells.
+test('faceted creek stays inside authoritative creek cells with upward faces and a small original texture-free scenery budget',()=>{
+ const state=createInitialState(),before=JSON.stringify(state),scene=createTropicalDiorama(state.world),water=scene.group.getObjectByName('creek water'),p=water.geometry.getAttribute('position'),n=water.geometry.getAttribute('normal');
+ for(let i=0;i<p.count;i++){
+  assert.ok(n.getY(i)>.99,'water face must remain visible from above');
+  assert.ok(state.world.tiles.some(t=>t.terrain==='creek'&&Math.abs(p.getX(i)-(t.cell.x+.5-state.world.width/2))<=.501&&Math.abs(p.getZ(i)-(t.cell.z+.5-state.world.height/2))<=.501),'water escaped creek tile');
+ }
+ assert.equal(scene.inspect().understoryClumps,10);assert.equal(scene.inspect().riverbankSegments,8);assert.equal(scene.group.children.length,6);assert.ok(scene.materials.every(m=>!m.map));assert.equal(JSON.stringify(state),before);dispose(scene);
+});

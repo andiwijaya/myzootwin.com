@@ -6,7 +6,7 @@ import type {SceneCatalog} from './scene-selection.ts';
 export function createHabitatScene(catalog:SceneCatalog,register:(geometry:BufferGeometry,material:MeshStandardMaterial|LineBasicMaterial)=>void){
   const group=new Group();group.name='Constructed macaw habitat';let ids:string[]=[],disposed=false;
   const wood=new Mesh(new BufferGeometry(),new MeshStandardMaterial({vertexColors:true,roughness:1}));
-  const wire=new LineSegments(new BufferGeometry(),new LineBasicMaterial({color:'#57735e',transparent:true,opacity:.34,depthWrite:false}));
+  const wire=new LineSegments(new BufferGeometry(),new LineBasicMaterial({color:'#57735e',transparent:true,opacity:.20,depthWrite:false}));
   wood.castShadow=true;wood.receiveShadow=true;
   register(wood.geometry,wood.material);register(wire.geometry,wire.material);
   function clear(){for(const id of ids){catalog.identities.delete(id);catalog.bounds.delete(id);}catalog.batches=catalog.batches.filter(b=>b.mesh!==wood);ids=[];group.clear();wood.geometry.dispose();wire.geometry.dispose();}
@@ -18,7 +18,7 @@ export function createHabitatScene(catalog:SceneCatalog,register:(geometry:Buffe
       const ordinal=ids.length+1,minX=Math.min(...habitat.cells.map(c=>c.x)),minZ=Math.min(...habitat.cells.map(c=>c.z));
       const x=minX-world.width/2+1,z=minZ-world.height/2+1,batch=new Batch();batch.owner=habitat.id;
       const box=(color:string,p:number[],scale:number[])=>batch.add(new BoxGeometry(1,1,1),color,p,scale);
-      box('#b8c68c',[x,.055,z],[1.96,.045,1.96]);
+      box('#c6ca9a',[x,.055,z],[1.96,.045,1.96]);
       // Continuous perimeter sill and upper rails; closed mesh roof keeps future short flights contained.
       for(const side of [-1,1]){
         box('#8c724d',[x+side*.96,.12,z],[.075,.12,1.98]);box('#8c724d',[x,.12,z+side*.96],[1.98,.12,.075]);
