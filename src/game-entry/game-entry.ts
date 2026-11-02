@@ -1,3 +1,4 @@
+import {containDialogFocus} from './dialog-focus.ts';
 import type {PreviewLoader} from '../game/render3d/preview-controller.ts';
 import {createAmbience} from '../game/audio/ambience.ts';
 import {readMutedPreference} from '../game/core/audio-settings.ts';
@@ -57,6 +58,7 @@ export function mountGameEntry(root: HTMLElement, options: {
     let restartPanel: ReturnType<typeof mountRestartPanel> | undefined;
     const pauseGate = createPauseGate(value => { preview?.setPaused(value); renderPause(); });
     const events = new AbortController();
+    containDialogFocus(root, events.signal);
     let channel: BroadcastChannel | undefined;
     const writer = crypto.randomUUID();
     const durable = createAutosave(options.backend ?? createIndexedDbBackend(browserFactory()), { writer, changed: () => {

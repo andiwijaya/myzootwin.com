@@ -647,6 +647,17 @@
       "activation": "Optional, initially muted, explicit user gesture; no microphone or camera",
       "evidence": "M5-06_SETTINGS.md and M6-02_MEMORY_PAYLOAD.md; physical speaker audibility not certified",
       "external_sample_download_bytes": 0
+    },
+    {
+      "id": "browser-software-notices-m6-06",
+      "path": "public/licenses/third-party-notices.txt",
+      "bytes": 1224,
+      "sha256": "a5eff5cf91485bdf2f7ada50d30832c648db248314b3897e3c80e9da66efa29b",
+      "origin": "Generated attribution wrapper followed by full unmodified installed Three.js LICENSE",
+      "rights_status": "Third-party MIT license text reproduced verbatim; original three-MIT.txt URL and bytes retained",
+      "dependency": "three@0.187.0",
+      "license_source_sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "scope": "Browser distribution only; does not assign artwork rights or clear tool/native redistribution notice gaps"
     }
   ],
   "direct_package_notice_spot_checks": [
@@ -1029,7 +1040,8 @@
     "effective_zod_to_ts_license": "MIT based on installed LICENSE despite missing package.json license field",
     "client_third_party": "Final Rollup emitted client modules identify Three.js only; full local MIT notice byte-matches public/licenses/three-MIT.txt. Sharp/native build tools are not browser artifacts.",
     "dependency_report": "qa/m6-05/dependencies.json",
-    "commercial_rights_clearance": "NOT a legal sign-off or permission for new licensing agreements; no new agreements/downloaded media"
+    "commercial_rights_clearance": "NOT a legal sign-off or permission for new licensing agreements; no new agreements/downloaded media",
+    "later_notice_update": "M6-06 adds an exact installed-license public notice wrapper; original public assets and earlier dated evidence remain unchanged."
   },
   "installed_dependency_license_inventory_complete": true,
   "transitive_license_audit_limit": "All369 installed packages inventoried with package/license metadata and local notices.13 packages lack a standalone notice file; full source/native-package redistribution notice clearance is not claimed. Only Three.js is present in measured client chunks and its exact MIT notice is retained."

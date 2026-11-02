@@ -10,6 +10,15 @@ export const now=()=>new Date().toISOString();
 export function within(root,path) { const part=relative(resolve(root),resolve(path));return part!==''&&!isAbsolute(part)&&part!=='..'&&!part.startsWith('..\\')&&!part.startsWith('../'); }
 export function childPath(root,path) { const target=resolve(root,path);if(!within(root,target))throw Error('Path leaves the named QA directory');return target; }
 export async function json(path,value) { await mkdir(resolve(path,'..'),{recursive:true});await writeFile(path,JSON.stringify(value,null,2)+'\n'); }
+/** Resolve the CLI declared by the installed Astro package, across supported package layouts. */
+export async function astroCli(root) {
+  const base=join(root,'node_modules/astro'),pkg=JSON.parse(await readFile(join(base,'package.json'),'utf8'));
+  const entry=typeof pkg.bin==='string'?pkg.bin:pkg.bin?.astro;
+  if(typeof entry!=='string'||isAbsolute(entry))throw Error('Missing relative Astro CLI declaration');
+  const cli=childPath(base,entry),info=await lstat(cli);
+  if(!info.isFile()||info.isSymbolicLink())throw Error('Astro CLI must be a regular installed package file');
+  return cli;
+}
 export const readJson=async path=>JSON.parse(await readFile(path,'utf8'));
 export async function files(root,exclude=()=>false) {
   const result=[];
@@ -54,7 +63,7 @@ export function assessRun(result,kind) {
 /** Full capture up to a hard limit; reaching it always fails, never a capped-log PASS. */
 export function runNode(args,{cwd,limit=2_000_000,timeoutMs=180_000,children,environment={}}={}) {
   return new Promise((done,reject)=>{
-    const child=spawn(process.execPath,args,{cwd,windowsHide:true,env:{...process.env,NO_COLOR:'1',FORCE_COLOR:'0',...environment},stdio:['ignore','pipe','pipe']});
+    const child=spawn(process.execPath,args,{cwd,windowsHide:true,env:{...process.env,NO_COLOR:'1',FORCE_COLOR:'0',ASTRO_TELEMETRY_DISABLED:'1',...environment},stdio:['ignore','pipe','pipe']});
     children?.add(child);
     let stdout='',stderr='',bytes=0,overflow=false,timedOut=false;
     const consume=key=>data=>{bytes+=data.length;if(bytes>limit){overflow=true;child.kill();return;}if(key==='stdout')stdout+=data.toString();else stderr+=data.toString();};

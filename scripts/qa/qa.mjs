@@ -3,11 +3,11 @@ import { fileURLToPath } from 'node:url';
 import { mkdir, readFile, writeFile, appendFile, readdir, rm, realpath, lstat } from 'node:fs/promises';
 import { spawn, execFileSync } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
-import { BROWSER_CASES, now, sha256, childPath, json, readJson, identities, assessRun, runNode, portFree, stopChild, safeRunDirectories, browserVerdict, sourceFingerprint, pageMetadata, fixtureIdentityMatches } from './tooling.mjs';
+import { astroCli, BROWSER_CASES, now, sha256, childPath, json, readJson, identities, assessRun, runNode, portFree, stopChild, safeRunDirectories, browserVerdict, sourceFingerprint, pageMetadata, fixtureIdentityMatches } from './tooling.mjs';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'../..');
 const output=join(root,'.qa'),runs=join(output,'runs');
-const astro=join(root,'node_modules/astro/astro.js'),vite=join(root,'node_modules/vite/bin/vite.js');
+const astro=await astroCli(root),vite=join(root,'node_modules/vite/bin/vite.js');
 const command=process.argv[2]??'local';
 const owned=new Set();let aborted=false,releaseServe;
 process.once('SIGINT',()=>{aborted=true;for(const child of owned)child.kill('SIGTERM');releaseServe?.();});
@@ -25,7 +25,7 @@ async function unchanged(report) {
   if(current.build.id!==report.build.id||current.source.id!==report.source.id)throw Error('Source/build changed since this run. Run qa:local again; old browser evidence cannot pass.');
 }
 function preview(args,log) {
-  const child=spawn(process.execPath,args,{cwd:root,windowsHide:true,stdio:['ignore','pipe','pipe'],env:{...process.env,NO_COLOR:'1',FORCE_COLOR:'0'}});
+  const child=spawn(process.execPath,args,{cwd:root,windowsHide:true,stdio:['ignore','pipe','pipe'],env:{...process.env,NO_COLOR:'1',FORCE_COLOR:'0',ASTRO_TELEMETRY_DISABLED:'1'}});
   owned.add(child);let bytes=0;
   for(const stream of [child.stdout,child.stderr])stream.on('data',data=>{bytes+=data.length;if(bytes>2_000_000){child.kill();log.overflow=true;}else log.text+=data.toString();});
   child.once('error',error=>{log.error=error.message;});child.once('close',()=>owned.delete(child));return child;
