@@ -116,15 +116,16 @@ export function createTropicalDiorama(world: WorldState) {
     const object=new Mesh(geometry,material); object.name=name; group.add(object);if(selectable.includes(batch))catalog.batches.push({mesh:object,ranges:batch.ranges});return object;
   }
   const standard=()=>new MeshStandardMaterial({vertexColors:true,roughness:.95,metalness:0,flatShading:true});
-  mesh(terrain,'land and creek banks',standard()); mesh(plants,'tropical canopy and reeds',standard()); mesh(props,'gate and rocks',standard());
+  mesh(terrain,'land and creek banks',standard()); const canopyMaterial=standard();const canopy=mesh(plants,'tropical canopy and reeds',canopyMaterial); mesh(props,'gate and rocks',standard());
   mesh(water,'creek water',new MeshStandardMaterial({vertexColors:true,roughness:.45,metalness:0}));
   const glints=mesh(sparkle,'water glints',new MeshBasicMaterial({vertexColors:true}));
-  mesh(shadows,'soft contact shade',new MeshBasicMaterial({vertexColors:true,transparent:true,opacity:.13,depthWrite:false}));
+  const contactShade=mesh(shadows,'soft contact shade',new MeshBasicMaterial({vertexColors:true,transparent:true,opacity:.13,depthWrite:false}));
   group.updateMatrixWorld(true);
   const bounds=new Box3().setFromObject(group);
   let visualGameTimeMs=0, waterFlowOffset=0;
   return { group, bounds, geometries, materials, catalog,
+    setLowGraphics(low:boolean){glints.visible=!low;contactShade.visible=!low;canopy.material=low?glints.material:canopyMaterial;},
     update(gameTimeMs:number,reducedMotion:boolean) { visualGameTimeMs=gameTimeMs; waterFlowOffset=reducedMotion?0:Math.sin(gameTimeMs*.0006)*.06; glints.position.z=waterFlowOffset; },
-    inspect:()=>({visualGameTimeMs,waterFlowOffset,terrainTiles:world.tiles.length,creekTiles:world.tiles.filter(t=>t.terrain==='creek').length,palmTrees:6,broadleafTrees:4,entranceGates:1}),
+    inspect:()=>({sceneryGlintsVisible:glints.visible,sceneryShadeVisible:contactShade.visible,scenerySimpleLighting:canopy.material===glints.material,visualGameTimeMs,waterFlowOffset,terrainTiles:world.tiles.length,creekTiles:world.tiles.filter(t=>t.terrain==='creek').length,palmTrees:6,broadleafTrees:4,entranceGates:1}),
   };
 }

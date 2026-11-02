@@ -40,3 +40,14 @@ test('scenery is reproducible and its ambient water reads fixed simulation time;
   a.update(1400,true);assert.equal(a.inspect().waterFlowOffset,0);assert.equal(a.inspect().visualGameTimeMs,1400);
   assert.equal(a.group.getObjectByName('water glints').position.z,0);dispose(a);dispose(b);
 });
+
+test('quality toggles reuse owned material and retain geometry, catalog and authoritative world',()=>{
+  const state=createInitialState(), before=JSON.stringify(state), world=createTropicalDiorama(state.world);
+  const geometries=[...world.geometries], materials=[...world.materials], catalog=JSON.stringify(world.catalog);
+  for(let i=0;i<12;i++) {
+    world.setLowGraphics(true); assert.equal(world.inspect().sceneryGlintsVisible,false); assert.equal(world.inspect().sceneryShadeVisible,false); assert.equal(world.inspect().scenerySimpleLighting,true);
+    assert.equal(world.group.getObjectByName('tropical canopy and reeds').material,world.group.getObjectByName('water glints').material);
+    world.setLowGraphics(false); assert.equal(world.inspect().sceneryGlintsVisible,true); assert.equal(world.inspect().sceneryShadeVisible,true); assert.equal(world.inspect().scenerySimpleLighting,false);
+  }
+  assert.deepEqual(world.geometries,geometries); assert.deepEqual(world.materials,materials); assert.equal(materials.length,6); assert.equal(JSON.stringify(world.catalog),catalog); assert.equal(JSON.stringify(state),before);dispose(world);
+});

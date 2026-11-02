@@ -1,3 +1,4 @@
+import type {VisualSettings} from '../game/core/visual-settings.ts';
 import {formatNumber} from './i18n-format.ts';
 import { revealHudTarget, scrollHudTarget } from './hud-layout.ts';
 import {mountSpeedPanel,type SpeedView} from './speed-panel.ts';
@@ -338,6 +339,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   window.addEventListener('pagehide', () => controller.close(), { signal: events.signal });
 
   return {
+    setVisualSettings(value:VisualSettings){if(!disposed)controller.visualSettings(value);},
     setLocale(value: EntryLocale) { if (!disposed) { locale = value; controller.locale(value);render(state); } },
     setPaused(value: boolean) { if (!disposed) controller.setExternalPaused(value); },
     refresh:()=>{if(!disposed)render(state);},

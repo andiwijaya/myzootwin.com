@@ -1,3 +1,5 @@
+import {readVisualSettings,type VisualSettings} from '../game/core/visual-settings.ts';
+import {mountVisualSettings} from './visual-settings-panel.ts';
 import {chooseGameLocale} from './i18n-format.ts';
 import {formatNumber} from './i18n-format.ts';
 import { mountHudLayout } from './hud-layout.ts';
@@ -41,6 +43,8 @@ export function mountGameEntry(root: HTMLElement, options: {
     let preview: ReturnType<typeof mountPreviewPanel> | undefined;
     let locale: EntryLocale = initial.locale;
     let manualLocale = initial.source === 'saved';
+    let visualChoice:VisualSettings|null=readVisualSettings(storage);
+    let visualPanel:ReturnType<typeof mountVisualSettings>|undefined;
     let resumePending = false;
     let recoveryPanel: ReturnType<typeof mountRecoveryPanel> | undefined;
     let restartPanel: ReturnType<typeof mountRestartPanel> | undefined;
@@ -82,6 +86,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         renderSave();
         recoveryPanel?.render();
         restartPanel?.render();
+        visualPanel?.render();
     }
     root.addEventListener('entry-locale-request', event => {
         const value = (event as CustomEvent<unknown>).detail;
@@ -283,12 +288,16 @@ export function mountGameEntry(root: HTMLElement, options: {
         locale = chooseGameLocale(locale, manualLocale, durable.savedLocale());
         preview = mountPreviewPanel(root, { stateStore: durable.session, canOpen: () => durable.canOpen(), beforeOpen: () => durable.view().active || durable.startNew(locale) });
         preview.setPaused(pauseGate.paused());
+        const currentVisual=()=>visualChoice??durable.savedVisualSettings()??{graphics:'auto' as const,reducedMotion:false};
+        visualPanel=mountVisualSettings(root,storage,{locale:()=>locale,current:currentVisual,apply:value=>{visualChoice={...value};preview?.setVisualSettings(value);}});
+        preview.setVisualSettings(currentVisual());
         render(locale);
     })();
     const handle = { ready, dispose() {
             if (disposed)
                 return;
             disposed = true;
+            visualPanel?.dispose();
             hudLayout.dispose();
             pauseObserver.disconnect();
             restartPanel?.dispose();
