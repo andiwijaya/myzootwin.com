@@ -56,7 +56,17 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   let guidedStart=false;
   const onboardingPanel=mountOnboardingPanel(root.querySelector('[data-onboarding-tools]'),events.signal,(c,r)=>controller.guide(c,r),()=>reviewRecovery(),()=>{root.dataset.guided='false';revealHudTarget(root.querySelector('[data-placement-tools]'));host.focus({preventScroll:true});scrollHudTarget(host);});
   host.addEventListener('scene-onboarding-change',event=>onboardingPanel.update((event as CustomEvent<FirstMissionGuide>).detail),{signal:events.signal});
-  const careAction=(target:import('./care-mission-panel.ts').CareDestination)=>{if(root.querySelector('dialog[open]'))return;if(target==='observe'){controller.guide('focus');host.focus({preventScroll:true});scrollHudTarget(host);return;}const selector=target==='birds'?'[data-bird-tools]':`[data-${target}-tools]`,tool=root.querySelector<HTMLElement>(selector);revealHudTarget(tool??null);scrollHudTarget(tool);const action=tool?.querySelector<HTMLButtonElement>('button:not([hidden]):not(:disabled)');if(action){action.focus({preventScroll:true});scrollHudTarget(action);}else{tool?.setAttribute('tabindex','-1');tool?.focus({preventScroll:true});}};
+  const careAction=(target:import('./care-mission-panel.ts').CareDestination)=>{
+    if(root.querySelector('dialog[open]'))return;
+    const selector=target==='birds'||target==='observe'?'[data-bird-tools]':`[data-${target}-tools]`,tool=root.querySelector<HTMLElement>(selector);
+    revealHudTarget(tool??null);
+    if(target==='observe'){
+      const inspect=tool?.querySelector<HTMLButtonElement>('[data-welfare-low="true"] [data-animal-info]:not(:disabled)')??tool?.querySelector<HTMLButtonElement>('[data-animal-info]:not(:disabled)');
+      if(inspect){inspect.click();return;}
+    }
+    const action=target==='birds'||target==='observe'?(tool?.querySelector<HTMLButtonElement>('[data-birds-command="welcome"]:not([hidden]):not(:disabled)')??tool?.querySelector<HTMLButtonElement>('[data-animal-info]:not(:disabled)')):['confirm','refill','preview'].map(command=>tool?.querySelector<HTMLButtonElement>(`[data-${target}-command="${command}"]:not(:disabled)`)).find(button=>button&&!button.closest('[hidden]'));
+    if(action){action.focus({preventScroll:true});scrollHudTarget(action);}else{tool?.setAttribute('tabindex','-1');tool?.focus({preventScroll:true});scrollHudTarget(tool);}
+  };
   const missionPanel=mountMissionPanel(root.querySelector('[data-mission-tools]'),events.signal,q=>controller.claimMission(q),careAction,target=>{if(root.querySelector('dialog[open]'))return;if(target==='gate'){controller.visitors('open');return;}if(target==='observe'){controller.visitors('focus');host.focus({preventScroll:true});scrollHudTarget(host);return;}if(target==='path'){root.dataset.guided='false';revealHudTarget(root.querySelector('[data-placement-tools]'));controller.placement('begin-path');host.focus({preventScroll:true});scrollHudTarget(host);return;}careAction(target);});
   host.addEventListener('scene-missions-change',event=>missionPanel.update((event as CustomEvent<MissionView>).detail),{signal:events.signal});
   host.addEventListener('scene-mission-result',event=>missionPanel.result((event as CustomEvent<{ok:boolean}>).detail.ok),{signal:events.signal});
