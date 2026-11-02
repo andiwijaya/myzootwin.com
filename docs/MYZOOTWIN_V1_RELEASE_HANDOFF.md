@@ -24,3 +24,8 @@ For owner/parent, group inputs into **(1) Git integration and public privacy/ser
 Autosave reentrant-writer bug remains locally fixed at294a28f with exact repro/targetedtests/currentnativeContinue evidence; not an active blocker. GPU/import historical uncertainty remains separate. Current optional unreferenced `/favicon.ico`404 probe observation is nonblocking; declaredSVG200. No additional QA loop or feature starts in this pass.
 
 Owner Cloudflaretab preserved on Deployments; temporary viewport restored. No servicesstarted, owner saves/oldbuild/rollback archives untouched. Inherited denieddownload/QA46/publicGET not retried. No login/permissions/credentials/Cloudflare changes/Actions/push/deploy. Stop for parent review.
+
+
+## Git reconnect follow-up - pending, 2 November2026 UTC
+
+[Exact checkpoint](RECONNECT_GITHUB_CHECKPOINT.md): existing installation grants18 selected repositories, **MyZooTwin absent**. Agent stopped before adding repo/Save, as parent requires action-time confirmation for expanded persistent access. Readmetadata and read/writeadministration/checks/code/deployments/PR categories are recorded. Cloudflare warning and old production pointer remain unchanged. Owner sessions preserved; no credentials/grants/disconnect/push/deploy/rebuild. **45/51 unchanged.**
