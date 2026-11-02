@@ -1,0 +1,142 @@
+{
+  "at": "2026-11-02T17:50:48.718Z",
+  "runId": "s20261102T174805Z",
+  "sourceId": "45145f5fac6380f8a011ad78a3576613f42e388ca76bf5b2f4009287ff113e6e",
+  "buildId": "0811a1a19fd9278f94f1167bc689edd37c2d9ffde60691c1aeef193c4b904974",
+  "sourceMatchesGate": true,
+  "buildMatchesGate": true,
+  "sourceUnchangedFromPreviousGPU": true,
+  "ownerBuildId": "e06d975a30b49470a1e80e915fbe39ce22ba102f16447dbef8776e7088d38b05",
+  "ownerPreserved": true,
+  "unitCounts": {
+    "tests": 485,
+    "pass": 485,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "relatedUnitCases": [
+    "lazy session opens once, closes once, and can reopen without overlap",
+    "closing during import prevents a late mount and ready transition",
+    "a failed lazy load is visible and a later attempt can recover",
+    "initialization exceptions do not become false ready states",
+    "context loss disposes the active session once and supports a fresh retry",
+    "disposing a pending import prevents later renderer creation"
+  ],
+  "staticRoutes": [
+    {
+      "route": "/",
+      "title": "MyZooTwin — Play Zoo & Explore the Animal Journal",
+      "canonical": "https://myzootwin.com/",
+      "h1": "Build a little world.Watch it come alive."
+    },
+    {
+      "route": "/animals/",
+      "title": "Animals — MyZooTwin",
+      "canonical": "https://myzootwin.com/animals/",
+      "h1": "Meet theneighborhood."
+    },
+    {
+      "route": "/wildlife/",
+      "title": "Into the wild — MyZooTwin",
+      "canonical": "https://myzootwin.com/wildlife/",
+      "h1": "Into the wild"
+    },
+    {
+      "route": "/pets/",
+      "title": "Life with pets — MyZooTwin",
+      "canonical": "https://myzootwin.com/pets/",
+      "h1": "Life with pets"
+    },
+    {
+      "route": "/learn/",
+      "title": "Learn something wild — MyZooTwin",
+      "canonical": "https://myzootwin.com/learn/",
+      "h1": "Learn something wild"
+    },
+    {
+      "route": "/adventures/",
+      "title": "Field notes & adventures — MyZooTwin",
+      "canonical": "https://myzootwin.com/adventures/",
+      "h1": "Field notes & adventures"
+    },
+    {
+      "route": "/gear/",
+      "title": "Gear & field notes — MyZooTwin",
+      "canonical": "https://myzootwin.com/gear/",
+      "h1": "Gear & field notes"
+    },
+    {
+      "route": "/about/",
+      "title": "About MyZooTwin — A curious animal learning journal",
+      "canonical": "https://myzootwin.com/about/",
+      "h1": "A little morecuriosity, every day."
+    },
+    {
+      "route": "/play/",
+      "title": "Play Zoo — Tropical Creek | MyZooTwin",
+      "canonical": "https://myzootwin.com/play/",
+      "h1": "A little world to care for."
+    }
+  ],
+  "sitemap": 9,
+  "artifactComparison": {
+    "reference": "C:/MyZooTwin/.qa/builds/s20261102T172335Z",
+    "files": 24,
+    "allBytesIdentical": true
+  },
+  "ports": [
+    {
+      "port": 4322,
+      "free": true
+    },
+    {
+      "port": 4323,
+      "free": true
+    },
+    {
+      "port": 4345,
+      "free": true
+    },
+    {
+      "port": 4346,
+      "free": true
+    },
+    {
+      "port": 4347,
+      "free": true
+    }
+  ],
+  "archives": [
+    {
+      "path": ".qa/archives/m6-05/superseded-builds.zip",
+      "sha256": "e175b4be5c2e1880886123779c3d358cca6b3d9fc7d64ddf12b7a1aeb5c3aec3"
+    },
+    {
+      "path": ".qa/archives/m6-07/candidate-builds.zip",
+      "sha256": "722252b7841a16eaa1a72274868f194b37e7ae9ad3776fc9905545d9e9d96f08"
+    },
+    {
+      "path": "docs/qa/m6-03/walkthrough-history.zip",
+      "sha256": "90d7c8c184b22e303456bc4ca4e574553db46ac57ee869b2d8af9b9ea74b99fe"
+    },
+    {
+      "path": "C:\\MyZooTwin\\.qa\\archives\\m6-06-gap\\superseded-builds.zip",
+      "sha256": "f2b40b323123f5ba1e2d81da06db59f192b5755f7c2e1d8a8e17c4e80522cc56"
+    }
+  ],
+  "stages": {
+    "unit": "PASS",
+    "check": "PASS",
+    "build": "PASS",
+    "routes": "UNRUN",
+    "browser": "UNRUN",
+    "cleanup": "UNRUN"
+  },
+  "browserExperiments": 0,
+  "browserServerActions": "NONE; no QA browser/server started. Build/check/test children exited. Generic runner browser/routes/cleanup remain UNRUN; static-route file validation and preservation are separate.",
+  "ownerPreview": "Already absent, no restart/tab/save access.",
+  "deniedQA46OrBaselineRetried": false,
+  "blockedDownloadRetried": false
+}

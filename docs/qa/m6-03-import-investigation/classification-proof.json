@@ -1,0 +1,14 @@
+{
+  "originalCommit": "9c1d6f36c255175877cf778a114befdf024e07e8",
+  "currentBaseline": "e74e6c27bb44e07b737fa3e03766a847c000b8e9",
+  "sourceByteEquivalenceGitCanonical": {
+    "src/game-entry/preview-panel.ts": true,
+    "src/game/render3d/preview-controller.ts": true
+  },
+  "visibleTitle": "Preview files could not load",
+  "localeKey": "previewLoadError",
+  "renderMapping": "error.reason === 'load' -> previewLoadError / previewReloadDetail",
+  "controllerBoundary": "factory = await load(); catch -> fail(token,'load'); factory invocation has a later separate init/unsupported catch",
+  "inference": "Original active renderer loader rejected before factory initialization; not enough evidence to discriminate fetch, parse/evaluation, optimizer or concurrency root cause.",
+  "originalUIHints": "Saved revision1 with975ZC/4missions/2birds still available; canvas0 and default1500ZCHUD are not evidence that the stored save was reset."
+}

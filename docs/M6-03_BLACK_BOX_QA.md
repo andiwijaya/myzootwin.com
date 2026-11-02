@@ -75,3 +75,8 @@ Use only the approved browser runtime, verify displayed run/source/build, and ex
 All permitted QA tabs/servers closed and temporary viewport reset by09:28UTC, before the09:45 checkpoint boundary. Owner **4345/PID18816**, old build/saves remain untouched and HTTP200. [Final guard](qa/m6-03/final-guard.json). Old denied QA46 closure stays UNRUN, recovery download stays BLOCKED/UNRUN; neither retried. No push/deploy/Actions/login/access change.
 
 Hard stop **2026-11-02 10:00UTC /17:00WIB** remains. M0-01/M4-07/M5-07/M6-01/M6-03 remain partial;12M7 items deferred. V1 **41/51 (80.39%)**. Next **M6-04 white-box invariants**, only after parent dispatch; not started here.
+
+
+## Later bounded import investigation - 2026-11-02 UTC
+
+[Investigation](M6-03_IMPORT_FAILURE_INVESTIGATION.md) establishes loader rejection before factory, but historical cause remains INCONCLUSIVE.46archive members verified; original exception/request/timing/cache details missing. No new browser rerun or speculative fix. Current485tests/205check/9staticroutes/24identicalartifacts are regression evidence only. M6-03 remains PARTIAL;currentV1 44/51.
