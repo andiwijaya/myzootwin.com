@@ -17,3 +17,8 @@ Rollback reference: previous verified production **f5c480a57761ed5a97de2c9e05f8e
 M6-08 is complete for authorized publication, focused live desktop/mobile-viewport smoke and this rollback-ready report under the owner's requested live-test sequence. **46/51 (90.20%)**; M6 **5/8**. Five items remain partial: recordingM4-07, genuine human studyM5-07, device/presentationFPSM6-01, cross-device/nativeM6-03, privacy/service sign-offM6-06. Current camera15-minute soak, physical A56 and native tests remain unrun; historical exact-source core duration/GPU/import evidence retains its original limits. Operator/contact remain explicitly deferred. This is a live playtest release, not full100% acceptance/legal clearance.
 
 All QA tabs/services closed, viewport reset confirmed1280×720/DPR1.5. Owner browser tabs/data/build/archives preserved. Stop before **01:00UTC /08:00WIB**, await owner resume; no additional feature/test loop, OS shutdown or automatic restart. Only local documentation checkpoint remains ahead of remote so it does not trigger another deployment.
+
+
+## Owner-reported live result — 2026-11-03 00:54 UTC
+
+Owner: “sudah saya coba live bud, hasilnya ok”. Recorded as **owner-reported live OK for what they tried**, not inferred physical A56/device/browser/FPS, exhaustive coverage, unaided first-run study, recording or sign-off. [Feedback record](qa/camera-live/owner-live-feedback.json). Production remains`d8c03c6`/Pages`a7dbf297-e15a-4096-ae9b-82b95f684018`. **46/51 unchanged**; QA already closed, documentation local only, no new test/feature/push and no automatic resume after stop.
