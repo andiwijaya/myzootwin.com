@@ -5,12 +5,12 @@ import { createCameraGestures, type CameraPointer } from './camera-gestures.ts';
 
 export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, camera:OrthographicCamera, bounds:Box3, map:{width:number;height:number}, onTap?:(point:CameraPointer)=>void,onCancel?:()=>void) {
   let disposed=false,enabled=true;const events=new AbortController();
-  let basePosition=new Vector3();
+  let basePosition=new Vector3(),width=0,height=0,azimuthStep=0;
   const navigation=createCameraNavigation(()=>{
     if(disposed)return;const view=navigation.inspect();
     camera.position.copy(basePosition).add(new Vector3(view.x,0,view.z));camera.zoom=view.zoom;camera.updateProjectionMatrix();camera.updateMatrixWorld(true);
-    host.dataset.cameraZoom=String(view.zoom);host.dataset.cameraPanX=String(view.x);host.dataset.cameraPanZ=String(view.z);
-    host.dispatchEvent(new CustomEvent('camera-view-change',{detail:{zoom:view.zoom},bubbles:false}));
+    host.dataset.cameraZoom=String(view.zoom);host.dataset.cameraPanX=String(view.x);host.dataset.cameraPanZ=String(view.z);host.dataset.cameraAzimuth=String(azimuthStep*45);
+    host.dispatchEvent(new CustomEvent('camera-view-change',{detail:{zoom:view.zoom,azimuth:azimuthStep*45},bubbles:false}));
   });
   const gestures=createCameraGestures(navigation,()=>canvas.getBoundingClientRect(),onTap);
   function release(id:number) {try{if(canvas.hasPointerCapture(id))canvas.releasePointerCapture(id);}catch{/* Already released by the browser. */}}
@@ -39,27 +39,40 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
   host.addEventListener('keydown',event=>{
     if(!enabled||disposed||event.target!==host||event.ctrlKey||event.metaKey||event.altKey)return;
     const key=event.key;
-    if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','_','Home','Escape','Enter',' '].includes(key))return;
+    if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','+','=','-','_','Home','Escape','Enter',' ','q','Q','e','E'].includes(key))return;
     event.preventDefault();cancelAll();
     const step=event.shiftKey?80:40;
     if(key.startsWith('Arrow'))navigation.panPixels(key==='ArrowLeft'?step:key==='ArrowRight'?-step:0,key==='ArrowUp'?step:key==='ArrowDown'?-step:0);
-    else if(key==='Home')navigation.command('reset');
+    else if(key==='Home')command('reset');
+    else if(key.toLowerCase()==='q'||key.toLowerCase()==='e'){if(!event.repeat)command(key.toLowerCase()==='q'?'rotate-left':'rotate-right');}
     else if(key==='Escape')onCancel?.();
     else if(key==='Enter'||key===' ') {
       if(!event.repeat){const b=canvas.getBoundingClientRect();onTap?.({id:0,x:b.left+b.width/2,y:b.top+b.height/2});}
     } else navigation.command(key==='+'||key==='='?'zoom-in':'zoom-out');
   },{signal:events.signal});
   window.addEventListener('blur',cancelAll,{signal:events.signal});
+  // Refit only on an explicit view/size change, never per simulation/render frame.
+  function reframe(preserveFocus=false){
+    if(width<=0||height<=0)return;
+    const frame=fitIsometricCamera(camera,bounds,width/height,azimuthStep*Math.PI/4);basePosition=camera.position.clone();
+    const right=new Vector3(1,0,0).applyQuaternion(camera.quaternion),up=new Vector3(0,1,0).applyQuaternion(camera.quaternion);
+    navigation.configure({width,height,halfWidth:frame.halfWidth,halfHeight:frame.halfHeight,rightX:right.x,rightZ:right.z,upX:up.x,upZ:up.z,originX:frame.originX,originZ:frame.originZ,mapWidth:map.width,mapHeight:map.height},preserveFocus);
+  }
+  function command(value:CameraCommand){
+    if(!enabled||disposed||!width||!height)return;cancelAll();
+    if(value==='rotate-left'||value==='rotate-right'){azimuthStep=(azimuthStep+(value==='rotate-left'?7:1))%8;reframe(true);}
+    else if(value==='reset'){azimuthStep=0;reframe();navigation.command('reset');}
+    else navigation.command(value);
+  }
   return {
-    resize(width:number,height:number) {
-      if(disposed)return;cancelAll();const frame=fitIsometricCamera(camera,bounds,width/height);basePosition=camera.position.clone();
-      const right=new Vector3(1,0,0).applyQuaternion(camera.quaternion),up=new Vector3(0,1,0).applyQuaternion(camera.quaternion),center=bounds.getCenter(new Vector3());
-      navigation.configure({width,height,halfWidth:frame.halfWidth,halfHeight:frame.halfHeight,rightX:right.x,rightZ:right.z,upX:up.x,upZ:up.z,originX:center.x-14*center.y/13,originZ:center.z-16*center.y/13,mapWidth:map.width,mapHeight:map.height});
+    resize(nextWidth:number,nextHeight:number) {
+      if(disposed||!Number.isFinite(nextWidth)||!Number.isFinite(nextHeight)||nextWidth<=0||nextHeight<=0)return;
+      cancelAll();width=nextWidth;height=nextHeight;reframe();
     },
     focus(point:{x:number;z:number}){if(enabled&&!disposed){cancelAll();navigation.focus(point);}},
-    command(value:CameraCommand) {if(enabled&&!disposed){cancelAll();navigation.command(value);}},
+    command,
     setEnabled(value:boolean) {enabled=value;if(!enabled)cancelAll();},
-    dispose(){if(disposed)return;cancelAll();disposed=true;events.abort();delete host.dataset.cameraZoom;delete host.dataset.cameraPanX;delete host.dataset.cameraPanZ;},
-    inspect:()=>{const v=navigation.inspect();return {cameraControlsDisposed:disposed,cameraInputEnabled:enabled&&!disposed,cameraZoom:v.zoom,cameraPanX:v.x,cameraPanZ:v.z,cameraFocusX:v.focusX,cameraFocusZ:v.focusZ,cameraMinPanX:v.minX,cameraMaxPanX:v.maxX,cameraMinPanZ:v.minZ,cameraMaxPanZ:v.maxZ,cameraPointers:gestures.inspect().pointers,cameraPinching:gestures.inspect().pinching};},
+    dispose(){if(disposed)return;cancelAll();disposed=true;events.abort();delete host.dataset.cameraZoom;delete host.dataset.cameraPanX;delete host.dataset.cameraPanZ;delete host.dataset.cameraAzimuth;},
+    inspect:()=>{const v=navigation.inspect();return {cameraControlsDisposed:disposed,cameraInputEnabled:enabled&&!disposed,cameraZoom:v.zoom,cameraAzimuth:azimuthStep*45,cameraPanX:v.x,cameraPanZ:v.z,cameraFocusX:v.focusX,cameraFocusZ:v.focusZ,cameraMinPanX:v.minX,cameraMaxPanX:v.maxX,cameraMinPanZ:v.minZ,cameraMaxPanZ:v.maxZ,cameraPointers:gestures.inspect().pointers,cameraPinching:gestures.inspect().pinching};},
   };
 }

@@ -3,7 +3,7 @@ export interface CameraFrame {
   rightX: number; rightZ: number; upX: number; upZ: number;
   originX: number; originZ: number; mapWidth: number; mapHeight: number;
 }
-export type CameraCommand = 'zoom-in' | 'zoom-out' | 'reset';
+export type CameraCommand = 'zoom-in' | 'zoom-out' | 'reset' | 'rotate-left' | 'rotate-right';
 const clamp = (value:number, min:number, max:number) => Math.max(min,Math.min(max,value));
 
 /** Ground-plane navigation only: no simulation, renderer loop, picking or placement. */
@@ -27,9 +27,10 @@ export function createCameraNavigation(onChange:()=>void = ()=>{}) {
     x+=p.x;z+=p.z;zoom=next;commit();
   }
   return {
-    configure(next:CameraFrame) {
+    configure(next:CameraFrame, preserveFocus=false) {
       if(!Object.values(next).every(Number.isFinite)||next.width<=0||next.height<=0||next.halfWidth<=0||next.halfHeight<=0||next.mapWidth<=2||next.mapHeight<=2||Math.abs(next.originX)>next.mapWidth/2-.6||Math.abs(next.originZ)>next.mapHeight/2-.6||Math.abs(next.rightX*next.upZ-next.rightZ*next.upX)<.01)throw new RangeError('Invalid camera frame');
-      frame={...next};commit();
+      const previous=frame?{x:frame.originX+x,z:frame.originZ+z}:undefined;
+      frame={...next};if(preserveFocus&&previous&&zoom>1){x=previous.x-frame.originX;z=previous.z-frame.originZ;}commit();
     },
     panPixels(dx:number,dy:number) {
       if(!frame||![dx,dy].every(Number.isFinite))return;
@@ -37,7 +38,7 @@ export function createCameraNavigation(onChange:()=>void = ()=>{}) {
     },
     focus(point:{x:number;z:number}){if(!frame||![point.x,point.z].every(Number.isFinite))return;zoom=2.5;x=point.x-frame.originX;z=point.z-frame.originZ;commit();},
     zoomBy,
-    command(command:CameraCommand) {if(command==='reset'){zoom=1;x=z=0;commit();}else zoomBy(command==='zoom-in'?1.25:.8);},
+    command(command:CameraCommand) {if(command==='reset'){zoom=1;x=z=0;commit();}else if(command==='zoom-in'||command==='zoom-out')zoomBy(command==='zoom-in'?1.25:.8);},
     inspect:()=>({zoom,x,z,focusX:(frame?.originX??0)+x,focusZ:(frame?.originZ??0)+z,...limits()}),
   };
 }

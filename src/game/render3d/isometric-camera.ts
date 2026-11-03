@@ -1,9 +1,11 @@
 import { Box3, OrthographicCamera, Vector3 } from 'three';
 
 /** Base 3/4 overview; navigation applies bounded ground-plane translation and zoom. */
-export function fitIsometricCamera(camera: OrthographicCamera, bounds: Box3, aspect: number) {
+export function fitIsometricCamera(camera: OrthographicCamera, bounds: Box3, aspect: number, azimuth = 0) {
   const center = bounds.getCenter(new Vector3());
-  camera.position.copy(center).add(new Vector3(14, 13, 16));
+  if(!Number.isFinite(azimuth))throw new RangeError('Invalid camera azimuth');
+  const offset=new Vector3(14,13,16).applyAxisAngle(new Vector3(0,1,0),azimuth);
+  camera.position.copy(center).add(offset);
   camera.lookAt(center);
   camera.updateMatrixWorld(true);
   let halfWidth = 0, halfHeight = 0;
@@ -16,5 +18,5 @@ export function fitIsometricCamera(camera: OrthographicCamera, bounds: Box3, asp
   camera.left = -halfHeight * aspect; camera.right = halfHeight * aspect;
   camera.top = halfHeight; camera.bottom = -halfHeight;
   camera.near = .1; camera.far = 100; camera.updateProjectionMatrix();
-  return {halfWidth:halfHeight*aspect,halfHeight};
+  return {halfWidth:halfHeight*aspect,halfHeight,originX:center.x-offset.x*center.y/offset.y,originZ:center.z-offset.z*center.y/offset.y};
 }

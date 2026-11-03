@@ -160,7 +160,9 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const zoomOutput=root.querySelector<HTMLOutputElement>('[data-camera-zoom]');
   function cameraState(zoom=Number(host?.dataset.cameraZoom??1)) {
     if(zoomOutput)zoomOutput.value=`${Math.round(zoom*100)}%`;
-    for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]'))button.disabled=state.status!=='ready'||(button.dataset.cameraCommand==='zoom-in'?zoom>=3:button.dataset.cameraCommand==='zoom-out'?zoom<=1:zoom===1);
+    const angle=Number(host?.dataset.cameraAzimuth??0),announcement=root.querySelector('[data-camera-angle]');
+    setText(announcement,entryMessages[locale].cameraAngle.replace('{angle}',String(angle)));
+    for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]'))button.disabled=state.status!=='ready'||(button.dataset.cameraCommand==='zoom-in'?zoom>=3:button.dataset.cameraCommand==='zoom-out'?zoom<=1:button.dataset.cameraCommand==='reset'?zoom===1&&angle===0:false);
   }
 
   function renderBirds(){
@@ -234,7 +236,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]')) {
       const command=button.dataset.cameraCommand;
       if(command==='reset')button.textContent=copy.cameraReset;
-      button.setAttribute('aria-label',copy[command==='zoom-in'?'cameraZoomIn':command==='zoom-out'?'cameraZoomOut':'cameraReset']);
+      const label=copy[command==='zoom-in'?'cameraZoomIn':command==='zoom-out'?'cameraZoomOut':command==='rotate-left'?'cameraRotateLeft':command==='rotate-right'?'cameraRotateRight':'cameraReset'];button.setAttribute('aria-label',label);button.title=label;
     }
     cameraState();
     const failed = next.status === 'unsupported' || next.status === 'error';

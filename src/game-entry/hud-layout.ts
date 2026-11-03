@@ -169,7 +169,7 @@ export function mountHudLayout(root: HTMLElement) {
     root.addEventListener('click', e => {
         // Focusing a sticky toolbar control can reveal the site's preceding header.
         // Re-align after the action, without trapping ordinary page scrolling.
-        if ((e.target as HTMLElement).closest('[data-hud-chrome], [data-hud-tabs], [data-hud-pane]'))
+        if ((e.target as HTMLElement).closest('[data-hud-chrome], [data-hud-tabs], [data-hud-pane], [data-camera-controls], [data-preview-stage]'))
             queueMicrotask(() => {
                 if (!disposed && active && !root.querySelector('dialog[open]'))
                     root.scrollIntoView({ block: 'start', behavior: 'instant' });
@@ -184,7 +184,7 @@ export function mountHudLayout(root: HTMLElement) {
         const target = e.target as HTMLElement;
         // Never move a native pointer target between its down and up events.
         // Pointer actions align after click; keyboard/programmatic focus aligns here.
-        if (pointerDown || !target.closest('[data-hud-chrome], [data-hud-tabs], [data-hud-pane]'))
+        if (pointerDown || !target.closest('[data-hud-chrome], [data-hud-tabs], [data-hud-pane], [data-camera-controls], [data-preview-stage]'))
             return;
         queueMicrotask(() => {
             if (!disposed && active && !root.querySelector('dialog[open]')) {

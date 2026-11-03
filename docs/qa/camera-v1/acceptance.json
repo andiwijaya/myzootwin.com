@@ -1,0 +1,311 @@
+{
+  "at": "2026-11-03T00:39:39.338445+00:00",
+  "status": "LOCAL_CAMERA_CANDIDATE_READY_FOR_PARENT_PREDEPLOY_REVIEW",
+  "run": "s20261103T002438Z",
+  "source": "6baf6b0363334e58c417445fa909e2d31d251c61768106cd3852e0284788dd67",
+  "build": "4465603e865b1c761cb8cdae61abbe708f172072edf9d5ca607fb522956bcfed",
+  "unitCounts": {
+    "tests": 494,
+    "pass": 494,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "check": "213 files; zero errors/warnings/hints",
+  "buildPages": 9,
+  "routes": "Nine compiled routes/direct/play/sitemap PASS; eight journal pages byte-identical to published baseline local build",
+  "camera": "Eight45-degree azimuth steps, left/right buttons, Q/E focused-world shortcuts, Home/fullReset, existing mouse/touch pan and zoom1..3, pitch fixed. Instant steps for all motion settings; no additional RAF or automatic orbit.",
+  "state": "Orbit/fitting is view-only. No simulation/economy/save schema changes. Every immediate camera command leaves authoritative inspect values unchanged in source fixture. View resets on remount; game/preferences persist.",
+  "native": [
+    "Desktop clicks both directions, Reset, Q/E/arrows/maxzoom3, mouse drag pan without selection",
+    "Center keyboard picking and native coordinate picking at45degrees; path preview/Cancel/build, removeCancel/remove/refund15/Undo15, occupancy consistent",
+    "Native pre-alignment habitat remove/refund300/Undo evidence retained; final path edit independently checked after HUD fix",
+    "ID/reduced motion, actual360x780 and780x360, targets44x44minimum, angle preserved across resize",
+    "Cold-tab Continue exact5save+10world fields:1169ZC/tick4990/onehabitat/twopaths; paused. Camera45->0 intentional view reset"
+  ],
+  "profile": {
+    "method": "Populated source fixture, High stationary2s versus eight explicit right rotations over2s; High/Low two lifecycle contexts. Injected public commands and touch cancellation, separate native product actions. Valid elapsed GPU timers with no disjoint/GLerror; short local observations, no hardware/FPS conclusion.",
+    "cases": [
+      {
+        "kind": "stationary",
+        "cpuCallback": {
+          "samples": 116,
+          "p50Ms": 4.599999964237213,
+          "p95Ms": 12.600000023841858,
+          "maxMs": 22.600000023841858
+        },
+        "gpu": {
+          "status": "OBSERVED_GPU_ELAPSED",
+          "counterBits": 64,
+          "disjoint": 0,
+          "overflow": false,
+          "glError": 0,
+          "submitted": 116,
+          "completed": 116,
+          "pending": 0,
+          "invalidValues": 0,
+          "all": {
+            "samples": 116,
+            "p50Ms": 1.757499,
+            "p95Ms": 2.426405,
+            "maxMs": 2.588645
+          },
+          "rafOnly": {
+            "samples": 116,
+            "p50Ms": 1.757499,
+            "p95Ms": 2.426405,
+            "maxMs": 2.588645
+          },
+          "cameraOnly": {
+            "samples": 0,
+            "p50Ms": null,
+            "p95Ms": null,
+            "maxMs": null
+          },
+          "replayOnly": {
+            "samples": 0,
+            "p50Ms": null,
+            "p95Ms": null,
+            "maxMs": null
+          },
+          "legacyRetained": {
+            "samples": 114,
+            "p50Ms": 1.756978,
+            "p95Ms": 2.426405,
+            "maxMs": 2.588645
+          },
+          "legacyExcludedLate": 2,
+          "legacyNote": "Same current-window rows: completion while collecting and last300 emulate old retention only; not the denied historical build or a full old-probe A/B.",
+          "presentationFPS": "UNMEASURED"
+        }
+      },
+      {
+        "kind": "eight-right-rotations",
+        "cpuCallback": {
+          "samples": 129,
+          "p50Ms": 4.199999988079071,
+          "p95Ms": 11.5,
+          "maxMs": 14.800000011920929
+        },
+        "gpu": {
+          "status": "OBSERVED_GPU_ELAPSED",
+          "counterBits": 64,
+          "disjoint": 0,
+          "overflow": false,
+          "glError": 0,
+          "submitted": 129,
+          "completed": 129,
+          "pending": 0,
+          "invalidValues": 0,
+          "all": {
+            "samples": 129,
+            "p50Ms": 2.800989,
+            "p95Ms": 4.053124,
+            "maxMs": 4.132082
+          },
+          "rafOnly": {
+            "samples": 129,
+            "p50Ms": 2.800989,
+            "p95Ms": 4.053124,
+            "maxMs": 4.132082
+          },
+          "cameraOnly": {
+            "samples": 0,
+            "p50Ms": null,
+            "p95Ms": null,
+            "maxMs": null
+          },
+          "replayOnly": {
+            "samples": 0,
+            "p50Ms": null,
+            "p95Ms": null,
+            "maxMs": null
+          },
+          "legacyRetained": {
+            "samples": 128,
+            "p50Ms": 2.800989,
+            "p95Ms": 4.053124,
+            "maxMs": 4.132082
+          },
+          "legacyExcludedLate": 1,
+          "legacyNote": "Same current-window rows: completion while collecting and last300 emulate old retention only; not the denied historical build or a full old-probe A/B.",
+          "presentationFPS": "UNMEASURED"
+        }
+      }
+    ],
+    "maxOwnedRenderers": 1,
+    "maxPendingRAF": 1,
+    "disposedAllZero": true
+  },
+  "payload": {
+    "initialShell": {
+      "files": [
+        {
+          "path": "play/index.html",
+          "rawBytes": 52501,
+          "gzip9Estimate": 11524,
+          "brotli11Estimate": 9364,
+          "sha256": "e2a7f6b8874508b245d68e03aab4802d29555b188f83014f23ff10adc249fb2a"
+        },
+        {
+          "path": "favicon.svg",
+          "rawBytes": 793,
+          "gzip9Estimate": 477,
+          "brotli11Estimate": 420,
+          "sha256": "78c28be8daea587e629661600e55c3250d521adcfa32cf88b3113d33267db702"
+        },
+        {
+          "path": "_astro/BaseLayout.DzYf29kc.css",
+          "rawBytes": 5620,
+          "gzip9Estimate": 1713,
+          "brotli11Estimate": 1455,
+          "sha256": "9535b3cf894c198266311a82dfda9a86dd1fc41c4e445ee89dba465e9cf9256b"
+        },
+        {
+          "path": "_astro/play.LEqOd7OO.css",
+          "rawBytes": 38415,
+          "gzip9Estimate": 5591,
+          "brotli11Estimate": 4922,
+          "sha256": "fb78d63d60945792097fc1ca35b8964fd93969c69ecf169f07ca46519700a3df"
+        },
+        {
+          "path": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.uzoMvQus.js",
+          "rawBytes": 268170,
+          "gzip9Estimate": 79021,
+          "brotli11Estimate": 67816,
+          "sha256": "ed21c74197564bd501ef48dc7c3b1251e89f6e780471537fd37ccdba2da1a03e"
+        },
+        {
+          "path": "_astro/BaseLayout.astro_astro_type_script_index_0_lang.7WEx15V2.js",
+          "rawBytes": 12801,
+          "gzip9Estimate": 5055,
+          "brotli11Estimate": 4470,
+          "sha256": "a5ecd16b0a7c2024a93daabc322b2be1c7460b0565328f2f41a0ad007f0170a0"
+        },
+        {
+          "path": "_astro/dialog-focus.CS_awhan.js",
+          "rawBytes": 697,
+          "gzip9Estimate": 467,
+          "brotli11Estimate": 365,
+          "sha256": "1c49e5f75581f00265e803464e1caea211865f20cc06223682b8336e763d2d64"
+        }
+      ],
+      "rawBytes": 378997,
+      "gzip9Estimate": 103848,
+      "brotli11Estimate": 88812
+    },
+    "firstPlay": {
+      "files": [
+        {
+          "path": "play/index.html",
+          "rawBytes": 52501,
+          "gzip9Estimate": 11524,
+          "brotli11Estimate": 9364,
+          "sha256": "e2a7f6b8874508b245d68e03aab4802d29555b188f83014f23ff10adc249fb2a"
+        },
+        {
+          "path": "favicon.svg",
+          "rawBytes": 793,
+          "gzip9Estimate": 477,
+          "brotli11Estimate": 420,
+          "sha256": "78c28be8daea587e629661600e55c3250d521adcfa32cf88b3113d33267db702"
+        },
+        {
+          "path": "_astro/BaseLayout.DzYf29kc.css",
+          "rawBytes": 5620,
+          "gzip9Estimate": 1713,
+          "brotli11Estimate": 1455,
+          "sha256": "9535b3cf894c198266311a82dfda9a86dd1fc41c4e445ee89dba465e9cf9256b"
+        },
+        {
+          "path": "_astro/play.LEqOd7OO.css",
+          "rawBytes": 38415,
+          "gzip9Estimate": 5591,
+          "brotli11Estimate": 4922,
+          "sha256": "fb78d63d60945792097fc1ca35b8964fd93969c69ecf169f07ca46519700a3df"
+        },
+        {
+          "path": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.uzoMvQus.js",
+          "rawBytes": 268170,
+          "gzip9Estimate": 79021,
+          "brotli11Estimate": 67816,
+          "sha256": "ed21c74197564bd501ef48dc7c3b1251e89f6e780471537fd37ccdba2da1a03e"
+        },
+        {
+          "path": "_astro/BaseLayout.astro_astro_type_script_index_0_lang.7WEx15V2.js",
+          "rawBytes": 12801,
+          "gzip9Estimate": 5055,
+          "brotli11Estimate": 4470,
+          "sha256": "a5ecd16b0a7c2024a93daabc322b2be1c7460b0565328f2f41a0ad007f0170a0"
+        },
+        {
+          "path": "_astro/dialog-focus.CS_awhan.js",
+          "rawBytes": 697,
+          "gzip9Estimate": 467,
+          "brotli11Estimate": 365,
+          "sha256": "1c49e5f75581f00265e803464e1caea211865f20cc06223682b8336e763d2d64"
+        },
+        {
+          "path": "_astro/foundation-scene.rnUtsWYL.js",
+          "rawBytes": 646629,
+          "gzip9Estimate": 166740,
+          "brotli11Estimate": 138212,
+          "sha256": "3e75c06bf451a3f29b69fd8940bb87ae7d9e788db1b172898491b678f66828a9"
+        }
+      ],
+      "rawBytes": 1025626,
+      "gzip9Estimate": 270588,
+      "brotli11Estimate": 227024
+    },
+    "totalStaticBuildBytes": 1377619,
+    "staticImportsProveRendererLazy": true
+  },
+  "fixedDefect": "Camera focus/clicks could scroll the document and clip the world. Camera toolbar/world now join existing HUD post-click/focus alignment; native final stage top65px below chrome bottom56px. No body scroll trap or held-pointer movement.",
+  "preservedFailures": [
+    "Initial fixture unused results hint caused checkFAIL/buildUNRUN; corrected. Final full494/check/build rerun after actual HUD fix. Intermediate494unit reuse across QA-only corrections is explicitly recorded, superseded by final full run.",
+    "Browser debugger synchronization timeout at own tab39. Documented recovery closed only39 and created40; internal browser inventory remapped to3, no personal Chrome control or alternate driver.",
+    "Wrong Resume play label, disabled extra ZoomIn at maximum, and inert portrait rotation after an unsettled resize were inspected before further action. Stable resume and current controls then worked.",
+    "Initial route audit wrongly required a redirect from the QA server; corrected direct200 canonical/game-body check. Failure text retained."
+  ],
+  "archives": [
+    {
+      "path": ".qa/archives/m6-05/superseded-builds.zip",
+      "sha256": "e175b4be5c2e1880886123779c3d358cca6b3d9fc7d64ddf12b7a1aeb5c3aec3",
+      "match": true
+    },
+    {
+      "path": ".qa/archives/m6-07/candidate-builds.zip",
+      "sha256": "722252b7841a16eaa1a72274868f194b37e7ae9ad3776fc9905545d9e9d96f08",
+      "match": true
+    },
+    {
+      "path": ".qa/archives/m6-06-gap/superseded-builds.zip",
+      "sha256": "f2b40b323123f5ba1e2d81da06db59f192b5755f7c2e1d8a8e17c4e80522cc56",
+      "match": true
+    },
+    {
+      "path": ".qa/archives/m6-06-original-assets/legacy-site-assets.zip",
+      "sha256": "187dc44b46c565c1066262ee0b5e3742bc54f29ae41078031f38dacbca037a00",
+      "match": true
+    },
+    {
+      "path": "docs/qa/m6-03/walkthrough-history.zip",
+      "sha256": "90d7c8c184b22e303456bc4ca4e574553db46ac57ee869b2d8af9b9ea74b99fe",
+      "match": true
+    }
+  ],
+  "ownerBuildPreserved": true,
+  "cleanup": "Own tabs39-44/QA contexts closed; owner1/28/29 retained. Final viewport reset verified1280x720 DPR1.5. Product4371 graceful exit0; Vite4322 CtrlC exit1 expected; ports to be independently rechecked.",
+  "production": "Still published f5c480a57761ed5a97de2c9e05f8e2aefc06ac78 / Cloudflareff9d9fd5-f36b-4008-89cf-f2e13e07666f. Camera not pushed; parent review/dispatch required before next authorized release.",
+  "rollback": "Current publishedf5c480a/ff9d9fd5 is next release rollback candidate; existing older references/archives retained. Actual rollback execution not tested.",
+  "cutoff": "2026-11-03 01:00UTC /08:00WIB hard stop. Cleanup/checkpoint begun before00:45UTC. No automatic resume after stop.",
+  "unrun": [
+    "physicalA56/touch/presentedFPS",
+    "native background/speaker/browser-process restart",
+    "screen recording/unaided human study",
+    "formal privacy/hosting/service signoff; operator/contact deferred",
+    "camera production deployment and live rotation smoke"
+  ],
+  "verifiedV1": "45/51 unchanged; owner requested enhancement to existing camera feature, not an extra M7/gameplay item."
+}
