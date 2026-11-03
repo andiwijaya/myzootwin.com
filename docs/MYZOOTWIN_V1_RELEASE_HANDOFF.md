@@ -1,5 +1,7 @@
 # MyZooTwin V1 - current live handoff
 
+Fresh user resume: one homepage-only cleanup authorized through tests and main deployment. [Current homepage change](HOMEPAGE_LIVE_CLEANUP.md). Prior stop statements below are historical; five acceptance/signoff gates remain partial and V1 count stays46/51.
+
 Current publication/stop status: [CAMERA_LIVE_RELEASE.md](CAMERA_LIVE_RELEASE.md); [five remaining gates](qa/release-facts/five-open-gates.json). Earlier audit and staged statements retain their original historical context.
 
 2 November2026 UTC. **Camera d8c03c6 is LIVE and focused-smoke-tested (Pages a7dbf297). See CAMERA_LIVE_RELEASE.md. 46/51 verified; five acceptance/signoff gates remain partial. Work stopped for08:00WIB cutoff; no automatic resume.** M0-01 external audit is complete at evidence commit `8ff706ba35ae2dbebdd7c0dd02c2325687790f19`. [Fact audit](RELEASE_CONFIGURATION_FACT_AUDIT.md), [five current open gates](qa/release-facts/five-open-gates.json), [minimum privacy/scope facts](qa/release-facts/privacy-and-scope.json). Earlier seven-item handoffs/receipts are historical, not silently edited.

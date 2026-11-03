@@ -4,6 +4,7 @@ import SitePrivacy from '../components/SitePrivacy.astro';
 const { title = 'MyZooTwin — Explore. Discover. Understand Animals.', description = 'MyZooTwin is an international animal learning journal for curious people who care about wildlife, pets, and the living world.' } = Astro.props;
 const canonical = Astro.props.canonical ?? new URL(Astro.url.pathname, 'https://myzootwin.com').toString();
 const socialImage = Astro.props.socialImage;
+const gameHome = Astro.props.gameHome === true;
 const gaId = import.meta.env.PUBLIC_GA4_ID;
 const privacy = pagePrivacy(Astro.url.pathname, Boolean(gaId));
 ---
@@ -31,19 +32,20 @@ const privacy = pagePrivacy(Astro.url.pathname, Boolean(gaId));
     {socialImage && <meta name="twitter:image:alt" content={socialImage.alt} />}
     <title>{title}</title>
   </head>
-  <body>
+  <body class={gameHome ? "game-home" : undefined}>
     <a class="skip-link" href="#main-content" lang="en">Skip to main content</a>
     <header class="site-header" lang="en">
       <a class="brand" href="/" aria-label="MyZooTwin home"><span class="brand-mark">✦</span><span>MyZoo<span class="brand-accent">Twin</span></span></a>
       <nav aria-label="Main navigation">
+        {gameHome && <a href="/" aria-current="page">Home</a>}
         <a class="play-link" href="/play/" data-site-source="nav" aria-current={Astro.url.pathname.replace(/\/$/, '') === '/play' ? 'page' : undefined}>Play Zoo</a>
-        <a href="/animals/">Animals</a><a href="/wildlife/">Wildlife</a><a href="/pets/">Pets</a><a href="/learn/">Learn</a><a href="/adventures/">Adventures</a><a href="/gear/">Gear</a>
+        {!gameHome && <><a href="/animals/">Animals</a><a href="/wildlife/">Wildlife</a><a href="/pets/">Pets</a><a href="/learn/">Learn</a><a href="/adventures/">Adventures</a><a href="/gear/">Gear</a></>}
       </nav>
-      <a class="header-link" href="/about/">About <span aria-hidden="true">↗</span></a>
+      {!gameHome && <a class="header-link" href="/about/">About <span aria-hidden="true">↗</span></a>}
     </header>
     <SitePrivacy analyticsId={gaId ?? ""} game={privacy.game} />
     <main id="main-content" tabindex="-1"><slot /></main>
-    <footer class="site-footer" lang="en"><div><a class="brand" href="/"><span class="brand-mark">✦</span><span>MyZoo<span class="brand-accent">Twin</span></span></a><p>A curious field guide to the animals we share this planet with.</p></div><div class="footer-links"><a href="/animals/">Animals</a><a href="/wildlife/">Wildlife</a><a href="/pets/">Pets</a><a href="/learn/">Learn</a><a href="/about/">About</a></div><small>© {new Date().getFullYear()} MyZooTwin. Made for curious minds.<br /><button class="privacy-footer" type="button" data-open-site-privacy disabled>Privacy choices</button></small></footer>
+    <footer class="site-footer" lang="en"><div><a class="brand" href="/"><span class="brand-mark">✦</span><span>MyZoo<span class="brand-accent">Twin</span></span></a><p>{gameHome ? "Build a living zoo. Care for its animals." : "A curious field guide to the animals we share this planet with."}</p></div><div class="footer-links">{gameHome ? <><a href="/">Home</a><a href="/play/" data-site-source="home">Play Zoo</a></> : <><a href="/animals/">Animals</a><a href="/wildlife/">Wildlife</a><a href="/pets/">Pets</a><a href="/learn/">Learn</a><a href="/about/">About</a></>}</div><small>© {new Date().getFullYear()} MyZooTwin. Made for curious minds.<br /><button class="privacy-footer" type="button" data-open-site-privacy disabled>Privacy choices</button></small></footer>
   </body>
 </html>
 <script>

@@ -1,0 +1,73 @@
+{
+  "startedAt": "2026-11-03T03:22:16.201Z",
+  "finishedAt": "2026-11-03T03:23:41.801Z",
+  "method": "supported IAB Chrome; native locator/keyboard actions, viewport emulation",
+  "physicalDevice": false,
+  "source": "2b1a0d783ae76d49eb6c381af00b3c06416c1421e379062f50270987c8215522",
+  "build": "ebcc8ba10534494e2d378d1d166178bfad9df9e49007349d262fc8704ecd47e9",
+  "cases": [
+    {
+      "at": "2026-11-03T03:22:24.397Z",
+      "case": "header nav a[href=\"/\"]",
+      "url": "http://127.0.0.1:4372/",
+      "home": true
+    },
+    {
+      "at": "2026-11-03T03:22:24.633Z",
+      "case": "footer .brand",
+      "url": "http://127.0.0.1:4372/",
+      "home": true
+    },
+    {
+      "at": "2026-11-03T03:22:24.830Z",
+      "case": "footer a[href=\"/\"]:not(.brand)",
+      "url": "http://127.0.0.1:4372/",
+      "home": true
+    },
+    {
+      "at": "2026-11-03T03:22:25.213Z",
+      "case": "header Play",
+      "url": "http://127.0.0.1:4372/play/"
+    },
+    {
+      "at": "2026-11-03T03:22:55.799Z",
+      "case": "portrait",
+      "data": {
+        "doc": 360,
+        "h": 780,
+        "w": 360
+      }
+    },
+    {
+      "case": "landscape",
+      "at": "2026-11-03T03:23:12.580Z",
+      "data": {
+        "doc": 780,
+        "h": 360,
+        "w": 780
+      }
+    },
+    {
+      "case": "footer Play",
+      "at": "2026-11-03T03:23:21.018Z",
+      "url": "http://127.0.0.1:4372/play/"
+    }
+  ],
+  "additionalPassed": [
+    "Keyboard skip focuses main-content",
+    "Header brand and header/footer Home reload correct homepage",
+    "Header, primary CTA and footer Play navigate correct entry",
+    "ID manual choice persisted after back and primary CTA; EN restored",
+    "Privacy keyboard open, essential-only, Close",
+    "No horizontal overflow at1366/360/780",
+    "Actual desktop/portrait/landscape screenshots visually reviewed"
+  ],
+  "homepageLanguage": "English retained, game ID/EN unchanged",
+  "console": [],
+  "limits": [
+    "No physical Android",
+    "No gameplay rerun; unchanged play route byte-identical",
+    "No analytics allow/provider transmission",
+    "No owner-origin save touched"
+  ]
+}
