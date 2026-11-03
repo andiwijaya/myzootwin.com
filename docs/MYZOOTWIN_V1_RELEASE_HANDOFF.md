@@ -1,6 +1,6 @@
 # MyZooTwin V1 - current live handoff
 
-Fresh user resume: one homepage-only cleanup authorized through tests and main deployment. [Current homepage change](HOMEPAGE_LIVE_CLEANUP.md). Prior stop statements below are historical; five acceptance/signoff gates remain partial and V1 count stays46/51.
+Current publication: homepage-only cleanup **d6aacb8555142a19a9844d84c4b1680ea5013e49** is LIVE on successful Pages **bc8b46ce-2ee6-4f7a-b747-f7634247de2a**, live verification completed 2026-11-03T03:29:58.843Z. [Current homepage report](HOMEPAGE_LIVE_CLEANUP.md). Eight other routes/game unchanged. Prior stop and release statements below are historical. Five acceptance/signoff gates remain partial; count46/51. This one task is complete; STOP. Final evidence checkpoint stays local; no documentation-only deployment.
 
 Current publication/stop status: [CAMERA_LIVE_RELEASE.md](CAMERA_LIVE_RELEASE.md); [five remaining gates](qa/release-facts/five-open-gates.json). Earlier audit and staged statements retain their original historical context.
 

@@ -1,6 +1,6 @@
 # Homepage: live game only
 
-3 November 2026 UTC. User authorized this one homepage change, tests, then direct main publication. Candidate is locally verified; publication status is recorded below after deployment.
+3 November 2026 UTC. User authorized this one homepage change, tests, then direct main publication. **COMPLETE and LIVE.** Remote/production source d6aacb8555142a19a9844d84c4b1680ea5013e49; successful Pages deployment bc8b46ce-2ee6-4f7a-b747-f7634247de2a.
 
 The homepage now presents Tropical Creek Sanctuary with a real existing original gameplay screenshot, one primary Play CTA, and accurate build/care/visitor/four-mission/local-save capabilities. Its header/footer link only Home and Play. Journal promotion, category cards and coming-soon promises were removed from the homepage. Privacy choices and the keyboard skip link remain.
 
@@ -22,3 +22,15 @@ Journal URLs/content, canonical/sitemap, assets and the game are preserved. Eigh
 Rollback candidate before this release: remote/main d8c03c6c8d3cc1aeef848470b69d287937a1ab7f, Pages a7dbf297-e15a-4096-ae9b-82b95f684018. Actual rollback not exercised. Local documentation commits dc5d831/f268a25 are preserved and travel with the intended source push. No Actions/manual build or new grants/settings.
 
 V1 remains46/51 (90.20%); no additional checklist criterion is claimed. The five existing partial evidence/signoff gates remain open. Physical Android/Edge, presented FPS, native background/speaker/process restart, recording and unaided study are not passed by this homepage smoke. Operator/contact stay deferred. Denied QA46, recovery-download and live300ZC confirmation were not retried. Existing gameplay evidence is reused explicitly because its complete emitted route is identical.
+
+## Published result
+
+One non-force push advanced main from d8c03c6 to d6aacb8555142a19a9844d84c4b1680ea5013e49. Cloudflare automatic deployment bc8b46ce-2ee6-4f7a-b747-f7634247de2a succeeded at2026-11-03T03:26:22.036927Z in42s using Node22.23.4/npm10.9.9. No manual build, Actions or settings/grant changes.
+
+Live https://myzootwin.com/ and https://myzootwin.com/play/; isolated production origin https://bc8b46ce.myzootwin-com.pages.dev. HTTP verification compared all9HTML routes on both origins against the tested build; only the expected configured analytics property attribute differs from the local unconfigured build. All15nonHTML assets match exact hashes on both origins; direct /play redirects to/play/. No browser scripts execute during HTTP checks.
+
+Supported-browser production smoke used the unique deployment origin to preserve apex owner saves. Desktop/portrait/landscape screenshots reviewed; primary keyboard Play and footer Play load the real entry, settings initialize, ID language switch persists through back/Play, privacy remains essential-only, no provider script and no console warn/error observed (limit200). No new game, save reset or paid construction action. The unchanged complete game/older gameplay evidence is reused, not relabelled a new full journey.
+
+[Release receipt](qa/homepage-live/release.json), [live browser](qa/homepage-live/browser-live.json), [route/asset hashes](qa/homepage-live/routes-assets.json), [Cloudflare terminal build log](qa/homepage-live/cloudflare-deployment.txt), [live desktop screenshot](qa/homepage-live/screens/live-desktop.png).
+
+Sandbox public HTTP audit initially lacked DNS; the explicitly authorized elevated read-only run passed. Initial reporter rejection and these scope limits remain recorded; no denied route was retried. Owner build and five rollback archives hash-match; loopback4372 closed and verified free, QA tabs closed, viewport reset, owner tabs untouched. Final receipt docs are local only to avoid an unnecessary second deployment. **STOP after this one homepage task.**

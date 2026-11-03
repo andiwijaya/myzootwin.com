@@ -1,0 +1,75 @@
+{
+  "at": "2026-11-03T03:29:58.843Z",
+  "status": "COMPLETE - homepage slice only",
+  "remoteAndProductionCommit": "d6aacb8555142a19a9844d84c4b1680ea5013e49",
+  "deploymentId": "bc8b46ce-2ee6-4f7a-b747-f7634247de2a",
+  "terminal": "success",
+  "completedAt": "2026-11-03T03:26:22.036927Z",
+  "durationSeconds": 42,
+  "node": "22.23.4",
+  "npm": "10.9.9",
+  "source": "2b1a0d783ae76d49eb6c381af00b3c06416c1421e379062f50270987c8215522",
+  "build": "ebcc8ba10534494e2d378d1d166178bfad9df9e49007349d262fc8704ecd47e9",
+  "ownerBuild": "e06d975a30b49470a1e80e915fbe39ce22ba102f16447dbef8776e7088d38b05",
+  "ownerPreserved": true,
+  "archives": [
+    {
+      "path": ".qa/archives/m6-05/superseded-builds.zip",
+      "sha256": "e175b4be5c2e1880886123779c3d358cca6b3d9fc7d64ddf12b7a1aeb5c3aec3",
+      "matched": true
+    },
+    {
+      "path": ".qa/archives/m6-07/candidate-builds.zip",
+      "sha256": "722252b7841a16eaa1a72274868f194b37e7ae9ad3776fc9905545d9e9d96f08",
+      "matched": true
+    },
+    {
+      "path": ".qa/archives/m6-06-gap/superseded-builds.zip",
+      "sha256": "f2b40b323123f5ba1e2d81da06db59f192b5755f7c2e1d8a8e17c4e80522cc56",
+      "matched": true
+    },
+    {
+      "path": ".qa/archives/m6-06-original-assets/legacy-site-assets.zip",
+      "sha256": "187dc44b46c565c1066262ee0b5e3742bc54f29ae41078031f38dacbca037a00",
+      "matched": true
+    },
+    {
+      "path": "docs/qa/m6-03/walkthrough-history.zip",
+      "sha256": "90d7c8c184b22e303456bc4ca4e574553db46ac57ee869b2d8af9b9ea74b99fe",
+      "matched": true
+    }
+  ],
+  "qaPort4372Free": true,
+  "qaTabsClosed": true,
+  "viewportReset": true,
+  "ownerTabsPreserved": [
+    "Cloudflare project",
+    "Existing apex homepage"
+  ],
+  "tests": {
+    "targeted": 17,
+    "checkFiles": 213,
+    "checkErrors": 0,
+    "checkWarnings": 0,
+    "checkHints": 0,
+    "buildRoutes": 9,
+    "unchangedOtherHTML": 8,
+    "liveRoutesPerOrigin": 9,
+    "origins": 2,
+    "matchedNonHTMLAssetsPerOrigin": 15
+  },
+  "limitations": [
+    "Homepage remains English; game ID/EN preserved",
+    "Physical Android/Edge not tested",
+    "No new full gameplay QA; exact emitted game unchanged",
+    "Five existing partial acceptance/signoff gates unchanged,46/51",
+    "No rollback execution",
+    "Original blocked actions not retried"
+  ],
+  "technicalNotes": [
+    "Node default reporter rejected by gate; explicit TAP rerun passed; first receipt retained",
+    "Public HTTP hash audit first failed sandbox DNS ENOTFOUND; authorized elevated read-only network run passed; no auto-review denial",
+    "Existing lazy Three chunk>500kB warning remains; homepage does not eagerly import game renderer"
+  ],
+  "next": "STOP. No next feature or documentation-only follow-up push."
+}

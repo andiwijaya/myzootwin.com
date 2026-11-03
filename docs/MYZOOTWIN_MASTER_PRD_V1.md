@@ -1185,3 +1185,8 @@ Read-only hash checks match219current source entries/25candidate artifacts and a
 ## M6-08 COMPLETE / stop checkpoint — 2026-11-03 UTC
 
 [Camera live release](CAMERA_LIVE_RELEASE.md), [acceptance](qa/camera-live/acceptance.json). Authorizedmainpush`d8c03c6`, Pages`a7dbf297-e15a-4096-ae9b-82b95f684018`success00:44:56UTC,actualNode22.23.4;9routes/16assetsexact;nativecamera/picking/previewCancel/Continue desktop+mobileviewports. New live300ZCconfirm was auto-reviewDENIED, not retried; localconstruction/Undo andpriorunchanged-core realproductionQ01-Q04 evidence reused, not relabelled newgolden. Rollbackf5c480a/ff9d9fd5 retained. **46/51 (90.20%)**, M6 5/8. Fivequality/evidence/signoffgates remainpartial; no100%/hardware/recording/legalclaim. AllQAclosed; stop01:00UTC/08:00WIB, noautomaticresume. Documentationcheckpointlocalonly.
+
+
+## Owner-requested homepage-only cleanup COMPLETE - 2026-11-03 UTC
+
+[Homepage release report](HOMEPAGE_LIVE_CLEANUP.md): live main/source`d6aacb8555142a19a9844d84c4b1680ea5013e49`, Pages`bc8b46ce-2ee6-4f7a-b747-f7634247de2a`success03:26:22UTC. Landing only shows available game, real screenshot, Home/Play and privacy; journal promotion/coming-soon removed from homepage. Existing8otherHTMLroutes/game unchanged, canonical/sitemap preserved.17targetedtests/check213zero/build9, native desktop/portrait/landscape links/keyboard/privacy/IDENentry, live9routes+15assets on2origins pass. No whole-game rerun or physical/pass inflation. **46/51 unchanged**, five partial gates retained; no new gameplay. Ownerbuild/rollback preserved, ownQAclosed; documentation receipt local only. STOP after this one authorized task.
