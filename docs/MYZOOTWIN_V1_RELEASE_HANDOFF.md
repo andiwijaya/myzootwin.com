@@ -1,6 +1,8 @@
-# MyZooTwin V1 - local release handoff
+# MyZooTwin V1 - current live handoff
 
-2 November2026 UTC. **Visual baseline f5c480a is LIVE and smoke-tested (Pages ff9d9fd5). Camera rotation is implemented/tested locally and awaits parent pre-deploy review; see CAMERA_ROTATION_V1.md. 45/51 retained with six unchecked items.** M0-01 external audit is complete at evidence commit `8ff706ba35ae2dbebdd7c0dd02c2325687790f19`. [Fact audit](RELEASE_CONFIGURATION_FACT_AUDIT.md), [six exact open gates](qa/release-facts/six-open-gates.json), [minimum privacy/scope facts](qa/release-facts/privacy-and-scope.json). Earlier seven-item handoffs/receipts are historical, not silently edited.
+Current publication/stop status: [CAMERA_LIVE_RELEASE.md](CAMERA_LIVE_RELEASE.md); [five remaining gates](qa/release-facts/five-open-gates.json). Earlier audit and staged statements retain their original historical context.
+
+2 November2026 UTC. **Camera d8c03c6 is LIVE and focused-smoke-tested (Pages a7dbf297). See CAMERA_LIVE_RELEASE.md. 46/51 verified; five acceptance/signoff gates remain partial. Work stopped for08:00WIB cutoff; no automatic resume.** M0-01 external audit is complete at evidence commit `8ff706ba35ae2dbebdd7c0dd02c2325687790f19`. [Fact audit](RELEASE_CONFIGURATION_FACT_AUDIT.md), [five current open gates](qa/release-facts/five-open-gates.json), [minimum privacy/scope facts](qa/release-facts/privacy-and-scope.json). Earlier seven-item handoffs/receipts are historical, not silently edited.
 
 **Historical operational finding (resolved by reconnect below):** Pages `myzootwin-com` binds the intended repo/main and auto-deploy is enabled, but dashboard says **Git account disconnected; deployments may fail**. Owner separately confirmed main push deploys. No reconnect, new grant, push or deploy occurred. Known exact settings: repository root, `npm run build` → `dist`, watch`*`, imagev3; production only`PUBLIC_GA4_ID`, preview none. Current vendor defaultNode22.23.4 meets Astro7.4.4 minimum; actual candidate build remains unrun. Old production is successful `5a755ea7` /source`ad20f2b`, remote main`f10d037`, not the local game. Current apex/www SSL active. Prior deployment listed is a rollback candidate only, not tested rollback eligibility.
 
@@ -49,3 +51,8 @@ Owner Cloudflaretab preserved on Deployments; temporary viewport restored. No se
 ## Owner-requested camera extension — 2026-11-03 UTC
 
 [Camera predeploy report](CAMERA_ROTATION_V1.md):45°left/right orbit, Q/E, reset/Home, rotated camera fitting/ground axes and bilingual accessible controls. Found/fixed HUD camera focus clipping. Final494tests/check213zero/build9routes; native mouse/keyboard, rotated picking/build/cancel/refund/Undo, mobileviewports and coldContinue1169ZC/tick4990/world exact. Source `6baf6b0363334e58c417445fa909e2d31d251c61768106cd3852e0284788dd67`, build `4465603e865b1c761cb8cdae61abbe708f172072edf9d5ca607fb522956bcfed`. Original bounded-isometric constraint remains; user explicitly added orbit after viewing live. No save/core change or M7. Current production remainsf5c480a/ff9d9fd5, camera not pushed. Parent predeploy review/dispatch; hardstop01:00UTC/08:00WIB, checkpoint/QAcleanup before00:45. **45/51 unchanged**, unrun device/human/recording/privacy gates retained.
+
+
+## Published camera / stop checkpoint — 2026-11-03 UTC
+
+[Live report](CAMERA_LIVE_RELEASE.md):remote/production`d8c03c6`/Pages`a7dbf297-e15a-4096-ae9b-82b95f684018`, https://myzootwin.com/play/. Buildsuccess00:44:56UTC;focusedlivecamera/reset/QE/picking/previewCancel/Continue passes withactualdesktop/portrait/landscape viewports. PriorQ01-Q04 livecoreevidence reused; newlive300ZCconfirm auto-reviewDENIED andnotretried. M6-08completeforrelease/smoke/report; **46/51**, remainingM4-07/M5-07/M6-01/M6-03/M6-06partial. No falsephysical/human/recording/native/signoffpass. QAclosed/ownerdatapreserved, docscommitlocalonly, stopbefore01:00UTC, noautomaticresume.

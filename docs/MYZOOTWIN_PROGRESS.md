@@ -2,7 +2,7 @@
 
 Updated: 2026-11-02 UTC. Complete canonical working requirements: MYZOOTWIN_MASTER_PRD_V1.md. Immutable source-text transcriptions and original Library references: SOURCE_PROVENANCE.md. Native Library materialization failed; the explicitly authorized complete source-text alternative is saved and clearly labeled.
 
-Verified V1: **45/51 (88.24%)**. M0 **8/8**, M6 **4/8**. M7 excluded: **12 deferred items**. Local entry/rendering/core/QA, measured baseline/retention, Tropical Creek diorama, bounded camera, bilingual selection and actual habitat/path construction, confirmed deletion/Undo and capped refund contracts with authoritative occupancy and entrance connectivity, plus original macaw model/animation preview, two actual autonomous macaws and real feeding/drinking/rest/enrichment and causal individual welfare information; a local complete gameplay loop with durable player autosave/Continue, protected recovery and recoverable restart with explicit pause, still awaiting remaining V1 quality/release gates; no production changes.
+Verified V1: **46/51 (90.20%)**. M0 **8/8**, M6 **5/8**. M7 excluded: **12 deferred items**. Local entry/rendering/core/QA, measured baseline/retention, Tropical Creek diorama, bounded camera, bilingual selection and actual habitat/path construction, confirmed deletion/Undo and capped refund contracts with authoritative occupancy and entrance connectivity, plus original macaw model/animation preview, two actual autonomous macaws and real feeding/drinking/rest/enrichment and causal individual welfare information; a local complete gameplay loop with durable player autosave/Continue, protected recovery and recoverable restart with explicit pause, still awaiting remaining V1 quality/release gates; no production changes.
 
 ## Ledger longevity release blocker — RESOLVED in M3-06
 
@@ -738,3 +738,8 @@ Read-only hash checks match219current source entries/25candidate artifacts and a
 ## Owner-requested camera extension — 2026-11-03 UTC
 
 [Camera predeploy report](CAMERA_ROTATION_V1.md):45°left/right orbit, Q/E, reset/Home, rotated camera fitting/ground axes and bilingual accessible controls. Found/fixed HUD camera focus clipping. Final494tests/check213zero/build9routes; native mouse/keyboard, rotated picking/build/cancel/refund/Undo, mobileviewports and coldContinue1169ZC/tick4990/world exact. Source `6baf6b0363334e58c417445fa909e2d31d251c61768106cd3852e0284788dd67`, build `4465603e865b1c761cb8cdae61abbe708f172072edf9d5ca607fb522956bcfed`. Original bounded-isometric constraint remains; user explicitly added orbit after viewing live. No save/core change or M7. Current production remainsf5c480a/ff9d9fd5, camera not pushed. Parent predeploy review/dispatch; hardstop01:00UTC/08:00WIB, checkpoint/QAcleanup before00:45. **45/51 unchanged**, unrun device/human/recording/privacy gates retained.
+
+
+## Published camera / stop checkpoint — 2026-11-03 UTC
+
+[Live report](CAMERA_LIVE_RELEASE.md):remote/production`d8c03c6`/Pages`a7dbf297-e15a-4096-ae9b-82b95f684018`, https://myzootwin.com/play/. Buildsuccess00:44:56UTC;focusedlivecamera/reset/QE/picking/previewCancel/Continue passes withactualdesktop/portrait/landscape viewports. PriorQ01-Q04 livecoreevidence reused; newlive300ZCconfirm auto-reviewDENIED andnotretried. M6-08completeforrelease/smoke/report; **46/51**, remainingM4-07/M5-07/M6-01/M6-03/M6-06partial. No falsephysical/human/recording/native/signoffpass. QAclosed/ownerdatapreserved, docscommitlocalonly, stopbefore01:00UTC, noautomaticresume.

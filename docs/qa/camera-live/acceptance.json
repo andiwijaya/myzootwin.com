@@ -1,0 +1,55 @@
+{
+  "at": "2026-11-03T00:52:46.346958+00:00",
+  "status": "PUBLISHED_AND_FOCUSED_LIVE_CAMERA_SMOKE_PASS",
+  "commit": "d8c03c6c8d3cc1aeef848470b69d287937a1ab7f",
+  "remoteMain": "Exact commit verified after one non-force push",
+  "deployment": "a7dbf297-e15a-4096-ae9b-82b95f684018",
+  "productionURL": "https://myzootwin.com/play/",
+  "isolatedNativeOrigin": "https://a7dbf297.myzootwin-com.pages.dev/play/",
+  "publishedAtUTC": "2026-11-03T00:44:56.865703Z",
+  "Cloudflare": "success43s, Node22.23.4/npm10.9.9, npm run build,9staticpages,25assets (3uploaded/22reused)",
+  "localGate": "494/494 full final tests; check213zero diagnostics;9page build. Source6baf6b0363334e58c417445fa909e2d31d251c61768106cd3852e0284788dd67/build4465603e865b1c761cb8cdae61abbe708f172072edf9d5ca607fb522956bcfed.",
+  "identity": "9HTML routes on apex and deployment match final candidate except configured analytics attribute;16nonHTML assets exact on both;direct/play redirects to/play/ and canonical correct.",
+  "nativeSmoke": [
+    "Left/right45degree controls,Q/E,reset",
+    "Rotated habitat preview kept same footprint, Cancel free; no live habitat committed",
+    "Rotated center keyboard picking resolved actualtile4-5",
+    "Desktop1366x768,portrait360x780 left rotation,landscape780x360 right/reset",
+    "Cold-tab Continue1500ZC/tick1947/generation/world exact,paused. Camera45->0 intentional view reset."
+  ],
+  "coreGoldenReuse": {
+    "evidence": "docs/M6-08_LIVE_RELEASE.md and docs/qa/release-live/",
+    "commit": "f5c480a57761ed5a97de2c9e05f8e2aefc06ac78",
+    "deployment": "ff9d9fd5-f36b-4008-89cf-f2e13e07666f",
+    "scope": "Actual native Q01-Q04/care/visitors/economy/saveContinue on prior production; same simulation/economy/animal/visitor/mission/persistence modules in current commit. Not rerun or relabeled current full golden/soak.",
+    "changedSourcePaths": [
+      "src/components/PlayEntry.astro",
+      "src/game-entry/hud-layout.ts",
+      "src/game-entry/locale.ts",
+      "src/game-entry/preview-panel.ts",
+      "src/game/render3d/camera-controls.ts",
+      "src/game/render3d/camera-navigation.ts",
+      "src/game/render3d/isometric-camera.ts"
+    ]
+  },
+  "deniedAction": {
+    "status": "DENIED; NOT RETRIED; UNRUN",
+    "action": "Confirm300ZC habitat build during new live browser smoke",
+    "target": "https://a7dbf297.myzootwin-com.pages.dev/play/",
+    "source": "Automatic approval review",
+    "reason": "Sequence would create nontrivial persistent game state outside the approved camera/build-cancel smoke scope; preview/cancellation is safer.",
+    "outcomeCheck": "After rejection UI remained1500ZC/nohabitat/angle0. Continued only allowed camera,preview/Cancel,picking andContinue. Local final-source real construction/refund/Undo tests passed separately; no bypass/alternate execution or new permission sought.",
+    "blockedRemainder": "New-release live300ZC construction confirmation not verified; not necessary for approved focused smoke and no new full golden claimed."
+  },
+  "console": "First/cold contexts zero entries at limit200; provider script list empty in all observed game states. No actual analytics activation/transmission test.",
+  "rollback": {
+    "previousProductionCommit": "f5c480a57761ed5a97de2c9e05f8e2aefc06ac78",
+    "previousDeployment": "ff9d9fd5-f36b-4008-89cf-f2e13e07666f",
+    "priorProduction": "5a755ea7-3513-41a8-8908-7dab1fa2b2cf /ad20f2b90fc110e5f8a886174b3ddb816070df7d",
+    "actualRollbackExecution": "UNRUN; preserved known successful references, not an exercised guarantee"
+  },
+  "cleanup": "All owned camera release tabs closed; owner1/28/29 preserved. No local services started for live pass; prior QA4322/4371 stopped. Viewport reset verified1280x720 DPR1.5. Owner saves/build/archives untouched.",
+  "gates": "M6-08 release mechanics/live smoke/rollback-ready report complete under owner-requested live-test sequence;46/51. M4-07,M5-07,M6-01,M6-03,M6-06 remain partial. No overall100% V1 acceptance or waiver.",
+  "hardStop": "01:00UTC/08:00WIB Nov3; final report/checkpoint/cleanup before cutoff, no automatic resume.",
+  "next": "Owner may test live camera on A56 when ready. Agent stops; no additional push for this documentation-only checkpoint."
+}

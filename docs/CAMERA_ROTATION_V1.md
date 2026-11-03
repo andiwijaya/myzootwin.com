@@ -1,3 +1,5 @@
+> Publication update: current camera d8c03c6/a7dbf297 is live. See [current live/stop report](CAMERA_LIVE_RELEASE.md). The evidence below retains its original stage/source limits.
+
 # Camera rotation — pre-deploy candidate
 
 **Local implementation and bounded verification complete. Camera is not pushed.** Published baseline remains `f5c480a57761ed5a97de2c9e05f8e2aefc06ac78`, Pages `ff9d9fd5-f36b-4008-89cf-f2e13e07666f`, https://myzootwin.com/play/; its native Q01–Q04 and cold Continue were verified in [release report](M6-08_LIVE_RELEASE.md). Parent review/dispatch precedes the already-authorized next publication. Hard stop: **3 November01:00UTC /08:00WIB**; no automatic resume.

@@ -398,7 +398,7 @@ Dot harus memperjelas typing dan validasi aktual sebelum implementasi; `unknown`
 - [x] **M6-05** Dead-code/dependency/asset/license audit; repo, build, QA artifact cleanup (keep usable licensed media). **Verify:** audit summary and repo size.
 - [ ] **M6-06** Security &amp; privacy review: no PII/login, storage transparency, safe errors, accessibility. **Verify:** sign-off notes.
 - [x] **M6-07** Update homepage game CTA, metadata, in-site Learn relationship, preserve existing public URLs; minimal privacy-safe telemetry where compliant. **Verify:** SEO route regression &amp; events.
-- [ ] **M6-08** Final local build → authorized main push/deploy → live production smoke test desktop/mobile → rollback-ready V1 report. **Verify:** actual production URL, commit hash, test timestamps.
+- [x] **M6-08** Final local build → authorized main push/deploy → live production smoke test desktop/mobile → rollback-ready V1 report. **Verify:** actual production URL, commit hash, test timestamps.
 
 **Exit M6 = V1 RELEASE:** all P0/P1 defects closed; owner can play live after Dot has tested live. No new features before release gate.
 
@@ -1180,3 +1180,8 @@ Read-only hash checks match219current source entries/25candidate artifacts and a
 ## Owner-requested camera extension — 2026-11-03 UTC
 
 [Camera predeploy report](CAMERA_ROTATION_V1.md):45°left/right orbit, Q/E, reset/Home, rotated camera fitting/ground axes and bilingual accessible controls. Found/fixed HUD camera focus clipping. Final494tests/check213zero/build9routes; native mouse/keyboard, rotated picking/build/cancel/refund/Undo, mobileviewports and coldContinue1169ZC/tick4990/world exact. Source `6baf6b0363334e58c417445fa909e2d31d251c61768106cd3852e0284788dd67`, build `4465603e865b1c761cb8cdae61abbe708f172072edf9d5ca607fb522956bcfed`. Original bounded-isometric constraint remains; user explicitly added orbit after viewing live. No save/core change or M7. Current production remainsf5c480a/ff9d9fd5, camera not pushed. Parent predeploy review/dispatch; hardstop01:00UTC/08:00WIB, checkpoint/QAcleanup before00:45. **45/51 unchanged**, unrun device/human/recording/privacy gates retained.
+
+
+## M6-08 COMPLETE / stop checkpoint — 2026-11-03 UTC
+
+[Camera live release](CAMERA_LIVE_RELEASE.md), [acceptance](qa/camera-live/acceptance.json). Authorizedmainpush`d8c03c6`, Pages`a7dbf297-e15a-4096-ae9b-82b95f684018`success00:44:56UTC,actualNode22.23.4;9routes/16assetsexact;nativecamera/picking/previewCancel/Continue desktop+mobileviewports. New live300ZCconfirm was auto-reviewDENIED, not retried; localconstruction/Undo andpriorunchanged-core realproductionQ01-Q04 evidence reused, not relabelled newgolden. Rollbackf5c480a/ff9d9fd5 retained. **46/51 (90.20%)**, M6 5/8. Fivequality/evidence/signoffgates remainpartial; no100%/hardware/recording/legalclaim. AllQAclosed; stop01:00UTC/08:00WIB, noautomaticresume. Documentationcheckpointlocalonly.

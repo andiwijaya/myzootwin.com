@@ -1,3 +1,5 @@
+> Publication update: current camera d8c03c6/a7dbf297 is live. See [current live/stop report](CAMERA_LIVE_RELEASE.md). The evidence below retains its original stage/source limits.
+
 # Published visual candidate — live verification
 
 **Live:** https://myzootwin.com/play/ · commit `f5c480a57761ed5a97de2c9e05f8e2aefc06ac78` · Pages deployment `ff9d9fd5-f36b-4008-89cf-f2e13e07666f`. Published **2026-11-02 23:51:52 UTC**, success33s, Node22.23.4/npm10.9.9. One authorized non-force main push; no Actions/manual duplicate build/settings/grants. The known lazy-chunk warning remains documented.
