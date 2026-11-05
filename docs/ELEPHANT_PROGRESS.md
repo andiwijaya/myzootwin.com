@@ -4,7 +4,7 @@ Source: owner Library handoff `libfile_09652153d1bc8191b2c1f1aa6cb5ce18` (44/44 
 
 Session: autonomous local work, hard stop **2026-11-05 17:00 WIB / 10:00 UTC**, checkpoint before 16:55 WIB. No automatic continuation. No push/deploy authorized in this session. Original checkout, owner builds and owner saves stay untouched.
 
-Verified EH: **4/39 (10.26%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
+Verified EH: **5/39 (12.82%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
 
 | Item | Status | Scope / evidence |
 |---|---|---|
@@ -12,7 +12,7 @@ Verified EH: **4/39 (10.26%)**. Existing V1: **46/51**, five evidence/signoff ga
 | EH0-02 | [x] | Nine frozen synthetic saves, four compatibility tests, 68 focused passes and native Q01–Q04/Continue/viewport proof; [baseline](ELEPHANT_BASELINE.md) |
 | EH0-03 | [x] | Official reference review, original procedural plan and measured-budget gates; [contract](ELEPHANT_ART_BEHAVIOR.md) |
 | EH0-04 | [x] | Deterministic layout/route/budget design fixtures and [technical contract](ELEPHANT_TECHNICAL_CONTRACT.md) |
-| EH1-01 | [ ] | Shared species/habitat/resource types; original macaws intact |
+| EH1-01 | [x] | Shared discriminated types, macaw-scoped Q02/Q04, safe welfare slots; [506-test evidence](ELEPHANT_FOUNDATION.md) |
 | EH1-02 | [ ] | Append tiles preserving original 120 |
 | EH1-03 | [ ] | Stable scene coordinates, blockers and camera |
 | EH1-04 | [ ] | Authoritative 2×2/6×6 preview and limits |

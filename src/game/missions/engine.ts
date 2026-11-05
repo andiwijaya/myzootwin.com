@@ -4,6 +4,7 @@ import {MISSION_IDS,type MissionId,type ZooSaveV1} from '../core/state.ts';
 import {analyzePaths} from '../world/paths.ts';
 import {ledgerProof,totals} from '../economy/journal.ts';
 import {welfareParts} from '../animals/welfare.ts';
+import {macaws} from '../core/species.ts';
 
 /** Tunable game objectives; seconds below are simulation time, never wall/render time. */
 export const CARE_MISSION_RULES=Object.freeze({threshold:60,durationTicks:50,unlockId:'aviary-blossoms' as const});
@@ -12,7 +13,7 @@ export interface MissionQuote {id:MissionId;command:number;}
 export type MissionStatus='active'|'ready'|'claimed'|'locked'|'planned';
 function connected(s:ZooSaveV1){return analyzePaths(s.world).habitats.some(h=>h.connected);}
 export function careMissionView(s:ZooSaveV1){
- const animals=[...s.animals].sort((a,b)=>a.id.localeCompare(b.id)).map(a=>{const p=welfareParts(s,a);return{id:a.id,placed:Boolean(p.habitat),fed:a.foodEaten>0,watered:a.waterDrunk>0,welfare:p.welfare,foodAccess:p.foodAccess,waterAccess:p.waterAccess,perchAccess:p.perchAccess};});
+ const animals=macaws(s.animals).sort((a,b)=>a.id.localeCompare(b.id)).map(a=>{const p=welfareParts(s,a);return{id:a.id,placed:Boolean(p.habitat),fed:a.foodEaten>0,watered:a.waterDrunk>0,welfare:p.welfare,foodAccess:p.foodAccess,waterAccess:p.waterAccess,perchAccess:p.perchAccess};});
  const placed=animals.filter(a=>a.placed).length,fed=animals.filter(a=>a.fed).length,watered=animals.filter(a=>a.watered).length;
  const holding=placed===2&&fed===2&&watered===2&&animals.every(a=>a.welfare>=CARE_MISSION_RULES.threshold);
  const unlocked=s.missions.completedIds.includes('Q02')&&s.missions.rewards.some(r=>'unlockId'in r&&r.missionId==='Q02'&&r.unlockId===CARE_MISSION_RULES.unlockId);
@@ -23,7 +24,7 @@ export function careMissionView(s:ZooSaveV1){
  * Only one final fixed-tick event can add duration; ordinary state events can reset, never advance it. */
 export function evaluateMissions(s:ZooSaveV1,fixedTick=false){
  captureVisitorObjective(s);evaluateThriving(s,fixedTick);const m=s.missions;m.objectives.habitatConnected=connected(s);
- m.objectives.birdsFedIds=s.animals.filter(a=>a.foodEaten>0).map(a=>a.id);m.objectives.birdsWateredIds=s.animals.filter(a=>a.waterDrunk>0).map(a=>a.id);
+ m.objectives.birdsFedIds=macaws(s.animals).filter(a=>a.foodEaten>0).map(a=>a.id);m.objectives.birdsWateredIds=macaws(s.animals).filter(a=>a.waterDrunk>0).map(a=>a.id);
  // Once the required consecutive streak is achieved, its objective proof is retained.
  // Later welfare still changes and demands care, but cannot erase an earned mission before Claim.
  if(m.completedIds.includes('Q02')||m.objectives.comfortableTicks===CARE_MISSION_RULES.durationTicks)return;

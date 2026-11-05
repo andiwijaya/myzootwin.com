@@ -2,6 +2,7 @@ import type {Animal,WorldState,ZooSaveV1} from '../core/state.ts';
 import {reachableFood} from './feeding.ts';
 import {reachableWater} from './watering.ts';
 import {reachablePerch} from './resting.ts';
+import {macaws} from '../core/species.ts';
 
 /** Configurable game balance, not biological or husbandry advice. */
 export const WELFARE_RULES=Object.freeze({foodWeight:.35,waterWeight:.30,habitatWeight:.20,enrichmentWeight:.15,noAccessCap:40,low:60,recovered:65,hungry:60,satisfied:45,tired:35,rested:65,bored:20,enriched:45});
@@ -11,7 +12,7 @@ export type CareCause='habitat'|'food-missing'|'food-unreachable'|'food-empty'|'
 export interface CareAlert {cause:CareCause;action:CareAction;}
 const round=(n:number)=>Math.round(Math.max(0,Math.min(100,n))*100)/100;
 function habitatFor(w:WorldState,a:Animal){const h=w.habitats.find(h=>h.id===a.habitatId);if(!h||!a.position||h.cells.length!==4)return undefined;const x=Math.min(...h.cells.map(c=>c.x)),z=Math.min(...h.cells.map(c=>c.z));return [0,1].every(dx=>[0,1].every(dz=>h.cells.some(c=>c.x===x+dx&&c.z===z+dz)))&&h.cells.every(c=>w.tiles.some(t=>t.cell.x===c.x&&t.cell.z===c.z&&t.terrain==='land'&&t.occupantId===h.id))?h:undefined;}
-export function welfareParts(s:ZooSaveV1,a:Animal){const h=habitatFor(s.world,a),slot=[...s.animals].sort((a,b)=>a.id.localeCompare(b.id)).findIndex(b=>b.id===a.id),food=h?reachableFood(s.world,h):undefined,water=h?reachableWater(s.world,h):undefined,perch=h?reachablePerch(s.world,h):undefined;
+export function welfareParts(s:ZooSaveV1,a:Animal){const h=habitatFor(s.world,a),slot=macaws(s.animals).sort((a,b)=>a.id.localeCompare(b.id)).findIndex(b=>b.id===a.id),food=h?reachableFood(s.world,h):undefined,water=h?reachableWater(s.world,h):undefined,perch=h?reachablePerch(s.world,h):undefined;
  const foodAccess=Boolean(food&&slot>=0&&slot<food.capacity&&(food.portions?.[slot]??0)>0),waterAccess=Boolean(water&&slot>=0&&slot<water.capacity&&(water.portions?.[slot]??0)>0),foodScore=h?round(Math.min(100-a.hunger,foodAccess?100:WELFARE_RULES.noAccessCap)):0,waterScore=h?round(Math.min(100-a.thirst,waterAccess?100:WELFARE_RULES.noAccessCap)):0,habitatFit=h?100:0,enrichmentScore=h?round(a.enrichment):0;
  return {foodScore,waterScore,habitatFit,enrichmentScore,welfare:round(WELFARE_RULES.foodWeight*foodScore+WELFARE_RULES.waterWeight*waterScore+WELFARE_RULES.habitatWeight*habitatFit+WELFARE_RULES.enrichmentWeight*enrichmentScore),foodAccess,waterAccess,perchAccess:Boolean(perch&&slot<perch.capacity),slot,habitat:h};
 }
