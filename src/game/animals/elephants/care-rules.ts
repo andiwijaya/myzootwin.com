@@ -10,3 +10,5 @@ export const ELEPHANT_ENRICHMENT=Object.freeze({restTicks:30,logTicks:24,logCool
 
 /** Fictional social need; one shared-tick reciprocal greeting, with no player-triggered reward. */
 export const ELEPHANT_SOCIAL=Object.freeze({seekBelow:65,attemptEveryTicks:20,decay:.005,comfort:24,touchTicks:24,cooldownTicks:600,retryTicks:80,approachTicks:400,minDistance:2.5,maxDistance:3.1});
+
+export const ELEPHANT_SUPPLIES=Object.freeze({browseRefill:8,waterRefill:4,pondRefill:12});

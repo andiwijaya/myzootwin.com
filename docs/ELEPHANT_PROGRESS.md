@@ -4,7 +4,7 @@ Source: owner Library handoff `libfile_09652153d1bc8191b2c1f1aa6cb5ce18` (44/44 
 
 Session 1 stopped safely before **2026-11-05 17:00 WIB / 10:00 UTC**. Session 2 explicitly authorized by the owner to continue at home, resumed at13:35 UTC /20:35 WIB from5852bdc. No new deadline specified. No push/deploy authorized. Original checkout, owner builds and owner saves stay untouched.
 
-Verified EH: **22/39 (56.41%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
+Verified EH: **23/39 (58.97%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
 
 | Item | Status | Scope / evidence |
 |---|---|---|
@@ -30,7 +30,7 @@ Verified EH: **22/39 (56.41%)**. Existing V1: **46/51**, five evidence/signoff g
 | EH3-04 | [x] | Paid pond, actual bath/spray/stock/cooldown, safe pinned-turn escape;638 tests/27 native cases, cold wet-spray and both baths; [evidence](ELEPHANT_POND.md) |
 | EH3-05 | [x] | Paid shade/log-mud, physical rest/rub/cooldown and causal welfare;647 tests/28 native cases, actual cold rub/IDEN/phone; [evidence](ELEPHANT_ENRICHMENT.md) |
 | EH3-06 | [x] | Reciprocal physical greeting, strict paired save/contact/cooldown/interrupt and shared contention fallback;657 tests/29 native cases; [evidence](ELEPHANT_SOCIAL.md) |
-| EH3-07 | [ ] | Per-elephant bilingual care panel |
+| EH3-07 | [x] | Derived actual causes/costed helpful actions, accessible IDEN disclosures/meters and live selected needs;662 tests/30 native cases; [evidence](ELEPHANT_CARE_INFO.md) |
 | EH4-01 | [ ] | Reachable fair multi-habitat visitors |
 | EH4-02 | [ ] | Habitat feedback, one admission ticket |
 | EH4-03 | [ ] | Balanced recoverable economy |
@@ -50,4 +50,4 @@ Verified EH: **22/39 (56.41%)**. Existing V1: **46/51**, five evidence/signoff g
 
 Each checked item requires a local commit and its scoped evidence. Commit identities are recorded by Git history and subsequent checkpoints; no self-referential hash is invented. Upcoming steps remain unverified until their complete seam passes.
 
-Historical timed-session shutdown: [first checkpoint](ELEPHANT_SESSION_CHECKPOINT.md). Owner explicitly resumed work afterward; latest verified seam: [reciprocal greeting](ELEPHANT_SOCIAL.md). Latest home handoff: [checkpoint](ELEPHANT_HOME_CHECKPOINT.md).
+Historical timed-session shutdown: [first checkpoint](ELEPHANT_SESSION_CHECKPOINT.md). Owner explicitly resumed work afterward; latest verified seam: [actual care explanations](ELEPHANT_CARE_INFO.md). Latest home handoff: [checkpoint](ELEPHANT_HOME_CHECKPOINT.md).

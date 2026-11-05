@@ -138,10 +138,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const button=root.querySelector<HTMLButtonElement>('[data-clear-selection]');if(button)button.textContent=entryMessages[locale].selectionDismiss;
     if(selected&&state.status==='ready') {
       const view=presentSelection(selected,locale);
-      root.querySelector('[data-selection-title]')?.replaceChildren(view.title);
-      root.querySelector('[data-selection-location]')?.replaceChildren(view.location);
-      root.querySelector('[data-selection-detail]')?.replaceChildren(view.detail);
-      if(selectionStatus)selectionStatus.value=view.title;
+      for(const [field,value]of [['title',view.title],['location',view.location],['detail',view.detail]]){const target=root.querySelector(`[data-selection-${field}]`);if(target&&target.textContent!==value)target.textContent=value;}
+      if(selectionStatus&&selectionStatus.value!==view.title)selectionStatus.value=view.title;
     } else {
       for(const field of ['title','location','detail'])root.querySelector(`[data-selection-${field}]`)?.replaceChildren();
     }

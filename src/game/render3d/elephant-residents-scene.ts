@@ -31,7 +31,7 @@ export function createElephantResidentsScene(catalog:SceneCatalog){
   for(const [ordinal,a]of active.entries()){
    let m=models.get(a.id);if(!m){const rig=createElephantRig(a.name,material!);rig.mesh.name=a.id;rig.mesh.scale.setScalar(a.name==='Nara'?ELEPHANT_ART.scaleNara:ELEPHANT_ART.scaleAyu);const entry={mesh:rig.mesh,ranges:[{first:0,count:rig.triangles,id:a.id}]};m={rig,entry,previous:structuredClone(a),current:structuredClone(a)};models.set(a.id,m);catalog.batches.push(entry);group.add(rig.mesh);}
    m.previous=m.current;m.current=structuredClone(a);const mesh=m.rig.mesh;mesh.position.set(a.position.x-origin.x,.079,a.position.z-origin.z);mesh.rotation.y=a.motion.heading;mesh.updateMatrixWorld(true);m.rig.skeleton.update();
-   catalog.identities.set(a.id,{id:a.id,category:'object',kind:'elephant',residentName:a.name,ordinal:ordinal+1,cell:{x:Math.floor(a.position.x),z:Math.floor(a.position.z)}});bounds(a.id);
+   catalog.identities.set(a.id,{id:a.id,category:'object',kind:'elephant',residentName:a.name,residentNeeds:{hunger:Math.round(a.hunger),thirst:Math.round(a.thirst),welfare:a.welfare,energy:Math.round(a.energy),enrichment:Math.round(a.enrichment),socialComfort:Math.round(a.socialComfort),behavior:a.currentBehavior,backing:Boolean(a.motion.backing)},ordinal:ordinal+1,cell:{x:Math.floor(a.position.x),z:Math.floor(a.position.z)}});bounds(a.id);
   }
   if(!models.size&&spray){group.remove(spray.mesh);spray.dispose();spray=undefined;}if(!models.size&&material){material.dispose();material=undefined;}
  },update(alpha:number,timeMs=0,reducedMotion=true,low=false){

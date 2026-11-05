@@ -1,0 +1,265 @@
+{
+  "method": "Actual canonical V2 game entry/renderer/autosave; named synthetic fixture; QA database only",
+  "fixture": "q04Claimed",
+  "database": "myzootwin-eh3-01-product-q04Claimed-20261105",
+  "databaseVersion": 2,
+  "primarySchema": 2,
+  "revision": 526,
+  "currency": 1335,
+  "command": 55,
+  "careServiceEntries": [
+    {
+      "id": "cmd-52",
+      "operationId": "cmd-52",
+      "kind": "supplies",
+      "amount": -12,
+      "balanceAfter": 1341,
+      "tick": 17503,
+      "relatedId": "elephant-pond-28"
+    }
+  ],
+  "tick": 18019,
+  "tiles": 216,
+  "birds": 2,
+  "elephants": [
+    {
+      "id": "elephant-ayu",
+      "name": "Ayu",
+      "sex": "female",
+      "position": {
+        "x": 7.5,
+        "z": 13.5
+      },
+      "hunger": 21.700000000000426,
+      "thirst": 44.31999999999927,
+      "welfare": 66,
+      "behavior": "drink",
+      "foodEaten": 24,
+      "waterDrunk": 24,
+      "baths": 3,
+      "energy": 86.74000000001206,
+      "enrichment": 74.10999999998486,
+      "bathCooldownTicks": 0,
+      "logCooldownTicks": 0,
+      "restedTicks": 90,
+      "enrichedTicks": 48,
+      "shadeRest": 42.78999999999698,
+      "socialComfort": 74.40000000001123,
+      "socialInteractions": 1,
+      "socialCooldownTicks": 0,
+      "motion": {
+        "phase": "drink",
+        "ticksLeft": 17,
+        "sequence": 270,
+        "heading": 0.8507963267948968,
+        "waypoints": [],
+        "waypointIndex": 0,
+        "lastStep": {
+          "x": 0,
+          "z": 0,
+          "heading": 0
+        }
+      }
+    },
+    {
+      "id": "elephant-nara",
+      "name": "Nara",
+      "sex": "female",
+      "position": {
+        "x": 6.5,
+        "z": 15.5
+      },
+      "hunger": 53.74000000000595,
+      "thirst": 4.160000000000002,
+      "welfare": 68,
+      "behavior": "seek-food",
+      "foodEaten": 24,
+      "waterDrunk": 26,
+      "baths": 3,
+      "energy": 84.12000000003809,
+      "enrichment": 74.10999999997244,
+      "bathCooldownTicks": 0,
+      "logCooldownTicks": 0,
+      "restedTicks": 90,
+      "enrichedTicks": 48,
+      "shadeRest": 35.810000000002034,
+      "socialComfort": 74.40000000001123,
+      "socialInteractions": 1,
+      "socialCooldownTicks": 0,
+      "motion": {
+        "phase": "seek-food",
+        "ticksLeft": 499,
+        "sequence": 270,
+        "heading": -1.5707963267948966,
+        "waypoints": [
+          {
+            "x": 6.5,
+            "z": 15.5
+          },
+          {
+            "x": 4.5,
+            "z": 13.5
+          }
+        ],
+        "waypointIndex": 1,
+        "lastStep": {
+          "x": 0,
+          "z": 0,
+          "heading": 0
+        }
+      }
+    }
+  ],
+  "careResources": [
+    {
+      "id": "elephant-browse-22",
+      "kind": "elephant-browse",
+      "habitatId": "habitat-56da3191-0ba0-4f2f-878f-0fc755a30e83",
+      "cell": {
+        "x": 3,
+        "z": 12
+      },
+      "stock": 6,
+      "capacity": 8,
+      "revision": 28,
+      "approaches": [
+        {
+          "x": 4.5,
+          "z": 13.5
+        }
+      ]
+    },
+    {
+      "id": "elephant-browse-23",
+      "kind": "elephant-browse",
+      "habitatId": "habitat-56da3191-0ba0-4f2f-878f-0fc755a30e83",
+      "cell": {
+        "x": 8,
+        "z": 12
+      },
+      "stock": 8,
+      "capacity": 8,
+      "revision": 27,
+      "approaches": [
+        {
+          "x": 7.5,
+          "z": 13.5
+        }
+      ]
+    },
+    {
+      "id": "elephant-water-24",
+      "kind": "elephant-water",
+      "habitatId": "habitat-56da3191-0ba0-4f2f-878f-0fc755a30e83",
+      "cell": {
+        "x": 8,
+        "z": 14
+      },
+      "stock": 3,
+      "capacity": 8,
+      "revision": 32,
+      "approaches": [
+        {
+          "x": 7.5,
+          "z": 13.5
+        },
+        {
+          "x": 7.5,
+          "z": 15.5
+        }
+      ]
+    },
+    {
+      "id": "elephant-pond-28",
+      "kind": "elephant-pond",
+      "habitatId": "habitat-56da3191-0ba0-4f2f-878f-0fc755a30e83",
+      "cell": {
+        "x": 5,
+        "z": 16
+      },
+      "stock": 8,
+      "capacity": 8,
+      "revision": 31,
+      "approaches": [
+        {
+          "x": 4.5,
+          "z": 15.5
+        },
+        {
+          "x": 6.5,
+          "z": 15.5
+        }
+      ]
+    },
+    {
+      "id": "elephant-shade-40",
+      "kind": "elephant-shade",
+      "habitatId": "habitat-56da3191-0ba0-4f2f-878f-0fc755a30e83",
+      "cell": {
+        "x": 3,
+        "z": 14
+      },
+      "stock": 1,
+      "capacity": 1,
+      "revision": 40,
+      "approaches": [
+        {
+          "x": 4.5,
+          "z": 13.5
+        },
+        {
+          "x": 4.5,
+          "z": 15.5
+        }
+      ]
+    },
+    {
+      "id": "elephant-log-41",
+      "kind": "elephant-log",
+      "habitatId": "habitat-56da3191-0ba0-4f2f-878f-0fc755a30e83",
+      "cell": {
+        "x": 8,
+        "z": 16
+      },
+      "stock": 1,
+      "capacity": 1,
+      "revision": 41,
+      "approaches": [
+        {
+          "x": 7.5,
+          "z": 15.5
+        }
+      ]
+    }
+  ],
+  "residents": 4,
+  "habitats": [
+    {
+      "id": "habitat-care-mission",
+      "kind": "macaw-aviary",
+      "cells": 4
+    },
+    {
+      "id": "habitat-56da3191-0ba0-4f2f-878f-0fc755a30e83",
+      "kind": "elephant-grove",
+      "cells": 36
+    }
+  ],
+  "buildEntries": 0,
+  "occupiedTiles": 40,
+  "missions": [
+    "Q01",
+    "Q02",
+    "Q03",
+    "Q04"
+  ],
+  "grant": {
+    "id": "elephant-expansion-grant-v1",
+    "ledgerEntryId": "elephant-expansion-grant-v1",
+    "tick": 1186,
+    "command": 19
+  },
+  "grantEntries": 1,
+  "backupSchema": 1,
+  "backupExact": true
+}
