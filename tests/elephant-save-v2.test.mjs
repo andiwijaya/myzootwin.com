@@ -6,7 +6,7 @@ import {createInitialState} from '../src/game/core/initial-state.ts';
 import {createSimulation} from '../src/game/core/simulation.ts';
 import {parseSave,validateSave} from '../src/game/persistence/save-v1.ts';
 import {migrateSaveV1,parseSaveV2,validateSaveV2,serializeSaveV2,legacySimulationState,ELEPHANT_CHECKPOINT_CODEC} from '../src/game/persistence/save-v2.ts';
-import {checkedCheckpoint,stateFromCheckpoint,encodeCheckpointState} from '../src/game/persistence/checkpoint.ts';
+import {checkedCheckpoint,stateFromCheckpoint,encodeCheckpointState,inspectCheckpoint} from '../src/game/persistence/checkpoint.ts';
 import {createAutosave} from '../src/game/persistence/autosave.ts';
 const frozen=JSON.parse(readFileSync(new URL('./fixtures/elephant-legacy-v1.json',import.meta.url),'utf8'));
 const projection=v=>{const s=legacySimulationState(v);s.world.height=10;s.world.tiles=s.world.tiles.slice(0,120);return s;};
@@ -49,6 +49,14 @@ test('corrupt unsupported oversize unknown and unimplemented future content reje
 test('otherwise valid custom legacy layouts refuse this expansion while leaving their original V1 data valid',()=>{
   const s=createInitialState();s.world.height=11;for(let x=0;x<12;x++)s.world.tiles.push({cell:{x,z:10},terrain:'land',occupantId:null,path:false});
   assert.equal(validateSave(s).ok,true);const before=structuredClone(s),r=migrateSaveV1(s);assert.equal(r.ok,false);assert.equal(r.code,'unsupported-schema');assert.equal(r.path,'$.world.unsupported-layout');assert.deepEqual(s,before);assert.equal(validateSave(s).ok,true);
+});
+
+test('future EH proof metadata and elephant resources block recovery as unsupported rather than recoverable corruption',()=>{
+  const source=migrateSaveV1(frozen.entries.q04Claimed.state).value;
+  for(const change of [s=>s.elephantGrove.missions={completedIds:['EH01']},s=>s.world.resources[0].kind='elephant-feeder']){
+    const newer=structuredClone(source);change(newer);const payload=JSON.stringify(newer),raw={format:2,generation:'newer-content',revision:9,writtenAt:1,writer:'future-code',payload};
+    assert.equal(validateSaveV2(newer).code,'unsupported-schema');assert.equal(inspectCheckpoint(raw,ELEPHANT_CHECKPOINT_CODEC).problem,'unsupported-schema');assert.equal(raw.payload,payload);assert.throws(()=>serializeSaveV2(newer));
+  }
 });
 
 test('checkpoint codec is explicitly opt-in; default legacy reader rejects V2 rather than downgrading it',()=>{

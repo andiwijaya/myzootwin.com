@@ -10,13 +10,15 @@ Checkpoint/autosave accept an explicit codec; their default is the unchanged str
 
 ## Validation of the final candidate
 
-- **530/530 full tests pass**, including all unchanged original tests and seven new migration tests. Nine fixture projections match their frozen SHA-256 exactly. Logs: `.qa/elephant-baseline/v2-closeout-full.tap`.
-- Astro checks **234 files, zero errors/warnings/hints**; nine-route build passes. Existing large lazy Three chunk warning remains. Logs: `v2-closeout-check.log`, `v2-closeout-build.log` in the same ignored QA folder.
+- **531/531 full tests pass**, including all unchanged original tests and eight new migration tests. Nine fixture projections match their frozen SHA-256 exactly. Final log: `.qa/elephant-baseline/v2-handoff-full.tap`.
+- Astro checks **234 files, zero errors/warnings/hints**; nine-route build passes. Existing large lazy Three chunk warning remains. Final logs: `v2-handoff-check.log`, `v2-handoff-build.log` in the same ignored QA folder.
 - [Native IndexedDB receipt](qa/elephant-v2/native-storage-closeout.json): **17/17 PASS**, 12 disposable databases created/deleted. All nine fixture migrations retain exact backups and block old-version opens; native transaction abort rolls back both records; two concurrent writers produce one commit/one conflict. Corrupt recovery, future content/schema protection, format-1 transition and reset-first/Undo pass. Quota failure is injected before a native write, not physical disk exhaustion. This proves persistence CAS, not an unimplemented grant's exactly-once behavior.
 - [Actual game-entry Continue receipt](qa/elephant-v2/product-continue.json): QA-only backend replacement using current compiled renderer/UI/autosave. Synthetic Q04 fixture cold-restores 985 ZC/tick1179, two macaws, all Q01-Q04 and 216 cells; one normal-rate active run then pause/cold reload restores 1003 ZC/tick1787, ID locale, repeated reload exact. Original V1 backup stays exact; no grant. One canvas/simulation. Console warn/error empty at limit200. Desktop/portrait/landscape pixels reviewed; no physical mobile claim or 15-minute elephant soak.
 - [Route receipt](qa/elephant-v2/routes.json): nine local HTTP routes match the built bytes, sitemap has nine entries, product output has no QA harness, fixture or source map. Harness bundles are isolated under ignored `.qa/elephant-world-built`, built with `node scripts/qa/build-elephant-harness.mjs` after `npm run build`.
 
 Screenshots: [desktop](qa/elephant-v2/continue-desktop.jpg), [ID portrait](qa/elephant-v2/continue-portrait-id.jpg), [ID landscape](qa/elephant-v2/continue-landscape-id.jpg). These show the retained macaw game with a migration candidate, not playable elephants. Earlier native receipts are retained with their actual case counts; the closeout receipt supersedes them for the final source.
+
+Final review after `a0acc4d` additionally classifies future EH proof keys and unknown resource kinds as unsupported-schema, closing a potential recovery-overwrite path. A new checkpoint-inspection regression proves both preserve their raw payload and block recovery classification; the final 531-test/check/build gates include this change. Native 17-case and actual Continue receipts were captured on `a0acc4d` before these two conservative rejection checks and were not rerun after them. The final route receipt was refreshed; shipped product bytes remain unchanged.
 
 ## Remaining work and release boundaries
 

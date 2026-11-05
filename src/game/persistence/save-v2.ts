@@ -23,10 +23,12 @@ export function validateSaveV2(value:unknown):SaveV2Result {
   if(!plain(value))return fail('$');
   if(value.schemaVersion!==2)return {ok:false,code:'unsupported-schema',path:'$.schemaVersion'};
   if(Object.keys(value).some(key=>!rootKeys.includes(key)))return unsupported('$');
+  if(plain(value.elephantGrove)&&Object.keys(value.elephantGrove).some(key=>key!=='grant'))return unsupported('$.elephantGrove');
   if(!exact(value,rootKeys)||!plain(value.elephantGrove)||!exact(value.elephantGrove,['grant']))return fail('$.elephantGrove');
   if(value.elephantGrove.grant!==null)return unsupported('$.elephantGrove.grant');
   const w=value.world;
   if(plain(w)&&Array.isArray(w.habitats)&&w.habitats.some(h=>plain(h)&&h.kind!=='macaw-aviary'))return unsupported('$.world.habitats.kind');
+  if(plain(w)&&Array.isArray(w.resources)&&w.resources.some(r=>plain(r)&&!['food','water','perch'].includes(r.kind as string)))return unsupported('$.world.resources.kind');
   if(Array.isArray(value.animals)&&value.animals.some(a=>plain(a)&&a.speciesId!=='ara-ararauna'))return unsupported('$.animals.speciesId');
   if(!plain(w)||w.width!==12||w.height!==18||!Array.isArray(w.habitats)||Object.getPrototypeOf(w.habitats)!==Array.prototype||Object.keys(w.habitats).length!==w.habitats.length||w.habitats.some(h=>!plain(h)||!exact(h,['id','kind','cells','viewingCell'])||h.kind!=='macaw-aviary'))return fail('$.world');
   const legacy={...value,schemaVersion:1,world:{...w,habitats:w.habitats.map(h=>{const {kind:_,...rest}=h;return rest;})}} as Record<string,unknown>;

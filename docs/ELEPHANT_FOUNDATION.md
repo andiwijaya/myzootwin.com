@@ -48,4 +48,4 @@ Progress **8/39 (20.51%)**. Next EH1-05 strict migration/persistence. No owner d
 
 ## EH1-05 candidate checkpoint
 
-The opt-in migration/recovery candidate is tested but **PARTIAL**, with no checklist increment. See [the exact scope, evidence and remaining schema work](ELEPHANT_SAVE_V2.md). Final candidate gates: 530/530 tests, 234-file Astro check with zero diagnostics, nine-route build, 17 native storage cases and actual macaw cold Continue. Production entry remains V1.
+The opt-in migration/recovery candidate is tested but **PARTIAL**, with no checklist increment. See [the exact scope, evidence and remaining schema work](ELEPHANT_SAVE_V2.md). Final candidate gates: 531/531 tests, 234-file Astro check with zero diagnostics, nine-route build, 17 native storage cases and actual macaw cold Continue. The evidence document distinguishes native-run source from final defensive hardening. Production entry remains V1.
