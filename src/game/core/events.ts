@@ -1,5 +1,6 @@
 export type SimulationEvent =
   | {type:'elephant-bathed';animalId:string;resourceId:string;bathCount:number;eventId:string;tick:number;gameTimeMs:number}
+  | {type:'elephant-enriched';animalId:string;resourceId:string;enrichedTicks:number;eventId:string;tick:number;gameTimeMs:number}
   | {type:'elephant-care-changed';resourceId:string;tick:number;gameTimeMs:number}
   | {type:'elephants-welcomed';tick:number;gameTimeMs:number}
   | {type:'conservation-grant-claimed';amount:number;tick:number;gameTimeMs:number}

@@ -4,3 +4,6 @@ export const ELEPHANT_WELFARE=Object.freeze({food:.25,water:.25,space:.20,shade:
 
 /** Fictional bathing refresh; a wet physically reached source is required throughout. */
 export const ELEPHANT_BATH=Object.freeze({batheTicks:18,sprayTicks:24,cooldownTicks:300,enrichment:24,energy:6,seekBelow:65});
+
+/** Benefits require a completed physical visit, never mere placement or elapsed real time. */
+export const ELEPHANT_ENRICHMENT=Object.freeze({restTicks:30,logTicks:24,logCooldownTicks:450,restEnergy:20,restShade:40,logRelief:28,shadeSeekBelow:50,energySeekBelow:45,logSeekBelow:75,shadeDecay:.01,energyDecay:.005,enrichmentDecay:.01});
