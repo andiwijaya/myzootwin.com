@@ -1,4 +1,4 @@
-import {visitTargetForState} from './graph.ts';
+import {visitTargetForState,selectVisitTarget} from './graph.ts';
 import {admitTicket} from '../economy/tickets.ts';
 import {VISITOR_STEP,visitorCell,visitorPaths,visitorRoute} from './graph.ts';
 export {visitorCell,visitorPaths,visitorRoute,visitTarget} from './graph.ts';
@@ -72,7 +72,7 @@ export function stepJourneys(s:RuntimeState):Array<{visitorId:string;habitatId:s
  if(s.visitorFlow.open&&target&&!s.visitors.some(ownsCorridor)){
   const centerGuest=s.visitors.find(v=>v.arrival?.slot===1&&!v.journey),eligible=s.visitors.filter(v=>v.phase==='queued').sort((a,b)=>a.arrival!.serial-b.arrival!.serial);
   const chosen=centerGuest?undefined:eligible.find(v=>v.arrival!.slot===1)??eligible[0];
-  if(chosen){chosen.journey!.habitatId=target.habitatId;chosen.journey!.startedTick=s.tick;setRoute(chosen,target.route.map(p=>({...p})),'entering');}
+  const assigned=chosen?selectVisitTarget(s):null;if(chosen&&assigned){chosen.journey!.habitatId=assigned.habitatId;chosen.journey!.startedTick=s.tick;setRoute(chosen,assigned.route.map(p=>({...p})),'entering');}
  }
  return viewed;
 }
