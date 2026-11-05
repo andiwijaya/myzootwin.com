@@ -1,3 +1,4 @@
+import {reconcileElephantWelfare} from '../animals/elephants/welfare.ts';
 import {stepElephantCare} from '../animals/elephants/care-simulation.ts';
 import {elephantCareView,elephantCareSnapshot,defaultElephantCareCell,validateElephantCarePlacement,prepareElephantCarePlacement,prepareElephantCareRefill,type ElephantCareKind,type ElephantCareQuote,type ElephantCareRefillQuote} from '../animals/elephants/care-resources.ts';
 import {elephantResidentsView,prepareElephantWelcome} from '../animals/elephants/residents.ts';
@@ -18,7 +19,7 @@ import {waterTransaction,waterView} from '../animals/watering.ts';
 import {foodTransaction,foodView,type FoodAction} from '../animals/feeding.ts';
 import {stepAnimals,welcomeBirds,reserveBird,birdsView,type BirdCommand} from '../animals/autonomy.ts';
 import {editLedger,refundable} from '../economy/refunds.ts';
-import {quoteRemoval,removedWorld,sameWorld,targetId,type EditTarget,type RemovalQuote,type EditorState} from '../world/editing.ts';
+import {quoteRemoval,removedWorld,sameWorld,targetId,elephantRestorationBlocked,elephantResourceUndoWorld,type EditTarget,type RemovalQuote,type EditorState} from '../world/editing.ts';
 import {preparePath,reconcilePathAccess,accessSummary} from '../world/paths.ts';
 import {prepareHabitat} from '../world/build-habitat.ts';
 import {prepareSpeciesHabitat} from '../world/species-habitat.ts';
@@ -49,7 +50,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
   let topology=reconciled.topology;
   let state=reconcileWelfare(structuredClone(baseline));evaluateMissions(state);
   let editor:EditorState={revision:0,undo:null};
-  if(savedEditor&&Number.isSafeInteger(savedEditor.revision)&&savedEditor.revision>=0&&savedEditor.revision<Number.MAX_SAFE_INTEGER){editor=structuredClone(savedEditor);if(editor.undo&&!sameWorld(editor.undo.after,state.world))editor.undo=null;}
+  if(savedEditor&&Number.isSafeInteger(savedEditor.revision)&&savedEditor.revision>=0&&savedEditor.revision<Number.MAX_SAFE_INTEGER){editor=structuredClone(savedEditor);if(editor.undo&&!sameWorld(editor.undo.after,state.world)&&!elephantResourceUndoWorld(state.world,editor.undo))editor.undo=null;}
   const invalidateEdit=()=>{editor={revision:editor.revision+1,undo:null};};
   const authorized=(expected?:number)=>Number.isSafeInteger(state.economy.nextCommand)&&state.economy.nextCommand<Number.MAX_SAFE_INTEGER&&(expected===state.economy.nextCommand||expected===undefined&&state.economy.checkpoint.entries===0);
   const compactNow=()=>{if(state.ledger.length<MONEY_RULES.journalEntries)return;const next=structuredClone(state);compactFinance(next,editor.undo?.refundIds??[]);const checked=validateState(next);if(!checked.ok)throw new Error(`Invalid financial checkpoint at ${checked.path}`);state=checked.value;};
@@ -200,19 +201,21 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
       const next=validateState(reconcileJourneys({...structuredClone(state),world:connected.world,currency:transaction.currency,ledger:transaction.ledger,economy:{...structuredClone(state.economy),nextCommand:state.economy.nextCommand+1}}));
       if(!next.ok)return {ok:false as const,reason:'command' as const};
       editor={revision:editor.revision+1,undo:{before:structuredClone(state.world),after:structuredClone(connected.world),refundIds:transaction.entries.map(e=>e.id)}};
-      state=reconcileWelfare(next.value);topology=connected.topology;compactNow();publish(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));
+      state=reconcileWelfare(next.value);if(state.schemaVersion===2&&quote.target.kind==='elephant-resource')reconcileElephantWelfare(state);topology=connected.topology;compactNow();publish(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));
       return {ok:true as const};
     },
     undo(operationId:string,expectedCommand?:number){
       if(disposed||clock.inspect().paused)return {ok:false as const,reason:'command' as const};
-      const undo=editor.undo;if(!authorized(expectedCommand)||!undo||!sameWorld(undo.after,state.world))return {ok:false as const,reason:'stale' as const};
+      const undo=editor.undo;if(!authorized(expectedCommand)||!undo)return {ok:false as const,reason:'stale' as const};
+      const elephantWorld=elephantResourceUndoWorld(state.world,undo);if(!elephantWorld&&!sameWorld(undo.after,state.world))return {ok:false as const,reason:'stale' as const};
       const refunds=undo.refundIds.map(id=>ledgerProof(state,id));
       if(refunds.some(e=>!e||e.kind!=='refund'))return {ok:false as const,reason:'command' as const};
       const transaction=editLedger(state,operationId,refunds.map(e=>({kind:'restore' as const,relatedId:e!.id,amount:-e!.amount})));
       if(!transaction)return {ok:false as const,reason:'funds' as const};
-      const connected=reconcilePathAccess(undo.before),restored=structuredClone(state);if(restored.economy.recovery.habitatGrant&&connected.world.habitats.some(h=>h.id===restored.economy.recovery.habitatGrant!.id))restored.economy.recovery.habitatGrant.tick=state.tick;const next=validateState(reconcileJourneys({...restored,world:connected.world,currency:transaction.currency,ledger:transaction.ledger,economy:{...restored.economy,nextCommand:state.economy.nextCommand+1}}));
+      const connected=reconcilePathAccess(elephantWorld??undo.before),restored=structuredClone(state);if(restored.economy.recovery.habitatGrant&&connected.world.habitats.some(h=>h.id===restored.economy.recovery.habitatGrant!.id))restored.economy.recovery.habitatGrant.tick=state.tick;const next=validateState(reconcileJourneys({...restored,world:connected.world,currency:transaction.currency,ledger:transaction.ledger,economy:{...restored.economy,nextCommand:state.economy.nextCommand+1}}));
       if(!next.ok)return {ok:false as const,reason:'command' as const};
-      state=reconcileWelfare(next.value);topology=connected.topology;invalidateEdit();compactNow();publish(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};
+      const restoresElephantCare=undo.before.resources.some(r=>r.kind.startsWith('elephant-')&&!undo.after.resources.some(a=>a.id===r.id));if(restoresElephantCare&&elephantRestorationBlocked(next.value))return {ok:false as const,reason:'elephant-space' as const};
+      state=reconcileWelfare(next.value);if(state.schemaVersion===2&&restoresElephantCare)reconcileElephantWelfare(state);topology=connected.topology;invalidateEdit();compactNow();publish(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};
     },
     economyView:()=>economyView(state),
     purchaseReason:(kind:'habitat'|'path')=>moneyReason(state,PRICES[kind]),

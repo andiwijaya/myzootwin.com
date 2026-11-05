@@ -79,7 +79,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   host.addEventListener('scene-mission-result',event=>missionPanel.result((event as CustomEvent<{ok:boolean}>).detail.ok),{signal:events.signal});
   const elephantCatalog=mountElephantCatalog(root.querySelector('[data-elephant-catalog]'),events.signal,q=>controller.claimConservationGrant(q),()=>{root.dataset.guided='false';revealHudTarget(root.querySelector('[data-placement-tools]'));controller.beginElephantHabitat();host.focus({preventScroll:true});scrollHudTarget(host);},command=>{controller.welcomeElephants(command);host.focus({preventScroll:true});scrollHudTarget(host);});
   host.addEventListener('scene-elephant-grove-change',event=>elephantCatalog.update((event as CustomEvent<ElephantCatalogView>).detail),{signal:events.signal});
-  const elephantCare=mountElephantCarePanel(root.querySelector('[data-elephant-care]'),events.signal,{begin:kind=>{root.dataset.guided='false';controller.beginElephantCare(kind);host.focus({preventScroll:true});scrollHudTarget(host);},command:(action,revision)=>{controller.elephantCare(action,revision);host.focus({preventScroll:true});scrollHudTarget(host);},refill:quote=>controller.refillElephantCare(quote)});
+  const elephantCare=mountElephantCarePanel(root.querySelector('[data-elephant-care]'),events.signal,{begin:kind=>{root.dataset.guided='false';controller.beginElephantCare(kind);host.focus({preventScroll:true});scrollHudTarget(host);},command:(action,revision)=>{controller.elephantCare(action,revision);host.focus({preventScroll:true});scrollHudTarget(host);},refill:quote=>controller.refillElephantCare(quote),remove:(id,name)=>reviewRemoval({kind:'elephant-resource',id},name)});
   host.addEventListener('scene-elephant-care-change',event=>elephantCare.update((event as CustomEvent<ElephantCareSceneView>).detail),{signal:events.signal});
   let selected:SceneIdentity|null=null;
   let studio:StudioView={active:false,habitat:false,clip:'perch',angle:'quarter',motionPaused:false,canHabitat:false};
@@ -120,9 +120,9 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const copy=entryMessages[locale],ready=state.status==='ready';
     root.querySelector('[data-entry-text="editHint"]')?.replaceChildren(copy.editHint);
     const remove=root.querySelector<HTMLButtonElement>('[data-edit-remove]');
-    if(remove){remove.hidden=!ready||studio.active||!selected||!['habitat','path'].includes(selected.kind);remove.textContent=copy.editRemove;}
+    if(remove){remove.hidden=!ready||studio.active||!selected||!['habitat','path','elephant-facility'].includes(selected.kind);remove.textContent=copy.editRemove;}
     const undo=root.querySelector<HTMLButtonElement>('[data-edit-undo]');if(undo){undo.hidden=!ready||!editView.canUndo;undo.textContent=copy.editUndo+` · ${editView.undoCost??0} ZC`;undo.disabled=Boolean(economy&&economy.balance<(editView.undoCost??0));}
-    const keys={missing:'editMissing',protected:'editProtected','in-use':'editInUse','visitor-route':'editVisitorRoute','visitor-occupied':'editVisitorOccupied',stale:'editStale',funds:'editFunds',capacity:'economyCapacity',command:'editCommand'} as const;
+    const keys={'elephant-using':'editElephantUsing','elephant-space':'editElephantSpace',missing:'editMissing',protected:'editProtected','in-use':'editInUse','visitor-route':'editVisitorRoute','visitor-occupied':'editVisitorOccupied',stale:'editStale',funds:'editFunds',capacity:'economyCapacity',command:'editCommand'} as const;
     root.querySelector('[data-edit-status]')?.replaceChildren(editView.reason?copy[keys[editView.reason]]:editView.result?copy[editView.result==='removed'?'editRemoved':'editRestored']:'');
     root.querySelector('[data-edit-cancel]')?.replaceChildren(copy.editCancel);root.querySelector('[data-edit-confirm]')?.replaceChildren(copy.editConfirm);
     root.querySelector('#edit-dialog-title')?.replaceChildren(copy.editTitle);root.querySelector('#edit-dialog-description')?.replaceChildren(copy.editIntro);
@@ -323,13 +323,18 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   for(const button of root.querySelectorAll<HTMLButtonElement>('[data-studio-command]'))button.addEventListener('click',()=>{const command=button.dataset.studioCommand as StudioCommand;controller.studio(command);host.focus({preventScroll:true});if(command!=='pause')scrollHudTarget(host);},{signal:events.signal});
   root.querySelector<HTMLSelectElement>('[data-macaw-clip]')?.addEventListener('change',event=>{controller.studio('clip',(event.target as HTMLSelectElement).value);scrollHudTarget(host);},{signal:events.signal});
   root.querySelector<HTMLSelectElement>('[data-macaw-angle]')?.addEventListener('change',event=>{controller.studio('angle',(event.target as HTMLSelectElement).value);scrollHudTarget(host);},{signal:events.signal});
-  root.querySelector('[data-edit-remove]')?.addEventListener('click',()=>{
-    if(!selected||removal||!editDialog)return;
-    const target:EditTarget=selected.kind==='habitat'?{kind:'habitat',id:selected.id}:{kind:'path',cell:{...selected.cell}};
+  function reviewRemoval(target:EditTarget,name:string){
+    if(removal||!editDialog)return;
     const result=controller.quoteRemoval(target);if(!result)return;
+    revealHudTarget(placementTools);scrollHudTarget(placementTools);
     if(!result.ok){editView={...editView,reason:result.reason,result:null};renderEdit();return;}
-    controller.placement('cancel');removal=result.quote;removalName=presentSelection(selected,locale).title;renderEdit();
+    controller.placement('cancel');removal=result.quote;removalName=name;renderEdit();
     editDialog.showModal();controller.setPaused(true);root.querySelector<HTMLElement>('[data-edit-cancel]')?.focus();
+  }
+  root.querySelector('[data-edit-remove]')?.addEventListener('click',()=>{
+    if(!selected||!['habitat','path','elephant-facility'].includes(selected.kind))return;
+    const target:EditTarget=selected.kind==='habitat'?{kind:'habitat',id:selected.id}:selected.kind==='elephant-facility'?{kind:'elephant-resource',id:selected.id}:{kind:'path',cell:{...selected.cell}};
+    reviewRemoval(target,presentSelection(selected,locale).title);
   },{signal:events.signal});
   function dismissRemoval(){removal=null;if(editDialog?.open)editDialog.close();controller.setPaused(false);if(state.status==='ready')host?.focus({preventScroll:true});}
   root.querySelector('[data-edit-cancel]')?.addEventListener('click',dismissRemoval,{signal:events.signal});

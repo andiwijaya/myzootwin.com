@@ -348,7 +348,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     quoteRemoval:target=>simulation.quoteRemoval(target),
     edit:(command,quote)=>{
       if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;
-      placement?.command('cancel');
+      placement?.command('cancel');elephantCarePreview?.cancel();
       const id=`edit-${crypto.randomUUID().replaceAll('-','')}`;
       const result=command==='undo'?simulation.undo(id,editCommand):quote?simulation.remove(quote,id):{ok:false as const,reason:'command' as const};
       if(result.ok){picker?.clear();saveSession();render();const a=simulation.access();host.dataset.worldPathCount=String(a.pathTiles);host.dataset.worldConnected=String(a.connected);host.dataset.worldRouteCells=String(a.routeCells);host.dispatchEvent(new CustomEvent('scene-access-change',{detail:simulation.macawAccess()}));const s=simulation.inspect();host.dataset.builtHabitats=String(s.habitatCount);host.dataset.occupiedTiles=String(s.occupiedTiles);host.dispatchEvent(new CustomEvent('scene-habitat-change',{detail:{count:simulation.macawWorldSnapshot().habitats.length,occupiedTiles:simulation.macawWorldSnapshot().habitats.reduce((n,h)=>n+h.cells.length,0)}}));}

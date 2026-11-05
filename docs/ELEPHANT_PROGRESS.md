@@ -4,7 +4,7 @@ Source: owner Library handoff `libfile_09652153d1bc8191b2c1f1aa6cb5ce18` (44/44 
 
 Session 1 stopped safely before **2026-11-05 17:00 WIB / 10:00 UTC**. Session 2 explicitly authorized by the owner to continue at home, resumed at13:35 UTC /20:35 WIB from5852bdc. No new deadline specified. No push/deploy authorized. Original checkout, owner builds and owner saves stay untouched.
 
-Verified EH: **15/39 (38.46%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
+Verified EH: **16/39 (41.03%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
 
 | Item | Status | Scope / evidence |
 |---|---|---|
@@ -23,7 +23,7 @@ Verified EH: **15/39 (38.46%)**. Existing V1: **46/51**, five evidence/signoff g
 | EH2-03 | [x] | Free exact two-resident welcome, bounded internal visuals/selection, protected old guests and Q reward display;576 tests/24 native cases; [evidence](ELEPHANT_RESIDENTS.md) |
 | EH2-04 | [x] | Paid real care placement/refill/consumption, ID/EN UI, bounded geometry;592 tests/25 native cases; [evidence](ELEPHANT_CARE.md) |
 | EH2-05 | [x] | Same canonical tick, both physical care loops/cold Continue;597 tests incl.5 causal/critical recovery gates; [evidence](ELEPHANT_WELFARE_SLICE.md) |
-| EH2-06 | [ ] | Removal/Undo/orphan/refund safety |
+| EH2-06 | [x] | Guarded actual facility deletion, scoped Undo preserving passive consumption/remount, exact refunds and orphan protection;605 tests/26 native cases; [evidence](ELEPHANT_EDITING.md) |
 | EH3-01 | [ ] | Original recognizable elephant mesh/rig |
 | EH3-02 | [ ] | Ground walking, collision and avoidance |
 | EH3-03 | [ ] | Consumption-linked trunk animation |
@@ -50,4 +50,4 @@ Verified EH: **15/39 (38.46%)**. Existing V1: **46/51**, five evidence/signoff g
 
 Each checked item requires a local commit and its scoped evidence. Commit identities are recorded by Git history and subsequent checkpoints; no self-referential hash is invented. Upcoming steps remain unverified until their complete seam passes.
 
-Historical timed-session shutdown: [first checkpoint](ELEPHANT_SESSION_CHECKPOINT.md). Owner explicitly resumed work afterward; latest verified seam: [ground-care and welfare slice](ELEPHANT_WELFARE_SLICE.md).
+Historical timed-session shutdown: [first checkpoint](ELEPHANT_SESSION_CHECKPOINT.md). Owner explicitly resumed work afterward; latest verified seam: [guarded facility editing](ELEPHANT_EDITING.md). Latest home handoff: [checkpoint](ELEPHANT_HOME_CHECKPOINT.md).
