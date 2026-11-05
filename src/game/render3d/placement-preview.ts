@@ -9,7 +9,7 @@ import { raycastScene, type PickRect } from './scene-picking.ts';
 import type {HabitatKind} from '../core/species.ts';
 import {validateSpeciesHabitatPlacement} from '../world/species-habitat.ts';
 
-export function createPlacementPreview(world:()=>RuntimeWorld,catalog:SceneCatalog,camera:Camera,rect:()=>PickRect,onChange:(view:PlacementView)=>void,commit?:(proposal:PlacementProposal,operationId:string)=>boolean,purchaseReason?:(kind:'habitat'|'path')=>'funds'|'capacity'|null,habitatKind?:()=>HabitatKind) {
+export function createPlacementPreview(world:()=>RuntimeWorld,catalog:SceneCatalog,camera:Camera,rect:()=>PickRect,onChange:(view:PlacementView)=>void,commit?:(proposal:PlacementProposal,operationId:string)=>boolean,purchaseReason?:(kind:'habitat'|'path')=>import('../world/placement-preview.ts').PlacementReason|null,habitatKind?:()=>HabitatKind) {
   const map=world(),blocked=habitatBlockerKeys();
   const group=new Group();group.name='Habitat footprint planning';
   const box=new BoxGeometry(2,.22,2),edges=new EdgesGeometry(box);box.dispose();
@@ -27,7 +27,7 @@ export function createPlacementPreview(world:()=>RuntimeWorld,catalog:SceneCatal
   const planner=createPlacementPlanner(world,blocked,view=>{
     ghost.visible=view.active&&Boolean(view.proposal);confirmed.visible=!commit&&Boolean(view.confirmed);
     if(view.proposal){const proposal=view.proposal;position(ghost,proposal);outline.scale.set(proposal.width/2,1,proposal.height/2);ensureFills(proposal.cells.length);fills.forEach((tile,i)=>{tile.visible=i<proposal.cells.length;tile.position.set(i%proposal.width-(proposal.width-1)/2,-.07,Math.floor(i/proposal.width)-(proposal.height-1)/2);});ghostMaterial.color.set(view.reason==='ready'?'#23774e':'#b32e33');edgeMaterial.color.set(view.reason==='ready'?'#176541':'#a5222b');}
-    if(view.confirmed){position(confirmed,view.confirmed);confirmed.scale.set(view.confirmed.width/2,1,view.confirmed.height/2);}group.updateMatrixWorld(true);onChange(view);
+    if(view.confirmed){position(confirmed,view.confirmed);confirmed.scale.set(view.confirmed.width/2,1,view.confirmed.height/2);}group.updateMatrixWorld(true);onChange({...view,habitatKind:habitatKind?.()});
   },commit||habitatKind?{validate:(w,a,kind)=>{const checked=kind==='path'?validatePathPlacement(w,a):habitatKind?validateSpeciesHabitatPlacement(w,a,habitatKind()):validateHabitatPlacement(w,a);return checked.reason==='ready'?{...checked,reason:purchaseReason?.(kind)??'ready'}:checked;},commit}:{});
   const raycaster=new Raycaster(),ground=new Plane(new Vector3(0,1,0),0),intersection=new Vector3();
   return {group,geometries:[edges,plane],materials:[ghostMaterial,edgeMaterial,confirmedMaterial],

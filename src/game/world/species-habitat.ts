@@ -12,6 +12,7 @@ export function validateSpeciesHabitatPlacement(world:HabitatPlacementWorld,anch
   if(species===null)return {proposal:null,reason:'command' as const};
   const checked=validatePlacement(world,anchor,habitatBlockerKeys(),'habitat',SPECIES[species].footprint);
   if(checked.reason!=='ready')return checked;
+  if(kind==='elephant-grove'&&anchor&&anchor.z<10)return {...checked,reason:'zone' as const};
   if(world.habitats.some(h=>kindOf(h)===null))return {...checked,reason:'command' as const};
   return world.habitats.filter(h=>kindOf(h)===kind).length>=HABITAT_LIMITS[kind]?{...checked,reason:'limit' as const}:checked;
 }

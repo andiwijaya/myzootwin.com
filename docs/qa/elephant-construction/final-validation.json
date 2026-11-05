@@ -1,0 +1,160 @@
+{
+  "at": "2026-11-05T15:52:33.369960+00:00",
+  "feature": "EH2-02",
+  "baseCommit": "cdd26514dc3d5018c019de69df401928f5ba7275",
+  "status": "VERIFIED",
+  "progress": {
+    "done": 12,
+    "total": 39,
+    "percent": 30.77
+  },
+  "tests": {
+    "passed": 568,
+    "failed": 0,
+    "durationMs": 154415.0827,
+    "log": ".qa/elephant-baseline/eh2-02-full-serial-final.tap",
+    "scope": "Complete serial suite; final renderer-only unpaid-preview cancellation subsequently verified by native actual UI"
+  },
+  "astro": {
+    "files": 249,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0
+  },
+  "build": {
+    "pages": 9,
+    "pass": true,
+    "existingLargeThreeChunkWarning": true
+  },
+  "nativeCases": 23,
+  "qaDatabasesCreated": 18,
+  "qaDatabasesDeleted": 18,
+  "nativeConsoleWarningsAndErrors": 0,
+  "paidBuild": {
+    "coins": 650,
+    "cells": 36,
+    "doubleClickDebits": 1,
+    "coldExact": true,
+    "originalV1BackupExact": true
+  },
+  "emptyGroveDoesNotDivertMacawVisitors": true,
+  "physicalDevice": false,
+  "elephantGameplayClaimed": false,
+  "activeElephantPerformanceSoak": "UNRUN",
+  "ownerSaveTouched": false,
+  "originalCheckout": {
+    "path": "C:/MyZooTwin",
+    "commit": "63ce52a9c535b47e44417213e88649355979abdd",
+    "clean": true
+  },
+  "push": false,
+  "deploy": false,
+  "ownedServerExitCodes": [
+    0,
+    0
+  ],
+  "sourceHashes": [
+    {
+      "path": "scripts/qa/build-elephant-harness.mjs",
+      "sha256": "8ff780226023160a1333f7c34def58e9e097f08042cb96cda9b52ba092cca58c"
+    },
+    {
+      "path": "src/components/PlayEntry.astro",
+      "sha256": "fb81b94fba6d082505a9f295ed5d78c309f85f1ac9ca893c957b8dcc71d8abfc"
+    },
+    {
+      "path": "src/game-entry/elephant-catalog.ts",
+      "sha256": "06e07f637c10aa2df2b6ca4a55f60b7be044d4b66149dbe6bac7755328e356a1"
+    },
+    {
+      "path": "src/game-entry/onboarding-panel.ts",
+      "sha256": "f10eb04c895fef3994e9216133c2d45b43525c9b62c533ea157abcae70774168"
+    },
+    {
+      "path": "src/game-entry/preview-panel.ts",
+      "sha256": "ce787ef800eb4894a23735da7f619e9fb34cced1c18ac36d540652ed6a1a7ebe"
+    },
+    {
+      "path": "src/game-entry/selection-presentation.ts",
+      "sha256": "44b5de159b7d4363306808d141863ecf6788a973837b4be20fc213d5ecb033e4"
+    },
+    {
+      "path": "src/game-entry/thriving-mission-panel.ts",
+      "sha256": "6ff285b15d67e6b4271c61372a6a7970ecc38db4aa3fdf15c6c9678d43af8ce8"
+    },
+    {
+      "path": "src/game/core/simulation.ts",
+      "sha256": "baa34095048ffb44f97b69ea921f6b464ceb9b625280fde5703c95de3a205c10"
+    },
+    {
+      "path": "src/game/economy/elephant-construction.ts",
+      "sha256": "d7479f0b8a891474306ba3fb5f2ac161d8d1e9078c319c56b7be5633a05aa384"
+    },
+    {
+      "path": "src/game/economy/tickets.ts",
+      "sha256": "78bcaf29dbb7301745709874e3ad91edd37ec9bf15f70fbb10f89da4ed3a56dc"
+    },
+    {
+      "path": "src/game/render3d/elephant-habitat-scene.ts",
+      "sha256": "fe36f14d9c50d528b945ea926e2b9837f7c9942e71cc24b1be5c9d5a2a343b07"
+    },
+    {
+      "path": "src/game/render3d/foundation-scene.ts",
+      "sha256": "e8059c49ca13d728552489b118540d7d34490c9ecc787d4bdcf0accedb1a0141"
+    },
+    {
+      "path": "src/game/render3d/path-scene.ts",
+      "sha256": "a92541829abb61452f485bdca9eb4e61fd99188724f6c57c8b4f233541c42f21"
+    },
+    {
+      "path": "src/game/render3d/placement-preview.ts",
+      "sha256": "d1064f9a7205e433bac1f046270ba020fa80a6ea2fc28c344a81d56e5cdd0f4a"
+    },
+    {
+      "path": "src/game/render3d/preview-controller.ts",
+      "sha256": "6a5b84f83abf3a26a186843c1e2468765f5b1945ae825a6b60efc9c3b8fdfb74"
+    },
+    {
+      "path": "src/game/render3d/scene-selection.ts",
+      "sha256": "b62f3bb8cb54c16d11058ee7bd224fd1fbeaade5e5d308d5fc2110b8157e1832"
+    },
+    {
+      "path": "src/game/visitors/arrivals.ts",
+      "sha256": "d00fb52efe80b4353eb0f875dfe279d67f447e3811f9dc31680a29782d95a4a3"
+    },
+    {
+      "path": "src/game/visitors/attraction.ts",
+      "sha256": "a256f6464b73f9332c54903985dbe84caa8b399ec03161cfcc88aa6bf2931207"
+    },
+    {
+      "path": "src/game/visitors/graph.ts",
+      "sha256": "1441ba0497f539c1df7971ea0bc7af66f934f7e7c45dd2750318a77cd17ebd9f"
+    },
+    {
+      "path": "src/game/visitors/navigation.ts",
+      "sha256": "500b9dd47808a44145d19217e73d13e2aedd43c588b24a165b4eca4a54affe80"
+    },
+    {
+      "path": "src/game/world/placement-preview.ts",
+      "sha256": "b9fbf174ffbbfe0d048ab4be0ef13019e77c3946d39a7f77dffbd78c176f32cf"
+    },
+    {
+      "path": "src/game/world/species-habitat.ts",
+      "sha256": "29605be52fe6756cd57cc3848cb63fad9131501c208cf26f3c163aefaf73b93d"
+    },
+    {
+      "path": "tests/browser/elephant-v2-product.ts",
+      "sha256": "39af2b774e6535d909c970f692cda58830d5b539176432557deb89d5c19058d0"
+    },
+    {
+      "path": "tests/browser/elephant-v2-storage-harness.ts",
+      "sha256": "06627770251345b2e98426889a244144fe77b1b9006dab8b23394234c16c0504"
+    },
+    {
+      "path": "tests/elephant-construction.test.mjs",
+      "sha256": "f9732852e49ed905083ce2205fb9a13da6943e6b300656d34f77bda392022297"
+    }
+  ],
+  "remainingOwnedProcesses": [],
+  "remainingListeners": []
+}

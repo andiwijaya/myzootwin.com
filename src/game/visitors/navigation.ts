@@ -1,5 +1,6 @@
+import {visitTargetForState} from './graph.ts';
 import {admitTicket} from '../economy/tickets.ts';
-import {VISITOR_STEP,visitorCell,visitorPaths,visitorRoute,visitTarget} from './graph.ts';
+import {VISITOR_STEP,visitorCell,visitorPaths,visitorRoute} from './graph.ts';
 export {visitorCell,visitorPaths,visitorRoute,visitTarget} from './graph.ts';
 import {SATISFACTION_RULES,observeHabitat,resetObservation,completeFeedback,interruptedFeedback} from './satisfaction.ts';
 import type {Point,Visitor,RuntimeWorld,RuntimeState} from '../core/state.ts';
@@ -15,7 +16,7 @@ function validRoute(s:RuntimeState,v:Visitor,destination:Point){const paths=visi
 function returnHome(s:RuntimeState,v:Visitor){if(v.phase==='leaving'&&validRoute(s,v,s.world.gate))return;const route=visitorRoute(s.world,visitorCell(v),s.world.gate);if(route.length)setRoute(v,route,'leaving');}
 /** Run on a cloned transaction before validation, without changing positions or money. */
 export function reconcileJourneys<S extends RuntimeState>(s:S):S{
- const target=visitTarget(s.world);
+ const target=visitTargetForState(s);
  for(const v of s.visitors){const j=v.journey;if(!j||!ownsCorridor(v)||v.phase==='exiting')continue;
   if(v.phase==='leaving'){returnHome(s,v);continue;}
   if(!s.visitorFlow.open||!target||target.habitatId!==j.habitatId){interruptedFeedback(s,v,!s.visitorFlow.open?'closed':s.world.habitats.some(h=>h.id===j.habitatId)?'access-lost':'habitat-removed');returnHome(s,v);continue;}
@@ -43,7 +44,7 @@ function move(v:Visitor,to:Point,guard?:(from:Point,next:Point)=>boolean):boolea
  if(d<=VISIT_RULES.speed+1e-9){v.position={...to};return true;}return false;
 }
 export function stepJourneys(s:RuntimeState):Array<{visitorId:string;habitatId:string}>{
- const viewed:Array<{visitorId:string;habitatId:string}>=[],target=visitTarget(s.world),remove=new Set<string>();
+ const viewed:Array<{visitorId:string;habitatId:string}>=[],target=visitTargetForState(s),remove=new Set<string>();
  for(const v of s.visitors){const j=v.journey;if(!j)continue;
   if(v.phase==='queued'){
    j.queuedTicks++;

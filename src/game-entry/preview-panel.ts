@@ -1,3 +1,4 @@
+import {ELEPHANT_PRICES} from '../game/economy/elephant-prices.ts';
 import type {VisualSettings} from '../game/core/visual-settings.ts';
 import {formatNumber} from './i18n-format.ts';
 import { revealHudTarget, scrollHudTarget } from './hud-layout.ts';
@@ -5,8 +6,8 @@ import {mountSpeedPanel,type SpeedView} from './speed-panel.ts';
 import {mountOnboardingPanel} from './onboarding-panel.ts';
 import type {FirstMissionGuide} from '../game/missions/onboarding.ts';
 import {mountMissionPanel} from './mission-panel.ts';
-import {mountElephantCatalog} from './elephant-catalog.ts';
-import type {ConservationGrantSceneView} from '../game/economy/conservation-grant.ts';
+import {elephantCatalogCopy,mountElephantCatalog} from './elephant-catalog.ts';
+import type {ElephantCatalogView} from '../game/economy/elephant-construction.ts';
 import type {ZooSave} from '../game/core/zoo-state.ts';
 import type {MissionView} from '../game/missions/engine.ts';
 import type {RecoveryView,RecoveryQuote} from '../game/economy/recovery.ts';
@@ -74,8 +75,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const missionPanel=mountMissionPanel(root.querySelector('[data-mission-tools]'),events.signal,q=>controller.claimMission(q),careAction,target=>{if(root.querySelector('dialog[open]'))return;if(target==='gate'){controller.visitors('open');return;}if(target==='observe'){controller.visitors('focus');host.focus({preventScroll:true});scrollHudTarget(host);return;}if(target==='path'){root.dataset.guided='false';revealHudTarget(root.querySelector('[data-placement-tools]'));controller.placement('begin-path');host.focus({preventScroll:true});scrollHudTarget(host);return;}careAction(target);});
   host.addEventListener('scene-missions-change',event=>missionPanel.update((event as CustomEvent<MissionView>).detail),{signal:events.signal});
   host.addEventListener('scene-mission-result',event=>missionPanel.result((event as CustomEvent<{ok:boolean}>).detail.ok),{signal:events.signal});
-  const elephantCatalog=mountElephantCatalog(root.querySelector('[data-elephant-catalog]'),events.signal,q=>controller.claimConservationGrant(q));
-  host.addEventListener('scene-elephant-grove-change',event=>elephantCatalog.update((event as CustomEvent<ConservationGrantSceneView>).detail),{signal:events.signal});
+  const elephantCatalog=mountElephantCatalog(root.querySelector('[data-elephant-catalog]'),events.signal,q=>controller.claimConservationGrant(q),()=>{root.dataset.guided='false';revealHudTarget(root.querySelector('[data-placement-tools]'));controller.beginElephantHabitat();host.focus({preventScroll:true});scrollHudTarget(host);});
+  host.addEventListener('scene-elephant-grove-change',event=>elephantCatalog.update((event as CustomEvent<ElephantCatalogView>).detail),{signal:events.signal});
   let selected:SceneIdentity|null=null;
   let studio:StudioView={active:false,habitat:false,clip:'perch',angle:'quarter',motionPaused:false,canHabitat:false};
   let food:FoodView={canPlace:false,habitat:false,exists:false,reachable:false,stock:0,capacity:8,revision:0,portions:[0,0],preview:false,reason:null};
@@ -89,10 +90,10 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const text=(value:string)=>value.replaceAll('{balance}',formatNumber(e.balance,locale)).replaceAll('{fee}',formatNumber(prices.maintenance,locale)).replaceAll('{due}',formatNumber(e.maintenanceDue,locale));
     const status=root.querySelector<HTMLElement>('[data-economy-status]');if(status){status.dataset.balance=String(e.balance);status.dataset.spent=String(e.spent);status.dataset.refunds=String(e.refunds);status.dataset.maintenanceDue=String(e.maintenanceDue);const value=text(c[e.maintenanceDue?'economyDue':'economyReady']);if(status.textContent!==value)status.textContent=value;}
     const flow=root.querySelector<HTMLElement>('[data-cashflow]');if(flow){const signed=e.net>0?`+${formatNumber(e.net,locale)}`:formatNumber(e.net,locale),lines=[c.cashflowTitle,c.cashflowIncome.replace('{tickets}',formatNumber(e.ticketIncome,locale)).replace('{rewards}',formatNumber(e.rewards,locale)),c.cashflowCosts.replace('{construction}',formatNumber(e.construction,locale)).replace('{supplies}',formatNumber(e.supplies,locale)).replace('{upkeep}',formatNumber(e.upkeep,locale)),c.cashflowAdjustments.replace('{refunds}',formatNumber(e.refunds,locale)).replace('{undo}',formatNumber(e.undo,locale)),c.cashflowNet.replace('{net}',signed)];for(const key of ['ticketIncome','rewards','construction','supplies','upkeep','refunds','undo','net']as const)flow.dataset[key]=String(e[key]);if(flow.textContent!==lines.join(''))flow.replaceChildren(...lines.map(value=>{const p=document.createElement('p');p.textContent=value;p.style.marginBlock='.3rem';return p;}));}
-    const placementCost=root.querySelector('[data-economy-cost="placement"]');if(placementCost)placementCost.textContent=text(c.economyPlacementPrice.replace('{habitat}',formatNumber(prices.habitat,locale)).replace('{path}',formatNumber(prices.path,locale)));
+    const placementCost=root.querySelector('[data-economy-cost="placement"]');if(placementCost)placementCost.textContent=text(c.economyPlacementPrice.replace('{habitat}',formatNumber(placement?.active&&placement.habitatKind==='elephant-grove'?ELEPHANT_PRICES.habitat:prices.habitat,locale)).replace('{path}',formatNumber(prices.path,locale)));
     for(const name of ['food','water','perch']as const){const cost=root.querySelector(`[data-economy-cost="${name}"]`),fee=prices[name],refill=name==='water'?prices.waterRefill:prices.foodRefill;const refundHint=root.querySelector(`[data-entry-text="${name}RemoveHint"]`);if(refundHint){const value=c[name==='food'?'foodRemoveHint':name==='water'?'waterRemoveHint':'perchRemoveHint']+' '+c.economyRefund.replace('{n}',formatNumber(e.resourceRefunds[name],locale));if(refundHint.textContent!==value)refundHint.textContent=value;}const current=name==='food'?food:name==='water'?water:perch,needed=current.exists?(name==='perch'?0:refill):fee;if(cost)cost.textContent=text(c[name==='perch'?'economyPerchPrice':'economyCarePrice'].replace('{build}',formatNumber(fee,locale)).replace('{refill}',formatNumber(refill,locale)))+(e.balance<needed?' '+c.economyFunds:'');
       for(const command of ['confirm','refill']as const){const b=root.querySelector<HTMLButtonElement>(`[data-${name}-command="${command}"]`);if(!b)continue;const amount=command==='confirm'?fee:refill,basic=c[name==='food'?(command==='confirm'?'foodConfirm':'foodFill'):name==='water'?(command==='confirm'?'waterConfirm':'waterFill'):'perchConfirm'];b.textContent=basic+` · ${amount} ZC`;if(e.balance<amount)b.disabled=true;}}
-    for(const [command,key,amount]of [['begin','placementStart',prices.habitat],['begin-path','pathStart',prices.path],['confirm',placement?.kind==='path'?'pathConfirm':'placementConfirm',placement?.kind==='path'?prices.path:prices.habitat]]as const){const b=root.querySelector<HTMLButtonElement>(`[data-placement-command="${command}"]`);if(b){b.textContent=c[key]+` · ${amount} ZC`;if(command==='confirm'&&(e.balance<amount))b.disabled=true;}}
+    for(const [command,key,amount]of [['begin','placementStart',prices.habitat],['begin-path','pathStart',prices.path],['confirm',placement?.kind==='path'?'pathConfirm':'placementConfirm',placement?.kind==='path'?prices.path:placement?.habitatKind==='elephant-grove'?ELEPHANT_PRICES.habitat:prices.habitat]]as const){const b=root.querySelector<HTMLButtonElement>(`[data-placement-command="${command}"]`);if(b){b.textContent=(command==='confirm'&&placement?.kind==='habitat'&&placement.habitatKind==='elephant-grove'?elephantCatalogCopy[locale].confirm:c[key])+` · ${amount} ZC`;if(command==='confirm'&&(e.balance<amount))b.disabled=true;}}
   }
   host.addEventListener('scene-economy-change',event=>{economy=(event as CustomEvent<EconomyView>).detail;renderFood();renderWater();renderPerch();renderPlacement();renderEdit();renderCosts();},{signal:events.signal});
   function renderVisitors(){const section=root.querySelector<HTMLElement>('[data-visitor-tools]');if(!section)return;section.hidden=state.status!=='ready'||studio.active;const copy=entryMessages[locale];
@@ -145,18 +146,18 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   let habitatCount=0;let access:AccessSummary|null=null;
   const placementTools=root.querySelector<HTMLElement>('[data-placement-tools]');
   function renderPlacement(){
-    if(!placementTools)return;const copy=entryMessages[locale],active=Boolean(placement?.active),path=placement?.kind==='path';
+    if(!placementTools)return;const copy=entryMessages[locale],active=Boolean(placement?.active),path=placement?.kind==='path',elephant=Boolean(placement?.active&&!path&&placement.habitatKind==='elephant-grove');
     placementTools.hidden=state.status!=='ready'||studio.active||food.preview||water.preview||perch.preview;placementTools.dataset.valid=String(placement?.reason==='ready');
     const start=root.querySelector<HTMLButtonElement>('[data-placement-command="begin"]');if(start){start.hidden=active;start.textContent=copy.placementStart;}
     const pathStart=root.querySelector<HTMLButtonElement>('[data-placement-command="begin-path"]');if(pathStart){pathStart.hidden=active;pathStart.textContent=copy.pathStart;}
     root.querySelector('[data-access-status]')?.replaceChildren(copy[!access?.habitats?'accessNoHabitat':access.connected?'accessConnected':'accessDisconnected'].replace('{n}',formatNumber(access?.pathTiles??1,locale)).replace('{r}',formatNumber(access?.routeCells??0,locale)));
     if(placementTools)placementTools.dataset.connected=String(Boolean(access?.connected));
     const edit=root.querySelector<HTMLElement>('[data-placement-edit]');if(edit)edit.hidden=!active;
-    for(const el of root.querySelectorAll<HTMLElement>('[data-placement-text]'))el.textContent=copy[path?(el.dataset.placementText==='placementTitle'?'pathTitle':'pathHint'):el.dataset.placementText as EntryMessage];
+    for(const el of root.querySelectorAll<HTMLElement>('[data-placement-text]'))el.textContent=elephant?(el.dataset.placementText==='placementTitle'?elephantCatalogCopy[locale].previewTitle:elephantCatalogCopy[locale].previewHint):copy[path?(el.dataset.placementText==='placementTitle'?'pathTitle':'pathHint'):el.dataset.placementText as EntryMessage];
     for(const command of ['confirm','cancel','left','right','up','down'] as const){const button=root.querySelector<HTMLButtonElement>(`[data-placement-command="${command}"]`);if(!button)continue;const key=`placement${command[0].toUpperCase()}${command.slice(1)}` as EntryMessage;if(command==='confirm'||command==='cancel')button.textContent=copy[path?(command==='confirm'?'pathConfirm':'pathCancel'):key];else button.setAttribute('aria-label',copy[key]);if(command==='confirm')button.disabled=!active||placement?.reason!=='ready';}
     const reasonKey=`placement${(placement?.reason??'choose')[0].toUpperCase()}${(placement?.reason??'choose').slice(1)}` as EntryMessage;
-    root.querySelector('[data-placement-reason]')?.replaceChildren(active?copy[path&&placement?.reason==='ready'?'pathReady':path&&placement?.reason==='path'?'pathAlready':reasonKey]:'');
-    root.querySelector('.placement-arrows')?.setAttribute('aria-label',path?copy.pathTitle:copy.placementTitle);
+    root.querySelector('[data-placement-reason]')?.replaceChildren(active?(placement?.reason==='zone'?elephantCatalogCopy[locale].zone:placement?.reason==='locked'?elephantCatalogCopy[locale].locked:elephant&&placement?.reason==='ready'?elephantCatalogCopy[locale].readyPlan:copy[path&&placement?.reason==='ready'?'pathReady':path&&placement?.reason==='path'?'pathAlready':reasonKey]):'');
+    root.querySelector('.placement-arrows')?.setAttribute('aria-label',path?copy.pathTitle:elephant?elephantCatalogCopy[locale].previewTitle:copy.placementTitle);
     const anchor=placement?.proposal?.anchor;
     root.querySelector('[data-placement-location]')?.replaceChildren(active&&anchor?copy.placementLocation.replace('{x}',formatNumber(anchor.x+1,locale)).replace('{z}',formatNumber(anchor.z+1,locale)):'');
     const confirmed=root.querySelector<HTMLElement>('[data-placement-confirmed]');if(confirmed){confirmed.hidden=habitatCount===0||active;confirmed.textContent=copy.placementConfirmed;}renderCosts();

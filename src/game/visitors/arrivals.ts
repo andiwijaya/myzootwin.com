@@ -1,10 +1,11 @@
+import {visitTargetForState} from './graph.ts';
 import {attractionView,type AttractionView} from './attraction.ts';
 import {ledgerProof,admissionProofs} from '../economy/journal.ts';
 import {ticketView,ticketLimit,type TicketView} from '../economy/tickets.ts';
 import {newExperience,finishFeedback,interruptedFeedback} from './satisfaction.ts';
 import type {VisitorFeedback,VisitorFeedbackSummary} from '../core/state.ts';
 import {MAX_TICK,type Point,type Visitor,type RuntimeState} from '../core/state.ts';
-import {visitTarget,stepJourneys,ownsCorridor} from './navigation.ts';
+import {stepJourneys,ownsCorridor} from './navigation.ts';
 import {analyzePaths} from '../world/paths.ts';
 
 /** Bounded entrance queue and deterministic excursions; per-visit satisfaction and actual eligible gate admission. */
@@ -21,7 +22,7 @@ export function arrivalPosition(gate:Point,slot:number,age:number):Point {
 }
 export function arrivalAge(v:Visitor,tick:number):number{return v.arrival?tick-v.arrival.spawnTick:0;}
 export function stepArrivals(s:RuntimeState):Array<{visitorId:string;habitatId:string}> {
- const target=visitTarget(s.world);
+ const target=visitTargetForState(s);
  for(const v of s.visitors)if(v.phase==='arrival'&&v.arrival&&!v.experience?.feedback&&target&&s.visitorFlow.open&&arrivalAge(v,s.tick)>=20&&arrivalAge(v,s.tick)<80){v.phase='queued';v.position=arrivalPosition(s.world.gate,v.arrival.slot,20);v.journey={habitatId:null,heading:Math.PI,dwellTicks:0,queuedTicks:0,viewed:false,startedTick:null};}
  const viewed=stepJourneys(s);
  for(const v of s.visitors)if(v.phase==='arrival'&&v.arrival&&!v.experience?.feedback){if(!s.visitorFlow.open)interruptedFeedback(s,v,'closed');else if(arrivalAge(v,s.tick)>=ARRIVAL_RULES.leaveAt){if(target)interruptedFeedback(s,v,'time-limit');else finishFeedback(s,v,s.world.habitats.length?'unreachable':'no-habitat');}}
@@ -43,5 +44,5 @@ export function stepArrivals(s:RuntimeState):Array<{visitorId:string;habitatId:s
 }
 export function arrivalsView(s:RuntimeState):ArrivalView {
  const ready=entranceReady(s),f=s.visitorFlow;
- return {open:f.open,active:s.visitors.length,capacity:ARRIVAL_RULES.capacity,ready,total:f.nextSerial-1,reason:!f.open?s.visitors.length?'departing':'closed':!ready?'path':!visitTarget(s.world)?'habitat':f.nextSerial>=MAX_TICK?'limit':'ready',ids:s.visitors.map(v=>v.id),people:s.visitors.map(v=>({id:v.id,phase:v.phase,feedback:structuredClone(v.experience?.feedback??null),entry:v.entry?.status??'paid',ticketAmount:v.admissionId?(()=>{const a=admissionProofs(s).find(a=>a.id===v.admissionId);return a?ledgerProof(s,a.ledgerEntryId)?.amount??null:null;})():null})),queued:s.visitors.filter(v=>v.phase==='queued').length,walking:s.visitors.filter(v=>v.phase==='entering').length,viewing:s.visitors.filter(v=>v.phase==='viewing').length,returning:s.visitors.filter(v=>v.phase==='leaving'||v.phase==='exiting').length,viewedTotal:f.viewedTotal,feedback:structuredClone(f.feedback),tickets:ticketView(s),attraction:attractionView(s)};
+ return {open:f.open,active:s.visitors.length,capacity:ARRIVAL_RULES.capacity,ready,total:f.nextSerial-1,reason:!f.open?s.visitors.length?'departing':'closed':!ready?'path':!visitTargetForState(s)?'habitat':f.nextSerial>=MAX_TICK?'limit':'ready',ids:s.visitors.map(v=>v.id),people:s.visitors.map(v=>({id:v.id,phase:v.phase,feedback:structuredClone(v.experience?.feedback??null),entry:v.entry?.status??'paid',ticketAmount:v.admissionId?(()=>{const a=admissionProofs(s).find(a=>a.id===v.admissionId);return a?ledgerProof(s,a.ledgerEntryId)?.amount??null:null;})():null})),queued:s.visitors.filter(v=>v.phase==='queued').length,walking:s.visitors.filter(v=>v.phase==='entering').length,viewing:s.visitors.filter(v=>v.phase==='viewing').length,returning:s.visitors.filter(v=>v.phase==='leaving'||v.phase==='exiting').length,viewedTotal:f.viewedTotal,feedback:structuredClone(f.feedback),tickets:ticketView(s),attraction:attractionView(s)};
 }

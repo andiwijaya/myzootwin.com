@@ -1,3 +1,4 @@
+import {elephantHabitatView,prepareElephantConstruction} from '../economy/elephant-construction.ts';
 import {isVisualSettings} from './visual-settings.ts';
 import {firstMissionGuide} from '../missions/onboarding.ts';
 import {MISSION_RULES,evaluateMissions as evaluateMacawMissions,missionView,claimMission,type MissionQuote} from '../missions/engine.ts';
@@ -121,6 +122,13 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
       state=valid.value;topology=connected.topology;invalidateEdit();compactNow();publish(Object.freeze({type:'recovery-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;
     },
     commandRevision:()=>state.economy.nextCommand,
+    elephantHabitatView:()=>elephantHabitatView(state),
+    buildElephantHabitat(anchor:Point,operationId:string,expectedCommand:number){
+      if(disposed||clock.inspect().paused)return {ok:false as const,reason:'command' as const};
+      const result=prepareElephantConstruction(state,anchor,operationId,expectedCommand);if(!result.ok)return result;
+      if(!result.duplicate){const connected=reconcilePathAccess(result.state.world),checked=validateState(reconcileJourneys({...result.state,world:connected.world}));if(!checked.ok)return {ok:false as const,reason:'command' as const};state=reconcileWelfare(checked.value);topology=connected.topology;invalidateEdit();compactNow();publish(Object.freeze({type:'habitat-built',habitatId:result.habitatId,tick:state.tick,gameTimeMs:state.gameTimeMs}));}
+      return {ok:true as const,habitatId:result.habitatId,duplicate:result.duplicate};
+    },
     buildHabitat(anchor:Point,operationId:string,expectedCommand?:number){
       if(disposed||clock.inspect().paused||!authorized(expectedCommand))return {ok:false as const,reason:'command' as const};
       const prepared=state.schemaVersion===2?prepareSpeciesHabitat(state.world,anchor,operationId,'macaw-aviary'):prepareHabitat(state.world,anchor,operationId);
@@ -193,6 +201,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     macawWorldSnapshot:()=>structuredClone(macawRuntimeView(state).world),
     pathTopology:()=>structuredClone(topology),
     access:()=>accessSummary(topology),
+    macawAccess:()=>accessSummary({...topology,habitats:topology.habitats.filter(h=>state.world.habitats.some(w=>w.id===h.habitatId&&(!('kind'in w)||w.kind==='macaw-aviary')))}),
     subscribe: bus.subscribe,
     snapshot: ()=>structuredClone(state),
     setPaused(value:boolean) { if(clock.inspect().paused!==value) { lastFrame=null; clock.setPaused(value); } },

@@ -1,6 +1,7 @@
+import {visitTargetForState} from '../visitors/graph.ts';
 import {coherentMoney,admissionProofs,ledgerProof,totals} from './journal.ts';
 import type {Admission,LedgerEntry,Point,Visitor,RuntimeState} from '../core/state.ts';
-import {VISITOR_STEP,visitorRoute,visitorPaths,visitTarget} from '../visitors/graph.ts';
+import {VISITOR_STEP,visitorRoute,visitorPaths} from '../visitors/graph.ts';
 
 /** Fictional Zoo Coins only. Starting price, not final economy balancing. */
 export const TICKET_RULES=Object.freeze({price:10});
@@ -32,6 +33,6 @@ export function admitTicket(s:RuntimeState,v:Visitor,from:Point,next:Point):{ok:
 }
 export interface TicketView {balance:number;price:number;admissions:number;revenue:number;reason:'closed'|'habitat'|'animals'|'capacity'|'balance'|'ready';last:{visitorId:string;amount:number;tick:number}|null;}
 export function ticketView(s:RuntimeState):TicketView{
- const target=visitTarget(s.world),last=s.admissions.at(-1)??s.economy.checkpoint.lastTicket?.admission,e=last?(ledgerProof(s,last.ledgerEntryId)??s.economy.checkpoint.lastTicket?.entry):null,t=totals(s);
+ const target=visitTargetForState(s),last=s.admissions.at(-1)??s.economy.checkpoint.lastTicket?.admission,e=last?(ledgerProof(s,last.ledgerEntryId)??s.economy.checkpoint.lastTicket?.entry):null,t=totals(s);
  return {balance:s.currency,price:TICKET_RULES.price,admissions:t.counts.ticket,revenue:t.amounts.ticket,reason:ticketLimit(s)??(!s.visitorFlow.open?'closed':!target?'habitat':!s.animals.some(a=>a.habitatId===target.habitatId&&a.position!==null)?'animals':'ready'),last:last&&e?{visitorId:last.visitorId,amount:e.amount,tick:last.tick}:null};
 }

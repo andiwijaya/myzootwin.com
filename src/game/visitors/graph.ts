@@ -1,3 +1,4 @@
+import type {RuntimeState} from '../core/runtime-state.ts';
 import type {Point,Visitor,RuntimeWorld} from '../core/state.ts';
 import {habitatBlockerKeys} from '../world/build-habitat.ts';
 import {cellKey} from '../world/placement-preview.ts';
@@ -21,4 +22,10 @@ export function visitTarget(w:RuntimeWorld):{habitatId:string;cell:Point;route:P
   if(!paths.has(cellKey(n)))continue;const route=visitorRoute(w,w.gate,n);if(route.length>1)candidates.push({habitatId:h.id,cell:n,route});
  }
  candidates.sort((a,b)=>a.route.length-b.route.length||a.cell.z-b.cell.z||a.cell.x-b.cell.x||a.habitatId.localeCompare(b.habitatId));return candidates[0]??null;
+}
+
+/** An empty new grove must not divert the existing aviary audience or stop admissions. */
+export function visitTargetForState(s:RuntimeState){
+ const empty=s.world.habitats.filter(h=>'kind'in h&&h.kind==='elephant-grove'&&!s.animals.some(a=>a.habitatId===h.id&&a.position!==null));
+ return visitTarget(empty.length?{...s.world,habitats:s.world.habitats.filter(h=>!empty.includes(h))}:s.world);
 }
