@@ -1,0 +1,839 @@
+{
+  "method": "Actual canonical V2 game entry/renderer/autosave; named synthetic fixture; QA database only",
+  "setup": "QA-only synthetic setup through actual priced commands and ticks; not automatic player migration",
+  "fixture": "q04Claimed",
+  "database": "myzootwin-eh4-04-product-q04Claimed-20261105",
+  "databaseVersion": 2,
+  "primarySchema": 2,
+  "revision": 76,
+  "currency": 1261,
+  "command": 46,
+  "careServiceEntries": [
+    {
+      "id": "cmd-28",
+      "operationId": "cmd-28",
+      "kind": "supplies",
+      "amount": -8,
+      "balanceAfter": 1167,
+      "tick": 1179,
+      "relatedId": "elephant-browse-22"
+    },
+    {
+      "id": "cmd-29",
+      "operationId": "cmd-29",
+      "kind": "supplies",
+      "amount": -8,
+      "balanceAfter": 1159,
+      "tick": 1179,
+      "relatedId": "elephant-browse-23"
+    },
+    {
+      "id": "cmd-30",
+      "operationId": "cmd-30",
+      "kind": "supplies",
+      "amount": -4,
+      "balanceAfter": 1155,
+      "tick": 1179,
+      "relatedId": "elephant-water-24"
+    },
+    {
+      "id": "cmd-31",
+      "operationId": "cmd-31",
+      "kind": "supplies",
+      "amount": -12,
+      "balanceAfter": 1143,
+      "tick": 1179,
+      "relatedId": "elephant-pond-25"
+    },
+    {
+      "id": "cmd-41",
+      "operationId": "cmd-41",
+      "kind": "supplies",
+      "amount": -8,
+      "balanceAfter": 1285,
+      "tick": 6690,
+      "relatedId": "elephant-browse-22"
+    },
+    {
+      "id": "cmd-42",
+      "operationId": "cmd-42",
+      "kind": "supplies",
+      "amount": -8,
+      "balanceAfter": 1277,
+      "tick": 6710,
+      "relatedId": "elephant-browse-23"
+    },
+    {
+      "id": "cmd-43",
+      "operationId": "cmd-43",
+      "kind": "supplies",
+      "amount": -4,
+      "balanceAfter": 1273,
+      "tick": 6727,
+      "relatedId": "elephant-water-24"
+    }
+  ],
+  "tick": 6757,
+  "tiles": 216,
+  "birds": 2,
+  "elephants": [
+    {
+      "id": "elephant-ayu",
+      "name": "Ayu",
+      "sex": "female",
+      "position": {
+        "x": 7.460000000000001,
+        "z": 15.5
+      },
+      "hunger": 56.20000000000088,
+      "thirst": 100,
+      "welfare": 37,
+      "behavior": "seek-water",
+      "foodEaten": 8,
+      "waterDrunk": 4,
+      "baths": 1,
+      "energy": 77.67000000002031,
+      "enrichment": 26.219999999997864,
+      "bathCooldownTicks": 0,
+      "logCooldownTicks": 0,
+      "restedTicks": 60,
+      "enrichedTicks": 24,
+      "shadeRest": 34.90999999999791,
+      "socialComfort": 66.11000000002527,
+      "socialInteractions": 1,
+      "socialCooldownTicks": 0,
+      "motion": {
+        "phase": "seek-water",
+        "ticksLeft": 472,
+        "sequence": 84,
+        "heading": 1.5707963267948966,
+        "waypoints": [
+          {
+            "x": 6.5,
+            "z": 15.5
+          },
+          {
+            "x": 7.5,
+            "z": 15.5
+          }
+        ],
+        "waypointIndex": 1,
+        "lastStep": {
+          "x": 0.040000000000000036,
+          "z": 0,
+          "heading": 0
+        }
+      }
+    },
+    {
+      "id": "elephant-nara",
+      "name": "Nara",
+      "sex": "female",
+      "position": {
+        "x": 5.456626554458445,
+        "z": 13.25500969098879
+      },
+      "hunger": 56.84000000000128,
+      "thirst": 100,
+      "welfare": 39,
+      "behavior": "seek-water",
+      "foodEaten": 8,
+      "waterDrunk": 4,
+      "baths": 1,
+      "energy": 77.29000000002065,
+      "enrichment": 54.219999999982726,
+      "bathCooldownTicks": 0,
+      "logCooldownTicks": 0,
+      "restedTicks": 60,
+      "enrichedTicks": 48,
+      "shadeRest": 27.81999999999783,
+      "socialComfort": 66.11000000002527,
+      "socialInteractions": 1,
+      "socialCooldownTicks": 0,
+      "motion": {
+        "phase": "seek-water",
+        "ticksLeft": 472,
+        "sequence": 83,
+        "heading": 1.4514708875197997,
+        "waypoints": [
+          {
+            "x": 4.8211774900609115,
+            "z": 13.178822509939085
+          },
+          {
+            "x": 7.5,
+            "z": 13.5
+          }
+        ],
+        "waypointIndex": 1,
+        "lastStep": {
+          "x": 0.03971556652484587,
+          "z": 0.004761698815606508,
+          "heading": -2.220446049250313e-16
+        }
+      }
+    }
+  ],
+  "visitorFlow": {
+    "open": true,
+    "nextSerial": 21,
+    "cooldownTicks": 298,
+    "viewedTotal": 16,
+    "feedback": {
+      "evaluated": 20,
+      "scored": 16,
+      "scoreSum": 794,
+      "positive": 5,
+      "negative": 11,
+      "interrupted": 4,
+      "recent": [
+        {
+          "visitorId": "arrival-20",
+          "habitatId": "habitat-qa-actual-visitors",
+          "tick": 6743,
+          "outcome": "concerned",
+          "reason": "none",
+          "score": 39,
+          "observedWelfare": 39,
+          "samples": 30,
+          "occupiedSamples": 30,
+          "welfareHundredths": 117000
+        },
+        {
+          "visitorId": "arrival-19",
+          "habitatId": "habitat-care-mission",
+          "tick": 6299,
+          "outcome": "concerned",
+          "reason": "none",
+          "score": 31,
+          "observedWelfare": 31,
+          "samples": 30,
+          "occupiedSamples": 30,
+          "welfareHundredths": 94335
+        },
+        {
+          "visitorId": "arrival-18",
+          "habitatId": "habitat-qa-actual-visitors",
+          "tick": 5938,
+          "outcome": "concerned",
+          "reason": "none",
+          "score": 32,
+          "observedWelfare": 32,
+          "samples": 30,
+          "occupiedSamples": 30,
+          "welfareHundredths": 97200
+        },
+        {
+          "visitorId": "arrival-17",
+          "habitatId": "habitat-care-mission",
+          "tick": 5603,
+          "outcome": "concerned",
+          "reason": "none",
+          "score": 35,
+          "observedWelfare": 35,
+          "samples": 30,
+          "occupiedSamples": 30,
+          "welfareHundredths": 103732
+        }
+      ]
+    }
+  },
+  "visitors": [
+    {
+      "id": "arrival-20",
+      "phase": "leaving",
+      "position": {
+        "x": 2.5,
+        "z": 11.349999999999998
+      },
+      "route": [
+        {
+          "x": 2,
+          "z": 11
+        },
+        {
+          "x": 2,
+          "z": 10
+        },
+        {
+          "x": 1,
+          "z": 10
+        },
+        {
+          "x": 1,
+          "z": 9
+        },
+        {
+          "x": 1,
+          "z": 8
+        }
+      ],
+      "routeIndex": 1,
+      "satisfaction": 39,
+      "experience": {
+        "samples": 30,
+        "occupiedSamples": 30,
+        "welfareHundredths": 117000,
+        "feedback": {
+          "visitorId": "arrival-20",
+          "habitatId": "habitat-qa-actual-visitors",
+          "tick": 6743,
+          "outcome": "concerned",
+          "reason": "none",
+          "score": 39,
+          "observedWelfare": 39,
+          "samples": 30,
+          "occupiedSamples": 30,
+          "welfareHundredths": 117000
+        }
+      },
+      "entry": {
+        "status": "paid",
+        "tick": 6625,
+        "reason": "none"
+      },
+      "admissionId": "admission-arrival-20",
+      "arrival": {
+        "serial": 20,
+        "slot": 1,
+        "spawnTick": 6579
+      },
+      "journey": {
+        "habitatId": "habitat-qa-actual-visitors",
+        "heading": 3.141592653589793,
+        "dwellTicks": 30,
+        "queuedTicks": 1,
+        "viewed": true,
+        "startedTick": 6599
+      }
+    }
+  ],
+  "admissions": [
+    {
+      "id": "admission-arrival-1",
+      "visitorId": "arrival-1",
+      "tick": 191,
+      "ledgerEntryId": "ticket-arrival-1",
+      "entry": {
+        "habitatId": "habitat-care-mission",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 7
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-2",
+      "visitorId": "arrival-2",
+      "tick": 492,
+      "ledgerEntryId": "ticket-arrival-2",
+      "entry": {
+        "habitatId": "habitat-care-mission",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 7
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-3",
+      "visitorId": "arrival-3",
+      "tick": 793,
+      "ledgerEntryId": "ticket-arrival-3",
+      "entry": {
+        "habitatId": "habitat-care-mission",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 7
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-5",
+      "visitorId": "arrival-5",
+      "tick": 878,
+      "ledgerEntryId": "ticket-arrival-5",
+      "entry": {
+        "habitatId": "habitat-care-mission",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 7
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-6",
+      "visitorId": "arrival-6",
+      "tick": 1179,
+      "ledgerEntryId": "ticket-arrival-6",
+      "entry": {
+        "habitatId": "habitat-care-mission",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 7
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-8",
+      "visitorId": "arrival-8",
+      "tick": 2627,
+      "ledgerEntryId": "ticket-arrival-8",
+      "entry": {
+        "habitatId": "habitat-qa-actual-visitors",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 9
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-9",
+      "visitorId": "arrival-9",
+      "tick": 2904,
+      "ledgerEntryId": "ticket-arrival-9",
+      "entry": {
+        "habitatId": "habitat-care-mission",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 7
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-10",
+      "visitorId": "arrival-10",
+      "tick": 3207,
+      "ledgerEntryId": "ticket-arrival-10",
+      "entry": {
+        "habitatId": "habitat-qa-actual-visitors",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 9
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-11",
+      "visitorId": "arrival-11",
+      "tick": 3484,
+      "ledgerEntryId": "ticket-arrival-11",
+      "entry": {
+        "habitatId": "habitat-care-mission",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 7
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-12",
+      "visitorId": "arrival-12",
+      "tick": 3811,
+      "ledgerEntryId": "ticket-arrival-12",
+      "entry": {
+        "habitatId": "habitat-qa-actual-visitors",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 9
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-13",
+      "visitorId": "arrival-13",
+      "tick": 4140,
+      "ledgerEntryId": "ticket-arrival-13",
+      "entry": {
+        "habitatId": "habitat-care-mission",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 7
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-14",
+      "visitorId": "arrival-14",
+      "tick": 4458,
+      "ledgerEntryId": "ticket-arrival-14",
+      "entry": {
+        "habitatId": "habitat-qa-actual-visitors",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 9
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-15",
+      "visitorId": "arrival-15",
+      "tick": 4777,
+      "ledgerEntryId": "ticket-arrival-15",
+      "entry": {
+        "habitatId": "habitat-care-mission",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 7
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-16",
+      "visitorId": "arrival-16",
+      "tick": 5114,
+      "ledgerEntryId": "ticket-arrival-16",
+      "entry": {
+        "habitatId": "habitat-qa-actual-visitors",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 9
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-17",
+      "visitorId": "arrival-17",
+      "tick": 5463,
+      "ledgerEntryId": "ticket-arrival-17",
+      "entry": {
+        "habitatId": "habitat-care-mission",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 7
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-18",
+      "visitorId": "arrival-18",
+      "tick": 5820,
+      "ledgerEntryId": "ticket-arrival-18",
+      "entry": {
+        "habitatId": "habitat-qa-actual-visitors",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 9
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-19",
+      "visitorId": "arrival-19",
+      "tick": 6159,
+      "ledgerEntryId": "ticket-arrival-19",
+      "entry": {
+        "habitatId": "habitat-care-mission",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 7
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-20",
+      "visitorId": "arrival-20",
+      "tick": 6625,
+      "ledgerEntryId": "ticket-arrival-20",
+      "entry": {
+        "habitatId": "habitat-qa-actual-visitors",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 9
+        },
+        "price": 10
+      }
+    }
+  ],
+  "careResources": [
+    {
+      "id": "elephant-browse-22",
+      "kind": "elephant-browse",
+      "habitatId": "habitat-qa-actual-visitors",
+      "cell": {
+        "x": 3,
+        "z": 12
+      },
+      "stock": 8,
+      "capacity": 8,
+      "revision": 24,
+      "approaches": [
+        {
+          "x": 4.5,
+          "z": 13.5
+        }
+      ]
+    },
+    {
+      "id": "elephant-browse-23",
+      "kind": "elephant-browse",
+      "habitatId": "habitat-qa-actual-visitors",
+      "cell": {
+        "x": 8,
+        "z": 12
+      },
+      "stock": 8,
+      "capacity": 8,
+      "revision": 25,
+      "approaches": [
+        {
+          "x": 7.5,
+          "z": 13.5
+        }
+      ]
+    },
+    {
+      "id": "elephant-water-24",
+      "kind": "elephant-water",
+      "habitatId": "habitat-qa-actual-visitors",
+      "cell": {
+        "x": 8,
+        "z": 14
+      },
+      "stock": 8,
+      "capacity": 8,
+      "revision": 26,
+      "approaches": [
+        {
+          "x": 7.5,
+          "z": 13.5
+        },
+        {
+          "x": 7.5,
+          "z": 15.5
+        }
+      ]
+    },
+    {
+      "id": "elephant-pond-25",
+      "kind": "elephant-pond",
+      "habitatId": "habitat-qa-actual-visitors",
+      "cell": {
+        "x": 5,
+        "z": 16
+      },
+      "stock": 6,
+      "capacity": 8,
+      "revision": 26,
+      "approaches": [
+        {
+          "x": 4.5,
+          "z": 15.5
+        },
+        {
+          "x": 6.5,
+          "z": 15.5
+        }
+      ]
+    },
+    {
+      "id": "elephant-shade-26",
+      "kind": "elephant-shade",
+      "habitatId": "habitat-qa-actual-visitors",
+      "cell": {
+        "x": 3,
+        "z": 14
+      },
+      "stock": 1,
+      "capacity": 1,
+      "revision": 26,
+      "approaches": [
+        {
+          "x": 4.5,
+          "z": 13.5
+        },
+        {
+          "x": 4.5,
+          "z": 15.5
+        }
+      ]
+    },
+    {
+      "id": "elephant-log-27",
+      "kind": "elephant-log",
+      "habitatId": "habitat-qa-actual-visitors",
+      "cell": {
+        "x": 8,
+        "z": 16
+      },
+      "stock": 1,
+      "capacity": 1,
+      "revision": 27,
+      "approaches": [
+        {
+          "x": 7.5,
+          "z": 15.5
+        }
+      ]
+    }
+  ],
+  "residents": 4,
+  "habitats": [
+    {
+      "id": "habitat-care-mission",
+      "kind": "macaw-aviary",
+      "cells": 4
+    },
+    {
+      "id": "habitat-qa-actual-visitors",
+      "kind": "elephant-grove",
+      "cells": 36
+    }
+  ],
+  "buildEntries": 1,
+  "occupiedTiles": 40,
+  "missions": [
+    "Q01",
+    "Q02",
+    "Q03",
+    "Q04"
+  ],
+  "elephantMissions": {
+    "currentId": "EH04",
+    "completedIds": [
+      "EH01",
+      "EH02",
+      "EH03"
+    ],
+    "rewards": [
+      {
+        "missionId": "EH01",
+        "tick": 1370,
+        "command": 38,
+        "ledgerEntryId": null,
+        "award": "elephant-keeper"
+      },
+      {
+        "missionId": "EH02",
+        "tick": 3929,
+        "command": 39,
+        "ledgerEntryId": "mission-eh02",
+        "award": null
+      },
+      {
+        "missionId": "EH03",
+        "tick": 5300,
+        "command": 40,
+        "ledgerEntryId": null,
+        "award": "elephant-water-lilies"
+      }
+    ],
+    "objectives": {
+      "fedIds": [
+        "elephant-ayu",
+        "elephant-nara"
+      ],
+      "wateredIds": [
+        "elephant-ayu",
+        "elephant-nara"
+      ],
+      "comfortableTicks": 50,
+      "baths": 2,
+      "enrichments": 3,
+      "thrivingTicks": 0,
+      "viewedVisitorIds": [
+        "arrival-8",
+        "arrival-10",
+        "arrival-12"
+      ]
+    }
+  },
+  "grant": {
+    "id": "elephant-expansion-grant-v1",
+    "ledgerEntryId": "elephant-expansion-grant-v1",
+    "tick": 1179,
+    "command": 19
+  },
+  "grantEntries": 1,
+  "backupSchema": 1,
+  "backupExact": true
+}

@@ -1,4 +1,5 @@
 export type SimulationEvent =
+  | {type:'eh-mission-claimed';missionId:import('./zoo-state.ts').ElephantMissionId;amount:number;tick:number;gameTimeMs:number}
   | {type:'elephant-socialized';animalId:string;companionId:string;socialCount:number;eventId:string;tick:number;gameTimeMs:number}
   | {type:'elephant-bathed';animalId:string;resourceId:string;bathCount:number;eventId:string;tick:number;gameTimeMs:number}
   | {type:'elephant-enriched';animalId:string;resourceId:string;enrichedTicks:number;eventId:string;tick:number;gameTimeMs:number}

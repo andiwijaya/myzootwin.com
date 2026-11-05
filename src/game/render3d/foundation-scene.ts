@@ -1,3 +1,5 @@
+import type {ElephantMissionQuote} from '../missions/elephant-missions.ts';
+import type {ElephantMissionSceneView} from '../../game-entry/elephant-mission-panel.ts';
 import {createElephantCarePreview,type ElephantCareSceneView} from './elephant-care-preview.ts';
 import {createElephantCareScene} from './elephant-care-scene.ts';
 import type {ElephantCareReason} from '../animals/elephants/care-resources.ts';
@@ -50,6 +52,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   let disposed = false;
   let lost = false;
   let paused = false;
+  let ehClaimBusy=false,ehClaimFailure:'storage'|'stale'|null=null,previousElephantMissions='';
   let grantBusy=false,grantFailure:'storage'|'stale'|null=null,previousGrant='';
   let cleanupErrors = 0;
   let renderSubmissions = 0;
@@ -93,7 +96,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   let paths:ReturnType<typeof createPathScene>|undefined;
   const simulation = createSimulation(options.stateStore?.read(),options.stateStore?.readEditor());
   function announceElephantCare(){const data=simulation.elephantCareView(),view:ElephantCareSceneView={...data,preview:elephantCarePreview?.view()??{active:false,kind:'elephant-browse',cell:null,revision:0,command:data.command,reason:'ready',price:data.browsePrice},failure:careFailure,result:careResult},key=JSON.stringify(view);if(key!==previousCare){previousCare=key;host.dispatchEvent(new CustomEvent('scene-elephant-care-change',{detail:view}));}host.dataset.elephantMeals=String(data.residents.reduce((n,a)=>n+a.foodEaten,0));host.dataset.elephantDrinks=String(data.residents.reduce((n,a)=>n+a.waterDrunk,0));}
-  function announceGrant(){const view:ElephantCatalogView={...simulation.conservationGrantView(),habitat:simulation.elephantHabitatView(),residents:simulation.elephantResidentsView(),busy:grantBusy,savingAvailable:options.stateStore?.canCommit?.()===true,failure:grantFailure},key=JSON.stringify(view);if(key!==previousGrant){previousGrant=key;host.dispatchEvent(new CustomEvent('scene-elephant-grove-change',{detail:view}));}host.dataset.elephantGrantClaimed=String(view.claimed);host.dataset.placedElephants=String(view.residents.residents.length);}
+  function announceGrant(){const view:ElephantCatalogView={...simulation.conservationGrantView(),habitat:simulation.elephantHabitatView(),residents:simulation.elephantResidentsView(),busy:grantBusy&&!ehClaimBusy,savingAvailable:options.stateStore?.canCommit?.()===true,failure:grantFailure},key=JSON.stringify(view);if(key!==previousGrant){previousGrant=key;host.dispatchEvent(new CustomEvent('scene-elephant-grove-change',{detail:view}));}host.dataset.elephantGrantClaimed=String(view.claimed);host.dataset.placedElephants=String(view.residents.residents.length);}
   async function claimGrant(quote:ConservationGrantQuote){
     if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;
     grantFailure=null;const prepared=simulation.prepareConservationGrant(quote);
@@ -105,6 +108,16 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     try{const committed=await options.stateStore.commitCandidate(prepared.state,expected);if(disposed)return;if(!committed||!simulation.acceptCommittedGrant(committed,quote))grantFailure='storage';else saveSession();}
     catch{grantFailure='storage';}
     finally{grantBusy=false;if(!disposed){updateRunning();announceGrant();render();}}
+  }
+  function announceElephantMissions(){const view:ElephantMissionSceneView={...simulation.elephantMissionView(),busy:ehClaimBusy,savingAvailable:options.stateStore?.canCommit?.()===true,failure:ehClaimFailure},key=JSON.stringify(view);if(key!==previousElephantMissions){previousElephantMissions=key;host.dispatchEvent(new CustomEvent('scene-elephant-missions-change',{detail:view}));}}
+  async function claimElephantMission(quote:ElephantMissionQuote){
+    if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;
+    ehClaimFailure=null;const prepared=simulation.prepareElephantMission(quote);if(!prepared.ok){ehClaimFailure='stale';announceElephantMissions();return;}
+    if(options.stateStore?.canCommit?.()!==true||!options.stateStore.commitCandidate){ehClaimFailure='storage';announceElephantMissions();return;}
+    placement?.command('cancel');elephantCarePreview?.cancel();picker?.clear();foodPreview=false;waterPreview=false;perchPreview=false;foodDirty=true;waterDirty=true;perchDirty=true;
+    const expected={tick:prepared.state.tick,command:quote.command};ehClaimBusy=true;grantBusy=true;updateRunning();render();
+    try{const committed=await options.stateStore.commitCandidate(prepared.state,expected);if(disposed)return;if(!committed||!simulation.acceptCommittedElephantMission(committed,quote))ehClaimFailure='storage';else saveSession();}catch{ehClaimFailure='storage';}
+    finally{grantBusy=false;ehClaimBusy=false;if(!disposed){updateRunning();render();}}
   }
   function saveSession(){options.stateStore?.write(simulation.snapshot());options.stateStore?.writeEditor(simulation.editorSnapshot());}
   function announceEdit(reason:import('../world/editing.ts').EditReason|null=null,result:'removed'|'restored'|null=null){editCommand=simulation.commandRevision();host.dispatchEvent(new CustomEvent('scene-edit-change',{detail:{canUndo:simulation.inspect().canUndo,undoCost:simulation.inspect().undoCost,reason,result}}));}
@@ -118,7 +131,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     if(event.type==='visitor-admitted'||event.type==='economy-changed'||event.type==='recovery-changed'||event.type==='mission-claimed'||event.type==='speed-changed'||event.type==='preferences-changed')saveSession();
     birdsDirty=true;foodDirty=true;waterDirty=true;perchDirty=true;visitorsDirty=true;careDirty=true;
     if(event.type==='habitat-built'||event.type==='elephants-welcomed'){habitatDirty=true;pathDirty=true;}
-    if(event.type==='mission-claimed')habitatDirty=true;
+    if(event.type==='mission-claimed'||event.type==='eh-mission-claimed')habitatDirty=true;
     if(event.type==='path-built')pathDirty=true;
     if(event.type==='elephant-care-changed')lighting?.invalidate();
     if(event.type==='world-edited'||event.type==='recovery-changed'){habitatDirty=true;pathDirty=true;}
@@ -138,7 +151,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     if (disposed || lost) return;
     const frame=simulation.inspect();
     const policy=visual();lighting?.setLowGraphics(policy.low);diorama?.setLowGraphics(policy.low);visitors?.setVisibleCap(policy.low?1:3);
-    announceSpeed(false,frame);announceGrant();announceElephantCare();
+    announceSpeed(false,frame);announceGrant();announceElephantCare();announceElephantMissions();
     const guide=readGuide(frame),guideKey=JSON.stringify(guide);if(guideKey!==previousGuide){previousGuide=guideKey;host.dispatchEvent(new CustomEvent('scene-onboarding-change',{detail:guide}));}
     const missions=simulation.missionView(),missionKey=JSON.stringify(missions);if(missionKey!==previousMission){previousMission=missionKey;host.dispatchEvent(new CustomEvent('scene-missions-change',{detail:missions}));}
     const recoveryKey=[frame.tick,frame.commandRevision,frame.editorRevision,simulation.visitorView().open].join(':');if(recoveryKey!==recoveryReadKey){recoveryReadKey=recoveryKey;recoveryRead=simulation.recoveryView();}const nextRecovery=JSON.stringify(recoveryRead);if(nextRecovery!==previousRecovery){previousRecovery=nextRecovery;host.dispatchEvent(new CustomEvent('scene-recovery-change',{detail:recoveryRead}));}
@@ -153,7 +166,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     if(foodDirty){feeder?.sync(macawWorld!,foodPreview,simulation.foodView().canPlace);announceFood();foodDirty=false;}
     if(waterDirty){waterStation?.sync(macawWorld!,waterPreview,simulation.waterView().canPlace);announceWater();waterDirty=false;}
     if(perchDirty){const view=simulation.perchView();restKit?.sync(macawWorld!,perchPreview,view.canPlace);birds?.setPerchesVisible(!view.reachable&&!perchPreview);announcePerch();perchDirty=false;}
-    if(careDirty&&elephantCareScene){const care=simulation.elephantCareSnapshot();if(elephantCareScene.sync(care.resources,care.width,care.height,elephantCarePreview?.view()??null))picker?.refresh();careDirty=false;}
+    if(careDirty&&elephantCareScene){const care=simulation.elephantCareSnapshot();if(elephantCareScene.sync(care.resources,care.width,care.height,elephantCarePreview?.view()??null,simulation.elephantMissionView().awards.includes('elephant-water-lilies')))picker?.refresh();careDirty=false;}
     restKit?.update(simulationTimeMs,simulation.perchView().exploring,policy.reducedMotion);
     if(visitorsDirty&&visitors){const v=simulation.visitorSnapshot();visitors.sync(v.visitors,v.width,v.height,v.tick,v.gate);visitorsDirty=false;announceVisitors();}
     const remainder=frame.accumulatorMs;
@@ -286,6 +299,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   return {
     dispose,
     claimConservationGrant:quote=>{void claimGrant(quote);},
+    claimElephantMission:quote=>{void claimElephantMission(quote);},
     guide:(command,revision)=>{
       if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active||!placement)return;
       if(command==='cancel')placement.command('cancel');

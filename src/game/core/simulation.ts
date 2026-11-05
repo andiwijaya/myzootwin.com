@@ -1,3 +1,4 @@
+import {evaluateElephantMissions,elephantMissionView,prepareElephantMission,ELEPHANT_MISSION_RULES,type ElephantMissionQuote} from '../missions/elephant-missions.ts';
 import {reconcileElephantWelfare} from '../animals/elephants/welfare.ts';
 import {stepElephantCare} from '../animals/elephants/care-simulation.ts';
 import {elephantCareView,elephantCareSnapshot,defaultElephantCareCell,validateElephantCarePlacement,prepareElephantCarePlacement,prepareElephantCareRefill,type ElephantCareKind,type ElephantCareQuote,type ElephantCareRefillQuote} from '../animals/elephants/care-resources.ts';
@@ -38,7 +39,7 @@ import {conservationGrantView,prepareConservationGrant,type ConservationGrantQuo
 import {serializeSaveV2} from '../persistence/save-v2.ts';
 const validateState=(value:unknown)=>typeof value==='object'&&value!==null&&'schemaVersion'in value&&value.schemaVersion===2?validateSaveV2(value):validateSave(value);
 const reconcileWelfare=<S extends RuntimeState>(state:S):S=>{reconcileMacawWelfare(macawRuntimeView(state));return state;};
-const evaluateMissions=(state:RuntimeState,advance=false)=>evaluateMacawMissions(macawRuntimeView(state),advance);
+const evaluateMissions=(state:RuntimeState,advance=false)=>{evaluateMacawMissions(macawRuntimeView(state),advance);evaluateElephantMissions(state,advance);};
 const macawTransaction=<Result>(state:RuntimeState,run:(view:ZooSaveV1)=>Result):Result=>{const view=macawRuntimeView(state),result=run(view);commitMacawRuntimeView(state,view);return result;};
 
 /** Fixed simulation time and validated atomic world, care and financial transactions. */
@@ -48,7 +49,8 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
   const reconciled=reconcilePathAccess(checked.value.world);
   const baseline:ZooSave=structuredClone(checked.value);baseline.world=reconciled.world;
   let topology=reconciled.topology;
-  let state=reconcileWelfare(structuredClone(baseline));evaluateMissions(state);
+  // Loading alone must preserve older V2 EH progress exactly; real commands/ticks capture lifetime action evidence.
+  let state=reconcileWelfare(structuredClone(baseline));evaluateMacawMissions(macawRuntimeView(state));
   let editor:EditorState={revision:0,undo:null};
   if(savedEditor&&Number.isSafeInteger(savedEditor.revision)&&savedEditor.revision>=0&&savedEditor.revision<Number.MAX_SAFE_INTEGER){editor=structuredClone(savedEditor);if(editor.undo&&!sameWorld(editor.undo.after,state.world)&&!elephantResourceUndoWorld(state.world,editor.undo))editor.undo=null;}
   const invalidateEdit=()=>{editor={revision:editor.revision+1,undo:null};};
@@ -94,6 +96,11 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     onboardingView:()=>firstMissionGuide(macawRuntimeView(state)),
     missionView:()=>missionView(macawRuntimeView(state)),
     conservationGrantView:()=>conservationGrantView(state),
+    elephantMissionView:()=>elephantMissionView(state),
+    prepareElephantMission:(quote:ElephantMissionQuote)=>disposed||clock.inspect().paused?{ok:false as const,reason:'stale' as const}:prepareElephantMission(state,quote),
+    acceptCommittedElephantMission(candidate:ZooSave,quote:ElephantMissionQuote){
+      if(disposed||candidate.schemaVersion!==2)return false;const prepared=prepareElephantMission(state,quote);if(!prepared.ok)return false;const next=structuredClone(candidate);next.preferences={...state.preferences};prepared.state.preferences={...state.preferences};if(serializeSaveV2(next)!==serializeSaveV2(prepared.state))return false;state=next;compactNow();publish(Object.freeze({type:'eh-mission-claimed',missionId:quote.id,amount:ELEPHANT_MISSION_RULES[quote.id].coins,tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;
+    },
     prepareConservationGrant:(quote:ConservationGrantQuote)=>prepareConservationGrant(state,quote),
     acceptCommittedGrant(candidate:ZooSave,quote:ConservationGrantQuote){
       if(disposed||candidate.schemaVersion!==2)return false;
