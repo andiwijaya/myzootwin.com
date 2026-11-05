@@ -22,18 +22,19 @@ function standingModel(name:string){
 
 /** Actual persisted entity transforms. Two stable picking batches, no timers, RAF, RNG or rewards. */
 export function createElephantResidentsScene(catalog:SceneCatalog){
- const group=new Group();group.name='Ayu and Nara residents';let disposed=false,material:MeshStandardMaterial|undefined;
- const models=new Map<string,{mesh:Mesh;geometry:BufferGeometry;triangles:number;entry:SceneCatalog['batches'][number]}>();
+ const group=new Group();group.name='Ayu and Nara residents';let disposed=false,material:MeshStandardMaterial|undefined,originX=6,originZ=5;
+ const models=new Map<string,{mesh:Mesh;geometry:BufferGeometry;triangles:number;previous:ElephantAnimal;current:ElephantAnimal;entry:SceneCatalog['batches'][number]}>();
  function remove(id:string){const m=models.get(id);if(!m)return;catalog.batches=catalog.batches.filter(b=>b!==m.entry);catalog.identities.delete(id);catalog.bounds.delete(id);m.geometry.dispose();group.remove(m.mesh);models.delete(id);}
  return {group,sync(animals:ElephantAnimal[],width:number,height:number){
   if(disposed)return;const active=animals.slice(0,2);for(const id of models.keys())if(!active.some(a=>a.id===id))remove(id);
   if(active.length&&!material)material=new MeshStandardMaterial({vertexColors:true,roughness:1});
-  const origin=sceneOrigin({width,height});
+  const origin=sceneOrigin({width,height});originX=origin.x;originZ=origin.z;
   for(const [ordinal,a]of active.entries()){
-   let m=models.get(a.id);if(!m){const shape=standingModel(a.name),mesh=new Mesh(shape.geometry,material);mesh.name=a.id;mesh.castShadow=true;mesh.receiveShadow=true;const entry={mesh,ranges:[{first:0,count:shape.triangles,id:a.id}]};m={...shape,mesh,entry};models.set(a.id,m);catalog.batches.push(entry);group.add(mesh);}
+   let m=models.get(a.id);if(!m){const shape=standingModel(a.name),mesh=new Mesh(shape.geometry,material);mesh.name=a.id;mesh.castShadow=true;mesh.receiveShadow=true;const entry={mesh,ranges:[{first:0,count:shape.triangles,id:a.id}]};m={...shape,mesh,entry,previous:structuredClone(a),current:structuredClone(a)};models.set(a.id,m);catalog.batches.push(entry);group.add(mesh);}
+   m.previous=m.current;m.current=structuredClone(a);
    m.mesh.position.set(a.position.x-origin.x,.079,a.position.z-origin.z);m.mesh.rotation.y=a.motion.heading;m.mesh.scale.setScalar(a.name==='Nara'?.94:1);m.mesh.updateMatrixWorld(true);
    catalog.identities.set(a.id,{id:a.id,category:'object',kind:'elephant',residentName:a.name,ordinal:ordinal+1,cell:{x:Math.floor(a.position.x),z:Math.floor(a.position.z)}});catalog.bounds.set(a.id,new Box3().setFromObject(m.mesh));
   }
   if(!models.size&&material){material.dispose();material=undefined;}
- },dispose(){if(disposed)return;disposed=true;for(const id of [...models.keys()])remove(id);material?.dispose();material=undefined;group.clear();},inspect:()=>({liveElephantModels:models.size,elephantResidentGeometries:models.size,elephantResidentMaterials:material?1:0,elephantResidentTriangles:[...models.values()].reduce((n,m)=>n+m.triangles,0),elephantResidentsSceneDisposed:disposed})};
+ },update(alpha:number){if(disposed)return;const t=Math.max(0,Math.min(1,alpha));for(const m of models.values()){const a=m.current,p=m.previous,origin={x:originX,z:originZ};m.mesh.position.set(p.position.x+(a.position.x-p.position.x)*t-origin.x,.079,p.position.z+(a.position.z-p.position.z)*t-origin.z);m.mesh.rotation.y=p.motion.heading+Math.atan2(Math.sin(a.motion.heading-p.motion.heading),Math.cos(a.motion.heading-p.motion.heading))*t;m.mesh.updateMatrixWorld(true);catalog.bounds.set(a.id,new Box3().setFromObject(m.mesh));}},dispose(){if(disposed)return;disposed=true;for(const id of [...models.keys()])remove(id);material?.dispose();material=undefined;group.clear();},inspect:()=>({liveElephantModels:models.size,elephantResidentGeometries:models.size,elephantResidentMaterials:material?1:0,elephantResidentTriangles:[...models.values()].reduce((n,m)=>n+m.triangles,0),elephantResidentsSceneDisposed:disposed})};
 }

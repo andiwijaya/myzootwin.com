@@ -1,3 +1,5 @@
+import {mountElephantCarePanel} from './elephant-care-panel.ts';
+import type {ElephantCareSceneView} from '../game/render3d/elephant-care-preview.ts';
 import {ELEPHANT_PRICES} from '../game/economy/elephant-prices.ts';
 import type {VisualSettings} from '../game/core/visual-settings.ts';
 import {formatNumber} from './i18n-format.ts';
@@ -77,6 +79,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   host.addEventListener('scene-mission-result',event=>missionPanel.result((event as CustomEvent<{ok:boolean}>).detail.ok),{signal:events.signal});
   const elephantCatalog=mountElephantCatalog(root.querySelector('[data-elephant-catalog]'),events.signal,q=>controller.claimConservationGrant(q),()=>{root.dataset.guided='false';revealHudTarget(root.querySelector('[data-placement-tools]'));controller.beginElephantHabitat();host.focus({preventScroll:true});scrollHudTarget(host);},command=>{controller.welcomeElephants(command);host.focus({preventScroll:true});scrollHudTarget(host);});
   host.addEventListener('scene-elephant-grove-change',event=>elephantCatalog.update((event as CustomEvent<ElephantCatalogView>).detail),{signal:events.signal});
+  const elephantCare=mountElephantCarePanel(root.querySelector('[data-elephant-care]'),events.signal,{begin:kind=>{root.dataset.guided='false';controller.beginElephantCare(kind);host.focus({preventScroll:true});scrollHudTarget(host);},command:(action,revision)=>{controller.elephantCare(action,revision);host.focus({preventScroll:true});scrollHudTarget(host);},refill:quote=>controller.refillElephantCare(quote)});
+  host.addEventListener('scene-elephant-care-change',event=>elephantCare.update((event as CustomEvent<ElephantCareSceneView>).detail),{signal:events.signal});
   let selected:SceneIdentity|null=null;
   let studio:StudioView={active:false,habitat:false,clip:'perch',angle:'quarter',motionPaused:false,canHabitat:false};
   let food:FoodView={canPlace:false,habitat:false,exists:false,reachable:false,stock:0,capacity:8,revision:0,portions:[0,0],preview:false,reason:null};
@@ -209,7 +213,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     root.querySelector('[data-perch-keep]')?.replaceChildren(c.perchKeep);root.querySelector('[data-perch-remove-confirm]')?.replaceChildren(c.perchRemoveConfirm);root.querySelector('#perch-dialog-title')?.replaceChildren(c.perchRemoveTitle);root.querySelector('[data-entry-text="perchRemoveHint"]')?.replaceChildren(c.perchRemoveHint);renderCosts();
   }
   function renderStudio(){
-    speedPanel.show(state.status==='ready'&&!studio.active,locale);renderVisitors();missionPanel.show(state.status==='ready'&&!studio.active,locale);elephantCatalog.show(state.status==='ready'&&!studio.active,locale);onboardingPanel.show(state.status==='ready'&&!studio.active,locale);const guideLanguage=root.querySelector<HTMLSelectElement>('[data-guide-language]');if(guideLanguage){guideLanguage.value=locale;guideLanguage.setAttribute('aria-label',entryMessages[locale].language);}
+    speedPanel.show(state.status==='ready'&&!studio.active,locale);renderVisitors();missionPanel.show(state.status==='ready'&&!studio.active,locale);elephantCatalog.show(state.status==='ready'&&!studio.active,locale);elephantCare.show(state.status==='ready'&&!studio.active,locale);onboardingPanel.show(state.status==='ready'&&!studio.active,locale);const guideLanguage=root.querySelector<HTMLSelectElement>('[data-guide-language]');if(guideLanguage){guideLanguage.value=locale;guideLanguage.setAttribute('aria-label',entryMessages[locale].language);}
     const copy=entryMessages[locale],ready=state.status==='ready',tools=root.querySelector<HTMLElement>('[data-macaw-tools]');if(!tools)return;
     tools.hidden=!ready;const controls=root.querySelector<HTMLElement>('[data-macaw-controls]');if(controls)controls.hidden=!studio.active;
     for(const button of tools.querySelectorAll<HTMLButtonElement>('[data-studio-command]')){const command=button.dataset.studioCommand as StudioCommand;const key=command==='pause'?(studio.motionPaused?'macawResume':'macawPause'):command==='open'?'macawOpen':command==='close'?'macawClose':command==='detail'?'macawDetail':'macawHabitat';button.textContent=copy[key];button.hidden=command==='open'?studio.active:command==='detail'?!studio.habitat:command==='habitat'?studio.habitat:false;if(command==='habitat')button.disabled=habitatCount===0;}

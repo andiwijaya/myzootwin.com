@@ -1,3 +1,5 @@
+import type {ElephantCareKind,ElephantCareRefillQuote} from '../animals/elephants/care-resources.ts';
+import type {ElephantCareCommand} from './elephant-care-preview.ts';
 import type {VisualSettings} from '../core/visual-settings.ts';
 import type {GuideCommand} from '../missions/onboarding.ts';
 import type {MissionQuote} from '../missions/engine.ts';
@@ -22,6 +24,9 @@ export class PreviewFailure extends Error {
 }
 
 export interface PreviewSession {
+  beginElephantCare?(kind:ElephantCareKind):void;
+  elephantCare?(command:ElephantCareCommand,revision?:number):void;
+  refillElephantCare?(quote:ElephantCareRefillQuote):void;
   welcomeElephants?(command:number):void;
   beginElephantHabitat?():void;
   claimConservationGrant?(quote:ConservationGrantQuote):void;
@@ -123,6 +128,9 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     studio(command:StudioCommand,value?:string){if(!isPaused()&&state.status==='ready')session?.studio?.(command,value);},
     guide(command:GuideCommand,revision?:number){if(!isPaused()&&state.status==='ready')session?.guide?.(command,revision);},
     claimMission(quote:MissionQuote){if(!isPaused()&&state.status==='ready')session?.claimMission?.(quote);},
+    beginElephantCare(kind:ElephantCareKind){if(!isPaused()&&state.status==='ready')session?.beginElephantCare?.(kind);},
+    elephantCare(command:ElephantCareCommand,revision?:number){if(!isPaused()&&state.status==='ready')session?.elephantCare?.(command,revision);},
+    refillElephantCare(quote:ElephantCareRefillQuote){if(!isPaused()&&state.status==='ready')session?.refillElephantCare?.(quote);},
     welcomeElephants(command:number){if(!isPaused()&&state.status==='ready')session?.welcomeElephants?.(command);},
     beginElephantHabitat(){if(!isPaused()&&state.status==='ready')session?.beginElephantHabitat?.();},
     claimConservationGrant(quote:ConservationGrantQuote){if(!isPaused()&&state.status==='ready')session?.claimConservationGrant?.(quote);},

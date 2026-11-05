@@ -4,7 +4,7 @@ Source: owner Library handoff `libfile_09652153d1bc8191b2c1f1aa6cb5ce18` (44/44 
 
 Session 1 stopped safely before **2026-11-05 17:00 WIB / 10:00 UTC**. Session 2 explicitly authorized by the owner to continue at home, resumed at13:35 UTC /20:35 WIB from5852bdc. No new deadline specified. No push/deploy authorized. Original checkout, owner builds and owner saves stay untouched.
 
-Verified EH: **13/39 (33.33%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
+Verified EH: **14/39 (35.90%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
 
 | Item | Status | Scope / evidence |
 |---|---|---|
@@ -21,7 +21,7 @@ Verified EH: **13/39 (33.33%)**. Existing V1: **46/51**, five evidence/signoff g
 | EH2-01 | [x] | Canonical V2 runtime, locked ID/EN catalogue and commit-before-credit grant;558 tests,22 native cases, actual Q04/grant/cold/viewport journey; [evidence](ELEPHANT_GRANT.md) |
 | EH2-02 | [x] | Real650ZC36-cell transaction, original enclosure/selection and ID/EN tool; full regression and23 native cases; [evidence](ELEPHANT_CONSTRUCTION.md) |
 | EH2-03 | [x] | Free exact two-resident welcome, bounded internal visuals/selection, protected old guests and Q reward display;576 tests/24 native cases; [evidence](ELEPHANT_RESIDENTS.md) |
-| EH2-04 | [ ] | Real feeders/trough placement and consumption |
+| EH2-04 | [x] | Paid real care placement/refill/consumption, ID/EN UI, bounded geometry;592 tests/25 native cases; [evidence](ELEPHANT_CARE.md) |
 | EH2-05 | [ ] | Tick-driven ground care and welfare vertical slice |
 | EH2-06 | [ ] | Removal/Undo/orphan/refund safety |
 | EH3-01 | [ ] | Original recognizable elephant mesh/rig |
@@ -50,4 +50,4 @@ Verified EH: **13/39 (33.33%)**. Existing V1: **46/51**, five evidence/signoff g
 
 Each checked item requires a local commit and its scoped evidence. Commit identities are recorded by Git history and subsequent checkpoints; no self-referential hash is invented. Upcoming steps remain unverified until their complete seam passes.
 
-Historical timed-session shutdown: [first checkpoint](ELEPHANT_SESSION_CHECKPOINT.md). Owner explicitly resumed work afterward; latest verified seam: [persisted Ayu/Nara residents](ELEPHANT_RESIDENTS.md).
+Historical timed-session shutdown: [first checkpoint](ELEPHANT_SESSION_CHECKPOINT.md). Owner explicitly resumed work afterward; latest verified seam: [real care facilities](ELEPHANT_CARE.md).

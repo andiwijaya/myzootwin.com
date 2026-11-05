@@ -1,4 +1,5 @@
 export type SimulationEvent =
+  | {type:'elephant-care-changed';resourceId:string;tick:number;gameTimeMs:number}
   | {type:'elephants-welcomed';tick:number;gameTimeMs:number}
   | {type:'conservation-grant-claimed';amount:number;tick:number;gameTimeMs:number}
   | {type:"preferences-changed";tick:number;gameTimeMs:number}

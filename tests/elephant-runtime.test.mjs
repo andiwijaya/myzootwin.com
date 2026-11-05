@@ -10,9 +10,9 @@ const frozen=JSON.parse(readFileSync(new URL('./fixtures/elephant-legacy-v1.json
 const fixture=()=>syntheticElephantSave(frozen.entries.q04Claimed.state);
 const foreign=s=>({animals:s.animals.filter(a=>a.speciesId==='elephas-maximus'),habitats:s.world.habitats.filter(h=>h.kind==='elephant-grove'),resources:s.world.resources.filter(r=>r.kind.startsWith('elephant-')),proof:s.elephantGrove});
 
-test('one canonical V2 clock retains all dormant elephant records/proofs while original macaws and visitors advance',()=>{
+test('one canonical V2 clock advances elephant care while preserving both species identities, ownership and reward proofs',()=>{
   const source=fixture(),before=foreign(source),s=createSimulation(source);let ticks=0;s.subscribe(e=>{if(e.type==='tick')ticks++;});
-  for(let i=0;i<100;i++)s.advance(100);const save=s.snapshot();assert.equal(save.schemaVersion,2);assert.equal(save.tick,source.tick+100);assert.equal(ticks,100);assert.equal(s.inspect().birdCount,2);assert.equal(s.birdSnapshot().animals.length,2);assert.deepEqual(foreign(save),before);assert.equal(validateSaveV2(save).ok,true);assert.deepEqual(parseSaveV2(serializeSaveV2(save)).value,save);s.dispose();assert.equal(s.inspect().subscribers,0);
+  for(let i=0;i<100;i++)s.advance(100);const save=s.snapshot();assert.equal(save.schemaVersion,2);assert.equal(save.tick,source.tick+100);assert.equal(ticks,100);assert.equal(s.inspect().birdCount,2);assert.equal(s.birdSnapshot().animals.length,2);assert.deepEqual(foreign(save).proof,before.proof);assert.deepEqual(foreign(save).habitats,before.habitats);assert.deepEqual(foreign(save).animals.map(a=>({id:a.id,speciesId:a.speciesId,name:a.name,sex:a.sex,habitatId:a.habitatId})),before.animals.map(a=>({id:a.id,speciesId:a.speciesId,name:a.name,sex:a.sex,habitatId:a.habitatId})));assert.deepEqual(foreign(save).resources.map(({stock,...r})=>r),before.resources.map(({stock,...r})=>r));assert.ok(foreign(save).animals.every((a,i)=>a.hunger!==before.animals[i].hunger||a.thirst!==before.animals[i].thirst));assert.equal(validateSaveV2(save).ok,true);assert.deepEqual(parseSaveV2(serializeSaveV2(save)).value,save);s.dispose();assert.equal(s.inspect().subscribers,0);
 });
 
 test('macaw reserve and resource remove/rebuild/refill transactions never replace the other species in the canonical world',()=>{

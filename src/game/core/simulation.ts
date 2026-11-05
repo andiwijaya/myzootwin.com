@@ -1,3 +1,5 @@
+import {stepElephantCare} from '../animals/elephants/care-simulation.ts';
+import {elephantCareView,elephantCareSnapshot,defaultElephantCareCell,validateElephantCarePlacement,prepareElephantCarePlacement,prepareElephantCareRefill,type ElephantCareKind,type ElephantCareQuote,type ElephantCareRefillQuote} from '../animals/elephants/care-resources.ts';
 import {elephantResidentsView,prepareElephantWelcome} from '../animals/elephants/residents.ts';
 import {elephantHabitatView,prepareElephantConstruction} from '../economy/elephant-construction.ts';
 import {isVisualSettings} from './visual-settings.ts';
@@ -63,7 +65,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     if(settleMaintenance(state)){compactNow();publish(Object.freeze({type:'economy-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));}
     const random=nextRandom(state.randomState);
     state.randomState=random.state;
-    const {fed,watered}=stepAnimals(macawRuntimeView(state));reconcileWelfare(state);for(const e of watered)publish(Object.freeze({type:'animal-drank',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));for(const e of fed)publish(Object.freeze({type:'animal-fed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
+    const {fed,watered}=stepAnimals(macawRuntimeView(state));if(state.schemaVersion===2){const care=stepElephantCare(state);fed.push(...care.fed);watered.push(...care.watered);}reconcileWelfare(state);for(const e of watered)publish(Object.freeze({type:'animal-drank',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));for(const e of fed)publish(Object.freeze({type:'animal-fed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     const previousAdmissions=state.admissions.length,viewed=stepArrivals(state);
     const admitted=state.admissions.slice(previousAdmissions).map(a=>({visitorId:a.visitorId,admissionId:a.id,amount:ledgerProof(state,a.ledgerEntryId)!.amount}));
     evaluateMissions(state);retireClosedProofs(state);compactNow();
@@ -123,6 +125,16 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
       state=valid.value;topology=connected.topology;invalidateEdit();compactNow();publish(Object.freeze({type:'recovery-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;
     },
     commandRevision:()=>state.economy.nextCommand,
+    elephantCareView:()=>elephantCareView(state),
+    elephantCareSnapshot:()=>elephantCareSnapshot(state),
+    defaultElephantCareCell:(kind:ElephantCareKind)=>defaultElephantCareCell(state,kind),
+    elephantCarePlacementView:(kind:ElephantCareKind,cell:Point|null)=>validateElephantCarePlacement(state,kind,cell),
+    placeElephantCare(quote:ElephantCareQuote){
+      if(disposed||clock.inspect().paused)return {ok:false as const,reason:'stale' as const};const result=prepareElephantCarePlacement(state,quote);if(!result.ok)return result;state=result.state;invalidateEdit();compactNow();publish(Object.freeze({type:'elephant-care-changed',resourceId:result.resourceId,tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const,resourceId:result.resourceId};
+    },
+    refillElephantCare(quote:ElephantCareRefillQuote){
+      if(disposed||clock.inspect().paused)return {ok:false as const,reason:'stale' as const};const result=prepareElephantCareRefill(state,quote);if(!result.ok)return result;state=result.state;invalidateEdit();compactNow();publish(Object.freeze({type:'elephant-care-changed',resourceId:result.resourceId,tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const,resourceId:result.resourceId};
+    },
     elephantResidentsView:()=>elephantResidentsView(state),
     elephantSnapshot:()=>({animals:structuredClone(elephants(state.animals)),width:state.world.width,height:state.world.height}),
     welcomeElephants(command:number){
