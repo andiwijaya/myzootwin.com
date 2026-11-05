@@ -1,3 +1,4 @@
+import {sceneOrigin} from '../world/scene-coordinates.ts';
 import {createSanctuaryLighting} from './sanctuary-lighting.ts';
 import {visualPolicy} from '../core/visual-settings.ts';
 import {createThrivingBanner} from './thriving-banner.ts';
@@ -251,8 +252,8 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
       if(disposed||paused||lost||document.hidden||macaw?.view().active||!placement)return;
       if(command==='cancel')placement.command('cancel');
       else if(command==='confirm'){const before=placement.inspect().placementConfirmations;placement.command('confirm',revision);if(placement.inspect().placementConfirmations>before)placement.command('cancel');}
-      else{const view=simulation.onboardingView();if(command==='focus'){if(view.target){const w=simulation.snapshot().world;controls?.focus({x:view.target.x+.5-w.width/2,z:view.target.z+.5-w.height/2});}else controls?.command('reset');}
-        else if(view.kind&&view.target&&view.affordable){controls?.setEnabled(false);controls?.setEnabled(true);foodPreview=false;waterPreview=false;perchPreview=false;foodDirty=true;waterDirty=true;perchDirty=true;picker?.clear();placementCommand=simulation.commandRevision();placement.guide(view.kind,view.target);const w=simulation.snapshot().world;controls?.focus({x:view.target.x+(view.kind==='habitat'?1:.5)-w.width/2,z:view.target.z+(view.kind==='habitat'?1:.5)-w.height/2});}}
+      else{const view=simulation.onboardingView();if(command==='focus'){if(view.target){const w=simulation.snapshot().world;controls?.focus({x:view.target.x+.5-sceneOrigin(w).x,z:view.target.z+.5-sceneOrigin(w).z});}else controls?.command('reset');}
+        else if(view.kind&&view.target&&view.affordable){controls?.setEnabled(false);controls?.setEnabled(true);foodPreview=false;waterPreview=false;perchPreview=false;foodDirty=true;waterDirty=true;perchDirty=true;picker?.clear();placementCommand=simulation.commandRevision();placement.guide(view.kind,view.target);const w=simulation.snapshot().world;controls?.focus({x:view.target.x+(view.kind==='habitat'?1:.5)-sceneOrigin(w).x,z:view.target.z+(view.kind==='habitat'?1:.5)-sceneOrigin(w).z});}}
       render();
     },
     muted:value=>{if(!disposed&&!lost)simulation.setMuted(value);},
@@ -262,7 +263,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     claimMission:quote=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;const result=simulation.claimMission(quote);previousMission='';render();host.dispatchEvent(new CustomEvent('scene-mission-result',{detail:result}));},
     recoveryQuote:()=>{const v=simulation.recoveryView();host.dispatchEvent(new CustomEvent('scene-recovery-change',{detail:v}));return !disposed&&!paused&&!lost&&!document.hidden&&!macaw?.view().active&&v.low&&v.available?{command:v.command,key:v.key}:undefined;},
     recover:quote=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');picker?.clear();foodPreview=false;waterPreview=false;perchPreview=false;if(simulation.recover(quote)){habitatDirty=true;pathDirty=true;birdsDirty=true;foodDirty=true;waterDirty=true;perchDirty=true;visitorsDirty=true;saveSession();announceEdit();}render();},
-    visitors:command=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;if(command==='focus'||command==='follow'){const w=simulation.snapshot().world,p=command==='follow'?(visual().low?simulation.snapshot().visitors.find(v=>v.arrival)?.position:simulation.visitorFocus()):null;controls?.focus({x:(p?.x??w.gate.x+.5)-w.width/2,z:(p?.z??w.gate.z+.7)-w.height/2});}else if(command==='open'||command==='close'){simulation.visitors(command==='open');saveSession();}render();},
+    visitors:command=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;if(command==='focus'||command==='follow'){const w=simulation.snapshot().world,p=command==='follow'?(visual().low?simulation.snapshot().visitors.find(v=>v.arrival)?.position:simulation.visitorFocus()):null;controls?.focus({x:(p?.x??w.gate.x+.5)-sceneOrigin(w).x,z:(p?.z??w.gate.z+.7)-sceneOrigin(w).z});}else if(command==='open'||command==='close'){simulation.visitors(command==='open');saveSession();}render();},
     perch:(command,revision=0)=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');picker?.clear();foodPreview=false;foodPreviewHabitat=null;foodDirty=true;waterPreview=false;waterPreviewHabitat=null;waterDirty=true;
       const h=simulation.snapshot().world.habitats[0];perchReason=null;
       if(command==='preview'){if(!h||simulation.perchView().exists)perchReason=h?'exists':'missing';else{perchPreview=true;perchPreviewHabitat=h.id;perchCommand=simulation.commandRevision();}}

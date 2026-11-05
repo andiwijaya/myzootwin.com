@@ -1,3 +1,4 @@
+import {sceneOrigin} from '../world/scene-coordinates.ts';
 import { BoxGeometry, EdgesGeometry, Group, LineBasicMaterial, LineSegments, Mesh, MeshBasicMaterial, Plane, PlaneGeometry, Raycaster, Vector2, Vector3, type Camera } from 'three';
 import {validatePathPlacement} from '../world/paths.ts';
 import {habitatBlockerKeys,validateHabitatPlacement} from '../world/build-habitat.ts';
@@ -19,7 +20,7 @@ export function createPlacementPreview(world:()=>WorldState,catalog:SceneCatalog
   ghost.add(outline);
   for(const [x,z]of [[-.5,-.5],[.5,-.5],[-.5,.5],[.5,.5]]){const tile=new Mesh(plane,ghostMaterial);tile.rotation.x=-Math.PI/2;tile.position.set(x,-.07,z);tile.renderOrder=22;fills.push(tile);ghost.add(tile);}
   group.add(ghost,confirmed);ghost.visible=false;confirmed.visible=false;
-  function position(target:Group|LineSegments,proposal:PlacementProposal){target.position.set(proposal.anchor.x-map.width/2+proposal.width/2,.17,proposal.anchor.z-map.height/2+proposal.height/2);}
+  function position(target:Group|LineSegments,proposal:PlacementProposal){target.position.set(proposal.anchor.x-sceneOrigin(map).x+proposal.width/2,.17,proposal.anchor.z-sceneOrigin(map).z+proposal.height/2);}
   const planner=createPlacementPlanner(world,blocked,view=>{
     ghost.visible=view.active&&Boolean(view.proposal);confirmed.visible=!commit&&Boolean(view.confirmed);
     if(view.proposal){position(ghost,view.proposal);outline.scale.set(view.proposal.width/2,1,view.proposal.height/2);fills.forEach((tile,i)=>{tile.visible=view.kind!=='path'||i===0;if(view.kind==='path')tile.position.set(0,-.07,0);else tile.position.set(i%2===0?-.5:.5,-.07,i<2?-.5:.5);});ghostMaterial.color.set(view.reason==='ready'?'#23774e':'#b32e33');edgeMaterial.color.set(view.reason==='ready'?'#176541':'#a5222b');}
@@ -34,7 +35,7 @@ export function createPlacementPreview(world:()=>WorldState,catalog:SceneCatalog
       const identity=raycastScene(catalog,camera,point,b,raycaster);
       if(identity){planner.choose(identity.cell);return;}
       camera.updateMatrixWorld(true);raycaster.setFromCamera(new Vector2((point.x-b.left)/b.width*2-1,1-(point.y-b.top)/b.height*2),camera);
-      planner.choose(raycaster.ray.intersectPlane(ground,intersection)?{x:Math.floor(intersection.x+map.width/2),z:Math.floor(intersection.z+map.height/2)}:null);
+      planner.choose(raycaster.ray.intersectPlane(ground,intersection)?{x:Math.floor(intersection.x+sceneOrigin(map).x),z:Math.floor(intersection.z+sceneOrigin(map).z)}:null);
     },
     refresh:()=>planner.refresh(),active:()=>planner.snapshot().active,
     setEnabled:planner.setEnabled,

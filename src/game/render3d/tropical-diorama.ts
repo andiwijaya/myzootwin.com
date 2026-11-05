@@ -1,6 +1,7 @@
 import { Box3, BoxGeometry, BufferGeometry, Color, CircleGeometry, CylinderGeometry, Float32BufferAttribute, Group, IcosahedronGeometry, Matrix4, Mesh, MeshBasicMaterial, MeshStandardMaterial, Quaternion, Vector3, type Material } from 'three';
 import type { FaceOwner, SceneCatalog, SceneIdentityKind } from './scene-selection.ts';
 import type { WorldState } from '../core/state.ts';
+import {sceneOrigin,sceneToCell,toScene} from '../world/scene-coordinates.ts';
 
 /** Original code-authored scenery. Dressing is not a player structure or a habitat. */
 export class Batch {
@@ -42,9 +43,9 @@ export function createTropicalDiorama(world: WorldState) {
     selectable.forEach(b=>b.owner=id);draw();selectable.forEach((b,i)=>b.owner=old[i]);
     const bounds=new Box3();
     selectable.forEach((batch,i)=>{for(let v=before[i];v<batch.positions.length;v+=3)bounds.expandByPoint(new Vector3(batch.positions[v],batch.positions[v+1],batch.positions[v+2]));});
-    catalog.identities.set(id,{id,category:'object',kind,ordinal,cell:{x:Math.floor(x+world.width/2),z:Math.floor(z+world.height/2)}});catalog.bounds.set(id,bounds);
+    catalog.identities.set(id,{id,category:'object',kind,ordinal,cell:sceneToCell({x,z},world)});catalog.bounds.set(id,bounds);
   }
-  const point = (x: number, z: number) => [x + .5 - world.width/2, z + .5 - world.height/2];
+  const point = (x: number, z: number) => {const p=toScene({x,z},world);return [p.x,p.z];};
   const box = (batch: Batch, color: string, p: number[], s: number[], yaw=0) => batch.add(new BoxGeometry(1,1,1), color,p,s,yaw);
   const rockGeometry = (x: number,z: number,s=.35) => props.add(new IcosahedronGeometry(1,0),'#a3ad91',[x,.12,z],[s,s*.65,s*.8],x);
   const shadow = (x:number,z:number,s:number) => {
@@ -63,8 +64,9 @@ export function createTropicalDiorama(world: WorldState) {
     }
   }
   // A raised soil slice, with layered faceted edges and a continuous open lawn.
-  box(terrain,'#94724e',[0,-.37,0],[world.width,.68,world.height]);
-  box(terrain,'#c5a77b',[0,-.08,0],[world.width+.04,.16,world.height+.04]);
+  const origin=sceneOrigin(world),centerX=world.width/2-origin.x,centerZ=world.height/2-origin.z;
+  box(terrain,'#94724e',[centerX,-.37,centerZ],[world.width,.68,world.height]);
+  box(terrain,'#c5a77b',[centerX,-.08,centerZ],[world.width+.04,.16,world.height+.04]);
   for (const tile of world.tiles) {
     const [x,z] = point(tile.cell.x,tile.cell.z),id=`tile-${tile.cell.x}-${tile.cell.z}`;
     catalog.identities.set(id,{id,category:'tile',kind:tile.path?'path':tile.terrain,ordinal:0,cell:{...tile.cell}});

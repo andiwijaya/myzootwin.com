@@ -1,3 +1,4 @@
+import {sceneOrigin} from '../world/scene-coordinates.ts';
 import {Box3,BoxGeometry,BufferGeometry,Float32BufferAttribute,Group,LineBasicMaterial,LineSegments,Mesh,MeshStandardMaterial,Vector3} from 'three';
 import {Batch} from './tropical-diorama.ts';
 import type {WorldState} from '../core/state.ts';
@@ -16,7 +17,7 @@ export function createHabitatScene(catalog:SceneCatalog,register:(geometry:Buffe
     for(const habitat of world.habitats){
       if(ids.includes(habitat.id))continue;
       const ordinal=ids.length+1,minX=Math.min(...habitat.cells.map(c=>c.x)),minZ=Math.min(...habitat.cells.map(c=>c.z));
-      const x=minX-world.width/2+1,z=minZ-world.height/2+1,batch=new Batch();batch.owner=habitat.id;
+      const x=minX-sceneOrigin(world).x+1,z=minZ-sceneOrigin(world).z+1,batch=new Batch();batch.owner=habitat.id;
       const box=(color:string,p:number[],scale:number[])=>batch.add(new BoxGeometry(1,1,1),color,p,scale);
       box('#c6ca9a',[x,.055,z],[1.96,.045,1.96]);
       // Continuous perimeter sill and upper rails; closed mesh roof keeps future short flights contained.

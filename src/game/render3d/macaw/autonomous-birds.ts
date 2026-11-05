@@ -1,3 +1,4 @@
+import {sceneOrigin} from '../../world/scene-coordinates.ts';
 import {CylinderGeometry,Group,Mesh,MeshStandardMaterial} from 'three';
 import type {Animal,Habitat} from '../../core/state.ts';
 import {BIRD_PERCH_HEIGHT,birdHome} from '../../animals/autonomy.ts';
@@ -23,18 +24,18 @@ export function createAutonomousBirds(){
   if(next!==layout){clear();layout=next;if(placed.length){assets=createMacawAssets();branchGeometry=new CylinderGeometry(1,1,1,8);branchMaterial=new MeshStandardMaterial({color:'#99754e',roughness:1});}}
   for(const [slot,a]of placed.entries()){
    let b=birds.get(a.id);if(!b&&assets){const rig=createMacawRig(assets);rig.root.name=a.id;rig.root.scale.setScalar(MACAW_SCALE);group.add(rig.root);const pose=autonomousPose(a,time);b={rig,previous:structuredClone(a),current:structuredClone(a),pose,from:pose,changedAt:time};birds.set(a.id,b);
-    const h=habitats.find(h=>h.id===a.habitatId)!;const p=birdHome(h,slot).perch,x=p.x-width/2,z=p.z-height/2-.025*MACAW_SCALE,y=.079+BIRD_PERCH_HEIGHT-.035*MACAW_SCALE;
+    const h=habitats.find(h=>h.id===a.habitatId)!;const p=birdHome(h,slot).perch,x=p.x-sceneOrigin({width,height}).x,z=p.z-sceneOrigin({width,height}).z-.025*MACAW_SCALE,y=.079+BIRD_PERCH_HEIGHT-.035*MACAW_SCALE;
     const branch=new Mesh(branchGeometry,branchMaterial);branch.rotation.z=Math.PI/2;branch.scale.set(.035*MACAW_SCALE,.34,.035*MACAW_SCALE);branch.position.set(x,y,z);branch.visible=perchesVisible;landingBranches.push(branch);group.add(branch);
     for(const dx of [-.15,.15]){const post=new Mesh(branchGeometry,branchMaterial);post.scale.set(.014,y-.079,.014);post.position.set(x+dx,.079+(y-.079)/2,z);post.visible=perchesVisible;landingBranches.push(post);group.add(post);}
    }
    if(b){if(b.current.motion.phase!==a.motion.phase){b.from={...b.pose};b.changedAt=time;}b.previous=b.current;b.current=structuredClone(a);}
   }
-  group.userData.worldWidth=width;group.userData.worldHeight=height;
+  group.userData.worldOriginX=sceneOrigin({width,height}).x;group.userData.worldOriginZ=sceneOrigin({width,height}).z;
  }
  function update(alpha:number,time:number){if(disposed)return;const t=Math.max(0,Math.min(1,alpha));for(const b of birds.values()){
   const a=b.current,p=b.previous;if(!a.position||!p.position)continue;
   const heading=p.motion.heading+Math.atan2(Math.sin(a.motion.heading-p.motion.heading),Math.cos(a.motion.heading-p.motion.heading))*t;
-  b.rig.root.position.set(p.position.x+(a.position.x-p.position.x)*t-group.userData.worldWidth/2,.079+p.motion.elevation+(a.motion.elevation-p.motion.elevation)*t,p.position.z+(a.position.z-p.position.z)*t-group.userData.worldHeight/2);b.rig.root.rotation.y=heading;
+  b.rig.root.position.set(p.position.x+(a.position.x-p.position.x)*t-group.userData.worldOriginX,.079+p.motion.elevation+(a.motion.elevation-p.motion.elevation)*t,p.position.z+(a.position.z-p.position.z)*t-group.userData.worldOriginZ);b.rig.root.rotation.y=heading;
   const sample=autonomousPose(a,time+(a.id==='macaw-1'?0:1300));b.pose=blendMacawPose(b.from,sample,Math.min(1,Math.max(0,time-b.changedAt)/280));b.rig.apply(b.pose);
  }}
  return {group,sync,update,setPerchesVisible(value:boolean){perchesVisible=value;for(const b of landingBranches)b.visible=value;},setVisible:(value:boolean)=>{group.visible=value;},dispose(){if(disposed)return;disposed=true;clear();},inspect:()=>({liveBirdModels:birds.size,birdAssetsGeometries:assets?.inspect().macawAssetGeometries??0,birdOwnedMaterials:assets?2:0,birdModelTriangles:assets?(assets.inspect().macawTriangles*birds.size):0,birdPerchTriangles:assets&&perchesVisible?3*32*birds.size:0,birdPerchesVisible:perchesVisible&&birds.size>0,birdSceneDisposed:disposed})};

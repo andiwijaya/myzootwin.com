@@ -2,6 +2,7 @@ import { Vector3, type Box3, type OrthographicCamera } from 'three';
 import { fitIsometricCamera } from './isometric-camera.ts';
 import { createCameraNavigation, type CameraCommand } from './camera-navigation.ts';
 import { createCameraGestures, type CameraPointer } from './camera-gestures.ts';
+import {sceneOrigin} from '../world/scene-coordinates.ts';
 
 export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, camera:OrthographicCamera, bounds:Box3, map:{width:number;height:number}, onTap?:(point:CameraPointer)=>void,onCancel?:()=>void) {
   let disposed=false,enabled=true;const events=new AbortController();
@@ -56,7 +57,8 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
     if(width<=0||height<=0)return;
     const frame=fitIsometricCamera(camera,bounds,width/height,azimuthStep*Math.PI/4);basePosition=camera.position.clone();
     const right=new Vector3(1,0,0).applyQuaternion(camera.quaternion),up=new Vector3(0,1,0).applyQuaternion(camera.quaternion);
-    navigation.configure({width,height,halfWidth:frame.halfWidth,halfHeight:frame.halfHeight,rightX:right.x,rightZ:right.z,upX:up.x,upZ:up.z,originX:frame.originX,originZ:frame.originZ,mapWidth:map.width,mapHeight:map.height},preserveFocus);
+    const origin=sceneOrigin(map);
+    navigation.configure({width,height,halfWidth:frame.halfWidth,halfHeight:frame.halfHeight,rightX:right.x,rightZ:right.z,upX:up.x,upZ:up.z,originX:frame.originX,originZ:frame.originZ,mapWidth:map.width,mapHeight:map.height,mapCenterX:map.width/2-origin.x,mapCenterZ:map.height/2-origin.z},preserveFocus);
   }
   function command(value:CameraCommand){
     if(!enabled||disposed||!width||!height)return;cancelAll();

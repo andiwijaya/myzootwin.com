@@ -1,3 +1,4 @@
+import {sceneOrigin} from '../world/scene-coordinates.ts';
 import {CylinderGeometry,Group,IcosahedronGeometry,Mesh,MeshStandardMaterial} from 'three';
 import {Batch} from './tropical-diorama.ts';
 import {BIRD_PERCH_HEIGHT,perchAnchor,reachablePerch} from '../animals/resting.ts';
@@ -12,7 +13,7 @@ export function createPerchScene(){
   baseGeometry=b.geometry();leafGeometry=l.geometry();material=new MeshStandardMaterial({vertexColors:true,roughness:1});base=new Mesh(baseGeometry,material);leaves.add(new Mesh(leafGeometry,material));group.add(base,leaves);
  }
  function release(){group.clear();leaves.clear();baseGeometry?.dispose();leafGeometry?.dispose();material?.dispose();baseGeometry=undefined;leafGeometry=undefined;material=undefined;base=undefined;}
- function sync(w:WorldState,preview:boolean,valid=true){if(disposed)return;const h=w.habitats[0],r=h?reachablePerch(w,h):undefined;active=Boolean(r||preview&&h);group.visible=active;if(!active){if(base)release();return;}if(!base)allocate();const p=perchAnchor(h!);group.position.set(p.x+1-w.width/2,0,p.z-w.height/2);material!.transparent=preview;material!.opacity=preview?.42:1;material!.depthWrite=!preview;material!.color.set(preview?(valid?'#8bd5a1':'#e58c79'):'#ffffff');group.updateMatrixWorld(true);}
+ function sync(w:WorldState,preview:boolean,valid=true){if(disposed)return;const h=w.habitats[0],r=h?reachablePerch(w,h):undefined;active=Boolean(r||preview&&h);group.visible=active;if(!active){if(base)release();return;}if(!base)allocate();const p=perchAnchor(h!);group.position.set(p.x+1-sceneOrigin(w).x,0,p.z-sceneOrigin(w).z);material!.transparent=preview;material!.opacity=preview?.42:1;material!.depthWrite=!preview;material!.color.set(preview?(valid?'#8bd5a1':'#e58c79'):'#ffffff');group.updateMatrixWorld(true);}
  function update(time:number,exploring:number,reducedMotion:boolean){if(disposed||!active)return;leaves.rotation.z=!reducedMotion&&exploring>0?.018*Math.sin(time/600):0;}
  return {group,sync,update,dispose(){if(disposed)return;disposed=true;active=false;release();},inspect:()=>({restKitVisible:active,perchSceneDisposed:disposed,perchOwnedMaterials:base?1:0,perchGeometries:base?2:0,perchTriangles:baseGeometry&&leafGeometry?(baseGeometry.getAttribute('position').count+leafGeometry.getAttribute('position').count)/3:0,leafSway:leaves.rotation.z})};
 }

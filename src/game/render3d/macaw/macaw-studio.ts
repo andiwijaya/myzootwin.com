@@ -1,3 +1,4 @@
+import {sceneOrigin} from '../../world/scene-coordinates.ts';
 import {CircleGeometry,Color,CylinderGeometry,Float32BufferAttribute,Group,LatheGeometry,Mesh,OrthographicCamera,SphereGeometry,Vector2,type BufferGeometry} from 'three';
 import type {WorldState} from '../../core/state.ts';
 import {createMacawAssets,MACAW_SCALE,type MacawAssets} from './macaw-geometry.ts';
@@ -36,7 +37,7 @@ export function createMacawStudio(world:()=>WorldState,onChange:(view:StudioView
   for(const support of supports){support.visible=height>.09;support.scale.y=Math.max(.001,height-.035);support.position.y=(height-.035)/2;}
   const feeding=view.clip==='eat'||view.clip==='drink';cup.visible=feeding;if(cupStand)cupStand.visible=feeding;water.visible=view.clip==='drink';fruit.forEach(m=>{m.visible=view.clip==='eat';});
   const w=world(),habitat=w.habitats[0];
-  if(view.habitat&&habitat){const x=Math.min(...habitat.cells.map(c=>c.x))+1-w.width/2,z=Math.min(...habitat.cells.map(c=>c.z))+1-w.height/2;stage.scale.setScalar(MACAW_SCALE);stage.position.set(x,.079,z);floor.visible=false;}
+  if(view.habitat&&habitat){const x=Math.min(...habitat.cells.map(c=>c.x))+1-sceneOrigin(w).x,z=Math.min(...habitat.cells.map(c=>c.z))+1-sceneOrigin(w).z;stage.scale.setScalar(MACAW_SCALE);stage.position.set(x,.079,z);floor.visible=false;}
   else {stage.scale.setScalar(1);stage.position.set(0,0,0);floor.visible=true;}
   group.updateMatrixWorld(true);
  }
