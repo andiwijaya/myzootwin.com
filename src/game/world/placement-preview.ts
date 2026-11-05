@@ -1,4 +1,5 @@
-import type { Point, WorldState } from '../core/state.ts';
+import type { Point, RuntimeWorld } from '../core/state.ts';
+import {sceneOrigin} from './scene-coordinates.ts';
 export type PlacementReason = 'choose' | 'ready' | 'outside' | 'creek' | 'path' | 'occupied' | 'scenery' | 'limit' | 'command' | 'funds' | 'capacity';
 export type PlacementKind='habitat'|'path';
 export interface PlacementProposal { kind:PlacementKind; anchor:Point; width:1|2|6; height:1|2|6; cells:Point[]; }
@@ -6,7 +7,7 @@ export interface PlacementView { kind:PlacementKind; active:boolean; revision:nu
 export type PlacementCommand = 'begin'|'begin-path'|'confirm'|'cancel'|'left'|'right'|'up'|'down';
 export const cellKey=(p:Point)=>`${p.x},${p.z}`;
 /** Pure, conservative footprint rules shared by preview and the upcoming habitat command. */
-export function validatePlacement(world:Pick<WorldState,'width'|'height'|'tiles'>, anchor:Point|null, blocked:ReadonlySet<string>,kind:PlacementKind='habitat',footprint:2|6=2):{proposal:PlacementProposal|null;reason:PlacementReason} {
+export function validatePlacement(world:Pick<RuntimeWorld,'width'|'height'|'tiles'>, anchor:Point|null, blocked:ReadonlySet<string>,kind:PlacementKind='habitat',footprint:2|6=2):{proposal:PlacementProposal|null;reason:PlacementReason} {
   if(!anchor)return {proposal:null,reason:'choose'};
   if(!Number.isSafeInteger(anchor.x)||!Number.isSafeInteger(anchor.z))return {proposal:null,reason:'outside'};
   if(footprint!==2&&footprint!==6)return {proposal:null,reason:'command'};
@@ -19,12 +20,12 @@ export function validatePlacement(world:Pick<WorldState,'width'|'height'|'tiles'
   return {proposal,reason};
 }
 export interface PlacementPlannerOptions {
-  validate?:(world:WorldState,anchor:Point|null,kind:PlacementKind)=>{proposal:PlacementProposal|null;reason:PlacementReason};
+  validate?:(world:RuntimeWorld,anchor:Point|null,kind:PlacementKind)=>{proposal:PlacementProposal|null;reason:PlacementReason};
   commit?:(proposal:PlacementProposal,operationId:string)=>boolean;
   operationId?:()=>string;
 }
 /** Candidate state is local; an optional authoritative command commits the checked proposal. */
-export function createPlacementPlanner(world:()=>WorldState,blocked:ReadonlySet<string>,onChange:(view:PlacementView)=>void,options:PlacementPlannerOptions={}) {
+export function createPlacementPlanner(world:()=>RuntimeWorld,blocked:ReadonlySet<string>,onChange:(view:PlacementView)=>void,options:PlacementPlannerOptions={}) {
   let active=false,anchor:Point|null=null,confirmed:PlacementProposal|null=null,revision=0,confirmations=0,disposed=false,enabled=true;
   let operationId='';let kind:PlacementKind='habitat',lastPathCell:Point|null=null;
   const validate=(anchor:Point|null)=>options.validate?options.validate(world(),anchor,kind):validatePlacement(world(),anchor,blocked,kind);
@@ -33,7 +34,7 @@ export function createPlacementPlanner(world:()=>WorldState,blocked:ReadonlySet<
   return {
     begin(value:PlacementKind='habitat'){if(!enabled||disposed||active)return;kind=value;lastPathCell=null;active=true;anchor=null;operationId=options.operationId?.()??`habitat-${crypto.randomUUID()}`;emit();},
     choose(value:Point|null){if(!enabled||disposed||!active)return;anchor=value?{...value}:null;emit();},
-    move(dx:number,dz:number){if(!enabled||disposed||!active)return;const w=world(),p=anchor??(kind==='path'?(lastPathCell??w.gate):{x:Math.floor(w.width/2)-1,z:Math.floor(w.height/2)-1});anchor={x:Math.max(-1,Math.min(w.width-1,p.x+dx)),z:Math.max(-1,Math.min(w.height-1,p.z+dz))};emit();},
+    move(dx:number,dz:number){if(!enabled||disposed||!active)return;const w=world(),origin=sceneOrigin(w),p=anchor??(kind==='path'?(lastPathCell??w.gate):{x:Math.floor(origin.x)-1,z:Math.floor(origin.z)-1});anchor={x:Math.max(-1,Math.min(w.width-1,p.x+dx)),z:Math.max(-1,Math.min(w.height-1,p.z+dz))};emit();},
     confirm(expectedRevision:number){if(!enabled||disposed||!active||revision!==expectedRevision)return false;const checked=validate(anchor);if(checked.reason!=='ready'||!checked.proposal){emit();return false;}if(options.commit&&!options.commit(checked.proposal,operationId)){emit();return false;}confirmed=structuredClone(checked.proposal);confirmations++;lastPathCell=kind==='path'?{...checked.proposal.anchor}:null;active=kind==='path';anchor=null;emit();return true;},
     cancel(){if(!enabled||disposed||!active)return;active=false;anchor=null;emit();},
     setEnabled(value:boolean){enabled=value;},

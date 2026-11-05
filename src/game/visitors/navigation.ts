@@ -2,7 +2,7 @@ import {admitTicket} from '../economy/tickets.ts';
 import {VISITOR_STEP,visitorCell,visitorPaths,visitorRoute,visitTarget} from './graph.ts';
 export {visitorCell,visitorPaths,visitorRoute,visitTarget} from './graph.ts';
 import {SATISFACTION_RULES,observeHabitat,resetObservation,completeFeedback,interruptedFeedback} from './satisfaction.ts';
-import type {Point,Visitor,WorldState,ZooSaveV1} from '../core/state.ts';
+import type {Point,Visitor,RuntimeWorld,RuntimeState} from '../core/state.ts';
 
 /** One excursion owns the narrow corridor; two side bays wait FIFO at the entrance.
  * Positions and headings are simulation data. Rendering never advances navigation. */
@@ -11,10 +11,10 @@ const same=(a:Point,b:Point)=>a.x===b.x&&a.z===b.z;
 export const ownsCorridor=(v:Visitor)=>v.journey?.startedTick!==null&&v.journey?.startedTick!==undefined;
 function setRoute(v:Visitor,route:Point[],phase:Visitor['phase']){v.route=route;v.routeIndex=0;v.phase=phase;}
 /** Preserve progress when an unrelated transaction leaves the existing route valid. */
-function validRoute(s:ZooSaveV1,v:Visitor,destination:Point){const paths=visitorPaths(s.world);return v.route.length>0&&same(v.route[v.route.length-1],destination)&&v.route.every((p,i)=>paths.has(p.x+','+p.z)&&(i===0||Math.abs(p.x-v.route[i-1].x)+Math.abs(p.z-v.route[i-1].z)===1));}
-function returnHome(s:ZooSaveV1,v:Visitor){if(v.phase==='leaving'&&validRoute(s,v,s.world.gate))return;const route=visitorRoute(s.world,visitorCell(v),s.world.gate);if(route.length)setRoute(v,route,'leaving');}
+function validRoute(s:RuntimeState,v:Visitor,destination:Point){const paths=visitorPaths(s.world);return v.route.length>0&&same(v.route[v.route.length-1],destination)&&v.route.every((p,i)=>paths.has(p.x+','+p.z)&&(i===0||Math.abs(p.x-v.route[i-1].x)+Math.abs(p.z-v.route[i-1].z)===1));}
+function returnHome(s:RuntimeState,v:Visitor){if(v.phase==='leaving'&&validRoute(s,v,s.world.gate))return;const route=visitorRoute(s.world,visitorCell(v),s.world.gate);if(route.length)setRoute(v,route,'leaving');}
 /** Run on a cloned transaction before validation, without changing positions or money. */
-export function reconcileJourneys(s:ZooSaveV1):ZooSaveV1{
+export function reconcileJourneys<S extends RuntimeState>(s:S):S{
  const target=visitTarget(s.world);
  for(const v of s.visitors){const j=v.journey;if(!j||!ownsCorridor(v)||v.phase==='exiting')continue;
   if(v.phase==='leaving'){returnHome(s,v);continue;}
@@ -25,7 +25,7 @@ export function reconcileJourneys(s:ZooSaveV1):ZooSaveV1{
   setRoute(v,route,'entering');j.dwellTicks=0;resetObservation(v);
  }return s;
 }
-export function visitorRemovalReason(s:ZooSaveV1,world:WorldState,cell:Point):'visitor-route'|'visitor-occupied'|'in-use'|null{
+export function visitorRemovalReason(s:RuntimeState,world:RuntimeWorld,cell:Point):'visitor-route'|'visitor-occupied'|'in-use'|null{
  for(const v of s.visitors){if(!v.arrival){if(v.route.some(p=>same(p,cell)))return 'in-use';continue;}
   const p=v.position,r=VISIT_RULES.footprint;
   if(p.x+r>cell.x&&p.x-r<cell.x+1&&p.z+r>cell.z&&p.z-r<cell.z+1)return 'visitor-occupied';
@@ -42,7 +42,7 @@ function move(v:Visitor,to:Point,guard?:(from:Point,next:Point)=>boolean):boolea
  if(guard&&!guard(v.position,next))return false;v.position=next;
  if(d<=VISIT_RULES.speed+1e-9){v.position={...to};return true;}return false;
 }
-export function stepJourneys(s:ZooSaveV1):Array<{visitorId:string;habitatId:string}>{
+export function stepJourneys(s:RuntimeState):Array<{visitorId:string;habitatId:string}>{
  const viewed:Array<{visitorId:string;habitatId:string}>=[],target=visitTarget(s.world),remove=new Set<string>();
  for(const v of s.visitors){const j=v.journey;if(!j)continue;
   if(v.phase==='queued'){

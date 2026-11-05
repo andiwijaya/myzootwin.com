@@ -1,4 +1,5 @@
 export const TICK_MS = 100;
+export type {RuntimeState,RuntimeWorld} from './runtime-state.ts';
 export const MAX_TICK = Math.floor(Number.MAX_SAFE_INTEGER / TICK_MS);
 export const SPECIES_ID = 'ara-ararauna' as const;
 export const MISSION_IDS = ['Q01', 'Q02', 'Q03', 'Q04'] as const;

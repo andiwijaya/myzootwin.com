@@ -40,6 +40,7 @@ export function createAutosave<State extends ZooSave=ZooSaveV1>(backend: Durable
     let phase: SavePhase = 'loading', active = false, record: StoredCheckpoint | null = null, data: State | undefined, editor: EditorState | undefined, revision = 0, savedTick: number | null = null, savedAt: number | null = null, savedCurrency: number | null = null, savedMissions: number | null = null, savedBirds: number | null = null, error: StorageFault | null = null, disposed = false, closing = false, storageReady = false, dirty = false, reader: (() => State) | undefined, timer: unknown, pendingCritical = false, inflight: Promise<void> | undefined, loadSerial = 0;
     const view = (): SaveView => ({ phase, active, hasSave: Boolean(record), revision, savedTick, savedAt, savedCurrency, savedMissions, savedBirds, fault: error, generation: generationOf(record), recovery, recoveryBusy, restartBusy, restartAvailable });
     let recovery: RecoveryInspection | null = null, recoveryBusy = false, restartBusy = false, restartAvailable = false;
+    let candidateBusy=false;
     let previous = '';
     const notify = () => {
         if (disposed)
@@ -60,7 +61,7 @@ export function createAutosave<State extends ZooSave=ZooSaveV1>(backend: Durable
     const requiresTransition = () => Boolean(recovery && recovery.kind !== 'none');
     const blocked = () => disposed || recoveryBusy || restartBusy || phase === 'conflict' || phase === 'unreadable';
     function queue(critical = false) {
-        if (closing || blocked() || !storageReady || phase === 'error')
+        if (closing || candidateBusy || blocked() || !storageReady || phase === 'error')
             return;
         if (inflight)
             return;
@@ -71,10 +72,10 @@ export function createAutosave<State extends ZooSave=ZooSaveV1>(backend: Durable
     }
     async function flush() {
         stopTimer();
-        if (blocked() || phase === 'error' || !storageReady || !active || !dirty || !reader)
-            return;
         if (inflight)
             return inflight;
+        if (blocked() || phase === 'error' || !storageReady || !active || !dirty || !reader)
+            return;
         let payload: string, snapshot: State;
         try {
             snapshot = reader();
@@ -123,7 +124,8 @@ export function createAutosave<State extends ZooSave=ZooSaveV1>(backend: Durable
         notify();
         return inflight;
     }
-    async function drain() {
+    async function drain(insideCandidate=false) {
+        if(candidateBusy&&!insideCandidate){if(inflight)await inflight;return;}
         await flush();
         if (dirty && !blocked() && phase !== 'error' && storageReady)
             await flush();
@@ -176,7 +178,30 @@ export function createAutosave<State extends ZooSave=ZooSaveV1>(backend: Durable
         }
         notify();
     }
-    const session: SanctuarySessionState<State> = { read: () => data ? structuredClone(data) : undefined, write(value) { data = structuredClone(value); }, readEditor: () => editor ? structuredClone(editor) : undefined, writeEditor(value) { editor = structuredClone(value); }, checkpoint(next, critical = false) {
+    const session: SanctuarySessionState<State> = { read: () => data ? structuredClone(data) : undefined, write(value) { if(!candidateBusy)data = structuredClone(value); }, readEditor: () => editor ? structuredClone(editor) : undefined, writeEditor(value) { editor = structuredClone(value); },
+        canCommit:()=>active&&storageReady&&!closing&&!blocked()&&phase!=='error'&&!candidateBusy,
+        async commitCandidate(candidate,expected){
+            if(!active||!storageReady||closing||blocked()||phase==='error'||candidateBusy||!reader)return undefined;
+            candidateBusy=true;
+            try{
+                await drain(true);
+                if(closing||blocked()||view().phase==='error'||!reader)return undefined;
+                const current=reader();
+                if(current.tick!==expected.tick||current.economy.nextCommand!==expected.command||candidate.tick!==current.tick||candidate.schemaVersion!==current.schemaVersion)return undefined;
+                const snapshot=structuredClone(candidate);snapshot.preferences={...current.preferences};
+                const payload=encodeCheckpointState(snapshot);let accepted:State|undefined;
+                stopTimer();dirty=false;pendingCritical=false;phase='saving';error=null;
+                inflight=(async()=>{try{
+                    const next=checkedCheckpoint(await backend.commit(revision,payload,options.writer,now()));
+                    const conflict=view().phase==='conflict';record=next;revision=next.revision;savedTick=snapshot.tick;savedAt=next.writtenAt;savedCurrency=snapshot.currency;savedMissions=snapshot.missions.completedIds.length;savedBirds=snapshot.animals.filter(a=>a.speciesId==='ara-ararauna'&&a.habitatId!==null).length;
+                    phase=conflict?'conflict':dirty?'dirty':'saved';
+                    if(!conflict){const latest=reader?.();data=structuredClone(snapshot);if(latest)data.preferences={...latest.preferences};accepted=structuredClone(data);reader=()=>structuredClone(data!);if(JSON.stringify(data.preferences)!==JSON.stringify(snapshot.preferences))dirty=true;}
+                    try{options.committed?.(revision,generationOf(next));}catch{/* Notification cannot reverse a committed transaction. */}
+                }catch(error){failed(error);}finally{inflight=undefined;notify();}})();
+                notify();await inflight;return accepted;
+            }catch(error){failed(error);return undefined;}
+            finally{candidateBusy=false;if(dirty&&!blocked())queue(pendingCritical);}
+        }, checkpoint(next, critical = false) {
             if (!active || closing || blocked())
                 return;
             reader = next;

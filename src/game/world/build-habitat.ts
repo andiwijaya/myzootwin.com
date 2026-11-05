@@ -1,4 +1,4 @@
-import type { Point, WorldState } from '../core/state.ts';
+import type { Point, WorldState, RuntimeWorld } from '../core/state.ts';
 import {cellKey,validatePlacement,type PlacementReason} from './placement-preview.ts';
 // Conservative fixed Tropical Creek scenery footprint, derived from actual art bounds.
 // A geometry-contract test prevents this pure gameplay mask drifting from rendered scenery.
@@ -6,7 +6,7 @@ const sceneryKeys=["0,0", "0,1", "0,2", "0,3", "0,4", "0,5", "0,6", "0,8", "1,0"
 const scenery=new Set(sceneryKeys);
 export const STARTER_HABITAT_LIMIT=1;
 export const habitatBlockerKeys=():ReadonlySet<string>=>new Set(scenery);
-export function validateHabitatPlacement(world:WorldState,anchor:Point|null){
+export function validateHabitatPlacement(world:RuntimeWorld,anchor:Point|null){
   const checked=validatePlacement(world,anchor,scenery);
   return checked.reason==='ready'&&world.habitats.filter(h=>!('kind'in h)||h.kind==='macaw-aviary').length>=STARTER_HABITAT_LIMIT?{...checked,reason:'limit' as const}:checked;
 }

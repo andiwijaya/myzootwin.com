@@ -3,13 +3,13 @@ import { BoxGeometry, EdgesGeometry, Group, LineBasicMaterial, LineSegments, Mes
 import {validatePathPlacement} from '../world/paths.ts';
 import {habitatBlockerKeys,validateHabitatPlacement} from '../world/build-habitat.ts';
 import { createPlacementPlanner, type PlacementCommand, type PlacementView, type PlacementProposal } from '../world/placement-preview.ts';
-import type { WorldState } from '../core/state.ts';
+import type { RuntimeWorld } from '../core/state.ts';
 import type { SceneCatalog } from './scene-selection.ts';
 import { raycastScene, type PickRect } from './scene-picking.ts';
 import type {HabitatKind} from '../core/species.ts';
 import {validateSpeciesHabitatPlacement} from '../world/species-habitat.ts';
 
-export function createPlacementPreview(world:()=>WorldState,catalog:SceneCatalog,camera:Camera,rect:()=>PickRect,onChange:(view:PlacementView)=>void,commit?:(proposal:PlacementProposal,operationId:string)=>boolean,purchaseReason?:(kind:'habitat'|'path')=>'funds'|'capacity'|null,habitatKind?:()=>HabitatKind) {
+export function createPlacementPreview(world:()=>RuntimeWorld,catalog:SceneCatalog,camera:Camera,rect:()=>PickRect,onChange:(view:PlacementView)=>void,commit?:(proposal:PlacementProposal,operationId:string)=>boolean,purchaseReason?:(kind:'habitat'|'path')=>'funds'|'capacity'|null,habitatKind?:()=>HabitatKind) {
   const map=world(),blocked=habitatBlockerKeys();
   const group=new Group();group.name='Habitat footprint planning';
   const box=new BoxGeometry(2,.22,2),edges=new EdgesGeometry(box);box.dispose();

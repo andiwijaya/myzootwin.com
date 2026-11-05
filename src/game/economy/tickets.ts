@@ -1,13 +1,13 @@
 import {coherentMoney,admissionProofs,ledgerProof,totals} from './journal.ts';
-import type {Admission,LedgerEntry,Point,Visitor,ZooSaveV1} from '../core/state.ts';
+import type {Admission,LedgerEntry,Point,Visitor,RuntimeState} from '../core/state.ts';
 import {VISITOR_STEP,visitorRoute,visitorPaths,visitTarget} from '../visitors/graph.ts';
 
 /** Fictional Zoo Coins only. Starting price, not final economy balancing. */
 export const TICKET_RULES=Object.freeze({price:10});
 const key=(p:Point)=>`${p.x},${p.z}`,cell=(p:Point)=>({x:Math.floor(p.x),z:Math.floor(p.z)});
-export function ticketLimit(s:ZooSaveV1):'balance'|null{return !Number.isSafeInteger(s.currency+TICKET_RULES.price)?'balance':null;}
+export function ticketLimit(s:RuntimeState):'balance'|null{return !Number.isSafeInteger(s.currency+TICKET_RULES.price)?'balance':null;}
 /** Internal simulation transaction. A committed receipt is never repaired/recredited from a partial restore. */
-export function admitTicket(s:ZooSaveV1,v:Visitor,from:Point,next:Point):{ok:true;duplicate:boolean;paid:boolean}|{ok:false;reason:'ineligible'|'inconsistent'|'capacity'|'balance'}{
+export function admitTicket(s:RuntimeState,v:Visitor,from:Point,next:Point):{ok:true;duplicate:boolean;paid:boolean}|{ok:false;reason:'ineligible'|'inconsistent'|'capacity'|'balance'}{
  if(!v.arrival||!v.entry||v.id!==`arrival-${v.arrival.serial}`||v.arrival.serial>=s.visitorFlow.nextSerial||v.arrival.spawnTick>s.tick||s.visitors.find(p=>p.id===v.id)!==v||!coherentMoney(s))return {ok:false,reason:'inconsistent'};
  if(v.arrival.serial<=s.economy.checkpoint.visitorThrough&&!s.economy.checkpoint.openSerials.includes(v.arrival.serial))return {ok:false,reason:'inconsistent'};
  const old=admissionProofs(s).find(a=>a.visitorId===v.id);
@@ -31,7 +31,7 @@ export function admitTicket(s:ZooSaveV1,v:Visitor,from:Point,next:Point):{ok:tru
  return {ok:true,duplicate:false,paid:true};
 }
 export interface TicketView {balance:number;price:number;admissions:number;revenue:number;reason:'closed'|'habitat'|'animals'|'capacity'|'balance'|'ready';last:{visitorId:string;amount:number;tick:number}|null;}
-export function ticketView(s:ZooSaveV1):TicketView{
+export function ticketView(s:RuntimeState):TicketView{
  const target=visitTarget(s.world),last=s.admissions.at(-1)??s.economy.checkpoint.lastTicket?.admission,e=last?(ledgerProof(s,last.ledgerEntryId)??s.economy.checkpoint.lastTicket?.entry):null,t=totals(s);
  return {balance:s.currency,price:TICKET_RULES.price,admissions:t.counts.ticket,revenue:t.amounts.ticket,reason:ticketLimit(s)??(!s.visitorFlow.open?'closed':!target?'habitat':!s.animals.some(a=>a.habitatId===target.habitatId&&a.position!==null)?'animals':'ready'),last:last&&e?{visitorId:last.visitorId,amount:e.amount,tick:last.tick}:null};
 }

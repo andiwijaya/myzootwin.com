@@ -15,6 +15,8 @@ import {createPathScene} from './path-scene.ts';
 import {releaseLiveContext} from './webgl-cleanup.ts';
 import {createHabitatScene} from './habitat-scene.ts';
 import type {SanctuarySessionState} from '../core/session-state.ts';
+import type {ZooSave} from '../core/zoo-state.ts';
+import type {ConservationGrantQuote,ConservationGrantSceneView} from '../economy/conservation-grant.ts';
 import { createPlacementPreview } from './placement-preview.ts';
 import { createScenePicker } from './scene-picking.ts';
 import { BufferGeometry, Group, OrthographicCamera, Scene, SRGBColorSpace, WebGLRenderer, type Material } from 'three';
@@ -25,7 +27,7 @@ import { createFrameLoop, type FrameDriver } from './frame-loop';
 import { PreviewFailure, type PreviewFailureKind, type PreviewSession } from './preview-controller';
 
 interface FoundationOptions {
-  stateStore?:SanctuarySessionState;
+  stateStore?:SanctuarySessionState<ZooSave>;
   frames?: FrameDriver;
   createContext?: (canvas: HTMLCanvasElement) => WebGL2RenderingContext | null;
   createRenderer?: (canvas: HTMLCanvasElement, context: WebGL2RenderingContext) => WebGLRenderer;
@@ -41,6 +43,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   let disposed = false;
   let lost = false;
   let paused = false;
+  let grantBusy=false,grantFailure:'storage'|'stale'|null=null,previousGrant='';
   let cleanupErrors = 0;
   let renderSubmissions = 0;
   let releasedMaterials = 0;
@@ -78,6 +81,17 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   function announceVisitors(){const view=simulation.visitorView(),key=JSON.stringify(view);if(key!==previousVisitors){previousVisitors=key;host.dispatchEvent(new CustomEvent('scene-visitors-change',{detail:view}));}host.dataset.visitorCount=String(view.active);host.dataset.visitorWalking=String(view.walking);host.dataset.visitorViewing=String(view.viewing);host.dataset.visitorViewed=String(view.viewedTotal);}
   let paths:ReturnType<typeof createPathScene>|undefined;
   const simulation = createSimulation(options.stateStore?.read(),options.stateStore?.readEditor());
+  function announceGrant(){const view:ConservationGrantSceneView={...simulation.conservationGrantView(),busy:grantBusy,savingAvailable:options.stateStore?.canCommit?.()===true,failure:grantFailure},key=JSON.stringify(view);if(key!==previousGrant){previousGrant=key;host.dispatchEvent(new CustomEvent('scene-elephant-grove-change',{detail:view}));}host.dataset.elephantGrantClaimed=String(view.claimed);}
+  async function claimGrant(quote:ConservationGrantQuote){
+    if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;
+    grantFailure=null;const prepared=simulation.prepareConservationGrant(quote);
+    if(!prepared.ok){grantFailure='stale';announceGrant();return;}
+    if(options.stateStore?.canCommit?.()!==true||!options.stateStore.commitCandidate){grantFailure='storage';announceGrant();return;}
+    const expected={tick:prepared.state.tick,command:quote.command};grantBusy=true;updateRunning();announceGrant();render();
+    try{const committed=await options.stateStore.commitCandidate(prepared.state,expected);if(disposed)return;if(!committed||!simulation.acceptCommittedGrant(committed,quote))grantFailure='storage';else saveSession();}
+    catch{grantFailure='storage';}
+    finally{grantBusy=false;if(!disposed){updateRunning();announceGrant();render();}}
+  }
   function saveSession(){options.stateStore?.write(simulation.snapshot());options.stateStore?.writeEditor(simulation.editorSnapshot());}
   function announceEdit(reason:import('../world/editing.ts').EditReason|null=null,result:'removed'|'restored'|null=null){editCommand=simulation.commandRevision();host.dispatchEvent(new CustomEvent('scene-edit-change',{detail:{canUndo:simulation.inspect().canUndo,undoCost:simulation.inspect().undoCost,reason,result}}));}
   const simulationStartTick=simulation.inspect().tick;
@@ -109,7 +123,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     if (disposed || lost) return;
     const frame=simulation.inspect();
     const policy=visual();lighting?.setLowGraphics(policy.low);diorama?.setLowGraphics(policy.low);visitors?.setVisibleCap(policy.low?1:3);
-    announceSpeed(false,frame);
+    announceSpeed(false,frame);announceGrant();
     const guide=readGuide(frame),guideKey=JSON.stringify(guide);if(guideKey!==previousGuide){previousGuide=guideKey;host.dispatchEvent(new CustomEvent('scene-onboarding-change',{detail:guide}));}
     const missions=simulation.missionView(),missionKey=JSON.stringify(missions);if(missionKey!==previousMission){previousMission=missionKey;host.dispatchEvent(new CustomEvent('scene-missions-change',{detail:missions}));}
     const recoveryKey=[frame.tick,frame.commandRevision,frame.editorRevision,simulation.visitorView().open].join(':');if(recoveryKey!==recoveryReadKey){recoveryReadKey=recoveryKey;recoveryRead=simulation.recoveryView();}const nextRecovery=JSON.stringify(recoveryRead);if(nextRecovery!==previousRecovery){previousRecovery=nextRecovery;host.dispatchEvent(new CustomEvent('scene-recovery-change',{detail:recoveryRead}));}
@@ -117,12 +131,13 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     if (disposed || lost) return;
     if (context?.isContextLost()) { notifyContextLoss(); return; }
     const world=habitatDirty||pathDirty||foodDirty||waterDirty||perchDirty?simulation.worldSnapshot():undefined;
-    if(habitatDirty&&habitats){habitats.sync(world!);lighting?.invalidate();decoration?.sync(world!,simulation.missionView().care.unlocked);banner?.sync(world!,simulation.missionView().thriving.unlocked);habitatDirty=false;}
+    const macawWorld=habitatDirty||foodDirty||waterDirty||perchDirty?simulation.macawWorldSnapshot():undefined;
+    if(habitatDirty&&habitats){habitats.sync(macawWorld!);lighting?.invalidate();decoration?.sync(macawWorld!,simulation.missionView().care.unlocked);banner?.sync(macawWorld!,simulation.missionView().thriving.unlocked);habitatDirty=false;}
     if(pathDirty&&paths){paths.sync(world!);picker?.refresh();pathDirty=false;}
     if(birdsDirty&&birds){const s=simulation.birdSnapshot();birds.sync(s.animals,s.habitats,s.width,s.height,simulationTimeMs);birdsDirty=false;announceBirds();}
-    if(foodDirty){feeder?.sync(world!,foodPreview,simulation.foodView().canPlace);announceFood();foodDirty=false;}
-    if(waterDirty){waterStation?.sync(world!,waterPreview,simulation.waterView().canPlace);announceWater();waterDirty=false;}
-    if(perchDirty){const view=simulation.perchView();restKit?.sync(world!,perchPreview,view.canPlace);birds?.setPerchesVisible(!view.reachable&&!perchPreview);announcePerch();perchDirty=false;}
+    if(foodDirty){feeder?.sync(macawWorld!,foodPreview,simulation.foodView().canPlace);announceFood();foodDirty=false;}
+    if(waterDirty){waterStation?.sync(macawWorld!,waterPreview,simulation.waterView().canPlace);announceWater();waterDirty=false;}
+    if(perchDirty){const view=simulation.perchView();restKit?.sync(macawWorld!,perchPreview,view.canPlace);birds?.setPerchesVisible(!view.reachable&&!perchPreview);announcePerch();perchDirty=false;}
     restKit?.update(simulationTimeMs,simulation.perchView().exploring,policy.reducedMotion);
     if(visitorsDirty&&visitors){const v=simulation.visitorSnapshot();visitors.sync(v.visitors,v.width,v.height,v.tick,v.gate);visitorsDirty=false;announceVisitors();}
     const remainder=frame.accumulatorMs;
@@ -134,7 +149,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   }
   const loop = createFrameLoop(frames, time => { simulation.frame(time);macaw?.frame(time); render(); }, () => onFailure('render'));
   function updateRunning() {
-    const shouldPause = disposed || lost || paused || document.hidden;
+    const shouldPause = disposed || lost || paused || grantBusy || document.hidden;
     const model=macaw?.view();
     simulation.setPaused(shouldPause||Boolean(model?.active));announceSpeed();
     if(shouldPause){saveSession();options.stateStore?.checkpoint?.(()=>simulation.snapshot(),true);options.stateStore?.flush?.();}
@@ -229,7 +244,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     },(proposal,operationId)=>{const result=proposal.kind==='path'?simulation.buildPath(proposal.anchor,placementCommand):simulation.buildHabitat(proposal.anchor,operationId,placementCommand);if(result.ok){placementCommand=simulation.commandRevision();saveSession();announceHabitat();return true;}return false;},kind=>simulation.purchaseReason(kind));
     geometries.push(...placement.geometries);materials.push(...placement.materials);worldLayer.add(placement.group);
     controls=mountCameraControls(host,canvas,camera,diorama.bounds,initialWorld,point=>{if(!macaw?.view().active){if(placement?.active())placement.pick(point);else picker?.pick(point);}},()=>placement?.active()?placement.command('cancel'):picker?.clear());
-    macaw=createMacawStudio(()=>simulation.snapshot().world,view=>{birds?.setVisible(!view.active);worldLayer.visible=!view.active||view.habitat;host.dispatchEvent(new CustomEvent('scene-studio-change',{detail:view}));updateRunning();resize();},()=>visual().reducedMotion);scene.add(macaw.group);host.addEventListener('keydown',onStudioKey,true);
+    macaw=createMacawStudio(()=>simulation.macawWorldSnapshot(),view=>{birds?.setVisible(!view.active);worldLayer.visible=!view.active||view.habitat;host.dispatchEvent(new CustomEvent('scene-studio-change',{detail:view}));updateRunning();resize();},()=>visual().reducedMotion);scene.add(macaw.group);host.addEventListener('keydown',onStudioKey,true);
     canvas.addEventListener('webglcontextlost', onLost);
     host.append(canvas);
     resize(); // Ready means a real first render completed, not merely an import.
@@ -248,8 +263,9 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
 
   return {
     dispose,
+    claimConservationGrant:quote=>{void claimGrant(quote);},
     guide:(command,revision)=>{
-      if(disposed||paused||lost||document.hidden||macaw?.view().active||!placement)return;
+      if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active||!placement)return;
       if(command==='cancel')placement.command('cancel');
       else if(command==='confirm'){const before=placement.inspect().placementConfirmations;placement.command('confirm',revision);if(placement.inspect().placementConfirmations>before)placement.command('cancel');}
       else{const view=simulation.onboardingView();if(command==='focus'){if(view.target){const w=simulation.snapshot().world;controls?.focus({x:view.target.x+.5-sceneOrigin(w).x,z:view.target.z+.5-sceneOrigin(w).z});}else controls?.command('reset');}
@@ -260,39 +276,39 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     visualSettings:value=>{if(disposed||lost)return;if(simulation.setVisualSettings(value)){saveSession();if(visual().reducedMotion)macaw?.pauseForReducedMotion();resize();render();}},
     locale:value=>{simulation.setLocale(value);},
     speed:value=>{if(disposed||lost||paused||document.hidden||macaw?.view().active)return;simulation.setSpeed(value);announceSpeed(true);render();},
-    claimMission:quote=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;const result=simulation.claimMission(quote);previousMission='';render();host.dispatchEvent(new CustomEvent('scene-mission-result',{detail:result}));},
+    claimMission:quote=>{if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;const result=simulation.claimMission(quote);previousMission='';render();host.dispatchEvent(new CustomEvent('scene-mission-result',{detail:result}));},
     recoveryQuote:()=>{const v=simulation.recoveryView();host.dispatchEvent(new CustomEvent('scene-recovery-change',{detail:v}));return !disposed&&!paused&&!lost&&!document.hidden&&!macaw?.view().active&&v.low&&v.available?{command:v.command,key:v.key}:undefined;},
-    recover:quote=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');picker?.clear();foodPreview=false;waterPreview=false;perchPreview=false;if(simulation.recover(quote)){habitatDirty=true;pathDirty=true;birdsDirty=true;foodDirty=true;waterDirty=true;perchDirty=true;visitorsDirty=true;saveSession();announceEdit();}render();},
-    visitors:command=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;if(command==='focus'||command==='follow'){const w=simulation.snapshot().world,p=command==='follow'?(visual().low?simulation.snapshot().visitors.find(v=>v.arrival)?.position:simulation.visitorFocus()):null;controls?.focus({x:(p?.x??w.gate.x+.5)-sceneOrigin(w).x,z:(p?.z??w.gate.z+.7)-sceneOrigin(w).z});}else if(command==='open'||command==='close'){simulation.visitors(command==='open');saveSession();}render();},
-    perch:(command,revision=0)=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');picker?.clear();foodPreview=false;foodPreviewHabitat=null;foodDirty=true;waterPreview=false;waterPreviewHabitat=null;waterDirty=true;
-      const h=simulation.snapshot().world.habitats[0];perchReason=null;
+    recover:quote=>{if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');picker?.clear();foodPreview=false;waterPreview=false;perchPreview=false;if(simulation.recover(quote)){habitatDirty=true;pathDirty=true;birdsDirty=true;foodDirty=true;waterDirty=true;perchDirty=true;visitorsDirty=true;saveSession();announceEdit();}render();},
+    visitors:command=>{if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;if(command==='focus'||command==='follow'){const w=simulation.snapshot().world,p=command==='follow'?(visual().low?simulation.snapshot().visitors.find(v=>v.arrival)?.position:simulation.visitorFocus()):null;controls?.focus({x:(p?.x??w.gate.x+.5)-sceneOrigin(w).x,z:(p?.z??w.gate.z+.7)-sceneOrigin(w).z});}else if(command==='open'||command==='close'){simulation.visitors(command==='open');saveSession();}render();},
+    perch:(command,revision=0)=>{if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');picker?.clear();foodPreview=false;foodPreviewHabitat=null;foodDirty=true;waterPreview=false;waterPreviewHabitat=null;waterDirty=true;
+      const h=simulation.macawWorldSnapshot().habitats[0];perchReason=null;
       if(command==='preview'){if(!h||simulation.perchView().exists)perchReason=h?'exists':'missing';else{perchPreview=true;perchPreviewHabitat=h.id;perchCommand=simulation.commandRevision();}}
       else if(command==='cancel'){perchPreview=false;perchPreviewHabitat=null;}
       else if(command==='confirm'&&(!perchPreview||h?.id!==perchPreviewHabitat)){perchPreview=false;perchReason='stale';}
       else{const action=command==='confirm'?'place':command==='remove'?'remove':null;if(action){const result=simulation.perch(action,revision,command==='confirm'?perchCommand:simulation.commandRevision());perchReason=result.ok?null:result.reason;if(result.ok){perchPreview=false;perchPreviewHabitat=null;saveSession();announceEdit();}}}
       perchDirty=true;updateRunning();render();announcePerch();},
-    water:(command,revision=0)=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');picker?.clear();perchPreview=false;perchPreviewHabitat=null;perchDirty=true;foodPreview=false;foodPreviewHabitat=null;foodDirty=true;
-      const h=simulation.snapshot().world.habitats[0];waterReason=null;
+    water:(command,revision=0)=>{if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');picker?.clear();perchPreview=false;perchPreviewHabitat=null;perchDirty=true;foodPreview=false;foodPreviewHabitat=null;foodDirty=true;
+      const h=simulation.macawWorldSnapshot().habitats[0];waterReason=null;
       if(command==='preview'){if(!h||simulation.waterView().exists){waterReason=h?'exists':'missing';}else{waterPreview=true;waterPreviewHabitat=h.id;waterCommand=simulation.commandRevision();}}
       else if(command==='cancel'){waterPreview=false;waterPreviewHabitat=null;}
       else if(command==='confirm'&&(!waterPreview||h?.id!==waterPreviewHabitat)){waterPreview=false;waterReason='stale';}
       else {const action=command==='confirm'?'place':command==='refill'?'refill':command==='remove'?'remove':null;if(action){const result=simulation.water(action,revision,command==='confirm'?waterCommand:simulation.commandRevision());waterReason=result.ok?null:result.reason;if(result.ok){waterPreview=false;waterPreviewHabitat=null;saveSession();announceEdit();}}}
       waterDirty=true;updateRunning();render();announceWater();},
-    food:(command,revision=0)=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');picker?.clear();perchPreview=false;perchPreviewHabitat=null;perchDirty=true;waterPreview=false;waterPreviewHabitat=null;waterDirty=true;
-      const h=simulation.snapshot().world.habitats[0];foodReason=null;
+    food:(command,revision=0)=>{if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');picker?.clear();perchPreview=false;perchPreviewHabitat=null;perchDirty=true;waterPreview=false;waterPreviewHabitat=null;waterDirty=true;
+      const h=simulation.macawWorldSnapshot().habitats[0];foodReason=null;
       if(command==='preview'){if(!h||simulation.foodView().exists){foodReason=h?'exists':'missing';}else{foodPreview=true;foodPreviewHabitat=h.id;foodCommand=simulation.commandRevision();}}
       else if(command==='cancel'){foodPreview=false;foodPreviewHabitat=null;}
       else if(command==='confirm'&&(!foodPreview||h?.id!==foodPreviewHabitat)){foodPreview=false;foodReason='stale';}
       else {const action=command==='confirm'?'place':command==='refill'?'refill':command==='remove'?'remove':null;if(action){const result=simulation.food(action,revision,command==='confirm'?foodCommand:simulation.commandRevision());foodReason=result.ok?null:result.reason;if(result.ok){foodPreview=false;foodPreviewHabitat=null;saveSession();announceEdit();}}}
       foodDirty=true;updateRunning();render();announceFood();},
-    birds:command=>{if(disposed||paused||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');if(simulation.birds(command)){picker?.clear();saveSession();render();announceEdit();}},
-    studio:(command,value)=>{if(disposed||paused||lost||document.hidden)return;try{if(command==='open'){perchPreview=false;perchPreviewHabitat=null;perchDirty=true;waterPreview=false;waterPreviewHabitat=null;waterDirty=true;foodPreview=false;foodPreviewHabitat=null;foodDirty=true;placement?.command('cancel');picker?.clear();}macaw?.command(command,value);}catch{onFailure('render');}},
+    birds:command=>{if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');if(simulation.birds(command)){picker?.clear();saveSession();render();announceEdit();}},
+    studio:(command,value)=>{if(disposed||paused||grantBusy||lost||document.hidden)return;try{if(command==='open'){perchPreview=false;perchPreviewHabitat=null;perchDirty=true;waterPreview=false;waterPreviewHabitat=null;waterDirty=true;foodPreview=false;foodPreviewHabitat=null;foodDirty=true;placement?.command('cancel');picker?.clear();}macaw?.command(command,value);}catch{onFailure('render');}},
     camera: value => controls?.command(value),
     clearSelection:()=>picker?.clear(),
-    placement:(command,revision)=>{if(macaw?.view().active)return;perchPreview=false;perchPreviewHabitat=null;perchDirty=true;foodPreview=false;foodPreviewHabitat=null;foodDirty=true;waterPreview=false;waterPreviewHabitat=null;waterDirty=true;if(command==='begin'||command==='begin-path'){placementCommand=simulation.commandRevision();picker?.clear();}placement?.command(command,revision);},
+    placement:(command,revision)=>{if(grantBusy||macaw?.view().active)return;perchPreview=false;perchPreviewHabitat=null;perchDirty=true;foodPreview=false;foodPreviewHabitat=null;foodDirty=true;waterPreview=false;waterPreviewHabitat=null;waterDirty=true;if(command==='begin'||command==='begin-path'){placementCommand=simulation.commandRevision();picker?.clear();}placement?.command(command,revision);},
     quoteRemoval:target=>simulation.quoteRemoval(target),
     edit:(command,quote)=>{
-      if(disposed||paused||lost||document.hidden||macaw?.view().active)return;
+      if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;
       placement?.command('cancel');
       const id=`edit-${crypto.randomUUID().replaceAll('-','')}`;
       const result=command==='undo'?simulation.undo(id,editCommand):quote?simulation.remove(quote,id):{ok:false as const,reason:'command' as const};

@@ -1,13 +1,13 @@
-import type {ZooSaveV1} from '../../src/game/core/state.ts';
 import {createSimulation} from '../../src/game/core/simulation.ts';
 import {migrateSaveV1,legacySimulationState,ZOO_CHECKPOINT_CODEC,serializeSaveV2} from '../../src/game/persistence/save-v2.ts';
 import {coherentMoney,totals} from '../../src/game/economy/journal.ts';
 import {validatePathPlacement} from '../../src/game/world/paths.ts';
 import {validateSave} from '../../src/game/persistence/save-v1.ts';
+import type {ZooSave} from '../../src/game/core/zoo-state.ts';
 
 const check=(value:unknown,message:string)=>{if(!value)throw Error(message);};
 const same=(a:unknown,b:unknown)=>JSON.stringify(a)===JSON.stringify(b);
-const projected=(value:ZooSaveV1)=>{const s=structuredClone(value);s.world.height=10;s.world.tiles=s.world.tiles.slice(0,120);return s;};
+const projected=(value:ZooSave)=>{if(value.schemaVersion!==1)throw Error('Legacy comparison fixture must remain V1-shaped');const s=structuredClone(value);s.world.height=10;s.world.tiles=s.world.tiles.slice(0,120);return s;};
 /** Regression baseline before EH2 commands: two real macaws, no elephant gameplay claim.
  * A reference test simulator is compared with a repeatedly migrated/reloaded simulator.
  * Production still owns one simulation; no test loop is imported into the product. */

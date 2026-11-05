@@ -1,5 +1,7 @@
 # EH1-05 - verified multispecies persistence
 
+Later local integration: [EH2-01](ELEPHANT_GRANT.md) connects the full V2 runtime and default game entry. The boundary/evidence below records its earlier e5d5a30 scope. Live production remains untouched.
+
 Resumed 5 November 2026 from `5852bdce8d5f01af5feba50de50e9cb39ca4dd5b` after the owner's explicit instruction to continue at home. The earlier timed session was stopped safely; this is new authorized local work. Original `C:\MyZooTwin` is still clean main at `63ce52a9c535b47e44417213e88649355979abdd`. No push/deploy permission added.
 
 **EH1-05 VERIFIED; EH 9/39 (23.08%).** This closes the strict save/migration/checkpoint boundary. Product activation and elephant simulation/construction remain later gates; there are no playable elephants in production.

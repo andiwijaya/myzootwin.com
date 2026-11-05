@@ -1,6 +1,6 @@
 import { Box3, BoxGeometry, BufferGeometry, Color, CircleGeometry, CylinderGeometry, Float32BufferAttribute, Group, IcosahedronGeometry, Matrix4, Mesh, MeshBasicMaterial, MeshStandardMaterial, Quaternion, Vector3, type Material } from 'three';
 import type { FaceOwner, SceneCatalog, SceneIdentityKind } from './scene-selection.ts';
-import type { WorldState } from '../core/state.ts';
+import type { RuntimeWorld } from '../core/state.ts';
 import {sceneOrigin,sceneToCell,toScene} from '../world/scene-coordinates.ts';
 
 /** Original code-authored scenery. Dressing is not a player structure or a habitat. */
@@ -32,7 +32,7 @@ export class Batch {
   }
 }
 
-export function createTropicalDiorama(world: WorldState) {
+export function createTropicalDiorama(world: RuntimeWorld) {
   const group = new Group(); group.name = 'Tropical Creek Sanctuary';
   const geometries: BufferGeometry[] = [], materials: Material[] = [];
   const terrain = new Batch(), plants = new Batch(), props = new Batch(), water = new Batch(), sparkle = new Batch(), shadows = new Batch();

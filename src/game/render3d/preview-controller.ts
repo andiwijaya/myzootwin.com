@@ -1,6 +1,7 @@
 import type {VisualSettings} from '../core/visual-settings.ts';
 import type {GuideCommand} from '../missions/onboarding.ts';
 import type {MissionQuote} from '../missions/engine.ts';
+import type {ConservationGrantQuote} from '../economy/conservation-grant.ts';
 import type {RecoveryQuote} from '../economy/recovery.ts';
 import type {PerchCommand} from '../animals/resting.ts';
 import type {FoodCommand} from '../animals/feeding.ts';
@@ -21,6 +22,7 @@ export class PreviewFailure extends Error {
 }
 
 export interface PreviewSession {
+  claimConservationGrant?(quote:ConservationGrantQuote):void;
   visualSettings?(value:VisualSettings):void;
   muted?(value:boolean):void;
   locale?(value:"en"|"id"):void;
@@ -119,6 +121,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     studio(command:StudioCommand,value?:string){if(!isPaused()&&state.status==='ready')session?.studio?.(command,value);},
     guide(command:GuideCommand,revision?:number){if(!isPaused()&&state.status==='ready')session?.guide?.(command,revision);},
     claimMission(quote:MissionQuote){if(!isPaused()&&state.status==='ready')session?.claimMission?.(quote);},
+    claimConservationGrant(quote:ConservationGrantQuote){if(!isPaused()&&state.status==='ready')session?.claimConservationGrant?.(quote);},
     recoveryQuote:()=>!isPaused()&&state.status==='ready'?session?.recoveryQuote?.():undefined,
     recover(quote:RecoveryQuote){if(!isPaused()&&state.status==='ready')session?.recover?.(quote);},
     visitors(command:'open'|'close'|'focus'|'follow'){if(!isPaused()&&state.status==='ready')session?.visitors?.(command);},

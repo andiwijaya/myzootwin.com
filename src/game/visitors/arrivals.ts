@@ -3,14 +3,14 @@ import {ledgerProof,admissionProofs} from '../economy/journal.ts';
 import {ticketView,ticketLimit,type TicketView} from '../economy/tickets.ts';
 import {newExperience,finishFeedback,interruptedFeedback} from './satisfaction.ts';
 import type {VisitorFeedback,VisitorFeedbackSummary} from '../core/state.ts';
-import {MAX_TICK,type Point,type Visitor,type ZooSaveV1} from '../core/state.ts';
+import {MAX_TICK,type Point,type Visitor,type RuntimeState} from '../core/state.ts';
 import {visitTarget,stepJourneys,ownsCorridor} from './navigation.ts';
 import {analyzePaths} from '../world/paths.ts';
 
 /** Bounded entrance queue and deterministic excursions; per-visit satisfaction and actual eligible gate admission. */
 export const ARRIVAL_RULES=Object.freeze({capacity:3,intervalTicks:30,lifetimeTicks:120,approachTicks:20,leaveAt:80,radius:.09});
 export interface ArrivalView {open:boolean;active:number;capacity:number;ready:boolean;total:number;reason:'closed'|'departing'|'path'|'habitat'|'limit'|'ready';ids:string[];people:Array<{id:string;phase:Visitor['phase'];feedback:VisitorFeedback|null;entry:'pending'|'paid'|'free';ticketAmount:number|null}>;queued:number;walking:number;viewing:number;returning:number;viewedTotal:number;feedback:VisitorFeedbackSummary;tickets:TicketView;attraction:AttractionView;}
-export function entranceReady(s:ZooSaveV1):boolean {
+export function entranceReady(s:RuntimeState):boolean {
  const w=s.world,g=w.gate,t=w.tiles.find(t=>t.cell.x===g.x&&t.cell.z===g.z);
  return Boolean(t?.path&&t.terrain==='land'&&t.occupantId===null&&analyzePaths(w).reachable.length>1);
 }
@@ -20,7 +20,7 @@ export function arrivalPosition(gate:Point,slot:number,age:number):Point {
  return {x:gate.x+.19+slot*.31,z:gate.z+z};
 }
 export function arrivalAge(v:Visitor,tick:number):number{return v.arrival?tick-v.arrival.spawnTick:0;}
-export function stepArrivals(s:ZooSaveV1):Array<{visitorId:string;habitatId:string}> {
+export function stepArrivals(s:RuntimeState):Array<{visitorId:string;habitatId:string}> {
  const target=visitTarget(s.world);
  for(const v of s.visitors)if(v.phase==='arrival'&&v.arrival&&!v.experience?.feedback&&target&&s.visitorFlow.open&&arrivalAge(v,s.tick)>=20&&arrivalAge(v,s.tick)<80){v.phase='queued';v.position=arrivalPosition(s.world.gate,v.arrival.slot,20);v.journey={habitatId:null,heading:Math.PI,dwellTicks:0,queuedTicks:0,viewed:false,startedTick:null};}
  const viewed=stepJourneys(s);
@@ -41,7 +41,7 @@ export function stepArrivals(s:ZooSaveV1):Array<{visitorId:string;habitatId:stri
  s.visitors.push({id:`arrival-${serial}`,phase:'arrival',position:arrivalPosition(s.world.gate,slot,0),route:[{...s.world.gate}],routeIndex:0,satisfaction:null,experience:newExperience(),entry:{status:'pending',tick:null,reason:'none'},admissionId:null,arrival:{serial,slot,spawnTick:s.tick},journey:null});
  f.cooldownTicks=attraction.intervalTicks;return viewed;
 }
-export function arrivalsView(s:ZooSaveV1):ArrivalView {
+export function arrivalsView(s:RuntimeState):ArrivalView {
  const ready=entranceReady(s),f=s.visitorFlow;
  return {open:f.open,active:s.visitors.length,capacity:ARRIVAL_RULES.capacity,ready,total:f.nextSerial-1,reason:!f.open?s.visitors.length?'departing':'closed':!ready?'path':!visitTarget(s.world)?'habitat':f.nextSerial>=MAX_TICK?'limit':'ready',ids:s.visitors.map(v=>v.id),people:s.visitors.map(v=>({id:v.id,phase:v.phase,feedback:structuredClone(v.experience?.feedback??null),entry:v.entry?.status??'paid',ticketAmount:v.admissionId?(()=>{const a=admissionProofs(s).find(a=>a.id===v.admissionId);return a?ledgerProof(s,a.ledgerEntryId)?.amount??null:null;})():null})),queued:s.visitors.filter(v=>v.phase==='queued').length,walking:s.visitors.filter(v=>v.phase==='entering').length,viewing:s.visitors.filter(v=>v.phase==='viewing').length,returning:s.visitors.filter(v=>v.phase==='leaving'||v.phase==='exiting').length,viewedTotal:f.viewedTotal,feedback:structuredClone(f.feedback),tickets:ticketView(s),attraction:attractionView(s)};
 }

@@ -1,9 +1,9 @@
 import {purchaseBook} from './journal.ts';
-import type {FinanceCheckpoint,LedgerEntry,ZooSaveV1} from '../core/state.ts';
+import type {FinanceCheckpoint,LedgerEntry,RuntimeState} from '../core/state.ts';
 /** Refunds are traceable to real build debits. Undo repays that exact refund. */
 export function validRefunds(ledger:LedgerEntry[],base?:Pick<FinanceCheckpoint,'purchases'|'refunds'>):boolean {return purchaseBook(ledger,base)!==null;}
-export function refundable(state:ZooSaveV1,targetId:string){const book=purchaseBook(state.ledger,state.economy.checkpoint);return book?[...book.purchases.values()].filter(p=>p.entry.relatedId===targetId&&-p.entry.amount>p.refunded).map(p=>({paidId:p.entry.id,amount:-p.entry.amount-p.refunded})):[];}
-export function editLedger(state:ZooSaveV1,operationId:string,items:Array<{kind:'refund'|'restore';relatedId:string;amount:number}>){
+export function refundable(state:RuntimeState,targetId:string){const book=purchaseBook(state.ledger,state.economy.checkpoint);return book?[...book.purchases.values()].filter(p=>p.entry.relatedId===targetId&&-p.entry.amount>p.refunded).map(p=>({paidId:p.entry.id,amount:-p.entry.amount-p.refunded})):[];}
+export function editLedger(state:RuntimeState,operationId:string,items:Array<{kind:'refund'|'restore';relatedId:string;amount:number}>){
   if(!/^(edit-[a-f0-9]{32}|care-remove-(food|water|perch)-[0-9]+)$/.test(operationId))return null;
   let balance=state.currency;
   const entries:LedgerEntry[]=[];

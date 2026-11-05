@@ -5,6 +5,9 @@ import {mountSpeedPanel,type SpeedView} from './speed-panel.ts';
 import {mountOnboardingPanel} from './onboarding-panel.ts';
 import type {FirstMissionGuide} from '../game/missions/onboarding.ts';
 import {mountMissionPanel} from './mission-panel.ts';
+import {mountElephantCatalog} from './elephant-catalog.ts';
+import type {ConservationGrantSceneView} from '../game/economy/conservation-grant.ts';
+import type {ZooSave} from '../game/core/zoo-state.ts';
 import type {MissionView} from '../game/missions/engine.ts';
 import type {RecoveryView,RecoveryQuote} from '../game/economy/recovery.ts';
 import type {EconomyView} from '../game/economy/spending.ts';
@@ -26,7 +29,7 @@ import type { CameraCommand } from '../game/render3d/camera-navigation.ts';
 import { createPreviewController, type PreviewLoader, type PreviewState } from '../game/render3d/preview-controller';
 import { entryMessages, type EntryLocale, type EntryMessage } from './locale';
 
-export interface PreviewPanelOptions { loadRenderer?: PreviewLoader; stateStore?:import("../game/core/session-state.ts").SanctuarySessionState;canOpen?:()=>boolean;beforeOpen?:()=>boolean; }
+export interface PreviewPanelOptions { loadRenderer?: PreviewLoader; stateStore?:import("../game/core/session-state.ts").SanctuarySessionState<ZooSave>;canOpen?:()=>boolean;beforeOpen?:()=>boolean; }
 const setText=(element:Element|null,value:string)=>{if(element&&element.textContent!==value)element.textContent=value;};
 const mounted = new WeakMap<HTMLElement, ReturnType<typeof createPanel>>();
 
@@ -71,6 +74,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const missionPanel=mountMissionPanel(root.querySelector('[data-mission-tools]'),events.signal,q=>controller.claimMission(q),careAction,target=>{if(root.querySelector('dialog[open]'))return;if(target==='gate'){controller.visitors('open');return;}if(target==='observe'){controller.visitors('focus');host.focus({preventScroll:true});scrollHudTarget(host);return;}if(target==='path'){root.dataset.guided='false';revealHudTarget(root.querySelector('[data-placement-tools]'));controller.placement('begin-path');host.focus({preventScroll:true});scrollHudTarget(host);return;}careAction(target);});
   host.addEventListener('scene-missions-change',event=>missionPanel.update((event as CustomEvent<MissionView>).detail),{signal:events.signal});
   host.addEventListener('scene-mission-result',event=>missionPanel.result((event as CustomEvent<{ok:boolean}>).detail.ok),{signal:events.signal});
+  const elephantCatalog=mountElephantCatalog(root.querySelector('[data-elephant-catalog]'),events.signal,q=>controller.claimConservationGrant(q));
+  host.addEventListener('scene-elephant-grove-change',event=>elephantCatalog.update((event as CustomEvent<ConservationGrantSceneView>).detail),{signal:events.signal});
   let selected:SceneIdentity|null=null;
   let studio:StudioView={active:false,habitat:false,clip:'perch',angle:'quarter',motionPaused:false,canHabitat:false};
   let food:FoodView={canPlace:false,habitat:false,exists:false,reachable:false,stock:0,capacity:8,revision:0,portions:[0,0],preview:false,reason:null};
@@ -203,7 +208,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     root.querySelector('[data-perch-keep]')?.replaceChildren(c.perchKeep);root.querySelector('[data-perch-remove-confirm]')?.replaceChildren(c.perchRemoveConfirm);root.querySelector('#perch-dialog-title')?.replaceChildren(c.perchRemoveTitle);root.querySelector('[data-entry-text="perchRemoveHint"]')?.replaceChildren(c.perchRemoveHint);renderCosts();
   }
   function renderStudio(){
-    speedPanel.show(state.status==='ready'&&!studio.active,locale);renderVisitors();missionPanel.show(state.status==='ready'&&!studio.active,locale);onboardingPanel.show(state.status==='ready'&&!studio.active,locale);const guideLanguage=root.querySelector<HTMLSelectElement>('[data-guide-language]');if(guideLanguage){guideLanguage.value=locale;guideLanguage.setAttribute('aria-label',entryMessages[locale].language);}
+    speedPanel.show(state.status==='ready'&&!studio.active,locale);renderVisitors();missionPanel.show(state.status==='ready'&&!studio.active,locale);elephantCatalog.show(state.status==='ready'&&!studio.active,locale);onboardingPanel.show(state.status==='ready'&&!studio.active,locale);const guideLanguage=root.querySelector<HTMLSelectElement>('[data-guide-language]');if(guideLanguage){guideLanguage.value=locale;guideLanguage.setAttribute('aria-label',entryMessages[locale].language);}
     const copy=entryMessages[locale],ready=state.status==='ready',tools=root.querySelector<HTMLElement>('[data-macaw-tools]');if(!tools)return;
     tools.hidden=!ready;const controls=root.querySelector<HTMLElement>('[data-macaw-controls]');if(controls)controls.hidden=!studio.active;
     for(const button of tools.querySelectorAll<HTMLButtonElement>('[data-studio-command]')){const command=button.dataset.studioCommand as StudioCommand;const key=command==='pause'?(studio.motionPaused?'macawResume':'macawPause'):command==='open'?'macawOpen':command==='close'?'macawClose':command==='detail'?'macawDetail':'macawHabitat';button.textContent=copy[key];button.hidden=command==='open'?studio.active:command==='detail'?!studio.habitat:command==='habitat'?studio.habitat:false;if(command==='habitat')button.disabled=habitatCount===0;}

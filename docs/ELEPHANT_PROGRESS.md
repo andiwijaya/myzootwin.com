@@ -4,7 +4,7 @@ Source: owner Library handoff `libfile_09652153d1bc8191b2c1f1aa6cb5ce18` (44/44 
 
 Session 1 stopped safely before **2026-11-05 17:00 WIB / 10:00 UTC**. Session 2 explicitly authorized by the owner to continue at home, resumed at13:35 UTC /20:35 WIB from5852bdc. No new deadline specified. No push/deploy authorized. Original checkout, owner builds and owner saves stay untouched.
 
-Verified EH: **10/39 (25.64%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
+Verified EH: **11/39 (28.21%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
 
 | Item | Status | Scope / evidence |
 |---|---|---|
@@ -18,7 +18,7 @@ Verified EH: **10/39 (25.64%)**. Existing V1: **46/51**, five evidence/signoff g
 | EH1-04 | [x] | Shared collision/36-cell transaction, separate caps, real bounded ghosts; 523 tests and native viewport negatives; [evidence](ELEPHANT_FOUNDATION.md) |
 | EH1-05 | [x] | Full typed multispecies save/atomic migration/recovery; 540 tests and19 native storage cases; product activation stays gated; [evidence](ELEPHANT_MULTISPECIES_SAVE.md) |
 | EH1-06 | [x] | Two30-minute deterministic reference comparisons, repeated cold loads/speeds/compaction;545 tests,20 native cases; [evidence](ELEPHANT_CLOCK_BASELINE.md) |
-| EH2-01 | [ ] | Locked catalogue and exactly-once conservation grant |
+| EH2-01 | [x] | Canonical V2 runtime, locked ID/EN catalogue and commit-before-credit grant;558 tests,22 native cases, actual Q04/grant/cold/viewport journey; [evidence](ELEPHANT_GRANT.md) |
 | EH2-02 | [ ] | Atomic paid elephant habitat construction |
 | EH2-03 | [ ] | Two persisted residents Ayu/Nara |
 | EH2-04 | [ ] | Real feeders/trough placement and consumption |

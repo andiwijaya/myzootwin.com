@@ -3,13 +3,13 @@ import {BoxGeometry,BufferGeometry,Group,Mesh,MeshStandardMaterial} from 'three'
 import {Batch} from './tropical-diorama.ts';
 import {analyzePaths} from '../world/paths.ts';
 import {cellKey} from '../world/placement-preview.ts';
-import type {WorldState} from '../core/state.ts';
+import type {RuntimeWorld} from '../core/state.ts';
 import type {SceneCatalog} from './scene-selection.ts';
 /** One reusable geometry/material for all player path tiles and the viewing marker. */
 export function createPathScene(catalog:SceneCatalog){
  const group=new Group(),geometry=new BufferGeometry(),material=new MeshStandardMaterial({vertexColors:true,roughness:1}),mesh=new Mesh(geometry,material),entry={mesh,ranges:[] as import('./scene-selection.ts').FaceOwner[]};
  mesh.receiveShadow=true;group.name='Visitor path topology';mesh.name='Player paths';mesh.visible=false;group.add(mesh);catalog.batches.push(entry);let disposed=false,tiles=0,revision=0;
- return {group,geometry,material,sync(world:WorldState){
+ return {group,geometry,material,sync(world:RuntimeWorld){
   if(disposed)return;const topology=analyzePaths(world),reachable=new Set(topology.reachable.map(cellKey)),batch=new Batch();tiles=0;
   const box=(color:string,x:number,y:number,z:number,scale:number[])=>batch.add(new BoxGeometry(1,1,1),color,[x,y,z],scale);
   for(const tile of world.tiles){

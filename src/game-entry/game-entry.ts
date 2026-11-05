@@ -13,7 +13,9 @@ import { mountRecoveryPanel } from './recovery-panel.ts';
 import { entryMessages, isEntryLocale, readEntryLocale, saveEntryLocale, type EntryLocale, type EntryMessage } from './locale';
 import { mountPreviewPanel } from './preview-panel';
 import { createAutosave } from '../game/persistence/autosave.ts';
-import { createIndexedDbBackend, type DurableBackend } from '../game/persistence/durable-backend.ts';
+import {type DurableBackend} from '../game/persistence/durable-backend.ts';
+import {createElephantIndexedDbBackend} from '../game/persistence/elephant-backend.ts';
+import type {ZooSave} from '../game/core/zoo-state.ts';
 function browserFactory() {
     try {
         return window.indexedDB;
@@ -26,13 +28,13 @@ const mounted = new WeakMap<HTMLElement, {
     dispose: () => void;
 }>();
 export function mountGameEntry(root: HTMLElement, options: {
-    backend?: DurableBackend;
+    backend?: DurableBackend<ZooSave>;
     broadcast?: boolean;
     allowRecoveryDownload?: boolean;
     preferenceStorage?: Pick<Storage, 'getItem' | 'setItem'> | null;
     browserLanguage?: string;
     audioFactory?:()=>AudioContext;
-    loadRenderer?:(store:import("../game/core/session-state.ts").SanctuarySessionState)=>ReturnType<PreviewLoader>;
+    loadRenderer?:(store:import("../game/core/session-state.ts").SanctuarySessionState<ZooSave>)=>ReturnType<PreviewLoader>;
 } = {}) {
     mounted.get(root)?.dispose();
     let disposed = false;
@@ -61,7 +63,7 @@ export function mountGameEntry(root: HTMLElement, options: {
     containDialogFocus(root, events.signal);
     let channel: BroadcastChannel | undefined;
     const writer = crypto.randomUUID();
-    const durable = createAutosave(options.backend ?? createIndexedDbBackend(browserFactory()), { writer, changed: () => {
+    const durable = createAutosave<ZooSave>(options.backend ?? createElephantIndexedDbBackend(browserFactory()), { writer, changed: () => {
             if (disposed)
                 return;
             syncPause();
