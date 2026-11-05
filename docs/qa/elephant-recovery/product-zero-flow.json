@@ -1,0 +1,90 @@
+{
+  "method": "Actual closed10200tick fixture from labelled prior expense; actual bounded support dialog Cancel/Confirm, real gate receipts and paid trough refill, no actor/money edits",
+  "initial": {
+    "tick": 11431,
+    "cash": 0,
+    "waterStock": 0,
+    "thirst": [
+      100,
+      100
+    ]
+  },
+  "cancel": {
+    "cash": 0,
+    "commandExact": true,
+    "groveStockExact": true
+  },
+  "rations": {
+    "cash": 0,
+    "groveStockExact": true,
+    "oneActualBoundedBatch": true
+  },
+  "actualGatePayments": [
+    {
+      "id": "ticket-arrival-8",
+      "operationId": "admit-arrival-8",
+      "kind": "ticket",
+      "amount": 10,
+      "balanceAfter": 10,
+      "tick": 11625,
+      "relatedId": "admission-arrival-8"
+    },
+    {
+      "id": "ticket-arrival-9",
+      "operationId": "admit-arrival-9",
+      "kind": "ticket",
+      "amount": 10,
+      "balanceAfter": 16,
+      "tick": 12029,
+      "relatedId": "admission-arrival-9"
+    }
+  ],
+  "actualUpkeep": [
+    {
+      "id": "maintenance-20",
+      "operationId": "maintenance-20",
+      "kind": "maintenance",
+      "amount": -4,
+      "balanceAfter": 6,
+      "tick": 12000,
+      "relatedId": null
+    }
+  ],
+  "actualSupplies": [
+    {
+      "id": "cmd-40",
+      "operationId": "cmd-40",
+      "kind": "supplies",
+      "amount": -4,
+      "balanceAfter": 12,
+      "tick": 12179,
+      "relatedId": "elephant-water-24"
+    }
+  ],
+  "refill": {
+    "tick": 12195,
+    "cash": 12,
+    "waterStock": 8,
+    "thirst": [
+      100,
+      100
+    ],
+    "welfare": [
+      18,
+      18
+    ],
+    "focusedRealRefillControl": true,
+    "keyboardTabIndexPreserved": true
+  },
+  "cold": {
+    "tick": 12195,
+    "cash": 12,
+    "tickExact": true,
+    "cashExact": true,
+    "groveStockExact": true,
+    "visitorsExact": true,
+    "admissionsExact": true,
+    "grantEntries": 1,
+    "backupExact": true
+  }
+}

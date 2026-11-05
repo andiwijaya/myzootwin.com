@@ -1,3 +1,5 @@
+import {mountElephantRecoveryPanel} from './elephant-recovery-panel.ts';
+import type {ElephantRecoveryView} from '../game/economy/elephant-recovery.ts';
 import {mountElephantMissionPanel,type ElephantMissionSceneView} from './elephant-mission-panel.ts';
 import {mountElephantCarePanel} from './elephant-care-panel.ts';
 import type {ElephantCareSceneView} from '../game/render3d/elephant-care-preview.ts';
@@ -75,6 +77,23 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const action=target==='birds'||target==='observe'?(tool?.querySelector<HTMLButtonElement>('[data-birds-command="welcome"]:not([hidden]):not(:disabled)')??tool?.querySelector<HTMLButtonElement>('[data-animal-info]:not(:disabled)')):['confirm','refill','preview'].map(command=>tool?.querySelector<HTMLButtonElement>(`[data-${target}-command="${command}"]:not(:disabled)`)).find(button=>button&&!button.closest('[hidden]'));
     if(action){action.focus({preventScroll:true});scrollHudTarget(action);}else{tool?.setAttribute('tabindex','-1');tool?.focus({preventScroll:true});scrollHudTarget(tool);}
   };
+  const elephantRecovery=mountElephantRecoveryPanel(root.querySelector('[data-elephant-recovery]'),events.signal,v=>{
+    if(root.querySelector('dialog[open]'))return;
+    if(v.action==='support'){reviewRecovery();return;}
+    if(v.action==='gate'){controller.visitors('open');return;}
+    if(v.action==='path'){root.dataset.guided='false';revealHudTarget(root.querySelector('[data-placement-tools]'));controller.reviewElephantPath({command:v.command,cell:v.path!.cell});host.focus({preventScroll:true});scrollHudTarget(host);return;}
+    if(v.action==='build'){const tool=root.querySelector<HTMLElement>('[data-elephant-catalog]');revealHudTarget(tool);tool?.setAttribute('tabindex','-1');tool?.focus({preventScroll:true});scrollHudTarget(tool,'start');return;}
+    if(v.action==='guests'){const tool=root.querySelector<HTMLElement>('[data-visitor-tools]');revealHudTarget(tool);tool?.setAttribute('tabindex','-1');tool?.focus({preventScroll:true});scrollHudTarget(tool,'start');return;}
+    if(v.action==='care'){
+      const tool=root.querySelector<HTMLElement>('[data-elephant-care]');revealHudTarget(tool);let target:HTMLElement|null=null;
+      if(v.care?.next.kind.startsWith('refill-')&&v.resourceId)target=tool?.querySelector<HTMLElement>(`[data-elephant-refill="${CSS.escape(v.resourceId)}"]`)??null;
+      else if(v.care?.next.kind.startsWith('build-')){const kind=v.care.next.kind.slice(6),name=kind==='food'?'browse':kind;target=tool?.querySelector<HTMLElement>(`[data-elephant-place="${name}"]`)??null;}
+      if(!target&&v.animalId){const row=tool?.querySelector<HTMLElement>(`[data-elephant-resident="${CSS.escape(v.animalId)}"]`),details=row?.querySelector<HTMLDetailsElement>('details');if(details){details.open=true;target=details.querySelector('summary');}}
+      target??=tool??null;if(target&&!target.matches('button,summary,a[href],input,select,textarea'))target.setAttribute('tabindex','-1');target?.focus({preventScroll:true});scrollHudTarget(target,'start');
+    }
+  });
+  host.addEventListener('scene-elephant-recovery-change',event=>elephantRecovery.update((event as CustomEvent<ElephantRecoveryView>).detail),{signal:events.signal});
+  host.addEventListener('scene-elephant-recovery-stale',()=>{elephantRecovery.stale();const status=root.querySelector<HTMLElement>('[data-elephant-recovery-status]');revealHudTarget(status);status?.setAttribute('tabindex','-1');status?.focus({preventScroll:true});scrollHudTarget(status);},{signal:events.signal});
   const missionPanel=mountMissionPanel(root.querySelector('[data-mission-tools]'),events.signal,q=>controller.claimMission(q),careAction,target=>{if(root.querySelector('dialog[open]'))return;if(target==='gate'){controller.visitors('open');return;}if(target==='observe'){controller.visitors('focus');host.focus({preventScroll:true});scrollHudTarget(host);return;}if(target==='path'){root.dataset.guided='false';revealHudTarget(root.querySelector('[data-placement-tools]'));controller.placement('begin-path');host.focus({preventScroll:true});scrollHudTarget(host);return;}careAction(target);});
   const elephantMissions=mountElephantMissionPanel(root.querySelector('[data-elephant-missions]'),events.signal,q=>controller.claimElephantMission(q));
   host.addEventListener('scene-elephant-missions-change',event=>elephantMissions.update((event as CustomEvent<ElephantMissionSceneView>).detail),{signal:events.signal});
@@ -214,7 +233,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     root.querySelector('[data-perch-keep]')?.replaceChildren(c.perchKeep);root.querySelector('[data-perch-remove-confirm]')?.replaceChildren(c.perchRemoveConfirm);root.querySelector('#perch-dialog-title')?.replaceChildren(c.perchRemoveTitle);root.querySelector('[data-entry-text="perchRemoveHint"]')?.replaceChildren(c.perchRemoveHint);renderCosts();
   }
   function renderStudio(){
-    speedPanel.show(state.status==='ready'&&!studio.active,locale);renderVisitors();missionPanel.show(state.status==='ready'&&!studio.active,locale);elephantMissions.show(state.status==='ready'&&!studio.active,locale);elephantCatalog.show(state.status==='ready'&&!studio.active,locale);elephantCare.show(state.status==='ready'&&!studio.active,locale);onboardingPanel.show(state.status==='ready'&&!studio.active,locale);const guideLanguage=root.querySelector<HTMLSelectElement>('[data-guide-language]');if(guideLanguage){guideLanguage.value=locale;guideLanguage.setAttribute('aria-label',entryMessages[locale].language);}
+    speedPanel.show(state.status==='ready'&&!studio.active,locale);renderVisitors();missionPanel.show(state.status==='ready'&&!studio.active,locale);elephantMissions.show(state.status==='ready'&&!studio.active,locale);elephantRecovery.show(state.status==='ready'&&!studio.active,locale);elephantCatalog.show(state.status==='ready'&&!studio.active,locale);elephantCare.show(state.status==='ready'&&!studio.active,locale);onboardingPanel.show(state.status==='ready'&&!studio.active,locale);const guideLanguage=root.querySelector<HTMLSelectElement>('[data-guide-language]');if(guideLanguage){guideLanguage.value=locale;guideLanguage.setAttribute('aria-label',entryMessages[locale].language);}
     const copy=entryMessages[locale],ready=state.status==='ready',tools=root.querySelector<HTMLElement>('[data-macaw-tools]');if(!tools)return;
     tools.hidden=!ready;const controls=root.querySelector<HTMLElement>('[data-macaw-controls]');if(controls)controls.hidden=!studio.active;
     for(const button of tools.querySelectorAll<HTMLButtonElement>('[data-studio-command]')){const command=button.dataset.studioCommand as StudioCommand;const key=command==='pause'?(studio.motionPaused?'macawResume':'macawPause'):command==='open'?'macawOpen':command==='close'?'macawClose':command==='detail'?'macawDetail':'macawHabitat';button.textContent=copy[key];button.hidden=command==='open'?studio.active:command==='detail'?!studio.habitat:command==='habitat'?studio.habitat:false;if(command==='habitat')button.disabled=habitatCount===0;}

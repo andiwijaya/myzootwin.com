@@ -1,3 +1,4 @@
+import type {ElephantPathReview} from '../economy/elephant-recovery.ts';
 import type {ElephantMissionQuote} from '../missions/elephant-missions.ts';
 import type {ElephantCareKind,ElephantCareRefillQuote} from '../animals/elephants/care-resources.ts';
 import type {ElephantCareCommand} from './elephant-care-preview.ts';
@@ -32,6 +33,7 @@ export interface PreviewSession {
   beginElephantHabitat?():void;
   claimConservationGrant?(quote:ConservationGrantQuote):void;
   claimElephantMission?(quote:ElephantMissionQuote):void;
+  reviewElephantPath?(quote:ElephantPathReview):void;
   visualSettings?(value:VisualSettings):void;
   muted?(value:boolean):void;
   locale?(value:"en"|"id"):void;
@@ -135,6 +137,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     refillElephantCare(quote:ElephantCareRefillQuote){if(!isPaused()&&state.status==='ready')session?.refillElephantCare?.(quote);},
     welcomeElephants(command:number){if(!isPaused()&&state.status==='ready')session?.welcomeElephants?.(command);},
     beginElephantHabitat(){if(!isPaused()&&state.status==='ready')session?.beginElephantHabitat?.();},
+    reviewElephantPath(quote:ElephantPathReview){if(!isPaused()&&state.status==='ready')session?.reviewElephantPath?.(quote);},
     claimElephantMission(quote:ElephantMissionQuote){if(!isPaused()&&state.status==='ready')session?.claimElephantMission?.(quote);},
     claimConservationGrant(quote:ConservationGrantQuote){if(!isPaused()&&state.status==='ready')session?.claimConservationGrant?.(quote);},
     recoveryQuote:()=>!isPaused()&&state.status==='ready'?session?.recoveryQuote?.():undefined,

@@ -1,0 +1,41 @@
+{
+  "method": "Actual quoted helper opens unpaid existing path ghost, Finish cancels, actual Confirm pays once, cold Continue does not rebuild",
+  "initial": {
+    "tick": 1231,
+    "cash": 83,
+    "command": 39,
+    "bridge": false
+  },
+  "cancelled": {
+    "tick": 1533,
+    "cash": 83,
+    "commandUnchanged": true,
+    "constructionExact": true,
+    "bridgeStillMissing": true
+  },
+  "built": {
+    "tick": 1701,
+    "cash": 68,
+    "newBuilds": [
+      {
+        "id": "cmd-39",
+        "operationId": "cmd-39",
+        "kind": "build",
+        "amount": -15,
+        "balanceAfter": 68,
+        "tick": 1689,
+        "relatedId": "path-1-9"
+      }
+    ],
+    "bridge": true
+  },
+  "cold": {
+    "tick": 1701,
+    "cash": 68,
+    "tickExact": true,
+    "cashExact": true,
+    "grantEntries": 1,
+    "backupExact": true
+  },
+  "legacyMissionsExact": true
+}

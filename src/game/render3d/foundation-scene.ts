@@ -1,3 +1,4 @@
+import type {ElephantPathReview} from '../economy/elephant-recovery.ts';
 import type {ElephantMissionQuote} from '../missions/elephant-missions.ts';
 import type {ElephantMissionSceneView} from '../../game-entry/elephant-mission-panel.ts';
 import {createElephantCarePreview,type ElephantCareSceneView} from './elephant-care-preview.ts';
@@ -52,6 +53,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   let disposed = false;
   let lost = false;
   let paused = false;
+  let previousElephantRecovery='',elephantRecoveryKey='';
   let ehClaimBusy=false,ehClaimFailure:'storage'|'stale'|null=null,previousElephantMissions='';
   let grantBusy=false,grantFailure:'storage'|'stale'|null=null,previousGrant='';
   let cleanupErrors = 0;
@@ -110,6 +112,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     finally{grantBusy=false;if(!disposed){updateRunning();announceGrant();render();}}
   }
   function announceElephantMissions(){const view:ElephantMissionSceneView={...simulation.elephantMissionView(),busy:ehClaimBusy,savingAvailable:options.stateStore?.canCommit?.()===true,failure:ehClaimFailure},key=JSON.stringify(view);if(key!==previousElephantMissions){previousElephantMissions=key;host.dispatchEvent(new CustomEvent('scene-elephant-missions-change',{detail:view}));}}
+  function announceElephantRecovery(frame=simulation.inspect()){const key=[frame.tick,frame.commandRevision,frame.editorRevision].join(':');if(key===elephantRecoveryKey)return;elephantRecoveryKey=key;const view=simulation.elephantRecoveryView(),next=JSON.stringify(view);if(next!==previousElephantRecovery){previousElephantRecovery=next;host.dispatchEvent(new CustomEvent('scene-elephant-recovery-change',{detail:view}));}}
   async function claimElephantMission(quote:ElephantMissionQuote){
     if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;
     ehClaimFailure=null;const prepared=simulation.prepareElephantMission(quote);if(!prepared.ok){ehClaimFailure='stale';announceElephantMissions();return;}
@@ -151,7 +154,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     if (disposed || lost) return;
     const frame=simulation.inspect();
     const policy=visual();lighting?.setLowGraphics(policy.low);diorama?.setLowGraphics(policy.low);visitors?.setVisibleCap(policy.low?1:3);
-    announceSpeed(false,frame);announceGrant();announceElephantCare();announceElephantMissions();
+    announceSpeed(false,frame);announceGrant();announceElephantCare();announceElephantMissions();announceElephantRecovery(frame);
     const guide=readGuide(frame),guideKey=JSON.stringify(guide);if(guideKey!==previousGuide){previousGuide=guideKey;host.dispatchEvent(new CustomEvent('scene-onboarding-change',{detail:guide}));}
     const missions=simulation.missionView(),missionKey=JSON.stringify(missions);if(missionKey!==previousMission){previousMission=missionKey;host.dispatchEvent(new CustomEvent('scene-missions-change',{detail:missions}));}
     const recoveryKey=[frame.tick,frame.commandRevision,frame.editorRevision,simulation.visitorView().open].join(':');if(recoveryKey!==recoveryReadKey){recoveryReadKey=recoveryKey;recoveryRead=simulation.recoveryView();}const nextRecovery=JSON.stringify(recoveryRead);if(nextRecovery!==previousRecovery){previousRecovery=nextRecovery;host.dispatchEvent(new CustomEvent('scene-recovery-change',{detail:recoveryRead}));}
@@ -300,6 +303,10 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     dispose,
     claimConservationGrant:quote=>{void claimGrant(quote);},
     claimElephantMission:quote=>{void claimElephantMission(quote);},
+    reviewElephantPath:(quote:ElephantPathReview)=>{
+      if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active||!placement)return;const v=simulation.elephantRecoveryView();if(!quote||!quote.cell||v.kind!=='path'||!v.path||quote.command!==v.command||quote.cell.x!==v.path.cell.x||quote.cell.z!==v.path.cell.z){host.dispatchEvent(new CustomEvent('scene-elephant-recovery-stale'));return;}
+      controls?.setEnabled(false);controls?.setEnabled(true);placement.command('cancel');elephantCarePreview?.cancel();picker?.clear();foodPreview=false;waterPreview=false;perchPreview=false;foodDirty=true;waterDirty=true;perchDirty=true;placementCommand=simulation.commandRevision();placementHabitatKind='macaw-aviary';placement.guide('path',v.path.cell);const w=simulation.snapshot().world;controls?.focus({x:v.path.cell.x+.5-sceneOrigin(w).x,z:v.path.cell.z+.5-sceneOrigin(w).z});render();
+    },
     guide:(command,revision)=>{
       if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active||!placement)return;
       if(command==='cancel')placement.command('cancel');

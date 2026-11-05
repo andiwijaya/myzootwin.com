@@ -1,3 +1,4 @@
+import {elephantRecoveryView} from '../economy/elephant-recovery.ts';
 import {evaluateElephantMissions,elephantMissionView,prepareElephantMission,ELEPHANT_MISSION_RULES,type ElephantMissionQuote} from '../missions/elephant-missions.ts';
 import {reconcileElephantWelfare} from '../animals/elephants/welfare.ts';
 import {stepElephantCare} from '../animals/elephants/care-simulation.ts';
@@ -115,6 +116,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
       const valid=validateState(next);if(!valid.ok)return {ok:false as const,reason:'stale' as const};
       state=valid.value;compactNow();publish(Object.freeze({type:'mission-claimed',missionId:quote.id,amount:MISSION_RULES[quote.id].coins,tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};
     },
+    elephantRecoveryView:()=>elephantRecoveryView(state),
     recoveryView:()=>recoveryView(macawRuntimeView(state)),
     recover(quote:RecoveryQuote):boolean{
       if(disposed||clock.inspect().paused||!authorized(quote.command))return false;
