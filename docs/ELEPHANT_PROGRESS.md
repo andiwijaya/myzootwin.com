@@ -4,7 +4,7 @@ Source: owner Library handoff `libfile_09652153d1bc8191b2c1f1aa6cb5ce18` (44/44 
 
 Session 1 stopped safely before **2026-11-05 17:00 WIB / 10:00 UTC**. Session 2 explicitly authorized by the owner to continue at home, resumed at13:35 UTC /20:35 WIB from5852bdc. No new deadline specified. No push/deploy authorized. Original checkout, owner builds and owner saves stay untouched.
 
-Verified EH: **25/39 (64.10%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
+Verified EH: **26/39 (66.67%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
 
 | Item | Status | Scope / evidence |
 |---|---|---|
@@ -33,7 +33,7 @@ Verified EH: **25/39 (64.10%)**. Existing V1: **46/51**, five evidence/signoff g
 | EH3-07 | [x] | Derived actual causes/costed helpful actions, accessible IDEN disclosures/meters and live selected needs;662 tests/30 native cases; [evidence](ELEPHANT_CARE_INFO.md) |
 | EH4-01 | [x] | Retained-ticket round robin, real outside routes/pinned journeys and IDEN destinations;669 tests/31 native cases, both actual observations; [evidence](ELEPHANT_VISITORS.md) |
 | EH4-02 | [x] | Reachable populated habitat attraction, actual destination feedback and retained single10ZC admission;676 tests/32 native cases, exact product cold; [evidence](ELEPHANT_ATTRACTION.md) |
-| EH4-03 | [ ] | Balanced recoverable economy |
+| EH4-03 | [x] | Actual zero-cash grant1336/64setup, solvent paid care, zero/depleted recovery, retained grant and separate IDENincome;682tests/33native cases; [evidence](ELEPHANT_ECONOMY.md) |
 | EH4-04 | [ ] | EH01–EH04 and exactly-once rewards |
 | EH4-05 | [ ] | Recovery/negative-state guidance |
 | EH4-06 | [ ] | Legacy missions/visitors/save regression with elephants |
@@ -50,4 +50,4 @@ Verified EH: **25/39 (64.10%)**. Existing V1: **46/51**, five evidence/signoff g
 
 Each checked item requires a local commit and its scoped evidence. Commit identities are recorded by Git history and subsequent checkpoints; no self-referential hash is invented. Upcoming steps remain unverified until their complete seam passes.
 
-Historical timed-session shutdown: [first checkpoint](ELEPHANT_SESSION_CHECKPOINT.md). Owner explicitly resumed work afterward; latest verified seam: [per-habitat attraction and observations](ELEPHANT_ATTRACTION.md). Latest home handoff: [checkpoint](ELEPHANT_HOME_CHECKPOINT.md).
+Historical timed-session shutdown: [first checkpoint](ELEPHANT_SESSION_CHECKPOINT.md). Owner explicitly resumed work afterward; latest verified seam: [recoverable elephant economy](ELEPHANT_ECONOMY.md). Latest home handoff: [checkpoint](ELEPHANT_HOME_CHECKPOINT.md).

@@ -18,7 +18,7 @@ Retain exact V1 interfaces and codec as the frozen input contract. Introduce dis
 
 Eligible means **Q04 explicitly claimed**, represented by validated completedIds plus its matching sanctuary-banner/thriving-sanctuary reward proof. A qualified-but-unclaimed Q04 or merely null currentId is insufficient. The frozen fixtures exercise both states. No migration credit. Grant command uses stable `elephant-expansion-grant-v1` proof retained through finance compaction; one claim, 1400 ZC design baseline. UI state alone cannot authorize money.
 
-Design facility quote: 650+160+90+170+80+60 =1210 ZC; actual fixture connector90; initial two feeder services16 + water4 + pond12, plus first two-habitat upkeep4: **1336**, leaving64 from a zero-cash grant. Pond service12 and elephant upkeep are provisional tuning, not implemented prices. Actual EH4-03 must prove negative states and a bounded low-cash recovery path with the final commands; this design arithmetic does not close that feature.
+Design facility quote: 650+160+90+170+80+60 =1210 ZC; actual fixture connector90; initial two feeder services16 + water4 + pond12, plus first two-habitat upkeep4: **1336**, leaving64 from a zero-cash grant. EH4-03now verifies these implemented prices with actual commands, first upkeep and negative recovery. Paid-care9000ticks minimum60/final124; actual closed/depleted zero-cash recovery ends22without another grant. See ELEPHANT_ECONOMY.md; physical active wall-time soak remains EH6-04.
 
 ## Lossless storage and rollback
 
