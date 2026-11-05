@@ -6,9 +6,9 @@ export const newExperience=():VisitorExperience=>({samples:0,occupiedSamples:0,w
 /** Called only while actually facing/viewing the target, after this tick's animal welfare update. */
 export function observeHabitat(s:RuntimeState,v:Visitor):void{
  const e=v.experience;if(!e||e.feedback||e.samples>=SATISFACTION_RULES.observationTicks)return;
- const birds=s.animals.filter(a=>a.habitatId===v.journey?.habitatId&&a.position!==null);
+ const animals=s.animals.filter(a=>a.habitatId===v.journey?.habitatId&&a.position!==null);
  e.samples++;
- if(birds.length){e.occupiedSamples++;e.welfareHundredths+=Math.round(birds.reduce((n,a)=>n+a.welfare,0)/birds.length*100);}
+ if(animals.length){e.occupiedSamples++;e.welfareHundredths+=Math.round(animals.reduce((n,a)=>n+a.welfare,0)/animals.length*100);}
 }
 export function resetObservation(v:Visitor):void{if(v.experience&&!v.experience.feedback){v.experience.samples=0;v.experience.occupiedSamples=0;v.experience.welfareHundredths=0;}}
 export function finishFeedback(s:RuntimeState,v:Visitor,outcome:VisitorOutcome,reason:VisitorInterruption='none'):boolean{
