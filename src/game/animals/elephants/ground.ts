@@ -1,7 +1,7 @@
 import {elephantBodyMoveAllowed,elephantBodyTurnAllowed,type GroundBody} from './body-clearance.ts';
 import type {Point} from '../../core/state.ts';
 import type {ZooHabitat,ZooWorld} from '../../core/species.ts';
-export const ELEPHANT_GROUND=Object.freeze({margin:1.1,propClearance:1.35,separation:1.55,speed:.04,turn:.18,seekTimeout:500});
+export const ELEPHANT_GROUND=Object.freeze({margin:1.1,propClearance:1.35,separation:1.55,speed:.04,turn:.18,seekTimeout:500,backoffDistance:.8,backoffTicks:60});
 export const groundDistance=(a:Point,b:Point)=>Math.hypot(a.x-b.x,a.z-b.z);
 const key=(p:Point)=>`${p.x},${p.z}`;
 export function groundBounds(h:ZooHabitat){const x=Math.min(...h.cells.map(c=>c.x)),z=Math.min(...h.cells.map(c=>c.z));return {x,z,maxX:x+6,maxZ:z+6};}

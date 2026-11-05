@@ -54,3 +54,8 @@ test('the actual walking mesh including feet, tucked trunk and tail fits the aut
 test('a legally mirrored water layout also serves both residents without relying on the default east-side goal',()=>{
  const s=home(true,true);for(let tick=0;tick<900;tick++){s.tick++;s.gameTimeMs=s.tick*100;stepElephantCare(s);}assert.ok(herd(s).every(a=>a.foodEaten>0&&a.waterDrunk>0));assert.ok(validateSaveV2(s).ok);
 });
+
+
+test('an actual reverse displacement plants stance feet in world space instead of sliding them with a forward-only gait',()=>{
+ const s=home(),p=structuredClone(herd(s)[0]),a=structuredClone(p);p.position.z=14;a.position.z=13.96;p.motion.heading=a.motion.heading=0;p.motion.lastStep=a.motion.lastStep={x:0,z:-.04,heading:0};const material=new MeshStandardMaterial(),rig=createElephantRig('Ayu',material);try{const id=rig.skeleton.bones.findIndex(b=>b.name==='foreLeftFoot'),skin=rig.geometry.getAttribute('skinIndex');let vertex=0;while(skin.getX(vertex)!==id)vertex++;const samples=[.2,.8].map(t=>{rig.mesh.position.z=p.position.z+(a.position.z-p.position.z)*t;rig.apply(elephantLocomotionPose(p,a,t,2));return rig.mesh.localToWorld(rig.mesh.getVertexPosition(vertex,new Vector3()));});assert.ok(samples[0].distanceTo(samples[1])<1e-5,'A stance foot must stay planted during the observed short backward step');}finally{rig.dispose();material.dispose();}
+});

@@ -66,13 +66,15 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     if(settleMaintenance(state)){compactNow();publish(Object.freeze({type:'economy-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));}
     const random=nextRandom(state.randomState);
     state.randomState=random.state;
-    const {fed,watered}=stepAnimals(macawRuntimeView(state));if(state.schemaVersion===2){const care=stepElephantCare(state);fed.push(...care.fed);watered.push(...care.watered);}reconcileWelfare(state);for(const e of watered)publish(Object.freeze({type:'animal-drank',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));for(const e of fed)publish(Object.freeze({type:'animal-fed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
+    const {fed,watered}=stepAnimals(macawRuntimeView(state)),bathed:Extract<SimulationEvent,{type:'elephant-bathed'}>[]=[];if(state.schemaVersion===2){const care=stepElephantCare(state);fed.push(...care.fed);watered.push(...care.watered);for(const bath of care.bathed??[])bathed.push({type:'elephant-bathed',...bath,tick:state.tick,gameTimeMs:state.gameTimeMs});}reconcileWelfare(state);for(const e of watered)publish(Object.freeze({type:'animal-drank',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));for(const e of fed)publish(Object.freeze({type:'animal-fed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     const previousAdmissions=state.admissions.length,viewed=stepArrivals(state);
     const admitted=state.admissions.slice(previousAdmissions).map(a=>({visitorId:a.visitorId,admissionId:a.id,amount:ledgerProof(state,a.ledgerEntryId)!.amount}));
     evaluateMissions(state);retireClosedProofs(state);compactNow();
     for(const e of viewed)publish(Object.freeze({type:'visitor-viewed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     for(const e of admitted)publish(Object.freeze({type:'visitor-admitted',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     publish(Object.freeze({type:'tick',tick:state.tick,gameTimeMs:state.gameTimeMs,randomSample:random.value}));
+    // Urgent bath autosave observes the complete world/visitor/economy/mission tick.
+    for(const bath of bathed)publish(Object.freeze(bath));
   },state.preferences.speed);
   const api={
     advance: (deltaMs:number)=>clock.advance(deltaMs),

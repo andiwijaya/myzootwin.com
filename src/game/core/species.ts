@@ -18,6 +18,8 @@ export type ElephantBehavior = 'idle' | 'wander' | 'seek-food' | 'eat' | 'seek-w
 export interface ElephantMotion {
   /** Last actual fixed-tick transform delta; optional for lossless older V2 reads. */
   lastStep?:Point&{heading:number};
+  /** Short reverse clearance step when a companion pins the turn; absent in older V2 saves. */
+  backing?:true;
   phase:ElephantBehavior;
   ticksLeft:number;
   sequence:number;

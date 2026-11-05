@@ -16,9 +16,9 @@ export function elephantTrunkPoints(angles:readonly number[]):YZ[]{
 }
 /** Bounded eight-joint planar CCD. Rendering only; never moves the animal or consumes stock. */
 export function solveElephantTrunk(target:YZ){
- let best:number[]=[],score=Infinity;
+ let best:number[]=[],score=Infinity;const ceiling=Math.max(1.43,target.y+.02);
  for(const seed of [Array<number>(8).fill(0),[0,0,0,-.4,-.8,-1.3,-1.3,-1.3],Array<number>(8).fill(-.65)]){const angles=[...seed];
-  for(let iteration=0;iteration<32;iteration++)for(let joint=7;joint>=0;joint--){const points=elephantTrunkPoints(angles),p=points[joint]!,tip=points[8]!,ay=tip.y-p.y,az=tip.z-p.z,by=target.y-p.y,bz=target.z-p.z,old=angles[joint]!;angles[joint]=clamp(old+Math.atan2(ay*bz-az*by,ay*by+az*bz),joint===0?-.65:-1.3,joint===0?.65:1.3);if(elephantTrunkPoints(angles).some(p=>p.z<.95||p.y<.08||p.y>1.43))angles[joint]=old;}
+  for(let iteration=0;iteration<32;iteration++)for(let joint=7;joint>=0;joint--){const points=elephantTrunkPoints(angles),p=points[joint]!,tip=points[8]!,ay=tip.y-p.y,az=tip.z-p.z,by=target.y-p.y,bz=target.z-p.z,old=angles[joint]!;angles[joint]=clamp(old+Math.atan2(ay*bz-az*by,ay*by+az*bz),joint===0?-.65:-1.3,joint===0?.65:1.3);if(elephantTrunkPoints(angles).some(p=>p.z<.95||p.y<.08||p.y>ceiling))angles[joint]=old;}
   const tip=elephantTrunkPoints(angles)[8]!,distance=Math.hypot(tip.y-target.y,tip.z-target.z),energy=angles.reduce((v,a,i)=>v+a*a+(i?(a-angles[i-1]!)**2:0),0),value=distance>.025?1000+distance:energy;
   if(value<score){score=value;best=angles;}
  }
@@ -47,6 +47,6 @@ export function elephantConsumptionPose(previous:ConsumptionActor,current:Consum
 /** Scene-owned bounded memoization; repeated frames do not re-solve unchanged care targets. */
 export function createElephantConsumptionAnimator(){
  const cache=new Map<string,readonly number[]>();let disposed=false;
- const solve=(target:YZ)=>{const key=target.y.toFixed(5)+','+target.z.toFixed(5),found=cache.get(key);if(found)return found;const angles=Object.freeze(solveElephantTrunk({y:Number(target.y.toFixed(5)),z:Number(target.z.toFixed(5))}));if(cache.size>=24)cache.delete(cache.keys().next().value!);cache.set(key,angles);return angles;};
- return {pose:(p:ConsumptionActor,a:ConsumptionActor,r:readonly ElephantResource[],t:number,base:ElephantPose,reducedMotion=false)=>disposed?null:elephantConsumptionPose(p,a,r,t,base,reducedMotion,solve),inspect:()=>({cachedTrunkTargets:cache.size,consumptionAnimatorDisposed:disposed}),dispose(){disposed=true;cache.clear();}};
+ const solve=(target:YZ)=>{if(disposed)return Object.freeze(Array<number>(8).fill(0));const key=target.y.toFixed(5)+','+target.z.toFixed(5),found=cache.get(key);if(found)return found;const angles=Object.freeze(solveElephantTrunk({y:Number(target.y.toFixed(5)),z:Number(target.z.toFixed(5))}));if(cache.size>=24)cache.delete(cache.keys().next().value!);cache.set(key,angles);return angles;};
+ return {target:solve,pose:(p:ConsumptionActor,a:ConsumptionActor,r:readonly ElephantResource[],t:number,base:ElephantPose,reducedMotion=false)=>disposed?null:elephantConsumptionPose(p,a,r,t,base,reducedMotion,solve),inspect:()=>({cachedTrunkTargets:cache.size,consumptionAnimatorDisposed:disposed}),dispose(){disposed=true;cache.clear();}};
 }

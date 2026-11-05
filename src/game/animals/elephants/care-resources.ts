@@ -9,16 +9,16 @@ import {debit} from '../../economy/spending.ts';
 import {validateSaveV2} from '../../persistence/save-v2.ts';
 import {ELEPHANT_GROUND,elephantGroundRoute,groundCenters,groundDistance} from './ground.ts';
 
-export type ElephantCareKind='elephant-browse'|'elephant-water';
+export type ElephantCareKind='elephant-browse'|'elephant-water'|'elephant-pond';
 export type ElephantCareReason='ready'|'locked'|'habitat'|'limit'|'outside'|'occupied'|'space'|'busy'|'funds'|'stale'|'full'|'missing';
-export const ELEPHANT_CARE_RULES=Object.freeze({capacity:8,browseRefill:8,waterRefill:4,feeders:2,troughs:1});
-const knownKind=(k:unknown):k is ElephantCareKind=>k==='elephant-browse'||k==='elephant-water';
-export const elephantServicePrice=(kind:ElephantCareKind)=>kind==='elephant-browse'?ELEPHANT_CARE_RULES.browseRefill:ELEPHANT_CARE_RULES.waterRefill;
+export const ELEPHANT_CARE_RULES=Object.freeze({capacity:8,browseRefill:8,waterRefill:4,pondRefill:12,feeders:2,troughs:1,ponds:1});
+const knownKind=(k:unknown):k is ElephantCareKind=>k==='elephant-browse'||k==='elephant-water'||k==='elephant-pond';
+export const elephantServicePrice=(kind:ElephantCareKind)=>kind==='elephant-browse'?ELEPHANT_CARE_RULES.browseRefill:kind==='elephant-water'?ELEPHANT_CARE_RULES.waterRefill:ELEPHANT_CARE_RULES.pondRefill;
 type Placement={reason:ElephantCareReason;resource:ElephantResource|null};
 
 export function defaultElephantCareCell(s:ZooSave,kind:ElephantCareKind):Point|null{
  if(s.schemaVersion!==2)return null;const h=s.world.habitats.find(h=>h.kind==='elephant-grove');if(!h)return null;
- const x=Math.min(...h.cells.map(c=>c.x)),z=Math.min(...h.cells.map(c=>c.z));return kind==='elephant-water'?{x:x+5,z:z+3}:{x:x+(s.world.resources.some(r=>r.kind==='elephant-browse'&&r.habitatId===h.id)?5:0),z:z+1};
+ const x=Math.min(...h.cells.map(c=>c.x)),z=Math.min(...h.cells.map(c=>c.z));return kind==='elephant-pond'?{x:x+2,z:z+5}:kind==='elephant-water'?{x:x+5,z:z+3}:{x:x+(s.world.resources.some(r=>r.kind==='elephant-browse'&&r.habitatId===h.id)?5:0),z:z+1};
 }
 /** Authoritative preview/Confirm authority. Ports and topology are simulation data, never renderer guesses. */
 export function validateElephantCarePlacement(s:ZooSave,kind:ElephantCareKind,cell:Point|null):Placement{
@@ -32,7 +32,7 @@ export function validateElephantCarePlacement(s:ZooSave,kind:ElephantCareKind,ce
  const resource:ElephantResource={id:'elephant-preview',kind,habitatId:h.id,cell:{...cell},stock:0,capacity:ELEPHANT_CARE_RULES.capacity,revision:0,approaches:[]},world:ZooWorld={...s.world,resources:[...s.world.resources,resource]},nodes=groundCenters(world,h);
  if(nodes.length<8)return fail('space');const ports=nodes.filter(p=>{const d=groundDistance(p,center);return d>=.95&&d<=1.6;});if(ports.length<(kind==='elephant-browse'?1:2))return fail('space');
  let pair:[Point,Point]|null=null,separation=-1;for(let i=0;i<ports.length;i++)for(let j=i+1;j<ports.length;j++){const d=groundDistance(ports[i]!,ports[j]!);if(d>separation){pair=[ports[i]!,ports[j]!];separation=d;}}
- if(kind==='elephant-water'&&(!pair||separation<ELEPHANT_GROUND.separation))return fail('space');resource.approaches=(pair??[ports[0]!]).map(p=>({...p}));
+ if(kind!=='elephant-browse'&&(!pair||separation<ELEPHANT_GROUND.separation))return fail('space');resource.approaches=(pair??[ports[0]!]).map(p=>({...p}));
  const starts=herd.length?herd.map(a=>a.position):[resource.approaches[0]!],facilities=world.resources.filter((r):r is ElephantResource=>'approaches'in r&&r.habitatId===h.id);
  for(const start of starts)for(const r of facilities)if(!r.approaches.some(p=>elephantGroundRoute(world,h,start,p)!==null))return fail('space');
  return {reason:s.currency<ELEPHANT_PRICES[kind]?'funds':'ready',resource};
@@ -55,7 +55,7 @@ export function prepareElephantCareRefill(s:ZooSave,quote:ElephantCareRefillQuot
 
 export function elephantCareView(s:ZooSave){
  const qualified=conservationGrantView(s).qualified,h=s.world.habitats.find(h=>'kind'in h&&h.kind==='elephant-grove'),resources:readonly ZooResource[]=s.world.resources,all=resources.filter((r):r is ElephantResource=>'approaches'in r&&knownKind(r.kind)),view=(r:ElephantResource)=>({id:r.id,kind:r.kind as ElephantCareKind,stock:r.stock,capacity:r.capacity,revision:r.revision,cell:{...r.cell},refillPrice:elephantServicePrice(r.kind as ElephantCareKind),canRefill:r.stock<r.capacity&&s.currency>=elephantServicePrice(r.kind as ElephantCareKind)});
- const feeders=all.filter(r=>r.kind==='elephant-browse').sort((a,b)=>a.cell.x-b.cell.x||a.cell.z-b.cell.z).map(view),water=all.find(r=>r.kind==='elephant-water');return {command:s.economy.nextCommand,qualified,habitat:Boolean(h),balance:s.currency,browsePrice:ELEPHANT_PRICES['elephant-browse'],waterPrice:ELEPHANT_PRICES['elephant-water'],canAddBrowse:Boolean(qualified&&h&&feeders.length<2&&s.currency>=ELEPHANT_PRICES['elephant-browse']),canAddWater:Boolean(qualified&&h&&!water&&s.currency>=ELEPHANT_PRICES['elephant-water']),feeders,water:water?view(water):null,residents:elephants(s.animals).map(a=>({id:a.id,name:a.name,behavior:a.currentBehavior,hunger:Math.round(a.hunger),thirst:Math.round(a.thirst),welfare:a.welfare,foodEaten:a.foodEaten,waterDrunk:a.waterDrunk}))};
+ const feeders=all.filter(r=>r.kind==='elephant-browse').sort((a,b)=>a.cell.x-b.cell.x||a.cell.z-b.cell.z).map(view),water=all.find(r=>r.kind==='elephant-water'),pond=all.find(r=>r.kind==='elephant-pond');return {command:s.economy.nextCommand,qualified,habitat:Boolean(h),balance:s.currency,browsePrice:ELEPHANT_PRICES['elephant-browse'],waterPrice:ELEPHANT_PRICES['elephant-water'],pondPrice:ELEPHANT_PRICES['elephant-pond'],canAddBrowse:Boolean(qualified&&h&&feeders.length<2&&s.currency>=ELEPHANT_PRICES['elephant-browse']),canAddWater:Boolean(qualified&&h&&!water&&s.currency>=ELEPHANT_PRICES['elephant-water']),canAddPond:Boolean(qualified&&h&&!pond&&s.currency>=ELEPHANT_PRICES['elephant-pond']),feeders,water:water?view(water):null,pond:pond?view(pond):null,residents:elephants(s.animals).map(a=>({id:a.id,name:a.name,behavior:a.currentBehavior,backing:Boolean(a.motion.backing),phaseTicksLeft:a.motion.ticksLeft,hunger:Math.round(a.hunger),thirst:Math.round(a.thirst),welfare:a.welfare,foodEaten:a.foodEaten,waterDrunk:a.waterDrunk,baths:a.baths,bathCooldownTicks:a.bathCooldownTicks}))};
 }
 export type ElephantCareView=ReturnType<typeof elephantCareView>;
 

@@ -1,0 +1,376 @@
+{
+  "status": "PASS",
+  "error": null,
+  "method": "Native IndexedDB on explicitly generated disposable QA databases",
+  "physicalDevice": false,
+  "cases": [
+    {
+      "id": "native-blocked-upgrade",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.515Z",
+      "data": {
+        "blocked": true,
+        "primaryExact": true,
+        "oldConnectionClosedExplicitly": true
+      }
+    },
+    {
+      "id": "native-migration-new",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.556Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 1500,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-migration-q01",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.586Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 1145,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-migration-midQ02",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.626Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 913,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-migration-midVisitor",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.665Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 923,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-migration-longLedger",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.704Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 969,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-migration-zeroCash",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.728Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 0,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-migration-q04Ready",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.755Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 985,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-migration-q04Claimed",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.785Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 985,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-migration-indonesian",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.809Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 985,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-transaction-abort",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.827Z",
+      "data": {
+        "primaryExact": true,
+        "partialBackup": false,
+        "method": "Explicit native tx.abort after queued primary write"
+      }
+    },
+    {
+      "id": "native-two-writer-CAS",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.845Z",
+      "data": {
+        "committed": 1,
+        "conflicted": 1
+      }
+    },
+    {
+      "id": "quota-fault-boundary",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.880Z",
+      "data": {
+        "method": "Injected SaveFault before native write; not physical disk exhaustion",
+        "primaryExact": true,
+        "recovered": true
+      }
+    },
+    {
+      "id": "native-corrupt-recovery",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.900Z",
+      "data": {
+        "restoredSchema": 2,
+        "automaticReset": false
+      }
+    },
+    {
+      "id": "future-content-protection",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.905Z",
+      "data": {
+        "blocked": true,
+        "rawPreserved": true,
+        "previousAvailable": true
+      }
+    },
+    {
+      "id": "future-schema-protection",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.907Z",
+      "data": {
+        "blocked": true,
+        "rawPreserved": true,
+        "previousAvailable": true
+      }
+    },
+    {
+      "id": "native-format1-envelope-transition",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:02.977Z",
+      "data": {
+        "schema": 2,
+        "backupExact": true,
+        "explicitRecovery": true
+      }
+    },
+    {
+      "id": "native-reset-first-migration-and-undo",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:03.024Z",
+      "data": {
+        "schema": 2,
+        "originalBackupExact": true,
+        "preferencesPreserved": true,
+        "undoExact": true
+      }
+    },
+    {
+      "id": "native-multispecies-cold-continue-and-undo",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:03.153Z",
+      "data": {
+        "syntheticPersistenceFixture": true,
+        "gameplayNotClaimed": true,
+        "residents": 4,
+        "macaws": 2,
+        "elephants": 2,
+        "habitats": 2,
+        "elephantResources": 6,
+        "coldContinues": 3,
+        "originalBackupExact": true,
+        "undoExact": true
+      }
+    },
+    {
+      "id": "native-migration-clock-ledger",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:04.461Z",
+      "data": {
+        "scope": "Migrated legacy macaw clock/ledger regression; no elephant FSM or active wall-time soak",
+        "ticks": 2400,
+        "simulatedMinutes": 4,
+        "reloads": 12,
+        "pauses": 12,
+        "editTransactions": 160,
+        "careCommands": 7,
+        "newCompactions": 1,
+        "maxJournal": 126,
+        "maxPayload": 36745,
+        "currency": 1003,
+        "ticketAdmissions": 12,
+        "legacyClaims": 4,
+        "grant": null,
+        "disposedSubscribers": 0,
+        "referenceExact": true,
+        "realNativeCheckpoint": true,
+        "coldContinueExact": true,
+        "originalBackupExact": true
+      }
+    },
+    {
+      "id": "native-durable-grant-race",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:04.525Z",
+      "data": {
+        "winners": 1,
+        "conflicts": 1,
+        "losingTabCredit": 0,
+        "grantLedgerEntries": 1,
+        "originalBackupExact": true
+      }
+    },
+    {
+      "id": "native-durable-grant-quota",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:04.570Z",
+      "data": {
+        "injectedBoundaryNotDiskExhaustion": true,
+        "noOptimisticCredit": true,
+        "primaryExactOnFailure": true,
+        "retryClaims": 1
+      }
+    },
+    {
+      "id": "native-paid-grove-abort-cold",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:04.603Z",
+      "data": {
+        "transactionAbortPreservesOriginal": true,
+        "partialDebit": false,
+        "partialOccupancy": false,
+        "price": 650,
+        "occupiedCells": 36,
+        "habitats": 2,
+        "macaws": 2,
+        "coldExact": true,
+        "originalBackupExact": true
+      }
+    },
+    {
+      "id": "native-actual-resident-welcome-cold",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:04.623Z",
+      "data": {
+        "residents": 4,
+        "macaws": 2,
+        "elephants": 2,
+        "names": [
+          "Ayu",
+          "Nara"
+        ],
+        "welcomeCost": 0,
+        "ledgerExact": true,
+        "coldExact": true,
+        "repeatWelcome": false,
+        "originalBackupExact": true,
+        "gameplayFSMNotYetClaimed": true
+      }
+    },
+    {
+      "id": "native-actual-care-abort-midseek-cold",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:05.122Z",
+      "data": {
+        "facilities": 3,
+        "construction": 250,
+        "initialRefills": 20,
+        "capacityEach": 8,
+        "transactionAbortExact": true,
+        "midSeekColdExact": true,
+        "continued570TicksExact": true,
+        "totalSimulationSeconds": 60,
+        "residents": [
+          {
+            "id": "elephant-ayu",
+            "foodEaten": 1,
+            "waterDrunk": 1
+          },
+          {
+            "id": "elephant-nara",
+            "foodEaten": 1,
+            "waterDrunk": 1
+          }
+        ],
+        "pauseExact": true,
+        "originalBackupExact": true
+      }
+    },
+    {
+      "id": "native-care-remove-refund-undo-cold",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:05.194Z",
+      "data": {
+        "occupiedGroveDenied": true,
+        "activeCareDenied": true,
+        "refund": 90,
+        "coldRemovalExact": true,
+        "coldPageUndo": false,
+        "samePageUndoExactFacilityAndCash": true,
+        "passiveStockRetained": true,
+        "samePageRemountRetainsUndo": true,
+        "residents": 4,
+        "originalBackupExact": true,
+        "editorMementoNotPersisted": true
+      }
+    },
+    {
+      "id": "native-pond-abort-mid-spray-cold",
+      "status": "PASS",
+      "at": "2026-11-05T20:58:05.821Z",
+      "data": {
+        "grantActuallyClaimed": true,
+        "actualBuildAndInitialService": 452,
+        "pondBuild": 170,
+        "pondService": 12,
+        "transactionAbortExact": true,
+        "midSprayColdExact": true,
+        "continued600TicksExact": true,
+        "bothResidentsBathed": true,
+        "uniqueEvents": 3,
+        "cooldownsPersisted": true,
+        "pauseExact": true,
+        "originalBackupExact": true
+      }
+    }
+  ],
+  "databasesCreated": 19,
+  "databasesDeleted": 19,
+  "ownerDatabaseTouched": false
+}

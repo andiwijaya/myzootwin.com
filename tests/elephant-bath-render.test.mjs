@@ -1,0 +1,30 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {Matrix4,MeshStandardMaterial,Vector3} from 'three';
+import {elephantHome,elephantHerd,elephantProps} from './fixtures/elephant-home.mjs';
+import {stepElephantCare} from '../src/game/animals/elephants/care-simulation.ts';
+import {serializeSaveV2,parseSaveV2} from '../src/game/persistence/save-v2.ts';
+import {createElephantRig} from '../src/game/render3d/elephant/elephant-rig.ts';
+import {elephantBathFrame} from '../src/game/render3d/elephant/elephant-bathing.ts';
+import {createElephantSpray} from '../src/game/render3d/elephant/elephant-spray.ts';
+import {createElephantResidentsScene} from '../src/game/render3d/elephant-residents-scene.ts';
+import {createElephantCareScene} from '../src/game/render3d/elephant-care-scene.ts';
+import {presentSelection} from '../src/game-entry/selection-presentation.ts';
+const catalog=()=>({identities:new Map(),bounds:new Map(),batches:[]});
+function findPhase(s,phase='spray',name='Ayu'){for(let i=0;i<1800;i++){const a=elephantHerd(s).find(a=>a.name===name&&a.currentBehavior===phase&&a.motion.ticksLeft<=6);if(a)return a;s.tick++;s.gameTimeMs=s.tick*100;stepElephantCare(s);}throw Error(name+' did not reach '+phase);}
+
+test('actual wet bathing/spray mesh frames stay grounded and inside their articulated picking envelope for both residents',()=>{
+ const material=new MeshStandardMaterial();try{for(const name of ['Ayu','Nara'])for(const phase of ['bathe','spray']){const s=elephantHome({pond:true}),a=findPhase(s,phase,name),rig=createElephantRig(name,material);try{const duration=phase==='bathe'?18:24;for(let frame=0;frame<=30;frame++){const c=structuredClone(a);c.motion.ticksLeft=duration*(1-frame/30);const result=elephantBathFrame(c,c,elephantProps(s),1);assert.ok(result);rig.apply(result.pose);for(let i=0;i<rig.geometry.getAttribute('position').count;i++){const p=rig.mesh.getVertexPosition(i,new Vector3());assert.ok(p.toArray().every(Number.isFinite));assert.ok(p.y>=-.001,'Bath trunk sinks');assert.ok(p.y<=2.28&&p.z<=2.10&&p.z>=-1.12,'Bath vertex escapes picking envelope');}}}finally{rig.dispose();}}}finally{material.dispose();}
+});
+
+test('pond body stays in its authoritative tile, only saved wet stock displays water, and all shared preview/selection owners dispose once',()=>{
+ const s=elephantHome({pond:true}),original=serializeSaveV2(s),c=catalog(),scene=createElephantCareScene(c);try{scene.sync(elephantProps(s),12,18,null);assert.equal(scene.inspect().elephantCareGeometries,6);assert.equal(scene.inspect().elephantCareWetPond,true);const pond=elephantProps(s).find(r=>r.kind==='elephant-pond'),body=c.batches.find(b=>b.ranges[0].id===pond.id).mesh;body.geometry.computeBoundingBox();const box=body.geometry.boundingBox;assert.ok(box.min.x>=-.5&&box.max.x<=.5&&box.min.z>=-.5&&box.max.z<=.5);assert.equal(presentSelection(c.identities.get(pond.id),'en').title,'Bathing pond');assert.equal(presentSelection(c.identities.get(pond.id),'id').title,'Kolam mandi');const dry=structuredClone(elephantProps(s));dry.find(r=>r.id===pond.id).stock=0;for(let i=0;i<100;i++)scene.sync(dry,12,18,{active:true,kind:'elephant-pond',cell:{x:6,z:16},reason:'ready',revision:i,command:0,price:170});assert.equal(scene.inspect().elephantCareWetPond,false);assert.equal(scene.inspect().elephantCareGeometries,6);assert.equal(serializeSaveV2(s),original);const geometries=new Set(),materials=new Set();scene.group.traverse(o=>{if(o.isMesh){geometries.add(o.geometry);materials.add(o.material);}});let disposed=0;geometries.forEach(g=>g.addEventListener('dispose',()=>disposed++));scene.dispose();scene.dispose();assert.equal(disposed,geometries.size);assert.equal(c.identities.has(pond.id),false);}finally{scene.dispose();}
+});
+
+test('one bounded instanced droplet owner is deterministic, suppressible and disposable without any timer or new geometry per frame',()=>{
+ const kit=createElephantSpray(),sources=[0,1,2].map(i=>({tip:new Vector3(i,2,0),body:new Vector3(i,0,0),heading:i*.5,progress:.8})),geometry=kit.mesh.geometry,material=kit.mesh.material;let gd=0,md=0;geometry.addEventListener('dispose',()=>gd++);material.addEventListener('dispose',()=>md++);kit.update(sources);assert.equal(kit.inspect().elephantSprayCount,24);const exact=[...kit.mesh.instanceMatrix.array];for(let i=0;i<200;i++)kit.update(sources);assert.deepEqual([...kit.mesh.instanceMatrix.array],exact);assert.equal(kit.mesh.geometry,geometry);assert.equal(kit.mesh.material,material);const matrix=new Matrix4();for(let i=0;i<24;i++){kit.mesh.getMatrixAt(i,matrix);assert.ok(matrix.elements.every(Number.isFinite));}kit.update(sources,true);assert.equal(kit.mesh.count,0);kit.dispose();kit.dispose();kit.update(sources);assert.equal(kit.mesh.count,0);assert.deepEqual([gd,md],[1,1]);
+});
+
+test('only a real wet physically reached saved spray drives particles; cold frames match, low/reduced tiers hide effects without state mutation',()=>{
+ const s=elephantHome({pond:true});findPhase(s);const exact=serializeSaveV2(s),cold=parseSaveV2(exact).value,left=createElephantResidentsScene(catalog()),right=createElephantResidentsScene(catalog());try{left.sync(elephantHerd(s),12,18,elephantProps(s));right.sync(elephantHerd(cold),12,18,elephantProps(cold));left.update(1,0,false,false);right.update(1,0,false,false);assert.ok(left.inspect().elephantSprayCount>0);const droplets=left.group.children.find(m=>m.isInstancedMesh),coldDroplets=right.group.children.find(m=>m.isInstancedMesh);assert.deepEqual([...droplets.instanceMatrix.array],[...coldDroplets.instanceMatrix.array]);left.update(1,0,true,false);assert.equal(left.inspect().elephantSprayCount,0);left.update(1,0,false,true);assert.equal(left.inspect().elephantSprayCount,0);const dry=structuredClone(elephantProps(s));dry.find(r=>r.kind==='elephant-pond').stock=0;left.sync(elephantHerd(s),12,18,dry);left.update(1,0,false,false);assert.equal(left.inspect().elephantSprayCount,0);assert.equal(serializeSaveV2(s),exact);}finally{left.dispose();right.dispose();assert.equal(left.inspect().elephantSprayGeometries,0);assert.equal(left.inspect().cachedTrunkTargets,0);}
+});

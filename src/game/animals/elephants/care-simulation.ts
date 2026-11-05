@@ -3,38 +3,51 @@ import type {ZooSaveV2} from '../../core/zoo-state.ts';
 import type {Point} from '../../core/state.ts';
 import {isElephant,type ElephantAnimal,type ElephantResource} from '../../core/species.ts';
 import {ELEPHANT_GROUND as G,elephantBodyRoute,groundCenters,groundDistance,groundSegmentAllowed} from './ground.ts';
-import {ELEPHANT_NEEDS as N} from './care-rules.ts';
+import {ELEPHANT_NEEDS as N,ELEPHANT_BATH as B} from './care-rules.ts';
 import {reconcileElephantWelfare} from './welfare.ts';
 type Consumed={animalId:string;resourceId:string};
 const angle=(a:number,b:number)=>Math.atan2(Math.sin(b-a),Math.cos(b-a));
 type FrameStart=Map<string,GroundBody>;
 function safeFrame(s:ZooSaveV2,a:ElephantAnimal,position:Point,heading:number,start:FrameStart){return s.animals.filter(isElephant).filter(b=>b.id!==a.id).every(b=>elephantBodyFrameAllowed(start.get(a.id)!,{position,heading},start.get(b.id)!,{position:b.position,heading:b.motion.heading}));}
 function turn(s:ZooSaveV2,a:ElephantAnimal,heading:number,start:FrameStart){const delta=angle(a.motion.heading,heading),next=a.motion.heading+Math.max(-G.turn,Math.min(G.turn,delta)),others=s.animals.filter(isElephant).filter(b=>b.id!==a.id).map(b=>({position:b.position,heading:b.motion.heading}));if(!elephantBodyTurnAllowed(a.position,a.motion.heading,next,others)||!safeFrame(s,a,a.position,next,start))return false;a.motion.heading=next;a.motion.heading=angle(0,a.motion.heading);return Math.abs(angle(a.motion.heading,heading))<.2;}
-function idle(a:ElephantAnimal,ticks:number=N.idleTicks){a.currentBehavior='idle';a.target=null;a.targetResourceId=null;a.motion={...a.motion,phase:'idle',ticksLeft:ticks,sequence:a.motion.sequence+1,waypoints:[],waypointIndex:0};}
-function choose(s:ZooSaveV2,a:ElephantAnimal,kind:'elephant-browse'|'elephant-water',slot:number){
+function idle(a:ElephantAnimal,ticks:number=N.idleTicks){delete a.motion.backing;a.currentBehavior='idle';a.target=null;a.targetResourceId=null;a.motion={...a.motion,phase:'idle',ticksLeft:ticks,sequence:a.motion.sequence+1,waypoints:[],waypointIndex:0};}
+function choose(s:ZooSaveV2,a:ElephantAnimal,kind:'elephant-browse'|'elephant-water'|'elephant-pond',slot:number){
  const h=s.world.habitats.find(h=>h.id===a.habitatId&&h.kind==='elephant-grove');if(!h)return null;
  const herd=s.animals.filter(isElephant),others=herd.filter(b=>b.id!==a.id),resources=s.world.resources.filter((r):r is ElephantResource=>r.habitatId===h.id&&r.kind===kind&&'approaches'in r&&r.stock>0).sort((a,b)=>a.cell.x-b.cell.x||a.cell.z-b.cell.z||a.id.localeCompare(b.id));
- for(let offset=0;offset<resources.length;offset++){const r=resources[(slot+offset)%resources.length]!;
+ for(let offset=0;offset<resources.length;offset++){const r=resources[(slot+offset)%resources.length]!;if(kind==='elephant-pond'&&others.some(b=>b.targetResourceId===r.id))continue;
   const ports=r.approaches.filter(p=>groundDistance(p,{x:r.cell.x+.5,z:r.cell.z+.5})<=1.6).sort((x,y)=>groundDistance(a.position,x)-groundDistance(a.position,y)||x.z-y.z||x.x-y.x);
   for(const p of ports){if(others.some(b=>b.targetResourceId===r.id&&b.target&&groundDistance(b.target,p)<G.separation))continue;const route=elephantBodyRoute(s.world,h,a.position,p,a.motion.heading,others.map(b=>({position:b.position,heading:b.motion.heading})),Math.atan2(r.cell.x+.5-p.x,r.cell.z+.5-p.z));if(route)return {resource:r,port:{...p},route};}
  }
  return null;
+}
+/** A finite reverse step gives a pinned turn room; all real body/prop/frame checks still apply. */
+function backAway(s:ZooSaveV2,a:ElephantAnimal){
+ const h=s.world.habitats.find(h=>h.id===a.habitatId&&h.kind==='elephant-grove'),others=s.animals.filter(isElephant).filter(b=>b.id!==a.id);if(!h||others.some(b=>b.motion.backing)||!others.some(b=>groundDistance(a.position,b.position)<3))return false;
+ const wanted=s.world.resources.some(r=>r.habitatId===h.id&&r.stock>0&&(r.kind==='elephant-browse'&&(a.hunger>=N.seekAt||a.foodEaten===0)||r.kind==='elephant-water'&&(a.thirst>=N.seekAt||a.waterDrunk===0)));if(!wanted)return false;
+ const bodies=others.map(b=>({position:b.position,heading:b.motion.heading}));
+ for(const distance of [G.backoffDistance,.6,.4]){const point={x:a.position.x-Math.sin(a.motion.heading)*distance,z:a.position.z-Math.cos(a.motion.heading)*distance};if(!groundSegmentAllowed(s.world,h,a.position,point,bodies.map(b=>b.position))||!elephantBodyMoveAllowed(a.position,point,a.motion.heading,bodies))continue;a.currentBehavior='wander';a.target=point;a.targetResourceId=null;a.motion={...a.motion,phase:'wander',backing:true,ticksLeft:G.backoffTicks,sequence:a.motion.sequence+1,waypoints:[{...point}],waypointIndex:0};return true;}
+ return false;
 }
 function seek(s:ZooSaveV2,a:ElephantAnimal,slot:number){
  const waterFirst=a.foodEaten===0&&a.waterDrunk===0?a.thirst>=N.criticalAt:a.thirst>=a.hunger,needs=[waterFirst?'elephant-water':'elephant-browse',waterFirst?'elephant-browse':'elephant-water'] as const;
  for(const kind of needs){const need=kind==='elephant-browse'?a.hunger:a.thirst,consumed=kind==='elephant-browse'?a.foodEaten:a.waterDrunk;if(need<N.seekAt&&consumed>0)continue;const selected=choose(s,a,kind,slot);if(!selected)continue;
   const phase=kind==='elephant-browse'?'seek-food':'seek-water';a.currentBehavior=phase;a.target=selected.port;a.targetResourceId=selected.resource.id;a.motion={...a.motion,phase,ticksLeft:G.seekTimeout,sequence:a.motion.sequence+1,waypoints:selected.route,waypointIndex:0};return true;
  }
- return false;
+ if(a.foodEaten>0&&a.waterDrunk>0&&a.hunger<N.seekAt&&a.thirst<N.seekAt&&a.bathCooldownTicks===0&&a.enrichment<B.seekBelow){const selected=choose(s,a,'elephant-pond',slot);if(selected){a.currentBehavior='seek-bath';a.target=selected.port;a.targetResourceId=selected.resource.id;a.motion={...a.motion,phase:'seek-bath',ticksLeft:G.seekTimeout,sequence:a.motion.sequence+1,waypoints:selected.route,waypointIndex:0};return true;}}
+ return backAway(s,a);
 }
 function walk(s:ZooSaveV2,a:ElephantAnimal,start:FrameStart){
  const h=s.world.habitats.find(h=>h.id===a.habitatId&&h.kind==='elephant-grove');if(!h||!a.target||--a.motion.ticksLeft<=0){idle(a);return false;}
  const bodies=s.animals.filter(isElephant).filter(b=>b.id!==a.id).map(b=>({position:b.position,heading:b.motion.heading})),others=bodies.map(b=>b.position),m=a.motion;let point=m.waypoints[m.waypointIndex];
+ if(m.backing){if(!point){idle(a);return false;}const distance=groundDistance(a.position,point);if(distance<.001)return true;const amount=Math.min(G.speed,distance),next={x:a.position.x+(point.x-a.position.x)/distance*amount,z:a.position.z+(point.z-a.position.z)/distance*amount};if(groundSegmentAllowed(s.world,h,a.position,next,others)&&elephantBodyMoveAllowed(a.position,next,m.heading,bodies)&&safeFrame(s,a,next,m.heading,start))a.position=next;else idle(a);return false;}
+
  if(!point){const route=elephantBodyRoute(s.world,h,a.position,a.target,a.motion.heading,bodies);if(!route){idle(a);return false;}m.waypoints=route;m.waypointIndex=0;point=route[0]!;}
  const d=groundDistance(a.position,point);
- if(d>.001){const heading=Math.atan2(point.x-a.position.x,point.z-a.position.z);if(turn(s,a,heading,start)){const amount=Math.min(G.speed,d),next:Point={x:a.position.x+(point.x-a.position.x)/d*amount,z:a.position.z+(point.z-a.position.z)/d*amount};if(groundSegmentAllowed(s.world,h,a.position,next,others)&&elephantBodyMoveAllowed(a.position,next,a.motion.heading,bodies)&&safeFrame(s,a,next,a.motion.heading,start))a.position=next;else{const route=elephantBodyRoute(s.world,h,a.position,a.target,a.motion.heading,bodies);if(route){m.waypoints=route;m.waypointIndex=0;}else idle(a);}}return false;}
+ const beforeTurn=m.heading;
+ if(d>.001){const heading=Math.atan2(point.x-a.position.x,point.z-a.position.z);if(turn(s,a,heading,start)){const amount=Math.min(G.speed,d),next:Point={x:a.position.x+(point.x-a.position.x)/d*amount,z:a.position.z+(point.z-a.position.z)/d*amount};if(groundSegmentAllowed(s.world,h,a.position,next,others)&&elephantBodyMoveAllowed(a.position,next,a.motion.heading,bodies)&&safeFrame(s,a,next,a.motion.heading,start))a.position=next;else{const route=elephantBodyRoute(s.world,h,a.position,a.target,a.motion.heading,bodies);if(route){m.waypoints=route;m.waypointIndex=0;}else idle(a,0);}}else if(Math.abs(angle(beforeTurn,m.heading))<1e-7){const route=elephantBodyRoute(s.world,h,a.position,a.target,a.motion.heading,bodies);if(route){m.waypoints=route;m.waypointIndex=0;}else idle(a,0);}return false;}
  if(m.waypointIndex<m.waypoints.length-1){m.waypointIndex++;return false;}return true;
 }
+function faceResource(s:ZooSaveV2,a:ElephantAnimal,r:ElephantResource,start:FrameStart){const before=a.motion.heading,ready=turn(s,a,Math.atan2(r.cell.x+.5-a.position.x,r.cell.z+.5-a.position.z),start);if(!ready&&Math.abs(angle(before,a.motion.heading))<1e-7)idle(a,0);return ready;}
 /** Clear a used station instead of idling on its approach and blocking the companion's next meal. */
 function depart(s:ZooSaveV2,a:ElephantAnimal,r:ElephantResource){
  const h=s.world.habitats.find(h=>h.id===a.habitatId&&h.kind==='elephant-grove');if(!h){idle(a);return;}
@@ -44,11 +57,21 @@ function depart(s:ZooSaveV2,a:ElephantAnimal,r:ElephantResource){
 }
 /** Called only by the existing authoritative fixed tick. Actual arrival and action completion consume stock. */
 export function stepElephantCare(s:ZooSaveV2){
- const fed:Consumed[]=[],watered:Consumed[]=[],herd=s.animals.filter(isElephant).sort((a,b)=>a.id.localeCompare(b.id)),start:FrameStart=new Map(herd.map(a=>[a.id,{position:{...a.position},heading:a.motion.heading}]));
+ const fed:Consumed[]=[],watered:Consumed[]=[],bathed:(Consumed&{bathCount:number;eventId:string})[]=[],herd=s.animals.filter(isElephant).sort((a,b)=>a.id.localeCompare(b.id)),start:FrameStart=new Map(herd.map(a=>[a.id,{position:{...a.position},heading:a.motion.heading}]));
  for(const [slot,a]of herd.entries()){
-  a.hunger=Math.min(100,a.hunger+N.hungerPerTick);a.thirst=Math.min(100,a.thirst+N.thirstPerTick);
+  if(a.bathCooldownTicks>0)a.bathCooldownTicks--;a.hunger=Math.min(100,a.hunger+N.hungerPerTick);a.thirst=Math.min(100,a.thirst+N.thirstPerTick);
   const phase=a.motion.phase,food=phase==='seek-food'||phase==='eat',water=phase==='seek-water'||phase==='drink';
-  if(phase==='wander'){if(a.hunger>=N.criticalAt||a.thirst>=N.criticalAt)idle(a,0);else if(walk(s,a,start))idle(a);continue;}
+  if(phase==='seek-bath'||phase==='bathe'||phase==='spray'){
+   const r=s.world.resources.find((r):r is ElephantResource=>r.id===a.targetResourceId&&r.kind==='elephant-pond'&&'approaches'in r),valid=Boolean(r&&r.habitatId===a.habitatId&&r.stock>0&&a.target&&groundDistance(a.target,{x:r.cell.x+.5,z:r.cell.z+.5})<=1.6&&r.approaches.some(p=>groundDistance(p,a.target!)<1e-6));
+   if(!r||!valid||a.hunger>=N.criticalAt||a.thirst>=N.criticalAt){idle(a,0);continue;}
+   if(phase==='seek-bath'){if(walk(s,a,start)&&faceResource(s,a,r,start)){a.currentBehavior='bathe';a.motion={...a.motion,phase:'bathe',ticksLeft:B.batheTicks,sequence:a.motion.sequence+1,waypoints:[],waypointIndex:0};}continue;}
+   if(!a.target||groundDistance(a.position,a.target)>.06){idle(a,0);continue;}
+   if(--a.motion.ticksLeft<=0){if(phase==='bathe'){a.currentBehavior='spray';a.motion.phase='spray';a.motion.ticksLeft=B.sprayTicks;a.motion.sequence++;}else{r.stock--;a.baths++;a.enrichment=Math.min(100,a.enrichment+B.enrichment);a.energy=Math.min(100,a.energy+B.energy);a.bathCooldownTicks=B.cooldownTicks;bathed.push({animalId:a.id,resourceId:r.id,bathCount:a.baths,eventId:`${a.id}:bath:${a.baths}`});depart(s,a,r);}}
+   continue;
+  }
+  // A station departure must clear its reserved approach before urgent care is reselected.
+  // Cancelling it in place can trap the companion's turn and starve both beside stocked care.
+  if(phase==='wander'){if(walk(s,a,start))idle(a);continue;}
   if(!food&&!water){if(phase==='idle'&&--a.motion.ticksLeft<=0&&!seek(s,a,slot))a.motion.ticksLeft=N.idleTicks+slot*3;continue;}
   const r=s.world.resources.find((r):r is ElephantResource=>r.id===a.targetResourceId&&'approaches'in r),h=s.world.habitats.find(h=>h.id===a.habitatId&&h.kind==='elephant-grove');
   if(!h||!r||r.habitatId!==h.id||r.kind!==(food?'elephant-browse':'elephant-water')||r.stock<=0||!a.target||groundDistance(a.target,{x:r.cell.x+.5,z:r.cell.z+.5})>1.6||!r.approaches.some(p=>groundDistance(p,a.target!)<1e-6)){idle(a);continue;}
@@ -58,8 +81,8 @@ export function stepElephantCare(s:ZooSaveV2){
    if(--a.motion.ticksLeft<=0){r.stock--;if(food){a.hunger=Math.max(0,a.hunger-N.foodRelief);a.foodEaten++;fed.push({animalId:a.id,resourceId:r.id});}else{a.thirst=Math.max(0,a.thirst-N.waterRelief);a.waterDrunk++;watered.push({animalId:a.id,resourceId:r.id});}depart(s,a,r);}
    continue;
   }
-  if(walk(s,a,start)&&turn(s,a,Math.atan2(r.cell.x+.5-a.position.x,r.cell.z+.5-a.position.z),start)){const action=food?'eat':'drink';a.currentBehavior=action;a.motion.phase=action;a.motion.ticksLeft=N.actionTicks;a.motion.sequence++;a.motion.waypoints=[];a.motion.waypointIndex=0;}
+  if(walk(s,a,start)&&faceResource(s,a,r,start)){const action=food?'eat':'drink';a.currentBehavior=action;a.motion.phase=action;a.motion.ticksLeft=N.actionTicks;a.motion.sequence++;a.motion.waypoints=[];a.motion.waypointIndex=0;}
  }
  for(const a of herd){const before=start.get(a.id)!;a.motion.lastStep={x:a.position.x-before.position.x,z:a.position.z-before.position.z,heading:angle(before.heading,a.motion.heading)};}
- reconcileElephantWelfare(s);return {fed,watered};
+ reconcileElephantWelfare(s);return bathed.length?{fed,watered,bathed}:{fed,watered};
 }

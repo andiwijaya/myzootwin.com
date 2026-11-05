@@ -25,7 +25,8 @@ export function elephantLocomotionPose(previous:ElephantAnimal,current:ElephantA
  const strength=Math.max(walk,pivot),x=mix(previous.position.x,current.position.x,t),z=mix(previous.position.z,current.position.z,t);
  const direction=speed>1e-8?now:before,length=Math.hypot(direction.x,direction.z);
  const phase=length>1e-8?(x*direction.x+z*direction.z)/length/(.16/.75):(previous.motion.heading+delta.heading*t)/.5;
- const drop=strength?-.014*strength:0,legs=[0,.5,.25,.75].map(offset=>{const step=elephantFootStep(phase+offset,strength);return elephantLegPose(step.step,step.lift,drop);});
+ const heading=previous.motion.heading+angle(previous.motion.heading,current.motion.heading)*t,reverse=direction.x*Math.sin(heading)+direction.z*Math.cos(heading)<0?-1:1;
+ const drop=strength?-.014*strength:0,legs=[0,.5,.25,.75].map(offset=>{const step=elephantFootStep(phase+offset,strength);return elephantLegPose(step.step*reverse,step.lift,drop);});
  const tuck=Math.max(walk,clamp((3.3-companionDistance)/.5));
  return {bodyDrop:drop,upperLegs:legs.map(p=>p.upper),lowerLegs:legs.map(p=>p.lower),feet:legs.map(p=>p.foot),trunk:[.20,.10,.10,.20,.26,.28,.28,.20].map(v=>v*tuck),tailPitch:-.4*tuck};
 }

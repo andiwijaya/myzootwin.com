@@ -4,7 +4,7 @@ Source: owner Library handoff `libfile_09652153d1bc8191b2c1f1aa6cb5ce18` (44/44 
 
 Session 1 stopped safely before **2026-11-05 17:00 WIB / 10:00 UTC**. Session 2 explicitly authorized by the owner to continue at home, resumed at13:35 UTC /20:35 WIB from5852bdc. No new deadline specified. No push/deploy authorized. Original checkout, owner builds and owner saves stay untouched.
 
-Verified EH: **19/39 (48.72%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
+Verified EH: **20/39 (51.28%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
 
 | Item | Status | Scope / evidence |
 |---|---|---|
@@ -27,7 +27,7 @@ Verified EH: **19/39 (48.72%)**. Existing V1: **46/51**, five evidence/signoff g
 | EH3-01 | [x] | Original3836triangle/27bone rigs, four-angle/phone/game/cold/picking proof, bounded2draw ownership/disposal;611 tests; [evidence](ELEPHANT_RIG.md) |
 | EH3-02 | [x] | Actual-displacement grounded IK gait, oriented swept-body/prop/frame avoidance, two legal care layouts and exact cold pose;618 tests/26 native cases; [evidence](ELEPHANT_LOCOMOTION.md) |
 | EH3-03 | [x] | Actual saved-action/resource reach, water draw/mouth curl, cold/interrupt/completion sync, bounded cache;624 tests and native actual care/phone art; [evidence](ELEPHANT_CONSUMPTION.md) |
-| EH3-04 | [ ] | Pond, bathing and trunk spray FSM |
+| EH3-04 | [x] | Paid pond, actual bath/spray/stock/cooldown, safe pinned-turn escape;638 tests/27 native cases, cold wet-spray and both baths; [evidence](ELEPHANT_POND.md) |
 | EH3-05 | [ ] | Shade/log/mud causal enrichment |
 | EH3-06 | [ ] | Social interaction and resource contention |
 | EH3-07 | [ ] | Per-elephant bilingual care panel |
@@ -50,4 +50,4 @@ Verified EH: **19/39 (48.72%)**. Existing V1: **46/51**, five evidence/signoff g
 
 Each checked item requires a local commit and its scoped evidence. Commit identities are recorded by Git history and subsequent checkpoints; no self-referential hash is invented. Upcoming steps remain unverified until their complete seam passes.
 
-Historical timed-session shutdown: [first checkpoint](ELEPHANT_SESSION_CHECKPOINT.md). Owner explicitly resumed work afterward; latest verified seam: [actual consumption animation](ELEPHANT_CONSUMPTION.md). Latest home handoff: [checkpoint](ELEPHANT_HOME_CHECKPOINT.md).
+Historical timed-session shutdown: [first checkpoint](ELEPHANT_SESSION_CHECKPOINT.md). Owner explicitly resumed work afterward; latest verified seam: [real pond and bathing](ELEPHANT_POND.md). Latest home handoff: [checkpoint](ELEPHANT_HOME_CHECKPOINT.md).
