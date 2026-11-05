@@ -1,0 +1,257 @@
+{
+  "result": {
+    "status": "PASS",
+    "error": null,
+    "method": "Native IndexedDB on explicitly generated disposable QA databases",
+    "physicalDevice": false,
+    "cases": [
+      {
+        "id": "native-blocked-upgrade",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.021Z",
+        "data": {
+          "blocked": true,
+          "primaryExact": true,
+          "oldConnectionClosedExplicitly": true
+        }
+      },
+      {
+        "id": "native-migration-new",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.045Z",
+        "data": {
+          "schema": 2,
+          "tiles": 216,
+          "currency": 1500,
+          "backupExact": true,
+          "oldBinaryBlocked": true
+        }
+      },
+      {
+        "id": "native-migration-q01",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.063Z",
+        "data": {
+          "schema": 2,
+          "tiles": 216,
+          "currency": 1145,
+          "backupExact": true,
+          "oldBinaryBlocked": true
+        }
+      },
+      {
+        "id": "native-migration-midQ02",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.085Z",
+        "data": {
+          "schema": 2,
+          "tiles": 216,
+          "currency": 913,
+          "backupExact": true,
+          "oldBinaryBlocked": true
+        }
+      },
+      {
+        "id": "native-migration-midVisitor",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.106Z",
+        "data": {
+          "schema": 2,
+          "tiles": 216,
+          "currency": 923,
+          "backupExact": true,
+          "oldBinaryBlocked": true
+        }
+      },
+      {
+        "id": "native-migration-longLedger",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.131Z",
+        "data": {
+          "schema": 2,
+          "tiles": 216,
+          "currency": 969,
+          "backupExact": true,
+          "oldBinaryBlocked": true
+        }
+      },
+      {
+        "id": "native-migration-zeroCash",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.147Z",
+        "data": {
+          "schema": 2,
+          "tiles": 216,
+          "currency": 0,
+          "backupExact": true,
+          "oldBinaryBlocked": true
+        }
+      },
+      {
+        "id": "native-migration-q04Ready",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.177Z",
+        "data": {
+          "schema": 2,
+          "tiles": 216,
+          "currency": 985,
+          "backupExact": true,
+          "oldBinaryBlocked": true
+        }
+      },
+      {
+        "id": "native-migration-q04Claimed",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.203Z",
+        "data": {
+          "schema": 2,
+          "tiles": 216,
+          "currency": 985,
+          "backupExact": true,
+          "oldBinaryBlocked": true
+        }
+      },
+      {
+        "id": "native-migration-indonesian",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.232Z",
+        "data": {
+          "schema": 2,
+          "tiles": 216,
+          "currency": 985,
+          "backupExact": true,
+          "oldBinaryBlocked": true
+        }
+      },
+      {
+        "id": "native-transaction-abort",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.249Z",
+        "data": {
+          "primaryExact": true,
+          "partialBackup": false,
+          "method": "Explicit native tx.abort after queued primary write"
+        }
+      },
+      {
+        "id": "native-two-writer-CAS",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.265Z",
+        "data": {
+          "committed": 1,
+          "conflicted": 1
+        }
+      },
+      {
+        "id": "quota-fault-boundary",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.294Z",
+        "data": {
+          "method": "Injected SaveFault before native write; not physical disk exhaustion",
+          "primaryExact": true,
+          "recovered": true
+        }
+      },
+      {
+        "id": "native-corrupt-recovery",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.310Z",
+        "data": {
+          "restoredSchema": 2,
+          "automaticReset": false
+        }
+      },
+      {
+        "id": "future-content-protection",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.319Z",
+        "data": {
+          "blocked": true,
+          "rawPreserved": true,
+          "previousAvailable": true
+        }
+      },
+      {
+        "id": "future-schema-protection",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.325Z",
+        "data": {
+          "blocked": true,
+          "rawPreserved": true,
+          "previousAvailable": true
+        }
+      },
+      {
+        "id": "native-format1-envelope-transition",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.386Z",
+        "data": {
+          "schema": 2,
+          "backupExact": true,
+          "explicitRecovery": true
+        }
+      },
+      {
+        "id": "native-reset-first-migration-and-undo",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.427Z",
+        "data": {
+          "schema": 2,
+          "originalBackupExact": true,
+          "preferencesPreserved": true,
+          "undoExact": true
+        }
+      },
+      {
+        "id": "native-multispecies-cold-continue-and-undo",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:23.552Z",
+        "data": {
+          "syntheticPersistenceFixture": true,
+          "gameplayNotClaimed": true,
+          "residents": 4,
+          "macaws": 2,
+          "elephants": 2,
+          "habitats": 2,
+          "elephantResources": 6,
+          "coldContinues": 3,
+          "originalBackupExact": true,
+          "undoExact": true
+        }
+      },
+      {
+        "id": "native-migration-clock-ledger",
+        "status": "PASS",
+        "at": "2026-11-05T14:17:24.774Z",
+        "data": {
+          "scope": "Migrated legacy macaw clock/ledger regression; no elephant FSM or active wall-time soak",
+          "ticks": 2400,
+          "simulatedMinutes": 4,
+          "reloads": 12,
+          "pauses": 12,
+          "editTransactions": 160,
+          "careCommands": 7,
+          "newCompactions": 1,
+          "maxJournal": 126,
+          "maxPayload": 36745,
+          "currency": 1003,
+          "ticketAdmissions": 12,
+          "legacyClaims": 4,
+          "grant": null,
+          "disposedSubscribers": 0,
+          "referenceExact": true,
+          "realNativeCheckpoint": true,
+          "coldContinueExact": true,
+          "originalBackupExact": true
+        }
+      }
+    ],
+    "databasesCreated": 15,
+    "databasesDeleted": 15,
+    "ownerDatabaseTouched": false
+  },
+  "console": {
+    "limit": 200,
+    "entries": []
+  }
+}
