@@ -18,11 +18,11 @@ export function elephantFootStep(phase:number,strength:number){
  return p<.75?{step:(.08-.16*p/.75)*strength,lift:0}:{step:(-.08+.16*(p-.75)/.25)*strength,lift:Math.sin(Math.PI*(p-.75)/.25)*.065*strength};
 }
 /** Read actual saved tick displacement. No animation clock, RNG, simulation writes or invented walking. */
-export function elephantLocomotionPose(previous:ElephantAnimal,current:ElephantAnimal,alpha:number,companionDistance=Infinity,reducedMotion=false):ElephantPose{
+export function elephantLocomotionPose(previous:ElephantAnimal,current:ElephantAnimal,alpha:number,companionDistance=Infinity,_reducedMotion=false):ElephantPose{
  const t=Number.isFinite(alpha)?clamp(alpha):0,delta={x:current.position.x-previous.position.x,z:current.position.z-previous.position.z,heading:angle(previous.motion.heading,current.motion.heading)};
  const now=current.motion.lastStep??delta,before=previous.motion.lastStep??delta;
  const speed=Math.hypot(now.x,now.z),priorSpeed=Math.hypot(before.x,before.z),walk=clamp(mix(priorSpeed,speed,t)/ELEPHANT_GROUND.speed),pivot=clamp(Math.abs(mix(before.heading,now.heading,t))/ELEPHANT_GROUND.turn)*.25;
- const strength=reducedMotion?0:Math.max(walk,pivot),x=mix(previous.position.x,current.position.x,t),z=mix(previous.position.z,current.position.z,t);
+ const strength=Math.max(walk,pivot),x=mix(previous.position.x,current.position.x,t),z=mix(previous.position.z,current.position.z,t);
  const direction=speed>1e-8?now:before,length=Math.hypot(direction.x,direction.z);
  const phase=length>1e-8?(x*direction.x+z*direction.z)/length/(.16/.75):(previous.motion.heading+delta.heading*t)/.5;
  const drop=strength?-.014*strength:0,legs=[0,.5,.25,.75].map(offset=>{const step=elephantFootStep(phase+offset,strength);return elephantLegPose(step.step,step.lift,drop);});

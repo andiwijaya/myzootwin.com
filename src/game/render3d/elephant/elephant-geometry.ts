@@ -13,7 +13,7 @@ for(const [i,p]of ELEPHANT_TRUNK.entries())joints.push({name:'trunk'+i,parent:i?
 joints.push({name:'tail',parent:'body',at:[0,.98,-.78]},{name:'tailTip',parent:'tail',at:[0,.39,-.99]});
 /** Original Asian-elephant topology; anatomical references are facts, never imported assets. */
 export const ELEPHANT_JOINTS:readonly ElephantJoint[]=joints;
-export const ELEPHANT_ART=Object.freeze({version:'asian-elephant-original-v1',triangleLimit:6000,maxResidents:2,scaleAyu:1,scaleNara:.94,footY:0,boundsMin:[-.88,0,-1.12]as V,boundsMax:[.88,2.28,1.37]as V});
+export const ELEPHANT_ART=Object.freeze({version:'asian-elephant-original-v1',triangleLimit:6000,maxResidents:2,scaleAyu:1,scaleNara:.94,footY:0,boundsMin:[-.88,0,-1.12]as V,boundsMax:[.88,2.28,2.10]as V});
 type Weights={a:number;b?:number;blend?:number};
 
 export function createElephantGeometry(name:string){

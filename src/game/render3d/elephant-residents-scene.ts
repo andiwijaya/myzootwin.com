@@ -1,9 +1,10 @@
 import {Box3,Group,MeshStandardMaterial} from 'three';
-import type {ElephantAnimal} from '../core/species.ts';
+import type {ElephantAnimal,ElephantResource} from '../core/species.ts';
 import type {SceneCatalog} from './scene-selection.ts';
 import {sceneOrigin} from '../world/scene-coordinates.ts';
 import {createElephantRig} from './elephant/elephant-rig.ts';
 import {ELEPHANT_ART} from './elephant/elephant-geometry.ts';
+import {createElephantConsumptionAnimator} from './elephant/elephant-consumption.ts';
 import {elephantLocomotionPose} from './elephant/elephant-locomotion.ts';
 
 /** Ambient rig movement reads existing simulation time; it never advances care or rewards. */
@@ -15,12 +16,12 @@ export function elephantAmbientPose(timeMs:number,name:string,reducedMotion=fals
 
 /** Two original skinned residents in the one world renderer; no timer, RAF, RNG or save mutation. */
 export function createElephantResidentsScene(catalog:SceneCatalog){
- const group=new Group();group.name='Ayu and Nara residents';let disposed=false,material:MeshStandardMaterial|undefined,originX=6,originZ=5;
+ const group=new Group();group.name='Ayu and Nara residents';let disposed=false,material:MeshStandardMaterial|undefined,originX=6,originZ=5;const consumption=createElephantConsumptionAnimator();let careResources:ElephantResource[]=[];
  const models=new Map<string,{rig:ReturnType<typeof createElephantRig>;previous:ElephantAnimal;current:ElephantAnimal;entry:SceneCatalog['batches'][number]}>();
  function bounds(id:string){const m=models.get(id);if(m)catalog.bounds.set(id,new Box3().copy(m.rig.mesh.boundingBox!).applyMatrix4(m.rig.mesh.matrixWorld));}
  function remove(id:string){const m=models.get(id);if(!m)return;catalog.batches=catalog.batches.filter(b=>b!==m.entry);catalog.identities.delete(id);catalog.bounds.delete(id);group.remove(m.rig.mesh);m.rig.dispose();models.delete(id);}
- return {group,sync(animals:ElephantAnimal[],width:number,height:number){
-  if(disposed)return;const active=animals.slice(0,ELEPHANT_ART.maxResidents);for(const id of models.keys())if(!active.some(a=>a.id===id))remove(id);
+ return {group,sync(animals:ElephantAnimal[],width:number,height:number,resources:readonly ElephantResource[]=[]){
+  if(disposed)return;careResources=structuredClone([...resources]);const active=animals.slice(0,ELEPHANT_ART.maxResidents);for(const id of models.keys())if(!active.some(a=>a.id===id))remove(id);
   if(active.length&&!material)material=new MeshStandardMaterial({vertexColors:true,roughness:.97});
   const origin=sceneOrigin({width,height});originX=origin.x;originZ=origin.z;
   for(const [ordinal,a]of active.entries()){
@@ -31,6 +32,6 @@ export function createElephantResidentsScene(catalog:SceneCatalog){
   if(!models.size&&material){material.dispose();material=undefined;}
  },update(alpha:number,timeMs=0,reducedMotion=true){
   if(disposed)return;const t=Number.isFinite(alpha)?Math.max(0,Math.min(1,alpha)):0;
-  for(const [id,m]of models){const a=m.current,p=m.previous,mesh=m.rig.mesh,x=p.position.x+(a.position.x-p.position.x)*t,z=p.position.z+(a.position.z-p.position.z)*t;mesh.position.set(x-originX,.079,z-originZ);mesh.rotation.y=p.motion.heading+Math.atan2(Math.sin(a.motion.heading-p.motion.heading),Math.cos(a.motion.heading-p.motion.heading))*t;const companion=Math.min(Infinity,...[...models.values()].filter(other=>other!==m).map(other=>Math.hypot(x-other.previous.position.x-(other.current.position.x-other.previous.position.x)*t,z-other.previous.position.z-(other.current.position.z-other.previous.position.z)*t)));m.rig.apply({...elephantAmbientPose(timeMs,a.name,reducedMotion),...elephantLocomotionPose(p,a,t,companion,reducedMotion)});bounds(id);}
- },dispose(){if(disposed)return;disposed=true;for(const id of [...models.keys()])remove(id);material?.dispose();material=undefined;group.clear();},inspect:()=>({liveElephantModels:models.size,elephantResidentGeometries:models.size,elephantResidentMaterials:material?1:0,elephantResidentTriangles:[...models.values()].reduce((n,m)=>n+m.rig.triangles,0),elephantResidentBones:[...models.values()].reduce((n,m)=>n+m.rig.inspect().elephantRigBones,0),elephantResidentSkinnedDraws:models.size,elephantResidentBoneTextures:[...models.values()].filter(m=>m.rig.skeleton.boneTexture).length,elephantResidentsSceneDisposed:disposed})};
+  for(const [id,m]of models){const a=m.current,p=m.previous,mesh=m.rig.mesh,x=p.position.x+(a.position.x-p.position.x)*t,z=p.position.z+(a.position.z-p.position.z)*t;mesh.position.set(x-originX,.079,z-originZ);mesh.rotation.y=p.motion.heading+Math.atan2(Math.sin(a.motion.heading-p.motion.heading),Math.cos(a.motion.heading-p.motion.heading))*t;const companion=Math.min(Infinity,...[...models.values()].filter(other=>other!==m).map(other=>Math.hypot(x-other.previous.position.x-(other.current.position.x-other.previous.position.x)*t,z-other.previous.position.z-(other.current.position.z-other.previous.position.z)*t)));const base={...elephantAmbientPose(timeMs,a.name,reducedMotion),...elephantLocomotionPose(p,a,t,companion,reducedMotion)};m.rig.apply({...base,...consumption.pose(p,a,careResources,t,base,reducedMotion)});bounds(id);}
+ },dispose(){if(disposed)return;disposed=true;consumption.dispose();careResources=[];for(const id of [...models.keys()])remove(id);material?.dispose();material=undefined;group.clear();},inspect:()=>({...consumption.inspect(),liveElephantModels:models.size,elephantResidentGeometries:models.size,elephantResidentMaterials:material?1:0,elephantResidentTriangles:[...models.values()].reduce((n,m)=>n+m.rig.triangles,0),elephantResidentBones:[...models.values()].reduce((n,m)=>n+m.rig.inspect().elephantRigBones,0),elephantResidentSkinnedDraws:models.size,elephantResidentBoneTextures:[...models.values()].filter(m=>m.rig.skeleton.boneTexture).length,elephantResidentsSceneDisposed:disposed})};
 }
