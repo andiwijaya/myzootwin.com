@@ -20,6 +20,8 @@ export interface ElephantMotion {
   lastStep?:Point&{heading:number};
   /** Short reverse clearance step when a companion pins the turn; absent in older V2 saves. */
   backing?:true;
+  /** Optional reciprocal partner for a coordinated, persisted social visit. */
+  partnerId?:string;
   phase:ElephantBehavior;
   ticksLeft:number;
   sequence:number;

@@ -4,13 +4,15 @@ import type {Point} from '../../core/state.ts';
 import {isElephant,type ElephantAnimal,type ElephantResource} from '../../core/species.ts';
 import {ELEPHANT_GROUND as G,elephantBodyRoute,groundCenters,groundDistance,groundSegmentAllowed} from './ground.ts';
 import {ELEPHANT_NEEDS as N,ELEPHANT_BATH as B,ELEPHANT_ENRICHMENT as E} from './care-rules.ts';
+import {prepareElephantSocial,stepElephantSocial,finishElephantSocial} from './social.ts';
+import {ELEPHANT_SOCIAL as S} from './care-rules.ts';
 import {reconcileElephantWelfare} from './welfare.ts';
 type Consumed={animalId:string;resourceId:string};
 const angle=(a:number,b:number)=>Math.atan2(Math.sin(b-a),Math.cos(b-a));
 type FrameStart=Map<string,GroundBody>;
 function safeFrame(s:ZooSaveV2,a:ElephantAnimal,position:Point,heading:number,start:FrameStart){return s.animals.filter(isElephant).filter(b=>b.id!==a.id).every(b=>elephantBodyFrameAllowed(start.get(a.id)!,{position,heading},start.get(b.id)!,{position:b.position,heading:b.motion.heading}));}
 function turn(s:ZooSaveV2,a:ElephantAnimal,heading:number,start:FrameStart){const delta=angle(a.motion.heading,heading),next=a.motion.heading+Math.max(-G.turn,Math.min(G.turn,delta)),others=s.animals.filter(isElephant).filter(b=>b.id!==a.id).map(b=>({position:b.position,heading:b.motion.heading}));if(!elephantBodyTurnAllowed(a.position,a.motion.heading,next,others)||!safeFrame(s,a,a.position,next,start))return false;a.motion.heading=next;a.motion.heading=angle(0,a.motion.heading);return Math.abs(angle(a.motion.heading,heading))<.2;}
-function idle(a:ElephantAnimal,ticks:number=N.idleTicks){delete a.motion.backing;a.currentBehavior='idle';a.target=null;a.targetResourceId=null;a.motion={...a.motion,phase:'idle',ticksLeft:ticks,sequence:a.motion.sequence+1,waypoints:[],waypointIndex:0};}
+function idle(a:ElephantAnimal,ticks:number=N.idleTicks){delete a.motion.backing;delete a.motion.partnerId;a.currentBehavior='idle';a.target=null;a.targetResourceId=null;a.motion={...a.motion,phase:'idle',ticksLeft:ticks,sequence:a.motion.sequence+1,waypoints:[],waypointIndex:0};}
 function choose(s:ZooSaveV2,a:ElephantAnimal,kind:ElephantResource['kind'],slot:number){
  const h=s.world.habitats.find(h=>h.id===a.habitatId&&h.kind==='elephant-grove');if(!h)return null;
  const herd=s.animals.filter(isElephant),others=herd.filter(b=>b.id!==a.id),resources=s.world.resources.filter((r):r is ElephantResource=>r.habitatId===h.id&&r.kind===kind&&'approaches'in r&&r.stock>0).sort((a,b)=>a.cell.x-b.cell.x||a.cell.z-b.cell.z||a.id.localeCompare(b.id));
@@ -62,8 +64,12 @@ function depart(s:ZooSaveV2,a:ElephantAnimal,r:ElephantResource){
 /** Called only by the existing authoritative fixed tick. Actual arrival and action completion consume stock. */
 export function stepElephantCare(s:ZooSaveV2){
  const fed:Consumed[]=[],watered:Consumed[]=[],bathed:(Consumed&{bathCount:number;eventId:string})[]=[],enriched:(Consumed&{enrichedTicks:number;eventId:string})[]=[],herd=s.animals.filter(isElephant).sort((a,b)=>a.id.localeCompare(b.id)),start:FrameStart=new Map(herd.map(a=>[a.id,{position:{...a.position},heading:a.motion.heading}]));
+ for(const a of herd){
+  if(a.socialCooldownTicks>0)a.socialCooldownTicks--;a.socialComfort=Math.max(0,a.socialComfort-S.decay);if(a.bathCooldownTicks>0)a.bathCooldownTicks--;if(a.logCooldownTicks>0)a.logCooldownTicks--;a.shadeRest=Math.max(0,a.shadeRest-E.shadeDecay);if(s.world.resources.some(r=>r.habitatId===a.habitatId&&r.kind==='elephant-shade')){a.energy=Math.max(0,a.energy-E.energyDecay);}if(s.world.resources.some(r=>r.habitatId===a.habitatId&&r.kind==='elephant-log'))a.enrichment=Math.max(0,a.enrichment-E.enrichmentDecay);a.hunger=Math.min(100,a.hunger+N.hungerPerTick);a.thirst=Math.min(100,a.thirst+N.thirstPerTick);
+ }
+ const socialHooks={idle,walk:(a:ElephantAnimal)=>walk(s,a,start),turn:(a:ElephantAnimal,heading:number)=>turn(s,a,heading,start)};prepareElephantSocial(s,socialHooks);
  for(const [slot,a]of herd.entries()){
-  if(a.bathCooldownTicks>0)a.bathCooldownTicks--;if(a.logCooldownTicks>0)a.logCooldownTicks--;a.shadeRest=Math.max(0,a.shadeRest-E.shadeDecay);if(s.world.resources.some(r=>r.habitatId===a.habitatId&&r.kind==='elephant-shade')){a.energy=Math.max(0,a.energy-E.energyDecay);}if(s.world.resources.some(r=>r.habitatId===a.habitatId&&r.kind==='elephant-log'))a.enrichment=Math.max(0,a.enrichment-E.enrichmentDecay);a.hunger=Math.min(100,a.hunger+N.hungerPerTick);a.thirst=Math.min(100,a.thirst+N.thirstPerTick);
+  if(stepElephantSocial(s,a,socialHooks))continue;
   const phase=a.motion.phase,food=phase==='seek-food'||phase==='eat',water=phase==='seek-water'||phase==='drink';
   if(phase==='seek-shade'||phase==='rest'||phase==='seek-log'||phase==='enrich'){
    const shade=phase==='seek-shade'||phase==='rest',kind=shade?'elephant-shade':'elephant-log',r=s.world.resources.find((r):r is ElephantResource=>r.id===a.targetResourceId&&r.kind===kind&&'approaches'in r);
@@ -95,6 +101,7 @@ export function stepElephantCare(s:ZooSaveV2){
   }
   if(walk(s,a,start)&&faceResource(s,a,r,start)){const action=food?'eat':'drink';a.currentBehavior=action;a.motion.phase=action;a.motion.ticksLeft=N.actionTicks;a.motion.sequence++;a.motion.waypoints=[];a.motion.waypointIndex=0;}
  }
+ const socialized=finishElephantSocial(s,socialHooks);
  for(const a of herd){const before=start.get(a.id)!;a.motion.lastStep={x:a.position.x-before.position.x,z:a.position.z-before.position.z,heading:angle(before.heading,a.motion.heading)};}
- reconcileElephantWelfare(s);return {...{fed,watered},...(bathed.length?{bathed}:{}),...(enriched.length?{enriched}:{})};
+ reconcileElephantWelfare(s);return {...{fed,watered},...(bathed.length?{bathed}:{}),...(enriched.length?{enriched}:{}),...(socialized.length?{socialized}:{})};
 }

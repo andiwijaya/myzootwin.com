@@ -7,3 +7,6 @@ export const ELEPHANT_BATH=Object.freeze({batheTicks:18,sprayTicks:24,cooldownTi
 
 /** Benefits require a completed physical visit, never mere placement or elapsed real time. */
 export const ELEPHANT_ENRICHMENT=Object.freeze({restTicks:30,logTicks:24,logCooldownTicks:450,restEnergy:20,restShade:40,logRelief:28,shadeSeekBelow:50,energySeekBelow:45,logSeekBelow:75,shadeDecay:.01,energyDecay:.005,enrichmentDecay:.01});
+
+/** Fictional social need; one shared-tick reciprocal greeting, with no player-triggered reward. */
+export const ELEPHANT_SOCIAL=Object.freeze({seekBelow:65,attemptEveryTicks:20,decay:.005,comfort:24,touchTicks:24,cooldownTicks:600,retryTicks:80,approachTicks:400,minDistance:2.5,maxDistance:3.1});
