@@ -1,16 +1,18 @@
 import type { Point, WorldState } from '../core/state.ts';
 export type PlacementReason = 'choose' | 'ready' | 'outside' | 'creek' | 'path' | 'occupied' | 'scenery' | 'limit' | 'command' | 'funds' | 'capacity';
 export type PlacementKind='habitat'|'path';
-export interface PlacementProposal { kind:PlacementKind; anchor:Point; width:1|2; height:1|2; cells:Point[]; }
+export interface PlacementProposal { kind:PlacementKind; anchor:Point; width:1|2|6; height:1|2|6; cells:Point[]; }
 export interface PlacementView { kind:PlacementKind; active:boolean; revision:number; proposal:PlacementProposal|null; reason:PlacementReason; confirmed:PlacementProposal|null; confirmations:number; }
 export type PlacementCommand = 'begin'|'begin-path'|'confirm'|'cancel'|'left'|'right'|'up'|'down';
 export const cellKey=(p:Point)=>`${p.x},${p.z}`;
 /** Pure, conservative footprint rules shared by preview and the upcoming habitat command. */
-export function validatePlacement(world:WorldState, anchor:Point|null, blocked:ReadonlySet<string>,kind:PlacementKind='habitat'):{proposal:PlacementProposal|null;reason:PlacementReason} {
+export function validatePlacement(world:Pick<WorldState,'width'|'height'|'tiles'>, anchor:Point|null, blocked:ReadonlySet<string>,kind:PlacementKind='habitat',footprint:2|6=2):{proposal:PlacementProposal|null;reason:PlacementReason} {
   if(!anchor)return {proposal:null,reason:'choose'};
   if(!Number.isSafeInteger(anchor.x)||!Number.isSafeInteger(anchor.z))return {proposal:null,reason:'outside'};
-  const cells=kind==='path'?[{...anchor}]:[{...anchor},{x:anchor.x+1,z:anchor.z},{x:anchor.x,z:anchor.z+1},{x:anchor.x+1,z:anchor.z+1}];
-  const proposal:PlacementProposal={kind,anchor:{...anchor},width:kind==='path'?1:2,height:kind==='path'?1:2,cells};
+  if(footprint!==2&&footprint!==6)return {proposal:null,reason:'command'};
+  const size=kind==='path'?1:footprint;
+  const cells=Array.from({length:size*size},(_,i)=>({x:anchor.x+i%size,z:anchor.z+Math.floor(i/size)}));
+  const proposal:PlacementProposal={kind,anchor:{...anchor},width:size,height:size,cells};
   if(cells.some(c=>c.x<0||c.z<0||c.x>=world.width||c.z>=world.height))return {proposal,reason:'outside'};
   const tiles=cells.map(c=>world.tiles.find(t=>t.cell.x===c.x&&t.cell.z===c.z));
   const reason=tiles.some(t=>!t)?'outside':tiles.some(t=>t!.terrain==='creek')?'creek':tiles.some(t=>t!.path)?'path':tiles.some(t=>t!.occupantId!==null)?'occupied':cells.some(c=>blocked.has(cellKey(c)))?'scenery':'ready';

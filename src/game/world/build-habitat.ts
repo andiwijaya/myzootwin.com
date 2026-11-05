@@ -8,7 +8,7 @@ export const STARTER_HABITAT_LIMIT=1;
 export const habitatBlockerKeys=():ReadonlySet<string>=>new Set(scenery);
 export function validateHabitatPlacement(world:WorldState,anchor:Point|null){
   const checked=validatePlacement(world,anchor,scenery);
-  return checked.reason==='ready'&&world.habitats.length>=STARTER_HABITAT_LIMIT?{...checked,reason:'limit' as const}:checked;
+  return checked.reason==='ready'&&world.habitats.filter(h=>!('kind'in h)||h.kind==='macaw-aviary').length>=STARTER_HABITAT_LIMIT?{...checked,reason:'limit' as const}:checked;
 }
 export type HabitatBuildResult={ok:true;world:WorldState;habitatId:string;duplicate:boolean}|{ok:false;reason:PlacementReason};
 /** Prepare a complete world transaction; never mutate the caller or mint money/progress. */
