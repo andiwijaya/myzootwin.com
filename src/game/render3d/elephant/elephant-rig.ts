@@ -1,0 +1,17 @@
+import {Bone,Box3,MeshStandardMaterial,Skeleton,SkinnedMesh,Sphere,Vector3} from 'three';
+import {createElephantGeometry,ELEPHANT_ART,ELEPHANT_JOINTS,ELEPHANT_LEGS} from './elephant-geometry.ts';
+
+export interface ElephantPose {breath?:number;headPitch?:number;headYaw?:number;earLeft?:number;earRight?:number;trunk?:readonly number[];upperLegs?:readonly number[];lowerLegs?:readonly number[];feet?:readonly number[];tail?:number;}
+const finite=(v:number|undefined,max:number)=>Number.isFinite(v)?Math.max(-max,Math.min(max,v!)):0;
+/** One skinned draw, one borrowed material and one owned geometry/skeleton per resident. */
+export function createElephantRig(name:string,material:MeshStandardMaterial){
+ const asset=createElephantGeometry(name),mesh=new SkinnedMesh(asset.geometry,material),bones=new Map<string,Bone>();let disposed=false;
+ mesh.name=name;mesh.castShadow=true;mesh.receiveShadow=true;
+ for(const definition of ELEPHANT_JOINTS){const bone=new Bone();bone.name=definition.name;const parent=definition.parent?ELEPHANT_JOINTS.find(j=>j.name===definition.parent):null;bone.position.set(...definition.at);if(parent)bone.position.sub(new Vector3(...parent.at));bones.set(definition.name,bone);if(definition.parent)bones.get(definition.parent)!.add(bone);else mesh.add(bone);}
+ mesh.updateMatrixWorld(true);const skeleton=new Skeleton([...bones.values()]);mesh.bind(skeleton);mesh.normalizeSkinWeights();
+ // Conservative articulated envelope: raycasting still tests the actual skinned triangles.
+ mesh.boundingBox=new Box3(new Vector3(...ELEPHANT_ART.boundsMin),new Vector3(...ELEPHANT_ART.boundsMax));mesh.boundingSphere=mesh.boundingBox.getBoundingSphere(new Sphere());
+ function apply(p:ElephantPose={}){if(disposed)return;for(const bone of bones.values()){bone.rotation.set(0,0,0);bone.scale.set(1,1,1);}bones.get('body')!.scale.y=1+finite(p.breath,.012);bones.get('head')!.rotation.set(finite(p.headPitch,.30),finite(p.headYaw,.30),0);bones.get('earLeft')!.rotation.y=finite(p.earLeft,.45);bones.get('earRight')!.rotation.y=finite(p.earRight,.45);for(let i=0;i<8;i++)bones.get('trunk'+i)!.rotation.x=finite(p.trunk?.[i],.40);for(const [i,name]of ELEPHANT_LEGS.entries()){bones.get(name)!.rotation.x=finite(p.upperLegs?.[i],.32);bones.get(name+'Knee')!.rotation.x=finite(p.lowerLegs?.[i],.45);bones.get(name+'Foot')!.rotation.x=finite(p.feet?.[i],.28);}bones.get('tail')!.rotation.z=finite(p.tail,.30);mesh.updateMatrixWorld(true);skeleton.update();}
+ apply();return {mesh,bones,skeleton,geometry:asset.geometry,triangles:asset.triangles,parts:asset.parts,apply,dispose(){if(disposed)return;disposed=true;skeleton.dispose();asset.geometry.dispose();mesh.clear();},inspect:()=>({elephantRigDisposed:disposed,elephantRigBones:disposed?0:bones.size,elephantRigTriangles:asset.triangles,elephantRigSkinnedDraws:disposed?0:1,elephantRigBoneTexture:Boolean(skeleton.boneTexture),elephantRigMaterialBorrowed:true})};
+}
+

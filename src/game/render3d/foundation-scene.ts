@@ -149,7 +149,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     const macawWorld=habitatDirty||foodDirty||waterDirty||perchDirty?simulation.macawWorldSnapshot():undefined;
     if(habitatDirty&&habitats){habitats.sync(macawWorld!);grove?.sync(world!);lighting?.invalidate();decoration?.sync(macawWorld!,simulation.missionView().care.unlocked);banner?.sync(macawWorld!,simulation.missionView().thriving.unlocked);habitatDirty=false;}
     if(pathDirty&&paths){paths.sync(world!);picker?.refresh();pathDirty=false;}
-    if(birdsDirty&&birds){const s=simulation.birdSnapshot();birds.sync(s.animals,s.habitats,s.width,s.height,simulationTimeMs);const e=simulation.elephantSnapshot();elephantModels?.sync(e.animals,e.width,e.height);if(e.animals.some(a=>['seek-food','seek-water','wander'].includes(a.currentBehavior)))lighting?.invalidate();birdsDirty=false;announceBirds();}
+    if(birdsDirty&&birds){const s=simulation.birdSnapshot();birds.sync(s.animals,s.habitats,s.width,s.height,simulationTimeMs);const e=simulation.elephantSnapshot();elephantModels?.sync(e.animals,e.width,e.height);if(e.animals.length&&(!policy.reducedMotion||e.animals.some(a=>['seek-food','seek-water','wander'].includes(a.currentBehavior))))lighting?.invalidate();birdsDirty=false;announceBirds();}
     if(foodDirty){feeder?.sync(macawWorld!,foodPreview,simulation.foodView().canPlace);announceFood();foodDirty=false;}
     if(waterDirty){waterStation?.sync(macawWorld!,waterPreview,simulation.waterView().canPlace);announceWater();waterDirty=false;}
     if(perchDirty){const view=simulation.perchView();restKit?.sync(macawWorld!,perchPreview,view.canPlace);birds?.setPerchesVisible(!view.reachable&&!perchPreview);announcePerch();perchDirty=false;}
@@ -159,7 +159,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     const remainder=frame.accumulatorMs;
     visitors?.update(remainder/100,simulationTimeMs+remainder,policy.reducedMotion);
     birds?.update(remainder/100,simulationTimeMs+remainder);
-    elephantModels?.update(remainder/100);
+    elephantModels?.update(remainder/100,simulationTimeMs+remainder,policy.reducedMotion);
     diorama?.update(simulationTimeMs, policy.reducedMotion);
     renderer?.render(scene, macaw?.view().active&&!macaw.view().habitat?macaw.camera:camera);
     if (renderer) renderSubmissions++;

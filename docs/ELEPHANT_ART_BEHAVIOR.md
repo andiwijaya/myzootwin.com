@@ -30,3 +30,5 @@ Rigid hierarchies with shared geometry/material pools: body breathing, grounded 
 With essentials placed, an elephant must visibly seek/use a real resource within **15–30 active seconds**, then produce matching resource/need deltas. Both residents must reach food and water; neither may monopolize a station. Bath/spray, log and social actions require saved state/events with cooldown and reachable contact; every action needs an interrupt path. Low/high graphics must produce identical save/simulation outcomes. EH3 requires four-angle actual 3D review and disposal evidence; this plan does not close those items.
 
 Verification: only documentation added for this item; no external asset/import or dependency change. Existing baseline 494 tests + 68 focused tests/build/check remain applicable because product modules are unchanged. Browser art review is **UNRUN until EH3-01**, not passed by this plan.
+
+Implementation update: EH3-01 is now verified with original articulated assets; [rig evidence](ELEPHANT_RIG.md). The plan above records the earlier design checkpoint. Ground/action/bath/social animation and final release/performance gates remain separate.
