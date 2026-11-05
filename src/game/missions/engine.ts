@@ -2,7 +2,7 @@ import {evaluateThriving,thrivingMissionView,THRIVING_RULES} from './thriving-ob
 import {captureVisitorObjective,visitorMissionView,VISITOR_MISSION_RULES} from './visitor-objective.ts';
 import {MISSION_IDS,type MissionId,type ZooSaveV1} from '../core/state.ts';
 import {analyzePaths} from '../world/paths.ts';
-import {ledgerProof,totals} from '../economy/journal.ts';
+import {ledgerProof} from '../economy/journal.ts';
 import {welfareParts} from '../animals/welfare.ts';
 import {macaws} from '../core/species.ts';
 
@@ -31,7 +31,7 @@ export function evaluateMissions(s:ZooSaveV1,fixedTick=false){
  if(m.currentId!=='Q02'||!careMissionView(s).holding)m.objectives.comfortableTicks=0;
  else if(fixedTick)m.objectives.comfortableTicks=Math.min(CARE_MISSION_RULES.durationTicks,m.objectives.comfortableTicks+1);
 }
-export function missionView(s:ZooSaveV1){const access=connected(s),habitat=s.world.habitats.length>0,care=careMissionView(s),visit=visitorMissionView(s),thriving=thrivingMissionView(s);return {currentId:s.missions.currentId,command:s.economy.nextCommand,completed:s.missions.completedIds.length,rewards:totals(s).amounts.reward,habitat,connected:access,care,visit,thriving,rows:MISSION_IDS.map(id=>{const claimed=s.missions.completedIds.includes(id),current=s.missions.currentId===id,enabled=MISSION_RULES[id].enabled,ready=id==='Q01'?habitat&&access:id==='Q02'?care.comfortableTicks>=CARE_MISSION_RULES.durationTicks:id==='Q03'?visit.qualified:id==='Q04'?thriving.qualified:false;const status:MissionStatus=claimed?'claimed':!current?'locked':!enabled?'planned':ready?'ready':'active';return{id,status,coins:MISSION_RULES[id].coins,unlockId:MISSION_RULES[id].unlockId,badgeId:MISSION_RULES[id].badgeId};})};}
+export function missionView(s:ZooSaveV1){const access=connected(s),habitat=s.world.habitats.length>0,care=careMissionView(s),visit=visitorMissionView(s),thriving=thrivingMissionView(s);return {currentId:s.missions.currentId,command:s.economy.nextCommand,completed:s.missions.completedIds.length,rewards:s.missions.rewards.reduce((coins,r)=>{if(!('ledgerEntryId'in r))return coins;const entry=ledgerProof(s,r.ledgerEntryId);return coins+(entry?.kind==='reward'&&entry.relatedId===r.missionId?entry.amount:0);},0),habitat,connected:access,care,visit,thriving,rows:MISSION_IDS.map(id=>{const claimed=s.missions.completedIds.includes(id),current=s.missions.currentId===id,enabled=MISSION_RULES[id].enabled,ready=id==='Q01'?habitat&&access:id==='Q02'?care.comfortableTicks>=CARE_MISSION_RULES.durationTicks:id==='Q03'?visit.qualified:id==='Q04'?thriving.qualified:false;const status:MissionStatus=claimed?'claimed':!current?'locked':!enabled?'planned':ready?'ready':'active';return{id,status,coins:MISSION_RULES[id].coins,unlockId:MISSION_RULES[id].unlockId,badgeId:MISSION_RULES[id].badgeId};})};}
 export type MissionView=ReturnType<typeof missionView>;
 export type ClaimFailure='stale'|'locked'|'planned'|'incomplete'|'claimed'|'balance';
 /** Clone-only atomic cash OR typed noncash claim. Noncash is never a zero-value ledger transaction. */

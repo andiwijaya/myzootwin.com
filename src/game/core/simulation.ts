@@ -1,3 +1,4 @@
+import {elephantResidentsView,prepareElephantWelcome} from '../animals/elephants/residents.ts';
 import {elephantHabitatView,prepareElephantConstruction} from '../economy/elephant-construction.ts';
 import {isVisualSettings} from './visual-settings.ts';
 import {firstMissionGuide} from '../missions/onboarding.ts';
@@ -20,7 +21,7 @@ import {preparePath,reconcilePathAccess,accessSummary} from '../world/paths.ts';
 import {prepareHabitat} from '../world/build-habitat.ts';
 import {prepareSpeciesHabitat} from '../world/species-habitat.ts';
 import {macawRuntimeView,commitMacawRuntimeView,type RuntimeState} from './runtime-state.ts';
-import {isMacaw} from './species.ts';
+import {isMacaw,elephants} from './species.ts';
 import type {ZooSave} from './zoo-state.ts';
 import type {Point} from './state.ts';
 import { createEventBus, type SimulationEvent } from './events.ts';
@@ -122,6 +123,13 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
       state=valid.value;topology=connected.topology;invalidateEdit();compactNow();publish(Object.freeze({type:'recovery-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;
     },
     commandRevision:()=>state.economy.nextCommand,
+    elephantResidentsView:()=>elephantResidentsView(state),
+    elephantSnapshot:()=>({animals:structuredClone(elephants(state.animals)),width:state.world.width,height:state.world.height}),
+    welcomeElephants(command:number){
+      if(disposed||clock.inspect().paused)return {ok:false as const,reason:'command' as const};
+      const result=prepareElephantWelcome(state,command);if(!result.ok)return result;
+      const checked=validateState(reconcileJourneys(result.state));if(!checked.ok)return {ok:false as const,reason:'command' as const};state=checked.value;invalidateEdit();compactNow();publish(Object.freeze({type:'elephants-welcomed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};
+    },
     elephantHabitatView:()=>elephantHabitatView(state),
     buildElephantHabitat(anchor:Point,operationId:string,expectedCommand:number){
       if(disposed||clock.inspect().paused)return {ok:false as const,reason:'command' as const};

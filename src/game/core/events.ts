@@ -1,4 +1,5 @@
 export type SimulationEvent =
+  | {type:'elephants-welcomed';tick:number;gameTimeMs:number}
   | {type:'conservation-grant-claimed';amount:number;tick:number;gameTimeMs:number}
   | {type:"preferences-changed";tick:number;gameTimeMs:number}
   | {type:"speed-changed";speed:import("./state.ts").SimulationSpeed;tick:number;gameTimeMs:number}

@@ -22,6 +22,7 @@ export class PreviewFailure extends Error {
 }
 
 export interface PreviewSession {
+  welcomeElephants?(command:number):void;
   beginElephantHabitat?():void;
   claimConservationGrant?(quote:ConservationGrantQuote):void;
   visualSettings?(value:VisualSettings):void;
@@ -122,6 +123,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     studio(command:StudioCommand,value?:string){if(!isPaused()&&state.status==='ready')session?.studio?.(command,value);},
     guide(command:GuideCommand,revision?:number){if(!isPaused()&&state.status==='ready')session?.guide?.(command,revision);},
     claimMission(quote:MissionQuote){if(!isPaused()&&state.status==='ready')session?.claimMission?.(quote);},
+    welcomeElephants(command:number){if(!isPaused()&&state.status==='ready')session?.welcomeElephants?.(command);},
     beginElephantHabitat(){if(!isPaused()&&state.status==='ready')session?.beginElephantHabitat?.();},
     claimConservationGrant(quote:ConservationGrantQuote){if(!isPaused()&&state.status==='ready')session?.claimConservationGrant?.(quote);},
     recoveryQuote:()=>!isPaused()&&state.status==='ready'?session?.recoveryQuote?.():undefined,

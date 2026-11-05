@@ -16,9 +16,9 @@ function validRoute(s:RuntimeState,v:Visitor,destination:Point){const paths=visi
 function returnHome(s:RuntimeState,v:Visitor){if(v.phase==='leaving'&&validRoute(s,v,s.world.gate))return;const route=visitorRoute(s.world,visitorCell(v),s.world.gate);if(route.length)setRoute(v,route,'leaving');}
 /** Run on a cloned transaction before validation, without changing positions or money. */
 export function reconcileJourneys<S extends RuntimeState>(s:S):S{
- const target=visitTargetForState(s);
  for(const v of s.visitors){const j=v.journey;if(!j||!ownsCorridor(v)||v.phase==='exiting')continue;
   if(v.phase==='leaving'){returnHome(s,v);continue;}
+  const target=visitTargetForState(s,j.habitatId??undefined);
   if(!s.visitorFlow.open||!target||target.habitatId!==j.habitatId){interruptedFeedback(s,v,!s.visitorFlow.open?'closed':s.world.habitats.some(h=>h.id===j.habitatId)?'access-lost':'habitat-removed');returnHome(s,v);continue;}
   const route=visitorRoute(s.world,visitorCell(v),target.cell);if(!route.length){interruptedFeedback(s,v,'access-lost');returnHome(s,v);continue;}
   if(v.phase==='viewing'&&same(visitorCell(v),target.cell))continue;
@@ -50,7 +50,8 @@ export function stepJourneys(s:RuntimeState):Array<{visitorId:string;habitatId:s
    j.queuedTicks++;
    if(!s.visitorFlow.open||!target||j.queuedTicks>=VISIT_RULES.maxQueueTicks){interruptedFeedback(s,v,!s.visitorFlow.open?'closed':!target?s.world.habitats.length?'access-lost':'habitat-removed':'time-limit');v.phase='exiting';}
   }
-  if(ownsCorridor(v)&&(v.phase==='entering'||v.phase==='viewing')&&(!s.visitorFlow.open||!target||target.habitatId!==j.habitatId||s.tick-j.startedTick!>=VISIT_RULES.maxJourneyTicks)){interruptedFeedback(s,v,!s.visitorFlow.open?'closed':!s.world.habitats.some(h=>h.id===j.habitatId)?'habitat-removed':!target?'access-lost':'time-limit');returnHome(s,v);}
+  const ownTarget=j.habitatId&&j.habitatId!==target?.habitatId?visitTargetForState(s,j.habitatId):target;
+  if(ownsCorridor(v)&&(v.phase==='entering'||v.phase==='viewing')&&(!s.visitorFlow.open||!ownTarget||ownTarget.habitatId!==j.habitatId||s.tick-j.startedTick!>=VISIT_RULES.maxJourneyTicks)){interruptedFeedback(s,v,!s.visitorFlow.open?'closed':!s.world.habitats.some(h=>h.id===j.habitatId)?'habitat-removed':!ownTarget?'access-lost':'time-limit');returnHome(s,v);}
   if(v.phase==='entering'||v.phase==='leaving'){
    const p=v.route[v.routeIndex];if(!p)continue;
    if(move(v,center(p),v.phase==='entering'?(from,next)=>{const g=s.world.gate,c={x:Math.floor(next.x),z:Math.floor(next.z)};if(Math.floor(from.x)!==g.x||Math.floor(from.z)!==g.z||(c.x===g.x&&c.z===g.z))return true;const paid=admitTicket(s,v,from,next);if(paid.ok)return true;if(paid.reason==='capacity'||paid.reason==='balance'){s.visitorFlow.open=false;s.visitorFlow.cooldownTicks=0;interruptedFeedback(s,v,'closed');}else interruptedFeedback(s,v,'access-lost');returnHome(s,v);return false;}:undefined)){if(v.routeIndex<v.route.length-1)v.routeIndex++;else if(v.phase==='entering'){v.phase='viewing';j.dwellTicks=0;resetObservation(v);}else v.phase='exiting';}

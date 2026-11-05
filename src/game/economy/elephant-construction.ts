@@ -1,3 +1,4 @@
+import type {elephantResidentsView} from '../animals/elephants/residents.ts';
 import type {ZooSave} from '../core/zoo-state.ts';
 import type {RuntimeState} from '../core/runtime-state.ts';
 import {conservationGrantView,type ConservationGrantSceneView} from './conservation-grant.ts';
@@ -13,7 +14,7 @@ export function elephantHabitatView(s:RuntimeState){
   const reason:'locked'|'limit'|'funds'|'ready'=!qualified?'locked':exists?'limit':s.currency<ELEPHANT_PRICES.habitat?'funds':'ready';
   return {qualified,exists,price:ELEPHANT_PRICES.habitat,reason,canBuild:reason==='ready'};
 }
-export type ElephantCatalogView=ConservationGrantSceneView&{habitat:ReturnType<typeof elephantHabitatView>};
+export type ElephantCatalogView=ConservationGrantSceneView&{habitat:ReturnType<typeof elephantHabitatView>;residents:ReturnType<typeof elephantResidentsView>};
 
 /** A caller-owned, complete paid world mutation. Never changes the input or grants residents. */
 export function prepareElephantConstruction(s:ZooSave,anchor:Point,operationId:string,command:number){

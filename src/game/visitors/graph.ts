@@ -25,7 +25,7 @@ export function visitTarget(w:RuntimeWorld):{habitatId:string;cell:Point;route:P
 }
 
 /** An empty new grove must not divert the existing aviary audience or stop admissions. */
-export function visitTargetForState(s:RuntimeState){
+export function visitTargetForState(s:RuntimeState,habitatId?:string){
  const empty=s.world.habitats.filter(h=>'kind'in h&&h.kind==='elephant-grove'&&!s.animals.some(a=>a.habitatId===h.id&&a.position!==null));
- return visitTarget(empty.length?{...s.world,habitats:s.world.habitats.filter(h=>!empty.includes(h))}:s.world);
+ return visitTarget(empty.length||habitatId?{...s.world,habitats:s.world.habitats.filter(h=>!empty.includes(h)&&(!habitatId||h.id===habitatId))}:s.world);
 }
