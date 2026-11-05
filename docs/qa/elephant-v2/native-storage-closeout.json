@@ -1,0 +1,204 @@
+{
+  "result": {
+    "cases": [
+      {
+        "at": "2026-11-05T09:38:42.411Z",
+        "data": {
+          "backupExact": true,
+          "currency": 1500,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-new",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:38:42.507Z",
+        "data": {
+          "backupExact": true,
+          "currency": 1145,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-q01",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:38:42.593Z",
+        "data": {
+          "backupExact": true,
+          "currency": 913,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-midQ02",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:38:42.706Z",
+        "data": {
+          "backupExact": true,
+          "currency": 923,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-midVisitor",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:38:42.840Z",
+        "data": {
+          "backupExact": true,
+          "currency": 969,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-longLedger",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:38:42.923Z",
+        "data": {
+          "backupExact": true,
+          "currency": 0,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-zeroCash",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:38:43.030Z",
+        "data": {
+          "backupExact": true,
+          "currency": 985,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-q04Ready",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:38:43.137Z",
+        "data": {
+          "backupExact": true,
+          "currency": 985,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-q04Claimed",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:38:43.253Z",
+        "data": {
+          "backupExact": true,
+          "currency": 985,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-indonesian",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:38:43.323Z",
+        "data": {
+          "method": "Explicit native tx.abort after queued primary write",
+          "partialBackup": false,
+          "primaryExact": true
+        },
+        "id": "native-transaction-abort",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:38:43.432Z",
+        "data": {
+          "committed": 1,
+          "conflicted": 1
+        },
+        "id": "native-two-writer-CAS",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:38:43.642Z",
+        "data": {
+          "method": "Injected SaveFault before native write; not physical disk exhaustion",
+          "primaryExact": true,
+          "recovered": true
+        },
+        "id": "quota-fault-boundary",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:38:43.739Z",
+        "data": {
+          "automaticReset": false,
+          "restoredSchema": 2
+        },
+        "id": "native-corrupt-recovery",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:38:43.767Z",
+        "data": {
+          "blocked": true,
+          "previousAvailable": true,
+          "rawPreserved": true
+        },
+        "id": "future-content-protection",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:38:43.783Z",
+        "data": {
+          "blocked": true,
+          "previousAvailable": true,
+          "rawPreserved": true
+        },
+        "id": "future-schema-protection",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:38:44.146Z",
+        "data": {
+          "backupExact": true,
+          "explicitRecovery": true,
+          "schema": 2
+        },
+        "id": "native-format1-envelope-transition",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:38:44.444Z",
+        "data": {
+          "originalBackupExact": true,
+          "preferencesPreserved": true,
+          "schema": 2,
+          "undoExact": true
+        },
+        "id": "native-reset-first-migration-and-undo",
+        "status": "PASS"
+      }
+    ],
+    "databasesCreated": 12,
+    "databasesDeleted": 12,
+    "error": null,
+    "method": "Native IndexedDB on explicitly generated disposable QA databases",
+    "ownerDatabaseTouched": false,
+    "physicalDevice": false,
+    "status": "PASS"
+  },
+  "console": {
+    "limit": 200,
+    "entries": []
+  }
+}

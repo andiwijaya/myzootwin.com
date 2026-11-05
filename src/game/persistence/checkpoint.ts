@@ -13,8 +13,14 @@ export interface StoredCheckpoint {
     writer: string;
     payload: string;
 }
+export interface CheckpointCodec {
+    parse(text:string):ReturnType<typeof parseSave>;
+    serialize(state:ZooSaveV1):string;
+    prepare?(state:ZooSaveV1):ZooSaveV1;
+}
+export const LEGACY_CHECKPOINT_CODEC:CheckpointCodec={parse:parseSave,serialize:serializeSave};
 export type CheckpointProblem = 'missing' | 'invalid-envelope' | 'unsupported-format' | 'unsupported-schema' | 'invalid-json' | 'invalid-state' | 'too-large';
-export function inspectCheckpoint(raw: unknown): {
+export function inspectCheckpoint(raw: unknown,codec:CheckpointCodec=LEGACY_CHECKPOINT_CODEC): {
     record: StoredCheckpoint | null;
     problem: CheckpointProblem | null;
 } {
@@ -28,24 +34,24 @@ export function inspectCheckpoint(raw: unknown): {
     const keys = x.format === 1 ? 'format,payload,revision,writer,writtenAt' : 'format,generation,payload,revision,writer,writtenAt';
     if (Object.keys(x).sort().join(',') !== keys || (x.format !== 1 && x.format !== 2) || !Number.isSafeInteger(x.revision) || x.revision < 1 || !Number.isSafeInteger(x.writtenAt) || x.writtenAt < 0 || x.writtenAt > 8640000000000000 || typeof x.writer !== 'string' || !/^[a-z0-9-]{1,64}$/.test(x.writer) || (x.format === 2 && (typeof x.generation !== 'string' || !/^[a-z0-9-]{1,64}$/.test(x.generation))) || typeof x.payload !== 'string')
         return { record: null, problem: 'invalid-envelope' };
-    const parsed = parseSave(x.payload);
+    const parsed = codec.parse(x.payload);
     if (!parsed.ok)
         return { record: null, problem: parsed.code };
     return { record: { ...x }, problem: null };
 }
-export function checkedCheckpoint(raw: unknown): StoredCheckpoint {
-    const x = inspectCheckpoint(raw);
+export function checkedCheckpoint(raw: unknown,codec:CheckpointCodec=LEGACY_CHECKPOINT_CODEC): StoredCheckpoint {
+    const x = inspectCheckpoint(raw,codec);
     if (!x.record)
         throw new SaveFault('unreadable');
     return x.record;
 }
-export function stateFromCheckpoint(raw: StoredCheckpoint): ZooSaveV1 {
-    const x = checkedCheckpoint(raw), s = parseSave(x.payload);
+export function stateFromCheckpoint(raw: StoredCheckpoint,codec:CheckpointCodec=LEGACY_CHECKPOINT_CODEC): ZooSaveV1 {
+    const x = checkedCheckpoint(raw,codec), s = codec.parse(x.payload);
     if (!s.ok)
         throw new SaveFault('unreadable');
     return s.value;
 }
-export const encodeCheckpointState = (state: ZooSaveV1) => serializeSave(state);
+export const encodeCheckpointState = (state: ZooSaveV1,codec:CheckpointCodec=LEGACY_CHECKPOINT_CODEC) => codec.serialize(state);
 export const generationOf = (r: StoredCheckpoint | null) => r ? r.format === 1 ? 'legacy' : r.generation! : 'empty';
 export interface CheckpointSummary {
     revision: number;
@@ -56,7 +62,7 @@ export interface CheckpointSummary {
     locale: 'id' | 'en';
     writtenAt: number;
 }
-export function summarize(r: StoredCheckpoint): CheckpointSummary { const s = stateFromCheckpoint(r); return { revision: r.revision, tick: s.tick, currency: s.currency, missions: s.missions.completedIds.length, birds: s.animals.filter(a => a.habitatId !== null).length, locale: s.preferences.locale, writtenAt: r.writtenAt }; }
+export function summarize(r: StoredCheckpoint,codec:CheckpointCodec=LEGACY_CHECKPOINT_CODEC): CheckpointSummary { const s = stateFromCheckpoint(r,codec); return { revision: r.revision, tick: s.tick, currency: s.currency, missions: s.missions.completedIds.length, birds: s.animals.filter(a => a.habitatId !== null).length, locale: s.preferences.locale, writtenAt: r.writtenAt }; }
 /** Exact bounded tagged encoding, not a lossy JSON hash. Unsupported/cyclic values refuse automatic repair. */
 export function rawSignature(raw: unknown): string {
     let nodes = 0, chars = 0;

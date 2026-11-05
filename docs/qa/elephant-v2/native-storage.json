@@ -1,0 +1,173 @@
+{
+  "result": {
+    "cases": [
+      {
+        "at": "2026-11-05T09:24:27.037Z",
+        "data": {
+          "backupExact": true,
+          "currency": 1500,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-new",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:24:27.142Z",
+        "data": {
+          "backupExact": true,
+          "currency": 1145,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-q01",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:24:27.242Z",
+        "data": {
+          "backupExact": true,
+          "currency": 913,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-midQ02",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:24:27.370Z",
+        "data": {
+          "backupExact": true,
+          "currency": 923,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-midVisitor",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:24:27.505Z",
+        "data": {
+          "backupExact": true,
+          "currency": 969,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-longLedger",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:24:27.609Z",
+        "data": {
+          "backupExact": true,
+          "currency": 0,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-zeroCash",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:24:27.739Z",
+        "data": {
+          "backupExact": true,
+          "currency": 985,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-q04Ready",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:24:27.856Z",
+        "data": {
+          "backupExact": true,
+          "currency": 985,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-q04Claimed",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:24:27.976Z",
+        "data": {
+          "backupExact": true,
+          "currency": 985,
+          "oldBinaryBlocked": true,
+          "schema": 2,
+          "tiles": 216
+        },
+        "id": "native-migration-indonesian",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:24:28.046Z",
+        "data": {
+          "method": "Explicit native tx.abort after queued primary write",
+          "partialBackup": false,
+          "primaryExact": true
+        },
+        "id": "native-transaction-abort",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:24:28.160Z",
+        "data": {
+          "committed": 1,
+          "conflicted": 1
+        },
+        "id": "native-two-writer-CAS",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:24:28.368Z",
+        "data": {
+          "method": "Injected SaveFault before native write; not physical disk exhaustion",
+          "primaryExact": true,
+          "recovered": true
+        },
+        "id": "quota-fault-boundary",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:24:28.455Z",
+        "data": {
+          "automaticReset": false,
+          "restoredSchema": 2
+        },
+        "id": "native-corrupt-recovery",
+        "status": "PASS"
+      },
+      {
+        "at": "2026-11-05T09:24:28.483Z",
+        "data": {
+          "blocked": true,
+          "previousAvailable": true,
+          "rawPreserved": true
+        },
+        "id": "future-schema-protection",
+        "status": "PASS"
+      }
+    ],
+    "databasesCreated": 10,
+    "databasesDeleted": 10,
+    "error": null,
+    "method": "Native IndexedDB on explicitly generated disposable QA databases",
+    "ownerDatabaseTouched": false,
+    "physicalDevice": false,
+    "status": "PASS"
+  },
+  "console": {
+    "limit": 200,
+    "entries": []
+  }
+}

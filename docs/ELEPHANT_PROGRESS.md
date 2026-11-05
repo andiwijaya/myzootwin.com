@@ -16,7 +16,7 @@ Verified EH: **8/39 (20.51%)**. Existing V1: **46/51**, five evidence/signoff ga
 | EH1-02 | [x] | Append-only cloned 96-cell extension, frozen worlds and real path/BFS tests; [evidence](ELEPHANT_FOUNDATION.md) |
 | EH1-03 | [x] | Original geometry/bounds exact, anchored consumers/camera/picking; 517 tests and native expanded-world viewport proof; [evidence](ELEPHANT_FOUNDATION.md) |
 | EH1-04 | [x] | Shared collision/36-cell transaction, separate caps, real bounded ghosts; 523 tests and native viewport negatives; [evidence](ELEPHANT_FOUNDATION.md) |
-| EH1-05 | [ ] | Strict SaveV2 migration and recovery |
+| EH1-05 | [ ] PARTIAL | Opt-in lossless legacy migration/recovery tested; persisted elephant/resource/grant/EH union and activation remain; [evidence](ELEPHANT_SAVE_V2.md) |
 | EH1-06 | [ ] | Migration/clock/ledger long run |
 | EH2-01 | [ ] | Locked catalogue and exactly-once conservation grant |
 | EH2-02 | [ ] | Atomic paid elephant habitat construction |

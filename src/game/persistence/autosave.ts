@@ -3,7 +3,8 @@ import { generationOf } from './checkpoint.ts';
 import type { ZooSaveV1 } from '../core/state.ts';
 import type { SanctuarySessionState } from '../core/session-state.ts';
 import type { EditorState } from '../world/editing.ts';
-import { SaveFault, checkedCheckpoint, stateFromCheckpoint, encodeCheckpointState, type RecoveryInspection, type RestartInspection, type DurableBackend, type StoredCheckpoint, type StorageFault } from './durable-backend.ts';
+import { SaveFault, checkedCheckpoint as checkRecord, stateFromCheckpoint as decodeRecord, encodeCheckpointState as encodeRecord, type RecoveryInspection, type RestartInspection, type DurableBackend, type StoredCheckpoint, type StorageFault } from './durable-backend.ts';
+import {LEGACY_CHECKPOINT_CODEC} from './checkpoint.ts';
 export const AUTOSAVE_DELAY_MS = 2000;
 export type SavePhase = 'loading' | 'empty' | 'available' | 'dirty' | 'saving' | 'saved' | 'unavailable' | 'unreadable' | 'error' | 'conflict';
 export interface SaveView {
@@ -33,6 +34,7 @@ interface Options {
 }
 /** Single bounded timer + one in-flight write + latest reader. No simulation/render scheduling. */
 export function createAutosave(backend: DurableBackend, options: Options) {
+    const codec=backend.codec??LEGACY_CHECKPOINT_CODEC,checkedCheckpoint=(raw:unknown)=>checkRecord(raw,codec),stateFromCheckpoint=(raw:StoredCheckpoint)=>decodeRecord(raw,codec),encodeCheckpointState=(state:ZooSaveV1)=>encodeRecord(state,codec);
     const now = options.now ?? Date.now, schedule = options.schedule ?? ((f, ms) => setTimeout(f, ms)), cancel = options.cancel ?? (id => clearTimeout(id as ReturnType<typeof setTimeout>));
     let phase: SavePhase = 'loading', active = false, record: StoredCheckpoint | null = null, data: ZooSaveV1 | undefined, editor: EditorState | undefined, revision = 0, savedTick: number | null = null, savedAt: number | null = null, savedCurrency: number | null = null, savedMissions: number | null = null, savedBirds: number | null = null, error: StorageFault | null = null, disposed = false, closing = false, storageReady = false, dirty = false, reader: (() => ZooSaveV1) | undefined, timer: unknown, pendingCritical = false, inflight: Promise<void> | undefined, loadSerial = 0;
     const view = (): SaveView => ({ phase, active, hasSave: Boolean(record), revision, savedTick, savedAt, savedCurrency, savedMissions, savedBirds, fault: error, generation: generationOf(record), recovery, recoveryBusy, restartBusy, restartAvailable });
@@ -188,7 +190,7 @@ export function createAutosave(backend: DurableBackend, options: Options) {
         startNew(locale: 'en' | 'id') {
             if (blocked() || phase === 'loading' || record || active || requiresTransition())
                 return false;
-            data = createInitialState();
+            data = codec.prepare?.(createInitialState())??createInitialState();
             data.preferences.locale = locale;
             editor = undefined;
             active = true;

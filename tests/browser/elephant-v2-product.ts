@@ -1,0 +1,15 @@
+import {mountGameEntry} from '../../src/game-entry/game-entry.ts';
+import {createElephantIndexedDbBackend} from '../../src/game/persistence/elephant-backend.ts';
+import {ELEPHANT_V1_BACKUP} from '../../src/game/persistence/durable-backend.ts';
+import frozen from '../fixtures/elephant-legacy-v1.json';
+const database='myzootwin-eh1-05-product-20261105',source=frozen.entries.q04Claimed.state,originalPayload=JSON.stringify(source);
+const output=document.querySelector<HTMLElement>('#qa-v2-storage')!;
+function open():Promise<IDBDatabase>{return new Promise((resolve,reject)=>{const r=indexedDB.open(database);r.onupgradeneeded=()=>r.result.createObjectStore('checkpoints');r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});}
+async function seed(){const db=await open();try{await new Promise<void>((resolve,reject)=>{const tx=db.transaction('checkpoints','readwrite'),store=tx.objectStore('checkpoints'),r=store.get('primary');r.onsuccess=()=>{if(r.result===undefined&&db.version===1)store.put({format:2,generation:'qa-product-v1',revision:1,writtenAt:1,writer:'qa-product-seed',payload:originalPayload},'primary');};tx.oncomplete=()=>resolve();tx.onabort=tx.onerror=()=>reject(tx.error);});}finally{db.close();}}
+async function inspect(){const db=await open();try{const result=await new Promise<{primary?:{payload:string;revision:number};backup?:{payload:string}}>((resolve,reject)=>{const tx=db.transaction('checkpoints'),store=tx.objectStore('checkpoints'),a=store.get('primary'),b=store.get(ELEPHANT_V1_BACKUP);b.onsuccess=()=>resolve({primary:a.result,backup:b.result});tx.onerror=()=>reject(tx.error);});const state=result.primary?JSON.parse(result.primary.payload):null;output.textContent=JSON.stringify({method:'Actual game entry + renderer/autosave with opt-in V2 backend; synthetic Q04 fixture; QA database only',databaseVersion:db.version,primarySchema:state?.schemaVersion,revision:result.primary?.revision,currency:state?.currency,tick:state?.tick,tiles:state?.world.tiles.length,birds:state?.animals.length,missions:state?.missions.completedIds,grant:state?.elephantGrove?.grant,backupSchema:result.backup?JSON.parse(result.backup.payload).schemaVersion:null,backupExact:result.backup?.payload===originalPayload},null,2);}finally{db.close();}}
+await seed();const root=document.querySelector<HTMLElement>('[data-play-entry]')!;
+const handle=mountGameEntry(root,{backend:createElephantIndexedDbBackend(indexedDB,database),broadcast:false,allowRecoveryDownload:false,preferenceStorage:null,browserLanguage:'en'});
+await inspect();const timer=setInterval(()=>{void inspect().catch(e=>{output.textContent=String(e);});},1000);
+document.querySelector('#qa-v2-inspect')!.addEventListener('click',()=>{void inspect();});
+document.querySelector('#qa-v2-close')!.addEventListener('click',()=>{handle.dispose();clearInterval(timer);void inspect();});
+window.addEventListener('pagehide',()=>{clearInterval(timer);handle.dispose();});
