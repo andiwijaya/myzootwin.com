@@ -16,6 +16,8 @@ export type ZooHabitat = MacawHabitat | ElephantHabitat;
 /** Ground motion cannot represent a bird's flight/perch/elevation phases. */
 export type ElephantBehavior = 'idle' | 'wander' | 'seek-food' | 'eat' | 'seek-water' | 'drink' | 'seek-bath' | 'bathe' | 'spray' | 'seek-shade' | 'rest' | 'seek-log' | 'enrich' | 'approach-companion' | 'trunk-touch';
 export interface ElephantMotion {
+  /** Last actual fixed-tick transform delta; optional for lossless older V2 reads. */
+  lastStep?:Point&{heading:number};
   phase:ElephantBehavior;
   ticksLeft:number;
   sequence:number;

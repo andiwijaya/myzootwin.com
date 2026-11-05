@@ -1,6 +1,7 @@
+import {elephantBodyMoveAllowed,elephantBodyTurnAllowed,type GroundBody} from './body-clearance.ts';
 import type {Point} from '../../core/state.ts';
 import type {ZooHabitat,ZooWorld} from '../../core/species.ts';
-export const ELEPHANT_GROUND=Object.freeze({margin:1.1,propClearance:1.05,separation:1.55,speed:.04,turn:.18,seekTimeout:500});
+export const ELEPHANT_GROUND=Object.freeze({margin:1.1,propClearance:1.35,separation:1.55,speed:.04,turn:.18,seekTimeout:500});
 export const groundDistance=(a:Point,b:Point)=>Math.hypot(a.x-b.x,a.z-b.z);
 const key=(p:Point)=>`${p.x},${p.z}`;
 export function groundBounds(h:ZooHabitat){const x=Math.min(...h.cells.map(c=>c.x)),z=Math.min(...h.cells.map(c=>c.z));return {x,z,maxX:x+6,maxZ:z+6};}
@@ -28,6 +29,20 @@ export function elephantGroundRoute(world:ZooWorld,h:ZooHabitat,from:Point,to:Po
   const queue=[start],parents=new Map<string,string|null>([[key(start),null]]);
   for(let i=0;i<queue.length&&!parents.has(end);i++){const p=queue[i]!;for(const q of [{x:p.x,z:p.z-1},{x:p.x-1,z:p.z},{x:p.x+1,z:p.z},{x:p.x,z:p.z+1}]){const k=key(q);if(!nodes.has(k)||parents.has(k)||!groundSegmentAllowed(world,h,p,q,others))continue;parents.set(k,key(p));queue.push(q);}}
   if(!parents.has(end))continue;const route:Point[]=[];let k:string|null=end;while(k!==null){route.unshift({...nodes.get(k)!});k=parents.get(k)??null;}if(groundDistance(from,route[0]!)>.001)route.unshift({...from});return route;
+ }
+ return null;
+}
+
+
+/** At most49 half-cell navigation nodes; placement/welfare still use the original16 coarse cells. */
+export function elephantBodyRoute(world:ZooWorld,h:ZooHabitat,from:Point,to:Point,heading:number,others:readonly GroundBody[],goalHeading?:number):Point[]|null{
+ const points=others.map(b=>b.position);if(!groundPointAllowed(world,h,from,points)||!groundPointAllowed(world,h,to,points))return null;
+ if(groundDistance(from,to)<1e-6)return goalHeading===undefined||elephantBodyTurnAllowed(from,heading,goalHeading,others)?[{...to}]:null;
+ const bounds=groundBounds(h),nodes=new Map<string,Point>();for(let z=1.5;z<=4.5;z+=.5)for(let x=1.5;x<=4.5;x+=.5){const p={x:bounds.x+x,z:bounds.z+z};if(groundPointAllowed(world,h,p,points))nodes.set(key(p),p);}if(!nodes.has(key(to)))return null;
+ type Node={p:Point;heading:number;parent:number};const queue:Node[]=[],visited=new Set<string>(),starts=[...nodes.values()].sort((a,b)=>groundDistance(from,a)-groundDistance(from,b)||a.z-b.z||a.x-b.x);
+ for(const p of starts){const d=groundDistance(from,p),a=d<1e-6?heading:Math.atan2(p.x-from.x,p.z-from.z);if(!groundSegmentAllowed(world,h,from,p,points)||!elephantBodyTurnAllowed(from,heading,a,others)||!elephantBodyMoveAllowed(from,p,a,others)&&d>1e-6)continue;queue.push({p,heading:a,parent:-1});visited.add(key(p)+':start');}
+ for(let i=0;i<queue.length;i++){const node=queue[i]!,p=node.p;if(key(p)===key(to)&&(goalHeading===undefined||elephantBodyTurnAllowed(p,node.heading,goalHeading,others))){const route:Point[]=[];let index=i;while(index>=0){route.unshift({...queue[index]!.p});index=queue[index]!.parent;}if(groundDistance(from,route[0]!)>1e-6)route.unshift({...from});return route;}
+  for(const [dx,dz]of [[0,-.5],[-.5,0],[.5,0],[0,.5]]){const q={x:p.x+dx!,z:p.z+dz!},a=Math.atan2(dx!,dz!),id=key(q)+':'+a;if(!nodes.has(key(q))||visited.has(id)||!groundSegmentAllowed(world,h,p,q,points)||!elephantBodyTurnAllowed(p,node.heading,a,others)||!elephantBodyMoveAllowed(p,q,a,others))continue;visited.add(id);queue.push({p:q,heading:a,parent:i});}
  }
  return null;
 }
