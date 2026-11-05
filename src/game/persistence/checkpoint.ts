@@ -1,5 +1,6 @@
 import { parseSave, serializeSave, MAX_SAVE_CHARS } from './save-v1.ts';
 import type { ZooSaveV1 } from '../core/state.ts';
+import type {ZooSave} from '../core/zoo-state.ts';
 export type StorageFault = 'unavailable' | 'unreadable' | 'quota' | 'conflict' | 'write';
 export class SaveFault extends Error {
     code: StorageFault;
@@ -13,14 +14,14 @@ export interface StoredCheckpoint {
     writer: string;
     payload: string;
 }
-export interface CheckpointCodec {
-    parse(text:string):ReturnType<typeof parseSave>;
-    serialize(state:ZooSaveV1):string;
-    prepare?(state:ZooSaveV1):ZooSaveV1;
+export interface CheckpointCodec<State extends ZooSave=ZooSaveV1> {
+    parse(text:string):{ok:true;value:State}|Extract<ReturnType<typeof parseSave>,{ok:false}>;
+    serialize(state:State):string;
+    prepare?(state:ZooSaveV1):State;
 }
 export const LEGACY_CHECKPOINT_CODEC:CheckpointCodec={parse:parseSave,serialize:serializeSave};
 export type CheckpointProblem = 'missing' | 'invalid-envelope' | 'unsupported-format' | 'unsupported-schema' | 'invalid-json' | 'invalid-state' | 'too-large';
-export function inspectCheckpoint(raw: unknown,codec:CheckpointCodec=LEGACY_CHECKPOINT_CODEC): {
+export function inspectCheckpoint<State extends ZooSave=ZooSaveV1>(raw: unknown,codec:CheckpointCodec<State>=LEGACY_CHECKPOINT_CODEC as unknown as CheckpointCodec<State>): {
     record: StoredCheckpoint | null;
     problem: CheckpointProblem | null;
 } {
@@ -39,19 +40,19 @@ export function inspectCheckpoint(raw: unknown,codec:CheckpointCodec=LEGACY_CHEC
         return { record: null, problem: parsed.code };
     return { record: { ...x }, problem: null };
 }
-export function checkedCheckpoint(raw: unknown,codec:CheckpointCodec=LEGACY_CHECKPOINT_CODEC): StoredCheckpoint {
+export function checkedCheckpoint<State extends ZooSave=ZooSaveV1>(raw: unknown,codec:CheckpointCodec<State>=LEGACY_CHECKPOINT_CODEC as unknown as CheckpointCodec<State>): StoredCheckpoint {
     const x = inspectCheckpoint(raw,codec);
     if (!x.record)
         throw new SaveFault('unreadable');
     return x.record;
 }
-export function stateFromCheckpoint(raw: StoredCheckpoint,codec:CheckpointCodec=LEGACY_CHECKPOINT_CODEC): ZooSaveV1 {
+export function stateFromCheckpoint<State extends ZooSave=ZooSaveV1>(raw: StoredCheckpoint,codec:CheckpointCodec<State>=LEGACY_CHECKPOINT_CODEC as unknown as CheckpointCodec<State>): State {
     const x = checkedCheckpoint(raw,codec), s = codec.parse(x.payload);
     if (!s.ok)
         throw new SaveFault('unreadable');
     return s.value;
 }
-export const encodeCheckpointState = (state: ZooSaveV1,codec:CheckpointCodec=LEGACY_CHECKPOINT_CODEC) => codec.serialize(state);
+export const encodeCheckpointState = <State extends ZooSave=ZooSaveV1>(state:State,codec:CheckpointCodec<State>=LEGACY_CHECKPOINT_CODEC as unknown as CheckpointCodec<State>) => codec.serialize(state);
 export const generationOf = (r: StoredCheckpoint | null) => r ? r.format === 1 ? 'legacy' : r.generation! : 'empty';
 export interface CheckpointSummary {
     revision: number;
@@ -62,7 +63,7 @@ export interface CheckpointSummary {
     locale: 'id' | 'en';
     writtenAt: number;
 }
-export function summarize(r: StoredCheckpoint,codec:CheckpointCodec=LEGACY_CHECKPOINT_CODEC): CheckpointSummary { const s = stateFromCheckpoint(r,codec); return { revision: r.revision, tick: s.tick, currency: s.currency, missions: s.missions.completedIds.length, birds: s.animals.filter(a => a.habitatId !== null).length, locale: s.preferences.locale, writtenAt: r.writtenAt }; }
+export function summarize<State extends ZooSave=ZooSaveV1>(r: StoredCheckpoint,codec:CheckpointCodec<State>=LEGACY_CHECKPOINT_CODEC as unknown as CheckpointCodec<State>): CheckpointSummary { const s = stateFromCheckpoint(r,codec); return { revision: r.revision, tick: s.tick, currency: s.currency, missions: s.missions.completedIds.length, birds: s.animals.filter(a => a.speciesId==='ara-ararauna'&&a.habitatId !== null).length, locale: s.preferences.locale, writtenAt: r.writtenAt }; }
 /** Exact bounded tagged encoding, not a lossy JSON hash. Unsupported/cyclic values refuse automatic repair. */
 export function rawSignature(raw: unknown): string {
     let nodes = 0, chars = 0;

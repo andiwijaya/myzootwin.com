@@ -1,74 +1,88 @@
-import type {ZooSaveV1,WorldState} from '../core/state.ts';
-import type {MacawHabitat} from '../core/species.ts';
+import {type ZooSaveV1,type Point} from '../core/state.ts';
+import {EH_IDS,initialElephantMissions,type ZooSaveV2,type ElephantMissions} from '../core/zoo-state.ts';
+import {ELEPHANT_SPECIES_ID,MACAW_SPECIES_ID,isMacaw,isElephant,compatibleHabitat,compatibleResource} from '../core/species.ts';
 import {appendElephantZone} from '../world/elephant-expansion.ts';
-import {MAX_SAVE_CHARS,parseSave,validateSave,type SaveResult} from './save-v1.ts';
+import {MAX_SAVE_CHARS,parseSave,validateSave,LEGACY_SAVE_FIELDS,economyRule,saveRules,validateLegacyRelationships,type SaveResult,type Rule} from './save-v1.ts';
 import type {CheckpointCodec} from './checkpoint.ts';
-
-/** Migration foundation. Resident/grant/EH proof fields are added with their later gameplay gates.
- * Unknown future content is rejected and preserved, never projected away by this codec. */
-export interface ZooSaveV2 extends Omit<ZooSaveV1,'schemaVersion'|'world'> {
-  schemaVersion:2;
-  world:Omit<WorldState,'habitats'>&{habitats:MacawHabitat[]};
-  elephantGrove:{grant:null};
-}
+import {purchaseBook} from '../economy/journal.ts';
+import {ELEPHANT_PRICES} from '../economy/elephant-prices.ts';
+export type {ZooSaveV2} from '../core/zoo-state.ts';
 type Failure=Extract<SaveResult,{ok:false}>;
 export type SaveV2Result={ok:true;value:ZooSaveV2}|Failure;
+const {requireValue:require,number,integer,percent,oneOf,bool,id,nullable,array,object,point,cell,tick}=saveRules;
 const plain=(x:unknown):x is Record<string,unknown>=>typeof x==='object'&&x!==null&&Object.getPrototypeOf(x)===Object.prototype;
-const exact=(x:Record<string,unknown>,keys:string[])=>Object.keys(x).sort().join(',')===[...keys].sort().join(',');
-const rootKeys=['schemaVersion','randomSeed','randomState','tick','gameTimeMs','currency','economy','world','animals','visitors','visitorFlow','admissions','ledger','missions','preferences','elephantGrove'];
-const fail=(path:string):Failure=>({ok:false,code:'invalid-state',path});
-const unsupported=(path:string):Failure=>({ok:false,code:'unsupported-schema',path});
+class Unsupported extends Error {readonly path:string;constructor(path:string){super('Unsupported save content');this.path=path;}}
+const futureObject=(fields:Record<string,Rule>):Rule=>(v,p)=>{if(plain(v)&&Object.keys(v).some(k=>!Object.hasOwn(fields,k)))throw new Unsupported(p);object(fields)(v,p);};
+const behaviors=['idle','wander','seek-food','eat','seek-water','drink','seek-bath','bathe','spray','seek-shade','rest','seek-log','enrich','approach-companion','trunk-touch'];
+const resourceKinds=['elephant-browse','elephant-water','elephant-pond','elephant-shade','elephant-log'];
+const name:Rule=(v,p)=>require(typeof v==='string'&&v.length>0&&v.length<=32&&v.trim()===v&&!/[\u0000-\u001f\u007f]/.test(v),p);
+const elephant=futureObject({id,speciesId:oneOf(ELEPHANT_SPECIES_ID),name,sex:oneOf('female'),habitatId:id,position:point,target:nullable(point),targetResourceId:nullable(id),hunger:percent,thirst:percent,energy:percent,habitatFit:percent,enrichment:percent,welfare:percent,care:object({low:bool,hungry:bool,thirsty:bool,tired:bool,bored:bool}),currentBehavior:oneOf(...behaviors),motion:futureObject({phase:oneOf(...behaviors),ticksLeft:integer(1200),sequence:tick,heading:number(-Math.PI*2,Math.PI*2),waypoints:array(point,128),waypointIndex:integer(127)}),foodEaten:tick,waterDrunk:tick,restedTicks:tick,enrichedTicks:tick,socialComfort:percent,shadeRest:percent,bathCooldownTicks:tick,logCooldownTicks:tick,socialCooldownTicks:tick,baths:tick,socialInteractions:tick});
+const animal:Rule=(v,p)=>{if(plain(v)&&v.speciesId===MACAW_SPECIES_ID)LEGACY_SAVE_FIELDS.animals([v],p);else if(plain(v)&&v.speciesId===ELEPHANT_SPECIES_ID)elephant(v,p);else throw new Unsupported(`${p}.speciesId`);};
+const resource:Rule=(v,p)=>{if(!plain(v))return require(false,p);if(['food','water','perch'].includes(v.kind as string)){object({id,kind:oneOf('food','water','perch'),habitatId:id,cell,stock:integer(10000),capacity:number(1,10000,true),revision:tick,portions:nullable(array(integer(10000),2))})(v,p);}else if(resourceKinds.includes(v.kind as string)){futureObject({id,kind:oneOf(...resourceKinds),habitatId:id,cell,stock:integer(10000),capacity:number(1,10000,true),revision:tick,approaches:array(point,8)})(v,p);}else throw new Unsupported(`${p}.kind`);};
+const ehReward=futureObject({missionId:oneOf(...EH_IDS),tick,command:number(1,Number.MAX_SAFE_INTEGER-1,true),ledgerEntryId:nullable(id),award:nullable(oneOf('elephant-keeper','elephant-water-lilies','gentle-giants'))});
+const grove=futureObject({grant:nullable(futureObject({id:oneOf('elephant-expansion-grant-v1'),ledgerEntryId:id,tick,command:number(1,Number.MAX_SAFE_INTEGER-1,true)})),missions:futureObject({currentId:nullable(oneOf(...EH_IDS)),completedIds:array(oneOf(...EH_IDS),4),rewards:array(ehReward,4),objectives:futureObject({fedIds:array(id,2),wateredIds:array(id,2),comfortableTicks:integer(50),baths:tick,enrichments:tick,thrivingTicks:integer(100),viewedVisitorIds:array(id,3)})})});
+const schema=futureObject({...LEGACY_SAVE_FIELDS,schemaVersion:oneOf(2),economy:economyRule(7),world:futureObject({width:oneOf(12),height:oneOf(18),gate:cell,tiles:array(object({cell,terrain:oneOf('land','creek'),occupantId:nullable(id),path:bool}),216),habitats:array(futureObject({id,kind:oneOf('macaw-aviary','elephant-grove'),cells:array(cell,36),viewingCell:nullable(cell)}),2),resources:array(resource,32)}),animals:array(animal,4),elephantGrove:grove});
+const key=(p:Point)=>`${Math.floor(p.x)},${Math.floor(p.z)}`;
+const unique=(values:string[],path:string)=>require(new Set(values).size===values.length,path);
+const initialMissions=(m:ElephantMissions)=>m.currentId==='EH01'&&m.completedIds.length===0&&m.rewards.length===0&&m.objectives.fedIds.length===0&&m.objectives.wateredIds.length===0&&m.objectives.comfortableTicks===0&&m.objectives.baths===0&&m.objectives.enrichments===0&&m.objectives.thrivingTicks===0&&m.objectives.viewedVisitorIds.length===0;
 
+/** Validation-only legacy view. Never serialized or returned as a V2 checkpoint. */
+function legacyView(s:ZooSaveV2):ZooSaveV1 {
+  const {elephantGrove:_,...rest}=s;
+  return {...rest,schemaVersion:1,animals:s.animals.filter(isMacaw),world:{...s.world,habitats:s.world.habitats.map(({kind:__,...h})=>h),resources:s.world.resources.filter((r):r is ZooSaveV1['world']['resources'][number]=>r.kind==='food'||r.kind==='water'||r.kind==='perch')}};
+}
+const claimedQ04=(s:ZooSaveV2)=>s.missions.completedIds.includes('Q04')&&s.missions.rewards.some(r=>r.missionId==='Q04'&&'unlockId'in r&&r.unlockId==='sanctuary-banner'&&'badgeId'in r&&r.badgeId==='thriving-sanctuary');
+function relationships(s:ZooSaveV2){
+  const w=s.world,herd=s.animals.filter(isElephant),birds=s.animals.filter(isMacaw),habitats=new Map(w.habitats.map(h=>[h.id,h])),resources=new Map(w.resources.map(r=>[r.id,r])),g=s.elephantGrove,m=g.missions,o=m.objectives;
+  require(w.gate.x===1&&w.gate.z===8&&w.tiles.every((t,i)=>t.cell.x===i%12&&t.cell.z===Math.floor(i/12)),'$.world.tiles.order');
+  unique([...w.habitats.map(h=>h.id),...w.resources.map(r=>r.id),...s.animals.map(a=>a.id),...s.visitors.map(v=>v.id)],'$.entityIds');
+  require(birds.length===2&&(herd.length===0||herd.length===2),'$.animals.population');
+  for(const kind of ['macaw-aviary','elephant-grove'])require(w.habitats.filter(h=>h.kind===kind).length<=1,'$.world.habitats.limit');
+  for(const h of w.habitats){const size=h.kind==='elephant-grove'?6:2,x=Math.min(...h.cells.map(c=>c.x)),z=Math.min(...h.cells.map(c=>c.z));require(h.cells.length===size*size&&h.cells.every(c=>c.x>=x&&c.x<x+size&&c.z>=z&&c.z<z+size),'$.world.habitats.footprint');if(h.kind==='elephant-grove')require(z>=10&&claimedQ04(s),'$.world.habitats.unlock');}
+  for(const a of s.animals)if(a.habitatId!==null)require(Boolean(habitats.get(a.habitatId)&&compatibleHabitat(a,habitats.get(a.habitatId)!)),'$.animals.habitatSpecies');
+  unique(w.resources.map(r=>key(r.cell)),'$.world.resources.cells');
+  for(const r of w.resources){const h=habitats.get(r.habitatId);require(Boolean(h&&compatibleResource(r,h))&&r.stock<=r.capacity&&h!.cells.some(c=>key(c)===key(r.cell)),'$.world.resources.ownership');if('approaches'in r){require(r.approaches.length>=2,'$.world.resources.approaches');unique(r.approaches.map(p=>`${p.x},${p.z}`),'$.world.resources.approaches');for(const p of r.approaches)require(h!.cells.some(c=>key(c)===key(p)),'$.world.resources.approaches');}}
+  for(const kind of resourceKinds)require(w.resources.filter(r=>r.kind===kind).length<=(kind==='elephant-browse'?2:1),'$.world.resources.limit');
+  const purchases=purchaseBook(s.ledger,s.economy.checkpoint);require(purchases!==null,'$.economy.purchases');
+  const paid=(id:string,price:number)=>{const proofs=[...purchases!.purchases.values()].filter(p=>p.entry.relatedId===id&&p.refunded<-p.entry.amount);require(proofs.length===1&&proofs[0].refunded===0&&proofs[0].entry.amount===-price,'$.elephantGrove.constructionProof');};
+  for(const h of w.habitats)if(h.kind==='elephant-grove')paid(h.id,ELEPHANT_PRICES.habitat);
+  for(const r of w.resources)if('approaches'in r)paid(r.id,ELEPHANT_PRICES[r.kind]);
+  for(const a of herd){const h=habitats.get(a.habitatId)!,inside=(p:Point)=>h.cells.some(c=>key(c)===key(p));require(inside(a.position)&&(!a.target||inside(a.target))&&a.motion.waypoints.every(inside),'$.animals.groundBounds');require(a.currentBehavior===a.motion.phase&&a.motion.sequence<=s.tick&&(a.motion.waypoints.length===0?a.motion.waypointIndex===0:a.motion.waypointIndex<a.motion.waypoints.length),'$.animals.motion');require(a.foodEaten<=s.tick&&a.waterDrunk<=s.tick&&a.restedTicks+a.enrichedTicks<=s.tick&&a.baths<=s.tick&&a.socialInteractions<=s.tick,'$.animals.counters');if(a.targetResourceId)require(resources.get(a.targetResourceId)?.habitatId===a.habitatId,'$.animals.targetResource');const expected=a.currentBehavior==='seek-food'||a.currentBehavior==='eat'?'elephant-browse':a.currentBehavior==='seek-water'||a.currentBehavior==='drink'?'elephant-water':['seek-bath','bathe','spray'].includes(a.currentBehavior)?'elephant-pond':a.currentBehavior==='seek-shade'||a.currentBehavior==='rest'?'elephant-shade':a.currentBehavior==='seek-log'||a.currentBehavior==='enrich'?'elephant-log':null;if(expected)require(a.target!==null&&a.targetResourceId!==null&&resources.get(a.targetResourceId)?.kind===expected&&a.motion.ticksLeft>0,'$.animals.resourceBehavior');}
+  require(m.completedIds.every((v,i)=>v===EH_IDS[i])&&m.currentId===(EH_IDS[m.completedIds.length]??null)&&m.rewards.length===m.completedIds.length,'$.elephantGrove.missions.order');unique(m.rewards.map(r=>r.missionId),'$.elephantGrove.missions.rewards');unique(o.fedIds,'$.elephantGrove.missions.fedIds');unique(o.wateredIds,'$.elephantGrove.missions.wateredIds');unique(o.viewedVisitorIds,'$.elephantGrove.missions.viewedVisitors');
+  for(const [ids,counter] of [[o.fedIds,'foodEaten'],[o.wateredIds,'waterDrunk']] as const)for(const id of ids)require(herd.some(a=>a.id===id&&a[counter]>0),'$.elephantGrove.missions.consumption');
+  require(o.baths<=herd.reduce((n,a)=>n+a.baths,0)&&o.enrichments<=herd.reduce((n,a)=>n+a.enrichedTicks,0),'$.elephantGrove.missions.events');
+  if(o.comfortableTicks>0)require(o.fedIds.length===2&&o.wateredIds.length===2,'$.elephantGrove.missions.comfort');
+  const admissions=[...s.economy.checkpoint.tickets.map(t=>t.admission),...s.admissions];for(const id of o.viewedVisitorIds)require(admissions.some(a=>a.visitorId===id),'$.elephantGrove.missions.visitors');
+  const ledger=[...s.economy.checkpoint.rewards,...s.ledger],extra:string[]=[];
+  const receipt=(id:string,amount:number,relatedId:string,at:number,operationId:string)=>{const matches=ledger.filter(e=>e.id===id);require(matches.length===1&&matches[0].kind==='reward'&&matches[0].amount===amount&&matches[0].relatedId===relatedId&&matches[0].tick===at&&matches[0].operationId===operationId,'$.elephantGrove.rewardReceipt');extra.push(id);};
+  if(g.grant){const p=g.grant,q=s.missions.rewards.find(r=>r.missionId==='Q04');require(claimedQ04(s)&&q!==undefined&&'tick'in q&&p.tick>=q.tick&&p.command>q.command&&p.tick<=s.tick&&p.command<s.economy.nextCommand,'$.elephantGrove.grant');receipt(p.ledgerEntryId,ELEPHANT_PRICES.grant,'elephant-expansion',p.tick,p.id);require(p.ledgerEntryId===p.id,'$.elephantGrove.grant.identity');}
+  for(const r of m.rewards){const i=EH_IDS.indexOf(r.missionId);require(m.completedIds.includes(r.missionId)&&r.tick<=s.tick&&r.command<s.economy.nextCommand&&(i===0||r.tick>=m.rewards[i-1].tick&&r.command>m.rewards[i-1].command),'$.elephantGrove.missions.reward');const award=i===0?'elephant-keeper':i===2?'elephant-water-lilies':i===3?'gentle-giants':null;require(r.award===award,'$.elephantGrove.missions.award');if(i===1||i===3){require(r.ledgerEntryId===`mission-${r.missionId.toLowerCase()}`,'$.elephantGrove.missions.receipt');receipt(r.ledgerEntryId!,i===1?150:200,r.missionId.toLowerCase(),r.tick,`claim-${r.missionId.toLowerCase()}`);}else require(r.ledgerEntryId===null,'$.elephantGrove.missions.nonCash');}
+  if(m.completedIds.length>0)require(herd.length===2&&w.habitats.some(h=>h.kind==='elephant-grove'),'$.elephantGrove.missions.home');
+  if(m.completedIds.length>1)require(o.comfortableTicks===50&&o.fedIds.length===2&&o.wateredIds.length===2,'$.elephantGrove.missions.foodWater');
+  if(m.completedIds.length>2)require(o.baths>0&&o.enrichments>0,'$.elephantGrove.missions.bath');
+  if(m.completedIds.length>3)require(o.thrivingTicks===100&&o.viewedVisitorIds.length===3,'$.elephantGrove.missions.herd');
+  if(!claimedQ04(s))require(g.grant===null&&herd.length===0&&initialMissions(m),'$.elephantGrove.locked');
+  validateLegacyRelationships(legacyView(s),extra,7);
+}
 export function validateSaveV2(value:unknown):SaveV2Result {
-  if(!plain(value))return fail('$');
-  if(value.schemaVersion!==2)return {ok:false,code:'unsupported-schema',path:'$.schemaVersion'};
-  if(Object.keys(value).some(key=>!rootKeys.includes(key)))return unsupported('$');
-  if(plain(value.elephantGrove)&&Object.keys(value.elephantGrove).some(key=>key!=='grant'))return unsupported('$.elephantGrove');
-  if(!exact(value,rootKeys)||!plain(value.elephantGrove)||!exact(value.elephantGrove,['grant']))return fail('$.elephantGrove');
-  if(value.elephantGrove.grant!==null)return unsupported('$.elephantGrove.grant');
-  const w=value.world;
-  if(plain(w)&&Array.isArray(w.habitats)&&w.habitats.some(h=>plain(h)&&h.kind!=='macaw-aviary'))return unsupported('$.world.habitats.kind');
-  if(plain(w)&&Array.isArray(w.resources)&&w.resources.some(r=>plain(r)&&!['food','water','perch'].includes(r.kind as string)))return unsupported('$.world.resources.kind');
-  if(Array.isArray(value.animals)&&value.animals.some(a=>plain(a)&&a.speciesId!=='ara-ararauna'))return unsupported('$.animals.speciesId');
-  if(!plain(w)||w.width!==12||w.height!==18||!Array.isArray(w.habitats)||Object.getPrototypeOf(w.habitats)!==Array.prototype||Object.keys(w.habitats).length!==w.habitats.length||w.habitats.some(h=>!plain(h)||!exact(h,['id','kind','cells','viewingCell'])||h.kind!=='macaw-aviary'))return fail('$.world');
-  const legacy={...value,schemaVersion:1,world:{...w,habitats:w.habitats.map(h=>{const {kind:_,...rest}=h;return rest;})}} as Record<string,unknown>;
-  delete legacy.elephantGrove;
-  const checked=validateSave(legacy);if(!checked.ok)return checked;
-  return {ok:true,value:structuredClone(value) as unknown as ZooSaveV2};
+  try{if(!plain(value)||value.schemaVersion!==2)return {ok:false,code:'unsupported-schema',path:'$.schemaVersion'};
+    // Detect future grant content before missing fields can classify it as recoverable corruption.
+    if(plain(value.elephantGrove)&&plain(value.elephantGrove.grant)&&Object.keys(value.elephantGrove.grant).some(k=>!['id','ledgerEntryId','tick','command'].includes(k)))throw new Unsupported('$.elephantGrove.grant');
+    // Compatibility with the unpublished migration-only candidate: no unknown content is removed.
+    if(plain(value.elephantGrove)&&Object.keys(value.elephantGrove).length===1&&value.elephantGrove.grant===null)value={...value,elephantGrove:{grant:null,missions:initialElephantMissions()}};
+    schema(value,'$');const save=value as ZooSaveV2;relationships(save);return {ok:true,value:structuredClone(save)};
+  }catch(error){return {ok:false,code:error instanceof Unsupported?'unsupported-schema':'invalid-state',path:error instanceof Error&&'path'in error?String(error.path):'$'};}
 }
-export function migrateSaveV1(value:unknown):SaveV2Result {
-  const checked=validateSave(value);if(!checked.ok)return checked;
-  try{
-    const world=appendElephantZone(checked.value.world);
-    const migrated:ZooSaveV2={...checked.value,schemaVersion:2,world:{...world,habitats:world.habitats.map(h=>({...h,kind:'macaw-aviary'}))},elephantGrove:{grant:null}};
-    return validateSaveV2(migrated);
-  }catch{return unsupported('$.world.unsupported-layout');}
-}
-export function parseSaveV2(text:string):SaveV2Result {
-  if(typeof text!=='string')return {ok:false,code:'invalid-json',path:'$'};
-  if(text.length>MAX_SAVE_CHARS)return {ok:false,code:'too-large',path:'$'};
-  let value:unknown;try{value=JSON.parse(text);}catch{return {ok:false,code:'invalid-json',path:'$'};}
-  return validateSaveV2(value);
-}
-export function serializeSaveV2(value:ZooSaveV2):string {
-  const checked=validateSaveV2(value);if(!checked.ok)throw new RangeError(`Invalid V2 save: ${checked.path}`);
-  const text=JSON.stringify(checked.value);if(text.length>MAX_SAVE_CHARS)throw new RangeError('V2 save too large');return text;
-}
-/** One simulator/ledger, with a lossless schema adapter at the checkpoint boundary.
- * No unsupported elephant content is accepted by the migration-only foundation. */
-export function legacySimulationState(value:ZooSaveV2):ZooSaveV1 {
-  const checked=validateSaveV2(value);if(!checked.ok)throw new RangeError('Invalid V2 save');
-  const {elephantGrove:_,...state}=checked.value;
-  const result=validateSave({...state,schemaVersion:1,world:{...state.world,habitats:state.world.habitats.map(({kind:__,...h})=>h)}});
-  if(!result.ok)throw new RangeError('Invalid simulation projection');return result.value;
-}
-export const ELEPHANT_CHECKPOINT_CODEC:CheckpointCodec={
-  parse(text){
-    if(typeof text!=='string'||text.length>MAX_SAVE_CHARS)return parseSave(text);
-    let value:unknown;try{value=JSON.parse(text);}catch{return parseSave(text);}
-    const checked=plain(value)&&value.schemaVersion===1?migrateSaveV1(value):validateSaveV2(value);
-    return checked.ok?{ok:true,value:legacySimulationState(checked.value)}:checked;
-  },
-  serialize(state){const checked=migrateSaveV1(state);if(!checked.ok)throw new RangeError(`Invalid migration source: ${checked.path}`);return serializeSaveV2(checked.value);},
-  prepare(state){const checked=migrateSaveV1(state);if(!checked.ok)throw new RangeError(`Invalid migration source: ${checked.path}`);return legacySimulationState(checked.value);},
+export function migrateSaveV1(value:unknown):SaveV2Result {const checked=validateSave(value);if(!checked.ok)return checked;try{const world=appendElephantZone(checked.value.world),migrated:ZooSaveV2={...checked.value,schemaVersion:2,world:{...world,habitats:world.habitats.map(h=>({...h,kind:'macaw-aviary'}))},elephantGrove:{grant:null,missions:initialElephantMissions()}};const result=validateSaveV2(migrated);return result.ok?result:{ok:false,code:'unsupported-schema',path:'$.world.unsupported-layout'};}catch{return {ok:false,code:'unsupported-schema',path:'$.world.unsupported-layout'};}}
+export function parseSaveV2(text:string):SaveV2Result {if(typeof text!=='string')return {ok:false,code:'invalid-json',path:'$'};if(text.length>MAX_SAVE_CHARS)return {ok:false,code:'too-large',path:'$'};let value:unknown;try{value=JSON.parse(text);}catch{return {ok:false,code:'invalid-json',path:'$'};}return validateSaveV2(value);}
+export function serializeSaveV2(value:ZooSaveV2):string {const checked=validateSaveV2(value);if(!checked.ok)throw new RangeError(`Invalid V2 save: ${checked.path}`);const text=JSON.stringify(checked.value);if(text.length>MAX_SAVE_CHARS)throw new RangeError('V2 save too large');return text;}
+/** The old renderer seam refuses any content it cannot represent. Not used by full V2 persistence. */
+export function legacySimulationState(value:ZooSaveV2):ZooSaveV1 {const checked=validateSaveV2(value);if(!checked.ok||checked.value.animals.some(isElephant)||checked.value.world.habitats.some(h=>h.kind!=='macaw-aviary')||checked.value.elephantGrove.grant!==null||!initialMissions(checked.value.elephantGrove.missions))throw new RangeError('V2 requires multispecies runtime');const result=validateSave(legacyView(checked.value));if(!result.ok)throw new RangeError('Invalid simulation projection');return result.value;}
+/** Retained migration-only QA renderer codec. */
+export const ELEPHANT_CHECKPOINT_CODEC:CheckpointCodec={parse(text){let value:unknown;try{if(text.length>MAX_SAVE_CHARS)return parseSave(text);value=JSON.parse(text);}catch{return parseSave(text);}const checked=plain(value)&&value.schemaVersion===1?migrateSaveV1(value):validateSaveV2(value);if(!checked.ok)return checked;try{return {ok:true,value:legacySimulationState(checked.value)};}catch{return {ok:false,code:'unsupported-schema',path:'$.multispecies-runtime'};}},serialize(state){const checked=migrateSaveV1(state);if(!checked.ok)throw new RangeError('Invalid migration source');return serializeSaveV2(checked.value);},prepare(state){const checked=migrateSaveV1(state);if(!checked.ok)throw new RangeError('Invalid migration source');return legacySimulationState(checked.value);}};
+/** Full V2 checkpoint path: retains both species and all proofs, with no legacy simulation projection. */
+export const ZOO_CHECKPOINT_CODEC:CheckpointCodec<ZooSaveV2>={
+  parse(text){if(typeof text!=='string'||text.length>MAX_SAVE_CHARS)return {ok:false,code:'too-large',path:'$'};let value:unknown;try{value=JSON.parse(text);}catch{return {ok:false,code:'invalid-json',path:'$'};}return plain(value)&&value.schemaVersion===1?migrateSaveV1(value):validateSaveV2(value);},
+  serialize:serializeSaveV2,
+  prepare(state){const checked=migrateSaveV1(state);if(!checked.ok)throw new RangeError(`Invalid migration source: ${checked.path}`);return checked.value;},
 };

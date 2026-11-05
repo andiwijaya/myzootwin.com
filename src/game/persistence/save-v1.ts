@@ -15,7 +15,7 @@ import {BIRD_PERCH_HEIGHT,birdHome,supportsBirds} from '../animals/autonomy.ts';
 import { MAX_TICK, MISSION_IDS, SPECIES_ID, TICK_MS, type ZooSaveV1 } from '../core/state.ts';
 
 export const MAX_SAVE_CHARS = 1_000_000;
-type Rule = (value: unknown, path: string) => void;
+export type Rule = (value: unknown, path: string) => void;
 class Invalid extends Error { path: string; constructor(path: string) { super('Invalid save'); this.path = path; } }
 const requireValue = (valid: boolean, path: string) => { if (!valid) throw new Invalid(path); };
 const number = (min: number, max: number, integer = false): Rule => (v,p) => requireValue(typeof v === 'number' && Number.isFinite(v) && v >= min && v <= max && (!integer || Number.isSafeInteger(v)),p);
@@ -41,11 +41,12 @@ const feedback=object({visitorId:id,habitatId:nullable(id),tick,outcome:oneOf('c
 const ledgerEntry=object({ id, operationId: id, kind: oneOf('starter','build','supplies','maintenance','ticket','reward','refund','restore'), amount: number(-Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER,true), balanceAfter: integer(), tick, relatedId: nullable(referenceId) });
 const admissionRule=object({ id, visitorId: id, tick, ledgerEntryId: id,entry:nullable(object({habitatId:id,gate:cell,cell,price:number(1,Number.MAX_SAFE_INTEGER,true)})) });
 const ticketProof=object({admission:admissionRule,entry:ledgerEntry});
-const financeCheckpoint=object({version:oneOf(1),balance:integer(),entries:integer(),lastTick:tick,compactions:integer(),commandThrough:integer(),visitorThrough:tick,openSerials:array(number(1,MAX_TICK,true),3),maintenancePeriod:tick,
-totals:object(Object.fromEntries(LEDGER_KINDS.map(k=>[k,number(-Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER,true)]))),counts:object(Object.fromEntries(LEDGER_KINDS.map(k=>[k,integer()]))),purchases:array(object({entry:ledgerEntry,refunded:integer()}),256),refunds:array(object({entry:ledgerEntry,restored:integer()}),256),tickets:array(ticketProof,35),rewards:array(ledgerEntry,4),lastTicket:nullable(ticketProof)});
+const financeCheckpoint=(rewardLimit:number)=>object({version:oneOf(1),balance:integer(),entries:integer(),lastTick:tick,compactions:integer(),commandThrough:integer(),visitorThrough:tick,openSerials:array(number(1,MAX_TICK,true),3),maintenancePeriod:tick,
+totals:object(Object.fromEntries(LEDGER_KINDS.map(k=>[k,number(-Number.MAX_SAFE_INTEGER,Number.MAX_SAFE_INTEGER,true)]))),counts:object(Object.fromEntries(LEDGER_KINDS.map(k=>[k,integer()]))),purchases:array(object({entry:ledgerEntry,refunded:integer()}),256),refunds:array(object({entry:ledgerEntry,restored:integer()}),256),tickets:array(ticketProof,35),rewards:array(ledgerEntry,rewardLimit),lastTicket:nullable(ticketProof)});
+export const economyRule=(rewardLimit=4)=>object({maintenancePeriod:tick,nextCommand:number(1,Number.MAX_SAFE_INTEGER,true),checkpoint:financeCheckpoint(rewardLimit),recovery:object({lastRationTick:nullable(tick),rationBatches:integer(),equipmentGrants:integer(),habitatGrant:nullable(object({id,tick}))})});
 const missionReward:Rule=(v,p)=>{if(typeof v==='object'&&v!==null&&'unlockId'in v&&'badgeId'in v)object({missionId,unlockId:oneOf(THRIVING_RULES.unlockId),badgeId:oneOf(THRIVING_RULES.badgeId),tick,command:number(1,Number.MAX_SAFE_INTEGER-1,true)})(v,p);else if(typeof v==='object'&&v!==null&&'unlockId'in v)object({missionId,unlockId:oneOf(CARE_MISSION_RULES.unlockId),tick,command:number(1,Number.MAX_SAFE_INTEGER-1,true)})(v,p);else if(typeof v==='object'&&v!==null&&'badgeId'in v)object({missionId,ledgerEntryId:id,badgeId:oneOf(VISITOR_MISSION_RULES.badgeId),tick,command:number(1,Number.MAX_SAFE_INTEGER-1,true)})(v,p);else object({missionId,ledgerEntryId:id})(v,p);};
-const schema = object({
-  schemaVersion: oneOf(1), randomSeed: number(1,0xffffffff,true), randomState: number(1,0xffffffff,true), tick, gameTimeMs: integer(), currency: integer(), economy:object({maintenancePeriod:tick,nextCommand:number(1,Number.MAX_SAFE_INTEGER,true),checkpoint:financeCheckpoint,recovery:object({lastRationTick:nullable(tick),rationBatches:integer(),equipmentGrants:integer(),habitatGrant:nullable(object({id,tick}))})}),
+export const LEGACY_SAVE_FIELDS = {
+  schemaVersion: oneOf(1), randomSeed: number(1,0xffffffff,true), randomState: number(1,0xffffffff,true), tick, gameTimeMs: integer(), currency: integer(), economy:economyRule(),
   world: object({ width: number(1,32,true), height: number(1,32,true), gate: cell,
     tiles: array(object({ cell, terrain: oneOf('land','creek'), occupantId: nullable(id), path: bool }),1024),
     habitats: array(object({ id, cells: array(cell,256), viewingCell: nullable(cell) }),8),
@@ -60,11 +61,14 @@ const schema = object({
     objectives: object({ habitatConnected: bool, birdsFedIds: array(id,2), birdsWateredIds: array(id,2), comfortableTicks: tick, viewedVisitorIds: array(id,1), admittedVisitorIds:array(id,3), viewingEvidence:nullable(feedback), thrivingTicks: integer(THRIVING_RULES.durationTicks), thriving:nullable(object({startTick:tick,lastTick:tick,baselineRevenue:integer(),baselineAdmissions:integer(),earnedRevenue:integer(),earnedAdmissions:integer()})) }),
   }),
   preferences: object({ speed:oneOf(1,10), locale: oneOf('id','en'), graphics: oneOf('auto','low','high'), muted: bool, reducedMotion: bool }),
-});
+};
+const schema=object(LEGACY_SAVE_FIELDS);
+/** Reuse exact primitive/legacy rules; V2 supplies its own explicit union branches. */
+export const saveRules={requireValue,number,integer,percent,oneOf,bool,id,nullable,array,object,point,cell,tick,ledgerEntry};
 
 const key = (p: {x:number;z:number}) => `${p.x},${p.z}`;
 function unique(values: string[], path: string) { requireValue(new Set(values).size === values.length,path); }
-function relationships(s: ZooSaveV1) {
+export function validateLegacyRelationships(s: ZooSaveV1,extraRewardIds:readonly string[]=[],rewardLimit=4) {
   requireValue(s.gameTimeMs === s.tick * TICK_MS,'$.gameTimeMs');
   requireValue(s.economy.maintenancePeriod<=Math.floor(s.tick/MONEY_RULES.maintenanceTicks),'$.economy.maintenancePeriod');
   const w=s.world;
@@ -121,7 +125,7 @@ const inBounds=(p:{x:number;z:number}) => p.x < w.width && p.z < w.height;
       }
     }
   }
-  requireValue(coherentMoney(s),'$.economy.journal');
+  requireValue(coherentMoney(s,rewardLimit),'$.economy.journal');
   const allAdmissions=admissionProofs(s),ledger=new Map<string,ZooSaveV1['ledger'][number]>();
   for(const e of [...s.economy.checkpoint.purchases.map(p=>p.entry),...s.economy.checkpoint.refunds.map(p=>p.entry),...s.economy.checkpoint.tickets.map(p=>p.entry),...s.economy.checkpoint.rewards,...s.ledger])ledger.set(e.id,e);
   const admissions=new Map(allAdmissions.map(a=>[a.id,a]));
@@ -203,7 +207,7 @@ const inBounds=(p:{x:number;z:number}) => p.x < w.width && p.z < w.height;
   requireValue(m.rewards.length===m.completedIds.length,'$.missions.claims');
   unique(m.rewards.map(r=>r.missionId),'$.missions.rewards'); unique(m.rewards.flatMap(r=>'ledgerEntryId'in r?[r.ledgerEntryId]:[]),'$.missions.rewardLedger');
   for(const r of m.rewards) { const rule=MISSION_RULES[r.missionId];requireValue(m.completedIds.includes(r.missionId)&&rule.enabled,'$.missions.rewards.reference');if('unlockId'in r&&r.unlockId===THRIVING_RULES.unlockId){const prior=m.rewards.find(p=>p.missionId==='Q03');requireValue(r.missionId==='Q04'&&'badgeId'in r&&r.badgeId===THRIVING_RULES.badgeId&&r.tick<=s.tick&&r.command<s.economy.nextCommand&&Boolean(prior&&'tick'in prior&&r.tick>prior.tick&&r.command>prior.command)&&thrivingQualified(s)&&r.tick>=m.objectives.thriving!.lastTick,'$.missions.thrivingReward');}else if('unlockId'in r){const prior=ledger.get('mission-q01');requireValue(rule.unlockId===r.unlockId&&r.missionId==='Q02'&&r.tick<=s.tick&&r.command<s.economy.nextCommand&&Boolean(prior)&&r.tick>=prior!.tick+CARE_MISSION_RULES.durationTicks&&m.objectives.comfortableTicks===CARE_MISSION_RULES.durationTicks,'$.missions.unlock.reference');}else{const e=ledger.get(r.ledgerEntryId);requireValue(!rule.unlockId&&e?.kind==='reward'&&e.relatedId===r.missionId&&e.amount===rule.coins,'$.missions.rewards.reference');if(rule.badgeId){const prior=m.rewards.find(p=>p.missionId==='Q02');requireValue('badgeId'in r&&r.badgeId===rule.badgeId&&r.tick===e!.tick&&r.tick<=s.tick&&r.command<s.economy.nextCommand&&Boolean(prior&&'tick'in prior&&r.tick>=prior.tick),'$.missions.badge.reference');}else requireValue(!('badgeId'in r),'$.missions.badge.kind');} }
-  for(const e of [...s.economy.checkpoint.rewards,...s.ledger])if(e.kind==='reward')requireValue(m.rewards.some(r=>'ledgerEntryId'in r&&r.ledgerEntryId===e.id),'$.ledger.reward');
+  for(const e of [...s.economy.checkpoint.rewards,...s.ledger])if(e.kind==='reward')requireValue(extraRewardIds.includes(e.id)||m.rewards.some(r=>'ledgerEntryId'in r&&r.ledgerEntryId===e.id),'$.ledger.reward');
   requireValue(s.economy.checkpoint.rewards.length===s.economy.checkpoint.counts.reward,'$.missions.archivedRewards');
   const o=m.objectives,p=o.thriving,t=totals(s),priorQ03=m.rewards.find(r=>r.missionId==='Q03');if(p){requireValue(Boolean(priorQ03&&'tick'in priorQ03&&p.startTick>priorQ03.tick)&&p.startTick<=p.lastTick&&p.lastTick<=s.tick&&o.thrivingTicks===Math.min(THRIVING_RULES.durationTicks,p.lastTick-p.startTick+1)&&p.baselineAdmissions+p.earnedAdmissions<=t.counts.ticket&&p.baselineRevenue+p.earnedRevenue<=t.amounts.ticket&&p.earnedRevenue===p.earnedAdmissions*TICKET_RULES.price&&p.baselineRevenue===p.baselineAdmissions*TICKET_RULES.price,'$.missions.thrivingProof');}else requireValue(o.thrivingTicks===0,'$.missions.thrivingMissing');if(m.completedIds.includes('Q04'))requireValue(thrivingQualified(s),'$.missions.thrivingQualification');
   const birdIds=new Set(s.animals.map(a=>a.id)); const visitorIds=new Set(allAdmissions.map(a=>a.visitorId));
@@ -221,7 +225,7 @@ export type SaveResult = {ok:true;value:ZooSaveV1} | {ok:false;code:'invalid-jso
 export function validateSave(value: unknown): SaveResult {
   try {
     if(typeof value==='object' && value!==null && 'schemaVersion' in value && value.schemaVersion!==1)return {ok:false,code:'unsupported-schema',path:'$.schemaVersion'};
-    schema(value,'$'); const save=value as ZooSaveV1; relationships(save); return {ok:true,value:structuredClone(save)};
+    schema(value,'$'); const save=value as ZooSaveV1; validateLegacyRelationships(save); return {ok:true,value:structuredClone(save)};
   }
   catch(error) { return {ok:false,code:'invalid-state',path:error instanceof Invalid?error.path:'$'}; }
 }

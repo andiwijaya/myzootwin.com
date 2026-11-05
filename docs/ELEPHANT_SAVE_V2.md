@@ -1,5 +1,7 @@
 # EH1-05 migration candidate: partial, inactive
 
+Historical first-session report. **Superseded by [verified full multispecies persistence](ELEPHANT_MULTISPECIES_SAVE.md)** after the owner's explicit resume instruction. The evidence below retains its original source/counts; it does not describe the latest scope.
+
 5 November 2026. Prior implementation checkpoint `79a8428`. **EH remains 8/39**: this candidate does not complete EH1-05 and is not a released Elephant Grove. Product `game-entry.ts` still selects the original V1 backend. No owner database was opened by QA.
 
 `save-v2.ts` strictly migrates the nine frozen V1 fixtures to schema 2 with the same currency, ledger, RNG, clock, missions, preferences, two macaws, original 120 tiles and legacy entities. It appends the 96-cell zone, tags original habitats and initializes `elephantGrove.grant` to null. Repeated serialization is idempotent. No grant, reward, paid construction or animal is added. Unsupported custom layouts and unknown future contents are rejected with their data preserved.

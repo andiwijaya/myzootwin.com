@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
 import {createHash} from 'node:crypto';
 import {createInitialState} from '../src/game/core/initial-state.ts';
+import {initialElephantMissions} from '../src/game/core/zoo-state.ts';
 import {createSimulation} from '../src/game/core/simulation.ts';
 import {parseSave,validateSave} from '../src/game/persistence/save-v1.ts';
 import {migrateSaveV1,parseSaveV2,validateSaveV2,serializeSaveV2,legacySimulationState,ELEPHANT_CHECKPOINT_CODEC} from '../src/game/persistence/save-v2.ts';
@@ -13,7 +14,7 @@ const projection=v=>{const s=legacySimulationState(v);s.world.height=10;s.world.
 
 test('all nine frozen V1 saves migrate losslessly: every legacy field, RNG, tick, ledger, mission, preference and tile hash retained',()=>{
   for(const [id,{state,sha256}] of Object.entries(frozen.entries)){
-    const before=structuredClone(state),r=migrateSaveV1(state);assert.equal(r.ok,true,id);assert.equal(r.value.schemaVersion,2);assert.equal(r.value.world.tiles.length,216);assert.deepEqual(r.value.elephantGrove,{grant:null});
+    const before=structuredClone(state),r=migrateSaveV1(state);assert.equal(r.ok,true,id);assert.equal(r.value.schemaVersion,2);assert.equal(r.value.world.tiles.length,216);assert.deepEqual(r.value.elephantGrove,{grant:null,missions:initialElephantMissions()});
     assert.deepEqual(projection(r.value),before,id);assert.equal(createHash('sha256').update(JSON.stringify(projection(r.value))).digest('hex'),sha256,id);
     assert.ok(r.value.world.habitats.every(h=>h.kind==='macaw-aviary'));assert.deepEqual(state,before);
     assert.deepEqual(parseSaveV2(serializeSaveV2(r.value)).value,r.value);
@@ -53,7 +54,7 @@ test('otherwise valid custom legacy layouts refuse this expansion while leaving 
 
 test('future EH proof metadata and elephant resources block recovery as unsupported rather than recoverable corruption',()=>{
   const source=migrateSaveV1(frozen.entries.q04Claimed.state).value;
-  for(const change of [s=>s.elephantGrove.missions={completedIds:['EH01']},s=>s.world.resources[0].kind='elephant-feeder']){
+  for(const change of [s=>s.elephantGrove.futureMissions={completedIds:['EH01']},s=>s.world.resources[0].kind='elephant-feeder']){
     const newer=structuredClone(source);change(newer);const payload=JSON.stringify(newer),raw={format:2,generation:'newer-content',revision:9,writtenAt:1,writer:'future-code',payload};
     assert.equal(validateSaveV2(newer).code,'unsupported-schema');assert.equal(inspectCheckpoint(raw,ELEPHANT_CHECKPOINT_CODEC).problem,'unsupported-schema');assert.equal(raw.payload,payload);assert.throws(()=>serializeSaveV2(newer));
   }

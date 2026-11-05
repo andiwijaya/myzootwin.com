@@ -1,4 +1,6 @@
 import { createInitialState } from '../core/initial-state.ts';
+import type {ZooSave} from '../core/zoo-state.ts';
+import type {ZooSaveV1} from '../core/state.ts';
 import { SaveFault, checkedCheckpoint as checkRecord, inspectCheckpoint as inspectRecord, stateFromCheckpoint as decodeRecord, encodeCheckpointState as encodeRecord, generationOf, summarize as summarizeRecord, rawSignature, LEGACY_CHECKPOINT_CODEC, type CheckpointCodec, type StorageFault, type StoredCheckpoint, type CheckpointProblem, type CheckpointSummary } from './checkpoint.ts';
 export { SaveFault, checkedCheckpoint, stateFromCheckpoint, encodeCheckpointState } from './checkpoint.ts';
 export type { StoredCheckpoint, StorageFault };
@@ -16,8 +18,8 @@ export interface RestartInspection {
     source: CheckpointSummary | null;
     hasBackup: boolean;
 }
-export interface DurableBackend {
-    readonly codec?:CheckpointCodec;
+export interface DurableBackend<State extends ZooSave=ZooSaveV1> {
+    readonly codec?:CheckpointCodec<State>;
     read(): Promise<StoredCheckpoint | null>;
     commit(expected: number, payload: string, writer: string, writtenAt: number): Promise<StoredCheckpoint>;
     inspectRecovery?(): Promise<RecoveryInspection>;
@@ -28,11 +30,11 @@ export interface DurableBackend {
     close(): void;
 }
 const fault = (e: unknown): SaveFault => e instanceof SaveFault ? e : new SaveFault(e instanceof DOMException && e.name === 'QuotaExceededError' ? 'quota' : e instanceof DOMException && e.name === 'VersionError' ? 'unreadable' : 'unavailable');
-export interface BackendOptions {codec?:CheckpointCodec;databaseVersion?:1|2;minimumSchema?:2;preserveV1BeforeMigration?:boolean;}
+export interface BackendOptions<State extends ZooSave=ZooSaveV1> {codec?:CheckpointCodec<State>;databaseVersion?:1|2;minimumSchema?:2;preserveV1BeforeMigration?:boolean;}
 export const ELEPHANT_V1_BACKUP='elephant-v1-backup';
-export function createIndexedDbBackend(factory: IDBFactory | undefined, database = SAVE_DATABASE,options:BackendOptions={}): DurableBackend {
-    const codec=options.codec??LEGACY_CHECKPOINT_CODEC;
-    const checkedCheckpoint=(raw:unknown)=>checkRecord(raw,codec),inspectCheckpoint=(raw:unknown)=>inspectRecord(raw,codec),stateFromCheckpoint=(raw:StoredCheckpoint)=>decodeRecord(raw,codec),encodeCheckpointState=(state:import('../core/state.ts').ZooSaveV1)=>encodeRecord(state,codec),summarize=(raw:StoredCheckpoint)=>summarizeRecord(raw,codec);
+export function createIndexedDbBackend<State extends ZooSave=ZooSaveV1>(factory: IDBFactory | undefined, database = SAVE_DATABASE,options:BackendOptions<State>={}): DurableBackend<State> {
+    const codec=options.codec??LEGACY_CHECKPOINT_CODEC as unknown as CheckpointCodec<State>;
+    const checkedCheckpoint=(raw:unknown)=>checkRecord(raw,codec),inspectCheckpoint=(raw:unknown)=>inspectRecord(raw,codec),stateFromCheckpoint=(raw:StoredCheckpoint)=>decodeRecord(raw,codec),encodeCheckpointState=(state:State)=>encodeRecord(state,codec),summarize=(raw:StoredCheckpoint)=>summarizeRecord(raw,codec);
     let connection: IDBDatabase | undefined, opening: Promise<IDBDatabase> | undefined, closed = false, observedGeneration = 'empty';
     let quoted: {
         id: string;
@@ -240,7 +242,7 @@ export function createIndexedDbBackend(factory: IDBFactory | undefined, database
             if (kind === 'reset') {
                 const fresh = createInitialState(), old = stateFromCheckpoint(source);
                 fresh.preferences = { ...old.preferences, speed: 1 };
-                payload = encodeCheckpointState(fresh);
+                payload = encodeCheckpointState(codec.prepare?.(fresh)??fresh as State);
             }
             try {
                 restartQuote = { id: crypto.randomUUID(), kind, primary: rawSignature(raw.primary), previous: rawSignature(raw.previous), backup: rawSignature(raw.restart), payload };

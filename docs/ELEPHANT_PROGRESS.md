@@ -2,9 +2,9 @@
 
 Source: owner Library handoff `libfile_09652153d1bc8191b2c1f1aa6cb5ce18` (44/44 lines) and master PRD `libfile_c082b76a52288191853083cf0b82e630` (445/445 lines), read directly on 5 November 2026. These references preserve source identity; this is an engineering checklist, not a materialized Library original.
 
-Session: autonomous local work, hard stop **2026-11-05 17:00 WIB / 10:00 UTC**, checkpoint before 16:55 WIB. No automatic continuation. No push/deploy authorized in this session. Original checkout, owner builds and owner saves stay untouched.
+Session 1 stopped safely before **2026-11-05 17:00 WIB / 10:00 UTC**. Session 2 explicitly authorized by the owner to continue at home, resumed at13:35 UTC /20:35 WIB from5852bdc. No new deadline specified. No push/deploy authorized. Original checkout, owner builds and owner saves stay untouched.
 
-Verified EH: **8/39 (20.51%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
+Verified EH: **9/39 (23.08%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
 
 | Item | Status | Scope / evidence |
 |---|---|---|
@@ -16,7 +16,7 @@ Verified EH: **8/39 (20.51%)**. Existing V1: **46/51**, five evidence/signoff ga
 | EH1-02 | [x] | Append-only cloned 96-cell extension, frozen worlds and real path/BFS tests; [evidence](ELEPHANT_FOUNDATION.md) |
 | EH1-03 | [x] | Original geometry/bounds exact, anchored consumers/camera/picking; 517 tests and native expanded-world viewport proof; [evidence](ELEPHANT_FOUNDATION.md) |
 | EH1-04 | [x] | Shared collision/36-cell transaction, separate caps, real bounded ghosts; 523 tests and native viewport negatives; [evidence](ELEPHANT_FOUNDATION.md) |
-| EH1-05 | [ ] PARTIAL | Opt-in lossless legacy migration/recovery tested; persisted elephant/resource/grant/EH union and activation remain; [evidence](ELEPHANT_SAVE_V2.md) |
+| EH1-05 | [x] | Full typed multispecies save/atomic migration/recovery; 540 tests and19 native storage cases; product activation stays gated; [evidence](ELEPHANT_MULTISPECIES_SAVE.md) |
 | EH1-06 | [ ] | Migration/clock/ledger long run |
 | EH2-01 | [ ] | Locked catalogue and exactly-once conservation grant |
 | EH2-02 | [ ] | Atomic paid elephant habitat construction |
@@ -50,4 +50,4 @@ Verified EH: **8/39 (20.51%)**. Existing V1: **46/51**, five evidence/signoff ga
 
 Each checked item requires a local commit and its scoped evidence. Commit identities are recorded by Git history and subsequent checkpoints; no self-referential hash is invented. Upcoming steps remain unverified until their complete seam passes.
 
-Session closed safely before 16:55 WIB. Code/tests frozen, owned QA servers stopped, no automatic continuation. [Final checkpoint and remaining work](ELEPHANT_SESSION_CHECKPOINT.md).
+Historical timed-session shutdown: [first checkpoint](ELEPHANT_SESSION_CHECKPOINT.md). Owner explicitly resumed work afterward; latest verified seam: [multispecies persistence](ELEPHANT_MULTISPECIES_SAVE.md).
