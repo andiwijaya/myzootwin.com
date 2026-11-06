@@ -1,6 +1,6 @@
 # MyZooTwin — Giraffe Plains Living Checklist
 
-**Created:** 7 November 2026 | **Status:** 0/42 (0%). Audit in progress; no implementation claimed.  
+**Created:** 7 November 2026 | **Status:** 1/42 (2.38%). Verified planning/reference gate only.  
 **Authority:** `MYZOOTWIN_GIRAFFE_PLAINS_MASTER_PRD_V1.md`  
 **Record:** after each micro-feature add verified commit SHA, exact tests, source-bound evidence, actual browser proof where relevant, issues and next. `[x]` means fully end-to-end **verified**, not planned/code-written only. Dot owns maintenance and concise updates autonomously.
 
@@ -12,8 +12,8 @@ Progress formula: `verified / 42 * 100`. Final release GH6-06 remains `[ ]` pend
   - Evidence: `UNRUN` | Commit: `NOT YET` | Browser: `UNRUN`
 - [ ] **GH0-02** — Freeze V1/V2/V3 synthetic old-player saves, tile coordinate/scene snapshots, macaw/elephant/lion quest/economy/visitor receipts and existing-owner-data isolation.
   - Evidence: `UNRUN` | Commit: `NOT YET` | Browser: `UNRUN`
-- [ ] **GH0-03** — Verify giraffe references, animation/welfare rules, original-art license path and game-scale vs real-life husbandry distinction.
-  - Evidence: `UNRUN` | Commit: `NOT YET` | Browser: `UNRUN`
+- [x] **GH0-03** — Verify giraffe references, animation/welfare rules, original-art license path and game-scale vs real-life husbandry distinction.
+  - Evidence: `GIRAFFE_ART_BEHAVIOR.md`; three primary sources checked | Commit: `761177278dec9a05d5ae00d3171153aa58a13b75` | Browser: not required for this reference gate; rendered art remains GH3
 - [ ] **GH0-04** — Create executable lateral expansion and route design fixtures: 12×26→24×26, macaw-side 7×7 anchor, reserve land and east-west visitor route/bridge decision.
   - Evidence: `UNRUN` | Commit: `NOT YET` | Browser: `UNRUN`
 
@@ -124,6 +124,7 @@ GH0-01 partial: fresh remote main is 3252234; GitHub Cloudflare check completed 
 | UTC/WIB | Feature | Commit | Unit/check/build | Internal browser evidence | Result/issues | Total |
 |---|---|---|---|---|---|---|
 | — | — | — | — | — | — | 0/42 |
+| 2026-11-06 UTC | GH0-03 | 761177278dec9a05d5ae00d3171153aa58a13b75 | Three primary references, original procedural art contract | Not a rendered art gate | Audit admin blocked independently | 1/42 |
 
 ## Hard boundaries
 
