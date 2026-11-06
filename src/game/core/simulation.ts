@@ -35,11 +35,11 @@ import { createFixedClock } from './fixed-clock.ts';
 import { createInitialState } from './initial-state.ts';
 import { nextRandom } from './random.ts';
 import { MAX_TICK, TICK_MS, type ZooSaveV1 } from './state.ts';
-import { validateSave } from '../persistence/save-v1.ts';
-import {validateSaveV2} from '../persistence/save-v2.ts';
+
+import {validateZooSave,serializeZooSave} from '../persistence/save.ts';
 import {conservationGrantView,prepareConservationGrant,type ConservationGrantQuote} from '../economy/conservation-grant.ts';
-import {serializeSaveV2} from '../persistence/save-v2.ts';
-const validateState=(value:unknown)=>typeof value==='object'&&value!==null&&'schemaVersion'in value&&value.schemaVersion===2?validateSaveV2(value):validateSave(value);
+
+const validateState=validateZooSave;
 const reconcileWelfare=<S extends RuntimeState>(state:S):S=>{reconcileMacawWelfare(macawRuntimeView(state));return state;};
 const evaluateMissions=(state:RuntimeState,advance=false)=>{evaluateMacawMissions(macawRuntimeView(state),advance);evaluateElephantMissions(state,advance);};
 const macawTransaction=<Result>(state:RuntimeState,run:(view:ZooSaveV1)=>Result):Result=>{const view=macawRuntimeView(state),result=run(view);commitMacawRuntimeView(state,view);return result;};
@@ -70,7 +70,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     if(settleMaintenance(state)){compactNow();publish(Object.freeze({type:'economy-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));}
     const random=nextRandom(state.randomState);
     state.randomState=random.state;
-    const {fed,watered}=stepAnimals(macawRuntimeView(state)),bathed:(Extract<SimulationEvent,{type:'elephant-bathed'}>|Extract<SimulationEvent,{type:'elephant-enriched'}>|Extract<SimulationEvent,{type:'elephant-socialized'}>)[]=[];if(state.schemaVersion===2){const care=stepElephantCare(state);fed.push(...care.fed);watered.push(...care.watered);for(const bath of care.bathed??[])bathed.push({type:'elephant-bathed',...bath,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.enriched??[])bathed.push({type:'elephant-enriched',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.socialized??[])bathed.push({type:'elephant-socialized',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});}reconcileWelfare(state);for(const e of watered)publish(Object.freeze({type:'animal-drank',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));for(const e of fed)publish(Object.freeze({type:'animal-fed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
+    const {fed,watered}=stepAnimals(macawRuntimeView(state)),bathed:(Extract<SimulationEvent,{type:'elephant-bathed'}>|Extract<SimulationEvent,{type:'elephant-enriched'}>|Extract<SimulationEvent,{type:'elephant-socialized'}>)[]=[];if(state.schemaVersion!==1){const care=stepElephantCare(state);fed.push(...care.fed);watered.push(...care.watered);for(const bath of care.bathed??[])bathed.push({type:'elephant-bathed',...bath,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.enriched??[])bathed.push({type:'elephant-enriched',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.socialized??[])bathed.push({type:'elephant-socialized',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});}reconcileWelfare(state);for(const e of watered)publish(Object.freeze({type:'animal-drank',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));for(const e of fed)publish(Object.freeze({type:'animal-fed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     const previousAdmissions=state.admissions.length,viewed=stepArrivals(state);
     const admitted=state.admissions.slice(previousAdmissions).map(a=>({visitorId:a.visitorId,admissionId:a.id,amount:ledgerProof(state,a.ledgerEntryId)!.amount}));
     evaluateMissions(state);retireClosedProofs(state);compactNow();
@@ -101,14 +101,14 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     elephantMissionView:()=>elephantMissionView(state),
     prepareElephantMission:(quote:ElephantMissionQuote)=>disposed||clock.inspect().paused?{ok:false as const,reason:'stale' as const}:prepareElephantMission(state,quote),
     acceptCommittedElephantMission(candidate:ZooSave,quote:ElephantMissionQuote){
-      if(disposed||candidate.schemaVersion!==2)return false;const prepared=prepareElephantMission(state,quote);if(!prepared.ok)return false;const next=structuredClone(candidate);next.preferences={...state.preferences};prepared.state.preferences={...state.preferences};if(serializeSaveV2(next)!==serializeSaveV2(prepared.state))return false;state=next;compactNow();publish(Object.freeze({type:'eh-mission-claimed',missionId:quote.id,amount:ELEPHANT_MISSION_RULES[quote.id].coins,tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;
+      if(disposed||candidate.schemaVersion===1)return false;const prepared=prepareElephantMission(state,quote);if(!prepared.ok)return false;const next=structuredClone(candidate);next.preferences={...state.preferences};prepared.state.preferences={...state.preferences};if(serializeZooSave(next)!==serializeZooSave(prepared.state))return false;state=next;compactNow();publish(Object.freeze({type:'eh-mission-claimed',missionId:quote.id,amount:ELEPHANT_MISSION_RULES[quote.id].coins,tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;
     },
     prepareConservationGrant:(quote:ConservationGrantQuote)=>prepareConservationGrant(state,quote),
     acceptCommittedGrant(candidate:ZooSave,quote:ConservationGrantQuote){
-      if(disposed||candidate.schemaVersion!==2)return false;
+      if(disposed||candidate.schemaVersion===1)return false;
       const prepared=prepareConservationGrant(state,quote);if(!prepared.ok)return false;
       const next=structuredClone(candidate);next.preferences={...state.preferences};prepared.state.preferences={...state.preferences};
-      if(serializeSaveV2(next)!==serializeSaveV2(prepared.state))return false;
+      if(serializeZooSave(next)!==serializeZooSave(prepared.state))return false;
       state=next;publish(Object.freeze({type:'conservation-grant-claimed',amount:conservationGrantView(state).amount,tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;
     },
     claimMission(quote:MissionQuote){
@@ -165,7 +165,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     },
     buildHabitat(anchor:Point,operationId:string,expectedCommand?:number){
       if(disposed||clock.inspect().paused||!authorized(expectedCommand))return {ok:false as const,reason:'command' as const};
-      const prepared=state.schemaVersion===2?prepareSpeciesHabitat(state.world,anchor,operationId,'macaw-aviary'):prepareHabitat(state.world,anchor,operationId);
+      const prepared=state.schemaVersion!==1?prepareSpeciesHabitat(state.world,anchor,operationId,'macaw-aviary'):prepareHabitat(state.world,anchor,operationId);
       if(!prepared.ok)return prepared;
       if(!prepared.duplicate){const paid=structuredClone(state),reason=debit(paid,PRICES.habitat,'build',`buy-${operationId.slice(8)}`,prepared.habitatId);if(reason)return {ok:false as const,reason:reason==='duplicate'?'command' as const:reason};paid.economy.nextCommand++;const connected=reconcilePathAccess(prepared.world);const next=validateState(reconcileJourneys({...paid,world:connected.world}));if(!next.ok)return {ok:false as const,reason:'command' as const};state=reconcileWelfare(next.value);topology=connected.topology;invalidateEdit();compactNow();publish(Object.freeze({type:'habitat-built',habitatId:prepared.habitatId,tick:state.tick,gameTimeMs:state.gameTimeMs}));}
       return {ok:true as const,habitatId:prepared.habitatId,duplicate:prepared.duplicate};
@@ -214,7 +214,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
       const next=validateState(reconcileJourneys({...structuredClone(state),world:connected.world,currency:transaction.currency,ledger:transaction.ledger,economy:{...structuredClone(state.economy),nextCommand:state.economy.nextCommand+1}}));
       if(!next.ok)return {ok:false as const,reason:'command' as const};
       editor={revision:editor.revision+1,undo:{before:structuredClone(state.world),after:structuredClone(connected.world),refundIds:transaction.entries.map(e=>e.id)}};
-      state=reconcileWelfare(next.value);if(state.schemaVersion===2&&quote.target.kind==='elephant-resource')reconcileElephantWelfare(state);topology=connected.topology;compactNow();publish(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));
+      state=reconcileWelfare(next.value);if(state.schemaVersion!==1&&quote.target.kind==='elephant-resource')reconcileElephantWelfare(state);topology=connected.topology;compactNow();publish(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));
       return {ok:true as const};
     },
     undo(operationId:string,expectedCommand?:number){
@@ -228,7 +228,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
       const connected=reconcilePathAccess(elephantWorld??undo.before),restored=structuredClone(state);if(restored.economy.recovery.habitatGrant&&connected.world.habitats.some(h=>h.id===restored.economy.recovery.habitatGrant!.id))restored.economy.recovery.habitatGrant.tick=state.tick;const next=validateState(reconcileJourneys({...restored,world:connected.world,currency:transaction.currency,ledger:transaction.ledger,economy:{...restored.economy,nextCommand:state.economy.nextCommand+1}}));
       if(!next.ok)return {ok:false as const,reason:'command' as const};
       const restoresElephantCare=undo.before.resources.some(r=>r.kind.startsWith('elephant-')&&!undo.after.resources.some(a=>a.id===r.id));if(restoresElephantCare&&elephantRestorationBlocked(next.value))return {ok:false as const,reason:'elephant-space' as const};
-      state=reconcileWelfare(next.value);if(state.schemaVersion===2&&restoresElephantCare)reconcileElephantWelfare(state);topology=connected.topology;invalidateEdit();compactNow();publish(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};
+      state=reconcileWelfare(next.value);if(state.schemaVersion!==1&&restoresElephantCare)reconcileElephantWelfare(state);topology=connected.topology;invalidateEdit();compactNow();publish(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};
     },
     economyView:()=>economyView(state),
     purchaseReason:(kind:'habitat'|'path')=>moneyReason(state,PRICES[kind]),

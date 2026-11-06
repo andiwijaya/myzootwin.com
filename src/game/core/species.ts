@@ -83,6 +83,7 @@ export const isLion = (animal:ZooAnimal):animal is LionAnimal => animal.speciesI
 export const macaws = (animals:readonly ZooAnimal[]):MacawAnimal[] => animals.filter(isMacaw);
 export const elephants = (animals:readonly ZooAnimal[]):ElephantAnimal[] => animals.filter(isElephant);
 export const lions = (animals:readonly ZooAnimal[]):LionAnimal[] => animals.filter(isLion);
+export const elephantResources=(resources:readonly ZooResource[]):ElephantResource[]=>resources.filter((r):r is ElephantResource=>r.kind.startsWith('elephant-'));
 
 export const SPECIES = Object.freeze({
   [MACAW_SPECIES_ID]:Object.freeze({habitatKind:'macaw-aviary' as const,footprint:2 as const,residents:2 as const,movement:'avian' as const}),

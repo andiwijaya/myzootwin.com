@@ -1,5 +1,5 @@
 import type {RuntimeState,Point} from '../core/state.ts';
-import type {ZooSaveV2} from '../core/zoo-state.ts';
+import type {MultiSpeciesSave as ZooSaveV2} from '../core/zoo-state.ts';
 import {elephants} from '../core/species.ts';
 import {macawRuntimeView} from '../core/runtime-state.ts';
 import {elephantCareInfo,type ElephantCareInfo} from '../animals/elephants/care-info.ts';
@@ -30,7 +30,7 @@ function missingConnection(s:RuntimeState,habitatId:string){
 
 /** One truthful next review action. No grant, debit, refill, advancement or optimistic success lives in this view. */
 export function elephantRecoveryView(s:RuntimeState):ElephantRecoveryView{
- const v:ElephantRecoveryView={active:false,command:s.economy.nextCommand,kind:'hidden',action:'none',balance:s.currency,cost:0,affordable:true,name:null,animalId:null,resourceId:null,care:null,path:null,waitTicks:0},h=s.world.habitats.find(h=>h.kind==='elephant-grove');if(s.schemaVersion!==2||!s.elephantGrove||!h)return v;
+ const v:ElephantRecoveryView={active:false,command:s.economy.nextCommand,kind:'hidden',action:'none',balance:s.currency,cost:0,affordable:true,name:null,animalId:null,resourceId:null,care:null,path:null,waitTicks:0},h=s.world.habitats.find(h=>h.kind==='elephant-grove');if(s.schemaVersion===1||!s.elephantGrove||!h)return v;
  v.active=true;const herd=elephants(s.animals);if(herd.length!==2){v.kind='welcome';v.action='build';return v;}
  const residents=herd.map(a=>({a,info:elephantCareInfo(s as ZooSaveV2,a)})).sort((x,y)=>Number(y.a.hunger>=80||y.a.thirst>=80)-Number(x.a.hunger>=80||x.a.thirst>=80)||x.info.welfare-y.info.welfare||x.a.id.localeCompare(y.a.id)),worst=residents[0]!;
  function care(){v.name=worst.a.name;v.animalId=worst.a.id;v.care=worst.info;v.cost=worst.info.next.coins;v.resourceId=worst.info.next.resourceId;v.affordable=v.cost<=s.currency;}

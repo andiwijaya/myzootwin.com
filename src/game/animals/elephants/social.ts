@@ -1,4 +1,4 @@
-import type {ZooSaveV2} from '../../core/zoo-state.ts';
+import type {MultiSpeciesSave as ZooSaveV2} from '../../core/zoo-state.ts';
 import {elephants,type ElephantAnimal} from '../../core/species.ts';
 import {elephantBodyRoute,groundCenters,groundDistance} from './ground.ts';
 import {elephantBodyClearance} from './body-clearance.ts';

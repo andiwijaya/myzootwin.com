@@ -36,7 +36,7 @@ export const sameWorld=(a:RuntimeWorld,b:RuntimeWorld)=>JSON.stringify(a)===JSON
 
 /** Undo cannot rebuild a solid prop through an actual elephant or its committed approach. */
 export function elephantRestorationBlocked(state:ZooSave){
- if(state.schemaVersion!==2)return false;
+ if(state.schemaVersion===1)return false;
  return state.animals.some(a=>{if(a.speciesId!=='elephas-maximus')return false;const h=state.world.habitats.find(h=>h.id===a.habitatId&&h.kind==='elephant-grove');return !h||!groundPointAllowed(state.world,h,a.position)||Boolean(a.target&&!groundPointAllowed(state.world,h,a.target));});
 }
 

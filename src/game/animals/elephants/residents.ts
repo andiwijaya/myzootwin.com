@@ -1,9 +1,9 @@
 import {reconcileElephantWelfare} from './welfare.ts';
 import type {ZooSave} from '../../core/zoo-state.ts';
 import type {RuntimeState} from '../../core/runtime-state.ts';
-import {isElephant,ELEPHANT_SPECIES_ID,type ElephantAnimal} from '../../core/species.ts';
+import {elephants,ELEPHANT_SPECIES_ID,type ElephantAnimal} from '../../core/species.ts';
 import {conservationGrantView} from '../../economy/conservation-grant.ts';
-import {validateSaveV2} from '../../persistence/save-v2.ts';
+import {validateMultiSave as validateSaveV2} from '../../persistence/save.ts';
 import type {Point} from '../../core/state.ts';
 
 export const ELEPHANT_RESIDENTS=Object.freeze([{id:'elephant-ayu',name:'Ayu'},{id:'elephant-nara',name:'Nara'}] as const);
@@ -17,16 +17,16 @@ export function elephantSpawnPair(s:RuntimeState):[Point,Point]|null{
  for(const a of free)for(const b of free)if(distance(a,b)>=2.4)return [{...a},{...b}];return null;
 }
 export function elephantResidentsView(s:RuntimeState){
- const residents=s.animals.filter(isElephant),habitat=s.world.habitats.some(h=>'kind'in h&&h.kind==='elephant-grove');
+ const residents=elephants(s.animals),habitat=s.world.habitats.some(h=>'kind'in h&&h.kind==='elephant-grove');
  const reason:'locked'|'habitat'|'present'|'space'|'ready'=!conservationGrantView(s).qualified?'locked':residents.length?'present':!habitat?'habitat':!elephantSpawnPair(s)?'space':'ready';
  return {command:s.economy.nextCommand,reason,canWelcome:reason==='ready',residents:residents.map(a=>({id:a.id,name:a.name,sex:a.sex}))};
 }
 /** Two free residents, never a purchase, reward, automatic migration side effect or repeated welcome. */
-export function prepareElephantWelcome(s:ZooSave,command:number){
- const view=elephantResidentsView(s);if(s.schemaVersion!==2||!view.canWelcome)return {ok:false as const,reason:view.reason};
+export function prepareElephantWelcome<S extends ZooSave>(s:S,command:number){
+ const view=elephantResidentsView(s);if(s.schemaVersion===1||!view.canWelcome)return {ok:false as const,reason:view.reason};
  if(command!==s.economy.nextCommand||!Number.isSafeInteger(command)||command>=Number.MAX_SAFE_INTEGER)return {ok:false as const,reason:'command' as const};
  const positions=elephantSpawnPair(s),habitat=s.world.habitats.find(h=>h.kind==='elephant-grove');if(!positions||!habitat)return {ok:false as const,reason:'space' as const};
- const next=structuredClone(s);
+ const next=structuredClone(s) as Extract<S,{schemaVersion:2|3}>;
  for(const [i,resident]of ELEPHANT_RESIDENTS.entries()){
   const a:ElephantAnimal={...resident,speciesId:ELEPHANT_SPECIES_ID,sex:'female',habitatId:habitat.id,position:positions[i]!,target:null,targetResourceId:null,hunger:20,thirst:20,energy:80,habitatFit:100,enrichment:30,welfare:30,care:{low:true,hungry:true,thirsty:true,tired:false,bored:true},currentBehavior:'idle',motion:{phase:'idle',ticksLeft:20,sequence:0,heading:0,waypoints:[],waypointIndex:0},foodEaten:0,waterDrunk:0,restedTicks:0,enrichedTicks:0,socialComfort:70,shadeRest:0,bathCooldownTicks:0,logCooldownTicks:0,socialCooldownTicks:0,baths:0,socialInteractions:0};next.animals.push(a);
  }

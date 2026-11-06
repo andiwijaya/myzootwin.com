@@ -1,5 +1,5 @@
-import type {ZooSaveV2} from '../../core/zoo-state.ts';
-import {elephants,type ElephantAnimal,type ElephantResource} from '../../core/species.ts';
+import type {MultiSpeciesSave as ZooSaveV2} from '../../core/zoo-state.ts';
+import {elephantResources,elephants,type ElephantAnimal,type ElephantResource} from '../../core/species.ts';
 import {elephantWelfareParts} from './welfare.ts';
 import {elephantGroundRoute,groundDistance} from './ground.ts';
 import {ELEPHANT_NEEDS as N,ELEPHANT_ENRICHMENT as E,ELEPHANT_SOCIAL as S,ELEPHANT_SUPPLIES} from './care-rules.ts';
@@ -8,7 +8,7 @@ export type ElephantCareNote='food-missing'|'food-empty'|'food-blocked'|'hungry'
 export type ElephantHelpfulAction='build-food'|'refill-food'|'repair-food'|'wait-food'|'build-water'|'refill-water'|'repair-water'|'wait-water'|'clear-space'|'build-shade'|'repair-shade'|'wait-shade'|'build-log'|'repair-log'|'wait-log'|'build-pond'|'refill-pond'|'repair-pond'|'wait-bath'|'welcome-companion'|'allow-social'|'wait-social'|'wait-clearance'|'steady';
 /** Read-only explanation from real needs, resource stock/access and the same species welfare formula. */
 export function elephantCareInfo(s:ZooSaveV2,a:ElephantAnimal){
- const p=elephantWelfareParts(s,a),h=s.world.habitats.find(h=>h.id===a.habitatId&&h.kind==='elephant-grove'),resources=s.world.resources.filter((r):r is ElephantResource=>r.habitatId===a.habitatId&&'approaches'in r),of=(kind:ElephantResource['kind'])=>resources.filter(r=>r.kind===kind);
+ const p=elephantWelfareParts(s,a),h=s.world.habitats.find(h=>h.id===a.habitatId&&h.kind==='elephant-grove'),resources=elephantResources(s.world.resources).filter(r=>r.habitatId===a.habitatId&&'approaches'in r),of=(kind:ElephantResource['kind'])=>resources.filter(r=>r.kind===kind);
  const reachable=(r:ElephantResource)=>Boolean(h&&r.approaches.some(point=>groundDistance(point,{x:r.cell.x+.5,z:r.cell.z+.5})<=1.6&&elephantGroundRoute(s.world,h,a.position,point)!==null));
  const food=of('elephant-browse'),water=of('elephant-water'),shade=of('elephant-shade'),log=of('elephant-log'),pond=of('elephant-pond'),notes:ElephantCareNote[]=[],next={kind:'steady' as ElephantHelpfulAction,coins:0,resourceId:null as string|null,seconds:0,affordable:true,balance:s.currency};
  const add=(condition:boolean,note:ElephantCareNote)=>{if(condition&&!notes.includes(note))notes.push(note);};
