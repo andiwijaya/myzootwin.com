@@ -1,0 +1,12 @@
+import {readFile,mkdir,cp,writeFile} from 'node:fs/promises';
+import {resolve,relative} from 'node:path';
+import {createHash} from 'node:crypto';
+import {execFileSync} from 'node:child_process';
+import {build} from 'vite';
+const root=resolve('.'),bundle=resolve('.qa/lion-maintenance-bundle'),target=resolve('.qa/lion-maintenance-dist'),qa=resolve('.qa/lion-product/maintenance');
+for(const [path,expected] of [[bundle,'.qa/lion-maintenance-bundle'],[target,'.qa/lion-maintenance-dist'],[qa,'.qa/lion-product/maintenance']])if(relative(root,path).replaceAll('\\','/')!==expected)throw Error('Unsafe maintenance output');
+await build({root,configFile:false,base:'./',publicDir:false,build:{outDir:bundle,emptyOutDir:true,rollupOptions:{input:resolve('scripts/qa/lion-maintenance.html')}}});
+let html=await readFile(resolve(bundle,'scripts/qa/lion-maintenance.html'),'utf8');html=html.replace(/src="[^"]*\/assets\//g,'src="/_lion-maintenance-assets/');
+await cp(resolve('dist'),target,{recursive:true});await mkdir(resolve(target,'play'),{recursive:true});await cp(resolve(bundle,'assets'),resolve(target,'_lion-maintenance-assets'),{recursive:true});await writeFile(resolve(target,'play/index.html'),html);
+await mkdir(qa,{recursive:true});await cp(resolve(bundle,'assets'),resolve('.qa/lion-product/_lion-maintenance-assets'),{recursive:true});await writeFile(resolve(qa,'index.html'),html);
+const receipt={source:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),localChanges:true,mode:'V3-compatible read-only maintenance; no storage version upgrade or write; nine normal routes retained except paused play entry',playHtmlSha256:createHash('sha256').update(html).digest('hex'),target};await writeFile(resolve(target,'maintenance-receipt.json'),JSON.stringify(receipt,null,2));console.log(JSON.stringify(receipt));

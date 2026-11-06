@@ -23,7 +23,7 @@ export function createLionWorldScene(catalog:SceneCatalog){
    }else if(r.kind==='lion-den'){
     stone('#9f977b',[x,.31,z],[.58,.38,.58]);batch.add(new CylinderGeometry(.055,.09,1.2,6),'#806444',[x, .62,z]);stone('#74825a',[x,1.22,z],[1.55,.20,1.55]);stone('#87935f',[x+.4,1.33,z-.2],[1.15,.17,.95]);
    }else if(r.kind==='lion-scent'){box('#a8a76e',[x,.09,z],[.7,.06,.7]);for(const side of [-1,1])stone(r.stock?'#809454':'#9a986c',[x+side*.16,.16,z],[.15,.17,.19]);}
-   else{batch.add(new CylinderGeometry(.16,.20,.7,8).rotateZ(Math.PI/2),'#896745',[x,.24,z]);for(const side of [-1,1])box('#b59a70',[x+side*.16,.4,z],[.025,.02,.26]);}
+   else{batch.add(new CylinderGeometry(.16,.20,.7,8).rotateZ(Math.PI/2),'#896745',[x,.24,z]);for(const side of [-1,1])box('#b59a70',[x+side*.16,.4,z],[.025,.02,.26]);for(const port of r.approaches){const dx=r.cell.x+.5-port.x,dz=r.cell.z+.5-port.z,d=Math.hypot(dx,dz),px=port.x+dx/d*.35-origin.x,pz=port.z+dz/d*.35-origin.z;batch.add(new CylinderGeometry(.085,.11,.42,7).rotateX(Math.PI/2),'#9a7751',[px,.16,pz],[1,1,1],Math.atan2(dx,dz));}}
    install(r.id,key,batch);catalog.identities.set(r.id,{id:r.id,category:'object',kind:'lion-facility',facilityKind:r.kind,stock:r.stock,capacity:r.capacity,ordinal:i+1,cell:{...r.cell}});
   }
  },dispose(){if(disposed)return;disposed=true;for(const id of [...models.keys()])remove(id);material.dispose();group.clear();},inspect:()=>({lionWorldMeshes:models.size,lionWorldMaterials:disposed?0:1,lionWorldDisposed:disposed})};

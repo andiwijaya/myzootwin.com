@@ -1,0 +1,38 @@
+Γ£û every domain notification exposes a fully valid shared tick, including visitors arriving during animal care and maintenance (313.9025ms)
+Γä╣ tests 1
+Γä╣ suites 0
+Γä╣ pass 0
+Γä╣ fail 1
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 582.4849
+
+Γ£û failing tests:
+
+test at tests\simulation-atomic-events.test.mjs:6:1
+Γ£û every domain notification exposes a fully valid shared tick, including visitors arriving during animal care and maintenance (313.9025ms)
+  AssertionError [ERR_ASSERTION]: No observer or eager save may receive the earlier visitor position with the new tick
+  + actual - expected
+  
+  + [
+  +   {
+  +     event: 'animal-fed',
+  +     path: '$.visitors.arrival.position',
+  +     tick: 2723
+  +   }
+  + ]
+  - []
+  
+      at TestContext.<anonymous> (file:///C:/Users/andi_/Documents/Codex/2026-11-06/task/lion/tests/simulation-atomic-events.test.mjs:11:9)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.start (node:internal/test_runner/test:1003:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: [ { event: 'animal-fed', tick: 2723, path: '$.visitors.arrival.position' } ],
+    expected: [],
+    operator: 'deepStrictEqual',
+    diff: 'simple'
+  }

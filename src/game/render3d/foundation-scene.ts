@@ -123,7 +123,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
       placement?.command('cancel');elephantCarePreview?.cancel();lionPreview?.cancel();grantBusy=true;updateRunning();announceLion();
       try{const committed=await options.stateStore.commitCandidate(prepared.state,{tick:prepared.state.tick,command:quote.command});if(disposed)return;if(!committed||!(q.action==='grant'?simulation.acceptCommittedLionGrant(committed,quote):simulation.acceptCommittedLionMission(committed,missionQuote)))lionFailure='storage';else saveSession();}catch{lionFailure='storage';}finally{grantBusy=false;if(!disposed){updateRunning();render();}}return;
     }
-    if(q.action==='focus'){const origin=sceneOrigin(simulation.worldSnapshot());controls?.focusArea({x:3-origin.x,z:18-origin.z,width:7,depth:7});}
+    if(q.action==='focus'){const world=simulation.worldSnapshot(),origin=sceneOrigin(world),home=world.habitats.find(h=>'kind'in h&&h.kind==='lion-savanna'),x=home?Math.min(...home.cells.map(c=>c.x)):3,z=home?Math.min(...home.cells.map(c=>c.z)):18;controls?.focusArea({x:x-origin.x,z:z-origin.z,width:7,depth:7});}
     else if(q.action==='habitat'){if(!simulation.lionHabitatView().canBuild)return;placement?.command('cancel');lionPreview?.cancel();elephantCarePreview?.cancel();lionPreview?.cancel();placementHabitatKind='lion-savanna';placementCommand=simulation.commandRevision();placement?.guide('habitat',{x:3,z:18});const origin=sceneOrigin(simulation.worldSnapshot());controls?.focusArea({x:3-origin.x,z:18-origin.z,width:7,depth:7});}
     else if(q.action==='welcome'){const result=simulation.welcomeLions(q.command??-1);if(!result.ok)lionFailure=result.reason;else saveSession();}
     else if(q.action==='resource-plan'&&q.kind&&LION_RESOURCE_KINDS.includes(q.kind)){placement?.command('cancel');elephantCarePreview?.cancel();lionPreview?.cancel();lionPreview?.begin(q.kind);}
@@ -426,7 +426,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
       announceEdit(result.ok?null:result.reason,result.ok?(command==='undo'?'restored':'removed'):null);
     },
     cancelInput() {lionPreview?.cancel();lionRemoval=null; controls?.setEnabled(false); updateRunning(); },
-    setPaused(value) { paused = value; updateRunning(); },
+    setPaused(value) { paused = value; updateRunning(); announceLion(); },
     inspect: () => {
       // One coherent read per diagnostic call; never repeat full finance/views/clones for each field.
       const simulationState=simulation.inspect(),stateSnapshot=simulation.snapshot(),missionView=simulation.missionView(),perchView=simulation.perchView(),foodView=simulation.foodView(),waterView=simulation.waterView(),visitorView=simulation.visitorView(),birdsView=simulation.birdsView(),policy=visual(),guide=readGuide(simulationState);

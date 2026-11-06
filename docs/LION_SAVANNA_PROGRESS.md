@@ -2,7 +2,7 @@
 
 # MyZooTwin Lion Savanna — living checklist copy
 **Source of truth:** `MYZOOTWIN_LION_SAVANNA_MASTER_PRD_V1.md` section 10.
-**Current status:** 7/39 (17.95%) — local verification only.
+**Current status:** 22/39 (56.41%) — local verification only.
 **Do not conflate:** V1 46/51, Elephant EH 38/39 are separately tracked snapshots, subject to re-audit at execution start.
 
 Copy these items into `docs/LION_SAVANNA_PROGRESS.md` and record a time-stamped evidence path and commit per verified feature. Never mark a checkbox solely for design or a mock.
@@ -17,38 +17,38 @@ Copy these items into `docs/LION_SAVANNA_PROGRESS.md` and record a time-stamped 
 ## LH1 — Shared world + species + persistence V3
 
 - [x] **LH1-01** — Add lion discriminants to shared species/habitat/resource, typed ground behaviors and source-bounded capacities.
-- [ ] **LH1-02** — Append lion zone to the V2 12×18 world, preserve old tile order and fixed origin; extend camera/diorama safely.
-- [ ] **LH1-03** — Implement 7×7 placement previews, occupied/scenery/fence blocking, safe resident routes and accessible visitor viewing cell.
+- [x] **LH1-02** — Append lion zone to the V2 12×18 world, preserve old tile order and fixed origin; extend camera/diorama safely.
+- [x] **LH1-03** — Implement 7×7 placement previews, occupied/scenery/fence blocking, safe resident routes and accessible visitor viewing cell.
 - [x] **LH1-04** — Implement strict ZooSaveV3 and lossless V1→V2→V3, V2→V3 migrations with original backup and future-format guard.
 - [x] **LH1-05** — Upgrade single IndexedDB store to version-3 CAS writer and old-binary barrier; prove compaction and retry semantics.
-- [ ] **LH1-06** — Connect V3 canonical game entry and safe in-memory reset/Continue/Undo with existing one RAF/fixed tick.
+- [x] **LH1-06** — Connect V3 canonical game entry and safe in-memory reset/Continue/Undo with existing one RAF/fixed tick.
 
 ## LH2 — First complete lion care loop
 
-- [ ] **LH2-01** — Introduce Lion Savanna unlock after EH04 and one-time 1,800 ZC reserve grant, separately claimed.
-- [ ] **LH2-02** — Create real costed savanna enclosure, 7×7 fence, selection and live/ghost material state.
-- [ ] **LH2-03** — Welcome one adult male lion (private interim slice), with real state, grounded roaming and saved identity.
-- [ ] **LH2-04** — Add lion food and drinking stations and causal feed/drink/refill system using shared money engine.
-- [ ] **LH2-05** — Welcome two adult females and coordinate service access/queue/collision and safe pride membership.
+- [x] **LH2-01** — Introduce Lion Savanna unlock after EH04 and one-time 1,800 ZC reserve grant, separately claimed.
+- [x] **LH2-02** — Create real costed savanna enclosure, 7×7 fence, selection and live/ghost material state.
+- [x] **LH2-03** — Welcome one adult male lion (private interim slice), with real state, grounded roaming and saved identity.
+- [x] **LH2-04** — Add lion food and drinking stations and causal feed/drink/refill system using shared money engine.
+- [x] **LH2-05** — Welcome two adult females and coordinate service access/queue/collision and safe pride membership.
 - [ ] **LH2-06** — Enable protected enclosure/facility edit/remove/Undo, real paid refunds and removal dependencies.
 
 ## LH3 — Lion art + real behavior + signature event
 
 - [ ] **LH3-01** — Build original recognizable stylized male lion rig (mane, paws, ears, muzzle, tail) and selection.
 - [ ] **LH3-02** — Build shared female lion rig with clear morphology, distinct palette/identity and locomotion compatibility.
-- [ ] **LH3-03** — Implement grounded walking, turning, slope/ramp/kopje approach, collision and deterministic waypoints.
-- [ ] **LH3-04** — Implement lion resting/shade-seeking with safe privacy choices and fair per-lion rest access.
+- [x] **LH3-03** — Implement grounded walking, turning, slope/ramp/kopje approach, collision and deterministic waypoints.
+- [x] **LH3-04** — Implement lion resting/shade-seeking with safe privacy choices and fair per-lion rest access.
 - [ ] **LH3-05** — Implement feeding/drinking animations tied strictly to FSM/resource stock and body/contact positions.
-- [ ] **LH3-06** — Add elevated kopje viewpoint and iconic ROAR sequence with jaw/head/mane motion and optional licensed/original audio.
-- [ ] **LH3-07** — Add coordinated, optional affiliative lion social behavior (approach, nuzzle/head rub, synchronize rest).
-- [ ] **LH3-08** — Add scent trail / scent post + scratch-log enrichment with investigation and replenishment/cooldowns.
+- [x] **LH3-06** — Add elevated kopje viewpoint and iconic ROAR sequence with jaw/head/mane motion and optional licensed/original audio.
+- [x] **LH3-07** — Add coordinated, optional affiliative lion social behavior (approach, nuzzle/head rub, synchronize rest).
+- [x] **LH3-08** — Add scent trail / scent post + scratch-log enrichment with investigation and replenishment/cooldowns.
 
 ## LH4 — Consequences, zoo economy + quests
 
 - [ ] **LH4-01** — Implement explainable lion welfare scoring with resource, space, shade/rest, enrichment and social causes.
-- [ ] **LH4-02** — Extend multi-habitat visitor destination fairness to macaw + elephant + lion with true sightline/viewing.
+- [x] **LH4-02** — Extend multi-habitat visitor destination fairness to macaw + elephant + lion with true sightline/viewing.
 - [ ] **LH4-03** — Balance reserve/operating prices, periodic upkeep, attraction and cash recovery without passive exploits.
-- [ ] **LH4-04** — Add LQ01–LQ04 real evidence-based lion missions, rewards and separate achievement namespace.
+- [x] **LH4-04** — Add LQ01–LQ04 real evidence-based lion missions, rewards and separate achievement namespace.
 - [ ] **LH4-05** — Add recoverable shortage/low-cash and blocked-path guidance to keep the lion loop playable.
 
 ## LH5 — Discoverability, mobile and accessibility
@@ -67,7 +67,7 @@ Copy these items into `docs/LION_SAVANNA_PROGRESS.md` and record a time-stamped 
 - [ ] **LH6-05** — Review dead code, asset rights, dependency/security/privacy, repo size and retained non-game routes.
 - [ ] **LH6-06** — Prepare release/rollback using V3-compatible target; publish only after explicit production approval.
 
-**Milestone progress:** LH0 4/4; LH1 3/6; LH2 0/6; LH3 0/8; LH4 0/5; LH5 0/4; LH6 0/6. **Total 7/39**.
+**Milestone progress:** LH0 4/4; LH1 6/6; LH2 5/6; LH3 5/8; LH4 2/5; LH5 0/4; LH6 0/6. **Total 22/39**.
 
 6 Nov 2026 evidence: [foundation](LION_FOUNDATION.md), [V3 codec](LION_V3_PERSISTENCE.md), [native storage and two-tab CAS](LION_NATIVE_STORAGE.md). Source checkpoints: 557af6c, d69431e; native evidence is recorded in the next local checkpoint. LH0-01 was completed by the later hosting dashboard check below. Product activation, Lion care/art/UI/mission gates remain open until independently verified.
 
@@ -76,3 +76,5 @@ Copy these items into `docs/LION_SAVANNA_PROGRESS.md` and record a time-stamped 
 2026-11-06: LH0-01 verified read-only in current Cloudflare Deployments dashboard: production main `2aa836300304477f6e381413b4a39047c28bacf3`, deployment `2c7e695d-620f-49e7-acee-68f73ad281c8`. Same SHA as fresh remote main; local Elephant source `377ec7d` differs only by later release evidence. Original C:\MyZooTwin checkout is stale `63ce52a` and was untouched. Elephant release receipt reports EH39/39; inherited V1 remains 46/51. Direct HTTP audit returned403; native browser public release and hosting dashboard were readable. No deploy action performed.
 
 Latest checkpoint: [care implementation and full regression](LION_CARE_CHECKPOINT.md).
+
+2026-11-06 checkpoint22/39: LH1-02/03/06 and LH2-01..05 combine golden/strict/native storage tests with the actual compiled UI journey in internal UUID database lion-product-5f9b7a20-b826-4187-b4fc-bc05592f0d1d: original habitats, explicit grant, illegal northern preview rejection, paid49-cell habitat, seven priced facilities, stocked ports, three welcomed identities, five paid outside path tiles, saved Continue. LH3-03/04/06/07/08: bounded ground/ramp/collision tests, actual rest, three elevated roars and later live social interaction counts Raka2/Sena4/Tala2, real scent/scratch use. LH4-02/04: all three habitats reached in seeded tests with exact10-ZC admission ledger; four sequential LQ claims completed in internal browser, actual viewers arrival20/23/26, separately preserved Q/EH. Receipt: docs/qa/lion/internal-initial-journey.json, care checkpoint d7c7849 and current scoped tests. Native mobile, detailed selection/contact views, zero-cash journey, final regression, faults and soak/release remain open. The initial transient save error recovered via explicit Retry; diagnostic re-run has not reproduced it, so soak is not yet accepted.

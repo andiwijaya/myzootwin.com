@@ -75,13 +75,17 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     if(state.tick>=MAX_TICK)throw new RangeError('Simulation tick limit reached');
     state.tick++;
     state.gameTimeMs=state.tick*TICK_MS;
-    if(settleMaintenance(state)){compactNow();publish(Object.freeze({type:'economy-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));}
+    const maintenanceChanged=settleMaintenance(state);
     const random=nextRandom(state.randomState);
     state.randomState=random.state;
-    const {fed,watered}=stepAnimals(macawRuntimeView(state)),bathed:(Extract<SimulationEvent,{type:'elephant-bathed'}>|Extract<SimulationEvent,{type:'elephant-enriched'}>|Extract<SimulationEvent,{type:'elephant-socialized'}>)[]=[];if(state.schemaVersion!==1){const care=stepElephantCare(state);fed.push(...care.fed);watered.push(...care.watered);for(const bath of care.bathed??[])bathed.push({type:'elephant-bathed',...bath,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.enriched??[])bathed.push({type:'elephant-enriched',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.socialized??[])bathed.push({type:'elephant-socialized',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});}const lionEvents=state.schemaVersion===3?stepLionCare(state):null;if(lionEvents){fed.push(...lionEvents.fed);watered.push(...lionEvents.watered);}reconcileWelfare(state);for(const e of watered)publish(Object.freeze({type:'animal-drank',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));for(const e of fed)publish(Object.freeze({type:'animal-fed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
+    const {fed,watered}=stepAnimals(macawRuntimeView(state)),bathed:(Extract<SimulationEvent,{type:'elephant-bathed'}>|Extract<SimulationEvent,{type:'elephant-enriched'}>|Extract<SimulationEvent,{type:'elephant-socialized'}>)[]=[];if(state.schemaVersion!==1){const care=stepElephantCare(state);fed.push(...care.fed);watered.push(...care.watered);for(const bath of care.bathed??[])bathed.push({type:'elephant-bathed',...bath,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.enriched??[])bathed.push({type:'elephant-enriched',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.socialized??[])bathed.push({type:'elephant-socialized',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});}const lionEvents=state.schemaVersion===3?stepLionCare(state):null;if(lionEvents){fed.push(...lionEvents.fed);watered.push(...lionEvents.watered);}reconcileWelfare(state);
     const previousAdmissions=state.admissions.length,viewed=stepArrivals(state);
     const admitted=state.admissions.slice(previousAdmissions).map(a=>({visitorId:a.visitorId,admissionId:a.id,amount:ledgerProof(state,a.ledgerEntryId)!.amount}));
     evaluateMissions(state);retireClosedProofs(state);compactNow();
+    // Observers and eager checkpoints must see the completed shared tick, including arrival positions.
+    if(maintenanceChanged)publish(Object.freeze({type:'economy-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));
+    for(const e of watered)publish(Object.freeze({type:'animal-drank',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
+    for(const e of fed)publish(Object.freeze({type:'animal-fed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     for(const e of viewed)publish(Object.freeze({type:'visitor-viewed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     for(const e of admitted)publish(Object.freeze({type:'visitor-admitted',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     publish(Object.freeze({type:'tick',tick:state.tick,gameTimeMs:state.gameTimeMs,randomSample:random.value}));
