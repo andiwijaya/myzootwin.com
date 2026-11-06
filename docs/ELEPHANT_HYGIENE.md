@@ -1,0 +1,37 @@
+# EH6-05: repository, rights, security and route audit
+
+Verified6November2026UTC after43dc563. **38/39** scoped engineering items complete; EH6-06 separate authorized publication/live/rollback remains open. No new runtime, package, media or owner-save changes. Original V1 remains46/51 with five evidence/signoff gates open.
+
+## Source and dependency audit
+
+Installed-TypeScript AST graph:145source modules reachable from5page roots,0orphan candidates/0unresolved imports. Type-only dependencies retained; no arbitrary source deletion or unused-export claim. Installed compiler:300files,0unused declarations/0other diagnostics. [Graph](qa/elephant-hygiene/source-graph.json), [no-unused](qa/elephant-hygiene/no-unused.json); reusable audit recipes in that directory.
+
+`npm ls --all --json` exits0.351locked package positions/281installed, no missing required package; absent entries are optional platform variants. `npm audit --json` exits0 and reports0known advisories at this run; no install/upgrade/fix/suppression. This is a registry-known advisory check, not a proof of all vulnerabilities, consistent with [npm audit documentation](https://docs.npmjs.com/cli/v11/commands/npm-audit/). Raw outputs/hash inventory retained. Six direct packages retain concrete site build/sitemap/render/typecheck purposes. [Dependencies](qa/elephant-hygiene/dependencies.json), [registry result](qa/elephant-hygiene/npm-audit.json).
+
+An opt-in distribution rebuild emits exactly the same source/build identities as37:327inputs`0bee95281804ffe6372bc3a3ebdfb0c8daceb40a982dd25c5c117ff777d54761`,24files/9pages`f38b2e916d88e57c8d1501e0e35a28982fdb05e236ade379628da57799345b96`. Emitted vendor modules are only Three core/module/BufferGeometryUtils. No native compiler/build tooling is in public artifacts. Eight non-play HTML bodies exactly match the verifiedV2fallback;9HTTP route/sitemap checks from37 remain valid. [Distribution/fallback](qa/elephant-hygiene/distribution-and-fallback.json), [retained pages](qa/elephant-hygiene/retained-site.json).
+
+## Assets and notices
+
+Elephant original procedural source modules have exact current hashes in [asset supplement](qa/elephant-hygiene/assets-current.json). No downloaded mesh, texture, image, animation or recorded sound was added. Existing art/public assets and package/lock are unchanged from original63ce52a. Original journalSVG/PNG/favicon generator verifies exact bytes on recordedNode24.12.0/sharp0.35.5/libvips8.18.7. Game screenshot remains an original documented screenshot. Source reading of Smithsonian anatomical references is not an image/video reproduction license.
+
+Three notice has identical complete copyright/permission text after CRLF normalization, not byte equality: public1102bytes/installed1081bytes. Initial raw comparison correctly returned false; retained hashes and text-equality result explain inherited Windows line endings. Notice scanner was corrected to includeLICENCE;9physical standalone-file absences remain, with existing exact-version source/parent supplements. Full text for am-i-vibing/piccolore/process-ancestry remains unresolved for broader tooling redistribution. No license agreement or legal signoff was invented. Historical asset manifest remains historical; current supplement distinguishes changed procedural files.
+
+## Scoped security/privacy review
+
+Pattern audit ofsrc finds no eval/newFunction, fetch/sendBeacon/WebSocket/XMLHttpRequest, device permission request or credential-shaped secret. Only sensitive-name candidate tracked is the empty `.env.example`, reviewed as a public blank GA setting. Values from real env/auth files were not read or printed. This is a source-pattern review, not a pentest. Google script-element loading is separately reviewed in the existing unchanged privacy adapter: game remains ineligible; journal remains verified-choice gated. [Source audit](qa/elephant-hygiene/security-source-scan.json).
+
+Built/play retains self-only script/connect/font CSP and no-referrer; CSP is a meta policy, not a production response-header/anti-framing certification. No remote fonts or new game telemetry/save upload. IndexedDB/localStorage and same-origin writer coordination remain local; strictV2 parsing/CAS/version barriers and future-protection are covered by719tests and40native fault cases. Do not describe hosting logs/extensions/shared profiles as absent data access. Existing controller/contact/provider/legal retention questions and the fiveV1gates remain open; current audit does not grant blanket legal/security clearance.
+
+## Size and artifact classification
+
+Before new audit/fallback receipts:575,962,917logical file bytes, including Git97,564,269, installed tooling232,530,284, docs233,169,452, privateQA7,861,861 and publicdist1,560,063. Compared with original63ce52a, Elephant evidence390files/12,592,182bytes; Elephant prose37files/232,070bytes. Below10GB preference. These are logical sizes, not allocated disk blocks. Final supplemental observation is581,448,147bytes including ignored fallback/privateQA12,740,377bytes and docs233,775,552bytes; no junctions/symlinks followed. [Inventory](qa/elephant-hygiene/inventory.json), [classification](qa/elephant-hygiene/scope-and-receipts.json).
+
+Private QA consists of frozen legacy fixtures, the current compiled harness and bounded debug/check receipts. No `.qa/runs` tree or superseded large build forest exists here; no arbitrary purge, history rewrite or dependency removal. Prior substantive proof and original233MBdocs are retained. Only24publicdist files ship; docs/QA/tooling/saves do not. New `.gitattributes` rules preserve exact soak/hygiene evidence bytes across checkouts. README now points to current candidate and original replacement art rather than obsolete pre-release rights/config descriptions.
+
+## Release preflight and limits
+
+OriginalC:/MyZooTwin remains cleanmain63ce52a. Read-only live `git ls-remote` confirmsmain/HEADd6aacb8555142a19a9844d84c4b1680ea5013e49; it is an ancestor of the candidate. No fetch/push/deploy. Latest historical production receipt isbc8b46ce/source d6aacb8, independently read in5Novbaseline; no authenticated Cloudflare panel is currently available in this IAB inventory, so current dashboard/deployment must be reverified at release time. Unrelated old tabs were untouched.
+
+Concrete V2fallback7bcca5c was exported locally and built9pages with exact historical build8628e88b4b1635ade6e1ce3e1690ca87e8e0a997f50d10a637f36991571d75eb. It decodes/serializes both current13305tick and cleanup13385tick full saves exactly. It lacks the performance fix, so remains a qualified emergency option, not a physical performance certification or exercised production rollback. An unnecessary optional dependency-junction attempt returned AccessDenied; it was not retried, no link exists, and normal ancestor package resolution built successfully. A diagnostic recipe first used one extra parent path and failed before execution, then was corrected; no product files changed.
+
+[Prepared publication and save-safe rollback steps](ELEPHANT_RELEASE_PLAN.md) require separate authorization. Do not roll back gameplay toV1 or overwriteV2 with originalV1backup. Owned servers/tabs are closed;4391/4392 free, no outstanding coding blocker.

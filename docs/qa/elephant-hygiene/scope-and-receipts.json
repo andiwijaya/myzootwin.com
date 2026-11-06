@@ -1,0 +1,73 @@
+{
+  "changedVsOriginal63ce52a": {
+    ".gitattributes": {
+      "files": 1,
+      "bytes": 988
+    },
+    "elephant-docs": {
+      "files": 37,
+      "bytes": 232070
+    },
+    "new-elephant-evidence": {
+      "files": 390,
+      "bytes": 12592182
+    },
+    "scripts": {
+      "files": 2,
+      "bytes": 7211
+    },
+    "src": {
+      "files": 93,
+      "bytes": 793872
+    },
+    "tests": {
+      "files": 59,
+      "bytes": 640934
+    }
+  },
+  "receipts": [
+    {
+      "file": "npm-ls.json",
+      "bytes": 90806,
+      "sha256": "b6ae2cca596be20227cd95c5f1aab0f61cbcbd2d51c85c6759b65753ba647563"
+    },
+    {
+      "file": "npm-ls-error.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "npm-audit.json",
+      "bytes": 386,
+      "sha256": "1685e1240737a3f1bf8ae411546115ca950f6d6eb750f8111ec00dbed23f63d3"
+    },
+    {
+      "file": "npm-audit-error.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "file": "source-graph.json",
+      "bytes": 373787,
+      "sha256": "e6186be4a677d63f038343089c2831f9ae1843ec5f0c0e3353e5305f380b6cf7"
+    },
+    {
+      "file": "no-unused.json",
+      "bytes": 233,
+      "sha256": "8520fc0014a573eeac3ef248bce02c91a91dc7d873e209ba055ce2606309e4a2"
+    },
+    {
+      "file": "inventory.py",
+      "bytes": 5229,
+      "sha256": "cfbcb9f61dafe2a55f352252338c6e6d25ec0f11c6856cf157fdae504eae7fae"
+    }
+  ],
+  "privateQaClassification": {
+    "scope": ".qa/ only ignored,7.86MB at observation",
+    "retained": "Frozen legacy fixture, private compiled current harness, bounded run logs and diagnostics",
+    "removed": [],
+    "reason": "No .qa/runs tree or orphan duplicate build forest; all remaining current/frozen/debug receipts have bounded reproducibility value. Original233MB QA/docs and Git history retained, no arbitrary purge."
+  },
+  "deadCodeAudit": "145 source modules reachable from5page roots;0unresolved/0orphan candidates. TypeScript300files0unused/0other. This is not an unused-export proof.",
+  "sourceUnchangedSince37": true
+}
