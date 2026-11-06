@@ -1,6 +1,6 @@
 # MyZooTwin — Giraffe Plains Living Checklist
 
-**Created:** 7 November 2026 | **Status:** 5/42 (11.90%). Verified gates only; publication held.  
+**Created:** 7 November 2026 | **Status:** 6/42 (14.29%). Verified gates only; publication held.  
 **Authority:** `MYZOOTWIN_GIRAFFE_PLAINS_MASTER_PRD_V1.md`  
 **Record:** after each micro-feature add verified commit SHA, exact tests, source-bound evidence, actual browser proof where relevant, issues and next. `[x]` means fully end-to-end **verified**, not planned/code-written only. Dot owns maintenance and concise updates autonomously.
 
@@ -23,8 +23,8 @@ Progress formula: `verified / 42 * 100`. Final release GH6-06 remains `[ ]` pend
   - Evidence: `GIRAFFE_FOUNDATION.md`, focused 5/5 and noEmit exit0 | Commit: `60c905be78ebdcf62a24c3fc91e10a9262e0ce4b` | Browser: dormant type-only gate; no product activation
 - [x] **GH1-02** — Implement width growth with full row-major reindex and frozen legacy (x,z) semantics, no automatic builds or cash; verify all legacy projections.
   - Evidence: `GIRAFFE_FOUNDATION.md`, `qa/giraffe-baseline/expansion-tests.txt` 7/7 including32adversarial grids | Commit: `e9bad1ce04ea4a21358ea1b11a4089d661677e48` | Browser: pure dormant transform; visual gate GH1-03 remains open
-- [ ] **GH1-03** — Hold legacy scene origin (6,5) and all old object transforms; expand terrain/selection/renderer/camera bounds; test 4-angle picking, portrait and landscape.
-  - Evidence: `UNRUN` | Commit: `NOT YET` | Browser: `UNRUN`
+- [x] **GH1-03** — Hold legacy scene origin (6,5) and all old object transforms; expand terrain/selection/renderer/camera bounds; test 4-angle picking, portrait and landscape.
+  - Evidence: `GIRAFFE_FOUNDATION.md`; scene15/15, TypeScript exit0 | Commits: `6bff153`, corrected native probe `36a0675c4b08597000d7496fdec22c785a58ebda` | Browser: real original renderer modules,48projected raycast checks, native selection,3viewports,0GPU resources after close; static probe, not full V4 gameplay
 - [ ] **GH1-04** — Build a real legal east-west visitor connection; choose safe land corridor or a bridge where needed, with correct paid transaction, topology, visuals and no teleport.
   - Evidence: `UNRUN` | Commit: `NOT YET` | Browser: `UNRUN`
 - [ ] **GH1-05** — Introduce actual 7×7 giraffe plot/ghost in lateral east wing, macaw-aligned z and a clear outside path; forbid overlap, keep unused parcels empty/buildable.
@@ -129,6 +129,7 @@ GH0-01 partial: fresh remote main is 3252234; GitHub Cloudflare check completed 
 | 2026-11-06 UTC | GH0-02 | ad2bf1d + native0a95ba1 | 775/775; check365clean; nine-page build | Actual3D/cold equality/IDEN/threeviewports | Superseded stale diagnostic retained; no physical-device claim | 3/42 |
 | 2026-11-06 UTC | GH1-01 | 60c905be78ebdcf62a24c3fc91e10a9262e0ce4b | focused5/5; TypeScript noEmit | Type-only | Dormant V4 | 4/42 |
 | 2026-11-06 UTC | GH1-02 | e9bad1ce04ea4a21358ea1b11a4089d661677e48 | focused7/7;32adversarial grids | Pure transform | Product activation gated | 5/42 |
+| 2026-11-06 UTC | GH1-03 | 36a0675c4b08597000d7496fdec22c785a58ebda | scene15/15;TypeScript exit0 | actualrenderer48raycasts/3views/nativeclick/focus/cleanup | Static probe; fullgame gate later | 6/42 |
 
 ## Hard boundaries
 
