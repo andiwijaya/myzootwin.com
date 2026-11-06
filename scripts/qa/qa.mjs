@@ -51,7 +51,7 @@ async function routeChecks(report) {
     const meta=pageMetadata(html);
     if(meta.canonical!=='https://myzootwin.com'+path)throw Error(`Canonical regression ${path}`);
     const prior=baseline.desktopRoutes.find(x=>x.path===path)?.direct;
-    const normalize=text=>text.replaceAll('â€”','-').replace(/\s+/g,'');
+    const normalize=text=>text.replace(/\s+/g,'');
     if(prior&&Object.keys(prior).some(key=>normalize(String(meta[key]??''))!==normalize(String(prior[key]))))throw Error(`Baseline journal metadata regression ${path}`);
     observations.push({path,status:response.status,sha256:sha256(html),...meta});
   }

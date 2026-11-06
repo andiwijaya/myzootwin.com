@@ -1,4 +1,10 @@
 export type SimulationEvent =
+  | {type:'giraffe-mission-claimed';missionId:import('./giraffe-state.ts').GiraffeMissionId;amount:number;tick:number;gameTimeMs:number}
+  | {type:'giraffe-grant-claimed';amount:number;tick:number;gameTimeMs:number}
+  | {type:'giraffes-welcomed';tick:number;gameTimeMs:number}
+  | {type:'giraffe-care-changed';resourceId:string;tick:number;gameTimeMs:number}
+  | {type:'giraffe-browsed'|'giraffe-enriched';animalId:string;resourceId:string;eventId:string;tick:number;gameTimeMs:number}
+  | {type:'giraffe-socialized';animalId:string;companionId:string;eventId:string;tick:number;gameTimeMs:number}
   | {type:'lion-mission-claimed';missionId:import('./zoo-state.ts').LionMissionId;amount:number;tick:number;gameTimeMs:number}
   | {type:'lion-grant-claimed';amount:number;tick:number;gameTimeMs:number}
   | {type:'lions-welcomed';tick:number;gameTimeMs:number}

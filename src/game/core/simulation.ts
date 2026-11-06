@@ -1,3 +1,12 @@
+import {giraffeWelfareExplanation,reconcileGiraffeWelfare} from '../animals/giraffes/welfare.ts';
+import {evaluateGiraffeMissions,giraffeMissionView,prepareGiraffeMission,type GiraffeMissionQuote} from '../missions/giraffe-missions.ts';
+import {GIRAFFE_MISSION_RULES,GIRAFFE_PRICES} from '../animals/giraffes/rules.ts';
+import {stepGiraffeCare} from '../animals/giraffes/care-simulation.ts';
+import {giraffeGrantView,prepareGiraffeGrant,type GiraffeGrantQuote} from '../economy/giraffe-grant.ts';
+import {giraffeHabitatView,prepareGiraffeConstruction} from '../economy/giraffe-construction.ts';
+import {giraffeResidentsView,prepareGiraffeWelcome} from '../animals/giraffes/residents.ts';
+import {defaultGiraffeCareCell,validateGiraffeCarePlacement,prepareGiraffeCarePlacement,prepareGiraffeRefill,giraffeServicePrice,type GiraffeCareQuote,type GiraffeRefillQuote} from '../animals/giraffes/resources.ts';
+import {giraffes,giraffeResources,type GiraffeResourceKind} from './giraffe-state.ts';
 import {lionWelfareExplanation} from '../animals/lions/welfare.ts';
 import {evaluateLionMissions,lionMissionView,prepareLionMission,LION_MISSION_RULES,type LionMissionQuote} from '../missions/lion-missions.ts';
 import {stepLionCare} from '../animals/lions/care-simulation.ts';
@@ -49,7 +58,7 @@ import {conservationGrantView,prepareConservationGrant,type ConservationGrantQuo
 
 const validateState=validateZooSave;
 const reconcileWelfare=<S extends RuntimeState>(state:S):S=>{reconcileMacawWelfare(macawRuntimeView(state));return state;};
-const evaluateMissions=(state:RuntimeState,advance=false)=>{evaluateMacawMissions(macawRuntimeView(state),advance);evaluateElephantMissions(state,advance);evaluateLionMissions(state,advance);};
+const evaluateMissions=(state:RuntimeState,advance=false)=>{evaluateMacawMissions(macawRuntimeView(state),advance);evaluateElephantMissions(state,advance);evaluateLionMissions(state,advance);evaluateGiraffeMissions(state,advance);};
 const macawTransaction=<Result>(state:RuntimeState,run:(view:ZooSaveV1)=>Result):Result=>{const view=macawRuntimeView(state),result=run(view);commitMacawRuntimeView(state,view);return result;};
 
 /** Fixed simulation time and validated atomic world, care and financial transactions. */
@@ -78,7 +87,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     const maintenanceChanged=settleMaintenance(state);
     const random=nextRandom(state.randomState);
     state.randomState=random.state;
-    const {fed,watered}=stepAnimals(macawRuntimeView(state)),bathed:(Extract<SimulationEvent,{type:'elephant-bathed'}>|Extract<SimulationEvent,{type:'elephant-enriched'}>|Extract<SimulationEvent,{type:'elephant-socialized'}>)[]=[];if(state.schemaVersion!==1){const care=stepElephantCare(state);fed.push(...care.fed);watered.push(...care.watered);for(const bath of care.bathed??[])bathed.push({type:'elephant-bathed',...bath,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.enriched??[])bathed.push({type:'elephant-enriched',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.socialized??[])bathed.push({type:'elephant-socialized',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});}const lionEvents=(state.schemaVersion===3||state.schemaVersion===4)?stepLionCare(state):null;if(lionEvents){fed.push(...lionEvents.fed);watered.push(...lionEvents.watered);}reconcileWelfare(state);
+    const {fed,watered}=stepAnimals(macawRuntimeView(state)),bathed:(Extract<SimulationEvent,{type:'elephant-bathed'}>|Extract<SimulationEvent,{type:'elephant-enriched'}>|Extract<SimulationEvent,{type:'elephant-socialized'}>)[]=[];if(state.schemaVersion!==1){const care=stepElephantCare(state);fed.push(...care.fed);watered.push(...care.watered);for(const bath of care.bathed??[])bathed.push({type:'elephant-bathed',...bath,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.enriched??[])bathed.push({type:'elephant-enriched',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.socialized??[])bathed.push({type:'elephant-socialized',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});}const lionEvents=(state.schemaVersion===3||state.schemaVersion===4)?stepLionCare(state):null;if(lionEvents){fed.push(...lionEvents.fed);watered.push(...lionEvents.watered);}const giraffeEvents=state.schemaVersion===4?stepGiraffeCare(state):null;if(giraffeEvents){fed.push(...giraffeEvents.fed);watered.push(...giraffeEvents.watered);}reconcileWelfare(state);
     const previousAdmissions=state.admissions.length,viewed=stepArrivals(state);
     const admitted=state.admissions.slice(previousAdmissions).map(a=>({visitorId:a.visitorId,admissionId:a.id,amount:ledgerProof(state,a.ledgerEntryId)!.amount}));
     evaluateMissions(state);retireClosedProofs(state);compactNow();
@@ -91,6 +100,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     publish(Object.freeze({type:'tick',tick:state.tick,gameTimeMs:state.gameTimeMs,randomSample:random.value}));
     // Urgent bath autosave observes the complete world/visitor/economy/mission tick.
     for(const bath of bathed)publish(Object.freeze(bath));
+    for(const event of giraffeEvents?.events??[])publish(Object.freeze({...event,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     for(const event of lionEvents?.events??[])publish(Object.freeze({...event,tick:state.tick,gameTimeMs:state.gameTimeMs}));
   },state.preferences.speed);
   const api={
@@ -110,6 +120,34 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     setLocale(value:unknown){if(disposed||(value!=='en'&&value!=='id')||state.preferences.locale===value)return false;state.preferences.locale=value;publish(Object.freeze({type:'preferences-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;},
     localeView:()=>state.preferences.locale,
     worldSize:()=>({width:state.world.width,height:state.world.height}),
+    giraffeMissionView:()=>giraffeMissionView(state),
+    giraffeGrantView:()=>giraffeGrantView(state),
+    giraffeHabitatView:()=>giraffeHabitatView(state),
+    giraffeResidentsView:()=>giraffeResidentsView(state),
+    giraffeCareView:()=>({command:state.economy.nextCommand,balance:state.currency,resources:giraffeResources(state.world.resources).map(r=>({...structuredClone(r),refillPrice:giraffeServicePrice(r.kind)})),residents:giraffes(state.animals).map(a=>({...structuredClone(a),welfareParts:giraffeWelfareExplanation(state,a)}))}),
+    giraffeSnapshot:()=>({animals:structuredClone(giraffes(state.animals)),width:state.world.width,height:state.world.height}),
+    defaultGiraffeCareCell:(kind:GiraffeResourceKind)=>defaultGiraffeCareCell(state,kind),
+    validateGiraffeCarePlacement:(kind:GiraffeResourceKind,cell:Point|null)=>validateGiraffeCarePlacement(state,kind,cell),
+    prepareGiraffeGrant:(quote:GiraffeGrantQuote)=>disposed||clock.inspect().paused?{ok:false as const,reason:'stale' as const}:prepareGiraffeGrant(state,quote),
+    acceptCommittedGiraffeGrant(candidate:ZooSave,quote:GiraffeGrantQuote){
+      if(disposed||candidate.schemaVersion!==4||!validateState(candidate).ok)return false;const prepared=prepareGiraffeGrant(state,quote);if(!prepared.ok)return false;const next=structuredClone(candidate);next.preferences={...state.preferences};prepared.state.preferences={...state.preferences};if(serializeZooSave(next)!==serializeZooSave(prepared.state))return false;state=next;compactNow();publish(Object.freeze({type:'giraffe-grant-claimed',amount:GIRAFFE_PRICES.grant,tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;
+    },
+    prepareGiraffeMission:(quote:GiraffeMissionQuote)=>disposed||clock.inspect().paused?{ok:false as const,reason:'stale' as const}:prepareGiraffeMission(state,quote),
+    acceptCommittedGiraffeMission(candidate:ZooSave,quote:GiraffeMissionQuote){
+      if(disposed||candidate.schemaVersion!==4||!validateState(candidate).ok)return false;const prepared=prepareGiraffeMission(state,quote);if(!prepared.ok)return false;const next=structuredClone(candidate);next.preferences={...state.preferences};prepared.state.preferences={...state.preferences};if(serializeZooSave(next)!==serializeZooSave(prepared.state))return false;state=next;compactNow();publish(Object.freeze({type:'giraffe-mission-claimed',missionId:quote.id,amount:GIRAFFE_MISSION_RULES[quote.id].coins,tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;
+    },
+    buildGiraffeHabitat(anchor:Point,operationId:string,command:number){
+      if(disposed||clock.inspect().paused)return {ok:false as const,reason:'command' as const};const result=prepareGiraffeConstruction(state,anchor,operationId,command);if(!result.ok)return result;state=result.state;topology=reconcilePathAccess(state.world).topology;invalidateEdit();compactNow();publish(Object.freeze({type:'habitat-built',habitatId:result.habitatId,tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const,habitatId:result.habitatId,duplicate:result.duplicate};
+    },
+    welcomeGiraffes(command:number){
+      if(disposed||clock.inspect().paused)return {ok:false as const,reason:'stale' as const};const result=prepareGiraffeWelcome(state,command);if(!result.ok)return result;state=result.state;reconcileGiraffeWelfare(state);invalidateEdit();publish(Object.freeze({type:'giraffes-welcomed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};
+    },
+    placeGiraffeCare(quote:GiraffeCareQuote){
+      if(disposed||clock.inspect().paused)return {ok:false as const,reason:'stale' as const};const result=prepareGiraffeCarePlacement(state,quote);if(!result.ok)return result;state=result.state;reconcileGiraffeWelfare(state);invalidateEdit();compactNow();publish(Object.freeze({type:'giraffe-care-changed',resourceId:result.resourceId,tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const,resourceId:result.resourceId};
+    },
+    refillGiraffeCare(quote:GiraffeRefillQuote){
+      if(disposed||clock.inspect().paused)return {ok:false as const,reason:'stale' as const};const result=prepareGiraffeRefill(state,quote);if(!result.ok)return result;state=result.state;reconcileGiraffeWelfare(state);invalidateEdit();compactNow();publish(Object.freeze({type:'giraffe-care-changed',resourceId:result.resourceId,tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const,resourceId:result.resourceId};
+    },
     lionMissionView:()=>lionMissionView(state),
     prepareLionMission:(quote:LionMissionQuote)=>disposed||clock.inspect().paused?{ok:false as const,reason:'stale' as const}:prepareLionMission(state,quote),
     acceptCommittedLionMission(candidate:ZooSave,quote:LionMissionQuote){if(disposed||(candidate.schemaVersion!==3&&candidate.schemaVersion!==4)||!validateState(candidate).ok)return false;const prepared=prepareLionMission(state,quote);if(!prepared.ok)return false;const next=structuredClone(candidate);next.preferences={...state.preferences};prepared.state.preferences={...state.preferences};if(serializeZooSave(next)!==serializeZooSave(prepared.state))return false;state=next;compactNow();publish(Object.freeze({type:'lion-mission-claimed',missionId:quote.id,amount:LION_MISSION_RULES[quote.id].coins,tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;},

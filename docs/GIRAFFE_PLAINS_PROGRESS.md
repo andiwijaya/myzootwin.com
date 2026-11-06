@@ -140,3 +140,5 @@ GH0-01 partial: fresh remote main is 3252234; GitHub Cloudflare check completed 
 - `GH6-06` may only close after separately approved production release + actual smoke and V4-aware safe recovery.
 
 Storage milestone (not a checklist closure): native real IndexedDB 10/10 at bd43f5e, cleanup14/14, zero captured warnings/errors. Full-game V4 Continue still pending.
+
+Non-browser playable-core milestone (browser gates remain open): quoted1850grant, paid recommended49cell home,0/1/3adult welcome, two essential browse/water/shade with paid services, grounded care FSM, welfare/social contact and GQ01-04 now pass real command/tick tests. Applied from a separate draft with exact original-file SHA guards; combined regressions28/28 and TypeScript noEmit pass. Main native webview-attachment failure persists; no new checklist closures.
