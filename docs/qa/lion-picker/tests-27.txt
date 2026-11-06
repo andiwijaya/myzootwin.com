@@ -1,0 +1,35 @@
+✔ all seven paid Lion facilities refund only construction and Undo repays exactly once without restoring refill fees (497.7634ms)
+✔ Lion habitat occupancy and active care dependencies block removals; stale paid quotes never partially edit or credit (575.8776ms)
+✔ Undo of a removed Lion facility preserves passive current stock of all other facilities across real ticks (613.4994ms)
+✔ a facility picker receives no DOM writes across repeated simulation renders, preserving the selected value and option identities (3.5853ms)
+✔ changing language updates each real label once while preserving the selected facility and the same native control (0.3066ms)
+✔ pause and resume still update disabled state exactly once without rewriting the option list (0.1851ms)
+✔ RAF start is idempotent and stale cancelled callbacks cannot duplicate a restarted loop (2.2583ms)
+✔ disposed RAF loop cannot render or restart (0.4554ms)
+✔ render exceptions stop the RAF chain and report once (0.2976ms)
+✔ request failures become an explicit stopped error (0.3039ms)
+✔ lazy session opens once, closes once, and can reopen without overlap (3.2011ms)
+✔ closing during import prevents a late mount and ready transition (0.3096ms)
+✔ a failed lazy load is visible and a later attempt can recover (0.4529ms)
+✔ unsupported WebGL has its own fallback and retry state (0.351ms)
+✔ initialization exceptions do not become false ready states (0.3212ms)
+✔ context loss disposes the active session once and supports a fresh retry (0.5464ms)
+✔ synchronous failure while mounting still disposes the late-created session (0.3887ms)
+✔ pause state is applied to newly loaded sessions without changing lifecycle status (0.4388ms)
+✔ disposing a pending import prevents later renderer creation (0.2614ms)
+✔ latest visual and mute choices reach every new session, including retry while paused (0.5419ms)
+✔ batched triangle ownership covers actual geometry,120 tiles and22 distinct scenery objects without changing state (36.3924ms)
+✔ actual visible triangles resolve exact grass,water,gate,palm,tree,rock and reed identities at all viewport sizes (30.661ms)
+✔ nearest unowned soil and empty/outside/invalid coordinates do not select hidden tiles (15.1432ms)
+✔ mouse/touch tap path selects once,while camera drag,pinch,cancel and late events never select (16.4694ms)
+✔ selection marker/data remain coherent across camera movement/resize,clear,pausing and disposal with bounded resources (28.9174ms)
+✔ every actual scene identity has complete bilingual presentation with1-based locations and no unresolved keys (11.4882ms)
+✔ UI dismissal forwards only to a live unpaused renderer and never a stale or closed session (0.4343ms)
+ℹ tests 27
+ℹ suites 0
+ℹ pass 27
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1990.0644
