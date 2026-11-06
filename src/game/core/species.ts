@@ -77,9 +77,9 @@ export interface ZooWorld extends Omit<WorldState,'habitats'|'resources'> {
 }
 
 /** Species ownership is explicit; callers must narrow before using a species FSM or rig. */
-export const isMacaw = (animal:ZooAnimal):animal is MacawAnimal => animal.speciesId===MACAW_SPECIES_ID;
-export const isElephant = (animal:ZooAnimal):animal is ElephantAnimal => animal.speciesId===ELEPHANT_SPECIES_ID;
-export const isLion = (animal:ZooAnimal):animal is LionAnimal => animal.speciesId===LION_SPECIES_ID;
+export const isMacaw = (animal:{speciesId:string}):animal is MacawAnimal => animal.speciesId===MACAW_SPECIES_ID;
+export const isElephant = (animal:{speciesId:string}):animal is ElephantAnimal => animal.speciesId===ELEPHANT_SPECIES_ID;
+export const isLion = (animal:{speciesId:string}):animal is LionAnimal => animal.speciesId===LION_SPECIES_ID;
 export const macaws = (animals:readonly ZooAnimal[]):MacawAnimal[] => animals.filter(isMacaw);
 export const elephants = (animals:readonly ZooAnimal[]):ElephantAnimal[] => animals.filter(isElephant);
 export const lions = (animals:readonly ZooAnimal[]):LionAnimal[] => animals.filter(isLion);

@@ -1,9 +1,11 @@
 import type {FinanceCheckpoint,LedgerEntry,LedgerKind,PurchaseProof,RefundProof,TicketProof,ZooSaveV1} from '../core/state.ts';
 import type {ZooSaveV2,LionSavannaProgress} from '../core/zoo-state.ts';
-type FinancialState=Pick<ZooSaveV1,'economy'|'currency'|'tick'|'visitors'|'visitorFlow'|'admissions'|'ledger'|'missions'>&{schemaVersion:1|2|3;elephantGrove?:ZooSaveV2['elephantGrove'];lionSavanna?:LionSavannaProgress};
+import type {GiraffeProgress} from '../core/giraffe-state.ts';
+type FinancialState=Pick<ZooSaveV1,'economy'|'currency'|'tick'|'visitors'|'visitorFlow'|'admissions'|'ledger'|'missions'>&{schemaVersion:1|2|3|4;elephantGrove?:ZooSaveV2['elephantGrove'];lionSavanna?:LionSavannaProgress;giraffePlains?:GiraffeProgress};
 const elephantRewardIds=(s:FinancialState)=>s.elephantGrove?[...(s.elephantGrove.grant?[s.elephantGrove.grant.ledgerEntryId]:[]),...s.elephantGrove.missions.rewards.flatMap(r=>r.ledgerEntryId?[r.ledgerEntryId]:[])]:[];
 const lionRewardIds=(s:FinancialState)=>s.lionSavanna?[...(s.lionSavanna.grant?[s.lionSavanna.grant.ledgerEntryId]:[]),...s.lionSavanna.missions.rewards.flatMap(r=>r.ledgerEntryId?[r.ledgerEntryId]:[])]:[];
-const missionVisitorIds=(s:FinancialState)=>[...s.missions.objectives.viewedVisitorIds,...s.missions.objectives.admittedVisitorIds,...(s.elephantGrove?.missions.objectives.viewedVisitorIds??[]),...(s.lionSavanna?.missions.objectives.viewedVisitorIds??[])];
+const giraffeRewardIds=(s:FinancialState)=>s.giraffePlains?[...(s.giraffePlains.grant?[s.giraffePlains.grant.ledgerEntryId]:[]),...s.giraffePlains.missions.rewards.flatMap(r=>r.ledgerEntryId?[r.ledgerEntryId]:[])]:[];
+const missionVisitorIds=(s:FinancialState)=>[...s.missions.objectives.viewedVisitorIds,...s.missions.objectives.admittedVisitorIds,...(s.elephantGrove?.missions.objectives.viewedVisitorIds??[]),...(s.lionSavanna?.missions.objectives.viewedVisitorIds??[]),...(s.giraffePlains?.missions.objectives.viewedVisitorIds??[])];
 import {MONEY_RULES} from './prices.ts';
 export const LEDGER_KINDS:readonly LedgerKind[]=['starter','build','supplies','maintenance','ticket','reward','refund','restore'];
 export const emptyTotals=():Record<LedgerKind,number>=>({starter:0,build:0,supplies:0,maintenance:0,ticket:0,reward:0,refund:0,restore:0});
@@ -24,7 +26,7 @@ const negative=(kind:LedgerKind)=>['build','supplies','maintenance','restore'].i
 const safe=(n:number)=>Number.isSafeInteger(n)&&n>=0;
 const same=(a:unknown,b:unknown)=>JSON.stringify(a)===JSON.stringify(b);
 /** Arithmetic/provenance validation is data-only, shared with raw admission transactions and the codec. */
-export function coherentMoney(s:FinancialState,rewardLimit=s.schemaVersion===3?10:s.schemaVersion===2?7:4):boolean{
+export function coherentMoney(s:FinancialState,rewardLimit=s.schemaVersion===4?13:s.schemaVersion===3?10:s.schemaVersion===2?7:4):boolean{
  const c=s.economy.checkpoint;if(!c||c.version!==1||!safe(c.balance)||!safe(c.entries)||!safe(c.lastTick)||c.lastTick>s.tick||!safe(c.compactions)||c.compactions>c.entries||!safe(c.commandThrough)||!safe(s.economy.nextCommand)||s.economy.nextCommand<=c.commandThrough||!safe(c.visitorThrough)||c.visitorThrough>=s.visitorFlow.nextSerial||!safe(c.maintenancePeriod)||c.maintenancePeriod>s.economy.maintenancePeriod)return false;
  let opening=0,entries=0;for(const k of LEDGER_KINDS){const a=c.totals[k],n=c.counts[k];if(!Number.isSafeInteger(a)||!safe(n)||(n===0)!==(a===0)||n>Math.abs(a)||a!==0&&(negative(k)?a>0:a<0))return false;opening+=a;entries+=n;}
  if(!Number.isSafeInteger(opening)||opening!==c.balance||entries!==c.entries||c.entries===0&&(c.balance!==0||c.commandThrough!==0||c.visitorThrough!==0||c.lastTick!==0||c.compactions!==0)||c.purchases.length>256||c.refunds.length>256||c.tickets.length>35||c.rewards.length>rewardLimit||c.openSerials.length>3||new Set(c.openSerials).size!==c.openSerials.length)return false;
@@ -59,7 +61,7 @@ export function compactFinance(s:FinancialState,pinRefundIds:readonly string[]=[
  if(purchases.length>256||refunds.length>256)throw new Error('Financial proof exceeds bounded world contract');
  const tickets=admissionProofs(s).filter(a=>active.has(a.visitorId)||mission.has(a.visitorId)).map(admission=>({admission:structuredClone(admission),entry:{...ledgerProof(s,admission.ledgerEntryId)!}}));
  const recent=s.admissions.at(-1),lastTicket:TicketProof|null=recent?{admission:structuredClone(recent),entry:{...ledgerProof(s,recent.ledgerEntryId)!}}:c.lastTicket?structuredClone(c.lastTicket):null;
- const rewardIds=new Set([...s.missions.rewards.flatMap(r=>'ledgerEntryId'in r?[r.ledgerEntryId]:[]),...elephantRewardIds(s),...lionRewardIds(s)]),rewards=[...c.rewards,...s.ledger.filter(e=>e.kind==='reward')].filter(e=>rewardIds.has(e.id));
+ const rewardIds=new Set([...s.missions.rewards.flatMap(r=>'ledgerEntryId'in r?[r.ledgerEntryId]:[]),...elephantRewardIds(s),...lionRewardIds(s),...giraffeRewardIds(s)]),rewards=[...c.rewards,...s.ledger.filter(e=>e.kind==='reward')].filter(e=>rewardIds.has(e.id));
  s.economy.checkpoint={version:1,balance:s.currency,entries:amounts.entries,lastTick:s.tick,compactions:c.compactions+1,commandThrough:s.economy.nextCommand-1,visitorThrough:s.visitorFlow.nextSerial-1,openSerials:s.visitors.flatMap(v=>v.arrival?[v.arrival.serial]:[]),maintenancePeriod:s.economy.maintenancePeriod,totals:amounts.amounts,counts:amounts.counts,purchases,refunds,tickets,rewards,lastTicket};
  s.ledger=[];s.admissions=[];return true;
 }

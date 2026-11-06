@@ -74,7 +74,9 @@ async function local() {
   try {
     for(const [kind,args] of [['unit',['--experimental-strip-types','--test','--test-reporter=tap',...testFiles]],['check',[astro,'check']],['build',[astro,'build']]]) {
       current=kind;const startedAt=now();console.log(`QA ${runId}: ${kind}...`);
-      const result=await runNode(args,{cwd:root,children:owned,environment:kind==='build'?{MYZOO_QA_ANALYZE:'1'}:{}});
+      // The multispecies regression baseline already takes ~264s; keep a bounded
+      // 10-minute unit budget while retaining the existing3-minute compile budgets.
+      const result=await runNode(args,{cwd:root,children:owned,timeoutMs:kind==='unit'?600_000:180_000,environment:kind==='build'?{MYZOO_QA_ANALYZE:'1'}:{}});
       const log=(result.stdout+'\n'+result.stderr).split(/\r?\n/).map(x=>x.trimEnd()).join('\n').trimEnd()+'\n';
       await writeFile(join(directory,kind+'.log'),log);
       const summary=assessRun(result,kind);

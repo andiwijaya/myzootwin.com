@@ -1,0 +1,53 @@
+Γ£ö all nine frozen V1 saves migrate losslessly: every legacy field, RNG, tick, ledger, mission, preference and tile hash retained (109.9844ms)
+Γ£ö repeated V2 codec/legacy simulator handoff is exact and never duplicates grant, animals, rewards or extension cells (488.8874ms)
+Γ£ö migrated simulation preserves old time/RNG/care/mission/finance outcomes and pause/speed semantics (93.366ms)
+Γ£ö corrupt unsupported oversize unknown and unimplemented future content rejects without repair or input mutation (17.4973ms)
+Γ£ö otherwise valid custom legacy layouts refuse this expansion while leaving their original V1 data valid (1.869ms)
+Γ£ö future EH proof metadata and elephant resources block recovery as unsupported rather than recoverable corruption (6.3907ms)
+Γ£ö checkpoint codec is explicitly opt-in; default legacy reader rejects V2 rather than downgrading it (15.0982ms)
+Γ£ö actual autosave boundary restores legacy progress, writes only V2, and cold Continue preserves the migrated snapshot (49.1075ms)
+Γ£ö frozen synthetic V1/V2/V3 saves retain exact source hashes and distinct earned namespaces (37.8047ms)
+Γ£ö all frozen versions cold-load without changes, pause adds no offline progress, and 1x/10x share authoritative outcomes (577.9202ms)
+Γ£ö frozen V3 coordinate and scene-space identities cover every cell and previous movable entity (1.3943ms)
+Γ£ö V3 to V4 is pure/lossless over all old coordinates and fields; migration adds only clean312land cells and empty GQ namespace (54.1411ms)
+Γ£ö all nine exact V1 saves and earned V2 migrate through frozen V3 validators with historical preferences/RNG/money/proofs preserved (191.5254ms)
+Γ£ö V4 rejects corruption, append-not-reindex, historical proof changes and sparse grids without normalizing any original bytes (35.7056ms)
+Γ£ö future schema, root and nested content are blocked and never coerced to old formats (22.7073ms)
+Γ£ö strict V4 validates labelled paid fixture/one adult and rejects wrong identity, free construction,2herd, orphan or unsafe action (75.8569ms)
+Γ£ö real source-based elevated browse ports require cost, ownership and reached contact; rendering cannot mint a meal (52.029ms)
+Γ£û V4 grant and future reward proof remain pinned exactly once through real journal compaction (24.3871ms)
+Γ£ö earned V2 to V3 migration is pure, append-only and lossless over every original field with no automatic money, residents or proof (43.8454ms)
+Γ£ö every genuine frozen V1 input validates through V1 to V2 to V3 with exact legacy field projections (94.9747ms)
+Γ£ö strict V3 preserves malformed/future originals without repairing, filtering or resetting them (27.3333ms)
+Γ£ö canonical V3 retains the original elephant and macaw clock, needs, ledger and mission results through cold loads and both speeds (773.7044ms)
+Γä╣ tests 22
+Γä╣ suites 0
+Γä╣ pass 21
+Γä╣ fail 1
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 1421.0667
+
+Γ£û failing tests:
+
+test at tests\giraffe-save-v4.test.mjs:42:1
+Γ£û V4 grant and future reward proof remain pinned exactly once through real journal compaction (24.3871ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  
+  0 !== 1
+  
+      at TestContext.<anonymous> (file:///C:/Users/andi_/Documents/Codex/2026-11-07/task/myzootwin-giraffe/tests/giraffe-save-v4.test.mjs:43:505)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: 0,
+    expected: 1,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

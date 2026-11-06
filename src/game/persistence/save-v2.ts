@@ -2,12 +2,14 @@ import {ELEPHANT_SOCIAL} from '../animals/elephants/care-rules.ts';
 import {ELEPHANT_GROUND} from '../animals/elephants/ground.ts';
 import {type ZooSaveV1,type Point} from '../core/state.ts';
 import {EH_IDS,initialElephantMissions,type ZooSaveV2,type MultiSpeciesSave,type ElephantMissions} from '../core/zoo-state.ts';
-import {ELEPHANT_SPECIES_ID,MACAW_SPECIES_ID,isMacaw,isElephant,compatibleHabitat,compatibleResource,type ZooAnimal,type ZooResource,type ZooWorld} from '../core/species.ts';
+import {ELEPHANT_SPECIES_ID,MACAW_SPECIES_ID,isMacaw,isElephant,compatibleHabitat,compatibleResource,type ZooResource} from '../core/species.ts';
 import {appendElephantZone} from '../world/elephant-expansion.ts';
 import {MAX_SAVE_CHARS,parseSave,validateSave,LEGACY_SAVE_FIELDS,economyRule,saveRules,validateLegacyRelationships,type SaveResult,type Rule} from './save-v1.ts';
 import type {CheckpointCodec} from './checkpoint.ts';
 import {purchaseBook} from '../economy/journal.ts';
 import {ELEPHANT_PRICES} from '../economy/elephant-prices.ts';
+import type {ZooSaveV4,V4ZooAnimal,V4ZooResource,V4ZooWorld} from '../core/giraffe-state.ts';
+type RelationshipSave=MultiSpeciesSave|ZooSaveV4;
 export type {ZooSaveV2} from '../core/zoo-state.ts';
 type Failure=Extract<SaveResult,{ok:false}>;
 export type SaveV2Result={ok:true;value:ZooSaveV2}|Failure;
@@ -32,21 +34,23 @@ const unique=(values:string[],path:string)=>require(new Set(values).size===value
 const initialMissions=(m:ElephantMissions)=>m.currentId==='EH01'&&m.completedIds.length===0&&m.rewards.length===0&&m.objectives.fedIds.length===0&&m.objectives.wateredIds.length===0&&m.objectives.comfortableTicks===0&&m.objectives.baths===0&&m.objectives.enrichments===0&&m.objectives.thrivingTicks===0&&m.objectives.viewedVisitorIds.length===0;
 
 /** Validation-only legacy view. Never serialized or returned as a V2 checkpoint. */
-function legacyView(s:MultiSpeciesSave):ZooSaveV1 {
-  const {elephantGrove:_,...rest}=s;const population:ZooAnimal[]=s.animals,resources:ZooResource[]=s.world.resources;
+function legacyView(s:RelationshipSave):ZooSaveV1 {
+  const {elephantGrove:_,...rest}=s;const population:V4ZooAnimal[]=s.animals,resources:V4ZooResource[]=s.world.resources;
   return {...rest,schemaVersion:1,animals:population.filter(isMacaw),world:{...s.world,habitats:s.world.habitats.map(({kind:__,...h})=>h),resources:resources.filter((r):r is ZooSaveV1['world']['resources'][number]=>r.kind==='food'||r.kind==='water'||r.kind==='perch')}};
 }
-const claimedQ04=(s:MultiSpeciesSave)=>s.missions.completedIds.includes('Q04')&&s.missions.rewards.some(r=>r.missionId==='Q04'&&'unlockId'in r&&r.unlockId==='sanctuary-banner'&&'badgeId'in r&&r.badgeId==='thriving-sanctuary');
-export function validateMultispeciesRelationships(s:MultiSpeciesSave,extraRewardIds:readonly string[]=[],rewardLimit=7){
-  const w:ZooWorld=s.world,population:ZooAnimal[]=s.animals,herd=population.filter(isElephant),birds=population.filter(isMacaw),habitats=new Map(w.habitats.map(h=>[h.id,h])),resources=new Map(w.resources.map(r=>[r.id,r])),g=s.elephantGrove,m=g.missions,o=m.objectives;
-  require(w.gate.x===1&&w.gate.z===8&&w.tiles.every((t,i)=>t.cell.x===i%12&&t.cell.z===Math.floor(i/12)),'$.world.tiles.order');
+const claimedQ04=(s:RelationshipSave)=>s.missions.completedIds.includes('Q04')&&s.missions.rewards.some(r=>r.missionId==='Q04'&&'unlockId'in r&&r.unlockId==='sanctuary-banner'&&'badgeId'in r&&r.badgeId==='thriving-sanctuary');
+/** Common relationship authority; public V2 input schema remains exactly V2. V4 validates its own added species separately. */
+export function validateMultispeciesRelationships(s:RelationshipSave,extraRewardIds:readonly string[]=[],rewardLimit=7){
+  const w:V4ZooWorld=s.world,population:V4ZooAnimal[]=s.animals,herd=population.filter(isElephant),birds=population.filter(isMacaw),habitats=new Map(w.habitats.map(h=>[h.id,h])),resources=new Map(w.resources.map(r=>[r.id,r])),g=s.elephantGrove,m=g.missions,o=m.objectives;
+  const width=s.schemaVersion===4?24:12;
+  require(w.gate.x===1&&w.gate.z===8&&w.tiles.every((t,i)=>t.cell.x===i%width&&t.cell.z===Math.floor(i/width)),'$.world.tiles.order');
   unique([...w.habitats.map(h=>h.id),...w.resources.map(r=>r.id),...s.animals.map(a=>a.id),...s.visitors.map(v=>v.id)],'$.entityIds');
   require(birds.length===2&&(herd.length===0||herd.length===2),'$.animals.population');
   for(const kind of ['macaw-aviary','elephant-grove'])require(w.habitats.filter(h=>h.kind===kind).length<=1,'$.world.habitats.limit');
-  for(const h of w.habitats.filter(h=>h.kind!=='lion-savanna')){const size=h.kind==='elephant-grove'?6:2,x=Math.min(...h.cells.map(c=>c.x)),z=Math.min(...h.cells.map(c=>c.z));require(h.cells.length===size*size&&h.cells.every(c=>c.x>=x&&c.x<x+size&&c.z>=z&&c.z<z+size),'$.world.habitats.footprint');if(h.kind==='elephant-grove')require(z>=10&&claimedQ04(s),'$.world.habitats.unlock');}
-  for(const a of s.animals)if(a.habitatId!==null)require(Boolean(habitats.get(a.habitatId)&&compatibleHabitat(a,habitats.get(a.habitatId)!)),'$.animals.habitatSpecies');
+  for(const h of w.habitats.filter(h=>h.kind==='macaw-aviary'||h.kind==='elephant-grove')){const size=h.kind==='elephant-grove'?6:2,x=Math.min(...h.cells.map(c=>c.x)),z=Math.min(...h.cells.map(c=>c.z));require(h.cells.length===size*size&&h.cells.every(c=>c.x>=x&&c.x<x+size&&c.z>=z&&c.z<z+size),'$.world.habitats.footprint');if(h.kind==='elephant-grove')require(z>=10&&claimedQ04(s),'$.world.habitats.unlock');}
+  for(const a of s.animals)if(a.speciesId!=='giraffa-sp'&&a.habitatId!==null){const h=habitats.get(a.habitatId);require(Boolean(h&&h.kind!=='giraffe-plains'&&compatibleHabitat(a,h)),'$.animals.habitatSpecies');}
   unique(w.resources.map(r=>key(r.cell)),'$.world.resources.cells');
-  for(const r of w.resources){const h=habitats.get(r.habitatId);require(Boolean(h&&compatibleResource(r,h))&&r.stock<=r.capacity&&h!.cells.some(c=>key(c)===key(r.cell)),'$.world.resources.ownership');if('approaches'in r){require(r.approaches.length>=(r.kind==='elephant-water'||r.kind==='elephant-pond'?2:1),'$.world.resources.approaches');unique(r.approaches.map(p=>`${p.x},${p.z}`),'$.world.resources.approaches');for(const p of r.approaches)require(h!.cells.some(c=>key(c)===key(p)),'$.world.resources.approaches');}}
+  for(const r of w.resources.filter((r):r is ZooResource=>!r.kind.startsWith('giraffe-'))){const h=habitats.get(r.habitatId);require(Boolean(h&&h.kind!=='giraffe-plains'&&compatibleResource(r,h))&&r.stock<=r.capacity&&h!.cells.some(c=>key(c)===key(r.cell)),'$.world.resources.ownership');if('approaches'in r){require(r.approaches.length>=(r.kind==='elephant-water'||r.kind==='elephant-pond'?2:1),'$.world.resources.approaches');unique(r.approaches.map(p=>`${p.x},${p.z}`),'$.world.resources.approaches');for(const p of r.approaches)require(h!.cells.some(c=>key(c)===key(p)),'$.world.resources.approaches');}}
   for(const kind of resourceKinds)require(w.resources.filter(r=>r.kind===kind).length<=(kind==='elephant-browse'?2:1),'$.world.resources.limit');
   const purchases=purchaseBook(s.ledger,s.economy.checkpoint);require(purchases!==null,'$.economy.purchases');
   const paid=(id:string,price:number)=>{const proofs=[...purchases!.purchases.values()].filter(p=>p.entry.relatedId===id&&p.refunded<-p.entry.amount);require(proofs.length===1&&proofs[0].refunded===0&&proofs[0].entry.amount===-price,'$.elephantGrove.constructionProof');};
