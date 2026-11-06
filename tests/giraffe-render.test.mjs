@@ -1,6 +1,6 @@
 import test from 'node:test';import assert from 'node:assert/strict';import {MeshStandardMaterial,Vector3} from 'three';
 import {createGiraffeGeometry,createGiraffeRig,GIRAFFE_LEGS} from '../src/game/render3d/giraffe/rig.ts';
-import {createGiraffeResidentsScene,giraffePose} from '../src/game/render3d/giraffe/residents-scene.ts';
+import {createGiraffeResidentsScene} from '../src/game/render3d/giraffe/residents-scene.ts';
 import {createGiraffeWorldScene} from '../src/game/render3d/giraffe/world-scene.ts';
 import {preparedGiraffeZoo} from './fixtures/giraffe-play.mjs';
 const catalog=()=>({identities:new Map(),bounds:new Map(),batches:[]});
