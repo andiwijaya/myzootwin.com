@@ -161,7 +161,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const copy=entryMessages[locale],ready=state.status==='ready';
     root.querySelector('[data-entry-text="editHint"]')?.replaceChildren(copy.editHint);
     const remove=root.querySelector<HTMLButtonElement>('[data-edit-remove]');
-    if(remove){remove.hidden=!ready||studio.active||!selected||!['habitat','path','elephant-facility'].includes(selected.kind);remove.textContent=copy.editRemove;}
+    if(remove){remove.hidden=!ready||studio.active||!selected||!['habitat','path','elephant-facility','giraffe-facility'].includes(selected.kind);remove.textContent=copy.editRemove;}
     const undo=root.querySelector<HTMLButtonElement>('[data-edit-undo]');if(undo){undo.hidden=!ready||!editView.canUndo;undo.textContent=copy.editUndo+` · ${editView.undoCost??0} ZC`;undo.disabled=Boolean(economy&&economy.balance<(editView.undoCost??0));}
     const keys={'giraffe-using':'editCommand','giraffe-space':'editCommand','lion-using':'editCommand','lion-space':'editCommand','elephant-using':'editElephantUsing','elephant-space':'editElephantSpace',missing:'editMissing',protected:'editProtected','in-use':'editInUse','visitor-route':'editVisitorRoute','visitor-occupied':'editVisitorOccupied',stale:'editStale',funds:'editFunds',capacity:'economyCapacity',command:'editCommand'} as const;
     root.querySelector('[data-edit-status]')?.replaceChildren(editView.reason?copy[keys[editView.reason]]:editView.result?copy[editView.result==='removed'?'editRemoved':'editRestored']:'');
@@ -371,8 +371,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     editDialog.showModal();controller.setPaused(true);root.querySelector<HTMLElement>('[data-edit-cancel]')?.focus();
   }
   root.querySelector('[data-edit-remove]')?.addEventListener('click',()=>{
-    if(!selected||!['habitat','path','elephant-facility'].includes(selected.kind))return;
-    const target:EditTarget=selected.kind==='habitat'?{kind:'habitat',id:selected.id}:selected.kind==='elephant-facility'?{kind:'elephant-resource',id:selected.id}:{kind:'path',cell:{...selected.cell}};
+    if(!selected||!['habitat','path','elephant-facility','giraffe-facility'].includes(selected.kind))return;
+    const target:EditTarget=selected.kind==='habitat'?{kind:'habitat',id:selected.id}:selected.kind==='giraffe-facility'?{kind:'giraffe-resource',id:selected.id}:selected.kind==='elephant-facility'?{kind:'elephant-resource',id:selected.id}:{kind:'path',cell:{...selected.cell}};
     reviewRemoval(target,presentSelection(selected,locale).title);
   },{signal:events.signal});
   function dismissRemoval(){removal=null;if(editDialog?.open)editDialog.close();controller.setPaused(false);if(state.status==='ready')host?.focus({preventScroll:true});}

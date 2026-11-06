@@ -1,0 +1,15 @@
+# Giraffe V4 local release candidate - publication held
+
+No push or deployment is authorized. Remote main was refreshed after implementation and remains325223403a2dec1b805f05d9fb8d795d09568585. The private Cloudflare administrative source/alias binding is still unverified because automatic browser review denied that destination without explicit administration authorization. This is separate from local engineering.
+
+The default local product now uses the same IndexedDB database/store at version4, exact generation/revision CAS and an atomic originalV3 backup. V1/V2 paths retain their historical copies and a labelled validated V3 intermediate. Missing/corrupt provenance, newer schemas/databases, invalid states and losing writers never reset or silently downgrade a world. Native storage10/10, actual full-game V4 cold equality and strict migration/invariant tests are recorded in the living checklist/evidence. Native art screenshots and the15-minute1xrendered soak remain outstanding.
+
+## Fix-forward maintenance
+
+`scripts/qa/giraffe-maintenance.html` and `.ts` prepare a V4-compatible read-only maintenance page, reusing `readGiraffeMaintenance`. It opens without a version request, aborts creation of a missing database, uses only readonly transactions, closes on version changes and blocks future databases. It has no game clock, scene, reset, restore, migration write, download or telemetry. It distinguishes the stored schema from the in-memory readableV4 contract. QA uses only an explicit disposable `giraffe-product-UUID` query; production use must be separately authorized on the original origin. The candidate is bundled outside public/dist routes by `build-giraffe-product.mjs` and is not published.
+
+If a separately authorized release encounters a regression: pause publishing changes; preserve currentV4 primary/previous, all historical backups and the exact release/source evidence. Use this V4-aware maintenance page to stop gameplay safely if necessary, then ship a tested forward fix that retains schema4/database4/CAS. Never point a V4 player at a resumable V3 binary, restore the oldV3 backup over an already-startedV4 world, clear browser data or recreate their zoo. The old-binary version barrier is a refusal mechanism, not a recovery path. Recovery/reset must remain the explicit validated V4 flows, with original bytes preserved.
+
+## Required final gates
+
+Run current-source unit/type/build/HTTP checks and verify unchanged9public routes/sitemap and no distributed QA assets. Exercise actual product source through the internal browser at1366x768,360x780,780x360 inID/EN, including allfocus buttons, precise rendered care, context loss/retry, cold saves,2tabCAS and cleanup. Complete at least15active1xminutes and10xstress with truthful measurements and explicit unavailable GPU/physical-device coverage. Close the rights/privacy/dependency/size/import audit. Prepare a concrete source-bound release package and only request production approval as the final publication step. GH6-06 stays open until separately authorized publication and verified live source/asset/save-safe smoke.

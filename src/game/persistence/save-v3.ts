@@ -1,5 +1,5 @@
 import type {ZooSaveV1} from '../core/state.ts';
-import {initialLionProgress,LQ_IDS,type ZooSaveV2,type ZooSaveV3} from '../core/zoo-state.ts';
+import {initialLionProgress,LQ_IDS,type ZooSaveV2,type ZooSaveV3,type LionSavannaProgress} from '../core/zoo-state.ts';
 import {isLion,LION_SPECIES_ID,type LionHabitat,type LionResource,type V3ZooResource as ZooResource,type V3ZooHabitat as ZooHabitat} from '../core/species.ts';
 import {appendLionZone} from '../world/lion-expansion.ts';
 import {V2_SAVE_FIELDS,validateSaveV2,migrateSaveV1,validateMultispeciesRelationships} from './save-v2.ts';
@@ -26,6 +26,8 @@ const nonLionResource:Rule=(v,p)=>{
 };
 export const V3_SAVE_FIELDS={...V2_SAVE_FIELDS,schemaVersion:oneOf(3),economy:economyRule(10),world:future({width:oneOf(12),height:oneOf(26),gate:cell,tiles:array(object({cell,terrain:oneOf('land','creek'),occupantId:nullable(id),path:bool}),312),habitats:array(future({id,kind:oneOf('macaw-aviary','elephant-grove','lion-savanna'),cells:array(cell,49),viewingCell:nullable(cell)}),3),resources:array((v,p)=>plain(v)&&typeof v.kind==='string'&&v.kind.startsWith('lion-')?lionResourceRule(v,p):nonLionResource(v,p),32)}),animals:array((v,p)=>plain(v)&&v.speciesId===LION_SPECIES_ID?lionRule(v,p):oldAnimal([v],p),7),lionSavanna:lionProgressRule};
 const schema=future(V3_SAVE_FIELDS);
+// Semantic emptiness preserves the exact V3 field/value contract regardless of JSON key order.
+const unstarted=(g:LionSavannaProgress)=>g.grant===null&&g.missions.currentId==='LQ01'&&g.missions.completedIds.length===0&&g.missions.rewards.length===0&&Object.values(g.missions.objectives).every(v=>Array.isArray(v)?v.length===0:v===0);
 const unique=(v:string[],p:string)=>require(new Set(v).size===v.length,p);
 const claimedEH04=(s:ZooSaveV3|ZooSaveV4)=>s.elephantGrove.missions.completedIds.includes('EH04')&&s.elephantGrove.missions.rewards.some(r=>r.missionId==='EH04'&&r.award==='gentle-giants'&&r.ledgerEntryId==='mission-eh04');
 export function validateV3SpeciesRelationships(s:ZooSaveV3|ZooSaveV4,extraRewardIds:readonly string[]=[],rewardLimit=10):void{
@@ -36,7 +38,7 @@ export function validateV3SpeciesRelationships(s:ZooSaveV3|ZooSaveV4,extraReward
  const receipt=(entryId:string,amount:number,relatedId:string,at:number,operationId:string)=>{const e=ledgerProof(s,entryId);require(Boolean(e&&e.kind==='reward'&&e.amount===amount&&e.relatedId===relatedId&&e.tick===at&&e.operationId===operationId),'$.lionSavanna.rewardReceipt');extras.push(entryId);};
  if(g.grant){const q=s.elephantGrove.missions.rewards.find(r=>r.missionId==='EH04'),p=g.grant;require(claimedEH04(s)&&q!==undefined&&p.command>q.command&&p.command<s.economy.nextCommand&&p.tick>=q.tick&&p.tick<=s.tick&&p.ledgerEntryId===p.id,'$.lionSavanna.grant');receipt(p.ledgerEntryId,1800,'lion-savanna',p.tick,p.id);}
  require(homes.length<=1&&(pride.length===0||pride.length===1||pride.length===3),'$.lionSavanna.population');
- if(!claimedEH04(s))require(homes.length===0&&pride.length===0&&resources.length===0&&JSON.stringify(g)===JSON.stringify(initialLionProgress()),'$.lionSavanna.locked');
+ if(!claimedEH04(s))require(homes.length===0&&pride.length===0&&resources.length===0&&unstarted(g),'$.lionSavanna.locked');
  for(const h of homes){const x=Math.min(...h.cells.map(c=>c.x)),z=Math.min(...h.cells.map(c=>c.z));require(claimedEH04(s)&&h.cells.length===49&&z>=18&&h.cells.every(c=>c.x>=x&&c.x<x+7&&c.z>=z&&c.z<z+7),'$.lionSavanna.footprint');}
  const book=purchaseBook(s.ledger,s.economy.checkpoint);require(book!==null,'$.lionSavanna.purchases');
  const paid=(relatedId:string,price:number)=>{const proofs=[...book!.purchases.values()].filter(p=>p.entry.relatedId===relatedId&&p.refunded<-p.entry.amount);require(proofs.length===1&&proofs[0]!.refunded===0&&proofs[0]!.entry.amount===-price,'$.lionSavanna.paid');};
@@ -72,7 +74,7 @@ export function parseSaveV3(text:string):SaveV3Result {if(typeof text!=='string'
 export function serializeSaveV3(value:ZooSaveV3):string {const checked=validateSaveV3(value);if(!checked.ok)throw new RangeError(`Invalid V3 save: ${checked.path}`);const text=JSON.stringify(checked.value);if(text.length>MAX_SAVE_CHARS)throw new RangeError('V3 save too large');return text;}
 /** For golden migration proof only; refuses to erase any existing lion progress. */
 export function projectUnstartedV3(value:ZooSaveV3):ZooSaveV2 {
- if(value.animals.some(isLion)||value.world.habitats.some(h=>h.kind==='lion-savanna')||value.world.resources.some(r=>r.kind.startsWith('lion-'))||JSON.stringify(value.lionSavanna)!==JSON.stringify(initialLionProgress()))throw new RangeError('Cannot project active lion progress');
+ if(value.animals.some(isLion)||value.world.habitats.some(h=>h.kind==='lion-savanna')||value.world.resources.some(r=>r.kind.startsWith('lion-'))||!unstarted(value.lionSavanna))throw new RangeError('Cannot project active lion progress');
  const {lionSavanna:_,...common}=structuredClone(value);const projected={...common,schemaVersion:2,world:{...common.world,height:18,tiles:common.world.tiles.slice(0,216)}};const checked=validateSaveV2(projected);if(!checked.ok)throw new RangeError(checked.path);return checked.value;
 }
 export const LION_CHECKPOINT_CODEC:CheckpointCodec<ZooSaveV3>={parse(text){if(typeof text!=='string'||text.length>MAX_SAVE_CHARS)return {ok:false,code:'too-large',path:'$'};try{return migrateToV3(JSON.parse(text));}catch{return {ok:false,code:'invalid-json',path:'$'};}},serialize:serializeSaveV3,prepare(state:ZooSaveV1){const checked=migrateToV3(state);if(!checked.ok)throw new RangeError(checked.path);return checked.value;}};
