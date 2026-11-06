@@ -1,8 +1,7 @@
 import { parseSave, serializeSave, MAX_SAVE_CHARS } from './save-v1.ts';
 import type { ZooSaveV1 } from '../core/state.ts';
 import type {ZooSave} from '../core/zoo-state.ts';
-import type {ZooSaveV4} from '../core/giraffe-state.ts';
-export type PersistedZooSave=ZooSave|ZooSaveV4;
+export type PersistedZooSave=ZooSave;
 export type StorageFault = 'unavailable' | 'unreadable' | 'quota' | 'conflict' | 'write';
 export class SaveFault extends Error {
     code: StorageFault;

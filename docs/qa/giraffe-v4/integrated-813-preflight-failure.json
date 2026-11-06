@@ -1,0 +1,15 @@
+{
+  "runId": "20261106T225201Z-b3605d19",
+  "source": "507eff5389fc927d8380034b07d042acb98feeb2",
+  "counts": {
+    "tests": 813,
+    "passed": 812,
+    "failed": 1,
+    "skipped": 0,
+    "cancelled": 0
+  },
+  "unitLogSha256": "3a35488769bb88652a738df2c2632d9d84349e4d060c9a44c94cdb7058714d7c",
+  "failure": "# Subtest: every paired game panel dictionary has matching keys and placeholder contracts\nnot ok 453 - every paired game panel dictionary has matching keys and placeholder contracts\n  ---\n  duration_ms: 532.0325\n  type: 'test'\n  location: 'C:\\\\Users\\\\andi_\\\\Documents\\\\Codex\\\\2026-11-07\\\\task\\\\myzootwin-giraffe\\\\tests\\\\localization.test.mjs:9:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly equal:\n\n    23 !== 21\n\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: 21\n  actual: 23\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///C:/Users/andi_/Documents/Codex/2026-11-07/task/myzootwin-giraffe/tests/localization.test.mjs:9:1272)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1106:25)\n    Test.processPendingSubtests (node:internal/test_runner/test:788:18)\n    Test.postRun (node:internal/test_runner/test:1235:19)\n    Test.run (node:internal/test_runner/test:1163:12)\n    async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)\n  ...\n",
+  "rootCause": "Expected21 paired localization dictionaries; the implementation adds2 fully checked dictionaries. Key/placeholder checks passed; the fixed count assertion was updated to23.",
+  "laterNativeObservation": "An old Lion announcement overwrote the Giraffe world aria label; fixed with one shared-priority description function. Native visual screenshots remain blocked."
+}

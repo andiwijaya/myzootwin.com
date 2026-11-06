@@ -1,10 +1,10 @@
-import type {GiraffeAnimal,GiraffeHabitat,GiraffeResource} from './giraffe-state.ts';
+import {GIRAFFE_SPECIES_ID,GIRAFFE_SPECIES,type GiraffeAnimal,type GiraffeHabitat,type GiraffeResource} from './giraffe-state.ts';
+export {GIRAFFE_SPECIES_ID};
 import {SPECIES_ID, type Animal, type Habitat, type Point, type Resource, type WorldState} from './state.ts';
 
 export const MACAW_SPECIES_ID = SPECIES_ID;
 export const ELEPHANT_SPECIES_ID = 'elephas-maximus' as const;
 export const LION_SPECIES_ID = 'panthera-leo' as const;
-export const GIRAFFE_SPECIES_ID = 'giraffa-sp' as const;
 export type SpeciesId = typeof GIRAFFE_SPECIES_ID | typeof MACAW_SPECIES_ID | typeof ELEPHANT_SPECIES_ID | typeof LION_SPECIES_ID;
 export type HabitatKind = 'macaw-aviary' | 'elephant-grove' | 'lion-savanna' | 'giraffe-plains';
 export type ElephantResourceKind = 'elephant-browse' | 'elephant-water' | 'elephant-pond' | 'elephant-shade' | 'elephant-log';
@@ -83,9 +83,9 @@ export interface ZooWorld extends Omit<WorldState,'habitats'|'resources'> {
 }
 
 /** Species ownership is explicit; callers must narrow before using a species FSM or rig. */
-export const isMacaw = (animal:ZooAnimal|GiraffeAnimal):animal is MacawAnimal => animal.speciesId===MACAW_SPECIES_ID;
-export const isElephant = (animal:ZooAnimal|GiraffeAnimal):animal is ElephantAnimal => animal.speciesId===ELEPHANT_SPECIES_ID;
-export const isLion = (animal:ZooAnimal|GiraffeAnimal):animal is LionAnimal => animal.speciesId===LION_SPECIES_ID;
+export const isMacaw = (animal:ZooAnimal):animal is MacawAnimal => animal.speciesId===MACAW_SPECIES_ID;
+export const isElephant = (animal:ZooAnimal):animal is ElephantAnimal => animal.speciesId===ELEPHANT_SPECIES_ID;
+export const isLion = (animal:ZooAnimal):animal is LionAnimal => animal.speciesId===LION_SPECIES_ID;
 export const macaws = (animals:readonly ZooAnimal[]):MacawAnimal[] => animals.filter(isMacaw);
 export const elephants = (animals:readonly ZooAnimal[]):ElephantAnimal[] => animals.filter(isElephant);
 export const lions = (animals:readonly ZooAnimal[]):LionAnimal[] => animals.filter(isLion);
@@ -94,7 +94,7 @@ export const elephantResources=(resources:readonly ZooResource[]):ElephantResour
 export const SPECIES = Object.freeze({
   [MACAW_SPECIES_ID]:Object.freeze({habitatKind:'macaw-aviary' as const,footprint:2 as const,residents:2 as const,movement:'avian' as const}),
   [ELEPHANT_SPECIES_ID]:Object.freeze({habitatKind:'elephant-grove' as const,footprint:6 as const,residents:2 as const,movement:'ground' as const}),
-  [GIRAFFE_SPECIES_ID]:Object.freeze({habitatKind:'giraffe-plains' as const,footprint:7 as const,residents:3 as const,movement:'giraffe-ground' as const}),
+  [GIRAFFE_SPECIES_ID]:GIRAFFE_SPECIES,
   [LION_SPECIES_ID]:Object.freeze({habitatKind:'lion-savanna' as const,footprint:7 as const,residents:3 as const,movement:'lion-ground' as const}),
 });
 export function habitatSpecies(kind:HabitatKind):SpeciesId|null {

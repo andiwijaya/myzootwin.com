@@ -5,7 +5,7 @@ import {isMacaw,type ZooAnimal,type ZooResource,type HabitatKind} from './specie
 
 export type RuntimeHabitat=Habitat&{kind?:HabitatKind};
 export interface RuntimeWorld extends Omit<WorldState,'habitats'|'resources'> {habitats:RuntimeHabitat[];resources:ZooResource[];}
-/** Common mutable subsystem contract. The canonical root is validated as exact V1 or V2. */
+/** Common mutable subsystem contract. The canonical root is validated by its exact versioned codec. */
 export interface RuntimeState extends Omit<ZooSaveV1,'schemaVersion'|'world'|'animals'> {schemaVersion:1|2|3|4;world:RuntimeWorld;animals:ZooAnimal[];elephantGrove?:ZooSaveV2['elephantGrove'];lionSavanna?:LionSavannaProgress;giraffePlains?:GiraffeProgress;}
 const macawHabitat=(h:RuntimeHabitat)=>h.kind===undefined||h.kind==='macaw-aviary';
 const macawResource=(r:ZooResource):r is ZooSaveV1['world']['resources'][number]=>r.kind==='food'||r.kind==='water'||r.kind==='perch';

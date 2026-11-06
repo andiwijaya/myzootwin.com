@@ -1,3 +1,4 @@
+import {sharedWorldDescription} from './world-description.ts';
 import {mountGiraffePanel} from './giraffe-panel.ts';
 import {giraffeCopy} from './giraffe-copy.ts';
 import {mountLionPanel} from './lion-panel.ts';
@@ -58,7 +59,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const retry = root.querySelector<HTMLButtonElement>('[data-preview-retry]');
   const reload = root.querySelector<HTMLButtonElement>('[data-preview-reload]');
   if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) throw new Error('Incomplete preview panel');
-  let elephantUnlocked=false,lionUnlocked=false;
+  let elephantUnlocked=false,lionUnlocked=false,giraffeUnlocked=false;
+  const canvasDescription=()=>sharedWorldDescription(locale,studio.active,giraffeUnlocked,lionUnlocked,elephantUnlocked);
   let recovery:RecoveryView|undefined,recoveryPending:RecoveryQuote|null=null;
   const recoveryDialog=root.querySelector<HTMLDialogElement>('[data-recovery-dialog]');
   const recoveryText=()=>{if(!recovery)return'';const c=entryMessages[locale],key=({habitat:'recoveryHabitat',path:'recoveryPath',food:'recoveryFood',water:'recoveryWater',perch:'recoveryPerch','food-refill':'recoveryFoodRefill','water-refill':'recoveryWaterRefill',rations:'recoveryRations',welcome:'recoveryWelcome',open:'recoveryOpen',reclaim:'recoveryReclaim','repair-food':'recoveryRepairFood','repair-water':'recoveryRepairWater','repair-perch':'recoveryRepairPerch',wait:'recoveryWait',steady:'recoverySteady'}as const)[recovery.kind];return c[key].replace('{x}',formatNumber((recovery.cell?.x??0)+1,locale)).replace('{z}',formatNumber((recovery.cell?.z??0)+1,locale)).replace('{refund}',formatNumber(recovery.refund,locale));};
@@ -69,8 +71,9 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   let state: PreviewState = { status: 'closed' };
   const events = new AbortController();
   const giraffePanel=mountGiraffePanel(root,host,events.signal);
+  host.addEventListener('scene-giraffe-change',event=>{giraffeUnlocked=(event as CustomEvent<{habitat:{exists:boolean}}>).detail.habitat.exists;host.setAttribute('aria-label',canvasDescription());},{signal:events.signal});
   const lionPanel=mountLionPanel(root,host,events.signal);
-  host.addEventListener('scene-lion-change',event=>{lionUnlocked=(event as CustomEvent<{grant:{qualified:boolean}}>).detail.grant.qualified;if(lionUnlocked&&!studio.active)host.setAttribute('aria-label',lionCopy[locale].canvas);},{signal:events.signal});
+  host.addEventListener('scene-lion-change',event=>{lionUnlocked=(event as CustomEvent<{grant:{qualified:boolean}}>).detail.grant.qualified;host.setAttribute('aria-label',canvasDescription());},{signal:events.signal});
   const speedPanel=mountSpeedPanel(root.querySelector('[data-speed-tools]'),events.signal,value=>controller.speed(value));
   host.addEventListener('scene-speed-change',event=>speedPanel.update((event as CustomEvent<SpeedView>).detail),{signal:events.signal});
   let guidedStart=false;
@@ -116,7 +119,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   host.addEventListener('scene-missions-change',event=>missionPanel.update((event as CustomEvent<MissionView>).detail),{signal:events.signal});
   host.addEventListener('scene-mission-result',event=>missionPanel.result((event as CustomEvent<{ok:boolean}>).detail.ok),{signal:events.signal});
   const elephantCatalog=mountElephantCatalog(root.querySelector('[data-elephant-catalog]'),events.signal,q=>controller.claimConservationGrant(q),()=>{root.dataset.guided='false';revealHudTarget(root.querySelector('[data-placement-tools]'));controller.beginElephantHabitat();host.focus({preventScroll:true});scrollHudTarget(host);},command=>{controller.welcomeElephants(command);host.focus({preventScroll:true});scrollHudTarget(host);});
-  host.addEventListener('scene-elephant-grove-change',event=>{const v=(event as CustomEvent<ElephantCatalogView>).detail;elephantUnlocked=v.qualified;elephantCatalog.update(v);host.setAttribute('aria-label',!studio.active&&host.dataset.giraffeResidents!=='0'&&Boolean(host.dataset.giraffeResidents)?giraffeCopy[locale].canvas:!studio.active&&lionUnlocked?lionCopy[locale].canvas:entryMessages[locale][studio.active?'macawCanvas':elephantUnlocked?'previewElephantCanvas':'previewCanvas']);},{signal:events.signal});
+  host.addEventListener('scene-elephant-grove-change',event=>{const v=(event as CustomEvent<ElephantCatalogView>).detail;elephantUnlocked=v.qualified;elephantCatalog.update(v);host.setAttribute('aria-label',canvasDescription());},{signal:events.signal});
   const elephantCare=mountElephantCarePanel(root.querySelector('[data-elephant-care]'),events.signal,{begin:kind=>{root.dataset.guided='false';controller.beginElephantCare(kind);host.focus({preventScroll:true});scrollHudTarget(host);scrollHudTarget(root.querySelector('[data-elephant-care-preview]'),'start');},command:(action,revision)=>{controller.elephantCare(action,revision);host.focus({preventScroll:true});scrollHudTarget(host);},refill:quote=>controller.refillElephantCare(quote),remove:(id,name)=>reviewRemoval({kind:'elephant-resource',id},name)});
   host.addEventListener('scene-elephant-care-change',event=>elephantCare.update((event as CustomEvent<ElephantCareSceneView>).detail),{signal:events.signal});
   let selected:SceneIdentity|null=null;
@@ -257,7 +260,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     for(const [selector,value]of [['[data-macaw-clip]',studio.clip],['[data-macaw-angle]',studio.angle]]){const select=root.querySelector<HTMLSelectElement>(selector);if(!select)continue;select.value=value;for(const option of select.options)option.textContent=copy[`macaw${option.value[0].toUpperCase()}${option.value.slice(1)}` as EntryMessage];}
     root.querySelector('[data-macaw-status]')?.replaceChildren(copy[studio.motionPaused?'macawPaused':'macawPlaying']);root.querySelector('[data-macaw-scale]')?.replaceChildren(studio.habitat?copy.macawScaleHint:habitatCount===0?copy.macawNeedHabitat:'');
     if(cameraControls)cameraControls.hidden=!ready||(studio.active&&!studio.habitat);
-    host?.setAttribute('aria-label',!studio.active&&host.dataset.giraffeResidents!=='0'&&Boolean(host.dataset.giraffeResidents)?giraffeCopy[locale].canvas:!studio.active&&lionUnlocked?lionCopy[locale].canvas:copy[studio.active?'macawCanvas':elephantUnlocked?'previewElephantCanvas':'previewCanvas']);
+    host?.setAttribute('aria-label',canvasDescription());
     host?.setAttribute('aria-keyshortcuts',studio.active?(studio.habitat?'ArrowUp ArrowDown ArrowLeft ArrowRight Home Escape':'Escape'):'ArrowUp ArrowDown ArrowLeft ArrowRight Home Escape Enter');
     root.querySelector('[data-camera-help]')?.replaceChildren(copy[studio.active&&studio.habitat?'macawScaleHint':'cameraHelp']);
     if(caption)caption.textContent=copy[studio.active?'macawSubtitle':state.status==='ready'||state.status==='loading'?'previewCaption':'artCaption'];
@@ -290,7 +293,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const startButton=root.querySelector<HTMLButtonElement>('[data-onboarding-start]');if(startButton)startButton.disabled=next.status==='loading'||options.canOpen?.()===false;
     illustration.hidden = next.status === 'loading' || next.status === 'ready';
     host.hidden = next.status !== 'loading' && next.status !== 'ready';
-    host.setAttribute('aria-label',host.dataset.giraffeResidents!=='0'&&Boolean(host.dataset.giraffeResidents)?giraffeCopy[locale].canvas:lionUnlocked?lionCopy[locale].canvas:copy[elephantUnlocked?'previewElephantCanvas':'previewCanvas']);
+    host.setAttribute('aria-label',canvasDescription());
     host.setAttribute('aria-busy', String(next.status === 'loading'));
     feedback.hidden = next.status === 'closed';
     feedback.setAttribute('role', failed ? 'alert' : 'status');

@@ -38,7 +38,7 @@ export async function fingerprint(root,paths) {
 export async function sourceFingerprint(root) {
   const source=[];
   for(const folder of ['src','tests','scripts','public'])source.push(...await files(join(root,folder),p=>p.includes(`${join('browser','.generated')}`)));
-  for(const file of ['package.json','package-lock.json','astro.config.mjs','tsconfig.json','docs/qa/m0-02/baseline-results.json'])source.push(join(root,file));
+  for(const file of ['package.json','package-lock.json','astro.config.mjs','tsconfig.json','docs/qa/m0-02/baseline-results.json','docs/qa/giraffe-baseline/released-route-metadata.json'])source.push(join(root,file));
   return fingerprint(root,source);
 }
 export async function identities(root) {

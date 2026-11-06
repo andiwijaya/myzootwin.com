@@ -1,6 +1,6 @@
 # Strict Giraffe V4 persistence — in progress
 
-The new codec is dormant: product entry still uses the released V3 backend and the canonical gameplay union is unchanged. Activation awaits database backup/CAS and actual native Continue. No production data has been opened or written.
+Current local product entry uses strict V4 and the shared canonical runtime. Atomic backup/CAS and native UI cold Continue are verified below; native visual screenshots and final source-wide checks remain pending. Production owner data has not been opened or written. The following entries preserve the staged implementation history.
 
 GH1-06 implements an exact24×26/624tile V4 schema, separate giraffe entity/resource/FSM/reward branches, unknown/future-content refusal, validated V1→V2→V3→V4 migration and pure lossless old-coordinate projection. New land/mission namespace adds no cash, structures, residents, clock or RNG changes. `projectUnstartedV4` is proof-only and refuses any new content instead of truncating it.
 
