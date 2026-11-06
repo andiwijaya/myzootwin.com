@@ -4,7 +4,7 @@ Source: owner Library handoff `libfile_09652153d1bc8191b2c1f1aa6cb5ce18` (44/44 
 
 Session 1 stopped safely before **2026-11-05 17:00 WIB / 10:00 UTC**. Session 2 explicitly authorized by the owner to continue at home, resumed at13:35 UTC /20:35 WIB from5852bdc. No new deadline specified. No push/deploy authorized. Original checkout, owner builds and owner saves stay untouched.
 
-Verified EH: **29/39 (74.36%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
+Verified EH: **30/39 (76.92%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
 
 | Item | Status | Scope / evidence |
 |---|---|---|
@@ -37,7 +37,7 @@ Verified EH: **29/39 (74.36%)**. Existing V1: **46/51**, five evidence/signoff g
 | EH4-04 | [x] | Four actual EH objectives and durable exactly-once cash/typed awards;693tests/35native cases; [evidence](ELEPHANT_MISSIONS.md) |
 | EH4-05 | [x] | Truthful IDENcare/funds/access help, cheapest real path preview, actual bounded support and paid refill/no instant relief;700tests/36native cases; [evidence](ELEPHANT_RECOVERY.md) |
 | EH4-06 | [x] | Full Q01–Q04 golden twins,6000mixed ticks and native cold macaw/clock/RNG/receipts;704tests/38native cases; [evidence](ELEPHANT_LEGACY_REGRESSION.md) |
-| EH5-01 | [ ] | Contextual onboarding and focus |
+| EH5-01 | [x] | Four readonly actual-state hints, whole Grove/aviary camera fit, new/ready/claimed/cold IDEN journeys;710tests/39native cases; [evidence](ELEPHANT_ONBOARDING.md) |
 | EH5-02 | [ ] | Complete ID/EN and accessibility text |
 | EH5-03 | [ ] | Portrait/landscape/desktop controls |
 | EH5-04 | [ ] | Visual tiers, accessibility and context recovery |
@@ -50,4 +50,4 @@ Verified EH: **29/39 (74.36%)**. Existing V1: **46/51**, five evidence/signoff g
 
 Each checked item requires a local commit and its scoped evidence. Commit identities are recorded by Git history and subsequent checkpoints; no self-referential hash is invented. Upcoming steps remain unverified until their complete seam passes.
 
-Historical timed-session shutdown: [first checkpoint](ELEPHANT_SESSION_CHECKPOINT.md). Owner explicitly resumed work afterward; latest verified seam: [legacy and mixed regression](ELEPHANT_LEGACY_REGRESSION.md). Latest home handoff: [checkpoint](ELEPHANT_HOME_CHECKPOINT.md).
+Historical timed-session shutdown: [first checkpoint](ELEPHANT_SESSION_CHECKPOINT.md). Owner explicitly resumed work afterward; latest verified seam: [contextual onboarding and focus](ELEPHANT_ONBOARDING.md). Latest home handoff: [checkpoint](ELEPHANT_HOME_CHECKPOINT.md).

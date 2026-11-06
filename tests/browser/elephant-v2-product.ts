@@ -9,7 +9,7 @@ import {ELEPHANT_V1_BACKUP} from '../../src/game/persistence/durable-backend.ts'
 import {createElephantIndexedDbBackend} from '../../src/game/persistence/elephant-backend.ts';
 import frozen from '../fixtures/elephant-legacy-v1.json';
 const mode=new URLSearchParams(location.search).get('fixture'),fixture=mode==='new'?'new':mode==='ready'?'q04Ready':'q04Claimed';
-const run=new URLSearchParams(location.search).get('run'),version=run==='recovery'?'eh4-05':run==='recovery-path'?'eh4-05-path':run==='missions'?'eh4-04':run==='visitors'?'eh4-01':run==='rig'?'eh3-01':run==='editing'?'eh2-06':run==='care'?'eh2-04':run==='residents'?'eh2-03':run==='build'?'eh2-02':'eh2-01';
+const run=new URLSearchParams(location.search).get('run'),version=run==='onboarding'?'eh5-01':run==='recovery'?'eh4-05':run==='recovery-path'?'eh4-05-path':run==='missions'?'eh4-04':run==='visitors'?'eh4-01':run==='rig'?'eh3-01':run==='editing'?'eh2-06':run==='care'?'eh2-04':run==='residents'?'eh2-03':run==='build'?'eh2-02':'eh2-01';
 const database=`myzootwin-${version}-product-${fixture}-20261105`,source=frozen.entries[fixture].state,originalPayload=JSON.stringify(source);
 const output=document.querySelector<HTMLElement>('#qa-v2-storage')!;let checkpointPayload='';
 function open():Promise<IDBDatabase>{return new Promise((resolve,reject)=>{const r=indexedDB.open(database);r.onupgradeneeded=()=>r.result.createObjectStore('checkpoints');r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);});}

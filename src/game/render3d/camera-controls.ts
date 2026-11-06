@@ -58,7 +58,7 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
     const frame=fitIsometricCamera(camera,bounds,width/height,azimuthStep*Math.PI/4);basePosition=camera.position.clone();
     const right=new Vector3(1,0,0).applyQuaternion(camera.quaternion),up=new Vector3(0,1,0).applyQuaternion(camera.quaternion);
     const origin=sceneOrigin(map);
-    navigation.configure({width,height,halfWidth:frame.halfWidth,halfHeight:frame.halfHeight,rightX:right.x,rightZ:right.z,upX:up.x,upZ:up.z,originX:frame.originX,originZ:frame.originZ,mapWidth:map.width,mapHeight:map.height,mapCenterX:map.width/2-origin.x,mapCenterZ:map.height/2-origin.z},preserveFocus);
+    navigation.configure({width,height,halfWidth:frame.halfWidth,halfHeight:frame.halfHeight,rightX:right.x,rightZ:right.z,upX:up.x,upZ:up.z,upY:up.y,originX:frame.originX,originZ:frame.originZ,mapWidth:map.width,mapHeight:map.height,mapCenterX:map.width/2-origin.x,mapCenterZ:map.height/2-origin.z},preserveFocus);
   }
   function command(value:CameraCommand){
     if(!enabled||disposed||!width||!height)return;cancelAll();
@@ -72,6 +72,7 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
       cancelAll();width=nextWidth;height=nextHeight;reframe();
     },
     focus(point:{x:number;z:number}){if(enabled&&!disposed){cancelAll();navigation.focus(point);}},
+    focusArea(area:{x:number;z:number;width:number;depth:number}){if(enabled&&!disposed){cancelAll();navigation.focusArea(area);}},
     command,
     setEnabled(value:boolean) {enabled=value;if(!enabled)cancelAll();},
     dispose(){if(disposed)return;cancelAll();disposed=true;events.abort();delete host.dataset.cameraZoom;delete host.dataset.cameraPanX;delete host.dataset.cameraPanZ;delete host.dataset.cameraAzimuth;},

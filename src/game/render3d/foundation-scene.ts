@@ -1,3 +1,4 @@
+import type {ElephantOnboardingView} from '../missions/elephant-onboarding.ts';
 import type {ElephantPathReview} from '../economy/elephant-recovery.ts';
 import type {ElephantMissionQuote} from '../missions/elephant-missions.ts';
 import type {ElephantMissionSceneView} from '../../game-entry/elephant-mission-panel.ts';
@@ -53,7 +54,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   let disposed = false;
   let lost = false;
   let paused = false;
-  let previousElephantRecovery='',elephantRecoveryKey='';
+  let previousElephantRecovery='',elephantRecoveryKey='',previousElephantGuide='',elephantGuideKey='';
   let ehClaimBusy=false,ehClaimFailure:'storage'|'stale'|null=null,previousElephantMissions='';
   let grantBusy=false,grantFailure:'storage'|'stale'|null=null,previousGrant='';
   let cleanupErrors = 0;
@@ -112,6 +113,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     finally{grantBusy=false;if(!disposed){updateRunning();announceGrant();render();}}
   }
   function announceElephantMissions(){const view:ElephantMissionSceneView={...simulation.elephantMissionView(),busy:ehClaimBusy,savingAvailable:options.stateStore?.canCommit?.()===true,failure:ehClaimFailure},key=JSON.stringify(view);if(key!==previousElephantMissions){previousElephantMissions=key;host.dispatchEvent(new CustomEvent('scene-elephant-missions-change',{detail:view}));}}
+  function announceElephantGuide(frame=simulation.inspect()){const key=[frame.tick,frame.commandRevision,frame.editorRevision].join(':');if(key===elephantGuideKey)return;elephantGuideKey=key;const view:ElephantOnboardingView=simulation.elephantOnboardingView(),next=JSON.stringify(view);if(next!==previousElephantGuide){previousElephantGuide=next;host.dispatchEvent(new CustomEvent('scene-elephant-guide-change',{detail:view}));}}
   function announceElephantRecovery(frame=simulation.inspect()){const key=[frame.tick,frame.commandRevision,frame.editorRevision].join(':');if(key===elephantRecoveryKey)return;elephantRecoveryKey=key;const view=simulation.elephantRecoveryView(),next=JSON.stringify(view);if(next!==previousElephantRecovery){previousElephantRecovery=next;host.dispatchEvent(new CustomEvent('scene-elephant-recovery-change',{detail:view}));}}
   async function claimElephantMission(quote:ElephantMissionQuote){
     if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;
@@ -154,7 +156,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     if (disposed || lost) return;
     const frame=simulation.inspect();
     const policy=visual();lighting?.setLowGraphics(policy.low);diorama?.setLowGraphics(policy.low);visitors?.setVisibleCap(policy.low?1:3);
-    announceSpeed(false,frame);announceGrant();announceElephantCare();announceElephantMissions();announceElephantRecovery(frame);
+    announceSpeed(false,frame);announceGrant();announceElephantCare();announceElephantMissions();announceElephantRecovery(frame);announceElephantGuide(frame);
     const guide=readGuide(frame),guideKey=JSON.stringify(guide);if(guideKey!==previousGuide){previousGuide=guideKey;host.dispatchEvent(new CustomEvent('scene-onboarding-change',{detail:guide}));}
     const missions=simulation.missionView(),missionKey=JSON.stringify(missions);if(missionKey!==previousMission){previousMission=missionKey;host.dispatchEvent(new CustomEvent('scene-missions-change',{detail:missions}));}
     const recoveryKey=[frame.tick,frame.commandRevision,frame.editorRevision,simulation.visitorView().open].join(':');if(recoveryKey!==recoveryReadKey){recoveryReadKey=recoveryKey;recoveryRead=simulation.recoveryView();}const nextRecovery=JSON.stringify(recoveryRead);if(nextRecovery!==previousRecovery){previousRecovery=nextRecovery;host.dispatchEvent(new CustomEvent('scene-recovery-change',{detail:recoveryRead}));}
@@ -360,10 +362,13 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
       placement?.command('cancel');elephantCarePreview?.cancel();picker?.clear();foodPreview=false;waterPreview=false;perchPreview=false;foodDirty=true;waterDirty=true;perchDirty=true;
       if(simulation.welcomeElephants(command).ok){saveSession();const h=simulation.worldSnapshot().habitats.find(h=>'kind'in h&&h.kind==='elephant-grove');if(h){const origin=sceneOrigin(simulation.worldSnapshot());controls?.focus({x:Math.min(...h.cells.map(c=>c.x))+3-origin.x,z:Math.min(...h.cells.map(c=>c.z))+3-origin.z});}render();}
     },
+    focusElephantGuide:target=>{
+      if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;const view=simulation.elephantOnboardingView(),area=view.focus[target];if(!view.active||!area)return;const origin=sceneOrigin(simulation.worldSnapshot());controls?.focusArea({...area,x:area.x-origin.x,z:area.z-origin.z});render();
+    },
     beginElephantHabitat:()=>{
       if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active||!simulation.elephantHabitatView().canBuild)return;
       controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');elephantCarePreview?.cancel();picker?.clear();foodPreview=false;waterPreview=false;perchPreview=false;foodDirty=true;waterDirty=true;perchDirty=true;
-      placementHabitatKind='elephant-grove';placementCommand=simulation.commandRevision();placement?.guide('habitat',{x:3,z:11});const origin=sceneOrigin(simulation.worldSnapshot());controls?.focus({x:6-origin.x,z:14-origin.z});render();
+      placementHabitatKind='elephant-grove';placementCommand=simulation.commandRevision();placement?.guide('habitat',{x:3,z:11});const origin=sceneOrigin(simulation.worldSnapshot());controls?.focusArea({x:3-origin.x,z:11-origin.z,width:6,depth:6});render();
     },
     placement:(command,revision)=>{if(grantBusy||macaw?.view().active)return;elephantCarePreview?.cancel();perchPreview=false;perchPreviewHabitat=null;perchDirty=true;foodPreview=false;foodPreviewHabitat=null;foodDirty=true;waterPreview=false;waterPreviewHabitat=null;waterDirty=true;if(command==='begin'||command==='begin-path'){placement?.command('cancel');placementHabitatKind='macaw-aviary';placementCommand=simulation.commandRevision();picker?.clear();}placement?.command(command,revision);},
     quoteRemoval:target=>simulation.quoteRemoval(target),

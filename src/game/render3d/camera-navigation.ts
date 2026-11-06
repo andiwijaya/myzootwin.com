@@ -2,7 +2,7 @@ export interface CameraFrame {
   width: number; height: number; halfWidth: number; halfHeight: number;
   rightX: number; rightZ: number; upX: number; upZ: number;
   originX: number; originZ: number; mapWidth: number; mapHeight: number;
-  mapCenterX?:number;mapCenterZ?:number;
+  mapCenterX?:number;mapCenterZ?:number;upY?:number;
 }
 export type CameraCommand = 'zoom-in' | 'zoom-out' | 'reset' | 'rotate-left' | 'rotate-right';
 const clamp = (value:number, min:number, max:number) => Math.max(min,Math.min(max,value));
@@ -38,6 +38,13 @@ export function createCameraNavigation(onChange:()=>void = ()=>{}) {
       const p=ground(-dx*2*frame.halfWidth/(zoom*frame.width),dy*2*frame.halfHeight/(zoom*frame.height));x+=p.x;z+=p.z;commit();
     },
     focus(point:{x:number;z:number}){if(!frame||![point.x,point.z].every(Number.isFinite))return;zoom=2.5;x=point.x-frame.originX;z=point.z-frame.originZ;commit();},
+    /** Fit a whole habitat with padding using the existing bounded pan policy. Existing close-up focus is unchanged. */
+    focusArea(area:{x:number;z:number;width:number;depth:number}){
+      if(!frame||!Object.values(area).every(Number.isFinite)||area.width<=0||area.depth<=0)return;
+      const f=frame,center={x:area.x+area.width/2,z:area.z+area.depth/2};
+      for(let step=80;step>=0;step--){zoom=1+step/40;const b=limits();x=clamp(center.x-f.originX,b.minX,b.maxX);z=clamp(center.z-f.originZ,b.minZ,b.maxZ);const fits=[area.x-1,area.x+area.width+1].every(px=>[area.z-1,area.z+area.depth+1].every(pz=>{const dx=px-f.originX-x,dz=pz-f.originZ-z;return Math.abs(dx*f.rightX+dz*f.rightZ)<=f.halfWidth/zoom*.94&&[0,3.4].every(y=>Math.abs(dx*f.upX+dz*f.upZ+y*(f.upY??0))<=f.halfHeight/zoom*.94);}));if(fits||step===0)break;}
+      commit();
+    },
     zoomBy,
     command(command:CameraCommand) {if(command==='reset'){zoom=1;x=z=0;commit();}else if(command==='zoom-in'||command==='zoom-out')zoomBy(command==='zoom-in'?1.25:.8);},
     inspect:()=>({zoom,x,z,focusX:(frame?.originX??0)+x,focusZ:(frame?.originZ??0)+z,...limits()}),
