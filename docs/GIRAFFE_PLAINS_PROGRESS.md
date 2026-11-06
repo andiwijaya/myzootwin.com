@@ -1,6 +1,6 @@
 # MyZooTwin — Giraffe Plains Living Checklist
 
-**Created:** 7 November 2026 | **Status:** 2/42 (4.76%). Verified reference/layout gates only.  
+**Created:** 7 November 2026 | **Status:** 5/42 (11.90%). Verified gates only; publication held.  
 **Authority:** `MYZOOTWIN_GIRAFFE_PLAINS_MASTER_PRD_V1.md`  
 **Record:** after each micro-feature add verified commit SHA, exact tests, source-bound evidence, actual browser proof where relevant, issues and next. `[x]` means fully end-to-end **verified**, not planned/code-written only. Dot owns maintenance and concise updates autonomously.
 
@@ -10,8 +10,8 @@ Progress formula: `verified / 42 * 100`. Final release GH6-06 remains `[ ]` pend
 
 - [ ] **GH0-01** — Audit fresh HEAD/branch/Cloudflare/live binding, Lion V3 release state and current blockers; freeze SHA and do not infer live status from a local checklist.
   - Evidence: `UNRUN` | Commit: `NOT YET` | Browser: `UNRUN`
-- [ ] **GH0-02** — Freeze V1/V2/V3 synthetic old-player saves, tile coordinate/scene snapshots, macaw/elephant/lion quest/economy/visitor receipts and existing-owner-data isolation.
-  - Evidence: `UNRUN` | Commit: `NOT YET` | Browser: `UNRUN`
+- [x] **GH0-02** — Freeze V1/V2/V3 synthetic old-player saves, tile coordinate/scene snapshots, macaw/elephant/lion quest/economy/visitor receipts and existing-owner-data isolation.
+  - Evidence: `GIRAFFE_BASELINE.md`, `qa/giraffe-baseline/` 775/775; check/build pass; cold hash equality | Commits: `ad2bf1db99728b83b6f06f1f1cf6a3aa79260817`, native source `0a95ba144b495020b0814dc8b9c1c85790910884` | Browser: actual compiled synthetic product desktop/portrait/landscape, ID/EN, cold return, cleanup
 - [x] **GH0-03** — Verify giraffe references, animation/welfare rules, original-art license path and game-scale vs real-life husbandry distinction.
   - Evidence: `GIRAFFE_ART_BEHAVIOR.md`; three primary sources checked | Commit: `761177278dec9a05d5ae00d3171153aa58a13b75` | Browser: not required for this reference gate; rendered art remains GH3
 - [x] **GH0-04** — Create executable lateral expansion and route design fixtures: 12×26→24×26, macaw-side 7×7 anchor, reserve land and east-west visitor route/bridge decision.
@@ -19,10 +19,10 @@ Progress formula: `verified / 42 * 100`. Final release GH6-06 remains `[ ]` pend
 
 ## GH1 — Horizontal world + strict Save V4
 
-- [ ] **GH1-01** — Add strongly typed Giraffe species, enclosure, resources, GH reward namespace and V4 runtime discriminants; old species functions remain narrowly scoped.
-  - Evidence: `UNRUN` | Commit: `NOT YET` | Browser: `UNRUN`
-- [ ] **GH1-02** — Implement width growth with full row-major reindex and frozen legacy (x,z) semantics, no automatic builds or cash; verify all legacy projections.
-  - Evidence: `UNRUN` | Commit: `NOT YET` | Browser: `UNRUN`
+- [x] **GH1-01** — Add strongly typed Giraffe species, enclosure, resources, GQ reward namespace and V4 runtime discriminants; old species functions remain narrowly scoped.
+  - Evidence: `GIRAFFE_FOUNDATION.md`, focused 5/5 and noEmit exit0 | Commit: `60c905be78ebdcf62a24c3fc91e10a9262e0ce4b` | Browser: dormant type-only gate; no product activation
+- [x] **GH1-02** — Implement width growth with full row-major reindex and frozen legacy (x,z) semantics, no automatic builds or cash; verify all legacy projections.
+  - Evidence: `GIRAFFE_FOUNDATION.md`, `qa/giraffe-baseline/expansion-tests.txt` 7/7 including32adversarial grids | Commit: `e9bad1ce04ea4a21358ea1b11a4089d661677e48` | Browser: pure dormant transform; visual gate GH1-03 remains open
 - [ ] **GH1-03** — Hold legacy scene origin (6,5) and all old object transforms; expand terrain/selection/renderer/camera bounds; test 4-angle picking, portrait and landscape.
   - Evidence: `UNRUN` | Commit: `NOT YET` | Browser: `UNRUN`
 - [ ] **GH1-04** — Build a real legal east-west visitor connection; choose safe land corridor or a bridge where needed, with correct paid transaction, topology, visuals and no teleport.
@@ -126,6 +126,9 @@ GH0-01 partial: fresh remote main is 3252234; GitHub Cloudflare check completed 
 | — | — | — | — | — | — | 0/42 |
 | 2026-11-06 UTC | GH0-03 | 761177278dec9a05d5ae00d3171153aa58a13b75 | Three primary references, original procedural art contract | Not a rendered art gate | Audit admin blocked independently | 1/42 |
 | 2026-11-06 UTC | GH0-04 | 7a945f80349f8aa4e94e348cdfaa37ef184d4bc4 | 4/4 deterministic design tests | Runtime proof remains GH1 | Legal land route,12 purchases/180ZC in frozen zoo | 2/42 |
+| 2026-11-06 UTC | GH0-02 | ad2bf1d + native0a95ba1 | 775/775; check365clean; nine-page build | Actual3D/cold equality/IDEN/threeviewports | Superseded stale diagnostic retained; no physical-device claim | 3/42 |
+| 2026-11-06 UTC | GH1-01 | 60c905be78ebdcf62a24c3fc91e10a9262e0ce4b | focused5/5; TypeScript noEmit | Type-only | Dormant V4 | 4/42 |
+| 2026-11-06 UTC | GH1-02 | e9bad1ce04ea4a21358ea1b11a4089d661677e48 | focused7/7;32adversarial grids | Pure transform | Product activation gated | 5/42 |
 
 ## Hard boundaries
 
