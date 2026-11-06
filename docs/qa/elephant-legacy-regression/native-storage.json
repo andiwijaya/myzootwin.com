@@ -1,0 +1,616 @@
+{
+  "status": "PASS",
+  "error": null,
+  "method": "Native IndexedDB on explicitly generated disposable QA databases",
+  "physicalDevice": false,
+  "cases": [
+    {
+      "id": "native-blocked-upgrade",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:15.241Z",
+      "data": {
+        "blocked": true,
+        "primaryExact": true,
+        "oldConnectionClosedExplicitly": true
+      }
+    },
+    {
+      "id": "native-migration-new",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:15.302Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 1500,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-migration-q01",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:15.343Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 1145,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-migration-midQ02",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:15.404Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 913,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-migration-midVisitor",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:15.458Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 923,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-migration-longLedger",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:15.524Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 969,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-migration-zeroCash",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:15.569Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 0,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-migration-q04Ready",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:15.619Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 985,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-migration-q04Claimed",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:15.669Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 985,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-migration-indonesian",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:15.725Z",
+      "data": {
+        "schema": 2,
+        "tiles": 216,
+        "currency": 985,
+        "backupExact": true,
+        "oldBinaryBlocked": true
+      }
+    },
+    {
+      "id": "native-transaction-abort",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:15.753Z",
+      "data": {
+        "primaryExact": true,
+        "partialBackup": false,
+        "method": "Explicit native tx.abort after queued primary write"
+      }
+    },
+    {
+      "id": "native-two-writer-CAS",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:15.791Z",
+      "data": {
+        "committed": 1,
+        "conflicted": 1
+      }
+    },
+    {
+      "id": "quota-fault-boundary",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:15.869Z",
+      "data": {
+        "method": "Injected SaveFault before native write; not physical disk exhaustion",
+        "primaryExact": true,
+        "recovered": true
+      }
+    },
+    {
+      "id": "native-corrupt-recovery",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:15.906Z",
+      "data": {
+        "restoredSchema": 2,
+        "automaticReset": false
+      }
+    },
+    {
+      "id": "future-content-protection",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:15.921Z",
+      "data": {
+        "blocked": true,
+        "rawPreserved": true,
+        "previousAvailable": true
+      }
+    },
+    {
+      "id": "future-schema-protection",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:15.935Z",
+      "data": {
+        "blocked": true,
+        "rawPreserved": true,
+        "previousAvailable": true
+      }
+    },
+    {
+      "id": "native-format1-envelope-transition",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:16.089Z",
+      "data": {
+        "schema": 2,
+        "backupExact": true,
+        "explicitRecovery": true
+      }
+    },
+    {
+      "id": "native-reset-first-migration-and-undo",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:16.192Z",
+      "data": {
+        "schema": 2,
+        "originalBackupExact": true,
+        "preferencesPreserved": true,
+        "undoExact": true
+      }
+    },
+    {
+      "id": "native-multispecies-cold-continue-and-undo",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:16.521Z",
+      "data": {
+        "syntheticPersistenceFixture": true,
+        "gameplayNotClaimed": true,
+        "residents": 4,
+        "macaws": 2,
+        "elephants": 2,
+        "habitats": 2,
+        "elephantResources": 6,
+        "coldContinues": 3,
+        "originalBackupExact": true,
+        "undoExact": true
+      }
+    },
+    {
+      "id": "native-migration-clock-ledger",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:20.463Z",
+      "data": {
+        "scope": "Migrated legacy macaw clock/ledger regression; no elephant FSM or active wall-time soak",
+        "ticks": 2400,
+        "simulatedMinutes": 4,
+        "reloads": 12,
+        "pauses": 12,
+        "editTransactions": 160,
+        "careCommands": 7,
+        "newCompactions": 1,
+        "maxJournal": 126,
+        "maxPayload": 36745,
+        "currency": 1003,
+        "ticketAdmissions": 12,
+        "legacyClaims": 4,
+        "grant": null,
+        "disposedSubscribers": 0,
+        "referenceExact": true,
+        "realNativeCheckpoint": true,
+        "coldContinueExact": true,
+        "originalBackupExact": true
+      }
+    },
+    {
+      "id": "native-durable-grant-race",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:20.639Z",
+      "data": {
+        "winners": 1,
+        "conflicts": 1,
+        "losingTabCredit": 0,
+        "grantLedgerEntries": 1,
+        "originalBackupExact": true
+      }
+    },
+    {
+      "id": "native-durable-grant-quota",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:20.718Z",
+      "data": {
+        "injectedBoundaryNotDiskExhaustion": true,
+        "noOptimisticCredit": true,
+        "primaryExactOnFailure": true,
+        "retryClaims": 1
+      }
+    },
+    {
+      "id": "native-paid-grove-abort-cold",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:20.795Z",
+      "data": {
+        "transactionAbortPreservesOriginal": true,
+        "partialDebit": false,
+        "partialOccupancy": false,
+        "price": 650,
+        "occupiedCells": 36,
+        "habitats": 2,
+        "macaws": 2,
+        "coldExact": true,
+        "originalBackupExact": true
+      }
+    },
+    {
+      "id": "native-actual-resident-welcome-cold",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:20.839Z",
+      "data": {
+        "residents": 4,
+        "macaws": 2,
+        "elephants": 2,
+        "names": [
+          "Ayu",
+          "Nara"
+        ],
+        "welcomeCost": 0,
+        "ledgerExact": true,
+        "coldExact": true,
+        "repeatWelcome": false,
+        "originalBackupExact": true,
+        "gameplayFSMNotYetClaimed": true
+      }
+    },
+    {
+      "id": "native-actual-care-abort-midseek-cold",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:22.329Z",
+      "data": {
+        "facilities": 3,
+        "construction": 250,
+        "initialRefills": 20,
+        "capacityEach": 8,
+        "transactionAbortExact": true,
+        "midSeekColdExact": true,
+        "continued570TicksExact": true,
+        "totalSimulationSeconds": 60,
+        "residents": [
+          {
+            "id": "elephant-ayu",
+            "foodEaten": 1,
+            "waterDrunk": 1
+          },
+          {
+            "id": "elephant-nara",
+            "foodEaten": 1,
+            "waterDrunk": 1
+          }
+        ],
+        "pauseExact": true,
+        "originalBackupExact": true
+      }
+    },
+    {
+      "id": "native-care-remove-refund-undo-cold",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:22.572Z",
+      "data": {
+        "occupiedGroveDenied": true,
+        "activeCareDenied": true,
+        "refund": 90,
+        "coldRemovalExact": true,
+        "coldPageUndo": false,
+        "samePageUndoExactFacilityAndCash": true,
+        "passiveStockRetained": true,
+        "samePageRemountRetainsUndo": true,
+        "residents": 4,
+        "originalBackupExact": true,
+        "editorMementoNotPersisted": true
+      }
+    },
+    {
+      "id": "native-pond-abort-mid-spray-cold",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:24.439Z",
+      "data": {
+        "grantActuallyClaimed": true,
+        "actualBuildAndInitialService": 452,
+        "pondBuild": 170,
+        "pondService": 12,
+        "transactionAbortExact": true,
+        "midSprayColdExact": true,
+        "continued600TicksExact": true,
+        "bothResidentsBathed": true,
+        "uniqueEvents": 3,
+        "cooldownsPersisted": true,
+        "pauseExact": true,
+        "originalBackupExact": true
+      }
+    },
+    {
+      "id": "native-shade-log-mid-rub-cold",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:27.689Z",
+      "data": {
+        "actualSixPropsCost": 592,
+        "shadePrice": 80,
+        "logPrice": 60,
+        "midRubColdExact": true,
+        "continued1200TicksExact": true,
+        "bothRestedAndEnriched": true,
+        "uniqueEvents": 2,
+        "pauseExact": true,
+        "originalBackupExact": true
+      }
+    },
+    {
+      "id": "native-paired-trunk-touch-cold",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:30.105Z",
+      "data": {
+        "sixActualPaidCareProps": true,
+        "midTouchPartnersAndPhaseExact": true,
+        "continued300TicksExact": true,
+        "bothFirstCareExperiencesComplete": true,
+        "bothSocialInteractions": 1,
+        "uniqueEvents": 2,
+        "cooldownsPersisted": true,
+        "pauseExact": true,
+        "originalBackupExact": true
+      }
+    },
+    {
+      "id": "native-readonly-care-explanation-cold",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:30.106Z",
+      "data": {
+        "actors": 2,
+        "actualSavedMidTouch": true,
+        "readOnly": true,
+        "infoAndNeedsExactAfterCold": true,
+        "languages": [
+          "id",
+          "en"
+        ],
+        "notesAndNextActionComplete": true,
+        "originalBackupExact": true
+      }
+    },
+    {
+      "id": "native-fair-multi-habitat-cold",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:36.936Z",
+      "data": {
+        "actualConnectorPrice": 90,
+        "paidGroveMidJourney": true,
+        "targetRouteAdmissionColdExact": true,
+        "continued2400TicksExact": true,
+        "actualCompletedViewings": 8,
+        "distinctHabitats": 2,
+        "alternatingViewings": true,
+        "oneCanonicalAdmissionLedger": true,
+        "originalBackupExact": true
+      }
+    },
+    {
+      "id": "native-per-habitat-observation-single-ticket",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:36.960Z",
+      "data": {
+        "completedRecent": 4,
+        "actualOccupiedSamplesEach": 30,
+        "distinctObservedHabitats": 2,
+        "reachableAttractionHabitats": 2,
+        "singleEntryPrice": 10,
+        "lifetimeRevenue": 140,
+        "lifetimeAdmissions": 14,
+        "revenueEqualsActualAdmissionsTimes10": true,
+        "originalBackupExact": true,
+        "languages": [
+          "id",
+          "en"
+        ]
+      }
+    },
+    {
+      "id": "native-zero-cash-paid-economy-cold",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:58.299Z",
+      "data": {
+        "initialCondition": "Labelled synthetic prior expense leaves qualified Q04save at0; all subsequent costs/grant/admissions are actual product commands",
+        "grant": 1400,
+        "actualSetupCosts": 1332,
+        "setupReserve": 68,
+        "simulatedTicks": 9000,
+        "activeWallTimeSoak": false,
+        "minimumCash": 60,
+        "finalCash": 124,
+        "originalMissionRewards": 60,
+        "conservationGrantSeparate": 1400,
+        "midpointCompaction": true,
+        "nativeColdExact": true,
+        "continued1x10xExact": true,
+        "maintenanceDue": 0,
+        "bothRealFoodAndWater": true,
+        "grantReplayRejected": true,
+        "originalBackupExact": true
+      }
+    },
+    {
+      "id": "native-eh02-claim-generation-revision-race",
+      "status": "PASS",
+      "at": "2026-11-06T00:01:59.004Z",
+      "data": {
+        "writers": 2,
+        "committedWriters": 1,
+        "conflicts": 1,
+        "optimisticCashOrProgress": false,
+        "reward": 150,
+        "retainedReceiptCount": 1
+      }
+    },
+    {
+      "id": "native-four-elephant-quests-cold-retained",
+      "status": "PASS",
+      "at": "2026-11-06T00:02:01.801Z",
+      "data": {
+        "actualClaims": [
+          "EH01",
+          "EH02",
+          "EH03",
+          "EH04"
+        ],
+        "cashRewards": 350,
+        "typedNoncashAwards": 3,
+        "realConnectedResidents": true,
+        "actualFoodWaterAndCareStreak": true,
+        "actualBathAndSeparateLog": true,
+        "uniqueRealGroveViewers": 3,
+        "herdStreakTicks": 100,
+        "coldAfterEachClaimExact": true,
+        "forcedCompaction": true,
+        "replayRejected": true,
+        "legacyQExact": true,
+        "originalBackupExact": true
+      }
+    },
+    {
+      "id": "native-negative-recovery-guidance-cold",
+      "status": "PASS",
+      "at": "2026-11-06T00:02:10.148Z",
+      "data": {
+        "actualClosedDepletedTicks": 10200,
+        "zeroCash": true,
+        "truthfulSupportAction": true,
+        "languages": [
+          "id",
+          "en"
+        ],
+        "readOnly": true,
+        "coldGuidanceExact": true,
+        "actualBoundedMacawRations": true,
+        "noCashOrElephantStockGift": true,
+        "actualBridgeGap": true,
+        "unpaidReviewCost": 0,
+        "realPathRepairPrice": 15,
+        "originalBackupExact": true
+      }
+    },
+    {
+      "id": "native-original-q01-q04-twin-cold",
+      "status": "PASS",
+      "at": "2026-11-06T00:02:12.881Z",
+      "data": {
+        "actualClaims": [
+          {
+            "id": "Q01",
+            "tick": 0
+          },
+          {
+            "id": "Q02",
+            "tick": 158
+          },
+          {
+            "id": "Q03",
+            "tick": 635
+          },
+          {
+            "id": "Q04",
+            "tick": 1237
+          }
+        ],
+        "exactFullLegacyComparisons": 57,
+        "partialCareCold": true,
+        "partialPaidVisitorCold": true,
+        "actualColdPoints": [
+          {
+            "tick": 33,
+            "care": false,
+            "visitor": true
+          },
+          {
+            "tick": 120,
+            "care": true,
+            "visitor": false
+          }
+        ],
+        "speeds": [
+          1,
+          10
+        ],
+        "originalRewardCoins": 60,
+        "noAutomaticGrantOrElephants": true,
+        "nativeColdExact": true,
+        "originalBlankV1BackupExact": true
+      }
+    },
+    {
+      "id": "native-mixed-macaw-reference-cold",
+      "status": "PASS",
+      "at": "2026-11-06T00:02:23.782Z",
+      "data": {
+        "simulatedTraceTicks": 2400,
+        "continuedAfterNativeColdTicks": 500,
+        "perTickMacawClockRngComparisons": 2954,
+        "fullMacawFsmNeedsPositionsExact": true,
+        "actualMacawStockExact": true,
+        "legacyQuestProofExact": true,
+        "legacyRewards": 60,
+        "elephantMissionCoins": 350,
+        "grant": 1400,
+        "actualNewAdmissions": 9,
+        "singleGatePrice": 10,
+        "distinctObservedHabitats": 2,
+        "forcedMidTraceCompaction": true,
+        "noLossyLegacyProjection": true,
+        "originalBackupExact": true,
+        "activeWallTimeSoak": false
+      }
+    }
+  ],
+  "databasesCreated": 27,
+  "databasesDeleted": 27,
+  "ownerDatabaseTouched": false
+}
