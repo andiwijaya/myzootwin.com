@@ -40,6 +40,7 @@ export function createPlacementPreview(world:()=>RuntimeWorld,catalog:SceneCatal
       camera.updateMatrixWorld(true);raycaster.setFromCamera(new Vector2((point.x-b.left)/b.width*2-1,1-(point.y-b.top)/b.height*2),camera);
       planner.choose(raycaster.ray.intersectPlane(ground,intersection)?{x:Math.floor(intersection.x+sceneOrigin(map).x),z:Math.floor(intersection.z+sceneOrigin(map).z)}:null);
     },
+    view:()=>({...planner.snapshot(),habitatKind:habitatKind?.()}),
     refresh:()=>planner.refresh(),active:()=>planner.snapshot().active,
     setEnabled:planner.setEnabled,
     dispose:planner.dispose,

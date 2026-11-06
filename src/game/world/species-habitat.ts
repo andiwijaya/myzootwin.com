@@ -1,3 +1,4 @@
+import {recommendedGiraffeAnchor} from './giraffe-expansion.ts';
 import type {Habitat,Point,WorldState} from '../core/state.ts';
 import {SPECIES,habitatSpecies,type HabitatKind} from '../core/species.ts';
 import {habitatBlockerKeys} from './build-habitat.ts';
@@ -13,7 +14,7 @@ export function validateSpeciesHabitatPlacement(world:HabitatPlacementWorld,anch
   const checked=validatePlacement(world,anchor,habitatBlockerKeys(),'habitat',SPECIES[species].footprint);
   if(checked.reason!=='ready')return checked;
   if(anchor&&world.width===24&&kind!=='giraffe-plains'&&anchor.x+SPECIES[species].footprint>12)return {...checked,reason:'zone' as const};
-  if(kind==='giraffe-plains'&&(!anchor||world.width!==24||world.height!==26||anchor.x!==13||anchor.z<1||anchor.z>3))return {...checked,reason:'zone' as const};
+  if(kind==='giraffe-plains'&&(!anchor||world.width!==24||world.height!==26||anchor.x!==13||anchor.z!==recommendedGiraffeAnchor(world).z))return {...checked,reason:'zone' as const};
   if(kind==='elephant-grove'&&anchor&&(anchor.z<10||anchor.z+6>18))return {...checked,reason:'zone' as const};
   if(kind==='macaw-aviary'&&world.height===26&&anchor&&anchor.z+2>18)return {...checked,reason:'zone' as const};
   if(kind==='lion-savanna'&&anchor&&anchor.z<18)return {...checked,reason:'zone' as const};

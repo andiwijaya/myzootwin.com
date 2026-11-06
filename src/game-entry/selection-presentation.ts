@@ -1,3 +1,5 @@
+import {giraffeCopy,giraffeResourceLabel,giraffeBehaviorLabel} from './giraffe-copy.ts';
+import type {GiraffeBehavior,GiraffeResourceKind} from '../game/core/giraffe-state.ts';
 import {lionCopy,lionResourceLabel,lionBehaviorLabel} from './lion-copy.ts';
 import type {ElephantBehavior,LionBehavior,LionResourceKind} from '../game/core/species.ts';
 import {elephantCareCopy,elephantBehaviorLabel} from './elephant-care-panel.ts';
@@ -5,10 +7,13 @@ import {formatNumber} from './i18n-format.ts';
 import {elephantCatalogCopy} from './elephant-catalog.ts';
 import type { SceneIdentity, SceneIdentityKind } from '../game/render3d/scene-selection.ts';
 import { entryMessages, type EntryLocale, type EntryMessage } from './locale.ts';
-const titles:Record<Exclude<SceneIdentityKind,'elephant'|'elephant-facility'|'lion'|'lion-facility'>,EntryMessage>={land:'selectionTile',creek:'selectionTile',path:'selectionTile',palm:'selectionPalm',tree:'selectionTree',rock:'selectionRock',reeds:'selectionReeds',gate:'selectionGate',habitat:'selectionHabitat'};
+const titles:Record<Exclude<SceneIdentityKind,'elephant'|'elephant-facility'|'lion'|'lion-facility'|'giraffe'|'giraffe-facility'>,EntryMessage>={land:'selectionTile',creek:'selectionTile',path:'selectionTile',palm:'selectionPalm',tree:'selectionTree',rock:'selectionRock',reeds:'selectionReeds',gate:'selectionGate',habitat:'selectionHabitat'};
 export function presentSelection(identity:SceneIdentity,locale:EntryLocale) {
   const copy=entryMessages[locale],params={x:identity.cell.x+1,z:identity.cell.z+1,n:identity.ordinal};
   const format=(message:string)=>message.replace(/\{(x|z|n)\}/g,(_,key:keyof typeof params)=>String(params[key]));
+  if(identity.kind==='giraffe'){const c=giraffeCopy[locale],n=identity.residentNeeds;return {title:identity.residentName??c.title,location:format(copy.selectionLocation),detail:n?`${giraffeBehaviorLabel(n.behavior as GiraffeBehavior,locale)} · ${c.welfare} ${n.welfare}/100 · ${c.hunger} ${n.hunger} · ${c.thirst} ${n.thirst}`:c.intro};}
+  if(identity.kind==='giraffe-facility'){const c=giraffeCopy[locale];return {title:giraffeResourceLabel(identity.facilityKind as GiraffeResourceKind,locale),location:format(copy.selectionLocation),detail:`${c.stock}: ${identity.stock}/${identity.capacity}. ${c.guide}`};}
+  if(identity.habitatKind==='giraffe-plains'){const c=giraffeCopy[locale];return {title:c.title,location:format(copy.selectionLocation),detail:identity.connected?c.connected:c.disconnected};}
   if(identity.kind==='lion'){const c=lionCopy[locale],n=identity.residentNeeds;return {title:identity.residentName??c.title,location:format(copy.selectionLocation),detail:n?`${lionBehaviorLabel(n.behavior as LionBehavior,locale)} · ${c.welfare} ${n.welfare}/100 · ${c.hunger} ${n.hunger} · ${c.thirst} ${n.thirst}`:c.intro};}
   if(identity.kind==='lion-facility'){const c=lionCopy[locale];return {title:lionResourceLabel(identity.facilityKind as LionResourceKind,locale),location:format(copy.selectionLocation),detail:`${c.stock}: ${identity.stock}/${identity.capacity}. ${c.guide}`};}
   if(identity.habitatKind==='lion-savanna'){const c=lionCopy[locale];return {title:c.title,location:format(copy.selectionLocation),detail:identity.connected?c.connected:c.disconnected};}

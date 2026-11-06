@@ -1,3 +1,4 @@
+import {giraffeCopy} from './giraffe-copy.ts';
 import type {HabitatKind} from '../game/core/species.ts';
 import {formatNumber} from './i18n-format.ts';
 import type {VisitorFeedback,VisitorFeedbackSummary} from '../game/core/state.ts';
@@ -11,7 +12,7 @@ export function presentVisitorFeedback(f:VisitorFeedback,locale:EntryLocale,habi
  else if(f.outcome==='interrupted')reason=c[({closed:'visitorClosedReason','access-lost':'visitorAccessReason','habitat-removed':'visitorRemovedReason','time-limit':'visitorTimeoutReason',none:'visitorAccessReason'}as const)[f.reason]];
  else reason=c[({empty:'visitorEmptyReason','no-habitat':'visitorNoHabitatReason',unreachable:'visitorUnreachableReason'}as const)[f.outcome]];
  const feedback=c.visitorFeedbackLine.replace('{badge}',badge).replace('{score}',score).replace('{reason}',reason);
- return habitatKind?c.visitorHabitatFeedback.replace('{habitat}',c[habitatKind==='lion-savanna'?'visitorTargetLion':habitatKind==='elephant-grove'?'visitorTargetElephant':'visitorTargetMacaw']).replace('{feedback}',feedback):feedback;
+ return habitatKind?c.visitorHabitatFeedback.replace('{habitat}',(habitatKind==='giraffe-plains'?giraffeCopy[locale].title:c[habitatKind==='lion-savanna'?'visitorTargetLion':habitatKind==='elephant-grove'?'visitorTargetElephant':'visitorTargetMacaw'])).replace('{feedback}',feedback):feedback;
 }
 export function renderVisitorSummary(root:HTMLElement,summary:VisitorFeedbackSummary,locale:EntryLocale,activeIds:string[],habitatKinds?:Record<string,HabitatKind>):void{
  const c=entryMessages[locale],p=root.querySelector('[data-visitor-satisfaction]');

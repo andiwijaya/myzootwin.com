@@ -39,7 +39,7 @@ import {waterTransaction,waterView} from '../animals/watering.ts';
 import {foodTransaction,foodView,type FoodAction} from '../animals/feeding.ts';
 import {stepAnimals,welcomeBirds,reserveBird,birdsView,type BirdCommand} from '../animals/autonomy.ts';
 import {editLedger,refundable} from '../economy/refunds.ts';
-import {quoteRemoval,removedWorld,sameWorld,targetId,elephantRestorationBlocked,elephantResourceUndoWorld,type EditTarget,type RemovalQuote,type EditorState} from '../world/editing.ts';
+import {quoteRemoval,removedWorld,sameWorld,targetId,elephantRestorationBlocked,giraffeRestorationBlocked,elephantResourceUndoWorld,type EditTarget,type RemovalQuote,type EditorState} from '../world/editing.ts';
 import {preparePath,reconcilePathAccess,accessSummary} from '../world/paths.ts';
 import {prepareHabitat} from '../world/build-habitat.ts';
 import {prepareSpeciesHabitat} from '../world/species-habitat.ts';
@@ -292,7 +292,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
       const next=validateState(reconcileJourneys({...structuredClone(state),world:connected.world,currency:transaction.currency,ledger:transaction.ledger,economy:{...structuredClone(state.economy),nextCommand:state.economy.nextCommand+1}}));
       if(!next.ok)return {ok:false as const,reason:'command' as const};
       editor={revision:editor.revision+1,undo:{before:structuredClone(state.world),after:structuredClone(connected.world),refundIds:transaction.entries.map(e=>e.id)}};
-      state=reconcileWelfare(next.value);if(state.schemaVersion!==1&&quote.target.kind==='elephant-resource')reconcileElephantWelfare(state);topology=connected.topology;compactNow();publish(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));
+      state=reconcileWelfare(next.value);if(state.schemaVersion!==1&&quote.target.kind==='elephant-resource')reconcileElephantWelfare(state);if(quote.target.kind==='giraffe-resource')reconcileGiraffeWelfare(state);topology=connected.topology;compactNow();publish(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));
       return {ok:true as const};
     },
     undo(operationId:string,expectedCommand?:number){
@@ -303,10 +303,10 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
       if(refunds.some(e=>!e||e.kind!=='refund'))return {ok:false as const,reason:'command' as const};
       const transaction=editLedger(state,operationId,refunds.map(e=>({kind:'restore' as const,relatedId:e!.id,amount:-e!.amount})));
       if(!transaction)return {ok:false as const,reason:'funds' as const};
-      const connected=reconcilePathAccess(elephantWorld??undo.before),restored=structuredClone(state);if(restored.economy.recovery.habitatGrant&&connected.world.habitats.some(h=>h.id===restored.economy.recovery.habitatGrant!.id))restored.economy.recovery.habitatGrant.tick=state.tick;const next=validateState(reconcileJourneys({...restored,world:connected.world,currency:transaction.currency,ledger:transaction.ledger,economy:{...restored.economy,nextCommand:state.economy.nextCommand+1}}));
+      const connected=reconcilePathAccess(elephantWorld??undo.before),restored=structuredClone(state);if(restored.economy.recovery.habitatGrant&&connected.world.habitats.some(h=>h.id===restored.economy.recovery.habitatGrant!.id))restored.economy.recovery.habitatGrant.tick=state.tick;const proposed=reconcileJourneys({...restored,world:connected.world,currency:transaction.currency,ledger:transaction.ledger,economy:{...restored.economy,nextCommand:state.economy.nextCommand+1}});if(giraffeRestorationBlocked(proposed))return {ok:false as const,reason:'giraffe-space' as const};const next=validateState(proposed);
       if(!next.ok)return {ok:false as const,reason:'command' as const};
       const restoresElephantCare=undo.before.resources.some(r=>r.kind.startsWith('elephant-')&&!undo.after.resources.some(a=>a.id===r.id));if(restoresElephantCare&&elephantRestorationBlocked(next.value))return {ok:false as const,reason:'elephant-space' as const};
-      state=reconcileWelfare(next.value);if(state.schemaVersion!==1&&restoresElephantCare)reconcileElephantWelfare(state);topology=connected.topology;invalidateEdit();compactNow();publish(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};
+      state=reconcileWelfare(next.value);if(state.schemaVersion!==1&&restoresElephantCare)reconcileElephantWelfare(state);if(undo.before.resources.some(r=>r.kind.startsWith('giraffe-')&&!undo.after.resources.some(a=>a.id===r.id)))reconcileGiraffeWelfare(state);topology=connected.topology;invalidateEdit();compactNow();publish(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};
     },
     economyView:()=>economyView(state),
     purchaseReason:(kind:'habitat'|'path')=>moneyReason(state,PRICES[kind]),
