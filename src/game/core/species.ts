@@ -1,3 +1,4 @@
+import type {GiraffeAnimal} from './giraffe-state.ts';
 import {SPECIES_ID, type Animal, type Habitat, type Point, type Resource, type WorldState} from './state.ts';
 
 export const MACAW_SPECIES_ID = SPECIES_ID;
@@ -77,9 +78,9 @@ export interface ZooWorld extends Omit<WorldState,'habitats'|'resources'> {
 }
 
 /** Species ownership is explicit; callers must narrow before using a species FSM or rig. */
-export const isMacaw = (animal:{speciesId:string}):animal is MacawAnimal => animal.speciesId===MACAW_SPECIES_ID;
-export const isElephant = (animal:{speciesId:string}):animal is ElephantAnimal => animal.speciesId===ELEPHANT_SPECIES_ID;
-export const isLion = (animal:{speciesId:string}):animal is LionAnimal => animal.speciesId===LION_SPECIES_ID;
+export const isMacaw = (animal:ZooAnimal|GiraffeAnimal):animal is MacawAnimal => animal.speciesId===MACAW_SPECIES_ID;
+export const isElephant = (animal:ZooAnimal|GiraffeAnimal):animal is ElephantAnimal => animal.speciesId===ELEPHANT_SPECIES_ID;
+export const isLion = (animal:ZooAnimal|GiraffeAnimal):animal is LionAnimal => animal.speciesId===LION_SPECIES_ID;
 export const macaws = (animals:readonly ZooAnimal[]):MacawAnimal[] => animals.filter(isMacaw);
 export const elephants = (animals:readonly ZooAnimal[]):ElephantAnimal[] => animals.filter(isElephant);
 export const lions = (animals:readonly ZooAnimal[]):LionAnimal[] => animals.filter(isLion);

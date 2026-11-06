@@ -1,11 +1,10 @@
 import { createInitialState } from '../core/initial-state.ts';
 import { generationOf } from './checkpoint.ts';
 import type { ZooSaveV1 } from '../core/state.ts';
-import type {ZooSave} from '../core/zoo-state.ts';
 import type { SanctuarySessionState } from '../core/session-state.ts';
 import type { EditorState } from '../world/editing.ts';
 import { SaveFault, checkedCheckpoint as checkRecord, stateFromCheckpoint as decodeRecord, encodeCheckpointState as encodeRecord, type RecoveryInspection, type RestartInspection, type DurableBackend, type StoredCheckpoint, type StorageFault } from './durable-backend.ts';
-import {LEGACY_CHECKPOINT_CODEC,type CheckpointCodec} from './checkpoint.ts';
+import {LEGACY_CHECKPOINT_CODEC,type CheckpointCodec,type PersistedZooSave} from './checkpoint.ts';
 export const AUTOSAVE_DELAY_MS = 2000;
 export type SavePhase = 'loading' | 'empty' | 'available' | 'dirty' | 'saving' | 'saved' | 'unavailable' | 'unreadable' | 'error' | 'conflict';
 export interface SaveView {
@@ -34,7 +33,7 @@ interface Options {
     committed?: (revision: number, generation: string) => void;
 }
 /** Single bounded timer + one in-flight write + latest reader. No simulation/render scheduling. */
-export function createAutosave<State extends ZooSave=ZooSaveV1>(backend: DurableBackend<State>, options: Options) {
+export function createAutosave<State extends PersistedZooSave=ZooSaveV1>(backend: DurableBackend<State>, options: Options) {
     const codec=backend.codec??LEGACY_CHECKPOINT_CODEC as unknown as CheckpointCodec<State>,checkedCheckpoint=(raw:unknown)=>checkRecord(raw,codec),stateFromCheckpoint=(raw:StoredCheckpoint)=>decodeRecord(raw,codec),encodeCheckpointState=(state:State)=>encodeRecord(state,codec);
     const now = options.now ?? Date.now, schedule = options.schedule ?? ((f, ms) => setTimeout(f, ms)), cancel = options.cancel ?? (id => clearTimeout(id as ReturnType<typeof setTimeout>));
     let phase: SavePhase = 'loading', active = false, record: StoredCheckpoint | null = null, data: State | undefined, editor: EditorState | undefined, revision = 0, savedTick: number | null = null, savedAt: number | null = null, savedCurrency: number | null = null, savedMissions: number | null = null, savedBirds: number | null = null, error: StorageFault | null = null, disposed = false, closing = false, storageReady = false, dirty = false, reader: (() => State) | undefined, timer: unknown, pendingCritical = false, inflight: Promise<void> | undefined, loadSerial = 0;

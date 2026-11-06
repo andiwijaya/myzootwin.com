@@ -1,6 +1,6 @@
 # MyZooTwin — Giraffe Plains Living Checklist
 
-**Created:** 7 November 2026 | **Status:** 6/42 (14.29%). Verified gates only; publication held.  
+**Created:** 7 November 2026 | **Status:** 7/42 (16.67%). Verified gates only; publication held.  
 **Authority:** `MYZOOTWIN_GIRAFFE_PLAINS_MASTER_PRD_V1.md`  
 **Record:** after each micro-feature add verified commit SHA, exact tests, source-bound evidence, actual browser proof where relevant, issues and next. `[x]` means fully end-to-end **verified**, not planned/code-written only. Dot owns maintenance and concise updates autonomously.
 
@@ -29,8 +29,8 @@ Progress formula: `verified / 42 * 100`. Final release GH6-06 remains `[ ]` pend
   - Evidence: `UNRUN` | Commit: `NOT YET` | Browser: `UNRUN`
 - [ ] **GH1-05** — Introduce actual 7×7 giraffe plot/ghost in lateral east wing, macaw-aligned z and a clear outside path; forbid overlap, keep unused parcels empty/buildable.
   - Evidence: `UNRUN` | Commit: `NOT YET` | Browser: `UNRUN`
-- [ ] **GH1-06** — Implement strict, lossless V3→V4 plus validated V1/V2 paths; preserve historical data and enforce future-content/unknown-format guards.
-  - Evidence: `UNRUN` | Commit: `NOT YET` | Browser: `UNRUN`
+- [x] **GH1-06** — Implement strict, lossless V3→V4 plus validated V1/V2 paths; preserve historical data and enforce future-content/unknown-format guards.
+  - Evidence: `GIRAFFE_V4_PERSISTENCE.md`, codec22/22; full790/790; check377clean/build9pass | Commit: `32e7dc9` | Browser: pure opt-in codec; native storage/full V4 Continue in GH1-07. Global HTTP preview failed due sandbox readiness and is not claimed passed.
 - [ ] **GH1-07** — Use one IndexedDB store version 4 with CAS, atomic V3 backup, old-binary barrier, full V4 Continue, corruption/quota/blocked-upgrade tests.
   - Evidence: `UNRUN` | Commit: `NOT YET` | Browser: `UNRUN`
 
@@ -130,6 +130,7 @@ GH0-01 partial: fresh remote main is 3252234; GitHub Cloudflare check completed 
 | 2026-11-06 UTC | GH1-01 | 60c905be78ebdcf62a24c3fc91e10a9262e0ce4b | focused5/5; TypeScript noEmit | Type-only | Dormant V4 | 4/42 |
 | 2026-11-06 UTC | GH1-02 | e9bad1ce04ea4a21358ea1b11a4089d661677e48 | focused7/7;32adversarial grids | Pure transform | Product activation gated | 5/42 |
 | 2026-11-06 UTC | GH1-03 | 36a0675c4b08597000d7496fdec22c785a58ebda | scene15/15;TypeScript exit0 | actualrenderer48raycasts/3views/nativeclick/focus/cleanup | Static probe; fullgame gate later | 6/42 |
+| 2026-11-06 UTC | GH1-06 | 32e7dc9 | 790/790;check377clean;build9 | Native storage follows GH1-07 | Global HTTP preview timeout retained; no activation | 7/42 |
 
 ## Hard boundaries
 
