@@ -1,0 +1,25 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';
+import {lionHome} from './fixtures/lion-home.mjs';
+import {migrateToV3,validateSaveV3,serializeSaveV3} from '../src/game/persistence/save-v3.ts';
+import {createSimulation} from '../src/game/core/simulation.ts';
+import {lionGrantView,prepareLionGrant} from '../src/game/economy/lion-grant.ts';
+import {compactFinance,ledgerProof} from '../src/game/economy/journal.ts';
+import {IDBFactory} from 'fake-indexeddb';import {createLionIndexedDbBackend} from '../src/game/persistence/lion-backend.ts';import {createAutosave} from '../src/game/persistence/autosave.ts';
+const initial=JSON.parse(readFileSync(new URL('./fixtures/lion-v2-golden.json',import.meta.url),'utf8')).state;
+test('EH04 claimed unlocks explicit 1800 grant; ready/legacy saves stay locked; candidate is pure and only exact committed adoption succeeds',()=>{
+ const ready=structuredClone(initial);ready.elephantGrove.missions.completedIds.pop();ready.elephantGrove.missions.rewards.pop();assert.equal(lionGrantView({...ready,schemaVersion:3}).canClaim,false);assert.equal(lionGrantView(initial).canClaim,false);
+ const s=migrateToV3(initial).value,sim=createSimulation(s),before=sim.snapshot(),quote={command:sim.commandRevision()},prepared=sim.prepareLionGrant(quote);assert.ok(prepared.ok);assert.deepEqual(sim.snapshot(),before);const forged=structuredClone(prepared.state);forged.currency++;assert.equal(sim.acceptCommittedLionGrant(forged,quote),false);assert.ok(sim.acceptCommittedLionGrant(prepared.state,quote));assert.equal(sim.inspect().currency,before.currency+1800);assert.equal(sim.prepareLionGrant({command:sim.commandRevision()}).reason,'claimed');
+ const saved=sim.snapshot();compactFinance(saved);assert.equal(ledgerProof(saved,'lion-savanna-grant-v1').amount,1800);assert.ok(validateSaveV3(saved).ok);assert.equal(prepareLionGrant(saved,{command:saved.economy.nextCommand}).reason,'claimed');sim.dispose();
+});
+test('paid 49-cell construction rejects locked, invalid, paused and stale operations without debit; first male and full pride persist distinct stable sex and identity',()=>{
+ const sim=lionHome({care:false}),s=sim.snapshot();assert.equal(s.world.habitats.at(-1).cells.length,49);assert.equal(s.animals.filter(a=>a.speciesId==='panthera-leo').length,1);const before=serializeSaveV3(s);assert.equal(sim.buildLionHabitat({x:3,z:18},'habitat-lion-other',sim.commandRevision()).ok,false);assert.equal(serializeSaveV3(sim.snapshot()),before);assert.equal(sim.welcomeLions(sim.commandRevision()-1).ok,false);assert.ok(sim.welcomeLions(sim.commandRevision()).ok);
+ const full=sim.snapshot();assert.deepEqual(full.animals.filter(a=>a.speciesId==='panthera-leo').map(a=>[a.id,a.name,a.sex]),[['lion-raka','Raka','male'],['lion-sena','Sena','female'],['lion-tala','Tala','female']]);assert.equal(sim.welcomeLions(sim.commandRevision()).ok,false);assert.ok(validateSaveV3(full).ok);const cold=createSimulation(JSON.parse(serializeSaveV3(full)));assert.deepEqual(cold.snapshot(),full);sim.dispose();cold.dispose();
+});
+test('all seven real facilities have paid receipts, bounded collision-safe access and explicit priced initial stock; duplicate/stale refill never charges',()=>{
+ const sim=lionHome({pride:true,enrichment:true}),s=sim.snapshot(),resources=sim.lionCareView().resources;assert.equal(resources.length,7);assert.equal(resources.filter(r=>r.kind==='lion-meat').length,2);assert.ok(validateSaveV3(s).ok,JSON.stringify(validateSaveV3(s)));assert.deepEqual(s.missions,initial.missions);assert.deepEqual(s.elephantGrove,initial.elephantGrove);
+ const food=resources.find(r=>r.kind==='lion-meat'),before=serializeSaveV3(s);assert.equal(sim.refillLionCare({command:sim.commandRevision(),id:food.id,revision:food.revision-1}).ok,false);assert.equal(sim.refillLionCare({command:sim.commandRevision(),id:food.id,revision:food.revision}).ok,false);assert.equal(serializeSaveV3(sim.snapshot()),before);sim.dispose();
+});
+test('emulated durable two-writer grant CAS credits exactly once; failed/losing session shows no optimistic grant',async()=>{
+ const factory=new IDBFactory(),name='lion-grant-test',seed=createLionIndexedDbBackend(factory,name),s=migrateToV3(initial).value;await seed.read();await seed.commit(0,serializeSaveV3(s),'lion-seed',1);seed.close();
+ const a=createAutosave(createLionIndexedDbBackend(factory,name),{writer:'lion-a'}),b=createAutosave(createLionIndexedDbBackend(factory,name),{writer:'lion-b'});await Promise.all([a.load(),b.load()]);await Promise.all([a.continueSaved(),b.continueSaved()]);const q={command:s.economy.nextCommand},candidate=prepareLionGrant(s,q),results=await Promise.all([a.session.commitCandidate(candidate.state,{tick:s.tick,command:q.command}),b.session.commitCandidate(candidate.state,{tick:s.tick,command:q.command})]);assert.equal(results.filter(Boolean).length,1);const winner=results.find(Boolean);assert.equal(winner.currency,s.currency+1800);const loser=results[0]?b:a;assert.equal(loser.session.read().currency,s.currency);assert.equal(loser.session.read().lionSavanna.grant,null);a.dispose();b.dispose();
+});

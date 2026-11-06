@@ -57,7 +57,7 @@ export type LionBehavior = 'idle'|'wander'|'seek-food'|'eat'|'seek-water'|'drink
 export interface LionMotion {
   phase:LionBehavior;ticksLeft:number;sequence:number;heading:number;
   waypoints:Point[];waypointIndex:number;elevation:number;
-  partnerId:string|null;lastStep:Point;
+  partnerId:string|null;lastStep:Point;distanceWalked:number;blockedTicks:number;
 }
 export interface LionAnimal extends Omit<Animal,'speciesId'|'habitatId'|'position'|'currentBehavior'|'motion'> {
   speciesId:typeof LION_SPECIES_ID;name:string;sex:'male'|'female';habitatId:string;position:Point;

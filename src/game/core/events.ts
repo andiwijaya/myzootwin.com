@@ -1,4 +1,10 @@
 export type SimulationEvent =
+  | {type:'lion-mission-claimed';missionId:import('./zoo-state.ts').LionMissionId;amount:number;tick:number;gameTimeMs:number}
+  | {type:'lion-grant-claimed';amount:number;tick:number;gameTimeMs:number}
+  | {type:'lions-welcomed';tick:number;gameTimeMs:number}
+  | {type:'lion-care-changed';resourceId:string;tick:number;gameTimeMs:number}
+  | {type:'lion-roared'|'lion-investigated-scent'|'lion-scratched';animalId:string;resourceId:string;eventId:string;tick:number;gameTimeMs:number}
+  | {type:'lion-socialized';animalId:string;companionId:string;eventId:string;tick:number;gameTimeMs:number}
   | {type:'eh-mission-claimed';missionId:import('./zoo-state.ts').ElephantMissionId;amount:number;tick:number;gameTimeMs:number}
   | {type:'elephant-socialized';animalId:string;companionId:string;socialCount:number;eventId:string;tick:number;gameTimeMs:number}
   | {type:'elephant-bathed';animalId:string;resourceId:string;bathCount:number;eventId:string;tick:number;gameTimeMs:number}

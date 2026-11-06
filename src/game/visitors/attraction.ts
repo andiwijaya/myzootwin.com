@@ -10,7 +10,7 @@ export function attractionView(s:RuntimeState){
  const habitats=targets.flatMap(target=>{const animals=s.animals.filter(a=>a.habitatId===target.habitatId&&a.position!==null),h=w.habitats.find(h=>h.id===target.habitatId);return animals.length?[{habitatId:target.habitatId,kind:(h?.kind??'macaw-aviary')as HabitatKind,welfare:animals.reduce((n,a)=>n+a.welfare,0)/animals.length}]:[];});
  const welfare=habitats.length?Math.round(habitats.reduce((n,h)=>n+h.welfare,0)/habitats.length):null,reason:'closed'|'path'|'habitat'|'animals'|'ready'=!s.visitorFlow.open?'closed':!path?'path':!targets.length?'habitat':!habitats.length?'animals':'ready',score=welfare??0,intervalTicks=Math.round(ATTRACTION_RULES.minIntervalTicks+(ATTRACTION_RULES.maxIntervalTicks-ATTRACTION_RULES.minIntervalTicks)*(1-score/100)**2);
  // Preserve the exact original V1/single-aviary view shape as well as the curve.
- const perHabitat:HabitatAttraction[]|undefined=habitats.some(h=>h.kind==='elephant-grove')?habitats.map(h=>({...h,welfare:Math.round(h.welfare)})):undefined;
+ const perHabitat:HabitatAttraction[]|undefined=habitats.some(h=>h.kind==='elephant-grove'||h.kind==='lion-savanna')?habitats.map(h=>({...h,welfare:Math.round(h.welfare)})):undefined;
  return {ready:reason==='ready',reason,welfare,intervalTicks,level:score>=ATTRACTION_RULES.strongAt?'strong':score>=ATTRACTION_RULES.comfortableAt?'steady':'low',...(perHabitat?{habitats:perHabitat}:{})};
 }
 export type AttractionView=ReturnType<typeof attractionView>;

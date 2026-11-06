@@ -1,0 +1,13 @@
+# Local Lion care checkpoint - 6 November 2026
+
+Source is isolated in the lion-savanna clone; original repositories and primary browser saves are untouched. No push or deploy is authorized.
+
+Implemented locally: canonical V3 entry; separately durable 1800-ZC grant; paid 7x7 enclosure; Raka, Sena and Tala; seven paid facilities; deterministic body-safe ground navigation and real stock consumption; rest, scent, scratch, physical ramp/roar and optional reciprocal social contact; original male/female skinned procedural art; shared visitor destinations; LQ01-LQ04; bilingual build/care/mission UI; welfare causes, next steps and wildflower award decoration. Implementation is not equivalent to acceptance of all checklist gates.
+
+Full regression after the two previous failures were repaired: 748/748 PASS, duration161691.5271ms (`../lion-resume-full-tests.log`). TypeScript latest log is empty (no diagnostics); Astro check reported0 errors,0 warnings and one unused-import hint subsequently removed. Static build produced all9 routes. These are local software checks, not physical-device evidence.
+
+Prior actual Chrome UI journey used only UUID database lion-product-7e77a1eb-e498-4d57-aea3-b1c6f50a2759. It migrated the original earned V2 fixture, explicitly claimed the grant, built and stocked care through product UI, and welcomed all three. Each lion completed meals, drinks, rest, scent and scratching. One genuine ramp roar was counted, and LQ01-LQ03 were durably claimed. Five actual paid path tiles connected the savanna. Latest inspected proof at2026-11-06T08:49:32.152Z: tick9145, three completed Lion missions, 100 thriving ticks, no Lion viewed-visitor proof yet. LQ04 remains native-unverified. Existing Q01-Q04 and EH01-EH04 rewards were preserved. Native storage and real two-tab CAS details are in LION_NATIVE_STORAGE.md.
+
+Chrome timing during that session was approximately1FPS with dropped fixed-clock wall time; it is not a performance PASS. On resume the native window was observed minimized. This is a possible confounder, not a proven explanation for all earlier samples. User subsequently restricted testing to the internal browser; no further desktop/Chrome control is permitted. The internal browser baseline at2026-11-06T09:14:38.428Z, before Lion construction, measured median16.7ms,p9516.8ms, about60FPS and0ms dropped wall time. A full three-lion comparison, mobile views and15-active-minute1x soak are still required.
+
+Checklist remains7/39 at this checkpoint; unverified gates stay open. Release and rollback still require a V3-compatible candidate and separate publishing authorization.

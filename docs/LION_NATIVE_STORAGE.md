@@ -1,0 +1,11 @@
+# Native V3 storage verification
+
+6 November 2026, Chrome 156 on Windows 10, local Vite QA harness on loopback 4368. Current source modules were exercised in the actual browser. This is native white-box persistence verification, not built-game UI acceptance or physical-device coverage.
+
+Six native cases PASS in 612.7 ms: exact V2 projection and transactional original V1/V2 backups (43615-char V3 payload); old version-2 open refused after version-3 upgrade; independent connections grant CAS with one winner; injected quota/transaction abort preserving original and no premature V2 backup, followed by successful retry; untouched future schema with recovery blocked; V3 reset plus exact Undo payload. Three generated UUID databases cleaned 3/3.
+
+A separate true two-tab case loaded the same UUID-named disposable V3 database before either claim. Both saw **1413 ZC, command 47, grant absent**. Tab one committed **3213 ZC**, one 1800 receipt at tick2629. Tab two entered **conflict**, retained **1413 ZC and grant null** in its own session. Fresh storage inspection showed **3213 ZC, exactly one receipt, revision2**. Both writer connections closed; owned database cleanup visibly reported CLEANED. This proves actual stale-tab exclusion; clicks were sequential after simultaneous stale reads, not a claim of simultaneous mouse input.
+
+Public game entry was read safely after browser transport recovered. Its PlayEntry `DlRDBMbQ`, BaseLayout `7WEx15V2`, BaseLayout CSS `DzYf29kc` and play CSS `B1Z1YVPk` references match the recorded Elephant release. It displayed an existing saved sanctuary, so **Continue was not clicked**. No primary save was read for QA or changed. Fresh raw HTTP hashes still returned403; the current Cloudflare dashboard was subsequently read and confirmed production main2aa836300304477f6e381413b4a39047c28bacf3, deployment2c7e695d-620f-49e7-acee-68f73ad281c8; LH0-01 is now verified.
+
+LH1-05 is verified. The canonical game entry now selects the V3 backend; native Continue/care checks are in LION_CARE_CHECKPOINT.md. Full lifecycle acceptance remains open. Later source changes require scoped rechecks; this does not certify unfinished Lion art, missions or game journey.

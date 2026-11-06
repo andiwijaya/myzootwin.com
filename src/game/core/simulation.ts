@@ -1,3 +1,11 @@
+import {lionWelfareExplanation} from '../animals/lions/welfare.ts';
+import {evaluateLionMissions,lionMissionView,prepareLionMission,LION_MISSION_RULES,type LionMissionQuote} from '../missions/lion-missions.ts';
+import {stepLionCare} from '../animals/lions/care-simulation.ts';
+import {lionGrantView,prepareLionGrant,type LionGrantQuote} from '../economy/lion-grant.ts';
+import {lionHabitatView,prepareLionConstruction} from '../economy/lion-construction.ts';
+import {lionResidentsView,prepareLionWelcome} from '../animals/lions/residents.ts';
+import {lionResources,defaultLionCareCell,validateLionCarePlacement,prepareLionCarePlacement,prepareLionRefill,lionServicePrice,type LionCareQuote,type LionRefillQuote} from '../animals/lions/resources.ts';
+import type {LionResourceKind} from './species.ts';
 import {elephantOnboardingView} from '../missions/elephant-onboarding.ts';
 import {elephantRecoveryView} from '../economy/elephant-recovery.ts';
 import {evaluateElephantMissions,elephantMissionView,prepareElephantMission,ELEPHANT_MISSION_RULES,type ElephantMissionQuote} from '../missions/elephant-missions.ts';
@@ -27,7 +35,7 @@ import {preparePath,reconcilePathAccess,accessSummary} from '../world/paths.ts';
 import {prepareHabitat} from '../world/build-habitat.ts';
 import {prepareSpeciesHabitat} from '../world/species-habitat.ts';
 import {macawRuntimeView,commitMacawRuntimeView,type RuntimeState} from './runtime-state.ts';
-import {isMacaw,elephants} from './species.ts';
+import {isMacaw,elephants,lions} from './species.ts';
 import type {ZooSave} from './zoo-state.ts';
 import type {Point} from './state.ts';
 import { createEventBus, type SimulationEvent } from './events.ts';
@@ -41,7 +49,7 @@ import {conservationGrantView,prepareConservationGrant,type ConservationGrantQuo
 
 const validateState=validateZooSave;
 const reconcileWelfare=<S extends RuntimeState>(state:S):S=>{reconcileMacawWelfare(macawRuntimeView(state));return state;};
-const evaluateMissions=(state:RuntimeState,advance=false)=>{evaluateMacawMissions(macawRuntimeView(state),advance);evaluateElephantMissions(state,advance);};
+const evaluateMissions=(state:RuntimeState,advance=false)=>{evaluateMacawMissions(macawRuntimeView(state),advance);evaluateElephantMissions(state,advance);evaluateLionMissions(state,advance);};
 const macawTransaction=<Result>(state:RuntimeState,run:(view:ZooSaveV1)=>Result):Result=>{const view=macawRuntimeView(state),result=run(view);commitMacawRuntimeView(state,view);return result;};
 
 /** Fixed simulation time and validated atomic world, care and financial transactions. */
@@ -70,7 +78,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     if(settleMaintenance(state)){compactNow();publish(Object.freeze({type:'economy-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));}
     const random=nextRandom(state.randomState);
     state.randomState=random.state;
-    const {fed,watered}=stepAnimals(macawRuntimeView(state)),bathed:(Extract<SimulationEvent,{type:'elephant-bathed'}>|Extract<SimulationEvent,{type:'elephant-enriched'}>|Extract<SimulationEvent,{type:'elephant-socialized'}>)[]=[];if(state.schemaVersion!==1){const care=stepElephantCare(state);fed.push(...care.fed);watered.push(...care.watered);for(const bath of care.bathed??[])bathed.push({type:'elephant-bathed',...bath,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.enriched??[])bathed.push({type:'elephant-enriched',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.socialized??[])bathed.push({type:'elephant-socialized',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});}reconcileWelfare(state);for(const e of watered)publish(Object.freeze({type:'animal-drank',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));for(const e of fed)publish(Object.freeze({type:'animal-fed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
+    const {fed,watered}=stepAnimals(macawRuntimeView(state)),bathed:(Extract<SimulationEvent,{type:'elephant-bathed'}>|Extract<SimulationEvent,{type:'elephant-enriched'}>|Extract<SimulationEvent,{type:'elephant-socialized'}>)[]=[];if(state.schemaVersion!==1){const care=stepElephantCare(state);fed.push(...care.fed);watered.push(...care.watered);for(const bath of care.bathed??[])bathed.push({type:'elephant-bathed',...bath,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.enriched??[])bathed.push({type:'elephant-enriched',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.socialized??[])bathed.push({type:'elephant-socialized',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});}const lionEvents=state.schemaVersion===3?stepLionCare(state):null;if(lionEvents){fed.push(...lionEvents.fed);watered.push(...lionEvents.watered);}reconcileWelfare(state);for(const e of watered)publish(Object.freeze({type:'animal-drank',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));for(const e of fed)publish(Object.freeze({type:'animal-fed',...e,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     const previousAdmissions=state.admissions.length,viewed=stepArrivals(state);
     const admitted=state.admissions.slice(previousAdmissions).map(a=>({visitorId:a.visitorId,admissionId:a.id,amount:ledgerProof(state,a.ledgerEntryId)!.amount}));
     evaluateMissions(state);retireClosedProofs(state);compactNow();
@@ -79,6 +87,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     publish(Object.freeze({type:'tick',tick:state.tick,gameTimeMs:state.gameTimeMs,randomSample:random.value}));
     // Urgent bath autosave observes the complete world/visitor/economy/mission tick.
     for(const bath of bathed)publish(Object.freeze(bath));
+    for(const event of lionEvents?.events??[])publish(Object.freeze({...event,tick:state.tick,gameTimeMs:state.gameTimeMs}));
   },state.preferences.speed);
   const api={
     advance: (deltaMs:number)=>clock.advance(deltaMs),
@@ -95,6 +104,33 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     visualSettings:()=>({graphics:state.preferences.graphics,reducedMotion:state.preferences.reducedMotion}),
     setVisualSettings(value:unknown){if(disposed||!isVisualSettings(value)||state.preferences.graphics===value.graphics&&state.preferences.reducedMotion===value.reducedMotion)return false;state.preferences.graphics=value.graphics;state.preferences.reducedMotion=value.reducedMotion;publish(Object.freeze({type:'preferences-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;},
     setLocale(value:unknown){if(disposed||(value!=='en'&&value!=='id')||state.preferences.locale===value)return false;state.preferences.locale=value;publish(Object.freeze({type:'preferences-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;},
+    localeView:()=>state.preferences.locale,
+    worldSize:()=>({width:state.world.width,height:state.world.height}),
+    lionMissionView:()=>lionMissionView(state),
+    prepareLionMission:(quote:LionMissionQuote)=>disposed||clock.inspect().paused?{ok:false as const,reason:'stale' as const}:prepareLionMission(state,quote),
+    acceptCommittedLionMission(candidate:ZooSave,quote:LionMissionQuote){if(disposed||candidate.schemaVersion!==3||!validateState(candidate).ok)return false;const prepared=prepareLionMission(state,quote);if(!prepared.ok)return false;const next=structuredClone(candidate);next.preferences={...state.preferences};prepared.state.preferences={...state.preferences};if(serializeZooSave(next)!==serializeZooSave(prepared.state))return false;state=next;compactNow();publish(Object.freeze({type:'lion-mission-claimed',missionId:quote.id,amount:LION_MISSION_RULES[quote.id].coins,tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;},
+    lionGrantView:()=>lionGrantView(state),
+    lionHabitatView:()=>lionHabitatView(state),
+    lionResidentsView:()=>lionResidentsView(state),
+    lionCareView:()=>{const s=state;return {command:s.economy.nextCommand,balance:s.currency,resources:s.schemaVersion===3?lionResources(s).map(r=>({...structuredClone(r),refillPrice:lionServicePrice(r.kind)})):[],residents:s.schemaVersion===3?lions(s.animals).map(a=>({...structuredClone(a),welfareParts:lionWelfareExplanation(s,a)})):[]};},
+    defaultLionCareCell:(kind:LionResourceKind)=>defaultLionCareCell(state,kind),
+    validateLionCarePlacement:(kind:LionResourceKind,cell:Point|null)=>validateLionCarePlacement(state,kind,cell),
+    prepareLionGrant:(quote:LionGrantQuote)=>disposed||clock.inspect().paused?{ok:false as const,reason:'stale' as const}:prepareLionGrant(state,quote),
+    acceptCommittedLionGrant(candidate:ZooSave,quote:LionGrantQuote){
+      if(disposed||candidate.schemaVersion!==3||!validateState(candidate).ok)return false;const prepared=prepareLionGrant(state,quote);if(!prepared.ok)return false;const next=structuredClone(candidate);next.preferences={...state.preferences};prepared.state.preferences={...state.preferences};if(serializeZooSave(next)!==serializeZooSave(prepared.state))return false;state=next;compactNow();publish(Object.freeze({type:'lion-grant-claimed',amount:1800,tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;
+    },
+    buildLionHabitat(anchor:Point,operationId:string,command:number){
+      if(disposed||clock.inspect().paused)return {ok:false as const,reason:'command' as const};const result=prepareLionConstruction(state,anchor,operationId,command);if(!result.ok)return result;state=result.state;topology=reconcilePathAccess(state.world).topology;invalidateEdit();compactNow();publish(Object.freeze({type:'habitat-built',habitatId:result.habitatId,tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const,habitatId:result.habitatId,duplicate:result.duplicate};
+    },
+    welcomeLions(command:number){
+      if(disposed||clock.inspect().paused)return {ok:false as const,reason:'stale' as const};const result=prepareLionWelcome(state,command);if(!result.ok)return result;state=result.state;invalidateEdit();publish(Object.freeze({type:'lions-welcomed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const};
+    },
+    placeLionCare(quote:LionCareQuote){
+      if(disposed||clock.inspect().paused)return {ok:false as const,reason:'stale' as const};const result=prepareLionCarePlacement(state,quote);if(!result.ok)return result;state=result.state;invalidateEdit();compactNow();publish(Object.freeze({type:'lion-care-changed',resourceId:result.resourceId,tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const,resourceId:result.resourceId};
+    },
+    refillLionCare(quote:LionRefillQuote){
+      if(disposed||clock.inspect().paused)return {ok:false as const,reason:'stale' as const};const result=prepareLionRefill(state,quote);if(!result.ok)return result;state=result.state;invalidateEdit();compactNow();publish(Object.freeze({type:'lion-care-changed',resourceId:result.resourceId,tick:state.tick,gameTimeMs:state.gameTimeMs}));return {ok:true as const,resourceId:result.resourceId};
+    },
     onboardingView:()=>firstMissionGuide(macawRuntimeView(state)),
     missionView:()=>missionView(macawRuntimeView(state)),
     conservationGrantView:()=>conservationGrantView(state),

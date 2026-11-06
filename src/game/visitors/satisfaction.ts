@@ -1,3 +1,5 @@
+import {isLion} from '../core/species.ts';
+import {lionVisible} from '../animals/lions/visibility.ts';
 import type {Visitor,VisitorExperience,VisitorFeedback,VisitorOutcome,VisitorInterruption,RuntimeState} from '../core/state.ts';
 
 /** Starting game rules, not scientific visitor research or final balancing. No FIFO wait penalty. */
@@ -6,7 +8,7 @@ export const newExperience=():VisitorExperience=>({samples:0,occupiedSamples:0,w
 /** Called only while actually facing/viewing the target, after this tick's animal welfare update. */
 export function observeHabitat(s:RuntimeState,v:Visitor):void{
  const e=v.experience;if(!e||e.feedback||e.samples>=SATISFACTION_RULES.observationTicks)return;
- const animals=s.animals.filter(a=>a.habitatId===v.journey?.habitatId&&a.position!==null);
+ const animals=s.animals.filter(a=>a.habitatId===v.journey?.habitatId&&a.position!==null&&(!isLion(a)||lionVisible(s,a,v.position)));
  e.samples++;
  if(animals.length){e.occupiedSamples++;e.welfareHundredths+=Math.round(animals.reduce((n,a)=>n+a.welfare,0)/animals.length*100);}
 }

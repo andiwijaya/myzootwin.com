@@ -14,7 +14,7 @@ export interface ElephantRecoveryView {
  path:{cell:Point;missing:number;total:number}|null;waitTicks:number;
 }
 /** An unpaid route proposal over only legally buildable real cells; never writes a path or clears scenery/occupants. */
-function missingConnection(s:RuntimeState,habitatId:string){
+export function missingConnection(s:RuntimeState,habitatId:string){
  const world={...s.world,tiles:s.world.tiles.map(t=>({...t,path:t.path||validatePathPlacement(s.world,t.cell).reason==='ready'}))},paths=visitorPaths(world),h=world.habitats.find(h=>h.id===habitatId);if(!h)return null;
  const key=(p:Point)=>`${p.x},${p.z}`,gate=key(world.gate),original=new Map(s.world.tiles.map(t=>[key(t.cell),t.path])),own=new Set(h.cells.map(key)),targets=new Set(h.cells.flatMap(c=>[{x:c.x,z:c.z-1},{x:c.x-1,z:c.z},{x:c.x+1,z:c.z},{x:c.x,z:c.z+1}]).filter(p=>!own.has(key(p))&&paths.has(key(p))).map(key));
  // Lexicographic Dijkstra: minimize actual15ZC purchases before distance. A one-gap repair beats a new shorter road.
