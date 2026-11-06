@@ -1,4 +1,6 @@
-# Lion Savanna local release handoff
+# Lion Savanna release handoff
+
+**Superseded local freeze below:** User subsequently approved deployment and live testing. Final production is325223403a2dec1b805f05d9fb8d795d09568585, Cloudflare1f929842-00f0-4857-9a01-dea990b58f37, successful6November2026 at15:13:28UTC. Current checklist39/39 with explicit physical-device/performance limits. [Final release, fixes, tests and fallback](LION_LIVE_RELEASE.md) is authoritative. The remaining text records the earlier pre-release checkpoint and its then-applicable hold.
 
 Runtime candidate: `c18f648a0976be5d1526fe9675d9d0463176e049`, source tree `ce5c03b2b4ea7b961663aedf231cff12662b72fe`. Later evidence-only commits may have a newer HEAD with the same source tree. Branch `lion-savanna` is local in the independent task clone. No push, merge, hosting change or deployment is authorized yet.
 

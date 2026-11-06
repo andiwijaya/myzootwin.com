@@ -1,0 +1,95 @@
+{
+  "status": "PASS",
+  "cases": [
+    {
+      "id": "native-v2-migration-and-transactional-backups",
+      "pass": true,
+      "detail": {
+        "projectionExact": true,
+        "payloadChars": 43615,
+        "v1BackupExact": true,
+        "v2BackupExact": true
+      }
+    },
+    {
+      "id": "native-old-binary-barrier",
+      "pass": true,
+      "detail": {
+        "version2OpenRefused": true
+      }
+    },
+    {
+      "id": "native-independent-connections-grant-CAS",
+      "pass": true,
+      "detail": {
+        "writers": 2,
+        "winners": 1,
+        "optimisticLoser": false,
+        "grant": 1800
+      }
+    },
+    {
+      "id": "native-single-tab-overlapping-drains",
+      "pass": true,
+      "detail": {
+        "earlyRequests": 2,
+        "claimedOnce": true,
+        "noFalseConflict": true,
+        "originalV2BackupExact": true
+      }
+    },
+    {
+      "id": "native-quota-abort-and-retry",
+      "pass": true,
+      "detail": {
+        "originalPreserved": true,
+        "noPrematureBackup": true,
+        "retrySucceeded": true
+      }
+    },
+    {
+      "id": "native-future-schema-guard",
+      "pass": true,
+      "detail": {
+        "primaryUntouched": true,
+        "noReset": true
+      }
+    },
+    {
+      "id": "native-reset-undo-and-cold",
+      "pass": true,
+      "detail": {
+        "v3Reset": true,
+        "exactUndo": true
+      }
+    },
+    {
+      "id": "native-invalid-json-recovery",
+      "pass": true,
+      "detail": {
+        "explicitReview": true,
+        "noAutomaticReset": true,
+        "exactV3Payload": true,
+        "corruptOriginalPreserved": true,
+        "historicalBackupsExact": true
+      }
+    },
+    {
+      "id": "native-invalid-state-recovery",
+      "pass": true,
+      "detail": {
+        "explicitReview": true,
+        "noAutomaticReset": true,
+        "exactV3Payload": true,
+        "corruptOriginalPreserved": true,
+        "historicalBackupsExact": true
+      }
+    }
+  ],
+  "ownedDatabases": 6,
+  "cleaned": 6,
+  "elapsedMs": 1005.3000000007451,
+  "native": true,
+  "browser": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+  "scope": "Native white-box storage harness; not two-tab or UI gameplay proof"
+}

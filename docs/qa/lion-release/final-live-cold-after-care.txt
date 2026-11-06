@@ -1,0 +1,218 @@
+- link "Skip to main content":
+  - /url: "#main-content"
+- banner:
+  - link "MyZooTwin home":
+    - /url: /
+    - generic: ✦
+    - generic: MyZooTwin
+  - navigation "Main navigation":
+    - link "Play Zoo":
+      - /url: /play/
+    - link "Animals":
+      - /url: /animals/
+    - link "Wildlife":
+      - /url: /wildlife/
+    - link "Pets":
+      - /url: /pets/
+    - link "Learn":
+      - /url: /learn/
+    - link "Adventures":
+      - /url: /adventures/
+    - link "Gear":
+      - /url: /gear/
+  - link "About":
+    - /url: /about/
+    - text: About ↗
+- main:
+  - region "A little world to care for.":
+    - generic "Sanctuary status":
+      - strong: 2,730 ZC
+      - 'generic "Average welfare of placed macaws: 60%. Inspect elephant welfare in Care."': Macaws 60%
+      - generic: Guests 1
+      - generic "All macaw missions complete": ✓
+      - generic "Simulation speed 1×. Open options": 1×
+    - region "Local game progress":
+      - generic "Save details":
+        - status: Saved on this device
+        - generic: Save details
+    - region "Session controls":
+      - button "Resume zoo" [pressed]
+      - status: Zoo paused. Animals, visitors, money and missions are frozen.
+    - generic "Options"
+    - option "English" [selected]
+    - option "Bahasa Indonesia"
+    - option "1× · normal" [selected]
+    - option "10× · faster care"
+    - figure "Tropical Creek · living sanctuary":
+      - group "One shared 3D zoo with macaws, elephants and Raka, Sena and Tala in Lion Savanna. Inspect animals, plan care and connect outside visitor paths."
+      - group "Game actions":
+        - generic: Game actions
+        - group "World camera controls":
+          - button "Zoom out" [disabled]: −
+          - status: 100%
+          - button "Zoom in" [disabled]: +
+          - button "Rotate camera left 45 degrees" [disabled]: ↶
+          - button "Rotate camera right 45 degrees" [disabled]: ↷
+          - status: Camera angle 0 degrees
+          - button "Reset" [disabled]
+      - tablist "Zoo tools":
+        - tab "Missions"
+        - tab "Care" [active] [selected]
+        - tab "Guests"
+        - tab "Build"
+      - tabpanel "Care":
+        - paragraph: "Balance: 2,730 ZC"
+        - text: Fictional gameplay needs and dimensions, not professional wildlife care guidance.
+        - heading "Pride care" [level=3]
+        - combobox "Plan facility" [disabled]:
+          - option "Meat station · 90 ZC" [selected]
+          - option "Drinking trough · 70 ZC"
+          - option "Shade and quiet den · 90 ZC"
+          - option "Lookout kopje · 160 ZC"
+          - option "Scent enrichment · 60 ZC"
+          - option "Scratch log · 55 ZC"
+        - button "Plan facility" [disabled]
+        - paragraph
+        - paragraph: Meat station 1 · Stock 10/12
+        - 'button "Meat station 1: Refill 12 ZC" [disabled]': Refill · 12 ZC
+        - 'button "Remove: Meat station 1" [disabled]': Remove
+        - paragraph: Meat station 2 · Stock 8/12
+        - 'button "Meat station 2: Refill 12 ZC" [disabled]': Refill · 12 ZC
+        - 'button "Remove: Meat station 2" [disabled]': Remove
+        - paragraph: Drinking trough · Stock 7/12
+        - 'button "Drinking trough: Refill 6 ZC" [disabled]': Refill · 6 ZC
+        - 'button "Remove: Drinking trough" [disabled]': Remove
+        - paragraph: Shade and quiet den · Stock 1/1
+        - 'button "Remove: Shade and quiet den" [disabled]': Remove
+        - paragraph: Lookout kopje · Stock 1/1
+        - 'button "Remove: Lookout kopje" [disabled]': Remove
+        - paragraph: Scent enrichment · Stock 2/6
+        - 'button "Scent enrichment: Refill 4 ZC" [disabled]': Refill · 4 ZC
+        - 'button "Remove: Scent enrichment" [disabled]': Remove
+        - paragraph: Scratch log · Stock 3/6
+        - 'button "Scratch log: Refill 4 ZC" [disabled]': Refill · 4 ZC
+        - 'button "Remove: Scratch log" [disabled]': Remove
+        - article:
+          - heading "Raka · Male · Walking" [level=4]
+          - paragraph: Welfare 90/100 · Hunger 12 · Thirst 30 · Energy 100 · Enrichment 94
+          - paragraph: Meals 5 · Drinks 5 · Rest 420 · Roars 5 · Scent visits 3 · Scratches 4 · Friendly contacts 6
+          - 'generic "Raka: Welfare"'
+        - article:
+          - heading "Sena · Female · Approaching log" [level=4]
+          - paragraph: Welfare 94/100 · Hunger 4 · Thirst 2 · Energy 94 · Enrichment 80
+          - paragraph: Meals 5 · Drinks 6 · Rest 420 · Roars 4 · Scent visits 4 · Scratches 2 · Friendly contacts 5
+          - 'generic "Sena: Welfare"'
+        - article:
+          - heading "Tala · Female · Resting" [level=4]
+          - paragraph: Welfare 87/100 · Hunger 12 · Thirst 3 · Energy 78 · Enrichment 85
+          - paragraph: Meals 5 · Drinks 6 · Rest 350 · Roars 5 · Scent visits 3 · Scratches 3 · Friendly contacts 5
+          - 'generic "Tala: Welfare"'
+        - status
+        - region "Elephant care":
+          - heading "Elephant care" [level=3]
+          - group "Elephant care":
+            - paragraph: Give Ayu and Nara two browse feeders and fresh drinking water inside their home.
+            - paragraph: "Hunger and thirst: 0% means satisfied, 100% means urgent need. Welfare, energy and comfort are better when higher. Supplies help only after real use."
+            - paragraph: Fill the pond for a refreshing bath. Ayu and Nara approach in turn after food and water; baths use real pond water and have a cooldown.
+            - article:
+              - heading "Browse feeder 1" [level=4]
+              - paragraph: 3 / 8 portions
+              - 'button "Browse feeder 1: Refill · 8 ZC" [disabled]': Refill · 8 ZC
+              - 'button "Remove facility: Browse feeder 1" [disabled]': Remove facility
+            - article:
+              - heading "Browse feeder 2" [level=4]
+              - paragraph: 2 / 8 portions
+              - 'button "Browse feeder 2: Refill · 8 ZC" [disabled]': Refill · 8 ZC
+              - 'button "Remove facility: Browse feeder 2" [disabled]': Remove facility
+            - article:
+              - heading "Drinking trough" [level=4]
+              - paragraph: 4 / 8 portions
+              - 'button "Drinking trough: Refill · 4 ZC" [disabled]': Refill · 4 ZC
+              - 'button "Remove facility: Drinking trough" [disabled]': Remove facility
+            - article:
+              - heading "Bathing pond" [level=4]
+              - paragraph: 7 / 8 baths of water
+              - 'button "Bathing pond: Refill · 12 ZC" [disabled]': Refill · 12 ZC
+              - 'button "Remove facility: Bathing pond" [disabled]': Remove facility
+            - article:
+              - heading "Shade grove" [level=4]
+              - paragraph: Ready to use · no refill needed
+              - 'button "Remove facility: Shade grove" [disabled]': Remove facility
+            - article:
+              - heading "Log and mud patch" [level=4]
+              - paragraph: Ready to use · no refill needed
+              - 'button "Remove facility: Log and mud patch" [disabled]': Remove facility
+            - status
+            - article:
+              - heading "Ayu · Walking" [level=4]
+              - paragraph: "Ayu: hunger 47%, thirst 25%, welfare 52%."
+              - paragraph: "Meals: 45 · Drinks: 33 · Baths: 8"
+              - paragraph: "Energy: 94% · Shade comfort: 65% · Enrichment: 0%"
+              - paragraph: "Social comfort: 0% · Greetings: 3"
+              - 'meter "Ayu welfare: 52%"'
+              - generic "Inspect Ayu"
+            - article:
+              - heading "Nara · Walking" [level=4]
+              - paragraph: "Nara: hunger 22%, thirst 32%, welfare 51%."
+              - paragraph: "Meals: 45 · Drinks: 33 · Baths: 7"
+              - paragraph: "Energy: 56% · Shade comfort: 0% · Enrichment: 7%"
+              - paragraph: "Social comfort: 0% · Greetings: 3"
+              - 'meter "Nara welfare: 51%"'
+              - generic "Inspect Nara"
+        - region "Two curious macaws":
+          - heading "Two curious macaws" [level=3]
+          - paragraph: Welcome both macaws, then provide food, water and rest below. Inspect a bird for the reasons behind its welfare and the next care action.
+          - group "Two curious macaws":
+            - button "Move birds to reserve for habitat edits" [disabled]
+          - status: Two macaws live in this aviary. Occupied habitats cannot be removed.
+          - paragraph: "Hunger and thirst: lower is better. Energy, enrichment and welfare: higher is better. Inspect either bird for the actual causes and next action."
+          - list:
+            - paragraph: Macaw 1 · Drinking · Hunger 44% · Portions eaten 60 · Thirst 64% · Drinks 59 · Energy 42% · Enrichment 80%
+            - paragraph: Welfare 63% · ✓ Comfortable
+            - button "Inspect Macaw 1"
+            - paragraph: Macaw 2 · Drinking · Hunger 44% · Portions eaten 60 · Thirst 64% · Drinks 60 · Energy 40% · Enrichment 52%
+            - paragraph: Welfare 58% · ! Needs care
+            - button "Inspect Macaw 2"
+          - status
+        - region "Fruit feeder":
+          - heading "Fruit feeder" [level=3]
+          - group "Fruit feeder":
+            - paragraph: Place a two-port feeder on the marked front edge, then fill it. Hungry macaws walk to a bowl and eat real portions. Hunger runs from 0% (full) to 100% (very hungry). Refill service has the displayed Zoo Coin cost.
+            - button "Fill feeder · 8 ZC" [disabled]
+            - button "Remove feeder" [disabled]
+            - paragraph: Build 80 ZC · Refill service 8 ZC · Balance 2,730 ZC. Removal returns only actual construction spending; refill fees are not refunded.
+            - status: "Food: 2/8 portions (macaw 1: 1; macaw 2: 1). Consumption happens only when a bird finishes eating."
+        - region "Fresh water":
+          - heading "Fresh water" [level=3]
+          - group "Fresh water":
+            - paragraph: Place two blue water bowls at the sides of the aviary, then refill them. Thirsty macaws approach and drink real portions. Thirst runs from 0% (hydrated) to 100% (very thirsty). Refill service has the displayed Zoo Coin cost.
+            - button "Refill water · 4 ZC" [disabled]
+            - button "Remove water bowls" [disabled]
+            - paragraph: Build 60 ZC · Refill service 4 ZC · Balance 2,730 ZC. Removal returns only actual construction spending; refill fees are not refunded.
+            - status: "Water: 4/8 portions (macaw 1: 2; macaw 2: 2). Stock decreases only when a bird finishes drinking."
+        - region "Rest & enrichment":
+          - heading "Rest & enrichment" [level=3]
+          - group "Rest & enrichment":
+            - paragraph: Prepare two supported leafy perches. Tired macaws sleep to recover energy; awake macaws look around the plants to improve enrichment. Both scores run from 0% to 100% (higher is better). Benefits happen only while the bird uses a prepared perch. Food and water still need care. Construction has the displayed Zoo Coin cost.
+            - button "Remove rest garden" [disabled]
+            - paragraph: Build 80 ZC · Balance 2,730 ZC. Removal returns actual construction spending.
+            - status: "Prepared perches: resting 0/2; exploring 0/2. Energy rises only during sleep; enrichment rises only during exploration. Urgent food/water can interrupt safely."
+      - status
+- contentinfo:
+  - link "✦ MyZooTwin":
+    - /url: /
+    - generic: ✦
+    - generic: MyZooTwin
+  - paragraph: A curious field guide to the animals we share this planet with.
+  - link "Animals":
+    - /url: /animals/
+  - link "Wildlife":
+    - /url: /wildlife/
+  - link "Pets":
+    - /url: /pets/
+  - link "Learn":
+    - /url: /learn/
+  - link "About":
+    - /url: /about/
+  - text: © 2026 MyZooTwin. Made for curious minds.
+  - button "Privacy choices"

@@ -65,9 +65,9 @@ Copy these items into `docs/LION_SAVANNA_PROGRESS.md` and record a time-stamped 
 - [x] **LH6-03** — Version-3 migration/fault-injection tests for CAS, quota, abort, corruption, malformed save and concurrency.
 - [x] **LH6-04** — 15-minute active 1× soak and 10× fixed-tick/visit stress + GPU/heap/draw-call/payload measurements.
 - [x] **LH6-05** — Review dead code, asset rights, dependency/security/privacy, repo size and retained non-game routes.
-- [ ] **LH6-06** — Prepare release/rollback using V3-compatible target; publish only after explicit production approval.
+- [x] **LH6-06** — Prepare release/rollback using V3-compatible target; publish only after explicit production approval.
 
-**Milestone progress:** LH0 4/4; LH1 6/6; LH2 6/6; LH3 8/8; LH4 5/5; LH5 4/4; LH6 5/6. **Total 38/39**.
+**Milestone progress:** LH0 4/4; LH1 6/6; LH2 6/6; LH3 8/8; LH4 5/5; LH5 4/4; LH6 6/6. **Total 39/39**.
 
 6 Nov 2026 evidence: [foundation](LION_FOUNDATION.md), [V3 codec](LION_V3_PERSISTENCE.md), [native storage and two-tab CAS](LION_NATIVE_STORAGE.md). Source checkpoints: 557af6c, d69431e; native evidence is recorded in the next local checkpoint. LH0-01 was completed by the later hosting dashboard check below. Product activation, Lion care/art/UI/mission gates remain open until independently verified.
 
@@ -82,3 +82,5 @@ Latest checkpoint: [care implementation and full regression](LION_CARE_CHECKPOIN
 2026-11-06 later checkpoint37/39: [native acceptance](LION_NATIVE_ACCEPTANCE.md) closes actual rig selection/contact, Undo, bilingual responsive UI, quality/reduced-motion/WebGL lifecycle, 1x/10x cold journey and IAB8/8 fault/two-tab gates. Full764/764 plus subsequent24/24 UI regression and clean types. Zero-cash journey, welfare and maintenance evidence are retained under docs/qa/lion. [Release audit](qa/lion/release-audit.json) confirms nine static HTTP routes, eight unchanged journal pages, exact metadata/sitemap, no new runtime network tokens and measured bundle delta. Production npm audit reports0 vulnerabilities; only pinned development fake-indexeddb was added. LH6-04 awaits900000ms active1x on the fixed candidate; LH6-06 stays open until explicit production authorization and later live smoke. No push/deploy.
 
 2026-11-06 final local checkpoint38/39: LH6-04 verified with915380.5ms active1x,54386 frames,59.4135 averageFPS, zero dropped clock time, strict-valid exact raw/persisted V3, no invalid callbacks/serialization failures, bounded journal/resource/heap counts. [Soak summary](qa/lion/final-soak-summary.json), [raw receipt](qa/lion/final-soak-native.json), [cleanup](qa/lion/final-cleanup.json), [release handoff](LION_RELEASE_HANDOFF.md). Actual GPU milliseconds, physical phones and power state are explicitly unmeasured. LH6-06 remains open: separate production permission, publish and live smoke have not occurred.
+
+2026-11-06 15:17 UTC final release checkpoint39/39: explicit user deployment approval, final production3252234 / Cloudflare1f929842-00f0-4857-9a01-dea990b58f37 success; live LQ04 claim and cold Continue, retained claims/grants and2730-ZC checkpoint, eight retained apex journal routes. Final768/768, native9/9,23.97-minute frozen325 soak and zero-resource disposal receipts are in [live release](LION_LIVE_RELEASE.md). Mobile picker DOM churn196 to0 is fixed and live; physical phone behavior remains UNRUN. New soak38.17 averageFPS is recorded honestly and does not certify sustained60FPS. Prior checkpoints below/above are historical and do not describe current authorization or production state.
