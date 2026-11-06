@@ -1,0 +1,965 @@
+{
+  "phase": "complete",
+  "diagnosticOnly": true,
+  "method": "Real native RAF / document visibility / unpaused actual1x; bounded10x. Existing UI paid supplies only. No injected advance.",
+  "targets": {
+    "active1xMs": 900000,
+    "maximum1xWallMs": 1200000,
+    "fastTicks": 1200,
+    "maximumFastWallMs": 180000
+  },
+  "activeMs": 12026.099999904633,
+  "wallMs": 41228.799999952316,
+  "frames": 236,
+  "failures": [],
+  "refillCount": 4,
+  "refillSpent": 20,
+  "completedPhases": [
+    {
+      "kind": "10x",
+      "status": "MEASURED",
+      "activeMs": 12026.099999904633,
+      "wallMs": 12045.299999952316,
+      "start": {
+        "at": 1793936744326,
+        "performanceNow": 22831.899999976158,
+        "visibility": "visible",
+        "pauseReasons": "",
+        "resourceEntriesObserved": 13,
+        "resourceListCapped": false,
+        "resourceTimingBufferFullEvents": 0,
+        "scene": {
+          "simulationTick": 3177,
+          "simulationGameTimeMs": 317700,
+          "simulationPaused": false,
+          "simulationSpeed": 10,
+          "simulationDroppedWallMs": 0,
+          "simulationDroppedSimMs": 0,
+          "currency": 1421,
+          "commandRevision": 48,
+          "placedBirds": 2,
+          "habitatCount": 2,
+          "liveElephantModels": 2,
+          "pendingFrames": 1,
+          "geometries": 46,
+          "textures": 5,
+          "programs": 17,
+          "ownedMaterialsLive": 31,
+          "drawCallsLastRender": 69,
+          "trianglesLastRender": 25596,
+          "pixelRatio": 1,
+          "bufferWidth": 743,
+          "bufferHeight": 590,
+          "elephantResidentBoneTextures": 2,
+          "visibleVisitorModels": 1,
+          "visitorModels": 2,
+          "graphicsLow": true,
+          "effectiveReducedMotion": true,
+          "sunShadowEnabled": false
+        },
+        "heap": {
+          "used": 35612228,
+          "total": 79730000,
+          "limit": 4395630592,
+          "method": "Chromium estimate; no forced GC, not process/native/GPU heap"
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "behavior": "perch",
+            "hunger": 20.64,
+            "thirst": 47.05,
+            "welfare": 76.98,
+            "food": 13,
+            "water": 13,
+            "rest": 310,
+            "log": 120
+          },
+          {
+            "id": "macaw-2",
+            "behavior": "seek-water",
+            "hunger": 20.64,
+            "thirst": 47.05,
+            "welfare": 77.16,
+            "food": 13,
+            "water": 13,
+            "rest": 308,
+            "log": 120
+          },
+          {
+            "id": "elephant-ayu",
+            "behavior": "idle",
+            "hunger": 30.500000000000046,
+            "thirst": 43.03999999999796,
+            "welfare": 67,
+            "food": 3,
+            "water": 3,
+            "rest": 60,
+            "log": 24,
+            "social": 1,
+            "baths": 1
+          },
+          {
+            "id": "elephant-nara",
+            "behavior": "idle",
+            "hunger": 31.999999999999957,
+            "thirst": 9.680000000000007,
+            "welfare": 77,
+            "food": 3,
+            "water": 4,
+            "rest": 60,
+            "log": 48,
+            "social": 1,
+            "baths": 1
+          }
+        ],
+        "ownership": {
+          "created": 1,
+          "liveOwners": 1,
+          "pendingDriver": 1,
+          "maxOwners": 1,
+          "maxPendingDriver": 1,
+          "canvases": 1,
+          "audio": {
+            "status": "muted",
+            "muted": true,
+            "allowed": true,
+            "unlocked": false,
+            "contextState": "absent",
+            "contextsCreated": 0,
+            "contextsClosed": 0,
+            "liveContexts": 0,
+            "liveNodes": 0,
+            "looping": false,
+            "gain": 0,
+            "signalRms": 0,
+            "analyserSampleActive": false,
+            "disposed": false,
+            "failed": false
+          },
+          "lastDisposed": null
+        }
+      },
+      "end": {
+        "at": 1793936756362,
+        "performanceNow": 34867.799999952316,
+        "visibility": "visible",
+        "pauseReasons": "",
+        "resourceEntriesObserved": 13,
+        "resourceListCapped": false,
+        "resourceTimingBufferFullEvents": 0,
+        "scene": {
+          "simulationTick": 4378,
+          "simulationGameTimeMs": 437800,
+          "simulationPaused": false,
+          "simulationSpeed": 10,
+          "simulationDroppedWallMs": 0,
+          "simulationDroppedSimMs": 0,
+          "currency": 1433,
+          "commandRevision": 52,
+          "placedBirds": 2,
+          "habitatCount": 2,
+          "liveElephantModels": 2,
+          "pendingFrames": 1,
+          "geometries": 48,
+          "textures": 5,
+          "programs": 17,
+          "ownedMaterialsLive": 31,
+          "drawCallsLastRender": 62,
+          "trianglesLastRender": 25264,
+          "pixelRatio": 1,
+          "bufferWidth": 743,
+          "bufferHeight": 590,
+          "elephantResidentBoneTextures": 2,
+          "visibleVisitorModels": 1,
+          "visitorModels": 2,
+          "graphicsLow": true,
+          "effectiveReducedMotion": true,
+          "sunShadowEnabled": false
+        },
+        "heap": {
+          "used": 62389337,
+          "total": 103329821,
+          "limit": 4395630592,
+          "method": "Chromium estimate; no forced GC, not process/native/GPU heap"
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "behavior": "seek-rest",
+            "hunger": 40.2,
+            "thirst": 11.5,
+            "welfare": 81.85,
+            "food": 17,
+            "water": 19,
+            "rest": 387,
+            "log": 150
+          },
+          {
+            "id": "macaw-2",
+            "behavior": "wander",
+            "hunger": 40.2,
+            "thirst": 11.5,
+            "welfare": 82.06,
+            "food": 17,
+            "water": 19,
+            "rest": 387,
+            "log": 150
+          },
+          {
+            "id": "elephant-ayu",
+            "behavior": "wander",
+            "hunger": 22.13999999999991,
+            "thirst": 3.23999999999935,
+            "welfare": 79,
+            "food": 5,
+            "water": 6,
+            "rest": 60,
+            "log": 24,
+            "social": 1,
+            "baths": 2
+          },
+          {
+            "id": "elephant-nara",
+            "behavior": "idle",
+            "hunger": 24.020000000000238,
+            "thirst": 20.039999999999246,
+            "welfare": 74,
+            "food": 5,
+            "water": 6,
+            "rest": 60,
+            "log": 48,
+            "social": 1,
+            "baths": 1
+          }
+        ],
+        "ownership": {
+          "created": 1,
+          "liveOwners": 1,
+          "pendingDriver": 1,
+          "maxOwners": 1,
+          "maxPendingDriver": 1,
+          "canvases": 1,
+          "audio": {
+            "status": "muted",
+            "muted": true,
+            "allowed": true,
+            "unlocked": false,
+            "contextState": "absent",
+            "contextsCreated": 0,
+            "contextsClosed": 0,
+            "liveContexts": 0,
+            "liveNodes": 0,
+            "looping": false,
+            "gain": 0,
+            "signalRms": 0,
+            "analyserSampleActive": false,
+            "disposed": false,
+            "failed": false
+          },
+          "lastDisposed": null
+        }
+      },
+      "actualTicks": 1201,
+      "actualGameTimeMs": 120100,
+      "gameTimePerActiveWall": 9.986612451331055,
+      "wallFidelityCertified": false,
+      "frames": 236,
+      "frameGap": {
+        "histogram": [
+          {
+            "upperMs": 8.5,
+            "count": 0
+          },
+          {
+            "upperMs": 17,
+            "count": 0
+          },
+          {
+            "upperMs": 34,
+            "count": 104
+          },
+          {
+            "upperMs": 100,
+            "count": 112
+          },
+          {
+            "upperMs": 250,
+            "count": 19
+          },
+          {
+            "upperMs": 1000,
+            "count": 0
+          },
+          {
+            "upperMs": "unbounded",
+            "count": 0
+          }
+        ],
+        "maximumMs": 133.40000000000146,
+        "meanMs": 51.063404255319156,
+        "deliveredFramesPerActiveSecond": 19.623984500533965
+      },
+      "withinCallbackWork": {
+        "sum": {
+          "inspectCalls": 0,
+          "inspectMs": 0,
+          "checkpointCalls": 1240,
+          "checkpointMs": 16.299999237060547,
+          "writeCalls": 6,
+          "writeMs": 1.8999998569488525
+        },
+        "maximum": {
+          "inspectCalls": 0,
+          "inspectMs": 0,
+          "checkpointCalls": 17,
+          "checkpointMs": 0.40000009536743164,
+          "writeCalls": 1,
+          "writeMs": 0.3999999761581421
+        },
+        "overlapping": true,
+        "method": "QA wrappers around actual session.inspect and session-store synchronous calls; subset costs overlap"
+      },
+      "callbackCpu": {
+        "sumMs": 3931.0999990701675,
+        "maximumMs": 28.200000047683716,
+        "meanMs": 16.65720338589054,
+        "notGpuTime": true
+      },
+      "refillCount": 4,
+      "refillSpent": 20,
+      "refills": [
+        {
+          "id": "macaw-water",
+          "tick": 3297,
+          "command": 49,
+          "spent": 4
+        },
+        {
+          "id": "macaw-food",
+          "tick": 3500,
+          "command": 50,
+          "spent": 8
+        },
+        {
+          "id": "macaw-water",
+          "tick": 3998,
+          "command": 51,
+          "spent": 4
+        },
+        {
+          "id": "elephant-water-24",
+          "tick": 4198,
+          "command": 52,
+          "spent": 4
+        }
+      ],
+      "samples": [
+        {
+          "at": 1793936744326,
+          "performanceNow": 22831.899999976158,
+          "visibility": "visible",
+          "pauseReasons": "",
+          "resourceEntriesObserved": 13,
+          "resourceListCapped": false,
+          "resourceTimingBufferFullEvents": 0,
+          "scene": {
+            "simulationTick": 3177,
+            "simulationGameTimeMs": 317700,
+            "simulationPaused": false,
+            "simulationSpeed": 10,
+            "simulationDroppedWallMs": 0,
+            "simulationDroppedSimMs": 0,
+            "currency": 1421,
+            "commandRevision": 48,
+            "placedBirds": 2,
+            "habitatCount": 2,
+            "liveElephantModels": 2,
+            "pendingFrames": 1,
+            "geometries": 46,
+            "textures": 5,
+            "programs": 17,
+            "ownedMaterialsLive": 31,
+            "drawCallsLastRender": 69,
+            "trianglesLastRender": 25596,
+            "pixelRatio": 1,
+            "bufferWidth": 743,
+            "bufferHeight": 590,
+            "elephantResidentBoneTextures": 2,
+            "visibleVisitorModels": 1,
+            "visitorModels": 2,
+            "graphicsLow": true,
+            "effectiveReducedMotion": true,
+            "sunShadowEnabled": false
+          },
+          "heap": {
+            "used": 35612228,
+            "total": 79730000,
+            "limit": 4395630592,
+            "method": "Chromium estimate; no forced GC, not process/native/GPU heap"
+          },
+          "actors": [
+            {
+              "id": "macaw-1",
+              "behavior": "perch",
+              "hunger": 20.64,
+              "thirst": 47.05,
+              "welfare": 76.98,
+              "food": 13,
+              "water": 13,
+              "rest": 310,
+              "log": 120
+            },
+            {
+              "id": "macaw-2",
+              "behavior": "seek-water",
+              "hunger": 20.64,
+              "thirst": 47.05,
+              "welfare": 77.16,
+              "food": 13,
+              "water": 13,
+              "rest": 308,
+              "log": 120
+            },
+            {
+              "id": "elephant-ayu",
+              "behavior": "idle",
+              "hunger": 30.500000000000046,
+              "thirst": 43.03999999999796,
+              "welfare": 67,
+              "food": 3,
+              "water": 3,
+              "rest": 60,
+              "log": 24,
+              "social": 1,
+              "baths": 1
+            },
+            {
+              "id": "elephant-nara",
+              "behavior": "idle",
+              "hunger": 31.999999999999957,
+              "thirst": 9.680000000000007,
+              "welfare": 77,
+              "food": 3,
+              "water": 4,
+              "rest": 60,
+              "log": 48,
+              "social": 1,
+              "baths": 1
+            }
+          ],
+          "ownership": {
+            "created": 1,
+            "liveOwners": 1,
+            "pendingDriver": 1,
+            "maxOwners": 1,
+            "maxPendingDriver": 1,
+            "canvases": 1,
+            "audio": {
+              "status": "muted",
+              "muted": true,
+              "allowed": true,
+              "unlocked": false,
+              "contextState": "absent",
+              "contextsCreated": 0,
+              "contextsClosed": 0,
+              "liveContexts": 0,
+              "liveNodes": 0,
+              "looping": false,
+              "gain": 0,
+              "signalRms": 0,
+              "analyserSampleActive": false,
+              "disposed": false,
+              "failed": false
+            },
+            "lastDisposed": null
+          }
+        }
+      ],
+      "resourcesAtStart": [
+        {
+          "url": "/assets/product-CdhWFeLc.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 151842,
+          "encoded": 151542,
+          "duration": 38
+        },
+        {
+          "url": "/assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 970,
+          "encoded": 670,
+          "duration": 21.600000023841858
+        },
+        {
+          "url": "/assets/save-v1-BX-doCd6.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 83331,
+          "encoded": 83031,
+          "duration": 22.200000047683716
+        },
+        {
+          "url": "/assets/tropical-diorama-DO33y8Qn.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 573415,
+          "encoded": 573115,
+          "duration": 19.300000071525574
+        },
+        {
+          "url": "/assets/scene-coordinates-Da0oUOAo.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 1494,
+          "encoded": 1194,
+          "duration": 17.700000047683716
+        },
+        {
+          "url": "/assets/ground-BB-l_XLQ.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 6037,
+          "encoded": 5737,
+          "duration": 20.399999976158142
+        },
+        {
+          "url": "/assets/isometric-camera-p7W_h2z0.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 8027,
+          "encoded": 7727,
+          "duration": 26.200000047683716
+        },
+        {
+          "url": "/assets/elephant-locomotion-BWeX64U2.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 11788,
+          "encoded": 11488,
+          "duration": 24.899999976158142
+        },
+        {
+          "url": "/assets/simulation-CYJckvl6.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 85703,
+          "encoded": 85403,
+          "duration": 24
+        },
+        {
+          "url": "/assets/foundation-scene-CrI-B0YJ.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 92527,
+          "encoded": 92227,
+          "duration": 27.600000023841858
+        },
+        {
+          "url": "/assets/autosave-CHFf9wq-.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 131794,
+          "encoded": 131494,
+          "duration": 27.799999952316284
+        },
+        {
+          "url": "/assets/session-state-Cm3dzvNu.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 546,
+          "encoded": 246,
+          "duration": 28.300000071525574
+        },
+        {
+          "url": "/assets/elephant-legacy-v1-C5pxJbrK.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 141499,
+          "encoded": 141199,
+          "duration": 29.5
+        }
+      ],
+      "resourcesAtEnd": [
+        {
+          "url": "/assets/product-CdhWFeLc.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 151842,
+          "encoded": 151542,
+          "duration": 38
+        },
+        {
+          "url": "/assets/modulepreload-polyfill-P2Xu9kJm.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 970,
+          "encoded": 670,
+          "duration": 21.600000023841858
+        },
+        {
+          "url": "/assets/save-v1-BX-doCd6.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 83331,
+          "encoded": 83031,
+          "duration": 22.200000047683716
+        },
+        {
+          "url": "/assets/tropical-diorama-DO33y8Qn.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 573415,
+          "encoded": 573115,
+          "duration": 19.300000071525574
+        },
+        {
+          "url": "/assets/scene-coordinates-Da0oUOAo.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 1494,
+          "encoded": 1194,
+          "duration": 17.700000047683716
+        },
+        {
+          "url": "/assets/ground-BB-l_XLQ.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 6037,
+          "encoded": 5737,
+          "duration": 20.399999976158142
+        },
+        {
+          "url": "/assets/isometric-camera-p7W_h2z0.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 8027,
+          "encoded": 7727,
+          "duration": 26.200000047683716
+        },
+        {
+          "url": "/assets/elephant-locomotion-BWeX64U2.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 11788,
+          "encoded": 11488,
+          "duration": 24.899999976158142
+        },
+        {
+          "url": "/assets/simulation-CYJckvl6.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 85703,
+          "encoded": 85403,
+          "duration": 24
+        },
+        {
+          "url": "/assets/foundation-scene-CrI-B0YJ.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 92527,
+          "encoded": 92227,
+          "duration": 27.600000023841858
+        },
+        {
+          "url": "/assets/autosave-CHFf9wq-.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 131794,
+          "encoded": 131494,
+          "duration": 27.799999952316284
+        },
+        {
+          "url": "/assets/session-state-Cm3dzvNu.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 546,
+          "encoded": 246,
+          "duration": 28.300000071525574
+        },
+        {
+          "url": "/assets/elephant-legacy-v1-C5pxJbrK.js",
+          "origin": "http://127.0.0.1:4392",
+          "initiator": "script",
+          "transfer": 141499,
+          "encoded": 141199,
+          "duration": 29.5
+        }
+      ],
+      "gpu": {
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)",
+        "renderer": "ANGLE (Intel, Intel(R) Iris(R) Xe Graphics (0x000046A8) Direct3D11 vs_5_0 ps_5_0, D3D11)",
+        "vendor": "Google Inc. (Intel)",
+        "method": "Reported browser context, not certification of the user physical GPU; no GPU timer query"
+      },
+      "failures": []
+    }
+  ],
+  "latestSample": {
+    "at": 1793936744326,
+    "performanceNow": 22831.899999976158,
+    "visibility": "visible",
+    "pauseReasons": "",
+    "resourceEntriesObserved": 13,
+    "resourceListCapped": false,
+    "resourceTimingBufferFullEvents": 0,
+    "scene": {
+      "simulationTick": 3177,
+      "simulationGameTimeMs": 317700,
+      "simulationPaused": false,
+      "simulationSpeed": 10,
+      "simulationDroppedWallMs": 0,
+      "simulationDroppedSimMs": 0,
+      "currency": 1421,
+      "commandRevision": 48,
+      "placedBirds": 2,
+      "habitatCount": 2,
+      "liveElephantModels": 2,
+      "pendingFrames": 1,
+      "geometries": 46,
+      "textures": 5,
+      "programs": 17,
+      "ownedMaterialsLive": 31,
+      "drawCallsLastRender": 69,
+      "trianglesLastRender": 25596,
+      "pixelRatio": 1,
+      "bufferWidth": 743,
+      "bufferHeight": 590,
+      "elephantResidentBoneTextures": 2,
+      "visibleVisitorModels": 1,
+      "visitorModels": 2,
+      "graphicsLow": true,
+      "effectiveReducedMotion": true,
+      "sunShadowEnabled": false
+    },
+    "heap": {
+      "used": 35612228,
+      "total": 79730000,
+      "limit": 4395630592,
+      "method": "Chromium estimate; no forced GC, not process/native/GPU heap"
+    },
+    "actors": [
+      {
+        "id": "macaw-1",
+        "behavior": "perch",
+        "hunger": 20.64,
+        "thirst": 47.05,
+        "welfare": 76.98,
+        "food": 13,
+        "water": 13,
+        "rest": 310,
+        "log": 120
+      },
+      {
+        "id": "macaw-2",
+        "behavior": "seek-water",
+        "hunger": 20.64,
+        "thirst": 47.05,
+        "welfare": 77.16,
+        "food": 13,
+        "water": 13,
+        "rest": 308,
+        "log": 120
+      },
+      {
+        "id": "elephant-ayu",
+        "behavior": "idle",
+        "hunger": 30.500000000000046,
+        "thirst": 43.03999999999796,
+        "welfare": 67,
+        "food": 3,
+        "water": 3,
+        "rest": 60,
+        "log": 24,
+        "social": 1,
+        "baths": 1
+      },
+      {
+        "id": "elephant-nara",
+        "behavior": "idle",
+        "hunger": 31.999999999999957,
+        "thirst": 9.680000000000007,
+        "welfare": 77,
+        "food": 3,
+        "water": 4,
+        "rest": 60,
+        "log": 48,
+        "social": 1,
+        "baths": 1
+      }
+    ],
+    "ownership": {
+      "created": 1,
+      "liveOwners": 1,
+      "pendingDriver": 1,
+      "maxOwners": 1,
+      "maxPendingDriver": 1,
+      "canvases": 1,
+      "audio": {
+        "status": "muted",
+        "muted": true,
+        "allowed": true,
+        "unlocked": false,
+        "contextState": "absent",
+        "contextsCreated": 0,
+        "contextsClosed": 0,
+        "liveContexts": 0,
+        "liveNodes": 0,
+        "looping": false,
+        "gain": 0,
+        "signalRms": 0,
+        "analyserSampleActive": false,
+        "disposed": false,
+        "failed": false
+      },
+      "lastDisposed": null
+    }
+  },
+  "visibility": [],
+  "boundaries": [
+    {
+      "at": 23880.299999952316,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 24292.899999976158,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 24406.199999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 24700.5,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 26256.100000023842,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 26577.5,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 27027.799999952316,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 27331.299999952316,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 27449,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 27748.799999952316,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 29752,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 30037.5,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 31282.5,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 31607.899999976158,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 31842.600000023842,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 32169.699999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 32787.299999952316,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 33061.10000002384,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 33311.199999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    },
+    {
+      "at": 33716.299999952316,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 10
+    }
+  ],
+  "closed": false,
+  "physicalDevice": false
+}

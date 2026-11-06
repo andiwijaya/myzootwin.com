@@ -4,7 +4,7 @@ Source: owner Library handoff `libfile_09652153d1bc8191b2c1f1aa6cb5ce18` (44/44 
 
 Session 1 stopped safely before **2026-11-05 17:00 WIB / 10:00 UTC**. Session 2 explicitly authorized by the owner to continue at home, resumed at13:35 UTC /20:35 WIB from5852bdc. No new deadline specified. No push/deploy authorized. Original checkout, owner builds and owner saves stay untouched.
 
-Verified EH: **36/39 (92.31%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
+Verified EH: **37/39 (94.87%)**. Existing V1: **46/51**, five evidence/signoff gates remain open; original V1 documents unchanged.
 
 | Item | Status | Scope / evidence |
 |---|---|---|
@@ -44,10 +44,10 @@ Verified EH: **36/39 (92.31%)**. Existing V1: **46/51**, five evidence/signoff g
 | EH6-01 | [x] | Exact unchanged326-input source, canonical npm719/719/check307zero/build9, invariant coverage matrix and raw log hashes; [evidence](ELEPHANT_WHITEBOX.md) |
 | EH6-02 | [x] | Actual Q04V1-to-four-EH native journey, causal care/bath/social/visits, duplicate/occupied/zero cases,3viewports/cold;719tests; [evidence](ELEPHANT_FINAL_NATIVE.md) |
 | EH6-03 | [x] | Fresh40native IndexedDB migration/abort/quota/CAS/recovery/Undo/cold/clock cases,27/27DBcleanup, exact unchanged source; [evidence](ELEPHANT_FINAL_FAULTS.md) |
-| EH6-04 | [ ] | 15-minute active soak/profile |
+| EH6-04 | [x] | Actual900.44s1x/1200tick10x native soak, CPU/heap/resources, less redundant UI/diagnostics, exact retry/cold/cleanup;719tests; [evidence](ELEPHANT_SOAK.md) |
 | EH6-05 | [ ] | Hygiene/rights/security/routes |
 | EH6-06 | [ ] | Separate authorized release/live/rollback |
 
 Each checked item requires a local commit and its scoped evidence. Commit identities are recorded by Git history and subsequent checkpoints; no self-referential hash is invented. Upcoming steps remain unverified until their complete seam passes.
 
-Historical timed-session shutdown: [first checkpoint](ELEPHANT_SESSION_CHECKPOINT.md). Owner explicitly resumed work afterward; latest verified seam: [final native persistence/fault gates](ELEPHANT_FINAL_FAULTS.md). Latest home handoff: [checkpoint](ELEPHANT_HOME_CHECKPOINT.md).
+Historical timed-session shutdown: [first checkpoint](ELEPHANT_SESSION_CHECKPOINT.md). Owner explicitly resumed work afterward; latest verified seam: [active soak and performance](ELEPHANT_SOAK.md). Latest home handoff: [checkpoint](ELEPHANT_HOME_CHECKPOINT.md).

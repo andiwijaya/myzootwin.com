@@ -1,0 +1,60 @@
+import type {ZooSave} from '../../src/game/core/zoo-state.ts';
+
+type Scene=Record<string,number|boolean>;
+type Stock={id?:string;stock:number;capacity:number};
+interface Access {
+  root:HTMLElement;
+  diagnosticOnly?:boolean;
+  scene:()=>Scene|undefined;
+  state:()=>ZooSave|null;
+  ownership:()=>Record<string,unknown>;
+}
+type Phase='idle'|'1x'|'1x-complete'|'10x'|'complete'|'failed';
+/** Private diagnostic only: observes the real RAF and buys supplies through existing UI.
+ * No simulation advance, state adoption, free stock, reward, clock or renderer is added.
+ */
+export function mountElephantSoakProfile(access:Access){
+ const {root}=access,host=root.querySelector<HTMLElement>('[data-preview-stage]')!,out=document.querySelector<HTMLElement>('#qa-v2-soak-result')!;
+ const first=document.querySelector<HTMLButtonElement>('#qa-v2-soak-start')!,fast=document.querySelector<HTMLButtonElement>('#qa-v2-soak-fast')!;
+ first.hidden=access.diagnosticOnly===true;fast.hidden=false;fast.disabled=access.diagnosticOnly!==true;
+ if(access.diagnosticOnly)fast.textContent="Start bounded 10x CPU probe (QA)";
+ performance.setResourceTimingBufferSize(500);let networkBufferFull=0;
+ const events=new AbortController(),failures=new Set<string>(),visibility:{at:number;state:string}[]=[],phases:Record<string,unknown>[]=[];
+ let phase:Phase='idle',closed=false,food:Stock|undefined,water:Stock|undefined,elephantStock:Stock[]=[],lastAt=0,wasEligible=false,startedAt=0,activeMs=0,lastFrame=0,nextSample=0;
+ let start:ReturnType<typeof metrics>|null=null,frames=0,cpuSum=0,cpuMax=0,gapMax=0,gapSum=0,refillCount=0,refillSpent=0;
+ const workSum:Record<string,number>={},workMax:Record<string,number>={};
+ const buckets=[8.5,17,34,100,250,1000,Infinity],histogram=Array<number>(buckets.length).fill(0),samples:ReturnType<typeof metrics>[]=[],refills:Record<string,unknown>[]=[],boundaries:Record<string,unknown>[]=[];
+ performance.addEventListener('resourcetimingbufferfull',()=>{networkBufferFull++;},{signal:events.signal});
+ const heap=()=>{const m=(performance as Performance&{memory?:{usedJSHeapSize:number;totalJSHeapSize:number;jsHeapSizeLimit:number}}).memory;return m?{used:m.usedJSHeapSize,total:m.totalJSHeapSize,limit:m.jsHeapSizeLimit,method:'Chromium estimate; no forced GC, not process/native/GPU heap'}:null;};
+ const resources=()=>performance.getEntriesByType('resource').map(e=>{const r=e as PerformanceResourceTiming;return {url:new URL(r.name,location.href).pathname,origin:new URL(r.name,location.href).origin,initiator:r.initiatorType,transfer:r.transferSize,encoded:r.encodedBodySize,duration:r.duration};}).slice(0,160);
+ function gpu(){try{const gl=host.querySelector('canvas')?.getContext('webgl2');if(!gl)return null;const ext=gl.getExtension('WEBGL_debug_renderer_info');return {version:String(gl.getParameter(gl.VERSION)),renderer:ext?String(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)):null,vendor:ext?String(gl.getParameter(ext.UNMASKED_VENDOR_WEBGL)):null,method:'Reported browser context, not certification of the user physical GPU; no GPU timer query'};}catch{return null;}}
+ function metrics(){const scene=access.scene(),state=access.state();return {at:Date.now(),performanceNow:performance.now(),visibility:document.visibilityState,pauseReasons:root.dataset.pauseReasons,resourceEntriesObserved:performance.getEntriesByType('resource').length,resourceListCapped:performance.getEntriesByType('resource').length>160,resourceTimingBufferFullEvents:networkBufferFull,scene:scene?Object.fromEntries(['simulationTick','simulationGameTimeMs','simulationPaused','simulationSpeed','simulationDroppedWallMs','simulationDroppedSimMs','currency','commandRevision','placedBirds','habitatCount','liveElephantModels','pendingFrames','geometries','textures','programs','ownedMaterialsLive','drawCallsLastRender','trianglesLastRender','pixelRatio','bufferWidth','bufferHeight','elephantResidentBoneTextures','visibleVisitorModels','visitorModels','graphicsLow','effectiveReducedMotion','sunShadowEnabled'].map(k=>[k,scene[k]])):null,heap:heap(),actors:state?.animals.map(a=>({id:a.id,behavior:a.currentBehavior,hunger:a.hunger,thirst:a.thirst,welfare:a.welfare,food:a.foodEaten,water:a.waterDrunk,rest:a.restedTicks,log:a.enrichedTicks,...('socialInteractions'in a?{social:a.socialInteractions,baths:a.baths}:{})})),ownership:access.ownership()};}
+ function eligible(){const s=access.scene();return !closed&&(phase==='1x'||phase==='10x')&&document.visibilityState==='visible'&&s?.simulationPaused===false&&s.simulationSpeed===(phase==='1x'?1:10);}
+ function account(){const now=performance.now();if(lastAt&&wasEligible)activeMs+=Math.max(0,now-lastAt);lastAt=now;wasEligible=eligible();}
+ function report(){out.textContent=JSON.stringify({phase,diagnosticOnly:access.diagnosticOnly===true,method:'Real native RAF / document visibility / unpaused actual1x; bounded10x. Existing UI paid supplies only. No injected advance.',targets:{active1xMs:900000,maximum1xWallMs:1200000,fastTicks:1200,maximumFastWallMs:180000},activeMs,wallMs:startedAt?performance.now()-startedAt:0,frames,failures:[...failures],refillCount,refillSpent,completedPhases:phases,latestSample:samples.at(-1)??null,visibility,boundaries,closed,physicalDevice:false},null,2);}
+ function rememberBoundary(reason:string){if(closed)return;account();if((phase==='1x'||phase==='10x')&&boundaries.length<64)boundaries.push({at:performance.now(),reason,visible:document.visibilityState,paused:access.scene()?.simulationPaused,speed:access.scene()?.simulationSpeed});}
+ document.addEventListener('visibilitychange',()=>{rememberBoundary('native-visibilitychange');if(visibility.length<64)visibility.push({at:performance.now(),state:document.visibilityState});},{signal:events.signal});
+ const observer=new MutationObserver(()=>rememberBoundary('actual-pause-gate'));observer.observe(root,{attributes:true,attributeFilter:['data-pause-reasons']});
+ host.addEventListener('scene-food-change',e=>{food=(e as CustomEvent<Stock>).detail;},{signal:events.signal});
+ host.addEventListener('scene-water-change',e=>{water=(e as CustomEvent<Stock>).detail;},{signal:events.signal});
+ host.addEventListener('scene-elephant-care-change',e=>{const v=(e as CustomEvent<{feeders:Stock[];water:Stock|null;pond:Stock|null}>).detail;elephantStock=[...v.feeders,...(v.water?[v.water]:[]),...(v.pond?[v.pond]:[])];},{signal:events.signal});
+ function pause(){const b=root.querySelector<HTMLButtonElement>('[data-pause-toggle]');if(b?.getAttribute('aria-pressed')==='false')b.click();}
+ function buy(button:HTMLButtonElement|null,id:string){if(!button||button.disabled||button.hidden||button.closest<HTMLElement>('[data-hud-pane]')?.hidden||root.querySelector('dialog[open]'))return;const before=access.scene();button.click();const after=access.scene();if(before&&after&&Number(after.commandRevision)>Number(before.commandRevision)){const spent=Number(before.currency)-Number(after.currency);refillCount++;refillSpent+=spent;if(refills.length<160)refills.push({id,tick:after.simulationTick,command:after.commandRevision,spent});if(spent<=0)failures.add('A paid-supply action did not debit positive cash');}}
+ function care(){if(!eligible())return;if(root.querySelector('button[data-hud-tab="care"]')?.getAttribute('aria-selected')!=='true'){failures.add('Care pane was not active for visible UI supply policy');return;}if(food?.stock!==undefined&&food.stock<=2)buy(root.querySelector('[data-food-command="refill"]'),'macaw-food');if(water?.stock!==undefined&&water.stock<=2)buy(root.querySelector('[data-water-command="refill"]'),'macaw-water');for(const r of elephantStock.filter(r=>r.capacity===8&&r.stock<=2))buy(root.querySelector(`[data-elephant-refill="${CSS.escape(r.id??'')}"]`),r.id??'missing');}
+ function finish(ok:boolean){account();const end=metrics(),startScene=start?.scene,endScene=end.scene,ticks=Number(endScene?.simulationTick)-Number(startScene?.simulationTick),gameMs=Number(endScene?.simulationGameTimeMs)-Number(startScene?.simulationGameTimeMs),wall=performance.now()-startedAt;
+  if(!(ticks>0))failures.add('No positive simulation progress');
+  phases.push({kind:phase,status:ok&&failures.size===0?'MEASURED':'FAIL',activeMs,wallMs:wall,start,end,actualTicks:ticks,actualGameTimeMs:gameMs,gameTimePerActiveWall:activeMs?gameMs/activeMs:null,wallFidelityCertified:phase==='1x'&&gameMs/activeMs>=.95&&gameMs/activeMs<=1.05,frames,frameGap:{histogram:histogram.map((count,i)=>({upperMs:Number.isFinite(buckets[i])?buckets[i]:'unbounded',count})),maximumMs:gapMax,meanMs:frames>1?gapSum/(frames-1):null,deliveredFramesPerActiveSecond:activeMs?frames/(activeMs/1000):null},withinCallbackWork:{sum:{...workSum},maximum:{...workMax},overlapping:true,method:"QA wrappers around actual session.inspect and session-store synchronous calls; subset costs overlap"},callbackCpu:{sumMs:cpuSum,maximumMs:cpuMax,meanMs:frames?cpuSum/frames:null,notGpuTime:true},refillCount,refillSpent,refills:[...refills],samples:[...samples],resourcesAtStart:initialResources,resourcesAtEnd:resources(),gpu:gpu(),failures:[...failures]});
+  phase=ok&&failures.size===0?(phase==='1x'?'1x-complete':'complete'):'failed';wasEligible=false;pause();report();
+ }
+ let initialResources:ReturnType<typeof resources>=[];
+ function begin(next:'1x'|'10x'){if(closed||next==='1x'&&phase!=='idle'||next==='10x'&&phase!=='1x-complete'&&!(access.diagnosticOnly&&phase==='idle'))return;const s=access.scene();if(!s||s.simulationPaused!==false||s.simulationSpeed!==(next==='1x'?1:10)||s.liveElephantModels!==2||s.placedBirds!==2||root.querySelector('button[data-hud-tab="care"]')?.getAttribute('aria-selected')!=='true'){out.textContent='UNRUN: select Care, Resume and choose the actual requested speed before starting.';return;}if(!food||!water||elephantStock.filter(r=>r.capacity===8).length!==4){out.textContent='UNRUN: waiting for actual food/water/four consumable facility views.';return;}if(next==='10x'&&s.graphicsLow!==true){out.textContent='UNRUN: apply Low power before the bounded10x comparison.';return;}
+  phase=next;startedAt=performance.now();lastAt=startedAt;activeMs=0;lastFrame=0;frames=0;cpuSum=0;cpuMax=0;gapMax=0;gapSum=0;refillCount=0;refillSpent=0;for(const k of Object.keys(workSum))delete workSum[k];for(const k of Object.keys(workMax))delete workMax[k];histogram.fill(0);samples.length=0;refills.length=0;failures.clear();start=metrics();samples.push(start);nextSample=60000;initialResources=resources();wasEligible=eligible();first.disabled=true;fast.disabled=true;report();
+ }
+ first.addEventListener('click',()=>begin('1x'),{signal:events.signal});fast.addEventListener('click',()=>begin('10x'),{signal:events.signal});
+ report();
+ return {
+  sample(){if(closed)return;if(phase==='1x'||phase==='10x'){account();const s=access.scene();if(!s||s.liveElephantModels!==2||s.placedBirds!==2||!Number.isFinite(s.currency)||Number(s.currency)<0)failures.add('Missing residents/renderer or invalid currency');care();if(activeMs>=nextSample&&samples.length<24){samples.push(metrics());nextSample+=60000;}if(phase==='1x'&&activeMs>=900000)finish(true);else if(performance.now()-startedAt>(phase==='1x'?1200000:180000)){failures.add('Bounded phase wall deadline reached');finish(false);}}fast.disabled=phase!=='1x-complete'&&!(access.diagnosticOnly&&phase==='idle');report();},
+  frame(t:number,cpuMs:number,work:Record<string,number>={}){if(!eligible())return;for(const [k,v]of Object.entries(work)){workSum[k]=(workSum[k]??0)+v;workMax[k]=Math.max(workMax[k]??0,v);}frames++;cpuSum+=cpuMs;cpuMax=Math.max(cpuMax,cpuMs);if(lastFrame){const gap=Math.max(0,t-lastFrame);gapSum+=gap;gapMax=Math.max(gapMax,gap);histogram[buckets.findIndex(b=>gap<=b)]++;}lastFrame=t;if(phase==='10x'&&Number(access.scene()?.simulationTick)-Number(start?.scene?.simulationTick)>=1200)finish(true);},
+  dispose(){if(closed)return;if(phase==='1x'||phase==='10x'){failures.add('Closed before the bounded measurement completed');finish(false);}closed=true;events.abort();observer.disconnect();boundaries.push({at:performance.now(),reason:'actual-disposal',ownership:access.ownership()});report();}
+ };
+}

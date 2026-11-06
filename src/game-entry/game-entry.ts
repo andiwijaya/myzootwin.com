@@ -66,8 +66,12 @@ export function mountGameEntry(root: HTMLElement, options: {
     const durable = createAutosave<ZooSave>(options.backend ?? createElephantIndexedDbBackend(browserFactory()), { writer, changed: () => {
             if (disposed)
                 return;
-            syncPause();
-            render(locale);
+            // Refresh status/visibility without reapplying the locale to every menu.
+            renderSave();
+            preview?.refresh();
+            recoveryPanel?.render();
+            restartPanel?.render();
+            visualPanel?.render();
         }, committed: (revision, generation) => channel?.postMessage({ writer, revision, generation }) });
     const currentVisual=()=>visualChoice??durable.savedVisualSettings()??{graphics:'auto' as const,reducedMotion:false};
     const currentMuted=()=>mutedChoice??durable.savedMuted()??true;
@@ -269,7 +273,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         if (disposed)
             return;
         const panel = root.querySelector<HTMLElement>('[data-session-panel]'), toggle = root.querySelector<HTMLButtonElement>('[data-pause-toggle]'), status = root.querySelector<HTMLElement>('[data-pause-status]');
-        const v = durable.view(), dialogOpen = anyDialogOpen(), paused = pauseGate.paused() || dialogOpen, ready = preview?.inspect().state.status === 'ready', blocked = ['conflict', 'unreadable'].includes(v.phase) || v.restartBusy;
+        const v = durable.view(), dialogOpen = anyDialogOpen(), paused = pauseGate.paused() || dialogOpen, ready = preview?.getState().status === 'ready', blocked = ['conflict', 'unreadable'].includes(v.phase) || v.restartBusy;
         root.dataset.sessionPaused = String(paused);
         root.dataset.pauseReasons = [...pauseGate.reasons(), ...(dialogOpen && !pauseGate.has('dialog') ? ['dialog'] : [])].join(',');
         if (panel) {
@@ -299,7 +303,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         syncPause();
         renderSave();
     }, { signal: events.signal });
-    root.addEventListener('click',event=>{if(event.isTrusted&&preview?.inspect().state.status==='ready'&&durable.view().active)ambience.gesture();},{signal:events.signal});
+    root.addEventListener('click',event=>{if(event.isTrusted&&preview?.getState().status==='ready'&&durable.view().active)ambience.gesture();},{signal:events.signal});
     root.addEventListener('hud-layout-change',syncPause,{signal:events.signal});
     const pauseObserver = new MutationObserver(syncPause);
     pauseObserver.observe(root, { subtree: true, attributes: true, attributeFilter: ['open', 'data-renderer-state'] });

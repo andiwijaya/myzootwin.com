@@ -1,0 +1,591 @@
+{
+  "phase": "1x",
+  "diagnosticOnly": false,
+  "method": "Real native RAF / document visibility / unpaused actual1x; bounded10x. Existing UI paid supplies only. No injected advance.",
+  "targets": {
+    "active1xMs": 900000,
+    "maximum1xWallMs": 1200000,
+    "fastTicks": 1200,
+    "maximumFastWallMs": 180000
+  },
+  "activeMs": 734423,
+  "wallMs": 734428,
+  "frames": 43654,
+  "failures": [],
+  "refillCount": 29,
+  "refillSpent": 172,
+  "completedPhases": [],
+  "latestSample": {
+    "at": 1793938750923,
+    "performanceNow": 740953.1999999285,
+    "visibility": "visible",
+    "pauseReasons": "",
+    "resourceEntriesObserved": 13,
+    "resourceListCapped": false,
+    "resourceTimingBufferFullEvents": 0,
+    "scene": {
+      "simulationTick": 10245,
+      "simulationGameTimeMs": 1024500,
+      "simulationPaused": false,
+      "simulationSpeed": 1,
+      "simulationDroppedWallMs": 0,
+      "simulationDroppedSimMs": 0,
+      "currency": 1455,
+      "commandRevision": 76,
+      "placedBirds": 2,
+      "habitatCount": 2,
+      "liveElephantModels": 2,
+      "pendingFrames": 1,
+      "geometries": 49,
+      "textures": 5,
+      "programs": 13,
+      "ownedMaterialsLive": 31,
+      "drawCallsLastRender": 81,
+      "trianglesLastRender": 26370,
+      "pixelRatio": 1.5,
+      "bufferWidth": 1114,
+      "bufferHeight": 885,
+      "elephantResidentBoneTextures": 2,
+      "visibleVisitorModels": 2,
+      "visitorModels": 2,
+      "graphicsLow": false,
+      "effectiveReducedMotion": false,
+      "sunShadowEnabled": true
+    },
+    "heap": {
+      "used": 45852312,
+      "total": 112422288,
+      "limit": 4395630592,
+      "method": "Chromium estimate; no forced GC, not process/native/GPU heap"
+    },
+    "actors": [
+      {
+        "id": "macaw-1",
+        "behavior": "seek-water",
+        "hunger": 12,
+        "thirst": 38.75,
+        "welfare": 81.78,
+        "food": 42,
+        "water": 44,
+        "rest": 959,
+        "log": 270
+      },
+      {
+        "id": "macaw-2",
+        "behavior": "seek-water",
+        "hunger": 12,
+        "thirst": 38.75,
+        "welfare": 81.81,
+        "food": 42,
+        "water": 44,
+        "rest": 935,
+        "log": 270
+      },
+      {
+        "id": "elephant-ayu",
+        "behavior": "idle",
+        "hunger": 31.20000000000127,
+        "thirst": 16.48,
+        "welfare": 76,
+        "food": 14,
+        "water": 17,
+        "rest": 120,
+        "log": 72,
+        "social": 2,
+        "baths": 3
+      },
+      {
+        "id": "elephant-nara",
+        "behavior": "idle",
+        "hunger": 26.060000000001235,
+        "thirst": 22.59999999999908,
+        "welfare": 73,
+        "food": 14,
+        "water": 17,
+        "rest": 120,
+        "log": 96,
+        "social": 2,
+        "baths": 1
+      }
+    ],
+    "ownership": {
+      "created": 1,
+      "liveOwners": 1,
+      "pendingDriver": 1,
+      "maxOwners": 1,
+      "maxPendingDriver": 1,
+      "canvases": 1,
+      "audio": {
+        "status": "muted",
+        "muted": true,
+        "allowed": true,
+        "unlocked": false,
+        "contextState": "absent",
+        "contextsCreated": 0,
+        "contextsClosed": 0,
+        "liveContexts": 0,
+        "liveNodes": 0,
+        "looping": false,
+        "gain": 0,
+        "signalRms": 0,
+        "analyserSampleActive": false,
+        "disposed": false,
+        "failed": false
+      },
+      "lastDisposed": null
+    }
+  },
+  "visibility": [],
+  "boundaries": [
+    {
+      "at": 22215.599999904633,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 22247.099999904633,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 22309.899999976158,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 24331.5,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 24383,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 24422.699999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 26420.799999952316,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 26452.899999976158,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 26498.899999976158,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 28495.699999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 28550.699999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 30571,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 30634.5,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 32647.899999976158,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 32722.799999952316,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 34742.09999990463,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 34797,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 34831.299999952316,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 36826.09999990463,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 36875.59999990463,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 36914,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 38918.39999997616,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 38989.199999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 39014.39999997616,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 41021.299999952316,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 41068.199999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 41120.59999990463,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 42003.89999997616,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 42081.799999952316,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 44093.59999990463,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 44169.09999990463,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 45032.699999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 45076,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 45114.5,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 47121.5,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 47179.5,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 47215.5,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 49215.59999990463,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 49250.89999997616,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 49309.59999990463,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 51314.199999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 51344.199999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 51412.299999952316,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 53418.699999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 53448,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 53515.199999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 55521.59999990463,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 55580.199999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 55616.699999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 57618.59999990463,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 57658.09999990463,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 57716.699999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 59719.199999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 59746.199999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 59810.5,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 61815,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 61864.299999952316,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 61909.89999997616,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 63008,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 63081.39999997616,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 65092.199999928474,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 65130.09999990463,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 67146.19999992847,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    },
+    {
+      "at": 67221.59999990463,
+      "reason": "actual-pause-gate",
+      "visible": "visible",
+      "paused": false,
+      "speed": 1
+    }
+  ],
+  "closed": false,
+  "physicalDevice": false
+}
