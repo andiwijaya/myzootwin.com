@@ -5,7 +5,11 @@ import type { EconomyView } from '../game/economy/spending.ts';
 import type { ArrivalView } from '../game/visitors/arrivals.ts';
 import type { MissionView } from '../game/missions/engine.ts';
 import type { SpeedView } from './speed-panel.ts';
-const copy = { en: { actions: 'Game actions', missions: 'Missions', care: 'Care', visitors: 'Guests', build: 'Build', options: 'Options', saveDetails: 'Save details', saved: 'Saved on this device', dirty: 'Changes pending', saving: 'Saving…', error: 'Not saved', conflict: 'Game changed in another tab', unreadable: 'Save needs recovery', unavailable: 'Temporary progress', status: 'Sanctuary status', tools: 'Zoo tools', welfare: 'Welfare {n}%', noBirds: 'No birds', guests: 'Guests {n}', speed: 'Simulation speed {n}×. Open options', done: 'All missions complete', mission: 'Current mission {id}', coins: 'Zoo Coins {n}' }, id: { actions: "Aksi permainan", missions: 'Misi', care: 'Rawat', visitors: 'Tamu', build: 'Bangun', options: 'Opsi', saveDetails: "Detail simpanan", saved: 'Tersimpan di perangkat', dirty: "Menunggu simpan otomatis", saving: 'Menyimpan…', error: 'Belum tersimpan', conflict: "Permainan berubah di tab lain", unreadable: "Simpanan perlu pemulihan", unavailable: 'Progres sementara', status: 'Status suaka', tools: 'Alat suaka', welfare: 'Satwa {n}%', noBirds: 'Belum ada satwa', guests: 'Tamu {n}', speed: 'Kecepatan simulasi {n}×. Buka opsi', done: 'Semua misi selesai', mission: 'Misi saat ini {id}', coins: 'Zoo Coins {n}' } };
+const copy = { en: { actions: 'Game actions', missions: 'Missions', care: 'Care', visitors: 'Guests', build: 'Build', options: 'Options', saveDetails: 'Save details', saved: 'Saved on this device', dirty: 'Changes pending', saving: 'Saving…', error: 'Not saved', conflict: 'Game changed in another tab', unreadable: 'Save needs recovery', unavailable: 'Temporary progress', status: 'Sanctuary status', tools: 'Zoo tools', welfare: 'Macaws {n}%', welfareScope: 'Average welfare of placed macaws: {n}%. Inspect elephant welfare in Care.', noBirds: 'No macaws', guests: 'Guests {n}', speed: 'Simulation speed {n}×. Open options', done: 'All macaw missions complete', mission: 'Current macaw mission {id}', coins: 'Zoo Coins {n}' }, id: { actions: "Aksi permainan", missions: 'Misi', care: 'Rawat', visitors: 'Tamu', build: 'Bangun', options: 'Opsi', saveDetails: "Detail simpanan", saved: 'Tersimpan di perangkat', dirty: "Menunggu simpan otomatis", saving: 'Menyimpan…', error: 'Belum tersimpan', conflict: "Permainan berubah di tab lain", unreadable: "Simpanan perlu pemulihan", unavailable: 'Progres sementara', status: 'Status suaka', tools: 'Alat suaka', welfare: 'Makaw {n}%', welfareScope: 'Rata-rata kesejahteraan makaw di aviari: {n}%. Periksa kesejahteraan gajah di Rawat.', noBirds: 'Belum ada makaw', guests: 'Tamu {n}', speed: 'Kecepatan simulasi {n}×. Buka opsi', done: 'Semua misi makaw selesai', mission: 'Misi makaw saat ini {id}', coins: 'Zoo Coins {n}' } };
+/** The existing HUD receives the macaw view; keep its visible and accessible scope honest in a shared zoo. */
+export function presentMacawHud(welfare:number|null,mission:string|null,locale:'en'|'id'){
+ const c=copy[locale],n=welfare===null?'':formatNumber(welfare,locale);return{welfare:welfare===null?c.noBirds:c.welfare.replace('{n}',n),welfareLabel:welfare===null?c.noBirds:c.welfareScope.replace('{n}',n),mission:mission??'✓',missionLabel:mission?c.mission.replace('{id}',mission):c.done};
+}
 /** Reveal before focus/scroll; no simulation state changes live in the HUD. */
 export function revealHudTarget(target: Element | null) {
     const root = target?.closest<HTMLElement>('[data-play-entry]'), pane = target?.closest<HTMLElement>('[data-hud-pane]');
@@ -85,10 +89,13 @@ export function mountHudLayout(root: HTMLElement) {
         set('[data-hud-coins]', coinSummary(balance, locale));
         root.querySelector('[data-hud-coins]')?.setAttribute('aria-label', c.coins.replace('{n}', new Intl.NumberFormat(locale).format(balance)));
         root.querySelector('[data-hud-coins]')?.setAttribute('title', new Intl.NumberFormat(locale).format(balance) + ' ZC');
-        set('[data-hud-welfare]', welfare === null ? c.noBirds : c.welfare.replace('{n}', formatNumber(welfare,locale)));
+        const macawStatus=presentMacawHud(welfare,mission,locale);
+        set('[data-hud-welfare]',macawStatus.welfare);
+        root.querySelector('[data-hud-welfare]')?.setAttribute('aria-label',macawStatus.welfareLabel);
+        root.querySelector('[data-hud-welfare]')?.setAttribute('title',macawStatus.welfareLabel);
         set('[data-hud-guests]', c.guests.replace('{n}', formatNumber(guests,locale)));
-        set('[data-hud-mission]', mission ?? '✓');
-        root.querySelector('[data-hud-mission]')?.setAttribute('aria-label', mission ? c.mission.replace('{id}', mission) : c.done);
+        set('[data-hud-mission]',macawStatus.mission);
+        root.querySelector('[data-hud-mission]')?.setAttribute('aria-label', macawStatus.missionLabel);
         set('[data-hud-speed]', speed + '×');
         root.querySelector('[data-hud-speed]')?.setAttribute('aria-label', c.speed.replace('{n}', formatNumber(speed,locale)));
         stats?.setAttribute('aria-label', c.status);
