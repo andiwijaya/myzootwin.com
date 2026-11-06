@@ -41,7 +41,7 @@ async function waitFor(url,child) {
 async function stopAll() { await Promise.all([...owned].map(child=>stopChild(child))); }
 async function requireFree() { for(const port of [4321,4322])if(!await portFree(port))throw Error(`Loopback port ${port} is occupied; no unowned process will be stopped.`); }
 async function routeChecks(report) {
-  const baseline=await readJson(join(root,'docs/qa/m0-02/baseline-results.json'));
+  const baseline=await readJson(join(root,'docs/qa/giraffe-baseline/released-route-metadata.json'));
   const routes=['/','/animals/','/wildlife/','/pets/','/learn/','/adventures/','/gear/','/about/','/play/'];
   const observations=[];
   for(const path of routes) {
@@ -52,7 +52,7 @@ async function routeChecks(report) {
     if(meta.canonical!=='https://myzootwin.com'+path)throw Error(`Canonical regression ${path}`);
     const prior=baseline.desktopRoutes.find(x=>x.path===path)?.direct;
     const normalize=text=>text.replaceAll('â€”','-').replace(/\s+/g,'');
-    if(prior&&(normalize(meta.title)!==normalize(prior.title)||normalize(meta.h1)!==normalize(prior.h1)))throw Error(`Baseline journal metadata regression ${path}`);
+    if(prior&&Object.keys(prior).some(key=>normalize(String(meta[key]??''))!==normalize(String(prior[key]))))throw Error(`Baseline journal metadata regression ${path}`);
     observations.push({path,status:response.status,sha256:sha256(html),...meta});
   }
   const direct=await fetch('http://127.0.0.1:4321/play',{signal:AbortSignal.timeout(5000)});
