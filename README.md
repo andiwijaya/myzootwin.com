@@ -1,6 +1,6 @@
 # MyZooTwin.com
 
-An animal learning journal with a local, playable Tropical Creek Sanctuary at `/play`: build a habitat/path, care for two macaws, welcome visitors, earn virtual tickets and complete four missions. Progress uses versioned local storage. V1 retains its documented quality/signoff gates. The local Elephant Grove candidate adds Ayu and Nara, paid care, social behavior, bathing and four elephant missions in the same world. [Elephant checklist](docs/ELEPHANT_PROGRESS.md) and [release preparation](docs/ELEPHANT_RELEASE_PLAN.md) record verified scope; this candidate is not deployed.
+An animal learning journal with a local, playable Tropical Creek Sanctuary at `/play`: build a habitat/path, care for two macaws, welcome visitors, earn virtual tickets and complete four missions. Progress uses versioned local storage. V1 retains its documented quality/signoff gates. Elephant Grove adds Ayu and Nara, paid care, social behavior, bathing and four elephant missions in the same world. [Elephant checklist](docs/ELEPHANT_PROGRESS.md) and [release preparation](docs/ELEPHANT_RELEASE_PLAN.md) record verified scope; [The release is deployed](docs/ELEPHANT_LIVE_RELEASE.md).
 
 ## Development
 

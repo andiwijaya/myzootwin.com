@@ -43,3 +43,9 @@ docs/qa/elephant-hygiene/** -text whitespace=trailing-space,space-before-tab,cr-
 # Captured vendor stdout retains its original trailing spaces as evidence.
 docs/qa/elephant-soak/*.log -whitespace
 docs/qa/elephant-hygiene/*.log -whitespace
+
+# Exact release evidence; captured tool logs keep verbatim formatting.
+docs/qa/elephant-release/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/qa/elephant-release/*.log -whitespace
+# Captured accessibility transcripts retain native list-marker spacing.
+docs/qa/elephant-release/*.txt -whitespace

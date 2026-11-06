@@ -1,6 +1,6 @@
-# Elephant Grove: held release candidate and save-safe rollback
+# Elephant Grove: publication and save-safe rollback plan
 
-Status: **EH6-06 OPEN / NOT AUTHORIZED**. Coding/local tests/local commits are authorized; push/deploy require separate owner permission.38/39 engineering items do not mean production publication or blanket acceptance of five inheritedV1gates. The candidate is the local elephant-grove commit containing this plan (read its actual SHA withgit rev-parseHEAD); no self-referential SHA is invented.
+Status: **EH6-06 COMPLETE: owner authorized, release2aa8363 deployed6Nov2026**. [Observed publication/live evidence](ELEPHANT_LIVE_RELEASE.md) supersedes the former hold. The following records the reviewed execution/rollback constraints. Five inheritedV1gates remain open; no blanket physical/security/legal signoff. Later local evidence commits are not published.
 
 ## Concrete review package
 
@@ -8,7 +8,7 @@ Runtime source327inputs`0bee95281804ffe6372bc3a3ebdfb0c8daceb40a982dd25c5c117ff7
 
 Read-only6Novremote main isd6aacb8555142a19a9844d84c4b1680ea5013e49, an ancestor. Origin ishttps://github.com/andiwijaya/myzootwin.com.git; baseline-local pointsC:/MyZooTwin and must never receive this push. Original checkout stays clean63ce52a. Historical productionbc8b46ce-2ee6-4f7a-b747-f7634247de2a/source d6aacb8 is a pre-upgrade reference, not a compatibleV2gameplay rollback.
 
-## Execution after explicit publication permission
+## Reviewed execution after explicit publication permission
 
 1. Read latest owner instruction and actual localHEAD/status; confirm this reviewed source/build remains exact. Re-read remote main, compare ancestry and any new changes. Stop on changed/unreviewed remote/source instead of force-pushing. Verify current Cloudflaremyzootwin-com/main binding/npmrunbuild/dist/root and supportedNode runtime using existing authorized access; stop for login/reconnect/new permissions. No such access/config change is implicitly granted by this plan.
 2. Confirm permitted scope includes one fast-forward publication tooriginmain and resulting automatic Pages deployment. Proposed command, **not executed**: `git push origin HEAD:main`. No branch/test push, force push, workflow dispatch or separate manual deployment. Publishing a branch can also trigger previews under historical policy.
@@ -24,4 +24,4 @@ Prepared local fallback:7bcca5c, full GroveV2before performance-only change. Sou
 
 If a future incident affects the commonV2core, use a read-only maintenance response or forward-compatible fix that leaves IndexedDB untouched; prepare/review it before requesting deployment permission. Never delete databases, downgrade schema, importV1overV2, reset progress or automatically claim/reissue grants. Actual rollback/maintenance deployment needs explicit permission unless a later release instruction specifically authorizes that contingency. Keep newV2saves and the originalV1backup intact.
 
-Current remaining blocker is **publication authorization**, plus fresh hosting/live verification when authorized. No push, deployment, live save mutation or rollback has occurred in this Elephant task.
+Publication was authorized and completed once. No rollback was needed or executed. Production is2aa8363/2c7e695d; the local evidence commit does not request or perform another deployment. See the release record for exact live scope and limitations.

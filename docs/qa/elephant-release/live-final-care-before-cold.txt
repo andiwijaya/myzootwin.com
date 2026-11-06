@@ -1,0 +1,165 @@
+Browser tab: 1, Title: "Play Zoo — Tropical Creek | MyZooTwin", URL: "https://myzootwin.com/play/".
+1 AXWebArea Play Zoo — Tropical Creek | MyZooTwin, URL: myzootwin.com/play/
+	2 link Description: Skip to main content, Value: myzootwin.com/play/#main-content
+	3 container
+		4 link Description: MyZooTwin home, Value: myzootwin.com/
+		5 container Main navigation
+			6 link Description: Play Zoo, Value: myzootwin.com/play/
+			7 link Description: Animals, Value: myzootwin.com/animals/
+			8 link Description: Wildlife, Value: myzootwin.com/wildlife/
+			9 link Description: Pets, Value: myzootwin.com/pets/
+			10 link Description: Learn, Value: myzootwin.com/learn/
+			11 link Description: Adventures, Value: myzootwin.com/adventures/
+			12 link Description: Gear, Value: myzootwin.com/gear/
+		13 link Description: About , Value: myzootwin.com/about/
+	14 container A little world to care for.
+		58 container
+			59 container Sanctuary status
+				60 container Zoo Coins 1,420
+					352 text 1,420 ZC
+				62 container Average welfare of placed macaws: 30%. Inspect elephant welfare in Care.
+					353 text Macaws 30%
+				354 text Guests 3
+				65 container All macaw missions complete
+					340 text ✓
+				67 container Simulation speed 1×. Open options
+					355 text 1×
+			69 container Local game progress
+				70 button (collapsed) Save details, Secondary Actions: Expand
+					356 text Saved on this device
+					72 text Save details
+			73 container Session controls
+				74 checkbox Resume zoo, Value: 1
+				357 text Zoo paused. Animals, visitors, money and missions are frozen.
+			76 button (collapsed) Options, Secondary Actions: Expand
+				77 text Options
+		32 container
+			79 container Game actions
+				80 text Game actions
+				81 container World camera controls
+					82 button (disabled) Zoom out
+					358 text 100%
+					84 button (disabled) Zoom in
+					85 button (disabled) Rotate camera left 45 degrees
+					86 button (disabled) Rotate camera right 45 degrees
+					87 text Camera angle 0 degrees
+					88 button (disabled) Reset
+			89 tab group Zoo tools
+				90 tab (selectable, settable, boolean) Missions, Value: 0, ID: hud-tab-missions
+				91 tab (selected, settable, boolean) Care, Value: 1, ID: hud-tab-care
+				92 tab (selectable, settable, boolean) Guests, Value: 0, ID: hud-tab-visitors
+				93 tab (selectable, settable, boolean) Build, Value: 0, ID: hud-tab-build
+			359 container Description: Care, ID: hud-pane-care
+				360 container Elephant care
+					361 heading Elephant care, Value: 3, ID: elephant-care-title
+						362 text Elephant care
+					363 container Elephant care
+						364 text Give Ayu and Nara two browse feeders and fresh drinking water inside their home.
+						365 text Hunger and thirst: 0% means satisfied, 100% means urgent need. Welfare, energy and comfort are better when higher. Supplies help only after real use.
+						366 text Fill the pond for a refreshing bath. Ayu and Nara approach in turn after food and water; baths use real pond water and have a cooldown.
+						367 container
+							368 heading Browse feeder 1, Value: 4
+								369 text Browse feeder 1
+							370 text 4 / 8 portions
+							371 button (disabled) Browse feeder 1: Refill · 8 ZC
+							372 button (disabled) Remove facility: Browse feeder 1
+						373 container
+							374 heading Browse feeder 2, Value: 4
+								375 text Browse feeder 2
+							376 text 5 / 8 portions
+							377 button (disabled) Browse feeder 2: Refill · 8 ZC
+							378 button (disabled) Remove facility: Browse feeder 2
+						379 container
+							380 heading Drinking trough, Value: 4
+								381 text Drinking trough
+							382 text 0 / 8 portions
+							383 button (disabled) Drinking trough: Refill · 4 ZC
+							384 button (disabled) Remove facility: Drinking trough
+						385 container
+							386 heading Bathing pond, Value: 4
+								387 text Bathing pond
+							388 text 6 / 8 baths of water
+							389 button (disabled) Bathing pond: Refill · 12 ZC
+							390 button (disabled) Remove facility: Bathing pond
+						391 container
+							392 heading Shade grove, Value: 4
+								393 text Shade grove
+							394 text Ready to use · no refill needed
+							395 button (disabled) Remove facility: Shade grove
+						396 container
+							397 heading Log and mud patch, Value: 4
+								398 text Log and mud patch
+							399 text Ready to use · no refill needed
+							400 button (disabled) Remove facility: Log and mud patch
+						401 text The facility is full again.
+						402 container
+							403 heading Ayu · Going to the pond, Value: 4
+								404 text Ayu · Going to the pond
+							405 text Ayu: hunger 12%, thirst 34%, welfare 58%. Meals: 7 · Drinks: 8 · Baths: 2 Energy: 99% · Shade comfort: 87% · Enrichment: 65% Social comfort: 71% · Greetings: 1
+							406 level indicator Description: Ayu welfare: 58%, Value: 58
+							407 button (collapsed) Inspect Ayu, Secondary Actions: Expand
+								408 text Inspect Ayu
+						409 container
+							410 heading Nara · Standing quietly, Value: 4
+								411 text Nara · Standing quietly
+							412 text Nara: hunger 15%, thirst 32%, welfare 58%. Meals: 7 · Drinks: 8 · Baths: 2 Energy: 94% · Shade comfort: 64% · Enrichment: 93% Social comfort: 71% · Greetings: 1
+							413 level indicator Description: Nara welfare: 58%, Value: 58
+							414 button (collapsed) Inspect Nara, Secondary Actions: Expand
+								415 text Inspect Nara
+				416 container Two curious macaws
+					417 heading Two curious macaws, Value: 3, ID: birds-title
+						418 text Two curious macaws
+					419 text Welcome both macaws, then provide food, water and rest below. Inspect a bird for the reasons behind its welfare and the next care action.
+					420 container Two curious macaws
+						421 button (disabled) Move birds to reserve for habitat edits
+					422 text Two macaws live in this aviary. Occupied habitats cannot be removed.
+					423 text Hunger and thirst: lower is better. Energy, enrichment and welfare: higher is better. Inspect either bird for the actual causes and next action.
+					424 content list
+						425 container
+							426 AXListMarker • 
+							427 text Macaw 1 · Perching / short flight · Hunger 100% · Portions eaten 38 · Thirst 100% · Drinks 39 · Energy 70% · Enrichment 69% Welfare 30% · ! Needs care
+							428 button (collapsed) Inspect Macaw 1, Secondary Actions: Expand
+						429 container
+							430 AXListMarker • 
+							431 text Macaw 2 · Perching / short flight · Hunger 100% · Portions eaten 39 · Thirst 100% · Drinks 39 · Energy 85% · Enrichment 63% Welfare 29% · ! Needs care
+							432 button (collapsed) Inspect Macaw 2, Secondary Actions: Expand
+				433 container Fruit feeder
+					434 heading Fruit feeder, Value: 3, ID: food-title
+						435 text Fruit feeder
+					436 container Fruit feeder
+						437 text Place a two-port feeder on the marked front edge, then fill it. Hungry macaws walk to a bowl and eat real portions. Hunger runs from 0% (full) to 100% (very hungry). Refill service has the displayed Zoo Coin cost.
+						438 container
+							439 button (disabled) Fill feeder · 8 ZC
+							440 button (disabled) Remove feeder
+						441 text Build 80 ZC · Refill service 8 ZC · Balance 1,420 ZC. Removal returns only actual construction spending; refill fees are not refunded.
+						442 text Empty feeder: 0/8 portions. Fill it to attract hungry birds.
+				443 container Fresh water
+					444 heading Fresh water, Value: 3, ID: water-title
+						445 text Fresh water
+					446 container Fresh water
+						447 text Place two blue water bowls at the sides of the aviary, then refill them. Thirsty macaws approach and drink real portions. Thirst runs from 0% (hydrated) to 100% (very thirsty). Refill service has the displayed Zoo Coin cost.
+						448 container
+							449 button (disabled) Refill water · 4 ZC
+							450 button (disabled) Remove water bowls
+						451 text Build 60 ZC · Refill service 4 ZC · Balance 1,420 ZC. Removal returns only actual construction spending; refill fees are not refunded.
+						452 text Empty water bowls: 0/8 portions. Refill to help thirsty birds.
+				453 container Rest & enrichment
+					454 heading Rest & enrichment, Value: 3, ID: perch-title
+						455 text Rest & enrichment
+					456 container Rest & enrichment
+						457 text Prepare two supported leafy perches. Tired macaws sleep to recover energy; awake macaws look around the plants to improve enrichment. Both scores run from 0% to 100% (higher is better). Benefits happen only while the bird uses a prepared perch. Food and water still need care. Construction has the displayed Zoo Coin cost.
+						458 button (disabled) Remove rest garden
+						459 text Build 80 ZC · Balance 1,420 ZC. Removal returns actual construction spending.
+						460 text Prepared perches: resting 0/2; exploring 0/2. Energy rises only during sleep; enrichment rises only during exploration. Urgent food/water can interrupt safely.
+	48 container
+		49 link Description: ✦ MyZooTwin, Value: myzootwin.com/
+		50 text A curious field guide to the animals we share this planet with.
+		51 link Description: Animals, Value: myzootwin.com/animals/
+		52 link Description: Wildlife, Value: myzootwin.com/wildlife/
+		53 link Description: Pets, Value: myzootwin.com/pets/
+		54 link Description: Learn, Value: myzootwin.com/learn/
+		55 link Description: About, Value: myzootwin.com/about/
+		56 text © 2026 MyZooTwin. Made for curious minds.
+		57 button Privacy choices
+
+The focused UI element is 91 tab (selected, settable, boolean) Care, Value: 1, ID: hud-tab-care
