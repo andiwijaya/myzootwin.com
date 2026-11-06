@@ -1,0 +1,48 @@
+{
+  "startedAt": "2026-11-06T02:34:33.337Z",
+  "finishedAt": "2026-11-06T02:43:56.380Z",
+  "parentCommit": "16d13f8b781bda3d8f0ba8b33e528d4bb856f2b3",
+  "sourceId": "f0076bb9c214a0b9cb51f98c0113cf95dad1a6cdf8a3dc865ce270b55d4cbd04",
+  "sourceFiles": 326,
+  "sourceUnchanged": true,
+  "buildId": "8628e88b4b1635ade6e1ce3e1690ca87e8e0a997f50d10a637f36991571d75eb",
+  "buildFiles": 24,
+  "stages": {
+    "unit": {
+      "status": "PASS",
+      "tests": 719,
+      "pass": 719,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0,
+      "durationMs": 167674.2254,
+      "command": "npm test -- --test-concurrency=2",
+      "format": "Native Node summary (spec output); appended npm arguments are recorded, no TAP-format claim",
+      "logSha256": "c5bdbfe535b74763f599ed9decde927f8324510d9c86fde9e823c8e4249fa78c",
+      "logLfSha256": "957f784acb34db8a8242818ceedd1bc7a88c681d70c05c294275fbdc673fcdab",
+      "logBytes": 91700
+    },
+    "check": {
+      "status": "PASS",
+      "files": 307,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 0,
+      "command": "npm run check",
+      "logSha256": "3e2589fb40b831219ef962de99f5f8880d6876adabec3fa7e6e796c4e0295bb4",
+      "logLfSha256": "5f93cd45ea0b2651dce10e2469bdecf066cf7990e1173c4675165bd0b4d0ecfc",
+      "logBytes": 269
+    },
+    "build": {
+      "status": "PASS",
+      "pages": 9,
+      "command": "npm run build",
+      "warning": "Existing lazy Three and private QA chunk-size advisory; no added dependencies",
+      "logSha256": "bbc139e298bc7ff080f54c1cb284f41b133c929c238ad9ea0edc2cd5f233eef1",
+      "logLfSha256": "6bc419d5ef994be29aa2acfb388b1a6782573bf0fd2cf7fa9cf332fc2f51b828",
+      "logBytes": 1616
+    }
+  },
+  "method": "Executed canonical repository commands locally; all719tests, no skip/cancel/todo. Native journey proof is stored separately beside these local test logs; no physical-device or production certification."
+}

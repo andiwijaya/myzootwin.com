@@ -1,0 +1,362 @@
+{
+  "method": "Actual canonical V2 game entry/renderer/autosave; named synthetic fixture; QA database only",
+  "setup": "Existing named synthetic journey",
+  "fixture": "q04Claimed",
+  "database": "myzootwin-eh6-02-product-q04Claimed-20261105",
+  "databaseVersion": 2,
+  "primarySchema": 2,
+  "revision": 19,
+  "currency": 1733,
+  "command": 21,
+  "careServiceEntries": [],
+  "tick": 1273,
+  "tiles": 216,
+  "birds": 2,
+  "elephants": [],
+  "visitorFlow": {
+    "open": true,
+    "nextSerial": 9,
+    "cooldownTicks": 0,
+    "viewedTotal": 3,
+    "feedback": {
+      "evaluated": 5,
+      "scored": 3,
+      "scoreSum": 213,
+      "positive": 3,
+      "negative": 0,
+      "interrupted": 2,
+      "recent": [
+        {
+          "visitorId": "arrival-5",
+          "habitatId": "habitat-care-mission",
+          "tick": 1018,
+          "outcome": "comfortable",
+          "reason": "none",
+          "score": 73,
+          "observedWelfare": 73,
+          "samples": 30,
+          "occupiedSamples": 30,
+          "welfareHundredths": 219205
+        },
+        {
+          "visitorId": "arrival-4",
+          "habitatId": null,
+          "tick": 794,
+          "outcome": "interrupted",
+          "reason": "closed",
+          "score": null,
+          "observedWelfare": null,
+          "samples": 0,
+          "occupiedSamples": 0,
+          "welfareHundredths": 0
+        },
+        {
+          "visitorId": "arrival-3",
+          "habitatId": "habitat-care-mission",
+          "tick": 794,
+          "outcome": "interrupted",
+          "reason": "closed",
+          "score": null,
+          "observedWelfare": null,
+          "samples": 0,
+          "occupiedSamples": 0,
+          "welfareHundredths": 0
+        },
+        {
+          "visitorId": "arrival-2",
+          "habitatId": "habitat-care-mission",
+          "tick": 632,
+          "outcome": "comfortable",
+          "reason": "none",
+          "score": 77,
+          "observedWelfare": 77,
+          "samples": 30,
+          "occupiedSamples": 30,
+          "welfareHundredths": 230661
+        }
+      ]
+    }
+  },
+  "visitors": [
+    {
+      "id": "arrival-6",
+      "phase": "entering",
+      "position": {
+        "x": 3.5,
+        "z": 6.000000000000002
+      },
+      "route": [
+        {
+          "x": 1,
+          "z": 8
+        },
+        {
+          "x": 1,
+          "z": 7
+        },
+        {
+          "x": 2,
+          "z": 7
+        },
+        {
+          "x": 3,
+          "z": 7
+        },
+        {
+          "x": 3,
+          "z": 6
+        },
+        {
+          "x": 3,
+          "z": 5
+        }
+      ],
+      "routeIndex": 5,
+      "satisfaction": null,
+      "experience": {
+        "samples": 0,
+        "occupiedSamples": 0,
+        "welfareHundredths": 0,
+        "feedback": null
+      },
+      "entry": {
+        "status": "paid",
+        "tick": 1179,
+        "reason": "none"
+      },
+      "admissionId": "admission-arrival-6",
+      "arrival": {
+        "serial": 6,
+        "slot": 0,
+        "spawnTick": 936
+      },
+      "journey": {
+        "habitatId": "habitat-care-mission",
+        "heading": 3.141592653589793,
+        "dwellTicks": 0,
+        "queuedTicks": 195,
+        "viewed": false,
+        "startedTick": 1150
+      }
+    },
+    {
+      "id": "arrival-7",
+      "phase": "queued",
+      "position": {
+        "x": 1.81,
+        "z": 8.58
+      },
+      "route": [
+        {
+          "x": 1,
+          "z": 8
+        }
+      ],
+      "routeIndex": 0,
+      "satisfaction": null,
+      "experience": {
+        "samples": 0,
+        "occupiedSamples": 0,
+        "welfareHundredths": 0,
+        "feedback": null
+      },
+      "entry": {
+        "status": "pending",
+        "tick": null,
+        "reason": "none"
+      },
+      "admissionId": null,
+      "arrival": {
+        "serial": 7,
+        "slot": 2,
+        "spawnTick": 1023
+      },
+      "journey": {
+        "habitatId": null,
+        "heading": 3.141592653589793,
+        "dwellTicks": 0,
+        "queuedTicks": 231,
+        "viewed": false,
+        "startedTick": null
+      }
+    },
+    {
+      "id": "arrival-8",
+      "phase": "queued",
+      "position": {
+        "x": 1.19,
+        "z": 8.58
+      },
+      "route": [
+        {
+          "x": 1,
+          "z": 8
+        }
+      ],
+      "routeIndex": 0,
+      "satisfaction": null,
+      "experience": {
+        "samples": 0,
+        "occupiedSamples": 0,
+        "welfareHundredths": 0,
+        "feedback": null
+      },
+      "entry": {
+        "status": "pending",
+        "tick": null,
+        "reason": "none"
+      },
+      "admissionId": null,
+      "arrival": {
+        "serial": 8,
+        "slot": 0,
+        "spawnTick": 1183
+      },
+      "journey": {
+        "habitatId": null,
+        "heading": 3.141592653589793,
+        "dwellTicks": 0,
+        "queuedTicks": 71,
+        "viewed": false,
+        "startedTick": null
+      }
+    }
+  ],
+  "admissions": [
+    {
+      "id": "admission-arrival-1",
+      "visitorId": "arrival-1",
+      "tick": 191,
+      "ledgerEntryId": "ticket-arrival-1",
+      "entry": {
+        "habitatId": "habitat-care-mission",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 7
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-2",
+      "visitorId": "arrival-2",
+      "tick": 492,
+      "ledgerEntryId": "ticket-arrival-2",
+      "entry": {
+        "habitatId": "habitat-care-mission",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 7
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-3",
+      "visitorId": "arrival-3",
+      "tick": 793,
+      "ledgerEntryId": "ticket-arrival-3",
+      "entry": {
+        "habitatId": "habitat-care-mission",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 7
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-5",
+      "visitorId": "arrival-5",
+      "tick": 878,
+      "ledgerEntryId": "ticket-arrival-5",
+      "entry": {
+        "habitatId": "habitat-care-mission",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 7
+        },
+        "price": 10
+      }
+    },
+    {
+      "id": "admission-arrival-6",
+      "visitorId": "arrival-6",
+      "tick": 1179,
+      "ledgerEntryId": "ticket-arrival-6",
+      "entry": {
+        "habitatId": "habitat-care-mission",
+        "gate": {
+          "x": 1,
+          "z": 8
+        },
+        "cell": {
+          "x": 1,
+          "z": 7
+        },
+        "price": 10
+      }
+    }
+  ],
+  "careResources": [],
+  "residents": 2,
+  "habitats": [
+    {
+      "id": "habitat-care-mission",
+      "kind": "macaw-aviary",
+      "cells": 4
+    },
+    {
+      "id": "habitat-d41698b5-d773-477c-bf88-e531422d4880",
+      "kind": "elephant-grove",
+      "cells": 36
+    }
+  ],
+  "buildEntries": 1,
+  "occupiedTiles": 40,
+  "missions": [
+    "Q01",
+    "Q02",
+    "Q03",
+    "Q04"
+  ],
+  "elephantMissions": {
+    "currentId": "EH01",
+    "completedIds": [],
+    "rewards": [],
+    "objectives": {
+      "fedIds": [],
+      "wateredIds": [],
+      "comfortableTicks": 0,
+      "baths": 0,
+      "enrichments": 0,
+      "thrivingTicks": 0,
+      "viewedVisitorIds": []
+    }
+  },
+  "grant": {
+    "id": "elephant-expansion-grant-v1",
+    "ledgerEntryId": "elephant-expansion-grant-v1",
+    "tick": 1207,
+    "command": 19
+  },
+  "grantEntries": 1,
+  "backupSchema": 1,
+  "backupExact": true
+}
