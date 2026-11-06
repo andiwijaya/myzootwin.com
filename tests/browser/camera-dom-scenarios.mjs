@@ -1,5 +1,5 @@
 /** Explicitly injected DOM integration checks, never native/physical touch evidence. */
-export function runCameraDomScenarios(root,inspect,setPaused) {
+export function runCameraDomScenarios(root,inspect,setPaused,world={width:12,height:10,originX:6,originZ:5}) {
   const canvas=root.querySelector('canvas'),host=root.querySelector('[data-preview-stage]');
   const cases=[];const b=canvas.getBoundingClientRect(),cx=b.left+b.width/2,cy=b.top+b.height/2;
   const check=(ok,label)=>{if(!ok)throw Error(label);};
@@ -9,7 +9,7 @@ export function runCameraDomScenarios(root,inspect,setPaused) {
   const pointer=(type,id,x=cx,y=cy,target=canvas)=>target.dispatchEvent(new PointerEvent(type,{pointerId:id,pointerType:'touch',button:0,buttons:type==='pointerup'?0:1,clientX:x,clientY:y,bubbles:true,cancelable:true}));
   const wheel=(delta,target=canvas,mode=0)=>{const e=new WheelEvent('wheel',{deltaY:delta,deltaMode:mode,clientX:cx,clientY:cy,bubbles:true,cancelable:true});target.dispatchEvent(e);return e.defaultPrevented;};
   const key=(value,mod={})=>{const e=new KeyboardEvent('keydown',{key:value,bubbles:true,cancelable:true,...mod});host.dispatchEvent(e);return e.defaultPrevented;};
-  const run=(id,fn)=>{fn();const s=inspect();check(s.cameraZoom>=1&&s.cameraZoom<=3&&Math.abs(s.cameraFocusX)<6&&Math.abs(s.cameraFocusZ)<5,id+' bounds');cases.push({id,status:'PASS',session:s});};
+  const run=(id,fn)=>{fn();const s=inspect();check(s.cameraZoom>=1&&s.cameraZoom<=3&&s.cameraFocusX>-world.originX&&s.cameraFocusX<world.width-world.originX&&s.cameraFocusZ>-world.originZ&&s.cameraFocusZ<world.height-world.originZ,id+' bounds');cases.push({id,status:'PASS',session:s});};
   try {
     run('tap-threshold',()=>{reset();button('zoom-in').click();const before=inspect();pointer('pointerdown',101);pointer('pointermove',101,cx+3,cy+1);pointer('pointerup',101,cx+3,cy+1);check(same(before,inspect()),'small tap moved camera');});
     run('one-finger-drag',()=>{const before=inspect();pointer('pointerdown',102);pointer('pointermove',102,cx+35,cy+15);pointer('pointerup',102,cx+35,cy+15);check(!same(before,inspect())&&inspect().cameraPointers===0,'drag failed');});
