@@ -1,0 +1,22 @@
+import {readFile,writeFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import assert from 'node:assert/strict';
+import {validateSaveV3} from '../../src/game/persistence/save-v3.ts';
+
+const path=process.argv[2];if(!path)throw Error('Pass exported native QA evidence');
+const q=JSON.parse(await readFile(path,'utf8'));
+assert.match(q.database,/^lion-product-[a-f0-9-]{36}$/);
+assert.equal(q.validation,true);assert.equal(q.firstInvalid,null);assert.deepEqual(q.serializationFaults,[]);
+assert.ok(q.performance.activeWallMs>=900000,'Require fifteen active minutes, not elapsed/paused time');
+assert.equal(q.renderer.session.simulationSpeed,1);assert.equal(q.renderer.session.simulationPaused,true);
+assert.equal(q.renderer.session.simulationDroppedSimMs,0);assert.equal(q.renderer.session.simulationDroppedWallMs,0);
+assert.equal(q.owners,1);assert.equal(q.maxOwners,1);assert.equal(q.maxPending,1);
+assert.equal(q.save.phase,'saved');assert.ok(validateSaveV3(q.rawState).ok);
+const persisted=JSON.parse(q.checkpoint.payload);assert.ok(validateSaveV3(persisted).ok);assert.deepEqual(persisted,q.rawState);
+assert.equal(createHash('sha256').update(q.checkpoint.payload).digest('hex'),q.storedPayloadSha256);
+assert.deepEqual(persisted.lionSavanna.missions.completedIds,['LQ01','LQ02','LQ03','LQ04']);
+const samples=q.performance.samples.filter(x=>x.heap&&x.frames>0),used=samples.map(x=>x.heap.used),first=samples.slice(5,35),last=samples.slice(-30);
+const median=values=>{const v=[...values].sort((a,b)=>a-b);return v[Math.floor(v.length/2)]??null;};
+const session=q.renderer.session;
+const receipt={at:q.at,database:q.database,environment:q.environment,scope:q.scope,physicalDevice:false,powerState:'unobserved',gpuTiming:'UNRUN; GPU resource counts are observed, not GPU milliseconds',activeWallMs:q.performance.activeWallMs,frames:q.performance.frameCount,averageFps:q.performance.frameCount/(q.performance.activeWallMs/1000),medianFrameMs:q.performance.medianFrameMs,p95FrameMs:q.performance.p95FrameMs,medianCpuMs:q.performance.medianCpuMs,p95CpuMs:q.performance.p95CpuMs,heap:{samples:samples.length,min:Math.min(...used),max:Math.max(...used),firstWindowMedian:median(first.map(x=>x.heap.used)),lastWindowMedian:median(last.map(x=>x.heap.used))},resources:{geometries:session.geometries,textures:session.textures,materials:session.ownedMaterialsLive,drawCalls:session.drawCallsLastRender,triangles:session.trianglesLastRender,programs:session.programs,liveLions:session.liveLionModels,lionGeometries:session.lionGeometries,lionMaterials:session.lionMaterials,lionWorldMeshes:session.lionWorldMeshes,owners:q.owners,maxOwners:q.maxOwners,pending:q.pending,maxPending:q.maxPending,cleanupErrors:session.cleanupErrors},persistence:{schema:q.storedSchema,revision:q.storedRevision,payloadChars:q.checkpoint.payload.length,payloadSha256:q.storedPayloadSha256,tick:persisted.tick,currency:persisted.currency,ledgerRetained:session.journalRetained,ledgerArchived:session.journalArchived,journalCompactions:session.journalCompactions,activeVisitors:session.visitorCount},validation:true,firstInvalid:null,serializationFaults:[],LQ:persisted.lionSavanna.missions.completedIds};
+await writeFile('docs/qa/lion/final-soak-summary.json',JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt,null,2));

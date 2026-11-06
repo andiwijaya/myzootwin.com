@@ -1,0 +1,32 @@
+✔ all seven paid Lion facilities refund only construction and Undo repays exactly once without restoring refill fees (648.8737ms)
+✔ Lion habitat occupancy and active care dependencies block removals; stale paid quotes never partially edit or credit (764.6663ms)
+✔ Undo of a removed Lion facility preserves passive current stock of all other facilities across real ticks (862.5239ms)
+✔ RAF start is idempotent and stale cancelled callbacks cannot duplicate a restarted loop (1.7789ms)
+✔ disposed RAF loop cannot render or restart (0.2816ms)
+✔ render exceptions stop the RAF chain and report once (0.2424ms)
+✔ request failures become an explicit stopped error (0.2631ms)
+✔ lazy session opens once, closes once, and can reopen without overlap (2.9324ms)
+✔ closing during import prevents a late mount and ready transition (0.462ms)
+✔ a failed lazy load is visible and a later attempt can recover (0.4992ms)
+✔ unsupported WebGL has its own fallback and retry state (0.3033ms)
+✔ initialization exceptions do not become false ready states (0.1736ms)
+✔ context loss disposes the active session once and supports a fresh retry (0.2541ms)
+✔ synchronous failure while mounting still disposes the late-created session (0.2177ms)
+✔ pause state is applied to newly loaded sessions without changing lifecycle status (0.1784ms)
+✔ disposing a pending import prevents later renderer creation (0.1341ms)
+✔ latest visual and mute choices reach every new session, including retry while paused (0.4458ms)
+✔ batched triangle ownership covers actual geometry,120 tiles and22 distinct scenery objects without changing state (60.8281ms)
+✔ actual visible triangles resolve exact grass,water,gate,palm,tree,rock and reed identities at all viewport sizes (48.6802ms)
+✔ nearest unowned soil and empty/outside/invalid coordinates do not select hidden tiles (19.1504ms)
+✔ mouse/touch tap path selects once,while camera drag,pinch,cancel and late events never select (23.9594ms)
+✔ selection marker/data remain coherent across camera movement/resize,clear,pausing and disposal with bounded resources (34.8049ms)
+✔ every actual scene identity has complete bilingual presentation with1-based locations and no unresolved keys (18.6738ms)
+✔ UI dismissal forwards only to a live unpaused renderer and never a stale or closed session (0.6474ms)
+ℹ tests 24
+ℹ suites 0
+ℹ pass 24
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2791.9239
