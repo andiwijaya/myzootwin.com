@@ -1,0 +1,15 @@
+# Giraffe baseline audit
+
+All four owner PRDs were read completely through Library on 6 November 2026 UTC. Work occurs in a new independent local clone, branch `giraffe-plains`, starting at `769cbeab0af2e5c76bb6e40a8851eec8532a1127`. No original checkout, save, build or historical QA is edited. No repository-specific AGENTS.md exists in the clone. Existing dependency bytes are copied locally without version changes.
+
+Fresh `git ls-remote` returned main `325223403a2dec1b805f05d9fb8d795d09568585`. The extra local commit 769cbea changes only release documentation/evidence. A fresh official GitHub check query returned Cloudflare Pages, completed/success, 2026-11-06T15:13:28Z, deployment `1f929842-00f0-4857-9a01-dea990b58f37`. The GitHub connector combined-status result was empty (not a failure or verification of checks); the explicit check-runs API supplies the check evidence.
+
+Read-only native IAB production inspection observed `/play/`, entry `/_astro/PlayEntry.astro_astro_type_script_index_0_lang.BlnC5Z-3.js`, and zero warnings/errors in the captured 15-entry window. The page detected an existing save; it was NOT opened, continued, reset, exported or inspected. Only DOM and script element URLs were read, then the owned tab was closed. This is a current asset observation, not a fresh full gameplay smoke.
+
+Direct access to the private Cloudflare deployment detail URL was **DENIED by automatic browser review**: local coding and internal-browser testing did not explicitly authorize private administration. The operation did not execute; no alternate browser, API, credentials or indirect workaround is used. Latest administrative alias/source binding remains BLOCKED pending explicit permission. This prevents closing GH0-01; it does not block independent local coding. Production release remains separately held.
+
+Historical Lion checklist header is stale (22/39); `LION_LIVE_RELEASE.md` supersedes it with 39 engineering items and native storage 9/9, regression 768/768. Its measured 23.97-minute soak averaged 38.17 FPS, not sustained 60 FPS. V1 still has 46/51 with five separate signoff/evidence gates. Elephant progress says 39/39. These are historical receipts, not rerun claims.
+
+The implementation reads the current simulation, V3 codec/backend, scene coordinates, visitor graph, renderer entry, LOCAL_QA and species technical/release documents. Exact current baseline tests/check/build are recorded separately when rerun. All new QA uses synthetic fixtures and task-owned loopback origins/database names. No push, Pages preview, deployment, owner save mutation or desktop takeover is authorized.
+
+Safety dependency exception: while the administrative audit remains blocked, continue GH0-02/03/04 and pure migration/layout engineering. Keep GH0-01 unchecked and report the blocker; do not infer administrative state from a historical receipt.
