@@ -1,0 +1,37 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {readFileSync} from 'node:fs';
+import {twoHabitatSimulation} from './fixtures/elephant-two-habitats.mjs';
+import {serviceRealSupplies} from './fixtures/elephant-economy.ts';
+import {createSimulation} from '../src/game/core/simulation.ts';
+import {serializeSaveV2,parseSaveV2,migrateSaveV1} from '../src/game/persistence/save-v2.ts';
+import {parseSave} from '../src/game/persistence/save-v1.ts';
+import {createPreviewController} from '../src/game/render3d/preview-controller.ts';
+import {createElephantResidentsScene} from '../src/game/render3d/elephant-residents-scene.ts';
+const masked=s=>({...s,preferences:{...s.preferences,graphics:'auto',reducedMotion:false,muted:true,speed:1}});
+const setup=()=>twoHabitatSimulation({pond:true,enrichment:true});
+const catalog=()=>({identities:new Map(),bounds:new Map(),batches:[]});
+
+test('V2 visual and mute preferences are atomic while paused and preserve all animals, missions, finance and terrain through codec cold',()=>{
+ const sim=setup();sim.setPaused(true);const before=sim.snapshot();for(const graphics of ['low','high','auto'])for(const reducedMotion of [true,false])for(const muted of [true,false]){sim.setVisualSettings({graphics,reducedMotion});sim.setMuted(muted);assert.deepEqual(masked(sim.snapshot()),masked(before));const cold=parseSaveV2(serializeSaveV2(sim.snapshot()));assert.ok(cold.ok);assert.deepEqual(cold.value.preferences,sim.snapshot().preferences);assert.equal(cold.value.animals.length,4);}const frozen=serializeSaveV2(sim.snapshot());for(const invalid of [{graphics:'ultra',reducedMotion:false},{graphics:'low',reducedMotion:true,currency:9000},{graphics:'high',reducedMotion:'true'}]){assert.equal(sim.setVisualSettings(invalid),false);assert.equal(serializeSaveV2(sim.snapshot()),frozen);}sim.advance(86400000);assert.equal(serializeSaveV2(sim.snapshot()),frozen);sim.dispose();assert.equal(sim.setMuted(false),false);assert.equal(sim.setVisualSettings({graphics:'low',reducedMotion:true}),false);
+});
+
+test('3000real mixed care/admission ticks stay identical in high1x and low-reduced-muted10x, including native-codec cold and paid supplies',()=>{
+ const source=setup();source.visitors(true);const initial=source.snapshot();source.dispose();let a=createSimulation(initial),b=createSimulation(initial);a.setSpeed(1);b.setSpeed(10);a.setVisualSettings({graphics:'high',reducedMotion:false});a.setMuted(false);b.setVisualSettings({graphics:'low',reducedMotion:true});b.setMuted(true);let comparisons=0;
+ for(let i=0;i<3000;i++){if(i%10===0){serviceRealSupplies(a);serviceRealSupplies(b);}a.advance(100);b.advance(10);if(i%100===0){assert.deepEqual(masked(a.snapshot()),masked(b.snapshot()));comparisons++;}if(i===1499){const ca=parseSaveV2(serializeSaveV2(a.snapshot())),cb=parseSaveV2(serializeSaveV2(b.snapshot()));assert.ok(ca.ok&&cb.ok);a.dispose();b.dispose();a=createSimulation(ca.value);b=createSimulation(cb.value);}}
+ assert.equal(comparisons,30);assert.deepEqual(masked(a.snapshot()),masked(b.snapshot()));assert.ok(a.visitorView().tickets.admissions>0);assert.equal(a.visitorView().tickets.revenue,a.visitorView().tickets.admissions*10);assert.ok(a.elephantSnapshot().animals.every(x=>x.foodEaten>0&&x.waterDrunk>0));a.dispose();b.dispose();
+});
+
+test('low and reduced rendering retains both full rigs and real displacement without mutating the authoritative care state; all resident ownership releases',()=>{
+ const sim=setup();let previous=sim.elephantSnapshot(),current,moving;for(let i=0;i<2000;i++){sim.advance(100);current=sim.elephantSnapshot();moving=current.animals.find(a=>{const p=previous.animals.find(p=>p.id===a.id);return Math.hypot(a.position.x-p.position.x,a.position.z-p.position.z)>.01;});if(moving)break;previous=current;}assert.ok(moving);const state=sim.snapshot(),bytes=serializeSaveV2(state),care=sim.elephantCareSnapshot(),p=previous.animals.find(a=>a.id===moving.id),delta={x:moving.position.x-p.position.x,z:moving.position.z-p.position.z};
+ for(const [reduced,low]of [[false,false],[true,true]]){const c=catalog(),scene=createElephantResidentsScene(c);scene.sync(previous.animals,previous.width,previous.height,care.resources);scene.sync(current.animals,current.width,current.height,care.resources);scene.update(0,state.gameTimeMs,reduced,low);const mesh=scene.group.getObjectByName(moving.id),start=mesh.position.clone();scene.update(1,state.gameTimeMs,reduced,low);assert.ok(Math.abs((mesh.position.x-start.x)-delta.x)<1e-8);assert.ok(Math.abs((mesh.position.z-start.z)-delta.z)<1e-8);assert.equal(scene.inspect().liveElephantModels,2);assert.equal(scene.inspect().elephantResidentSkinnedDraws,2);assert.equal(scene.inspect().elephantResidentTriangles,7672);assert.equal(serializeSaveV2(sim.snapshot()),bytes);scene.dispose();scene.dispose();assert.equal(scene.inspect().liveElephantModels,0);assert.equal(scene.inspect().elephantResidentMaterials,0);assert.equal(c.identities.size,0);assert.equal(c.batches.length,0);}sim.dispose();
+});
+
+test('controller loss/retry generations retain actual full mixed state and ignore old failure callbacks; this unit uses an explicit renderer seam rather than claiming native GPU loss',async()=>{
+ const source=setup();source.setPaused(true);let saved=source.snapshot();source.dispose();const callbacks=[],sessions=[];let live=0,maxLive=0,writes=0;const controller=createPreviewController(async()=>failure=>{callbacks.push(failure);const sim=createSimulation(saved);let disposed=false;live++;maxLive=Math.max(maxLive,live);const session={setPaused:v=>sim.setPaused(v),visualSettings:v=>sim.setVisualSettings(v),muted:v=>sim.setMuted(v),locale:v=>sim.setLocale(v),inspect:()=>({tick:sim.inspect().tick,disposed}),dispose(){if(disposed)return;disposed=true;saved=sim.snapshot();sim.dispose();live--;writes++;}};sessions.push(session);return session;},()=>{});controller.setExternalPaused(true);await controller.open();const original=serializeSaveV2(saved);
+ for(let i=0;i<5;i++){callbacks.at(-1)('context-lost');assert.equal(controller.getState().status,'error');assert.equal(live,0);assert.equal(serializeSaveV2(saved),original);await controller.open();const current=controller.inspectSession();callbacks[i]('render');assert.deepEqual(controller.inspectSession(),current);assert.equal(controller.getState().status,'ready');assert.equal(live,1);}controller.dispose();controller.dispose();assert.equal(live,0);assert.equal(maxLive,1);assert.equal(writes,6);assert.ok(sessions.every(s=>s.inspect().disposed));assert.equal(serializeSaveV2(saved),original);
+});
+
+test('qualified and first-run V1 preferences migrate without resetting speed, mute, motion or quality and without new conservation credit',()=>{
+ const f=JSON.parse(readFileSync(new URL('./fixtures/elephant-legacy-v1.json',import.meta.url),'utf8'));for(const name of ['new','q04Claimed'])for(const graphics of ['auto','low','high'])for(const reducedMotion of [false,true])for(const muted of [false,true]){const old=structuredClone(f.entries[name].state);Object.assign(old.preferences,{graphics,reducedMotion,muted,speed:10});const bytes=JSON.stringify(old),v1=parseSave(bytes);assert.ok(v1.ok);const v2=migrateSaveV1(v1.value);assert.ok(v2.ok);assert.deepEqual(v2.value.preferences,v1.value.preferences);assert.equal(v2.value.currency,v1.value.currency);assert.deepEqual(v2.value.animals,v1.value.animals.map(a=>({...a})));assert.equal(v2.value.elephantGrove.grant,null);assert.equal(JSON.stringify(old),bytes);}
+});
