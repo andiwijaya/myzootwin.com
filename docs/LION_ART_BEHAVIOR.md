@@ -1,0 +1,7 @@
+# Original lion art and behavior brief
+
+Reviewed 6 November 2026: [San Diego Zoo lion guide](https://animals.sandiegozoo.org/animals/lion) and [Smithsonian enrichment](https://nationalzoo.si.edu/animals/animal-enrichment). The former describes mane morphology, established social groups, extensive resting, vocal communication and scent marking. The latter supports sensory exploration, habitat choice and mental activity. This game simplifies those ideas; its sizes, diets and welfare weights are entertainment constants, not professional husbandry standards.
+
+Raka is a broad-maned adult male; Sena and Tala are adult lionesses with distinct warm/pale coats. All rigs, meshes and materials will be original procedural Three.js geometry, with muscular torso, rounded muzzle, ears, paws, tail tuft and separate jaw. No purchased/scraped models, trademarked characters, downloaded textures or third-party animal sounds. Shared female geometry must be disposed by its owning scene. Optional audio may remain absent; visual roar and authoritative proof work when muted.
+
+The fictional familiar pride may choose solitude and shade. No breeding, hunting, violence, attacks or visitor access inside the enclosure. Meals use a neutral trough. Nuzzling needs reciprocal available partners and safe contact. Critical needs interrupt enrichment. Resting, sniffing, scratching and rock travel must be authoritative saved behavior; animation never creates money, stock or mission progress.

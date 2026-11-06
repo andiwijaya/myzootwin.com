@@ -1,5 +1,5 @@
 import type {ZooSaveV1} from './state.ts';
-import type {ZooAnimal,ZooWorld} from './species.ts';
+import type {V2ZooAnimal,V2ZooWorld} from './species.ts';
 
 export const EH_IDS=['EH01','EH02','EH03','EH04'] as const;
 export type ElephantMissionId=typeof EH_IDS[number];
@@ -14,8 +14,8 @@ export interface ElephantMissions {
 /** One serialized world, population, clock, ledger and admission system. */
 export interface ZooSaveV2 extends Omit<ZooSaveV1,'schemaVersion'|'world'|'animals'> {
   schemaVersion:2;
-  world:ZooWorld;
-  animals:ZooAnimal[];
+  world:V2ZooWorld;
+  animals:V2ZooAnimal[];
   elephantGrove:{grant:ConservationGrant|null;missions:ElephantMissions};
 }
 export type ZooSave=ZooSaveV1|ZooSaveV2;

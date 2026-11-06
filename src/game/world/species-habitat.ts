@@ -3,8 +3,8 @@ import {SPECIES,habitatSpecies,type HabitatKind} from '../core/species.ts';
 import {habitatBlockerKeys} from './build-habitat.ts';
 import {cellKey,validatePlacement,type PlacementReason} from './placement-preview.ts';
 export type HabitatPlacementWorld=Pick<WorldState,'width'|'height'|'tiles'|'habitats'>;
-export const HABITAT_LIMITS=Object.freeze({'macaw-aviary':1,'elephant-grove':1});
-const kindOf=(h:Habitat):HabitatKind|null=>!('kind'in h)?'macaw-aviary':h.kind==='macaw-aviary'||h.kind==='elephant-grove'?h.kind:null;
+export const HABITAT_LIMITS=Object.freeze({'macaw-aviary':1,'elephant-grove':1,'lion-savanna':1});
+const kindOf=(h:Habitat):HabitatKind|null=>!('kind'in h)?'macaw-aviary':h.kind==='macaw-aviary'||h.kind==='elephant-grove'||h.kind==='lion-savanna'?h.kind:null;
 
 /** One shared footprint/collision authority, with separate per-species construction caps. */
 export function validateSpeciesHabitatPlacement(world:HabitatPlacementWorld,anchor:Point|null,kind:HabitatKind){
@@ -13,6 +13,7 @@ export function validateSpeciesHabitatPlacement(world:HabitatPlacementWorld,anch
   const checked=validatePlacement(world,anchor,habitatBlockerKeys(),'habitat',SPECIES[species].footprint);
   if(checked.reason!=='ready')return checked;
   if(kind==='elephant-grove'&&anchor&&anchor.z<10)return {...checked,reason:'zone' as const};
+  if(kind==='lion-savanna'&&anchor&&anchor.z<18)return {...checked,reason:'zone' as const};
   if(world.habitats.some(h=>kindOf(h)===null))return {...checked,reason:'command' as const};
   return world.habitats.filter(h=>kindOf(h)===kind).length>=HABITAT_LIMITS[kind]?{...checked,reason:'limit' as const}:checked;
 }
