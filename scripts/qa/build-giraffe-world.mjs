@@ -1,0 +1,2 @@
+import {build} from 'vite';import {resolve} from 'node:path';import {execFileSync} from 'node:child_process';
+await build({root:resolve('.'),configFile:false,base:'./',publicDir:false,define:{__GIRAFFE_QA_SOURCE__:JSON.stringify(execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim())},build:{outDir:'.qa/giraffe-world',emptyOutDir:true,rollupOptions:{input:resolve('tests/browser/giraffe-world-harness.html')}}});
