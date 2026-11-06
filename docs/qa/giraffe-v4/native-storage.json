@@ -1,0 +1,62 @@
+{
+  "status": "PASS",
+  "source": "bd43f5ebf86bc0a9ab6142e93c3d5fc087d7c580",
+  "testSourceSha256": "bee0d6e5b9f5c7129d8f0d0c56ba3aa952aa716d9db227ed2633114ecb051795",
+  "method": "Actual native IndexedDB via namespace-only adapter; synthetic fixtures only. Independent connections, not two-tab UI/full-game proof.",
+  "native": true,
+  "physicalDevice": false,
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36",
+  "startedAt": "2026-11-06T22:05:14.199Z",
+  "finishedAt": "2026-11-06T22:05:15.157Z",
+  "elapsedMs": 956.8000000007451,
+  "cases": [
+    {
+      "id": "native: first V4 CAS preserves exact V3 and historical V1/V2 atomically; old V3 binary cannot reopen",
+      "pass": true
+    },
+    {
+      "id": "native: V1/V2 paths keep original inputs and a validated explicitly labelled V3 intermediate",
+      "pass": true
+    },
+    {
+      "id": "native: independent autosave writers have one durable1850grant winner and no optimistic losing credit",
+      "pass": true
+    },
+    {
+      "id": "native: quota abort leaves V3 primary/all backups unchanged; retry installs all migration data together",
+      "pass": true
+    },
+    {
+      "id": "native: a held V3 connection blocks upgrade safely until closed, without premature migration writes",
+      "pass": true
+    },
+    {
+      "id": "native: future data and missing/corrupt V3 backup block writes/restart/recovery rather than reconstruct provenance",
+      "pass": true
+    },
+    {
+      "id": "native: cold Continue/reset/Undo keep strict V4 and exact original V3 backup",
+      "pass": true
+    },
+    {
+      "id": "native: invalid JSON/state require explicit recovery and retain exact damaged original and V3 backup",
+      "pass": true
+    },
+    {
+      "id": "native: read-only V4 maintenance never creates/upgrades/writes or erases bytes, and blocks future databases",
+      "pass": true
+    },
+    {
+      "id": "native: fresh V4 autosave has a labelled V3 predecessor and cold no-offline-progress behavior",
+      "pass": true
+    }
+  ],
+  "ownedDatabases": 14,
+  "cleaned": 14,
+  "cleanupErrors": [],
+  "console": {
+    "limit": 200,
+    "entries": [],
+    "capped": false
+  }
+}
