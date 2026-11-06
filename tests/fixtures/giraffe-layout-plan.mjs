@@ -1,6 +1,7 @@
 import {missingConnection} from '../../src/game/economy/elephant-recovery.ts';
 import {preparePath} from '../../src/game/world/paths.ts';
-import {visitTargetForState} from '../../src/game/visitors/graph.ts';
+import {visitTargets} from '../../src/game/visitors/graph.ts';
+const geometricTarget=(s,id)=>visitTargets(s.world).find(t=>t.habitatId===id)??null;
 /** Executable design fixture only; not an activated save or a migration codec. */
 export function giraffeDesignWorld(world){
  if(world.width!==12||world.height!==26||world.tiles.length!==312)throw Error('Expected frozen V3');
@@ -14,6 +15,6 @@ export function giraffeDesignRoute(state){
  for(let z=anchor.z;z<anchor.z+7;z++)for(let x=13;x<20;x++)cells.push({x,z});
  const home={id:'habitat-giraffe-design',kind:'giraffe-plains',cells,viewingCell:null};next.world.habitats.push(home);
  for(const c of cells)next.world.tiles[c.z*24+c.x].occupantId=home.id;
- const purchases=[];for(let i=0;i<624;i++){if(visitTargetForState(next,home.id))return {state:next,anchor,purchases,cost:purchases.length*15,target:visitTargetForState(next,home.id)};const quote=missingConnection(next,home.id);if(!quote)break;const built=preparePath(next.world,quote.cell);if(!built.ok||built.duplicate)throw Error('Design path is illegal');next.world=built.world;purchases.push(quote.cell);}
+ const purchases=[];for(let i=0;i<624;i++){if(geometricTarget(next,home.id))return {state:next,anchor,purchases,cost:purchases.length*15,target:geometricTarget(next,home.id)};const quote=missingConnection(next,home.id);if(!quote)break;const built=preparePath(next.world,quote.cell);if(!built.ok||built.duplicate)throw Error('Design path is illegal');next.world=built.world;purchases.push(quote.cell);}
  throw Error('No legal land route');
 }
