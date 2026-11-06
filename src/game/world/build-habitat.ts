@@ -8,6 +8,7 @@ export const STARTER_HABITAT_LIMIT=1;
 export const habitatBlockerKeys=():ReadonlySet<string>=>new Set(scenery);
 export function validateHabitatPlacement(world:RuntimeWorld,anchor:Point|null){
   const checked=validatePlacement(world,anchor,scenery);
+  if(world.width===24&&anchor&&anchor.x+2>12)return {...checked,reason:'zone' as const};
   return checked.reason==='ready'&&world.habitats.filter(h=>!('kind'in h)||h.kind==='macaw-aviary').length>=STARTER_HABITAT_LIMIT?{...checked,reason:'limit' as const}:checked;
 }
 export type HabitatBuildResult={ok:true;world:WorldState;habitatId:string;duplicate:boolean}|{ok:false;reason:PlacementReason};

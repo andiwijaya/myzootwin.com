@@ -14,7 +14,7 @@ import { entryMessages, isEntryLocale, readEntryLocale, saveEntryLocale, type En
 import { mountPreviewPanel } from './preview-panel';
 import { createAutosave } from '../game/persistence/autosave.ts';
 import {type DurableBackend} from '../game/persistence/durable-backend.ts';
-import {createLionIndexedDbBackend} from '../game/persistence/lion-backend.ts';
+import {createGiraffeIndexedDbBackend} from '../game/persistence/giraffe-backend.ts';
 import type {ZooSave} from '../game/core/zoo-state.ts';
 function browserFactory() {
     try {
@@ -63,7 +63,7 @@ export function mountGameEntry(root: HTMLElement, options: {
     containDialogFocus(root, events.signal);
     let channel: BroadcastChannel | undefined;
     const writer = crypto.randomUUID();
-    const durable = createAutosave<ZooSave>(options.backend ?? createLionIndexedDbBackend(browserFactory()), { writer, changed: () => {
+    const durable = createAutosave<ZooSave>(options.backend ?? createGiraffeIndexedDbBackend(browserFactory()), { writer, changed: () => {
             if (disposed)
                 return;
             // Refresh status/visibility without reapplying the locale to every menu.

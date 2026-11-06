@@ -1,6 +1,6 @@
 import type {ZooSaveV1} from '../core/state.ts';
 import {initialLionProgress,LQ_IDS,type ZooSaveV2,type ZooSaveV3} from '../core/zoo-state.ts';
-import {isLion,LION_SPECIES_ID,type LionHabitat,type LionResource,type ZooResource,type ZooHabitat} from '../core/species.ts';
+import {isLion,LION_SPECIES_ID,type LionHabitat,type LionResource,type V3ZooResource as ZooResource,type V3ZooHabitat as ZooHabitat} from '../core/species.ts';
 import {appendLionZone} from '../world/lion-expansion.ts';
 import {V2_SAVE_FIELDS,validateSaveV2,migrateSaveV1,validateMultispeciesRelationships} from './save-v2.ts';
 import {MAX_SAVE_CHARS,saveRules,economyRule,type Rule,type SaveResult} from './save-v1.ts';

@@ -1,11 +1,12 @@
-import type {GiraffeAnimal} from './giraffe-state.ts';
+import type {GiraffeAnimal,GiraffeHabitat,GiraffeResource} from './giraffe-state.ts';
 import {SPECIES_ID, type Animal, type Habitat, type Point, type Resource, type WorldState} from './state.ts';
 
 export const MACAW_SPECIES_ID = SPECIES_ID;
 export const ELEPHANT_SPECIES_ID = 'elephas-maximus' as const;
 export const LION_SPECIES_ID = 'panthera-leo' as const;
-export type SpeciesId = typeof MACAW_SPECIES_ID | typeof ELEPHANT_SPECIES_ID | typeof LION_SPECIES_ID;
-export type HabitatKind = 'macaw-aviary' | 'elephant-grove' | 'lion-savanna';
+export const GIRAFFE_SPECIES_ID = 'giraffa-sp' as const;
+export type SpeciesId = typeof GIRAFFE_SPECIES_ID | typeof MACAW_SPECIES_ID | typeof ELEPHANT_SPECIES_ID | typeof LION_SPECIES_ID;
+export type HabitatKind = 'macaw-aviary' | 'elephant-grove' | 'lion-savanna' | 'giraffe-plains';
 export type ElephantResourceKind = 'elephant-browse' | 'elephant-water' | 'elephant-pond' | 'elephant-shade' | 'elephant-log';
 
 /** V1 stays the exact serialized input contract. Its Animal/Resource aliases are macaw-only. */
@@ -15,7 +16,8 @@ export type MacawHabitat = Habitat & {kind:'macaw-aviary'};
 export type ElephantHabitat = Habitat & {kind:'elephant-grove'};
 export type V2ZooHabitat = MacawHabitat | ElephantHabitat;
 export type LionHabitat = Habitat & {kind:'lion-savanna'};
-export type ZooHabitat = V2ZooHabitat | LionHabitat;
+export type V3ZooHabitat = V2ZooHabitat | LionHabitat;
+export type ZooHabitat = V3ZooHabitat | GiraffeHabitat;
 
 /** Ground motion cannot represent a bird's flight/perch/elevation phases. */
 export type ElephantBehavior = 'idle' | 'wander' | 'seek-food' | 'eat' | 'seek-water' | 'drink' | 'seek-bath' | 'bathe' | 'spray' | 'seek-shade' | 'rest' | 'seek-log' | 'enrich' | 'approach-companion' | 'trunk-touch';
@@ -69,9 +71,12 @@ export interface LionAnimal extends Omit<Animal,'speciesId'|'habitatId'|'positio
 export interface LionResource extends Omit<Resource,'kind'|'portions'> {kind:LionResourceKind;approaches:Point[];}
 export type V2ZooAnimal = MacawAnimal | ElephantAnimal;
 export type V2ZooResource = MacawResource | ElephantResource;
-export type ZooAnimal = V2ZooAnimal | LionAnimal;
-export type ZooResource = V2ZooResource | LionResource;
+export type V3ZooAnimal = V2ZooAnimal | LionAnimal;
+export type ZooAnimal = V3ZooAnimal | GiraffeAnimal;
+export type V3ZooResource = V2ZooResource | LionResource;
+export type ZooResource = V3ZooResource | GiraffeResource;
 export interface V2ZooWorld extends Omit<WorldState,'habitats'|'resources'> {habitats:V2ZooHabitat[];resources:V2ZooResource[];}
+export interface V3ZooWorld extends Omit<WorldState,'habitats'|'resources'> {habitats:V3ZooHabitat[];resources:V3ZooResource[];}
 export interface ZooWorld extends Omit<WorldState,'habitats'|'resources'> {
   habitats:ZooHabitat[];
   resources:ZooResource[];
@@ -89,12 +94,14 @@ export const elephantResources=(resources:readonly ZooResource[]):ElephantResour
 export const SPECIES = Object.freeze({
   [MACAW_SPECIES_ID]:Object.freeze({habitatKind:'macaw-aviary' as const,footprint:2 as const,residents:2 as const,movement:'avian' as const}),
   [ELEPHANT_SPECIES_ID]:Object.freeze({habitatKind:'elephant-grove' as const,footprint:6 as const,residents:2 as const,movement:'ground' as const}),
+  [GIRAFFE_SPECIES_ID]:Object.freeze({habitatKind:'giraffe-plains' as const,footprint:7 as const,residents:3 as const,movement:'giraffe-ground' as const}),
   [LION_SPECIES_ID]:Object.freeze({habitatKind:'lion-savanna' as const,footprint:7 as const,residents:3 as const,movement:'lion-ground' as const}),
 });
 export function habitatSpecies(kind:HabitatKind):SpeciesId|null {
-  return kind==='macaw-aviary'?MACAW_SPECIES_ID:kind==='elephant-grove'?ELEPHANT_SPECIES_ID:kind==='lion-savanna'?LION_SPECIES_ID:null;
+  return kind==='macaw-aviary'?MACAW_SPECIES_ID:kind==='elephant-grove'?ELEPHANT_SPECIES_ID:kind==='lion-savanna'?LION_SPECIES_ID:kind==='giraffe-plains'?GIRAFFE_SPECIES_ID:null;
 }
 export function resourceSpecies(kind:ZooResource['kind']):SpeciesId|null {
+  if(kind.startsWith('giraffe-'))return GIRAFFE_SPECIES_ID;
   if(kind==='food'||kind==='water'||kind==='perch')return MACAW_SPECIES_ID;
   if(['lion-meat','lion-water','lion-den','lion-kopje','lion-scent','lion-scratch'].includes(kind))return LION_SPECIES_ID;
   return kind==='elephant-browse'||kind==='elephant-water'||kind==='elephant-pond'||kind==='elephant-shade'||kind==='elephant-log'?ELEPHANT_SPECIES_ID:null;

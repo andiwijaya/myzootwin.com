@@ -22,7 +22,7 @@ export function prepareElephantConstruction<S extends ZooSave>(s:S,anchor:Point,
   if(command!==s.economy.nextCommand||!Number.isSafeInteger(command)||command>=Number.MAX_SAFE_INTEGER)return {ok:false as const,reason:'command' as const};
   const prepared=prepareSpeciesHabitat(s.world,anchor,operationId,'elephant-grove');if(!prepared.ok)return prepared;
   if(prepared.duplicate)return {ok:true as const,state:structuredClone(s),habitatId:prepared.habitatId,duplicate:true};
-  const next=structuredClone(s) as Extract<S,{schemaVersion:2|3}>,failure=debit(next,ELEPHANT_PRICES.habitat,'build',`buy-${operationId.slice(8)}`,prepared.habitatId);
+  const next=structuredClone(s) as Extract<S,{schemaVersion:2|3|4}>,failure=debit(next,ELEPHANT_PRICES.habitat,'build',`buy-${operationId.slice(8)}`,prepared.habitatId);
   if(failure)return {ok:false as const,reason:failure==='duplicate'?'command' as const:failure};
   next.world=reconcilePathAccess(prepared.world).world;next.economy.nextCommand++;
   const checked=validateSaveV2(next);return checked.ok?{ok:true as const,state:checked.value,habitatId:prepared.habitatId,duplicate:false}:{ok:false as const,reason:'command' as const};

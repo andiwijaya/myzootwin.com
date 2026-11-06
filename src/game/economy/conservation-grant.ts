@@ -12,11 +12,11 @@ export function conservationGrantView(s:RuntimeState){
   return {command:s.economy.nextCommand,amount:ELEPHANT_PRICES.grant,habitatPrice:ELEPHANT_PRICES.habitat,claimed,qualified,reason,canClaim:reason==='ready'};
 }
 /** Pure quoted candidate. The owner must durably commit it before adopting/publishing it. */
-export function prepareConservationGrant<S extends ZooSave>(s:S,quote:ConservationGrantQuote):{ok:true;state:Extract<S,{schemaVersion:2|3}>}|{ok:false;reason:GrantReason}{
+export function prepareConservationGrant<S extends ZooSave>(s:S,quote:ConservationGrantQuote):{ok:true;state:Extract<S,{schemaVersion:2|3|4}>}|{ok:false;reason:GrantReason}{
   const view=conservationGrantView(s);if(!view.canClaim)return {ok:false,reason:view.reason};
   if(s.schemaVersion===1||!quote||quote.command!==s.economy.nextCommand||!Number.isSafeInteger(quote.command)||quote.command>=Number.MAX_SAFE_INTEGER)return {ok:false,reason:'stale'};
-  const next=structuredClone(s) as Extract<S,{schemaVersion:2|3}>;next.currency+=ELEPHANT_PRICES.grant;
+  const next=structuredClone(s) as Extract<S,{schemaVersion:2|3|4}>;next.currency+=ELEPHANT_PRICES.grant;
   next.ledger.push({id:CONSERVATION_GRANT_ID,operationId:CONSERVATION_GRANT_ID,kind:'reward',amount:ELEPHANT_PRICES.grant,balanceAfter:next.currency,tick:next.tick,relatedId:'elephant-expansion'});
   next.elephantGrove.grant={id:CONSERVATION_GRANT_ID,ledgerEntryId:CONSERVATION_GRANT_ID,tick:next.tick,command:quote.command};next.economy.nextCommand++;
-  const checked=validateSaveV2(next);return checked.ok?{ok:true,state:checked.value as Extract<S,{schemaVersion:2|3}>}:{ok:false,reason:'stale'};
+  const checked=validateSaveV2(next);return checked.ok?{ok:true,state:checked.value as Extract<S,{schemaVersion:2|3|4}>}:{ok:false,reason:'stale'};
 }

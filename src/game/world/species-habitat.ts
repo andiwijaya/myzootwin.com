@@ -3,8 +3,8 @@ import {SPECIES,habitatSpecies,type HabitatKind} from '../core/species.ts';
 import {habitatBlockerKeys} from './build-habitat.ts';
 import {cellKey,validatePlacement,type PlacementReason} from './placement-preview.ts';
 export type HabitatPlacementWorld=Pick<WorldState,'width'|'height'|'tiles'|'habitats'>;
-export const HABITAT_LIMITS=Object.freeze({'macaw-aviary':1,'elephant-grove':1,'lion-savanna':1});
-const kindOf=(h:Habitat):HabitatKind|null=>!('kind'in h)?'macaw-aviary':h.kind==='macaw-aviary'||h.kind==='elephant-grove'||h.kind==='lion-savanna'?h.kind:null;
+export const HABITAT_LIMITS=Object.freeze({'macaw-aviary':1,'elephant-grove':1,'lion-savanna':1,'giraffe-plains':1});
+const kindOf=(h:Habitat):HabitatKind|null=>!('kind'in h)?'macaw-aviary':h.kind==='macaw-aviary'||h.kind==='elephant-grove'||h.kind==='lion-savanna'||h.kind==='giraffe-plains'?h.kind:null;
 
 /** One shared footprint/collision authority, with separate per-species construction caps. */
 export function validateSpeciesHabitatPlacement(world:HabitatPlacementWorld,anchor:Point|null,kind:HabitatKind){
@@ -12,6 +12,8 @@ export function validateSpeciesHabitatPlacement(world:HabitatPlacementWorld,anch
   if(species===null)return {proposal:null,reason:'command' as const};
   const checked=validatePlacement(world,anchor,habitatBlockerKeys(),'habitat',SPECIES[species].footprint);
   if(checked.reason!=='ready')return checked;
+  if(anchor&&world.width===24&&kind!=='giraffe-plains'&&anchor.x+SPECIES[species].footprint>12)return {...checked,reason:'zone' as const};
+  if(kind==='giraffe-plains'&&(!anchor||world.width!==24||world.height!==26||anchor.x!==13||anchor.z<1||anchor.z>3))return {...checked,reason:'zone' as const};
   if(kind==='elephant-grove'&&anchor&&(anchor.z<10||anchor.z+6>18))return {...checked,reason:'zone' as const};
   if(kind==='macaw-aviary'&&world.height===26&&anchor&&anchor.z+2>18)return {...checked,reason:'zone' as const};
   if(kind==='lion-savanna'&&anchor&&anchor.z<18)return {...checked,reason:'zone' as const};

@@ -138,3 +138,5 @@ GH0-01 partial: fresh remote main is 3252234; GitHub Cloudflare check completed 
 - Browser QA memakai **internal browser**; **NO “Take over computer”** dan no owner's personal saved browser.
 - Functionality first; no per-feature user approval/manual testing; real blockers only.
 - `GH6-06` may only close after separately approved production release + actual smoke and V4-aware safe recovery.
+
+Storage milestone (not a checklist closure): native real IndexedDB 10/10 at bd43f5e, cleanup14/14, zero captured warnings/errors. Full-game V4 Continue still pending.

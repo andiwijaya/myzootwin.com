@@ -1,3 +1,4 @@
+import type {GiraffeProgress} from './giraffe-state.ts';
 import type {Habitat,WorldState,ZooSaveV1} from './state.ts';
 import type {ZooSaveV2,LionSavannaProgress} from './zoo-state.ts';
 import {isMacaw,type ZooAnimal,type ZooResource,type HabitatKind} from './species.ts';
@@ -5,7 +6,7 @@ import {isMacaw,type ZooAnimal,type ZooResource,type HabitatKind} from './specie
 export type RuntimeHabitat=Habitat&{kind?:HabitatKind};
 export interface RuntimeWorld extends Omit<WorldState,'habitats'|'resources'> {habitats:RuntimeHabitat[];resources:ZooResource[];}
 /** Common mutable subsystem contract. The canonical root is validated as exact V1 or V2. */
-export interface RuntimeState extends Omit<ZooSaveV1,'schemaVersion'|'world'|'animals'> {schemaVersion:1|2|3;world:RuntimeWorld;animals:ZooAnimal[];elephantGrove?:ZooSaveV2['elephantGrove'];lionSavanna?:LionSavannaProgress;}
+export interface RuntimeState extends Omit<ZooSaveV1,'schemaVersion'|'world'|'animals'> {schemaVersion:1|2|3|4;world:RuntimeWorld;animals:ZooAnimal[];elephantGrove?:ZooSaveV2['elephantGrove'];lionSavanna?:LionSavannaProgress;giraffePlains?:GiraffeProgress;}
 const macawHabitat=(h:RuntimeHabitat)=>h.kind===undefined||h.kind==='macaw-aviary';
 const macawResource=(r:ZooResource):r is ZooSaveV1['world']['resources'][number]=>r.kind==='food'||r.kind==='water'||r.kind==='perch';
 const worldViews=new WeakMap<RuntimeWorld,{world:WorldState;habitats:RuntimeWorld['habitats'];resources:RuntimeWorld['resources'];tiles:RuntimeWorld['tiles']}>();
@@ -20,7 +21,7 @@ function macawWorldView(world:RuntimeWorld):WorldState {
  * Its birds, resources, mission/economy objects belong to the same canonical root.
  * Full-world occupancy remains visible so old commands cannot collide with a grove. */
 export function macawRuntimeView(state:RuntimeState):ZooSaveV1 {
-  const {elephantGrove:_,lionSavanna:__,...common}=state;
+  const {elephantGrove:_,lionSavanna:__,giraffePlains:___,...common}=state;
   return {...common,schemaVersion:1,animals:state.animals.filter(isMacaw),world:macawWorldView(state.world)};
 }
 function merge<T extends {id:string}>(current:readonly T[],changed:readonly T[],belongs:(item:T)=>boolean):T[]{

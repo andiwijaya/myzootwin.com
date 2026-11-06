@@ -26,7 +26,7 @@ export function prepareElephantWelcome<S extends ZooSave>(s:S,command:number){
  const view=elephantResidentsView(s);if(s.schemaVersion===1||!view.canWelcome)return {ok:false as const,reason:view.reason};
  if(command!==s.economy.nextCommand||!Number.isSafeInteger(command)||command>=Number.MAX_SAFE_INTEGER)return {ok:false as const,reason:'command' as const};
  const positions=elephantSpawnPair(s),habitat=s.world.habitats.find(h=>h.kind==='elephant-grove');if(!positions||!habitat)return {ok:false as const,reason:'space' as const};
- const next=structuredClone(s) as Extract<S,{schemaVersion:2|3}>;
+ const next=structuredClone(s) as Extract<S,{schemaVersion:2|3|4}>;
  for(const [i,resident]of ELEPHANT_RESIDENTS.entries()){
   const a:ElephantAnimal={...resident,speciesId:ELEPHANT_SPECIES_ID,sex:'female',habitatId:habitat.id,position:positions[i]!,target:null,targetResourceId:null,hunger:20,thirst:20,energy:80,habitatFit:100,enrichment:30,welfare:30,care:{low:true,hungry:true,thirsty:true,tired:false,bored:true},currentBehavior:'idle',motion:{phase:'idle',ticksLeft:20,sequence:0,heading:0,waypoints:[],waypointIndex:0},foodEaten:0,waterDrunk:0,restedTicks:0,enrichedTicks:0,socialComfort:70,shadeRest:0,bathCooldownTicks:0,logCooldownTicks:0,socialCooldownTicks:0,baths:0,socialInteractions:0};next.animals.push(a);
  }

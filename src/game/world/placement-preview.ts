@@ -3,7 +3,7 @@ import {sceneOrigin} from './scene-coordinates.ts';
 export type PlacementReason = 'choose' | 'ready' | 'outside' | 'creek' | 'path' | 'occupied' | 'scenery' | 'limit' | 'command' | 'funds' | 'capacity' | 'zone' | 'locked';
 export type PlacementKind='habitat'|'path';
 export interface PlacementProposal { kind:PlacementKind; anchor:Point; width:1|2|6|7; height:1|2|6|7; cells:Point[]; }
-export interface PlacementView { kind:PlacementKind; habitatKind?:'macaw-aviary'|'elephant-grove'|'lion-savanna'; active:boolean; revision:number; proposal:PlacementProposal|null; reason:PlacementReason; confirmed:PlacementProposal|null; confirmations:number; }
+export interface PlacementView { kind:PlacementKind; habitatKind?:import('../core/species.ts').HabitatKind; active:boolean; revision:number; proposal:PlacementProposal|null; reason:PlacementReason; confirmed:PlacementProposal|null; confirmations:number; }
 export type PlacementCommand = 'begin'|'begin-path'|'confirm'|'cancel'|'left'|'right'|'up'|'down';
 export const cellKey=(p:Point)=>`${p.x},${p.z}`;
 /** Pure, conservative footprint rules shared by preview and the upcoming habitat command. */

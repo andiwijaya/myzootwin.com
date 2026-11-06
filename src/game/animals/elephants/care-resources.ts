@@ -44,7 +44,7 @@ export interface ElephantCareQuote {command:number;kind:ElephantCareKind;cell:Po
 export function prepareElephantCarePlacement<S extends ZooSave>(s:S,quote:ElephantCareQuote){
  if(!quote||quote.command!==s.economy.nextCommand||!Number.isSafeInteger(quote.command)||quote.command>=Number.MAX_SAFE_INTEGER)return {ok:false as const,reason:'stale' as const};
  const checked=validateElephantCarePlacement(s,quote.kind,quote.cell);if(s.schemaVersion===1||checked.reason!=='ready'||!checked.resource)return {ok:false as const,reason:checked.reason};
- const next=structuredClone(s) as Extract<S,{schemaVersion:2|3}>,r={...checked.resource,id:`${quote.kind}-${quote.command}`,revision:quote.command};next.world.resources.push(r);const paid=debit(next,ELEPHANT_PRICES[quote.kind],'build',`place-${r.id}`,r.id);if(paid)return {ok:false as const,reason:paid==='funds'?'funds' as const:'stale' as const};next.economy.nextCommand++;
+ const next=structuredClone(s) as Extract<S,{schemaVersion:2|3|4}>,r={...checked.resource,id:`${quote.kind}-${quote.command}`,revision:quote.command};next.world.resources.push(r);const paid=debit(next,ELEPHANT_PRICES[quote.kind],'build',`place-${r.id}`,r.id);if(paid)return {ok:false as const,reason:paid==='funds'?'funds' as const:'stale' as const};next.economy.nextCommand++;
  const valid=validateSaveV2(reconcileElephantWelfare(next));return valid.ok?{ok:true as const,state:valid.value,resourceId:r.id}:{ok:false as const,reason:'stale' as const};
 }
 export interface ElephantCareRefillQuote {command:number;id:string;revision:number;}
@@ -52,7 +52,7 @@ export function prepareElephantCareRefill<S extends ZooSave>(s:S,quote:ElephantC
  if(s.schemaVersion===1||!conservationGrantView(s).qualified)return {ok:false as const,reason:'locked' as const};
  if(!quote||quote.command!==s.economy.nextCommand||!Number.isSafeInteger(quote.command)||quote.command>=Number.MAX_SAFE_INTEGER)return {ok:false as const,reason:'stale' as const};
  const resource=elephantResources(s.world.resources).find(r=>r.id===quote.id&&knownKind(r.kind)&&'approaches'in r);if(!resource)return {ok:false as const,reason:'missing' as const};if(quote.revision!==resource.revision)return {ok:false as const,reason:'stale' as const};if(!elephantConsumable(resource.kind as ElephantCareKind)||resource.stock>=resource.capacity)return {ok:false as const,reason:'full' as const};
- const next=structuredClone(s) as Extract<S,{schemaVersion:2|3}>,r=next.world.resources.find(r=>r.id===resource.id)!;const paid=debit(next,elephantServicePrice(resource.kind as ElephantCareKind),'supplies',`service-${r.id}`,r.id);if(paid)return {ok:false as const,reason:paid==='funds'?'funds' as const:'stale' as const};r.stock=r.capacity;r.revision++;next.economy.nextCommand++;
+ const next=structuredClone(s) as Extract<S,{schemaVersion:2|3|4}>,r=next.world.resources.find(r=>r.id===resource.id)!;const paid=debit(next,elephantServicePrice(resource.kind as ElephantCareKind),'supplies',`service-${r.id}`,r.id);if(paid)return {ok:false as const,reason:paid==='funds'?'funds' as const:'stale' as const};r.stock=r.capacity;r.revision++;next.economy.nextCommand++;
  const checked=validateSaveV2(reconcileElephantWelfare(next));return checked.ok?{ok:true as const,state:checked.value,resourceId:r.id}:{ok:false as const,reason:'stale' as const};
 }
 

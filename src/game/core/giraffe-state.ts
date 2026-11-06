@@ -1,5 +1,5 @@
 import type {Animal,Habitat,Point} from './state.ts';
-import type {ZooAnimal,ZooHabitat,ZooResource,ZooWorld} from './species.ts';
+import type {V3ZooAnimal as ZooAnimal,V3ZooHabitat as ZooHabitat,V3ZooResource as ZooResource,V3ZooWorld as ZooWorld} from './species.ts';
 import type {ZooSaveV3} from './zoo-state.ts';
 
 export const GIRAFFE_SPECIES_ID='giraffa-sp' as const;
