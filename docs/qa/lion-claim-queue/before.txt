@@ -1,0 +1,28 @@
+✖ a reward candidate joins a follow-up autosave started by another already-running drain before using its revision (57.8534ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 235.2851
+
+✖ failing tests:
+
+test at tests\autosave-candidate-drain.test.mjs:9:1
+✖ a reward candidate joins a follow-up autosave started by another already-running drain before using its revision (57.8534ms)
+  AssertionError [ERR_ASSERTION]: The candidate must not submit a competing write while the second autosave owns the transaction queue
+  
+  3 !== 2
+  
+      at TestContext.<anonymous> (file:///C:/Users/andi_/Documents/Codex/2026-11-06/task/lion/tests/autosave-candidate-drain.test.mjs:22:9)
+      at async Test.run (node:internal/test_runner/test:1113:7)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: 3,
+    expected: 2,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

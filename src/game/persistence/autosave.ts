@@ -185,6 +185,10 @@ export function createAutosave<State extends ZooSave=ZooSaveV1>(backend: Durable
             candidateBusy=true;
             try{
                 await drain(true);
+                // A drain that was already awaiting the same write can start its
+                // second flush before ours resumes. Join that write too; new
+                // non-candidate drains/queued timers are held by candidateBusy.
+                while(inflight)await inflight;
                 if(closing||blocked()||view().phase==='error'||!reader)return undefined;
                 const current=reader();
                 if(current.tick!==expected.tick||current.economy.nextCommand!==expected.command||candidate.tick!==current.tick||candidate.schemaVersion!==current.schemaVersion)return undefined;
