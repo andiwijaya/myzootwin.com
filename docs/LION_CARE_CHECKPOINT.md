@@ -10,4 +10,4 @@ Prior actual Chrome UI journey used only UUID database lion-product-7e77a1eb-e49
 
 Chrome timing during that session was approximately1FPS with dropped fixed-clock wall time; it is not a performance PASS. On resume the native window was observed minimized. This is a possible confounder, not a proven explanation for all earlier samples. User subsequently restricted testing to the internal browser; no further desktop/Chrome control is permitted. The internal browser baseline at2026-11-06T09:14:38.428Z, before Lion construction, measured median16.7ms,p9516.8ms, about60FPS and0ms dropped wall time. A full three-lion comparison, mobile views and15-active-minute1x soak are still required.
 
-Checklist remains7/39 at this checkpoint; unverified gates stay open. Release and rollback still require a V3-compatible candidate and separate publishing authorization.
+Checklist was7/39 at this historical checkpoint. Later acceptance supersedes its open journey/mission/native notes: [current native acceptance](LION_NATIVE_ACCEPTANCE.md), [living checklist](LION_SAVANNA_PROGRESS.md). Publishing still requires separate authorization.
