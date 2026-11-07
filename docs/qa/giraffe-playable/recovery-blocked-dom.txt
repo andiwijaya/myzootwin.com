@@ -1,0 +1,89 @@
+- complementary:
+  - strong: "Giraffe QA: actual compiled product, synthetic named database only"
+  - button "Inspect QA state"
+  - button "Close QA game"
+  - button "Lose QA WebGL context"
+  - button "Corrupt isolated QA primary"
+  - generic "Source and save evidence"
+- link "Skip to main content":
+  - /url: "#main-content"
+- banner:
+  - link "MyZooTwin home":
+    - /url: /
+    - generic: ✦
+    - generic: MyZooTwin
+  - navigation "Main navigation":
+    - link "Play Zoo":
+      - /url: /play/
+    - link "Animals":
+      - /url: /animals/
+    - link "Wildlife":
+      - /url: /wildlife/
+    - link "Pets":
+      - /url: /pets/
+    - link "Learn":
+      - /url: /learn/
+    - link "Adventures":
+      - /url: /adventures/
+    - link "Gear":
+      - /url: /gear/
+  - link "About":
+    - /url: /about/
+    - text: About ↗
+- main:
+  - region "Dunia kecil untuk dirawat.":
+    - region "Progres game lokal":
+      - generic "Detail simpanan":
+        - status: Progres tersimpan tidak dapat dibaca. Data tetap utuh; mulai baru diblokir untuk melindunginya.
+        - generic: Detail simpanan
+      - alert: Progres tersimpan tidak dapat dibaca. Data tetap utuh; mulai baru diblokir untuk melindunginya.
+      - button "Periksa simpanan / opsi pemulihan"
+    - generic: ✦
+    - generic: Pratinjau pengembangan
+    - paragraph: Suaka Tropical Creek
+    - heading "Dunia kecil untuk dirawat." [level=1]
+    - paragraph: Sungai yang tenang, calon rumah bagi dua makaw yang penasaran, dan suaka yang akan tumbuh.
+    - paragraph: Bangun, rawat, sambut pengunjung dan selesaikan empat misi. Progres tersimpan otomatis di perangkat ini saat storage tersedia.
+    - button "Coba misi pertama" [disabled]
+    - button "Lanjutkan" [disabled]
+    - button "Cara bermain"
+    - button "Pengaturan"
+    - link "Jelajahi jurnal satwa":
+      - /url: /animals/
+      - generic: Jelajahi jurnal satwa
+      - generic: ↗
+    - figure "Konsep suaka · hanya ilustrasi":
+      - img "Ilustrasi konsep sungai tropis, pepohonan, dan calon habitat."
+      - group "Aksi permainan":
+        - generic: Aksi permainan
+      - tabpanel "Misi":
+        - group "Aksi permainan":
+          - generic: Aksi permainan
+      - tabpanel "Rawat"
+      - tabpanel "Tamu":
+        - group "Aksi permainan":
+          - generic: Aksi permainan
+      - tabpanel "Bangun":
+        - group "Aksi permainan":
+          - generic: Aksi permainan
+      - button "Jelajahi suaka" [disabled]
+      - generic: Konsep suaka · hanya ilustrasi
+      - status
+- contentinfo:
+  - link "✦ MyZooTwin":
+    - /url: /
+    - generic: ✦
+    - generic: MyZooTwin
+  - paragraph: A curious field guide to the animals we share this planet with.
+  - link "Animals":
+    - /url: /animals/
+  - link "Wildlife":
+    - /url: /wildlife/
+  - link "Pets":
+    - /url: /pets/
+  - link "Learn":
+    - /url: /learn/
+  - link "About":
+    - /url: /about/
+  - text: © 2026 MyZooTwin. Made for curious minds.
+  - button "Privacy choices" [disabled]

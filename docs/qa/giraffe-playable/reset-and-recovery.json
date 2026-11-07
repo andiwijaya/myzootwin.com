@@ -1,0 +1,97 @@
+{
+  "resetSource": "c99526a0c59df9f345854a394277af723e3784d7",
+  "inspectorFixSource": "b656a57f1cc1d25fd87aaae2455acc28acde6ec5",
+  "before": {
+    "tick": 15912,
+    "cash": 3138,
+    "residents": 10,
+    "claimedGQ": [
+      "GQ01",
+      "GQ02",
+      "GQ03",
+      "GQ04"
+    ]
+  },
+  "fresh": {
+    "tick": 0,
+    "cash": 1500,
+    "schema": 4,
+    "tiles": 624,
+    "habitats": 0,
+    "reservedMacaws": 2,
+    "giraffes": 0,
+    "giraffeGrant": null,
+    "preferences": {
+      "speed": 1,
+      "locale": "id",
+      "graphics": "low",
+      "muted": true,
+      "reducedMotion": true
+    }
+  },
+  "resetThroughRealConfirmation": true,
+  "normalCorruptPrimaryBlocksContinueAndNewGame": true,
+  "recoveryThroughRealConfirmation": true,
+  "exactOfferedCheckpointRestored": true,
+  "recoveredCheckpoint": "Latest valid V4 previous at tick0 after explicit reset, with user-selectedEN locale; not the pre-reset10resident world and not a V3 rollback",
+  "noPassiveGrantOrMissionProof": true,
+  "inspectorRefusal": {
+    "at": "2026-11-07T00:10:43.200Z",
+    "source": "b656a57f1cc1d25fd87aaae2455acc28acde6ec5",
+    "database": "giraffe-product-f716958f-5447-495f-aee7-4d6051582e4c",
+    "scope": "QA inspector only; backend refused checkpoint without mutation",
+    "checkpointRead": "blocked",
+    "reason": "unreadable",
+    "owners": 0,
+    "maxOwners": 0,
+    "retired": []
+  },
+  "firstFaultHarnessConsole": [
+    {
+      "level": "error",
+      "message": "r: unreadable\n    at o (http://127.0.0.1:4381/assets/durable-backend-CZCV1HzF.js:1:1797)\n    at b (http://127.0.0.1:4381/assets/durable-backend-CZCV1HzF.js:1:3418)\n    at Object.read (http://127.0.0.1:4381/assets/durable-backend-CZCV1HzF.js:1:5697)\n    at async Ut (http://127.0.0.1:4381/assets/product-DAQBI4vz.js:3:68889)",
+      "timestamp": "2026-11-07T00:07:03.242Z",
+      "url": "http://127.0.0.1:4381/assets/durable-backend-CZCV1HzF.js"
+    }
+  ],
+  "firstFaultScope": "The product correctly blocked unreadable state; its separate QA inspector initially exposed expected backend refusal as an unhandled rejection. Catch/report added, native retest below is clean.",
+  "cleanRetestConsole": [],
+  "cleanup": {
+    "ownedTabsClosed": true,
+    "ownServerStopped": true,
+    "viewportVisibilityReset": true,
+    "resourcesZero": true
+  },
+  "artifacts": [
+    {
+      "path": ".qa/giraffe-native-6a08f70/reset-before.json",
+      "sha256": "3ae34747a0f29e730b1880200793127f2d1cc6393046fce88de110edbd3bcee7",
+      "bytes": 648852
+    },
+    {
+      "path": ".qa/giraffe-native-6a08f70/reset-fresh.json",
+      "sha256": "847348569f5ee97a3f664e56597d6a25dc9048769434842090a7841fa2a7c6d1",
+      "bytes": 371239
+    },
+    {
+      "path": ".qa/giraffe-native-6a08f70/reset-recovered.json",
+      "sha256": "4978cb5a0f8c82244efa91256ee522e51531201577aba4aae1000b08e3fcce58",
+      "bytes": 371238
+    },
+    {
+      "path": ".qa/giraffe-native-6a08f70/reset-closed.json",
+      "sha256": "3f8ac1772f05fabda59a3f04043e3da55ab49b06dcee0942c91ec1a4a011088c",
+      "bytes": 371203
+    },
+    {
+      "path": ".qa/giraffe-native-6a08f70/refusal-handled.json",
+      "sha256": "8ad0907238c8cc271e471ae0632e899711e507355e18075bbc9a4e3f06d490b2",
+      "bytes": 348
+    },
+    {
+      "path": ".qa/giraffe-native-6a08f70/refusal-recovered.json",
+      "sha256": "e47410f8a54e6be2ec2b3121ee1da3fcee699954300da1822e7e14cb07081c58",
+      "bytes": 360687
+    }
+  ]
+}

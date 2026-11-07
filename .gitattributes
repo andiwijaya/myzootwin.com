@@ -49,3 +49,16 @@ docs/qa/elephant-release/** -text whitespace=trailing-space,space-before-tab,cr-
 docs/qa/elephant-release/*.log -whitespace
 # Captured accessibility transcripts retain native list-marker spacing.
 docs/qa/elephant-release/*.txt -whitespace
+
+# Preserve exact new Giraffe evidence bytes and recorded log digests.
+docs/qa/giraffe-hygiene/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/qa/giraffe-hygiene/*.log -whitespace
+docs/qa/giraffe-playable/current-v4-cold.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/qa/giraffe-playable/recovered-fresh-v4.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/qa/giraffe-playable/native-final.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/qa/giraffe-playable/reset-and-recovery.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/qa/giraffe-playable/stress-final.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/qa/giraffe-playable/recovery-*-dom.txt -text whitespace=trailing-space,space-before-tab,cr-at-eol
+# Original captured tool output is evidence, including its trailing spacing.
+docs/qa/giraffe-baseline/*.txt -whitespace
+docs/qa/giraffe-v4/*.txt -whitespace

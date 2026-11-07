@@ -1,0 +1,33 @@
+# Giraffe native acceptance: verified function and remaining visual gates
+
+The actual compiled game was exercised exclusively through the internal browser, using a named disposable synthetic database. No owner's save/profile, desktop takeover, alternate browser driver or simulation-time injection was used. The original full journey at `507eff5389fc927d8380034b07d042acb98feeb2` remains in `qa/giraffe-playable/` and the earned V4 fixture in `tests/fixtures/giraffe-v4-golden.json`. Current-source evidence is summarized in [native-final.json](qa/giraffe-playable/native-final.json), with hashes of full local captures retained under `.qa/giraffe-native-6a08f70/`.
+
+## Real gameplay and storage
+
+The original native journey migrated the frozen earned V3 with all seven old residents and all old mission proofs, awarded the explicit 1,850 ZC grant durably once, constructed the paid 49-cell home at (13,2), welcomed Dira and then Sora/Lila atomically, built and serviced real browse/water/shade, and purchased twelve actual path tiles for 180 ZC. All GQ01–04 were earned and claimed through real controls, including measured meals/drinks, social contact, comfort streaks and three distinct paid giraffe viewers. Optional enrichment rejected a busy cell, accepted a moved clear cell, and all three residents used its actual stock.
+
+Final cold return at `e1b637419a7a8515856000bab5f39e964a295ef5` strictly validates 624 tiles, ten residents, Dira/Sora/Lila and all four GQ claims. The complete state at tick 15,912 / 3,138 ZC is exactly equal before and after read-only maintenance. Continue remains paused and grants no offline progress. Read-only maintenance in ID/EN reports schema 4, database 4, three giraffes, four missions and the V3 backup without changing those bytes.
+
+Two actual tabs loaded the same unclaimed 2,163 ZC source before either committed. The first committed 1,850 ZC; the loser entered conflict with 2,163 ZC and a null grant. Stored balance was 4,013 ZC with exactly one grant receipt. Both writers closed and only their owned race database was deleted. This supplements the earlier native IndexedDB 10/10 failure-injection evidence; it is not a claim of two full-game conflict screenshots.
+
+A native UI test found that the shared Undo control was hidden after removal. Giraffe care now directly exposes the existing guarded Undo transaction. Actual controls removed a 90 ZC browse station, recorded its 90 ZC construction refund, then restored it for exactly 90 ZC with its remaining stock. The old optional-enrichment removal's separate 65 ZC refund is explicitly distinguished in the evidence. Refill charges are never refunded. The Undo interaction used identical runtime code before a newline-only correction; the final source and renderer hash are recorded separately.
+
+## Renderer, settings and controls
+
+The browser reports three live giraffe rigs, one active shared geometry, and at most one renderer owner. Low power changes giraffe triangles from 11,220 to 10,140 while retaining all three actors; only two bounded LOD assets are cached. Reduced motion and mute remain saved preferences. Five actual focus buttons move to Macaw/Giraffe/Elephant/Lion/All; actual camera controls report 0°, 90°, 180° and 270°. Active ID layouts at 1366×768, 360×780 and 780×360 have one canvas, no document overflow and all five focus controls at least 44×44 px. An earlier paused-state layout observation returned hidden zero-size controls; it is retained and superseded by the explicit active-state measurements, not treated as a touch pass.
+
+Actual `WEBGL_lose_context` injection produced the normal context-lost state and Try again control. The old scene disposed all owned geometry/textures/materials/frames/subscribers with zero cleanup errors. Retry recreated all three giraffes with an exactly equal save and one maximum owner. Final closure again left zero owned resources and no captured console warnings/errors. Tabs closed, viewport/visibility reset and the own loopback server stopped.
+
+## Gates that remain open
+
+All supported screenshot APIs failed with “Unable to capture screenshot”, including after actual renderer recovery. Native DOM, WebGL counters, geometric tests and save equality are not a visual art review. Neck/hoof contact, clipping, coat readability, four-angle rendered picking, contrast and gesture usability still need supported rendered evidence. No desktop or personal-browser workaround was used.
+
+The native 1× observation covered 513.83 wall seconds but only 121.2 simulation seconds, with 368,339.3 ms additional dropped wall time; settings also pause normally and background callbacks may be throttled. The required 900 active seconds were not completed. FPS, browser CPU/GPU timing and physical-phone performance are unverified. The separate actual-model 10× stress did complete 10,000 ticks with all four destinations, strict periodic validation, 72 real paid services, exact cold return and a maximum 105,673-character payload. Post-GC Node heap grew about 456 KB; Node CPU/heap/RSS are not native rendering measurements. See [stress-final.json](qa/giraffe-playable/stress-final.json).
+
+The global QA browser stage therefore remains UNRUN. No receipt was fabricated to turn that stage green. Publication and private Cloudflare binding verification remain independently held.
+
+## Additional native reset and recovery coverage
+
+At `c99526a`, actual restart confirmation replaced the ten-resident world with a valid fresh V4: 1,500 ZC, tick0,624tiles, no habitat/giraffe progress and two reserved macaws, preserving visual settings. New ID/EN text distinguishes empty land, the700ZC fence/home and separate path/care costs. Deliberately corrupting only the disposable primary blocked Continue/newgame. The real recovery dialog offered the latest valid post-reset V4 at tick0; confirmation restored exactly that state, including the selectedENlocale. It did not select the old ten-resident world or a V3 rollback.
+
+The product handled unreadable state correctly, but the separate QA inspector initially logged its expected backend refusal as an unhandled rejection. The inspector was fixed to report structured refusal at `b656a57`, then the same native corruption/recovery was repeated: blocked reason unreadable, exact recovery, zero warn/errors, no passive grant or mission progress. Records and limits are in [reset-and-recovery.json](qa/giraffe-playable/reset-and-recovery.json); the valid recovered fresh state and blocked/recovery dialog text are versioned. Cleanup again left no owned resource, tab or loopback server.

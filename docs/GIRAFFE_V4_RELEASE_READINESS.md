@@ -1,6 +1,6 @@
 # Giraffe V4 local release candidate - publication held
 
-No push or deployment is authorized. Remote main was refreshed after implementation and remains325223403a2dec1b805f05d9fb8d795d09568585. The private Cloudflare administrative source/alias binding is still unverified because automatic browser review denied that destination without explicit administration authorization. This is separate from local engineering.
+No push or deployment is authorized. Remote main was refreshed after implementation and remains `325223403a2dec1b805f05d9fb8d795d09568585`. The private Cloudflare administrative source/alias binding is still unverified because automatic browser review denied that destination without explicit administration authorization. This is separate from local engineering.
 
 The default local product now uses the same IndexedDB database/store at version4, exact generation/revision CAS and an atomic originalV3 backup. V1/V2 paths retain their historical copies and a labelled validated V3 intermediate. Missing/corrupt provenance, newer schemas/databases, invalid states and losing writers never reset or silently downgrade a world. Native storage10/10, actual full-game V4 cold equality and strict migration/invariant tests are recorded in the living checklist/evidence. Native art screenshots and the15-minute1xrendered soak remain outstanding.
 
@@ -13,3 +13,5 @@ If a separately authorized release encounters a regression: pause publishing cha
 ## Required final gates
 
 Run current-source unit/type/build/HTTP checks and verify unchanged9public routes/sitemap and no distributed QA assets. Exercise actual product source through the internal browser at1366x768,360x780,780x360 inID/EN, including allfocus buttons, precise rendered care, context loss/retry, cold saves,2tabCAS and cleanup. Complete at least15active1xminutes and10xstress with truthful measurements and explicit unavailable GPU/physical-device coverage. Close the rights/privacy/dependency/size/import audit. Prepare a concrete source-bound release package and only request production approval as the final publication step. GH6-06 stays open until separately authorized publication and verified live source/asset/save-safe smoke.
+
+Final local source is `b656a57` (product7945a62, later QA tooling). Source-stable817/817/check407clean/build9/HTTP9 passes are archived; the browser stage is deliberatelyUNRUN. Native actual reset, corrupted-primary refusal, explicit validV4 recovery, realWebGL retry and readonlymaintenance have passed. Complete rendered art/gesture evidence and900active1xseconds remain outstanding. See GIRAFFE_LOCAL_HANDOFF.md. This does not authorize publication.
