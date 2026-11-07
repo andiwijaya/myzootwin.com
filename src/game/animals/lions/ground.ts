@@ -8,7 +8,24 @@ const center=(r:LionResource)=>({x:r.cell.x+.5,z:r.cell.z+.5});
 /** Build one local geometric context per query; no persistent cache can hide edited or untrusted geometry. */
 function groundContext(world:Pick<ZooWorld,'resources'>,h:LionHabitat){
  const bounds=lionBounds(h),r=LION_GROUND,obstacles=world.resources.filter(q=>q.habitatId===h.id&&q.kind!=='lion-kopje').map(q=>({x:q.cell.x+.5,z:q.cell.z+.5})),rock=world.resources.find((q):q is LionResource=>q.habitatId===h.id&&q.kind==='lion-kopje'),c=rock?center(rock):null;
- return {allowed(p:Point,others:readonly Point[]=[]){return h.cells.length===49&&Number.isFinite(p.x)&&Number.isFinite(p.z)&&p.x>=bounds.x+r.margin&&p.x<=bounds.x+7-r.margin&&p.z>=bounds.z+r.margin&&p.z<=bounds.z+7-r.margin&&obstacles.every(q=>lionDistance(p,q)>=r.propClearance-1e-8)&&others.every(q=>lionDistance(p,q)>=r.separation-1e-8);},height(p:Point){if(!c||Math.abs(p.x-c.x)>.5||p.z<c.z-.5||p.z>c.z+2)return 0;return r.rampHeight*Math.max(0,Math.min(1,(c.z+2-p.z)/2));},bounds};
+ const allowed=(p:Point,others:readonly Point[]=[])=>h.cells.length===49&&Number.isFinite(p.x)&&Number.isFinite(p.z)&&p.x>=bounds.x+r.margin&&p.x<=bounds.x+7-r.margin&&p.z>=bounds.z+r.margin&&p.z<=bounds.z+7-r.margin&&obstacles.every(q=>lionDistance(p,q)>=r.propClearance-1e-8)&&others.every(q=>lionDistance(p,q)>=r.separation-1e-8);
+ return {allowed,height(p:Point){if(!c||Math.abs(p.x-c.x)>.5||p.z<c.z-.5||p.z>c.z+2)return 0;return r.rampHeight*Math.max(0,Math.min(1,(c.z+2-p.z)/2));},bounds,
+  motionAllowed(from:Point,to:Point,others:readonly Point[]=[]){
+   if(!allowed(from,others)||!allowed(to,others))return false;
+   const dx=to.x-from.x,dz=to.z-from.z,length2=dx*dx+dz*dz;
+   const clearance=(p:Point,radius:number)=>{const t=length2?Math.max(0,Math.min(1,((p.x-from.x)*dx+(p.z-from.z)*dz)/length2)):0;return Math.hypot(from.x+dx*t-p.x,from.z+dz*t-p.z)>=radius-1e-8;};
+   if(!obstacles.every(p=>clearance(p,r.propClearance))||!others.every(p=>clearance(p,r.separation)))return false;
+   if(!c)return true;
+   // A ramp is continuous at its southern foot, never across an elevated side/north ledge.
+   // Clip analytically: resampling the same diagonal after every tiny step must not change legality.
+   let enter=0,exit=1;
+   for(const [origin,delta,min,max] of [[from.x,dx,c.x-.5,c.x+.5] as const,[from.z,dz,c.z-.5,c.z+2] as const]){
+    if(delta===0){if(origin<min||origin>max)return true;continue;}
+    const a=(min-origin)/delta,b=(max-origin)/delta;enter=Math.max(enter,Math.min(a,b));exit=Math.min(exit,Math.max(a,b));if(enter>exit)return true;
+   }
+   const heightAt=(t:number)=>r.rampHeight*Math.max(0,Math.min(1,(c.z+2-(from.z+dz*t))/2));
+   return !(enter>0&&heightAt(enter)>1e-8||exit<1&&heightAt(exit)>1e-8);
+  }};
 }
 type GroundContext=ReturnType<typeof groundContext>;
 /** Kopje has a level northern crown and a two-tile south ramp. */
@@ -21,11 +38,13 @@ function segmentAllowed(context:GroundContext,from:Point,to:Point,others:readonl
  return true;
 }
 export function lionSegmentAllowed(world:Pick<ZooWorld,'resources'>,h:LionHabitat,from:Point,to:Point,others:readonly Point[]=[]):boolean{return segmentAllowed(groundContext(world,h),from,to,others);}
+/** Stricter future motion; legacy checkpoint acceptance above deliberately stays unchanged. */
+export function lionMotionSegmentAllowed(world:Pick<ZooWorld,'resources'>,h:LionHabitat,from:Point,to:Point,others:readonly Point[]=[]):boolean{const context=groundContext(world,h);return context.motionAllowed(from,to,others)&&segmentAllowed(context,from,to,others);}
 function groundNodes(context:GroundContext,others:readonly Point[]):Point[]{const b=context.bounds,points:Point[]=[];for(let z=1;z<=6;z+=.5)for(let x=1;x<=6;x+=.5){const p={x:b.x+x,z:b.z+z};if(context.allowed(p,others))points.push(p);}return points;}
 export function lionGroundNodes(world:Pick<ZooWorld,'resources'>,h:LionHabitat,others:readonly Point[]=[]):Point[]{return groundNodes(groundContext(world,h),others);}
 /** Deterministic bounded 121-node BFS; every segment checks fence, props, neighbors and ramp slope. */
 export function lionGroundRoute(world:Pick<ZooWorld,'resources'>,h:LionHabitat,from:Point,to:Point,others:readonly Point[]=[]):Point[]|null{
- const context=groundContext(world,h),segment=(a:Point,b:Point)=>segmentAllowed(context,a,b,others);
+ const context=groundContext(world,h),segment=(a:Point,b:Point)=>context.motionAllowed(a,b,others)&&segmentAllowed(context,a,b,others);
  if(!context.allowed(from,others)||!context.allowed(to,others))return null;
  if(segment(from,to))return [{...to}];
  const points=groundNodes(context,others),nodes=new Map(points.map(p=>[key(p),p]));

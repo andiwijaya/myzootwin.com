@@ -2,7 +2,7 @@ import type {RuntimeState} from '../../core/runtime-state.ts';
 import type {Point} from '../../core/state.ts';
 import {isLion,type LionAnimal,type LionHabitat,type LionResource,type LionResourceKind,type LionBehavior} from '../../core/species.ts';
 import {LION_NEEDS as N} from './rules.ts';
-import {LION_GROUND as G,lionDistance,lionGroundRoute,lionSegmentAllowed,lionGroundHeight,lionGroundNodes} from './ground.ts';
+import {LION_GROUND as G,lionDistance,lionGroundRoute,lionMotionSegmentAllowed,lionGroundHeight,lionGroundNodes} from './ground.ts';
 import {reconcileLionWelfare} from './welfare.ts';
 type ActionEvent={type:'lion-roared'|'lion-investigated-scent'|'lion-scratched';animalId:string;resourceId:string;eventId:string}|{type:'lion-socialized';animalId:string;companionId:string;eventId:string};
 const clamp=(n:number)=>Math.max(0,Math.min(100,n));
@@ -15,9 +15,9 @@ function action(a:LionAnimal,phase:LionBehavior,ticks:number){a.currentBehavior=
 function walk(s:RuntimeState,a:LionAnimal):'moving'|'arrived'|'blocked'{
  if(--a.motion.ticksLeft<=0||!a.target)return 'blocked';const h=habitat(s,a),waypoints=a.motion.waypoints;
  if(!waypoints.length)return lionDistance(a.position,a.target)<1e-7?'arrived':'blocked';
- const goal=waypoints[a.motion.waypointIndex]!;const dx=goal.x-a.position.x,dz=goal.z-a.position.z,d=lionDistance(a.position,goal),heading=d<1e-7?a.motion.heading:Math.atan2(dx,dz),error=angle(a.motion.heading,heading);
+ const goal=waypoints[a.motion.waypointIndex]!;if(!lionMotionSegmentAllowed(s.world,h,a.position,goal))return 'blocked';const dx=goal.x-a.position.x,dz=goal.z-a.position.z,d=lionDistance(a.position,goal),heading=d<1e-7?a.motion.heading:Math.atan2(dx,dz),error=angle(a.motion.heading,heading);
  a.motion.heading=angle(0,a.motion.heading+Math.max(-G.turn,Math.min(G.turn,error)));if(Math.abs(error)>.2)return 'moving';
- if(d>1e-7){const step=Math.min(G.speed,d),p={x:a.position.x+dx/d*step,z:a.position.z+dz/d*step};if(!lionSegmentAllowed(s.world,h,a.position,p,neighbors(s,a))){a.motion.blockedTicks++;return a.motion.blockedTicks>=18?'blocked':'moving';}a.motion.blockedTicks=0;a.motion.lastStep={x:p.x-a.position.x,z:p.z-a.position.z};a.motion.distanceWalked+=Math.hypot(a.motion.lastStep.x,a.motion.lastStep.z);a.position=p;a.motion.elevation=lionGroundHeight(s.world,h,p);}
+ if(d>1e-7){const step=Math.min(G.speed,d),p={x:a.position.x+dx/d*step,z:a.position.z+dz/d*step};if(!lionMotionSegmentAllowed(s.world,h,a.position,p,neighbors(s,a))){a.motion.blockedTicks++;return a.motion.blockedTicks>=18?'blocked':'moving';}if(!lionMotionSegmentAllowed(s.world,h,p,goal))return 'blocked';a.motion.blockedTicks=0;a.motion.lastStep={x:p.x-a.position.x,z:p.z-a.position.z};a.motion.distanceWalked+=Math.hypot(a.motion.lastStep.x,a.motion.lastStep.z);a.position=p;a.motion.elevation=lionGroundHeight(s.world,h,p);}
  if(lionDistance(a.position,goal)<1e-7){if(a.motion.waypointIndex+1<waypoints.length)a.motion.waypointIndex++;else return 'arrived';}return 'moving';
 }
 function choose(s:RuntimeState,a:LionAnimal,kind:LionResourceKind,slot:number):boolean{
