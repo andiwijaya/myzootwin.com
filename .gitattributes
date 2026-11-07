@@ -62,3 +62,8 @@ docs/qa/giraffe-playable/recovery-*-dom.txt -text whitespace=trailing-space,spac
 # Original captured tool output is evidence, including its trailing spacing.
 docs/qa/giraffe-baseline/*.txt -whitespace
 docs/qa/giraffe-v4/*.txt -whitespace
+
+# Native failed-soak captures remain byte-exact, with the failed result explicit.
+docs/qa/giraffe-soak/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/qa/giraffe-soak/*.log -whitespace
+docs/qa/giraffe-soak/*.txt -whitespace

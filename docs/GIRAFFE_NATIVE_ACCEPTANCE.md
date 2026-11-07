@@ -1,5 +1,12 @@
 # Giraffe native acceptance: verified function and remaining visual gates
 
+## Current continuation superseding earlier soak limits
+
+Native sourcee8b103e reached900.3active seconds at1x, but the attempt **FAILED** because a Lion route became invalid and autosave refused that candidate. The last valid tick21245 checkpoint remained intact. Actual native CPU/RAF/GPU measurements are preserved as measurements from a failed run, not acceptance. Forward fix76e715e passes820/820, every-tick exact-supply replay through22757 and new10x10000tickstress/coldexact. The post-fix native rerun is blocked by internal webview attachment failures, even for a blank tab; supported screenshots also fail independently of the app. See [GIRAFFE_SOAK_ROUTE_FIX.md](GIRAFFE_SOAK_ROUTE_FIX.md) and [current result](qa/giraffe-soak/result.json).
+
+Additional genuine native interactions selected Lila on the canvas, dragged the camera, used keyboard End/Home/Tab and measured ID/EN computed user-agent text contrast (no eligible-text failure, min11.67). EN All measured42.82px; its44px source fix awaits native retest. Pinch, rendered art/contact/clipping/readability, current responsive EN and a clean post-fix900active-second run remain unverified. No desktop takeover, owner profile, hidden driver, timestamp substitution or fabricated screenshot receipt was used. Current local checks820/820/check411clean/build9/HTTP9; global browser UNRUN, checklist25/42. Owned browser session and server are closed. The following sections retain their earlier source-bound results.
+
+
 The actual compiled game was exercised exclusively through the internal browser, using a named disposable synthetic database. No owner's save/profile, desktop takeover, alternate browser driver or simulation-time injection was used. The original full journey at `507eff5389fc927d8380034b07d042acb98feeb2` remains in `qa/giraffe-playable/` and the earned V4 fixture in `tests/fixtures/giraffe-v4-golden.json`. Current-source evidence is summarized in [native-final.json](qa/giraffe-playable/native-final.json), with hashes of full local captures retained under `.qa/giraffe-native-6a08f70/`.
 
 ## Real gameplay and storage

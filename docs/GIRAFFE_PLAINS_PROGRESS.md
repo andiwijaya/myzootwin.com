@@ -6,6 +6,12 @@
 
 Progress formula: `verified / 42 * 100`. Final release GH6-06 remains `[ ]` pending explicit production authorization/live smoke even if 41 engineering items pass.
 
+## Current continuation - forward route fix, 7 November 2026 UTC
+
+Tested source `76e715e8b1b73814de69df57301b0dacece7bd3f`: **820/820**, Astro411files0errors/warnings/hints, build9/HTTP9 PASS. Exact current receipts: `qa/giraffe-hygiene/route-fix-*`. Node10xstress10000ticks/72paidservices/all4destinations/coldexact PASS, max105968chars. Every-tick replay of the native supply ledger now passes through tick22757. No new gate is closed: **25/42 (59.52%),17open**.
+
+The native1xattempt actually reached900.3active seconds, but **FAILED** after an invalid Lion route caused autosave refusal; valid stored tick21245 was preserved. Reproduced tick21253, fixed future ramp/prop movement and committed-step route safety without tightening historical save acceptance. Old FSMs fail both regressions; current FSMs pass. Post-fix native retest is BLOCKED because the internal browser cannot attach fresh webviews, including a blank tab. Supported screenshots separately fail on visible blank pages. Exact failed captures and native keyboard/contrast/Lila-picking evidence: `GIRAFFE_SOAK_ROUTE_FIX.md`, `qa/giraffe-soak/`. EN44px fix still awaits native retest. Global browser remainsUNRUN; no desktop takeover, owner-save action, push or deployment. Owned tabs/server closed. Earlier entries below are historical source-bound checkpoints; the current handoff supersedes their outstanding-time description.
+
 ## GH0 — Audit, baseline & design
 
 - [ ] **GH0-01** — Audit fresh HEAD/branch/Cloudflare/live binding, Lion V3 release state and current blockers; freeze SHA and do not infer live status from a local checklist.
@@ -90,11 +96,11 @@ Progress formula: `verified / 42 * 100`. Final release GH6-06 remains `[ ]` pend
 - [x] **GH5-01** — Ship ID-default/EN complete content, compact guide/Quick Start, species-specific needs, land/fence/building explanation and reward feedback.
   - Evidence: ID-default/EN Giraffe build/care/missions/guide/rewards/formula text implemented and observed; localization key/placeholder parity passes. New ID/EN empty-land vs700ZC fence/home/separate-care explanation observed natively atc99526a;3stepQuickStart present. Visual readability remainsGH5-02/GH5-04.
 - [ ] **GH5-02** — Add one-tap focus buttons Macaw/Giraffe/Elephant/Lion/All, robust 4-angle camera/tap-pinch-drag, readable portrait/landscape builder.
-  - Evidence: Actual5focus/4cameraangles/3activeviewports and44px controls verified in native-final.json; no document overflow. Current rendered picking and native pinch/drag usability remain unverified; screenshots blocked.
+  - Evidence: Actual5focus/4cameraangles/3activeviewports and44px controls verified in native-final.json; no document overflow. Native single-actor Lila picking and camera drag now exercised at e8b103e; four-angle rendered identity/pinch/mobile gesture review remains open; screenshots blocked.
 - [x] **GH5-03** — Respect graphics tier, reduced motion, mute, loading and WebGL/context-loss recovery with one RAF and owned GPU/audio cleanup.
   - Evidence: Native low/reduced/mute preferences, real WebGL loss/error/retry with exact saved state,3giraffes/oneowner, zero owned GPU/frame/subscriber cleanup, no captured warn/errors. Full world still uses one shared engine/RAF; physicalGPU performance is not claimed.
 - [ ] **GH5-04** — Stabilize native selects and care panels during ticks (avoid Pride Care-style option churn), keyboard/ARIA/contrast/touch targets and old journal routes.
-  - Evidence: Stable native options500updates, focused key/placeholder tests and actual shared ARIA correction/Dira cause details pass. Active focus controls44px;9public routes/meta unchanged. Visual contrast, keyboard and full gesture audit remain open.
+  - Evidence: Stable native options500updates, focused key/placeholder tests and actual shared ARIA correction/Dira cause details pass. Active focus controls44px;9public routes/meta unchanged. Native End/Home/Tab, stable selection/focus and ID/EN computed text contrast now pass (eligible minimum11.67); EN All42.82px finding fixed with44px minimum at4bca8b0, native retest pending. Rendered/full gesture audit remains open.
 
 ## GH6 — Proof, hardening & controlled release
 
@@ -105,7 +111,7 @@ Progress formula: `verified / 42 * 100`. Final release GH6-06 remains `[ ]` pend
 - [x] **GH6-03** — Run IndexedDB V4 failure injection: blocked upgrade, two-tab CAS, quota/abort, corrupt/future saves, missing V3 backup, cold return and writer race.
   - Evidence: Native IndexedDB10/10 plus actual2tabCAS:2163to4013onegrant; loser2163/null/conflict; cleanupownedDB. Strict fault cases/oldbinarybarrier/quota/abort/future/corrupt/missingbackup and current full-game cold equality pass.
 - [ ] **GH6-04** — Perform ≥15 active minutes 1× native internal-browser soak plus 10× simulation stress; record CPU/memory/GPU-when-available, FPS and payload deltas.
-  - Evidence: PARTIAL: actual-model10x10000ticksPASS, max105673chars, CPU/GC/heap/RSS captured. Native1x513.83wallsec yielded121.2active sec with368339.3ms dropped wall;900active seconds/FPS/browserCPU/GPU/physicalphone remain unverified. No soak pass claimed.
+  - Evidence: PARTIAL: actual-model10x10000ticksPASS, max105673chars, CPU/GC/heap/RSS captured. Native sourcee8b103e reached900.3active/1213.7855wallsec with real RAF/CPU/GPU samples, but FAILED on Lion route/autosave refusal. Forward fix76e715e passes exact every-tick replay; clean native rerun is BLOCKED by internal webview attachment. Physical-phone/visual coverage unavailable. No soak pass claimed; see GIRAFFE_SOAK_ROUTE_FIX.md.
 - [x] **GH6-05** — Audit dead code/import graph, dependency/security/privacy, original art/rights, distribution files, repo/QA size and unchanged original website routes.
   - Evidence: GIRAFFE_HYGIENE.md;186reachable/0unresolved imports,399files0unused/otherdiagnostics;4deliberate compatibility/maintenance candidates retained.0npmprodknown advisories;24distributionfiles/9pages/noQAassets; originalart/unchangeddeps/publicsite;952MBmeasured checkout.
 - [ ] **GH6-06** — Prepare V4-aware fix-forward/maintenance recovery and controlled production release; publish ONLY when separately authorized and verify live asset/source/save-safe smoke.

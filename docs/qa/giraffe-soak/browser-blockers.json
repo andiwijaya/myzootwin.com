@@ -1,0 +1,22 @@
+{
+  "scope": "Manual record of supported internal-browser tool outcomes; not a screenshot or browser acceptance receipt",
+  "browser": "ChatGPT in-app browser, id2; existing binding retained",
+  "postFixSource": "76e715e8b1b73814de69df57301b0dacece7bd3f",
+  "postFixSoak": "BLOCKED before gameplay; no clean900second rerun claimed",
+  "freshWebviewAttempts": [
+    {"api": "cua.createBrowserTab", "target": "Own localhost4381 QA product and known synthetic database", "outcome": "Timed out waiting for Browser webview attachment; tabs list empty"},
+    {"api": "cua.createBrowserTab", "condition": "Explicit1366x768 viewport and visible internal panel", "outcome": "Same attachment timeout; tabs list empty"},
+    {"api": "internalBrowser.tabs.new", "target": "Fresh empty tab using documented alternative", "outcome": "Same attachment timeout"}
+  ],
+  "earlierScreenshotDiagnosis": {
+    "target": "Visible about:blank tab, independently of game renderer",
+    "apis": ["tab.getScreenshot", "tab.screenshot({fullPage:true})"],
+    "outcome": "Unable to capture screenshot",
+    "otherSupportedCapabilityReviewed": "pageAssets inventories already observed files; it does not capture rendered pixels",
+    "rootCause": "Unknown; no hidden methods, desktop capture or canvas-export substitute used"
+  },
+  "cleanup": {"ownedTabs": 0, "viewportReset": true, "visibilityReset": true, "ownLoopbackServerStopped": true},
+  "privateCloudflare": "Previously denied by automatic review, not executed; left pending and not retried per renewed delegation",
+  "pushOrDeployment": false,
+  "ownerSaveOrProfileUsed": false
+}

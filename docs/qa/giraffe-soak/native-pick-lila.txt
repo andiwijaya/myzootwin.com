@@ -1,0 +1,139 @@
+- complementary:
+  - strong: "Giraffe QA: actual compiled product, synthetic named database only"
+  - button "Native 1x measurement running"
+  - button "Stop measurement"
+  - button "Inspect QA state" [active]
+  - button "Close QA game"
+  - button "Lose QA WebGL context"
+  - button "Corrupt isolated QA primary"
+  - generic "Source and save evidence"
+- link "Skip to main content":
+  - /url: "#main-content"
+- banner:
+  - link "MyZooTwin home":
+    - /url: /
+    - generic: ✦
+    - generic: MyZooTwin
+  - navigation "Main navigation":
+    - link "Play Zoo":
+      - /url: /play/
+    - link "Animals":
+      - /url: /animals/
+    - link "Wildlife":
+      - /url: /wildlife/
+    - link "Pets":
+      - /url: /pets/
+    - link "Learn":
+      - /url: /learn/
+    - link "Adventures":
+      - /url: /adventures/
+    - link "Gear":
+      - /url: /gear/
+  - link "About":
+    - /url: /about/
+    - text: About ↗
+- main:
+  - region "Dunia kecil untuk dirawat.":
+    - generic "Status suaka":
+      - strong: 3.007 ZC
+      - 'generic "Rata-rata kesejahteraan makaw di aviari: 31%. Periksa kesejahteraan gajah di Rawat."': Makaw 31%
+      - generic: Tamu 1
+      - generic "Semua misi makaw selesai": ✓
+      - generic "Kecepatan simulasi 1×. Buka opsi": 1×
+    - region "Progres game lokal":
+      - generic "Detail simpanan":
+        - status: Menunggu simpan otomatis
+        - generic: Detail simpanan
+    - region "Kontrol sesi":
+      - button "Jeda suaka"
+      - status: Suaka berjalan. Jeda kapan saja untuk berhenti dengan aman.
+    - generic "Opsi"
+    - option "English"
+    - option "Bahasa Indonesia" [selected]
+    - option "1× · normal" [selected]
+    - option "10× · perawatan lebih cepat"
+    - figure "Tropical Creek · suaka hidup":
+      - group "Satu kebun binatang 3D dengan macaw, gajah, singa, dan Padang Jerapah. Periksa satwa, perawatan nyata, dan jalur pengunjung di luar pagar."
+      - group "Aksi permainan":
+        - generic: Aksi permainan
+        - group "Kontrol kamera dunia":
+          - button "Perkecil": −
+          - status: 233%
+          - button "Perbesar": +
+          - button "Putar kamera ke kiri 45 derajat": ↶
+          - button "Putar kamera ke kanan 45 derajat": ↷
+          - status: Sudut kamera 0 derajat
+          - button "Awal"
+      - tablist "Alat suaka":
+        - tab "Misi"
+        - tab "Rawat"
+        - tab "Tamu"
+        - tab "Bangun" [selected]
+      - tabpanel "Bangun":
+        - heading "Savana Singa" [level=3]
+        - paragraph: Satu kebun binatang. Rumah baru 7 × 7 untuk Raka, Sena, dan Tala.
+        - status: Hibah Savana diterima
+        - button "Hibah Savana diterima" [disabled]
+        - button "Fokus Savana Singa"
+        - text: Bangun jalur pengamatan nyata di luar pagar. Semua perawatan memakai Zoo Coins bersama.
+        - paragraph: "Langkah berikutnya: Amati perawatan nyata dan progres misi; isi ulang saat stok dibutuhkan."
+        - heading "Padang Jerapah" [level=3]
+        - paragraph: Tetangga tinggi baru di samping Macaw. Dira, Sora, dan Lila adalah betina dewasa fiktif.
+        - status: Hibah perluasan diterima
+        - button "Hibah perluasan diterima" [disabled]
+        - button "Lihat lokasi"
+        - paragraph: Jalur pengamatan luar tersambung
+        - paragraph: Bangun kandang → Isi pakan daun dan air → Amati jerapah dan pengunjung.
+        - navigation "Lihat lokasi":
+          - button "Macaw"
+          - button "Jerapah"
+          - button "Gajah"
+          - button "Singa"
+          - button "Semua"
+        - group "Aksi permainan":
+          - generic: Aksi permainan
+          - region "Kawasan Gajah":
+            - heading "Kawasan Gajah" [level=3]
+            - paragraph: Rumah outdoor yang luas untuk Ayu dan Nara, dua gajah Asia. Habitat 6 × 6 memakai dunia, jalur dan Zoo Coins suakamu.
+            - paragraph: "Biaya konstruksi habitat: 650 ZC"
+            - status: Hibah konservasi diterima. Suakamu siap untuk Kawasan Gajah.
+            - button "Hibah konservasi diterima. Suakamu siap untuk Kawasan Gajah." [disabled]
+            - paragraph: Satu hibah konservasi per suaka. Memuat ulang tidak memberi hibah lagi.
+            - paragraph: "Contoh anggaran: habitat, enam fasilitas perawatan, 6 petak jalan, isi awal dan pemeliharaan pertama kedua habitat berbiaya 1.336 ZC, menyisakan 64 ZC dari hibah. Jalurmu mungkin perlu lebih banyak petak. Isi ulang dan pemeliharaan berikutnya tetap berbayar; sambut pengunjung nyata."
+            - status: Kawasan Gajah telah dibangun.
+            - status: Ayu dan Nara sudah di rumah. Siapkan tempat pakan dan air minum untuk mereka.
+            - paragraph: Ayu · Gajah Asia · Betina Nara · Gajah Asia · Betina
+          - region "Tapak habitat · 2 × 2":
+            - button "Bangun habitat makaw · 300 ZC"
+            - button "Bangun jalur pengunjung · 15 ZC"
+            - paragraph: Habitat 300 ZC · Petak jalan 15 ZC · Saldo 3.007 ZC. Batal 0 ZC. Batalkan penghapusan membayar kembali pengembalian awal.
+            - status: ✓ Habitat terhubung ke gerbang · 6 petak rute. Buka gerbang untuk kunjungan habitat. Pengunjung yang memenuhi syarat membayar sekali di gerbang.
+            - paragraph: Untuk memperbaiki salah tempat, pilih objek, hapus, lalu bangun di lokasi baru. Perubahan bangunan termasuk dalam simpan otomatis lokal. Riwayat Urungkan hanya bertahan selama halaman ini terbuka.
+            - status
+            - status: ✓ Satu habitat makaw tertutup dibangun. Empat petak ditempati. Habitat termasuk dalam simpan otomatis lokal saat penyimpanan tersedia. Sambut kedua makaw atau hubungkan jalur pengunjung ke sisinya. Tempatkan dan isi tempat pakan untuk memberi makan makaw. Tempatkan dan isi mangkuk biru untuk memberi minum.
+          - region "Lila":
+            - heading "Lila" [level=3]
+            - button "Tutup pilihan"
+            - paragraph: Petak peta 16, 8
+            - paragraph: Berjalan · Kesejahteraan 83/100 · Lapar 29 · Haus 29
+          - region "Makaw biru-kuning":
+            - button "Kenali makaw"
+      - status: Lila
+- contentinfo:
+  - link "✦ MyZooTwin":
+    - /url: /
+    - generic: ✦
+    - generic: MyZooTwin
+  - paragraph: A curious field guide to the animals we share this planet with.
+  - link "Animals":
+    - /url: /animals/
+  - link "Wildlife":
+    - /url: /wildlife/
+  - link "Pets":
+    - /url: /pets/
+  - link "Learn":
+    - /url: /learn/
+  - link "About":
+    - /url: /about/
+  - text: © 2026 MyZooTwin. Made for curious minds.
+  - button "Privacy choices" [disabled]

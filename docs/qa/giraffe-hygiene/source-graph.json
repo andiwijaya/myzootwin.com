@@ -7,7 +7,7 @@
     "src/pages/play.astro",
     "src/pages/[section].astro"
   ],
-  "files": 404,
+  "files": 408,
   "reachableSourceFiles": [
     "src/components/PlayEntry.astro",
     "src/components/SitePrivacy.astro",
@@ -437,6 +437,11 @@
       },
       {
         "from": "src/game/render3d/water-scene.ts",
+        "specifier": "three",
+        "typeOnly": false
+      },
+      {
+        "from": "scripts/qa/giraffe-native-metrics.ts",
         "specifier": "three",
         "typeOnly": false
       },
@@ -935,7 +940,17 @@
         "typeOnly": false
       },
       {
+        "from": "tests/giraffe-grazing-route.test.mjs",
+        "specifier": "node:fs",
+        "typeOnly": false
+      },
+      {
         "from": "tests/giraffe-layout-plan.test.mjs",
+        "specifier": "node:fs",
+        "typeOnly": false
+      },
+      {
+        "from": "tests/giraffe-native-metrics.test.mjs",
         "specifier": "node:fs",
         "typeOnly": false
       },
@@ -996,6 +1011,11 @@
       },
       {
         "from": "tests/lion-save-v3.test.mjs",
+        "specifier": "node:fs",
+        "typeOnly": false
+      },
+      {
+        "from": "tests/lion-soak-route.test.mjs",
         "specifier": "node:fs",
         "typeOnly": false
       },
@@ -1674,7 +1694,17 @@
         "typeOnly": false
       },
       {
+        "from": "tests/giraffe-grazing-route.test.mjs",
+        "specifier": "node:assert/strict",
+        "typeOnly": false
+      },
+      {
         "from": "tests/giraffe-layout-plan.test.mjs",
+        "specifier": "node:assert/strict",
+        "typeOnly": false
+      },
+      {
+        "from": "tests/giraffe-native-metrics.test.mjs",
         "specifier": "node:assert/strict",
         "typeOnly": false
       },
@@ -1790,6 +1820,11 @@
       },
       {
         "from": "tests/lion-save-v3.test.mjs",
+        "specifier": "node:assert/strict",
+        "typeOnly": false
+      },
+      {
+        "from": "tests/lion-soak-route.test.mjs",
         "specifier": "node:assert/strict",
         "typeOnly": false
       },
@@ -2260,7 +2295,17 @@
         "typeOnly": false
       },
       {
+        "from": "tests/giraffe-grazing-route.test.mjs",
+        "specifier": "node:test",
+        "typeOnly": false
+      },
+      {
         "from": "tests/giraffe-layout-plan.test.mjs",
+        "specifier": "node:test",
+        "typeOnly": false
+      },
+      {
+        "from": "tests/giraffe-native-metrics.test.mjs",
         "specifier": "node:test",
         "typeOnly": false
       },
@@ -2376,6 +2421,11 @@
       },
       {
         "from": "tests/lion-save-v3.test.mjs",
+        "specifier": "node:test",
+        "typeOnly": false
+      },
+      {
+        "from": "tests/lion-soak-route.test.mjs",
         "specifier": "node:test",
         "typeOnly": false
       },
@@ -8428,6 +8478,47 @@
       "target": "src/game/persistence/giraffe-maintenance.ts"
     },
     {
+      "from": "scripts/qa/giraffe-native-metrics.ts",
+      "specifier": "three",
+      "typeOnly": false
+    },
+    {
+      "from": "scripts/qa/giraffe-native-metrics.ts",
+      "specifier": "../../src/game/render3d/frame-loop.ts",
+      "typeOnly": true,
+      "target": "src/game/render3d/frame-loop.ts"
+    },
+    {
+      "from": "scripts/qa/giraffe-native-metrics.ts",
+      "specifier": "../../src/game/core/giraffe-state.ts",
+      "typeOnly": false,
+      "target": "src/game/core/giraffe-state.ts"
+    },
+    {
+      "from": "scripts/qa/giraffe-native-metrics.ts",
+      "specifier": "../../src/game/core/zoo-state.ts",
+      "typeOnly": true,
+      "target": "src/game/core/zoo-state.ts"
+    },
+    {
+      "from": "scripts/qa/giraffe-product.ts",
+      "specifier": "./giraffe-native-metrics.ts",
+      "typeOnly": false,
+      "target": "scripts/qa/giraffe-native-metrics.ts"
+    },
+    {
+      "from": "scripts/qa/giraffe-product.ts",
+      "specifier": "../../tests/fixtures/giraffe-v4-golden.json",
+      "typeOnly": false,
+      "target": "tests/fixtures/giraffe-v4-golden.json"
+    },
+    {
+      "from": "scripts/qa/giraffe-product.ts",
+      "specifier": "../../src/game/persistence/save-v4.ts",
+      "typeOnly": false,
+      "target": "src/game/persistence/save-v4.ts"
+    },
+    {
       "from": "scripts/qa/giraffe-product.ts",
       "specifier": "../../src/game-entry/game-entry.ts",
       "typeOnly": false,
@@ -13682,6 +13773,39 @@
       "target": "src/game/core/giraffe-state.ts"
     },
     {
+      "from": "tests/giraffe-grazing-route.test.mjs",
+      "specifier": "node:test",
+      "typeOnly": false
+    },
+    {
+      "from": "tests/giraffe-grazing-route.test.mjs",
+      "specifier": "node:assert/strict",
+      "typeOnly": false
+    },
+    {
+      "from": "tests/giraffe-grazing-route.test.mjs",
+      "specifier": "node:fs",
+      "typeOnly": false
+    },
+    {
+      "from": "tests/giraffe-grazing-route.test.mjs",
+      "specifier": "../src/game/core/simulation.ts",
+      "typeOnly": false,
+      "target": "src/game/core/simulation.ts"
+    },
+    {
+      "from": "tests/giraffe-grazing-route.test.mjs",
+      "specifier": "../src/game/persistence/save-v4.ts",
+      "typeOnly": false,
+      "target": "src/game/persistence/save-v4.ts"
+    },
+    {
+      "from": "tests/giraffe-grazing-route.test.mjs",
+      "specifier": "../src/game/animals/giraffes/ground.ts",
+      "typeOnly": false,
+      "target": "src/game/animals/giraffes/ground.ts"
+    },
+    {
       "from": "tests/giraffe-layout-plan.test.mjs",
       "specifier": "node:test",
       "typeOnly": false
@@ -13713,6 +13837,27 @@
       "specifier": "../src/game/world/build-habitat.ts",
       "typeOnly": false,
       "target": "src/game/world/build-habitat.ts"
+    },
+    {
+      "from": "tests/giraffe-native-metrics.test.mjs",
+      "specifier": "node:test",
+      "typeOnly": false
+    },
+    {
+      "from": "tests/giraffe-native-metrics.test.mjs",
+      "specifier": "node:assert/strict",
+      "typeOnly": false
+    },
+    {
+      "from": "tests/giraffe-native-metrics.test.mjs",
+      "specifier": "node:fs",
+      "typeOnly": false
+    },
+    {
+      "from": "tests/giraffe-native-metrics.test.mjs",
+      "specifier": "../scripts/qa/giraffe-native-metrics.ts",
+      "typeOnly": false,
+      "target": "scripts/qa/giraffe-native-metrics.ts"
     },
     {
       "from": "tests/giraffe-play.test.mjs",
@@ -14702,6 +14847,39 @@
       "specifier": "../src/game/core/simulation.ts",
       "typeOnly": false,
       "target": "src/game/core/simulation.ts"
+    },
+    {
+      "from": "tests/lion-soak-route.test.mjs",
+      "specifier": "node:test",
+      "typeOnly": false
+    },
+    {
+      "from": "tests/lion-soak-route.test.mjs",
+      "specifier": "node:assert/strict",
+      "typeOnly": false
+    },
+    {
+      "from": "tests/lion-soak-route.test.mjs",
+      "specifier": "node:fs",
+      "typeOnly": false
+    },
+    {
+      "from": "tests/lion-soak-route.test.mjs",
+      "specifier": "../src/game/core/simulation.ts",
+      "typeOnly": false,
+      "target": "src/game/core/simulation.ts"
+    },
+    {
+      "from": "tests/lion-soak-route.test.mjs",
+      "specifier": "../src/game/persistence/save-v4.ts",
+      "typeOnly": false,
+      "target": "src/game/persistence/save-v4.ts"
+    },
+    {
+      "from": "tests/lion-soak-route.test.mjs",
+      "specifier": "../src/game/animals/lions/ground.ts",
+      "typeOnly": false,
+      "target": "src/game/animals/lions/ground.ts"
     },
     {
       "from": "tests/lion-storage-v3.test.mjs",

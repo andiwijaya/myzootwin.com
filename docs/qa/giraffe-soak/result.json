@@ -1,0 +1,242 @@
+{
+  "status": "FAIL",
+  "source": "e8b103e1c4c0b4ce100da7ea43887370f2b84cf4",
+  "at": "2026-11-07T00:51:56.445Z",
+  "scope": "Actual internal-browser native RAF, owned synthetic V4 fixture and V3 provenance, no injected simulation time",
+  "reason": "Observed invalid lion route and refused autosave; reaching 900 active seconds alone is not a passing soak",
+  "metricsAt900": {
+    "scope": "Native product RAF delivery/callback/render CPU and optional disjoint-safe GPU samples; no synthetic time, extra RAF chain or physical display FPS claim",
+    "status": "ACTIVE_TARGET_REACHED",
+    "startTick": 13582,
+    "currentTick": 22585,
+    "activeSeconds": 900.3,
+    "requiredActiveSeconds": 900,
+    "wallSeconds": 1213.7855,
+    "speed": 1,
+    "speedViolations": 0,
+    "callbacks": 42204,
+    "pauses": 0,
+    "pending": 1,
+    "maxPending": 1,
+    "rafIntervals": {
+      "count": 42203,
+      "meanMs": 28.735890813449277,
+      "maxMs": 1017.2000000000116,
+      "p50LowerBoundMs": 16.6,
+      "p95LowerBoundMs": 33.4,
+      "resolutionMs": 0.1,
+      "cappedBucketAtMs": 2000
+    },
+    "callbackCpu": {
+      "count": 42204,
+      "meanMs": 15.72475594730758,
+      "maxMs": 332.40000000037253,
+      "p50LowerBoundMs": 10.5,
+      "p95LowerBoundMs": 34.1,
+      "resolutionMs": 0.1,
+      "cappedBucketAtMs": 2000
+    },
+    "renderSubmitCpu": {
+      "count": 42250,
+      "meanMs": 0.572373964497544,
+      "maxMs": 15,
+      "p50LowerBoundMs": 0.5,
+      "p95LowerBoundMs": 1,
+      "resolutionMs": 0.1,
+      "cappedBucketAtMs": 2000
+    },
+    "gpu": {
+      "extension": true,
+      "counterBits": 64,
+      "disjoint": 0,
+      "discarded": 0,
+      "pending": 0,
+      "timing": {
+        "count": 704,
+        "meanMs": 4.8306715482954585,
+        "maxMs": 8.634218,
+        "p50LowerBoundMs": 4.7,
+        "p95LowerBoundMs": 7.2,
+        "resolutionMs": 0.1,
+        "cappedBucketAtMs": 2000
+      }
+    },
+    "memory": {
+      "usedJSHeapSize": 48050516,
+      "totalJSHeapSize": 118520592,
+      "jsHeapSizeLimit": 4395630592
+    },
+    "visibility": "visible"
+  },
+  "stoppedActiveSeconds": 917.5,
+  "invalid": [
+    {
+      "ok": false,
+      "code": "invalid-state",
+      "path": "$.lionSavanna.route"
+    }
+  ],
+  "saveAt900": {
+    "phase": "error",
+    "active": true,
+    "hasSave": true,
+    "revision": 531,
+    "savedTick": 21245,
+    "savedAt": 1794012582268,
+    "savedCurrency": 3001,
+    "savedMissions": 4,
+    "savedBirds": 2,
+    "fault": "write",
+    "generation": "giraffe-synthetic-fixture",
+    "recovery": {
+      "kind": "none",
+      "problem": null,
+      "quote": null,
+      "source": null,
+      "hasPreserved": false
+    },
+    "recoveryBusy": false,
+    "restartBusy": false,
+    "restartAvailable": false,
+    "dirty": true,
+    "pendingTimer": false,
+    "inflight": false,
+    "storageReady": true,
+    "disposed": false
+  },
+  "storedValidTick": 21245,
+  "cleanup": {
+    "owners": 0,
+    "maxOwners": 1,
+    "retired": [
+      {
+        "pendingFrames": 0,
+        "geometries": 0,
+        "textures": 0,
+        "cleanupErrors": 0,
+        "liveGiraffeModels": 0
+      }
+    ]
+  },
+  "fixSource": "76e715e8b1b73814de69df57301b0dacece7bd3f",
+  "reproduction": {
+    "firstInvalidTick": 21253,
+    "path": "$.lionSavanna.route",
+    "actor": "Sena",
+    "priorValidFixture": "tests/fixtures/lion-soak-route-before.json",
+    "tests": [
+      "tests/lion-soak-route.test.mjs",
+      "tests/giraffe-grazing-route.test.mjs"
+    ]
+  },
+  "postFixNative": {
+    "status": "BLOCKED",
+    "reason": "Internal browser could not attach any new webview; existing browser binding retained; no desktop or alternate driver used"
+  },
+  "capture": {
+    "status": "BLOCKED",
+    "reason": "Supported screenshot APIs also fail on visible about:blank independently of the game"
+  },
+  "sourceCaptureManifest": [
+    {
+      "file": "contrast-build-en.json",
+      "bytes": 1376,
+      "sha256": "81ba9ba13f4d2400001221c179373301d595581eec70a917cbac7ae5bcb25836"
+    },
+    {
+      "file": "contrast-build-id.json",
+      "bytes": 1129,
+      "sha256": "9454a2dd7c30ab9f31881b2e5720e2cd59bc10b1b6f3ee827688edfb9f0606cd"
+    },
+    {
+      "file": "contrast-care-en.json",
+      "bytes": 1607,
+      "sha256": "81442402b6b57ed56861bf5521de86cc684967744eaa1543f330cd8350ba0c42"
+    },
+    {
+      "file": "contrast-care-id.json",
+      "bytes": 1660,
+      "sha256": "2385fb5b7d9f9a8db21e9d59bdbb8f6117c3852af95f7fd78c84679ad7815ca3"
+    },
+    {
+      "file": "contrast-missions-en.json",
+      "bytes": 827,
+      "sha256": "3d5a8478987f8f040812658e59fe7a6cb565c32d8f8175cb99bdf83fede4bc1c"
+    },
+    {
+      "file": "contrast-missions-id.json",
+      "bytes": 805,
+      "sha256": "3c4c53902e767437546862c469b82b437167adc071c6042bbf73b9501d0ded40"
+    },
+    {
+      "file": "contrast.json",
+      "bytes": 2499,
+      "sha256": "d69cbb8dbc9a6d12382938fa8854933edfca6a7b83ad57cecc42e14f47af49a3"
+    },
+    {
+      "file": "drag.json",
+      "bytes": 665559,
+      "sha256": "34c9aa584a309641419bde1b7c0dffab7bacf72f3db970197cea494632b9f563"
+    },
+    {
+      "file": "failed-closed.json",
+      "bytes": 708367,
+      "sha256": "8796febf73f33b708a9c7951635d79e45dd98679fee1ab2c2cd4982533520d4a"
+    },
+    {
+      "file": "keyboard.json",
+      "bytes": 168,
+      "sha256": "7e2ba1dfe4ab256d82a6e59b6285dad513161692555fa58e5b08aed32f4197a3"
+    },
+    {
+      "file": "native-pick-lila.json",
+      "bytes": 671678,
+      "sha256": "aad243f4513590457f620ba46042a8f64850cb05cf58b88b481cbb00f4e7fb40"
+    },
+    {
+      "file": "native-pick-lila.txt",
+      "bytes": 6561,
+      "sha256": "13fe68994e04535322bec5e993766c2fb51435ef121890d8d35676c81fda6649"
+    },
+    {
+      "file": "retry-status.json",
+      "bytes": 708429,
+      "sha256": "9c2e8b2b7a9f833dedefdbb411bc67202d228c77f480b1f743982bc0109dc853"
+    },
+    {
+      "file": "sample-01.json",
+      "bytes": 641297,
+      "sha256": "991b17f5505e06e33ead28dc10f8841c1e375d742b9d319cf1d325de4ce3861b"
+    },
+    {
+      "file": "sample-02.json",
+      "bytes": 648521,
+      "sha256": "dcd05a733749ee9135bd48cf6eab7c3449c0e267951ca39e7565b8da4012af2b"
+    },
+    {
+      "file": "sample-03.json",
+      "bytes": 648664,
+      "sha256": "1a724de2a4df019484a71373dcb2793fb26c0c4e949bbeb595af66d90e6a0b72"
+    },
+    {
+      "file": "sample-04.json",
+      "bytes": 684797,
+      "sha256": "4ae5066d2f507c952164957f0ad8691be4d60f3c0f1267005ae30aeb4d6573bb"
+    },
+    {
+      "file": "start.json",
+      "bytes": 632257,
+      "sha256": "be416e00f8a6eabc316a9e69b634ae5e80ae6d0dd618b10e0e20803a18e7ea8c"
+    },
+    {
+      "file": "stopped.json",
+      "bytes": 708430,
+      "sha256": "52f177f655c277a2ee97b49bc3fef67d7ab2b7767d15db39424c7df18f23986b"
+    },
+    {
+      "file": "target-reached.json",
+      "bytes": 706489,
+      "sha256": "372302689a1ade1cb46819ed97682dc402a6540e56ed2880ad0e5432603d2f6b"
+    }
+  ]
+}

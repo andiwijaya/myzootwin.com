@@ -1,0 +1,44 @@
+✖ a sampled route grazing a browse prop never publishes an invalid remaining segment while taking smaller steps (131.8121ms)
+✖ native soak21253 ramp-side route remains loadable but future movement replans without teleport, invalid checkpoint or erased rewards (80.4034ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 0
+ℹ fail 2
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 549.039
+
+✖ failing tests:
+
+test at tests\giraffe-grazing-route.test.mjs:4:1
+✖ a sampled route grazing a browse prop never publishes an invalid remaining segment while taking smaller steps (131.8121ms)
+  AssertionError [ERR_ASSERTION]: {"i":4,"checked":{"ok":false,"code":"invalid-state","path":"$.giraffePlains.route"}}
+      at TestContext.<anonymous> (file:///C:/Users/andi_/Documents/Codex/2026-11-07/task/myzootwin-giraffe/tests/giraffe-grazing-route.test.mjs:7:224)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.start (node:internal/test_runner/test:1003:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }
+
+test at tests\lion-soak-route.test.mjs:5:1
+✖ native soak21253 ramp-side route remains loadable but future movement replans without teleport, invalid checkpoint or erased rewards (80.4034ms)
+  AssertionError [ERR_ASSERTION]: {"ok":false,"code":"invalid-state","path":"$.lionSavanna.route"}
+      at TestContext.<anonymous> (file:///C:/Users/andi_/Documents/Codex/2026-11-07/task/myzootwin-giraffe/tests/lion-soak-route.test.mjs:9:180)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.start (node:internal/test_runner/test:1003:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

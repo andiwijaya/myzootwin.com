@@ -1,5 +1,8 @@
 # Giraffe repository and distribution audit
 
+Current route-fix source `76e715e8b1b73814de69df57301b0dacece7bd3f` passes820/820/check411clean/build9/HTTP9. Refreshed audit:186reachable source modules,0unresolved imports,403compiler files with0unused/otherdiagnostics; no source imports QA. Current distribution24files/1,716,920bytes, all chunk hashes match,9routes,0QAmarkers; public/site/dependencies remain unchanged from3252234. Measured checkout964,503,485logical bytes,5bounded QA runs. Delta fromb656 has no new network/dynamic-execution/device-permission pattern. New receipts are `qa/giraffe-hygiene/route-fix-*`; the recorded npm advisory query below remains historical and was not silently refreshed. Global browser remainsUNRUN. Subsequent paragraphs preserve the priorb656 audit snapshot rather than describing current counts.
+
+
 Audited locally through frozen source `b656a57f1cc1d25fd87aaae2455acc28acde6ec5` (product changes end at `7945a62`; subsequent changes are isolated QA tooling). [Evidence](qa/giraffe-hygiene/) distinguishes static source checks, registry advisories, build output and historical production evidence. This is not a penetration test, legal certification or live hosting audit.
 
 The TypeScript AST import graph finds 186 reachable source modules from five Astro page roots and zero unresolved relative imports. Four non-page-reachable modules are deliberate compatibility backends or separately built read-only maintenance, each referenced by QA/tests; they were reviewed and retained. Installed TypeScript with noUnusedLocals/noUnusedParameters checks 399 files with zero unused declarations or other diagnostics. Astro separately checks JavaScript tests and page content. No source imports a QA/test module.
