@@ -1,0 +1,3878 @@
+{
+  "schemaVersion": 1,
+  "runId": "20261107T001023Z-db9bd697",
+  "startedAt": "2026-11-07T00:10:23.491Z",
+  "node": "v24.12.0",
+  "platform": "win32",
+  "head": "b656a57f1cc1d25fd87aaae2455acc28acde6ec5",
+  "testFiles": [
+    "tests/animal-actions-qa.test.mjs",
+    "tests/animal-autonomy.test.mjs",
+    "tests/audio-settings.test.mjs",
+    "tests/autosave-candidate-drain.test.mjs",
+    "tests/autosave.test.mjs",
+    "tests/camera-navigation.test.mjs",
+    "tests/care-mission.test.mjs",
+    "tests/cashflow.test.mjs",
+    "tests/clock-reentrancy.test.mjs",
+    "tests/conservation-grant.test.mjs",
+    "tests/elephant-attraction.test.mjs",
+    "tests/elephant-bath-render.test.mjs",
+    "tests/elephant-care-info.test.mjs",
+    "tests/elephant-care.test.mjs",
+    "tests/elephant-construction.test.mjs",
+    "tests/elephant-consumption.test.mjs",
+    "tests/elephant-economy.test.mjs",
+    "tests/elephant-editing.test.mjs",
+    "tests/elephant-enrichment-render.test.mjs",
+    "tests/elephant-enrichment.test.mjs",
+    "tests/elephant-expansion.test.mjs",
+    "tests/elephant-footprint.test.mjs",
+    "tests/elephant-layout-plan.test.mjs",
+    "tests/elephant-legacy-baseline.test.mjs",
+    "tests/elephant-legacy-regression.test.mjs",
+    "tests/elephant-localization.test.mjs",
+    "tests/elephant-locomotion.test.mjs",
+    "tests/elephant-migration-clock.test.mjs",
+    "tests/elephant-missions.test.mjs",
+    "tests/elephant-multispecies-save.test.mjs",
+    "tests/elephant-onboarding.test.mjs",
+    "tests/elephant-pond.test.mjs",
+    "tests/elephant-recovery.test.mjs",
+    "tests/elephant-residents.test.mjs",
+    "tests/elephant-rig.test.mjs",
+    "tests/elephant-runtime.test.mjs",
+    "tests/elephant-save-v2.test.mjs",
+    "tests/elephant-scene-anchor.test.mjs",
+    "tests/elephant-social-render.test.mjs",
+    "tests/elephant-social.test.mjs",
+    "tests/elephant-species.test.mjs",
+    "tests/elephant-visitors.test.mjs",
+    "tests/elephant-visual-settings.test.mjs",
+    "tests/elephant-welfare.test.mjs",
+    "tests/entry-preferences.test.mjs",
+    "tests/feeding.test.mjs",
+    "tests/giraffe-baseline.test.mjs",
+    "tests/giraffe-editing.test.mjs",
+    "tests/giraffe-expansion.test.mjs",
+    "tests/giraffe-facility-select.test.mjs",
+    "tests/giraffe-layout-plan.test.mjs",
+    "tests/giraffe-play.test.mjs",
+    "tests/giraffe-render.test.mjs",
+    "tests/giraffe-return.test.mjs",
+    "tests/giraffe-runtime-v4.test.mjs",
+    "tests/giraffe-save-v4.test.mjs",
+    "tests/giraffe-scene-anchor.test.mjs",
+    "tests/giraffe-species.test.mjs",
+    "tests/giraffe-storage-v4.test.mjs",
+    "tests/giraffe-world-description.test.mjs",
+    "tests/gpu-timing-records.test.mjs",
+    "tests/habitat-construction.test.mjs",
+    "tests/hud-navigation.test.mjs",
+    "tests/lion-care-simulation.test.mjs",
+    "tests/lion-care-transactions.test.mjs",
+    "tests/lion-checkpoint-stress.test.mjs",
+    "tests/lion-editing.test.mjs",
+    "tests/lion-facility-select.test.mjs",
+    "tests/lion-foundation.test.mjs",
+    "tests/lion-ground-design.test.mjs",
+    "tests/lion-maintenance.test.mjs",
+    "tests/lion-missions.test.mjs",
+    "tests/lion-render.test.mjs",
+    "tests/lion-save-v3.test.mjs",
+    "tests/lion-storage-v3.test.mjs",
+    "tests/lion-welfare.test.mjs",
+    "tests/lion-zero-cash.test.mjs",
+    "tests/localization.test.mjs",
+    "tests/macaw-model.test.mjs",
+    "tests/missions.test.mjs",
+    "tests/mixed-invariants.test.mjs",
+    "tests/onboarding.test.mjs",
+    "tests/path-connectivity.test.mjs",
+    "tests/pause-restart.test.mjs",
+    "tests/performance-baseline.test.mjs",
+    "tests/performance-reads.test.mjs",
+    "tests/placement-preview.test.mjs",
+    "tests/preview-lifecycle.test.mjs",
+    "tests/qa-workflow.test.mjs",
+    "tests/recovery.test.mjs",
+    "tests/resting.test.mjs",
+    "tests/sanctuary-lighting.test.mjs",
+    "tests/save-recovery.test.mjs",
+    "tests/scene-picking.test.mjs",
+    "tests/security-privacy.test.mjs",
+    "tests/simulation-atomic-events.test.mjs",
+    "tests/simulation-contract.test.mjs",
+    "tests/simulation-speed.test.mjs",
+    "tests/site-consent.test.mjs",
+    "tests/site-integration.test.mjs",
+    "tests/spending.test.mjs",
+    "tests/thriving-banner.test.mjs",
+    "tests/thriving-mission.test.mjs",
+    "tests/ticket-admission.test.mjs",
+    "tests/tropical-diorama.test.mjs",
+    "tests/visitor-arrivals.test.mjs",
+    "tests/visitor-mission.test.mjs",
+    "tests/visitor-navigation.test.mjs",
+    "tests/visitor-satisfaction.test.mjs",
+    "tests/visual-settings.test.mjs",
+    "tests/watering.test.mjs",
+    "tests/welfare.test.mjs",
+    "tests/world-editing.test.mjs"
+  ],
+  "sourceStart": {
+    "id": "65e651d08818d556d481e2730f85241c2e55e50e7308bce3b6313f375271e8ec",
+    "entries": [
+      {
+        "path": "astro.config.mjs",
+        "sha256": "f47757ffb0a7d390102e8f9208d3f435032988b2a0d6b008e90029a315c1df81"
+      },
+      {
+        "path": "docs/qa/giraffe-baseline/released-route-metadata.json",
+        "sha256": "050fd294e401f598cf5980aa4b394d91b5a067492981532183cacc00adad2533"
+      },
+      {
+        "path": "docs/qa/m0-02/baseline-results.json",
+        "sha256": "5094032d6b4cb09c0d077f60866e82ae8a167cb95c1704a8796ed2f4d8d2ec76"
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "267a9ae660affdb978621b21ff1944057249158df5b650d7ac0f837527919118"
+      },
+      {
+        "path": "package.json",
+        "sha256": "0f73476a7eee00bb8ad4ef1b545fe262200f83151174b9cf136fb3603faab05f"
+      },
+      {
+        "path": "public/favicon.svg",
+        "sha256": "78c28be8daea587e629661600e55c3250d521adcfa32cf88b3113d33267db702"
+      },
+      {
+        "path": "public/images/myzootwin-beranda.png",
+        "sha256": "194a2cb5178f255ebf0289aabac75135fc65a8f716f26c01dcfeaebe00960169"
+      },
+      {
+        "path": "public/images/tropical-creek-game.jpg",
+        "sha256": "6edf52437618a80b94911b846cb2722257739be87c4f96c793f1e808d848e880"
+      },
+      {
+        "path": "public/images/tropical-creek-journal.svg",
+        "sha256": "cf2f03404f8d72367c385fbbdfaabb0bd21ae0a262804525c20e027a34ea94cc"
+      },
+      {
+        "path": "public/licenses/third-party-notices.txt",
+        "sha256": "a5eff5cf91485bdf2f7ada50d30832c648db248314b3897e3c80e9da66efa29b"
+      },
+      {
+        "path": "public/licenses/three-MIT.txt",
+        "sha256": "5d5dad8147523d59bc15cca838ae0bdaae7075230ec49132c551a1d18e7b3412"
+      },
+      {
+        "path": "public/robots.txt",
+        "sha256": "ec272ee8fdedb49773eebe94cf6eade96bc05d3e47a0695d450d894d154b2011"
+      },
+      {
+        "path": "scripts/qa/assets-review.mjs",
+        "sha256": "b80cc23c23c5f30cd8a4988949c862229bbda998e4d0817159321b8ccda52c95"
+      },
+      {
+        "path": "scripts/qa/audit-lion-release.mjs",
+        "sha256": "841175debc6271ef75d48d71e8e051543c8bacd015b48b9685db1bfaec2e30c0"
+      },
+      {
+        "path": "scripts/qa/build-elephant-harness.mjs",
+        "sha256": "d98b18544fd361b711d7318e33c547905b9072f21f09d03e20098f9d15319a24"
+      },
+      {
+        "path": "scripts/qa/build-giraffe-product.mjs",
+        "sha256": "0ba8c2355577d85e406e80bfa5a402377a181b47072226fd02cd7425fbd931f0"
+      },
+      {
+        "path": "scripts/qa/build-giraffe-storage.mjs",
+        "sha256": "37a37c3cd4eeaa20d6d8477a60086bd7517389c2f898bd78330a219e4a226646"
+      },
+      {
+        "path": "scripts/qa/build-giraffe-world.mjs",
+        "sha256": "67fa10814b0ae699cfb7eaef7b0b064c55b419b94aeee954d2eeb054a6b22fbb"
+      },
+      {
+        "path": "scripts/qa/build-lion-maintenance.mjs",
+        "sha256": "3448226d18f643e14da2b42852eb10b7b43761de0a6150b2e478856e762f1187"
+      },
+      {
+        "path": "scripts/qa/build-lion-product.mjs",
+        "sha256": "1fae244b47f389713d24389127ab49b898152a115003d109b1dcaea83769860b"
+      },
+      {
+        "path": "scripts/qa/bundle-analysis.mjs",
+        "sha256": "0d94bd663da19ec1b4662689f9fbe307c761105adf33262b6dba0deb5e441045"
+      },
+      {
+        "path": "scripts/qa/camera-rotation.mjs",
+        "sha256": "686b8f77a2e01037adca4829432485374b9b35532aa56c5b931dd425adfd4c1f"
+      },
+      {
+        "path": "scripts/qa/freeze-elephant-legacy.mjs",
+        "sha256": "119f0c1926e98cb48cd4da35119dbdf2558dd5f085afbd80d64f0fce86fda1f3"
+      },
+      {
+        "path": "scripts/qa/freeze-giraffe-baseline.mjs",
+        "sha256": "c930c708db4648d635361e2a929fae60a0e1716d1eed216cc99f2a6e5b041cdd"
+      },
+      {
+        "path": "scripts/qa/freeze-lion-baseline.mjs",
+        "sha256": "c2131fe56c16a329c15b771f24266ea68d7c30309d6f3f5d8a2e2a88a4f4f7a9"
+      },
+      {
+        "path": "scripts/qa/giraffe-baseline-metrics.mjs",
+        "sha256": "aa852ac58acfc5361f2ee15a1ca9ea7908581c5496d3b4257055c44872c829f1"
+      },
+      {
+        "path": "scripts/qa/giraffe-maintenance.html",
+        "sha256": "660223d7632596b2397e21cc30ab0b478ae26d6879465e26df6736094d5121d2"
+      },
+      {
+        "path": "scripts/qa/giraffe-maintenance.ts",
+        "sha256": "df620aca4358ef334b0782bfbf7b31539274f9505d5c851efd18e85857fea097"
+      },
+      {
+        "path": "scripts/qa/giraffe-product.ts",
+        "sha256": "0ead366bc88d718e1224ce1dbcbc7ed71104db1a34cc40fbde5075acc98c47a1"
+      },
+      {
+        "path": "scripts/qa/giraffe-race.html",
+        "sha256": "f0a087c4e2d56de3367cf711fdb787344e605dfb332d438bbf36a22fdbbff60b"
+      },
+      {
+        "path": "scripts/qa/giraffe-race.ts",
+        "sha256": "61cce26fe66755f67f807d033dafca15671b401ec3f61d2c8be62993dda96584"
+      },
+      {
+        "path": "scripts/qa/giraffe-stress.mjs",
+        "sha256": "ac1e646c09223cbd210e538791a2f19c21cd99b98b486e01e377d8c3f165efe6"
+      },
+      {
+        "path": "scripts/qa/lion-maintenance.html",
+        "sha256": "e482cbda9e7921e216533c603514399ce8899b305235e038cbf027aefc58ef39"
+      },
+      {
+        "path": "scripts/qa/lion-maintenance.ts",
+        "sha256": "153394543bf855a5dd496385bf37f817eedafa548a855a02d11c19a5a0c02c6c"
+      },
+      {
+        "path": "scripts/qa/lion-native.html",
+        "sha256": "dfa053690360326f48b2d1ee7af61f42f93027058c23e828dac18ea319cd27e6"
+      },
+      {
+        "path": "scripts/qa/lion-native.ts",
+        "sha256": "b5ce4ee45b722d09a41d19e6cc9ddc8443bc2c1a089fd23313ce6bc7e0e6f24f"
+      },
+      {
+        "path": "scripts/qa/lion-product.ts",
+        "sha256": "355b1920083daf4de0568714d26f7154f21addb17f431490337edf30626b275a"
+      },
+      {
+        "path": "scripts/qa/lion-race.html",
+        "sha256": "19a047c51a27247f59f204bd727fe5b22e845a9ff794f38dcd62998120230397"
+      },
+      {
+        "path": "scripts/qa/lion-race.ts",
+        "sha256": "3cdc20ce87226a08449ed330415e08d9c3d8a757e86a104cef9bab1be34accb8"
+      },
+      {
+        "path": "scripts/qa/payload-isolated.mjs",
+        "sha256": "8bb1a22eeaecb7bac20c022b1e0b15569321913caddd44972aa719d0775b5fb9"
+      },
+      {
+        "path": "scripts/qa/payload.mjs",
+        "sha256": "9483ebe3db69d071c8ce2f7c8ce5fa2c0fa632fa14ecac8560d0d47c0b358cb7"
+      },
+      {
+        "path": "scripts/qa/prepare-gpu-attribution.mjs",
+        "sha256": "6b4a792e62d0e8fe77781b2b0c32698233b2583a46d843cdec485ab9bf316c31"
+      },
+      {
+        "path": "scripts/qa/prepare-privacy.mjs",
+        "sha256": "93bc9ac4a47eef470ae190f3e96aba825670918de669d16e586cceeab1f1d97d"
+      },
+      {
+        "path": "scripts/qa/privacy-locked.mjs",
+        "sha256": "ec264529c305c83e53b67bc2e3bc29d543d98415217a8548213795f99d0da84c"
+      },
+      {
+        "path": "scripts/qa/qa.mjs",
+        "sha256": "26294042818f1d054799d5fd164fc1c5cc5c993857d76af9fca6a9097162ddf5"
+      },
+      {
+        "path": "scripts/qa/settings-isolated.mjs",
+        "sha256": "a702617474add4561d100611f8da85a20a3f5713e4e10710c7b46a28cc27ac12"
+      },
+      {
+        "path": "scripts/qa/tooling.mjs",
+        "sha256": "ea7e6f11893649c001e76d61df778263b865337818f3383a07fc69b9dc28974a"
+      },
+      {
+        "path": "scripts/qa/verify-lion-soak.mjs",
+        "sha256": "376d5a326046719f295cb09ca00d681dcc64d8bae499aaa9ab077dc9438f4373"
+      },
+      {
+        "path": "scripts/qa/visual-polish.mjs",
+        "sha256": "1f36b0cc96476876ec3a9bba77ccd922a30e933028f9d361f065ec6d94f4c3ff"
+      },
+      {
+        "path": "src/components/PlayEntry.astro",
+        "sha256": "0e3feedd50306f291e5c319b1d258e45578f7da3cc50dff7fdf079fd5e98439c"
+      },
+      {
+        "path": "src/components/SitePrivacy.astro",
+        "sha256": "d10096c4a90de206d788402488375809bbb8859849bbc057886809a73d5bcf19"
+      },
+      {
+        "path": "src/game-entry/animal-info.ts",
+        "sha256": "d3cbdfa7d5165c41f17f27b7c1cb97e0ed3dc29c5999cfad5e42ed5608e85261"
+      },
+      {
+        "path": "src/game-entry/care-mission-panel.ts",
+        "sha256": "c43352e684acdb661b8ae098e1b0e09d76152e69529817b1db30c34910b4530b"
+      },
+      {
+        "path": "src/game-entry/dialog-focus.ts",
+        "sha256": "5767d01c19d74c2df1965f0fe4cb83c97e3e37af21246fbfae376420dcc17a4c"
+      },
+      {
+        "path": "src/game-entry/elephant-care-info.ts",
+        "sha256": "1ab19aa01bfbbbecf2e83d15d6199064a404c5cdb50a632871af7bdc117ff58f"
+      },
+      {
+        "path": "src/game-entry/elephant-care-panel.ts",
+        "sha256": "5e5bcfd8edd15e4b61c3edfdee21ccb79f859b4035380b93b9d02fbaf25adb0b"
+      },
+      {
+        "path": "src/game-entry/elephant-catalog.ts",
+        "sha256": "8062c1dcd17182c57451e6b33657ca05a1ee34e68685aa6e7117228146737fde"
+      },
+      {
+        "path": "src/game-entry/elephant-mission-panel.ts",
+        "sha256": "bb7093f5b71e0729ac1968a46021a3bde978e03c7a63e6941fcefdc59f38b41c"
+      },
+      {
+        "path": "src/game-entry/elephant-onboarding-panel.ts",
+        "sha256": "748371deee0204d01a94c81465a9e2ca23fa160a7097f7d764a53e23dee41681"
+      },
+      {
+        "path": "src/game-entry/elephant-recovery-panel.ts",
+        "sha256": "f0429eddc16429c6213701c829187e6b4dd36ae5ad907f360d315cdbd17bc366"
+      },
+      {
+        "path": "src/game-entry/game-entry.ts",
+        "sha256": "a4b98f6a2496227df92a4bbcb59eb01d37261ca3547b3c67162d50e693acd465"
+      },
+      {
+        "path": "src/game-entry/giraffe-copy.ts",
+        "sha256": "cd906ef74d420259614b3779f96116085025a294a3c8715f05f8f39106763ec1"
+      },
+      {
+        "path": "src/game-entry/giraffe-panel.ts",
+        "sha256": "bdd7c70f79b924a1dea6c360e1694d1ae44e9de5704be57088233e7ed5b56319"
+      },
+      {
+        "path": "src/game-entry/hud-layout.ts",
+        "sha256": "53cf63633036c28413d48df2a751ae3a1c8819e94a4410a66d94eb2e6d26ef49"
+      },
+      {
+        "path": "src/game-entry/hud-summary.ts",
+        "sha256": "04e729fe6d3f47a710912dccbd1b3addbb4d92c175da1318d21483866c50f7a5"
+      },
+      {
+        "path": "src/game-entry/i18n-format.ts",
+        "sha256": "9dbe942d1296e5485d8ad2ad6aa9ad214911e3270044d4c6217e7598b4e0e4fe"
+      },
+      {
+        "path": "src/game-entry/lion-copy.ts",
+        "sha256": "aed3db8b1c71c7099e24688da6fd22b0dcf0da600462c5c932c68e8f2630a7f7"
+      },
+      {
+        "path": "src/game-entry/lion-facility-select.ts",
+        "sha256": "c9879a05cbaa1ed063f428db1299552ad772affcff0c915888e11dc69aff33a1"
+      },
+      {
+        "path": "src/game-entry/lion-panel.ts",
+        "sha256": "dea9a0b8e956652ec109638ca412adbafffc419ec19b1bea26f4d7bf116e390a"
+      },
+      {
+        "path": "src/game-entry/locale.ts",
+        "sha256": "9594e69a05a5f9316d9073e0196b8de7f2f2c105a9706a75f3d030f6a260a8f3"
+      },
+      {
+        "path": "src/game-entry/mission-panel.ts",
+        "sha256": "1a33dce55e1f3379ec5ece50c7313c9e5cea0ccf04109ebbd3ce58af16ed2482"
+      },
+      {
+        "path": "src/game-entry/onboarding-panel.ts",
+        "sha256": "f10eb04c895fef3994e9216133c2d45b43525c9b62c533ea157abcae70774168"
+      },
+      {
+        "path": "src/game-entry/pause-gate.ts",
+        "sha256": "cba528b4cfab78dabeb2550bbddc511033d143486d20dfaa15ea026480c8757b"
+      },
+      {
+        "path": "src/game-entry/preview-panel.ts",
+        "sha256": "489ef24083841822f43ee1fef500774744a5dd6a7a782499ca03823913088608"
+      },
+      {
+        "path": "src/game-entry/recovery-panel.ts",
+        "sha256": "dc79092c26efa90ec64b316d8e4247361d1a8679076ccf8aa31475d16d0bc703"
+      },
+      {
+        "path": "src/game-entry/restart-panel.ts",
+        "sha256": "ed5e3552aed0329cfaa55d3b6f897cddc9221d407ba4aa0a282d9511642c9e82"
+      },
+      {
+        "path": "src/game-entry/selection-presentation.ts",
+        "sha256": "4ae8d1124b85a56b2c350b5e5f727064f3d7142a6c9c823023e1013c129e02a1"
+      },
+      {
+        "path": "src/game-entry/speed-panel.ts",
+        "sha256": "ba9ef2defa8f2968e5e30c7103130ebd103b4c784100c1f367cecfba38f73d0d"
+      },
+      {
+        "path": "src/game-entry/thriving-mission-panel.ts",
+        "sha256": "6ff285b15d67e6b4271c61372a6a7970ecc38db4aa3fdf15c6c9678d43af8ce8"
+      },
+      {
+        "path": "src/game-entry/ticket-feedback.ts",
+        "sha256": "deafa704b0625cfd8acd57dc7771b4f39989a87a4453de372f242f9b1281a870"
+      },
+      {
+        "path": "src/game-entry/visitor-feedback.ts",
+        "sha256": "cef4a352bb0a7dcdedd31334285550c0102af8c49275794f2274b76732706e38"
+      },
+      {
+        "path": "src/game-entry/visitor-mission-panel.ts",
+        "sha256": "09fbfda2652aa54d7075f1d02821aea5b9ae62705bb0fdd69cd77225c7a21d2e"
+      },
+      {
+        "path": "src/game-entry/visual-settings-panel.ts",
+        "sha256": "a320558e3cc9bad2a68ed5a52685a1c5c2718dc217247185e36268d0d30eb88d"
+      },
+      {
+        "path": "src/game-entry/world-description.ts",
+        "sha256": "754c1c4419b346786cba4f73392429f714b2a704b85612faf0e859c7b9f18229"
+      },
+      {
+        "path": "src/game/animals/autonomy.ts",
+        "sha256": "1aeafa2dad5e878d81c66154b6422587427c05e5b8f5e53b5bf50099ab56fd5b"
+      },
+      {
+        "path": "src/game/animals/elephants/body-clearance.ts",
+        "sha256": "cf87e1fef79fb85d056221a200781592ec252ff8558c5789a01447f47ae60852"
+      },
+      {
+        "path": "src/game/animals/elephants/care-info.ts",
+        "sha256": "d6b0ffad7a7351013d52e340782cd5796792214e5727a232c027e04ac4079e31"
+      },
+      {
+        "path": "src/game/animals/elephants/care-resources.ts",
+        "sha256": "11bca7d4ee81c90d503f36acddf6f8c1ba2c01fe2cfd85627b9f3b82158aebcf"
+      },
+      {
+        "path": "src/game/animals/elephants/care-rules.ts",
+        "sha256": "78a4c8bc902d1feeacbb857bf2e39511ce2e664d7caffbd8f18cd12e55709c12"
+      },
+      {
+        "path": "src/game/animals/elephants/care-simulation.ts",
+        "sha256": "98cc6657e397020ae83f854618533169cb7e93db033736a11aa4ed360ca50336"
+      },
+      {
+        "path": "src/game/animals/elephants/ground.ts",
+        "sha256": "177415c6137aa92d889f22508e45f6d1556cbc4d1b1fd570e80847865c052bd4"
+      },
+      {
+        "path": "src/game/animals/elephants/residents.ts",
+        "sha256": "6d68645af8ff28c7750865c7f0f7a06c06737d4bf31aba225dba100850b36eb6"
+      },
+      {
+        "path": "src/game/animals/elephants/social.ts",
+        "sha256": "281c6700fd2bd716cfccb4675affe4abc7d9aa8c93eb344867ffb0b6f632a62f"
+      },
+      {
+        "path": "src/game/animals/elephants/welfare.ts",
+        "sha256": "236e82ffbcdee26d40f8c5618a5d3e3fe472843b6758df0e66b40a17bd3f4fd4"
+      },
+      {
+        "path": "src/game/animals/feeding.ts",
+        "sha256": "0605259ce09ee65660ff923d55d3214798971f8b944732ff07e657da0122ae0a"
+      },
+      {
+        "path": "src/game/animals/giraffes/care-simulation.ts",
+        "sha256": "433f7f143902bfd2a8b617dc1a2bf12f7199a3b1529e623163aa7d6d524be3d6"
+      },
+      {
+        "path": "src/game/animals/giraffes/ground.ts",
+        "sha256": "a0dbd802a3fe4efac482c058153d85540922998f0d3dd93b1d2d023bf3c3005a"
+      },
+      {
+        "path": "src/game/animals/giraffes/residents.ts",
+        "sha256": "e880ebded34b07d91d4848bc0cce532a0fcef710c84747dcf8107b6cdc38a743"
+      },
+      {
+        "path": "src/game/animals/giraffes/resources.ts",
+        "sha256": "3c4b69d2e60346657eefe9197c28cc8304a9cf402e66a626305c30278b4f8c44"
+      },
+      {
+        "path": "src/game/animals/giraffes/rules.ts",
+        "sha256": "480f039a1b2b64db3d7b09fefc2825c52177e5adad1cc3935acad34ba68ea60c"
+      },
+      {
+        "path": "src/game/animals/giraffes/welfare.ts",
+        "sha256": "fcd2e578f13980a607f35f61045a16f4a93de3c9fbce8884b9c2486d55b7d11c"
+      },
+      {
+        "path": "src/game/animals/lions/care-simulation.ts",
+        "sha256": "d0e15eaf1b659bd800b0df688ed2f32ecc90b68f65647e94be3f18ea686c20f0"
+      },
+      {
+        "path": "src/game/animals/lions/ground.ts",
+        "sha256": "ff841706a52867f34d851c0911d8784ef16ba4b854c9645d6fd0631dbb5ced8c"
+      },
+      {
+        "path": "src/game/animals/lions/residents.ts",
+        "sha256": "97b126bdea224f2ad09539f5064c7eae5430905dcf212cb18afe460eaf020c6f"
+      },
+      {
+        "path": "src/game/animals/lions/resources.ts",
+        "sha256": "32f417c64b0366fb323b9ecc005fb1985cc1df63fb0e9e38de6fd864ecdfb9c1"
+      },
+      {
+        "path": "src/game/animals/lions/rules.ts",
+        "sha256": "51b7d03cf0f9afdfb6e1dd3dcb7805380943dd9f8c9aa39253789899de16014a"
+      },
+      {
+        "path": "src/game/animals/lions/visibility.ts",
+        "sha256": "1299c125446ebcb7d663395fd3d5cf42e8200a3d1a41959f16ea27ffbd1d0f31"
+      },
+      {
+        "path": "src/game/animals/lions/welfare.ts",
+        "sha256": "25315f191a138b43e6d6ec789ba4925f02ab46932522305d49c248189f79ce22"
+      },
+      {
+        "path": "src/game/animals/resting.ts",
+        "sha256": "a9227e92ac2f2fb257e3117a25aa19c94ee76dceb779ca8907cb4a93a4ede55e"
+      },
+      {
+        "path": "src/game/animals/watering.ts",
+        "sha256": "d08ce3d576fa563465de27ac013a0e25d3020784ded51aa9e4762bbb8d265243"
+      },
+      {
+        "path": "src/game/animals/welfare.ts",
+        "sha256": "62f085132d0703e75078fbc9ac0552a6cd7e95d8c640fc6e1976bb9cfa0fccc4"
+      },
+      {
+        "path": "src/game/audio/ambience.ts",
+        "sha256": "64d149d6ee70197d9e5af34e7d8ef0b336f37b6ba2cc4d581e9b4cd9a9edf8c0"
+      },
+      {
+        "path": "src/game/core/audio-settings.ts",
+        "sha256": "1900f4026c57cd03d5adfe65abd6db7a1c89e704341571c6b613394349d1a54e"
+      },
+      {
+        "path": "src/game/core/events.ts",
+        "sha256": "7ead88151ade90fcd0e614bc1b9fb22312b1b6614e19f75f741dc6821b3dda0c"
+      },
+      {
+        "path": "src/game/core/fixed-clock.ts",
+        "sha256": "2c96d7244a23d89678bf21d9557281682fadd4e160c228328a01bfc30c8208f3"
+      },
+      {
+        "path": "src/game/core/giraffe-state.ts",
+        "sha256": "caf3f015eebf6e11aa15adfe534f256ebf711c4da79926e78d9ea5f2d2a602af"
+      },
+      {
+        "path": "src/game/core/initial-state.ts",
+        "sha256": "55a3a787638182f16b3826f03ecf5d730f85fa8e029321ab0db53e7a28c74624"
+      },
+      {
+        "path": "src/game/core/random.ts",
+        "sha256": "55da373f6786befb931a6d11c7a54aafb84ab1e507c6de94c33aa3a82e35c45f"
+      },
+      {
+        "path": "src/game/core/runtime-state.ts",
+        "sha256": "f2050e341757e3ba623b60a262c6d203b55efde993786645fbee60785a69f2f7"
+      },
+      {
+        "path": "src/game/core/session-state.ts",
+        "sha256": "c3102862c11c2f8d8a02fcf0951616a874b4cf7d72bf91bd45817e86d9dbd734"
+      },
+      {
+        "path": "src/game/core/simulation.ts",
+        "sha256": "0e07a23beb34efaa61e94c0cef309004d5383d5628d9025243e3910de3909701"
+      },
+      {
+        "path": "src/game/core/species.ts",
+        "sha256": "840486f7ae079a8a9930493c141c0e851dd1adf995aab3cc855e334e7e949219"
+      },
+      {
+        "path": "src/game/core/state.ts",
+        "sha256": "5c2582c02f643f5939ded40441c1e0c04a594a5a257c04eac0a5835088f0c769"
+      },
+      {
+        "path": "src/game/core/visual-settings.ts",
+        "sha256": "db7483f0fad4eec26c5a394b4fd6d2af3c51a81d1d632831563f424a84ccc9b5"
+      },
+      {
+        "path": "src/game/core/zoo-state.ts",
+        "sha256": "593373cd42eaa36733d367dbd81a87c2db86b44429013ba877952f762295f225"
+      },
+      {
+        "path": "src/game/economy/conservation-grant.ts",
+        "sha256": "4be0fb1e2dfe9a0350f61f9910baf13772fc6e7681326f85cacb854ff679f400"
+      },
+      {
+        "path": "src/game/economy/elephant-construction.ts",
+        "sha256": "2ac0761b7975d4ff559f981fdbc3a818e1d1dad4f0fa5822ea90e87396cd6bd3"
+      },
+      {
+        "path": "src/game/economy/elephant-prices.ts",
+        "sha256": "839a6d563e028cfc25de4c126cd3225ef7377f0658a5408099e3ffc96242d234"
+      },
+      {
+        "path": "src/game/economy/elephant-recovery.ts",
+        "sha256": "3d8883b38c5cda742c28289a6c57d0c74a8b8d3dd9ee9559c055aedf70de1206"
+      },
+      {
+        "path": "src/game/economy/giraffe-construction.ts",
+        "sha256": "75e9f669e4686984542a9626f6d08e6f9a51048cebfbcb075378a5c0be6a74b5"
+      },
+      {
+        "path": "src/game/economy/giraffe-grant.ts",
+        "sha256": "75ba756146d384fba89a1e1b52e2b02572c5354b5fed5aa60e98c837f847b4a3"
+      },
+      {
+        "path": "src/game/economy/journal.ts",
+        "sha256": "4a9ad3052601924de3aca5675259742a528755827ded6c1c3571c85b081bb8c3"
+      },
+      {
+        "path": "src/game/economy/lion-construction.ts",
+        "sha256": "7963289b8547f1cfa43ba9bd16dd899aaf951e1368c1e9b83632d4d001a78040"
+      },
+      {
+        "path": "src/game/economy/lion-grant.ts",
+        "sha256": "a5dbfc0782aa184124076bb6a66787b13d2eb1a7fed7d5420a9b69bba56b8fc1"
+      },
+      {
+        "path": "src/game/economy/prices.ts",
+        "sha256": "c85db32119b79ef0ace025c9f9a4afbe16942712ea87da7e445ef5d4c1467fce"
+      },
+      {
+        "path": "src/game/economy/recovery.ts",
+        "sha256": "c5f89517221480502f59f79ddc613835c549252cd1d33dda0ee8343a24df1cdf"
+      },
+      {
+        "path": "src/game/economy/refunds.ts",
+        "sha256": "9b4a52370e3af0a0241d63a4e72364f573f451c3fc99c70d153a31ce5f6d7b06"
+      },
+      {
+        "path": "src/game/economy/spending.ts",
+        "sha256": "fd96de64917d452868d6835e0ca1aeb6120e0800748025771f5daf08738e3a8a"
+      },
+      {
+        "path": "src/game/economy/tickets.ts",
+        "sha256": "78bcaf29dbb7301745709874e3ad91edd37ec9bf15f70fbb10f89da4ed3a56dc"
+      },
+      {
+        "path": "src/game/missions/elephant-missions.ts",
+        "sha256": "269dda929aa1c325f2f412b0e43d2203fd813e97913b7b86cb42fc22a2d00b6f"
+      },
+      {
+        "path": "src/game/missions/elephant-onboarding.ts",
+        "sha256": "7ff2256792c566a509a593de6f0452d4a25e0cf8725b4d806e5ca553f20a723d"
+      },
+      {
+        "path": "src/game/missions/engine.ts",
+        "sha256": "6b782f8143d65c06f832b6937de15acbfdcc7db0f06f14daf20af7c1409bb13d"
+      },
+      {
+        "path": "src/game/missions/giraffe-missions.ts",
+        "sha256": "ca74136d364f51267c0f2d541f199617bda8064fb2230991ce85c242b5d829fc"
+      },
+      {
+        "path": "src/game/missions/lion-missions.ts",
+        "sha256": "8083b666b85551d1342f678b3a1d3eae3563f2eb7e8f472ca71f47c9c8f08add"
+      },
+      {
+        "path": "src/game/missions/onboarding.ts",
+        "sha256": "acee098c6db1436506a466fa441679ae12f06d8f2144b5a073b390b246b16370"
+      },
+      {
+        "path": "src/game/missions/thriving-objective.ts",
+        "sha256": "94954a8c24872640c0718b2f2fc05d48e5c7c39bdeeabc9159144cbe958e0ea7"
+      },
+      {
+        "path": "src/game/missions/visitor-objective.ts",
+        "sha256": "106c101f8a184f03dbe7578a53b2567f8f7fea782c6eeb78abe5407354df8800"
+      },
+      {
+        "path": "src/game/persistence/autosave.ts",
+        "sha256": "3dbcbbd2f2dc8390767c9e5d0d1ae5d34b80a4eb311df9222cf2c37261d2ced3"
+      },
+      {
+        "path": "src/game/persistence/checkpoint.ts",
+        "sha256": "a79a5225d5ad6187af9932f4f211289d99feac21a0d46d8d3f5b16b96464639d"
+      },
+      {
+        "path": "src/game/persistence/durable-backend.ts",
+        "sha256": "4458b2183564f0f8e27c6cf9e48136b67a007ad48e8f05511e9c05ffe6f6e7c8"
+      },
+      {
+        "path": "src/game/persistence/elephant-backend.ts",
+        "sha256": "df16915f0ebbb7e99e88cd0601abeeb2c4b2b260cf1f7f25b3d9d58a37710337"
+      },
+      {
+        "path": "src/game/persistence/giraffe-backend.ts",
+        "sha256": "c50fd45e602fea5e26b1e316c7851609378d7cbb0d713b78a03952c5de26b974"
+      },
+      {
+        "path": "src/game/persistence/giraffe-maintenance.ts",
+        "sha256": "56e36623b23669d1a95ae032c5c41b773031c7bf79d04a37128ab4b92637f177"
+      },
+      {
+        "path": "src/game/persistence/lion-backend.ts",
+        "sha256": "043733d3fdfe03cf70a4877bb68d5fd7593ebc393f32d4c238f5366b27105a45"
+      },
+      {
+        "path": "src/game/persistence/lion-maintenance.ts",
+        "sha256": "04848efc7ad81a4432715f686354c1b2a11ddec825a602611dfc2d80c1323421"
+      },
+      {
+        "path": "src/game/persistence/save-v1.ts",
+        "sha256": "a26a97fb973c2a8788ef294eae3f2d57cbaad34bcac4af26f58deb73446ddde7"
+      },
+      {
+        "path": "src/game/persistence/save-v2.ts",
+        "sha256": "e7dbf3e55c556cda1c9de3063f4979d3f36598c44b95921a86a7533e69e93bdd"
+      },
+      {
+        "path": "src/game/persistence/save-v3.ts",
+        "sha256": "e9ce17f3d5a28c3f5febcd058e978068a2c4bd3cc3a17d43813ef5b0e809713a"
+      },
+      {
+        "path": "src/game/persistence/save-v4.ts",
+        "sha256": "e772c64166c87897a485766e032c5e1f2dc23829c467b1142a717b66a0c12a23"
+      },
+      {
+        "path": "src/game/persistence/save.ts",
+        "sha256": "fbe2ed1e10bfae7fbd8a2177f33c3849e9670c06ae8bd253bffc8a42e721a9a8"
+      },
+      {
+        "path": "src/game/render3d/camera-controls.ts",
+        "sha256": "1478581cd4a358cd2fb4cd8c9bbe98a14dd994f6a1ba61cf6b4fe1e244a11427"
+      },
+      {
+        "path": "src/game/render3d/camera-gestures.ts",
+        "sha256": "14db5aea8fc6249d2b002c438ab2ce3d976fa3700af9feda7fce8f0bba6f94de"
+      },
+      {
+        "path": "src/game/render3d/camera-navigation.ts",
+        "sha256": "1151aff726a32773295e41a43c5e8ffc980de880d9a8c23b33c9768edecf8fc4"
+      },
+      {
+        "path": "src/game/render3d/elephant-care-preview.ts",
+        "sha256": "d9d937cf86d1e71a1a0606580c3d2ed7210c7894c5be07785e2914cdc7c3efb9"
+      },
+      {
+        "path": "src/game/render3d/elephant-care-scene.ts",
+        "sha256": "b16b5daf075313b70b9a6729f70b611b33394045dff35d3e9fa02437b1bc265d"
+      },
+      {
+        "path": "src/game/render3d/elephant-habitat-scene.ts",
+        "sha256": "a369c67c3f0c725b87399d513a71d4ca43a3940af7c2c4d66861728ece61cf1d"
+      },
+      {
+        "path": "src/game/render3d/elephant-residents-scene.ts",
+        "sha256": "e5c8ae125f1fcac07068dc3d9bc2b41fae30f5fb4143f80671448336e90b38c9"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-bathing.ts",
+        "sha256": "b588ddc52c5082528cd3123bb1dc223015d348178d636a634a6ec47304de6371"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-consumption.ts",
+        "sha256": "5bb1a0f1a1f1a06ba0fd12246e84b9a2d65cbdbb6c8466c3892a564754187779"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-enrichment-geometry.ts",
+        "sha256": "55088d3af62d7001b952be2ac4c7edb3eaa9064c35b73bab8ab40fb371374f51"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-enrichment.ts",
+        "sha256": "ab43d5ab07324aed844505836a41936653eb9915416daa32850b1519c3f49944"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-geometry.ts",
+        "sha256": "e7e5bf44f2cd5a7a4685306056b0d40adc5966a2a539b0a6cd903c38fe19072b"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-locomotion.ts",
+        "sha256": "54ff74f9e9c67479d5df1d4a30b348225f47748e296a11d0594c26de9add8e4b"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-pond-geometry.ts",
+        "sha256": "9acd9017bd36dd969f78980e3991e48942e47abd2c870163e9348c3ed6d0eda0"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-rig.ts",
+        "sha256": "b0c9a3e0c9b359e8e1191f24a527732d3bb3d6b7d8a23bf7810cb50dec33313e"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-social.ts",
+        "sha256": "041813b1b1e2215b70956bb5f71148af4f9424713edc99c407403722ebef9edd"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-spray.ts",
+        "sha256": "4af4c5b719b8041c7674979d5794859adc2580f6458cfff4dd3d5e4f8740c6f5"
+      },
+      {
+        "path": "src/game/render3d/feeder-scene.ts",
+        "sha256": "094a4e71c812e4d84d3717d16f0be9272cb81019c7bb9cde2b48c4ecab900a9a"
+      },
+      {
+        "path": "src/game/render3d/foundation-scene.ts",
+        "sha256": "bdc4dbec56b7ec1be8eb803c1446eda4d0b9d264c9962adb099a2ff03b4b7ffe"
+      },
+      {
+        "path": "src/game/render3d/frame-loop.ts",
+        "sha256": "20bbb4852b72df88645e30f901321d490fbc63ef6046a009b68d8cf33589fe26"
+      },
+      {
+        "path": "src/game/render3d/giraffe-care-preview.ts",
+        "sha256": "922ed83e68868f7bf378e69d8f9158792a0c631b263859877e64c933238957a0"
+      },
+      {
+        "path": "src/game/render3d/giraffe/care-ghost.ts",
+        "sha256": "115c9f7e1758fb8e45a48f5b1609c1b95d5dcd2aa88e6069848393871d7d4ea6"
+      },
+      {
+        "path": "src/game/render3d/giraffe/residents-scene.ts",
+        "sha256": "da8219d02f31aff73e02baf7a07332e02969080afde125ca098aafa902800c21"
+      },
+      {
+        "path": "src/game/render3d/giraffe/rig.ts",
+        "sha256": "311ea63e27715939d947f09e159bd4c0837b78d8f2ed1692e40a0fa55cddc149"
+      },
+      {
+        "path": "src/game/render3d/giraffe/world-scene.ts",
+        "sha256": "f069c20d8d86dac9170be2fe120e3f9fe179c2c22984faf5f25a68678956fe1a"
+      },
+      {
+        "path": "src/game/render3d/habitat-scene.ts",
+        "sha256": "624cca01c9c7dca9f13b68d29020dff91391dfaf95e85ffc03b9dd9aec26f6e9"
+      },
+      {
+        "path": "src/game/render3d/isometric-camera.ts",
+        "sha256": "85bce4e1b31a4e311cf862ddca3fd983c75a09b5de01cf1361d0a735ff1948c8"
+      },
+      {
+        "path": "src/game/render3d/lion-care-preview.ts",
+        "sha256": "6b69420c1dff4d5fdb23f664ca13663eb108f6ab565b0b6cfeeadc03e582a1bf"
+      },
+      {
+        "path": "src/game/render3d/lion/care-ghost.ts",
+        "sha256": "24e5a0f9f504e286d4eb5e206c90bac67bfdd9a9e5d1575934dfdf66cdbe8afa"
+      },
+      {
+        "path": "src/game/render3d/lion/residents-scene.ts",
+        "sha256": "00d6d781ab1981bb1036ba72efa3e216bb68de3baa740ae7c4b22353c0e49f48"
+      },
+      {
+        "path": "src/game/render3d/lion/rig.ts",
+        "sha256": "59b0a64ee06fddbfa7fac0bb08598288959e635fa7a127bbcae9a1afd8e2bcd5"
+      },
+      {
+        "path": "src/game/render3d/lion/world-scene.ts",
+        "sha256": "683eef59a00c371aed32e91d2f1a3c1e21a402c42f5a66fb57b7d9cd49e83f2f"
+      },
+      {
+        "path": "src/game/render3d/macaw/autonomous-birds.ts",
+        "sha256": "95a247e4d71af8c175956a37709c73ef3bcad56444044e5996b60cade03b9955"
+      },
+      {
+        "path": "src/game/render3d/macaw/macaw-animation.ts",
+        "sha256": "0b8109829d5de5431f27f3023ed2146c242c6f5d8c5c04642b08c70127079671"
+      },
+      {
+        "path": "src/game/render3d/macaw/macaw-geometry.ts",
+        "sha256": "ec2c24032a471808a319d1474617a9c5ba0c195ac7ddc2e2404485b3c9aaf86c"
+      },
+      {
+        "path": "src/game/render3d/macaw/macaw-rig.ts",
+        "sha256": "4dce85448632fc37e1954f75a4fa4b3dfb078aa739e29fa0e6d0d91851f5ae93"
+      },
+      {
+        "path": "src/game/render3d/macaw/macaw-studio.ts",
+        "sha256": "319c5e2b8af39eb87aa4cd09ab928ff543ef29d0c45aee2b5d73f1493a87c1b2"
+      },
+      {
+        "path": "src/game/render3d/macaw/studio-contract.ts",
+        "sha256": "6c80968043b845cd733dc9053b923d00d7259473305fb6b6189cc37ad18374c9"
+      },
+      {
+        "path": "src/game/render3d/path-scene.ts",
+        "sha256": "a92541829abb61452f485bdca9eb4e61fd99188724f6c57c8b4f233541c42f21"
+      },
+      {
+        "path": "src/game/render3d/perch-scene.ts",
+        "sha256": "d90b0cf38e0aeeafbe32f8b758018836c87e92649e9b21c7fefb95c59bb719aa"
+      },
+      {
+        "path": "src/game/render3d/placement-preview.ts",
+        "sha256": "0c02d8d3c5cf60334e1872412d595a616db428df8c4c935b77ccbfe0b097a46e"
+      },
+      {
+        "path": "src/game/render3d/preview-controller.ts",
+        "sha256": "2ec4816994a4c9ef4256208318f7861d3c598a176f507c95bb02ae6ef97b1fbd"
+      },
+      {
+        "path": "src/game/render3d/reward-decoration.ts",
+        "sha256": "8810ab1df2ccf2a2cf20538b4d1d51e6fcfdb49242d49d626dae9647e58039e9"
+      },
+      {
+        "path": "src/game/render3d/sanctuary-lighting.ts",
+        "sha256": "8bdef798a020d3fed70c7c2f3ac26d354435faa250a16a8a534bf7e114f480f2"
+      },
+      {
+        "path": "src/game/render3d/scene-picking.ts",
+        "sha256": "9c314dbc928c51148272b0e8c2e289bc7b041b0e922d909edc854ec68b3cec63"
+      },
+      {
+        "path": "src/game/render3d/scene-selection.ts",
+        "sha256": "0a4ca11ff1422c8257e1ad84017568d63aaf5f1636767ca0caf73a08d0c8ad13"
+      },
+      {
+        "path": "src/game/render3d/thriving-banner.ts",
+        "sha256": "77729c577bc1bc6e036dcc013e6926db6c6d49561ff6c9be6e001e35748ea1d1"
+      },
+      {
+        "path": "src/game/render3d/tropical-diorama.ts",
+        "sha256": "6ad571a6643a1dc77ad69db86e0745a787b975e907c4092f200d390374ab9245"
+      },
+      {
+        "path": "src/game/render3d/visitor-scene.ts",
+        "sha256": "d14782513abb1292748be69f016a7bc1c81ac63cae3b0e14a6ac9ddb3257dc23"
+      },
+      {
+        "path": "src/game/render3d/water-scene.ts",
+        "sha256": "7b8a9c96fe257ffc59f7e9d39407b12f7c1391d744687a5ece37e02259aeaff0"
+      },
+      {
+        "path": "src/game/render3d/webgl-cleanup.ts",
+        "sha256": "6f8ead8de6f6a462b857adae16cc4734ca1dc30b05f335d9f845c7402c70d64b"
+      },
+      {
+        "path": "src/game/visitors/arrivals.ts",
+        "sha256": "924ff348e1e8b3b40dba6f8a85ebd4907157acb344afb5f83455d1faf86e0896"
+      },
+      {
+        "path": "src/game/visitors/attraction.ts",
+        "sha256": "ab64d81ac9d96290fd957bf2c40bbb1942dea847459c4eb343cceb3659879ad9"
+      },
+      {
+        "path": "src/game/visitors/graph.ts",
+        "sha256": "228bb6b6bb9b42702fc46d2ad4cc00d0ca363fc828d3ad549c31254ae4566eb7"
+      },
+      {
+        "path": "src/game/visitors/navigation.ts",
+        "sha256": "882b66125467e5a858165f9cf584c6ec4a6718c0880ef2194cb99c13aebeb479"
+      },
+      {
+        "path": "src/game/visitors/satisfaction.ts",
+        "sha256": "fa8f036644e2351caaeede55918965ddbc3259ca8a3b7e2daf8c8c6e4ac225e6"
+      },
+      {
+        "path": "src/game/world/build-habitat.ts",
+        "sha256": "a2039bf2c82edb0d615239b171768a7d2350fa25c05c6d6f9fef3ff6b217ad03"
+      },
+      {
+        "path": "src/game/world/editing.ts",
+        "sha256": "0bf9d918c5cc48d79dd9d9081ed5db212906466149a7dde95656c29007fa8be2"
+      },
+      {
+        "path": "src/game/world/elephant-expansion.ts",
+        "sha256": "78175a2bfc392decb2fa3f4731d28e21baa90f9641e4f6d0d54bc420abd771ac"
+      },
+      {
+        "path": "src/game/world/giraffe-expansion.ts",
+        "sha256": "318bc93cd193fbe48edc17e114303af28293a18f9c6fc94849bfc854a889775c"
+      },
+      {
+        "path": "src/game/world/lion-expansion.ts",
+        "sha256": "84f712261644a6234a35cfda6cd6beebda8be880a21c4c0e483419933847fb98"
+      },
+      {
+        "path": "src/game/world/paths.ts",
+        "sha256": "1185107ce3fc7ef9bcec95e76089ee69023c8ccb55fa9ad91296067dca87a5f7"
+      },
+      {
+        "path": "src/game/world/placement-preview.ts",
+        "sha256": "014db3284d66b6b3df2e801740ce97ee89314159b8ff872218bd158b7c05ebeb"
+      },
+      {
+        "path": "src/game/world/scene-coordinates.ts",
+        "sha256": "0b2fb6f25603721d3d765057cfa6d2e29c22367bbe7f5b07b0ea7e7c34c8829e"
+      },
+      {
+        "path": "src/game/world/species-habitat.ts",
+        "sha256": "cd44a9ea9cb36c68b0b1234bc060dcad3b85803ab7d37250052c510dffb7cf22"
+      },
+      {
+        "path": "src/layouts/BaseLayout.astro",
+        "sha256": "a5e66adb6e30cb328247791e5342528c0bae5a98840ec6d5a74907e514998859"
+      },
+      {
+        "path": "src/pages/[section].astro",
+        "sha256": "76b9a84575ddf8af25be07a87cceb5814dd04a75f8922c9559ba3861d078cc29"
+      },
+      {
+        "path": "src/pages/about.astro",
+        "sha256": "ee1de4f5f2258cb6166509b88143daf6b95492e273b3416542d4d6c5ad4465cb"
+      },
+      {
+        "path": "src/pages/animals/index.astro",
+        "sha256": "2ad2bd9a0ef9c8f7964116f25e95b23c94a4ef44e3e9a1c90554d3c70db1b8f2"
+      },
+      {
+        "path": "src/pages/index.astro",
+        "sha256": "a59d060db15eca466d06e6c0df88c05d4f2e5a635d3c1e96ce06eef589a42692"
+      },
+      {
+        "path": "src/pages/play.astro",
+        "sha256": "0da8b09a2da154c63abe13d1b0048c29950eadac35bf2513446ab0c15cde7a75"
+      },
+      {
+        "path": "src/privacy/consent.ts",
+        "sha256": "405fff3355ea73c235b04f6dc53e4c64f2dbafd12e1ffa5333d9bf4d7da4c284"
+      },
+      {
+        "path": "src/privacy/google.ts",
+        "sha256": "6b4421f488a630915c8475dff6bacf3bb6444e1f62a6225f21cc639afba7aab5"
+      },
+      {
+        "path": "src/privacy/locale.ts",
+        "sha256": "fb836d4dd7b67cda99fafc7fccccaaf138d5b7d6d8274baf3eb469ae52013692"
+      },
+      {
+        "path": "src/privacy/ui.ts",
+        "sha256": "ac45df117e02d3f2ed8e5232f36eb37ae1e9b9500e1109ac72fea8f4c4007d4d"
+      },
+      {
+        "path": "src/scripts/play-entry.ts",
+        "sha256": "5949827393152515d94df23abe8b4cd55df267f2cc795516bd065f691882e823"
+      },
+      {
+        "path": "src/site-content.ts",
+        "sha256": "9c9b9d098e19f7ecea6c6aff56115212bf7576d82988a2f86e585ab3429113ad"
+      },
+      {
+        "path": "src/site-events.ts",
+        "sha256": "37add71d6ab62ae21c9c694417e4c09ef43f5e8d1411462846b0d195de604eb5"
+      },
+      {
+        "path": "src/site-policy.ts",
+        "sha256": "9d7320bdceb9d5804dcb8c55626e624b45caeed5ca5a022d528d630bcb856d81"
+      },
+      {
+        "path": "tests/animal-actions-qa.test.mjs",
+        "sha256": "aa1866fc008fed26acc50fddc47d920fdb4d0393b505291fed3459195c77516c"
+      },
+      {
+        "path": "tests/animal-autonomy.test.mjs",
+        "sha256": "b3dd0a477d71eed463bd5f3720f037ed5b8d751debaccd9e434fc02a31110537"
+      },
+      {
+        "path": "tests/audio-settings.test.mjs",
+        "sha256": "be85f837ef99d284f2d41af992794755cdbd069c74ade1ea70169faf6b4d3cf8"
+      },
+      {
+        "path": "tests/autosave-candidate-drain.test.mjs",
+        "sha256": "a0e6b9597a982c8b2824fb751124506a941952cd87faeacd64d807d17f86eef2"
+      },
+      {
+        "path": "tests/autosave.test.mjs",
+        "sha256": "3b3288e29297a533d57eba4cf151aa7644fc4d2e965fe891d211ed24e8689c82"
+      },
+      {
+        "path": "tests/browser/.gitignore",
+        "sha256": "cd9e593418d6a88b2e5cfc359d66a2fc8a2b1b3fb9d39e2c53231845444456c9"
+      },
+      {
+        "path": "tests/browser/README.md",
+        "sha256": "eaa4719f66a8269043a938d78c71e18e883572d82782dc17cf8b45c33b815ff8"
+      },
+      {
+        "path": "tests/browser/animal-dom-scenarios.mjs",
+        "sha256": "290d9aa50c0046cef03d415f3eef4e9f12fb2014750433ed1f1edc5f13b9ffbd"
+      },
+      {
+        "path": "tests/browser/audio-settings-harness.mjs",
+        "sha256": "0479f612ca32cd60ad96cdbb8eba2ca5c759ca9f7bc900feeff537cf4d49769f"
+      },
+      {
+        "path": "tests/browser/autosave-harness.mjs",
+        "sha256": "e6e9f74fbecc6bf6277e731d53c967ef79c6e7a6c915b07ee1ceb853792b0f0d"
+      },
+      {
+        "path": "tests/browser/camera-dom-scenarios.mjs",
+        "sha256": "7311949c039b2ea474032b074f38a1e0e64a84c4ba83810a052cf478b8536326"
+      },
+      {
+        "path": "tests/browser/camera-rotation-harness.mjs",
+        "sha256": "29d0e369c251ac3a8e1940ed972b588f80ec2a7ea20f77815c0ad78b7b915c1b"
+      },
+      {
+        "path": "tests/browser/care-mission-dom-scenarios.mjs",
+        "sha256": "f78069c3cf9daf1ce746fb984d33246ab0e8a574c5e7514348674f8e097ef5b8"
+      },
+      {
+        "path": "tests/browser/compiled-site-observer.mjs",
+        "sha256": "9d8e33ac01444582d72c455c11946fdaa743aaa88a3c6a544f8eb6aedc4458e6"
+      },
+      {
+        "path": "tests/browser/editing-dom-scenarios.mjs",
+        "sha256": "8fe17d55301a7fb63fe4c1c28e7d9d5cc6484b13673147fd0b3d43461a9cd26e"
+      },
+      {
+        "path": "tests/browser/elephant-placement-harness.html",
+        "sha256": "cf60cf7658635ad6d5358ab33faafe647d5aab78b0755f6cfa01acf6ff215790"
+      },
+      {
+        "path": "tests/browser/elephant-placement-harness.ts",
+        "sha256": "aef6ecc6cfc489cd7c2b0930e3f0d208eafb5090a8ac6eb54e6a20f91fb44d4f"
+      },
+      {
+        "path": "tests/browser/elephant-rig-harness.html",
+        "sha256": "5e972c7fbeeee68c44e600727108e9671935331c1907feb5002d99e776016025"
+      },
+      {
+        "path": "tests/browser/elephant-rig-harness.ts",
+        "sha256": "39828be044dbb4576e4880e146d0426c5d2e5e95f7152c964d43a96293c4dbd2"
+      },
+      {
+        "path": "tests/browser/elephant-soak-profile.ts",
+        "sha256": "8571012921aa1d62aca5f26fdb0d681d62efc7ba835312d699755d76aa5eb9e8"
+      },
+      {
+        "path": "tests/browser/elephant-v2-product.ts",
+        "sha256": "341ed3edac77a4018d09e30b997b4e79080ab5865374498f102d4314800ecdb1"
+      },
+      {
+        "path": "tests/browser/elephant-v2-storage-harness.html",
+        "sha256": "22eaeee4c2b45a4d3b97b48e1d20e2e2278ae7a996e7fbe1f16f20fa9330215e"
+      },
+      {
+        "path": "tests/browser/elephant-v2-storage-harness.ts",
+        "sha256": "eb56b1d9b3cb373b279b3317135f8194cdf0deaaba1e565c7cf0d521750f3645"
+      },
+      {
+        "path": "tests/browser/elephant-world-harness.html",
+        "sha256": "c46347a5730b97ba4dd597279032f15580e36f2b17bf880b51607649d61d67f7"
+      },
+      {
+        "path": "tests/browser/elephant-world-harness.ts",
+        "sha256": "de200cff05b6752f06ea2665d5520ab56d07213d5f75256d38edab237ec2d5a8"
+      },
+      {
+        "path": "tests/browser/feeding-dom-scenarios.mjs",
+        "sha256": "6a1f3eb3a7762e99c65cb7f3f16117014f2571170df0d4f118be5b03c55c8292"
+      },
+      {
+        "path": "tests/browser/frame-metrics.mjs",
+        "sha256": "ca257c38ddcf98450899a7d2c6b4f1483aa486dfd93454e9dbb12fb06650bc9f"
+      },
+      {
+        "path": "tests/browser/giraffe-storage-harness.html",
+        "sha256": "73b538dd91e092c55130d202be9996abbfeb23c9800a2e609269662d9a37d713"
+      },
+      {
+        "path": "tests/browser/giraffe-world-harness.html",
+        "sha256": "b9fc5981f77cd0a41afda11df807ad44bb5dc813d20b3794ec17414b273cf602"
+      },
+      {
+        "path": "tests/browser/giraffe-world-harness.ts",
+        "sha256": "e2cf0181abe752034d0de47fa268e37032e087a3dee1a914e5b08a7ff2239c49"
+      },
+      {
+        "path": "tests/browser/gpu-attribution-harness.mjs",
+        "sha256": "43e18d27ae783dea30a9a9dc84b1f5ae5502503583597162a9df7eabcf6feb9c"
+      },
+      {
+        "path": "tests/browser/gpu-timing-records.mjs",
+        "sha256": "98616ea6b6aee11d8f3f718e55fc06029436bbc78b5744edada6aea92284baac"
+      },
+      {
+        "path": "tests/browser/hud-harness.mjs",
+        "sha256": "c62dd1fb92c361a316be91269345d20ea645931c31315e91e7589103fd908542"
+      },
+      {
+        "path": "tests/browser/localization-harness.mjs",
+        "sha256": "3ea65909ac84474d2d43c4cf76d7b696e95b83ffbfbdfdffefab3eebb37315ff"
+      },
+      {
+        "path": "tests/browser/macaw-dom-scenarios.mjs",
+        "sha256": "827f13013fda744a494c3d18a64372ea75fd5c0511bf2f97f0d9f9005523b97b"
+      },
+      {
+        "path": "tests/browser/memory-soak-harness.mjs",
+        "sha256": "adadef6c339f7d25ff5bead496d7cc7c30ac21f9ab163b49387e2650dd375de3"
+      },
+      {
+        "path": "tests/browser/mission-dom-scenarios.mjs",
+        "sha256": "8502d582dd4d4a5d7b86ef8cb5c608d00bccf2744a417678cfe79c21244e92fe"
+      },
+      {
+        "path": "tests/browser/money-observations.mjs",
+        "sha256": "05d28d71e76e04e5e6399ef56e2d1ef0a050722014ac35827ae0274caf875113"
+      },
+      {
+        "path": "tests/browser/onboarding-dom-scenarios.mjs",
+        "sha256": "6406dc4f639a949b23ffc06c947161e96b26761afec72820bbff0287131ec10a"
+      },
+      {
+        "path": "tests/browser/path-dom-scenarios.mjs",
+        "sha256": "962989aabff4564d3685812f8235b422c2028cb6c466788d93e6c6f143decf76"
+      },
+      {
+        "path": "tests/browser/placement-dom-scenarios.mjs",
+        "sha256": "db507c342e6a5b9ce76847d563c4bf7437e0d14738bcb84a3bd67ff1604ca5c1"
+      },
+      {
+        "path": "tests/browser/populated-performance-harness.mjs",
+        "sha256": "803ed25e1088f13e365ee450f63d571a214d6553aa22aa58ff1104a02328a8c5"
+      },
+      {
+        "path": "tests/browser/prepare-preview-harness.mjs",
+        "sha256": "c830c00edd2f67e00d0cf7d3c44c053c3b51bf152db590e10f5ee2486c15683e"
+      },
+      {
+        "path": "tests/browser/preview-harness.mjs",
+        "sha256": "ccc6db3ee9a420b31191edc51a81c564a4d8140ba6d4a7f3faeab2a66ed35dc6"
+      },
+      {
+        "path": "tests/browser/privacy-harness.mjs",
+        "sha256": "5d4b28e171df66f78d5626c43a9eb8255b95cf06862b05102a05adfd4763ff35"
+      },
+      {
+        "path": "tests/browser/recovery-dom-scenarios.mjs",
+        "sha256": "7e5e9e213144d1fc53131e040d873f4a8dcd1c132e6a9983f6748c10ffa51a4d"
+      },
+      {
+        "path": "tests/browser/recovery-harness.mjs",
+        "sha256": "193de3a1f068e0ed151f3cc6d351a00f9f57efd8bd0f3ac0bfa519cb1e2dcc3f"
+      },
+      {
+        "path": "tests/browser/restart-harness.mjs",
+        "sha256": "5983e69ed96a112c33cc551678132d76a54c8ce77f192d8787260fddffe063a9"
+      },
+      {
+        "path": "tests/browser/resting-dom-scenarios.mjs",
+        "sha256": "2940c1e246b6c1380584ff3f90b20b154e78e70bec02ea296234f7658aac014b"
+      },
+      {
+        "path": "tests/browser/scenario-result.mjs",
+        "sha256": "20f2fc52b700c032464e879bf13fd915e26b11a2a0f61d2a33fc985bd023e667"
+      },
+      {
+        "path": "tests/browser/security-harness.mjs",
+        "sha256": "71ff30d8b55c594eeed0a9330ebecf0b9b9d31414d5cf6ca6783c67e2a835395"
+      },
+      {
+        "path": "tests/browser/selection-dom-scenarios.mjs",
+        "sha256": "b0f53d729ac76db19e4965f33234b765a6a4fe5364b9fba2028a3887f78d956b"
+      },
+      {
+        "path": "tests/browser/site-harness.html",
+        "sha256": "7a845cd8974a75e72df6ee62f65c1eaf0bd9b7a77b2da88389f4991168b22f53"
+      },
+      {
+        "path": "tests/browser/speed-dom-scenarios.mjs",
+        "sha256": "19101f03421338ea346ce40217d9d77f1670a638958924c0ae76c98dda4b3095"
+      },
+      {
+        "path": "tests/browser/spending-dom-scenarios.mjs",
+        "sha256": "d7303dc372cb0e322c678ed3cc0a7c813f1eec785b6bb5952626c4a2f164e2dd"
+      },
+      {
+        "path": "tests/browser/thriving-mission-dom-scenarios.mjs",
+        "sha256": "b6a912a45057b0f3210d724a5665555232cbf8a2bd91125ea4bd45ea5bc7015d"
+      },
+      {
+        "path": "tests/browser/ticket-dom-scenarios.mjs",
+        "sha256": "97075aecf0d873ffa425f6d30b2bc3414378d0709dd5eff41589469b608365f9"
+      },
+      {
+        "path": "tests/browser/usability-fixture.mjs",
+        "sha256": "221dbc069150347234d951610ba60f94475720b22767cb7738d8db1599f2c777"
+      },
+      {
+        "path": "tests/browser/usability-harness.mjs",
+        "sha256": "6dc8e98ef3c6953305e230b22cc4660fc94b25af0924439d4ee32c94ce8a50f6"
+      },
+      {
+        "path": "tests/browser/visitor-dom-scenarios.mjs",
+        "sha256": "a9650397171b60c1cd742842d868419210922bda2d7978845f41b0990fc2bf80"
+      },
+      {
+        "path": "tests/browser/visitor-mission-dom-scenarios.mjs",
+        "sha256": "abc831bc0103e4e29fc046bb3a29147dbe98dfbd310cd2ac082dd257aeaa366c"
+      },
+      {
+        "path": "tests/browser/visitor-navigation-dom-scenarios.mjs",
+        "sha256": "f9f3156d53c042e8f7af457bc714c540dbbf0f794fed64a91ce2d9138130f30f"
+      },
+      {
+        "path": "tests/browser/visitor-satisfaction-dom-scenarios.mjs",
+        "sha256": "2db1f8ea28e7047460a8d3f59b5d3874c81841bb31c4bfe578e8b2fb9f633390"
+      },
+      {
+        "path": "tests/browser/visual-polish-harness.mjs",
+        "sha256": "fd49f92b2c2110a6683ed994a8d5f28755c9ad4d09d6e40247d1488781b0f6c8"
+      },
+      {
+        "path": "tests/browser/visual-settings-harness.mjs",
+        "sha256": "ceb2cbe5ef83458c8211a23f87ce1a9a0194d6ff95bf8383aba577a2b3d58297"
+      },
+      {
+        "path": "tests/browser/watering-dom-scenarios.mjs",
+        "sha256": "e8dfe620be7d94d32162b137cf15444f7570dfaa671c7ce8421ff5de1d11d2b6"
+      },
+      {
+        "path": "tests/browser/welfare-dom-scenarios.mjs",
+        "sha256": "bf7bf17315ecec395f6dd9400ed4c9b21519dbc469d75d42dc5975e474ed9f43"
+      },
+      {
+        "path": "tests/camera-navigation.test.mjs",
+        "sha256": "0dea0b2ce2a82dbebd2da87d1d7a80f26e07adde4e5cf91fdd13dea0b1d2cdc5"
+      },
+      {
+        "path": "tests/care-mission.test.mjs",
+        "sha256": "50c8f14751d87b0b710139da26ff134b47ee76e02c3d710a9d484b815d0fdc94"
+      },
+      {
+        "path": "tests/cashflow.test.mjs",
+        "sha256": "19eda9e6c62a7ccdacb3405aee60bec6fd111c472d336878d831363769011f20"
+      },
+      {
+        "path": "tests/clock-reentrancy.test.mjs",
+        "sha256": "097841106704042aadb76554e41dc04080bbfe9ab959b46259574a51d7b20686"
+      },
+      {
+        "path": "tests/conservation-grant.test.mjs",
+        "sha256": "1157dbf28fef2441a0771954bf686f2293a5ef58330dff9de1d9dd71a67acf25"
+      },
+      {
+        "path": "tests/elephant-attraction.test.mjs",
+        "sha256": "91e47b6185df4f07dec00a414dc54ab760b2c1241822064b053137eefa04288b"
+      },
+      {
+        "path": "tests/elephant-bath-render.test.mjs",
+        "sha256": "9ec965818a7f6ada32a0978eee4d967ea9df4a398d2fedeade7691f560677212"
+      },
+      {
+        "path": "tests/elephant-care-info.test.mjs",
+        "sha256": "4080c778619cf0072da47f454abebf145ad46332674661dec3b47c84b90f1ec3"
+      },
+      {
+        "path": "tests/elephant-care.test.mjs",
+        "sha256": "59d01a3eb73dd4850993e83e3256171933d72ba0fb8a954029deeb268f4ded4f"
+      },
+      {
+        "path": "tests/elephant-construction.test.mjs",
+        "sha256": "f9732852e49ed905083ce2205fb9a13da6943e6b300656d34f77bda392022297"
+      },
+      {
+        "path": "tests/elephant-consumption.test.mjs",
+        "sha256": "89ee77cf8a789287c37b620a90f804dff5b5c04f3ec58d0ac02fe243f1e3ed96"
+      },
+      {
+        "path": "tests/elephant-economy.test.mjs",
+        "sha256": "c8c0ad9a4911140f0e78711a1ecaefdc61601a22359b5ca891881e2b47e89c46"
+      },
+      {
+        "path": "tests/elephant-editing.test.mjs",
+        "sha256": "a8b2cc99c12baa2bb4a5de206eabccf60c83edd2d9e7d531345f119fb67fd17c"
+      },
+      {
+        "path": "tests/elephant-enrichment-render.test.mjs",
+        "sha256": "b6b5b87c523c128cb8a87752d11d7d575c18899fe6411aa1e70ffa83ef54cc0a"
+      },
+      {
+        "path": "tests/elephant-enrichment.test.mjs",
+        "sha256": "e83ce8d996070d095a01a39bdf40769050ff8b660177f11309a3a1a77999c99b"
+      },
+      {
+        "path": "tests/elephant-expansion.test.mjs",
+        "sha256": "fc154b9b2b239cb60ac8ccfeb45f871b8ac98efb74c36b17e8a41b1c6599382d"
+      },
+      {
+        "path": "tests/elephant-footprint.test.mjs",
+        "sha256": "142a3efeb82b5db8d3c5815a9cc5841a9328c3504b9f331bfa683b124164b73d"
+      },
+      {
+        "path": "tests/elephant-layout-plan.test.mjs",
+        "sha256": "85a66f008b328230046c109c725335372a63cf5b1a58bb395a5eef5c6e3b8f5e"
+      },
+      {
+        "path": "tests/elephant-legacy-baseline.test.mjs",
+        "sha256": "d064c0f64a9cf3be74825281bb2a963e8009da443b5eb5d99466ff050456c6ab"
+      },
+      {
+        "path": "tests/elephant-legacy-regression.test.mjs",
+        "sha256": "5d146039959324b94148081b682a5103f6df84cf0ded9d62084dff5f8f5c2dc0"
+      },
+      {
+        "path": "tests/elephant-localization.test.mjs",
+        "sha256": "d3c9c2e7e8019a263ee7d8c0fd600ccca0a5e79fd7a5b4aab5d489ee5a08d53a"
+      },
+      {
+        "path": "tests/elephant-locomotion.test.mjs",
+        "sha256": "1f30d9fb5fcb77a74d689b7c3047d13e5e9258d1f481bbe0c9f6db18d2d8566a"
+      },
+      {
+        "path": "tests/elephant-migration-clock.test.mjs",
+        "sha256": "9be7e0c27575f1c52bb6e9ab7b22d83bf1916dc6c306f03bd17af461fd9a397b"
+      },
+      {
+        "path": "tests/elephant-missions.test.mjs",
+        "sha256": "5068a60186d05ac07dabb683377eb9e32746384c386e5d12948c0fafd96dd0b9"
+      },
+      {
+        "path": "tests/elephant-multispecies-save.test.mjs",
+        "sha256": "75c17126d73eecdc9913e3899c1546559e9ace794b1068d8ce52ef9d7f573664"
+      },
+      {
+        "path": "tests/elephant-onboarding.test.mjs",
+        "sha256": "277de20955209c3dd0086881013460af89ea900a0b34033480819d316b75ff97"
+      },
+      {
+        "path": "tests/elephant-pond.test.mjs",
+        "sha256": "6510170c32ce489411bba895a06d7e05367bbcc9fc68244a396b59b51a36161f"
+      },
+      {
+        "path": "tests/elephant-recovery.test.mjs",
+        "sha256": "499c112b641d3e7f778619df4f9bb341238bc48ba42faf61ac90ac317b1f1de5"
+      },
+      {
+        "path": "tests/elephant-residents.test.mjs",
+        "sha256": "84f14a6193f016d773d236d984439ee4f1fd4aa7d185033ff563142ba6fa82eb"
+      },
+      {
+        "path": "tests/elephant-rig.test.mjs",
+        "sha256": "84e5b505df86554e67f91f2d63a0ba647b0679846f73eb7a4b99662ab9ef9dea"
+      },
+      {
+        "path": "tests/elephant-runtime.test.mjs",
+        "sha256": "52f63cdb4d6e976e2c1bac7f9989221060b2e7c3c691912860a8f941c88eb596"
+      },
+      {
+        "path": "tests/elephant-save-v2.test.mjs",
+        "sha256": "ec00e67e73d45e4ef36aeb5873721996894a0548087a40ca683e80d4bf1b0930"
+      },
+      {
+        "path": "tests/elephant-save-v2.typecheck.ts",
+        "sha256": "cddb68ea21e9bf625e59f93cde33ce277aa1ec24613a25aa35674ba555b8470e"
+      },
+      {
+        "path": "tests/elephant-scene-anchor.test.mjs",
+        "sha256": "05db5678dc9aea6d83079eb540a4e028f18b594794e0aaf37a5232b98f4d24fa"
+      },
+      {
+        "path": "tests/elephant-social-render.test.mjs",
+        "sha256": "6bb0ef435f13780efacd4e5f4e9656c3b1500b277695aa46f37971302f05b7ee"
+      },
+      {
+        "path": "tests/elephant-social.test.mjs",
+        "sha256": "d7293c22a74d4a0b9b4f5b0fd2ec7724dede9cfa864bb1738aea5a19928a24cb"
+      },
+      {
+        "path": "tests/elephant-species.test.mjs",
+        "sha256": "2e4e2c97eca89d0e9c65b4f2f0cfdd252a12d578e5cb890a5068279e9fc374e2"
+      },
+      {
+        "path": "tests/elephant-visitors.test.mjs",
+        "sha256": "d2a3532ea76255becee5ba373b05ab54abc41cd37b54a6337360b3ce4644ee64"
+      },
+      {
+        "path": "tests/elephant-visual-settings.test.mjs",
+        "sha256": "92a55d0d79ec65b6aa12c36787e67b4d6f2f9ca301ec0b1c2fdaab3c3c57e96f"
+      },
+      {
+        "path": "tests/elephant-welfare.test.mjs",
+        "sha256": "0c1aa076420c030fdbe8bc74613952e7c555463c311f72bc9b459da210e37267"
+      },
+      {
+        "path": "tests/entry-preferences.test.mjs",
+        "sha256": "a514b0f814f2fa2fe7ccf3d001d9be7dc6c11a6b50008961494cd71f5adc33fe"
+      },
+      {
+        "path": "tests/feeding.test.mjs",
+        "sha256": "269b445624d02421188ecb3361e3a0c016d200de29facafec1267e37e909f792"
+      },
+      {
+        "path": "tests/financial-assertions.mjs",
+        "sha256": "c53590628b1890e6e0083f7de26895ea4962af1328b578b399cbb23c970c0f4c"
+      },
+      {
+        "path": "tests/fixtures/elephant-economy.ts",
+        "sha256": "c6e332a974988702bf0c7a35ff47d9c4fc4d67ff3014670150f4c9ba5f30a25f"
+      },
+      {
+        "path": "tests/fixtures/elephant-home.mjs",
+        "sha256": "8e62c9fa3b469973bf73d6bde66b98e9e4433ae48cdb765585c4631502ca0dcf"
+      },
+      {
+        "path": "tests/fixtures/elephant-layout-plan.mjs",
+        "sha256": "1c7b55f361789362f4885705870652a83c55bf25eeb453e8ec2381bba8b7782d"
+      },
+      {
+        "path": "tests/fixtures/elephant-legacy-regression.ts",
+        "sha256": "88eef5227ec2f99be00a818f9d5f7ce2f906143eb991dbcd6301acd4cd8f5079"
+      },
+      {
+        "path": "tests/fixtures/elephant-legacy-scene.json",
+        "sha256": "a4955ff9ae5a15fbecb8782b2ed84fb4abd1f1f9667300dc60cd59198a835bce"
+      },
+      {
+        "path": "tests/fixtures/elephant-legacy-v1.json",
+        "sha256": "82fd14ab17cdf3445cdd31aa9281aac5dba6d465879c9c4c5b83bec2ff4d9d77"
+      },
+      {
+        "path": "tests/fixtures/elephant-migration-clock.ts",
+        "sha256": "d0dc01809d0ee655a16db66794fc846049b95e6b0b0f6ecb56e2b1d0479e4f2a"
+      },
+      {
+        "path": "tests/fixtures/elephant-native-station-block-v2.json",
+        "sha256": "c15e2b3e0b0e32d72438194da1afe18e4dd70839c8e0ae41c7eb98b4e85f4979"
+      },
+      {
+        "path": "tests/fixtures/elephant-two-habitats.mjs",
+        "sha256": "43e0d68a69ceada96987e11459eb8422e8ae1fc122dabed2f1b84a03a4ec5fe0"
+      },
+      {
+        "path": "tests/fixtures/elephant-type-contract.ts",
+        "sha256": "179fa46696d7d108dd304c6a45b44f5f4f3ab324d8510b730fef9efb3a854223"
+      },
+      {
+        "path": "tests/fixtures/elephant-v2-world.ts",
+        "sha256": "35b473c1a34cac6a6c29bb9092341fafdd729fc59edf06319f33b4a4fb17047a"
+      },
+      {
+        "path": "tests/fixtures/giraffe-layout-plan.mjs",
+        "sha256": "4aae0d7c2bc142019de32a5f7468a7dbb9f3507b6ac00520ec13bc4cc7984660"
+      },
+      {
+        "path": "tests/fixtures/giraffe-play.mjs",
+        "sha256": "e49fec960b2cc75cb0be990c41ca5a3fc461e09dfa990fe53adaeb4c84911f2f"
+      },
+      {
+        "path": "tests/fixtures/giraffe-v3-golden.json",
+        "sha256": "c25dccaacb8b1a3f18da44be9c809a14dfa09979b92c56825310040ea3ec25ba"
+      },
+      {
+        "path": "tests/fixtures/giraffe-v4-golden.json",
+        "sha256": "5c186919ca88e6563204f5a993200410e96d8d2736aef27e62cf92287d09e145"
+      },
+      {
+        "path": "tests/fixtures/lion-home.mjs",
+        "sha256": "42ce305ee0a1098d90f80813e198580fb85adf52b15872f4722555d7f892f7ab"
+      },
+      {
+        "path": "tests/fixtures/lion-v2-golden.json",
+        "sha256": "7232657bbc2e0a89c2255c50aa0fbacb9356d8e8332425a8f4f592dfa0335fae"
+      },
+      {
+        "path": "tests/fixtures/populated-zoo-v1.mjs",
+        "sha256": "efb95355cc0c3f475fda31bb98cb133fce8d35820cdd2fa2eae91de2b52ad5b1"
+      },
+      {
+        "path": "tests/giraffe-baseline.test.mjs",
+        "sha256": "1b843b263f913a0e0af74d28cccd52143c742fc811fcb4f2aef215cd93d87d19"
+      },
+      {
+        "path": "tests/giraffe-editing.test.mjs",
+        "sha256": "ffd68d840fa47ea274e0e274a901a3ff0a7730d21b64fa68efff57a75a6925e6"
+      },
+      {
+        "path": "tests/giraffe-expansion.test.mjs",
+        "sha256": "78c6680d5111d57790c01e9041da8b314d27d24496185a16de66f07d3366f9a1"
+      },
+      {
+        "path": "tests/giraffe-facility-select.test.mjs",
+        "sha256": "1e43a3db96a05bae33fd5275abb04fb2fad28481c320194fce44be3aa74f7153"
+      },
+      {
+        "path": "tests/giraffe-layout-plan.test.mjs",
+        "sha256": "f8219c5e40e5088641756969676661e6569c42a4d81f027239716854932d5e2c"
+      },
+      {
+        "path": "tests/giraffe-play.test.mjs",
+        "sha256": "e6427cb61d7578c036c8cc15258d565ef7932f9b7527b8ff452e3dea985502a1"
+      },
+      {
+        "path": "tests/giraffe-render.test.mjs",
+        "sha256": "6672be3c80142dd4e9269c3d420682a2938fe449f8ee78e82e7309b957e68139"
+      },
+      {
+        "path": "tests/giraffe-return.test.mjs",
+        "sha256": "2260735dd571b49ce3c609bf6f75968b751c02778309fd356809982cd3496e00"
+      },
+      {
+        "path": "tests/giraffe-runtime-v4.test.mjs",
+        "sha256": "8a59e5f006adcac8e979b6ab6f29653c2be9866371e9b21b2a916b3ef8b74120"
+      },
+      {
+        "path": "tests/giraffe-save-v4.test.mjs",
+        "sha256": "1c3373f7eec59763097b19fdedf6dd5e356acf25b0366854f494d4c6a19f20d4"
+      },
+      {
+        "path": "tests/giraffe-scene-anchor.test.mjs",
+        "sha256": "441a369e9547d44eba3a2e9e8a410a9723b6073a165155bb41e7d3ad424017e1"
+      },
+      {
+        "path": "tests/giraffe-species.test.mjs",
+        "sha256": "846b68390ed727c8a9da2449a0cf0fc0e136f6c6bc161745f9aaa6a8eac73b9e"
+      },
+      {
+        "path": "tests/giraffe-storage-v4.test.mjs",
+        "sha256": "bee0d6e5b9f5c7129d8f0d0c56ba3aa952aa716d9db227ed2633114ecb051795"
+      },
+      {
+        "path": "tests/giraffe-type-contract.ts",
+        "sha256": "5821ecc30abf016ac7d6080b18d676591caaa25f99b2d7a9b7552912b5b6a975"
+      },
+      {
+        "path": "tests/giraffe-world-description.test.mjs",
+        "sha256": "e57253f3e346fef0a3f1171353241faddf49ebfcc3512027ff071d89bba0a6ab"
+      },
+      {
+        "path": "tests/gpu-timing-records.test.mjs",
+        "sha256": "6ab914af52408d2c3b0ac7d5a21ff225d14ca07080b895b608e5f70b63d3320b"
+      },
+      {
+        "path": "tests/habitat-construction.test.mjs",
+        "sha256": "816fcd2b01a11daacc540b28a17c9a7d195c7817b4c963b977ef7d7f57ed3b41"
+      },
+      {
+        "path": "tests/hud-navigation.test.mjs",
+        "sha256": "680a1675c034af4f97e582a424c7dc8df5db9b0ad1656a4aae7bb38368169159"
+      },
+      {
+        "path": "tests/lion-care-simulation.test.mjs",
+        "sha256": "21fc0aef4efa9e2641a507642ed3d9aac6c7e6f408639a1d049558d253376382"
+      },
+      {
+        "path": "tests/lion-care-transactions.test.mjs",
+        "sha256": "9b667cf771c7ed52f63dfc77edf10a1fc3da1ccd7aaef93dc92eb62465e7e215"
+      },
+      {
+        "path": "tests/lion-checkpoint-stress.test.mjs",
+        "sha256": "5b1132986a68186493abf398a3cbfb581da8517bd909449843ebb25bf78ca99c"
+      },
+      {
+        "path": "tests/lion-editing.test.mjs",
+        "sha256": "3585a633f39e8907044fcf3d7dba48ed9d140a8bfe96069a4f2021c788196504"
+      },
+      {
+        "path": "tests/lion-facility-select.test.mjs",
+        "sha256": "305b483a3dc2fde381603e392e243fffe2e2a047aa799b8b24deb3b8b3945036"
+      },
+      {
+        "path": "tests/lion-foundation.test.mjs",
+        "sha256": "827e42fe1d79d22b81164cfc9636930eb4d8a9523d2f598c676fa4a39c8f8733"
+      },
+      {
+        "path": "tests/lion-ground-design.test.mjs",
+        "sha256": "08609079539b28beba34e8aefe1f558b8adf966d8c1359e5aeb5441073625656"
+      },
+      {
+        "path": "tests/lion-maintenance.test.mjs",
+        "sha256": "87f5dde8cc3b7465f1b90a4dd1bb7481e9fff08d92412fec6d1661aba2a37d75"
+      },
+      {
+        "path": "tests/lion-missions.test.mjs",
+        "sha256": "c94d37d0527178fd846593d229b166302fc98d772977dc7a5eacbf37330f2809"
+      },
+      {
+        "path": "tests/lion-render.test.mjs",
+        "sha256": "8df7feb314ed40a4fb292a5e7f327a94234a0a2baf9f22be32b7c2ad4d45f35a"
+      },
+      {
+        "path": "tests/lion-save-v3.test.mjs",
+        "sha256": "57e71adcce49f40b694ff455386eccabac294c179c4baf661671e1f53d6a0f64"
+      },
+      {
+        "path": "tests/lion-storage-v3.test.mjs",
+        "sha256": "f7929cf82cd13a94cf8d48e8bb9a0c6a8f054cf286509cb2a71959e3afdb136e"
+      },
+      {
+        "path": "tests/lion-type-contract.ts",
+        "sha256": "708b02ffd73d3be6816cbc264bd64111e0d86dcbd8cac9d3fd06bb19ff246ab5"
+      },
+      {
+        "path": "tests/lion-welfare.test.mjs",
+        "sha256": "916574a320d86d53c12fc2d40c34e7131ed1a47b82ab00882418c82291a69fab"
+      },
+      {
+        "path": "tests/lion-zero-cash.test.mjs",
+        "sha256": "713444fe510c1bc23edcdb5db638419cc68c3bb4556c140fa2d6da548a6587db"
+      },
+      {
+        "path": "tests/localization.test.mjs",
+        "sha256": "58194f212dc9af06252a7d1539bea3b2d4561baad849dbe4ecce9f11064efff7"
+      },
+      {
+        "path": "tests/macaw-model.test.mjs",
+        "sha256": "7ce05a09990219bb0fbad882d7f00ecc61f67e47c37f6c86305e9212455676e3"
+      },
+      {
+        "path": "tests/missions.test.mjs",
+        "sha256": "64bd49626b44f7d2dd9bbd0cdf8ac630b58d6d07a61740535be9ea047dff61d5"
+      },
+      {
+        "path": "tests/mixed-invariants.test.mjs",
+        "sha256": "aafb7af9370f50e6306b91f98d0f2ed954bcc06c86cac3db5c61be963eb8f84e"
+      },
+      {
+        "path": "tests/onboarding.test.mjs",
+        "sha256": "585c1f16d839c229e191fe3d072e69ee135ec5366ed2c0caea4186b8af09105b"
+      },
+      {
+        "path": "tests/path-connectivity.test.mjs",
+        "sha256": "a076df9f0858038d47041fe23692c74eafe69d61051279b024287fae8b684c26"
+      },
+      {
+        "path": "tests/pause-restart.test.mjs",
+        "sha256": "8a7cac8103b6eaab23d59ff11958a1e95a77b597b2d7900a019465b7fdd4075f"
+      },
+      {
+        "path": "tests/performance-baseline.test.mjs",
+        "sha256": "c0b67a1a5c2c145a97f388c7e51711c1e974b48cc41f1a173c17959b64b04f3b"
+      },
+      {
+        "path": "tests/performance-reads.test.mjs",
+        "sha256": "8b889823066278a391e033c8a9824044cec07ebd4a825f725ff182e4c97552ed"
+      },
+      {
+        "path": "tests/placement-preview.test.mjs",
+        "sha256": "7c61d50e76c821d43e0c2ad6c8a791a062d78b6479592f1feb9423f37e1492b6"
+      },
+      {
+        "path": "tests/preview-lifecycle.test.mjs",
+        "sha256": "ea72c5662f23cb5ae62cc9691fd61f7c73fb86452739bbaa59532358b65033f4"
+      },
+      {
+        "path": "tests/qa-workflow.test.mjs",
+        "sha256": "fab2721e1b130a8f585d090b7a6afaf3864b0a678d3115335ea93d7e2e5a3d38"
+      },
+      {
+        "path": "tests/recovery.test.mjs",
+        "sha256": "f481894c2c0ac40d109275fd5818379ba682fcdcc63eb8ebd46499f3dba32e96"
+      },
+      {
+        "path": "tests/resting.test.mjs",
+        "sha256": "7fdc90e0655c7f39dfe87dcef566304707eb17dcbf1a46a6847c0ba0f0655b66"
+      },
+      {
+        "path": "tests/sanctuary-lighting.test.mjs",
+        "sha256": "4e0b9d7e9ee3a4ca2eaf648ebc8aa26c93b10559c24379e8d0305397d3fc3932"
+      },
+      {
+        "path": "tests/save-recovery.test.mjs",
+        "sha256": "2a76884b5b563a393bb1fa621330590ffba591ef193c340936f46dc82104dffa"
+      },
+      {
+        "path": "tests/scene-picking.test.mjs",
+        "sha256": "b998f15e47c925190a0364f8f76b4620ad3b5a85623928cb4a87547337c5bbcb"
+      },
+      {
+        "path": "tests/security-privacy.test.mjs",
+        "sha256": "9d7c1fd6e4a9081f76bbb205ed890977d9b4b9ba03a3fc95ce58060e98de652a"
+      },
+      {
+        "path": "tests/simulation-atomic-events.test.mjs",
+        "sha256": "1dbc10b6cd1ad7cb07c9836b5af831c757a1528374611ed42083c620bc324af0"
+      },
+      {
+        "path": "tests/simulation-contract.test.mjs",
+        "sha256": "e70c68ac9567b4806e5b1d453aefad7c2712a1f179c9e32bd86e5588bbf2b707"
+      },
+      {
+        "path": "tests/simulation-speed.test.mjs",
+        "sha256": "52771b28308cceda2d48538207e6448377288e3264223aced575869bdbb73702"
+      },
+      {
+        "path": "tests/site-consent.test.mjs",
+        "sha256": "900491dbab9ad7588aa4b29c172201f914a896f09612d97b27dc3697d54c7bbd"
+      },
+      {
+        "path": "tests/site-integration.test.mjs",
+        "sha256": "fa0165be728906ac746e266c4e313701b5fc5fbe457ab4f945e9ad8df8ec569e"
+      },
+      {
+        "path": "tests/spending.test.mjs",
+        "sha256": "fb3cd0ff0135292a92fbb1b6aa8a84100a0faf0cc64809fa8196d7aadf070157"
+      },
+      {
+        "path": "tests/thriving-banner.test.mjs",
+        "sha256": "6bca3db2d668ce139a053f95e9f34247c364f2c6c65a541e7aa8fd73e161dacb"
+      },
+      {
+        "path": "tests/thriving-mission.test.mjs",
+        "sha256": "6cee233543e47a1c1c87b63c1ac17b60ac2b0cfb1ed2861f1fb78e2a88438a21"
+      },
+      {
+        "path": "tests/ticket-admission.test.mjs",
+        "sha256": "44e63085e53f1188847a86bf2245f1ec68c9b599a788c98dded8d2b0c05fb26f"
+      },
+      {
+        "path": "tests/tropical-diorama.test.mjs",
+        "sha256": "6827a0d5a5c7d35a0051962baa4c82a34d8aad15d9df8a82bb0d9f8dbbeb8a60"
+      },
+      {
+        "path": "tests/visitor-arrivals.test.mjs",
+        "sha256": "2d1882edfdf1c122ca52303e3e3db950d15888c9c824f9f76e0fa9eac616a508"
+      },
+      {
+        "path": "tests/visitor-mission.test.mjs",
+        "sha256": "e229fdddf49e12dda4204987575fe6fd47709c78ea0f2247b2b0b6cdd288e068"
+      },
+      {
+        "path": "tests/visitor-navigation.test.mjs",
+        "sha256": "b052f03c44c4a4a59f4caa7e594048e952d176d5d59216d17f4135c1e032d2c0"
+      },
+      {
+        "path": "tests/visitor-satisfaction.test.mjs",
+        "sha256": "b5821bafa56a38274526318d8167658105b81e22b06ae19966cddea113098ec9"
+      },
+      {
+        "path": "tests/visual-settings.test.mjs",
+        "sha256": "442b0322303cd66d376a6e329b948437e8bdae58e33b36938174748692d8ced1"
+      },
+      {
+        "path": "tests/watering.test.mjs",
+        "sha256": "17d5c2f6b0a0659ae12cea883ffe1e11ef522cf259a7e8505da764a2cf476662"
+      },
+      {
+        "path": "tests/welfare.test.mjs",
+        "sha256": "75ecd8c6e033cc9deb7ff4660373953106a11ed507d3a1b53e870a974a8952f7"
+      },
+      {
+        "path": "tests/world-editing.test.mjs",
+        "sha256": "a538b8fe9c1db168da3ca9453e8a1cafe93f36b83e5fe7e974b02638e8ca77b4"
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "bc3f06710bcc184e95b3dd0fdc023c0ef769f03d038362aefba7ea12034ced81"
+      }
+    ]
+  },
+  "stages": {
+    "unit": {
+      "status": "PASS",
+      "startedAt": "2026-11-07T00:10:23.534Z",
+      "finishedAt": "2026-11-07T00:13:18.855Z",
+      "exitCode": 0,
+      "log": "unit.log",
+      "logSha256": "44328f244c2ef375fbf079eee07e635d86e7eea4b087a9f2d7e1fd14837d16ce",
+      "logBytes": 232432,
+      "summary": {
+        "tests": 817,
+        "pass": 817,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      }
+    },
+    "check": {
+      "status": "PASS",
+      "startedAt": "2026-11-07T00:13:18.856Z",
+      "finishedAt": "2026-11-07T00:13:38.559Z",
+      "exitCode": 0,
+      "log": "check.log",
+      "logSha256": "4effc7b92b8c5a9bddfcc6e7f7299d8873bc2459848de5bbedb556db593e8655",
+      "logBytes": 210,
+      "summary": null
+    },
+    "build": {
+      "status": "PASS",
+      "startedAt": "2026-11-07T00:13:38.560Z",
+      "finishedAt": "2026-11-07T00:13:41.381Z",
+      "exitCode": 0,
+      "log": "build.log",
+      "logSha256": "33c991a1d0b8d4c977903272ce1a2e7d4887c77e90f9cbc8f826a93e7bddffaf",
+      "logBytes": 1450,
+      "summary": null
+    },
+    "routes": {
+      "status": "PASS",
+      "observedAt": "2026-11-07T00:13:43.741Z",
+      "routes": [
+        {
+          "path": "/",
+          "status": 200,
+          "sha256": "882202c42aa080b3113528f62c849f8b8d29563f2b03cc857eee92a7afaddf06",
+          "title": "MyZooTwin — Build a Living Zoo",
+          "canonical": "https://myzootwin.com/",
+          "h1": "Your little zoo.A world alive."
+        },
+        {
+          "path": "/animals/",
+          "status": 200,
+          "sha256": "1a00b3450fc27957b0c49b8746afd22c3e50b82f9ada6c814b9f111683cf389e",
+          "title": "Animals — MyZooTwin",
+          "canonical": "https://myzootwin.com/animals/",
+          "h1": "Meet theneighborhood."
+        },
+        {
+          "path": "/wildlife/",
+          "status": 200,
+          "sha256": "b8bbaf6eaeb7b7cb27b9b579357257109624aac38a15d4ffc61f16c325162c01",
+          "title": "Into the wild — MyZooTwin",
+          "canonical": "https://myzootwin.com/wildlife/",
+          "h1": "Into the wild"
+        },
+        {
+          "path": "/pets/",
+          "status": 200,
+          "sha256": "639f50fced9aeeb778fe0491f15bdfa4d100ac3bb71863e0a9ced8d2797c6036",
+          "title": "Life with pets — MyZooTwin",
+          "canonical": "https://myzootwin.com/pets/",
+          "h1": "Life with pets"
+        },
+        {
+          "path": "/learn/",
+          "status": 200,
+          "sha256": "143411728f8671d74e60bf6ad0276d5b92d9c2129593ef7343977df51d83ddf9",
+          "title": "Learn something wild — MyZooTwin",
+          "canonical": "https://myzootwin.com/learn/",
+          "h1": "Learn something wild"
+        },
+        {
+          "path": "/adventures/",
+          "status": 200,
+          "sha256": "aae3bc96c549d3012616c3fa2d510cfd4464bf7dcb4d8880c5a3767b59ea178b",
+          "title": "Field notes & adventures — MyZooTwin",
+          "canonical": "https://myzootwin.com/adventures/",
+          "h1": "Field notes & adventures"
+        },
+        {
+          "path": "/gear/",
+          "status": 200,
+          "sha256": "13400384269bdfd84c7127a5461f398839580df873dfcc4915d596cf835836f3",
+          "title": "Gear & field notes — MyZooTwin",
+          "canonical": "https://myzootwin.com/gear/",
+          "h1": "Gear & field notes"
+        },
+        {
+          "path": "/about/",
+          "status": 200,
+          "sha256": "8b306c25b65d244e458f58b283353185ad209a8625f769ac28074d199336f9ca",
+          "title": "About MyZooTwin — A curious animal learning journal",
+          "canonical": "https://myzootwin.com/about/",
+          "h1": "A little morecuriosity, every day."
+        },
+        {
+          "path": "/play/",
+          "status": 200,
+          "sha256": "9f0ac558e6e4694c960152fa42c9fb795e27f853b5c54523bdd67cb97fb49d8f",
+          "title": "Play Zoo — Tropical Creek | MyZooTwin",
+          "canonical": "https://myzootwin.com/play/",
+          "h1": "A little world to care for."
+        }
+      ],
+      "directPlay": true,
+      "sitemapCount": 9,
+      "buildId": "88f42de737a376903efce8006ab01b3cd0ebf953516c7fd9cefcdfbb6d8aef78"
+    },
+    "browser": {
+      "status": "UNRUN",
+      "errors": [],
+      "missing": [
+        "desktop-native",
+        "portrait-native-id",
+        "landscape-native-id",
+        "native-lifecycle",
+        "injected-failure-retry",
+        "navigation-reload"
+      ],
+      "verifiedAt": "2026-11-07T00:19:49.423Z",
+      "screenshots": [],
+      "receiptSha256": null,
+      "method": "manual approved-runtime observations + automated receipt consistency checks; not an automated browser driver"
+    },
+    "cleanup": {
+      "status": "PASS",
+      "observedAt": "2026-11-07T00:19:49.436Z",
+      "ports": [
+        4321,
+        4322
+      ],
+      "tabs": "Operator must close owned tabs and reset viewport; see browser receipt."
+    }
+  },
+  "status": "UNRUN",
+  "source": {
+    "id": "65e651d08818d556d481e2730f85241c2e55e50e7308bce3b6313f375271e8ec",
+    "entries": [
+      {
+        "path": "astro.config.mjs",
+        "sha256": "f47757ffb0a7d390102e8f9208d3f435032988b2a0d6b008e90029a315c1df81"
+      },
+      {
+        "path": "docs/qa/giraffe-baseline/released-route-metadata.json",
+        "sha256": "050fd294e401f598cf5980aa4b394d91b5a067492981532183cacc00adad2533"
+      },
+      {
+        "path": "docs/qa/m0-02/baseline-results.json",
+        "sha256": "5094032d6b4cb09c0d077f60866e82ae8a167cb95c1704a8796ed2f4d8d2ec76"
+      },
+      {
+        "path": "package-lock.json",
+        "sha256": "267a9ae660affdb978621b21ff1944057249158df5b650d7ac0f837527919118"
+      },
+      {
+        "path": "package.json",
+        "sha256": "0f73476a7eee00bb8ad4ef1b545fe262200f83151174b9cf136fb3603faab05f"
+      },
+      {
+        "path": "public/favicon.svg",
+        "sha256": "78c28be8daea587e629661600e55c3250d521adcfa32cf88b3113d33267db702"
+      },
+      {
+        "path": "public/images/myzootwin-beranda.png",
+        "sha256": "194a2cb5178f255ebf0289aabac75135fc65a8f716f26c01dcfeaebe00960169"
+      },
+      {
+        "path": "public/images/tropical-creek-game.jpg",
+        "sha256": "6edf52437618a80b94911b846cb2722257739be87c4f96c793f1e808d848e880"
+      },
+      {
+        "path": "public/images/tropical-creek-journal.svg",
+        "sha256": "cf2f03404f8d72367c385fbbdfaabb0bd21ae0a262804525c20e027a34ea94cc"
+      },
+      {
+        "path": "public/licenses/third-party-notices.txt",
+        "sha256": "a5eff5cf91485bdf2f7ada50d30832c648db248314b3897e3c80e9da66efa29b"
+      },
+      {
+        "path": "public/licenses/three-MIT.txt",
+        "sha256": "5d5dad8147523d59bc15cca838ae0bdaae7075230ec49132c551a1d18e7b3412"
+      },
+      {
+        "path": "public/robots.txt",
+        "sha256": "ec272ee8fdedb49773eebe94cf6eade96bc05d3e47a0695d450d894d154b2011"
+      },
+      {
+        "path": "scripts/qa/assets-review.mjs",
+        "sha256": "b80cc23c23c5f30cd8a4988949c862229bbda998e4d0817159321b8ccda52c95"
+      },
+      {
+        "path": "scripts/qa/audit-lion-release.mjs",
+        "sha256": "841175debc6271ef75d48d71e8e051543c8bacd015b48b9685db1bfaec2e30c0"
+      },
+      {
+        "path": "scripts/qa/build-elephant-harness.mjs",
+        "sha256": "d98b18544fd361b711d7318e33c547905b9072f21f09d03e20098f9d15319a24"
+      },
+      {
+        "path": "scripts/qa/build-giraffe-product.mjs",
+        "sha256": "0ba8c2355577d85e406e80bfa5a402377a181b47072226fd02cd7425fbd931f0"
+      },
+      {
+        "path": "scripts/qa/build-giraffe-storage.mjs",
+        "sha256": "37a37c3cd4eeaa20d6d8477a60086bd7517389c2f898bd78330a219e4a226646"
+      },
+      {
+        "path": "scripts/qa/build-giraffe-world.mjs",
+        "sha256": "67fa10814b0ae699cfb7eaef7b0b064c55b419b94aeee954d2eeb054a6b22fbb"
+      },
+      {
+        "path": "scripts/qa/build-lion-maintenance.mjs",
+        "sha256": "3448226d18f643e14da2b42852eb10b7b43761de0a6150b2e478856e762f1187"
+      },
+      {
+        "path": "scripts/qa/build-lion-product.mjs",
+        "sha256": "1fae244b47f389713d24389127ab49b898152a115003d109b1dcaea83769860b"
+      },
+      {
+        "path": "scripts/qa/bundle-analysis.mjs",
+        "sha256": "0d94bd663da19ec1b4662689f9fbe307c761105adf33262b6dba0deb5e441045"
+      },
+      {
+        "path": "scripts/qa/camera-rotation.mjs",
+        "sha256": "686b8f77a2e01037adca4829432485374b9b35532aa56c5b931dd425adfd4c1f"
+      },
+      {
+        "path": "scripts/qa/freeze-elephant-legacy.mjs",
+        "sha256": "119f0c1926e98cb48cd4da35119dbdf2558dd5f085afbd80d64f0fce86fda1f3"
+      },
+      {
+        "path": "scripts/qa/freeze-giraffe-baseline.mjs",
+        "sha256": "c930c708db4648d635361e2a929fae60a0e1716d1eed216cc99f2a6e5b041cdd"
+      },
+      {
+        "path": "scripts/qa/freeze-lion-baseline.mjs",
+        "sha256": "c2131fe56c16a329c15b771f24266ea68d7c30309d6f3f5d8a2e2a88a4f4f7a9"
+      },
+      {
+        "path": "scripts/qa/giraffe-baseline-metrics.mjs",
+        "sha256": "aa852ac58acfc5361f2ee15a1ca9ea7908581c5496d3b4257055c44872c829f1"
+      },
+      {
+        "path": "scripts/qa/giraffe-maintenance.html",
+        "sha256": "660223d7632596b2397e21cc30ab0b478ae26d6879465e26df6736094d5121d2"
+      },
+      {
+        "path": "scripts/qa/giraffe-maintenance.ts",
+        "sha256": "df620aca4358ef334b0782bfbf7b31539274f9505d5c851efd18e85857fea097"
+      },
+      {
+        "path": "scripts/qa/giraffe-product.ts",
+        "sha256": "0ead366bc88d718e1224ce1dbcbc7ed71104db1a34cc40fbde5075acc98c47a1"
+      },
+      {
+        "path": "scripts/qa/giraffe-race.html",
+        "sha256": "f0a087c4e2d56de3367cf711fdb787344e605dfb332d438bbf36a22fdbbff60b"
+      },
+      {
+        "path": "scripts/qa/giraffe-race.ts",
+        "sha256": "61cce26fe66755f67f807d033dafca15671b401ec3f61d2c8be62993dda96584"
+      },
+      {
+        "path": "scripts/qa/giraffe-stress.mjs",
+        "sha256": "ac1e646c09223cbd210e538791a2f19c21cd99b98b486e01e377d8c3f165efe6"
+      },
+      {
+        "path": "scripts/qa/lion-maintenance.html",
+        "sha256": "e482cbda9e7921e216533c603514399ce8899b305235e038cbf027aefc58ef39"
+      },
+      {
+        "path": "scripts/qa/lion-maintenance.ts",
+        "sha256": "153394543bf855a5dd496385bf37f817eedafa548a855a02d11c19a5a0c02c6c"
+      },
+      {
+        "path": "scripts/qa/lion-native.html",
+        "sha256": "dfa053690360326f48b2d1ee7af61f42f93027058c23e828dac18ea319cd27e6"
+      },
+      {
+        "path": "scripts/qa/lion-native.ts",
+        "sha256": "b5ce4ee45b722d09a41d19e6cc9ddc8443bc2c1a089fd23313ce6bc7e0e6f24f"
+      },
+      {
+        "path": "scripts/qa/lion-product.ts",
+        "sha256": "355b1920083daf4de0568714d26f7154f21addb17f431490337edf30626b275a"
+      },
+      {
+        "path": "scripts/qa/lion-race.html",
+        "sha256": "19a047c51a27247f59f204bd727fe5b22e845a9ff794f38dcd62998120230397"
+      },
+      {
+        "path": "scripts/qa/lion-race.ts",
+        "sha256": "3cdc20ce87226a08449ed330415e08d9c3d8a757e86a104cef9bab1be34accb8"
+      },
+      {
+        "path": "scripts/qa/payload-isolated.mjs",
+        "sha256": "8bb1a22eeaecb7bac20c022b1e0b15569321913caddd44972aa719d0775b5fb9"
+      },
+      {
+        "path": "scripts/qa/payload.mjs",
+        "sha256": "9483ebe3db69d071c8ce2f7c8ce5fa2c0fa632fa14ecac8560d0d47c0b358cb7"
+      },
+      {
+        "path": "scripts/qa/prepare-gpu-attribution.mjs",
+        "sha256": "6b4a792e62d0e8fe77781b2b0c32698233b2583a46d843cdec485ab9bf316c31"
+      },
+      {
+        "path": "scripts/qa/prepare-privacy.mjs",
+        "sha256": "93bc9ac4a47eef470ae190f3e96aba825670918de669d16e586cceeab1f1d97d"
+      },
+      {
+        "path": "scripts/qa/privacy-locked.mjs",
+        "sha256": "ec264529c305c83e53b67bc2e3bc29d543d98415217a8548213795f99d0da84c"
+      },
+      {
+        "path": "scripts/qa/qa.mjs",
+        "sha256": "26294042818f1d054799d5fd164fc1c5cc5c993857d76af9fca6a9097162ddf5"
+      },
+      {
+        "path": "scripts/qa/settings-isolated.mjs",
+        "sha256": "a702617474add4561d100611f8da85a20a3f5713e4e10710c7b46a28cc27ac12"
+      },
+      {
+        "path": "scripts/qa/tooling.mjs",
+        "sha256": "ea7e6f11893649c001e76d61df778263b865337818f3383a07fc69b9dc28974a"
+      },
+      {
+        "path": "scripts/qa/verify-lion-soak.mjs",
+        "sha256": "376d5a326046719f295cb09ca00d681dcc64d8bae499aaa9ab077dc9438f4373"
+      },
+      {
+        "path": "scripts/qa/visual-polish.mjs",
+        "sha256": "1f36b0cc96476876ec3a9bba77ccd922a30e933028f9d361f065ec6d94f4c3ff"
+      },
+      {
+        "path": "src/components/PlayEntry.astro",
+        "sha256": "0e3feedd50306f291e5c319b1d258e45578f7da3cc50dff7fdf079fd5e98439c"
+      },
+      {
+        "path": "src/components/SitePrivacy.astro",
+        "sha256": "d10096c4a90de206d788402488375809bbb8859849bbc057886809a73d5bcf19"
+      },
+      {
+        "path": "src/game-entry/animal-info.ts",
+        "sha256": "d3cbdfa7d5165c41f17f27b7c1cb97e0ed3dc29c5999cfad5e42ed5608e85261"
+      },
+      {
+        "path": "src/game-entry/care-mission-panel.ts",
+        "sha256": "c43352e684acdb661b8ae098e1b0e09d76152e69529817b1db30c34910b4530b"
+      },
+      {
+        "path": "src/game-entry/dialog-focus.ts",
+        "sha256": "5767d01c19d74c2df1965f0fe4cb83c97e3e37af21246fbfae376420dcc17a4c"
+      },
+      {
+        "path": "src/game-entry/elephant-care-info.ts",
+        "sha256": "1ab19aa01bfbbbecf2e83d15d6199064a404c5cdb50a632871af7bdc117ff58f"
+      },
+      {
+        "path": "src/game-entry/elephant-care-panel.ts",
+        "sha256": "5e5bcfd8edd15e4b61c3edfdee21ccb79f859b4035380b93b9d02fbaf25adb0b"
+      },
+      {
+        "path": "src/game-entry/elephant-catalog.ts",
+        "sha256": "8062c1dcd17182c57451e6b33657ca05a1ee34e68685aa6e7117228146737fde"
+      },
+      {
+        "path": "src/game-entry/elephant-mission-panel.ts",
+        "sha256": "bb7093f5b71e0729ac1968a46021a3bde978e03c7a63e6941fcefdc59f38b41c"
+      },
+      {
+        "path": "src/game-entry/elephant-onboarding-panel.ts",
+        "sha256": "748371deee0204d01a94c81465a9e2ca23fa160a7097f7d764a53e23dee41681"
+      },
+      {
+        "path": "src/game-entry/elephant-recovery-panel.ts",
+        "sha256": "f0429eddc16429c6213701c829187e6b4dd36ae5ad907f360d315cdbd17bc366"
+      },
+      {
+        "path": "src/game-entry/game-entry.ts",
+        "sha256": "a4b98f6a2496227df92a4bbcb59eb01d37261ca3547b3c67162d50e693acd465"
+      },
+      {
+        "path": "src/game-entry/giraffe-copy.ts",
+        "sha256": "cd906ef74d420259614b3779f96116085025a294a3c8715f05f8f39106763ec1"
+      },
+      {
+        "path": "src/game-entry/giraffe-panel.ts",
+        "sha256": "bdd7c70f79b924a1dea6c360e1694d1ae44e9de5704be57088233e7ed5b56319"
+      },
+      {
+        "path": "src/game-entry/hud-layout.ts",
+        "sha256": "53cf63633036c28413d48df2a751ae3a1c8819e94a4410a66d94eb2e6d26ef49"
+      },
+      {
+        "path": "src/game-entry/hud-summary.ts",
+        "sha256": "04e729fe6d3f47a710912dccbd1b3addbb4d92c175da1318d21483866c50f7a5"
+      },
+      {
+        "path": "src/game-entry/i18n-format.ts",
+        "sha256": "9dbe942d1296e5485d8ad2ad6aa9ad214911e3270044d4c6217e7598b4e0e4fe"
+      },
+      {
+        "path": "src/game-entry/lion-copy.ts",
+        "sha256": "aed3db8b1c71c7099e24688da6fd22b0dcf0da600462c5c932c68e8f2630a7f7"
+      },
+      {
+        "path": "src/game-entry/lion-facility-select.ts",
+        "sha256": "c9879a05cbaa1ed063f428db1299552ad772affcff0c915888e11dc69aff33a1"
+      },
+      {
+        "path": "src/game-entry/lion-panel.ts",
+        "sha256": "dea9a0b8e956652ec109638ca412adbafffc419ec19b1bea26f4d7bf116e390a"
+      },
+      {
+        "path": "src/game-entry/locale.ts",
+        "sha256": "9594e69a05a5f9316d9073e0196b8de7f2f2c105a9706a75f3d030f6a260a8f3"
+      },
+      {
+        "path": "src/game-entry/mission-panel.ts",
+        "sha256": "1a33dce55e1f3379ec5ece50c7313c9e5cea0ccf04109ebbd3ce58af16ed2482"
+      },
+      {
+        "path": "src/game-entry/onboarding-panel.ts",
+        "sha256": "f10eb04c895fef3994e9216133c2d45b43525c9b62c533ea157abcae70774168"
+      },
+      {
+        "path": "src/game-entry/pause-gate.ts",
+        "sha256": "cba528b4cfab78dabeb2550bbddc511033d143486d20dfaa15ea026480c8757b"
+      },
+      {
+        "path": "src/game-entry/preview-panel.ts",
+        "sha256": "489ef24083841822f43ee1fef500774744a5dd6a7a782499ca03823913088608"
+      },
+      {
+        "path": "src/game-entry/recovery-panel.ts",
+        "sha256": "dc79092c26efa90ec64b316d8e4247361d1a8679076ccf8aa31475d16d0bc703"
+      },
+      {
+        "path": "src/game-entry/restart-panel.ts",
+        "sha256": "ed5e3552aed0329cfaa55d3b6f897cddc9221d407ba4aa0a282d9511642c9e82"
+      },
+      {
+        "path": "src/game-entry/selection-presentation.ts",
+        "sha256": "4ae8d1124b85a56b2c350b5e5f727064f3d7142a6c9c823023e1013c129e02a1"
+      },
+      {
+        "path": "src/game-entry/speed-panel.ts",
+        "sha256": "ba9ef2defa8f2968e5e30c7103130ebd103b4c784100c1f367cecfba38f73d0d"
+      },
+      {
+        "path": "src/game-entry/thriving-mission-panel.ts",
+        "sha256": "6ff285b15d67e6b4271c61372a6a7970ecc38db4aa3fdf15c6c9678d43af8ce8"
+      },
+      {
+        "path": "src/game-entry/ticket-feedback.ts",
+        "sha256": "deafa704b0625cfd8acd57dc7771b4f39989a87a4453de372f242f9b1281a870"
+      },
+      {
+        "path": "src/game-entry/visitor-feedback.ts",
+        "sha256": "cef4a352bb0a7dcdedd31334285550c0102af8c49275794f2274b76732706e38"
+      },
+      {
+        "path": "src/game-entry/visitor-mission-panel.ts",
+        "sha256": "09fbfda2652aa54d7075f1d02821aea5b9ae62705bb0fdd69cd77225c7a21d2e"
+      },
+      {
+        "path": "src/game-entry/visual-settings-panel.ts",
+        "sha256": "a320558e3cc9bad2a68ed5a52685a1c5c2718dc217247185e36268d0d30eb88d"
+      },
+      {
+        "path": "src/game-entry/world-description.ts",
+        "sha256": "754c1c4419b346786cba4f73392429f714b2a704b85612faf0e859c7b9f18229"
+      },
+      {
+        "path": "src/game/animals/autonomy.ts",
+        "sha256": "1aeafa2dad5e878d81c66154b6422587427c05e5b8f5e53b5bf50099ab56fd5b"
+      },
+      {
+        "path": "src/game/animals/elephants/body-clearance.ts",
+        "sha256": "cf87e1fef79fb85d056221a200781592ec252ff8558c5789a01447f47ae60852"
+      },
+      {
+        "path": "src/game/animals/elephants/care-info.ts",
+        "sha256": "d6b0ffad7a7351013d52e340782cd5796792214e5727a232c027e04ac4079e31"
+      },
+      {
+        "path": "src/game/animals/elephants/care-resources.ts",
+        "sha256": "11bca7d4ee81c90d503f36acddf6f8c1ba2c01fe2cfd85627b9f3b82158aebcf"
+      },
+      {
+        "path": "src/game/animals/elephants/care-rules.ts",
+        "sha256": "78a4c8bc902d1feeacbb857bf2e39511ce2e664d7caffbd8f18cd12e55709c12"
+      },
+      {
+        "path": "src/game/animals/elephants/care-simulation.ts",
+        "sha256": "98cc6657e397020ae83f854618533169cb7e93db033736a11aa4ed360ca50336"
+      },
+      {
+        "path": "src/game/animals/elephants/ground.ts",
+        "sha256": "177415c6137aa92d889f22508e45f6d1556cbc4d1b1fd570e80847865c052bd4"
+      },
+      {
+        "path": "src/game/animals/elephants/residents.ts",
+        "sha256": "6d68645af8ff28c7750865c7f0f7a06c06737d4bf31aba225dba100850b36eb6"
+      },
+      {
+        "path": "src/game/animals/elephants/social.ts",
+        "sha256": "281c6700fd2bd716cfccb4675affe4abc7d9aa8c93eb344867ffb0b6f632a62f"
+      },
+      {
+        "path": "src/game/animals/elephants/welfare.ts",
+        "sha256": "236e82ffbcdee26d40f8c5618a5d3e3fe472843b6758df0e66b40a17bd3f4fd4"
+      },
+      {
+        "path": "src/game/animals/feeding.ts",
+        "sha256": "0605259ce09ee65660ff923d55d3214798971f8b944732ff07e657da0122ae0a"
+      },
+      {
+        "path": "src/game/animals/giraffes/care-simulation.ts",
+        "sha256": "433f7f143902bfd2a8b617dc1a2bf12f7199a3b1529e623163aa7d6d524be3d6"
+      },
+      {
+        "path": "src/game/animals/giraffes/ground.ts",
+        "sha256": "a0dbd802a3fe4efac482c058153d85540922998f0d3dd93b1d2d023bf3c3005a"
+      },
+      {
+        "path": "src/game/animals/giraffes/residents.ts",
+        "sha256": "e880ebded34b07d91d4848bc0cce532a0fcef710c84747dcf8107b6cdc38a743"
+      },
+      {
+        "path": "src/game/animals/giraffes/resources.ts",
+        "sha256": "3c4b69d2e60346657eefe9197c28cc8304a9cf402e66a626305c30278b4f8c44"
+      },
+      {
+        "path": "src/game/animals/giraffes/rules.ts",
+        "sha256": "480f039a1b2b64db3d7b09fefc2825c52177e5adad1cc3935acad34ba68ea60c"
+      },
+      {
+        "path": "src/game/animals/giraffes/welfare.ts",
+        "sha256": "fcd2e578f13980a607f35f61045a16f4a93de3c9fbce8884b9c2486d55b7d11c"
+      },
+      {
+        "path": "src/game/animals/lions/care-simulation.ts",
+        "sha256": "d0e15eaf1b659bd800b0df688ed2f32ecc90b68f65647e94be3f18ea686c20f0"
+      },
+      {
+        "path": "src/game/animals/lions/ground.ts",
+        "sha256": "ff841706a52867f34d851c0911d8784ef16ba4b854c9645d6fd0631dbb5ced8c"
+      },
+      {
+        "path": "src/game/animals/lions/residents.ts",
+        "sha256": "97b126bdea224f2ad09539f5064c7eae5430905dcf212cb18afe460eaf020c6f"
+      },
+      {
+        "path": "src/game/animals/lions/resources.ts",
+        "sha256": "32f417c64b0366fb323b9ecc005fb1985cc1df63fb0e9e38de6fd864ecdfb9c1"
+      },
+      {
+        "path": "src/game/animals/lions/rules.ts",
+        "sha256": "51b7d03cf0f9afdfb6e1dd3dcb7805380943dd9f8c9aa39253789899de16014a"
+      },
+      {
+        "path": "src/game/animals/lions/visibility.ts",
+        "sha256": "1299c125446ebcb7d663395fd3d5cf42e8200a3d1a41959f16ea27ffbd1d0f31"
+      },
+      {
+        "path": "src/game/animals/lions/welfare.ts",
+        "sha256": "25315f191a138b43e6d6ec789ba4925f02ab46932522305d49c248189f79ce22"
+      },
+      {
+        "path": "src/game/animals/resting.ts",
+        "sha256": "a9227e92ac2f2fb257e3117a25aa19c94ee76dceb779ca8907cb4a93a4ede55e"
+      },
+      {
+        "path": "src/game/animals/watering.ts",
+        "sha256": "d08ce3d576fa563465de27ac013a0e25d3020784ded51aa9e4762bbb8d265243"
+      },
+      {
+        "path": "src/game/animals/welfare.ts",
+        "sha256": "62f085132d0703e75078fbc9ac0552a6cd7e95d8c640fc6e1976bb9cfa0fccc4"
+      },
+      {
+        "path": "src/game/audio/ambience.ts",
+        "sha256": "64d149d6ee70197d9e5af34e7d8ef0b336f37b6ba2cc4d581e9b4cd9a9edf8c0"
+      },
+      {
+        "path": "src/game/core/audio-settings.ts",
+        "sha256": "1900f4026c57cd03d5adfe65abd6db7a1c89e704341571c6b613394349d1a54e"
+      },
+      {
+        "path": "src/game/core/events.ts",
+        "sha256": "7ead88151ade90fcd0e614bc1b9fb22312b1b6614e19f75f741dc6821b3dda0c"
+      },
+      {
+        "path": "src/game/core/fixed-clock.ts",
+        "sha256": "2c96d7244a23d89678bf21d9557281682fadd4e160c228328a01bfc30c8208f3"
+      },
+      {
+        "path": "src/game/core/giraffe-state.ts",
+        "sha256": "caf3f015eebf6e11aa15adfe534f256ebf711c4da79926e78d9ea5f2d2a602af"
+      },
+      {
+        "path": "src/game/core/initial-state.ts",
+        "sha256": "55a3a787638182f16b3826f03ecf5d730f85fa8e029321ab0db53e7a28c74624"
+      },
+      {
+        "path": "src/game/core/random.ts",
+        "sha256": "55da373f6786befb931a6d11c7a54aafb84ab1e507c6de94c33aa3a82e35c45f"
+      },
+      {
+        "path": "src/game/core/runtime-state.ts",
+        "sha256": "f2050e341757e3ba623b60a262c6d203b55efde993786645fbee60785a69f2f7"
+      },
+      {
+        "path": "src/game/core/session-state.ts",
+        "sha256": "c3102862c11c2f8d8a02fcf0951616a874b4cf7d72bf91bd45817e86d9dbd734"
+      },
+      {
+        "path": "src/game/core/simulation.ts",
+        "sha256": "0e07a23beb34efaa61e94c0cef309004d5383d5628d9025243e3910de3909701"
+      },
+      {
+        "path": "src/game/core/species.ts",
+        "sha256": "840486f7ae079a8a9930493c141c0e851dd1adf995aab3cc855e334e7e949219"
+      },
+      {
+        "path": "src/game/core/state.ts",
+        "sha256": "5c2582c02f643f5939ded40441c1e0c04a594a5a257c04eac0a5835088f0c769"
+      },
+      {
+        "path": "src/game/core/visual-settings.ts",
+        "sha256": "db7483f0fad4eec26c5a394b4fd6d2af3c51a81d1d632831563f424a84ccc9b5"
+      },
+      {
+        "path": "src/game/core/zoo-state.ts",
+        "sha256": "593373cd42eaa36733d367dbd81a87c2db86b44429013ba877952f762295f225"
+      },
+      {
+        "path": "src/game/economy/conservation-grant.ts",
+        "sha256": "4be0fb1e2dfe9a0350f61f9910baf13772fc6e7681326f85cacb854ff679f400"
+      },
+      {
+        "path": "src/game/economy/elephant-construction.ts",
+        "sha256": "2ac0761b7975d4ff559f981fdbc3a818e1d1dad4f0fa5822ea90e87396cd6bd3"
+      },
+      {
+        "path": "src/game/economy/elephant-prices.ts",
+        "sha256": "839a6d563e028cfc25de4c126cd3225ef7377f0658a5408099e3ffc96242d234"
+      },
+      {
+        "path": "src/game/economy/elephant-recovery.ts",
+        "sha256": "3d8883b38c5cda742c28289a6c57d0c74a8b8d3dd9ee9559c055aedf70de1206"
+      },
+      {
+        "path": "src/game/economy/giraffe-construction.ts",
+        "sha256": "75e9f669e4686984542a9626f6d08e6f9a51048cebfbcb075378a5c0be6a74b5"
+      },
+      {
+        "path": "src/game/economy/giraffe-grant.ts",
+        "sha256": "75ba756146d384fba89a1e1b52e2b02572c5354b5fed5aa60e98c837f847b4a3"
+      },
+      {
+        "path": "src/game/economy/journal.ts",
+        "sha256": "4a9ad3052601924de3aca5675259742a528755827ded6c1c3571c85b081bb8c3"
+      },
+      {
+        "path": "src/game/economy/lion-construction.ts",
+        "sha256": "7963289b8547f1cfa43ba9bd16dd899aaf951e1368c1e9b83632d4d001a78040"
+      },
+      {
+        "path": "src/game/economy/lion-grant.ts",
+        "sha256": "a5dbfc0782aa184124076bb6a66787b13d2eb1a7fed7d5420a9b69bba56b8fc1"
+      },
+      {
+        "path": "src/game/economy/prices.ts",
+        "sha256": "c85db32119b79ef0ace025c9f9a4afbe16942712ea87da7e445ef5d4c1467fce"
+      },
+      {
+        "path": "src/game/economy/recovery.ts",
+        "sha256": "c5f89517221480502f59f79ddc613835c549252cd1d33dda0ee8343a24df1cdf"
+      },
+      {
+        "path": "src/game/economy/refunds.ts",
+        "sha256": "9b4a52370e3af0a0241d63a4e72364f573f451c3fc99c70d153a31ce5f6d7b06"
+      },
+      {
+        "path": "src/game/economy/spending.ts",
+        "sha256": "fd96de64917d452868d6835e0ca1aeb6120e0800748025771f5daf08738e3a8a"
+      },
+      {
+        "path": "src/game/economy/tickets.ts",
+        "sha256": "78bcaf29dbb7301745709874e3ad91edd37ec9bf15f70fbb10f89da4ed3a56dc"
+      },
+      {
+        "path": "src/game/missions/elephant-missions.ts",
+        "sha256": "269dda929aa1c325f2f412b0e43d2203fd813e97913b7b86cb42fc22a2d00b6f"
+      },
+      {
+        "path": "src/game/missions/elephant-onboarding.ts",
+        "sha256": "7ff2256792c566a509a593de6f0452d4a25e0cf8725b4d806e5ca553f20a723d"
+      },
+      {
+        "path": "src/game/missions/engine.ts",
+        "sha256": "6b782f8143d65c06f832b6937de15acbfdcc7db0f06f14daf20af7c1409bb13d"
+      },
+      {
+        "path": "src/game/missions/giraffe-missions.ts",
+        "sha256": "ca74136d364f51267c0f2d541f199617bda8064fb2230991ce85c242b5d829fc"
+      },
+      {
+        "path": "src/game/missions/lion-missions.ts",
+        "sha256": "8083b666b85551d1342f678b3a1d3eae3563f2eb7e8f472ca71f47c9c8f08add"
+      },
+      {
+        "path": "src/game/missions/onboarding.ts",
+        "sha256": "acee098c6db1436506a466fa441679ae12f06d8f2144b5a073b390b246b16370"
+      },
+      {
+        "path": "src/game/missions/thriving-objective.ts",
+        "sha256": "94954a8c24872640c0718b2f2fc05d48e5c7c39bdeeabc9159144cbe958e0ea7"
+      },
+      {
+        "path": "src/game/missions/visitor-objective.ts",
+        "sha256": "106c101f8a184f03dbe7578a53b2567f8f7fea782c6eeb78abe5407354df8800"
+      },
+      {
+        "path": "src/game/persistence/autosave.ts",
+        "sha256": "3dbcbbd2f2dc8390767c9e5d0d1ae5d34b80a4eb311df9222cf2c37261d2ced3"
+      },
+      {
+        "path": "src/game/persistence/checkpoint.ts",
+        "sha256": "a79a5225d5ad6187af9932f4f211289d99feac21a0d46d8d3f5b16b96464639d"
+      },
+      {
+        "path": "src/game/persistence/durable-backend.ts",
+        "sha256": "4458b2183564f0f8e27c6cf9e48136b67a007ad48e8f05511e9c05ffe6f6e7c8"
+      },
+      {
+        "path": "src/game/persistence/elephant-backend.ts",
+        "sha256": "df16915f0ebbb7e99e88cd0601abeeb2c4b2b260cf1f7f25b3d9d58a37710337"
+      },
+      {
+        "path": "src/game/persistence/giraffe-backend.ts",
+        "sha256": "c50fd45e602fea5e26b1e316c7851609378d7cbb0d713b78a03952c5de26b974"
+      },
+      {
+        "path": "src/game/persistence/giraffe-maintenance.ts",
+        "sha256": "56e36623b23669d1a95ae032c5c41b773031c7bf79d04a37128ab4b92637f177"
+      },
+      {
+        "path": "src/game/persistence/lion-backend.ts",
+        "sha256": "043733d3fdfe03cf70a4877bb68d5fd7593ebc393f32d4c238f5366b27105a45"
+      },
+      {
+        "path": "src/game/persistence/lion-maintenance.ts",
+        "sha256": "04848efc7ad81a4432715f686354c1b2a11ddec825a602611dfc2d80c1323421"
+      },
+      {
+        "path": "src/game/persistence/save-v1.ts",
+        "sha256": "a26a97fb973c2a8788ef294eae3f2d57cbaad34bcac4af26f58deb73446ddde7"
+      },
+      {
+        "path": "src/game/persistence/save-v2.ts",
+        "sha256": "e7dbf3e55c556cda1c9de3063f4979d3f36598c44b95921a86a7533e69e93bdd"
+      },
+      {
+        "path": "src/game/persistence/save-v3.ts",
+        "sha256": "e9ce17f3d5a28c3f5febcd058e978068a2c4bd3cc3a17d43813ef5b0e809713a"
+      },
+      {
+        "path": "src/game/persistence/save-v4.ts",
+        "sha256": "e772c64166c87897a485766e032c5e1f2dc23829c467b1142a717b66a0c12a23"
+      },
+      {
+        "path": "src/game/persistence/save.ts",
+        "sha256": "fbe2ed1e10bfae7fbd8a2177f33c3849e9670c06ae8bd253bffc8a42e721a9a8"
+      },
+      {
+        "path": "src/game/render3d/camera-controls.ts",
+        "sha256": "1478581cd4a358cd2fb4cd8c9bbe98a14dd994f6a1ba61cf6b4fe1e244a11427"
+      },
+      {
+        "path": "src/game/render3d/camera-gestures.ts",
+        "sha256": "14db5aea8fc6249d2b002c438ab2ce3d976fa3700af9feda7fce8f0bba6f94de"
+      },
+      {
+        "path": "src/game/render3d/camera-navigation.ts",
+        "sha256": "1151aff726a32773295e41a43c5e8ffc980de880d9a8c23b33c9768edecf8fc4"
+      },
+      {
+        "path": "src/game/render3d/elephant-care-preview.ts",
+        "sha256": "d9d937cf86d1e71a1a0606580c3d2ed7210c7894c5be07785e2914cdc7c3efb9"
+      },
+      {
+        "path": "src/game/render3d/elephant-care-scene.ts",
+        "sha256": "b16b5daf075313b70b9a6729f70b611b33394045dff35d3e9fa02437b1bc265d"
+      },
+      {
+        "path": "src/game/render3d/elephant-habitat-scene.ts",
+        "sha256": "a369c67c3f0c725b87399d513a71d4ca43a3940af7c2c4d66861728ece61cf1d"
+      },
+      {
+        "path": "src/game/render3d/elephant-residents-scene.ts",
+        "sha256": "e5c8ae125f1fcac07068dc3d9bc2b41fae30f5fb4143f80671448336e90b38c9"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-bathing.ts",
+        "sha256": "b588ddc52c5082528cd3123bb1dc223015d348178d636a634a6ec47304de6371"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-consumption.ts",
+        "sha256": "5bb1a0f1a1f1a06ba0fd12246e84b9a2d65cbdbb6c8466c3892a564754187779"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-enrichment-geometry.ts",
+        "sha256": "55088d3af62d7001b952be2ac4c7edb3eaa9064c35b73bab8ab40fb371374f51"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-enrichment.ts",
+        "sha256": "ab43d5ab07324aed844505836a41936653eb9915416daa32850b1519c3f49944"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-geometry.ts",
+        "sha256": "e7e5bf44f2cd5a7a4685306056b0d40adc5966a2a539b0a6cd903c38fe19072b"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-locomotion.ts",
+        "sha256": "54ff74f9e9c67479d5df1d4a30b348225f47748e296a11d0594c26de9add8e4b"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-pond-geometry.ts",
+        "sha256": "9acd9017bd36dd969f78980e3991e48942e47abd2c870163e9348c3ed6d0eda0"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-rig.ts",
+        "sha256": "b0c9a3e0c9b359e8e1191f24a527732d3bb3d6b7d8a23bf7810cb50dec33313e"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-social.ts",
+        "sha256": "041813b1b1e2215b70956bb5f71148af4f9424713edc99c407403722ebef9edd"
+      },
+      {
+        "path": "src/game/render3d/elephant/elephant-spray.ts",
+        "sha256": "4af4c5b719b8041c7674979d5794859adc2580f6458cfff4dd3d5e4f8740c6f5"
+      },
+      {
+        "path": "src/game/render3d/feeder-scene.ts",
+        "sha256": "094a4e71c812e4d84d3717d16f0be9272cb81019c7bb9cde2b48c4ecab900a9a"
+      },
+      {
+        "path": "src/game/render3d/foundation-scene.ts",
+        "sha256": "bdc4dbec56b7ec1be8eb803c1446eda4d0b9d264c9962adb099a2ff03b4b7ffe"
+      },
+      {
+        "path": "src/game/render3d/frame-loop.ts",
+        "sha256": "20bbb4852b72df88645e30f901321d490fbc63ef6046a009b68d8cf33589fe26"
+      },
+      {
+        "path": "src/game/render3d/giraffe-care-preview.ts",
+        "sha256": "922ed83e68868f7bf378e69d8f9158792a0c631b263859877e64c933238957a0"
+      },
+      {
+        "path": "src/game/render3d/giraffe/care-ghost.ts",
+        "sha256": "115c9f7e1758fb8e45a48f5b1609c1b95d5dcd2aa88e6069848393871d7d4ea6"
+      },
+      {
+        "path": "src/game/render3d/giraffe/residents-scene.ts",
+        "sha256": "da8219d02f31aff73e02baf7a07332e02969080afde125ca098aafa902800c21"
+      },
+      {
+        "path": "src/game/render3d/giraffe/rig.ts",
+        "sha256": "311ea63e27715939d947f09e159bd4c0837b78d8f2ed1692e40a0fa55cddc149"
+      },
+      {
+        "path": "src/game/render3d/giraffe/world-scene.ts",
+        "sha256": "f069c20d8d86dac9170be2fe120e3f9fe179c2c22984faf5f25a68678956fe1a"
+      },
+      {
+        "path": "src/game/render3d/habitat-scene.ts",
+        "sha256": "624cca01c9c7dca9f13b68d29020dff91391dfaf95e85ffc03b9dd9aec26f6e9"
+      },
+      {
+        "path": "src/game/render3d/isometric-camera.ts",
+        "sha256": "85bce4e1b31a4e311cf862ddca3fd983c75a09b5de01cf1361d0a735ff1948c8"
+      },
+      {
+        "path": "src/game/render3d/lion-care-preview.ts",
+        "sha256": "6b69420c1dff4d5fdb23f664ca13663eb108f6ab565b0b6cfeeadc03e582a1bf"
+      },
+      {
+        "path": "src/game/render3d/lion/care-ghost.ts",
+        "sha256": "24e5a0f9f504e286d4eb5e206c90bac67bfdd9a9e5d1575934dfdf66cdbe8afa"
+      },
+      {
+        "path": "src/game/render3d/lion/residents-scene.ts",
+        "sha256": "00d6d781ab1981bb1036ba72efa3e216bb68de3baa740ae7c4b22353c0e49f48"
+      },
+      {
+        "path": "src/game/render3d/lion/rig.ts",
+        "sha256": "59b0a64ee06fddbfa7fac0bb08598288959e635fa7a127bbcae9a1afd8e2bcd5"
+      },
+      {
+        "path": "src/game/render3d/lion/world-scene.ts",
+        "sha256": "683eef59a00c371aed32e91d2f1a3c1e21a402c42f5a66fb57b7d9cd49e83f2f"
+      },
+      {
+        "path": "src/game/render3d/macaw/autonomous-birds.ts",
+        "sha256": "95a247e4d71af8c175956a37709c73ef3bcad56444044e5996b60cade03b9955"
+      },
+      {
+        "path": "src/game/render3d/macaw/macaw-animation.ts",
+        "sha256": "0b8109829d5de5431f27f3023ed2146c242c6f5d8c5c04642b08c70127079671"
+      },
+      {
+        "path": "src/game/render3d/macaw/macaw-geometry.ts",
+        "sha256": "ec2c24032a471808a319d1474617a9c5ba0c195ac7ddc2e2404485b3c9aaf86c"
+      },
+      {
+        "path": "src/game/render3d/macaw/macaw-rig.ts",
+        "sha256": "4dce85448632fc37e1954f75a4fa4b3dfb078aa739e29fa0e6d0d91851f5ae93"
+      },
+      {
+        "path": "src/game/render3d/macaw/macaw-studio.ts",
+        "sha256": "319c5e2b8af39eb87aa4cd09ab928ff543ef29d0c45aee2b5d73f1493a87c1b2"
+      },
+      {
+        "path": "src/game/render3d/macaw/studio-contract.ts",
+        "sha256": "6c80968043b845cd733dc9053b923d00d7259473305fb6b6189cc37ad18374c9"
+      },
+      {
+        "path": "src/game/render3d/path-scene.ts",
+        "sha256": "a92541829abb61452f485bdca9eb4e61fd99188724f6c57c8b4f233541c42f21"
+      },
+      {
+        "path": "src/game/render3d/perch-scene.ts",
+        "sha256": "d90b0cf38e0aeeafbe32f8b758018836c87e92649e9b21c7fefb95c59bb719aa"
+      },
+      {
+        "path": "src/game/render3d/placement-preview.ts",
+        "sha256": "0c02d8d3c5cf60334e1872412d595a616db428df8c4c935b77ccbfe0b097a46e"
+      },
+      {
+        "path": "src/game/render3d/preview-controller.ts",
+        "sha256": "2ec4816994a4c9ef4256208318f7861d3c598a176f507c95bb02ae6ef97b1fbd"
+      },
+      {
+        "path": "src/game/render3d/reward-decoration.ts",
+        "sha256": "8810ab1df2ccf2a2cf20538b4d1d51e6fcfdb49242d49d626dae9647e58039e9"
+      },
+      {
+        "path": "src/game/render3d/sanctuary-lighting.ts",
+        "sha256": "8bdef798a020d3fed70c7c2f3ac26d354435faa250a16a8a534bf7e114f480f2"
+      },
+      {
+        "path": "src/game/render3d/scene-picking.ts",
+        "sha256": "9c314dbc928c51148272b0e8c2e289bc7b041b0e922d909edc854ec68b3cec63"
+      },
+      {
+        "path": "src/game/render3d/scene-selection.ts",
+        "sha256": "0a4ca11ff1422c8257e1ad84017568d63aaf5f1636767ca0caf73a08d0c8ad13"
+      },
+      {
+        "path": "src/game/render3d/thriving-banner.ts",
+        "sha256": "77729c577bc1bc6e036dcc013e6926db6c6d49561ff6c9be6e001e35748ea1d1"
+      },
+      {
+        "path": "src/game/render3d/tropical-diorama.ts",
+        "sha256": "6ad571a6643a1dc77ad69db86e0745a787b975e907c4092f200d390374ab9245"
+      },
+      {
+        "path": "src/game/render3d/visitor-scene.ts",
+        "sha256": "d14782513abb1292748be69f016a7bc1c81ac63cae3b0e14a6ac9ddb3257dc23"
+      },
+      {
+        "path": "src/game/render3d/water-scene.ts",
+        "sha256": "7b8a9c96fe257ffc59f7e9d39407b12f7c1391d744687a5ece37e02259aeaff0"
+      },
+      {
+        "path": "src/game/render3d/webgl-cleanup.ts",
+        "sha256": "6f8ead8de6f6a462b857adae16cc4734ca1dc30b05f335d9f845c7402c70d64b"
+      },
+      {
+        "path": "src/game/visitors/arrivals.ts",
+        "sha256": "924ff348e1e8b3b40dba6f8a85ebd4907157acb344afb5f83455d1faf86e0896"
+      },
+      {
+        "path": "src/game/visitors/attraction.ts",
+        "sha256": "ab64d81ac9d96290fd957bf2c40bbb1942dea847459c4eb343cceb3659879ad9"
+      },
+      {
+        "path": "src/game/visitors/graph.ts",
+        "sha256": "228bb6b6bb9b42702fc46d2ad4cc00d0ca363fc828d3ad549c31254ae4566eb7"
+      },
+      {
+        "path": "src/game/visitors/navigation.ts",
+        "sha256": "882b66125467e5a858165f9cf584c6ec4a6718c0880ef2194cb99c13aebeb479"
+      },
+      {
+        "path": "src/game/visitors/satisfaction.ts",
+        "sha256": "fa8f036644e2351caaeede55918965ddbc3259ca8a3b7e2daf8c8c6e4ac225e6"
+      },
+      {
+        "path": "src/game/world/build-habitat.ts",
+        "sha256": "a2039bf2c82edb0d615239b171768a7d2350fa25c05c6d6f9fef3ff6b217ad03"
+      },
+      {
+        "path": "src/game/world/editing.ts",
+        "sha256": "0bf9d918c5cc48d79dd9d9081ed5db212906466149a7dde95656c29007fa8be2"
+      },
+      {
+        "path": "src/game/world/elephant-expansion.ts",
+        "sha256": "78175a2bfc392decb2fa3f4731d28e21baa90f9641e4f6d0d54bc420abd771ac"
+      },
+      {
+        "path": "src/game/world/giraffe-expansion.ts",
+        "sha256": "318bc93cd193fbe48edc17e114303af28293a18f9c6fc94849bfc854a889775c"
+      },
+      {
+        "path": "src/game/world/lion-expansion.ts",
+        "sha256": "84f712261644a6234a35cfda6cd6beebda8be880a21c4c0e483419933847fb98"
+      },
+      {
+        "path": "src/game/world/paths.ts",
+        "sha256": "1185107ce3fc7ef9bcec95e76089ee69023c8ccb55fa9ad91296067dca87a5f7"
+      },
+      {
+        "path": "src/game/world/placement-preview.ts",
+        "sha256": "014db3284d66b6b3df2e801740ce97ee89314159b8ff872218bd158b7c05ebeb"
+      },
+      {
+        "path": "src/game/world/scene-coordinates.ts",
+        "sha256": "0b2fb6f25603721d3d765057cfa6d2e29c22367bbe7f5b07b0ea7e7c34c8829e"
+      },
+      {
+        "path": "src/game/world/species-habitat.ts",
+        "sha256": "cd44a9ea9cb36c68b0b1234bc060dcad3b85803ab7d37250052c510dffb7cf22"
+      },
+      {
+        "path": "src/layouts/BaseLayout.astro",
+        "sha256": "a5e66adb6e30cb328247791e5342528c0bae5a98840ec6d5a74907e514998859"
+      },
+      {
+        "path": "src/pages/[section].astro",
+        "sha256": "76b9a84575ddf8af25be07a87cceb5814dd04a75f8922c9559ba3861d078cc29"
+      },
+      {
+        "path": "src/pages/about.astro",
+        "sha256": "ee1de4f5f2258cb6166509b88143daf6b95492e273b3416542d4d6c5ad4465cb"
+      },
+      {
+        "path": "src/pages/animals/index.astro",
+        "sha256": "2ad2bd9a0ef9c8f7964116f25e95b23c94a4ef44e3e9a1c90554d3c70db1b8f2"
+      },
+      {
+        "path": "src/pages/index.astro",
+        "sha256": "a59d060db15eca466d06e6c0df88c05d4f2e5a635d3c1e96ce06eef589a42692"
+      },
+      {
+        "path": "src/pages/play.astro",
+        "sha256": "0da8b09a2da154c63abe13d1b0048c29950eadac35bf2513446ab0c15cde7a75"
+      },
+      {
+        "path": "src/privacy/consent.ts",
+        "sha256": "405fff3355ea73c235b04f6dc53e4c64f2dbafd12e1ffa5333d9bf4d7da4c284"
+      },
+      {
+        "path": "src/privacy/google.ts",
+        "sha256": "6b4421f488a630915c8475dff6bacf3bb6444e1f62a6225f21cc639afba7aab5"
+      },
+      {
+        "path": "src/privacy/locale.ts",
+        "sha256": "fb836d4dd7b67cda99fafc7fccccaaf138d5b7d6d8274baf3eb469ae52013692"
+      },
+      {
+        "path": "src/privacy/ui.ts",
+        "sha256": "ac45df117e02d3f2ed8e5232f36eb37ae1e9b9500e1109ac72fea8f4c4007d4d"
+      },
+      {
+        "path": "src/scripts/play-entry.ts",
+        "sha256": "5949827393152515d94df23abe8b4cd55df267f2cc795516bd065f691882e823"
+      },
+      {
+        "path": "src/site-content.ts",
+        "sha256": "9c9b9d098e19f7ecea6c6aff56115212bf7576d82988a2f86e585ab3429113ad"
+      },
+      {
+        "path": "src/site-events.ts",
+        "sha256": "37add71d6ab62ae21c9c694417e4c09ef43f5e8d1411462846b0d195de604eb5"
+      },
+      {
+        "path": "src/site-policy.ts",
+        "sha256": "9d7320bdceb9d5804dcb8c55626e624b45caeed5ca5a022d528d630bcb856d81"
+      },
+      {
+        "path": "tests/animal-actions-qa.test.mjs",
+        "sha256": "aa1866fc008fed26acc50fddc47d920fdb4d0393b505291fed3459195c77516c"
+      },
+      {
+        "path": "tests/animal-autonomy.test.mjs",
+        "sha256": "b3dd0a477d71eed463bd5f3720f037ed5b8d751debaccd9e434fc02a31110537"
+      },
+      {
+        "path": "tests/audio-settings.test.mjs",
+        "sha256": "be85f837ef99d284f2d41af992794755cdbd069c74ade1ea70169faf6b4d3cf8"
+      },
+      {
+        "path": "tests/autosave-candidate-drain.test.mjs",
+        "sha256": "a0e6b9597a982c8b2824fb751124506a941952cd87faeacd64d807d17f86eef2"
+      },
+      {
+        "path": "tests/autosave.test.mjs",
+        "sha256": "3b3288e29297a533d57eba4cf151aa7644fc4d2e965fe891d211ed24e8689c82"
+      },
+      {
+        "path": "tests/browser/.gitignore",
+        "sha256": "cd9e593418d6a88b2e5cfc359d66a2fc8a2b1b3fb9d39e2c53231845444456c9"
+      },
+      {
+        "path": "tests/browser/README.md",
+        "sha256": "eaa4719f66a8269043a938d78c71e18e883572d82782dc17cf8b45c33b815ff8"
+      },
+      {
+        "path": "tests/browser/animal-dom-scenarios.mjs",
+        "sha256": "290d9aa50c0046cef03d415f3eef4e9f12fb2014750433ed1f1edc5f13b9ffbd"
+      },
+      {
+        "path": "tests/browser/audio-settings-harness.mjs",
+        "sha256": "0479f612ca32cd60ad96cdbb8eba2ca5c759ca9f7bc900feeff537cf4d49769f"
+      },
+      {
+        "path": "tests/browser/autosave-harness.mjs",
+        "sha256": "e6e9f74fbecc6bf6277e731d53c967ef79c6e7a6c915b07ee1ceb853792b0f0d"
+      },
+      {
+        "path": "tests/browser/camera-dom-scenarios.mjs",
+        "sha256": "7311949c039b2ea474032b074f38a1e0e64a84c4ba83810a052cf478b8536326"
+      },
+      {
+        "path": "tests/browser/camera-rotation-harness.mjs",
+        "sha256": "29d0e369c251ac3a8e1940ed972b588f80ec2a7ea20f77815c0ad78b7b915c1b"
+      },
+      {
+        "path": "tests/browser/care-mission-dom-scenarios.mjs",
+        "sha256": "f78069c3cf9daf1ce746fb984d33246ab0e8a574c5e7514348674f8e097ef5b8"
+      },
+      {
+        "path": "tests/browser/compiled-site-observer.mjs",
+        "sha256": "9d8e33ac01444582d72c455c11946fdaa743aaa88a3c6a544f8eb6aedc4458e6"
+      },
+      {
+        "path": "tests/browser/editing-dom-scenarios.mjs",
+        "sha256": "8fe17d55301a7fb63fe4c1c28e7d9d5cc6484b13673147fd0b3d43461a9cd26e"
+      },
+      {
+        "path": "tests/browser/elephant-placement-harness.html",
+        "sha256": "cf60cf7658635ad6d5358ab33faafe647d5aab78b0755f6cfa01acf6ff215790"
+      },
+      {
+        "path": "tests/browser/elephant-placement-harness.ts",
+        "sha256": "aef6ecc6cfc489cd7c2b0930e3f0d208eafb5090a8ac6eb54e6a20f91fb44d4f"
+      },
+      {
+        "path": "tests/browser/elephant-rig-harness.html",
+        "sha256": "5e972c7fbeeee68c44e600727108e9671935331c1907feb5002d99e776016025"
+      },
+      {
+        "path": "tests/browser/elephant-rig-harness.ts",
+        "sha256": "39828be044dbb4576e4880e146d0426c5d2e5e95f7152c964d43a96293c4dbd2"
+      },
+      {
+        "path": "tests/browser/elephant-soak-profile.ts",
+        "sha256": "8571012921aa1d62aca5f26fdb0d681d62efc7ba835312d699755d76aa5eb9e8"
+      },
+      {
+        "path": "tests/browser/elephant-v2-product.ts",
+        "sha256": "341ed3edac77a4018d09e30b997b4e79080ab5865374498f102d4314800ecdb1"
+      },
+      {
+        "path": "tests/browser/elephant-v2-storage-harness.html",
+        "sha256": "22eaeee4c2b45a4d3b97b48e1d20e2e2278ae7a996e7fbe1f16f20fa9330215e"
+      },
+      {
+        "path": "tests/browser/elephant-v2-storage-harness.ts",
+        "sha256": "eb56b1d9b3cb373b279b3317135f8194cdf0deaaba1e565c7cf0d521750f3645"
+      },
+      {
+        "path": "tests/browser/elephant-world-harness.html",
+        "sha256": "c46347a5730b97ba4dd597279032f15580e36f2b17bf880b51607649d61d67f7"
+      },
+      {
+        "path": "tests/browser/elephant-world-harness.ts",
+        "sha256": "de200cff05b6752f06ea2665d5520ab56d07213d5f75256d38edab237ec2d5a8"
+      },
+      {
+        "path": "tests/browser/feeding-dom-scenarios.mjs",
+        "sha256": "6a1f3eb3a7762e99c65cb7f3f16117014f2571170df0d4f118be5b03c55c8292"
+      },
+      {
+        "path": "tests/browser/frame-metrics.mjs",
+        "sha256": "ca257c38ddcf98450899a7d2c6b4f1483aa486dfd93454e9dbb12fb06650bc9f"
+      },
+      {
+        "path": "tests/browser/giraffe-storage-harness.html",
+        "sha256": "73b538dd91e092c55130d202be9996abbfeb23c9800a2e609269662d9a37d713"
+      },
+      {
+        "path": "tests/browser/giraffe-world-harness.html",
+        "sha256": "b9fc5981f77cd0a41afda11df807ad44bb5dc813d20b3794ec17414b273cf602"
+      },
+      {
+        "path": "tests/browser/giraffe-world-harness.ts",
+        "sha256": "e2cf0181abe752034d0de47fa268e37032e087a3dee1a914e5b08a7ff2239c49"
+      },
+      {
+        "path": "tests/browser/gpu-attribution-harness.mjs",
+        "sha256": "43e18d27ae783dea30a9a9dc84b1f5ae5502503583597162a9df7eabcf6feb9c"
+      },
+      {
+        "path": "tests/browser/gpu-timing-records.mjs",
+        "sha256": "98616ea6b6aee11d8f3f718e55fc06029436bbc78b5744edada6aea92284baac"
+      },
+      {
+        "path": "tests/browser/hud-harness.mjs",
+        "sha256": "c62dd1fb92c361a316be91269345d20ea645931c31315e91e7589103fd908542"
+      },
+      {
+        "path": "tests/browser/localization-harness.mjs",
+        "sha256": "3ea65909ac84474d2d43c4cf76d7b696e95b83ffbfbdfdffefab3eebb37315ff"
+      },
+      {
+        "path": "tests/browser/macaw-dom-scenarios.mjs",
+        "sha256": "827f13013fda744a494c3d18a64372ea75fd5c0511bf2f97f0d9f9005523b97b"
+      },
+      {
+        "path": "tests/browser/memory-soak-harness.mjs",
+        "sha256": "adadef6c339f7d25ff5bead496d7cc7c30ac21f9ab163b49387e2650dd375de3"
+      },
+      {
+        "path": "tests/browser/mission-dom-scenarios.mjs",
+        "sha256": "8502d582dd4d4a5d7b86ef8cb5c608d00bccf2744a417678cfe79c21244e92fe"
+      },
+      {
+        "path": "tests/browser/money-observations.mjs",
+        "sha256": "05d28d71e76e04e5e6399ef56e2d1ef0a050722014ac35827ae0274caf875113"
+      },
+      {
+        "path": "tests/browser/onboarding-dom-scenarios.mjs",
+        "sha256": "6406dc4f639a949b23ffc06c947161e96b26761afec72820bbff0287131ec10a"
+      },
+      {
+        "path": "tests/browser/path-dom-scenarios.mjs",
+        "sha256": "962989aabff4564d3685812f8235b422c2028cb6c466788d93e6c6f143decf76"
+      },
+      {
+        "path": "tests/browser/placement-dom-scenarios.mjs",
+        "sha256": "db507c342e6a5b9ce76847d563c4bf7437e0d14738bcb84a3bd67ff1604ca5c1"
+      },
+      {
+        "path": "tests/browser/populated-performance-harness.mjs",
+        "sha256": "803ed25e1088f13e365ee450f63d571a214d6553aa22aa58ff1104a02328a8c5"
+      },
+      {
+        "path": "tests/browser/prepare-preview-harness.mjs",
+        "sha256": "c830c00edd2f67e00d0cf7d3c44c053c3b51bf152db590e10f5ee2486c15683e"
+      },
+      {
+        "path": "tests/browser/preview-harness.mjs",
+        "sha256": "ccc6db3ee9a420b31191edc51a81c564a4d8140ba6d4a7f3faeab2a66ed35dc6"
+      },
+      {
+        "path": "tests/browser/privacy-harness.mjs",
+        "sha256": "5d4b28e171df66f78d5626c43a9eb8255b95cf06862b05102a05adfd4763ff35"
+      },
+      {
+        "path": "tests/browser/recovery-dom-scenarios.mjs",
+        "sha256": "7e5e9e213144d1fc53131e040d873f4a8dcd1c132e6a9983f6748c10ffa51a4d"
+      },
+      {
+        "path": "tests/browser/recovery-harness.mjs",
+        "sha256": "193de3a1f068e0ed151f3cc6d351a00f9f57efd8bd0f3ac0bfa519cb1e2dcc3f"
+      },
+      {
+        "path": "tests/browser/restart-harness.mjs",
+        "sha256": "5983e69ed96a112c33cc551678132d76a54c8ce77f192d8787260fddffe063a9"
+      },
+      {
+        "path": "tests/browser/resting-dom-scenarios.mjs",
+        "sha256": "2940c1e246b6c1380584ff3f90b20b154e78e70bec02ea296234f7658aac014b"
+      },
+      {
+        "path": "tests/browser/scenario-result.mjs",
+        "sha256": "20f2fc52b700c032464e879bf13fd915e26b11a2a0f61d2a33fc985bd023e667"
+      },
+      {
+        "path": "tests/browser/security-harness.mjs",
+        "sha256": "71ff30d8b55c594eeed0a9330ebecf0b9b9d31414d5cf6ca6783c67e2a835395"
+      },
+      {
+        "path": "tests/browser/selection-dom-scenarios.mjs",
+        "sha256": "b0f53d729ac76db19e4965f33234b765a6a4fe5364b9fba2028a3887f78d956b"
+      },
+      {
+        "path": "tests/browser/site-harness.html",
+        "sha256": "7a845cd8974a75e72df6ee62f65c1eaf0bd9b7a77b2da88389f4991168b22f53"
+      },
+      {
+        "path": "tests/browser/speed-dom-scenarios.mjs",
+        "sha256": "19101f03421338ea346ce40217d9d77f1670a638958924c0ae76c98dda4b3095"
+      },
+      {
+        "path": "tests/browser/spending-dom-scenarios.mjs",
+        "sha256": "d7303dc372cb0e322c678ed3cc0a7c813f1eec785b6bb5952626c4a2f164e2dd"
+      },
+      {
+        "path": "tests/browser/thriving-mission-dom-scenarios.mjs",
+        "sha256": "b6a912a45057b0f3210d724a5665555232cbf8a2bd91125ea4bd45ea5bc7015d"
+      },
+      {
+        "path": "tests/browser/ticket-dom-scenarios.mjs",
+        "sha256": "97075aecf0d873ffa425f6d30b2bc3414378d0709dd5eff41589469b608365f9"
+      },
+      {
+        "path": "tests/browser/usability-fixture.mjs",
+        "sha256": "221dbc069150347234d951610ba60f94475720b22767cb7738d8db1599f2c777"
+      },
+      {
+        "path": "tests/browser/usability-harness.mjs",
+        "sha256": "6dc8e98ef3c6953305e230b22cc4660fc94b25af0924439d4ee32c94ce8a50f6"
+      },
+      {
+        "path": "tests/browser/visitor-dom-scenarios.mjs",
+        "sha256": "a9650397171b60c1cd742842d868419210922bda2d7978845f41b0990fc2bf80"
+      },
+      {
+        "path": "tests/browser/visitor-mission-dom-scenarios.mjs",
+        "sha256": "abc831bc0103e4e29fc046bb3a29147dbe98dfbd310cd2ac082dd257aeaa366c"
+      },
+      {
+        "path": "tests/browser/visitor-navigation-dom-scenarios.mjs",
+        "sha256": "f9f3156d53c042e8f7af457bc714c540dbbf0f794fed64a91ce2d9138130f30f"
+      },
+      {
+        "path": "tests/browser/visitor-satisfaction-dom-scenarios.mjs",
+        "sha256": "2db1f8ea28e7047460a8d3f59b5d3874c81841bb31c4bfe578e8b2fb9f633390"
+      },
+      {
+        "path": "tests/browser/visual-polish-harness.mjs",
+        "sha256": "fd49f92b2c2110a6683ed994a8d5f28755c9ad4d09d6e40247d1488781b0f6c8"
+      },
+      {
+        "path": "tests/browser/visual-settings-harness.mjs",
+        "sha256": "ceb2cbe5ef83458c8211a23f87ce1a9a0194d6ff95bf8383aba577a2b3d58297"
+      },
+      {
+        "path": "tests/browser/watering-dom-scenarios.mjs",
+        "sha256": "e8dfe620be7d94d32162b137cf15444f7570dfaa671c7ce8421ff5de1d11d2b6"
+      },
+      {
+        "path": "tests/browser/welfare-dom-scenarios.mjs",
+        "sha256": "bf7bf17315ecec395f6dd9400ed4c9b21519dbc469d75d42dc5975e474ed9f43"
+      },
+      {
+        "path": "tests/camera-navigation.test.mjs",
+        "sha256": "0dea0b2ce2a82dbebd2da87d1d7a80f26e07adde4e5cf91fdd13dea0b1d2cdc5"
+      },
+      {
+        "path": "tests/care-mission.test.mjs",
+        "sha256": "50c8f14751d87b0b710139da26ff134b47ee76e02c3d710a9d484b815d0fdc94"
+      },
+      {
+        "path": "tests/cashflow.test.mjs",
+        "sha256": "19eda9e6c62a7ccdacb3405aee60bec6fd111c472d336878d831363769011f20"
+      },
+      {
+        "path": "tests/clock-reentrancy.test.mjs",
+        "sha256": "097841106704042aadb76554e41dc04080bbfe9ab959b46259574a51d7b20686"
+      },
+      {
+        "path": "tests/conservation-grant.test.mjs",
+        "sha256": "1157dbf28fef2441a0771954bf686f2293a5ef58330dff9de1d9dd71a67acf25"
+      },
+      {
+        "path": "tests/elephant-attraction.test.mjs",
+        "sha256": "91e47b6185df4f07dec00a414dc54ab760b2c1241822064b053137eefa04288b"
+      },
+      {
+        "path": "tests/elephant-bath-render.test.mjs",
+        "sha256": "9ec965818a7f6ada32a0978eee4d967ea9df4a398d2fedeade7691f560677212"
+      },
+      {
+        "path": "tests/elephant-care-info.test.mjs",
+        "sha256": "4080c778619cf0072da47f454abebf145ad46332674661dec3b47c84b90f1ec3"
+      },
+      {
+        "path": "tests/elephant-care.test.mjs",
+        "sha256": "59d01a3eb73dd4850993e83e3256171933d72ba0fb8a954029deeb268f4ded4f"
+      },
+      {
+        "path": "tests/elephant-construction.test.mjs",
+        "sha256": "f9732852e49ed905083ce2205fb9a13da6943e6b300656d34f77bda392022297"
+      },
+      {
+        "path": "tests/elephant-consumption.test.mjs",
+        "sha256": "89ee77cf8a789287c37b620a90f804dff5b5c04f3ec58d0ac02fe243f1e3ed96"
+      },
+      {
+        "path": "tests/elephant-economy.test.mjs",
+        "sha256": "c8c0ad9a4911140f0e78711a1ecaefdc61601a22359b5ca891881e2b47e89c46"
+      },
+      {
+        "path": "tests/elephant-editing.test.mjs",
+        "sha256": "a8b2cc99c12baa2bb4a5de206eabccf60c83edd2d9e7d531345f119fb67fd17c"
+      },
+      {
+        "path": "tests/elephant-enrichment-render.test.mjs",
+        "sha256": "b6b5b87c523c128cb8a87752d11d7d575c18899fe6411aa1e70ffa83ef54cc0a"
+      },
+      {
+        "path": "tests/elephant-enrichment.test.mjs",
+        "sha256": "e83ce8d996070d095a01a39bdf40769050ff8b660177f11309a3a1a77999c99b"
+      },
+      {
+        "path": "tests/elephant-expansion.test.mjs",
+        "sha256": "fc154b9b2b239cb60ac8ccfeb45f871b8ac98efb74c36b17e8a41b1c6599382d"
+      },
+      {
+        "path": "tests/elephant-footprint.test.mjs",
+        "sha256": "142a3efeb82b5db8d3c5815a9cc5841a9328c3504b9f331bfa683b124164b73d"
+      },
+      {
+        "path": "tests/elephant-layout-plan.test.mjs",
+        "sha256": "85a66f008b328230046c109c725335372a63cf5b1a58bb395a5eef5c6e3b8f5e"
+      },
+      {
+        "path": "tests/elephant-legacy-baseline.test.mjs",
+        "sha256": "d064c0f64a9cf3be74825281bb2a963e8009da443b5eb5d99466ff050456c6ab"
+      },
+      {
+        "path": "tests/elephant-legacy-regression.test.mjs",
+        "sha256": "5d146039959324b94148081b682a5103f6df84cf0ded9d62084dff5f8f5c2dc0"
+      },
+      {
+        "path": "tests/elephant-localization.test.mjs",
+        "sha256": "d3c9c2e7e8019a263ee7d8c0fd600ccca0a5e79fd7a5b4aab5d489ee5a08d53a"
+      },
+      {
+        "path": "tests/elephant-locomotion.test.mjs",
+        "sha256": "1f30d9fb5fcb77a74d689b7c3047d13e5e9258d1f481bbe0c9f6db18d2d8566a"
+      },
+      {
+        "path": "tests/elephant-migration-clock.test.mjs",
+        "sha256": "9be7e0c27575f1c52bb6e9ab7b22d83bf1916dc6c306f03bd17af461fd9a397b"
+      },
+      {
+        "path": "tests/elephant-missions.test.mjs",
+        "sha256": "5068a60186d05ac07dabb683377eb9e32746384c386e5d12948c0fafd96dd0b9"
+      },
+      {
+        "path": "tests/elephant-multispecies-save.test.mjs",
+        "sha256": "75c17126d73eecdc9913e3899c1546559e9ace794b1068d8ce52ef9d7f573664"
+      },
+      {
+        "path": "tests/elephant-onboarding.test.mjs",
+        "sha256": "277de20955209c3dd0086881013460af89ea900a0b34033480819d316b75ff97"
+      },
+      {
+        "path": "tests/elephant-pond.test.mjs",
+        "sha256": "6510170c32ce489411bba895a06d7e05367bbcc9fc68244a396b59b51a36161f"
+      },
+      {
+        "path": "tests/elephant-recovery.test.mjs",
+        "sha256": "499c112b641d3e7f778619df4f9bb341238bc48ba42faf61ac90ac317b1f1de5"
+      },
+      {
+        "path": "tests/elephant-residents.test.mjs",
+        "sha256": "84f14a6193f016d773d236d984439ee4f1fd4aa7d185033ff563142ba6fa82eb"
+      },
+      {
+        "path": "tests/elephant-rig.test.mjs",
+        "sha256": "84e5b505df86554e67f91f2d63a0ba647b0679846f73eb7a4b99662ab9ef9dea"
+      },
+      {
+        "path": "tests/elephant-runtime.test.mjs",
+        "sha256": "52f63cdb4d6e976e2c1bac7f9989221060b2e7c3c691912860a8f941c88eb596"
+      },
+      {
+        "path": "tests/elephant-save-v2.test.mjs",
+        "sha256": "ec00e67e73d45e4ef36aeb5873721996894a0548087a40ca683e80d4bf1b0930"
+      },
+      {
+        "path": "tests/elephant-save-v2.typecheck.ts",
+        "sha256": "cddb68ea21e9bf625e59f93cde33ce277aa1ec24613a25aa35674ba555b8470e"
+      },
+      {
+        "path": "tests/elephant-scene-anchor.test.mjs",
+        "sha256": "05db5678dc9aea6d83079eb540a4e028f18b594794e0aaf37a5232b98f4d24fa"
+      },
+      {
+        "path": "tests/elephant-social-render.test.mjs",
+        "sha256": "6bb0ef435f13780efacd4e5f4e9656c3b1500b277695aa46f37971302f05b7ee"
+      },
+      {
+        "path": "tests/elephant-social.test.mjs",
+        "sha256": "d7293c22a74d4a0b9b4f5b0fd2ec7724dede9cfa864bb1738aea5a19928a24cb"
+      },
+      {
+        "path": "tests/elephant-species.test.mjs",
+        "sha256": "2e4e2c97eca89d0e9c65b4f2f0cfdd252a12d578e5cb890a5068279e9fc374e2"
+      },
+      {
+        "path": "tests/elephant-visitors.test.mjs",
+        "sha256": "d2a3532ea76255becee5ba373b05ab54abc41cd37b54a6337360b3ce4644ee64"
+      },
+      {
+        "path": "tests/elephant-visual-settings.test.mjs",
+        "sha256": "92a55d0d79ec65b6aa12c36787e67b4d6f2f9ca301ec0b1c2fdaab3c3c57e96f"
+      },
+      {
+        "path": "tests/elephant-welfare.test.mjs",
+        "sha256": "0c1aa076420c030fdbe8bc74613952e7c555463c311f72bc9b459da210e37267"
+      },
+      {
+        "path": "tests/entry-preferences.test.mjs",
+        "sha256": "a514b0f814f2fa2fe7ccf3d001d9be7dc6c11a6b50008961494cd71f5adc33fe"
+      },
+      {
+        "path": "tests/feeding.test.mjs",
+        "sha256": "269b445624d02421188ecb3361e3a0c016d200de29facafec1267e37e909f792"
+      },
+      {
+        "path": "tests/financial-assertions.mjs",
+        "sha256": "c53590628b1890e6e0083f7de26895ea4962af1328b578b399cbb23c970c0f4c"
+      },
+      {
+        "path": "tests/fixtures/elephant-economy.ts",
+        "sha256": "c6e332a974988702bf0c7a35ff47d9c4fc4d67ff3014670150f4c9ba5f30a25f"
+      },
+      {
+        "path": "tests/fixtures/elephant-home.mjs",
+        "sha256": "8e62c9fa3b469973bf73d6bde66b98e9e4433ae48cdb765585c4631502ca0dcf"
+      },
+      {
+        "path": "tests/fixtures/elephant-layout-plan.mjs",
+        "sha256": "1c7b55f361789362f4885705870652a83c55bf25eeb453e8ec2381bba8b7782d"
+      },
+      {
+        "path": "tests/fixtures/elephant-legacy-regression.ts",
+        "sha256": "88eef5227ec2f99be00a818f9d5f7ce2f906143eb991dbcd6301acd4cd8f5079"
+      },
+      {
+        "path": "tests/fixtures/elephant-legacy-scene.json",
+        "sha256": "a4955ff9ae5a15fbecb8782b2ed84fb4abd1f1f9667300dc60cd59198a835bce"
+      },
+      {
+        "path": "tests/fixtures/elephant-legacy-v1.json",
+        "sha256": "82fd14ab17cdf3445cdd31aa9281aac5dba6d465879c9c4c5b83bec2ff4d9d77"
+      },
+      {
+        "path": "tests/fixtures/elephant-migration-clock.ts",
+        "sha256": "d0dc01809d0ee655a16db66794fc846049b95e6b0b0f6ecb56e2b1d0479e4f2a"
+      },
+      {
+        "path": "tests/fixtures/elephant-native-station-block-v2.json",
+        "sha256": "c15e2b3e0b0e32d72438194da1afe18e4dd70839c8e0ae41c7eb98b4e85f4979"
+      },
+      {
+        "path": "tests/fixtures/elephant-two-habitats.mjs",
+        "sha256": "43e0d68a69ceada96987e11459eb8422e8ae1fc122dabed2f1b84a03a4ec5fe0"
+      },
+      {
+        "path": "tests/fixtures/elephant-type-contract.ts",
+        "sha256": "179fa46696d7d108dd304c6a45b44f5f4f3ab324d8510b730fef9efb3a854223"
+      },
+      {
+        "path": "tests/fixtures/elephant-v2-world.ts",
+        "sha256": "35b473c1a34cac6a6c29bb9092341fafdd729fc59edf06319f33b4a4fb17047a"
+      },
+      {
+        "path": "tests/fixtures/giraffe-layout-plan.mjs",
+        "sha256": "4aae0d7c2bc142019de32a5f7468a7dbb9f3507b6ac00520ec13bc4cc7984660"
+      },
+      {
+        "path": "tests/fixtures/giraffe-play.mjs",
+        "sha256": "e49fec960b2cc75cb0be990c41ca5a3fc461e09dfa990fe53adaeb4c84911f2f"
+      },
+      {
+        "path": "tests/fixtures/giraffe-v3-golden.json",
+        "sha256": "c25dccaacb8b1a3f18da44be9c809a14dfa09979b92c56825310040ea3ec25ba"
+      },
+      {
+        "path": "tests/fixtures/giraffe-v4-golden.json",
+        "sha256": "5c186919ca88e6563204f5a993200410e96d8d2736aef27e62cf92287d09e145"
+      },
+      {
+        "path": "tests/fixtures/lion-home.mjs",
+        "sha256": "42ce305ee0a1098d90f80813e198580fb85adf52b15872f4722555d7f892f7ab"
+      },
+      {
+        "path": "tests/fixtures/lion-v2-golden.json",
+        "sha256": "7232657bbc2e0a89c2255c50aa0fbacb9356d8e8332425a8f4f592dfa0335fae"
+      },
+      {
+        "path": "tests/fixtures/populated-zoo-v1.mjs",
+        "sha256": "efb95355cc0c3f475fda31bb98cb133fce8d35820cdd2fa2eae91de2b52ad5b1"
+      },
+      {
+        "path": "tests/giraffe-baseline.test.mjs",
+        "sha256": "1b843b263f913a0e0af74d28cccd52143c742fc811fcb4f2aef215cd93d87d19"
+      },
+      {
+        "path": "tests/giraffe-editing.test.mjs",
+        "sha256": "ffd68d840fa47ea274e0e274a901a3ff0a7730d21b64fa68efff57a75a6925e6"
+      },
+      {
+        "path": "tests/giraffe-expansion.test.mjs",
+        "sha256": "78c6680d5111d57790c01e9041da8b314d27d24496185a16de66f07d3366f9a1"
+      },
+      {
+        "path": "tests/giraffe-facility-select.test.mjs",
+        "sha256": "1e43a3db96a05bae33fd5275abb04fb2fad28481c320194fce44be3aa74f7153"
+      },
+      {
+        "path": "tests/giraffe-layout-plan.test.mjs",
+        "sha256": "f8219c5e40e5088641756969676661e6569c42a4d81f027239716854932d5e2c"
+      },
+      {
+        "path": "tests/giraffe-play.test.mjs",
+        "sha256": "e6427cb61d7578c036c8cc15258d565ef7932f9b7527b8ff452e3dea985502a1"
+      },
+      {
+        "path": "tests/giraffe-render.test.mjs",
+        "sha256": "6672be3c80142dd4e9269c3d420682a2938fe449f8ee78e82e7309b957e68139"
+      },
+      {
+        "path": "tests/giraffe-return.test.mjs",
+        "sha256": "2260735dd571b49ce3c609bf6f75968b751c02778309fd356809982cd3496e00"
+      },
+      {
+        "path": "tests/giraffe-runtime-v4.test.mjs",
+        "sha256": "8a59e5f006adcac8e979b6ab6f29653c2be9866371e9b21b2a916b3ef8b74120"
+      },
+      {
+        "path": "tests/giraffe-save-v4.test.mjs",
+        "sha256": "1c3373f7eec59763097b19fdedf6dd5e356acf25b0366854f494d4c6a19f20d4"
+      },
+      {
+        "path": "tests/giraffe-scene-anchor.test.mjs",
+        "sha256": "441a369e9547d44eba3a2e9e8a410a9723b6073a165155bb41e7d3ad424017e1"
+      },
+      {
+        "path": "tests/giraffe-species.test.mjs",
+        "sha256": "846b68390ed727c8a9da2449a0cf0fc0e136f6c6bc161745f9aaa6a8eac73b9e"
+      },
+      {
+        "path": "tests/giraffe-storage-v4.test.mjs",
+        "sha256": "bee0d6e5b9f5c7129d8f0d0c56ba3aa952aa716d9db227ed2633114ecb051795"
+      },
+      {
+        "path": "tests/giraffe-type-contract.ts",
+        "sha256": "5821ecc30abf016ac7d6080b18d676591caaa25f99b2d7a9b7552912b5b6a975"
+      },
+      {
+        "path": "tests/giraffe-world-description.test.mjs",
+        "sha256": "e57253f3e346fef0a3f1171353241faddf49ebfcc3512027ff071d89bba0a6ab"
+      },
+      {
+        "path": "tests/gpu-timing-records.test.mjs",
+        "sha256": "6ab914af52408d2c3b0ac7d5a21ff225d14ca07080b895b608e5f70b63d3320b"
+      },
+      {
+        "path": "tests/habitat-construction.test.mjs",
+        "sha256": "816fcd2b01a11daacc540b28a17c9a7d195c7817b4c963b977ef7d7f57ed3b41"
+      },
+      {
+        "path": "tests/hud-navigation.test.mjs",
+        "sha256": "680a1675c034af4f97e582a424c7dc8df5db9b0ad1656a4aae7bb38368169159"
+      },
+      {
+        "path": "tests/lion-care-simulation.test.mjs",
+        "sha256": "21fc0aef4efa9e2641a507642ed3d9aac6c7e6f408639a1d049558d253376382"
+      },
+      {
+        "path": "tests/lion-care-transactions.test.mjs",
+        "sha256": "9b667cf771c7ed52f63dfc77edf10a1fc3da1ccd7aaef93dc92eb62465e7e215"
+      },
+      {
+        "path": "tests/lion-checkpoint-stress.test.mjs",
+        "sha256": "5b1132986a68186493abf398a3cbfb581da8517bd909449843ebb25bf78ca99c"
+      },
+      {
+        "path": "tests/lion-editing.test.mjs",
+        "sha256": "3585a633f39e8907044fcf3d7dba48ed9d140a8bfe96069a4f2021c788196504"
+      },
+      {
+        "path": "tests/lion-facility-select.test.mjs",
+        "sha256": "305b483a3dc2fde381603e392e243fffe2e2a047aa799b8b24deb3b8b3945036"
+      },
+      {
+        "path": "tests/lion-foundation.test.mjs",
+        "sha256": "827e42fe1d79d22b81164cfc9636930eb4d8a9523d2f598c676fa4a39c8f8733"
+      },
+      {
+        "path": "tests/lion-ground-design.test.mjs",
+        "sha256": "08609079539b28beba34e8aefe1f558b8adf966d8c1359e5aeb5441073625656"
+      },
+      {
+        "path": "tests/lion-maintenance.test.mjs",
+        "sha256": "87f5dde8cc3b7465f1b90a4dd1bb7481e9fff08d92412fec6d1661aba2a37d75"
+      },
+      {
+        "path": "tests/lion-missions.test.mjs",
+        "sha256": "c94d37d0527178fd846593d229b166302fc98d772977dc7a5eacbf37330f2809"
+      },
+      {
+        "path": "tests/lion-render.test.mjs",
+        "sha256": "8df7feb314ed40a4fb292a5e7f327a94234a0a2baf9f22be32b7c2ad4d45f35a"
+      },
+      {
+        "path": "tests/lion-save-v3.test.mjs",
+        "sha256": "57e71adcce49f40b694ff455386eccabac294c179c4baf661671e1f53d6a0f64"
+      },
+      {
+        "path": "tests/lion-storage-v3.test.mjs",
+        "sha256": "f7929cf82cd13a94cf8d48e8bb9a0c6a8f054cf286509cb2a71959e3afdb136e"
+      },
+      {
+        "path": "tests/lion-type-contract.ts",
+        "sha256": "708b02ffd73d3be6816cbc264bd64111e0d86dcbd8cac9d3fd06bb19ff246ab5"
+      },
+      {
+        "path": "tests/lion-welfare.test.mjs",
+        "sha256": "916574a320d86d53c12fc2d40c34e7131ed1a47b82ab00882418c82291a69fab"
+      },
+      {
+        "path": "tests/lion-zero-cash.test.mjs",
+        "sha256": "713444fe510c1bc23edcdb5db638419cc68c3bb4556c140fa2d6da548a6587db"
+      },
+      {
+        "path": "tests/localization.test.mjs",
+        "sha256": "58194f212dc9af06252a7d1539bea3b2d4561baad849dbe4ecce9f11064efff7"
+      },
+      {
+        "path": "tests/macaw-model.test.mjs",
+        "sha256": "7ce05a09990219bb0fbad882d7f00ecc61f67e47c37f6c86305e9212455676e3"
+      },
+      {
+        "path": "tests/missions.test.mjs",
+        "sha256": "64bd49626b44f7d2dd9bbd0cdf8ac630b58d6d07a61740535be9ea047dff61d5"
+      },
+      {
+        "path": "tests/mixed-invariants.test.mjs",
+        "sha256": "aafb7af9370f50e6306b91f98d0f2ed954bcc06c86cac3db5c61be963eb8f84e"
+      },
+      {
+        "path": "tests/onboarding.test.mjs",
+        "sha256": "585c1f16d839c229e191fe3d072e69ee135ec5366ed2c0caea4186b8af09105b"
+      },
+      {
+        "path": "tests/path-connectivity.test.mjs",
+        "sha256": "a076df9f0858038d47041fe23692c74eafe69d61051279b024287fae8b684c26"
+      },
+      {
+        "path": "tests/pause-restart.test.mjs",
+        "sha256": "8a7cac8103b6eaab23d59ff11958a1e95a77b597b2d7900a019465b7fdd4075f"
+      },
+      {
+        "path": "tests/performance-baseline.test.mjs",
+        "sha256": "c0b67a1a5c2c145a97f388c7e51711c1e974b48cc41f1a173c17959b64b04f3b"
+      },
+      {
+        "path": "tests/performance-reads.test.mjs",
+        "sha256": "8b889823066278a391e033c8a9824044cec07ebd4a825f725ff182e4c97552ed"
+      },
+      {
+        "path": "tests/placement-preview.test.mjs",
+        "sha256": "7c61d50e76c821d43e0c2ad6c8a791a062d78b6479592f1feb9423f37e1492b6"
+      },
+      {
+        "path": "tests/preview-lifecycle.test.mjs",
+        "sha256": "ea72c5662f23cb5ae62cc9691fd61f7c73fb86452739bbaa59532358b65033f4"
+      },
+      {
+        "path": "tests/qa-workflow.test.mjs",
+        "sha256": "fab2721e1b130a8f585d090b7a6afaf3864b0a678d3115335ea93d7e2e5a3d38"
+      },
+      {
+        "path": "tests/recovery.test.mjs",
+        "sha256": "f481894c2c0ac40d109275fd5818379ba682fcdcc63eb8ebd46499f3dba32e96"
+      },
+      {
+        "path": "tests/resting.test.mjs",
+        "sha256": "7fdc90e0655c7f39dfe87dcef566304707eb17dcbf1a46a6847c0ba0f0655b66"
+      },
+      {
+        "path": "tests/sanctuary-lighting.test.mjs",
+        "sha256": "4e0b9d7e9ee3a4ca2eaf648ebc8aa26c93b10559c24379e8d0305397d3fc3932"
+      },
+      {
+        "path": "tests/save-recovery.test.mjs",
+        "sha256": "2a76884b5b563a393bb1fa621330590ffba591ef193c340936f46dc82104dffa"
+      },
+      {
+        "path": "tests/scene-picking.test.mjs",
+        "sha256": "b998f15e47c925190a0364f8f76b4620ad3b5a85623928cb4a87547337c5bbcb"
+      },
+      {
+        "path": "tests/security-privacy.test.mjs",
+        "sha256": "9d7c1fd6e4a9081f76bbb205ed890977d9b4b9ba03a3fc95ce58060e98de652a"
+      },
+      {
+        "path": "tests/simulation-atomic-events.test.mjs",
+        "sha256": "1dbc10b6cd1ad7cb07c9836b5af831c757a1528374611ed42083c620bc324af0"
+      },
+      {
+        "path": "tests/simulation-contract.test.mjs",
+        "sha256": "e70c68ac9567b4806e5b1d453aefad7c2712a1f179c9e32bd86e5588bbf2b707"
+      },
+      {
+        "path": "tests/simulation-speed.test.mjs",
+        "sha256": "52771b28308cceda2d48538207e6448377288e3264223aced575869bdbb73702"
+      },
+      {
+        "path": "tests/site-consent.test.mjs",
+        "sha256": "900491dbab9ad7588aa4b29c172201f914a896f09612d97b27dc3697d54c7bbd"
+      },
+      {
+        "path": "tests/site-integration.test.mjs",
+        "sha256": "fa0165be728906ac746e266c4e313701b5fc5fbe457ab4f945e9ad8df8ec569e"
+      },
+      {
+        "path": "tests/spending.test.mjs",
+        "sha256": "fb3cd0ff0135292a92fbb1b6aa8a84100a0faf0cc64809fa8196d7aadf070157"
+      },
+      {
+        "path": "tests/thriving-banner.test.mjs",
+        "sha256": "6bca3db2d668ce139a053f95e9f34247c364f2c6c65a541e7aa8fd73e161dacb"
+      },
+      {
+        "path": "tests/thriving-mission.test.mjs",
+        "sha256": "6cee233543e47a1c1c87b63c1ac17b60ac2b0cfb1ed2861f1fb78e2a88438a21"
+      },
+      {
+        "path": "tests/ticket-admission.test.mjs",
+        "sha256": "44e63085e53f1188847a86bf2245f1ec68c9b599a788c98dded8d2b0c05fb26f"
+      },
+      {
+        "path": "tests/tropical-diorama.test.mjs",
+        "sha256": "6827a0d5a5c7d35a0051962baa4c82a34d8aad15d9df8a82bb0d9f8dbbeb8a60"
+      },
+      {
+        "path": "tests/visitor-arrivals.test.mjs",
+        "sha256": "2d1882edfdf1c122ca52303e3e3db950d15888c9c824f9f76e0fa9eac616a508"
+      },
+      {
+        "path": "tests/visitor-mission.test.mjs",
+        "sha256": "e229fdddf49e12dda4204987575fe6fd47709c78ea0f2247b2b0b6cdd288e068"
+      },
+      {
+        "path": "tests/visitor-navigation.test.mjs",
+        "sha256": "b052f03c44c4a4a59f4caa7e594048e952d176d5d59216d17f4135c1e032d2c0"
+      },
+      {
+        "path": "tests/visitor-satisfaction.test.mjs",
+        "sha256": "b5821bafa56a38274526318d8167658105b81e22b06ae19966cddea113098ec9"
+      },
+      {
+        "path": "tests/visual-settings.test.mjs",
+        "sha256": "442b0322303cd66d376a6e329b948437e8bdae58e33b36938174748692d8ced1"
+      },
+      {
+        "path": "tests/watering.test.mjs",
+        "sha256": "17d5c2f6b0a0659ae12cea883ffe1e11ef522cf259a7e8505da764a2cf476662"
+      },
+      {
+        "path": "tests/welfare.test.mjs",
+        "sha256": "75ecd8c6e033cc9deb7ff4660373953106a11ed507d3a1b53e870a974a8952f7"
+      },
+      {
+        "path": "tests/world-editing.test.mjs",
+        "sha256": "a538b8fe9c1db168da3ca9453e8a1cafe93f36b83e5fe7e974b02638e8ca77b4"
+      },
+      {
+        "path": "tsconfig.json",
+        "sha256": "bc3f06710bcc184e95b3dd0fdc023c0ef769f03d038362aefba7ea12034ced81"
+      }
+    ]
+  },
+  "build": {
+    "id": "88f42de737a376903efce8006ab01b3cd0ebf953516c7fd9cefcdfbb6d8aef78",
+    "entries": [
+      {
+        "path": "dist/_astro/BaseLayout.DzYf29kc.css",
+        "sha256": "9535b3cf894c198266311a82dfda9a86dd1fc41c4e445ee89dba465e9cf9256b"
+      },
+      {
+        "path": "dist/_astro/BaseLayout.astro_astro_type_script_index_0_lang.7WEx15V2.js",
+        "sha256": "a5ecd16b0a7c2024a93daabc322b2be1c7460b0565328f2f41a0ad007f0170a0"
+      },
+      {
+        "path": "dist/_astro/PlayEntry.astro_astro_type_script_index_0_lang.mAoGXajc.js",
+        "sha256": "9f73cd301ae8a480ac4f03064136b63bbf6b9e621866312d81807978e7850644"
+      },
+      {
+        "path": "dist/_astro/dialog-focus.CS_awhan.js",
+        "sha256": "1c49e5f75581f00265e803464e1caea211865f20cc06223682b8336e763d2d64"
+      },
+      {
+        "path": "dist/_astro/foundation-scene.ByjE0L6a.js",
+        "sha256": "a33ba2790398891c4467c4c1191bb7d600d4c59fcf05a98ac6ac8e2a1bd34bb5"
+      },
+      {
+        "path": "dist/_astro/play.B1Z1YVPk.css",
+        "sha256": "392b655fad30c252ce7e3e844a03e91f79ac23f794d12d1ef613ba3f3cff46b6"
+      },
+      {
+        "path": "dist/about/index.html",
+        "sha256": "8b306c25b65d244e458f58b283353185ad209a8625f769ac28074d199336f9ca"
+      },
+      {
+        "path": "dist/adventures/index.html",
+        "sha256": "aae3bc96c549d3012616c3fa2d510cfd4464bf7dcb4d8880c5a3767b59ea178b"
+      },
+      {
+        "path": "dist/animals/index.html",
+        "sha256": "1a00b3450fc27957b0c49b8746afd22c3e50b82f9ada6c814b9f111683cf389e"
+      },
+      {
+        "path": "dist/favicon.svg",
+        "sha256": "78c28be8daea587e629661600e55c3250d521adcfa32cf88b3113d33267db702"
+      },
+      {
+        "path": "dist/gear/index.html",
+        "sha256": "13400384269bdfd84c7127a5461f398839580df873dfcc4915d596cf835836f3"
+      },
+      {
+        "path": "dist/images/myzootwin-beranda.png",
+        "sha256": "194a2cb5178f255ebf0289aabac75135fc65a8f716f26c01dcfeaebe00960169"
+      },
+      {
+        "path": "dist/images/tropical-creek-game.jpg",
+        "sha256": "6edf52437618a80b94911b846cb2722257739be87c4f96c793f1e808d848e880"
+      },
+      {
+        "path": "dist/images/tropical-creek-journal.svg",
+        "sha256": "cf2f03404f8d72367c385fbbdfaabb0bd21ae0a262804525c20e027a34ea94cc"
+      },
+      {
+        "path": "dist/index.html",
+        "sha256": "882202c42aa080b3113528f62c849f8b8d29563f2b03cc857eee92a7afaddf06"
+      },
+      {
+        "path": "dist/learn/index.html",
+        "sha256": "143411728f8671d74e60bf6ad0276d5b92d9c2129593ef7343977df51d83ddf9"
+      },
+      {
+        "path": "dist/licenses/third-party-notices.txt",
+        "sha256": "a5eff5cf91485bdf2f7ada50d30832c648db248314b3897e3c80e9da66efa29b"
+      },
+      {
+        "path": "dist/licenses/three-MIT.txt",
+        "sha256": "5d5dad8147523d59bc15cca838ae0bdaae7075230ec49132c551a1d18e7b3412"
+      },
+      {
+        "path": "dist/pets/index.html",
+        "sha256": "639f50fced9aeeb778fe0491f15bdfa4d100ac3bb71863e0a9ced8d2797c6036"
+      },
+      {
+        "path": "dist/play/index.html",
+        "sha256": "9f0ac558e6e4694c960152fa42c9fb795e27f853b5c54523bdd67cb97fb49d8f"
+      },
+      {
+        "path": "dist/robots.txt",
+        "sha256": "ec272ee8fdedb49773eebe94cf6eade96bc05d3e47a0695d450d894d154b2011"
+      },
+      {
+        "path": "dist/sitemap-0.xml",
+        "sha256": "8b1b9a6746e7c7b26fc340892677f92f706153ef1c66a9d8f3049255b8621db4"
+      },
+      {
+        "path": "dist/sitemap-index.xml",
+        "sha256": "f956f18339cf090382bb71b5dadff01ca95c9bd0958046cef03c002851a7b550"
+      },
+      {
+        "path": "dist/wildlife/index.html",
+        "sha256": "b8bbaf6eaeb7b7cb27b9b579357257109624aac38a15d4ffc61f16c325162c01"
+      }
+    ]
+  },
+  "entryScript": "/_astro/PlayEntry.astro_astro_type_script_index_0_lang.mAoGXajc.js",
+  "finishedAt": "2026-11-07T00:13:43.841Z"
+}

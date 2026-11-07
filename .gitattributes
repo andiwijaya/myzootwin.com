@@ -67,3 +67,8 @@ docs/qa/giraffe-v4/*.txt -whitespace
 docs/qa/giraffe-soak/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
 docs/qa/giraffe-soak/*.log -whitespace
 docs/qa/giraffe-soak/*.txt -whitespace
+
+# Final native evidence preserves exact JPEG/capture and projected-state bytes.
+docs/qa/giraffe-native-final/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/qa/giraffe-native-final/*.log -whitespace
+docs/qa/giraffe-native-final/*.diff -whitespace

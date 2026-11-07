@@ -1,5 +1,9 @@
 # Giraffe native acceptance: verified function and remaining visual gates
 
+## Final continuation superseding the historical blocker
+
+The internal browser recovered. Final source `dfeef18` now passes821/821, Astro412clean, build9/HTTP9 and six native browser receipt cases. Actual full-world ID/EN3sizes, rendered actions/cold comparisons, green/red paid placement,27injected camera cases, low-tier settings/context retry/cleanup have source-bound evidence. Route-fixed native1x soak passed943.9active seconds with invalid0/coldexact; the earlier failed900.3attempt remains a failure. Actual presented FPS is unmeasured (callback cadence~11Hz is separate), so GH6-04 remains partial. Checklist39/42; private binding/publication held. All owned tabs/servers closed; no takeover/push/deploy. See [final verification](GIRAFFE_FINAL_NATIVE_QA.md) and [manifest](qa/giraffe-native-final/manifest.json). Sections below preserve earlier source-bound history, including resolved browser failures.
+
 ## Current continuation superseding earlier soak limits
 
 Native sourcee8b103e reached900.3active seconds at1x, but the attempt **FAILED** because a Lion route became invalid and autosave refused that candidate. The last valid tick21245 checkpoint remained intact. Actual native CPU/RAF/GPU measurements are preserved as measurements from a failed run, not acceptance. Forward fix76e715e passes820/820, every-tick exact-supply replay through22757 and new10x10000tickstress/coldexact. The post-fix native rerun is blocked by internal webview attachment failures, even for a blank tab; supported screenshots also fail independently of the app. See [GIRAFFE_SOAK_ROUTE_FIX.md](GIRAFFE_SOAK_ROUTE_FIX.md) and [current result](qa/giraffe-soak/result.json).

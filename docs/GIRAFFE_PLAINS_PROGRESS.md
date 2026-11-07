@@ -1,16 +1,18 @@
 # MyZooTwin — Giraffe Plains Living Checklist
 
-**Created:** 7 November 2026 | **Status:** 25/42 (59.52%). Verified gates only; publication held.
+**Created:** 7 November 2026 | **Status:** 39/42 (92.86%). Verified gates only; publication held.
 **Authority:** `MYZOOTWIN_GIRAFFE_PLAINS_MASTER_PRD_V1.md`
 **Record:** after each micro-feature add verified commit SHA, exact tests, source-bound evidence, actual browser proof where relevant, issues and next. `[x]` means fully end-to-end **verified**, not planned/code-written only. Dot owns maintenance and concise updates autonomously.
 
 Progress formula: `verified / 42 * 100`. Final release GH6-06 remains `[ ]` pending explicit production authorization/live smoke even if 41 engineering items pass.
 
-## Current continuation - forward route fix, 7 November 2026 UTC
+## Current final local verification - 7 November 2026 UTC
 
-Tested source `76e715e8b1b73814de69df57301b0dacece7bd3f`: **820/820**, Astro411files0errors/warnings/hints, build9/HTTP9 PASS. Exact current receipts: `qa/giraffe-hygiene/route-fix-*`. Node10xstress10000ticks/72paidservices/all4destinations/coldexact PASS, max105968chars. Every-tick replay of the native supply ledger now passes through tick22757. No new gate is closed: **25/42 (59.52%),17open**.
+Final product source `dfeef18ba6eb7d4d9095245738e209add7fc976b`: **821/821**, Astro412files0errors/warnings/hints, build9/HTTP9 and all six native browser receipt cases **PASS**. Run `20261107T022626Z-aa7c1312`; exact `qa/giraffe-hygiene/final-dfe-*`. Browser recovered; actual screenshots, ID/EN three sizes, care/action/cold comparisons, 27 injected camera cases, actual context retry/cleanup and paid green/red/cancel/confirm placement now have source-bound evidence. See [final native verification](GIRAFFE_FINAL_NATIVE_QA.md) and [manifest](qa/giraffe-native-final/manifest.json).
 
-The native1xattempt actually reached900.3active seconds, but **FAILED** after an invalid Lion route caused autosave refusal; valid stored tick21245 was preserved. Reproduced tick21253, fixed future ramp/prop movement and committed-step route safety without tightening historical save acceptance. Old FSMs fail both regressions; current FSMs pass. Post-fix native retest is BLOCKED because the internal browser cannot attach fresh webviews, including a blank tab. Supported screenshots separately fail on visible blank pages. Exact failed captures and native keyboard/contrast/Lila-picking evidence: `GIRAFFE_SOAK_ROUTE_FIX.md`, `qa/giraffe-soak/`. EN44px fix still awaits native retest. Global browser remainsUNRUN; no desktop takeover, owner-save action, push or deployment. Owned tabs/server closed. Earlier entries below are historical source-bound checkpoints; the current handoff supersedes their outstanding-time description.
+A new route-fixed native1x soak **passed943.9active/1040.1421wall seconds**, invalid0/coldexact/oneRAF. The earlier failed900.3-second attempt is preserved. Final-source delta after that soak is only UI wrapping/static canopy elevation, with exact source bridge and fresh rendered QA. **GH6-04 remains partial: presented FPS is unmeasured** (native callback cadence about11Hz is explicitly a separate measure). Physical touch/phone coverage is not claimed. No new production audit, push or deployment occurred. All owned tabs/servers are closed and viewport reset.
+
+Verified **39/42 (92.86%),3open**: GH0-01 private administrative binding; GH6-04 actual presented FPS coverage; GH6-06 separately authorized release/live smoke. The previous25/42 checkpoints below are historical, not the current state.
 
 ## GH0 — Audit, baseline & design
 
@@ -31,10 +33,10 @@ The native1xattempt actually reached900.3active seconds, but **FAILED** after an
   - Evidence: `GIRAFFE_FOUNDATION.md`, `qa/giraffe-baseline/expansion-tests.txt` 7/7 including32adversarial grids | Commit: `e9bad1ce04ea4a21358ea1b11a4089d661677e48` | Browser: pure dormant transform; visual gate GH1-03 remains open
 - [x] **GH1-03** — Hold legacy scene origin (6,5) and all old object transforms; expand terrain/selection/renderer/camera bounds; test 4-angle picking, portrait and landscape.
   - Evidence: `GIRAFFE_FOUNDATION.md`; scene15/15, TypeScript exit0 | Commits: `6bff153`, corrected native probe `36a0675c4b08597000d7496fdec22c785a58ebda` | Browser: real original renderer modules,48projected raycast checks, native selection,3viewports,0GPU resources after close; static probe, not full V4 gameplay
-- [ ] **GH1-04** — Build a real legal east-west visitor connection; choose safe land corridor or a bridge where needed, with correct paid transaction, topology, visuals and no teleport.
-  - Evidence: Implemented/tested: twelve actual15ZC purchases connect a legal land route around the creek; nativeGQ viewers reached it. Static48raycasts and topology tests pass. Rendered route/visual signoff remains blocked by screenshot failure.
-- [ ] **GH1-05** — Introduce actual 7×7 giraffe plot/ghost in lateral east wing, macaw-aligned z and a clear outside path; forbid overlap, keep unused parcels empty/buildable.
-  - Evidence: Implemented/tested: recommended7x7 home at actual saved-Macaw anchor; all3anchor variants and empty southern reserve are covered. Native paid49cells at13,2 verified. Ghost/plot rendered visual review remains open.
+- [x] **GH1-04** — Build a real legal east-west visitor connection; choose safe land corridor or a bridge where needed, with correct paid transaction, topology, visuals and no teleport.
+  - Evidence: Final native four-habitat overview shows the continuous paid land route around the creek; actual GQ viewers and strict topology/ticket tests prove real travel/no teleport. Twelve15ZC path purchases retained. GIRAFFE_FINAL_NATIVE_QA.md; desktop-en-all-habitats.jpg.
+- [x] **GH1-05** — Introduce actual 7×7 giraffe plot/ghost in lateral east wing, macaw-aligned z and a clear outside path; forbid overlap, keep unused parcels empty/buildable.
+  - Evidence: Final source dfeef18 actual green49cell preview, red one-tile-west refusal/reason/disabled confirm, cancel unchanged habitat/grant, actual700ZC confirm. Saved cells x13..19/z2..8, old habitats unchanged, southern east reserve empty. plot-assertions.json and exact native JPEGs; all3anchor variants covered by tests.
 - [x] **GH1-06** — Implement strict, lossless V3→V4 plus validated V1/V2 paths; preserve historical data and enforce future-content/unknown-format guards.
   - Evidence: `GIRAFFE_V4_PERSISTENCE.md`, codec22/22; full790/790; check377clean/build9pass | Commit: `32e7dc9` | Browser: pure opt-in codec; native storage/full V4 Continue in GH1-07. Global HTTP preview failed due sandbox readiness and is not claimed passed.
 - [x] **GH1-07** — Use one IndexedDB store version 4 with CAS, atomic V3 backup, old-binary barrier, full V4 Continue, corruption/quota/blocked-upgrade tests.
@@ -44,8 +46,8 @@ The native1xattempt actually reached900.3active seconds, but **FAILED** after an
 
 - [x] **GH2-01** — Expose ID/EN Giraffe Plains unlock after proven LQ04 claim, plus explicit exactly-once conservation grant committed before celebratory UI.
   - Evidence: Native full journey507eff5 + final e1b6374 cold equality; explicit1850grant durably saved once after LQ04claim, ID/ENcontrols; two-tab loser receives no optimistic credit. Strict locked/ready-not-claimed tests pass.
-- [ ] **GH2-02** — Implement real paid 7×7 fence/habitat construction, occupancy and save/selection with actual internal giraffe locomotion clearance.
-  - Evidence: Implemented/tested: real700ZC/49cell occupancy, actual home/three rigs and strict save proved through controls and tests. Paid-home rendered selection/art review remains open with screenshot capture unavailable.
+- [x] **GH2-02** — Implement real paid 7×7 fence/habitat construction, occupancy and save/selection with actual internal giraffe locomotion clearance.
+  - Evidence: Final dfeef18 actual paid49cell fenced home has one -700 receipt and unchanged old habitats; native visible three adult rigs, actual selection/cold persistence and ground-clearance/strict occupancy tests pass. Final native manifest and plot-assertions.json.
 - [x] **GH2-03** — Welcome first giraffe as a real persisted actor with autonomous safe ground movement, correct enclosure and no passive reward.
   - Evidence: Actual UI firstDira at507eff5, real autonomous meals/drinks/ground movement and exact cold6935save; final strictV4 has10actors. No migration/resident welcome cash. Giraffe ground/separation invariants checked over10000stress ticks.
 - [x] **GH2-04** — Add high browse food station with real stock, refill and actor consumption; complete first build→feed→needs-change→save loop.
@@ -59,22 +61,22 @@ The native1xattempt actually reached900.3active seconds, but **FAILED** after an
 
 ## GH3 — Procedural art and authoritative behavior
 
-- [ ] **GH3-01** — Create original low-poly adult giraffe rig with recognisable legs, neck, ossicones, ears, tail and pattern; camera/selection/LOD verified.
-  - Evidence: Implemented: original adult-female rig/coat/ears/pairedossicones/tail, shared bounded LOD assets and selection catalog. Native3models/11220to10140triangles verified. Rendered recognizability/picking/art review BLOCKED by screenshot capture.
-- [ ] **GH3-02** — Implement deterministic long-neck browsing and head/neck reach toward actual high browse port; no leaves consumed from cosmetic motion.
-  - Evidence: Implemented/tested: two-link neck IK reaches actual high browse ports; measured stock only at confirmed actor contact. Native meal progression verified. Rendered browse reach/clipping review remains open.
-- [ ] **GH3-03** — Implement four-beat ground walk, turns, body separation and smooth hoof contact, with deterministic collision/fence and no clipping.
-  - Evidence: Implemented/tested: four independent hoof phases, authoritative ground BFS/turn/separation,10000tick movement invariants. Native actors move. Rendered walk/hoof/fence clipping review remains open.
-- [ ] **GH3-04** — Synchronize mouth/tongue/browse animation with confirmed actor feeding, real stock decrement and interruption/Continue semantics.
-  - Evidence: Implemented/tested: jaw/tongue driven by saved browse/enrich phase, actual stock counters and cold interruption semantics. Native real meals persisted. Rendered tongue/leaf synchrony review remains open.
-- [ ] **GH3-05** — Animate safe foreleg stance/head lowering for drinking only at real reached water; support cold-load and pause mid-action.
-  - Evidence: Implemented/tested: actual water contact, neck IK and planted-hoof lower-body stance; native drinks/cold state equality. Rendered stance/pause-mid-drink review remains open.
-- [ ] **GH3-06** — Implement visible shade-seeking, rest/rumination and recovery with actual shelter/energy changes, cooldowns and fair access.
-  - Evidence: Implemented/tested: real shade routes, rest/rumination energy recovery, bounded cooldown/fair access. Native rested counters and visible localized ruminate state observed. Rendered recovery animation review remains open.
-- [ ] **GH3-07** — Implement loose non-teleporting herd proximity/social visits and separation behavior, respecting independent needs and path clearance.
-  - Evidence: Implemented/tested: reciprocal saved partner IDs, ground approach, face-to-face turns,30tick contact and independence; native social proofs/GQ03 earned. Rendered social spacing review remains open.
-- [ ] **GH3-08** — Add variation in elevated browsing/enrichment and repeated returnable causal activities, preserving food as essential care rather than optional puzzle.
-  - Evidence: Implemented/tested: two essential browse stations plus optional65enrichment only afterGQ03, real4service/stock/cooldown. Native busy-cell rejection, moved placement and allthree enriched30ticks. Rendered variation review remains open.
+- [x] **GH3-01** — Create original low-poly adult giraffe rig with recognisable legs, neck, ossicones, ears, tail and pattern; camera/selection/LOD verified.
+  - Evidence: Original recognizable adult female low-poly rigs reviewed natively from four angles; coats/ears/ossicones/legs/tails, actual Dira/Lila picking, three models and bounded two-LOD cache. 11220→10140triangles; no external art redistribution. Final native manifest.
+- [x] **GH3-02** — Implement deterministic long-neck browsing and head/neck reach toward actual high browse port; no leaves consumed from cosmetic motion.
+  - Evidence: Native Lila essential browse at upper leaves, remaining23, exact cold state and meal11→12/stock5→4/hunger improvement. Actual two-link IK/port tests and clear upper-browse JPEG; no cosmetic-only consumption. Final native QA.
+- [x] **GH3-03** — Implement four-beat ground walk, turns, body separation and smooth hoof contact, with deterministic collision/fence and no clipping.
+  - Evidence: Actual native walk sequence and four camera orientations reviewed; grounded four-beat limbs/turns and separate actors within fence. Deterministic separation/clearance and10000tick invariants pass; route repair regression validates each committed step. Final native walk-series captures.
+- [x] **GH3-04** — Synchronize mouth/tongue/browse animation with confirmed actor feeding, real stock decrement and interruption/Continue semantics.
+  - Evidence: Native mouth/tongue at real essential browse phase23, exact cold interruption and subsequent actual stock5→4/meal11→12. Optional Lila enrichment separately captured420→450ticks/stock6→5. Final native QA and source-bound captures.
+- [x] **GH3-05** — Animate safe foreleg stance/head lowering for drinking only at real reached water; support cold-load and pause mid-action.
+  - Evidence: Native Sora drink21, visibly lowered head/foreleg stance at blue port; exact cold Continue and completed drink14→15/stock3→2/thirst improvement. Paused time unchanged and actual contact tests pass. drinking-native.jpg plus before/cold/completed states.
+- [x] **GH3-06** — Implement visible shade-seeking, rest/rumination and recovery with actual shelter/energy changes, cooldowns and fair access.
+  - Evidence: Real Lila shade/rest/rumination and energy recovery captured. Visual QA found canopy clipping; dfeef18 raises only shade mesh. New actual-vertex test red-old/green-new in both LODs; min3.537 clears adultmax3.229. Exact old save retained; rested1260→1330/energy→99.8. Final native QA.
+- [x] **GH3-07** — Implement loose non-teleporting herd proximity/social visits and separation behavior, respecting independent needs and path clearance.
+  - Evidence: Native reciprocal Dira/Sora social17 at distinct positions visibly face each other; entire state exact across cold Continue. Loose-herd scheduling/partner/cooldown/separation and deterministic tests pass; independent Lila retains actual care progression. Final social JPEG/states.
+- [x] **GH3-08** — Add variation in elevated browsing/enrichment and repeated returnable causal activities, preserving food as essential care rather than optional puzzle.
+  - Evidence: Final dfeef18 actual optional upper-leaf browse, planted water stance, tall shade, fence and signs reviewed with original rigs, 3sizes/IDEN. Low/reduced/mute retains3actors/10140triangles/no sun shadows. Exact native context retry/zero-resource disposal pass. Final native manifest.
 
 ## GH4 — Consequences, economy, guests and missions
 
@@ -95,25 +97,25 @@ The native1xattempt actually reached900.3active seconds, but **FAILED** after an
 
 - [x] **GH5-01** — Ship ID-default/EN complete content, compact guide/Quick Start, species-specific needs, land/fence/building explanation and reward feedback.
   - Evidence: ID-default/EN Giraffe build/care/missions/guide/rewards/formula text implemented and observed; localization key/placeholder parity passes. New ID/EN empty-land vs700ZC fence/home/separate-care explanation observed natively atc99526a;3stepQuickStart present. Visual readability remainsGH5-02/GH5-04.
-- [ ] **GH5-02** — Add one-tap focus buttons Macaw/Giraffe/Elephant/Lion/All, robust 4-angle camera/tap-pinch-drag, readable portrait/landscape builder.
-  - Evidence: Actual5focus/4cameraangles/3activeviewports and44px controls verified in native-final.json; no document overflow. Native single-actor Lila picking and camera drag now exercised at e8b103e; four-angle rendered identity/pinch/mobile gesture review remains open; screenshots blocked.
+- [x] **GH5-02** — Add one-tap focus buttons Macaw/Giraffe/Elephant/Lion/All, robust 4-angle camera/tap-pinch-drag, readable portrait/landscape builder.
+  - Evidence: Actual5focus,4angles,picking/drag and unclipped IDEN portrait/landscape builder;44px controls/no overflow. Shared native controller27/27 injected tap/drag/pinch/cancel/wheel/UI/keyboard cases across3sizes; orientation releases held pointer. physicalTouch:false; no OS/finger pinch claim. Final native QA.
 - [x] **GH5-03** — Respect graphics tier, reduced motion, mute, loading and WebGL/context-loss recovery with one RAF and owned GPU/audio cleanup.
   - Evidence: Native low/reduced/mute preferences, real WebGL loss/error/retry with exact saved state,3giraffes/oneowner, zero owned GPU/frame/subscriber cleanup, no captured warn/errors. Full world still uses one shared engine/RAF; physicalGPU performance is not claimed.
-- [ ] **GH5-04** — Stabilize native selects and care panels during ticks (avoid Pride Care-style option churn), keyboard/ARIA/contrast/touch targets and old journal routes.
-  - Evidence: Stable native options500updates, focused key/placeholder tests and actual shared ARIA correction/Dira cause details pass. Active focus controls44px;9public routes/meta unchanged. Native End/Home/Tab, stable selection/focus and ID/EN computed text contrast now pass (eligible minimum11.67); EN All42.82px finding fixed with44px minimum at4bca8b0, native retest pending. Rendered/full gesture audit remains open.
+- [x] **GH5-04** — Stabilize native selects and care panels during ticks (avoid Pride Care-style option churn), keyboard/ARIA/contrast/touch targets and old journal routes.
+  - Evidence: Native End/Home/Tab/stable selects and500update option tests pass. Computed IDEN eligible contrast minimum11.67.44px minimum plus098bfca wrap fix now natively verified: all5labels unclipped, no overflow at3sizes.9oldpublic routes/meta/navigation/reload pass. Final native QA.
 
 ## GH6 — Proof, hardening & controlled release
 
 - [x] **GH6-01** — Run full white-box deterministic/invariant/property regression for all species, tile reindex, migration, money, guests and rewards.
-  - Evidence: Final sourceb656a57:817/817unit,0fail/skip/cancel/todo; Astro407files0errors/warnings/hints;9pagebuild and9HTTProute/meta/sitemap checks pass. Run20261107T001023Z-db9bd697; global browser stage remainsUNRUN honestly.
-- [ ] **GH6-02** — Use the internal browser to prove actual 3D E2E, real source build, ID/EN, desktop 1366×768, mobile 360×780 and 780×360; no computer takeover.
-  - Evidence: Actual compiled native UI journey + current sourcee1b6374,ID/EN/1366x768/360x780/780x360, realWebGL and fullstate proofs recorded. Required rendered screenshots/art inspection BLOCKED by all supported capture APIs. No takeover or alternate browser.
+  - Evidence: Final source dfeef18:821/821,0fail/skip/cancel/todo; Astro412files0errors/warnings/hints;9pagebuild/9HTTPchecks/all6supportedbrowsercases PASS. Run20261107T022626Z-aa7c1312; exact final-dfe-report/logs/receipt.
+- [x] **GH6-02** — Use the internal browser to prove actual 3D E2E, real source build, ID/EN, desktop 1366×768, mobile 360×780 and 780×360; no computer takeover.
+  - Evidence: Final dfeef18 actual full V4 world/IDEN/native JPEGs at1366x768,360x780,780x360, causal care/cold behavior proof and real context retry. Global final build six-case receipt PASS. Internal browser only; no desktop takeover or physical-phone claim. GIRAFFE_FINAL_NATIVE_QA.md.
 - [x] **GH6-03** — Run IndexedDB V4 failure injection: blocked upgrade, two-tab CAS, quota/abort, corrupt/future saves, missing V3 backup, cold return and writer race.
   - Evidence: Native IndexedDB10/10 plus actual2tabCAS:2163to4013onegrant; loser2163/null/conflict; cleanupownedDB. Strict fault cases/oldbinarybarrier/quota/abort/future/corrupt/missingbackup and current full-game cold equality pass.
 - [ ] **GH6-04** — Perform ≥15 active minutes 1× native internal-browser soak plus 10× simulation stress; record CPU/memory/GPU-when-available, FPS and payload deltas.
-  - Evidence: PARTIAL: actual-model10x10000ticksPASS, max105673chars, CPU/GC/heap/RSS captured. Native sourcee8b103e reached900.3active/1213.7855wallsec with real RAF/CPU/GPU samples, but FAILED on Lion route/autosave refusal. Forward fix76e715e passes exact every-tick replay; clean native rerun is BLOCKED by internal webview attachment. Physical-phone/visual coverage unavailable. No soak pass claimed; see GIRAFFE_SOAK_ROUTE_FIX.md.
+  - Evidence: PARTIAL: route-fixed76e715e native1x943.9active/1040.1421wallseconds PASS, invalid0/coldexact/oneRAF. CPU/heap/GPU174valid and payload deltas captured;10x10000ticks/72services/all4destinations PASS. Native RAF cadence~11Hz is NOT actual presented FPS; FPS remains UNMEASURED, so this gate stays open. Earlier failed900.3attempt preserved. Final native QA/soak-summary.json.
 - [x] **GH6-05** — Audit dead code/import graph, dependency/security/privacy, original art/rights, distribution files, repo/QA size and unchanged original website routes.
-  - Evidence: GIRAFFE_HYGIENE.md;186reachable/0unresolved imports,399files0unused/otherdiagnostics;4deliberate compatibility/maintenance candidates retained.0npmprodknown advisories;24distributionfiles/9pages/noQAassets; originalart/unchangeddeps/publicsite;952MBmeasured checkout.
+  - Evidence: Final hygiene refresh:186reachable/0unresolved;404compilerfiles0unused/otherdiagnostics;4intentional compatibility/maintenance modules retained.24distributedfiles/1717034bytes/9pages, no QA markers, originalart/unchanged dependencies/public site. Previous npm advisory check retained without claiming a new registry query. Final-dfe audit/distribution.
 - [ ] **GH6-06** — Prepare V4-aware fix-forward/maintenance recovery and controlled production release; publish ONLY when separately authorized and verify live asset/source/save-safe smoke.
   - Evidence: HELD: V4 readonly maintenance prepared and native-testedID/EN with exact post-maintenance save; fix-forward plan inGIRAFFE_V4_RELEASE_READINESS.md. No push/deploy authorized. PrivateCloudflarebinding denied/pendingapproval; no live smoke/release claimed.
 
@@ -170,3 +172,13 @@ Additional functional closure: real full-product reset from the10resident world 
 Frozen engineering/QA source `b656a57f1cc1d25fd87aaae2455acc28acde6ec5`; product changes end at `7945a62` (the last two commits only improve isolated QA). Run `20261107T001023Z-db9bd697`:817/817, no skipped/cancelled/todo; Astro407files0errors/warnings/hints; build9pages; HTTP9metadata/sitemap PASS; owned preview cleanupPASS. Current source/build fingerprints and exact logs/report are in `qa/giraffe-hygiene/final-*` and `distribution.json`. Global browser remainsUNRUN. Read-only public remote main refreshed and still325223403a2dec1b805f05d9fb8d795d09568585; private binding is independentlyblocked.
 
 **Verified25/42 (59.52%);17open gates**. Every open gate names visual/performance/approval coverage, not a promise that all code is visually accepted. Native original full-world proof, current reset/refusal/recovery, strict schemas/atomic backups/CAS, four-destination shared economy, allGQclaims and repository audit are preserved. No deploy/push/owner-save action occurred. Own tabs/server are closed. See `GIRAFFE_LOCAL_HANDOFF.md` for the concrete remaining work.
+
+## Final rendered continuation - 7 November 2026 UTC
+
+The internal browser recovered without owner action or computer takeover. Actual native screenshots and full V4 controls closed fourteen former visual gates. A clean route-fixed1x run passed943.9active seconds and exact cold Continue. The original failed route soak and screenshot/attach failures remain in history; they are not erased. Visual QA additionally found/fixed portrait focus clipping (`098bfca`) and canopy/head intersection (`dfeef18`), with actual native retests and a red/green emitted-vertex regression.
+
+| UTC | Source | Verified evidence | Result | Total |
+|---|---|---|---|---|
+| 2026-11-07 | 76e715e route-fixed soak;098bfca UI wrap;dfeef18 final art/source | 821/821;412clean;build9;HTTP9;six native browser cases PASS;27injected camera cases;actual IDEN3sizes/paid plot/care/cold/context/cleanup | Fourteen visual gates close; presented FPS/private binding/release remain open | 39/42 |
+
+All owned QA tabs and servers are closed; viewport/visibility reset. Repository original work/production owner saves remain untouched. No push or deployment. Details and source-bound limitations: GIRAFFE_FINAL_NATIVE_QA.md and GIRAFFE_LOCAL_HANDOFF.md.

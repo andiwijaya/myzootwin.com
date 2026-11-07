@@ -1,0 +1,27 @@
+diff --git a/src/game-entry/giraffe-panel.ts b/src/game-entry/giraffe-panel.ts
+index a3aa248..44d081e 100644
+--- a/src/game-entry/giraffe-panel.ts
++++ b/src/game-entry/giraffe-panel.ts
+@@ -21,6 +21,8 @@ export function mountGiraffePanel(root:HTMLElement,host:HTMLElement,signal:Abort
+  const send=(q:GiraffeCommand)=>{if(view&&!view.busy&&!view.paused)host.dispatchEvent(new CustomEvent('scene-giraffe-command',{detail:{command:view.care.command,...q}}));};
+  const button=(parent:Element,run:()=>void)=>{const b=make('button',parent);b.type='button';b.style.cssText='min-width:44px;min-height:44px;max-width:100%;padding:9px 12px;margin:4px 4px 4px 0;white-space:normal';b.addEventListener('keydown',e=>{if(e.repeat&&(e.key==='Enter'||e.key===' '))e.preventDefault();},{signal});b.addEventListener('click',e=>{if(e.detail<=1)run();},{signal});return b;};
+  const title=make('h3',sections[0]),intro=make('p',sections[0]),status=make('p',sections[0]),grant=button(sections[0],()=>send({action:'grant'})),build=button(sections[0],()=>send({action:'habitat'})),welcome=button(sections[0],()=>send({action:'welcome'})),focus=button(sections[0],()=>send({action:'focus',target:'giraffe'})),path=button(sections[0],()=>send({action:'path'})),route=make('p',sections[0]),guide=make('p',sections[0]),focusRow=make('nav',sections[0]),focusButtons=(['macaw','giraffe','elephant','lion','all'] as const).map(target=>({target,b:button(focusRow,()=>send({action:'focus',target}))}));status.setAttribute('role','status');
++ // Site navigation defaults to one flex row; plot controls must remain readable on narrow screens.
++ focusRow.style.cssText='display:flex;flex-wrap:wrap;align-items:center;gap:4px';for(const {b} of focusButtons)b.style.flex='0 0 auto';
+  const landHint=make('p',sections[0]);
+  const careTitle=make('h3',sections[1]),balance=make('p',sections[1]),note=make('small',sections[1]),select=make('select',sections[1]);select.style.cssText='display:block;min-height:44px;max-width:100%';for(const kind of GIRAFFE_RESOURCE_KINDS){const o=make('option',select);o.value=kind;}
+  const plan=button(sections[1],()=>send({action:'resource-plan',kind:select.value as GiraffeResourceKind})),hint=make('p',sections[1]),preview=make('p',sections[1]),arrows=make('div',sections[1]),arrowButtons=(['left','right','up','down'] as const).map(direction=>({direction,b:button(arrows,()=>send({action:'resource-move',direction}))})),confirm=button(arrows,()=>send({action:'resource-confirm',revision:view?.preview?.revision})),cancel=button(arrows,()=>send({action:'resource-cancel'})),resourceList=make('div',sections[1]),animalList=make('div',sections[1]),failure=make('p',sections[1]);failure.setAttribute('role','status');
+diff --git a/src/game/render3d/giraffe/world-scene.ts b/src/game/render3d/giraffe/world-scene.ts
+index 2273224..e05ea44 100644
+--- a/src/game/render3d/giraffe/world-scene.ts
++++ b/src/game/render3d/giraffe/world-scene.ts
+@@ -18,7 +18,8 @@ export function createGiraffeWorldScene(catalog:SceneCatalog){
+   }
+   for(const [i,r] of resources.entries()){const key=JSON.stringify(r);if(models.get(r.id)?.key===key)continue;const batch=new Batch();batch.owner=r.id;const x=r.cell.x+.5-origin.x,z=r.cell.z+.5-origin.z,box=(color:string,p:number[],size:number[])=>batch.add(new BoxGeometry(1,1,1),color,p,size),leaf=(color:string,p:number[],size:number[])=>batch.add(new IcosahedronGeometry(1,0),color,p,size);
+    if(r.kind==='giraffe-water'){box('#a6a38a',[x,.18,z],[.6,.28,.6]);for(const p of r.approaches){const dx=r.cell.x+.5-p.x,dz=r.cell.z+.5-p.z,d=Math.hypot(dx,dz),px=p.x+dx/d*.8-origin.x,pz=p.z+dz/d*.8-origin.z;box('#b9b49a',[px,.17,pz],[.40,.13,.40]);box(r.stock>0?'#70b9b9':'#8b8771',[px,.24,pz],[.33,.025,.33]);}}
+-   else if(r.kind==='giraffe-shade'){batch.add(new CylinderGeometry(.11,.15,2.6,8),'#94764b',[x,1.36,z]);leaf('#819b5c',[x,2.85,z],[1.65,.25,1.45]);leaf('#91a968',[x+.35,3.06,z-.2],[1.25,.17,1.1]);box('#c0b988',[x,.08,z],[.65,.045,.65]);}
++   // Adult ossicones reach3.23world units; keep the whole crown safely above standing/resting heads.
++   else if(r.kind==='giraffe-shade'){batch.add(new CylinderGeometry(.11,.15,3.5,8),'#94764b',[x,1.81,z]);leaf('#819b5c',[x,3.75,z],[1.65,.25,1.45]);leaf('#91a968',[x+.35,3.96,z-.2],[1.25,.17,1.1]);box('#c0b988',[x,.08,z],[.65,.045,.65]);}
+    else{const enrichment=r.kind==='giraffe-enrichment';batch.add(new CylinderGeometry(.065,.11,2.4,8),'#a48759',[x,1.27,z]);leaf('#9fa873',[x,2.52,z],[.45,.08,.45]);for(const p of r.approaches){const dx=r.cell.x+.5-p.x,dz=r.cell.z+.5-p.z,d=Math.hypot(dx,dz),px=p.x+dx/d*.8-origin.x,pz=p.z+dz/d*.8-origin.z;const from=new Vector3(x,2.40,z),to=new Vector3(px,2.55,pz),v=to.clone().sub(from),branch=new CylinderGeometry(.025,.04,v.length(),6);branch.applyQuaternion(new Quaternion().setFromUnitVectors(new Vector3(0,1,0),v.normalize()));batch.add(branch,'#98794d',from.add(to).multiplyScalar(.5).toArray());}
+     // Each remaining fictional portion has its own original leaf cluster; only the simulation changes stock.
+     for(let n=0;n<r.stock;n++){const p=r.approaches[n%2]!,dx=r.cell.x+.5-p.x,dz=r.cell.z+.5-p.z,d=Math.hypot(dx,dz),px=p.x+dx/d*.8-origin.x,pz=p.z+dz/d*.8-origin.z,angle=n*2.4;leaf(enrichment?'#9ab562':'#6e9550',[px+Math.sin(angle)*.11,2.55+(n%3)*.04,pz+Math.cos(angle)*.11],[.13,.055,.11]);}

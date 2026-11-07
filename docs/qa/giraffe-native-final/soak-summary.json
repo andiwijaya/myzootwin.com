@@ -1,0 +1,816 @@
+{
+  "scope": "Source-bound native 1x whole-world soak. Final-source visual and lifecycle coverage is a separate run, never retroactively relabelled.",
+  "source": "76e715e8b1b73814de69df57301b0dacece7bd3f",
+  "finalVisualSource": "dfeef18ba6eb7d4d9095245738e209add7fc976b",
+  "metrics": {
+    "scope": "Native product RAF delivery/callback/render CPU and optional disjoint-safe GPU samples; no synthetic time, extra RAF chain or physical display FPS claim",
+    "status": "ACTIVE_TARGET_REACHED",
+    "startTick": 21440,
+    "currentTick": 30879,
+    "activeSeconds": 943.9,
+    "requiredActiveSeconds": 900,
+    "wallSeconds": 1040.1421000000014,
+    "speed": 1,
+    "speedViolations": 0,
+    "callbacks": 10366,
+    "pauses": 4,
+    "pending": 0,
+    "maxPending": 1,
+    "rafIntervals": {
+      "count": 10362,
+      "meanMs": 91.14358598726115,
+      "maxMs": 349.8999999999942,
+      "p50LowerBoundMs": 99.9,
+      "p95LowerBoundMs": 133.4,
+      "resolutionMs": 0.1,
+      "cappedBucketAtMs": 2000
+    },
+    "callbackCpu": {
+      "count": 10366,
+      "meanMs": 79.36237700170504,
+      "maxMs": 144.40000000223517,
+      "p50LowerBoundMs": 85.6,
+      "p95LowerBoundMs": 104.2,
+      "resolutionMs": 0.1,
+      "cappedBucketAtMs": 2000
+    },
+    "renderSubmitCpu": {
+      "count": 10478,
+      "meanMs": 1.5762072914738814,
+      "maxMs": 14.199999999254942,
+      "p50LowerBoundMs": 1.5,
+      "p95LowerBoundMs": 2.6,
+      "resolutionMs": 0.1,
+      "cappedBucketAtMs": 2000
+    },
+    "gpu": {
+      "extension": true,
+      "counterBits": 64,
+      "disjoint": 0,
+      "discarded": 0,
+      "pending": 0,
+      "timing": {
+        "count": 174,
+        "meanMs": 5.419843534482758,
+        "maxMs": 7.10828,
+        "p50LowerBoundMs": 5.7,
+        "p95LowerBoundMs": 6.3,
+        "resolutionMs": 0.1,
+        "cappedBucketAtMs": 2000
+      }
+    },
+    "memory": {
+      "usedJSHeapSize": 40866522,
+      "totalJSHeapSize": 124272342,
+      "jsHeapSizeLimit": 4395630592
+    },
+    "visibility": "visible",
+    "samples": [
+      {
+        "at": "2026-11-07T01:24:53.277Z",
+        "tick": 22052,
+        "activeSeconds": 61.2,
+        "cash": 2981,
+        "ledger": 90,
+        "admissions": 29,
+        "herd": [
+          {
+            "id": "giraffe-dira",
+            "name": "Dira",
+            "behavior": "social",
+            "welfare": 84
+          },
+          {
+            "id": "giraffe-sora",
+            "name": "Sora",
+            "behavior": "social",
+            "welfare": 76
+          },
+          {
+            "id": "giraffe-lila",
+            "name": "Lila",
+            "behavior": "seek-shade",
+            "welfare": 83
+          }
+        ],
+        "visibility": "visible",
+        "frame": {
+          "count": 1129,
+          "meanMs": 47.69459698843193,
+          "maxMs": 132.59999999776483,
+          "p50LowerBoundMs": 48,
+          "p95LowerBoundMs": 93.6,
+          "resolutionMs": 0.1,
+          "cappedBucketAtMs": 2000
+        }
+      },
+      {
+        "at": "2026-11-07T01:25:54.346Z",
+        "tick": 22662,
+        "activeSeconds": 122.2,
+        "cash": 2993,
+        "ledger": 93,
+        "admissions": 31,
+        "herd": [
+          {
+            "id": "giraffe-dira",
+            "name": "Dira",
+            "behavior": "seek-water",
+            "welfare": 80
+          },
+          {
+            "id": "giraffe-sora",
+            "name": "Sora",
+            "behavior": "seek-shade",
+            "welfare": 86
+          },
+          {
+            "id": "giraffe-lila",
+            "name": "Lila",
+            "behavior": "seek-water",
+            "welfare": 81
+          }
+        ],
+        "visibility": "visible",
+        "frame": {
+          "count": 1763,
+          "meanMs": 61.427793533706605,
+          "maxMs": 134,
+          "p50LowerBoundMs": 78.1,
+          "p95LowerBoundMs": 100.6,
+          "resolutionMs": 0.1,
+          "cappedBucketAtMs": 2000
+        }
+      },
+      {
+        "at": "2026-11-07T01:26:54.795Z",
+        "tick": 23267,
+        "activeSeconds": 182.7,
+        "cash": 2941,
+        "ledger": 103,
+        "admissions": 32,
+        "herd": [
+          {
+            "id": "giraffe-dira",
+            "name": "Dira",
+            "behavior": "wander",
+            "welfare": 81
+          },
+          {
+            "id": "giraffe-sora",
+            "name": "Sora",
+            "behavior": "wander",
+            "welfare": 88
+          },
+          {
+            "id": "giraffe-lila",
+            "name": "Lila",
+            "behavior": "wander",
+            "welfare": 84
+          }
+        ],
+        "visibility": "visible",
+        "frame": {
+          "count": 2398,
+          "meanMs": 66.45979983316388,
+          "maxMs": 134,
+          "p50LowerBoundMs": 81,
+          "p95LowerBoundMs": 101.5,
+          "resolutionMs": 0.1,
+          "cappedBucketAtMs": 2000
+        }
+      },
+      {
+        "at": "2026-11-07T01:27:56.655Z",
+        "tick": 23884,
+        "activeSeconds": 244.4,
+        "cash": 2927,
+        "ledger": 107,
+        "admissions": 33,
+        "herd": [
+          {
+            "id": "giraffe-dira",
+            "name": "Dira",
+            "behavior": "seek-browse",
+            "welfare": 80
+          },
+          {
+            "id": "giraffe-sora",
+            "name": "Sora",
+            "behavior": "wander",
+            "welfare": 81
+          },
+          {
+            "id": "giraffe-lila",
+            "name": "Lila",
+            "behavior": "wander",
+            "welfare": 77
+          }
+        ],
+        "visibility": "visible",
+        "frame": {
+          "count": 3034,
+          "meanMs": 70.65365853657039,
+          "maxMs": 144.40000000223517,
+          "p50LowerBoundMs": 83.1,
+          "p95LowerBoundMs": 104.5,
+          "resolutionMs": 0.1,
+          "cappedBucketAtMs": 2000
+        }
+      },
+      {
+        "at": "2026-11-07T01:28:56.692Z",
+        "tick": 24484,
+        "activeSeconds": 304.4,
+        "cash": 2907,
+        "ledger": 115,
+        "admissions": 35,
+        "herd": [
+          {
+            "id": "giraffe-dira",
+            "name": "Dira",
+            "behavior": "wander",
+            "welfare": 84
+          },
+          {
+            "id": "giraffe-sora",
+            "name": "Sora",
+            "behavior": "social",
+            "welfare": 82
+          },
+          {
+            "id": "giraffe-lila",
+            "name": "Lila",
+            "behavior": "social",
+            "welfare": 83
+          }
+        ],
+        "visibility": "visible",
+        "frame": {
+          "count": 3705,
+          "meanMs": 71.98504723345663,
+          "maxMs": 144.40000000223517,
+          "p50LowerBoundMs": 83.3,
+          "p95LowerBoundMs": 104.3,
+          "resolutionMs": 0.1,
+          "cappedBucketAtMs": 2000
+        }
+      },
+      {
+        "at": "2026-11-07T01:29:59.188Z",
+        "tick": 25109,
+        "activeSeconds": 366.9,
+        "cash": 2909,
+        "ledger": 117,
+        "admissions": 36,
+        "herd": [
+          {
+            "id": "giraffe-dira",
+            "name": "Dira",
+            "behavior": "seek-shade",
+            "welfare": 85
+          },
+          {
+            "id": "giraffe-sora",
+            "name": "Sora",
+            "behavior": "wander",
+            "welfare": 90
+          },
+          {
+            "id": "giraffe-lila",
+            "name": "Lila",
+            "behavior": "wander",
+            "welfare": 90
+          }
+        ],
+        "visibility": "visible",
+        "frame": {
+          "count": 4373,
+          "meanMs": 73.68854333408963,
+          "maxMs": 144.40000000223517,
+          "p50LowerBoundMs": 83.8,
+          "p95LowerBoundMs": 104.9,
+          "resolutionMs": 0.1,
+          "cappedBucketAtMs": 2000
+        }
+      },
+      {
+        "at": "2026-11-07T01:31:01.468Z",
+        "tick": 25731,
+        "activeSeconds": 429.1,
+        "cash": 2843,
+        "ledger": 0,
+        "admissions": 0,
+        "herd": [
+          {
+            "id": "giraffe-dira",
+            "name": "Dira",
+            "behavior": "enrich",
+            "welfare": 84
+          },
+          {
+            "id": "giraffe-sora",
+            "name": "Sora",
+            "behavior": "wander",
+            "welfare": 85
+          },
+          {
+            "id": "giraffe-lila",
+            "name": "Lila",
+            "behavior": "wander",
+            "welfare": 82
+          }
+        ],
+        "visibility": "visible",
+        "frame": {
+          "count": 4987,
+          "meanMs": 75.16170042108035,
+          "maxMs": 144.40000000223517,
+          "p50LowerBoundMs": 84.4,
+          "p95LowerBoundMs": 104.8,
+          "resolutionMs": 0.1,
+          "cappedBucketAtMs": 2000
+        }
+      },
+      {
+        "at": "2026-11-07T01:32:02.376Z",
+        "tick": 26340,
+        "activeSeconds": 490,
+        "cash": 2845,
+        "ledger": 2,
+        "admissions": 1,
+        "herd": [
+          {
+            "id": "giraffe-dira",
+            "name": "Dira",
+            "behavior": "wander",
+            "welfare": 81
+          },
+          {
+            "id": "giraffe-sora",
+            "name": "Sora",
+            "behavior": "wander",
+            "welfare": 86
+          },
+          {
+            "id": "giraffe-lila",
+            "name": "Lila",
+            "behavior": "idle",
+            "welfare": 75
+          }
+        ],
+        "visibility": "visible",
+        "frame": {
+          "count": 5599,
+          "meanMs": 76.4880514377417,
+          "maxMs": 144.40000000223517,
+          "p50LowerBoundMs": 85,
+          "p95LowerBoundMs": 105.2,
+          "resolutionMs": 0.1,
+          "cappedBucketAtMs": 2000
+        }
+      },
+      {
+        "at": "2026-11-07T01:33:02.485Z",
+        "tick": 26941,
+        "activeSeconds": 550.1,
+        "cash": 2825,
+        "ledger": 10,
+        "admissions": 3,
+        "herd": [
+          {
+            "id": "giraffe-dira",
+            "name": "Dira",
+            "behavior": "approach-companion",
+            "welfare": 91
+          },
+          {
+            "id": "giraffe-sora",
+            "name": "Sora",
+            "behavior": "rest",
+            "welfare": 79
+          },
+          {
+            "id": "giraffe-lila",
+            "name": "Lila",
+            "behavior": "approach-companion",
+            "welfare": 88
+          }
+        ],
+        "visibility": "visible",
+        "frame": {
+          "count": 6241,
+          "meanMs": 77.09226085561612,
+          "maxMs": 144.40000000223517,
+          "p50LowerBoundMs": 85.3,
+          "p95LowerBoundMs": 104.8,
+          "resolutionMs": 0.1,
+          "cappedBucketAtMs": 2000
+        }
+      },
+      {
+        "at": "2026-11-07T01:34:02.484Z",
+        "tick": 27541,
+        "activeSeconds": 610.1,
+        "cash": 2823,
+        "ledger": 13,
+        "admissions": 4,
+        "herd": [
+          {
+            "id": "giraffe-dira",
+            "name": "Dira",
+            "behavior": "wander",
+            "welfare": 89
+          },
+          {
+            "id": "giraffe-sora",
+            "name": "Sora",
+            "behavior": "wander",
+            "welfare": 88
+          },
+          {
+            "id": "giraffe-lila",
+            "name": "Lila",
+            "behavior": "wander",
+            "welfare": 82
+          }
+        ],
+        "visibility": "visible",
+        "frame": {
+          "count": 6927,
+          "meanMs": 77.21407535727526,
+          "maxMs": 144.40000000223517,
+          "p50LowerBoundMs": 85.1,
+          "p95LowerBoundMs": 104.3,
+          "resolutionMs": 0.1,
+          "cappedBucketAtMs": 2000
+        }
+      },
+      {
+        "at": "2026-11-07T01:35:53.451Z",
+        "tick": 28164,
+        "activeSeconds": 672.4,
+        "cash": 2825,
+        "ledger": 15,
+        "admissions": 5,
+        "herd": [
+          {
+            "id": "giraffe-dira",
+            "name": "Dira",
+            "behavior": "wander",
+            "welfare": 85
+          },
+          {
+            "id": "giraffe-sora",
+            "name": "Sora",
+            "behavior": "seek-enrichment",
+            "welfare": 89
+          },
+          {
+            "id": "giraffe-lila",
+            "name": "Lila",
+            "behavior": "wander",
+            "welfare": 81
+          }
+        ],
+        "visibility": "visible",
+        "frame": {
+          "count": 7575,
+          "meanMs": 77.87222442241736,
+          "maxMs": 144.40000000223517,
+          "p50LowerBoundMs": 85.3,
+          "p95LowerBoundMs": 104.7,
+          "resolutionMs": 0.1,
+          "cappedBucketAtMs": 2000
+        }
+      },
+      {
+        "at": "2026-11-07T01:36:54.826Z",
+        "tick": 28777,
+        "activeSeconds": 733.7,
+        "cash": 2821,
+        "ledger": 21,
+        "admissions": 7,
+        "herd": [
+          {
+            "id": "giraffe-dira",
+            "name": "Dira",
+            "behavior": "seek-water",
+            "welfare": 78
+          },
+          {
+            "id": "giraffe-sora",
+            "name": "Sora",
+            "behavior": "wander",
+            "welfare": 85
+          },
+          {
+            "id": "giraffe-lila",
+            "name": "Lila",
+            "behavior": "wander",
+            "welfare": 85
+          }
+        ],
+        "visibility": "visible",
+        "frame": {
+          "count": 8181,
+          "meanMs": 78.56414863706189,
+          "maxMs": 144.40000000223517,
+          "p50LowerBoundMs": 85.6,
+          "p95LowerBoundMs": 104.8,
+          "resolutionMs": 0.1,
+          "cappedBucketAtMs": 2000
+        }
+      },
+      {
+        "at": "2026-11-07T01:38:42.185Z",
+        "tick": 29383,
+        "activeSeconds": 794.3,
+        "cash": 2823,
+        "ledger": 23,
+        "admissions": 8,
+        "herd": [
+          {
+            "id": "giraffe-dira",
+            "name": "Dira",
+            "behavior": "social",
+            "welfare": 89
+          },
+          {
+            "id": "giraffe-sora",
+            "name": "Sora",
+            "behavior": "social",
+            "welfare": 83
+          },
+          {
+            "id": "giraffe-lila",
+            "name": "Lila",
+            "behavior": "wander",
+            "welfare": 87
+          }
+        ],
+        "visibility": "visible",
+        "frame": {
+          "count": 8823,
+          "meanMs": 78.85457327436548,
+          "maxMs": 144.40000000223517,
+          "p50LowerBoundMs": 85.6,
+          "p95LowerBoundMs": 104.7,
+          "resolutionMs": 0.1,
+          "cappedBucketAtMs": 2000
+        }
+      },
+      {
+        "at": "2026-11-07T01:39:42.646Z",
+        "tick": 29987,
+        "activeSeconds": 854.7,
+        "cash": 2791,
+        "ledger": 31,
+        "admissions": 9,
+        "herd": [
+          {
+            "id": "giraffe-dira",
+            "name": "Dira",
+            "behavior": "enrich",
+            "welfare": 88
+          },
+          {
+            "id": "giraffe-sora",
+            "name": "Sora",
+            "behavior": "seek-browse",
+            "welfare": 76
+          },
+          {
+            "id": "giraffe-lila",
+            "name": "Lila",
+            "behavior": "wander",
+            "welfare": 80
+          }
+        ],
+        "visibility": "visible",
+        "frame": {
+          "count": 9413,
+          "meanMs": 79.3729841707918,
+          "maxMs": 144.40000000223517,
+          "p50LowerBoundMs": 85.8,
+          "p95LowerBoundMs": 104.6,
+          "resolutionMs": 0.1,
+          "cappedBucketAtMs": 2000
+        }
+      },
+      {
+        "at": "2026-11-07T01:40:42.722Z",
+        "tick": 30587,
+        "activeSeconds": 914.7,
+        "cash": 2803,
+        "ledger": 34,
+        "admissions": 11,
+        "herd": [
+          {
+            "id": "giraffe-dira",
+            "name": "Dira",
+            "behavior": "wander",
+            "welfare": 83
+          },
+          {
+            "id": "giraffe-sora",
+            "name": "Sora",
+            "behavior": "browse",
+            "welfare": 69
+          },
+          {
+            "id": "giraffe-lila",
+            "name": "Lila",
+            "behavior": "wander",
+            "welfare": 75
+          }
+        ],
+        "visibility": "visible",
+        "frame": {
+          "count": 10086,
+          "meanMs": 79.19181043026116,
+          "maxMs": 144.40000000223517,
+          "p50LowerBoundMs": 85.5,
+          "p95LowerBoundMs": 104.3,
+          "resolutionMs": 0.1,
+          "cappedBucketAtMs": 2000
+        }
+      }
+    ]
+  },
+  "strictValidationOK": true,
+  "invalid": [],
+  "coldEntireStateEqual": true,
+  "endTick": 30879,
+  "residentCount": 10,
+  "payloadSamples": [
+    {
+      "file": "sample-01.json",
+      "originalSha256": "f52e273e2727a0e81781918be6ce82f1966b38739bb4ebffeba8cdd6a1fff66f",
+      "at": "2026-11-07T01:23:52.305Z",
+      "tick": 21429,
+      "compactUTF8StateBytes": 101012,
+      "heap": {
+        "usedJSHeapSize": 66094722,
+        "totalJSHeapSize": 126085522,
+        "jsHeapSizeLimit": 4395630592
+      },
+      "activeSeconds": 0.2
+    },
+    {
+      "file": "sample-02.json",
+      "originalSha256": "f7cf9bddc36fd29b40e181792415232ee373bd29c52ae8424ba371813e2035cf",
+      "at": "2026-11-07T01:24:40.126Z",
+      "tick": 21919,
+      "compactUTF8StateBytes": 101512,
+      "heap": {
+        "usedJSHeapSize": 64391162,
+        "totalJSHeapSize": 126896390,
+        "jsHeapSizeLimit": 4395630592
+      },
+      "activeSeconds": 47.9
+    },
+    {
+      "file": "sample-03.json",
+      "originalSha256": "00a5016fe33b0cfc288bf555b58250b8f97960faaab5054afc89bd9cebb4fdd0",
+      "at": "2026-11-07T01:26:47.198Z",
+      "tick": 23178,
+      "compactUTF8StateBytes": 103716,
+      "heap": {
+        "usedJSHeapSize": 62324974,
+        "totalJSHeapSize": 139667394,
+        "jsHeapSizeLimit": 4395630592
+      },
+      "activeSeconds": 175.1
+    },
+    {
+      "file": "sample-04.json",
+      "originalSha256": "9edc8091d1d916723ac920e562d3d4fb6bbc4726883704e24ee0dee924359f9b",
+      "at": "2026-11-07T01:27:42.602Z",
+      "tick": 23734,
+      "compactUTF8StateBytes": 104210,
+      "heap": {
+        "usedJSHeapSize": 77151148,
+        "totalJSHeapSize": 131309580,
+        "jsHeapSizeLimit": 4395630592
+      },
+      "activeSeconds": 230.3
+    },
+    {
+      "file": "sample-05.json",
+      "originalSha256": "bd7a683c60b313a0ab5db1b6ab5f379f24dd4eb58c25cd0d6b4217a61980c59f",
+      "at": "2026-11-07T01:29:06.240Z",
+      "tick": 24554,
+      "compactUTF8StateBytes": 106143,
+      "heap": {
+        "usedJSHeapSize": 73677008,
+        "totalJSHeapSize": 147832116,
+        "jsHeapSizeLimit": 4395630592
+      },
+      "activeSeconds": 313.9
+    },
+    {
+      "file": "sample-06.json",
+      "originalSha256": "3db0d308a958c344a36656f66bc8e27456fc1c6b2804e414ac6a7d9cf062de34",
+      "at": "2026-11-07T01:31:37.012Z",
+      "tick": 26068,
+      "compactUTF8StateBytes": 85471,
+      "heap": {
+        "usedJSHeapSize": 54779738,
+        "totalJSHeapSize": 141033670,
+        "jsHeapSizeLimit": 4395630592
+      },
+      "activeSeconds": 464.6
+    },
+    {
+      "file": "sample-07.json",
+      "originalSha256": "787a339e2fd8973f7ad04289c906cd1f65c6baf125cf04a154f05500d034458f",
+      "at": "2026-11-07T01:33:09.837Z",
+      "tick": 27001,
+      "compactUTF8StateBytes": 87931,
+      "heap": {
+        "usedJSHeapSize": 73324412,
+        "totalJSHeapSize": 144588120,
+        "jsHeapSizeLimit": 4395630592
+      },
+      "activeSeconds": 557.4
+    },
+    {
+      "file": "sample-08.json",
+      "originalSha256": "8acafc8baec4858bce9ce461574c7c3d2a45530cdb9f19a256a31b73ce395d73",
+      "at": "2026-11-07T01:37:44.216Z",
+      "tick": 28800,
+      "compactUTF8StateBytes": 90207,
+      "heap": {
+        "usedJSHeapSize": 39060152,
+        "totalJSHeapSize": 45835052,
+        "jsHeapSizeLimit": 4395630592
+      },
+      "activeSeconds": 736.3
+    },
+    {
+      "file": "sample-09.json",
+      "originalSha256": "23e4ccb3115dfec031f67f3654670906933ec9e821b6f724b35550c58ae66f0d",
+      "at": "2026-11-07T01:39:10.156Z",
+      "tick": 29645,
+      "compactUTF8StateBytes": 91498,
+      "heap": {
+        "usedJSHeapSize": 71166723,
+        "totalJSHeapSize": 131323363,
+        "jsHeapSizeLimit": 4395630592
+      },
+      "activeSeconds": 822.2
+    },
+    {
+      "file": "start.json",
+      "originalSha256": "f52e273e2727a0e81781918be6ce82f1966b38739bb4ebffeba8cdd6a1fff66f",
+      "at": "2026-11-07T01:23:52.305Z",
+      "tick": 21429,
+      "compactUTF8StateBytes": 101012,
+      "heap": {
+        "usedJSHeapSize": 66094722,
+        "totalJSHeapSize": 126085522,
+        "jsHeapSizeLimit": 4395630592
+      },
+      "activeSeconds": 0.2
+    },
+    {
+      "file": "target-reached.json",
+      "originalSha256": "f4138af4bba015aea6234a0e0253b16505b006c25a6cb6dae9f45b012fd207ba",
+      "at": "2026-11-07T01:40:58.880Z",
+      "tick": 30723,
+      "compactUTF8StateBytes": 93683,
+      "heap": {
+        "usedJSHeapSize": 65442530,
+        "totalJSHeapSize": 138624726,
+        "jsHeapSizeLimit": 4395630592
+      },
+      "activeSeconds": 930.9
+    },
+    {
+      "file": "stopped.json",
+      "originalSha256": "00ae7fab1ec703a43d6adce60bfd789b62eb9a3252338c0da565fe7ceeb9d5fe",
+      "at": "2026-11-07T01:41:12.192Z",
+      "tick": 30879,
+      "compactUTF8StateBytes": 94366,
+      "heap": {
+        "usedJSHeapSize": 40866522,
+        "totalJSHeapSize": 124272342,
+        "jsHeapSizeLimit": 4395630592
+      },
+      "activeSeconds": 943.9
+    }
+  ],
+  "callbackCadenceHz": 10.971699096190562,
+  "actualPresentationFPS": "UNMEASURED",
+  "physicalDevice": false,
+  "notes": [
+    "CPU means elapsed callback/submission time including QA instrumentation; not OS CPU utilization.",
+    "RAF cadence is about 11 Hz, not evidence of 30/60 presented FPS.",
+    "GPU timer queries valid 174/disjoint0; heap estimate is potentially shared/quantized, not GPU memory or leak certification.",
+    "Four pauses excluded from active time. Real paid refills used; no time or needs injection.",
+    "Legacy birds required later refills; no claim all habitats were continuously healthy.",
+    "Natural journal checkpoint/compaction reduced payload without truncating historical totals.",
+    "Final changes after soak are only wrapping navigation controls and shade canopy mesh elevation; the engine, schema, routing and rig/FSM are unchanged."
+  ]
+}

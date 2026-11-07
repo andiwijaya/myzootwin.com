@@ -7,7 +7,7 @@
     "src/pages/play.astro",
     "src/pages/[section].astro"
   ],
-  "files": 408,
+  "files": 409,
   "reachableSourceFiles": [
     "src/components/PlayEntry.astro",
     "src/components/SitePrivacy.astro",
@@ -572,6 +572,11 @@
       },
       {
         "from": "tests/giraffe-scene-anchor.test.mjs",
+        "specifier": "three",
+        "typeOnly": false
+      },
+      {
+        "from": "tests/giraffe-shade-clearance.test.mjs",
         "specifier": "three",
         "typeOnly": false
       },
@@ -1739,6 +1744,11 @@
         "typeOnly": false
       },
       {
+        "from": "tests/giraffe-shade-clearance.test.mjs",
+        "specifier": "node:assert/strict",
+        "typeOnly": false
+      },
+      {
         "from": "tests/giraffe-species.test.mjs",
         "specifier": "node:assert/strict",
         "typeOnly": false
@@ -2336,6 +2346,11 @@
       },
       {
         "from": "tests/giraffe-scene-anchor.test.mjs",
+        "specifier": "node:test",
+        "typeOnly": false
+      },
+      {
+        "from": "tests/giraffe-shade-clearance.test.mjs",
         "specifier": "node:test",
         "typeOnly": false
       },
@@ -14115,6 +14130,39 @@
       "specifier": "../src/game/render3d/scene-picking.ts",
       "typeOnly": false,
       "target": "src/game/render3d/scene-picking.ts"
+    },
+    {
+      "from": "tests/giraffe-shade-clearance.test.mjs",
+      "specifier": "node:test",
+      "typeOnly": false
+    },
+    {
+      "from": "tests/giraffe-shade-clearance.test.mjs",
+      "specifier": "node:assert/strict",
+      "typeOnly": false
+    },
+    {
+      "from": "tests/giraffe-shade-clearance.test.mjs",
+      "specifier": "three",
+      "typeOnly": false
+    },
+    {
+      "from": "tests/giraffe-shade-clearance.test.mjs",
+      "specifier": "../src/game/render3d/giraffe/world-scene.ts",
+      "typeOnly": false,
+      "target": "src/game/render3d/giraffe/world-scene.ts"
+    },
+    {
+      "from": "tests/giraffe-shade-clearance.test.mjs",
+      "specifier": "../src/game/render3d/giraffe/residents-scene.ts",
+      "typeOnly": false,
+      "target": "src/game/render3d/giraffe/residents-scene.ts"
+    },
+    {
+      "from": "tests/giraffe-shade-clearance.test.mjs",
+      "specifier": "./fixtures/giraffe-play.mjs",
+      "typeOnly": false,
+      "target": "tests/fixtures/giraffe-play.mjs"
     },
     {
       "from": "tests/giraffe-species.test.mjs",

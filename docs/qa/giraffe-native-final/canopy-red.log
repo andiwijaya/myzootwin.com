@@ -1,0 +1,27 @@
+Γ£û shade foliage clears the actual skinned adult heads in both LODs during standing, rest and rumination (152.8089ms)
+Γä╣ tests 1
+Γä╣ suites 0
+Γä╣ pass 0
+Γä╣ fail 1
+Γä╣ cancelled 0
+Γä╣ skipped 0
+Γä╣ todo 0
+Γä╣ duration_ms 503.3569
+
+Γ£û failing tests:
+
+test at tests\giraffe-shade-clearance.test.mjs:8:1
+Γ£û shade foliage clears the actual skinned adult heads in both LODs during standing, rest and rumination (152.8089ms)
+  AssertionError [ERR_ASSERTION]: {"low":false,"phase":"idle","time":0,"crownMin":2.6373372077941895,"adultMax":3.229000095367432,"requiredClearance":0.2}
+      at TestContext.<anonymous> (file:///C:/Users/andi_/Documents/Codex/2026-11-07/task/myzootwin-giraffe/tests/giraffe-shade-clearance.test.mjs:24:11)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.start (node:internal/test_runner/test:1003:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: false,
+    expected: true,
+    operator: '==',
+    diff: 'simple'
+  }

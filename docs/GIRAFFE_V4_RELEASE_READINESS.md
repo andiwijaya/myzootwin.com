@@ -1,5 +1,9 @@
 # Giraffe V4 local release candidate - publication held
 
+## Final continuation superseding the historical blocker
+
+The internal browser recovered. Final source `dfeef18` now passes821/821, Astro412clean, build9/HTTP9 and six native browser receipt cases. Actual full-world ID/EN3sizes, rendered actions/cold comparisons, green/red paid placement,27injected camera cases, low-tier settings/context retry/cleanup have source-bound evidence. Route-fixed native1x soak passed943.9active seconds with invalid0/coldexact; the earlier failed900.3attempt remains a failure. Actual presented FPS is unmeasured (callback cadence~11Hz is separate), so GH6-04 remains partial. Checklist39/42; private binding/publication held. All owned tabs/servers closed; no takeover/push/deploy. See [final verification](GIRAFFE_FINAL_NATIVE_QA.md) and [manifest](qa/giraffe-native-final/manifest.json). Sections below preserve earlier source-bound history, including resolved browser failures.
+
 No push or deployment is authorized. Remote main was refreshed after implementation and remains `325223403a2dec1b805f05d9fb8d795d09568585`. The private Cloudflare administrative source/alias binding is still unverified because automatic browser review denied that destination without explicit administration authorization. This is separate from local engineering.
 
 The default local product now uses the same IndexedDB database/store at version4, exact generation/revision CAS and an atomic originalV3 backup. V1/V2 paths retain their historical copies and a labelled validated V3 intermediate. Missing/corrupt provenance, newer schemas/databases, invalid states and losing writers never reset or silently downgrade a world. Native storage10/10, actual full-game V4 cold equality and strict migration/invariant tests are recorded in the living checklist/evidence. Native art screenshots and the15-minute1xrendered soak remain outstanding.

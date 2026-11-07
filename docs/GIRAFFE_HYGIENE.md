@@ -1,5 +1,9 @@
 # Giraffe repository and distribution audit
 
+## Final continuation superseding the historical blocker
+
+The internal browser recovered. Final source `dfeef18` now passes821/821, Astro412clean, build9/HTTP9 and six native browser receipt cases. Actual full-world ID/EN3sizes, rendered actions/cold comparisons, green/red paid placement,27injected camera cases, low-tier settings/context retry/cleanup have source-bound evidence. Route-fixed native1x soak passed943.9active seconds with invalid0/coldexact; the earlier failed900.3attempt remains a failure. Actual presented FPS is unmeasured (callback cadence~11Hz is separate), so GH6-04 remains partial. Checklist39/42; private binding/publication held. All owned tabs/servers closed; no takeover/push/deploy. See [final verification](GIRAFFE_FINAL_NATIVE_QA.md) and [manifest](qa/giraffe-native-final/manifest.json). Sections below preserve earlier source-bound history, including resolved browser failures.
+
 Current route-fix source `76e715e8b1b73814de69df57301b0dacece7bd3f` passes820/820/check411clean/build9/HTTP9. Refreshed audit:186reachable source modules,0unresolved imports,403compiler files with0unused/otherdiagnostics; no source imports QA. Current distribution24files/1,716,920bytes, all chunk hashes match,9routes,0QAmarkers; public/site/dependencies remain unchanged from3252234. Measured checkout964,503,485logical bytes,5bounded QA runs. Delta fromb656 has no new network/dynamic-execution/device-permission pattern. New receipts are `qa/giraffe-hygiene/route-fix-*`; the recorded npm advisory query below remains historical and was not silently refreshed. Global browser remainsUNRUN. Subsequent paragraphs preserve the priorb656 audit snapshot rather than describing current counts.
 
 
