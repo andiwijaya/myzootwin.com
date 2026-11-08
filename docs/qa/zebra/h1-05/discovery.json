@@ -1,0 +1,19 @@
+{
+  "id": "QA_MANUAL_BATCH_UI_BLOCK",
+  "source": "ba3fb167698e81ab77032e080f5602d9b9f62550",
+  "observed": "Input.dispatchMouseEvent timed out for Step100. Read-only DOM confirmed tick13680 and exactly100 completed real engine tick events, strict valid, paused, zero callbacks, no console/application errors. No blind retry or duplicate step.",
+  "beforeTick": 13580,
+  "afterTick": 13680,
+  "driver": {
+    "mode": "manual",
+    "pending": 0,
+    "nativePending": 0,
+    "manualTime": 1000,
+    "manualDeliveries": 12,
+    "nativeDeliveries": 0,
+    "disposed": false,
+    "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+  },
+  "status": "FIXED_ASYNC_BATCH_VERIFIED_D2A7C25",
+  "resolution": "Async 100-tick batch yielded and finished exactly 100 real ticks. Native 10x CDP command timeouts remain a separately documented performance limitation; keyboard Pause succeeds."
+}
