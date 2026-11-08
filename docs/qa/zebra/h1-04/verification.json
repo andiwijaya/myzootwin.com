@@ -1,0 +1,334 @@
+{
+  "id": "H1-04",
+  "status": "PASS_EXISTING_FOUR_HABITAT_FIXTURE",
+  "at": "2026-11-08T14:30:39.883Z",
+  "source": "0a7cea63b356d9eeabce86f00a0ac32d58aa5352",
+  "sourceFingerprint": "3433b5a1bb78f8ff07c854e98de8c04e8f63110711d79933a85f0a4fc4b6c8c4",
+  "build": "f470fdfd075cf770f9233e886b65eac54db58939d78a4c53ae2fb6baaab7a793",
+  "productionExclusion": {
+    "status": "PASS",
+    "markers": [
+      "myzootwin-visual3d-",
+      "Asset Lab internal",
+      "__VIS3D_SOURCE__",
+      "scripts/qa/visual3d",
+      "visual3d-frozen-v4",
+      "__qaVisual3dTag",
+      "QA-only constructor side-table"
+    ],
+    "files": 31
+  },
+  "fixture": {
+    "inherited": "Frozen actual UI-earned V4; production strict decoder, full world/scene factories and BFS reused, no replacement models or gratuitous landscaping",
+    "grid": {
+      "width": 24,
+      "height": 26,
+      "tiles": 624,
+      "origin": {
+        "x": 6,
+        "z": 5
+      }
+    },
+    "habitats": [
+      {
+        "kind": "macaw-aviary",
+        "cells": 4,
+        "residents": 2,
+        "resources": 3,
+        "connected": true,
+        "viewingCell": {
+          "x": 3,
+          "z": 5
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 7
+          },
+          {
+            "x": 2,
+            "z": 7
+          },
+          {
+            "x": 3,
+            "z": 7
+          },
+          {
+            "x": 3,
+            "z": 6
+          },
+          {
+            "x": 3,
+            "z": 5
+          }
+        ]
+      },
+      {
+        "kind": "elephant-grove",
+        "cells": 36,
+        "residents": 2,
+        "resources": 6,
+        "connected": true,
+        "viewingCell": {
+          "x": 3,
+          "z": 10
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          }
+        ]
+      },
+      {
+        "kind": "lion-savanna",
+        "cells": 49,
+        "residents": 3,
+        "resources": 7,
+        "connected": true,
+        "viewingCell": {
+          "x": 3,
+          "z": 17
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 11
+          },
+          {
+            "x": 2,
+            "z": 12
+          },
+          {
+            "x": 2,
+            "z": 13
+          },
+          {
+            "x": 2,
+            "z": 14
+          },
+          {
+            "x": 2,
+            "z": 15
+          },
+          {
+            "x": 2,
+            "z": 16
+          },
+          {
+            "x": 2,
+            "z": 17
+          },
+          {
+            "x": 3,
+            "z": 17
+          }
+        ]
+      },
+      {
+        "kind": "giraffe-plains",
+        "cells": 49,
+        "residents": 3,
+        "resources": 5,
+        "connected": true,
+        "viewingCell": {
+          "x": 12,
+          "z": 8
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 9
+          },
+          {
+            "x": 12,
+            "z": 9
+          },
+          {
+            "x": 12,
+            "z": 8
+          }
+        ]
+      }
+    ],
+    "resources": 21,
+    "servicePorts": 38,
+    "footprintCells": 138,
+    "creekTiles": 8,
+    "palms": 6,
+    "trees": 4,
+    "gate": 1,
+    "zebra": {
+      "status": "UNBUILT_V4_LAND_ONLY",
+      "candidateCells": 64,
+      "freeInThisFixture": true,
+      "spawnedZebras": 0
+    }
+  },
+  "tests": {
+    "pass": 11,
+    "fail": 0,
+    "strictTypesWithUnusedChecks": "PASS",
+    "logHash": "4a2ce374f4d705e36706b34edcd765dc317d6d865cf5dc8808e67e4c090f7660"
+  },
+  "browser": {
+    "runner": "internal-browser",
+    "physicalDevice": false,
+    "cases": 11,
+    "fourAngles": true,
+    "habitatVisibilityCorrect": true,
+    "sourceBoundRealEnvironment": true,
+    "coldStateExact": true,
+    "sameDisposableDatabase": true,
+    "errors": 0,
+    "presentedFps": null
+  },
+  "cleanup": {
+    "ownedResources": 0,
+    "overlayResources": 0,
+    "callbacks": 0,
+    "qaObserverActive": false,
+    "programCounter": 1,
+    "boundedGrowth": "NOT_RUN_H1-08"
+  },
+  "evidence": {
+    "browserHash": "11d75073ab1a80b84fe0f197449b2380fcca198440b55184f604f18a44f1c4fe",
+    "screenshots": [
+      {
+        "path": "docs/qa/zebra/h1-04/cold-full.jpg",
+        "sha256": "8560d685d7c5eab8f823b2a8551f0aade41c41b7aa82b99c90887ec4987f9324"
+      },
+      {
+        "path": "docs/qa/zebra/h1-04/elephant.jpg",
+        "sha256": "9db4e2924ac990cf53dd248c681d44d6ac59116a0fb62f5753ea1dbe42529aa1"
+      },
+      {
+        "path": "docs/qa/zebra/h1-04/full-0.jpg",
+        "sha256": "0d241401d44393e7f52f636d3a6573f96fa1034dc684c6d153d1cb97666339f9"
+      },
+      {
+        "path": "docs/qa/zebra/h1-04/full-180.jpg",
+        "sha256": "1d10dea16d8ec42979766513aff0f75e7eca15c8bec75c02106c17692334cafe"
+      },
+      {
+        "path": "docs/qa/zebra/h1-04/full-270.jpg",
+        "sha256": "ba934db7db3ed785ca01e335a466d784e64edfe0c74221c1169a7fab08086cd9"
+      },
+      {
+        "path": "docs/qa/zebra/h1-04/full-90.jpg",
+        "sha256": "bca9a693208c37104e99cb90b0f1f92ba69285346b67d899f2b7aaee9c4d9feb"
+      },
+      {
+        "path": "docs/qa/zebra/h1-04/giraffe.jpg",
+        "sha256": "801d588f9a045ab813c1b3f4b8deeb2b9745c51b82d3de72e960085e61acdd84"
+      },
+      {
+        "path": "docs/qa/zebra/h1-04/lion.jpg",
+        "sha256": "c4432c1bf7101a7e5f0c6a0e5c297a78f1f0286fc4f0c482e42ad22858f3ba07"
+      },
+      {
+        "path": "docs/qa/zebra/h1-04/macaw.jpg",
+        "sha256": "7ca232347f26f75f90cec9d057c21896b02d48bb7a1b07312af4263fbfef2e0d"
+      },
+      {
+        "path": "docs/qa/zebra/h1-04/world-overlay.jpg",
+        "sha256": "e3b70831752c74b93f6351cb4dddcd9a067ce534f2cf69067141980ae013d5e0"
+      }
+    ]
+  },
+  "limits": [
+    "V4 contains no Zebra enclosure or actor. Free64-cell candidate land is verified, never presented as a fifth playable habitat.",
+    "Habitat focus hides other species/enclosures while retaining actual shared terrain, paths, visitors and explicit QA data marks. It does not clone/rebuild the habitat.",
+    "Overlay dots mark true approach positions, not mouth-contact or welfare proof. Behavior/event/contact checks remain H1-05..07.",
+    "Far camera presets deliberately fit conservatively; cold-full.jpg shows the actual production overview camera. Detailed mesh quality still H1-06..09.",
+    "No owner database, public route, production source or save changed."
+  ]
+}
