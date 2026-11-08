@@ -1,10 +1,10 @@
 # Execution checkpoint
 
-Current verified progress: **1/54 (1.85%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: this task authorizes local coding and release preparation, not production push/deploy.
+Current verified progress: **2/54 (3.70%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: this task authorizes local coding and release preparation, not production push/deploy.
 
 All four Library documents were read completely: master PRD 335 lines, harness spec 128, feature checklist 200, handoff 42. Official Windows materialization failed at `os.setxattr` after the authorized network retry. `.qa/zebra-inputs` is empty; no cloud path or installed source-file identity is claimed. Implementation uses the complete authorized Library reads; original Library files remain unchanged. This checklist is the requested repository working copy, not a claimed metadata-preserving materialization.
 
-Latest audited source before this task: `634de84ebfeab6c069ca9463527193a4e99ea458`. Z0-01 is verified: fresh public pipeline/check binds live deployment de1f5a36 to 634de84; ID/EN native homepage observations and 11/11 focused tests pass. Runtime source tree c78fbf947b7e83d5c410038df96efb077739b27a. Evidence: [baseline](qa/zebra/z0-01/baseline.json), [browser](qa/zebra/z0-01/browser.json), [tests](qa/zebra/z0-01/tests.json). Historical Giraffe 39/42 remains historical; live V4 and the homepage are now independently verified, while presented FPS remains unmeasured. Next: Z0-02 synthetic fixtures and rendered baseline. No V5 push/deploy authorized.
+Latest audited source before this task: `634de84ebfeab6c069ca9463527193a4e99ea458`. Z0-01 is verified: fresh public pipeline/check binds live deployment de1f5a36 to 634de84; ID/EN native homepage observations and 11/11 focused tests pass. Runtime source tree c78fbf947b7e83d5c410038df96efb077739b27a. Evidence: [baseline](qa/zebra/z0-01/baseline.json), [browser](qa/zebra/z0-01/browser.json), [tests](qa/zebra/z0-01/tests.json). Historical Giraffe 39/42 remains historical; live V4 and the homepage are now independently verified, while presented FPS remains unmeasured. Z0-02 is verified at source f174108: 12 original V1–V4 fixture fingerprints/projections frozen, 20/20 tests, native four-habitat ID captures at three sizes, exact paused/cold state and zero owned frames/subscribers/geometries/textures/materials. Renderer program counter remains1 after dispose; repeated-growth investigation belongs to H1-08 and is not claimed passed. [Verification](qa/zebra/z0-02/verification.json). Next: Z0-03 complete reachable visual inventory. No V5 push/deploy authorized.
 
 ---
 
@@ -21,7 +21,7 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
 - [x] **Z0-01** — Audit repo HEAD, branch, deployment nyata, status Giraffe V4 (39/42 dalam dokumen terakhir) dan beranda empat habitat; bedakan source lokal/remote/live.
   - **DoD:** Catat SHA/identitas build, status izin deploy, perbedaan, bukti. Tidak mengklaim status produksi dari checklist.
   - **Proof:** `docs/qa/zebra/z0-01/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
-- [ ] **Z0-02** — Freeze fixture V1–V4 (synthetic, bukan save owner), seluruh 4 habitat lama, ekonomi, missions, visitor/admission, kamera, lingkungan dan baseline gambar.
+- [x] **Z0-02** — Freeze fixture V1–V4 (synthetic, bukan save owner), seluruh 4 habitat lama, ekonomi, missions, visitor/admission, kamera, lingkungan dan baseline gambar.
   - **DoD:** Golden projections/hash/route/camera dari actual source; browser QA terisolasi.
   - **Proof:** `docs/qa/zebra/z0-02/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 - [ ] **Z0-03** — Audit visual inventory awal: semua hewan/sprite, props, habitat, terrain, vegetasi, air, fasilitas, pengunjung, animasi, audio dan provenance/ownership.

@@ -1,0 +1,49 @@
+{
+  "at": "2026-11-08T13:23:42.216Z",
+  "id": "Z0-02",
+  "status": "PASS",
+  "source": "f174108ee4938b9e9d2fa52d808e520deadf59d7",
+  "build": "c83cb8d2f58de90f2d641573a850847f304fac3481c0046e128d291074fd4117",
+  "rendererSourceHash": "bdc4dbec56b7ec1be8eb803c1446eda4d0b9d264c9962adb099a2ff03b4b7ffe",
+  "fixtures": 12,
+  "stateSha256": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
+  "originalEqualsNativeBeforeAndAfter": true,
+  "tests": {
+    "counts": {
+      "tests": 20,
+      "pass": 20,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "log": ".qa/zebra-audit/z0-02-regression.log",
+    "sha256": "c699a86a68379b55b55fecbc198e0af0ab7a37498fd586f707586fd5b5c1ba72"
+  },
+  "screenshots": [
+    {
+      "path": "desktop-id.jpg",
+      "bytes": 84241,
+      "sha256": "5b3d829b8a5a445317040d0d347be93157fd87107d0b088f4d2692a882aa5351"
+    },
+    {
+      "path": "portrait-id.jpg",
+      "bytes": 36014,
+      "sha256": "d046f133d0cb2d109f48fe890cf0586f7752a473a67f55ab952d81f6bc8d8432"
+    },
+    {
+      "path": "landscape-id.jpg",
+      "bytes": 28066,
+      "sha256": "77b76a20f9edca768376846114048c9ebd9ac8e95b2b760473e89c19dd3ddec5"
+    }
+  ],
+  "productPages": 10,
+  "qaAbsentFromProduct": true,
+  "cleanup": {
+    "ownedFramesSubscribersGeometriesTexturesMaterialsErrors": 0,
+    "rendererProgramCounter": 1,
+    "repeatedLifecycle": "UNRUN until H1-08",
+    "note": "First verification incorrectly asserted literal program count zero and failed at observed1. Ownership checks now remain distinct from renderer counters, as the harness specification requires. No leak-free claim."
+  },
+  "performance": "No active soak; presented FPS UNMEASURED"
+}
