@@ -1,0 +1,5523 @@
+{
+  "raw": {
+    "path": ".qa/zebra-audit/z3-03-browser-full.json",
+    "bytes": 4280490,
+    "sha256": "417209dd35d14b721154b9d01f1b0f4f7dfa20632435970804768090d440c3a2"
+  },
+  "cases": [
+    {
+      "label": "before-companions",
+      "source": "58895ec7f44925a55e2de9ceaf9a6c58e1a9c340",
+      "sourceFingerprint": "57db68a53b2af48e774bab104021584b7007c900e9515b75bd36415501dbc8e2",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "documentWidth": 1265
+      },
+      "lang": {
+        "document": "id",
+        "root": "id"
+      },
+      "state": {
+        "tick": 15345,
+        "cash": 4029,
+        "valid": true,
+        "sha256": "5fc49abdc6ae2dca141e78f74093b754f479ae1a67b22886acaad1822fa23b05",
+        "gameplayHash": "686f3c948be87ba54be4d876582d623b3ac799c9e19c1b11aa9463058f981e8b",
+        "seedGameplayHash": "686f3c948be87ba54be4d876582d623b3ac799c9e19c1b11aa9463058f981e8b",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "rest",
+            "position": {
+              "x": 4.5,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "ascend",
+            "position": {
+              "x": 5.5,
+              "z": 4.5625
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "idle",
+            "position": {
+              "x": 4.5,
+              "z": 24
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 7.5,
+              "z": 22.5
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-shade",
+            "position": {
+              "x": 4,
+              "z": 22.5
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 18.032812370449193,
+              "z": 5.429794598902886
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 16,
+              "z": 6
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "zebra-zaki",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 18.375405186988814,
+              "z": 15.928339893149207
+            }
+          }
+        ]
+      },
+      "zebraActors": [
+        {
+          "id": "zebra-zaki",
+          "name": "Zaki",
+          "sex": "male",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 18.375405186988814,
+            "z": 15.928339893149207
+          },
+          "target": {
+            "x": 20,
+            "z": 15
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 537,
+            "sequence": 35,
+            "heading": 2.0899424410414005,
+            "waypoints": [
+              {
+                "x": 20,
+                "z": 15
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0.0390709413956003,
+              "z": -0.022326252226056553
+            },
+            "distanceWalked": 61.21881685522551,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        }
+      ],
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": true,
+        "visitorEligible": true,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4029,
+        "command": 125
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 40,
+        "savedTick": 15345,
+        "savedAt": 1794169968155,
+        "savedCurrency": 4029,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 1,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 1,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 1,
+          "retained": 1,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 25.5,
+          "maxMs": 25.5,
+          "p50Ms": 25.5,
+          "p95Ms": 25.5,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "renderer": {
+        "simulationTick": 15345,
+        "simulationSpeed": 10,
+        "simulationPaused": false,
+        "simulationDroppedWallMs": 0,
+        "simulationDroppedSimMs": 0,
+        "liveZebraModels": 1,
+        "zebraGeometries": 1,
+        "zebraMaterials": 1,
+        "zebraBones": 20,
+        "zebraTriangles": 14148,
+        "ownedMaterialsLive": 43,
+        "cleanupErrors": 0,
+        "disposed": false,
+        "geometries": 61,
+        "textures": 12
+      },
+      "resources": {
+        "geometries": 72,
+        "materials": 44,
+        "textures": 11,
+        "renderTargets": 1,
+        "skeletons": 9,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "meshAudit": {
+        "counts": {
+          "objects": 370,
+          "geometries": 72,
+          "materials": 43,
+          "textures": 9,
+          "materialTextures": 0,
+          "skeletonTextures": 9,
+          "skinned": 9,
+          "sprites": 0,
+          "points": 0,
+          "errors": 0,
+          "review": 2
+        },
+        "issues": [
+          {
+            "code": "DEGENERATE_TRIANGLES",
+            "severity": "REVIEW",
+            "path": "/Scene[0]/Group[0]/Two-port macaw feeder[0]/Mesh[0]",
+            "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+          },
+          {
+            "code": "DEGENERATE_TRIANGLES",
+            "severity": "REVIEW",
+            "path": "/Scene[0]/Group[0]/Two macaw water bowls[1]/Mesh[0]",
+            "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+          }
+        ]
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "companions-refused",
+      "source": "58895ec7f44925a55e2de9ceaf9a6c58e1a9c340",
+      "sourceFingerprint": "57db68a53b2af48e774bab104021584b7007c900e9515b75bd36415501dbc8e2",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "documentWidth": 1265
+      },
+      "lang": {
+        "document": "id",
+        "root": "id"
+      },
+      "state": {
+        "tick": 15345,
+        "cash": 4029,
+        "valid": true,
+        "sha256": "5fc49abdc6ae2dca141e78f74093b754f479ae1a67b22886acaad1822fa23b05",
+        "gameplayHash": "686f3c948be87ba54be4d876582d623b3ac799c9e19c1b11aa9463058f981e8b",
+        "seedGameplayHash": "686f3c948be87ba54be4d876582d623b3ac799c9e19c1b11aa9463058f981e8b",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "rest",
+            "position": {
+              "x": 4.5,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "ascend",
+            "position": {
+              "x": 5.5,
+              "z": 4.5625
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "idle",
+            "position": {
+              "x": 4.5,
+              "z": 24
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 7.5,
+              "z": 22.5
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-shade",
+            "position": {
+              "x": 4,
+              "z": 22.5
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 18.032812370449193,
+              "z": 5.429794598902886
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 16,
+              "z": 6
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "zebra-zaki",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 18.375405186988814,
+              "z": 15.928339893149207
+            }
+          }
+        ]
+      },
+      "zebraActors": [
+        {
+          "id": "zebra-zaki",
+          "name": "Zaki",
+          "sex": "male",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 18.375405186988814,
+            "z": 15.928339893149207
+          },
+          "target": {
+            "x": 20,
+            "z": 15
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 537,
+            "sequence": 35,
+            "heading": 2.0899424410414005,
+            "waypoints": [
+              {
+                "x": 20,
+                "z": 15
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0.0390709413956003,
+              "z": -0.022326252226056553
+            },
+            "distanceWalked": 61.21881685522551,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        }
+      ],
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": true,
+        "visitorEligible": true,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4029,
+        "command": 125
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 41,
+        "savedTick": 15345,
+        "savedAt": 1794169983270,
+        "savedCurrency": 4029,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 1,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 2,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 2,
+          "retained": 2,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 18.19999998807907,
+          "maxMs": 25.5,
+          "p50Ms": 18.19999998807907,
+          "p95Ms": 18.19999998807907,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "renderer": {
+        "simulationTick": 15345,
+        "simulationSpeed": 10,
+        "simulationPaused": false,
+        "simulationDroppedWallMs": 0,
+        "simulationDroppedSimMs": 0,
+        "liveZebraModels": 1,
+        "zebraGeometries": 1,
+        "zebraMaterials": 1,
+        "zebraBones": 20,
+        "zebraTriangles": 14148,
+        "ownedMaterialsLive": 43,
+        "cleanupErrors": 0,
+        "disposed": false,
+        "geometries": 61,
+        "textures": 12
+      },
+      "resources": {
+        "geometries": 72,
+        "materials": 44,
+        "textures": 11,
+        "renderTargets": 1,
+        "skeletons": 9,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "meshAudit": {
+        "counts": {
+          "objects": 370,
+          "geometries": 72,
+          "materials": 43,
+          "textures": 9,
+          "materialTextures": 0,
+          "skeletonTextures": 9,
+          "skinned": 9,
+          "sprites": 0,
+          "points": 0,
+          "errors": 0,
+          "review": 2
+        },
+        "issues": [
+          {
+            "code": "DEGENERATE_TRIANGLES",
+            "severity": "REVIEW",
+            "path": "/Scene[0]/Group[0]/Two-port macaw feeder[0]/Mesh[0]",
+            "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+          },
+          {
+            "code": "DEGENERATE_TRIANGLES",
+            "severity": "REVIEW",
+            "path": "/Scene[0]/Group[0]/Two macaw water bowls[1]/Mesh[0]",
+            "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+          }
+        ]
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "companions-welcomed",
+      "source": "58895ec7f44925a55e2de9ceaf9a6c58e1a9c340",
+      "sourceFingerprint": "57db68a53b2af48e774bab104021584b7007c900e9515b75bd36415501dbc8e2",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "documentWidth": 1265
+      },
+      "lang": {
+        "document": "id",
+        "root": "id"
+      },
+      "state": {
+        "tick": 15345,
+        "cash": 4029,
+        "valid": true,
+        "sha256": "aeaa1167cf696c8abbfadc5150364c3acbd7f937319a2e0abe867b6ae9ef8c67",
+        "gameplayHash": "78bb1382ffda78b96cd86bde31ffd7af50966657088b29aaf1858a173d8db60c",
+        "seedGameplayHash": "686f3c948be87ba54be4d876582d623b3ac799c9e19c1b11aa9463058f981e8b",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "rest",
+            "position": {
+              "x": 4.5,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "ascend",
+            "position": {
+              "x": 5.5,
+              "z": 4.5625
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "idle",
+            "position": {
+              "x": 4.5,
+              "z": 24
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 7.5,
+              "z": 22.5
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-shade",
+            "position": {
+              "x": 4,
+              "z": 22.5
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 18.032812370449193,
+              "z": 5.429794598902886
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 16,
+              "z": 6
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "zebra-zaki",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 18.375405186988814,
+              "z": 15.928339893149207
+            }
+          },
+          {
+            "id": "zebra-zuri",
+            "species": "equus-quagga",
+            "phase": "idle",
+            "position": {
+              "x": 19,
+              "z": 14
+            }
+          },
+          {
+            "id": "zebra-mira",
+            "species": "equus-quagga",
+            "phase": "idle",
+            "position": {
+              "x": 16,
+              "z": 17
+            }
+          },
+          {
+            "id": "zebra-kira",
+            "species": "equus-quagga",
+            "phase": "idle",
+            "position": {
+              "x": 19.5,
+              "z": 17.5
+            }
+          }
+        ]
+      },
+      "zebraActors": [
+        {
+          "id": "zebra-zaki",
+          "name": "Zaki",
+          "sex": "male",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 18.375405186988814,
+            "z": 15.928339893149207
+          },
+          "target": {
+            "x": 20,
+            "z": 15
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 537,
+            "sequence": 35,
+            "heading": 2.0899424410414005,
+            "waypoints": [
+              {
+                "x": 20,
+                "z": 15
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0.0390709413956003,
+              "z": -0.022326252226056553
+            },
+            "distanceWalked": 61.21881685522551,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-zuri",
+          "name": "Zuri",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 19,
+            "z": 14
+          },
+          "target": null,
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "idle",
+          "motion": {
+            "phase": "idle",
+            "ticksLeft": 5,
+            "sequence": 0,
+            "heading": 0,
+            "waypoints": [],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 0,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-mira",
+          "name": "Mira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 16,
+            "z": 17
+          },
+          "target": null,
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "idle",
+          "motion": {
+            "phase": "idle",
+            "ticksLeft": 5,
+            "sequence": 0,
+            "heading": 0,
+            "waypoints": [],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 0,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-kira",
+          "name": "Kira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 19.5,
+            "z": 17.5
+          },
+          "target": null,
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "idle",
+          "motion": {
+            "phase": "idle",
+            "ticksLeft": 5,
+            "sequence": 0,
+            "heading": 0,
+            "waypoints": [],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 0,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        }
+      ],
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": true,
+        "visitorEligible": true,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4029,
+        "command": 126
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 44,
+        "savedTick": 15345,
+        "savedAt": 1794169995802,
+        "savedCurrency": 4029,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 1,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 3,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 3,
+          "retained": 3,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 16.19999998807907,
+          "maxMs": 25.5,
+          "p50Ms": 18.19999998807907,
+          "p95Ms": 18.19999998807907,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "renderer": {
+        "simulationTick": 15345,
+        "simulationSpeed": 10,
+        "simulationPaused": false,
+        "simulationDroppedWallMs": 0,
+        "simulationDroppedSimMs": 0,
+        "liveZebraModels": 4,
+        "zebraGeometries": 4,
+        "zebraMaterials": 4,
+        "zebraBones": 80,
+        "zebraTriangles": 56592,
+        "ownedMaterialsLive": 46,
+        "cleanupErrors": 0,
+        "disposed": false,
+        "geometries": 64,
+        "textures": 15
+      },
+      "resources": {
+        "geometries": 75,
+        "materials": 47,
+        "textures": 14,
+        "renderTargets": 1,
+        "skeletons": 12,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "meshAudit": {
+        "counts": {
+          "objects": 433,
+          "geometries": 75,
+          "materials": 46,
+          "textures": 12,
+          "materialTextures": 0,
+          "skeletonTextures": 12,
+          "skinned": 12,
+          "sprites": 0,
+          "points": 0,
+          "errors": 0,
+          "review": 2
+        },
+        "issues": [
+          {
+            "code": "DEGENERATE_TRIANGLES",
+            "severity": "REVIEW",
+            "path": "/Scene[0]/Group[0]/Two-port macaw feeder[0]/Mesh[0]",
+            "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+          },
+          {
+            "code": "DEGENERATE_TRIANGLES",
+            "severity": "REVIEW",
+            "path": "/Scene[0]/Group[0]/Two macaw water bowls[1]/Mesh[0]",
+            "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+          }
+        ]
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "herd-paused-before-native",
+      "source": "58895ec7f44925a55e2de9ceaf9a6c58e1a9c340",
+      "sourceFingerprint": "57db68a53b2af48e774bab104021584b7007c900e9515b75bd36415501dbc8e2",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "documentWidth": 1265
+      },
+      "lang": {
+        "document": "en",
+        "root": "en"
+      },
+      "state": {
+        "tick": 15345,
+        "cash": 4029,
+        "valid": true,
+        "sha256": "2593e50d849fccc7e56b52d71f7cb013d1b30091d8e98b2dfc9f26f8a51bb914",
+        "gameplayHash": "78bb1382ffda78b96cd86bde31ffd7af50966657088b29aaf1858a173d8db60c",
+        "seedGameplayHash": "686f3c948be87ba54be4d876582d623b3ac799c9e19c1b11aa9463058f981e8b",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "rest",
+            "position": {
+              "x": 4.5,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "ascend",
+            "position": {
+              "x": 5.5,
+              "z": 4.5625
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "idle",
+            "position": {
+              "x": 4.5,
+              "z": 24
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 7.5,
+              "z": 22.5
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-shade",
+            "position": {
+              "x": 4,
+              "z": 22.5
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 18.032812370449193,
+              "z": 5.429794598902886
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 16,
+              "z": 6
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "zebra-zaki",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 18.375405186988814,
+              "z": 15.928339893149207
+            }
+          },
+          {
+            "id": "zebra-zuri",
+            "species": "equus-quagga",
+            "phase": "idle",
+            "position": {
+              "x": 19,
+              "z": 14
+            }
+          },
+          {
+            "id": "zebra-mira",
+            "species": "equus-quagga",
+            "phase": "idle",
+            "position": {
+              "x": 16,
+              "z": 17
+            }
+          },
+          {
+            "id": "zebra-kira",
+            "species": "equus-quagga",
+            "phase": "idle",
+            "position": {
+              "x": 19.5,
+              "z": 17.5
+            }
+          }
+        ]
+      },
+      "zebraActors": [
+        {
+          "id": "zebra-zaki",
+          "name": "Zaki",
+          "sex": "male",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 18.375405186988814,
+            "z": 15.928339893149207
+          },
+          "target": {
+            "x": 20,
+            "z": 15
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 537,
+            "sequence": 35,
+            "heading": 2.0899424410414005,
+            "waypoints": [
+              {
+                "x": 20,
+                "z": 15
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0.0390709413956003,
+              "z": -0.022326252226056553
+            },
+            "distanceWalked": 61.21881685522551,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-zuri",
+          "name": "Zuri",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 19,
+            "z": 14
+          },
+          "target": null,
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "idle",
+          "motion": {
+            "phase": "idle",
+            "ticksLeft": 5,
+            "sequence": 0,
+            "heading": 0,
+            "waypoints": [],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 0,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-mira",
+          "name": "Mira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 16,
+            "z": 17
+          },
+          "target": null,
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "idle",
+          "motion": {
+            "phase": "idle",
+            "ticksLeft": 5,
+            "sequence": 0,
+            "heading": 0,
+            "waypoints": [],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 0,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-kira",
+          "name": "Kira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 19.5,
+            "z": 17.5
+          },
+          "target": null,
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "idle",
+          "motion": {
+            "phase": "idle",
+            "ticksLeft": 5,
+            "sequence": 0,
+            "heading": 0,
+            "waypoints": [],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 0,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        }
+      ],
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": true,
+        "visitorEligible": true,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4029,
+        "command": 126
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 47,
+        "savedTick": 15345,
+        "savedAt": 1794170030455,
+        "savedCurrency": 4029,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 0,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 3,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 3,
+          "retained": 3,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 16.19999998807907,
+          "maxMs": 25.5,
+          "p50Ms": 18.19999998807907,
+          "p95Ms": 18.19999998807907,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "renderer": {
+        "simulationTick": 15345,
+        "simulationSpeed": 1,
+        "simulationPaused": true,
+        "simulationDroppedWallMs": 0,
+        "simulationDroppedSimMs": 0,
+        "liveZebraModels": 4,
+        "zebraGeometries": 4,
+        "zebraMaterials": 4,
+        "zebraBones": 80,
+        "zebraTriangles": 56592,
+        "ownedMaterialsLive": 46,
+        "cleanupErrors": 0,
+        "disposed": false,
+        "geometries": 64,
+        "textures": 15
+      },
+      "resources": {
+        "geometries": 75,
+        "materials": 47,
+        "textures": 14,
+        "renderTargets": 1,
+        "skeletons": 12,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "meshAudit": {
+        "counts": {
+          "objects": 433,
+          "geometries": 75,
+          "materials": 46,
+          "textures": 12,
+          "materialTextures": 0,
+          "skeletonTextures": 12,
+          "skinned": 12,
+          "sprites": 0,
+          "points": 0,
+          "errors": 0,
+          "review": 2
+        },
+        "issues": [
+          {
+            "code": "DEGENERATE_TRIANGLES",
+            "severity": "REVIEW",
+            "path": "/Scene[0]/Group[0]/Two-port macaw feeder[0]/Mesh[0]",
+            "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+          },
+          {
+            "code": "DEGENERATE_TRIANGLES",
+            "severity": "REVIEW",
+            "path": "/Scene[0]/Group[0]/Two macaw water bowls[1]/Mesh[0]",
+            "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+          }
+        ]
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "native-herd-paused",
+      "source": "58895ec7f44925a55e2de9ceaf9a6c58e1a9c340",
+      "sourceFingerprint": "57db68a53b2af48e774bab104021584b7007c900e9515b75bd36415501dbc8e2",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "documentWidth": 1265
+      },
+      "lang": {
+        "document": "en",
+        "root": "en"
+      },
+      "state": {
+        "tick": 15484,
+        "cash": 4039,
+        "valid": true,
+        "sha256": "60396879a60d9ab21bd2e7dab395deb0cdf7568ff5f1b456a4ea62664c875b29",
+        "gameplayHash": "7cc850b7924b8e6bdb77569eb165ff4cbe4bb22e80cb52281ce395ec0b7b6dd2",
+        "seedGameplayHash": "686f3c948be87ba54be4d876582d623b3ac799c9e19c1b11aa9463058f981e8b",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "perch",
+            "position": {
+              "x": 4.5,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "rest",
+            "position": {
+              "x": 5.5,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "seek-shade",
+            "position": {
+              "x": 4.5,
+              "z": 24
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 4.899264874760215,
+              "z": 19.40018378130994
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "idle",
+            "position": {
+              "x": 4,
+              "z": 22.5
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 18.5,
+              "z": 4
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 14.858087419173335,
+              "z": 3.537131128759997
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 15,
+              "z": 6.3
+            }
+          },
+          {
+            "id": "zebra-zaki",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 17.84982241633649,
+              "z": 16.81949622981142
+            }
+          },
+          {
+            "id": "zebra-zuri",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 17.5,
+              "z": 15
+            }
+          },
+          {
+            "id": "zebra-mira",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 15.112445108559797,
+              "z": 13.640556385699746
+            }
+          },
+          {
+            "id": "zebra-kira",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 20,
+              "z": 17.5
+            }
+          }
+        ]
+      },
+      "zebraActors": [
+        {
+          "id": "zebra-zaki",
+          "name": "Zaki",
+          "sex": "male",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 17.84982241633649,
+            "z": 16.81949622981142
+          },
+          "target": {
+            "x": 16,
+            "z": 17.5
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 570,
+            "sequence": 39,
+            "heading": -1.2182866507214654,
+            "waypoints": [
+              {
+                "x": 16,
+                "z": 17.5
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": -0.04223291368598936,
+              "z": 0.015536441085131969
+            },
+            "distanceWalked": 64.05381685522562,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-zuri",
+          "name": "Zuri",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 17.5,
+            "z": 15
+          },
+          "target": {
+            "x": 15.5,
+            "z": 17.5
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 506,
+            "sequence": 3,
+            "heading": 0,
+            "waypoints": [
+              {
+                "x": 18.5,
+                "z": 14
+              },
+              {
+                "x": 18,
+                "z": 14
+              },
+              {
+                "x": 17.5,
+                "z": 14
+              },
+              {
+                "x": 17.5,
+                "z": 14.5
+              },
+              {
+                "x": 17.5,
+                "z": 15
+              },
+              {
+                "x": 17.5,
+                "z": 15.5
+              },
+              {
+                "x": 17.5,
+                "z": 16
+              },
+              {
+                "x": 17.5,
+                "z": 16.5
+              },
+              {
+                "x": 17.5,
+                "z": 17
+              },
+              {
+                "x": 17,
+                "z": 17
+              },
+              {
+                "x": 17,
+                "z": 17.5
+              },
+              {
+                "x": 16.5,
+                "z": 17.5
+              },
+              {
+                "x": 16,
+                "z": 17.5
+              },
+              {
+                "x": 15.5,
+                "z": 17.5
+              }
+            ],
+            "waypointIndex": 5,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0.005000000000000782
+            },
+            "distanceWalked": 3.071282775206301,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-mira",
+          "name": "Mira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 15.112445108559797,
+            "z": 13.640556385699746
+          },
+          "target": {
+            "x": 17,
+            "z": 16
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 577,
+            "sequence": 3,
+            "heading": 0.6747409422235526,
+            "waypoints": [
+              {
+                "x": 17,
+                "z": 16
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0.02811127713994921,
+              "z": 0.03513909642493651
+            },
+            "distanceWalked": 3.820054944640267,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-kira",
+          "name": "Kira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 20,
+            "z": 17.5
+          },
+          "target": {
+            "x": 18.5,
+            "z": 13
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 570,
+            "sequence": 5,
+            "heading": 2.0898820040189436,
+            "waypoints": [
+              {
+                "x": 20,
+                "z": 17.5
+              },
+              {
+                "x": 20.5,
+                "z": 17.5
+              },
+              {
+                "x": 20.5,
+                "z": 17
+              },
+              {
+                "x": 20.5,
+                "z": 16.5
+              },
+              {
+                "x": 20.5,
+                "z": 16
+              },
+              {
+                "x": 20.5,
+                "z": 15.5
+              },
+              {
+                "x": 20.5,
+                "z": 15
+              },
+              {
+                "x": 20.5,
+                "z": 14.5
+              },
+              {
+                "x": 20.5,
+                "z": 14
+              },
+              {
+                "x": 20.5,
+                "z": 13.5
+              },
+              {
+                "x": 20,
+                "z": 13.5
+              },
+              {
+                "x": 19.5,
+                "z": 13.5
+              },
+              {
+                "x": 19,
+                "z": 13.5
+              },
+              {
+                "x": 18.5,
+                "z": 13
+              }
+            ],
+            "waypointIndex": 1,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0.011239452564680619,
+              "z": -0.006421643269341359
+            },
+            "distanceWalked": 2.7509785936581688,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        }
+      ],
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": true,
+        "visitorEligible": true,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4039,
+        "command": 126
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 54,
+        "savedTick": 15484,
+        "savedAt": 1794170052367,
+        "savedCurrency": 4039,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "native",
+        "pending": 0,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 3,
+        "nativeDeliveries": 392,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 395,
+          "retained": 120,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 12.5,
+          "maxMs": 61,
+          "p50Ms": 20.099999994039536,
+          "p95Ms": 56.5,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Actual native requestAnimationFrame; callback cadence is not presented FPS"
+      },
+      "renderer": {
+        "simulationTick": 15484,
+        "simulationSpeed": 1,
+        "simulationPaused": true,
+        "simulationDroppedWallMs": 0,
+        "simulationDroppedSimMs": 0,
+        "liveZebraModels": 4,
+        "zebraGeometries": 4,
+        "zebraMaterials": 4,
+        "zebraBones": 80,
+        "zebraTriangles": 56592,
+        "ownedMaterialsLive": 46,
+        "cleanupErrors": 0,
+        "disposed": false,
+        "geometries": 64,
+        "textures": 15
+      },
+      "resources": {
+        "geometries": 75,
+        "materials": 47,
+        "textures": 14,
+        "renderTargets": 1,
+        "skeletons": 12,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "meshAudit": {
+        "counts": {
+          "objects": 433,
+          "geometries": 75,
+          "materials": 46,
+          "textures": 12,
+          "materialTextures": 0,
+          "skeletonTextures": 12,
+          "skinned": 12,
+          "sprites": 0,
+          "points": 0,
+          "errors": 0,
+          "review": 2
+        },
+        "issues": [
+          {
+            "code": "DEGENERATE_TRIANGLES",
+            "severity": "REVIEW",
+            "path": "/Scene[0]/Group[0]/Two-port macaw feeder[0]/Mesh[0]",
+            "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+          },
+          {
+            "code": "DEGENERATE_TRIANGLES",
+            "severity": "REVIEW",
+            "path": "/Scene[0]/Group[0]/Two macaw water bowls[1]/Mesh[0]",
+            "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+          }
+        ]
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "mobile-herd-paused",
+      "source": "58895ec7f44925a55e2de9ceaf9a6c58e1a9c340",
+      "sourceFingerprint": "57db68a53b2af48e774bab104021584b7007c900e9515b75bd36415501dbc8e2",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "viewport": {
+        "width": 360,
+        "height": 780,
+        "documentWidth": 345
+      },
+      "lang": {
+        "document": "en",
+        "root": "en"
+      },
+      "state": {
+        "tick": 15484,
+        "cash": 4039,
+        "valid": true,
+        "sha256": "60396879a60d9ab21bd2e7dab395deb0cdf7568ff5f1b456a4ea62664c875b29",
+        "gameplayHash": "7cc850b7924b8e6bdb77569eb165ff4cbe4bb22e80cb52281ce395ec0b7b6dd2",
+        "seedGameplayHash": "686f3c948be87ba54be4d876582d623b3ac799c9e19c1b11aa9463058f981e8b",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "perch",
+            "position": {
+              "x": 4.5,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "rest",
+            "position": {
+              "x": 5.5,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "seek-shade",
+            "position": {
+              "x": 4.5,
+              "z": 24
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 4.899264874760215,
+              "z": 19.40018378130994
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "idle",
+            "position": {
+              "x": 4,
+              "z": 22.5
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 18.5,
+              "z": 4
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 14.858087419173335,
+              "z": 3.537131128759997
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 15,
+              "z": 6.3
+            }
+          },
+          {
+            "id": "zebra-zaki",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 17.84982241633649,
+              "z": 16.81949622981142
+            }
+          },
+          {
+            "id": "zebra-zuri",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 17.5,
+              "z": 15
+            }
+          },
+          {
+            "id": "zebra-mira",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 15.112445108559797,
+              "z": 13.640556385699746
+            }
+          },
+          {
+            "id": "zebra-kira",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 20,
+              "z": 17.5
+            }
+          }
+        ]
+      },
+      "zebraActors": [
+        {
+          "id": "zebra-zaki",
+          "name": "Zaki",
+          "sex": "male",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 17.84982241633649,
+            "z": 16.81949622981142
+          },
+          "target": {
+            "x": 16,
+            "z": 17.5
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 570,
+            "sequence": 39,
+            "heading": -1.2182866507214654,
+            "waypoints": [
+              {
+                "x": 16,
+                "z": 17.5
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": -0.04223291368598936,
+              "z": 0.015536441085131969
+            },
+            "distanceWalked": 64.05381685522562,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-zuri",
+          "name": "Zuri",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 17.5,
+            "z": 15
+          },
+          "target": {
+            "x": 15.5,
+            "z": 17.5
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 506,
+            "sequence": 3,
+            "heading": 0,
+            "waypoints": [
+              {
+                "x": 18.5,
+                "z": 14
+              },
+              {
+                "x": 18,
+                "z": 14
+              },
+              {
+                "x": 17.5,
+                "z": 14
+              },
+              {
+                "x": 17.5,
+                "z": 14.5
+              },
+              {
+                "x": 17.5,
+                "z": 15
+              },
+              {
+                "x": 17.5,
+                "z": 15.5
+              },
+              {
+                "x": 17.5,
+                "z": 16
+              },
+              {
+                "x": 17.5,
+                "z": 16.5
+              },
+              {
+                "x": 17.5,
+                "z": 17
+              },
+              {
+                "x": 17,
+                "z": 17
+              },
+              {
+                "x": 17,
+                "z": 17.5
+              },
+              {
+                "x": 16.5,
+                "z": 17.5
+              },
+              {
+                "x": 16,
+                "z": 17.5
+              },
+              {
+                "x": 15.5,
+                "z": 17.5
+              }
+            ],
+            "waypointIndex": 5,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0.005000000000000782
+            },
+            "distanceWalked": 3.071282775206301,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-mira",
+          "name": "Mira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 15.112445108559797,
+            "z": 13.640556385699746
+          },
+          "target": {
+            "x": 17,
+            "z": 16
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 577,
+            "sequence": 3,
+            "heading": 0.6747409422235526,
+            "waypoints": [
+              {
+                "x": 17,
+                "z": 16
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0.02811127713994921,
+              "z": 0.03513909642493651
+            },
+            "distanceWalked": 3.820054944640267,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-kira",
+          "name": "Kira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 20,
+            "z": 17.5
+          },
+          "target": {
+            "x": 18.5,
+            "z": 13
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 570,
+            "sequence": 5,
+            "heading": 2.0898820040189436,
+            "waypoints": [
+              {
+                "x": 20,
+                "z": 17.5
+              },
+              {
+                "x": 20.5,
+                "z": 17.5
+              },
+              {
+                "x": 20.5,
+                "z": 17
+              },
+              {
+                "x": 20.5,
+                "z": 16.5
+              },
+              {
+                "x": 20.5,
+                "z": 16
+              },
+              {
+                "x": 20.5,
+                "z": 15.5
+              },
+              {
+                "x": 20.5,
+                "z": 15
+              },
+              {
+                "x": 20.5,
+                "z": 14.5
+              },
+              {
+                "x": 20.5,
+                "z": 14
+              },
+              {
+                "x": 20.5,
+                "z": 13.5
+              },
+              {
+                "x": 20,
+                "z": 13.5
+              },
+              {
+                "x": 19.5,
+                "z": 13.5
+              },
+              {
+                "x": 19,
+                "z": 13.5
+              },
+              {
+                "x": 18.5,
+                "z": 13
+              }
+            ],
+            "waypointIndex": 1,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0.011239452564680619,
+              "z": -0.006421643269341359
+            },
+            "distanceWalked": 2.7509785936581688,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        }
+      ],
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": true,
+        "visitorEligible": true,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4039,
+        "command": 126
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 55,
+        "savedTick": 15484,
+        "savedAt": 1794170114518,
+        "savedCurrency": 4039,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "native",
+        "pending": 0,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 3,
+        "nativeDeliveries": 392,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 395,
+          "retained": 120,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 12.5,
+          "maxMs": 61,
+          "p50Ms": 20.099999994039536,
+          "p95Ms": 56.5,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Actual native requestAnimationFrame; callback cadence is not presented FPS"
+      },
+      "renderer": {
+        "simulationTick": 15484,
+        "simulationSpeed": 1,
+        "simulationPaused": true,
+        "simulationDroppedWallMs": 0,
+        "simulationDroppedSimMs": 0,
+        "liveZebraModels": 4,
+        "zebraGeometries": 4,
+        "zebraMaterials": 4,
+        "zebraBones": 80,
+        "zebraTriangles": 56592,
+        "ownedMaterialsLive": 46,
+        "cleanupErrors": 0,
+        "disposed": false,
+        "geometries": 64,
+        "textures": 15
+      },
+      "resources": {
+        "geometries": 75,
+        "materials": 47,
+        "textures": 14,
+        "renderTargets": 1,
+        "skeletons": 12,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "meshAudit": {
+        "counts": {
+          "objects": 433,
+          "geometries": 75,
+          "materials": 46,
+          "textures": 12,
+          "materialTextures": 0,
+          "skeletonTextures": 12,
+          "skinned": 12,
+          "sprites": 0,
+          "points": 0,
+          "errors": 0,
+          "review": 2
+        },
+        "issues": [
+          {
+            "code": "DEGENERATE_TRIANGLES",
+            "severity": "REVIEW",
+            "path": "/Scene[0]/Group[0]/Two-port macaw feeder[0]/Mesh[0]",
+            "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+          },
+          {
+            "code": "DEGENERATE_TRIANGLES",
+            "severity": "REVIEW",
+            "path": "/Scene[0]/Group[0]/Two macaw water bowls[1]/Mesh[0]",
+            "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+          }
+        ]
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "closed-herd",
+      "source": "58895ec7f44925a55e2de9ceaf9a6c58e1a9c340",
+      "sourceFingerprint": "57db68a53b2af48e774bab104021584b7007c900e9515b75bd36415501dbc8e2",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "documentWidth": 1265
+      },
+      "lang": {
+        "document": "en",
+        "root": "en"
+      },
+      "state": {
+        "tick": 15484,
+        "cash": 4039,
+        "valid": true,
+        "sha256": "60396879a60d9ab21bd2e7dab395deb0cdf7568ff5f1b456a4ea62664c875b29",
+        "gameplayHash": "7cc850b7924b8e6bdb77569eb165ff4cbe4bb22e80cb52281ce395ec0b7b6dd2",
+        "seedGameplayHash": "686f3c948be87ba54be4d876582d623b3ac799c9e19c1b11aa9463058f981e8b",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "perch",
+            "position": {
+              "x": 4.5,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "rest",
+            "position": {
+              "x": 5.5,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "seek-shade",
+            "position": {
+              "x": 4.5,
+              "z": 24
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 4.899264874760215,
+              "z": 19.40018378130994
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "idle",
+            "position": {
+              "x": 4,
+              "z": 22.5
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 18.5,
+              "z": 4
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 14.858087419173335,
+              "z": 3.537131128759997
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 15,
+              "z": 6.3
+            }
+          },
+          {
+            "id": "zebra-zaki",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 17.84982241633649,
+              "z": 16.81949622981142
+            }
+          },
+          {
+            "id": "zebra-zuri",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 17.5,
+              "z": 15
+            }
+          },
+          {
+            "id": "zebra-mira",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 15.112445108559797,
+              "z": 13.640556385699746
+            }
+          },
+          {
+            "id": "zebra-kira",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 20,
+              "z": 17.5
+            }
+          }
+        ]
+      },
+      "zebraActors": [
+        {
+          "id": "zebra-zaki",
+          "name": "Zaki",
+          "sex": "male",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 17.84982241633649,
+            "z": 16.81949622981142
+          },
+          "target": {
+            "x": 16,
+            "z": 17.5
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 570,
+            "sequence": 39,
+            "heading": -1.2182866507214654,
+            "waypoints": [
+              {
+                "x": 16,
+                "z": 17.5
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": -0.04223291368598936,
+              "z": 0.015536441085131969
+            },
+            "distanceWalked": 64.05381685522562,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-zuri",
+          "name": "Zuri",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 17.5,
+            "z": 15
+          },
+          "target": {
+            "x": 15.5,
+            "z": 17.5
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 506,
+            "sequence": 3,
+            "heading": 0,
+            "waypoints": [
+              {
+                "x": 18.5,
+                "z": 14
+              },
+              {
+                "x": 18,
+                "z": 14
+              },
+              {
+                "x": 17.5,
+                "z": 14
+              },
+              {
+                "x": 17.5,
+                "z": 14.5
+              },
+              {
+                "x": 17.5,
+                "z": 15
+              },
+              {
+                "x": 17.5,
+                "z": 15.5
+              },
+              {
+                "x": 17.5,
+                "z": 16
+              },
+              {
+                "x": 17.5,
+                "z": 16.5
+              },
+              {
+                "x": 17.5,
+                "z": 17
+              },
+              {
+                "x": 17,
+                "z": 17
+              },
+              {
+                "x": 17,
+                "z": 17.5
+              },
+              {
+                "x": 16.5,
+                "z": 17.5
+              },
+              {
+                "x": 16,
+                "z": 17.5
+              },
+              {
+                "x": 15.5,
+                "z": 17.5
+              }
+            ],
+            "waypointIndex": 5,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0.005000000000000782
+            },
+            "distanceWalked": 3.071282775206301,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-mira",
+          "name": "Mira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 15.112445108559797,
+            "z": 13.640556385699746
+          },
+          "target": {
+            "x": 17,
+            "z": 16
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 577,
+            "sequence": 3,
+            "heading": 0.6747409422235526,
+            "waypoints": [
+              {
+                "x": 17,
+                "z": 16
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0.02811127713994921,
+              "z": 0.03513909642493651
+            },
+            "distanceWalked": 3.820054944640267,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-kira",
+          "name": "Kira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 20,
+            "z": 17.5
+          },
+          "target": {
+            "x": 18.5,
+            "z": 13
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 570,
+            "sequence": 5,
+            "heading": 2.0898820040189436,
+            "waypoints": [
+              {
+                "x": 20,
+                "z": 17.5
+              },
+              {
+                "x": 20.5,
+                "z": 17.5
+              },
+              {
+                "x": 20.5,
+                "z": 17
+              },
+              {
+                "x": 20.5,
+                "z": 16.5
+              },
+              {
+                "x": 20.5,
+                "z": 16
+              },
+              {
+                "x": 20.5,
+                "z": 15.5
+              },
+              {
+                "x": 20.5,
+                "z": 15
+              },
+              {
+                "x": 20.5,
+                "z": 14.5
+              },
+              {
+                "x": 20.5,
+                "z": 14
+              },
+              {
+                "x": 20.5,
+                "z": 13.5
+              },
+              {
+                "x": 20,
+                "z": 13.5
+              },
+              {
+                "x": 19.5,
+                "z": 13.5
+              },
+              {
+                "x": 19,
+                "z": 13.5
+              },
+              {
+                "x": 18.5,
+                "z": 13
+              }
+            ],
+            "waypointIndex": 1,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0.011239452564680619,
+              "z": -0.006421643269341359
+            },
+            "distanceWalked": 2.7509785936581688,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        }
+      ],
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": true,
+        "visitorEligible": true,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4039,
+        "command": 126
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 58,
+        "savedTick": 15484,
+        "savedAt": 1794170123140,
+        "savedCurrency": 4039,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": true
+      },
+      "owners": 0,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "native",
+        "pending": 0,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 3,
+        "nativeDeliveries": 392,
+        "disposed": true,
+        "cpuFrame": {
+          "count": 395,
+          "retained": 120,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 12.5,
+          "maxMs": 61,
+          "p50Ms": 20.099999994039536,
+          "p95Ms": 56.5,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Actual native requestAnimationFrame; callback cadence is not presented FPS"
+      },
+      "renderer": null,
+      "resources": {
+        "geometries": 0,
+        "materials": 0,
+        "textures": 0,
+        "renderTargets": 0,
+        "skeletons": 0,
+        "shared": 0,
+        "debugRoots": 0
+      },
+      "meshAudit": null,
+      "retired": [
+        {
+          "simulationTick": 15484,
+          "simulationSpeed": 1,
+          "simulationPaused": true,
+          "simulationDroppedWallMs": 0,
+          "simulationDroppedSimMs": 0,
+          "liveZebraModels": 0,
+          "zebraGeometries": 0,
+          "zebraMaterials": 0,
+          "zebraBones": 0,
+          "zebraTriangles": 0,
+          "ownedMaterialsLive": 0,
+          "cleanupErrors": 0,
+          "disposed": true,
+          "geometries": 0,
+          "textures": 0
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "cold-herd",
+      "source": "58895ec7f44925a55e2de9ceaf9a6c58e1a9c340",
+      "sourceFingerprint": "57db68a53b2af48e774bab104021584b7007c900e9515b75bd36415501dbc8e2",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "documentWidth": 1265
+      },
+      "lang": {
+        "document": "en",
+        "root": "en"
+      },
+      "state": {
+        "tick": 15484,
+        "cash": 4039,
+        "valid": true,
+        "sha256": "60396879a60d9ab21bd2e7dab395deb0cdf7568ff5f1b456a4ea62664c875b29",
+        "gameplayHash": "7cc850b7924b8e6bdb77569eb165ff4cbe4bb22e80cb52281ce395ec0b7b6dd2",
+        "seedGameplayHash": "7cc850b7924b8e6bdb77569eb165ff4cbe4bb22e80cb52281ce395ec0b7b6dd2",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "perch",
+            "position": {
+              "x": 4.5,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "rest",
+            "position": {
+              "x": 5.5,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "seek-shade",
+            "position": {
+              "x": 4.5,
+              "z": 24
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 4.899264874760215,
+              "z": 19.40018378130994
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "idle",
+            "position": {
+              "x": 4,
+              "z": 22.5
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 18.5,
+              "z": 4
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 14.858087419173335,
+              "z": 3.537131128759997
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 15,
+              "z": 6.3
+            }
+          },
+          {
+            "id": "zebra-zaki",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 17.84982241633649,
+              "z": 16.81949622981142
+            }
+          },
+          {
+            "id": "zebra-zuri",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 17.5,
+              "z": 15
+            }
+          },
+          {
+            "id": "zebra-mira",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 15.112445108559797,
+              "z": 13.640556385699746
+            }
+          },
+          {
+            "id": "zebra-kira",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 20,
+              "z": 17.5
+            }
+          }
+        ]
+      },
+      "zebraActors": [
+        {
+          "id": "zebra-zaki",
+          "name": "Zaki",
+          "sex": "male",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 17.84982241633649,
+            "z": 16.81949622981142
+          },
+          "target": {
+            "x": 16,
+            "z": 17.5
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 570,
+            "sequence": 39,
+            "heading": -1.2182866507214654,
+            "waypoints": [
+              {
+                "x": 16,
+                "z": 17.5
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": -0.04223291368598936,
+              "z": 0.015536441085131969
+            },
+            "distanceWalked": 64.05381685522562,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-zuri",
+          "name": "Zuri",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 17.5,
+            "z": 15
+          },
+          "target": {
+            "x": 15.5,
+            "z": 17.5
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 506,
+            "sequence": 3,
+            "heading": 0,
+            "waypoints": [
+              {
+                "x": 18.5,
+                "z": 14
+              },
+              {
+                "x": 18,
+                "z": 14
+              },
+              {
+                "x": 17.5,
+                "z": 14
+              },
+              {
+                "x": 17.5,
+                "z": 14.5
+              },
+              {
+                "x": 17.5,
+                "z": 15
+              },
+              {
+                "x": 17.5,
+                "z": 15.5
+              },
+              {
+                "x": 17.5,
+                "z": 16
+              },
+              {
+                "x": 17.5,
+                "z": 16.5
+              },
+              {
+                "x": 17.5,
+                "z": 17
+              },
+              {
+                "x": 17,
+                "z": 17
+              },
+              {
+                "x": 17,
+                "z": 17.5
+              },
+              {
+                "x": 16.5,
+                "z": 17.5
+              },
+              {
+                "x": 16,
+                "z": 17.5
+              },
+              {
+                "x": 15.5,
+                "z": 17.5
+              }
+            ],
+            "waypointIndex": 5,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0.005000000000000782
+            },
+            "distanceWalked": 3.071282775206301,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-mira",
+          "name": "Mira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 15.112445108559797,
+            "z": 13.640556385699746
+          },
+          "target": {
+            "x": 17,
+            "z": 16
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 577,
+            "sequence": 3,
+            "heading": 0.6747409422235526,
+            "waypoints": [
+              {
+                "x": 17,
+                "z": 16
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0.02811127713994921,
+              "z": 0.03513909642493651
+            },
+            "distanceWalked": 3.820054944640267,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-kira",
+          "name": "Kira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 20,
+            "z": 17.5
+          },
+          "target": {
+            "x": 18.5,
+            "z": 13
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 570,
+            "sequence": 5,
+            "heading": 2.0898820040189436,
+            "waypoints": [
+              {
+                "x": 20,
+                "z": 17.5
+              },
+              {
+                "x": 20.5,
+                "z": 17.5
+              },
+              {
+                "x": 20.5,
+                "z": 17
+              },
+              {
+                "x": 20.5,
+                "z": 16.5
+              },
+              {
+                "x": 20.5,
+                "z": 16
+              },
+              {
+                "x": 20.5,
+                "z": 15.5
+              },
+              {
+                "x": 20.5,
+                "z": 15
+              },
+              {
+                "x": 20.5,
+                "z": 14.5
+              },
+              {
+                "x": 20.5,
+                "z": 14
+              },
+              {
+                "x": 20.5,
+                "z": 13.5
+              },
+              {
+                "x": 20,
+                "z": 13.5
+              },
+              {
+                "x": 19.5,
+                "z": 13.5
+              },
+              {
+                "x": 19,
+                "z": 13.5
+              },
+              {
+                "x": 18.5,
+                "z": 13
+              }
+            ],
+            "waypointIndex": 1,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0.011239452564680619,
+              "z": -0.006421643269341359
+            },
+            "distanceWalked": 2.7509785936581688,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        }
+      ],
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": true,
+        "visitorEligible": true,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4039,
+        "command": 126
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 59,
+        "savedTick": 15484,
+        "savedAt": 1794170136019,
+        "savedCurrency": 4039,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 0,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 0,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 0,
+          "retained": 0,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": null,
+          "maxMs": null,
+          "p50Ms": null,
+          "p95Ms": null,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "renderer": {
+        "simulationTick": 15484,
+        "simulationSpeed": 1,
+        "simulationPaused": true,
+        "simulationDroppedWallMs": 0,
+        "simulationDroppedSimMs": 0,
+        "liveZebraModels": 4,
+        "zebraGeometries": 4,
+        "zebraMaterials": 4,
+        "zebraBones": 80,
+        "zebraTriangles": 56592,
+        "ownedMaterialsLive": 46,
+        "cleanupErrors": 0,
+        "disposed": false,
+        "geometries": 64,
+        "textures": 15
+      },
+      "resources": {
+        "geometries": 75,
+        "materials": 47,
+        "textures": 14,
+        "renderTargets": 1,
+        "skeletons": 12,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "meshAudit": {
+        "counts": {
+          "objects": 433,
+          "geometries": 75,
+          "materials": 46,
+          "textures": 12,
+          "materialTextures": 0,
+          "skeletonTextures": 12,
+          "skinned": 12,
+          "sprites": 0,
+          "points": 0,
+          "errors": 0,
+          "review": 2
+        },
+        "issues": [
+          {
+            "code": "DEGENERATE_TRIANGLES",
+            "severity": "REVIEW",
+            "path": "/Scene[0]/Group[0]/Two-port macaw feeder[0]/Mesh[0]",
+            "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+          },
+          {
+            "code": "DEGENERATE_TRIANGLES",
+            "severity": "REVIEW",
+            "path": "/Scene[0]/Group[0]/Two macaw water bowls[1]/Mesh[0]",
+            "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+          }
+        ]
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "cold-herd-closed",
+      "source": "58895ec7f44925a55e2de9ceaf9a6c58e1a9c340",
+      "sourceFingerprint": "57db68a53b2af48e774bab104021584b7007c900e9515b75bd36415501dbc8e2",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "viewport": {
+        "width": 1280,
+        "height": 720,
+        "documentWidth": 1265
+      },
+      "lang": {
+        "document": "en",
+        "root": "en"
+      },
+      "state": {
+        "tick": 15484,
+        "cash": 4039,
+        "valid": true,
+        "sha256": "60396879a60d9ab21bd2e7dab395deb0cdf7568ff5f1b456a4ea62664c875b29",
+        "gameplayHash": "7cc850b7924b8e6bdb77569eb165ff4cbe4bb22e80cb52281ce395ec0b7b6dd2",
+        "seedGameplayHash": "7cc850b7924b8e6bdb77569eb165ff4cbe4bb22e80cb52281ce395ec0b7b6dd2",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "perch",
+            "position": {
+              "x": 4.5,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "rest",
+            "position": {
+              "x": 5.5,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "seek-shade",
+            "position": {
+              "x": 4.5,
+              "z": 24
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 4.899264874760215,
+              "z": 19.40018378130994
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "idle",
+            "position": {
+              "x": 4,
+              "z": 22.5
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 18.5,
+              "z": 4
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 14.858087419173335,
+              "z": 3.537131128759997
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 15,
+              "z": 6.3
+            }
+          },
+          {
+            "id": "zebra-zaki",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 17.84982241633649,
+              "z": 16.81949622981142
+            }
+          },
+          {
+            "id": "zebra-zuri",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 17.5,
+              "z": 15
+            }
+          },
+          {
+            "id": "zebra-mira",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 15.112445108559797,
+              "z": 13.640556385699746
+            }
+          },
+          {
+            "id": "zebra-kira",
+            "species": "equus-quagga",
+            "phase": "wander",
+            "position": {
+              "x": 20,
+              "z": 17.5
+            }
+          }
+        ]
+      },
+      "zebraActors": [
+        {
+          "id": "zebra-zaki",
+          "name": "Zaki",
+          "sex": "male",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 17.84982241633649,
+            "z": 16.81949622981142
+          },
+          "target": {
+            "x": 16,
+            "z": 17.5
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 570,
+            "sequence": 39,
+            "heading": -1.2182866507214654,
+            "waypoints": [
+              {
+                "x": 16,
+                "z": 17.5
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": -0.04223291368598936,
+              "z": 0.015536441085131969
+            },
+            "distanceWalked": 64.05381685522562,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-zuri",
+          "name": "Zuri",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 17.5,
+            "z": 15
+          },
+          "target": {
+            "x": 15.5,
+            "z": 17.5
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 506,
+            "sequence": 3,
+            "heading": 0,
+            "waypoints": [
+              {
+                "x": 18.5,
+                "z": 14
+              },
+              {
+                "x": 18,
+                "z": 14
+              },
+              {
+                "x": 17.5,
+                "z": 14
+              },
+              {
+                "x": 17.5,
+                "z": 14.5
+              },
+              {
+                "x": 17.5,
+                "z": 15
+              },
+              {
+                "x": 17.5,
+                "z": 15.5
+              },
+              {
+                "x": 17.5,
+                "z": 16
+              },
+              {
+                "x": 17.5,
+                "z": 16.5
+              },
+              {
+                "x": 17.5,
+                "z": 17
+              },
+              {
+                "x": 17,
+                "z": 17
+              },
+              {
+                "x": 17,
+                "z": 17.5
+              },
+              {
+                "x": 16.5,
+                "z": 17.5
+              },
+              {
+                "x": 16,
+                "z": 17.5
+              },
+              {
+                "x": 15.5,
+                "z": 17.5
+              }
+            ],
+            "waypointIndex": 5,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0.005000000000000782
+            },
+            "distanceWalked": 3.071282775206301,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-mira",
+          "name": "Mira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 15.112445108559797,
+            "z": 13.640556385699746
+          },
+          "target": {
+            "x": 17,
+            "z": 16
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 577,
+            "sequence": 3,
+            "heading": 0.6747409422235526,
+            "waypoints": [
+              {
+                "x": 17,
+                "z": 16
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0.02811127713994921,
+              "z": 0.03513909642493651
+            },
+            "distanceWalked": 3.820054944640267,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-kira",
+          "name": "Kira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 20,
+            "z": 17.5
+          },
+          "target": {
+            "x": 18.5,
+            "z": 13
+          },
+          "targetResourceId": null,
+          "hunger": 45,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 570,
+            "sequence": 5,
+            "heading": 2.0898820040189436,
+            "waypoints": [
+              {
+                "x": 20,
+                "z": 17.5
+              },
+              {
+                "x": 20.5,
+                "z": 17.5
+              },
+              {
+                "x": 20.5,
+                "z": 17
+              },
+              {
+                "x": 20.5,
+                "z": 16.5
+              },
+              {
+                "x": 20.5,
+                "z": 16
+              },
+              {
+                "x": 20.5,
+                "z": 15.5
+              },
+              {
+                "x": 20.5,
+                "z": 15
+              },
+              {
+                "x": 20.5,
+                "z": 14.5
+              },
+              {
+                "x": 20.5,
+                "z": 14
+              },
+              {
+                "x": 20.5,
+                "z": 13.5
+              },
+              {
+                "x": 20,
+                "z": 13.5
+              },
+              {
+                "x": 19.5,
+                "z": 13.5
+              },
+              {
+                "x": 19,
+                "z": 13.5
+              },
+              {
+                "x": 18.5,
+                "z": 13
+              }
+            ],
+            "waypointIndex": 1,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0.011239452564680619,
+              "z": -0.006421643269341359
+            },
+            "distanceWalked": 2.7509785936581688,
+            "blockedTicks": 0
+          },
+          "foodEaten": 0,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 0,
+          "groomings": 0,
+          "trots": 0
+        }
+      ],
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": true,
+        "visitorEligible": true,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4039,
+        "command": 126
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 60,
+        "savedTick": 15484,
+        "savedAt": 1794170148169,
+        "savedCurrency": 4039,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": true
+      },
+      "owners": 0,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 0,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 0,
+        "nativeDeliveries": 0,
+        "disposed": true,
+        "cpuFrame": {
+          "count": 0,
+          "retained": 0,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": null,
+          "maxMs": null,
+          "p50Ms": null,
+          "p95Ms": null,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "renderer": null,
+      "resources": {
+        "geometries": 0,
+        "materials": 0,
+        "textures": 0,
+        "renderTargets": 0,
+        "skeletons": 0,
+        "shared": 0,
+        "debugRoots": 0
+      },
+      "meshAudit": null,
+      "retired": [
+        {
+          "simulationTick": 15484,
+          "simulationSpeed": 1,
+          "simulationPaused": true,
+          "simulationDroppedWallMs": 0,
+          "simulationDroppedSimMs": 0,
+          "liveZebraModels": 0,
+          "zebraGeometries": 0,
+          "zebraMaterials": 0,
+          "zebraBones": 0,
+          "zebraTriangles": 0,
+          "ownedMaterialsLive": 0,
+          "cleanupErrors": 0,
+          "disposed": true,
+          "geometries": 0,
+          "textures": 0
+        }
+      ],
+      "errors": [],
+      "failures": []
+    }
+  ],
+  "backup": {
+    "version": 5,
+    "revision": 60,
+    "hash": "60396879a60d9ab21bd2e7dab395deb0cdf7568ff5f1b456a4ea62664c875b29",
+    "schema": 5,
+    "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
+    "backupSchema": 4
+  },
+  "logs": []
+}
