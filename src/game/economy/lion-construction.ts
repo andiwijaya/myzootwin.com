@@ -8,7 +8,7 @@ import {debit} from './spending.ts';
 import {validateMultiSave} from '../persistence/save.ts';
 export function lionHabitatView(s:ZooSave){const qualified=lionGrantView(s).qualified,exists=s.world.habitats.some(h=>'kind'in h&&h.kind==='lion-savanna'),reason=!qualified?'locked':exists?'limit':s.currency<LION_PRICES.habitat?'funds':'ready';return {qualified,exists,reason,price:LION_PRICES.habitat,canBuild:reason==='ready'};}
 export function prepareLionConstruction(s:ZooSave,anchor:Point,operationId:string,command:number){
- if(s.schemaVersion!==3&&s.schemaVersion!==4||!lionGrantView(s).qualified)return {ok:false as const,reason:'locked' as const};
+ if(s.schemaVersion!==3&&(s.schemaVersion!==4&&s.schemaVersion!==5)||!lionGrantView(s).qualified)return {ok:false as const,reason:'locked' as const};
  if(!Number.isSafeInteger(command)||command!==s.economy.nextCommand||command>=Number.MAX_SAFE_INTEGER)return {ok:false as const,reason:'command' as const};
  const built=prepareSpeciesHabitat(s.world,anchor,operationId,'lion-savanna');if(!built.ok)return built;
  if(built.duplicate)return {ok:true as const,state:structuredClone(s),habitatId:built.habitatId,duplicate:true};

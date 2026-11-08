@@ -9,7 +9,7 @@ import { raycastScene, type PickRect } from './scene-picking.ts';
 import type {HabitatKind} from '../core/species.ts';
 import {validateSpeciesHabitatPlacement} from '../world/species-habitat.ts';
 
-export function createPlacementPreview(world:()=>RuntimeWorld,catalog:SceneCatalog,camera:Camera,rect:()=>PickRect,onChange:(view:PlacementView)=>void,commit?:(proposal:PlacementProposal,operationId:string)=>boolean,purchaseReason?:(kind:'habitat'|'path')=>import('../world/placement-preview.ts').PlacementReason|null,habitatKind?:()=>HabitatKind) {
+export function createPlacementPreview(world:()=>RuntimeWorld,catalog:SceneCatalog,camera:Camera,rect:()=>PickRect,onChange:(view:PlacementView)=>void,commit?:(proposal:PlacementProposal,operationId:string)=>boolean|Promise<boolean>,purchaseReason?:(kind:'habitat'|'path')=>import('../world/placement-preview.ts').PlacementReason|null,habitatKind?:()=>HabitatKind) {
   const map=world(),blocked=habitatBlockerKeys();
   const group=new Group();group.name='Habitat footprint planning';
   const box=new BoxGeometry(2,.22,2),edges=new EdgesGeometry(box);box.dispose();

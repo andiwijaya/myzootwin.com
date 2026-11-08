@@ -27,6 +27,7 @@ export class PreviewFailure extends Error {
 }
 
 export interface PreviewSession {
+  beginZebraHabitat?():void;
   beginElephantCare?(kind:ElephantCareKind):void;
   elephantCare?(command:ElephantCareCommand,revision?:number):void;
   refillElephantCare?(quote:ElephantCareRefillQuote):void;
@@ -127,6 +128,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     visualSettings(value:VisualSettings){visual={...value};session?.visualSettings?.(visual);},
     locale(value:"en"|"id"){locale=value;session?.locale?.(value);},
     speed(value:number){if(!isPaused()&&state.status==='ready'&&(value===1||value===10))session?.speed?.(value);},
+    beginZebraHabitat(){if(!isPaused()&&state.status==='ready')session?.beginZebraHabitat?.();},
     perch(command:PerchCommand,revision?:number){if(!isPaused()&&state.status==='ready')session?.perch?.(command,revision);},
     water(command:FoodCommand,revision?:number){if(!isPaused()&&state.status==='ready')session?.water?.(command,revision);},
     food(command:FoodCommand,revision?:number){if(!isPaused()&&state.status==='ready')session?.food?.(command,revision);},

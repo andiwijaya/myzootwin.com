@@ -1,5 +1,6 @@
 import type {ZooSaveV4} from './giraffe-state.ts';
-/** V5 data contract is available; runtime acceptance waits for its strict codec/backend gates. */
+import type {ZooSaveV5} from './zebra-state.ts';
+/** Exact historical unions stay closed; canonical commands may preserve validated V5. */
 export type {ZooSaveV5} from './zebra-state.ts';
 import type {ZooSaveV1} from './state.ts';
 import type {V2ZooAnimal,V2ZooWorld,V3ZooAnimal,V3ZooWorld} from './species.ts';
@@ -31,7 +32,7 @@ export interface LionSavannaProgress {
 export interface ZooSaveV3 extends Omit<ZooSaveV2,'schemaVersion'|'world'|'animals'> {
  schemaVersion:3;world:V3ZooWorld;animals:V3ZooAnimal[];lionSavanna:LionSavannaProgress;
 }
-export type MultiSpeciesSave=ZooSaveV2|ZooSaveV3|ZooSaveV4;
+export type MultiSpeciesSave=ZooSaveV2|ZooSaveV3|ZooSaveV4|ZooSaveV5;
 export type ZooSave=ZooSaveV1|MultiSpeciesSave;
 export const initialLionProgress=():LionSavannaProgress=>({grant:null,missions:{currentId:'LQ01',completedIds:[],rewards:[],objectives:{fedIds:[],wateredIds:[],comfortableTicks:0,roars:0,scentInvestigations:0,thrivingTicks:0,viewedVisitorIds:[]}}});
 export const initialElephantMissions=():ElephantMissions=>({currentId:'EH01',completedIds:[],rewards:[],objectives:{fedIds:[],wateredIds:[],comfortableTicks:0,baths:0,enrichments:0,thrivingTicks:0,viewedVisitorIds:[]}});

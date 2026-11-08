@@ -5,13 +5,13 @@ import {validateMultiSave} from '../persistence/save.ts';
 export const LION_GRANT_ID='lion-savanna-grant-v1' as const;
 export interface LionGrantQuote {command:number;}
 export function lionGrantView(s:RuntimeState){
- const qualified=(s.schemaVersion===3||s.schemaVersion===4)&&Boolean(s.elephantGrove?.missions.completedIds.includes('EH04')&&s.elephantGrove.missions.rewards.some(r=>r.missionId==='EH04'&&r.award==='gentle-giants'&&r.ledgerEntryId==='mission-eh04'));
+ const qualified=(s.schemaVersion===3||(s.schemaVersion===4||s.schemaVersion===5))&&Boolean(s.elephantGrove?.missions.completedIds.includes('EH04')&&s.elephantGrove.missions.rewards.some(r=>r.missionId==='EH04'&&r.award==='gentle-giants'&&r.ledgerEntryId==='mission-eh04'));
  const claimed=Boolean(s.lionSavanna?.grant),reason=claimed?'claimed' as const:!qualified?'locked' as const:!Number.isSafeInteger(s.currency+LION_PRICES.grant)?'capacity' as const:'ready' as const;
  return {qualified,claimed,reason,canClaim:reason==='ready',amount:LION_PRICES.grant,command:s.economy.nextCommand};
 }
 /** Durable CAS must win before the caller adopts this exact candidate. No migration/view side effect. */
 export function prepareLionGrant<S extends ZooSave>(s:S,q:LionGrantQuote){
- const view=lionGrantView(s);if(s.schemaVersion!==3&&s.schemaVersion!==4||!view.canClaim)return {ok:false as const,reason:view.reason};
+ const view=lionGrantView(s);if(s.schemaVersion!==3&&(s.schemaVersion!==4&&s.schemaVersion!==5)||!view.canClaim)return {ok:false as const,reason:view.reason};
  if(!q||!Number.isSafeInteger(q.command)||q.command!==s.economy.nextCommand||q.command>=Number.MAX_SAFE_INTEGER)return {ok:false as const,reason:'stale' as const};
  const next=structuredClone(s) as Extract<S,{schemaVersion:3|4}>;next.currency+=1800;next.ledger.push({id:LION_GRANT_ID,operationId:LION_GRANT_ID,kind:'reward',amount:1800,balanceAfter:next.currency,tick:next.tick,relatedId:'lion-savanna'});next.lionSavanna.grant={id:LION_GRANT_ID,ledgerEntryId:LION_GRANT_ID,tick:next.tick,command:q.command};next.economy.nextCommand++;
  const checked=validateMultiSave(next);return checked.ok?{ok:true as const,state:checked.value}:{ok:false as const,reason:'stale' as const};

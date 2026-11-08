@@ -27,7 +27,7 @@ type Result<W>={ok:true;world:W;habitatId:string;duplicate:boolean}|{ok:false;re
 /** Pure world transaction only. Paid construction/unlock/save are separate gates, not bypassed here. */
 export function prepareSpeciesHabitat<W extends HabitatPlacementWorld>(world:W,anchor:Point,operationId:string,kind:HabitatKind):Result<W>{
   const species=habitatSpecies(kind);
-  if(species===null||species==='equus-quagga')return {ok:false,reason:'command'};
+  if(species===null)return {ok:false,reason:'command'};
   if(typeof operationId!=='string'||!/^habitat-[a-z0-9-]{1,40}$/.test(operationId))return {ok:false,reason:'command'};
   const existing=world.habitats.find(h=>h.id===operationId);
   if(existing){

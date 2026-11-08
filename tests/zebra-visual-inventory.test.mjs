@@ -12,10 +12,18 @@ test('all production-reachable visual sources and nested geometry/part sites rem
  // Z2 adds a species data module to the runtime closure. Keep historical visual factories,
  // assets and media exact; core contract changes are covered by the V1-V4 golden projections.
  // Do not rewrite the immutable Z0 receipt or reject an intentional nonvisual schema extension.
- assert.deepEqual(current.modules.filter(m=>m.path.startsWith('src/game/render3d/')),historical.modules.filter(m=>m.path.startsWith('src/game/render3d/')),'Original render factory drift requires explicit review');
- for(const key of ['assets','staticVisuals','generatedResources','publicAssets'])assert.deepEqual(current[key],historical[key],key+' visual inventory drift requires explicit review');
+ // Z2-03 adds one original Zebra fence factory and three reviewed integration modules.
+ // All other47 original render modules stay byte/source-inventory exact. Never rewrite Z0.
+ const integration=new Set(['src/game/render3d/foundation-scene.ts','src/game/render3d/placement-preview.ts','src/game/render3d/preview-controller.ts']),newFactory='src/game/render3d/zebra/world-scene.ts';
+ const protectedModule=m=>m.path.startsWith('src/game/render3d/')&&!integration.has(m.path)&&m.path!==newFactory;
+ assert.deepEqual(current.modules.filter(protectedModule),historical.modules.filter(protectedModule),'Original protected render factory drift requires explicit review');
+ const protectedAsset=a=>!integration.has(a.sourcePath)&&a.sourcePath!==newFactory;
+ assert.deepEqual(current.assets.filter(protectedAsset),historical.assets.filter(protectedAsset),'Original protected visual parts remain exact');
+ for(const path of integration)assert.deepEqual(current.assets.filter(a=>a.sourcePath===path).map(({line,...a})=>a),historical.assets.filter(a=>a.sourcePath===path).map(({line,...a})=>a),'Integration retains original constructors/parts: '+path);
+ for(const key of ['staticVisuals','generatedResources','publicAssets'])assert.deepEqual(current[key],historical[key],key+' visual inventory drift requires explicit review');
+ assert.ok(actual.modules.some(m=>m.path===newFactory&&m.family==='zebra'));
  assert.deepEqual(actual.unresolved,[]);assert.equal(new Set(actual.assets.map(a=>a.assetId)).size,actual.assets.length);
- for(const family of ['macaw','elephant','lion','giraffe','environment','visitors','lighting','camera-picking'])assert.ok(actual.assets.some(a=>a.family===family),family);
+ for(const family of ['macaw','elephant','lion','giraffe','zebra','environment','visitors','lighting','camera-picking'])assert.ok(actual.assets.some(a=>a.family===family),family);
  for(const m of actual.modules)for(const target of m.imports)assert.ok(actual.modules.some(x=>x.path===target),target+' missing from runtime closure');
  for(const m of actual.modules.filter(m=>m.path.startsWith('src/game/render3d/')))for(const c of m.constructors)assert.ok(actual.assets.some(a=>a.sourcePath===m.path&&a.type===c.type&&a.line===c.line),m.path+':'+c.line+' omitted');
  assert.ok(actual.assets.some(a=>a.type==='Box3Helper'&&a.sourcePath.endsWith('scene-picking.ts')),'H1 runtime-discovered real helper stays registered');

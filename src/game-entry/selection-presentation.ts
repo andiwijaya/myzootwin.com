@@ -1,4 +1,5 @@
 import {giraffeCopy,giraffeResourceLabel,giraffeBehaviorLabel} from './giraffe-copy.ts';
+import {zebraConstructionCopy} from './zebra-copy.ts';
 import type {GiraffeBehavior,GiraffeResourceKind} from '../game/core/giraffe-state.ts';
 import {lionCopy,lionResourceLabel,lionBehaviorLabel} from './lion-copy.ts';
 import type {ElephantBehavior,LionBehavior,LionResourceKind} from '../game/core/species.ts';
@@ -11,6 +12,7 @@ const titles:Record<Exclude<SceneIdentityKind,'elephant'|'elephant-facility'|'li
 export function presentSelection(identity:SceneIdentity,locale:EntryLocale) {
   const copy=entryMessages[locale],params={x:identity.cell.x+1,z:identity.cell.z+1,n:identity.ordinal};
   const format=(message:string)=>message.replace(/\{(x|z|n)\}/g,(_,key:keyof typeof params)=>String(params[key]));
+  if(identity.habitatKind==='zebra-grasslands'){const c=zebraConstructionCopy[locale];return{title:c.title,location:format(copy.selectionLocation),detail:identity.connected?c.connected:c.disconnected};}
   if(identity.kind==='giraffe'){const c=giraffeCopy[locale],n=identity.residentNeeds;return {title:identity.residentName??c.title,location:format(copy.selectionLocation),detail:n?`${giraffeBehaviorLabel(n.behavior as GiraffeBehavior,locale)} · ${c.welfare} ${n.welfare}/100 · ${c.hunger} ${n.hunger} · ${c.thirst} ${n.thirst}`:c.intro};}
   if(identity.kind==='giraffe-facility'){const c=giraffeCopy[locale];return {title:giraffeResourceLabel(identity.facilityKind as GiraffeResourceKind,locale),location:format(copy.selectionLocation),detail:`${c.stock}: ${identity.stock}/${identity.capacity}. ${c.guide}`};}
   if(identity.habitatKind==='giraffe-plains'){const c=giraffeCopy[locale];return {title:c.title,location:format(copy.selectionLocation),detail:identity.connected?c.connected:c.disconnected};}

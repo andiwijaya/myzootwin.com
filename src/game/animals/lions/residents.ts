@@ -8,7 +8,7 @@ export const LION_RESIDENTS=Object.freeze([{id:'lion-raka',name:'Raka',sex:'male
 export function lionResidentsView(s:ZooSave){const pride=s.animals.filter(a=>a.speciesId==='panthera-leo'),habitat=s.world.habitats.some(h=>'kind'in h&&h.kind==='lion-savanna'),qualified=lionGrantView(s).qualified;return {qualified,command:s.economy.nextCommand,count:pride.length,canWelcome:qualified&&habitat&&pride.length<3,stage:pride.length===0?'male' as const:'females' as const,residents:pride.map(a=>({id:a.id,name:'name'in a?a.name:a.id}))};}
 /** Private first-male vertical slice, then both females. Identity, sex and membership never regenerate at load. */
 export function prepareLionWelcome(s:ZooSave,command:number){
- if(s.schemaVersion!==3&&s.schemaVersion!==4||!lionResidentsView(s).canWelcome)return {ok:false as const,reason:'locked' as const};
+ if(s.schemaVersion!==3&&(s.schemaVersion!==4&&s.schemaVersion!==5)||!lionResidentsView(s).canWelcome)return {ok:false as const,reason:'locked' as const};
  if(!Number.isSafeInteger(command)||command!==s.economy.nextCommand||command>=Number.MAX_SAFE_INTEGER)return {ok:false as const,reason:'stale' as const};
  const next=structuredClone(s),h=(next.world.habitats as RuntimeState['world']['habitats']).find((h):h is LionHabitat=>h.kind==='lion-savanna');if(!h)return {ok:false as const,reason:'habitat' as const};
  const count=(next.animals as RuntimeState['animals']).filter(isLion).length,add=count===0?LION_RESIDENTS.slice(0,1):LION_RESIDENTS.slice(1),nodes=lionGroundNodes(next.world,h);
