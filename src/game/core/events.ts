@@ -1,4 +1,5 @@
 export type SimulationEvent =
+  | {type:'zebras-welcomed';tick:number;gameTimeMs:number}
   | {type:'giraffe-mission-claimed';missionId:import('./giraffe-state.ts').GiraffeMissionId;amount:number;tick:number;gameTimeMs:number}
   | {type:'giraffe-grant-claimed';amount:number;tick:number;gameTimeMs:number}
   | {type:'giraffes-welcomed';tick:number;gameTimeMs:number}

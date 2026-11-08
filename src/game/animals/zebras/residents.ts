@@ -1,0 +1,12 @@
+import type {ZooSave} from '../../core/zoo-state.ts';
+import {ZEBRA_RESIDENTS,zebras,type ZebraAnimal,type ZebraHabitat} from '../../core/zebra-state.ts';
+import {zebraHabitatView} from '../../economy/zebra-construction.ts';
+import {zebraGroundNodes,zebraDistance} from './ground.ts';
+import {validateSaveV5} from '../../persistence/save-v5.ts';
+export function zebraResidentsView(s:ZooSave){const herd=zebras(s.animals),home=s.world.habitats.some(h=>'kind'in h&&h.kind==='zebra-grasslands');return{count:herd.length,canWelcome:s.schemaVersion===5&&zebraHabitatView(s).qualified&&home&&herd.length===0,command:s.economy.nextCommand,residents:herd.map(a=>({id:a.id,name:a.name}))};}
+/** Explicit first-adult command, never on load. Pure candidate requires durable CAS. */
+export function prepareZebraWelcome(s:ZooSave,command:number){
+ if(s.schemaVersion!==5||!zebraResidentsView(s).canWelcome)return{ok:false as const,reason:'locked' as const};if(!Number.isSafeInteger(command)||command!==s.economy.nextCommand||command>=Number.MAX_SAFE_INTEGER||!validateSaveV5(s).ok)return{ok:false as const,reason:'stale' as const};
+ const next=structuredClone(s),h=next.world.habitats.find((h):h is ZebraHabitat=>h.kind==='zebra-grasslands');if(!h)return{ok:false as const,reason:'habitat' as const};const x=Math.min(...h.cells.map(c=>c.x)),z=Math.min(...h.cells.map(c=>c.z)),preferred={x:x+3,z:z+3},position=zebraGroundNodes(next.world,h).sort((a,b)=>zebraDistance(a,preferred)-zebraDistance(b,preferred)||a.z-b.z||a.x-b.x)[0];if(!position)return{ok:false as const,reason:'space' as const};
+ const a:ZebraAnimal={...ZEBRA_RESIDENTS[0],speciesId:'equus-quagga',habitatId:h.id,position:{...position},target:null,targetResourceId:null,hunger:45,thirst:45,energy:75,habitatFit:100,enrichment:40,welfare:40,care:{low:true,hungry:true,thirsty:true,tired:false,bored:false},currentBehavior:'idle',motion:{phase:'idle',ticksLeft:5,sequence:0,heading:0,waypoints:[],waypointIndex:0,partnerId:null,herdLeaderId:null,lastStep:{x:0,z:0},distanceWalked:0,blockedTicks:0},foodEaten:0,waterDrunk:0,restedTicks:0,enrichedTicks:0,socialComfort:50,shadeRest:30,groomCooldownTicks:0,trotCooldownTicks:0,enrichmentCooldownTicks:0,grazes:0,groomings:0,trots:0};next.animals.push(a);next.economy.nextCommand++;const checked=validateSaveV5(next);return checked.ok?{ok:true as const,state:checked.value}:{ok:false as const,reason:'stale' as const};
+}

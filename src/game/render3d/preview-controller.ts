@@ -30,6 +30,7 @@ export interface PreviewSession {
   beginZebraHabitat?():void;
   beginZebraPath?():void;
   focusZebraHabitat?():void;
+  welcomeZebra?():void;
   beginElephantCare?(kind:ElephantCareKind):void;
   elephantCare?(command:ElephantCareCommand,revision?:number):void;
   refillElephantCare?(quote:ElephantCareRefillQuote):void;
@@ -132,6 +133,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     speed(value:number){if(!isPaused()&&state.status==='ready'&&(value===1||value===10))session?.speed?.(value);},
     beginZebraHabitat(){if(!isPaused()&&state.status==='ready')session?.beginZebraHabitat?.();},
     beginZebraPath(){if(!isPaused()&&state.status==='ready')session?.beginZebraPath?.();},
+    welcomeZebra(){if(!isPaused()&&state.status==='ready')session?.welcomeZebra?.();},
     focusZebraHabitat(){if(!isPaused()&&state.status==='ready')session?.focusZebraHabitat?.();},
     perch(command:PerchCommand,revision?:number){if(!isPaused()&&state.status==='ready')session?.perch?.(command,revision);},
     water(command:FoodCommand,revision?:number){if(!isPaused()&&state.status==='ready')session?.water?.(command,revision);},

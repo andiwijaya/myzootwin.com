@@ -1,3 +1,5 @@
+import {stepZebraMovement} from '../animals/zebras/movement.ts';
+import {prepareZebraWelcome,zebraResidentsView} from '../animals/zebras/residents.ts';
 import {giraffeWelfareExplanation,reconcileGiraffeWelfare} from '../animals/giraffes/welfare.ts';
 import {evaluateGiraffeMissions,giraffeMissionView,prepareGiraffeMission,type GiraffeMissionQuote} from '../missions/giraffe-missions.ts';
 import {GIRAFFE_MISSION_RULES,GIRAFFE_PRICES} from '../animals/giraffes/rules.ts';
@@ -88,7 +90,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     const maintenanceChanged=settleMaintenance(state);
     const random=nextRandom(state.randomState);
     state.randomState=random.state;
-    const {fed,watered}=stepAnimals(macawRuntimeView(state)),bathed:(Extract<SimulationEvent,{type:'elephant-bathed'}>|Extract<SimulationEvent,{type:'elephant-enriched'}>|Extract<SimulationEvent,{type:'elephant-socialized'}>)[]=[];if(state.schemaVersion!==1){const care=stepElephantCare(state);fed.push(...care.fed);watered.push(...care.watered);for(const bath of care.bathed??[])bathed.push({type:'elephant-bathed',...bath,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.enriched??[])bathed.push({type:'elephant-enriched',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.socialized??[])bathed.push({type:'elephant-socialized',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});}const lionEvents=(state.schemaVersion===3||(state.schemaVersion===4||state.schemaVersion===5))?stepLionCare(state):null;if(lionEvents){fed.push(...lionEvents.fed);watered.push(...lionEvents.watered);}const giraffeEvents=(state.schemaVersion===4||state.schemaVersion===5)?stepGiraffeCare(state):null;if(giraffeEvents){fed.push(...giraffeEvents.fed);watered.push(...giraffeEvents.watered);}reconcileWelfare(state);
+    const {fed,watered}=stepAnimals(macawRuntimeView(state)),bathed:(Extract<SimulationEvent,{type:'elephant-bathed'}>|Extract<SimulationEvent,{type:'elephant-enriched'}>|Extract<SimulationEvent,{type:'elephant-socialized'}>)[]=[];if(state.schemaVersion!==1){const care=stepElephantCare(state);fed.push(...care.fed);watered.push(...care.watered);for(const bath of care.bathed??[])bathed.push({type:'elephant-bathed',...bath,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.enriched??[])bathed.push({type:'elephant-enriched',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});for(const event of care.socialized??[])bathed.push({type:'elephant-socialized',...event,tick:state.tick,gameTimeMs:state.gameTimeMs});}const lionEvents=(state.schemaVersion===3||(state.schemaVersion===4||state.schemaVersion===5))?stepLionCare(state):null;if(lionEvents){fed.push(...lionEvents.fed);watered.push(...lionEvents.watered);}const giraffeEvents=(state.schemaVersion===4||state.schemaVersion===5)?stepGiraffeCare(state):null;if(giraffeEvents){fed.push(...giraffeEvents.fed);watered.push(...giraffeEvents.watered);}if(state.schemaVersion===5)stepZebraMovement(state);reconcileWelfare(state);
     const previousAdmissions=state.admissions.length,viewed=stepArrivals(state);
     const admitted=state.admissions.slice(previousAdmissions).map(a=>({visitorId:a.visitorId,admissionId:a.id,amount:ledgerProof(state,a.ledgerEntryId)!.amount}));
     evaluateMissions(state);retireClosedProofs(state);compactNow();
@@ -122,6 +124,9 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     localeView:()=>state.preferences.locale,
     worldSize:()=>({width:state.world.width,height:state.world.height}),
     zebraHabitatView:()=>zebraHabitatView(state),
+    zebraResidentsView:()=>zebraResidentsView(state),
+    prepareZebraWelcome:(command:number)=>disposed||clock.inspect().paused?{ok:false as const,reason:'stale' as const}:prepareZebraWelcome(state,command),
+    acceptCommittedZebraWelcome(candidate:ZooSave,command:number){if(disposed||candidate.schemaVersion!==5||!validateState(candidate).ok)return false;const prepared=prepareZebraWelcome(state,command);if(!prepared.ok)return false;const next=structuredClone(candidate);next.preferences={...state.preferences};prepared.state.preferences={...state.preferences};if(serializeZooSave(next)!==serializeZooSave(prepared.state))return false;state=next;invalidateEdit();publish(Object.freeze({type:'zebras-welcomed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;},
     prepareZebraHabitat:(anchor:Point,operationId:string,command:number)=>disposed||clock.inspect().paused?{ok:false as const,reason:'command' as const}:prepareZebraConstruction(state,anchor,operationId,command),
     acceptCommittedZebraHabitat(candidate:ZooSave,anchor:Point,operationId:string,command:number){
       if(disposed||candidate.schemaVersion!==5||!validateState(candidate).ok)return false;const prepared=prepareZebraConstruction(state,anchor,operationId,command);if(!prepared.ok)return false;

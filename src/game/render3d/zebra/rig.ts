@@ -4,7 +4,7 @@ import {ZEBRA_RESIDENTS} from '../../core/zebra-state.ts';
 type V=[number,number,number];
 export const ZEBRA_LEGS=['foreLeft','foreRight','hindLeft','hindRight'] as const;
 const joints:{name:string;parent:string|null;at:V}[]=[{name:'root',parent:null,at:[0,0,0]},{name:'body',parent:'root',at:[0,.94,-.06]},{name:'neck',parent:'body',at:[0,1.08,.27]},{name:'head',parent:'neck',at:[0,1.39,.46]},{name:'jaw',parent:'head',at:[0,1.29,.62]},{name:'tail',parent:'body',at:[0,1.02,-.46]},{name:'earLeft',parent:'head',at:[.11,1.51,.39]},{name:'earRight',parent:'head',at:[-.11,1.51,.39]}];
-for(const [i,name]of ZEBRA_LEGS.entries()){const x=i%2?-.16:.16,z=i<2?.24:-.34;joints.push({name,parent:'root',at:[x,.87,z]},{name:name+'Knee',parent:name,at:[x,.45,z]},{name:name+'Hoof',parent:name+'Knee',at:[x,.045,z+.02]});}
+for(const [i,name]of ZEBRA_LEGS.entries()){const x=i%2?-.16:.16,z=i<2?.24:-.34;joints.push({name,parent:'root',at:[x,.87,z]},{name:name+'Knee',parent:name,at:[x,.45,z]},{name:name+'Hoof',parent:name+'Knee',at:[x,.045,z]});}
 /** Closed ellipsoid with continuous opaque vertex colors on its original surface.
  * Shared positions sample the same coat: no triangle-centroid checkerboards,
  * coplanar decals, textures, random or time input. Body rings follow its length. */

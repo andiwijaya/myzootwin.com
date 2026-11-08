@@ -73,7 +73,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   let state: PreviewState = { status: 'closed' };
   const events = new AbortController();
   const giraffePanel=mountGiraffePanel(root,host,events.signal);
-  const zebraAccessPanel=mountZebraAccessPanel(root,host,events.signal,{path(){controller.beginZebraPath();revealHudTarget(placementTools);host.focus({preventScroll:true});scrollHudTarget(host);},focus(){controller.focusZebraHabitat();host.focus({preventScroll:true});scrollHudTarget(host);}});
+  const zebraAccessPanel=mountZebraAccessPanel(root,host,events.signal,{welcome(){controller.welcomeZebra();},path(){controller.beginZebraPath();revealHudTarget(placementTools);host.focus({preventScroll:true});scrollHudTarget(host);},focus(){controller.focusZebraHabitat();host.focus({preventScroll:true});scrollHudTarget(host);}});
   host.addEventListener('scene-zebra-access-change',event=>{zebraExists=(event as CustomEvent<ZebraAccessSceneView>).detail.exists;host.setAttribute('aria-label',canvasDescription());},{signal:events.signal});
   host.addEventListener('scene-giraffe-change',event=>{giraffeUnlocked=(event as CustomEvent<{habitat:{exists:boolean}}>).detail.habitat.exists;host.setAttribute('aria-label',canvasDescription());},{signal:events.signal});
   const lionPanel=mountLionPanel(root,host,events.signal);
