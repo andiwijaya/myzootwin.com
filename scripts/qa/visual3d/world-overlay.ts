@@ -1,0 +1,13 @@
+import {BufferGeometry,CircleGeometry,Float32BufferAttribute,Group,Line,LineBasicMaterial,LineSegments,Mesh,MeshBasicMaterial,Vector3,type Material,type Scene} from 'three';
+import type {WorldFixtureDescription} from './world-fixture.ts';import {toScene} from '../../../src/game/world/scene-coordinates.ts';
+/** Explicit debug marks from authoritative cells, care approach ports and production BFS. */
+export function createWorldOverlay(scene:Scene,fixture:WorldFixtureDescription,draw:()=>void){
+ const group=new Group();group.name='QA authoritative footprint ports and routes';group.userData.qaVisual3dDebug=true;group.visible=false;scene.add(group);
+ const geometries=new Set<BufferGeometry>(),materials=new Set<Material>(),wire=new LineBasicMaterial({color:'#1099ae',transparent:true,opacity:.75,depthWrite:false}),portMaterial=new MeshBasicMaterial({color:'#ffbd36',depthWrite:false}),portGeometry=new CircleGeometry(.07,10),routeMaterial=new LineBasicMaterial({color:'#da4e87',depthWrite:false});materials.add(wire);materials.add(portMaterial);materials.add(routeMaterial);geometries.add(portGeometry);let portCount=0,cells=0,disposed=false;
+ for(const h of fixture.habitats){const positions:number[]=[];for(const c of h.cells){cells++;const p=toScene(c,fixture.grid,0);for(const [a,b] of [[[0,0],[1,0]],[[1,0],[1,1]],[[1,1],[0,1]],[[0,1],[0,0]]])positions.push(p.x+a[0]!, .105,p.z+a[1]!,p.x+b[0]!, .105,p.z+b[1]!);}
+  const geometry=new BufferGeometry();geometry.setAttribute('position',new Float32BufferAttribute(positions,3));geometries.add(geometry);const lines=new LineSegments(geometry,wire);lines.name='QA footprint '+h.kind;group.add(lines);
+  for(const r of h.resources)for(const port of r.ports){const marker=new Mesh(portGeometry,portMaterial);marker.rotation.x=-Math.PI/2;marker.position.set(port.scene.x,port.height,port.scene.z);marker.name='QA approach '+r.id;group.add(marker);portCount++;}
+  if(h.route.length){const geometry=new BufferGeometry().setFromPoints(h.route.map(p=>{const s=toScene(p,fixture.grid);return new Vector3(s.x,.13,s.z);}));geometries.add(geometry);const route=new Line(geometry,routeMaterial);route.name='QA gate route '+h.kind;group.add(route);}
+ }
+ return {setVisible(value:boolean){if(disposed)return;group.visible=value;draw();},inspect:()=>({visible:group.visible,cells,ports:portCount,routes:fixture.habitats.filter(h=>h.connected).length,qaGeometries:geometries.size,qaMaterials:materials.size,disposed}),dispose(){if(disposed)return;disposed=true;group.visible=false;scene.remove(group);group.clear();for(const g of geometries)g.dispose();for(const m of materials)m.dispose();geometries.clear();materials.clear();}};
+}
