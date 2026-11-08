@@ -5,11 +5,14 @@ const { title = 'MyZooTwin — Explore. Discover. Understand Animals.', descript
 const canonical = Astro.props.canonical ?? new URL(Astro.url.pathname, 'https://myzootwin.com').toString();
 const socialImage = Astro.props.socialImage;
 const gameHome = Astro.props.gameHome === true;
+const locale = Astro.props.locale === 'id' ? 'id' : 'en';
+const homePath = locale === 'id' ? '/' : '/en/';
+const ui = locale === 'id' ? {skip:'Langsung ke konten utama',home:'Beranda',play:'Main Sekarang',nav:'Navigasi utama',brand:'Beranda MyZooTwin',tagline:'Bangun zoo yang hidup. Rawat para penghuninya.',footer:'Dibuat untuk rasa ingin tahu.',privacy:'Pilihan privasi'} : {skip:'Skip to main content',home:'Home',play:'Play Now',nav:'Main navigation',brand:'MyZooTwin home',tagline:'Build a living zoo. Care for its animals.',footer:'Made for curious minds.',privacy:'Privacy choices'};
 const gaId = import.meta.env.PUBLIC_GA4_ID;
 const privacy = pagePrivacy(Astro.url.pathname, Boolean(gaId));
 ---
 <!doctype html>
-<html lang="en">
+<html lang={locale}>
   <head>
     <meta charset="UTF-8" />
     {privacy.csp && <meta http-equiv="Content-Security-Policy" content={privacy.csp} />}
@@ -30,22 +33,26 @@ const privacy = pagePrivacy(Astro.url.pathname, Boolean(gaId));
     {socialImage && <meta property="og:image:alt" content={socialImage.alt} />}
     {socialImage && <meta name="twitter:image" content={new URL(socialImage.src, 'https://myzootwin.com').href} />}
     {socialImage && <meta name="twitter:image:alt" content={socialImage.alt} />}
+    {gameHome && <><link rel="alternate" hreflang="id" href="https://myzootwin.com/" /><link rel="alternate" hreflang="en" href="https://myzootwin.com/en/" /><link rel="alternate" hreflang="x-default" href="https://myzootwin.com/" /><meta property="og:locale" content={locale === 'id' ? 'id_ID' : 'en_US'} /><meta property="og:locale:alternate" content={locale === 'id' ? 'en_US' : 'id_ID'} /></>}
+    {socialImage?.width && <meta property="og:image:width" content={String(socialImage.width)} />}
+    {socialImage?.height && <meta property="og:image:height" content={String(socialImage.height)} />}
     <title>{title}</title>
   </head>
   <body class={gameHome ? "game-home" : undefined}>
-    <a class="skip-link" href="#main-content" lang="en">Skip to main content</a>
-    <header class="site-header" lang="en">
-      <a class="brand" href="/" aria-label="MyZooTwin home"><span class="brand-mark">✦</span><span>MyZoo<span class="brand-accent">Twin</span></span></a>
-      <nav aria-label="Main navigation">
-        {gameHome && <a href="/" aria-current="page">Home</a>}
-        <a class="play-link" href="/play/" data-site-source="nav" aria-current={Astro.url.pathname.replace(/\/$/, '') === '/play' ? 'page' : undefined}>Play Zoo</a>
+    <a class="skip-link" href="#main-content" lang={locale}>{ui.skip}</a>
+    <header class="site-header" lang={locale}>
+      <a class="brand" href={gameHome ? homePath : "/"} aria-label={ui.brand}><span class="brand-mark">✦</span><span>MyZoo<span class="brand-accent">Twin</span></span></a>
+      <nav aria-label={ui.nav}>
+        {gameHome && <a href={homePath} aria-current="page">{ui.home}</a>}
+        <a class="play-link" href="/play/" data-site-source="nav" aria-current={Astro.url.pathname.replace(/\/$/, '') === '/play' ? 'page' : undefined}>{gameHome ? ui.play : "Play Zoo"}</a>
+        {gameHome && <a class="language-link" href={locale === "id" ? "/en/" : "/"} lang={locale === "id" ? "en" : "id"} hreflang={locale === "id" ? "en" : "id"}>{locale === "id" ? "English" : "Indonesia"}</a>}
         {!gameHome && <><a href="/animals/">Animals</a><a href="/wildlife/">Wildlife</a><a href="/pets/">Pets</a><a href="/learn/">Learn</a><a href="/adventures/">Adventures</a><a href="/gear/">Gear</a></>}
       </nav>
       {!gameHome && <a class="header-link" href="/about/">About <span aria-hidden="true">↗</span></a>}
     </header>
-    <SitePrivacy analyticsId={gaId ?? ""} game={privacy.game} />
+    <SitePrivacy analyticsId={gaId ?? ""} game={privacy.game} locale={locale} />
     <main id="main-content" tabindex="-1"><slot /></main>
-    <footer class="site-footer" lang="en"><div><a class="brand" href="/"><span class="brand-mark">✦</span><span>MyZoo<span class="brand-accent">Twin</span></span></a><p>{gameHome ? "Build a living zoo. Care for its animals." : "A curious field guide to the animals we share this planet with."}</p></div><div class="footer-links">{gameHome ? <><a href="/">Home</a><a href="/play/" data-site-source="home">Play Zoo</a></> : <><a href="/animals/">Animals</a><a href="/wildlife/">Wildlife</a><a href="/pets/">Pets</a><a href="/learn/">Learn</a><a href="/about/">About</a></>}</div><small>© {new Date().getFullYear()} MyZooTwin. Made for curious minds.<br /><button class="privacy-footer" type="button" data-open-site-privacy disabled>Privacy choices</button></small></footer>
+    <footer class="site-footer" lang={locale}><div><a class="brand" href={gameHome ? homePath : "/"}><span class="brand-mark">✦</span><span>MyZoo<span class="brand-accent">Twin</span></span></a><p>{gameHome ? ui.tagline : "A curious field guide to the animals we share this planet with."}</p></div><div class="footer-links">{gameHome ? <><a href={homePath}>{ui.home}</a><a href="/play/" data-site-source="home">{ui.play}</a></> : <><a href="/animals/">Animals</a><a href="/wildlife/">Wildlife</a><a href="/pets/">Pets</a><a href="/learn/">Learn</a><a href="/about/">About</a></>}</div><small>© {new Date().getFullYear()} MyZooTwin. {ui.footer}<br /><button class="privacy-footer" type="button" data-open-site-privacy disabled>{ui.privacy}</button></small></footer>
   </body>
 </html>
 <script>

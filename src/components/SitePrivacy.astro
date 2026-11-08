@@ -1,8 +1,9 @@
 ---
-import {privacyEnglish as copy} from '../privacy/locale';
-const {analyticsId = '', game = false} = Astro.props;
+import {privacyEnglish, privacyIndonesian} from '../privacy/locale';
+const {analyticsId = '', game = false, locale = 'en'} = Astro.props;
+const copy = locale === 'id' ? privacyIndonesian : privacyEnglish;
 ---
-<section data-site-privacy data-analytics-id={analyticsId} data-game={String(game)} lang="en">
+<section data-site-privacy data-analytics-id={analyticsId} data-game={String(game)} lang={locale}>
   <section class="privacy-banner" data-privacy-banner hidden aria-labelledby="privacy-banner-title">
     <div><strong id="privacy-banner-title" data-privacy-text="bannerTitle">{copy.bannerTitle}</strong><p data-privacy-text="banner">{copy.banner}</p><p class="privacy-status" data-privacy-status role="status"></p></div>
     <div class="privacy-actions"><button type="button" data-site-choice="denied" data-privacy-text="essential" disabled>{copy.essential}</button><button type="button" data-site-review data-privacy-text="review" disabled>{copy.review}</button></div>
@@ -16,7 +17,7 @@ const {analyticsId = '', game = false} = Astro.props;
     <p class="privacy-status" data-privacy-status role="status"></p><p class="privacy-reason" data-privacy-reason></p>
     <div class="privacy-actions"><button type="button" data-site-choice="denied" data-privacy-text="essential" disabled>{copy.essential}</button><button type="button" data-site-choice="allowed" data-privacy-text="allow" disabled>{copy.allow}</button><button type="button" data-site-close data-privacy-text="close">{copy.close}</button></div>
   </dialog>
-  <noscript><p class="privacy-no-script">Optional analytics is off. JavaScript is needed to change privacy choices and run the game; the journal remains readable.</p></noscript>
+  <noscript><p class="privacy-no-script">{locale === 'id' ? 'Analytics opsional nonaktif. JavaScript diperlukan untuk mengubah pilihan privasi dan menjalankan game; halaman tetap dapat dibaca.' : 'Optional analytics is off. JavaScript is needed to change privacy choices and run the game; the journal remains readable.'}</p></noscript>
 </section>
 <style>
 .privacy-banner{padding:1rem clamp(1.2rem,4vw,4rem);background:#eaf0e3;border-bottom:1px solid #b4c5a9;display:flex;gap:1rem;align-items:center;justify-content:space-between}.privacy-banner[hidden]{display:none}.privacy-banner p{font-size:.85rem;line-height:1.5;margin:.3rem 0;max-width:45rem}.privacy-actions{display:flex;gap:.65rem;flex-wrap:wrap}.privacy-actions button{min-height:44px;padding:.65rem .9rem;border:1px solid #4c6b54;border-radius:10px;background:#fffdf8;color:#183b32;font:inherit;font-size:.85rem;font-weight:600;cursor:pointer}.privacy-actions button:disabled{opacity:.6;cursor:default}.privacy-actions button:focus-visible,dialog a:focus-visible{outline:3px solid #805211;outline-offset:3px}dialog{width:min(92vw,650px);max-height:calc(100dvh - 2rem);overflow-y:auto;border:1px solid #a4b89b;border-radius:18px;padding:clamp(1.1rem,4vw,2rem);background:#fffdf8;color:#183b32;box-shadow:0 20px 80px #183b3240}dialog::backdrop{background:#142e267a}dialog h2{font-size:clamp(1.7rem,4vw,2.4rem);line-height:1.1;margin:0 0 1.2rem}dialog h3{font:700 1rem/1.4 system-ui;margin:1rem 0 .4rem}dialog p{font-size:.9rem;line-height:1.6;color:#405948;margin:.5rem 0}dialog a{text-decoration:underline;text-underline-offset:.2rem}.privacy-status{font-weight:600}.privacy-reason{background:#eef1e6;padding:.7rem;border-radius:8px}.privacy-no-script{padding:1rem;font-size:.85rem}@media(max-width:720px){.privacy-banner{align-items:start;flex-direction:column}.privacy-actions{width:100%}dialog .privacy-actions button{flex:1 1 100%}}

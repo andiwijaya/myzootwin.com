@@ -20,7 +20,7 @@ function mountNew(root: HTMLElement, options: {storage?: ConsentStorage; analyti
   let storage: ConsentStorage | undefined;
   try {storage = 'storage' in options ? options.storage : win.localStorage;} catch {/* Fail closed. */}
   let opener: HTMLElement | null = null, last: ConsentView;
-  const language = () => options.locale?.() ?? (doc.querySelector('[data-play-entry]')?.getAttribute('lang') === 'id' ? 'id' : 'en');
+  const language = () => options.locale?.() ?? ((doc.querySelector('[data-play-entry]')?.getAttribute('lang') ?? doc.documentElement.lang) === 'id' ? 'id' : 'en');
   const copy = () => language() === 'id' ? privacyIndonesian : privacyEnglish;
   function render(view: ConsentView) {
     last = view; const strings = copy(); root.lang = language();

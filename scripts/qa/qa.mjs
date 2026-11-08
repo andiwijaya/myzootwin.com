@@ -42,7 +42,7 @@ async function stopAll() { await Promise.all([...owned].map(child=>stopChild(chi
 async function requireFree() { for(const port of [4321,4322])if(!await portFree(port))throw Error(`Loopback port ${port} is occupied; no unowned process will be stopped.`); }
 async function routeChecks(report) {
   const baseline=await readJson(join(root,'docs/qa/giraffe-baseline/released-route-metadata.json'));
-  const routes=['/','/animals/','/wildlife/','/pets/','/learn/','/adventures/','/gear/','/about/','/play/'];
+  const routes=['/','/en/','/animals/','/wildlife/','/pets/','/learn/','/adventures/','/gear/','/about/','/play/'];
   const observations=[];
   for(const path of routes) {
     const response=await fetch('http://127.0.0.1:4321'+path,{signal:AbortSignal.timeout(5000)}),html=await response.text();
@@ -50,7 +50,8 @@ async function routeChecks(report) {
     if(response.status!==200||sha256(html)!==sha256(built))throw Error(`Wrong/non-current built route: ${path}`);
     const meta=pageMetadata(html);
     if(meta.canonical!=='https://myzootwin.com'+path)throw Error(`Canonical regression ${path}`);
-    const prior=baseline.desktopRoutes.find(x=>x.path===path)?.direct;
+    // The bilingual homepage deliberately replaces the released landing metadata.
+    const prior=path === '/' ? undefined : baseline.desktopRoutes.find(x=>x.path===path)?.direct;
     const normalize=text=>text.replace(/\s+/g,'');
     if(prior&&Object.keys(prior).some(key=>normalize(String(meta[key]??''))!==normalize(String(prior[key]))))throw Error(`Baseline journal metadata regression ${path}`);
     observations.push({path,status:response.status,sha256:sha256(html),...meta});
@@ -58,8 +59,8 @@ async function routeChecks(report) {
   const direct=await fetch('http://127.0.0.1:4321/play',{signal:AbortSignal.timeout(5000)});
   if(!direct.ok||pageMetadata(await direct.text()).canonical!=='https://myzootwin.com/play/')throw Error('Direct /play regression');
   const sitemap=await (await fetch('http://127.0.0.1:4321/sitemap-0.xml')).text();
-  if([...sitemap.matchAll(/<loc>/g)].length!==9||!routes.every(path=>sitemap.includes('https://myzootwin.com'+path)))throw Error('Nine-route sitemap regression');
-  return {status:'PASS',observedAt:now(),routes:observations,directPlay:true,sitemapCount:9,buildId:report.build.id};
+  if([...sitemap.matchAll(/<loc>/g)].length!==routes.length||!routes.every(path=>sitemap.includes('https://myzootwin.com'+path)))throw Error('Route sitemap regression');
+  return {status:'PASS',observedAt:now(),routes:observations,directPlay:true,sitemapCount:routes.length,buildId:report.build.id};
 }
 async function local() {
   await mkdir(runs,{recursive:true});

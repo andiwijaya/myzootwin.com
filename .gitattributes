@@ -72,3 +72,7 @@ docs/qa/giraffe-soak/*.txt -whitespace
 docs/qa/giraffe-native-final/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
 docs/qa/giraffe-native-final/*.log -whitespace
 docs/qa/giraffe-native-final/*.diff -whitespace
+
+# Homepage receipts preserve exact capture bytes and vendor log formatting.
+docs/qa/homepage-refresh/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/qa/homepage-refresh/*.log -whitespace
