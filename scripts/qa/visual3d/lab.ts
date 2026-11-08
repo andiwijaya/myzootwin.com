@@ -5,6 +5,7 @@ import type {ZooSave} from '../../../src/game/core/zoo-state.ts';
 import type {EditorState} from '../../../src/game/world/editing.ts';
 import {validateSaveV4} from '../../../src/game/persistence/save-v4.ts';
 import {loadVisualFixture} from './fixture.ts';
+import {stateFingerprint as hash} from './state-fingerprint.ts';
 
 declare const __VIS3D_SOURCE__:string,__VIS3D_SOURCE_FINGERPRINT__:string,__VIS3D_FIXTURE_HASH__:string;
 const stage=document.querySelector<HTMLElement>('#stage')!,out=document.querySelector<HTMLElement>('#result')!,status=document.querySelector<HTMLElement>('#status')!,open=document.querySelector<HTMLButtonElement>('#open')!,close=document.querySelector<HTMLButtonElement>('#close')!;
@@ -12,7 +13,6 @@ const errors:string[]=[],pending=new Set<number>();let session:PreviewSession|un
 const recordError=(e:unknown)=>{if(errors.length<20)errors.push(String(e));};
 window.addEventListener('error',e=>recordError(e.message));window.addEventListener('unhandledrejection',e=>recordError(e.reason));
 const fixture=await loadVisualFixture();latest=structuredClone(fixture.state);
-const hash=async(value:unknown)=>Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(JSON.stringify(value))))).map(n=>n.toString(16).padStart(2,'0')).join('');
 function catalogue(){
  const geometries=new Set<BufferGeometry>(),materials=new Set<Material>(),textures=new Set<Texture>(),skeletons=new Set<Skeleton>(),names:string[]=[];let meshes=0,skinned=0,instances=0,sprites=0,points=0;
  world?.traverse(o=>{if(o.name)names.push(o.name);if(o instanceof Mesh){meshes++;geometries.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:[o.material]){materials.add(m);for(const v of Object.values(m))if(v&&typeof v==='object'&&'isTexture'in v)textures.add(v as Texture);}}if(o instanceof SkinnedMesh){skinned++;skeletons.add(o.skeleton);if(o.skeleton.boneTexture)textures.add(o.skeleton.boneTexture);}if(o instanceof InstancedMesh)instances+=o.count;if(o instanceof Sprite)sprites++;if(o instanceof Points)points++;});
