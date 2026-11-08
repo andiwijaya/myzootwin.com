@@ -125,7 +125,8 @@ export function createIndexedDbBackend<State extends PersistedZooSave=ZooSaveV1>
                 }
                 catch (e) {
                     error = e;
-                    tx.abort();
+                    // The failing body may already have aborted the native transaction.
+                    try { tx.abort(); } catch { /* Existing abort event settles the original error. */ }
                 }
                 tx.addEventListener('error', () => { }, { once: true });
             });
@@ -140,8 +141,10 @@ export function createIndexedDbBackend<State extends PersistedZooSave=ZooSaveV1>
             run();
         }
         catch (e) {
-            tx.abort();
             throwLater.set(tx, e);
+            // Native IndexedDB throws InvalidStateError on a second abort. Preserve
+            // the first failure before aborting and let onabort reject the promise.
+            try { tx.abort(); } catch { /* Already aborted by the operation/browser. */ }
         }
     }
     const throwLater = new WeakMap<IDBTransaction, unknown>();
