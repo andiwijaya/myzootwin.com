@@ -1,0 +1,130 @@
+{
+  "id": "H1-02",
+  "status": "PASS_REGISTRY_AND_PROVENANCE_ONLY",
+  "at": "2026-11-08T14:00:41.291Z",
+  "source": "a5f24cd42413c4a7c75ef4731c35498934453c3b",
+  "sourceFingerprint": "3910d6dc5133f2a5d08ae816c3d51aab92e252238b7e7a3dc47f72762620e1c8",
+  "build": "459344b53bd264f91f46bf5efa1485e87bcca13ada4ef5377759fd26e7968088",
+  "productionExclusion": {
+    "status": "PASS",
+    "markers": [
+      "myzootwin-visual3d-",
+      "Asset Lab internal",
+      "__VIS3D_SOURCE__",
+      "scripts/qa/visual3d",
+      "visual3d-frozen-v4",
+      "__qaVisual3dTag",
+      "QA-only constructor side-table"
+    ],
+    "files": 31
+  },
+  "manifest": {
+    "records": 449,
+    "renderModules": 50,
+    "constructorSites": 257,
+    "sha256": "68e795ce86aad0aa3b504e4ab6485cc6b285d8ad500bb16db7e706bce1fa62ea",
+    "bytes": 485358
+  },
+  "runtime": {
+    "objects": 346,
+    "directlyTagged": 345,
+    "derivedLightTargets": 1,
+    "unmapped": 0,
+    "constructedSites": 241,
+    "retainedSites": 133,
+    "resources": 111,
+    "notConstructed": [
+      {
+        "assetId": "game/render3d/elephant/elephant-spray:createElephantSpray:geometry:SphereGeometry:0",
+        "status": "NOT_CONSTRUCTED_CURRENT_CYCLE"
+      },
+      {
+        "assetId": "game/render3d/elephant/elephant-spray:createElephantSpray:material:MeshBasicMaterial:1",
+        "status": "NOT_CONSTRUCTED_CURRENT_CYCLE"
+      },
+      {
+        "assetId": "game/render3d/elephant/elephant-spray:createElephantSpray:mesh:InstancedMesh:2",
+        "status": "NOT_CONSTRUCTED_CURRENT_CYCLE"
+      },
+      {
+        "assetId": "game/render3d/elephant/elephant-spray:createElephantSpray:dummy:Object3D:3",
+        "status": "NOT_CONSTRUCTED_CURRENT_CYCLE"
+      },
+      {
+        "assetId": "game/render3d/foundation-scene:mountFoundationScene:WebGLRenderer:WebGLRenderer:3",
+        "status": "NOT_CONSTRUCTED_CURRENT_CYCLE"
+      },
+      {
+        "assetId": "game/render3d/macaw/macaw-studio:allocate:Group:Group:2",
+        "status": "NOT_CONSTRUCTED_CURRENT_CYCLE"
+      },
+      {
+        "assetId": "game/render3d/macaw/macaw-studio:mesh:Mesh:Mesh:3",
+        "status": "NOT_CONSTRUCTED_CURRENT_CYCLE"
+      },
+      {
+        "assetId": "game/render3d/macaw/macaw-studio:allocate:CylinderGeometry:CylinderGeometry:4",
+        "status": "NOT_CONSTRUCTED_CURRENT_CYCLE"
+      },
+      {
+        "assetId": "game/render3d/macaw/macaw-studio:allocate:CircleGeometry:CircleGeometry:5",
+        "status": "NOT_CONSTRUCTED_CURRENT_CYCLE"
+      },
+      {
+        "assetId": "game/render3d/macaw/macaw-studio:allocate:CylinderGeometry:CylinderGeometry:6",
+        "status": "NOT_CONSTRUCTED_CURRENT_CYCLE"
+      },
+      {
+        "assetId": "game/render3d/macaw/macaw-studio:allocate:CylinderGeometry:CylinderGeometry:7",
+        "status": "NOT_CONSTRUCTED_CURRENT_CYCLE"
+      },
+      {
+        "assetId": "game/render3d/macaw/macaw-studio:allocate:LatheGeometry:LatheGeometry:8",
+        "status": "NOT_CONSTRUCTED_CURRENT_CYCLE"
+      },
+      {
+        "assetId": "game/render3d/macaw/macaw-studio:allocate:CylinderGeometry:CylinderGeometry:9",
+        "status": "NOT_CONSTRUCTED_CURRENT_CYCLE"
+      },
+      {
+        "assetId": "game/render3d/macaw/macaw-studio:allocate:CircleGeometry:CircleGeometry:10",
+        "status": "NOT_CONSTRUCTED_CURRENT_CYCLE"
+      },
+      {
+        "assetId": "game/render3d/macaw/macaw-studio:allocate:SphereGeometry:SphereGeometry:11",
+        "status": "NOT_CONSTRUCTED_CURRENT_CYCLE"
+      },
+      {
+        "assetId": "game/render3d/placement-preview:ensureFills:tile:Mesh:11",
+        "status": "NOT_CONSTRUCTED_CURRENT_CYCLE"
+      }
+    ],
+    "sourceAndActualSceneSpriteCount": 0,
+    "points": 0,
+    "stateExact": true
+  },
+  "correction": {
+    "issue": "INITIAL_HELPER_SCAN_OMISSION",
+    "status": "FIXED_AND_NATIVE_REVERIFIED",
+    "discovery": "discovery.json",
+    "detail": "Added actual Box3Helper and spray Object3D transform-helper constructors. Z0-03 immutable original receipt retained; historical projection test documents correction, source hashes unchanged. Transient constructor counts now include resources merged/disposed before traversal."
+  },
+  "tests": {
+    "pass": 9,
+    "fail": 0,
+    "logHash": "648d49191f05f9fbef7405b09c7a7d51a4ccbfbe4813fb595f7bf7ced84961ee",
+    "targetedStrictTypecheck": "PASS",
+    "wholeProjectCheck": "439files clean before helper-traversal correction; targeted strict QA-entry import graph rechecked after correction"
+  },
+  "evidence": {
+    "browser": "9f84a6aaba8cb9dc00ba61ca6e8f850ce44f51585bff93d6d478f58eac9acad9",
+    "screenshot": "102710075272b160f6b1f8d51ccd034b7ef7561b0070e92a54dd01c3f84b4bc2"
+  },
+  "limits": [
+    "Every visualStatus remains NOT_RUN; constructing/tracing an object is not a visual quality pass.",
+    "16 unconstructed sites in this paused fixture remain explicit pending cases for studio/spray/quality/timeline coverage.",
+    "Generated/merged internal resources inherit actual owner provenance; no invented exact constructor line.",
+    "The renderer itself uses the documented real WebGLRenderer QA hook, so the default source constructor is intentionally not executed.",
+    "Repeated resource-growth test H1-08 still open; presented FPS unmeasured."
+  ]
+}
