@@ -1,0 +1,39 @@
+{
+  "at": "2026-11-08T13:34:54.495Z",
+  "id": "Z0-03",
+  "status": "PASS",
+  "source": "4ae67baea393b45d6895937ba3373c39b1663fd7",
+  "runtimeSourceTree": "c78fbf947b7e83d5c410038df96efb077739b27a",
+  "method": "TypeScript AST runtime-import closure, constructor sites, named procedural parts, all helper/animation functions, source hashes and public distribution inventory; source sites are NOT a runtime asset count or rendered pass",
+  "reachableModules": 170,
+  "visualModules": 50,
+  "sourceSites": 360,
+  "publicAssets": 12,
+  "unresolved": [],
+  "sourceInventoryCoverage": "50/50 reachable render modules inventoried; not runtime visual acceptance",
+  "visualAcceptance": "NOT_RUN until H1; Z0-02 native four-habitat overview inherited unchanged production source",
+  "tests": {
+    "counts": {
+      "tests": 2,
+      "pass": 2,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "log": ".qa/zebra-audit/z0-03-tests.log",
+    "sha256": "185fe687027a3b5362fcf4de67a1937c6051cf758a22037aa649e7fa57ed0e48"
+  },
+  "issues": [
+    {
+      "id": "PROVENANCE-LEGACY-PUBLIC",
+      "status": "RESOLVED_BY_CONTENT_HASH",
+      "finding": "Do not confuse path reuse with retired art: current171632byte PNG SHA194a2cb5 matches journal_hero_png_compat original-project record, not the retired3001357byte historical image. Git4dde232 replaced it. Original media preserved."
+    },
+    {
+      "id": "RENDERER-PROGRAM-COUNTER",
+      "status": "OPEN",
+      "finding": "Z0-02 disposal has zero owned frames/subscribers/geometries/textures/materials and renderer program counter1. Measure repeated growth and inspect ownership in H1-08; no leak-free claim."
+    }
+  ]
+}
