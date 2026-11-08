@@ -1,0 +1,157 @@
+{
+  "status": "PASS_Z4_01_PAID_FACILITIES_AND_REFILLS",
+  "source": "87b981a523f8d08c4c7f1cf33a4dcd3e80957849",
+  "sourceFingerprint": "16b165cacf2905d42ebbc9c1cf13ee255d12290d8b06af2058ad59456fe554fe",
+  "tests": 38,
+  "strictTypes": "PASS",
+  "astroCheck": "525 files;0 errors/warnings/hints",
+  "productionExclusion": {
+    "status": "PASS",
+    "markers": [
+      "myzootwin-visual3d-",
+      "Asset Lab internal",
+      "__VIS3D_SOURCE__",
+      "scripts/qa/visual3d",
+      "visual3d-frozen-v4",
+      "__qaVisual3dTag",
+      "QA-only constructor side-table",
+      "Step cosmetic Studio100ms",
+      "matrix-result"
+    ],
+    "files": 31
+  },
+  "browserCases": 22,
+  "paid": {
+    "facilities": 5,
+    "construction": 410,
+    "initialSupplies": 34,
+    "total": 444,
+    "cashBefore": 4039,
+    "cashAfter": 3595,
+    "commandsBefore": 126,
+    "commandsAfter": 135,
+    "stocks": [
+      {
+        "id": "zebra-graze-126",
+        "kind": "zebra-graze",
+        "stock": 12,
+        "capacity": 12,
+        "revision": 127,
+        "approaches": [
+          {
+            "x": 15.15,
+            "z": 13.8
+          },
+          {
+            "x": 15.15,
+            "z": 15.2
+          }
+        ]
+      },
+      {
+        "id": "zebra-graze-127",
+        "kind": "zebra-graze",
+        "stock": 12,
+        "capacity": 12,
+        "revision": 128,
+        "approaches": [
+          {
+            "x": 20.85,
+            "z": 13.8
+          },
+          {
+            "x": 20.85,
+            "z": 15.2
+          }
+        ]
+      },
+      {
+        "id": "zebra-water-128",
+        "kind": "zebra-water",
+        "stock": 12,
+        "capacity": 12,
+        "revision": 129,
+        "approaches": [
+          {
+            "x": 16.8,
+            "z": 13.15
+          },
+          {
+            "x": 18.2,
+            "z": 13.15
+          }
+        ]
+      },
+      {
+        "id": "zebra-shade-129",
+        "kind": "zebra-shade",
+        "stock": 1,
+        "capacity": 1,
+        "revision": 129,
+        "approaches": [
+          {
+            "x": 16.8,
+            "z": 18.85
+          },
+          {
+            "x": 18.2,
+            "z": 18.85
+          }
+        ]
+      },
+      {
+        "id": "zebra-enrichment-130",
+        "kind": "zebra-enrichment",
+        "stock": 6,
+        "capacity": 6,
+        "revision": 131,
+        "approaches": [
+          {
+            "x": 21.15,
+            "z": 18.8
+          },
+          {
+            "x": 19.8,
+            "z": 18.85
+          }
+        ]
+      }
+    ]
+  },
+  "cold": {
+    "hash": "7d9d60a47c2b8d8f866199be004f8a1fef92ed1fb707c026525473eff0249620",
+    "tick": 15484,
+    "cash": 3595
+  },
+  "scope": [
+    "Actual product UI, original renderer/engine and durable backend: unpaid ready/outside/cancel leave full hash exact; purchase/refill refusal before write leaves no optimistic stock/debit. Same unchanged purchase quote can retry. Nine actual accepted commands buy five props and refill four consumables for444ZC.",
+    "Two legal service ports per real resource, bounded5 slots/two grazing stations; placement protects occupied cells, actual roots/waypoints, old service ports and reachable routes. No actor/old habitat/path/mission mutation or automatic placement.",
+    "Procedural original grazing/hay portions, open round drinking trough/water surface, slatted shade crown inside the paid8x8 pen above adult heads, and dust/log enrichment; actual stock owns portion geometry. Shade post participates in swept body collision.",
+    "Node tests cover exact receipts/prices, strict low-balance negative validation data, stale/full/replay/forged guards, active-route obstruction, frozen async preview/disposal and resource ownership. Low-balance fixture uses a validation-only shared ledger debit; it is not causal player spending/budget evidence.",
+    "Factory triangle-ownership tests isolate each real prop mesh for four-angle raycasts. Some full-scene angles occlude small props behind the real shade geometry; whole-scene visibility is an explicit R7 matrix, not promoted by isolated picking. Native visible-water picking selects zebra-water-128 and reports actual12/12 stock.",
+    "Native ID/EN,360px/44px controls, zero mesh errors apart from two original source-reviewed macaw lathe closures, exact cold stock/revisions/ports/hash and original V4 archive; all owners/materials/geometries/textures/callbacks zero after close.",
+    "All native inspection callbacks stay0ms; canonical tick15484 and every actor remain exact. No fabricated consumption/welfare/rest/social/mission credit, physical-device or presented-FPS claim. Grant remains proposed until real care/upkeep budget acceptance. Public bootstrap remains V4; no push/deploy."
+  ],
+  "artifacts": [
+    {
+      "path": "docs\\qa\\zebra\\z4-01\\browser.json",
+      "bytes": 425865,
+      "sha256": "23486dbaedba465c569f5b39f6b005171e50236844e5a93afd695d4466275ae2"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z4-01\\paid-care-full-en.png",
+      "bytes": 105060,
+      "sha256": "0ef94c79c60b824d5294898f987a7e93a7c339ebca3c8b841aa40c481411d108"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z4-01\\paid-care-full-id.png",
+      "bytes": 128215,
+      "sha256": "a592c36ed28a4d161baf7de92c92f0bbc69bd556ef0d69dd43fbe8aadce756db"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z4-01\\paid-care-mobile360-id.png",
+      "bytes": 42895,
+      "sha256": "74bf5c4499dc11988997701153c286ff98c7d2fdb8e35719ac31472d439931ca"
+    }
+  ]
+}
