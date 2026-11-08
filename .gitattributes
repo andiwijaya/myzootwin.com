@@ -76,3 +76,7 @@ docs/qa/giraffe-native-final/*.diff -whitespace
 # Homepage receipts preserve exact capture bytes and vendor log formatting.
 docs/qa/homepage-refresh/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
 docs/qa/homepage-refresh/*.log -whitespace
+
+# Zebra source-bound receipts preserve exact bytes across checkouts.
+docs/qa/zebra/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
+docs/qa/zebra/**/*.log -whitespace
