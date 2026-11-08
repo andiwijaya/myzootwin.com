@@ -1,0 +1,4 @@
+export interface PhaseRecord {id:string;tick:number;species:string|null;phase:string|null;actors:{id:string;ticksLeft:number;position:{x:number;z:number}|null}[];stateHash:string;gameplayHash:string;producerSource:string;productionFingerprint:string;producerHash:string;baseHash:string;mode:string;recipe:string;fileHash:string;bytes:number;}
+export interface PhaseIndex {version:1;productionFingerprint:string|null;records:PhaseRecord[];}
+export function selectPhaseRecord(index:PhaseIndex,requested:string|null){if(requested===null||requested==='')return null;const record=index.records.find(r=>r.id===requested);if(!record||!(/^[a-z0-9-]{1,40}$/).test(requested))throw Error('Phase case is not in this immutable QA build');return record;}
+export const phaseGeneration=(id:string|null)=>id?'visual3d-synthetic-'+id:'visual3d-synthetic-fixture';
