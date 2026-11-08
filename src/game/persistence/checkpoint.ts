@@ -1,7 +1,9 @@
 import { parseSave, serializeSave, MAX_SAVE_CHARS } from './save-v1.ts';
 import type { ZooSaveV1 } from '../core/state.ts';
 import type {ZooSave} from '../core/zoo-state.ts';
-export type PersistedZooSave=ZooSave;
+import type {ZooSaveV5} from '../core/zebra-state.ts';
+/** Persistence may validate V5 before the product runtime adopts it. Historical codecs stay exact. */
+export type PersistedZooSave=ZooSave|ZooSaveV5;
 export type StorageFault = 'unavailable' | 'unreadable' | 'quota' | 'conflict' | 'write';
 export class SaveFault extends Error {
     code: StorageFault;

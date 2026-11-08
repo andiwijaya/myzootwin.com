@@ -10,8 +10,10 @@ function predecessor(old:StoredCheckpoint|null,next:StoredCheckpoint):StoredChec
   const fresh=GIRAFFE_CHECKPOINT_CODEC.parse(next.payload);if(!fresh.ok)throw new SaveFault('unreadable');return {...structuredClone(next),writer:'giraffe-v3-intermediate',payload:serializeSaveV3(projectUnstartedV4(fresh.value))};
  }catch{throw new SaveFault('unreadable');}
 }
+/** Shared historical policy. V5 may reuse this only with a validated V4 intermediate. */
+export const GIRAFFE_V3_MIGRATION={prepare:predecessor,validate:validateV3Backup};
 /** Same database/store; exact V3 predecessor (or explicitly labelled validated intermediate)
  * is preserved atomically with the first winning V4 write. Never reconstruct lost V4 provenance. */
 export function createGiraffeIndexedDbBackend(factory:IDBFactory|undefined,database=SAVE_DATABASE){
- return createIndexedDbBackend<ZooSaveV4>(factory,database,{codec:GIRAFFE_CHECKPOINT_CODEC,databaseVersion:4,minimumSchema:4,preserveV1BeforeMigration:true,preserveV2BeforeMigration:true,v3Migration:{prepare:predecessor,validate:validateV3Backup}});
+ return createIndexedDbBackend<ZooSaveV4>(factory,database,{codec:GIRAFFE_CHECKPOINT_CODEC,databaseVersion:4,minimumSchema:4,preserveV1BeforeMigration:true,preserveV2BeforeMigration:true,v3Migration:GIRAFFE_V3_MIGRATION});
 }

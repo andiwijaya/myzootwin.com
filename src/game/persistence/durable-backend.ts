@@ -29,20 +29,34 @@ export interface DurableBackend<State extends PersistedZooSave=ZooSaveV1> {
     close(): void;
 }
 const fault = (e: unknown): SaveFault => e instanceof SaveFault ? e : new SaveFault(e instanceof DOMException && e.name === 'QuotaExceededError' ? 'quota' : e instanceof DOMException && e.name === 'VersionError' ? 'unreadable' : 'unavailable');
-export interface BackendOptions<State extends PersistedZooSave=ZooSaveV1> {codec?:CheckpointCodec<State>;databaseVersion?:1|2|3|4;minimumSchema?:2|3|4;preserveV1BeforeMigration?:boolean;preserveV2BeforeMigration?:boolean;v3Migration?:{prepare(old:StoredCheckpoint|null,next:StoredCheckpoint):StoredCheckpoint;validate(raw:unknown):boolean};}
+interface MigrationBackup {prepare(old:StoredCheckpoint|null,next:StoredCheckpoint):StoredCheckpoint;validate(raw:unknown):boolean;}
+export interface BackendOptions<State extends PersistedZooSave=ZooSaveV1> {codec?:CheckpointCodec<State>;databaseVersion?:1|2|3|4|5;minimumSchema?:2|3|4|5;preserveV1BeforeMigration?:boolean;preserveV2BeforeMigration?:boolean;v3Migration?:MigrationBackup;v4Migration?:MigrationBackup;}
 export const ELEPHANT_V1_BACKUP='elephant-v1-backup';
 export const LION_V2_BACKUP='lion-v2-backup';
 export const GIRAFFE_V3_BACKUP='giraffe-v3-backup';
+export const ZEBRA_V4_BACKUP='zebra-v4-backup';
 export function createIndexedDbBackend<State extends PersistedZooSave=ZooSaveV1>(factory: IDBFactory | undefined, database = SAVE_DATABASE,options:BackendOptions<State>={}): DurableBackend<State> {
     const codec=options.codec??LEGACY_CHECKPOINT_CODEC as unknown as CheckpointCodec<State>;
     const checkedCheckpoint=(raw:unknown)=>checkRecord(raw,codec),inspectCheckpoint=(raw:unknown)=>inspectRecord(raw,codec),stateFromCheckpoint=(raw:StoredCheckpoint)=>decodeRecord(raw,codec),encodeCheckpointState=(state:State)=>encodeRecord(state,codec),summarize=(raw:StoredCheckpoint)=>summarizeRecord(raw,codec);
-    const backupMissing=(record:StoredCheckpoint|null,backup:unknown)=>Boolean(options.v3Migration&&record&&JSON.parse(record.payload).schemaVersion===4&&!options.v3Migration.validate(backup));
+    const backupMissing=(record:StoredCheckpoint|null,v3:unknown,v4:unknown)=>{const schema=record?JSON.parse(record.payload).schemaVersion:0;return Boolean(options.v3Migration&&schema>=4&&!options.v3Migration.validate(v3)||options.v4Migration&&schema===5&&!options.v4Migration.validate(v4));};
     function preserveV3(old:StoredCheckpoint|null,next:StoredCheckpoint,store:IDBObjectStore,backup:unknown){
         if(!options.v3Migration)return;
         if(backup!==undefined){if(!options.v3Migration.validate(backup))throw new SaveFault('unreadable');return;}
         const predecessor=options.v3Migration.prepare(old,next);
         if(!options.v3Migration.validate(predecessor))throw new SaveFault('unreadable');
         store.put(predecessor,GIRAFFE_V3_BACKUP);
+    }
+    function preserveV4(old:StoredCheckpoint|null,next:StoredCheckpoint,store:IDBObjectStore,backup:unknown){
+        if(!options.v4Migration)return;
+        if(backup!==undefined){
+            if(!options.v4Migration.validate(backup))throw new SaveFault('unreadable');
+            // A pre-existing backup cannot substitute for a different V4 predecessor.
+            if(old&&JSON.parse(old.payload).schemaVersion<5&&rawSignature(old)!==rawSignature(backup))throw new SaveFault('unreadable');
+            return;
+        }
+        const predecessor=options.v4Migration.prepare(old,next);
+        if(!options.v4Migration.validate(predecessor))throw new SaveFault('unreadable');
+        store.put(predecessor,ZEBRA_V4_BACKUP);
     }
     let connection: IDBDatabase | undefined, opening: Promise<IDBDatabase> | undefined, closed = false, observedGeneration = 'empty';
     let quoted: {
@@ -137,13 +151,13 @@ export function createIndexedDbBackend<State extends PersistedZooSave=ZooSaveV1>
             previous: unknown;
             preserved: unknown;
             restart: unknown;
-            migrationBackup:unknown;v2Backup:unknown;v3Backup:unknown;
-        }>('readonly', (store, _tx, set) => { const a = store.get('primary'), b = store.get('previous'), c = store.get('preserved'), d = store.get('restart'),e=store.get(ELEPHANT_V1_BACKUP),f=store.get(LION_V2_BACKUP),g=store.get(GIRAFFE_V3_BACKUP); g.onsuccess = () => set({ primary: a.result, previous: b.result, preserved: c.result, restart: d.result,migrationBackup:e.result,v2Backup:f.result,v3Backup:g.result }); });
+            migrationBackup:unknown;v2Backup:unknown;v3Backup:unknown;v4Backup:unknown;
+        }>('readonly', (store, _tx, set) => { const a = store.get('primary'), b = store.get('previous'), c = store.get('preserved'), d = store.get('restart'),e=store.get(ELEPHANT_V1_BACKUP),f=store.get(LION_V2_BACKUP),g=store.get(GIRAFFE_V3_BACKUP),h=store.get(ZEBRA_V4_BACKUP); h.onsuccess = () => set({ primary: a.result, previous: b.result, preserved: c.result, restart: d.result,migrationBackup:e.result,v2Backup:f.result,v3Backup:g.result,v4Backup:h.result }); });
     }
-    async function mutate(run: (raw: unknown, previous: unknown, store: IDBObjectStore, tx: IDBTransaction, set: (x: StoredCheckpoint) => void, backup: unknown,migrationBackup:unknown,v2Backup:unknown,v3Backup:unknown) => void) {
+    async function mutate(run: (raw: unknown, previous: unknown, store: IDBObjectStore, tx: IDBTransaction, set: (x: StoredCheckpoint) => void, backup: unknown,migrationBackup:unknown,v2Backup:unknown,v3Backup:unknown,v4Backup:unknown) => void) {
         try {
             const db = await open();
-            return await new Promise<StoredCheckpoint>((resolve, reject) => { const tx = db.transaction(SAVE_STORE, 'readwrite'), store = tx.objectStore(SAVE_STORE), a = store.get('primary'), b = store.get('previous'), c = store.get('restart'),d=store.get(ELEPHANT_V1_BACKUP),e=store.get(LION_V2_BACKUP),f=store.get(GIRAFFE_V3_BACKUP); let result: StoredCheckpoint; tx.oncomplete = () => resolve(result); tx.onabort = tx.onerror = () => reject(fault(throwLater.get(tx) ?? tx.error)); f.onsuccess = () => guarded(tx, () => run(a.result, b.result, store, tx, v => { result = v; }, c.result,d.result,e.result,f.result)); });
+            return await new Promise<StoredCheckpoint>((resolve, reject) => { const tx = db.transaction(SAVE_STORE, 'readwrite'), store = tx.objectStore(SAVE_STORE), a = store.get('primary'), b = store.get('previous'), c = store.get('restart'),d=store.get(ELEPHANT_V1_BACKUP),e=store.get(LION_V2_BACKUP),f=store.get(GIRAFFE_V3_BACKUP),g=store.get(ZEBRA_V4_BACKUP); let result: StoredCheckpoint; tx.oncomplete = () => resolve(result); tx.onabort = tx.onerror = () => reject(fault(throwLater.get(tx) ?? tx.error)); g.onsuccess = () => guarded(tx, () => run(a.result, b.result, store, tx, v => { result = v; }, c.result,d.result,e.result,f.result,g.result)); });
         }
         catch (e) {
             throw fault(e);
@@ -152,18 +166,18 @@ export function createIndexedDbBackend<State extends PersistedZooSave=ZooSaveV1>
     return {
         codec,
         async read() {
-            const { primary, previous, preserved, restart,migrationBackup,v2Backup,v3Backup } = await records();
-            if (primary === undefined && (previous !== undefined || preserved !== undefined || restart !== undefined||migrationBackup!==undefined||v2Backup!==undefined||v3Backup!==undefined))
+            const { primary, previous, preserved, restart,migrationBackup,v2Backup,v3Backup,v4Backup } = await records();
+            if (primary === undefined && (previous !== undefined || preserved !== undefined || restart !== undefined||migrationBackup!==undefined||v2Backup!==undefined||v3Backup!==undefined||v4Backup!==undefined))
                 throw new SaveFault('unreadable');
             const value = primary === undefined ? null : checkedCheckpoint(primary);
-            if(backupMissing(value,v3Backup))throw new SaveFault('unreadable');
+            if(backupMissing(value,v3Backup,v4Backup))throw new SaveFault('unreadable');
             observedGeneration = generationOf(value);
             return value;
         },
         async commit(expected, payload, writer, writtenAt) {
             if (!codec.parse(payload).ok||(options.minimumSchema!==undefined&&JSON.parse(payload).schemaVersion!==options.minimumSchema))
                 throw new SaveFault('unreadable');
-            const next = await mutate((raw, _previous, store, _tx, set,_backup,migrationBackup,v2Backup,v3Backup) => {
+            const next = await mutate((raw, _previous, store, _tx, set,_backup,migrationBackup,v2Backup,v3Backup,v4Backup) => {
                 const old = raw === undefined ? null : checkedCheckpoint(raw), revision = old?.revision ?? 0;
                 if (revision !== expected || generationOf(old) !== observedGeneration || revision === Number.MAX_SAFE_INTEGER)
                     throw new SaveFault('conflict');
@@ -175,6 +189,7 @@ export function createIndexedDbBackend<State extends PersistedZooSave=ZooSaveV1>
                 if(options.preserveV1BeforeMigration&&old&&JSON.parse(old.payload).schemaVersion===1&&migrationBackup===undefined)store.put(old,ELEPHANT_V1_BACKUP);
                 if(options.preserveV2BeforeMigration&&old&&JSON.parse(old.payload).schemaVersion===2&&v2Backup===undefined)store.put(old,LION_V2_BACKUP);
                 preserveV3(old,value,store,v3Backup);
+                preserveV4(old,value,store,v4Backup);
                 store.put(value, 'primary');
                 set(value);
             });
@@ -185,7 +200,7 @@ export function createIndexedDbBackend<State extends PersistedZooSave=ZooSaveV1>
             const raw = await records(), main = inspectCheckpoint(raw.primary), previous = inspectCheckpoint(raw.previous);
             quoted = undefined;
             let kind: RecoveryInspection['kind'] = 'none', source: StoredCheckpoint | null = null;
-            if(main.record&&backupMissing(main.record,raw.v3Backup)){kind='blocked';}
+            if(main.record&&backupMissing(main.record,raw.v3Backup,raw.v4Backup)){kind='blocked';}
             else if (main.record?.format === 1) {
                 kind = 'migrate';
                 source = main.record;
@@ -193,12 +208,13 @@ export function createIndexedDbBackend<State extends PersistedZooSave=ZooSaveV1>
             else if (main.record) {
                 kind = 'none';
             }
-            else if (main.problem === 'missing' && previous.problem === 'missing' && raw.preserved === undefined && raw.restart === undefined&&raw.migrationBackup===undefined&&raw.v2Backup===undefined&&raw.v3Backup===undefined) {
+            else if (main.problem === 'missing' && previous.problem === 'missing' && raw.preserved === undefined && raw.restart === undefined&&raw.migrationBackup===undefined&&raw.v2Backup===undefined&&raw.v3Backup===undefined&&raw.v4Backup===undefined) {
                 kind = 'none';
             }
             else if (main.problem === 'unsupported-format' || main.problem === 'unsupported-schema') {
                 kind = 'blocked';
             }
+            else if (previous.record&&backupMissing(previous.record,raw.v3Backup,raw.v4Backup)){kind='blocked';}
             else if (previous.record) {
                 kind = 'restore';
                 source = previous.record;
@@ -221,7 +237,7 @@ export function createIndexedDbBackend<State extends PersistedZooSave=ZooSaveV1>
             if (!quote || quote.id !== id)
                 throw new SaveFault('conflict');
             quoted = undefined;
-            const value = await mutate((raw, previous, store, _tx, set,_backup,migrationBackup,v2Backup,v3Backup) => {
+            const value = await mutate((raw, previous, store, _tx, set,_backup,migrationBackup,v2Backup,v3Backup,v4Backup) => {
                 if (rawSignature(raw) !== quote.primary || rawSignature(previous) !== quote.previous)
                     throw new SaveFault('conflict');
                 const current = inspectCheckpoint(raw);
@@ -233,6 +249,7 @@ export function createIndexedDbBackend<State extends PersistedZooSave=ZooSaveV1>
                 if(options.preserveV1BeforeMigration&&JSON.parse(source.payload).schemaVersion===1&&migrationBackup===undefined)store.put(source,ELEPHANT_V1_BACKUP);
                 if(options.preserveV2BeforeMigration&&JSON.parse(source.payload).schemaVersion===2&&v2Backup===undefined)store.put(source,LION_V2_BACKUP);
                 preserveV3(source,next,store,v3Backup);
+                preserveV4(source,next,store,v4Backup);
                 store.put({ format: 1, reason: quote.kind, capturedAt: writtenAt, primary: raw, previous }, 'preserved');
                 store.put(next, 'primary');
                 set(next);
@@ -243,7 +260,7 @@ export function createIndexedDbBackend<State extends PersistedZooSave=ZooSaveV1>
         async inspectRestart(kind) {
             restartQuote = undefined;
             const raw = await records(), current = inspectCheckpoint(raw.primary);
-            if(current.record&&backupMissing(current.record,raw.v3Backup))return {kind:'blocked',quote:null,source:null,hasBackup:false};
+            if(current.record&&backupMissing(current.record,raw.v3Backup,raw.v4Backup))return {kind:'blocked',quote:null,source:null,hasBackup:false};
             const backup = raw.restart as {
                 format?: number;
                 used?: boolean;
@@ -273,7 +290,7 @@ export function createIndexedDbBackend<State extends PersistedZooSave=ZooSaveV1>
             if (!quote || quote.id !== id)
                 throw new SaveFault('conflict');
             restartQuote = undefined;
-            const value = await mutate((raw, previous, store, _tx, set, backup,migrationBackup,v2Backup,v3Backup) => {
+            const value = await mutate((raw, previous, store, _tx, set, backup,migrationBackup,v2Backup,v3Backup,v4Backup) => {
                 if (rawSignature(raw) !== quote.primary || rawSignature(previous) !== quote.previous || rawSignature(backup) !== quote.backup)
                     throw new SaveFault('conflict');
                 const current = checkedCheckpoint(raw);
@@ -283,6 +300,7 @@ export function createIndexedDbBackend<State extends PersistedZooSave=ZooSaveV1>
                 if(options.preserveV1BeforeMigration&&JSON.parse(current.payload).schemaVersion===1&&migrationBackup===undefined)store.put(current,ELEPHANT_V1_BACKUP);
                 if(options.preserveV2BeforeMigration&&JSON.parse(current.payload).schemaVersion===2&&v2Backup===undefined)store.put(current,LION_V2_BACKUP);
                 preserveV3(current,next,store,v3Backup);
+                preserveV4(current,next,store,v4Backup);
                 if (quote.kind === 'reset')
                     store.put({ format: 1, used: false, primary: raw, previous }, 'restart');
                 else

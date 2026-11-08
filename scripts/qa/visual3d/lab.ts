@@ -23,6 +23,7 @@ import {createContextTrial} from './context-trial.ts';
 import type {PhaseIndex} from './phase-contract.ts';
 import {createZebraPlacementInspection} from './zebra-placement.ts';
 import {probeV5Codec} from './v5-codec.ts';
+import {createV5StorageProbe} from './v5-storage.ts';
 declare const __VIS3D_PHASE_INDEX__:PhaseIndex;
 const sourceFailures:{reason:string;expected:boolean}[]=[];
 const sourceRenderCpu=createCpuSamples(),inspectionRenderCpu=createCpuSamples(),mountCpu=createCpuSamples();let lastSourceRender:unknown=null,lastInspectionRender:unknown=null,lastLifecycleTrial:unknown=null,mountCount=0;
@@ -40,6 +41,8 @@ let driver:ReturnType<typeof createTimelineDriver>|undefined,timeline:ReturnType
 const recordError=(e:unknown)=>{if(errors.length<20)errors.push(String(e));};
 window.addEventListener('error',e=>recordError(e.message));window.addEventListener('unhandledrejection',e=>recordError(e.reason));
 const fixture=await loadVisualFixture().catch(error=>{status.textContent='Fixture QA ditolak: '+String(error);out.textContent=JSON.stringify({status:'FIXTURE_REFUSED',source:__VIS3D_SOURCE__,owners:0,reason:String(error)});throw error;}),snapshotObserver=createQaSnapshotObserver<ZooSave>(fixture.state);latest=snapshotObserver.read();
+const storageProbe=createV5StorageProbe(()=>fixture.state,{source:__VIS3D_SOURCE__,sourceFingerprint:__VIS3D_SOURCE_FINGERPRINT__});
+window.addEventListener('pagehide',()=>storageProbe.close(),{once:true});
 function observe(s:ZooSave){snapshotObserver.write(s);latest=snapshotObserver.read();}
 function synchronizeSnapshot(){latest=snapshotObserver.read();return latest;}
 function catalogue(){
