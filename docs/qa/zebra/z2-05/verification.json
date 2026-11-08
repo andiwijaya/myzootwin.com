@@ -1,0 +1,68 @@
+{
+  "status": "PASS_Z2_05_DURABLE_V5",
+  "implementationSource": "a2a7a8899ec01099b716f5900130dba59fd8346f",
+  "nativeFixSource": "78b55387b8095ce7806158c682726873b7766153",
+  "sourceFingerprint": "a5e0cac024beddd088a6cdcf1f0899da8f4d20b57a264a9fba91fc145ae4d3cf",
+  "tests": 110,
+  "strictTypes": "PASS",
+  "astroCheck": "495 files;0 errors/warnings/hints",
+  "productionExclusion": {
+    "status": "PASS",
+    "markers": [
+      "myzootwin-visual3d-",
+      "Asset Lab internal",
+      "__VIS3D_SOURCE__",
+      "scripts/qa/visual3d",
+      "visual3d-frozen-v4",
+      "__qaVisual3dTag",
+      "QA-only constructor side-table",
+      "Step cosmetic Studio100ms",
+      "matrix-result"
+    ],
+    "files": 31
+  },
+  "browserCases": 8,
+  "nativeDatabase": "myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+  "storage": {
+    "version": 5,
+    "stores": [
+      "checkpoints"
+    ],
+    "winnerRevision": 3,
+    "originalV4StateHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf",
+    "originalV4EnvelopeHash": "0b7a63912044a328f049b83f5e7b1fe83a1f2f2939f93f42aeca62c3c4762da4",
+    "v5StateHash": "ef34c58b0079fb3bb8d111bfe91873cb74116872dbe3131305b05c2fdaba44b3",
+    "exactOriginalV4Backup": true,
+    "oneCasWinner": true,
+    "loserMemoryUnchanged": true,
+    "heldOldV4ClientBarred": true,
+    "quotaInjectionAtomic": true,
+    "actualNativeAbortAtomic": true,
+    "coldExact": true
+  },
+  "scope": [
+    "Actual production backend/autosave, native IndexedDB and two independent internal-browser tabs on a fresh UUID database.",
+    "Node fake-indexeddb covers all12 source fixtures, actual generation/reset ABA, pending second-drain race, quota/abort, damaged/future data and backup guards.",
+    "CAS candidate advances one empty QA command slot with no reward/ledger/mission/path/animal mutation; Zebra grant and quest exactly-once commands remain Z2-06/Z4.",
+    "Native quota is an injected QuotaExceededError, not physical storage exhaustion. Native abort is an actual transaction.abort call.",
+    "Current product runtime/backend selection stays V4 until explicit V5 gameplay integration. No production database opened or upgraded.",
+    "Do not roll a V4 binary over a V5 database; tested barrier refuses it. Maintenance/fix-forward release plan remains R7-07."
+  ],
+  "artifacts": [
+    {
+      "path": "docs\\qa\\zebra\\z2-05\\browser.json",
+      "bytes": 46971,
+      "sha256": "e0e8d230b8db6555da499ec080c1c535d7465f1d64d0d0d5a86750ac3e4ea8c3"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z2-05\\native-v5-checkpoint-discovery.png",
+      "bytes": 67686,
+      "sha256": "d6f5be7059499635c167b6afd6e91ff7ae56e336dc4a931aef2a8e4b39efc756"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z2-05\\native-v5-checkpoint.png",
+      "bytes": 67638,
+      "sha256": "71c1ab42768d1da9f8075bc82ee153a7a3c755412aade69cd4713c2335d8a8fc"
+    }
+  ]
+}

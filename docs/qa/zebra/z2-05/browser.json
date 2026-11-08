@@ -1,0 +1,1261 @@
+{
+  "cases": [
+    {
+      "label": "created-v4",
+      "report": {
+        "source": "78b55387b8095ce7806158c682726873b7766153",
+        "sourceFingerprint": "a5e0cac024beddd088a6cdcf1f0899da8f4d20b57a264a9fba91fc145ae4d3cf",
+        "at": "2026-11-08T18:52:47.930Z",
+        "scope": "QA-only native IndexedDB5 + actual backend/autosave. Empty command-slot CAS only; no engine V5 adoption or Zebra grant/mission proof.",
+        "database": "myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+        "sharedUrl": "http://127.0.0.1:52907/scripts/qa/visual3d/index.html?fixtureDb=myzootwin-visual3d-9460adf2-8221-4bcf-b26a-b8d456bcd1ae&storageDb=myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+        "databaseVersion": 4,
+        "stores": [
+          "checkpoints"
+        ],
+        "originalV4Hash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf",
+        "rows": {
+          "primary": {
+            "recordHash": "0b7a63912044a328f049b83f5e7b1fe83a1f2f2939f93f42aeca62c3c4762da4",
+            "payloadHash": "ef6a2e763e29d54f709a1a9843586950da466ff53c636358fc0ab7eaf82b8e3d",
+            "schema": 4,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 2,
+              "writtenAt": 2,
+              "writer": "zebra-storage-v4-seed"
+            },
+            "stateHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          },
+          "previous": {
+            "recordHash": "10e95c2f5f77f74ec5afbd98d1cca558ff55a9d6e74dfb4df0e2dccf9a3464bc",
+            "payloadHash": "163edf541530d3ca7d142b341d1e9d86eec319209f8f35f621bdb5dad13dc760",
+            "schema": 3,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 1,
+              "writtenAt": 1,
+              "writer": "zebra-storage-v3-seed"
+            },
+            "stateHash": "77c46ecd83cee9298c15879ad2f4e1f3aa59926d7a684e245b5c05dd0c473d17"
+          },
+          "elephant-v1-backup": null,
+          "lion-v2-backup": null,
+          "giraffe-v3-backup": {
+            "recordHash": "10e95c2f5f77f74ec5afbd98d1cca558ff55a9d6e74dfb4df0e2dccf9a3464bc",
+            "payloadHash": "163edf541530d3ca7d142b341d1e9d86eec319209f8f35f621bdb5dad13dc760",
+            "schema": 3,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 1,
+              "writtenAt": 1,
+              "writer": "zebra-storage-v3-seed"
+            },
+            "stateHash": "77c46ecd83cee9298c15879ad2f4e1f3aa59926d7a684e245b5c05dd0c473d17"
+          },
+          "zebra-v4-backup": null,
+          "preserved": null,
+          "restart": null
+        },
+        "view": null,
+        "memory": null,
+        "stored": {
+          "validV5": false,
+          "schema": 4,
+          "tick": 15609,
+          "cash": 2755,
+          "command": 168,
+          "actors": 10,
+          "habitats": 4,
+          "grant": null,
+          "projectedV4Hash": null
+        },
+        "events": [
+          {
+            "kind": "CREATED_V4_QA",
+            "sourceHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          }
+        ]
+      }
+    },
+    {
+      "label": "writer-a-prepared",
+      "report": {
+        "source": "78b55387b8095ce7806158c682726873b7766153",
+        "sourceFingerprint": "a5e0cac024beddd088a6cdcf1f0899da8f4d20b57a264a9fba91fc145ae4d3cf",
+        "at": "2026-11-08T18:52:53.834Z",
+        "scope": "QA-only native IndexedDB5 + actual backend/autosave. Empty command-slot CAS only; no engine V5 adoption or Zebra grant/mission proof.",
+        "database": "myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+        "sharedUrl": "http://127.0.0.1:52907/scripts/qa/visual3d/index.html?fixtureDb=myzootwin-visual3d-9460adf2-8221-4bcf-b26a-b8d456bcd1ae&storageDb=myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+        "databaseVersion": 5,
+        "stores": [
+          "checkpoints"
+        ],
+        "originalV4Hash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf",
+        "rows": {
+          "primary": {
+            "recordHash": "0b7a63912044a328f049b83f5e7b1fe83a1f2f2939f93f42aeca62c3c4762da4",
+            "payloadHash": "ef6a2e763e29d54f709a1a9843586950da466ff53c636358fc0ab7eaf82b8e3d",
+            "schema": 4,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 2,
+              "writtenAt": 2,
+              "writer": "zebra-storage-v4-seed"
+            },
+            "stateHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          },
+          "previous": {
+            "recordHash": "10e95c2f5f77f74ec5afbd98d1cca558ff55a9d6e74dfb4df0e2dccf9a3464bc",
+            "payloadHash": "163edf541530d3ca7d142b341d1e9d86eec319209f8f35f621bdb5dad13dc760",
+            "schema": 3,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 1,
+              "writtenAt": 1,
+              "writer": "zebra-storage-v3-seed"
+            },
+            "stateHash": "77c46ecd83cee9298c15879ad2f4e1f3aa59926d7a684e245b5c05dd0c473d17"
+          },
+          "elephant-v1-backup": null,
+          "lion-v2-backup": null,
+          "giraffe-v3-backup": {
+            "recordHash": "10e95c2f5f77f74ec5afbd98d1cca558ff55a9d6e74dfb4df0e2dccf9a3464bc",
+            "payloadHash": "163edf541530d3ca7d142b341d1e9d86eec319209f8f35f621bdb5dad13dc760",
+            "schema": 3,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 1,
+              "writtenAt": 1,
+              "writer": "zebra-storage-v3-seed"
+            },
+            "stateHash": "77c46ecd83cee9298c15879ad2f4e1f3aa59926d7a684e245b5c05dd0c473d17"
+          },
+          "zebra-v4-backup": null,
+          "preserved": null,
+          "restart": null
+        },
+        "view": {
+          "phase": "saved",
+          "active": true,
+          "hasSave": true,
+          "revision": 2,
+          "savedTick": 15609,
+          "savedAt": 2,
+          "savedCurrency": 2755,
+          "savedMissions": 4,
+          "savedBirds": 2,
+          "fault": null,
+          "generation": "zebra-storage-synthetic",
+          "recovery": {
+            "kind": "none",
+            "problem": null,
+            "quote": null,
+            "source": null,
+            "hasPreserved": false
+          },
+          "recoveryBusy": false,
+          "restartBusy": false,
+          "restartAvailable": false
+        },
+        "memory": {
+          "hash": "5bbc10e9f5bef06a4a5f77516f0f75dbdf8d71f69ccfd31120414268f8fee82f",
+          "schema": 5,
+          "cash": 2755,
+          "command": 168,
+          "grant": null
+        },
+        "stored": {
+          "validV5": false,
+          "schema": 4,
+          "tick": 15609,
+          "cash": 2755,
+          "command": 168,
+          "actors": 10,
+          "habitats": 4,
+          "grant": null,
+          "projectedV4Hash": null
+        },
+        "events": [
+          {
+            "kind": "CREATED_V4_QA",
+            "sourceHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          },
+          {
+            "kind": "WRITER_PREPARED",
+            "view": {
+              "phase": "saved",
+              "active": true,
+              "hasSave": true,
+              "revision": 2,
+              "savedTick": 15609,
+              "savedAt": 2,
+              "savedCurrency": 2755,
+              "savedMissions": 4,
+              "savedBirds": 2,
+              "fault": null,
+              "generation": "zebra-storage-synthetic",
+              "recovery": {
+                "kind": "none",
+                "problem": null,
+                "quote": null,
+                "source": null,
+                "hasPreserved": false
+              },
+              "recoveryBusy": false,
+              "restartBusy": false,
+              "restartAvailable": false
+            },
+            "memoryHash": "5bbc10e9f5bef06a4a5f77516f0f75dbdf8d71f69ccfd31120414268f8fee82f"
+          }
+        ]
+      }
+    },
+    {
+      "label": "native-quota-abort",
+      "report": {
+        "source": "78b55387b8095ce7806158c682726873b7766153",
+        "sourceFingerprint": "a5e0cac024beddd088a6cdcf1f0899da8f4d20b57a264a9fba91fc145ae4d3cf",
+        "at": "2026-11-08T18:53:00.135Z",
+        "scope": "QA-only native IndexedDB5 + actual backend/autosave. Empty command-slot CAS only; no engine V5 adoption or Zebra grant/mission proof.",
+        "database": "myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+        "sharedUrl": "http://127.0.0.1:52907/scripts/qa/visual3d/index.html?fixtureDb=myzootwin-visual3d-9460adf2-8221-4bcf-b26a-b8d456bcd1ae&storageDb=myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+        "databaseVersion": 5,
+        "stores": [
+          "checkpoints"
+        ],
+        "originalV4Hash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf",
+        "rows": {
+          "primary": {
+            "recordHash": "0b7a63912044a328f049b83f5e7b1fe83a1f2f2939f93f42aeca62c3c4762da4",
+            "payloadHash": "ef6a2e763e29d54f709a1a9843586950da466ff53c636358fc0ab7eaf82b8e3d",
+            "schema": 4,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 2,
+              "writtenAt": 2,
+              "writer": "zebra-storage-v4-seed"
+            },
+            "stateHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          },
+          "previous": {
+            "recordHash": "10e95c2f5f77f74ec5afbd98d1cca558ff55a9d6e74dfb4df0e2dccf9a3464bc",
+            "payloadHash": "163edf541530d3ca7d142b341d1e9d86eec319209f8f35f621bdb5dad13dc760",
+            "schema": 3,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 1,
+              "writtenAt": 1,
+              "writer": "zebra-storage-v3-seed"
+            },
+            "stateHash": "77c46ecd83cee9298c15879ad2f4e1f3aa59926d7a684e245b5c05dd0c473d17"
+          },
+          "elephant-v1-backup": null,
+          "lion-v2-backup": null,
+          "giraffe-v3-backup": {
+            "recordHash": "10e95c2f5f77f74ec5afbd98d1cca558ff55a9d6e74dfb4df0e2dccf9a3464bc",
+            "payloadHash": "163edf541530d3ca7d142b341d1e9d86eec319209f8f35f621bdb5dad13dc760",
+            "schema": 3,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 1,
+              "writtenAt": 1,
+              "writer": "zebra-storage-v3-seed"
+            },
+            "stateHash": "77c46ecd83cee9298c15879ad2f4e1f3aa59926d7a684e245b5c05dd0c473d17"
+          },
+          "zebra-v4-backup": null,
+          "preserved": null,
+          "restart": null
+        },
+        "view": {
+          "phase": "saved",
+          "active": true,
+          "hasSave": true,
+          "revision": 2,
+          "savedTick": 15609,
+          "savedAt": 2,
+          "savedCurrency": 2755,
+          "savedMissions": 4,
+          "savedBirds": 2,
+          "fault": null,
+          "generation": "zebra-storage-synthetic",
+          "recovery": {
+            "kind": "none",
+            "problem": null,
+            "quote": null,
+            "source": null,
+            "hasPreserved": false
+          },
+          "recoveryBusy": false,
+          "restartBusy": false,
+          "restartAvailable": false
+        },
+        "memory": {
+          "hash": "5bbc10e9f5bef06a4a5f77516f0f75dbdf8d71f69ccfd31120414268f8fee82f",
+          "schema": 5,
+          "cash": 2755,
+          "command": 168,
+          "grant": null
+        },
+        "stored": {
+          "validV5": false,
+          "schema": 4,
+          "tick": 15609,
+          "cash": 2755,
+          "command": 168,
+          "actors": 10,
+          "habitats": 4,
+          "grant": null,
+          "projectedV4Hash": null
+        },
+        "events": [
+          {
+            "kind": "CREATED_V4_QA",
+            "sourceHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          },
+          {
+            "kind": "WRITER_PREPARED",
+            "view": {
+              "phase": "saved",
+              "active": true,
+              "hasSave": true,
+              "revision": 2,
+              "savedTick": 15609,
+              "savedAt": 2,
+              "savedCurrency": 2755,
+              "savedMissions": 4,
+              "savedBirds": 2,
+              "fault": null,
+              "generation": "zebra-storage-synthetic",
+              "recovery": {
+                "kind": "none",
+                "problem": null,
+                "quote": null,
+                "source": null,
+                "hasPreserved": false
+              },
+              "recoveryBusy": false,
+              "restartBusy": false,
+              "restartAvailable": false
+            },
+            "memoryHash": "5bbc10e9f5bef06a4a5f77516f0f75dbdf8d71f69ccfd31120414268f8fee82f"
+          },
+          {
+            "kind": "FAULT",
+            "mode": "quota",
+            "outcome": "quota",
+            "unchanged": true,
+            "scope": "Synthetic QuotaExceededError on actual native transaction, no storage pressure"
+          },
+          {
+            "kind": "FAULT",
+            "mode": "abort",
+            "outcome": "unavailable",
+            "unchanged": true,
+            "scope": "Actual native transaction.abort on the first V5 primary write"
+          }
+        ]
+      }
+    },
+    {
+      "label": "writer-b-prepared",
+      "report": {
+        "source": "78b55387b8095ce7806158c682726873b7766153",
+        "sourceFingerprint": "a5e0cac024beddd088a6cdcf1f0899da8f4d20b57a264a9fba91fc145ae4d3cf",
+        "at": "2026-11-08T18:53:13.345Z",
+        "scope": "QA-only native IndexedDB5 + actual backend/autosave. Empty command-slot CAS only; no engine V5 adoption or Zebra grant/mission proof.",
+        "database": "myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+        "sharedUrl": "http://127.0.0.1:52907/scripts/qa/visual3d/index.html?fixtureDb=myzootwin-visual3d-9460adf2-8221-4bcf-b26a-b8d456bcd1ae&storageDb=myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+        "databaseVersion": 5,
+        "stores": [
+          "checkpoints"
+        ],
+        "originalV4Hash": null,
+        "rows": {
+          "primary": {
+            "recordHash": "0b7a63912044a328f049b83f5e7b1fe83a1f2f2939f93f42aeca62c3c4762da4",
+            "payloadHash": "ef6a2e763e29d54f709a1a9843586950da466ff53c636358fc0ab7eaf82b8e3d",
+            "schema": 4,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 2,
+              "writtenAt": 2,
+              "writer": "zebra-storage-v4-seed"
+            },
+            "stateHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          },
+          "previous": {
+            "recordHash": "10e95c2f5f77f74ec5afbd98d1cca558ff55a9d6e74dfb4df0e2dccf9a3464bc",
+            "payloadHash": "163edf541530d3ca7d142b341d1e9d86eec319209f8f35f621bdb5dad13dc760",
+            "schema": 3,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 1,
+              "writtenAt": 1,
+              "writer": "zebra-storage-v3-seed"
+            },
+            "stateHash": "77c46ecd83cee9298c15879ad2f4e1f3aa59926d7a684e245b5c05dd0c473d17"
+          },
+          "elephant-v1-backup": null,
+          "lion-v2-backup": null,
+          "giraffe-v3-backup": {
+            "recordHash": "10e95c2f5f77f74ec5afbd98d1cca558ff55a9d6e74dfb4df0e2dccf9a3464bc",
+            "payloadHash": "163edf541530d3ca7d142b341d1e9d86eec319209f8f35f621bdb5dad13dc760",
+            "schema": 3,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 1,
+              "writtenAt": 1,
+              "writer": "zebra-storage-v3-seed"
+            },
+            "stateHash": "77c46ecd83cee9298c15879ad2f4e1f3aa59926d7a684e245b5c05dd0c473d17"
+          },
+          "zebra-v4-backup": null,
+          "preserved": null,
+          "restart": null
+        },
+        "view": {
+          "phase": "saved",
+          "active": true,
+          "hasSave": true,
+          "revision": 2,
+          "savedTick": 15609,
+          "savedAt": 2,
+          "savedCurrency": 2755,
+          "savedMissions": 4,
+          "savedBirds": 2,
+          "fault": null,
+          "generation": "zebra-storage-synthetic",
+          "recovery": {
+            "kind": "none",
+            "problem": null,
+            "quote": null,
+            "source": null,
+            "hasPreserved": false
+          },
+          "recoveryBusy": false,
+          "restartBusy": false,
+          "restartAvailable": false
+        },
+        "memory": {
+          "hash": "5bbc10e9f5bef06a4a5f77516f0f75dbdf8d71f69ccfd31120414268f8fee82f",
+          "schema": 5,
+          "cash": 2755,
+          "command": 168,
+          "grant": null
+        },
+        "stored": {
+          "validV5": false,
+          "schema": 4,
+          "tick": 15609,
+          "cash": 2755,
+          "command": 168,
+          "actors": 10,
+          "habitats": 4,
+          "grant": null,
+          "projectedV4Hash": null
+        },
+        "events": [
+          {
+            "kind": "WRITER_PREPARED",
+            "view": {
+              "phase": "saved",
+              "active": true,
+              "hasSave": true,
+              "revision": 2,
+              "savedTick": 15609,
+              "savedAt": 2,
+              "savedCurrency": 2755,
+              "savedMissions": 4,
+              "savedBirds": 2,
+              "fault": null,
+              "generation": "zebra-storage-synthetic",
+              "recovery": {
+                "kind": "none",
+                "problem": null,
+                "quote": null,
+                "source": null,
+                "hasPreserved": false
+              },
+              "recoveryBusy": false,
+              "restartBusy": false,
+              "restartAvailable": false
+            },
+            "memoryHash": "5bbc10e9f5bef06a4a5f77516f0f75dbdf8d71f69ccfd31120414268f8fee82f"
+          }
+        ]
+      }
+    },
+    {
+      "label": "writer-a-winner",
+      "report": {
+        "source": "78b55387b8095ce7806158c682726873b7766153",
+        "sourceFingerprint": "a5e0cac024beddd088a6cdcf1f0899da8f4d20b57a264a9fba91fc145ae4d3cf",
+        "at": "2026-11-08T18:53:20.361Z",
+        "scope": "QA-only native IndexedDB5 + actual backend/autosave. Empty command-slot CAS only; no engine V5 adoption or Zebra grant/mission proof.",
+        "database": "myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+        "sharedUrl": "http://127.0.0.1:52907/scripts/qa/visual3d/index.html?fixtureDb=myzootwin-visual3d-9460adf2-8221-4bcf-b26a-b8d456bcd1ae&storageDb=myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+        "databaseVersion": 5,
+        "stores": [
+          "checkpoints"
+        ],
+        "originalV4Hash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf",
+        "rows": {
+          "primary": {
+            "recordHash": "2a315f57354dcd96341b0e25495f3b9eea4c86fbc8ba981ce06b74b7b1e91037",
+            "payloadHash": "fa4771e0bd4ca99146fd4afea42b8c8a9278a08a9285c4104e565af93f503e20",
+            "schema": 5,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 3,
+              "writtenAt": 1794164000232,
+              "writer": "zebra-storage-c1350883-5b73-4ae7-bf8a-206bd0da34cb"
+            },
+            "stateHash": "ef34c58b0079fb3bb8d111bfe91873cb74116872dbe3131305b05c2fdaba44b3"
+          },
+          "previous": {
+            "recordHash": "0b7a63912044a328f049b83f5e7b1fe83a1f2f2939f93f42aeca62c3c4762da4",
+            "payloadHash": "ef6a2e763e29d54f709a1a9843586950da466ff53c636358fc0ab7eaf82b8e3d",
+            "schema": 4,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 2,
+              "writtenAt": 2,
+              "writer": "zebra-storage-v4-seed"
+            },
+            "stateHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          },
+          "elephant-v1-backup": null,
+          "lion-v2-backup": null,
+          "giraffe-v3-backup": {
+            "recordHash": "10e95c2f5f77f74ec5afbd98d1cca558ff55a9d6e74dfb4df0e2dccf9a3464bc",
+            "payloadHash": "163edf541530d3ca7d142b341d1e9d86eec319209f8f35f621bdb5dad13dc760",
+            "schema": 3,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 1,
+              "writtenAt": 1,
+              "writer": "zebra-storage-v3-seed"
+            },
+            "stateHash": "77c46ecd83cee9298c15879ad2f4e1f3aa59926d7a684e245b5c05dd0c473d17"
+          },
+          "zebra-v4-backup": {
+            "recordHash": "0b7a63912044a328f049b83f5e7b1fe83a1f2f2939f93f42aeca62c3c4762da4",
+            "payloadHash": "ef6a2e763e29d54f709a1a9843586950da466ff53c636358fc0ab7eaf82b8e3d",
+            "schema": 4,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 2,
+              "writtenAt": 2,
+              "writer": "zebra-storage-v4-seed"
+            },
+            "stateHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          },
+          "preserved": null,
+          "restart": null
+        },
+        "view": {
+          "phase": "saved",
+          "active": true,
+          "hasSave": true,
+          "revision": 3,
+          "savedTick": 15609,
+          "savedAt": 1794164000232,
+          "savedCurrency": 2755,
+          "savedMissions": 4,
+          "savedBirds": 2,
+          "fault": null,
+          "generation": "zebra-storage-synthetic",
+          "recovery": {
+            "kind": "none",
+            "problem": null,
+            "quote": null,
+            "source": null,
+            "hasPreserved": false
+          },
+          "recoveryBusy": false,
+          "restartBusy": false,
+          "restartAvailable": false
+        },
+        "memory": {
+          "hash": "ef34c58b0079fb3bb8d111bfe91873cb74116872dbe3131305b05c2fdaba44b3",
+          "schema": 5,
+          "cash": 2755,
+          "command": 169,
+          "grant": null
+        },
+        "stored": {
+          "validV5": true,
+          "schema": 5,
+          "tick": 15609,
+          "cash": 2755,
+          "command": 169,
+          "actors": 10,
+          "habitats": 4,
+          "grant": null,
+          "projectedV4Hash": "171d41760d49bf1aab3000f2f9c3f5e04fea44fba1314782771b3ed628ab7629"
+        },
+        "events": [
+          {
+            "kind": "CREATED_V4_QA",
+            "sourceHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          },
+          {
+            "kind": "WRITER_PREPARED",
+            "view": {
+              "phase": "saved",
+              "active": true,
+              "hasSave": true,
+              "revision": 2,
+              "savedTick": 15609,
+              "savedAt": 2,
+              "savedCurrency": 2755,
+              "savedMissions": 4,
+              "savedBirds": 2,
+              "fault": null,
+              "generation": "zebra-storage-synthetic",
+              "recovery": {
+                "kind": "none",
+                "problem": null,
+                "quote": null,
+                "source": null,
+                "hasPreserved": false
+              },
+              "recoveryBusy": false,
+              "restartBusy": false,
+              "restartAvailable": false
+            },
+            "memoryHash": "5bbc10e9f5bef06a4a5f77516f0f75dbdf8d71f69ccfd31120414268f8fee82f"
+          },
+          {
+            "kind": "FAULT",
+            "mode": "quota",
+            "outcome": "quota",
+            "unchanged": true,
+            "scope": "Synthetic QuotaExceededError on actual native transaction, no storage pressure"
+          },
+          {
+            "kind": "FAULT",
+            "mode": "abort",
+            "outcome": "unavailable",
+            "unchanged": true,
+            "scope": "Actual native transaction.abort on the first V5 primary write"
+          },
+          {
+            "kind": "CANDIDATE",
+            "accepted": true,
+            "beforeHash": "5bbc10e9f5bef06a4a5f77516f0f75dbdf8d71f69ccfd31120414268f8fee82f",
+            "afterHash": "ef34c58b0079fb3bb8d111bfe91873cb74116872dbe3131305b05c2fdaba44b3",
+            "view": {
+              "phase": "saved",
+              "active": true,
+              "hasSave": true,
+              "revision": 3,
+              "savedTick": 15609,
+              "savedAt": 1794164000232,
+              "savedCurrency": 2755,
+              "savedMissions": 4,
+              "savedBirds": 2,
+              "fault": null,
+              "generation": "zebra-storage-synthetic",
+              "recovery": {
+                "kind": "none",
+                "problem": null,
+                "quote": null,
+                "source": null,
+                "hasPreserved": false
+              },
+              "recoveryBusy": false,
+              "restartBusy": false,
+              "restartAvailable": false
+            },
+            "scope": "One empty QA command slot; zero reward/ledger/path/actor/mission mutation"
+          }
+        ]
+      }
+    },
+    {
+      "label": "writer-b-loser",
+      "report": {
+        "source": "78b55387b8095ce7806158c682726873b7766153",
+        "sourceFingerprint": "a5e0cac024beddd088a6cdcf1f0899da8f4d20b57a264a9fba91fc145ae4d3cf",
+        "at": "2026-11-08T18:53:25.958Z",
+        "scope": "QA-only native IndexedDB5 + actual backend/autosave. Empty command-slot CAS only; no engine V5 adoption or Zebra grant/mission proof.",
+        "database": "myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+        "sharedUrl": "http://127.0.0.1:52907/scripts/qa/visual3d/index.html?fixtureDb=myzootwin-visual3d-9460adf2-8221-4bcf-b26a-b8d456bcd1ae&storageDb=myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+        "databaseVersion": 5,
+        "stores": [
+          "checkpoints"
+        ],
+        "originalV4Hash": null,
+        "rows": {
+          "primary": {
+            "recordHash": "2a315f57354dcd96341b0e25495f3b9eea4c86fbc8ba981ce06b74b7b1e91037",
+            "payloadHash": "fa4771e0bd4ca99146fd4afea42b8c8a9278a08a9285c4104e565af93f503e20",
+            "schema": 5,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 3,
+              "writtenAt": 1794164000232,
+              "writer": "zebra-storage-c1350883-5b73-4ae7-bf8a-206bd0da34cb"
+            },
+            "stateHash": "ef34c58b0079fb3bb8d111bfe91873cb74116872dbe3131305b05c2fdaba44b3"
+          },
+          "previous": {
+            "recordHash": "0b7a63912044a328f049b83f5e7b1fe83a1f2f2939f93f42aeca62c3c4762da4",
+            "payloadHash": "ef6a2e763e29d54f709a1a9843586950da466ff53c636358fc0ab7eaf82b8e3d",
+            "schema": 4,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 2,
+              "writtenAt": 2,
+              "writer": "zebra-storage-v4-seed"
+            },
+            "stateHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          },
+          "elephant-v1-backup": null,
+          "lion-v2-backup": null,
+          "giraffe-v3-backup": {
+            "recordHash": "10e95c2f5f77f74ec5afbd98d1cca558ff55a9d6e74dfb4df0e2dccf9a3464bc",
+            "payloadHash": "163edf541530d3ca7d142b341d1e9d86eec319209f8f35f621bdb5dad13dc760",
+            "schema": 3,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 1,
+              "writtenAt": 1,
+              "writer": "zebra-storage-v3-seed"
+            },
+            "stateHash": "77c46ecd83cee9298c15879ad2f4e1f3aa59926d7a684e245b5c05dd0c473d17"
+          },
+          "zebra-v4-backup": {
+            "recordHash": "0b7a63912044a328f049b83f5e7b1fe83a1f2f2939f93f42aeca62c3c4762da4",
+            "payloadHash": "ef6a2e763e29d54f709a1a9843586950da466ff53c636358fc0ab7eaf82b8e3d",
+            "schema": 4,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 2,
+              "writtenAt": 2,
+              "writer": "zebra-storage-v4-seed"
+            },
+            "stateHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          },
+          "preserved": null,
+          "restart": null
+        },
+        "view": {
+          "phase": "conflict",
+          "active": true,
+          "hasSave": true,
+          "revision": 2,
+          "savedTick": 15609,
+          "savedAt": 2,
+          "savedCurrency": 2755,
+          "savedMissions": 4,
+          "savedBirds": 2,
+          "fault": "conflict",
+          "generation": "zebra-storage-synthetic",
+          "recovery": {
+            "kind": "none",
+            "problem": null,
+            "quote": null,
+            "source": null,
+            "hasPreserved": false
+          },
+          "recoveryBusy": false,
+          "restartBusy": false,
+          "restartAvailable": false
+        },
+        "memory": {
+          "hash": "5bbc10e9f5bef06a4a5f77516f0f75dbdf8d71f69ccfd31120414268f8fee82f",
+          "schema": 5,
+          "cash": 2755,
+          "command": 168,
+          "grant": null
+        },
+        "stored": {
+          "validV5": true,
+          "schema": 5,
+          "tick": 15609,
+          "cash": 2755,
+          "command": 169,
+          "actors": 10,
+          "habitats": 4,
+          "grant": null,
+          "projectedV4Hash": "171d41760d49bf1aab3000f2f9c3f5e04fea44fba1314782771b3ed628ab7629"
+        },
+        "events": [
+          {
+            "kind": "WRITER_PREPARED",
+            "view": {
+              "phase": "saved",
+              "active": true,
+              "hasSave": true,
+              "revision": 2,
+              "savedTick": 15609,
+              "savedAt": 2,
+              "savedCurrency": 2755,
+              "savedMissions": 4,
+              "savedBirds": 2,
+              "fault": null,
+              "generation": "zebra-storage-synthetic",
+              "recovery": {
+                "kind": "none",
+                "problem": null,
+                "quote": null,
+                "source": null,
+                "hasPreserved": false
+              },
+              "recoveryBusy": false,
+              "restartBusy": false,
+              "restartAvailable": false
+            },
+            "memoryHash": "5bbc10e9f5bef06a4a5f77516f0f75dbdf8d71f69ccfd31120414268f8fee82f"
+          },
+          {
+            "kind": "CANDIDATE",
+            "accepted": false,
+            "beforeHash": "5bbc10e9f5bef06a4a5f77516f0f75dbdf8d71f69ccfd31120414268f8fee82f",
+            "afterHash": "5bbc10e9f5bef06a4a5f77516f0f75dbdf8d71f69ccfd31120414268f8fee82f",
+            "view": {
+              "phase": "conflict",
+              "active": true,
+              "hasSave": true,
+              "revision": 2,
+              "savedTick": 15609,
+              "savedAt": 2,
+              "savedCurrency": 2755,
+              "savedMissions": 4,
+              "savedBirds": 2,
+              "fault": "conflict",
+              "generation": "zebra-storage-synthetic",
+              "recovery": {
+                "kind": "none",
+                "problem": null,
+                "quote": null,
+                "source": null,
+                "hasPreserved": false
+              },
+              "recoveryBusy": false,
+              "restartBusy": false,
+              "restartAvailable": false
+            },
+            "scope": "One empty QA command slot; zero reward/ledger/path/actor/mission mutation"
+          }
+        ]
+      }
+    },
+    {
+      "label": "old-v4-barrier",
+      "report": {
+        "source": "78b55387b8095ce7806158c682726873b7766153",
+        "sourceFingerprint": "a5e0cac024beddd088a6cdcf1f0899da8f4d20b57a264a9fba91fc145ae4d3cf",
+        "at": "2026-11-08T18:53:32.871Z",
+        "scope": "QA-only native IndexedDB5 + actual backend/autosave. Empty command-slot CAS only; no engine V5 adoption or Zebra grant/mission proof.",
+        "database": "myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+        "sharedUrl": "http://127.0.0.1:52907/scripts/qa/visual3d/index.html?fixtureDb=myzootwin-visual3d-9460adf2-8221-4bcf-b26a-b8d456bcd1ae&storageDb=myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+        "databaseVersion": 5,
+        "stores": [
+          "checkpoints"
+        ],
+        "originalV4Hash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf",
+        "rows": {
+          "primary": {
+            "recordHash": "2a315f57354dcd96341b0e25495f3b9eea4c86fbc8ba981ce06b74b7b1e91037",
+            "payloadHash": "fa4771e0bd4ca99146fd4afea42b8c8a9278a08a9285c4104e565af93f503e20",
+            "schema": 5,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 3,
+              "writtenAt": 1794164000232,
+              "writer": "zebra-storage-c1350883-5b73-4ae7-bf8a-206bd0da34cb"
+            },
+            "stateHash": "ef34c58b0079fb3bb8d111bfe91873cb74116872dbe3131305b05c2fdaba44b3"
+          },
+          "previous": {
+            "recordHash": "0b7a63912044a328f049b83f5e7b1fe83a1f2f2939f93f42aeca62c3c4762da4",
+            "payloadHash": "ef6a2e763e29d54f709a1a9843586950da466ff53c636358fc0ab7eaf82b8e3d",
+            "schema": 4,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 2,
+              "writtenAt": 2,
+              "writer": "zebra-storage-v4-seed"
+            },
+            "stateHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          },
+          "elephant-v1-backup": null,
+          "lion-v2-backup": null,
+          "giraffe-v3-backup": {
+            "recordHash": "10e95c2f5f77f74ec5afbd98d1cca558ff55a9d6e74dfb4df0e2dccf9a3464bc",
+            "payloadHash": "163edf541530d3ca7d142b341d1e9d86eec319209f8f35f621bdb5dad13dc760",
+            "schema": 3,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 1,
+              "writtenAt": 1,
+              "writer": "zebra-storage-v3-seed"
+            },
+            "stateHash": "77c46ecd83cee9298c15879ad2f4e1f3aa59926d7a684e245b5c05dd0c473d17"
+          },
+          "zebra-v4-backup": {
+            "recordHash": "0b7a63912044a328f049b83f5e7b1fe83a1f2f2939f93f42aeca62c3c4762da4",
+            "payloadHash": "ef6a2e763e29d54f709a1a9843586950da466ff53c636358fc0ab7eaf82b8e3d",
+            "schema": 4,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 2,
+              "writtenAt": 2,
+              "writer": "zebra-storage-v4-seed"
+            },
+            "stateHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          },
+          "preserved": null,
+          "restart": null
+        },
+        "view": {
+          "phase": "saved",
+          "active": true,
+          "hasSave": true,
+          "revision": 3,
+          "savedTick": 15609,
+          "savedAt": 1794164000232,
+          "savedCurrency": 2755,
+          "savedMissions": 4,
+          "savedBirds": 2,
+          "fault": null,
+          "generation": "zebra-storage-synthetic",
+          "recovery": {
+            "kind": "none",
+            "problem": null,
+            "quote": null,
+            "source": null,
+            "hasPreserved": false
+          },
+          "recoveryBusy": false,
+          "restartBusy": false,
+          "restartAvailable": false
+        },
+        "memory": {
+          "hash": "ef34c58b0079fb3bb8d111bfe91873cb74116872dbe3131305b05c2fdaba44b3",
+          "schema": 5,
+          "cash": 2755,
+          "command": 169,
+          "grant": null
+        },
+        "stored": {
+          "validV5": true,
+          "schema": 5,
+          "tick": 15609,
+          "cash": 2755,
+          "command": 169,
+          "actors": 10,
+          "habitats": 4,
+          "grant": null,
+          "projectedV4Hash": "171d41760d49bf1aab3000f2f9c3f5e04fea44fba1314782771b3ed628ab7629"
+        },
+        "events": [
+          {
+            "kind": "CREATED_V4_QA",
+            "sourceHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          },
+          {
+            "kind": "WRITER_PREPARED",
+            "view": {
+              "phase": "saved",
+              "active": true,
+              "hasSave": true,
+              "revision": 2,
+              "savedTick": 15609,
+              "savedAt": 2,
+              "savedCurrency": 2755,
+              "savedMissions": 4,
+              "savedBirds": 2,
+              "fault": null,
+              "generation": "zebra-storage-synthetic",
+              "recovery": {
+                "kind": "none",
+                "problem": null,
+                "quote": null,
+                "source": null,
+                "hasPreserved": false
+              },
+              "recoveryBusy": false,
+              "restartBusy": false,
+              "restartAvailable": false
+            },
+            "memoryHash": "5bbc10e9f5bef06a4a5f77516f0f75dbdf8d71f69ccfd31120414268f8fee82f"
+          },
+          {
+            "kind": "FAULT",
+            "mode": "quota",
+            "outcome": "quota",
+            "unchanged": true,
+            "scope": "Synthetic QuotaExceededError on actual native transaction, no storage pressure"
+          },
+          {
+            "kind": "FAULT",
+            "mode": "abort",
+            "outcome": "unavailable",
+            "unchanged": true,
+            "scope": "Actual native transaction.abort on the first V5 primary write"
+          },
+          {
+            "kind": "CANDIDATE",
+            "accepted": true,
+            "beforeHash": "5bbc10e9f5bef06a4a5f77516f0f75dbdf8d71f69ccfd31120414268f8fee82f",
+            "afterHash": "ef34c58b0079fb3bb8d111bfe91873cb74116872dbe3131305b05c2fdaba44b3",
+            "view": {
+              "phase": "saved",
+              "active": true,
+              "hasSave": true,
+              "revision": 3,
+              "savedTick": 15609,
+              "savedAt": 1794164000232,
+              "savedCurrency": 2755,
+              "savedMissions": 4,
+              "savedBirds": 2,
+              "fault": null,
+              "generation": "zebra-storage-synthetic",
+              "recovery": {
+                "kind": "none",
+                "problem": null,
+                "quote": null,
+                "source": null,
+                "hasPreserved": false
+              },
+              "recoveryBusy": false,
+              "restartBusy": false,
+              "restartAvailable": false
+            },
+            "scope": "One empty QA command slot; zero reward/ledger/path/actor/mission mutation"
+          },
+          {
+            "kind": "OLD_V4_BARRIER",
+            "outcome": "unreadable"
+          }
+        ]
+      }
+    },
+    {
+      "label": "cold-v5",
+      "report": {
+        "source": "78b55387b8095ce7806158c682726873b7766153",
+        "sourceFingerprint": "a5e0cac024beddd088a6cdcf1f0899da8f4d20b57a264a9fba91fc145ae4d3cf",
+        "at": "2026-11-08T18:53:40.173Z",
+        "scope": "QA-only native IndexedDB5 + actual backend/autosave. Empty command-slot CAS only; no engine V5 adoption or Zebra grant/mission proof.",
+        "database": "myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+        "sharedUrl": "http://127.0.0.1:52907/scripts/qa/visual3d/index.html?fixtureDb=myzootwin-visual3d-9460adf2-8221-4bcf-b26a-b8d456bcd1ae&storageDb=myzootwin-zebra-storage-11509e06-11db-41d5-8b1a-980f5765aa54",
+        "databaseVersion": 5,
+        "stores": [
+          "checkpoints"
+        ],
+        "originalV4Hash": null,
+        "rows": {
+          "primary": {
+            "recordHash": "2a315f57354dcd96341b0e25495f3b9eea4c86fbc8ba981ce06b74b7b1e91037",
+            "payloadHash": "fa4771e0bd4ca99146fd4afea42b8c8a9278a08a9285c4104e565af93f503e20",
+            "schema": 5,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 3,
+              "writtenAt": 1794164000232,
+              "writer": "zebra-storage-c1350883-5b73-4ae7-bf8a-206bd0da34cb"
+            },
+            "stateHash": "ef34c58b0079fb3bb8d111bfe91873cb74116872dbe3131305b05c2fdaba44b3"
+          },
+          "previous": {
+            "recordHash": "0b7a63912044a328f049b83f5e7b1fe83a1f2f2939f93f42aeca62c3c4762da4",
+            "payloadHash": "ef6a2e763e29d54f709a1a9843586950da466ff53c636358fc0ab7eaf82b8e3d",
+            "schema": 4,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 2,
+              "writtenAt": 2,
+              "writer": "zebra-storage-v4-seed"
+            },
+            "stateHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          },
+          "elephant-v1-backup": null,
+          "lion-v2-backup": null,
+          "giraffe-v3-backup": {
+            "recordHash": "10e95c2f5f77f74ec5afbd98d1cca558ff55a9d6e74dfb4df0e2dccf9a3464bc",
+            "payloadHash": "163edf541530d3ca7d142b341d1e9d86eec319209f8f35f621bdb5dad13dc760",
+            "schema": 3,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 1,
+              "writtenAt": 1,
+              "writer": "zebra-storage-v3-seed"
+            },
+            "stateHash": "77c46ecd83cee9298c15879ad2f4e1f3aa59926d7a684e245b5c05dd0c473d17"
+          },
+          "zebra-v4-backup": {
+            "recordHash": "0b7a63912044a328f049b83f5e7b1fe83a1f2f2939f93f42aeca62c3c4762da4",
+            "payloadHash": "ef6a2e763e29d54f709a1a9843586950da466ff53c636358fc0ab7eaf82b8e3d",
+            "schema": 4,
+            "envelope": {
+              "format": 2,
+              "generation": "zebra-storage-synthetic",
+              "revision": 2,
+              "writtenAt": 2,
+              "writer": "zebra-storage-v4-seed"
+            },
+            "stateHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+          },
+          "preserved": null,
+          "restart": null
+        },
+        "view": null,
+        "memory": null,
+        "stored": {
+          "validV5": true,
+          "schema": 5,
+          "tick": 15609,
+          "cash": 2755,
+          "command": 169,
+          "actors": 10,
+          "habitats": 4,
+          "grant": null,
+          "projectedV4Hash": "171d41760d49bf1aab3000f2f9c3f5e04fea44fba1314782771b3ed628ab7629"
+        },
+        "events": []
+      }
+    }
+  ],
+  "logsA": [],
+  "logsB": [],
+  "originalFixture": {
+    "source": "78b55387b8095ce7806158c682726873b7766153",
+    "state": {
+      "actorPhases": [
+        {
+          "behavior": "drink",
+          "id": "macaw-1",
+          "phase": "drink"
+        },
+        {
+          "behavior": "drink",
+          "id": "macaw-2",
+          "phase": "drink"
+        },
+        {
+          "behavior": "trunk-touch",
+          "id": "elephant-ayu",
+          "phase": "trunk-touch"
+        },
+        {
+          "behavior": "trunk-touch",
+          "id": "elephant-nara",
+          "phase": "trunk-touch"
+        },
+        {
+          "behavior": "seek-food",
+          "id": "lion-raka",
+          "phase": "seek-food"
+        },
+        {
+          "behavior": "wander",
+          "id": "lion-sena",
+          "phase": "wander"
+        },
+        {
+          "behavior": "wander",
+          "id": "lion-tala",
+          "phase": "wander"
+        },
+        {
+          "behavior": "rest",
+          "id": "giraffe-dira",
+          "phase": "rest"
+        },
+        {
+          "behavior": "wander",
+          "id": "giraffe-sora",
+          "phase": "wander"
+        },
+        {
+          "behavior": "wander",
+          "id": "giraffe-lila",
+          "phase": "wander"
+        }
+      ],
+      "cash": 2755,
+      "fixtureGameplaySha256": "5966ad81e91f06378ab3a34fbf148ee77a93b43c7c043f6ffafd2ba8b5a3ede0",
+      "fixturePreferences": {
+        "graphics": "auto",
+        "locale": "id",
+        "muted": true,
+        "reducedMotion": false,
+        "speed": 1
+      },
+      "fixtureSha256": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf",
+      "gameplaySha256": "5966ad81e91f06378ab3a34fbf148ee77a93b43c7c043f6ffafd2ba8b5a3ede0",
+      "habitats": 4,
+      "preferences": {
+        "graphics": "auto",
+        "locale": "id",
+        "muted": true,
+        "reducedMotion": false,
+        "speed": 1
+      },
+      "residents": 10,
+      "schema": 4,
+      "sha256": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf",
+      "tick": 15609,
+      "valid": true
+    },
+    "revision": 3,
+    "owners": 0,
+    "errors": []
+  },
+  "raw": {
+    "path": ".qa/zebra-audit/z2-05-browser-full.json",
+    "bytes": 134225,
+    "sha256": "5b2012f2230cc7373c60443101487029508afad85adb26f7c04ec1bba57bcc2b"
+  },
+  "discovery": {
+    "source": "a2a7a8899ec01099b716f5900130dba59fd8346f",
+    "console": [
+      {
+        "level": "error",
+        "message": "InvalidStateError: Failed to execute 'abort' on 'IDBTransaction': The transaction has finished.\n    at b (http://127.0.0.1:52907/assets/index-CNZMci3K.js:4225:638909)\n    at f.onsuccess (http://127.0.0.1:52907/assets/index-CNZMci3K.js:4225:639624)",
+        "timestamp": "2026-11-08T18:49:21.460Z",
+        "url": "http://127.0.0.1:52907/assets/index-CNZMci3K.js"
+      }
+    ],
+    "scope": "Real native abort already finished the transaction; old error guard called abort a second time, raising InvalidStateError. Atomic state remained unchanged. Fix78b5538 records the original error before attempting abort and handles already-aborted state. Final native repeat has zero console/window errors.",
+    "raw": {
+      "path": ".qa/zebra-audit/z2-05-discovery-browser.json",
+      "bytes": 134644,
+      "sha256": "e066630b56ed5f7d4b6db7ac3485f70b322aeffca6d61669c9ac4dd992a6bccd"
+    }
+  }
+}

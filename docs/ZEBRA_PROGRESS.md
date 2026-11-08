@@ -1,6 +1,6 @@
 # Execution checkpoint
 
-Current verified progress: **16/54 (29.63%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
+Current verified progress: **17/54 (31.48%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
 
 All four Library inputs were read completely: master PRD 335 lines, harness 128, checklist 200, handoff 42. Official Windows materialization failed at `os.setxattr` after the authorized retry. The destination is empty; no original source-file identity is claimed. This requested derived repository checklist uses the complete official reads. Original Library documents remain unchanged. See [input-access record](qa/zebra/z0-01/input-access.json).
 
@@ -35,7 +35,9 @@ Open gates: static registry records retain their default **NOT_RUN** labels; fea
 
 | Z2-04 | e592799 | [Strict V5 codec](qa/zebra/z2-04/verification.json): all12 original fixtures migrate with exact V4 projections and no actors/money/paths/grants; strict data relationships cover stable identities, own FSM/ports/routes/contact, bounded population/resources, reciprocal grooming, ordered quests and actual ledger proofs.43 tests, strict types,491-file check and10-page production QA exclusion pass. Native cloned-checkpoint probe round-trips99,668 characters with exact a2403c2 historical projection; future/unknown/corrupt content refused. Existing QA DB stays schema4/revision3 after cold reload; owned resources zero after close. Populated14-actor/26-resource fixture is validation-only, not causal gameplay or grant proof. Product runtime/backend still V4. |
 
-Next: **Z2-05** durable backup/CAS/version barrier, before completing **Z2-03** paid construction. This dependency order prevents a purchasable fifth habitat before its save format and atomic persistence exist. Continue one verified micro-feature at a time. Preserve all old state projections; no migration grants or automatic construction.
+| Z2-05 | a2a7a88 / 78b5538 | [Durable V5](qa/zebra/z2-05/verification.json): same store/database version5; original V4 envelope/payload plus existing history retained atomically with first winning CAS.110 storage/codec/regression tests include all12 source fixtures, generation/reset ABA, pending second-autosave drain, quota/abort, future/corrupt content and missing-backup refusal. Strict types,495-file check and10-page production QA exclusion pass. Eight final native records from two independent internal-browser tabs confirm one winner, unchanged losing memory, exact cold V5, unchanged cash/ledger/animals, original V4 backup and old V4 client barrier. Native abort exposed a real second-abort console defect;78b5538 fixes it and final repeat has zero errors. Discovery/raw proof retained. QA candidate consumes one empty command slot only; no Zebra grant proof or product runtime adoption is claimed. |
+
+Next: **Z2-03** paid habitat construction, selection/picking and Undo. This dependency order prevents a purchasable fifth habitat before its save format and atomic persistence exist. Continue one verified micro-feature at a time. Preserve all old state projections; no migration grants or automatic construction.
 
 ---
 
@@ -104,7 +106,7 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
 - [x] **Z2-04** — Implement strict lossless ZooSaveV5, V4→V5 dan V1/V2/V3→V5 melalui migrasi terverifikasi, bounded schema & unknown-future guard.
   - **DoD:** Old save projection identik; migrasi tidak menambah zebra/uang/paths tanpa tindakan pemain.
   - **Proof:** `docs/qa/zebra/z2-04/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
-- [ ] **Z2-05** — Upgrade database version 5 di store yang sama; atomic V4 backup, generation/revision CAS, old-client barrier, abort/quota/multi-tab tests.
+- [x] **Z2-05** — Upgrade database version 5 di store yang sama; atomic V4 backup, generation/revision CAS, old-client barrier, abort/quota/multi-tab tests.
   - **DoD:** Losing tab no reward and no mutation; never downgrade, delete, overwrite V5 with V4 or other backup.
   - **Proof:** `docs/qa/zebra/z2-05/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 - [ ] **Z2-06** — Unlock setelah GQ04 claimed dengan proof; explicit once-only 1,700 ZC proposed starter grant and safe recovery, price fixture before lock.
