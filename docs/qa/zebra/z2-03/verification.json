@@ -1,0 +1,104 @@
+{
+  "status": "PASS_Z2_03_PAID_CONSTRUCTION",
+  "implementationSource": "045edb4ac4387905a865b8df8d2e68dd60a1cf26",
+  "finalQaSource": "a5ce07fa33de0700984497a84fa70d7f3752915a",
+  "sourceFingerprints": [
+    "1cf116582831425907c9cb743e36a670d4a916fc929c6deeb0268a49523efb40",
+    "e1e987298b567786339f84bd0c0857f86ecbce1c4a83136cc39ab81e40943915"
+  ],
+  "tests": 55,
+  "strictTypes": "PASS",
+  "astroCheck": "501 files;0 errors/warnings/hints",
+  "productionExclusion": [
+    {
+      "status": "PASS",
+      "markers": [
+        "myzootwin-visual3d-",
+        "Asset Lab internal",
+        "__VIS3D_SOURCE__",
+        "scripts/qa/visual3d",
+        "visual3d-frozen-v4",
+        "__qaVisual3dTag",
+        "QA-only constructor side-table",
+        "Step cosmetic Studio100ms",
+        "matrix-result"
+      ],
+      "files": 31
+    },
+    {
+      "status": "PASS",
+      "markers": [
+        "myzootwin-visual3d-",
+        "Asset Lab internal",
+        "__VIS3D_SOURCE__",
+        "scripts/qa/visual3d",
+        "visual3d-frozen-v4",
+        "__qaVisual3dTag",
+        "QA-only constructor side-table",
+        "Step cosmetic Studio100ms",
+        "matrix-result"
+      ],
+      "files": 31
+    }
+  ],
+  "browserCases": 16,
+  "paid": {
+    "price": 700,
+    "actualDebitCount": 1,
+    "occupancyCells": 64,
+    "anchor": {
+      "x": 14,
+      "z": 12
+    },
+    "stableHabitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+    "cashBefore": 4799,
+    "cashAfter": 4099,
+    "casRefusalUnchanged": true,
+    "pickedActualGeometry": true,
+    "removeUndo": true,
+    "coldExactHash": "6f155a00f859ad56c6f1d3d0f79efc83ee97ea2f89d347a796e52e261a84c335"
+  },
+  "oldActorsHash": "ee0c1e637dedda13835c653e7f13233dc19f5fb6ef82b0a15b9bdb69a97408bf",
+  "protectedOriginalRenderModules": 47,
+  "scope": [
+    "Actual canonical V5 engine, production fence/placement/picking/camera/editor factories and durable autosave/backend; no second renderer/engine.",
+    "Node tests verify complete original four-species state parity after100 actual1x fixed ticks, exact paid candidate, negative/duplicate/stale guards, original removal/refund/Undo, async planner hold/dispose, actual fence geometry and4-angle raycasts.",
+    "Native setup seed includes a synthetic already-claimed grant and zero Zebra actors; construction proof does not count as unlock/grant exactly-once, welfare, new actor behavior or budget acceptance.",
+    "CAS refusal leaves original cash/hash and zero fence meshes; retry charges once. Native cold state and exact V4 backup survive remove/Undo.",
+    "1366desktop/360portrait/780landscape are internal browser viewport emulations, no physical-device or presented-FPS claim. Frames use0ms solely to freeze this construction matrix.",
+    "55 tests/strict types/501-file check cover045edb4 implementation. Final a5ce07f changes only a QA camera label; its immutable production/QA build and native cold/viewport tests pass.",
+    "Canonical engine/dispatch now preserve V5, while the public bootstrap still selects the V4 backend until the explicit Zebra onboarding integration. Nothing is pushed/deployed."
+  ],
+  "artifacts": [
+    {
+      "path": "docs\\qa\\zebra\\z2-03\\browser.json",
+      "bytes": 48868,
+      "sha256": "52c413b66b04a5d3af500b800115f15d71a9f4b2912fc23381129cfc5f17e128"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z2-03\\fence-angle270.png",
+      "bytes": 104433,
+      "sha256": "d00989f62dd6f0973c459dd40bd942de06c518a1031293f66f572e29fc7f11ba"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z2-03\\final-cold-desktop.png",
+      "bytes": 92835,
+      "sha256": "b8a6c87c1f2293afc277f0073deb6e33d68c99007ea7bd090be67933440c65d6"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z2-03\\final-landscape780.png",
+      "bytes": 26535,
+      "sha256": "3fee82ea35b2509b776a52569be0b6a9309ddda45fb671cfe07e02b947facaac"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z2-03\\final-portrait360.png",
+      "bytes": 30459,
+      "sha256": "98b44e1a2c8f45fa0ca3d91b9cac43ad9e3b14cb631eae788b3f0e882431cad9"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z2-03\\paid-fence-desktop.png",
+      "bytes": 106541,
+      "sha256": "f822aad57b1076985809fd8d8464a2f247d73c8d297ec670d9cef22ed2606e1d"
+    }
+  ]
+}

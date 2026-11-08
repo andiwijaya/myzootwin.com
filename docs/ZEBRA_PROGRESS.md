@@ -1,6 +1,6 @@
 # Execution checkpoint
 
-Current verified progress: **17/54 (31.48%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
+Current verified progress: **18/54 (33.33%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
 
 All four Library inputs were read completely: master PRD 335 lines, harness 128, checklist 200, handoff 42. Official Windows materialization failed at `os.setxattr` after the authorized retry. The destination is empty; no original source-file identity is claimed. This requested derived repository checklist uses the complete official reads. Original Library documents remain unchanged. See [input-access record](qa/zebra/z0-01/input-access.json).
 
@@ -37,7 +37,9 @@ Open gates: static registry records retain their default **NOT_RUN** labels; fea
 
 | Z2-05 | a2a7a88 / 78b5538 | [Durable V5](qa/zebra/z2-05/verification.json): same store/database version5; original V4 envelope/payload plus existing history retained atomically with first winning CAS.110 storage/codec/regression tests include all12 source fixtures, generation/reset ABA, pending second-autosave drain, quota/abort, future/corrupt content and missing-backup refusal. Strict types,495-file check and10-page production QA exclusion pass. Eight final native records from two independent internal-browser tabs confirm one winner, unchanged losing memory, exact cold V5, unchanged cash/ledger/animals, original V4 backup and old V4 client barrier. Native abort exposed a real second-abort console defect;78b5538 fixes it and final repeat has zero errors. Discovery/raw proof retained. QA candidate consumes one empty command slot only; no Zebra grant proof or product runtime adoption is claimed. |
 
-Next: **Z2-03** paid habitat construction, selection/picking and Undo. This dependency order prevents a purchasable fifth habitat before its save format and atomic persistence exist. Continue one verified micro-feature at a time. Preserve all old state projections; no migration grants or automatic construction.
+| Z2-03 | 045edb4 / a5ce07f | [Paid construction](qa/zebra/z2-03/verification.json): actual64-cell8x8 fence/floor, stable identity, one700ZC debit, source triangle picking, original remove/refund/Undo and lossless coldV5. Canonical engine/dispatch preserveV5 while all four old species keep running; historical serialized contracts remain closed.55 tests include exact old state parity after100actual1x ticks, async planner pending/dispose and4-angle real geometry picking. Strict types,501-file check and10-page production QA exclusion pass. Sixteen native records cover refused CAS with unchanged cash/hash/zero fence, successful retry, actual selection, remove/Undo, angles0/45/90/180/270 and final1366/360/780 cold views. Owned resources/callbacks zero at close. Setup uses an explicit synthetic already-claimed grant and zero Zebra actors; this is construction proof only, not grant/budget/behavior acceptance. QA camera label corrected without changing source camera behavior. Public bootstrap still selects V4 pending onboarding integration; no publish. |
+
+Next: **Z2-06** explicit GQ04-proof unlock, once-only proposed grant, durable/native claim and budget validation; then **Z2-07** actual visitor connection. This dependency order prevents a purchasable fifth habitat before its save format and atomic persistence exist. Continue one verified micro-feature at a time. Preserve all old state projections; no migration grants or automatic construction.
 
 ---
 
@@ -100,7 +102,7 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
 - [x] **Z2-02** — Tambah real 8×8 placement ghost, collision mask, reserve land & viewing corridor di east wing tanpa mengganggu giraffe/old habitats.
   - **DoD:** Peta tetap 24×26, origin (6,5), invalid preview merah, confirm disabled; anchor target 14..21,z12..19 tervalidasi.
   - **Proof:** `docs/qa/zebra/z2-02/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
-- [ ] **Z2-03** — Implement paid zebra fence & selected/picking/Undo-compatible habitat construction, tanpa auto-membangun tanah kosong.
+- [x] **Z2-03** — Implement paid zebra fence & selected/picking/Undo-compatible habitat construction, tanpa auto-membangun tanah kosong.
   - **DoD:** 64 occupancy cells, visible fence matching collision, unique stable IDs and one ledger debit.
   - **Proof:** `docs/qa/zebra/z2-03/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 - [x] **Z2-04** — Implement strict lossless ZooSaveV5, V4→V5 dan V1/V2/V3→V5 melalui migrasi terverifikasi, bounded schema & unknown-future guard.
