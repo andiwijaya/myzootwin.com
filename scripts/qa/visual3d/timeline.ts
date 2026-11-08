@@ -1,0 +1,31 @@
+import type {PreviewSession} from '../../../src/game/render3d/preview-controller.ts';
+import type {SimulationEvent} from '../../../src/game/core/events.ts';
+import type {ZooSave} from '../../../src/game/core/zoo-state.ts';
+import type {CanonicalSimulation} from './tagging.ts';
+import type {createTimelineDriver} from './timeline-driver.ts';
+type Driver=ReturnType<typeof createTimelineDriver>;
+
+/** Uses the captured, sole production simulation and its real frame loop. No alternative FSM. */
+export function createBehaviorTimeline(sim:CanonicalSimulation,session:PreviewSession,driver:Driver,hooks:{beforePlayback():void;afterPause():void;read():ZooSave}){
+ let disposed=false,playing=false,ticks=0,lastSearch:unknown=null,lastRefill:unknown=null;
+ let previous=sim.snapshot();const counts:Record<string,number>={},phases=new Map<string,Set<string>>(),events:SimulationEvent[]=[],pendingConsumption:Extract<SimulationEvent,{type:'animal-fed'|'animal-drank'}>[]=[],receipts:Record<string,unknown>[]=[];
+ const sample=(s:ZooSave)=>{for(const a of s.animals){let seen=phases.get(a.speciesId);if(!seen){seen=new Set();phases.set(a.speciesId,seen);}seen.add(a.motion.phase);}};
+ sample(previous);
+ const unsubscribe=sim.subscribe(e=>{
+  counts[e.type]=(counts[e.type]??0)+1;if(e.type!=='tick'){events.push(e);if(events.length>128)events.shift();}
+  if(e.type==='animal-fed'||e.type==='animal-drank')pendingConsumption.push(e);
+  if(['food-changed','water-changed','elephant-care-changed','lion-care-changed','giraffe-care-changed','speed-changed','preferences-changed','visitor-entrance-changed'].includes(e.type))previous=hooks.read();
+  if(e.type!=='tick')return;ticks++;const current=hooks.read();sample(current);
+  for(const event of pendingConsumption){const a=previous.animals.find(a=>a.id===event.animalId),b=current.animals.find(a=>a.id===event.animalId),r=previous.world.resources.find(r=>r.id===event.resourceId),s=current.world.resources.find(r=>r.id===event.resourceId),counter=event.type==='animal-fed'?'foodEaten':'waterDrunk',need=event.type==='animal-fed'?'hunger':'thirst',sameResource=pendingConsumption.filter(c=>c.resourceId===event.resourceId).length;
+   receipts.push({event,stockBefore:r?.stock,stockAfter:s?.stock,eventsForResource:sameResource,stockMatchesEvents:!!r&&!!s&&r.stock-s.stock===sameResource,counterBefore:a?.[counter],counterAfter:b?.[counter],counterAdvanced:!!a&&!!b&&b[counter]===a[counter]+1,needBefore:a?.[need],needAfter:b?.[need],realRelief:!!a&&!!b&&b[need]<a[need],contactBefore:a?.position,phaseBefore:a?.motion.phase,phaseAfter:b?.motion.phase});if(receipts.length>128)receipts.shift();
+  }
+  pendingConsumption.length=0;previous=current;
+ });
+ function requireLive(){if(disposed||sim.inspect().disposed)throw Error('Disposed behavior timeline');}
+ function begin(mode:'manual'|'native',speed:1|10){requireLive();session.setPaused?.(true);hooks.beforePlayback();driver.setMode(mode);session.setPaused?.(false);session.speed?.(speed);playing=mode==='native';}
+ function pause(){requireLive();session.setPaused?.(true);playing=false;hooks.afterPause();}
+ function manual(frames:number,speed:1|10){if(!Number.isSafeInteger(frames)||frames<1||frames>10)throw Error('Bounded manual recipe accepts1..10frames');const before=sim.inspect().tick;begin('manual',speed);try{driver.dispatchManual(0);for(let i=0;i<frames;i++)if(!driver.dispatchManual(100))throw Error('Production loop did not request a QA frame');}finally{pause();}const advanced=sim.inspect().tick-before;if(advanced!==frames*speed)throw Error('Canonical tick count differs from explicit recipe');return advanced;}
+ function refill(){const before=sim.snapshot(),results:Record<string,unknown>[]=[];begin('manual',1);try{for(const r of sim.snapshot().world.resources){if(r.stock>=r.capacity||r.kind==='perch')continue;const q={command:sim.commandRevision(),id:r.id,revision:r.revision},result=r.kind==='food'?sim.food('refill',r.revision,q.command):r.kind==='water'?sim.water('refill',r.revision,q.command):r.kind.startsWith('elephant-')?sim.refillElephantCare(q):r.kind.startsWith('lion-')?sim.refillLionCare(q):sim.refillGiraffeCare(q);results.push({resourceId:r.id,command:q.command,ok:result.ok,reason:result.ok?null:result.reason});}driver.dispatchManual(0);}finally{pause();}lastRefill={tickBefore:before.tick,tickAfter:sim.inspect().tick,cashBefore:before.currency,cashAfter:sim.snapshot().currency,results,scope:'Real paid source commands only; no stock injection/grant/reset'};return lastRefill;}
+ function seek(speciesId:string,phase:string){const before=sim.inspect().tick;begin('manual',10);let found=false;try{driver.dispatchManual(0);for(let i=0;i<100;i++){if(sim.snapshot().animals.some(a=>a.speciesId===speciesId&&a.motion.phase===phase)){found=true;break;}driver.dispatchManual(10);}if(!found)found=sim.snapshot().animals.some(a=>a.speciesId===speciesId&&a.motion.phase===phase);}finally{pause();}lastSearch={speciesId,phase,before,after:sim.inspect().tick,found,maxCanonicalTicks:100,scope:'Actual FSM search, no fabricated pose or state teleport'};return lastSearch;}
+ return {manual,refill,seek,pause,play(speed:1|10){begin('native',speed);},probePaused(){requireLive();session.setPaused?.(true);driver.setMode('manual');const before=sim.snapshot(),delivered=driver.dispatchManual(100),after=sim.snapshot();return {delivered,tickBefore:before.tick,tickAfter:after.tick,cashBefore:before.currency,cashAfter:after.currency};},inspect:()=>({playing,disposed,realTickEvents:ticks,counts:{...counts},phases:Object.fromEntries([...phases.entries()].map(([id,seen])=>[id,[...seen].sort()])),events:[...events],consumptionReceipts:[...receipts],lastSearch,lastRefill,driver:driver.inspect(),sourceOwnerDisposed:sim.inspect().disposed,sourceSubscribers:sim.inspect().subscribers,sourceListenerErrors:sim.inspect().listenerErrors}),dispose(){if(disposed)return;session.setPaused?.(true);playing=false;unsubscribe();disposed=true;}};
+}
