@@ -18,5 +18,5 @@ test('stable four adult identities and ZQ progress round trip as plain independe
 });
 test('registry types alone cannot build Zebra or make the old codec accept unknown V5; every V1-V4 fixture stays exact',()=>{
  for(const {id,state}of readBaselineStates()){const before=canonical(state),checked=validateZooSave(state);assert.equal(checked.ok,true,id);assert.equal(canonical(checked.value),before,id);assert.equal(validateZooSave({...state,schemaVersion:5,zebraGrasslands:initialZebraProgress()}).ok,false,id+' V5 remains gated until strict codec');assert.equal(canonical(state),before,id+' input unchanged');}
- const state=readBaselineStates().find(x=>x.state.schemaVersion===4).state,before=canonical(state);assert.equal(validateSpeciesHabitatPlacement(state.world,{x:14,z:12},'zebra-grasslands').reason,'command');assert.deepEqual(prepareSpeciesHabitat(state.world,{x:14,z:12},'habitat-zebra-qa','zebra-grasslands'),{ok:false,reason:'command'});assert.equal(canonical(state),before);
+ const state=readBaselineStates().find(x=>x.state.schemaVersion===4).state,before=canonical(state);assert.equal(validateSpeciesHabitatPlacement(state.world,{x:14,z:12},'zebra-grasslands').proposal.cells.length,64);assert.deepEqual(prepareSpeciesHabitat(state.world,{x:14,z:12},'habitat-zebra-qa','zebra-grasslands'),{ok:false,reason:'command'});assert.equal(canonical(state),before);
 });

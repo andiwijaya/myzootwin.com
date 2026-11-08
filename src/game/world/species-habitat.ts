@@ -1,15 +1,16 @@
 import {recommendedGiraffeAnchor} from './giraffe-expansion.ts';
+import {validateZebraPlacement} from './zebra-layout.ts';
 import type {Habitat,Point,WorldState} from '../core/state.ts';
 import {SPECIES,habitatSpecies,type HabitatKind} from '../core/species.ts';
 import {habitatBlockerKeys} from './build-habitat.ts';
 import {cellKey,validatePlacement,type PlacementReason} from './placement-preview.ts';
 export type HabitatPlacementWorld=Pick<WorldState,'width'|'height'|'tiles'|'habitats'>;
-export const HABITAT_LIMITS=Object.freeze({'macaw-aviary':1,'elephant-grove':1,'lion-savanna':1,'giraffe-plains':1});
-const kindOf=(h:Habitat):HabitatKind|null=>!('kind'in h)?'macaw-aviary':h.kind==='macaw-aviary'||h.kind==='elephant-grove'||h.kind==='lion-savanna'||h.kind==='giraffe-plains'?h.kind:null;
+export const HABITAT_LIMITS=Object.freeze({'macaw-aviary':1,'elephant-grove':1,'lion-savanna':1,'giraffe-plains':1,'zebra-grasslands':1});
+const kindOf=(h:Habitat):HabitatKind|null=>!('kind'in h)?'macaw-aviary':h.kind==='macaw-aviary'||h.kind==='elephant-grove'||h.kind==='lion-savanna'||h.kind==='giraffe-plains'||h.kind==='zebra-grasslands'?h.kind:null;
 
 /** One shared footprint/collision authority, with separate per-species construction caps. */
 export function validateSpeciesHabitatPlacement(world:HabitatPlacementWorld,anchor:Point|null,kind:HabitatKind){
-  // The V5 type/registry must not activate construction before its placement and paid-command gates.
+  if(kind==='zebra-grasslands')return validateZebraPlacement(world,anchor);
   const species=habitatSpecies(kind);
   if(species===null||species==='equus-quagga')return {proposal:null,reason:'command' as const};
   const checked=validatePlacement(world,anchor,habitatBlockerKeys(),'habitat',SPECIES[species].footprint);
