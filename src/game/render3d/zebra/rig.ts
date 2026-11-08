@@ -1,0 +1,39 @@
+import {Bone,Box3,BoxGeometry,BufferGeometry,Color,Float32BufferAttribute,MeshStandardMaterial,Skeleton,SkinnedMesh,Sphere,Uint16BufferAttribute,Vector3} from 'three';
+import {Batch} from '../tropical-diorama.ts';
+import {ZEBRA_RESIDENTS} from '../../core/zebra-state.ts';
+type V=[number,number,number];
+export const ZEBRA_LEGS=['foreLeft','foreRight','hindLeft','hindRight'] as const;
+const joints:{name:string;parent:string|null;at:V}[]=[{name:'root',parent:null,at:[0,0,0]},{name:'body',parent:'root',at:[0,.94,-.06]},{name:'neck',parent:'body',at:[0,1.08,.27]},{name:'head',parent:'neck',at:[0,1.39,.46]},{name:'jaw',parent:'head',at:[0,1.29,.62]},{name:'tail',parent:'body',at:[0,1.02,-.46]},{name:'earLeft',parent:'head',at:[.11,1.51,.39]},{name:'earRight',parent:'head',at:[-.11,1.51,.39]}];
+for(const [i,name]of ZEBRA_LEGS.entries()){const x=i%2?-.16:.16,z=i<2?.24:-.34;joints.push({name,parent:'root',at:[x,.87,z]},{name:name+'Knee',parent:name,at:[x,.45,z]},{name:name+'Hoof',parent:name+'Knee',at:[x,.045,z+.02]});}
+/** Closed, non-indexed ellipsoid. Every triangle has one opaque coat color on the
+ * original surface: no coplanar stripe decals, textures, random or time input. */
+function coatSurface(low:boolean,pattern:number,axis:'body'|'neck'|'leg'|'head'|'plain',color:string){
+ const columns=low?12:20,rows=low?6:10,positions:number[]=[],normals:number[]=[],colors:number[]=[],white=new Color(color),black=new Color('#292b2a');
+ const point=(r:number,c:number):V=>{const p=Math.PI*r/rows,t=Math.PI*2*c/columns;return[Math.sin(p)*Math.cos(t),Math.cos(p),Math.sin(p)*Math.sin(t)];};
+ const triangle=(a:V,b:V,c:V)=>{const p=a.map((v,i)=>(v+b[i]+c[i])/3)as V,band=axis==='leg'?p[1]*11:axis==='neck'?p[1]*10+p[2]*2:axis==='head'?p[0]*12+p[2]*3:p[2]*14+p[1]*(1.4+pattern*.13),wave=Math.sin(band+pattern*.61+Math.sin(p[1]*5+pattern)*.42),stripe=axis!=='plain'&&wave>(pattern%2?-.08:.08),chosen=stripe?black:white;for(const v of [a,b,c]){positions.push(...v);normals.push(...v);colors.push(chosen.r,chosen.g,chosen.b);}};
+ for(let r=0;r<rows;r++)for(let c=0;c<columns;c++){const a=point(r,c),b=point(r+1,c),d=point(r,c+1),e=point(r+1,c+1);if(r>0)triangle(a,d,b);if(r<rows-1)triangle(b,d,e);}
+ const g=new BufferGeometry();g.setAttribute('position',new Float32BufferAttribute(positions,3));g.setAttribute('normal',new Float32BufferAttribute(normals,3));g.setAttribute('color',new Float32BufferAttribute(colors,3));return g;
+}
+/** Original adult Equus quagga, four stable coats. Borrowed by rigs, owned by scene. */
+export function createZebraGeometry(id:string,low=false){
+ const pattern=ZEBRA_RESIDENTS.findIndex(a=>a.id===id);if(pattern<0)throw Error('Unknown stable Zebra identity');
+ const batch=new Batch(),indices:number[]=[],weights:number[]=[],parts:Record<string,number>={};
+ const add=(name:string,g:BufferGeometry,at:V,size:V,joint='body',color='#f0eee3')=>{const first=batch.positions.length/3,coat=g.getAttribute('color');batch.add(g,color,at,size);const n=batch.positions.length/3-first,index=joints.findIndex(j=>j.name===joint);for(let i=0;i<n;i++){indices.push(index,0,0,0);weights.push(1,0,0,0);if(coat){batch.colors[(first+i)*3]=coat.getX(i);batch.colors[(first+i)*3+1]=coat.getY(i);batch.colors[(first+i)*3+2]=coat.getZ(i);}}parts[name]=(parts[name]??0)+n/3;};
+ const oval=(name:string,at:V,size:V,joint='body',axis:'body'|'neck'|'leg'|'head'|'plain'='body',color='#f0eee3')=>add(name,coatSurface(low,pattern,axis,color),at,size,joint,'#ffffff');
+ oval('striped barrel',[0,1.01,-.07],[.245,.30,.43]);oval('rounded rump',[0,1.02,-.33],[.235,.28,.22]);oval('shoulder',[0,1.06,.22],[.21,.29,.23]);
+ oval('short strong neck',[0,1.25,.32],[.155,.30,.18],'neck','neck');oval('long equine head',[0,1.41,.48],[.125,.19,.205],'head','head');oval('dark muzzle',[0,1.31,.66],[.125,.10,.14],'head','plain','#444340');oval('lower jaw',[0,1.26,.64],[.10,.035,.12],'jaw','plain','#5b5751');
+ for(const sign of [-1,1]){const ear=sign===1?'earLeft':'earRight';oval('upright rounded ears',[sign*.11,1.62,.39],[.065,.15,.045],ear,'head');oval('ear interiors',[sign*.11,1.63,.425],[.035,.10,.015],ear,'plain','#766e68');oval('eyes',[sign*.116,1.45,.55],[.018,.023,.024],'head','plain','#151b1c');oval('eye glints',[sign*.129,1.457,.557],[.005,.007,.008],'head','plain','#eeeadd');oval('nostrils',[sign*.072,1.335,.777],[.023,.017,.009],'head','plain','#161b1b');}
+ for(let i=0;i<9;i++)add('short erect mane',new BoxGeometry(1,1,1),[0,1.13+i*.054,.145+i*.019],[.055,.095,.047],'neck',i%2?'#e6e2d6':'#252b29');
+ for(const [i,name]of ZEBRA_LEGS.entries()){const x=i%2?-.16:.16,z=i<2?.24:-.34;oval('striped upper legs',[x,.66,z],[.057,.23,.067],name,'leg');oval('knees',[x,.45,z],[.047,.055,.052],name+'Knee','leg');oval('striped lower legs',[x,.25,z],[.035,.205,.044],name+'Knee','leg');oval('solid single hooves',[x,.045,z+.02],[.053,.045,.069],name+'Hoof','plain','#343633');}
+ oval('tail stem',[0,.85,-.52],[.022,.22,.025],'tail','plain','#d6d1bf');oval('black tail tuft',[0,.65,-.56],[.045,.09,.045],'tail','plain','#252b29');
+ const geometry=batch.geometry();geometry.setAttribute('skinIndex',new Uint16BufferAttribute(indices,4));geometry.setAttribute('skinWeight',new Float32BufferAttribute(weights,4));geometry.computeBoundingBox();geometry.computeBoundingSphere();geometry.name='Original adult plains zebra '+id;geometry.userData={provenance:'Original procedural Equus quagga geometry and vertex-color markings; no external artwork',species:'Equus quagga',resident:id,pattern,lod:low?'low':'high',parts};return{geometry,parts,triangles:batch.positions.length/9,pattern};
+}
+export interface ZebraPose {neckPitch?:number;headPitch?:number;jaw?:number;tail?:number;earLeft?:number;earRight?:number;legs?:number[];knees?:number[];}
+/** Skeleton is owned here; shared geometry/material remain owned by the caller. */
+export function createZebraRig(geometry:BufferGeometry,material:MeshStandardMaterial){
+ const mesh=new SkinnedMesh(geometry,material),bones=new Map<string,Bone>();let disposed=false;
+ for(const j of joints){const b=new Bone();b.name=j.name;b.position.set(...j.at);if(j.parent){const p=joints.find(x=>x.name===j.parent)!;b.position.sub(new Vector3(...p.at));bones.get(j.parent)!.add(b);}else mesh.add(b);bones.set(j.name,b);}
+ mesh.updateMatrixWorld(true);const skeleton=new Skeleton([...bones.values()]);mesh.bind(skeleton);mesh.normalizeSkinWeights();mesh.castShadow=true;mesh.receiveShadow=true;mesh.boundingBox=new Box3(new Vector3(-.32,0,-.64),new Vector3(.32,1.80,.83));mesh.boundingSphere=mesh.boundingBox.getBoundingSphere(new Sphere());
+ function apply(p:ZebraPose={}){if(disposed)return;for(const b of bones.values())b.rotation.set(0,0,0);bones.get('neck')!.rotation.x=p.neckPitch??0;bones.get('head')!.rotation.x=p.headPitch??0;bones.get('jaw')!.rotation.x=p.jaw??0;bones.get('tail')!.rotation.z=p.tail??0;bones.get('earLeft')!.rotation.z=p.earLeft??0;bones.get('earRight')!.rotation.z=p.earRight??0;for(const [i,n]of ZEBRA_LEGS.entries()){const hip=p.legs?.[i]??0,knee=p.knees?.[i]??0;bones.get(n)!.rotation.x=hip;bones.get(n+'Knee')!.rotation.x=knee;bones.get(n+'Hoof')!.rotation.x=-hip-knee;}mesh.updateMatrixWorld(true);skeleton.update();}
+ apply();return{mesh,bones,skeleton,apply,dispose(){if(disposed)return;disposed=true;skeleton.dispose();mesh.clear();},inspect:()=>({bones:bones.size,disposed})};
+}
