@@ -1,0 +1,258 @@
+{
+  "id": "H1-07",
+  "status": "PASS_EXISTING_WORLD_AUTHORITY_AND_FROZEN_SCENE_SPATIAL_MATRIX",
+  "at": "2026-11-08T16:18:33.583Z",
+  "source": "f3ffe8a10205b859e95230b65d1fbfa31f092e78",
+  "sourceFingerprint": "577b9c64284c71015848bd9518bde85dd5dfef6dc60bc0dea81ff88cadb05d32",
+  "lab": "5ee0724c0ef06dff95930abcb72be15d9bf6a8ec2863d6024343c55c4bceebb8",
+  "productionExclusion": {
+    "status": "PASS",
+    "markers": [
+      "myzootwin-visual3d-",
+      "Asset Lab internal",
+      "__VIS3D_SOURCE__",
+      "scripts/qa/visual3d",
+      "visual3d-frozen-v4",
+      "__qaVisual3dTag",
+      "QA-only constructor side-table"
+    ],
+    "files": 31
+  },
+  "tests": {
+    "uniquePassed": 15,
+    "fail": 0,
+    "finalSceneSubsetRerun": 4,
+    "strictTypesWithUnusedChecks": "PASS",
+    "logHash": "dd6b8c4b4f20635ece393423567db73b50e01e0532f105c55b1f9a312f004518",
+    "rerunHash": "b1ff2511de710579081267c3e80a445e1763a8d3359b81a99f5f1798da2c0d7f",
+    "canonicalEngineProbe": {
+      "ticks": 2500,
+      "samples": 500,
+      "renderer": false,
+      "method": "Actual createSimulation advance100ms; source per-species collision/body/ramp and visitor graph queries every fifth tick. Synthetic fixture only, no wall-time/native/presented-FPS claim."
+    }
+  },
+  "native": {
+    "runner": "internal-browser",
+    "physicalDevice": false,
+    "presentedFps": null,
+    "cases": 8,
+    "angles": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "inspectionZooms": [
+      1,
+      3
+    ],
+    "coldTick": 15609,
+    "allRootsExact": true,
+    "allActorPosedBoundsInsideOwnFootprint": true,
+    "sourceTileBindings": 624,
+    "connectedGateRoutes": 4,
+    "canopy": {
+      "crownMin": 3.537337303161621,
+      "adultMax": 3.229000095367432,
+      "clearance": 0.30833720779418927,
+      "required": 0.2
+    },
+    "confirmedPickingCategories": [
+      {
+        "id": "tile:land",
+        "exactSamples": 13
+      },
+      {
+        "id": "tile:creek",
+        "exactSamples": 22
+      },
+      {
+        "id": "tile:path",
+        "exactSamples": 25
+      },
+      {
+        "id": "palm:",
+        "exactSamples": 19
+      },
+      {
+        "id": "tree:",
+        "exactSamples": 30
+      },
+      {
+        "id": "rock:",
+        "exactSamples": 20
+      },
+      {
+        "id": "reeds:",
+        "exactSamples": 15
+      },
+      {
+        "id": "gate:",
+        "exactSamples": 38
+      },
+      {
+        "id": "habitat:macaw-aviary",
+        "exactSamples": 38
+      },
+      {
+        "id": "habitat:elephant-grove",
+        "exactSamples": 15
+      },
+      {
+        "id": "habitat:lion-savanna",
+        "exactSamples": 24
+      },
+      {
+        "id": "facility:lion-meat",
+        "exactSamples": 27
+      },
+      {
+        "id": "facility:lion-water",
+        "exactSamples": 34
+      },
+      {
+        "id": "facility:lion-den",
+        "exactSamples": 40
+      },
+      {
+        "id": "facility:lion-kopje",
+        "exactSamples": 36
+      },
+      {
+        "id": "facility:lion-scent",
+        "exactSamples": 31
+      },
+      {
+        "id": "facility:lion-scratch",
+        "exactSamples": 19
+      },
+      {
+        "id": "habitat:giraffe-plains",
+        "exactSamples": 31
+      },
+      {
+        "id": "facility:giraffe-browse",
+        "exactSamples": 32
+      },
+      {
+        "id": "facility:giraffe-water",
+        "exactSamples": 34
+      },
+      {
+        "id": "facility:giraffe-shade",
+        "exactSamples": 34
+      },
+      {
+        "id": "facility:giraffe-enrichment",
+        "exactSamples": 28
+      },
+      {
+        "id": "giraffe:Dira",
+        "exactSamples": 26
+      },
+      {
+        "id": "giraffe:Sora",
+        "exactSamples": 30
+      },
+      {
+        "id": "giraffe:Lila",
+        "exactSamples": 26
+      },
+      {
+        "id": "lion:Raka",
+        "exactSamples": 30
+      },
+      {
+        "id": "lion:Sena",
+        "exactSamples": 34
+      },
+      {
+        "id": "lion:Tala",
+        "exactSamples": 30
+      },
+      {
+        "id": "elephant:Ayu",
+        "exactSamples": 26
+      },
+      {
+        "id": "elephant:Nara",
+        "exactSamples": 24
+      },
+      {
+        "id": "facility:elephant-browse",
+        "exactSamples": 30
+      },
+      {
+        "id": "facility:elephant-water",
+        "exactSamples": 20
+      },
+      {
+        "id": "facility:elephant-pond",
+        "exactSamples": 36
+      },
+      {
+        "id": "facility:elephant-shade",
+        "exactSamples": 40
+      },
+      {
+        "id": "facility:elephant-log",
+        "exactSamples": 24
+      }
+    ],
+    "expectedOcclusion": {
+      "id": "tile:habitat",
+      "reason": "Production enclosure-owned floor correctly occludes hidden base tile. Actual habitat identities are confirmed."
+    },
+    "zoomResizeFixVerified": true,
+    "errors": 0,
+    "cleanupOwnedResources": 0
+  },
+  "evidence": {
+    "browserHash": "6f7a497a3748f684bf6f50e0bad1478df58f5b2d5458e5738a78c7e56e2a20c6",
+    "screenshots": [
+      {
+        "path": "docs/qa/zebra/h1-07/full-0-zoom-1.jpg",
+        "sha256": "37bb96ac1603b101d822e919000ab43145d0a43b34694d2de663c7bf7bee5d84"
+      },
+      {
+        "path": "docs/qa/zebra/h1-07/full-0-zoom-3.jpg",
+        "sha256": "2518c254956d542d7597f3876d5fef3ec455ffc09d61492534f9c2ccd85e27f0"
+      },
+      {
+        "path": "docs/qa/zebra/h1-07/full-180-zoom-1.jpg",
+        "sha256": "940a1e9c0965271990b77fcf508a76a6ae7f441b9ae622e6e58e65a7e3820c6f"
+      },
+      {
+        "path": "docs/qa/zebra/h1-07/full-180-zoom-3.jpg",
+        "sha256": "4f8766e98119027c2415e4f0e30a7ca64b921a1becc2f8d1120fd3e0b82245ec"
+      },
+      {
+        "path": "docs/qa/zebra/h1-07/full-270-zoom-1.jpg",
+        "sha256": "a11ce64cad5dfd8803680ef6e3f16f463fc8372a90b6b0ac4d03b659cf22833d"
+      },
+      {
+        "path": "docs/qa/zebra/h1-07/full-270-zoom-3.jpg",
+        "sha256": "79ffd6a1efc51513e6af8089856439849ff42958def524cc24046d0d9af7089c"
+      },
+      {
+        "path": "docs/qa/zebra/h1-07/full-90-zoom-1.jpg",
+        "sha256": "59104b3ae50d5dfff8f7d0c0b177c783657fc1e49eb9acdbb10026883d867c87"
+      },
+      {
+        "path": "docs/qa/zebra/h1-07/full-90-zoom-3.jpg",
+        "sha256": "5754129b07003db964fc0ab7ba622ff846c8926642a92591c95c0126f4564d79"
+      }
+    ]
+  },
+  "limits": [
+    "Each screenshot uses a viewport capture after native keyboard page scrolling; canvas fully visible was checked. It does not resize the WebGL viewport.",
+    "Inspector JSON is sampled after actions settle; viewer degrees/zoom and cached audit camera zoom must agree.",
+    "Zoom1/3 are inspection-camera ratios; this is not a claim that source production camera controls or a physical device were used.",
+    "Tile:habitat projects onto the real enclosure-owned floor; source production raycast correctly returns the owning habitat rather than a hidden underlying tile. All other 35 sampled categories confirmed at least once.",
+    "The browser matrix is frozen/cold geometry, not 2500 native animated frames. Animation interpolation is reported separately; last-tick delta cannot bound a renderer sync interval at 10x.",
+    "Macaw wings/perch and elephant trunk/lion kopje/giraffe neck were reviewed in actual original scene/normal captures. No exhaustive pixel-perfect or biological/certified collision guarantee is claimed.",
+    "Zebra is absent in V4 and is not spawned by the harness; its resources and rerun are a later R7 gate.",
+    "No production source, primary save or owner browser changed; no push/deploy."
+  ]
+}

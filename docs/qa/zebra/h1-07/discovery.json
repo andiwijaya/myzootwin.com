@@ -1,0 +1,10 @@
+{
+  "id": "QA_VIEWPORT_RESIZE_RESETS_INSPECTION_ZOOM",
+  "source": "45d4d045d88681869987939c4a4e3ef6eb078db9",
+  "beforeZoom": 3,
+  "afterFullPageCaptureZoom": 1,
+  "gameplayHashUnchanged": true,
+  "status": "FIXED_F3FFE8A_NATIVE_PORTRAIT_DESKTOP_RETEST",
+  "scope": "QA viewer resize only. Production camera/gameplay source untouched.",
+  "resolution": "Resize now passes current zoom through the inspection camera fit, including selected objects. Real portrait/desktop transitions retain zoom3 and correct aspect, exact frozen state. Final evidence uses settled viewport captures with canvas fully visible; no full-page resize."
+}
