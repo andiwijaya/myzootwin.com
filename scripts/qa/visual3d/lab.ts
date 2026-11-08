@@ -6,6 +6,7 @@ import type {EditorState} from '../../../src/game/world/editing.ts';
 import {validateSaveV4} from '../../../src/game/persistence/save-v4.ts';
 import {loadVisualFixture} from './fixture.ts';
 import {stateFingerprint as hash} from './state-fingerprint.ts';
+import {runtimeProvenance} from './runtime-provenance.ts';
 
 declare const __VIS3D_SOURCE__:string,__VIS3D_SOURCE_FINGERPRINT__:string,__VIS3D_FIXTURE_HASH__:string;
 const stage=document.querySelector<HTMLElement>('#stage')!,out=document.querySelector<HTMLElement>('#result')!,status=document.querySelector<HTMLElement>('#status')!,open=document.querySelector<HTMLButtonElement>('#open')!,close=document.querySelector<HTMLButtonElement>('#close')!;
@@ -16,7 +17,7 @@ const fixture=await loadVisualFixture();latest=structuredClone(fixture.state);
 function catalogue(){
  const geometries=new Set<BufferGeometry>(),materials=new Set<Material>(),textures=new Set<Texture>(),skeletons=new Set<Skeleton>(),names:string[]=[];let meshes=0,skinned=0,instances=0,sprites=0,points=0;
  world?.traverse(o=>{if(o.name)names.push(o.name);if(o instanceof Mesh){meshes++;geometries.add(o.geometry);for(const m of Array.isArray(o.material)?o.material:[o.material]){materials.add(m);for(const v of Object.values(m))if(v&&typeof v==='object'&&'isTexture'in v)textures.add(v as Texture);}}if(o instanceof SkinnedMesh){skinned++;skeletons.add(o.skeleton);if(o.skeleton.boneTexture)textures.add(o.skeleton.boneTexture);}if(o instanceof InstancedMesh)instances+=o.count;if(o instanceof Sprite)sprites++;if(o instanceof Points)points++;});
- return {meshes,skinned,instancedInstances:instances,sprites,points,uniqueGeometries:geometries.size,uniqueMaterials:materials.size,explicitOrSkeletonTextures:textures.size,skeletons:skeletons.size,cameraType:camera?.type,rendererGeometries:renderer?.info.memory.geometries,names};
+ return {meshes,skinned,instancedInstances:instances,sprites,points,uniqueGeometries:geometries.size,uniqueMaterials:materials.size,explicitOrSkeletonTextures:textures.size,skeletons:skeletons.size,cameraType:camera?.type,rendererGeometries:renderer?.info.memory.geometries,provenance:runtimeProvenance(world),names};
 }
 async function report(){
  const checked=latest&&validateSaveV4(latest);out.textContent=JSON.stringify({at:new Date().toISOString(),source:__VIS3D_SOURCE__,sourceFingerprint:__VIS3D_SOURCE_FINGERPRINT__,fixtureId:'frozen-earned-v4',fixtureFileHash:__VIS3D_FIXTURE_HASH__,database:fixture.database,revision:fixture.revision,scope:'QA-only actual mountFoundationScene with strict-valid synthetic V4, no mock engine, no player DB',runner:'internal-browser-only',physicalDevice:false,presentedFps:null,presentedFpsStatus:'UNMEASURED',viewport:{width:innerWidth,height:innerHeight,documentWidth:document.documentElement.scrollWidth},state:{schema:latest?.schemaVersion,tick:latest?.tick,cash:latest?.currency,habitats:latest?.world.habitats.length,residents:latest?.animals.length,sha256:await hash(latest),fixtureSha256:await hash(fixture.state),valid:checked?.ok===true},owners,maxOwners,pendingRafCallbacks:pending.size,submissions,renderer:session?.inspect?.(),runtime:catalogue(),retired,errors},null,2);
