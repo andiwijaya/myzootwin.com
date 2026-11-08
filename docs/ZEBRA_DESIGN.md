@@ -1,0 +1,13 @@
+# Zebra east-wing design, frozen for implementation
+
+This is fictional game balancing, not guidance for real enclosures or animal care. No fifth habitat, cash, paths or animals are added to the production game by this design probe.
+
+Map stays 24×26, 624 tiles, scene origin (6,5). Preferred 8×8 anchor (14,12) occupies x14..21/z12..19. If player improvements block it, search only x14..15/z12..14, in z-then-x order. Never move, erase or convert a saved object. Exhaustion disables construction and explains the obstruction. Keep x12..13 for circulation, column23 and rows22..25 for future land. Even the southernmost permitted Giraffe footprint ends at z9; two whole rows separate it from the earliest Zebra fence.
+
+The earned V4 fixture needs four new paid path cells, selected by a cardinal minimum-cost path search using production `validatePathPlacement` and verified by production `analyzePaths`. New cells cannot become alternate viewpoints next to existing habitats. Existing paths, viewing cells and full routes remain identical. A blocked corridor produces no route, rather than a cosmetic connection. Actual V5 placement and visitor commands must repeat these assertions on the player's current state, not assume the sample anchor is free.
+
+Proposed grant stays 1,700 ZC, claimed only after proved GQ04 through the future V5 CAS path. The conservative grant-only sample budget spends 1,304: fence700, two stocked pastures180, water75, shade90, enrichment65, four paths60, two food refills24, water refill6, enrichment refill4, and6000ticks/ten minutes of shared five-habitat maintenance100. Reserve396 exceeds150 with zero old cash, ticket revenue or quest rewards. Path costs inherit15ZC; maintenance inherits2ZC/habitat/600ticks. A21-cell new route fails this envelope and needs explicit recovery/requote, never silent overspending.
+
+Future resource-demand and zero-cash recovery tests must demonstrate actual playable viability; this arithmetic is not that test. Proposed welfare weights are nutrition.25/hydration.20/rest.20/space.15/social.10/enrichment.10. Every score must derive from actual finite stock, legal ports, reached contact, resting or social events in the canonical100ms engine. No decorative grazing, body pose or timer alone grants relief, money or mission credit. Capacity, rates, rest and mission thresholds remain implementation gates with positive, depleted, unreachable, pause and cold tests before price acceptance at Z2-06.
+
+Evidence: [design proof](qa/zebra/z0-04/design.json), [probe](../scripts/qa/zebra/layout-design.mjs), [four regressions](../tests/zebra-layout-design.test.mjs). Native existing-world screenshots remain in Z0-02; no mock Zebra screenshot is presented as gameplay.
