@@ -1,6 +1,6 @@
 # Execution checkpoint
 
-Current verified progress: **18/54 (33.33%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
+Current verified progress: **19/54 (35.19%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
 
 All four Library inputs were read completely: master PRD 335 lines, harness 128, checklist 200, handoff 42. Official Windows materialization failed at `os.setxattr` after the authorized retry. The destination is empty; no original source-file identity is claimed. This requested derived repository checklist uses the complete official reads. Original Library documents remain unchanged. See [input-access record](qa/zebra/z0-01/input-access.json).
 
@@ -39,7 +39,9 @@ Open gates: static registry records retain their default **NOT_RUN** labels; fea
 
 | Z2-03 | 045edb4 / a5ce07f | [Paid construction](qa/zebra/z2-03/verification.json): actual64-cell8x8 fence/floor, stable identity, one700ZC debit, source triangle picking, original remove/refund/Undo and lossless coldV5. Canonical engine/dispatch preserveV5 while all four old species keep running; historical serialized contracts remain closed.55 tests include exact old state parity after100actual1x ticks, async planner pending/dispose and4-angle real geometry picking. Strict types,501-file check and10-page production QA exclusion pass. Sixteen native records cover refused CAS with unchanged cash/hash/zero fence, successful retry, actual selection, remove/Undo, angles0/45/90/180/270 and final1366/360/780 cold views. Owned resources/callbacks zero at close. Setup uses an explicit synthetic already-claimed grant and zero Zebra actors; this is construction proof only, not grant/budget/behavior acceptance. QA camera label corrected without changing source camera behavior. Public bootstrap still selects V4 pending onboarding integration; no publish. |
 
-Next: **Z2-06** explicit GQ04-proof unlock, once-only proposed grant, durable/native claim and budget validation; then **Z2-07** actual visitor connection. This dependency order prevents a purchasable fifth habitat before its save format and atomic persistence exist. Continue one verified micro-feature at a time. Preserve all old state projections; no migration grants or automatic construction.
+| Z2-07 | c87e6cd / eff26df | [Visitor connection](qa/zebra/z2-07/verification.json): four actual paid path cells/60ZC; real17-cell gate BFS to north viewing cell14,11, all old routes preserved. Empty fifth habitat remains ineligible for visitors.66 focused tests include actual visitor movement, once-only gate ticket, disconnected refusal and path remove/Undo; strict types,507-file check and10-page production QA exclusion pass. Sixteen native actual-product records verify cancellation, four15ZC debits4099→4039, ID/EN,360px keyboard access, Reset/Undo and exact cold hash fb8f90e. Original V4 backup f68c660 remains intact; three original renderer owners dispose to zero owned resources/callbacks, max one at a time. Validation-only claimed grant/idle population is explicitly separate from causal Zebra behavior or grant acceptance. QA close ownership was corrected without changing production. |
+
+Next: **Z3-01** original Zebra rig, followed by real motion/care and the minimum viable care facilities. **Z2-06 remains OPEN:** its1,700ZC grant is proposed, and PRD budget acceptance requires actual construction/care prices and a demonstrated reserve before freezing/activating it. This dependency order permits independent route/visual work on explicit validation-only fixtures without crediting a synthetic grant as gameplay. Public bootstrap remains V4; preserve old state projections and never grant during migration. The actual graph resolves an equal-cost design tie through the north cells12,10→13,10→14,10→14,11, rather than the earlier west design; the price remains60ZC and original routes remain exact.
 
 ---
 
@@ -114,7 +116,7 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
 - [ ] **Z2-06** — Unlock setelah GQ04 claimed dengan proof; explicit once-only 1,700 ZC proposed starter grant and safe recovery, price fixture before lock.
   - **DoD:** Proof survives compaction/cold; grant cannot double-claim; budgeting leaves >=150 ZC after viable essential setup.
   - **Proof:** `docs/qa/zebra/z2-06/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
-- [ ] **Z2-07** — Bangun paid visitor path ke viewing spot, visitor topology, cold Continue/camera fit/reset/Undo/regression in shared world.
+- [x] **Z2-07** - Bangun paid visitor path ke viewing spot, visitor topology, cold Continue/camera fit/reset/Undo/regression in shared world.
   - **DoD:** Actual gate-to-zebra reachability, one ticket at gate, disconnected route blocked; existing four paths untouched.
   - **Proof:** `docs/qa/zebra/z2-07/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 

@@ -1,0 +1,4095 @@
+{
+  "raw": {
+    "path": ".qa/zebra-audit/z2-07-browser-full.json",
+    "bytes": 7176451,
+    "sha256": "0f258e22fca0c624d793d971a6a577f8936b318cb375cb9383212f86ae999816"
+  },
+  "cases": [
+    {
+      "label": "product-id-before-path",
+      "source": "eff26df2918829c505e615e074bbd94189c8ddbe",
+      "sourceFingerprint": "9b7a9b300241fe55dfd48639d252b94d4e12fbd8b4f9e38bd755f1590b773f90",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "lang": {
+        "document": "id",
+        "root": "id"
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "documentWidth": 1351
+      },
+      "state": {
+        "tick": 13580,
+        "cash": 4099,
+        "valid": true,
+        "sha256": "6f155a00f859ad56c6f1d3d0f79efc83ee97ea2f89d347a796e52e261a84c335",
+        "gameplayHash": "bb936b6157f66d93aaa879b5f0161963cadea02b7852ed50a1be176bd5c75f7e",
+        "seedGameplayHash": "bb936b6157f66d93aaa879b5f0161963cadea02b7852ed50a1be176bd5c75f7e",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "walk-home",
+            "position": {
+              "x": 4.54,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "descend",
+            "position": {
+              "x": 5.5,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 8.120000000000005,
+              "z": 20.5
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 6,
+              "z": 21.775
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 4.5,
+              "z": 20.225
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 19,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "enrich",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "seek-enrichment",
+            "position": {
+              "x": 14.305941170815558,
+              "z": 7.029705854077823
+            }
+          }
+        ]
+      },
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": false,
+        "populated": false,
+        "visitorEligible": false,
+        "viewingCell": null,
+        "route": [],
+        "path": {
+          "cell": {
+            "x": 12,
+            "z": 10
+          },
+          "missing": 4,
+          "total": 60
+        },
+        "price": 15,
+        "balance": 4099,
+        "command": 120
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 12,
+        "savedTick": 13580,
+        "savedAt": 1794166811162,
+        "savedCurrency": 4099,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "zebra-build-synthetic",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 1,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 1,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 1,
+          "retained": 1,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 19.099999994039536,
+          "maxMs": 19.099999994039536,
+          "p50Ms": 19.099999994039536,
+          "p95Ms": 19.099999994039536,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "resources": {
+        "geometries": 71,
+        "materials": 43,
+        "textures": 10,
+        "renderTargets": 1,
+        "skeletons": 8,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "cancel-no-charge",
+      "source": "eff26df2918829c505e615e074bbd94189c8ddbe",
+      "sourceFingerprint": "9b7a9b300241fe55dfd48639d252b94d4e12fbd8b4f9e38bd755f1590b773f90",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "lang": {
+        "document": "id",
+        "root": "id"
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "documentWidth": 1351
+      },
+      "state": {
+        "tick": 13580,
+        "cash": 4099,
+        "valid": true,
+        "sha256": "6f155a00f859ad56c6f1d3d0f79efc83ee97ea2f89d347a796e52e261a84c335",
+        "gameplayHash": "bb936b6157f66d93aaa879b5f0161963cadea02b7852ed50a1be176bd5c75f7e",
+        "seedGameplayHash": "bb936b6157f66d93aaa879b5f0161963cadea02b7852ed50a1be176bd5c75f7e",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "walk-home",
+            "position": {
+              "x": 4.54,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "descend",
+            "position": {
+              "x": 5.5,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 8.120000000000005,
+              "z": 20.5
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 6,
+              "z": 21.775
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 4.5,
+              "z": 20.225
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 19,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "enrich",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "seek-enrichment",
+            "position": {
+              "x": 14.305941170815558,
+              "z": 7.029705854077823
+            }
+          }
+        ]
+      },
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": false,
+        "populated": false,
+        "visitorEligible": false,
+        "viewingCell": null,
+        "route": [],
+        "path": {
+          "cell": {
+            "x": 12,
+            "z": 10
+          },
+          "missing": 4,
+          "total": 60
+        },
+        "price": 15,
+        "balance": 4099,
+        "command": 120
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 12,
+        "savedTick": 13580,
+        "savedAt": 1794166811162,
+        "savedCurrency": 4099,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "zebra-build-synthetic",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 1,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 2,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 2,
+          "retained": 2,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 19.099999994039536,
+          "maxMs": 26,
+          "p50Ms": 19.099999994039536,
+          "p95Ms": 19.099999994039536,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "resources": {
+        "geometries": 71,
+        "materials": 43,
+        "textures": 10,
+        "renderTargets": 1,
+        "skeletons": 8,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "paid-path1",
+      "source": "eff26df2918829c505e615e074bbd94189c8ddbe",
+      "sourceFingerprint": "9b7a9b300241fe55dfd48639d252b94d4e12fbd8b4f9e38bd755f1590b773f90",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "lang": {
+        "document": "id",
+        "root": "id"
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "documentWidth": 1351
+      },
+      "state": {
+        "tick": 13580,
+        "cash": 4084,
+        "valid": true,
+        "sha256": "43522c6d1f3efc37e9fd6f0e031eefa0e0ea236b170a840652ea5e01aca4f703",
+        "gameplayHash": "6e5a23d94d1e2726d54659be659b279e9f1de52e97fa27f0742aa37222a9a2b9",
+        "seedGameplayHash": "bb936b6157f66d93aaa879b5f0161963cadea02b7852ed50a1be176bd5c75f7e",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "walk-home",
+            "position": {
+              "x": 4.54,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "descend",
+            "position": {
+              "x": 5.5,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 8.120000000000005,
+              "z": 20.5
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 6,
+              "z": 21.775
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 4.5,
+              "z": 20.225
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 19,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "enrich",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "seek-enrichment",
+            "position": {
+              "x": 14.305941170815558,
+              "z": 7.029705854077823
+            }
+          }
+        ]
+      },
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": false,
+        "populated": false,
+        "visitorEligible": false,
+        "viewingCell": null,
+        "route": [],
+        "path": {
+          "cell": {
+            "x": 13,
+            "z": 10
+          },
+          "missing": 3,
+          "total": 45
+        },
+        "price": 15,
+        "balance": 4084,
+        "command": 121
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 13,
+        "savedTick": 13580,
+        "savedAt": 1794166868787,
+        "savedCurrency": 4084,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "zebra-build-synthetic",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 1,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 3,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 3,
+          "retained": 3,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 19.099999994039536,
+          "maxMs": 161.5,
+          "p50Ms": 26,
+          "p95Ms": 26,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "resources": {
+        "geometries": 71,
+        "materials": 43,
+        "textures": 10,
+        "renderTargets": 1,
+        "skeletons": 8,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "paid-path2",
+      "source": "eff26df2918829c505e615e074bbd94189c8ddbe",
+      "sourceFingerprint": "9b7a9b300241fe55dfd48639d252b94d4e12fbd8b4f9e38bd755f1590b773f90",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "lang": {
+        "document": "id",
+        "root": "id"
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "documentWidth": 1351
+      },
+      "state": {
+        "tick": 13580,
+        "cash": 4069,
+        "valid": true,
+        "sha256": "14bff9131653f17a986232dfc31015cae99299b00c391bfe47a07cddab4c5e2e",
+        "gameplayHash": "cad9a91d8b6d81cc4cdd20e83d2eb5eb5317da0b478fbf3de8870a282a7ba0b2",
+        "seedGameplayHash": "bb936b6157f66d93aaa879b5f0161963cadea02b7852ed50a1be176bd5c75f7e",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "walk-home",
+            "position": {
+              "x": 4.54,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "descend",
+            "position": {
+              "x": 5.5,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 8.120000000000005,
+              "z": 20.5
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 6,
+              "z": 21.775
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 4.5,
+              "z": 20.225
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 19,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "enrich",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "seek-enrichment",
+            "position": {
+              "x": 14.305941170815558,
+              "z": 7.029705854077823
+            }
+          }
+        ]
+      },
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": false,
+        "populated": false,
+        "visitorEligible": false,
+        "viewingCell": null,
+        "route": [],
+        "path": {
+          "cell": {
+            "x": 14,
+            "z": 10
+          },
+          "missing": 2,
+          "total": 30
+        },
+        "price": 15,
+        "balance": 4069,
+        "command": 122
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 14,
+        "savedTick": 13580,
+        "savedAt": 1794166894933,
+        "savedCurrency": 4069,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "zebra-build-synthetic",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 1,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 4,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 4,
+          "retained": 4,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 19.099999994039536,
+          "maxMs": 161.5,
+          "p50Ms": 26,
+          "p95Ms": 148.69999998807907,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "resources": {
+        "geometries": 71,
+        "materials": 43,
+        "textures": 10,
+        "renderTargets": 1,
+        "skeletons": 8,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "paid-path3",
+      "source": "eff26df2918829c505e615e074bbd94189c8ddbe",
+      "sourceFingerprint": "9b7a9b300241fe55dfd48639d252b94d4e12fbd8b4f9e38bd755f1590b773f90",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "lang": {
+        "document": "id",
+        "root": "id"
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "documentWidth": 1351
+      },
+      "state": {
+        "tick": 13580,
+        "cash": 4054,
+        "valid": true,
+        "sha256": "be859e9c88d96f19149b283e041bb7cf4acb055202a9ea2245687163bb40eeba",
+        "gameplayHash": "6978c564352871c6c72f163044969387ed0d1cf8ba61f47f3a0d06c8c51cfce7",
+        "seedGameplayHash": "bb936b6157f66d93aaa879b5f0161963cadea02b7852ed50a1be176bd5c75f7e",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "walk-home",
+            "position": {
+              "x": 4.54,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "descend",
+            "position": {
+              "x": 5.5,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 8.120000000000005,
+              "z": 20.5
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 6,
+              "z": 21.775
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 4.5,
+              "z": 20.225
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 19,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "enrich",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "seek-enrichment",
+            "position": {
+              "x": 14.305941170815558,
+              "z": 7.029705854077823
+            }
+          }
+        ]
+      },
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": false,
+        "populated": false,
+        "visitorEligible": false,
+        "viewingCell": null,
+        "route": [],
+        "path": {
+          "cell": {
+            "x": 14,
+            "z": 11
+          },
+          "missing": 1,
+          "total": 15
+        },
+        "price": 15,
+        "balance": 4054,
+        "command": 123
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 15,
+        "savedTick": 13580,
+        "savedAt": 1794166903522,
+        "savedCurrency": 4054,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "zebra-build-synthetic",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 1,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 5,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 5,
+          "retained": 5,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 19.099999994039536,
+          "maxMs": 161.5,
+          "p50Ms": 121.69999998807907,
+          "p95Ms": 148.69999998807907,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "resources": {
+        "geometries": 71,
+        "materials": 43,
+        "textures": 10,
+        "renderTargets": 1,
+        "skeletons": 8,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "connected-empty-id",
+      "source": "eff26df2918829c505e615e074bbd94189c8ddbe",
+      "sourceFingerprint": "9b7a9b300241fe55dfd48639d252b94d4e12fbd8b4f9e38bd755f1590b773f90",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "lang": {
+        "document": "id",
+        "root": "id"
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "documentWidth": 1351
+      },
+      "state": {
+        "tick": 13580,
+        "cash": 4039,
+        "valid": true,
+        "sha256": "3929debb87abcbd534a104ee451f7c028b1a1e4502dde007760dc047627c0811",
+        "gameplayHash": "93720d0e2d75ed84b5cc8fab70f40eb4f2359721e8f38331f53a036b5b7777c5",
+        "seedGameplayHash": "bb936b6157f66d93aaa879b5f0161963cadea02b7852ed50a1be176bd5c75f7e",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "walk-home",
+            "position": {
+              "x": 4.54,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "descend",
+            "position": {
+              "x": 5.5,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 8.120000000000005,
+              "z": 20.5
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 6,
+              "z": 21.775
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 4.5,
+              "z": 20.225
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 19,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "enrich",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "seek-enrichment",
+            "position": {
+              "x": 14.305941170815558,
+              "z": 7.029705854077823
+            }
+          }
+        ]
+      },
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": false,
+        "visitorEligible": false,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4039,
+        "command": 124
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 16,
+        "savedTick": 13580,
+        "savedAt": 1794166912587,
+        "savedCurrency": 4039,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "zebra-build-synthetic",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 1,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 6,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 6,
+          "retained": 6,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 19.099999994039536,
+          "maxMs": 161.5,
+          "p50Ms": 119.2000000178814,
+          "p95Ms": 148.69999998807907,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "resources": {
+        "geometries": 71,
+        "materials": 43,
+        "textures": 10,
+        "renderTargets": 1,
+        "skeletons": 8,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "focus-connected-id",
+      "source": "eff26df2918829c505e615e074bbd94189c8ddbe",
+      "sourceFingerprint": "9b7a9b300241fe55dfd48639d252b94d4e12fbd8b4f9e38bd755f1590b773f90",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "lang": {
+        "document": "id",
+        "root": "id"
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "documentWidth": 1351
+      },
+      "state": {
+        "tick": 13580,
+        "cash": 4039,
+        "valid": true,
+        "sha256": "3929debb87abcbd534a104ee451f7c028b1a1e4502dde007760dc047627c0811",
+        "gameplayHash": "93720d0e2d75ed84b5cc8fab70f40eb4f2359721e8f38331f53a036b5b7777c5",
+        "seedGameplayHash": "bb936b6157f66d93aaa879b5f0161963cadea02b7852ed50a1be176bd5c75f7e",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "walk-home",
+            "position": {
+              "x": 4.54,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "descend",
+            "position": {
+              "x": 5.5,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 8.120000000000005,
+              "z": 20.5
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 6,
+              "z": 21.775
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 4.5,
+              "z": 20.225
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 19,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "enrich",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "seek-enrichment",
+            "position": {
+              "x": 14.305941170815558,
+              "z": 7.029705854077823
+            }
+          }
+        ]
+      },
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": false,
+        "visitorEligible": false,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4039,
+        "command": 124
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 16,
+        "savedTick": 13580,
+        "savedAt": 1794166912587,
+        "savedCurrency": 4039,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "zebra-build-synthetic",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 1,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 7,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 7,
+          "retained": 7,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 14.800000011920929,
+          "maxMs": 161.5,
+          "p50Ms": 119.2000000178814,
+          "p95Ms": 148.69999998807907,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "resources": {
+        "geometries": 71,
+        "materials": 43,
+        "textures": 10,
+        "renderTargets": 1,
+        "skeletons": 8,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "connected-empty-en",
+      "source": "eff26df2918829c505e615e074bbd94189c8ddbe",
+      "sourceFingerprint": "9b7a9b300241fe55dfd48639d252b94d4e12fbd8b4f9e38bd755f1590b773f90",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "lang": {
+        "document": "en",
+        "root": "en"
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "documentWidth": 1351
+      },
+      "state": {
+        "tick": 13580,
+        "cash": 4039,
+        "valid": true,
+        "sha256": "fb8f90ea827c0214d4beb7b2b077e652971219da6a3563366beed0647b0fb99a",
+        "gameplayHash": "93720d0e2d75ed84b5cc8fab70f40eb4f2359721e8f38331f53a036b5b7777c5",
+        "seedGameplayHash": "bb936b6157f66d93aaa879b5f0161963cadea02b7852ed50a1be176bd5c75f7e",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "walk-home",
+            "position": {
+              "x": 4.54,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "descend",
+            "position": {
+              "x": 5.5,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 8.120000000000005,
+              "z": 20.5
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 6,
+              "z": 21.775
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 4.5,
+              "z": 20.225
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 19,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "enrich",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "seek-enrichment",
+            "position": {
+              "x": 14.305941170815558,
+              "z": 7.029705854077823
+            }
+          }
+        ]
+      },
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": false,
+        "visitorEligible": false,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4039,
+        "command": 124
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 17,
+        "savedTick": 13580,
+        "savedAt": 1794167009383,
+        "savedCurrency": 4039,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "zebra-build-synthetic",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 1,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 8,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 8,
+          "retained": 8,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 14.800000011920929,
+          "maxMs": 161.5,
+          "p50Ms": 46.29999998211861,
+          "p95Ms": 148.69999998807907,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "resources": {
+        "geometries": 71,
+        "materials": 43,
+        "textures": 10,
+        "renderTargets": 1,
+        "skeletons": 8,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "camera-reset",
+      "source": "eff26df2918829c505e615e074bbd94189c8ddbe",
+      "sourceFingerprint": "9b7a9b300241fe55dfd48639d252b94d4e12fbd8b4f9e38bd755f1590b773f90",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "lang": {
+        "document": "en",
+        "root": "en"
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "documentWidth": 1351
+      },
+      "state": {
+        "tick": 13580,
+        "cash": 4039,
+        "valid": true,
+        "sha256": "fb8f90ea827c0214d4beb7b2b077e652971219da6a3563366beed0647b0fb99a",
+        "gameplayHash": "93720d0e2d75ed84b5cc8fab70f40eb4f2359721e8f38331f53a036b5b7777c5",
+        "seedGameplayHash": "bb936b6157f66d93aaa879b5f0161963cadea02b7852ed50a1be176bd5c75f7e",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "walk-home",
+            "position": {
+              "x": 4.54,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "descend",
+            "position": {
+              "x": 5.5,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 8.120000000000005,
+              "z": 20.5
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 6,
+              "z": 21.775
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 4.5,
+              "z": 20.225
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 19,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "enrich",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "seek-enrichment",
+            "position": {
+              "x": 14.305941170815558,
+              "z": 7.029705854077823
+            }
+          }
+        ]
+      },
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": false,
+        "visitorEligible": false,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4039,
+        "command": 124
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 17,
+        "savedTick": 13580,
+        "savedAt": 1794167009383,
+        "savedCurrency": 4039,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "zebra-build-synthetic",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 1,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 9,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 9,
+          "retained": 9,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 14.800000011920929,
+          "maxMs": 161.5,
+          "p50Ms": 46.29999998211861,
+          "p95Ms": 148.69999998807907,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "resources": {
+        "geometries": 71,
+        "materials": 43,
+        "textures": 10,
+        "renderTargets": 1,
+        "skeletons": 8,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "product-mobile360-en",
+      "source": "eff26df2918829c505e615e074bbd94189c8ddbe",
+      "sourceFingerprint": "9b7a9b300241fe55dfd48639d252b94d4e12fbd8b4f9e38bd755f1590b773f90",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "lang": {
+        "document": "en",
+        "root": "en"
+      },
+      "viewport": {
+        "width": 360,
+        "height": 780,
+        "documentWidth": 345
+      },
+      "state": {
+        "tick": 13580,
+        "cash": 4039,
+        "valid": true,
+        "sha256": "fb8f90ea827c0214d4beb7b2b077e652971219da6a3563366beed0647b0fb99a",
+        "gameplayHash": "93720d0e2d75ed84b5cc8fab70f40eb4f2359721e8f38331f53a036b5b7777c5",
+        "seedGameplayHash": "bb936b6157f66d93aaa879b5f0161963cadea02b7852ed50a1be176bd5c75f7e",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "walk-home",
+            "position": {
+              "x": 4.54,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "descend",
+            "position": {
+              "x": 5.5,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 8.120000000000005,
+              "z": 20.5
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 6,
+              "z": 21.775
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 4.5,
+              "z": 20.225
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 19,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "enrich",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "seek-enrichment",
+            "position": {
+              "x": 14.305941170815558,
+              "z": 7.029705854077823
+            }
+          }
+        ]
+      },
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": false,
+        "visitorEligible": false,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4039,
+        "command": 124
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 17,
+        "savedTick": 13580,
+        "savedAt": 1794167009383,
+        "savedCurrency": 4039,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "zebra-build-synthetic",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 1,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 10,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 10,
+          "retained": 10,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 14.800000011920929,
+          "maxMs": 161.5,
+          "p50Ms": 26,
+          "p95Ms": 148.69999998807907,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "resources": {
+        "geometries": 71,
+        "materials": 43,
+        "textures": 10,
+        "renderTargets": 1,
+        "skeletons": 8,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "reset-fresh-v5",
+      "source": "eff26df2918829c505e615e074bbd94189c8ddbe",
+      "sourceFingerprint": "9b7a9b300241fe55dfd48639d252b94d4e12fbd8b4f9e38bd755f1590b773f90",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "lang": {
+        "document": "en",
+        "root": "en"
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "documentWidth": 1351
+      },
+      "state": {
+        "tick": 0,
+        "cash": 1500,
+        "valid": true,
+        "sha256": "82c1041af17036c98d49e4d353cf6e044a34d3f5b2de4143c6a48c313c985820",
+        "gameplayHash": "d5d09f2464e730d5ab40ff5430eec0a58bdb1e8be57100d7a596c57a7fc7c4aa",
+        "seedGameplayHash": "bb936b6157f66d93aaa879b5f0161963cadea02b7852ed50a1be176bd5c75f7e",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "idle",
+            "position": null
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "idle",
+            "position": null
+          }
+        ]
+      },
+      "zebraAccess": {
+        "exists": false,
+        "habitatId": null,
+        "connected": false,
+        "populated": false,
+        "visitorEligible": false,
+        "viewingCell": null,
+        "route": [],
+        "path": null,
+        "price": 15,
+        "balance": 1500,
+        "command": 1
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 2,
+        "savedTick": 0,
+        "savedAt": 1794167206097,
+        "savedCurrency": 1500,
+        "savedMissions": 0,
+        "savedBirds": 0,
+        "fault": null,
+        "generation": "6a37151d-5e8b-4202-a74e-c6eee3795794",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": true,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 0,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 10,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 10,
+          "retained": 10,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 14.800000011920929,
+          "maxMs": 161.5,
+          "p50Ms": 26,
+          "p95Ms": 148.69999998807907,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "resources": {
+        "geometries": 14,
+        "materials": 16,
+        "textures": 2,
+        "renderTargets": 1,
+        "skeletons": 0,
+        "shared": 4,
+        "debugRoots": 0
+      },
+      "retired": [
+        {
+          "disposed": true,
+          "geometries": 0,
+          "textures": 0,
+          "ownedMaterialsLive": 0,
+          "cleanupErrors": 0
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "reset-undo-restored",
+      "source": "eff26df2918829c505e615e074bbd94189c8ddbe",
+      "sourceFingerprint": "9b7a9b300241fe55dfd48639d252b94d4e12fbd8b4f9e38bd755f1590b773f90",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "lang": {
+        "document": "en",
+        "root": "en"
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "documentWidth": 1351
+      },
+      "state": {
+        "tick": 13580,
+        "cash": 4039,
+        "valid": true,
+        "sha256": "fb8f90ea827c0214d4beb7b2b077e652971219da6a3563366beed0647b0fb99a",
+        "gameplayHash": "93720d0e2d75ed84b5cc8fab70f40eb4f2359721e8f38331f53a036b5b7777c5",
+        "seedGameplayHash": "bb936b6157f66d93aaa879b5f0161963cadea02b7852ed50a1be176bd5c75f7e",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "walk-home",
+            "position": {
+              "x": 4.54,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "descend",
+            "position": {
+              "x": 5.5,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 8.120000000000005,
+              "z": 20.5
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 6,
+              "z": 21.775
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 4.5,
+              "z": 20.225
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 19,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "enrich",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "seek-enrichment",
+            "position": {
+              "x": 14.305941170815558,
+              "z": 7.029705854077823
+            }
+          }
+        ]
+      },
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": false,
+        "visitorEligible": false,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4039,
+        "command": 124
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 2,
+        "savedTick": 13580,
+        "savedAt": 1794167245674,
+        "savedCurrency": 4039,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 0,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 10,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 10,
+          "retained": 10,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 14.800000011920929,
+          "maxMs": 161.5,
+          "p50Ms": 26,
+          "p95Ms": 148.69999998807907,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "resources": {
+        "geometries": 71,
+        "materials": 43,
+        "textures": 10,
+        "renderTargets": 1,
+        "skeletons": 8,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "retired": [
+        {
+          "disposed": true,
+          "geometries": 0,
+          "textures": 0,
+          "ownedMaterialsLive": 0,
+          "cleanupErrors": 0
+        },
+        {
+          "disposed": true,
+          "geometries": 0,
+          "textures": 0,
+          "ownedMaterialsLive": 0,
+          "cleanupErrors": 0
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "restored-paused-saved",
+      "source": "eff26df2918829c505e615e074bbd94189c8ddbe",
+      "sourceFingerprint": "9b7a9b300241fe55dfd48639d252b94d4e12fbd8b4f9e38bd755f1590b773f90",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "lang": {
+        "document": "en",
+        "root": "en"
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "documentWidth": 1351
+      },
+      "state": {
+        "tick": 13580,
+        "cash": 4039,
+        "valid": true,
+        "sha256": "fb8f90ea827c0214d4beb7b2b077e652971219da6a3563366beed0647b0fb99a",
+        "gameplayHash": "93720d0e2d75ed84b5cc8fab70f40eb4f2359721e8f38331f53a036b5b7777c5",
+        "seedGameplayHash": "bb936b6157f66d93aaa879b5f0161963cadea02b7852ed50a1be176bd5c75f7e",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "walk-home",
+            "position": {
+              "x": 4.54,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "descend",
+            "position": {
+              "x": 5.5,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 8.120000000000005,
+              "z": 20.5
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 6,
+              "z": 21.775
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 4.5,
+              "z": 20.225
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 19,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "enrich",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "seek-enrichment",
+            "position": {
+              "x": 14.305941170815558,
+              "z": 7.029705854077823
+            }
+          }
+        ]
+      },
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": false,
+        "visitorEligible": false,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4039,
+        "command": 124
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 3,
+        "savedTick": 13580,
+        "savedAt": 1794167353328,
+        "savedCurrency": 4039,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 0,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 11,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 11,
+          "retained": 11,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 14.800000011920929,
+          "maxMs": 161.5,
+          "p50Ms": 31.299999982118607,
+          "p95Ms": 148.69999998807907,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "resources": {
+        "geometries": 71,
+        "materials": 43,
+        "textures": 10,
+        "renderTargets": 1,
+        "skeletons": 8,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "retired": [
+        {
+          "disposed": true,
+          "geometries": 0,
+          "textures": 0,
+          "ownedMaterialsLive": 0,
+          "cleanupErrors": 0
+        },
+        {
+          "disposed": true,
+          "geometries": 0,
+          "textures": 0,
+          "ownedMaterialsLive": 0,
+          "cleanupErrors": 0
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "closed-after-reset-undo",
+      "source": "eff26df2918829c505e615e074bbd94189c8ddbe",
+      "sourceFingerprint": "9b7a9b300241fe55dfd48639d252b94d4e12fbd8b4f9e38bd755f1590b773f90",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "lang": {
+        "document": "en",
+        "root": "en"
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "documentWidth": 1351
+      },
+      "state": {
+        "tick": 13580,
+        "cash": 4039,
+        "valid": true,
+        "sha256": "fb8f90ea827c0214d4beb7b2b077e652971219da6a3563366beed0647b0fb99a",
+        "gameplayHash": "93720d0e2d75ed84b5cc8fab70f40eb4f2359721e8f38331f53a036b5b7777c5",
+        "seedGameplayHash": "bb936b6157f66d93aaa879b5f0161963cadea02b7852ed50a1be176bd5c75f7e",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "walk-home",
+            "position": {
+              "x": 4.54,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "descend",
+            "position": {
+              "x": 5.5,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 8.120000000000005,
+              "z": 20.5
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 6,
+              "z": 21.775
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 4.5,
+              "z": 20.225
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 19,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "enrich",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "seek-enrichment",
+            "position": {
+              "x": 14.305941170815558,
+              "z": 7.029705854077823
+            }
+          }
+        ]
+      },
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": false,
+        "visitorEligible": false,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4039,
+        "command": 124
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 4,
+        "savedTick": 13580,
+        "savedAt": 1794167366379,
+        "savedCurrency": 4039,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": true
+      },
+      "owners": 0,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 0,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 11,
+        "nativeDeliveries": 0,
+        "disposed": true,
+        "cpuFrame": {
+          "count": 11,
+          "retained": 11,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 14.800000011920929,
+          "maxMs": 161.5,
+          "p50Ms": 31.299999982118607,
+          "p95Ms": 148.69999998807907,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "resources": {
+        "geometries": 0,
+        "materials": 0,
+        "textures": 0,
+        "renderTargets": 0,
+        "skeletons": 0,
+        "shared": 0,
+        "debugRoots": 0
+      },
+      "retired": [
+        {
+          "disposed": true,
+          "geometries": 0,
+          "textures": 0,
+          "ownedMaterialsLive": 0,
+          "cleanupErrors": 0
+        },
+        {
+          "disposed": true,
+          "geometries": 0,
+          "textures": 0,
+          "ownedMaterialsLive": 0,
+          "cleanupErrors": 0
+        },
+        {
+          "disposed": true,
+          "geometries": 0,
+          "textures": 0,
+          "ownedMaterialsLive": 0,
+          "cleanupErrors": 0
+        }
+      ],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "cold-after-reset-undo",
+      "source": "eff26df2918829c505e615e074bbd94189c8ddbe",
+      "sourceFingerprint": "9b7a9b300241fe55dfd48639d252b94d4e12fbd8b4f9e38bd755f1590b773f90",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "lang": {
+        "document": "en",
+        "root": "en"
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "documentWidth": 1351
+      },
+      "state": {
+        "tick": 13580,
+        "cash": 4039,
+        "valid": true,
+        "sha256": "fb8f90ea827c0214d4beb7b2b077e652971219da6a3563366beed0647b0fb99a",
+        "gameplayHash": "93720d0e2d75ed84b5cc8fab70f40eb4f2359721e8f38331f53a036b5b7777c5",
+        "seedGameplayHash": "93720d0e2d75ed84b5cc8fab70f40eb4f2359721e8f38331f53a036b5b7777c5",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "walk-home",
+            "position": {
+              "x": 4.54,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "descend",
+            "position": {
+              "x": 5.5,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 8.120000000000005,
+              "z": 20.5
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 6,
+              "z": 21.775
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 4.5,
+              "z": 20.225
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 19,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "enrich",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "seek-enrichment",
+            "position": {
+              "x": 14.305941170815558,
+              "z": 7.029705854077823
+            }
+          }
+        ]
+      },
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": false,
+        "visitorEligible": false,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4039,
+        "command": 124
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 5,
+        "savedTick": 13580,
+        "savedAt": 1794167388162,
+        "savedCurrency": 4039,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": false
+      },
+      "owners": 1,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 0,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 0,
+        "nativeDeliveries": 0,
+        "disposed": false,
+        "cpuFrame": {
+          "count": 0,
+          "retained": 0,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": null,
+          "maxMs": null,
+          "p50Ms": null,
+          "p95Ms": null,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "resources": {
+        "geometries": 71,
+        "materials": 43,
+        "textures": 10,
+        "renderTargets": 1,
+        "skeletons": 8,
+        "shared": 35,
+        "debugRoots": 0
+      },
+      "retired": [],
+      "errors": [],
+      "failures": []
+    },
+    {
+      "label": "closed-final-cold",
+      "source": "eff26df2918829c505e615e074bbd94189c8ddbe",
+      "sourceFingerprint": "9b7a9b300241fe55dfd48639d252b94d4e12fbd8b4f9e38bd755f1590b773f90",
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "lang": {
+        "document": "en",
+        "root": "en"
+      },
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "documentWidth": 1351
+      },
+      "state": {
+        "tick": 13580,
+        "cash": 4039,
+        "valid": true,
+        "sha256": "fb8f90ea827c0214d4beb7b2b077e652971219da6a3563366beed0647b0fb99a",
+        "gameplayHash": "93720d0e2d75ed84b5cc8fab70f40eb4f2359721e8f38331f53a036b5b7777c5",
+        "seedGameplayHash": "93720d0e2d75ed84b5cc8fab70f40eb4f2359721e8f38331f53a036b5b7777c5",
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "basePreferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 10
+        },
+        "actors": [
+          {
+            "id": "macaw-1",
+            "species": "ara-ararauna",
+            "phase": "walk-home",
+            "position": {
+              "x": 4.54,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "macaw-2",
+            "species": "ara-ararauna",
+            "phase": "descend",
+            "position": {
+              "x": 5.5,
+              "z": 5.25
+            }
+          },
+          {
+            "id": "elephant-ayu",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 7.5,
+              "z": 15.5
+            }
+          },
+          {
+            "id": "elephant-nara",
+            "species": "elephas-maximus",
+            "phase": "idle",
+            "position": {
+              "x": 4.520101012677711,
+              "z": 13.52010101267762
+            }
+          },
+          {
+            "id": "lion-raka",
+            "species": "panthera-leo",
+            "phase": "wander",
+            "position": {
+              "x": 8.120000000000005,
+              "z": 20.5
+            }
+          },
+          {
+            "id": "lion-sena",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 6,
+              "z": 21.775
+            }
+          },
+          {
+            "id": "lion-tala",
+            "species": "panthera-leo",
+            "phase": "seek-food",
+            "position": {
+              "x": 4.5,
+              "z": 20.225
+            }
+          },
+          {
+            "id": "giraffe-dira",
+            "species": "giraffa-sp",
+            "phase": "wander",
+            "position": {
+              "x": 19,
+              "z": 4.5
+            }
+          },
+          {
+            "id": "giraffe-sora",
+            "species": "giraffa-sp",
+            "phase": "enrich",
+            "position": {
+              "x": 16.5,
+              "z": 7.5
+            }
+          },
+          {
+            "id": "giraffe-lila",
+            "species": "giraffa-sp",
+            "phase": "seek-enrichment",
+            "position": {
+              "x": 14.305941170815558,
+              "z": 7.029705854077823
+            }
+          }
+        ]
+      },
+      "zebraAccess": {
+        "exists": true,
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "connected": true,
+        "populated": false,
+        "visitorEligible": false,
+        "viewingCell": {
+          "x": 14,
+          "z": 11
+        },
+        "route": [
+          {
+            "x": 1,
+            "z": 8
+          },
+          {
+            "x": 1,
+            "z": 9
+          },
+          {
+            "x": 1,
+            "z": 10
+          },
+          {
+            "x": 2,
+            "z": 10
+          },
+          {
+            "x": 3,
+            "z": 10
+          },
+          {
+            "x": 4,
+            "z": 10
+          },
+          {
+            "x": 5,
+            "z": 10
+          },
+          {
+            "x": 6,
+            "z": 10
+          },
+          {
+            "x": 7,
+            "z": 10
+          },
+          {
+            "x": 8,
+            "z": 10
+          },
+          {
+            "x": 9,
+            "z": 10
+          },
+          {
+            "x": 10,
+            "z": 10
+          },
+          {
+            "x": 11,
+            "z": 10
+          },
+          {
+            "x": 12,
+            "z": 10
+          },
+          {
+            "x": 13,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 10
+          },
+          {
+            "x": 14,
+            "z": 11
+          }
+        ],
+        "path": null,
+        "price": 15,
+        "balance": 4039,
+        "command": 124
+      },
+      "save": {
+        "phase": "saved",
+        "active": true,
+        "hasSave": true,
+        "revision": 6,
+        "savedTick": 13580,
+        "savedAt": 1794167401716,
+        "savedCurrency": 4039,
+        "savedMissions": 4,
+        "savedBirds": 2,
+        "fault": null,
+        "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+        "recovery": {
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null,
+          "hasPreserved": false
+        },
+        "recoveryBusy": false,
+        "restartBusy": false,
+        "restartAvailable": false,
+        "dirty": false,
+        "pendingTimer": false,
+        "inflight": false,
+        "storageReady": true,
+        "disposed": true
+      },
+      "owners": 0,
+      "maxOwners": 1,
+      "frames": {
+        "mode": "manual",
+        "pending": 0,
+        "nativePending": 0,
+        "manualTime": 0,
+        "manualDeliveries": 0,
+        "nativeDeliveries": 0,
+        "disposed": true,
+        "cpuFrame": {
+          "count": 0,
+          "retained": 0,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": null,
+          "maxMs": null,
+          "p50Ms": null,
+          "p95Ms": null,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+      },
+      "resources": {
+        "geometries": 0,
+        "materials": 0,
+        "textures": 0,
+        "renderTargets": 0,
+        "skeletons": 0,
+        "shared": 0,
+        "debugRoots": 0
+      },
+      "retired": [
+        {
+          "disposed": true,
+          "geometries": 0,
+          "textures": 0,
+          "ownedMaterialsLive": 0,
+          "cleanupErrors": 0
+        }
+      ],
+      "errors": [],
+      "failures": []
+    }
+  ],
+  "mobileDom": {
+    "buttons": [
+      {
+        "rect": {
+          "bottom": 807.8125,
+          "height": 44,
+          "left": 16.52083396911621,
+          "right": 182.8541774749756,
+          "top": 763.8125,
+          "width": 166.33334350585938,
+          "x": 16.52083396911621,
+          "y": 763.8125
+        },
+        "text": "View Zebra Grasslands"
+      }
+    ],
+    "documentWidth": 345,
+    "panel": {
+      "bottom": 823.8125,
+      "height": 268.125,
+      "left": 16.52083396911621,
+      "right": 312.81252098083496,
+      "top": 555.6875,
+      "width": 296.29168701171875,
+      "x": 16.52083396911621,
+      "y": 555.6875
+    },
+    "viewport": 360
+  },
+  "mobileKeyboard": {
+    "focus": "View Zebra Grasslands",
+    "height": 780,
+    "rect": {
+      "bottom": 631.8125,
+      "height": 44,
+      "left": 16.52083396911621,
+      "right": 182.8541774749756,
+      "top": 587.8125,
+      "width": 166.33334350585938,
+      "x": 16.52083396911621,
+      "y": 587.8125
+    },
+    "scroller": {
+      "bottom": 772.7604370117188,
+      "height": 325.8333435058594,
+      "left": 10.927083969116213,
+      "right": 333.7395839691162,
+      "top": 446.9270935058594,
+      "width": 322.8125,
+      "x": 10.927083969116213,
+      "y": 446.9270935058594
+    }
+  },
+  "backup": {
+    "version": 5,
+    "revision": 6,
+    "hash": "fb8f90ea827c0214d4beb7b2b077e652971219da6a3563366beed0647b0fb99a",
+    "schema": 5,
+    "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
+    "backupSchema": 4
+  }
+}
