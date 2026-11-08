@@ -4,7 +4,8 @@ import {isLion,LION_SPECIES_ID,type LionHabitat,type LionResource,type V3ZooReso
 import {appendLionZone} from '../world/lion-expansion.ts';
 import {V2_SAVE_FIELDS,validateSaveV2,migrateSaveV1,validateMultispeciesRelationships} from './save-v2.ts';
 import {MAX_SAVE_CHARS,saveRules,economyRule,type Rule,type SaveResult} from './save-v1.ts';
-import type {ZooSaveV4,V4ZooWorld,V4ZooAnimal} from '../core/giraffe-state.ts';
+import type {ZooSaveV4} from '../core/giraffe-state.ts';
+import type {ZooSaveV5,V5ZooWorld,V5ZooAnimal} from '../core/zebra-state.ts';
 import type {CheckpointCodec} from './checkpoint.ts';
 import {LION_PRICES,LION_LIMITS} from '../animals/lions/rules.ts';
 import {lionGroundHeight,lionPointAllowed,lionDistance,lionSegmentAllowed} from '../animals/lions/ground.ts';
@@ -29,11 +30,11 @@ const schema=future(V3_SAVE_FIELDS);
 // Semantic emptiness preserves the exact V3 field/value contract regardless of JSON key order.
 const unstarted=(g:LionSavannaProgress)=>g.grant===null&&g.missions.currentId==='LQ01'&&g.missions.completedIds.length===0&&g.missions.rewards.length===0&&Object.values(g.missions.objectives).every(v=>Array.isArray(v)?v.length===0:v===0);
 const unique=(v:string[],p:string)=>require(new Set(v).size===v.length,p);
-const claimedEH04=(s:ZooSaveV3|ZooSaveV4)=>s.elephantGrove.missions.completedIds.includes('EH04')&&s.elephantGrove.missions.rewards.some(r=>r.missionId==='EH04'&&r.award==='gentle-giants'&&r.ledgerEntryId==='mission-eh04');
-export function validateV3SpeciesRelationships(s:ZooSaveV3|ZooSaveV4,extraRewardIds:readonly string[]=[],rewardLimit=10):void{
- const world:V4ZooWorld=s.world,population:V4ZooAnimal[]=s.animals;
- const lionWorld={...world,habitats:world.habitats.filter((h):h is ZooHabitat=>h.kind!=='giraffe-plains'),resources:world.resources.filter((r):r is ZooResource=>!r.kind.startsWith('giraffe-'))};
- require(world.habitats.filter(h=>h.kind!=='lion-savanna'&&h.kind!=='giraffe-plains').every(h=>h.cells.every(c=>c.z<18)),'$.world.legacyZones');
+const claimedEH04=(s:ZooSaveV3|ZooSaveV4|ZooSaveV5)=>s.elephantGrove.missions.completedIds.includes('EH04')&&s.elephantGrove.missions.rewards.some(r=>r.missionId==='EH04'&&r.award==='gentle-giants'&&r.ledgerEntryId==='mission-eh04');
+export function validateV3SpeciesRelationships(s:ZooSaveV3|ZooSaveV4|ZooSaveV5,extraRewardIds:readonly string[]=[],rewardLimit=10):void{
+ const world:V5ZooWorld=s.world,population:V5ZooAnimal[]=s.animals;
+ const lionWorld={...world,habitats:world.habitats.filter((h):h is ZooHabitat=>h.kind!=='giraffe-plains'&&h.kind!=='zebra-grasslands'),resources:world.resources.filter((r):r is ZooResource=>!r.kind.startsWith('giraffe-')&&!r.kind.startsWith('zebra-'))};
+ require(world.habitats.filter(h=>h.kind!=='lion-savanna'&&h.kind!=='giraffe-plains'&&h.kind!=='zebra-grasslands').every(h=>h.cells.every(c=>c.z<18)),'$.world.legacyZones');
  const pride=population.filter(isLion),homes=world.habitats.filter((h):h is LionHabitat=>h.kind==='lion-savanna'),resources=world.resources.filter((r):r is LionResource=>LION_RESOURCE_KINDS.includes(r.kind as typeof LION_RESOURCE_KINDS[number])),g=s.lionSavanna,m=g.missions,o=m.objectives,extras:string[]=[...extraRewardIds];
  const receipt=(entryId:string,amount:number,relatedId:string,at:number,operationId:string)=>{const e=ledgerProof(s,entryId);require(Boolean(e&&e.kind==='reward'&&e.amount===amount&&e.relatedId===relatedId&&e.tick===at&&e.operationId===operationId),'$.lionSavanna.rewardReceipt');extras.push(entryId);};
  if(g.grant){const q=s.elephantGrove.missions.rewards.find(r=>r.missionId==='EH04'),p=g.grant;require(claimedEH04(s)&&q!==undefined&&p.command>q.command&&p.command<s.economy.nextCommand&&p.tick>=q.tick&&p.tick<=s.tick&&p.ledgerEntryId===p.id,'$.lionSavanna.grant');receipt(p.ledgerEntryId,1800,'lion-savanna',p.tick,p.id);}

@@ -2,14 +2,15 @@ import {ELEPHANT_SOCIAL} from '../animals/elephants/care-rules.ts';
 import {ELEPHANT_GROUND} from '../animals/elephants/ground.ts';
 import {type ZooSaveV1,type Point} from '../core/state.ts';
 import {EH_IDS,initialElephantMissions,type ZooSaveV2,type MultiSpeciesSave,type ElephantMissions} from '../core/zoo-state.ts';
-import {ELEPHANT_SPECIES_ID,MACAW_SPECIES_ID,isMacaw,isElephant,compatibleHabitat,compatibleResource,type V3ZooResource as ZooResource} from '../core/species.ts';
+import {ELEPHANT_SPECIES_ID,MACAW_SPECIES_ID,isMacaw,isElephant,compatibleHabitat,compatibleResource,type ZooResource} from '../core/species.ts';
 import {appendElephantZone} from '../world/elephant-expansion.ts';
 import {MAX_SAVE_CHARS,parseSave,validateSave,LEGACY_SAVE_FIELDS,economyRule,saveRules,validateLegacyRelationships,type SaveResult,type Rule} from './save-v1.ts';
 import type {CheckpointCodec} from './checkpoint.ts';
 import {purchaseBook} from '../economy/journal.ts';
 import {ELEPHANT_PRICES} from '../economy/elephant-prices.ts';
-import type {ZooSaveV4,V4ZooAnimal,V4ZooResource,V4ZooWorld} from '../core/giraffe-state.ts';
-type RelationshipSave=MultiSpeciesSave|ZooSaveV4;
+import type {ZooSaveV4} from '../core/giraffe-state.ts';
+import type {ZooSaveV5,V5ZooAnimal,V5ZooResource,V5ZooWorld} from '../core/zebra-state.ts';
+type RelationshipSave=MultiSpeciesSave|ZooSaveV4|ZooSaveV5;
 export type {ZooSaveV2} from '../core/zoo-state.ts';
 type Failure=Extract<SaveResult,{ok:false}>;
 export type SaveV2Result={ok:true;value:ZooSaveV2}|Failure;
@@ -35,14 +36,14 @@ const initialMissions=(m:ElephantMissions)=>m.currentId==='EH01'&&m.completedIds
 
 /** Validation-only legacy view. Never serialized or returned as a V2 checkpoint. */
 function legacyView(s:RelationshipSave):ZooSaveV1 {
-  const {elephantGrove:_,...rest}=s;const population:V4ZooAnimal[]=s.animals,resources:V4ZooResource[]=s.world.resources;
+  const {elephantGrove:_,...rest}=s;const population:V5ZooAnimal[]=s.animals,resources:V5ZooResource[]=s.world.resources;
   return {...rest,schemaVersion:1,animals:population.filter(isMacaw),world:{...s.world,habitats:s.world.habitats.map(({kind:__,...h})=>h),resources:resources.filter((r):r is ZooSaveV1['world']['resources'][number]=>r.kind==='food'||r.kind==='water'||r.kind==='perch')}};
 }
 const claimedQ04=(s:RelationshipSave)=>s.missions.completedIds.includes('Q04')&&s.missions.rewards.some(r=>r.missionId==='Q04'&&'unlockId'in r&&r.unlockId==='sanctuary-banner'&&'badgeId'in r&&r.badgeId==='thriving-sanctuary');
 /** Common relationship authority; public V2 input schema remains exactly V2. V4 validates its own added species separately. */
 export function validateMultispeciesRelationships(s:RelationshipSave,extraRewardIds:readonly string[]=[],rewardLimit=7){
-  const w:V4ZooWorld=s.world,population:V4ZooAnimal[]=s.animals,herd=population.filter(isElephant),birds=population.filter(isMacaw),habitats=new Map(w.habitats.map(h=>[h.id,h])),resources=new Map(w.resources.map(r=>[r.id,r])),g=s.elephantGrove,m=g.missions,o=m.objectives;
-  const width=s.schemaVersion===4?24:12;
+  const w:V5ZooWorld=s.world,population:V5ZooAnimal[]=s.animals,herd=population.filter(isElephant),birds=population.filter(isMacaw),habitats=new Map(w.habitats.map(h=>[h.id,h])),resources=new Map(w.resources.map(r=>[r.id,r])),g=s.elephantGrove,m=g.missions,o=m.objectives;
+  const width=s.schemaVersion>=4?24:12;
   require(w.gate.x===1&&w.gate.z===8&&w.tiles.every((t,i)=>t.cell.x===i%width&&t.cell.z===Math.floor(i/width)),'$.world.tiles.order');
   unique([...w.habitats.map(h=>h.id),...w.resources.map(r=>r.id),...s.animals.map(a=>a.id),...s.visitors.map(v=>v.id)],'$.entityIds');
   require(birds.length===2&&(herd.length===0||herd.length===2),'$.animals.population');

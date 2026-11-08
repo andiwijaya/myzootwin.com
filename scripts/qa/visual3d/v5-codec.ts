@@ -1,0 +1,9 @@
+import type {ZooSave} from '../../../src/game/core/zoo-state.ts';
+import {migrateToV5,validateSaveV5,serializeSaveV5,parseSaveV5,projectUnstartedV5,V5_SAVE_LIMITS} from '../../../src/game/persistence/save-v5.ts';
+import {stateFingerprint} from './state-fingerprint.ts';
+/** Read-only probe of the actual strict codec. It neither adopts V5 into the engine nor writes IndexedDB. */
+export async function probeV5Codec(source:ZooSave){
+ const before=await stateFingerprint(source),next=migrateToV5(source);if(!next.ok)throw Error('V5 migration refused '+next.path);
+ const text=serializeSaveV5(next.value),roundTrip=parseSaveV5(text),projection=projectUnstartedV5(next.value),future=validateSaveV5({...next.value,schemaVersion:6}),unknown=validateSaveV5({...next.value,preferences:{...next.value.preferences,futureFlag:true}}),corrupt=validateSaveV5({...next.value,currency:next.value.currency+1});
+ return{scope:'Actual strict V5 codec in internal browser; cloned snapshot only. No V5 engine adoption, checkpoint write, grant, actor, path or construction.',sourceSchema:source.schemaVersion,schema:next.value.schemaVersion,sourceHash:before,afterHash:await stateFingerprint(source),projectionHash:await stateFingerprint(projection),v5Hash:await stateFingerprint(next.value),roundTripHash:roundTrip.ok?await stateFingerprint(roundTrip.value):null,bytes:new TextEncoder().encode(text).byteLength,characters:text.length,limits:V5_SAVE_LIMITS,namespace:next.value.zebraGrasslands,oldAnimalsUnchanged:await stateFingerprint(source.animals)===await stateFingerprint(next.value.animals),oldWorldUnchanged:await stateFingerprint(source.world)===await stateFingerprint(next.value.world),oldEconomyUnchanged:await stateFingerprint(source.economy)===await stateFingerprint(next.value.economy),oldMissionsUnchanged:await stateFingerprint(source.missions)===await stateFingerprint(next.value.missions),future,unknown,corrupt};
+}
