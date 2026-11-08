@@ -1,3 +1,4 @@
+import {zebraAccessView} from '../world/zebra-access.ts';
 import {createZebraWorldScene} from './zebra/world-scene.ts';
 import {createGiraffeResidentsScene} from './giraffe/residents-scene.ts';
 import {createGiraffeWorldScene} from './giraffe/world-scene.ts';
@@ -68,7 +69,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   let renderer: WebGLRenderer | undefined;
   let disposed = false;
   let lost = false;
-  let zebraWorld:ReturnType<typeof createZebraWorldScene>|undefined,zebraBuildFailure:string|null=null;
+  let zebraViewKey='';let zebraWorld:ReturnType<typeof createZebraWorldScene>|undefined,zebraBuildFailure:string|null=null;
   let paused = false;
   let giraffeModels:ReturnType<typeof createGiraffeResidentsScene>|undefined,giraffeWorld:ReturnType<typeof createGiraffeWorldScene>|undefined,giraffeGhost:ReturnType<typeof createGiraffeCareGhost>|undefined,giraffePreview:ReturnType<typeof createGiraffeCarePreview>|undefined,giraffeFailure:string|null=null,giraffeViewKey='',giraffePathKey='';
   let giraffeRemoval:RemovalQuote|null=null,giraffePath:ReturnType<typeof missingConnection>=null;const giraffeInput=new AbortController();
@@ -120,6 +121,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   function announceVisitors(){const view=simulation.visitorView(),key=JSON.stringify(view);if(key!==previousVisitors){previousVisitors=key;host.dispatchEvent(new CustomEvent('scene-visitors-change',{detail:view}));}host.dataset.visitorCount=String(view.active);host.dataset.visitorWalking=String(view.walking);host.dataset.visitorViewing=String(view.viewing);host.dataset.visitorViewed=String(view.viewedTotal);}
   let paths:ReturnType<typeof createPathScene>|undefined;
   const simulation = createSimulation(options.stateStore?.read(),options.stateStore?.readEditor());
+  function announceZebraAccess(){const frame=simulation.inspect(),key=[frame.commandRevision,frame.editorRevision,frame.currency,paused,grantBusy,simulation.localeView()].join(':');if(key===zebraViewKey)return;zebraViewKey=key;host.dispatchEvent(new CustomEvent('scene-zebra-access-change',{detail:{...zebraAccessView(simulation.snapshot()),locale:simulation.localeView(),paused:paused||lost||grantBusy}}));}
   function announceGiraffe(){
     const frame=simulation.inspect(),key=[frame.tick,frame.commandRevision,giraffePreview?.view().revision,giraffeFailure,grantBusy,options.stateStore?.canCommit?.(),paused,simulation.localeView()].join(':');if(key===giraffeViewKey)return;giraffeViewKey=key;const habitat=simulation.giraffeHabitatView(),pathKey=[frame.commandRevision,frame.editorRevision].join(':');
     if(pathKey!==giraffePathKey){giraffePathKey=pathKey;const w=simulation.worldSnapshot(),h=w.habitats.find(h=>'kind'in h&&h.kind==='giraffe-plains');giraffePath=h&&!h.viewingCell?missingConnection(simulation.snapshot(),h.id):null;}
@@ -254,13 +256,14 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     const guide=readGuide(frame),guideKey=JSON.stringify(guide);if(guideKey!==previousGuide){previousGuide=guideKey;host.dispatchEvent(new CustomEvent('scene-onboarding-change',{detail:guide}));}
     const missions=simulation.missionView(),missionKey=JSON.stringify(missions);if(missionKey!==previousMission){previousMission=missionKey;host.dispatchEvent(new CustomEvent('scene-missions-change',{detail:missions}));}
     const recoveryKey=[frame.tick,frame.commandRevision,frame.editorRevision,simulation.visitorView().open].join(':');if(recoveryKey!==recoveryReadKey){recoveryReadKey=recoveryKey;recoveryRead=simulation.recoveryView();}const nextRecovery=JSON.stringify(recoveryRead);if(nextRecovery!==previousRecovery){previousRecovery=nextRecovery;host.dispatchEvent(new CustomEvent('scene-recovery-change',{detail:recoveryRead}));}
+    announceZebraAccess();
     const money=simulation.economyView(),moneyKey=JSON.stringify(money);if(moneyKey!==previousEconomy){previousEconomy=moneyKey;placement?.refresh();host.dispatchEvent(new CustomEvent('scene-economy-change',{detail:money}));}
     if (disposed || lost) return;
     if (context?.isContextLost()) { notifyContextLoss(); return; }
     const world=habitatDirty||pathDirty||foodDirty||waterDirty||perchDirty?simulation.worldSnapshot():undefined;
     const macawWorld=habitatDirty||foodDirty||waterDirty||perchDirty?simulation.macawWorldSnapshot():undefined;
     if(habitatDirty&&habitats){habitats.sync(macawWorld!);grove?.sync(world!);lionWorld?.sync(world!,simulation.lionMissionView().awards.includes('savanna-wildflowers'));giraffeWorld?.sync(world!,simulation.giraffeMissionView().awards);zebraWorld?.sync(world!);lighting?.invalidate();decoration?.sync(macawWorld!,simulation.missionView().care.unlocked);banner?.sync(macawWorld!,simulation.missionView().thriving.unlocked);habitatDirty=false;}
-    if(pathDirty&&paths){paths.sync(world!);picker?.refresh();pathDirty=false;}
+    if(pathDirty&&paths){paths.sync(world!);zebraWorld?.sync(world!);picker?.refresh();pathDirty=false;}
     if(birdsDirty&&birds){const s=simulation.birdSnapshot();birds.sync(s.animals,s.habitats,s.width,s.height,simulationTimeMs);const g=simulation.giraffeSnapshot();giraffeModels?.sync(g.animals,g.width,g.height,policy.low);if(g.animals.some(a=>a.currentBehavior!=='idle'))lighting?.invalidate();const lions=simulation.lionCareView().residents;lionModels?.sync(lions,s.width,s.height);const e=simulation.elephantSnapshot();elephantModels?.sync(e.animals,e.width,e.height,simulation.elephantCareSnapshot().resources);if(picker?.selection()?.kind==='giraffe')picker.refresh();if(picker?.selection()?.kind==='lion')picker.refresh();if(picker?.selection()?.kind==='elephant')picker.refresh();if(e.animals.length&&(!policy.reducedMotion||e.animals.some(a=>['seek-food','seek-water','wander','eat','drink','seek-bath','bathe','spray','seek-shade','rest','seek-log','enrich','approach-companion','trunk-touch'].includes(a.currentBehavior))))lighting?.invalidate();birdsDirty=false;announceBirds();}
     if(foodDirty){feeder?.sync(macawWorld!,foodPreview,simulation.foodView().canPlace);announceFood();foodDirty=false;}
     if(waterDirty){waterStation?.sync(macawWorld!,waterPreview,simulation.waterView().canPlace);announceWater();waterDirty=false;}
@@ -470,6 +473,11 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     focusElephantGuide:target=>{
       if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;const view=simulation.elephantOnboardingView(),area=view.focus[target];if(!view.active||!area)return;const origin=sceneOrigin(simulation.worldSnapshot());controls?.focusArea({...area,x:area.x-origin.x,z:area.z-origin.z});render();
     },
+    beginZebraPath:()=>{
+      if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;const v=zebraAccessView(simulation.snapshot());if(!v.path)return;
+      placement?.command('cancel');elephantCarePreview?.cancel();lionPreview?.cancel();giraffePreview?.cancel();picker?.clear();foodPreview=false;waterPreview=false;perchPreview=false;foodDirty=true;waterDirty=true;perchDirty=true;placementHabitatKind='macaw-aviary';placementCommand=simulation.commandRevision();placement?.guide('path',v.path.cell);const origin=sceneOrigin(simulation.worldSnapshot());controls?.focus({x:v.path.cell.x+.5-origin.x,z:v.path.cell.z+.5-origin.z});render();
+    },
+    focusZebraHabitat:()=>{if(disposed||paused||grantBusy||lost||macaw?.view().active)return;const h=simulation.worldSnapshot().habitats.find(h=>'kind'in h&&h.kind==='zebra-grasslands');if(!h)return;placement?.command('cancel');const origin=sceneOrigin(simulation.worldSnapshot());controls?.focusArea({x:Math.min(...h.cells.map(c=>c.x))-origin.x,z:Math.min(...h.cells.map(c=>c.z))-origin.z,width:8,depth:8});render();},
     beginZebraHabitat:()=>{
       if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;const v=simulation.zebraHabitatView();if(!v.canBuild||!v.anchor)return;
       controls?.setEnabled(false);controls?.setEnabled(true);placement?.command('cancel');elephantCarePreview?.cancel();lionPreview?.cancel();giraffePreview?.cancel();picker?.clear();foodPreview=false;waterPreview=false;perchPreview=false;foodDirty=true;waterDirty=true;perchDirty=true;

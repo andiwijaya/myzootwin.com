@@ -1,3 +1,4 @@
+import {mountZebraAccessPanel,type ZebraAccessSceneView} from './zebra-access-panel.ts';
 import {zebraConstructionCopy} from './zebra-copy.ts';
 import {sharedWorldDescription} from './world-description.ts';
 import {mountGiraffePanel} from './giraffe-panel.ts';
@@ -60,8 +61,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const retry = root.querySelector<HTMLButtonElement>('[data-preview-retry]');
   const reload = root.querySelector<HTMLButtonElement>('[data-preview-reload]');
   if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) throw new Error('Incomplete preview panel');
-  let elephantUnlocked=false,lionUnlocked=false,giraffeUnlocked=false;
-  const canvasDescription=()=>sharedWorldDescription(locale,studio.active,giraffeUnlocked,lionUnlocked,elephantUnlocked);
+  let elephantUnlocked=false,lionUnlocked=false,giraffeUnlocked=false,zebraExists=false;
+  const canvasDescription=()=>sharedWorldDescription(locale,studio.active,giraffeUnlocked,lionUnlocked,elephantUnlocked,zebraExists);
   let recovery:RecoveryView|undefined,recoveryPending:RecoveryQuote|null=null;
   const recoveryDialog=root.querySelector<HTMLDialogElement>('[data-recovery-dialog]');
   const recoveryText=()=>{if(!recovery)return'';const c=entryMessages[locale],key=({habitat:'recoveryHabitat',path:'recoveryPath',food:'recoveryFood',water:'recoveryWater',perch:'recoveryPerch','food-refill':'recoveryFoodRefill','water-refill':'recoveryWaterRefill',rations:'recoveryRations',welcome:'recoveryWelcome',open:'recoveryOpen',reclaim:'recoveryReclaim','repair-food':'recoveryRepairFood','repair-water':'recoveryRepairWater','repair-perch':'recoveryRepairPerch',wait:'recoveryWait',steady:'recoverySteady'}as const)[recovery.kind];return c[key].replace('{x}',formatNumber((recovery.cell?.x??0)+1,locale)).replace('{z}',formatNumber((recovery.cell?.z??0)+1,locale)).replace('{refund}',formatNumber(recovery.refund,locale));};
@@ -72,6 +73,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   let state: PreviewState = { status: 'closed' };
   const events = new AbortController();
   const giraffePanel=mountGiraffePanel(root,host,events.signal);
+  const zebraAccessPanel=mountZebraAccessPanel(root,host,events.signal,{path(){controller.beginZebraPath();revealHudTarget(placementTools);host.focus({preventScroll:true});scrollHudTarget(host);},focus(){controller.focusZebraHabitat();host.focus({preventScroll:true});scrollHudTarget(host);}});
+  host.addEventListener('scene-zebra-access-change',event=>{zebraExists=(event as CustomEvent<ZebraAccessSceneView>).detail.exists;host.setAttribute('aria-label',canvasDescription());},{signal:events.signal});
   host.addEventListener('scene-giraffe-change',event=>{giraffeUnlocked=(event as CustomEvent<{habitat:{exists:boolean}}>).detail.habitat.exists;host.setAttribute('aria-label',canvasDescription());},{signal:events.signal});
   const lionPanel=mountLionPanel(root,host,events.signal);
   host.addEventListener('scene-lion-change',event=>{lionUnlocked=(event as CustomEvent<{grant:{qualified:boolean}}>).detail.grant.qualified;host.setAttribute('aria-label',canvasDescription());},{signal:events.signal});
@@ -254,7 +257,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     root.querySelector('[data-perch-keep]')?.replaceChildren(c.perchKeep);root.querySelector('[data-perch-remove-confirm]')?.replaceChildren(c.perchRemoveConfirm);root.querySelector('#perch-dialog-title')?.replaceChildren(c.perchRemoveTitle);root.querySelector('[data-entry-text="perchRemoveHint"]')?.replaceChildren(c.perchRemoveHint);renderCosts();
   }
   function renderStudio(){
-    speedPanel.show(state.status==='ready'&&!studio.active,locale);renderVisitors();missionPanel.show(state.status==='ready'&&!studio.active,locale);elephantMissions.show(state.status==='ready'&&!studio.active,locale);elephantGuide.show(state.status==='ready'&&!studio.active,locale);elephantRecovery.show(state.status==='ready'&&!studio.active,locale);lionPanel.show(state.status==='ready'&&!studio.active,locale);giraffePanel.show(state.status==='ready'&&!studio.active,locale);elephantCatalog.show(state.status==='ready'&&!studio.active,locale);elephantCare.show(state.status==='ready'&&!studio.active,locale);onboardingPanel.show(state.status==='ready'&&!studio.active,locale);const guideLanguage=root.querySelector<HTMLSelectElement>('[data-guide-language]');if(guideLanguage){guideLanguage.value=locale;guideLanguage.setAttribute('aria-label',entryMessages[locale].language);}
+    speedPanel.show(state.status==='ready'&&!studio.active,locale);renderVisitors();missionPanel.show(state.status==='ready'&&!studio.active,locale);elephantMissions.show(state.status==='ready'&&!studio.active,locale);elephantGuide.show(state.status==='ready'&&!studio.active,locale);elephantRecovery.show(state.status==='ready'&&!studio.active,locale);lionPanel.show(state.status==='ready'&&!studio.active,locale);giraffePanel.show(state.status==='ready'&&!studio.active,locale);zebraAccessPanel.show(state.status==='ready'&&!studio.active,locale);elephantCatalog.show(state.status==='ready'&&!studio.active,locale);elephantCare.show(state.status==='ready'&&!studio.active,locale);onboardingPanel.show(state.status==='ready'&&!studio.active,locale);const guideLanguage=root.querySelector<HTMLSelectElement>('[data-guide-language]');if(guideLanguage){guideLanguage.value=locale;guideLanguage.setAttribute('aria-label',entryMessages[locale].language);}
     const copy=entryMessages[locale],ready=state.status==='ready',tools=root.querySelector<HTMLElement>('[data-macaw-tools]');if(!tools)return;
     tools.hidden=!ready;const controls=root.querySelector<HTMLElement>('[data-macaw-controls]');if(controls)controls.hidden=!studio.active;
     for(const button of tools.querySelectorAll<HTMLButtonElement>('[data-studio-command]')){const command=button.dataset.studioCommand as StudioCommand;const key=command==='pause'?(studio.motionPaused?'macawResume':'macawPause'):command==='open'?'macawOpen':command==='close'?'macawClose':command==='detail'?'macawDetail':'macawHabitat';button.textContent=copy[key];button.hidden=command==='open'?studio.active:command==='detail'?!studio.habitat:command==='habitat'?studio.habitat:false;if(command==='habitat')button.disabled=habitatCount===0;}

@@ -29,12 +29,12 @@ export function visitTarget(w:RuntimeWorld):VisitTarget|null{return visitTargets
 const populated=(s:RuntimeState,id:string)=>s.animals.some(a=>a.habitatId===id&&a.position!==null);
 /** Empty new groves never divert legacy visitors. A populated reachable habitat takes priority over an empty alternative. */
 export function visitTargetsForState(s:RuntimeState):VisitTarget[]{
- const visible={...s.world,habitats:s.world.habitats.filter(h=>!('kind'in h&&(h.kind==='elephant-grove'||h.kind==='lion-savanna'||h.kind==='giraffe-plains')&&!populated(s,h.id)))},targets=visitTargets(visible),occupied=targets.filter(t=>populated(s,t.habitatId));return s.world.habitats.length>1&&occupied.length?occupied:targets;
+ const visible={...s.world,habitats:s.world.habitats.filter(h=>!('kind'in h&&(h.kind==='elephant-grove'||h.kind==='lion-savanna'||h.kind==='giraffe-plains'||h.kind==='zebra-grasslands')&&!populated(s,h.id)))},targets=visitTargets(visible),occupied=targets.filter(t=>populated(s,t.habitatId));return s.world.habitats.length>1&&occupied.length?occupied:targets;
 }
 /** Explicit targets pin existing journeys; selecting a new destination never retargets a visitor in flight. */
 export function visitTargetForState(s:RuntimeState,habitatId?:string):VisitTarget|null{
  if(!habitatId)return visitTargetsForState(s)[0]??null;
- return visitTarget({...s.world,habitats:s.world.habitats.filter(h=>h.id===habitatId&&!('kind'in h&&(h.kind==='elephant-grove'||h.kind==='lion-savanna'||h.kind==='giraffe-plains')&&!populated(s,h.id)))});
+ return visitTarget({...s.world,habitats:s.world.habitats.filter(h=>h.id===habitatId&&!('kind'in h&&(h.kind==='elephant-grove'||h.kind==='lion-savanna'||h.kind==='giraffe-plains'||h.kind==='zebra-grasslands')&&!populated(s,h.id)))});
 }
 /** Round robin follows the last actual paid gate receipt, retained through compaction and cold saves. No counter/RNG mutation. */
 export function selectVisitTarget(s:RuntimeState):VisitTarget|null{
