@@ -1,0 +1,9 @@
+import {createServer} from 'node:http';
+import {readFile,stat,writeFile} from 'node:fs/promises';
+import {resolve,extname,sep} from 'node:path';
+const root=resolve(process.argv[2]??'.qa/zebra/z0-02/render'),workspace=resolve('.qa');
+if(!root.startsWith(workspace+sep))throw Error('QA server root must be inside this repository .qa');
+const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.webp':'image/webp','.jpg':'image/jpeg','.svg':'image/svg+xml','.json':'application/json'};
+const server=createServer(async(req,res)=>{try{const path=decodeURIComponent(new URL(req.url,'http://localhost').pathname);let file=resolve(root,'.'+path);if(file!==root&&!file.startsWith(root+sep))throw Error('Invalid path');if((await stat(file)).isDirectory())file=resolve(file,'index.html');res.writeHead(200,{'Content-Type':mime[extname(file)]??'application/octet-stream','Cache-Control':'no-store'});res.end(await readFile(file));}catch{res.writeHead(404);res.end('Not found');}});
+server.listen(0,'127.0.0.1',async()=>{const receipt={origin:'http://127.0.0.1:'+server.address().port,pid:process.pid,root};await writeFile('.qa/zebra-audit/server.json',JSON.stringify(receipt));console.log(JSON.stringify(receipt));});
+process.stdin.setEncoding('utf8');process.stdin.on('data',s=>{if(s.trim()==='stop')server.close(()=>process.exit(0));});
