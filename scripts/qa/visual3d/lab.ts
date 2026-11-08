@@ -7,6 +7,7 @@ import {validateSaveV4} from '../../../src/game/persistence/save-v4.ts';
 import {loadVisualFixture} from './fixture.ts';
 import {stateFingerprint as hash} from './state-fingerprint.ts';
 import {runtimeProvenance} from './runtime-provenance.ts';
+import {resetVisualConstructions} from './tagging.ts';
 
 declare const __VIS3D_SOURCE__:string,__VIS3D_SOURCE_FINGERPRINT__:string,__VIS3D_FIXTURE_HASH__:string;
 const stage=document.querySelector<HTMLElement>('#stage')!,out=document.querySelector<HTMLElement>('#result')!,status=document.querySelector<HTMLElement>('#status')!,open=document.querySelector<HTMLButtonElement>('#open')!,close=document.querySelector<HTMLButtonElement>('#close')!;
@@ -26,7 +27,7 @@ function dispose(){if(session){session.dispose();retired.push(session.inspect?.(
 function mount(){
  if(session||owners)return;
  try{
-  latest=structuredClone(fixture.state);editor=undefined;
+  latest=structuredClone(fixture.state);editor=undefined;resetVisualConstructions();
   const created=mountFoundationScene(stage,reason=>{recordError(reason);status.textContent='Renderer gagal: '+reason;},{stateStore:{read:()=>structuredClone(latest),write:s=>{const check=validateSaveV4(s);if(!check.ok)throw Error('Production emitted invalid V4');latest=structuredClone(s);},readEditor:()=>editor,writeEditor:s=>{editor=structuredClone(s);}},frames:{request(fn){const id=requestAnimationFrame(t=>{pending.delete(id);fn(t);});pending.add(id);return id;},cancel(id){pending.delete(id);cancelAnimationFrame(id);}},createRenderer(canvas,context){
    const real=new WebGLRenderer({canvas,context,antialias:true,alpha:false});renderer=real;const render=real.render.bind(real);real.render=(scene,view)=>{world=scene as Scene;camera=view;render(scene,view);submissions++;};return real;
   }});
