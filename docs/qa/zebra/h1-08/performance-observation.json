@@ -1,0 +1,42 @@
+{
+  "status": "OPEN_R7_PERFORMANCE_PRESENTATION_AND_ACTIVE_SOAK",
+  "source": "29ac46611af65e3ff416aece60144c0aeae4e875",
+  "sourceFingerprint": "fff6d86e38975755d41b712c33e1d887f4944590ff2ef95ca024302584d763af",
+  "method": "Actual native RAF source callback CPU wall time with QA observation. No presented FPS or physical-device claim. The ten-times trailing120 callbacks include earlier one-times callbacks; counters are cumulative.",
+  "nativeOne": {
+    "tick": 15669,
+    "canonicalTicks": 60,
+    "callbacks": 196,
+    "cpu": {
+      "count": 196,
+      "retained": 120,
+      "capacity": 120,
+      "invalid": 0,
+      "minMs": 12.900000005960464,
+      "maxMs": 78.69999998807907,
+      "p50Ms": 20.5,
+      "p95Ms": 56,
+      "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+    }
+  },
+  "nativeTen": {
+    "tick": 17718,
+    "canonicalTicks": 2109,
+    "callbacks": 281,
+    "cpu": {
+      "count": 281,
+      "retained": 120,
+      "capacity": 120,
+      "invalid": 0,
+      "minMs": 12.900000005960464,
+      "maxMs": 332.40000000596046,
+      "p50Ms": 261.09999999403954,
+      "p95Ms": 309.10000002384186,
+      "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+    },
+    "droppedWallMs": 2349.5999999999767,
+    "droppedSimMs": 23495.999999999767
+  },
+  "finding": "Observed callback maximum332.4ms and clamped wall/simulation time during10x. Correct canonical state/receipts and keyboard Pause were verified; this does not close product performance acceptance. Source render submissions were only part of callback cost. Further active-soak/profiling and measured presentation remain R7 gates.",
+  "next": "Compare actual production and QA CPU work before changing source. Preserve fixed100ms rules and canonical outputs; do not relabel callbacks as presented frames."
+}

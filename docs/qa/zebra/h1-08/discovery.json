@@ -1,0 +1,43 @@
+{
+  "source": "2c05b60a8cfc2e5c240782f0fa48835b6e06daa0",
+  "status": "FIXED_QA_COVERAGE_AND_PROTOCOL_29AC466_NATIVE_RETEST",
+  "twentyCycles": {
+    "status": "PASS_20_REAL_MOUNT_CLOSE_CYCLES",
+    "cycles": 20,
+    "ownersAtEnd": 0,
+    "closedPrograms": [
+      1
+    ],
+    "closedGeometries": [
+      0
+    ]
+  },
+  "findings": [
+    {
+      "id": "RETIRED_CONTEXT_RESTORE_NOT_CONFIRMED",
+      "actual": {
+        "serial": 1,
+        "phase": "RESTORE_REQUESTED",
+        "supported": true,
+        "actualLostEvents": 1,
+        "actualRestoredEvents": 0,
+        "sourceLossObserved": true,
+        "sourceOwnerReleased": true,
+        "restoredWasLive": false,
+        "retirementRequested": false,
+        "reason": null,
+        "heldContext": true,
+        "heldContextLost": true,
+        "qaEventObserverActive": true,
+        "scope": "Real context extension/events on QA canvas only. Released production owner remains disposed; fresh factory remount is the recovery strategy, not stale in-place resume."
+      },
+      "note": "Original source owner was released and its canvas detached before restoreContext. No restored event was observed; fresh production retry rendered the exact cold state. Do not claim same-context restoration pass."
+    },
+    {
+      "id": "QA_SHADOW_OWNERSHIP_OMISSION",
+      "note": "Current graph observer counts mesh/material maps and bone textures, but omits source customDepthMaterial and light-shadow render targets. Renderer reports11 textures against8 graph bone textures; inspect actual shadow allocations and correct coverage, preserving this receipt."
+    }
+  ],
+  "errors": [],
+  "resolution": "Native twenty-cycle rerun includes actual custom-depth material and shadow target/color/depth attachments. A bounded attached-canvas hardware restore exercise observes actual lost/restored events while source engine/RAF stays paused/lost; then releases the old owner and remounts original source. The original retired-context restore failure is retained as discovery, not counted as a pass."
+}

@@ -1,0 +1,112 @@
+{
+  "id": "H1-08",
+  "status": "PASS_BOUNDED_OWNERSHIP_LIFECYCLE_AND_ACTUAL_CONTEXT_RECOVERY",
+  "at": "2026-11-08T16:52:49.775Z",
+  "source": "29ac46611af65e3ff416aece60144c0aeae4e875",
+  "sourceFingerprint": "fff6d86e38975755d41b712c33e1d887f4944590ff2ef95ca024302584d763af",
+  "lab": "799c62da6c16442fef7fb71ba22a9e488cff8aae4f0e507774370864eedf7449",
+  "productionExclusion": {
+    "status": "PASS",
+    "markers": [
+      "myzootwin-visual3d-",
+      "Asset Lab internal",
+      "__VIS3D_SOURCE__",
+      "scripts/qa/visual3d",
+      "visual3d-frozen-v4",
+      "__qaVisual3dTag",
+      "QA-only constructor side-table"
+    ],
+    "files": 31
+  },
+  "tests": {
+    "pass": 28,
+    "fail": 0,
+    "actualFactoryOwnershipFamilies": [
+      "macaw",
+      "elephant",
+      "lion",
+      "giraffe",
+      "visitor"
+    ],
+    "controllerStubs": "Unit guard/cancel tests only; not native WebGL evidence",
+    "strictTypesWithUnusedChecks": "PASS",
+    "wholeProjectCheck": {
+      "files": 470,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 0
+    },
+    "logHash": "3879b82d1fff55ac74fc852483d782e96854eb6748408c70b9ae00f27727e449",
+    "checkHash": "4551b6fa24ec05f705f06d8ea58d559e504b0a04896b57f2c690f25410b9946a"
+  },
+  "native": {
+    "runner": "internal-browser",
+    "physicalDevice": false,
+    "presentedFps": null,
+    "cycles": 20,
+    "sourceOwnerMaximum": 1,
+    "resourceCounts": {
+      "geometries": 72,
+      "materials": 42,
+      "textures": 10,
+      "renderTargets": 1,
+      "skeletons": 8,
+      "shared": 38,
+      "debugRoots": 2
+    },
+    "rendererLiveTextures": 11,
+    "closedGpuGeometries": 0,
+    "closedGpuTextures": 0,
+    "closedOwnedMaterials": 0,
+    "closedProgramCounter": 1,
+    "programGrowthAcross20": 0,
+    "sourceCallbacksAfterClose": 0,
+    "sourceSubscribersAfterClose": 0,
+    "qaResizeObserversAfterClose": 0,
+    "context": {
+      "actualLostEvents": 1,
+      "actualRestoredEvents": 1,
+      "pausedAndLostDuringHardwareExercise": true,
+      "oldOwnerReleased": true,
+      "heldContextAfter": 0,
+      "timeoutAfter": 0,
+      "freshFactoryRetryExact": true
+    },
+    "cold": {
+      "revision": 3,
+      "tick": 15609,
+      "sha256": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf"
+    },
+    "nativeClock": {
+      "oneTimesTicks": 60,
+      "subsequentTenTimesTicks": 2049,
+      "canonicalReceiptsValid": true
+    },
+    "errors": 0
+  },
+  "evidence": {
+    "browserHash": "0da2fef3744bce2cbe97b300bae9673b1f9e9ce79cd4932f709220c77ec6bb28",
+    "rawCyclePath": ".qa/zebra-audit/h1-08-final-lifecycle-raw.json",
+    "rawCycleHash": "7a398ed1c6b59913c443f8f57576f959ec2cfc55aa7302555ebe264d612013c3",
+    "screenshots": [
+      {
+        "path": "docs/qa/zebra/h1-08/context-retry-cold.jpg",
+        "sha256": "d5ef2bfad1dded599dfd50ee1c6977d32f9b70ad8669ce73f038613fded33784"
+      },
+      {
+        "path": "docs/qa/zebra/h1-08/cycles-complete.jpg",
+        "sha256": "c5272e270733d8988a235c98c6d00597bd512c747c066a249a06121345b7fabf"
+      }
+    ]
+  },
+  "limits": [
+    "Resource graph includes actual custom-depth material, shadow render target/color/depth attachments, eight skeleton bone textures and source mesh/shared resources. Renderer reports one more live texture than directly addressable graph objects (11 versus10); the delta is stable across20cycles and both reach0 at source teardown. Its exact internal object type is not claimed.",
+    "The retained program counter is1 in all20closed renderers while owned materials/geometries/textures/skeletons/callbacks/subscribers are released. This is a measured bounded internal counter, not a literal-zero cache or heap-leak proof.",
+    "CPU samples measure actual source callbacks with installed QA observation and renderer command submission. They exclude GPU completion and presented FPS. The ten-times trailing120-callback window includes some earlier one-times callbacks; sample counters and canonical tick counts are reported separately.",
+    "Approximate Chromium heap values were read without forced GC; no retained-object/physical-device performance claim.",
+    "Actual context loss/restoration events were exercised on an attached paused QA canvas, then the lost owner was disposed and a fresh production factory remounted. This hardware exercise does not claim in-place product resume.",
+    "All native progression was unsaved QA-only. Cold reload returns the exact revision3tick15609checkpoint.",
+    "Performance observation remains OPEN_R7. Native state progressed2109ticks total after retry, with60 at1x and2049 subsequently at10x; this is not a15minute active soak.",
+    "No production src/public/package changes, primary database, owner browser, push or deploy."
+  ]
+}
