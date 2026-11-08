@@ -1,0 +1,99 @@
+{
+  "status": "PASS_Z3_04_CAUSAL_GRAZING",
+  "source": "9b784e49a87da1b45aad05d605a3da302f3bb318",
+  "sourceFingerprint": "a282bdc8de207e357d8ce69f72b015af93887bf4b917e90d19c5dead8482c99a",
+  "tests": {
+    "unique": 44,
+    "runs": [
+      30,
+      19
+    ],
+    "overlap": 5,
+    "scope": "Six grazing tests plus movement/herd/paid care/render/visitor/source inventory/strictV5/old construction regression"
+  },
+  "strictTypes": "PASS",
+  "astroCheck": "530 files;0 errors/warnings/hints",
+  "productionExclusion": {
+    "status": "PASS",
+    "markers": [
+      "myzootwin-visual3d-",
+      "Asset Lab internal",
+      "__VIS3D_SOURCE__",
+      "scripts/qa/visual3d",
+      "visual3d-frozen-v4",
+      "__qaVisual3dTag",
+      "QA-only constructor side-table",
+      "Step cosmetic Studio100ms",
+      "matrix-result"
+    ],
+    "files": 31
+  },
+  "browserCases": 18,
+  "viewerCases": 11,
+  "native": {
+    "ticks": 600,
+    "speed": 1,
+    "callbacks": 1486,
+    "cpu": {
+      "count": 1486,
+      "retained": 120,
+      "capacity": 120,
+      "invalid": 0,
+      "minMs": 12,
+      "maxMs": 122.5,
+      "p50Ms": 84.10000002384186,
+      "p95Ms": 105.90000000596046,
+      "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+    },
+    "presentedFps": null
+  },
+  "cold": {
+    "midGameplayHash": "04e2c02a4475615fbf244132580da2ff2d5841a4c68f830d31627253b43ab901",
+    "finalHash": "aa5e1d88d0b3305c3f9bc110a028800a3a21b436bdd9acb1448abb42f21f99a9",
+    "tick": 16174,
+    "cash": 3605,
+    "meals": 4,
+    "foodStock": 20,
+    "waterStock": 12
+  },
+  "scope": [
+    "Actual paid5 facilities and full supplies in existing UUID; source callbacks advance90 actual fixed ticks, then nativeRAF1x advances600. Four actual food completions consume4 portions, lower hunger and increment exactly4 grazes; water/rest/social/mission credit is not claimed.",
+    "Source two-link neck/head IK reaches mouth height.279 world at actual close food ports; leg IK keeps hooves grounded. Essential head lowering remains under reduced motion. Node tests check every posed vertex, strict contact, empty/contested/blocked/far ports, no free stock, paused/disposed and exact cold continuation.",
+    "Saved mid-contact Zaki12ticks/Kira23ticks cold-load unchanged. Actual quality switch auto→low changes only preferences; gameplay/actors/stocks remain exact. FinalID cold hash is byte-equivalent state identity with all4food counters1, no offline progress or duplicate meal.",
+    "Actual native sourceAssetLab uses four true runtime-mesh angles,20-bone overlay and high/low meshes; no mocked pose. An initial identity-bound selection cannot isolate a subtree, was correctly reported isolationApplied=false, and was replaced by true runtime-mesh selection; retained as scoped discovery.",
+    "Native product ID/EN and360px emulation have no document overflow; actual care buttons observed44px tall. Viewports are not physical devices. PresentedFPS remains unmeasured. Trailing callbackCPU is disclosed; full performance/soak remains OPEN_R7.",
+    "Shared cash rises10 during native running through existing real guest economy; no refill or purchase command occurs. OriginalV4 backup remains exact; all owners/assets/callbacks return0 after close. Synthetic claimed grant remains validation-only, proposed1700grant and defaultpublicV5 activation still open. No push/deploy."
+  ],
+  "artifacts": [
+    {
+      "path": "docs\\qa\\zebra\\z3-04\\browser.json",
+      "bytes": 455642,
+      "sha256": "a67925f9ae5a656698bfa1745a71b94649ca478b02f5d1f939a005ad2cbde09f"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z3-04\\four-fed-en.png",
+      "bytes": 123093,
+      "sha256": "0154e89f0c4441e1a75b2313441d7db481216cb13bc6cee2cc5433ba531a0603"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z3-04\\four-fed-mobile360-en.png",
+      "bytes": 51207,
+      "sha256": "4a58df7cc14292d7773f963cda6dc968b273cd9f14be88dd273de35cf7030092"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z3-04\\mid-graze-id.png",
+      "bytes": 126838,
+      "sha256": "3e1bd929da8840a99d63309cbb61aa79d6ae14729f4b194509490e271a4067c0"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z3-04\\zaki-contact270.png",
+      "bytes": 69491,
+      "sha256": "4948c2da8159141a15eda169fea2f7f260a317809c87950c7d529d7e0a56970c"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z3-04\\zaki-contact90.png",
+      "bytes": 69127,
+      "sha256": "d06a18a2830f4467cf121b2e4c4a328c581d7c981e1ee4006e815a1314eb8d25"
+    }
+  ]
+}
