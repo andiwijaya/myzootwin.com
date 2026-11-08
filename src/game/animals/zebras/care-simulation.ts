@@ -1,14 +1,53 @@
-import type{RuntimeState}from'../../core/runtime-state.ts';import{zebras,type ZebraAnimal,type ZebraHabitat,type ZebraResource}from'../../core/zebra-state.ts';import{ZEBRA_NEEDS as N,ZEBRA_GROUND as G}from'./rules.ts';import{zebraDistance as distance,zebraGroundRoute}from'./ground.ts';import{zebraBodySweepAllowed}from'./body.ts';import{stepZebraMovement,walkZebraGround,zebraIdle,zebraAngle}from'./movement.ts';
-type GrazeEvent={type:'zebra-grazed';animalId:string;resourceId:string;eventId:string};
+import type {RuntimeState} from '../../core/runtime-state.ts';
+import {zebras,type ZebraAnimal,type ZebraHabitat,type ZebraResource} from '../../core/zebra-state.ts';
+import {ZEBRA_NEEDS as N,ZEBRA_GROUND as G} from './rules.ts';
+import {zebraDistance as distance,zebraGroundRoute} from './ground.ts';
+import {zebraBodySweepAllowed} from './body.ts';
+import {stepZebraMovement,walkZebraGround,zebraIdle,zebraAngle} from './movement.ts';
+type CareEvent={type:'zebra-grazed'|'zebra-drank';animalId:string;resourceId:string;eventId:string};
+type Kind='zebra-graze'|'zebra-water';
 const home=(s:RuntimeState,a:ZebraAnimal)=>s.world.habitats.find((h):h is ZebraHabitat=>h.kind==='zebra-grasslands'&&h.id===a.habitatId);
-function chooseFood(s:RuntimeState,a:ZebraAnimal,slot:number,herd:ZebraAnimal[]){const h=home(s,a);if(!h)return;const others=herd.filter(b=>b!==a),resources=s.world.resources.filter((r):r is ZebraResource=>r.kind==='zebra-graze'&&r.habitatId===h.id&&r.stock>0);for(let i=0;i<resources.length;i++){const r=resources[(slot+a.grazes+a.motion.sequence+i)%resources.length]!;for(const p of[...r.approaches].sort((p,q)=>distance(a.position,p)-distance(a.position,q)||p.z-q.z||p.x-q.x)){if(distance(p,{x:r.cell.x+.5,z:r.cell.z+.5})>N.maxFeedApproach)continue;if(others.some(b=>distance(b.position,p)<G.separation||b.target&&distance(b.target,p)<G.separation))continue;const route=zebraGroundRoute(s.world,h,a.position,p,others.map(b=>b.position));if(!route)continue;a.target={...p};a.targetResourceId=r.id;a.currentBehavior='seek-graze';a.motion={...a.motion,phase:'seek-graze',ticksLeft:G.seekTimeout,sequence:a.motion.sequence+1,waypoints:route,waypointIndex:0,partnerId:null,herdLeaderId:null,blockedTicks:0};return;}}}
+const isContact=(a:ZebraAnimal)=>a.currentBehavior==='graze'||a.currentBehavior==='drink';
+const isCare=(a:ZebraAnimal)=>isContact(a)||a.currentBehavior==='seek-graze'||a.currentBehavior==='seek-water';
+function chooseResource(s:RuntimeState,a:ZebraAnimal,slot:number,herd:ZebraAnimal[],kind:Kind){
+ const h=home(s,a);if(!h)return false;const others=herd.filter(b=>b!==a),resources=s.world.resources.filter((r):r is ZebraResource=>r.kind===kind&&r.habitatId===h.id&&r.stock>0);
+ for(let i=0;i<resources.length;i++){const r=resources[(slot+a.grazes+a.waterDrunk+a.motion.sequence+i)%resources.length]!;
+  for(const p of [...r.approaches].sort((p,q)=>distance(a.position,p)-distance(a.position,q)||p.z-q.z||p.x-q.x)){
+   if(distance(p,{x:r.cell.x+.5,z:r.cell.z+.5})>N.maxFeedApproach)continue;
+   if(others.some(b=>distance(b.position,p)<G.separation||b.target&&distance(b.target,p)<G.separation))continue;
+   const route=zebraGroundRoute(s.world,h,a.position,p,others.map(b=>b.position));if(!route)continue;
+   a.target={...p};a.targetResourceId=r.id;a.currentBehavior=kind==='zebra-water'?'seek-water':'seek-graze';
+   a.motion={...a.motion,phase:a.currentBehavior,ticksLeft:G.seekTimeout,sequence:a.motion.sequence+1,waypoints:route,waypointIndex:0,partnerId:null,herdLeaderId:null,blockedTicks:0};return true;
+  }
+ }return false;
+}
 /** One canonical100ms step. Only completed true contact consumes one real portion.
  * No rendering, wall-time, extra random draw, automatic refill or mission credit. */
-export function stepZebraCare(s:RuntimeState){const herd=zebras(s.animals),fed:{animalId:string;resourceId:string}[]=[],events:GrazeEvent[]=[],offset=herd.length?s.tick%herd.length:0;for(let n=0;n<herd.length;n++){const a=herd[(n+offset)%herd.length]!;a.hunger=Math.min(100,a.hunger+N.hungerPerTick);if(a.hunger>=N.seekAt&&['idle','wander'].includes(a.currentBehavior))chooseFood(s,a,n,herd);}stepZebraMovement(s);
- for(let n=0;n<herd.length;n++){const a=herd[(n+offset)%herd.length]!;if(!['seek-graze','graze'].includes(a.currentBehavior))continue;const r=s.world.resources.find((r):r is ZebraResource=>r.kind==='zebra-graze'&&r.id===a.targetResourceId&&r.habitatId===a.habitatId),h=home(s,a);if(!r||r.stock<=0||!h||!a.target||distance(a.target,{x:r.cell.x+.5,z:r.cell.z+.5})>N.maxFeedApproach){zebraIdle(a,0);continue;}
-  if(a.currentBehavior==='seek-graze'){if(walkZebraGround(s,a,h,herd.filter(b=>b!==a)))continue;if(distance(a.position,a.target)>.001){zebraIdle(a,6);continue;}const heading=Math.atan2(r.cell.x+.5-a.position.x,r.cell.z+.5-a.position.z),delta=zebraAngle(a.motion.heading,heading),next=zebraAngle(0,a.motion.heading+Math.max(-G.turn,Math.min(G.turn,delta))),posts=s.world.resources.filter(r=>r.kind==='zebra-shade'&&r.habitatId===h.id).map(r=>({x:r.cell.x+.5,z:r.cell.z+.5}));if(!zebraBodySweepAllowed(a,a.position,next,herd.filter(b=>b!==a),posts)){zebraIdle(a,6);continue;}a.motion.heading=next;if(Math.abs(delta)>.12)continue;a.currentBehavior=a.motion.phase='graze';a.motion.ticksLeft=N.grazeTicks;a.motion.sequence++;a.motion.waypoints=[];a.motion.waypointIndex=0;a.motion.lastStep={x:0,z:0};continue;}
-  if(distance(a.position,a.target)>.001||!r.approaches.some(p=>distance(p,a.position)<.001)){zebraIdle(a,0);continue;}if(--a.motion.ticksLeft>0)continue;r.stock--;r.revision++;a.hunger=Math.max(0,a.hunger-N.foodRelief);a.foodEaten++;a.grazes++;fed.push({animalId:a.id,resourceId:r.id});events.push({type:'zebra-grazed',animalId:a.id,resourceId:r.id,eventId:a.id+':graze:'+a.grazes});zebraIdle(a,0);
+export function stepZebraCare(s:RuntimeState){
+ const herd=zebras(s.animals),fed:{animalId:string;resourceId:string}[]=[],watered:{animalId:string;resourceId:string}[]=[],events:CareEvent[]=[],offset=herd.length?s.tick%herd.length:0;
+ for(let n=0;n<herd.length;n++){const a=herd[(n+offset)%herd.length]!;a.hunger=Math.min(100,a.hunger+N.hungerPerTick);a.thirst=Math.min(100,a.thirst+N.thirstPerTick);
+  if(!['idle','wander'].includes(a.currentBehavior))continue;
+  const thirsty=a.thirst>=N.seekAt,hungry=a.hunger>=N.seekAt;
+  if(thirsty&&a.thirst>=70&&a.hunger<85&&chooseResource(s,a,n,herd,'zebra-water'))continue;
+  if(hungry&&chooseResource(s,a,n,herd,'zebra-graze'))continue;
+  if(thirsty)chooseResource(s,a,n,herd,'zebra-water');
+ }stepZebraMovement(s);
+ for(let n=0;n<herd.length;n++){const a=herd[(n+offset)%herd.length]!;if(!isCare(a))continue;
+  const drinking=a.currentBehavior==='seek-water'||a.currentBehavior==='drink',kind:Kind=drinking?'zebra-water':'zebra-graze',r=s.world.resources.find((r):r is ZebraResource=>r.kind===kind&&r.id===a.targetResourceId&&r.habitatId===a.habitatId),h=home(s,a);
+  if(!r||r.stock<=0||!h||!a.target||distance(a.target,{x:r.cell.x+.5,z:r.cell.z+.5})>N.maxFeedApproach){zebraIdle(a,0);continue;}
+  if(!isContact(a)){
+   if(walkZebraGround(s,a,h,herd.filter(b=>b!==a)))continue;
+   if(distance(a.position,a.target)>.001){zebraIdle(a,6);continue;}
+   const heading=Math.atan2(r.cell.x+.5-a.position.x,r.cell.z+.5-a.position.z),delta=zebraAngle(a.motion.heading,heading),next=zebraAngle(0,a.motion.heading+Math.max(-G.turn,Math.min(G.turn,delta))),posts=s.world.resources.filter(r=>r.kind==='zebra-shade'&&r.habitatId===h.id).map(r=>({x:r.cell.x+.5,z:r.cell.z+.5}));
+   if(!zebraBodySweepAllowed(a,a.position,next,herd.filter(b=>b!==a),posts)){zebraIdle(a,6);continue;}
+   a.motion.heading=next;if(Math.abs(delta)>.12)continue;a.currentBehavior=a.motion.phase=drinking?'drink':'graze';a.motion.ticksLeft=drinking?N.drinkTicks:N.grazeTicks;a.motion.sequence++;a.motion.waypoints=[];a.motion.waypointIndex=0;a.motion.lastStep={x:0,z:0};continue;
+  }
+  if(distance(a.position,a.target)>.001||!r.approaches.some(p=>distance(p,a.position)<.001)){zebraIdle(a,0);continue;}
+  if(--a.motion.ticksLeft>0)continue;r.stock--;r.revision++;
+  if(drinking){a.thirst=Math.max(0,a.thirst-N.waterRelief);a.waterDrunk++;watered.push({animalId:a.id,resourceId:r.id});events.push({type:'zebra-drank',animalId:a.id,resourceId:r.id,eventId:a.id+':drink:'+a.waterDrunk});}
+  else{a.hunger=Math.max(0,a.hunger-N.foodRelief);a.foodEaten++;a.grazes++;fed.push({animalId:a.id,resourceId:r.id});events.push({type:'zebra-grazed',animalId:a.id,resourceId:r.id,eventId:a.id+':graze:'+a.grazes});}zebraIdle(a,0);
  }
  // Another resident may consume the last portion later in this same atomic tick.
- for(const a of herd)if(['seek-graze','graze'].includes(a.currentBehavior)&&!s.world.resources.some(r=>r.id===a.targetResourceId&&r.stock>0))zebraIdle(a,0);return{fed,events};
+ for(const a of herd)if(isCare(a)&&!s.world.resources.some(r=>r.id===a.targetResourceId&&r.stock>0))zebraIdle(a,0);
+ return{fed,watered,events};
 }
