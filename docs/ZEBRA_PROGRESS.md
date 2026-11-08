@@ -1,6 +1,6 @@
 # Execution checkpoint
 
-Current verified progress: **15/54 (27.78%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
+Current verified progress: **16/54 (29.63%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
 
 All four Library inputs were read completely: master PRD 335 lines, harness 128, checklist 200, handoff 42. Official Windows materialization failed at `os.setxattr` after the authorized retry. The destination is empty; no original source-file identity is claimed. This requested derived repository checklist uses the complete official reads. Original Library documents remain unchanged. See [input-access record](qa/zebra/z0-01/input-access.json).
 
@@ -33,7 +33,9 @@ Open gates: static registry records retain their default **NOT_RUN** labels; fea
 
 | Z2-02 | d7d1643 / 62e36f8 | [Placement](qa/zebra/z2-02/verification.json): real original64-fill ghost at14..21/12..19, six bounded alternatives, authoritative path/occupancy/scenery rejection, corridor12/13 and future east23/south22..25 preserved. No tile mutation or automatic construction.40 tests incl.old construction/placement and twelve old projections, strict types,484-file check,10-page production QA exclusion. Eight final native cases validate green/red ghost, invalid/outside refusal, desktop/portrait/landscape fit, unchanged cold hash and2geometry/3material disposal. An existing QA fixture-selector overflow was found and fixed; final360px document width345. Paid command remains blocked. |
 
-Next: **Z2-04**, strict lossless V5 codec and verified migration, followed by **Z2-05** durable backup/CAS/version barrier, before completing **Z2-03** paid construction. This dependency order prevents a purchasable fifth habitat before its save format and atomic persistence exist. Continue one verified micro-feature at a time. Preserve all old state projections; no migration grants or automatic construction.
+| Z2-04 | e592799 | [Strict V5 codec](qa/zebra/z2-04/verification.json): all12 original fixtures migrate with exact V4 projections and no actors/money/paths/grants; strict data relationships cover stable identities, own FSM/ports/routes/contact, bounded population/resources, reciprocal grooming, ordered quests and actual ledger proofs.43 tests, strict types,491-file check and10-page production QA exclusion pass. Native cloned-checkpoint probe round-trips99,668 characters with exact a2403c2 historical projection; future/unknown/corrupt content refused. Existing QA DB stays schema4/revision3 after cold reload; owned resources zero after close. Populated14-actor/26-resource fixture is validation-only, not causal gameplay or grant proof. Product runtime/backend still V4. |
+
+Next: **Z2-05** durable backup/CAS/version barrier, before completing **Z2-03** paid construction. This dependency order prevents a purchasable fifth habitat before its save format and atomic persistence exist. Continue one verified micro-feature at a time. Preserve all old state projections; no migration grants or automatic construction.
 
 ---
 
@@ -99,7 +101,7 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
 - [ ] **Z2-03** — Implement paid zebra fence & selected/picking/Undo-compatible habitat construction, tanpa auto-membangun tanah kosong.
   - **DoD:** 64 occupancy cells, visible fence matching collision, unique stable IDs and one ledger debit.
   - **Proof:** `docs/qa/zebra/z2-03/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
-- [ ] **Z2-04** — Implement strict lossless ZooSaveV5, V4→V5 dan V1/V2/V3→V5 melalui migrasi terverifikasi, bounded schema & unknown-future guard.
+- [x] **Z2-04** — Implement strict lossless ZooSaveV5, V4→V5 dan V1/V2/V3→V5 melalui migrasi terverifikasi, bounded schema & unknown-future guard.
   - **DoD:** Old save projection identik; migrasi tidak menambah zebra/uang/paths tanpa tindakan pemain.
   - **Proof:** `docs/qa/zebra/z2-04/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 - [ ] **Z2-05** — Upgrade database version 5 di store yang sama; atomic V4 backup, generation/revision CAS, old-client barrier, abort/quota/multi-tab tests.

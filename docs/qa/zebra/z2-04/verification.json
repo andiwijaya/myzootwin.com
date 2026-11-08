@@ -1,0 +1,68 @@
+{
+  "status": "PASS_Z2_04_STRICT_CODEC",
+  "source": "e5927998f7f280f125933287220a4ae9bd46bd43",
+  "sourceFingerprint": "b2fd2af1c01237542a3cd525906e8f294d50cb32d6a25d93286bea611fdb7656",
+  "tests": 43,
+  "strictTypes": "PASS",
+  "astroCheck": "491 files;0 errors/warnings/hints",
+  "productionExclusion": {
+    "status": "PASS",
+    "markers": [
+      "myzootwin-visual3d-",
+      "Asset Lab internal",
+      "__VIS3D_SOURCE__",
+      "scripts/qa/visual3d",
+      "visual3d-frozen-v4",
+      "__qaVisual3dTag",
+      "QA-only constructor side-table",
+      "Step cosmetic Studio100ms",
+      "matrix-result"
+    ],
+    "files": 31
+  },
+  "legacyFixtures": 12,
+  "browserCases": 3,
+  "stateHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf",
+  "limits": {
+    "animals": 14,
+    "chars": 1000000,
+    "habitats": 5,
+    "resources": 37,
+    "rewards": 14,
+    "ticketProofs": 35
+  },
+  "validationFixture": {
+    "animals": 14,
+    "habitats": 5,
+    "resources": 26,
+    "characters": 96895,
+    "scope": "Synthetic codec validation only; not gameplay, unlock, grant budget or persistence proof"
+  },
+  "nativeClone": {
+    "characters": 99668,
+    "sourceSchema": 4,
+    "targetSchema": 5,
+    "exactHistoricalProjection": true,
+    "noStorageWrite": true
+  },
+  "limitsOfProof": [
+    "V5 codec is standalone; current product engine/dispatcher/backend remain V4 until integration gates.",
+    "Migration adds only the empty Zebra namespace and schema version, with no actors, money, paths or construction.",
+    "Ground/FSM/mission relationship checks validate data; actual causal Zebra behavior and budget/exactly-once commands remain later units.",
+    "Historical projection is a golden-data assertion, never a V4 binary rollback for started V5 saves.",
+    "No owner storage touched. Native QA used the existing isolated revision3 DB and verified it remained schema4 after reload.",
+    "Presented FPS remains unmeasured."
+  ],
+  "artifacts": [
+    {
+      "path": "docs\\qa\\zebra\\z2-04\\browser.json",
+      "bytes": 12069,
+      "sha256": "d7d40b1b9124682cf966ad3de59925367b095ed293543505c142bf0f068b6730"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z2-04\\unchanged-four-habitats.png",
+      "bytes": 76185,
+      "sha256": "3579d3d255889e3e7187f072b8307ffc122a5f332a3d2d156f1aada9eaaddadc"
+    }
+  ]
+}
