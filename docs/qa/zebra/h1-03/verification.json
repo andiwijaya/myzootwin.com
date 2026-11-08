@@ -1,0 +1,153 @@
+{
+  "id": "H1-03",
+  "status": "PASS_VIEWER_CONTROLS_ONLY",
+  "at": "2026-11-08T14:19:17.864Z",
+  "source": "8dc3af0cde9798143a6d804c874626184cce42ec",
+  "sourceFingerprint": "9105fc655fdfb6f96eaa1c56ec88cc67189406b650f6b5020fa46900a771a2b1",
+  "build": "0b576b88233186c723e39698742a651807a2ccf955547a0ebccbce7e5b70e8fd",
+  "productionExclusion": {
+    "status": "PASS",
+    "markers": [
+      "myzootwin-visual3d-",
+      "Asset Lab internal",
+      "__VIS3D_SOURCE__",
+      "scripts/qa/visual3d",
+      "visual3d-frozen-v4",
+      "__qaVisual3dTag",
+      "QA-only constructor side-table"
+    ],
+    "files": 31
+  },
+  "tests": {
+    "pass": 9,
+    "fail": 0,
+    "logHash": "ccb172720704e4291222d9cbd5e0378c9d526e4e9c31940f164cdb5df050ce9e",
+    "strictTypesWithUnusedChecks": "PASS"
+  },
+  "native": {
+    "runner": "internal-browser",
+    "physicalDevice": false,
+    "cases": 43,
+    "sourceBoundFourAngleFamilies": [
+      "macaw",
+      "elephant",
+      "lion",
+      "giraffe",
+      "visitor",
+      "tree",
+      "facility"
+    ],
+    "runtimeChoices": 856,
+    "realCatalogueIdentities": 676,
+    "extraRenderers": 0,
+    "extraRaf": 0,
+    "gameplayExactEveryCase": true,
+    "actualCameraOrbitDrag": true,
+    "keyboardZoomPan": true,
+    "picking": "Viewer mesh selection exercised by native canvas click; full production identity/path/picking checks remain H1-07",
+    "snapshots": "Actual tick13580 actor FSM phases only. No fabricated animation-phase controls or consumption. Canonical timeline remains H1-05.",
+    "LOD": {
+      "threeLODObjects": 0,
+      "actualProductionQualitySwitch": true,
+      "giraffeLowTriangles": 10140,
+      "giraffeHighTriangles": 11220
+    }
+  },
+  "cleanup": {
+    "owners": 0,
+    "callbacks": 0,
+    "viewerControlsDisposed": true,
+    "qaResizeObserverActive": false,
+    "debugMaterials": 0,
+    "debugOverlays": 0,
+    "ownedProductionResources": 0,
+    "programCounter": 1,
+    "boundedGrowth": "NOT_RUN_H1-08"
+  },
+  "screenshots": [
+    {
+      "path": "docs/qa/zebra/h1-03/elephant.jpg",
+      "sha256": "b090b5ef61b585caefb1a9950dbe8bd50fa5fe697e22acdaf633dd1d078fcc45"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/facility.jpg",
+      "sha256": "72a887fcadac1057ff2bdb274abf6a7f675d0e42746e4ca8baa179b2bbb3edeb"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/full-zoo.jpg",
+      "sha256": "020da105146ef4509fe20681289ac0f7355478d7bffa17c5e58c494db8efcc4d"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/giraffe-0.jpg",
+      "sha256": "51fd42acbc525ba98bffe808198c2f1643a53733d5867e41b660d5819fe10b2a"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/giraffe-180.jpg",
+      "sha256": "7ac6d47e650627edb611ad719bf9ff0a1d8b65a52fc169f99bc0f537b4d0f990"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/giraffe-270.jpg",
+      "sha256": "6896e8267e2d3496417ec62830d3901d42089b78cbedb9ae0ed4966ca2431e2a"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/giraffe-90.jpg",
+      "sha256": "fd81cf287f08e72b4982550f6e76f1405645435a99e4a165e081908c46e79616"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/giraffe-high.jpg",
+      "sha256": "91e863bf9d4ec89376bcad9b6a23268e9b67820cf0d57b5ebc13bf4849cf5ef7"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/giraffe-low.jpg",
+      "sha256": "78aff2a8fe49f4a4d5d0db3e707c974105043d259c8caa06b708d43bc4467ca6"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/landscape.jpg",
+      "sha256": "c3d55f7b10ec12b5da06f80f8cf31dddc3e337f9302a79b6503d3f8f725aaf27"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/lion.jpg",
+      "sha256": "92eeead6d6718ce8f205cb22c24d9d368774304b19390bc153b36bfa9d64a471"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/macaw.jpg",
+      "sha256": "72a7c63abde05c1780fee9ab5e18d89c99b8241d1ff1e858d97774adeba92a03"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/normals.jpg",
+      "sha256": "8e466d10f036a5b11dc032ff2047c877eca6505fc7c7156a4eedecf71b3d0445"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/orbit.jpg",
+      "sha256": "2c743020de7f3e901d686a58f7527d92dae29cd8aeede1cf4a9e77527e473963"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/portrait.jpg",
+      "sha256": "d461dcd4e25e5cfdb383e15e58b127eb0539779ccfd22edfc8057d1929deab54"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/resize-before-fix.jpg",
+      "sha256": "6e54dae9c123bad9e63f184020a0dfb04412357621ad8eff4b6423f003ea7ce2"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/tree.jpg",
+      "sha256": "3e9fde36370e539fdb6c5fed102e16f4ef2a320e5c7b4320c95868971962922d"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/visitor.jpg",
+      "sha256": "ec16fabcdfe3ce8f4e626fd66d9b9ac7def5de130d5d240b2d24223439b3ac39"
+    },
+    {
+      "path": "docs/qa/zebra/h1-03/wireframe.jpg",
+      "sha256": "eebd92673b7c944a240f5ba88a12f2493c7499f8eaa99cd158e7e3384c8fbae2"
+    }
+  ],
+  "browserHash": "b1f8850c1694468dd7ff20ac0b0b2432a6ae18cdef84b7496baba75900c292bc",
+  "limits": [
+    "Viewer functionality and framing verified, not final mesh/animation quality acceptance; H1-06..09 remain open.",
+    "Merged catalogue identities expose actual authoritative bounds. Select their actual runtime batch mesh for material debug; no fake isolated clone.",
+    "Macaws use transform rigs; Bone/Skeleton overlay is NA there. The other three species use actual bones.",
+    "Mobile captures are internal viewport overrides; page scroll can expose the full canvas and controls. No physical-device or presented-FPS claim.",
+    "Quality/reduced-motion changes affect only synthetic in-memory preferences; all other state remains hash-exact. No player data or production files changed."
+  ]
+}

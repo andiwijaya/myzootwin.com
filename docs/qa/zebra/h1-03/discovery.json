@@ -1,0 +1,136 @@
+{
+  "id": "QA_VIEWER_RESIZE_FOCUS",
+  "status": "FIXED_AND_NATIVE_REVERIFIED",
+  "oldSource": "a46606c18b7f9cd0764cbd85c41d878c7131b576",
+  "oldCase": {
+    "id": "portrait-resize-before-fit",
+    "at": "2026-11-08T14:12:43.171Z",
+    "source": "a46606c18b7f9cd0764cbd85c41d878c7131b576",
+    "sourceFingerprint": "009b875d267d25f9fa417a8ab208db15a7655407bcffdcffbba5b6f1f9ad3f35",
+    "fixtureHash": "5c186919ca88e6563204f5a993200410e96d8d2736aef27e62cf92287d09e145",
+    "viewport": {
+      "width": 360,
+      "height": 780,
+      "documentWidth": 345
+    },
+    "state": {
+      "schema": 4,
+      "tick": 13580,
+      "cash": 3099,
+      "habitats": 4,
+      "residents": 10,
+      "sha256": "80f6b790ad9aff86a0710483cb6ea0857ae8bb8fc5618d1ed5597e357ff0fe0e",
+      "fixtureSha256": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
+      "gameplaySha256": "5d892856864c2b2c22cf8e7282aae92c69547a9e343483bab33a8c5185ef77dc",
+      "fixtureGameplaySha256": "5d892856864c2b2c22cf8e7282aae92c69547a9e343483bab33a8c5185ef77dc",
+      "preferences": {
+        "graphics": "high",
+        "locale": "id",
+        "muted": true,
+        "reducedMotion": true,
+        "speed": 10
+      },
+      "fixturePreferences": {
+        "graphics": "auto",
+        "locale": "id",
+        "muted": true,
+        "reducedMotion": false,
+        "speed": 10
+      },
+      "actorPhases": [
+        {
+          "id": "macaw-1",
+          "behavior": "wander",
+          "phase": "walk-home"
+        },
+        {
+          "id": "macaw-2",
+          "behavior": "perch",
+          "phase": "descend"
+        },
+        {
+          "id": "elephant-ayu",
+          "behavior": "idle",
+          "phase": "idle"
+        },
+        {
+          "id": "elephant-nara",
+          "behavior": "idle",
+          "phase": "idle"
+        },
+        {
+          "id": "lion-raka",
+          "behavior": "wander",
+          "phase": "wander"
+        },
+        {
+          "id": "lion-sena",
+          "behavior": "seek-food",
+          "phase": "seek-food"
+        },
+        {
+          "id": "lion-tala",
+          "behavior": "seek-food",
+          "phase": "seek-food"
+        },
+        {
+          "id": "giraffe-dira",
+          "behavior": "wander",
+          "phase": "wander"
+        },
+        {
+          "id": "giraffe-sora",
+          "behavior": "enrich",
+          "phase": "enrich"
+        },
+        {
+          "id": "giraffe-lila",
+          "behavior": "seek-enrichment",
+          "phase": "seek-enrichment"
+        }
+      ],
+      "valid": true
+    },
+    "viewer": {
+      "selectedId": "scene/Group:0/Dira Sora and Lila:10/giraffe-dira:0",
+      "selectedAssetId": "game/render3d/giraffe/rig:createGiraffeRig:mesh:SkinnedMesh:8",
+      "selectedLabel": "giraffe-dira · createGiraffeRig",
+      "entries": 856,
+      "catalogues": 1,
+      "authoritativeIdentities": 676,
+      "degrees": 45,
+      "zoom": 1,
+      "wireframe": false,
+      "normals": false,
+      "boundsOn": false,
+      "pivotOn": false,
+      "skeletonOn": false,
+      "isolate": false,
+      "debugObjects": 0,
+      "debugMaterials": 0,
+      "controlsDisposed": false,
+      "bones": 20,
+      "threeLODObjects": 0,
+      "tierPolicy": "Real production quality switch; no Three.LOD objects unless actually discovered",
+      "rendererCount": 1,
+      "extraRaf": 0
+    },
+    "renderer": {
+      "geometries": 59,
+      "textures": 11,
+      "programs": 15,
+      "pendingFrames": 0
+    },
+    "owners": 1,
+    "pending": 0,
+    "unmapped": [],
+    "errors": [],
+    "screenshot": "portrait-before-fit.jpg"
+  },
+  "observed": "Native screenshot after resize showed the full world while viewer still selected Dira. Production resize redraw had overridden the QA camera. Dedicated disposable QA resize observer and pre-layout panel activation fix it; portrait and landscape preserve fit/aspect/selection.",
+  "newSource": "8dc3af0cde9798143a6d804c874626184cce42ec",
+  "newCases": [
+    "portrait-resize",
+    "landscape-resize"
+  ]
+}
