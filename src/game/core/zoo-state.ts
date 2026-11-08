@@ -1,4 +1,6 @@
 import type {ZooSaveV4} from './giraffe-state.ts';
+/** V5 data contract is available; runtime acceptance waits for its strict codec/backend gates. */
+export type {ZooSaveV5} from './zebra-state.ts';
 import type {ZooSaveV1} from './state.ts';
 import type {V2ZooAnimal,V2ZooWorld,V3ZooAnimal,V3ZooWorld} from './species.ts';
 

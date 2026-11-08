@@ -1,0 +1,13 @@
+import type {Animal} from '../../src/game/core/state.ts';
+import type {ZooSaveV1} from '../../src/game/core/state.ts';
+import type {ZooSaveV2,ZooSaveV3} from '../../src/game/core/zoo-state.ts';
+import type {ZooSaveV4,GiraffeAnimal} from '../../src/game/core/giraffe-state.ts';
+import type {ElephantAnimal,LionAnimal,ZooAnimal,SpeciesId,HabitatKind} from '../../src/game/core/species.ts';
+import type {ZooSaveV5,ZebraAnimal,ZebraResource,ZebraBehavior} from '../../src/game/core/zebra-state.ts';
+type Assert<T extends true>=T;
+type Equal<A,B>=(<T>()=>T extends A?1:2)extends(<T>()=>T extends B?1:2)?true:false;
+type HasZebra<S extends {animals:unknown[]}>=Extract<S['animals'][number],{speciesId:'equus-quagga'}>;
+export type HistoricalContractsStayClosed=[Assert<Equal<HasZebra<ZooSaveV1>,never>>,Assert<Equal<HasZebra<ZooSaveV2>,never>>,Assert<Equal<HasZebra<ZooSaveV3>,never>>,Assert<Equal<HasZebra<ZooSaveV4>,never>>];
+export type FifthContract=[Assert<Equal<HasZebra<ZooSaveV5>,ZebraAnimal>>,Assert<Equal<Extract<ZooAnimal,{speciesId:'equus-quagga'}>,ZebraAnimal>>,Assert<Equal<Extract<SpeciesId,'equus-quagga'>,'equus-quagga'>>,Assert<Equal<Extract<HabitatKind,'zebra-grasslands'>,'zebra-grasslands'>>];
+export type DistinctStateMachines=[Assert<Equal<ZebraAnimal extends Animal?true:false,false>>,Assert<Equal<ZebraAnimal extends ElephantAnimal?true:false,false>>,Assert<Equal<ZebraAnimal extends LionAnimal?true:false,false>>,Assert<Equal<ZebraAnimal extends GiraffeAnimal?true:false,false>>,Assert<Equal<Extract<ZebraBehavior,'ascend'|'perch'|'spray'|'roar'|'browse'>,never>>];
+export type StableResidentIdentity=[Assert<Equal<Extract<ZebraAnimal,{id:'zebra-zaki'}>['sex'],'male'>>,Assert<Equal<Extract<ZebraAnimal,{id:'zebra-zuri'}>['name'],'Zuri'>>,Assert<Equal<Extract<ZebraResource['kind'],'food'|'giraffe-browse'|'lion-meat'>,never>>];

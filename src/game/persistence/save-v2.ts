@@ -2,7 +2,7 @@ import {ELEPHANT_SOCIAL} from '../animals/elephants/care-rules.ts';
 import {ELEPHANT_GROUND} from '../animals/elephants/ground.ts';
 import {type ZooSaveV1,type Point} from '../core/state.ts';
 import {EH_IDS,initialElephantMissions,type ZooSaveV2,type MultiSpeciesSave,type ElephantMissions} from '../core/zoo-state.ts';
-import {ELEPHANT_SPECIES_ID,MACAW_SPECIES_ID,isMacaw,isElephant,compatibleHabitat,compatibleResource,type ZooResource} from '../core/species.ts';
+import {ELEPHANT_SPECIES_ID,MACAW_SPECIES_ID,isMacaw,isElephant,compatibleHabitat,compatibleResource,type V3ZooResource as ZooResource} from '../core/species.ts';
 import {appendElephantZone} from '../world/elephant-expansion.ts';
 import {MAX_SAVE_CHARS,parseSave,validateSave,LEGACY_SAVE_FIELDS,economyRule,saveRules,validateLegacyRelationships,type SaveResult,type Rule} from './save-v1.ts';
 import type {CheckpointCodec} from './checkpoint.ts';

@@ -1,6 +1,7 @@
 import type {Animal,Habitat,Point} from './state.ts';
 import type {V3ZooAnimal as ZooAnimal,V3ZooHabitat as ZooHabitat,V3ZooResource as ZooResource,V3ZooWorld as ZooWorld} from './species.ts';
 import type {ZooSaveV3} from './zoo-state.ts';
+import type {ZebraAnimal,ZebraResource} from './zebra-state.ts';
 
 export const GIRAFFE_SPECIES_ID='giraffa-sp' as const;
 export const GIRAFFE_HABITAT_KIND='giraffe-plains' as const;
@@ -37,7 +38,7 @@ export type V4ZooHabitat=ZooHabitat|GiraffeHabitat;
 export type V4ZooResource=ZooResource|GiraffeResource;
 export interface V4ZooWorld extends Omit<ZooWorld,'habitats'|'resources'> {habitats:V4ZooHabitat[];resources:V4ZooResource[];}
 export interface ZooSaveV4 extends Omit<ZooSaveV3,'schemaVersion'|'world'|'animals'> {schemaVersion:4;world:V4ZooWorld;animals:V4ZooAnimal[];giraffePlains:GiraffeProgress;}
-export const isGiraffe=(animal:V4ZooAnimal):animal is GiraffeAnimal=>animal.speciesId===GIRAFFE_SPECIES_ID;
-export const giraffes=(animals:readonly V4ZooAnimal[])=>animals.filter(isGiraffe);
-export const giraffeResources=(resources:readonly V4ZooResource[]):GiraffeResource[]=>resources.filter((r):r is GiraffeResource=>GIRAFFE_RESOURCE_KINDS.includes(r.kind as GiraffeResourceKind));
+export const isGiraffe=(animal:V4ZooAnimal|ZebraAnimal):animal is GiraffeAnimal=>animal.speciesId===GIRAFFE_SPECIES_ID;
+export const giraffes=(animals:readonly (V4ZooAnimal|ZebraAnimal)[])=>animals.filter(isGiraffe);
+export const giraffeResources=(resources:readonly (V4ZooResource|ZebraResource)[]):GiraffeResource[]=>resources.filter((r):r is GiraffeResource=>GIRAFFE_RESOURCE_KINDS.includes(r.kind as GiraffeResourceKind));
 export const GIRAFFE_SPECIES=Object.freeze({id:GIRAFFE_SPECIES_ID,habitatKind:GIRAFFE_HABITAT_KIND,footprint:7 as const,residents:3 as const,movement:'giraffe-ground' as const});

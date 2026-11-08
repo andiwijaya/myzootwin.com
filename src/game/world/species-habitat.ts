@@ -9,8 +9,9 @@ const kindOf=(h:Habitat):HabitatKind|null=>!('kind'in h)?'macaw-aviary':h.kind==
 
 /** One shared footprint/collision authority, with separate per-species construction caps. */
 export function validateSpeciesHabitatPlacement(world:HabitatPlacementWorld,anchor:Point|null,kind:HabitatKind){
+  // The V5 type/registry must not activate construction before its placement and paid-command gates.
   const species=habitatSpecies(kind);
-  if(species===null)return {proposal:null,reason:'command' as const};
+  if(species===null||species==='equus-quagga')return {proposal:null,reason:'command' as const};
   const checked=validatePlacement(world,anchor,habitatBlockerKeys(),'habitat',SPECIES[species].footprint);
   if(checked.reason!=='ready')return checked;
   if(anchor&&world.width===24&&kind!=='giraffe-plains'&&anchor.x+SPECIES[species].footprint>12)return {...checked,reason:'zone' as const};
@@ -24,8 +25,10 @@ export function validateSpeciesHabitatPlacement(world:HabitatPlacementWorld,anch
 type Result<W>={ok:true;world:W;habitatId:string;duplicate:boolean}|{ok:false;reason:PlacementReason};
 /** Pure world transaction only. Paid construction/unlock/save are separate gates, not bypassed here. */
 export function prepareSpeciesHabitat<W extends HabitatPlacementWorld>(world:W,anchor:Point,operationId:string,kind:HabitatKind):Result<W>{
-  if(typeof operationId!=='string'||!/^habitat-[a-z0-9-]{1,40}$/.test(operationId)||habitatSpecies(kind)===null)return {ok:false,reason:'command'};
-  const existing=world.habitats.find(h=>h.id===operationId),species=habitatSpecies(kind)!;
+  const species=habitatSpecies(kind);
+  if(species===null||species==='equus-quagga')return {ok:false,reason:'command'};
+  if(typeof operationId!=='string'||!/^habitat-[a-z0-9-]{1,40}$/.test(operationId))return {ok:false,reason:'command'};
+  const existing=world.habitats.find(h=>h.id===operationId);
   if(existing){
     const desired=validatePlacement(world,anchor,new Set(),'habitat',SPECIES[species].footprint).proposal;
     return kindOf(existing)===kind&&desired&&existing.cells.length===desired.cells.length&&desired.cells.every(c=>existing.cells.some(e=>cellKey(e)===cellKey(c)))?{ok:true,world:structuredClone(world),habitatId:existing.id,duplicate:true}:{ok:false,reason:'command'};
