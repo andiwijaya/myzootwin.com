@@ -1,3 +1,5 @@
+import {prepareZebraCarePlacement,prepareZebraRefill,defaultZebraCareCell,validateZebraCarePlacement,zebraServicePrice,type ZebraCareQuote,type ZebraRefillQuote} from '../animals/zebras/resources.ts';
+import {zebraResources} from './zebra-state.ts';
 import {zebras} from './zebra-state.ts';
 import {stepZebraMovement} from '../animals/zebras/movement.ts';
 import {prepareZebraWelcome,zebraResidentsView} from '../animals/zebras/residents.ts';
@@ -126,6 +128,12 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     localeView:()=>state.preferences.locale,
     worldSize:()=>({width:state.world.width,height:state.world.height}),
     zebraHabitatView:()=>zebraHabitatView(state),
+    zebraCareView:()=>({exists:state.world.habitats.some(h=>'kind'in h&&h.kind==='zebra-grasslands'),qualified:zebraHabitatView(state).qualified,command:state.economy.nextCommand,balance:state.currency,resources:zebraResources(state.world.resources).map(r=>({...structuredClone(r),refillPrice:zebraServicePrice(r.kind)}))}),
+    defaultZebraCareCell:(kind:import('./zebra-state.ts').ZebraResourceKind)=>defaultZebraCareCell(state,kind),
+    validateZebraCarePlacement:(kind:import('./zebra-state.ts').ZebraResourceKind,cell:Point|null)=>validateZebraCarePlacement(state,kind,cell),
+    prepareZebraCare:(q:ZebraCareQuote)=>disposed||clock.inspect().paused?{ok:false as const,reason:'stale' as const}:prepareZebraCarePlacement(state,q),
+    prepareZebraRefill:(q:ZebraRefillQuote)=>disposed||clock.inspect().paused?{ok:false as const,reason:'stale' as const}:prepareZebraRefill(state,q),
+    acceptCommittedZebraCare(candidate:ZooSave,q:ZebraCareQuote|ZebraRefillQuote){if(disposed||candidate.schemaVersion!==5||!validateState(candidate).ok)return false;const prepared='kind'in q?prepareZebraCarePlacement(state,q):prepareZebraRefill(state,q);if(!prepared.ok)return false;const next=structuredClone(candidate);next.preferences={...state.preferences};prepared.state.preferences={...state.preferences};if(serializeZooSave(next)!==serializeZooSave(prepared.state))return false;state=next;invalidateEdit();publish(Object.freeze({type:'zebra-care-changed',resourceId:prepared.resourceId,tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;},
     zebraSnapshot:()=>({animals:structuredClone(zebras(state.animals)),previous:structuredClone(previousZebras),width:state.world.width,height:state.world.height}),
     zebraResidentsView:()=>zebraResidentsView(state),
     prepareZebraWelcome:(command:number)=>disposed||clock.inspect().paused?{ok:false as const,reason:'stale' as const}:prepareZebraWelcome(state,command),
