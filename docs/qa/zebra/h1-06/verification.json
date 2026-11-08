@@ -1,0 +1,271 @@
+{
+  "id": "H1-06",
+  "status": "PASS_STRUCTURAL_AND_REVIEWED_CURRENT_MESH_CAPTURES",
+  "at": "2026-11-08T15:54:32.598Z",
+  "source": "ab8afbe33c102d19c36e1e5ac69ba2abcd6dd7b4",
+  "sourceFingerprint": "85d34ac5b18fe39601f081885004947cb351d9d7c253bdf3e5f4d5a4a29fa4d3",
+  "lab": "14708b3aab564c78b03b4cdbd10a8c83450df281582b1c84d60a0f80587460ce",
+  "productionExclusion": {
+    "status": "PASS",
+    "markers": [
+      "myzootwin-visual3d-",
+      "Asset Lab internal",
+      "__VIS3D_SOURCE__",
+      "scripts/qa/visual3d",
+      "visual3d-frozen-v4",
+      "__qaVisual3dTag",
+      "QA-only constructor side-table"
+    ],
+    "files": 31
+  },
+  "priorCaptureSource": {
+    "source": "f12abfaf91f55738fe786527df22cce85a0d7e25",
+    "fingerprint": "abec05828e5f1705e9a9478c6c6a606372d5989fd8ae1e9b06bdffc7dc8afb6e",
+    "scope": "Same unchanged production renderer/rigs and viewer. Final QA-only correction accounts for bone textures and adds extreme-world-extent detection; final low/high native audits rerun."
+  },
+  "tests": {
+    "pass": 12,
+    "fail": 0,
+    "strictTypesWithUnusedChecks": "PASS",
+    "logHash": "0a4137b84323c7acc41484cb1c11d3ef0b712a22d4141de5e4b94583a5d64200",
+    "negativeFixtures": [
+      "nonfinite attributes/transforms/normals",
+      "invalid indices",
+      "bad alpha/opacity",
+      "bad skin layout/weights",
+      "nonfinite active instance matrix",
+      "extreme posed world extent"
+    ],
+    "noSourceObjectMutation": true
+  },
+  "native": {
+    "runner": "internal-browser",
+    "physicalDevice": false,
+    "presentedFps": null,
+    "low": {
+      "objects": 353,
+      "geometries": 72,
+      "materials": 41,
+      "textures": 8,
+      "materialTextures": 0,
+      "skeletonTextures": 8,
+      "skinned": 8,
+      "sprites": 0,
+      "points": 0,
+      "errors": 0,
+      "review": 2
+    },
+    "high": {
+      "objects": 353,
+      "geometries": 72,
+      "materials": 41,
+      "textures": 8,
+      "materialTextures": 0,
+      "skeletonTextures": 8,
+      "skinned": 8,
+      "sprites": 0,
+      "points": 0,
+      "errors": 0,
+      "review": 2
+    },
+    "triangles": {
+      "low": 54736,
+      "high": 56370
+    },
+    "coldStateExact": true,
+    "gameplayIdenticalAcrossTiersAndDebug": true,
+    "visualCases": [
+      {
+        "id": "giraffe-source-skeleton",
+        "bones": 20,
+        "fit": true,
+        "normals": false,
+        "isolationApplied": false
+      },
+      {
+        "id": "giraffe-normal",
+        "bones": 20,
+        "fit": true,
+        "normals": true,
+        "isolationApplied": true
+      },
+      {
+        "id": "elephant-normal",
+        "bones": 27,
+        "fit": true,
+        "normals": true,
+        "isolationApplied": true
+      },
+      {
+        "id": "lion-normal",
+        "bones": 17,
+        "fit": true,
+        "normals": true,
+        "isolationApplied": true
+      },
+      {
+        "id": "macaw-normal",
+        "bones": 0,
+        "fit": true,
+        "normals": true,
+        "isolationApplied": true
+      },
+      {
+        "id": "water-bowls-normal",
+        "bones": 0,
+        "fit": true,
+        "normals": true,
+        "isolationApplied": true
+      },
+      {
+        "id": "feeder-normal",
+        "bones": 0,
+        "fit": true,
+        "normals": true,
+        "isolationApplied": true
+      }
+    ],
+    "materialMaps": "No actual material textures in this fixture; eight real bone DataTextures are counted separately. Source registry has no Sprite/Points use. Actual spray instancing remains a separate phase/matrix gate.",
+    "errors": 0,
+    "cleanupOwnedResources": 0
+  },
+  "reviewedExceptions": {
+    "status": "INTENTIONAL_AXIS_CLOSURE_REVIEWED",
+    "method": "Node construction of actual createFeederScene/createWaterScene, original frozen V4 world; not a native-browser claim.",
+    "sourceModules": [
+      "src/game/render3d/feeder-scene.ts",
+      "src/game/render3d/water-scene.ts"
+    ],
+    "finding": "Each station merges two 12-segment LatheGeometry bowls whose profile starts and ends at radius zero. Two pole rows x 12 segments x two bowls = 48 zero-area triangles per station; zero normal disagreements, no structural error. Native normal-material screenshots show closed bowls without broken culling.",
+    "issues": [
+      {
+        "code": "DEGENERATE_TRIANGLES",
+        "severity": "REVIEW",
+        "path": "/Group[0]/Two-port macaw feeder[0]/Mesh[0]",
+        "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+      },
+      {
+        "code": "DEGENERATE_TRIANGLES",
+        "severity": "REVIEW",
+        "path": "/Group[0]/Two macaw water bowls[1]/Mesh[0]",
+        "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+      }
+    ],
+    "geometries": [
+      {
+        "id": 0,
+        "source": null,
+        "type": "BufferGeometry",
+        "vertices": 1092,
+        "triangles": 364,
+        "indexed": false,
+        "bounds": {
+          "min": [
+            -0.675000011920929,
+            0.07900000363588333,
+            0.7038000226020813
+          ],
+          "max": [
+            0.675000011920929,
+            0.2646999955177307,
+            0.8650000095367432
+          ]
+        },
+        "normal": {
+          "zeroNormals": 0,
+          "nonUnitNormals": 0
+        },
+        "degenerateTriangles": 48,
+        "invertedNormalTriangles": 0,
+        "groups": [],
+        "drawRange": {
+          "start": 0,
+          "count": "Infinity (full source geometry)"
+        }
+      },
+      {
+        "id": 2,
+        "source": null,
+        "type": "BufferGeometry",
+        "vertices": 1056,
+        "triangles": 352,
+        "indexed": false,
+        "bounds": {
+          "min": [
+            -0.9150000214576721,
+            0.07899999618530273,
+            0.7694000005722046
+          ],
+          "max": [
+            0.9150000214576721,
+            0.24969999492168427,
+            0.9305999875068665
+          ]
+        },
+        "normal": {
+          "zeroNormals": 0,
+          "nonUnitNormals": 0
+        },
+        "degenerateTriangles": 48,
+        "invertedNormalTriangles": 0,
+        "groups": [],
+        "drawRange": {
+          "start": 0,
+          "count": "Infinity (full source geometry)"
+        }
+      }
+    ]
+  },
+  "evidence": {
+    "finalHash": "78b8ae0e326314583defdc5117a8085f8b0afdc2659828c262bf262d3a970d14",
+    "initialHash": "345e7e00a4d5d05815e7961b7ae8bc8b15ae9d9d388c9222d8ed2b20dfff9e94",
+    "screenshots": [
+      {
+        "path": "docs/qa/zebra/h1-06/elephant-normal.jpg",
+        "sha256": "112d9c92c23b688eb7ccb55a3900a32a0549e19bd1258fa574dfe2b3e1d748e9"
+      },
+      {
+        "path": "docs/qa/zebra/h1-06/feeder-normal.jpg",
+        "sha256": "0fe3a65bfbfa8ddf8fe312870c05feeba8741eec282b2827cf464abac8156862"
+      },
+      {
+        "path": "docs/qa/zebra/h1-06/final-low-full.jpg",
+        "sha256": "84cf0f3dcb4e339df5817066df23e66e7b0a9f10fa5899d9895612a96ffdc889"
+      },
+      {
+        "path": "docs/qa/zebra/h1-06/giraffe-normal.jpg",
+        "sha256": "55f449aa689e6b91dd99a21152a0dff799e24029259419225f656c0615dda9de"
+      },
+      {
+        "path": "docs/qa/zebra/h1-06/giraffe-source-skeleton.jpg",
+        "sha256": "2292d0679fad7d0575f022e350476bb5256ac3bc865bc5d252c975a216924410"
+      },
+      {
+        "path": "docs/qa/zebra/h1-06/high-full-world.jpg",
+        "sha256": "1c9ba4af259998966c700903cd7c2d70ced53b5d169b081a758dc9afbe7574a3"
+      },
+      {
+        "path": "docs/qa/zebra/h1-06/lion-normal.jpg",
+        "sha256": "98b0cea748bcff2867add06859d198edc29bd2f25a69066873864a8a92176fd2"
+      },
+      {
+        "path": "docs/qa/zebra/h1-06/low-full-world.jpg",
+        "sha256": "84cf0f3dcb4e339df5817066df23e66e7b0a9f10fa5899d9895612a96ffdc889"
+      },
+      {
+        "path": "docs/qa/zebra/h1-06/macaw-normal.jpg",
+        "sha256": "3cbed63fe0cea888dad68ba640f95748465b5b5727b5de25bd25c3b5d98e809e"
+      },
+      {
+        "path": "docs/qa/zebra/h1-06/water-bowls-normal.jpg",
+        "sha256": "08533ebdfe456f98005a4ed0ec9778bd2cb6159a09b645a804f85b0e35ae6dd4"
+      }
+    ]
+  },
+  "limits": [
+    "Structural pass checks actual finite arrays/posed vertices, normal agreement, indices, scales, pivots, weights, matrices, material culling/alpha/depth data and all current scene resources. It is not an automatic pixel-perfect clipping/z-fighting/collision guarantee.",
+    "Seven normal/skeleton/prop captures and native world low/high views were visually reviewed. At the frozen contact tick no obvious holes, inverted faces or stretched skin were observed; broad geometry bounds alone do not prove care contact or canopy clearance. H1-07 covers authoritative spatial checks.",
+    "No Three.LOD objects exist in the source/fixture; actual production low/high geometry changes were exercised. Additional viewports/animation/culling/particles remain H1-09/R7 matrix gates.",
+    "All QA controls and debug resources are excluded from production. No production source/save or owner browser changed; no push/deploy."
+  ]
+}

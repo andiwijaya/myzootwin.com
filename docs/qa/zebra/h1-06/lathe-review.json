@@ -1,0 +1,87 @@
+{
+  "status": "INTENTIONAL_AXIS_CLOSURE_REVIEWED",
+  "method": "Node construction of actual createFeederScene/createWaterScene, original frozen V4 world; not a native-browser claim.",
+  "sourceModules": [
+    "src/game/render3d/feeder-scene.ts",
+    "src/game/render3d/water-scene.ts"
+  ],
+  "finding": "Each station merges two 12-segment LatheGeometry bowls whose profile starts and ends at radius zero. Two pole rows x 12 segments x two bowls = 48 zero-area triangles per station; zero normal disagreements, no structural error. Native normal-material screenshots show closed bowls without broken culling.",
+  "issues": [
+    {
+      "code": "DEGENERATE_TRIANGLES",
+      "severity": "REVIEW",
+      "path": "/Group[0]/Two-port macaw feeder[0]/Mesh[0]",
+      "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+    },
+    {
+      "code": "DEGENERATE_TRIANGLES",
+      "severity": "REVIEW",
+      "path": "/Group[0]/Two macaw water bowls[1]/Mesh[0]",
+      "detail": "48 zero-area triangles; primitive pole/cap seams may be intentional"
+    }
+  ],
+  "geometries": [
+    {
+      "id": 0,
+      "source": null,
+      "type": "BufferGeometry",
+      "vertices": 1092,
+      "triangles": 364,
+      "indexed": false,
+      "bounds": {
+        "min": [
+          -0.675000011920929,
+          0.07900000363588333,
+          0.7038000226020813
+        ],
+        "max": [
+          0.675000011920929,
+          0.2646999955177307,
+          0.8650000095367432
+        ]
+      },
+      "normal": {
+        "zeroNormals": 0,
+        "nonUnitNormals": 0
+      },
+      "degenerateTriangles": 48,
+      "invertedNormalTriangles": 0,
+      "groups": [],
+      "drawRange": {
+        "start": 0,
+        "count": "Infinity (full source geometry)"
+      }
+    },
+    {
+      "id": 2,
+      "source": null,
+      "type": "BufferGeometry",
+      "vertices": 1056,
+      "triangles": 352,
+      "indexed": false,
+      "bounds": {
+        "min": [
+          -0.9150000214576721,
+          0.07899999618530273,
+          0.7694000005722046
+        ],
+        "max": [
+          0.9150000214576721,
+          0.24969999492168427,
+          0.9305999875068665
+        ]
+      },
+      "normal": {
+        "zeroNormals": 0,
+        "nonUnitNormals": 0
+      },
+      "degenerateTriangles": 48,
+      "invertedNormalTriangles": 0,
+      "groups": [],
+      "drawRange": {
+        "start": 0,
+        "count": "Infinity (full source geometry)"
+      }
+    }
+  ]
+}

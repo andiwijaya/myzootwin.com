@@ -1,10 +1,10 @@
 # Execution checkpoint
 
-Current verified progress: **9/54 (16.67%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
+Current verified progress: **10/54 (18.52%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
 
 All four Library inputs were read completely: master PRD 335 lines, harness 128, checklist 200, handoff 42. Official Windows materialization failed at `os.setxattr` after the authorized retry. The destination is empty; no original source-file identity is claimed. This requested derived repository checklist uses the complete official reads. Original Library documents remain unchanged. See [input-access record](qa/zebra/z0-01/input-access.json).
 
-Production/source baseline is `634de84ebfeab6c069ca9463527193a4e99ea458`; runtime source tree `c78fbf947b7e83d5c410038df96efb077739b27a`. Historical Giraffe 39/42 and the homepage release remain separate from this new PRD. Fresh Z0-01 check bound production deployment de1f5a36 to 634de84. Existing production game/site source, assets and dependencies remain unchanged through H1-05.
+Production/source baseline is `634de84ebfeab6c069ca9463527193a4e99ea458`; runtime source tree `c78fbf947b7e83d5c410038df96efb077739b27a`. Historical Giraffe 39/42 and the homepage release remain separate from this new PRD. Fresh Z0-01 check bound production deployment de1f5a36 to 634de84. Existing production game/site source, assets and dependencies remain unchanged through H1-06.
 
 | Verified unit | Tested source | Evidence and scope |
 | --- | --- | --- |
@@ -19,9 +19,11 @@ Production/source baseline is `634de84ebfeab6c069ca9463527193a4e99ea458`; runtim
 
 | H1-05 | d2a7c25 / b565250 / f34d430 | [Timeline](qa/zebra/h1-05/verification.json): one actual canonical owner, bounded async step/search, paid refill, event/stock/counter/need receipts; native 1x + 10x, exact durable mid-contact cold state; 19 tests + strict types; zero owned resources at close. CDP controls time out during busy native 10x; focused keyboard pauses. Performance and spray particle visibility remain open H1-08/09 gates. |
 
+| H1-06 | f12abfa / ab8afbe | [Mesh audit](qa/zebra/h1-06/verification.json): actual low/high 353 objects, 72 geometries, 41 materials, eight bone textures/skinned actors; zero structural errors. Two lathe pole closures reviewed against source and normal captures; seven actor/prop captures; 12 tests including corrupt geometry/skin/alpha/instance/scale fixtures + strict types. Pixel collision and broader matrix remain H1-07/09. |
+
 Open gates: all registry visual statuses remain **NOT_RUN** until feature-specific mesh/behavior/spatial/matrix acceptance. A rendered/traced constructor is not a visual quality pass. Renderer program counter remains one after disposal with zero owned resources; repeated-growth investigation is **H1-08 NOT_RUN**. Presented FPS is **UNMEASURED**. Full Zebra regression/release gates remain open; prior homepage test results are not claimed rerun for V5.
 
-Next: **H1-06**, mesh/material validation with negative fixtures and real scene captures. Complete the existing four-species harness before Zebra gameplay implementation.
+Next: **H1-07**, authoritative spatial/path/picking checks across all existing habitats and environment. Complete the existing four-species harness before Zebra gameplay implementation.
 
 ---
 
@@ -64,7 +66,7 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
 - [x] **H1-05** — Implement deterministic behavior playback: idle, walk, feeding, drinking, resting, social, enrichment; pause/step/1×/10×/cold snapshot.
   - **DoD:** Event/tick dari engine otoritatif; kosmetik tidak bisa membuat consumption, reward, atau cash.
   - **Proof:** `docs/qa/zebra/h1-05/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
-- [ ] **H1-06** — Tambahkan pemeriksaan mesh/sprite material: NaN, skala, pivot, normal, index/bounds, clipping, face culling, z-fighting, LOD, texture/alpha, skeleton, camera occlusion.
+- [x] **H1-06** — Tambahkan pemeriksaan mesh/sprite material: NaN, skala, pivot, normal, index/bounds, clipping, face culling, z-fighting, LOD, texture/alpha, skeleton, camera occlusion.
   - **DoD:** Unit validation + screenshot evidence; negative fixtures sengaja gagal; false positive dibedakan.
   - **Proof:** `docs/qa/zebra/h1-06/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 - [ ] **H1-07** — Tambahkan cek spatial/collision/picking/path/sightline untuk SEMUA habitat & environment, termasuk leher jerapah, belalai gajah, kopje singa, sayap macaw dan zebra.
