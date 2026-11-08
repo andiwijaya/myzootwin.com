@@ -1,0 +1,139 @@
+{
+  "status": "PASS_Z2_02_PLACEMENT_PREVIEW",
+  "implementationSource": "d7d16439b92e8da4c6857202538dea875b1a49e7",
+  "source": "62e36f8275d2b57757bcd79487d13f9976f63d15",
+  "sourceFingerprint": "a76ca8956f677fe3a3dfaa7f0180133eea296b2d37d3b2be42810b932908d6b2",
+  "tests": 40,
+  "typecheck": "strict/noUnused clean",
+  "astroCheck": "484 files;0 errors/warnings/hints",
+  "browserCases": 8,
+  "productionExclusion": {
+    "status": "PASS",
+    "markers": [
+      "myzootwin-visual3d-",
+      "Asset Lab internal",
+      "__VIS3D_SOURCE__",
+      "scripts/qa/visual3d",
+      "visual3d-frozen-v4",
+      "__qaVisual3dTag",
+      "QA-only constructor side-table",
+      "Step cosmetic Studio100ms",
+      "matrix-result"
+    ],
+    "files": 31
+  },
+  "map": {
+    "width": 24,
+    "height": 26,
+    "tiles": 624,
+    "origin": {
+      "x": 6,
+      "z": 5
+    }
+  },
+  "defaultFootprint": {
+    "x": [
+      14,
+      21
+    ],
+    "z": [
+      12,
+      19
+    ],
+    "cells": 64
+  },
+  "boundedCandidates": 6,
+  "reservation": {
+    "corridorColumns": [
+      12,
+      13
+    ],
+    "eastColumn": 23,
+    "southRows": [
+      22,
+      23,
+      24,
+      25
+    ],
+    "mutatesExistingTiles": false
+  },
+  "stateHash": "a2403c2ba6c3ab036dc43ced103a38f115430d0d87d68c2f2e7077c0a2cc1aaf",
+  "cleanup": {
+    "ownedResources": {
+      "geometries": 0,
+      "materials": 0,
+      "textures": 0,
+      "renderTargets": 0,
+      "skeletons": 0,
+      "shared": 0,
+      "debugRoots": 0
+    },
+    "ghostGeometriesReleased": 2,
+    "ghostMaterialsReleased": 3
+  },
+  "discovery": {
+    "source": "d7d16439b92e8da4c6857202538dea875b1a49e7",
+    "viewport": {
+      "width": 360,
+      "height": 780,
+      "documentWidth": 387
+    },
+    "status": "FIXED_QA_SELECTOR_OVERFLOW",
+    "reason": "Existing long fixture selector exceeded360px. QA-only CSS bounded flex labels/selects; final same-feature browser cases verify documentWidth<=viewport.",
+    "raw": {
+      "path": ".qa/zebra-audit/z2-02-first-browser.json",
+      "bytes": 683589,
+      "sha256": "b40ac80708d73c59dcd24f7b8c5ee9a374cc3104c93e210aeb723be249e5ad6c"
+    }
+  },
+  "limits": [
+    "Preview uses the original production factory with real source occupancy; its UI owner is QA-only.",
+    "Paid construction intentionally remains blocked until strict V5/durable transaction gates.",
+    "Blocked player path/occupancy/scenery and six-anchor fallback are unit-tested; no player data is bulldozed.",
+    "Mobile/landscape are browser viewport emulations; no physical-device/FPS claim.",
+    "Initial d7 captures retained as discovery evidence; accepted final cases are62e36f8 after a QA-only CSS fix.",
+    "The40 tests/strict types/484-file check cover d7 implementation;62 changes only QA CSS, and its production/QA builds and native matrix are verified."
+  ],
+  "artifacts": [
+    {
+      "path": "docs\\qa\\zebra\\z2-02\\browser.json",
+      "bytes": 109647,
+      "sha256": "e956570f0d7573d3e8f1d4f855d83028d9eea85d7b6b2c8638bbd838bc0d25b8"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z2-02\\invalid-corridor-red.jpg",
+      "bytes": 134750,
+      "sha256": "d723498cf1e77d24fe1bfb84c98ec1114f15b7ca5f84751eb7684e782beaabee"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z2-02\\invalid-red-final.jpg",
+      "bytes": 134750,
+      "sha256": "d723498cf1e77d24fe1bfb84c98ec1114f15b7ca5f84751eb7684e782beaabee"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z2-02\\valid64-desktop.jpg",
+      "bytes": 133527,
+      "sha256": "e8577c1cf5b5ab2f196543bf8f8ba819da87fe2a91b84b4204c2c9fdba1fb6de"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z2-02\\valid64-final-desktop.jpg",
+      "bytes": 133527,
+      "sha256": "e8577c1cf5b5ab2f196543bf8f8ba819da87fe2a91b84b4204c2c9fdba1fb6de"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z2-02\\valid64-final-landscape.jpg",
+      "bytes": 29617,
+      "sha256": "61b080674b17cb201921b12b6156ffd70136eaea882c317f79cf5d1d3ac11a7d"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z2-02\\valid64-final-portrait.jpg",
+      "bytes": 39183,
+      "sha256": "8c268a5a2d352e293f58814926e7165575fd11b4d97449b3f5daa24a2ed2d589"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z2-02\\valid64-portrait.jpg",
+      "bytes": 39866,
+      "sha256": "46c0501b7698778e42707123876aa23f7b2026258d34acd14c23e783b5852267"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Execution checkpoint
 
-Current verified progress: **14/54 (25.93%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
+Current verified progress: **15/54 (27.78%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
 
 All four Library inputs were read completely: master PRD 335 lines, harness 128, checklist 200, handoff 42. Official Windows materialization failed at `os.setxattr` after the authorized retry. The destination is empty; no original source-file identity is claimed. This requested derived repository checklist uses the complete official reads. Original Library documents remain unchanged. See [input-access record](qa/zebra/z0-01/input-access.json).
 
@@ -31,7 +31,9 @@ Open gates: static registry records retain their default **NOT_RUN** labels; fea
 
 | Z2-01 | 4f9597a | [Typed foundation](qa/zebra/z2-01/verification.json): fifth registry entry,8x8 footprint metadata, own Zebra resource/FSM and stable identity/name/sex types, explicit V5/ZQ data contract. Historical V1-V4 unions remain closed; current codec and construction refuse premature V5/Zebra activation.13 tests, strict compile assertions,480-file check and10-page build/QA exclusion pass. Actual internal-browser cold revision3/tick15609/cash2755/hash a2403c2 unchanged; four habitats/ten old residents, no new grants or actors, owned resources zero after close. Typed JSON progress only; durable V5 persistence remains Z2-04/05. |
 
-Next: **Z2-02**, implement the real8x8 placement preview, reservation/collision rules and east viewing corridor. Preserve the24x26 map/origin and all old save/mission/ledger/position projections. No migration grants or automatic construction.
+| Z2-02 | d7d1643 / 62e36f8 | [Placement](qa/zebra/z2-02/verification.json): real original64-fill ghost at14..21/12..19, six bounded alternatives, authoritative path/occupancy/scenery rejection, corridor12/13 and future east23/south22..25 preserved. No tile mutation or automatic construction.40 tests incl.old construction/placement and twelve old projections, strict types,484-file check,10-page production QA exclusion. Eight final native cases validate green/red ghost, invalid/outside refusal, desktop/portrait/landscape fit, unchanged cold hash and2geometry/3material disposal. An existing QA fixture-selector overflow was found and fixed; final360px document width345. Paid command remains blocked. |
+
+Next: **Z2-04**, strict lossless V5 codec and verified migration, followed by **Z2-05** durable backup/CAS/version barrier, before completing **Z2-03** paid construction. This dependency order prevents a purchasable fifth habitat before its save format and atomic persistence exist. Continue one verified micro-feature at a time. Preserve all old state projections; no migration grants or automatic construction.
 
 ---
 
@@ -91,7 +93,7 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
 - [x] **Z2-01** - Tambahkan typed zebra Equus quagga, Zebra Grasslands habitat, per-species resource/behavior, persisted ZQ progression tanpa memperlebar peta.
   - **DoD:** V1–V4 typed contracts tetap valid; zebra tidak masuk ke FSM bird/elephant/lion/giraffe.
   - **Proof:** `docs/qa/zebra/z2-01/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
-- [ ] **Z2-02** — Tambah real 8×8 placement ghost, collision mask, reserve land & viewing corridor di east wing tanpa mengganggu giraffe/old habitats.
+- [x] **Z2-02** — Tambah real 8×8 placement ghost, collision mask, reserve land & viewing corridor di east wing tanpa mengganggu giraffe/old habitats.
   - **DoD:** Peta tetap 24×26, origin (6,5), invalid preview merah, confirm disabled; anchor target 14..21,z12..19 tervalidasi.
   - **Proof:** `docs/qa/zebra/z2-02/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 - [ ] **Z2-03** — Implement paid zebra fence & selected/picking/Undo-compatible habitat construction, tanpa auto-membangun tanah kosong.
