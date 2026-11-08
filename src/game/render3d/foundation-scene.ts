@@ -504,7 +504,7 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
       announceEdit(result.ok?null:result.reason,result.ok?(command==='undo'?'restored':'removed'):null);
     },
     cancelInput() {lionPreview?.cancel();giraffePreview?.cancel();lionRemoval=null;giraffeRemoval=null; controls?.setEnabled(false); updateRunning(); },
-    setPaused(value) { paused = value; updateRunning(); announceLion();announceGiraffe(); },
+    setPaused(value) { paused = value; updateRunning(); announceLion();announceGiraffe();announceZebraAccess(); },
     inspect: () => {
       // One coherent read per diagnostic call; never repeat full finance/views/clones for each field.
       const simulationState=simulation.inspect(),stateSnapshot=simulation.snapshot(),missionView=simulation.missionView(),perchView=simulation.perchView(),foodView=simulation.foodView(),waterView=simulation.waterView(),visitorView=simulation.visitorView(),birdsView=simulation.birdsView(),policy=visual(),guide=readGuide(simulationState);
