@@ -1,6 +1,6 @@
 # Execution checkpoint
 
-Current verified progress: **19/54 (35.19%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
+Current verified progress: **20/54 (37.04%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
 
 All four Library inputs were read completely: master PRD 335 lines, harness 128, checklist 200, handoff 42. Official Windows materialization failed at `os.setxattr` after the authorized retry. The destination is empty; no original source-file identity is claimed. This requested derived repository checklist uses the complete official reads. Original Library documents remain unchanged. See [input-access record](qa/zebra/z0-01/input-access.json).
 
@@ -41,7 +41,9 @@ Open gates: static registry records retain their default **NOT_RUN** labels; fea
 
 | Z2-07 | c87e6cd / eff26df | [Visitor connection](qa/zebra/z2-07/verification.json): four actual paid path cells/60ZC; real17-cell gate BFS to north viewing cell14,11, all old routes preserved. Empty fifth habitat remains ineligible for visitors.66 focused tests include actual visitor movement, once-only gate ticket, disconnected refusal and path remove/Undo; strict types,507-file check and10-page production QA exclusion pass. Sixteen native actual-product records verify cancellation, four15ZC debits4099→4039, ID/EN,360px keyboard access, Reset/Undo and exact cold hash fb8f90e. Original V4 backup f68c660 remains intact; three original renderer owners dispose to zero owned resources/callbacks, max one at a time. Validation-only claimed grant/idle population is explicitly separate from causal Zebra behavior or grant acceptance. QA close ownership was corrected without changing production. |
 
-Next: **Z3-01** original Zebra rig, followed by real motion/care and the minimum viable care facilities. **Z2-06 remains OPEN:** its1,700ZC grant is proposed, and PRD budget acceptance requires actual construction/care prices and a demonstrated reserve before freezing/activating it. This dependency order permits independent route/visual work on explicit validation-only fixtures without crediting a synthetic grant as gameplay. Public bootstrap remains V4; preserve old state projections and never grant during migration. The actual graph resolves an equal-cost design tie through the north cells12,10→13,10→14,10→14,11, rather than the earlier west design; the price remains60ZC and original routes remain exact.
+| Z3-01 | fc70f15 / 530d1bc | [Original rig](qa/zebra/z3-01/verification.json): four deterministic individual vertex-color coats, original adult Equus quagga geometry with mane/ears/tail/muzzle/four solid-hoof legs,20 bones each; real high14,148/low4,860 triangles per actor. No external artwork/coat textures/copied models.18 tests cover topology, skin, bounded footprint, grounded hooves, ownership, quality swaps and old construction/visitor/render inventory regressions. Strict types,511-file check and10-page production QA exclusion pass. Twenty native records bind the original renderer/Asset Lab: high/low four angles, all individual coats, skeleton/wire/bounds, zero mesh issues on all four skins,360/780 viewports, exact cold hash482b46e and zero owned assets/callbacks at close. Initial triangle-centroid coat defect was found visually and repaired with continuous vertex sampling; discovery preserved. Actors remain idle validation-only setup data, not welcome/FSM/care acceptance. |
+
+Next: **Z3-02** welcome Zaki and canonical grounded motion/persistence, followed by herd/care and the minimum viable care facilities. **Z2-06 remains OPEN:** its1,700ZC grant is proposed, and PRD budget acceptance requires actual construction/care prices and a demonstrated reserve before freezing/activating it. This dependency order permits independent route/visual work on explicit validation-only fixtures without crediting a synthetic grant as gameplay. Public bootstrap remains V4; preserve old state projections and never grant during migration. The actual graph resolves an equal-cost design tie through the north cells12,10→13,10→14,10→14,11, rather than the earlier west design; the price remains60ZC and original routes remain exact.
 
 ---
 
@@ -121,7 +123,7 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
   - **Proof:** `docs/qa/zebra/z2-07/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 
 ### Z3 — Zebra 3D actors, state-driven animation & herd (8 micro-features)
-- [ ] **Z3-01** — Buat original procedural zebra rig recognizable: proporsi, garis individual, surai, telinga, ekor, moncong, empat kaki; high/low LOD.
+- [x] **Z3-01** - Buat original procedural zebra rig recognizable: proporsi, garis individual, surai, telinga, ekor, moncong, empat kaki; high/low LOD.
   - **DoD:** Diuji di H1 Asset Lab empat angle & mobile, tanpa unlicensed art; pola tidak berkedip dan tidak z-fight.
   - **Proof:** `docs/qa/zebra/z3-01/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 - [ ] **Z3-02** — Welcome Zaki, zebra pertama; grounded autonomous walk/turn/idle real state + persistence.
