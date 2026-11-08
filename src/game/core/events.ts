@@ -1,4 +1,5 @@
 export type SimulationEvent =
+  | {type:'zebra-grazed';animalId:string;resourceId:string;eventId:string;tick:number;gameTimeMs:number}
   | {type:'zebra-care-changed';resourceId:string;tick:number;gameTimeMs:number}
   | {type:'zebras-welcomed';tick:number;gameTimeMs:number}
   | {type:'giraffe-mission-claimed';missionId:import('./giraffe-state.ts').GiraffeMissionId;amount:number;tick:number;gameTimeMs:number}
