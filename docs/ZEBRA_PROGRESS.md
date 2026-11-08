@@ -1,6 +1,6 @@
 # Execution checkpoint
 
-Current verified progress: **20/54 (37.04%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
+Current verified progress: **21/54 (38.89%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
 
 All four Library inputs were read completely: master PRD 335 lines, harness 128, checklist 200, handoff 42. Official Windows materialization failed at `os.setxattr` after the authorized retry. The destination is empty; no original source-file identity is claimed. This requested derived repository checklist uses the complete official reads. Original Library documents remain unchanged. See [input-access record](qa/zebra/z0-01/input-access.json).
 
@@ -43,7 +43,9 @@ Open gates: static registry records retain their default **NOT_RUN** labels; fea
 
 | Z3-01 | fc70f15 / 530d1bc | [Original rig](qa/zebra/z3-01/verification.json): four deterministic individual vertex-color coats, original adult Equus quagga geometry with mane/ears/tail/muzzle/four solid-hoof legs,20 bones each; real high14,148/low4,860 triangles per actor. No external artwork/coat textures/copied models.18 tests cover topology, skin, bounded footprint, grounded hooves, ownership, quality swaps and old construction/visitor/render inventory regressions. Strict types,511-file check and10-page production QA exclusion pass. Twenty native records bind the original renderer/Asset Lab: high/low four angles, all individual coats, skeleton/wire/bounds, zero mesh issues on all four skins,360/780 viewports, exact cold hash482b46e and zero owned assets/callbacks at close. Initial triangle-centroid coat defect was found visually and repaired with continuous vertex sampling; discovery preserved. Actors remain idle validation-only setup data, not welcome/FSM/care acceptance. |
 
-Next: **Z3-02** welcome Zaki and canonical grounded motion/persistence, followed by herd/care and the minimum viable care facilities. **Z2-06 remains OPEN:** its1,700ZC grant is proposed, and PRD budget acceptance requires actual construction/care prices and a demonstrated reserve before freezing/activating it. This dependency order permits independent route/visual work on explicit validation-only fixtures without crediting a synthetic grant as gameplay. Public bootstrap remains V4; preserve old state projections and never grant during migration. The actual graph resolves an equal-cost design tie through the north cells12,10→13,10→14,10→14,11, rather than the earlier west design; the price remains60ZC and original routes remain exact.
+| Z3-02 | cb1f6ae / 79c8682 | [Canonical Zaki](qa/zebra/z3-02/verification.json): explicit durable first-adult welcome, no debit/optimistic actor, stable Zaki male identity; canonical grounded walk/turn/idle, distance-driven skin animation and persisted route.26 tests prove stale/forged/repeated/locked refusal, exact mid-route continuation,1x/10x ordered-state equality, paused/disposed inactivity and grounded hoof regression. Strict types,515-file check and10-page production QA exclusion pass. Eleven actual-product native records cover refused candidate with unchanged fb8f90e, successful one-actor welcome,102 real1x ticks +1,663 real10x ticks, ID/EN, exact cold5fc49ab at15345/cash4029,360px view and zero resources/callbacks at close; original V4 backup retained. Tiny ankle-pivot dip and stale paused focus-button state were found/fixed. Native10x CDP remains slow, keyboard pauses;5,216.3ms dropped wall time and trailing CPU disclosed, performance OPEN_R7. No care counters or proposed-grant acceptance is credited. |
+
+Next: **Z3-03** explicit Zuri/Mira/Kira companions, four-actor separation and fair movement scheduling, followed by care and the minimum viable facilities. **Z2-06 remains OPEN:** its1,700ZC grant is proposed, and PRD budget acceptance requires actual construction/care prices and a demonstrated reserve before freezing/activating it. This dependency order permits independent route/visual work on explicit validation-only fixtures without crediting a synthetic grant as gameplay. Public bootstrap remains V4; preserve old state projections and never grant during migration. The actual graph resolves an equal-cost design tie through the north cells12,10→13,10→14,10→14,11, rather than the earlier west design; the price remains60ZC and original routes remain exact.
 
 ---
 
@@ -126,7 +128,7 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
 - [x] **Z3-01** - Buat original procedural zebra rig recognizable: proporsi, garis individual, surai, telinga, ekor, moncong, empat kaki; high/low LOD.
   - **DoD:** Diuji di H1 Asset Lab empat angle & mobile, tanpa unlicensed art; pola tidak berkedip dan tidak z-fight.
   - **Proof:** `docs/qa/zebra/z3-01/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
-- [ ] **Z3-02** — Welcome Zaki, zebra pertama; grounded autonomous walk/turn/idle real state + persistence.
+- [x] **Z3-02** - Welcome Zaki, zebra pertama; grounded autonomous walk/turn/idle real state + persistence.
   - **DoD:** 1 actor, legal path/fence, cold exact, bukan marker visual tanpa sim.
   - **Proof:** `docs/qa/zebra/z3-02/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 - [ ] **Z3-03** — Welcome Zuri, Mira, Kira; tepat 4 dewasa, unique stable IDs/markings, separasi, fair scheduling.
