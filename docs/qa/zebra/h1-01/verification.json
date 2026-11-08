@@ -1,0 +1,57 @@
+{
+  "id": "H1-01",
+  "status": "PASS",
+  "at": "2026-11-08T13:48:48.317Z",
+  "source": "ab20cbd8b17732230601381b56da5c8c2c41c223",
+  "sourceFingerprint": "50e844934913b6b107803455148a3742b3a2b83a89dea7294b71b43cdf370892",
+  "labBuild": "f2b11f3aa62f59e81bd470d7146c5328156fa9e644d815e18dd3b0fde0e7bae9",
+  "productionBuild": "8cbd5560b612db5b82a037e2ce6f3c99ca6729a7771c405d22f77ccd30594598",
+  "productionExclusion": {
+    "status": "PASS",
+    "markers": [
+      "myzootwin-visual3d-",
+      "Asset Lab internal",
+      "__VIS3D_SOURCE__",
+      "scripts/qa/visual3d",
+      "visual3d-frozen-v4"
+    ],
+    "files": 31
+  },
+  "fixtureHash": "5c186919ca88e6563204f5a993200410e96d8d2736aef27e62cf92287d09e145",
+  "browser": {
+    "runner": "internal-browser",
+    "physicalDevice": false,
+    "desktop": {
+      "width": 1366,
+      "height": 768
+    },
+    "pausedStateAndColdExact": true,
+    "oneSceneSimulationRenderer": true,
+    "ownerDatabaseTouched": false,
+    "errors": 0,
+    "meshes": 115,
+    "skinned": 8,
+    "geometries": 65,
+    "materials": 35,
+    "presentedFps": null
+  },
+  "cleanup": {
+    "ownedResources": 0,
+    "programCounter": 1,
+    "boundedGrowth": "NOT_RUN_H1-08"
+  },
+  "tests": {
+    "pass": 3,
+    "fail": 0,
+    "logSha256": "7080122595015427482162e213c6699749434da648aa4fc4c62e2b406c9b4cad"
+  },
+  "evidence": {
+    "browser": "894c9eafba0bba2241b7b92ebc2f784f08cf5eb7073b4ad5d8441bcdc4632313",
+    "screenshot": "7405ee1100a54847b0802fae91283cc2ed99531aa13dc6b4cb9454c2f5034f59"
+  },
+  "limitations": [
+    "H1-01 proves entry/isolation/native real-scene/cold identity only. Per-asset tagging, viewer, behavior, geometry, spatial, lifecycle and matrix remain H1-02..09.",
+    "QA bundle exceeds Vite500kB advisory (actual full renderer/engine); excluded from every production file.",
+    "Program counter1 after disposal awaits repeated-growth investigation; no leak-free or presented-FPS claim."
+  ]
+}
