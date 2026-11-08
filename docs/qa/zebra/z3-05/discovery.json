@@ -1,0 +1,2538 @@
+{
+  "raw": {
+    "path": ".qa/zebra-audit/z3-05-discovery/browser.json",
+    "bytes": 3867787,
+    "sha256": "fc9d75304b3ac7fd6e3630e6b6d89de48b4b5c92155b13fac55f4abf0bcdb98d"
+  },
+  "source": "7ba73322798b5e876fc1bade0d47dd45ada52e28",
+  "cases": [
+    {
+      "label": "cold-before-drink",
+      "source": "7ba73322798b5e876fc1bade0d47dd45ada52e28",
+      "tick": 16174,
+      "hash": "aa5e1d88d0b3305c3f9bc110a028800a3a21b436bdd9acb1448abb42f21f99a9",
+      "zebraActors": [
+        {
+          "id": "zebra-zaki",
+          "name": "Zaki",
+          "sex": "male",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 15.5,
+            "z": 18
+          },
+          "target": {
+            "x": 18,
+            "z": 18.5
+          },
+          "targetResourceId": null,
+          "hunger": 17.420000000000414,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 592,
+            "sequence": 57,
+            "heading": 0.8417003409949009,
+            "waypoints": [
+              {
+                "x": 18,
+                "z": 18.5
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 84.18825740990506,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-zuri",
+          "name": "Zuri",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 19.72999999999999,
+            "z": 13.5
+          },
+          "target": {
+            "x": 15.5,
+            "z": 13.5
+          },
+          "targetResourceId": null,
+          "hunger": 17.42000000000047,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 556,
+            "sequence": 16,
+            "heading": -1.5707963267948966,
+            "waypoints": [
+              {
+                "x": 20,
+                "z": 13.5
+              },
+              {
+                "x": 19.5,
+                "z": 13.5
+              },
+              {
+                "x": 19,
+                "z": 13.5
+              },
+              {
+                "x": 18.5,
+                "z": 13.5
+              },
+              {
+                "x": 18,
+                "z": 13.5
+              },
+              {
+                "x": 17.5,
+                "z": 13.5
+              },
+              {
+                "x": 17,
+                "z": 13.5
+              },
+              {
+                "x": 16.5,
+                "z": 13.5
+              },
+              {
+                "x": 16,
+                "z": 13.5
+              },
+              {
+                "x": 15.5,
+                "z": 13.5
+              }
+            ],
+            "waypointIndex": 1,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": -0.045000000000001705,
+              "z": 0
+            },
+            "distanceWalked": 21.47679504864027,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-mira",
+          "name": "Mira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 19.5,
+            "z": 16.5
+          },
+          "target": {
+            "x": 19.5,
+            "z": 19
+          },
+          "targetResourceId": null,
+          "hunger": 17.420000000000353,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 565,
+            "sequence": 19,
+            "heading": 0.36539816339744824,
+            "waypoints": [
+              {
+                "x": 19.5,
+                "z": 16.5
+              },
+              {
+                "x": 19.5,
+                "z": 17
+              },
+              {
+                "x": 19.5,
+                "z": 17.5
+              },
+              {
+                "x": 19.5,
+                "z": 18
+              },
+              {
+                "x": 19.5,
+                "z": 18.5
+              },
+              {
+                "x": 19.5,
+                "z": 19
+              }
+            ],
+            "waypointIndex": 1,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 21.848195801106133,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-kira",
+          "name": "Kira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 17.5,
+            "z": 15.73
+          },
+          "target": {
+            "x": 18.5,
+            "z": 14.5
+          },
+          "targetResourceId": null,
+          "hunger": 17.42000000000042,
+          "thirst": 45,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 556,
+            "sequence": 25,
+            "heading": 3.141592653589793,
+            "waypoints": [
+              {
+                "x": 17.5,
+                "z": 16.5
+              },
+              {
+                "x": 17.5,
+                "z": 16
+              },
+              {
+                "x": 17.5,
+                "z": 15.5
+              },
+              {
+                "x": 17.5,
+                "z": 15
+              },
+              {
+                "x": 18,
+                "z": 15
+              },
+              {
+                "x": 18.5,
+                "z": 14.5
+              }
+            ],
+            "waypointIndex": 2,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": -0.04499999999999993
+            },
+            "distanceWalked": 19.770223738307628,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        }
+      ],
+      "water": {
+        "id": "zebra-water-128",
+        "kind": "zebra-water",
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "cell": {
+          "x": 17,
+          "z": 12
+        },
+        "stock": 12,
+        "capacity": 12,
+        "revision": 129,
+        "approaches": [
+          {
+            "x": 16.8,
+            "z": 13.15
+          },
+          {
+            "x": 18.2,
+            "z": 13.15
+          }
+        ],
+        "refillPrice": 6
+      },
+      "owners": 1,
+      "errors": []
+    },
+    {
+      "label": "source-after30",
+      "source": "7ba73322798b5e876fc1bade0d47dd45ada52e28",
+      "tick": 16204,
+      "hash": "3b883578f1cb44c81d66ff6701af642943480c070d9a1672e68f9f416d748b31",
+      "zebraActors": [
+        {
+          "id": "zebra-zaki",
+          "name": "Zaki",
+          "sex": "male",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 16,
+            "z": 17.5
+          },
+          "target": {
+            "x": 18.2,
+            "z": 13.15
+          },
+          "targetResourceId": "zebra-water-128",
+          "hunger": 17.960000000000434,
+          "thirst": 45.659999999999954,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "seek-water",
+          "motion": {
+            "phase": "seek-water",
+            "ticksLeft": 570,
+            "sequence": 58,
+            "heading": 2.9161944901923453,
+            "waypoints": [
+              {
+                "x": 16,
+                "z": 17.5
+              },
+              {
+                "x": 16,
+                "z": 17
+              },
+              {
+                "x": 16,
+                "z": 16.5
+              },
+              {
+                "x": 16,
+                "z": 16
+              },
+              {
+                "x": 16,
+                "z": 15.5
+              },
+              {
+                "x": 16,
+                "z": 15
+              },
+              {
+                "x": 16,
+                "z": 14.5
+              },
+              {
+                "x": 16,
+                "z": 14
+              },
+              {
+                "x": 16,
+                "z": 13.5
+              },
+              {
+                "x": 16.5,
+                "z": 13.5
+              },
+              {
+                "x": 17,
+                "z": 13.5
+              },
+              {
+                "x": 17.5,
+                "z": 13.5
+              },
+              {
+                "x": 18,
+                "z": 13.5
+              },
+              {
+                "x": 18.2,
+                "z": 13.15
+              }
+            ],
+            "waypointIndex": 1,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 84.89536419109164,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-zuri",
+          "name": "Zuri",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 18.5,
+            "z": 13.5
+          },
+          "target": {
+            "x": 15.5,
+            "z": 13.5
+          },
+          "targetResourceId": null,
+          "hunger": 17.96000000000049,
+          "thirst": 45.659999999999954,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 526,
+            "sequence": 16,
+            "heading": -1.5707963267948966,
+            "waypoints": [
+              {
+                "x": 20,
+                "z": 13.5
+              },
+              {
+                "x": 19.5,
+                "z": 13.5
+              },
+              {
+                "x": 19,
+                "z": 13.5
+              },
+              {
+                "x": 18.5,
+                "z": 13.5
+              },
+              {
+                "x": 18,
+                "z": 13.5
+              },
+              {
+                "x": 17.5,
+                "z": 13.5
+              },
+              {
+                "x": 17,
+                "z": 13.5
+              },
+              {
+                "x": 16.5,
+                "z": 13.5
+              },
+              {
+                "x": 16,
+                "z": 13.5
+              },
+              {
+                "x": 15.5,
+                "z": 13.5
+              }
+            ],
+            "waypointIndex": 4,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": -0.004999999999981242,
+              "z": 0
+            },
+            "distanceWalked": 22.70679504864026,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-mira",
+          "name": "Mira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 19.5,
+            "z": 17.680000000000007
+          },
+          "target": {
+            "x": 19.5,
+            "z": 19
+          },
+          "targetResourceId": null,
+          "hunger": 17.960000000000374,
+          "thirst": 45.659999999999954,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 535,
+            "sequence": 19,
+            "heading": 0,
+            "waypoints": [
+              {
+                "x": 19.5,
+                "z": 16.5
+              },
+              {
+                "x": 19.5,
+                "z": 17
+              },
+              {
+                "x": 19.5,
+                "z": 17.5
+              },
+              {
+                "x": 19.5,
+                "z": 18
+              },
+              {
+                "x": 19.5,
+                "z": 18.5
+              },
+              {
+                "x": 19.5,
+                "z": 19
+              }
+            ],
+            "waypointIndex": 3,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0.045000000000001705
+            },
+            "distanceWalked": 23.02819580110614,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-kira",
+          "name": "Kira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 17.158284332697875,
+            "z": 14.470533683372114
+          },
+          "target": {
+            "x": 16.8,
+            "z": 13.15
+          },
+          "targetResourceId": "zebra-water-128",
+          "hunger": 17.96000000000044,
+          "thirst": 45.659999999999954,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "seek-water",
+          "motion": {
+            "phase": "seek-water",
+            "ticksLeft": 570,
+            "sequence": 26,
+            "heading": -2.8766529396434852,
+            "waypoints": [
+              {
+                "x": 16.8,
+                "z": 13.15
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": -0.01178329887248708,
+              "z": -0.043429872987168494
+            },
+            "distanceWalked": 21.075223738307574,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        }
+      ],
+      "water": {
+        "id": "zebra-water-128",
+        "kind": "zebra-water",
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "cell": {
+          "x": 17,
+          "z": 12
+        },
+        "stock": 12,
+        "capacity": 12,
+        "revision": 129,
+        "approaches": [
+          {
+            "x": 16.8,
+            "z": 13.15
+          },
+          {
+            "x": 18.2,
+            "z": 13.15
+          }
+        ],
+        "refillPrice": 6
+      },
+      "owners": 1,
+      "errors": []
+    },
+    {
+      "label": "source-after60",
+      "source": "7ba73322798b5e876fc1bade0d47dd45ada52e28",
+      "tick": 16234,
+      "hash": "ee4760ff52c790669811fe0bd9477e3044ff0b7fa15e0d3faf2be9aa013effb3",
+      "zebraActors": [
+        {
+          "id": "zebra-zaki",
+          "name": "Zaki",
+          "sex": "male",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 16,
+            "z": 16.27499999999999
+          },
+          "target": {
+            "x": 18.2,
+            "z": 13.15
+          },
+          "targetResourceId": "zebra-water-128",
+          "hunger": 18.500000000000455,
+          "thirst": 46.31999999999991,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "seek-water",
+          "motion": {
+            "phase": "seek-water",
+            "ticksLeft": 540,
+            "sequence": 58,
+            "heading": 3.141592653589793,
+            "waypoints": [
+              {
+                "x": 16,
+                "z": 17.5
+              },
+              {
+                "x": 16,
+                "z": 17
+              },
+              {
+                "x": 16,
+                "z": 16.5
+              },
+              {
+                "x": 16,
+                "z": 16
+              },
+              {
+                "x": 16,
+                "z": 15.5
+              },
+              {
+                "x": 16,
+                "z": 15
+              },
+              {
+                "x": 16,
+                "z": 14.5
+              },
+              {
+                "x": 16,
+                "z": 14
+              },
+              {
+                "x": 16,
+                "z": 13.5
+              },
+              {
+                "x": 16.5,
+                "z": 13.5
+              },
+              {
+                "x": 17,
+                "z": 13.5
+              },
+              {
+                "x": 17.5,
+                "z": 13.5
+              },
+              {
+                "x": 18,
+                "z": 13.5
+              },
+              {
+                "x": 18.2,
+                "z": 13.15
+              }
+            ],
+            "waypointIndex": 3,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": -0.045000000000001705
+            },
+            "distanceWalked": 86.12036419109165,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-zuri",
+          "name": "Zuri",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 18.184999999999988,
+            "z": 13.5
+          },
+          "target": null,
+          "targetResourceId": null,
+          "hunger": 18.50000000000051,
+          "thirst": 46.31999999999991,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "idle",
+          "motion": {
+            "phase": "idle",
+            "ticksLeft": 3,
+            "sequence": 17,
+            "heading": -1.5707963267948966,
+            "waypoints": [],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 23.02179504864027,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-mira",
+          "name": "Mira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 19.5,
+            "z": 18.950000000000017
+          },
+          "target": {
+            "x": 19.5,
+            "z": 19
+          },
+          "targetResourceId": null,
+          "hunger": 18.500000000000394,
+          "thirst": 46.31999999999991,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 505,
+            "sequence": 19,
+            "heading": 0,
+            "waypoints": [
+              {
+                "x": 19.5,
+                "z": 16.5
+              },
+              {
+                "x": 19.5,
+                "z": 17
+              },
+              {
+                "x": 19.5,
+                "z": 17.5
+              },
+              {
+                "x": 19.5,
+                "z": 18
+              },
+              {
+                "x": 19.5,
+                "z": 18.5
+              },
+              {
+                "x": 19.5,
+                "z": 19
+              }
+            ],
+            "waypointIndex": 5,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0.045000000000001705
+            },
+            "distanceWalked": 24.29819580110615,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-kira",
+          "name": "Kira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 17.087584539462952,
+            "z": 14.209954445449103
+          },
+          "target": {
+            "x": 16.8,
+            "z": 13.15
+          },
+          "targetResourceId": "zebra-water-128",
+          "hunger": 18.500000000000462,
+          "thirst": 46.31999999999991,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "seek-water",
+          "motion": {
+            "phase": "seek-water",
+            "ticksLeft": 594,
+            "sequence": 28,
+            "heading": -2.036652939643479,
+            "waypoints": [
+              {
+                "x": 16.5,
+                "z": 14
+              },
+              {
+                "x": 16.5,
+                "z": 13.5
+              },
+              {
+                "x": 16.8,
+                "z": 13.15
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 21.345223738307563,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        }
+      ],
+      "water": {
+        "id": "zebra-water-128",
+        "kind": "zebra-water",
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "cell": {
+          "x": 17,
+          "z": 12
+        },
+        "stock": 12,
+        "capacity": 12,
+        "revision": 129,
+        "approaches": [
+          {
+            "x": 16.8,
+            "z": 13.15
+          },
+          {
+            "x": 18.2,
+            "z": 13.15
+          }
+        ],
+        "refillPrice": 6
+      },
+      "owners": 1,
+      "errors": []
+    },
+    {
+      "label": "source-after90",
+      "source": "7ba73322798b5e876fc1bade0d47dd45ada52e28",
+      "tick": 16264,
+      "hash": "dc94950d2e3e4029cb7133e9a15f102e68c27194b7472296521ad87b12c9058e",
+      "zebraActors": [
+        {
+          "id": "zebra-zaki",
+          "name": "Zaki",
+          "sex": "male",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 16,
+            "z": 15.005
+          },
+          "target": {
+            "x": 18.2,
+            "z": 13.15
+          },
+          "targetResourceId": "zebra-water-128",
+          "hunger": 19.040000000000475,
+          "thirst": 46.97999999999986,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "seek-water",
+          "motion": {
+            "phase": "seek-water",
+            "ticksLeft": 510,
+            "sequence": 58,
+            "heading": 3.141592653589793,
+            "waypoints": [
+              {
+                "x": 16,
+                "z": 17.5
+              },
+              {
+                "x": 16,
+                "z": 17
+              },
+              {
+                "x": 16,
+                "z": 16.5
+              },
+              {
+                "x": 16,
+                "z": 16
+              },
+              {
+                "x": 16,
+                "z": 15.5
+              },
+              {
+                "x": 16,
+                "z": 15
+              },
+              {
+                "x": 16,
+                "z": 14.5
+              },
+              {
+                "x": 16,
+                "z": 14
+              },
+              {
+                "x": 16,
+                "z": 13.5
+              },
+              {
+                "x": 16.5,
+                "z": 13.5
+              },
+              {
+                "x": 17,
+                "z": 13.5
+              },
+              {
+                "x": 17.5,
+                "z": 13.5
+              },
+              {
+                "x": 18,
+                "z": 13.5
+              },
+              {
+                "x": 18.2,
+                "z": 13.15
+              }
+            ],
+            "waypointIndex": 5,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": -0.04499999999999993
+            },
+            "distanceWalked": 87.39036419109168,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-zuri",
+          "name": "Zuri",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 18.47284033443684,
+            "z": 13.956889419741017
+          },
+          "target": {
+            "x": 17.5,
+            "z": 16
+          },
+          "targetResourceId": null,
+          "hunger": 19.040000000000532,
+          "thirst": 46.97999999999986,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 574,
+            "sequence": 18,
+            "heading": 0.5621867439000552,
+            "waypoints": [
+              {
+                "x": 18.5,
+                "z": 14
+              },
+              {
+                "x": 18.5,
+                "z": 14.5
+              },
+              {
+                "x": 18.5,
+                "z": 15
+              },
+              {
+                "x": 18,
+                "z": 15
+              },
+              {
+                "x": 18,
+                "z": 15.5
+              },
+              {
+                "x": 17.5,
+                "z": 16
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0.02398669453640423,
+              "z": 0.03807411831175145
+            },
+            "distanceWalked": 23.561795048640292,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-mira",
+          "name": "Mira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 19.40454058453982,
+            "z": 18.90454058453982
+          },
+          "target": {
+            "x": 15.5,
+            "z": 18.5
+          },
+          "targetResourceId": null,
+          "hunger": 19.040000000000415,
+          "thirst": 46.97999999999986,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 581,
+            "sequence": 21,
+            "heading": -2.356194490192345,
+            "waypoints": [
+              {
+                "x": 19,
+                "z": 18.5
+              },
+              {
+                "x": 18.5,
+                "z": 18.5
+              },
+              {
+                "x": 18,
+                "z": 18.5
+              },
+              {
+                "x": 17.5,
+                "z": 18.5
+              },
+              {
+                "x": 17,
+                "z": 18.5
+              },
+              {
+                "x": 16.5,
+                "z": 18.5
+              },
+              {
+                "x": 16,
+                "z": 18.5
+              },
+              {
+                "x": 15.5,
+                "z": 18.5
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": -0.03181980515339333,
+              "z": -0.03181980515339333
+            },
+            "distanceWalked": 24.483195801106127,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-kira",
+          "name": "Kira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 16.5,
+            "z": 13.64
+          },
+          "target": {
+            "x": 16.8,
+            "z": 13.15
+          },
+          "targetResourceId": "zebra-water-128",
+          "hunger": 19.040000000000482,
+          "thirst": 46.97999999999986,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "seek-water",
+          "motion": {
+            "phase": "seek-water",
+            "ticksLeft": 564,
+            "sequence": 28,
+            "heading": 3.141592653589793,
+            "waypoints": [
+              {
+                "x": 16.5,
+                "z": 14
+              },
+              {
+                "x": 16.5,
+                "z": 13.5
+              },
+              {
+                "x": 16.8,
+                "z": 13.15
+              }
+            ],
+            "waypointIndex": 1,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": -0.04499999999999993
+            },
+            "distanceWalked": 22.32919205495493,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        }
+      ],
+      "water": {
+        "id": "zebra-water-128",
+        "kind": "zebra-water",
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "cell": {
+          "x": 17,
+          "z": 12
+        },
+        "stock": 12,
+        "capacity": 12,
+        "revision": 129,
+        "approaches": [
+          {
+            "x": 16.8,
+            "z": 13.15
+          },
+          {
+            "x": 18.2,
+            "z": 13.15
+          }
+        ],
+        "refillPrice": 6
+      },
+      "owners": 1,
+      "errors": []
+    },
+    {
+      "label": "source-after110",
+      "source": "7ba73322798b5e876fc1bade0d47dd45ada52e28",
+      "tick": 16284,
+      "hash": "eafc83e7d50495692e6ecd0695a74c0536c4ed556c50efadc0b77ac1491b2254",
+      "zebraActors": [
+        {
+          "id": "zebra-zaki",
+          "name": "Zaki",
+          "sex": "male",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 16,
+            "z": 14.775
+          },
+          "target": {
+            "x": 18.2,
+            "z": 13.15
+          },
+          "targetResourceId": "zebra-water-128",
+          "hunger": 19.40000000000049,
+          "thirst": 47.41999999999983,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "seek-water",
+          "motion": {
+            "phase": "seek-water",
+            "ticksLeft": 490,
+            "sequence": 58,
+            "heading": 3.141592653589793,
+            "waypoints": [
+              {
+                "x": 16,
+                "z": 17.5
+              },
+              {
+                "x": 16,
+                "z": 17
+              },
+              {
+                "x": 16,
+                "z": 16.5
+              },
+              {
+                "x": 16,
+                "z": 16
+              },
+              {
+                "x": 16,
+                "z": 15.5
+              },
+              {
+                "x": 16,
+                "z": 15
+              },
+              {
+                "x": 16,
+                "z": 14.5
+              },
+              {
+                "x": 16,
+                "z": 14
+              },
+              {
+                "x": 16,
+                "z": 13.5
+              },
+              {
+                "x": 16.5,
+                "z": 13.5
+              },
+              {
+                "x": 17,
+                "z": 13.5
+              },
+              {
+                "x": 17.5,
+                "z": 13.5
+              },
+              {
+                "x": 18,
+                "z": 13.5
+              },
+              {
+                "x": 18.2,
+                "z": 13.15
+              }
+            ],
+            "waypointIndex": 6,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 87.62036419109168,
+            "blockedTicks": 14
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-zuri",
+          "name": "Zuri",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 18.5,
+            "z": 14.635
+          },
+          "target": {
+            "x": 17.5,
+            "z": 16
+          },
+          "targetResourceId": null,
+          "hunger": 19.400000000000546,
+          "thirst": 47.41999999999983,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 554,
+            "sequence": 18,
+            "heading": 0,
+            "waypoints": [
+              {
+                "x": 18.5,
+                "z": 14
+              },
+              {
+                "x": 18.5,
+                "z": 14.5
+              },
+              {
+                "x": 18.5,
+                "z": 15
+              },
+              {
+                "x": 18,
+                "z": 15
+              },
+              {
+                "x": 18,
+                "z": 15.5
+              },
+              {
+                "x": 17.5,
+                "z": 16
+              }
+            ],
+            "waypointIndex": 2,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0.04499999999999993
+            },
+            "distanceWalked": 24.247747669414615,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-mira",
+          "name": "Mira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 18.909999999999997,
+            "z": 18.5
+          },
+          "target": {
+            "x": 15.5,
+            "z": 18.5
+          },
+          "targetResourceId": null,
+          "hunger": 19.40000000000043,
+          "thirst": 47.41999999999983,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 561,
+            "sequence": 21,
+            "heading": -1.5707963267948966,
+            "waypoints": [
+              {
+                "x": 19,
+                "z": 18.5
+              },
+              {
+                "x": 18.5,
+                "z": 18.5
+              },
+              {
+                "x": 18,
+                "z": 18.5
+              },
+              {
+                "x": 17.5,
+                "z": 18.5
+              },
+              {
+                "x": 17,
+                "z": 18.5
+              },
+              {
+                "x": 16.5,
+                "z": 18.5
+              },
+              {
+                "x": 16,
+                "z": 18.5
+              },
+              {
+                "x": 15.5,
+                "z": 18.5
+              }
+            ],
+            "waypointIndex": 1,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": -0.045000000000001705,
+              "z": 0
+            },
+            "distanceWalked": 25.145302582292683,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-kira",
+          "name": "Kira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 16.5,
+            "z": 13.5
+          },
+          "target": {
+            "x": 16.8,
+            "z": 13.15
+          },
+          "targetResourceId": "zebra-water-128",
+          "hunger": 19.400000000000496,
+          "thirst": 47.41999999999983,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "seek-water",
+          "motion": {
+            "phase": "seek-water",
+            "ticksLeft": 544,
+            "sequence": 28,
+            "heading": 2.7215926535897927,
+            "waypoints": [
+              {
+                "x": 16.5,
+                "z": 14
+              },
+              {
+                "x": 16.5,
+                "z": 13.5
+              },
+              {
+                "x": 16.8,
+                "z": 13.15
+              }
+            ],
+            "waypointIndex": 2,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 22.469192054954938,
+            "blockedTicks": 13
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        }
+      ],
+      "water": {
+        "id": "zebra-water-128",
+        "kind": "zebra-water",
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "cell": {
+          "x": 17,
+          "z": 12
+        },
+        "stock": 12,
+        "capacity": 12,
+        "revision": 129,
+        "approaches": [
+          {
+            "x": 16.8,
+            "z": 13.15
+          },
+          {
+            "x": 18.2,
+            "z": 13.15
+          }
+        ],
+        "refillPrice": 6
+      },
+      "owners": 1,
+      "errors": []
+    },
+    {
+      "label": "source-after130",
+      "source": "7ba73322798b5e876fc1bade0d47dd45ada52e28",
+      "tick": 16304,
+      "hash": "45707e5b309556f76ad0a3677adf4c7a99e90278a6ae3b916338551a1fa42bc2",
+      "zebraActors": [
+        {
+          "id": "zebra-zaki",
+          "name": "Zaki",
+          "sex": "male",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 16,
+            "z": 14.775
+          },
+          "target": {
+            "x": 18,
+            "z": 16.5
+          },
+          "targetResourceId": null,
+          "hunger": 19.760000000000502,
+          "thirst": 47.8599999999998,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 591,
+            "sequence": 60,
+            "heading": 3.141592653589793,
+            "waypoints": [
+              {
+                "x": 18,
+                "z": 16.5
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 87.62036419109168,
+            "blockedTicks": 9
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-zuri",
+          "name": "Zuri",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 18.5,
+            "z": 14.815
+          },
+          "target": {
+            "x": 18.2,
+            "z": 13.15
+          },
+          "targetResourceId": "zebra-water-128",
+          "hunger": 19.76000000000056,
+          "thirst": 47.8599999999998,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "seek-water",
+          "motion": {
+            "phase": "seek-water",
+            "ticksLeft": 584,
+            "sequence": 19,
+            "heading": -2.240000000000001,
+            "waypoints": [
+              {
+                "x": 18.2,
+                "z": 13.15
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 24.42774766941462,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-mira",
+          "name": "Mira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 18.049999999999983,
+            "z": 18.5
+          },
+          "target": {
+            "x": 15.5,
+            "z": 18.5
+          },
+          "targetResourceId": null,
+          "hunger": 19.760000000000442,
+          "thirst": 47.8599999999998,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 541,
+            "sequence": 21,
+            "heading": -1.5707963267948966,
+            "waypoints": [
+              {
+                "x": 19,
+                "z": 18.5
+              },
+              {
+                "x": 18.5,
+                "z": 18.5
+              },
+              {
+                "x": 18,
+                "z": 18.5
+              },
+              {
+                "x": 17.5,
+                "z": 18.5
+              },
+              {
+                "x": 17,
+                "z": 18.5
+              },
+              {
+                "x": 16.5,
+                "z": 18.5
+              },
+              {
+                "x": 16,
+                "z": 18.5
+              },
+              {
+                "x": 15.5,
+                "z": 18.5
+              }
+            ],
+            "waypointIndex": 2,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": -0.045000000000001705,
+              "z": 0
+            },
+            "distanceWalked": 26.005302582292696,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-kira",
+          "name": "Kira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 16.5,
+            "z": 13.5
+          },
+          "target": {
+            "x": 16.8,
+            "z": 13.15
+          },
+          "targetResourceId": "zebra-water-128",
+          "hunger": 19.76000000000051,
+          "thirst": 47.8599999999998,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "seek-water",
+          "motion": {
+            "phase": "seek-water",
+            "ticksLeft": 585,
+            "sequence": 30,
+            "heading": 2.7215926535897927,
+            "waypoints": [
+              {
+                "x": 16.8,
+                "z": 13.15
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 22.469192054954938,
+            "blockedTicks": 15
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        }
+      ],
+      "water": {
+        "id": "zebra-water-128",
+        "kind": "zebra-water",
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "cell": {
+          "x": 17,
+          "z": 12
+        },
+        "stock": 12,
+        "capacity": 12,
+        "revision": 129,
+        "approaches": [
+          {
+            "x": 16.8,
+            "z": 13.15
+          },
+          {
+            "x": 18.2,
+            "z": 13.15
+          }
+        ],
+        "refillPrice": 6
+      },
+      "owners": 1,
+      "errors": []
+    },
+    {
+      "label": "closed-blocked-route",
+      "source": "7ba73322798b5e876fc1bade0d47dd45ada52e28",
+      "tick": 16304,
+      "hash": "45707e5b309556f76ad0a3677adf4c7a99e90278a6ae3b916338551a1fa42bc2",
+      "zebraActors": [
+        {
+          "id": "zebra-zaki",
+          "name": "Zaki",
+          "sex": "male",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 16,
+            "z": 14.775
+          },
+          "target": {
+            "x": 18,
+            "z": 16.5
+          },
+          "targetResourceId": null,
+          "hunger": 19.760000000000502,
+          "thirst": 47.8599999999998,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 591,
+            "sequence": 60,
+            "heading": 3.141592653589793,
+            "waypoints": [
+              {
+                "x": 18,
+                "z": 16.5
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 87.62036419109168,
+            "blockedTicks": 9
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-zuri",
+          "name": "Zuri",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 18.5,
+            "z": 14.815
+          },
+          "target": {
+            "x": 18.2,
+            "z": 13.15
+          },
+          "targetResourceId": "zebra-water-128",
+          "hunger": 19.76000000000056,
+          "thirst": 47.8599999999998,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "seek-water",
+          "motion": {
+            "phase": "seek-water",
+            "ticksLeft": 584,
+            "sequence": 19,
+            "heading": -2.240000000000001,
+            "waypoints": [
+              {
+                "x": 18.2,
+                "z": 13.15
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 24.42774766941462,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-mira",
+          "name": "Mira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 18.049999999999983,
+            "z": 18.5
+          },
+          "target": {
+            "x": 15.5,
+            "z": 18.5
+          },
+          "targetResourceId": null,
+          "hunger": 19.760000000000442,
+          "thirst": 47.8599999999998,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "wander",
+          "motion": {
+            "phase": "wander",
+            "ticksLeft": 541,
+            "sequence": 21,
+            "heading": -1.5707963267948966,
+            "waypoints": [
+              {
+                "x": 19,
+                "z": 18.5
+              },
+              {
+                "x": 18.5,
+                "z": 18.5
+              },
+              {
+                "x": 18,
+                "z": 18.5
+              },
+              {
+                "x": 17.5,
+                "z": 18.5
+              },
+              {
+                "x": 17,
+                "z": 18.5
+              },
+              {
+                "x": 16.5,
+                "z": 18.5
+              },
+              {
+                "x": 16,
+                "z": 18.5
+              },
+              {
+                "x": 15.5,
+                "z": 18.5
+              }
+            ],
+            "waypointIndex": 2,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": -0.045000000000001705,
+              "z": 0
+            },
+            "distanceWalked": 26.005302582292696,
+            "blockedTicks": 0
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        },
+        {
+          "id": "zebra-kira",
+          "name": "Kira",
+          "sex": "female",
+          "speciesId": "equus-quagga",
+          "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+          "position": {
+            "x": 16.5,
+            "z": 13.5
+          },
+          "target": {
+            "x": 16.8,
+            "z": 13.15
+          },
+          "targetResourceId": "zebra-water-128",
+          "hunger": 19.76000000000051,
+          "thirst": 47.8599999999998,
+          "energy": 75,
+          "habitatFit": 100,
+          "enrichment": 40,
+          "welfare": 40,
+          "care": {
+            "low": true,
+            "hungry": true,
+            "thirsty": true,
+            "tired": false,
+            "bored": false
+          },
+          "currentBehavior": "seek-water",
+          "motion": {
+            "phase": "seek-water",
+            "ticksLeft": 585,
+            "sequence": 30,
+            "heading": 2.7215926535897927,
+            "waypoints": [
+              {
+                "x": 16.8,
+                "z": 13.15
+              }
+            ],
+            "waypointIndex": 0,
+            "partnerId": null,
+            "herdLeaderId": null,
+            "lastStep": {
+              "x": 0,
+              "z": 0
+            },
+            "distanceWalked": 22.469192054954938,
+            "blockedTicks": 15
+          },
+          "foodEaten": 1,
+          "waterDrunk": 0,
+          "restedTicks": 0,
+          "enrichedTicks": 0,
+          "socialComfort": 50,
+          "shadeRest": 30,
+          "groomCooldownTicks": 0,
+          "trotCooldownTicks": 0,
+          "enrichmentCooldownTicks": 0,
+          "grazes": 1,
+          "groomings": 0,
+          "trots": 0
+        }
+      ],
+      "water": {
+        "id": "zebra-water-128",
+        "kind": "zebra-water",
+        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+        "cell": {
+          "x": 17,
+          "z": 12
+        },
+        "stock": 12,
+        "capacity": 12,
+        "revision": 129,
+        "approaches": [
+          {
+            "x": 16.8,
+            "z": 13.15
+          },
+          {
+            "x": 18.2,
+            "z": 13.15
+          }
+        ],
+        "refillPrice": 6
+      },
+      "owners": 0,
+      "errors": []
+    }
+  ],
+  "regressionFixture": {
+    "path": "tests/fixtures/zebra-water-turn-regression.json",
+    "sha256": "9e8fd97d0ac138e8a6e97763417336944f735ffd0daa7b0079282eb1f4d0068e"
+  },
+  "scope": "Observed actual source turn deadlock; unchanged state cold-loads on fixed source. Validation-only actor-pose projection over source-command care setup provides a deterministic Node regression. Initial unbounded reverse attempt delayed other queues; final bounded turn-only reverse and wandering respect for reserved ports pass51 tests."
+}
