@@ -1,6 +1,6 @@
 import ts from 'typescript';
 import {readFileSync,readdirSync,statSync} from 'node:fs';
-import {resolve,relative,dirname,join} from 'node:path';
+import {resolve,relative,join} from 'node:path';
 import {createHash} from 'node:crypto';
 const root=resolve('.'),hash=s=>createHash('sha256').update(s).digest('hex'),rel=p=>relative(root,p).replaceAll('\\','/');
 const options={module:ts.ModuleKind.ESNext,moduleResolution:ts.ModuleResolutionKind.Bundler,allowImportingTsExtensions:true};
