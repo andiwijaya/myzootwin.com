@@ -221,10 +221,14 @@ export function mountHudLayout(root: HTMLElement) {
     }, { signal: events.signal });
     root.addEventListener('keydown', e => {
         if (e.key === 'Escape' && options?.open && !root.querySelector('dialog[open]')) {
-            e.preventDefault();
-            e.stopPropagation();
             options.open = false;
-            options.querySelector<HTMLElement>('summary')?.focus();
+            // Outside the menu, let the focused tool handle Escape (for
+            // example, cancel an unpaid preview and restore its Plan focus).
+            if (options.contains(e.target as Node)) {
+                e.preventDefault();
+                e.stopPropagation();
+                options.querySelector<HTMLElement>('summary')?.focus();
+            }
         }
     }, { signal: events.signal, capture: true });
     root.addEventListener('pointerdown', e => {
