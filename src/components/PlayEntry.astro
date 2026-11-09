@@ -266,4 +266,7 @@ dialog{max-width:calc(100vw - 1.5rem);max-height:calc(100dvh - max(1rem,env(safe
 .play-shell[data-hud-active="true"] [data-elephant-care-preview] p{font-size:.78rem;line-height:1.4;margin:.25rem 0}
 [data-elephant-care-preview] .elephant-care-controls{display:flex;flex-wrap:wrap;gap:.35rem;margin:.25rem 0}
 [data-elephant-care-preview-status]:empty{display:none}
+/* Runtime-created welfare disclosures also need a full touch target. */
+.play-shell[data-hud-active="true"] :global(.hud-panels summary){box-sizing:border-box;min-height:44px;padding-block:.55rem;cursor:pointer;overflow-wrap:anywhere}
+.play-shell[data-hud-active="true"] :global(.hud-panels summary:focus-visible){outline:3px solid var(--gold);outline-offset:2px}
 </style>
