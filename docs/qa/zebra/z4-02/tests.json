@@ -1,0 +1,258 @@
+{
+  "status": "PASS",
+  "source": "693fed3f634f08f34db1d45bf1b7e378a48b9f3d",
+  "uniquePassing": 39,
+  "welfare": 5,
+  "regression": 34,
+  "strictTypes": "PASS",
+  "astroCheck": "545 files;0 errors/warnings/hints",
+  "logs": [
+    {
+      "path": ".qa/zebra-audit/z4-02-welfare.log",
+      "bytes": 3082,
+      "sha256": "59d479ca650b1e2862ed1ddc92aa0f32af04866a835da4be3fa8d640d122862f"
+    },
+    {
+      "path": ".qa/zebra-audit/z4-02-regression.log",
+      "bytes": 8612,
+      "sha256": "8e20c1514df6bd6493e2cfd5a298ce8ed87e80a8576769b942954dabe7ac08fe"
+    },
+    {
+      "path": ".qa/zebra-audit/z4-02-types-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".qa/zebra-audit/z4-02-check.log",
+      "bytes": 216,
+      "sha256": "eafe4c63fe5d967dd426d15a548f8d733192cd2f48aef7010ccb61d9a4df6f67"
+    },
+    {
+      "path": ".qa/zebra-audit/z4-02-build.log",
+      "bytes": 2757,
+      "sha256": "db62fc129310876a4c2a7d84821f2b78610b3bc900a67a1964bbad1070df8913"
+    }
+  ],
+  "discovery": {
+    "path": ".qa/zebra-audit/z4-02-tests-first.log",
+    "status": "Superseded one obsolete full-new-Zebra-array assertion: legitimate derived welfare/habitatFit now update on paid placement. Final regression verifies exact physical state and old actors separately."
+  },
+  "withoutOptionalEnrichment": {
+    "canonicalTicks": 2898,
+    "events": [
+      {
+        "type": "zebra-grazed",
+        "tick": 13662
+      },
+      {
+        "type": "zebra-grazed",
+        "tick": 13718
+      },
+      {
+        "type": "zebra-grazed",
+        "tick": 13728
+      },
+      {
+        "type": "zebra-drank",
+        "tick": 13892
+      },
+      {
+        "type": "zebra-grazed",
+        "tick": 13908
+      },
+      {
+        "type": "zebra-drank",
+        "tick": 13933
+      },
+      {
+        "type": "zebra-drank",
+        "tick": 14105
+      },
+      {
+        "type": "zebra-rested",
+        "tick": 14224
+      },
+      {
+        "type": "zebra-drank",
+        "tick": 14396
+      },
+      {
+        "type": "zebra-rested",
+        "tick": 14560
+      },
+      {
+        "type": "zebra-rested",
+        "tick": 14653
+      },
+      {
+        "type": "zebra-drank",
+        "tick": 15297
+      },
+      {
+        "type": "zebra-grazed",
+        "tick": 15387
+      },
+      {
+        "type": "zebra-grazed",
+        "tick": 15414
+      },
+      {
+        "type": "zebra-grazed",
+        "tick": 15425
+      },
+      {
+        "type": "zebra-drank",
+        "tick": 15475
+      },
+      {
+        "type": "zebra-drank",
+        "tick": 15541
+      },
+      {
+        "type": "zebra-grazed",
+        "tick": 15600
+      },
+      {
+        "type": "zebra-rested",
+        "tick": 15805
+      },
+      {
+        "type": "zebra-drank",
+        "tick": 15852
+      },
+      {
+        "type": "zebra-rested",
+        "tick": 15933
+      },
+      {
+        "type": "zebra-rested",
+        "tick": 16094
+      },
+      {
+        "type": "zebra-rested",
+        "tick": 16212
+      },
+      {
+        "type": "zebra-groomed",
+        "tick": 16478
+      }
+    ],
+    "welfare": [
+      {
+        "id": "zebra-zaki",
+        "nutrition": 81.04599999999965,
+        "hydration": 81.24400000000281,
+        "rest": 93.72396858360582,
+        "space": 92.89940828402366,
+        "social": 56.020000000001865,
+        "enrichment": 0,
+        "welfare": 74,
+        "food": "ready",
+        "water": "ready",
+        "shade": "ready",
+        "enrichmentAccess": "missing",
+        "company": true
+      },
+      {
+        "id": "zebra-zuri",
+        "nutrition": 80.84799999999964,
+        "hydration": 79.38600000000021,
+        "rest": 55.82499999999881,
+        "space": 92.89940828402366,
+        "social": 21.020000000001865,
+        "enrichment": 0,
+        "welfare": 63,
+        "food": "ready",
+        "water": "ready",
+        "shade": "ready",
+        "enrichmentAccess": "missing",
+        "company": true
+      },
+      {
+        "id": "zebra-mira",
+        "nutrition": 82.83599999999834,
+        "hydration": 74.01800000000058,
+        "rest": 91.34499999999967,
+        "space": 92.89940828402366,
+        "social": 56.020000000001865,
+        "enrichment": 0,
+        "welfare": 72,
+        "food": "ready",
+        "water": "ready",
+        "shade": "ready",
+        "enrichmentAccess": "missing",
+        "company": true
+      },
+      {
+        "id": "zebra-kira",
+        "nutrition": 80.36199999999963,
+        "hydration": 77.93400000000031,
+        "rest": 84.85749999999942,
+        "space": 92.89940828402366,
+        "social": 21.020000000001865,
+        "enrichment": 0,
+        "welfare": 68,
+        "food": "ready",
+        "water": "ready",
+        "shade": "ready",
+        "enrichmentAccess": "missing",
+        "company": true
+      }
+    ]
+  },
+  "groomingFairness": {
+    "canonicalTicks": 9048,
+    "encounters": 3,
+    "minimumBodyGap": 0.5401073265754252,
+    "actors": [
+      {
+        "id": "zebra-zaki",
+        "groomings": 2,
+        "social": 29.520000000005453
+      },
+      {
+        "id": "zebra-zuri",
+        "groomings": 2,
+        "social": 59.80999999999948
+      },
+      {
+        "id": "zebra-mira",
+        "groomings": 1,
+        "social": 0
+      },
+      {
+        "id": "zebra-kira",
+        "groomings": 1,
+        "social": 35
+      }
+    ]
+  },
+  "actualRestEnrichment": {
+    "canonicalTicks": 1570,
+    "restEvents": 4,
+    "enrichEvents": 4,
+    "refilledEnrichment": 0,
+    "actors": [
+      {
+        "id": "zebra-zaki",
+        "rested": 80,
+        "enriched": 60
+      },
+      {
+        "id": "zebra-zuri",
+        "rested": 80,
+        "enriched": 60
+      },
+      {
+        "id": "zebra-mira",
+        "rested": 80,
+        "enriched": 60
+      },
+      {
+        "id": "zebra-kira",
+        "rested": 80,
+        "enriched": 60
+      }
+    ]
+  }
+}

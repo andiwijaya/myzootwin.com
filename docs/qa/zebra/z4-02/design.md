@@ -1,6 +1,6 @@
 # Z4-02 causal Zebra welfare
 
-Candidate under verification; this file alone is not acceptance evidence.
+Verified against source `693fed3` by [verification.json](verification.json). This design explains the policy; the receipt supplies acceptance evidence.
 
 The score is a fictional game approximation. Six live components contribute to a rounded 0–100 score: nutrition 25%, hydration 25%, rest 20%, movement space 10%, social comfort 10%, enrichment 10%. The ID/EN care panel explicitly says it is not veterinary guidance and exposes each component with its cause/remedy in a keyboard-operable disclosure per resident.
 
