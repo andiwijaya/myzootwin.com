@@ -207,7 +207,8 @@ export function mountGameEntry(root: HTMLElement, options: {
             gate.hidden = !resumePending;
         root.querySelector('[data-save-resume-note]')?.replaceChildren(c.resumeNote);
         root.querySelector('[data-save-resume-button]')?.replaceChildren(c.resume);
-        gateGameplay(pauseGate.paused(), resumePending || ['conflict','unreadable'].includes(view.phase) || view.restartBusy);
+        const toolbarBlocked = ['conflict','unreadable'].includes(view.phase) || view.restartBusy;
+        gateGameplay(pauseGate.paused(), resumePending || toolbarBlocked, toolbarBlocked);
     }
     root.querySelector('[data-continue]')?.addEventListener('click', async () => {
         if (disposed || resumePending)
