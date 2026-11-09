@@ -1,6 +1,6 @@
 # Z4-03 shared finance and Zebra edits
 
-Candidate awaiting final browser acceptance. Public bootstrap remains V4; the proposed Zebra grant is not activated by this work.
+Verified by [verification.json](verification.json), with runtime source `86b1662` and source financial implementation `f126c33`. Public bootstrap remains V4; the proposed Zebra grant is not activated by this work.
 
 The existing shared economy already charges two fictional ZC per habitat per600 canonical ticks. Five habitats therefore cost10ZC per period. Unaffordable maintenance remains due rather than overdrawing the wallet. Original gate admission produces one10ZC receipt for a visitor, independently of the number of habitats. These rules are reused unchanged and covered by five-habitat source tests, including actual paid Zebra admission, cold1x10x, compaction and repeated admission checks. The cashflow panel now separately displays an existing Zebra grant receipt, conditional on its presence; this is accounting, not a new grant command or budget acceptance.
 
@@ -11,3 +11,5 @@ A pure Zebra edit candidate uses the original shared purchase/refund book, bound
 Facilities with an actual approaching/using Zebra cannot be removed. Restore checks live roots, targets, every remaining route segment, the original swept body and grooming-head guards. It refuses occupied space instead of relocating a resident. A Zebra memento must describe exactly one removed Zebra prop, and refund references must trace to that prop’s original build receipts. Stock revision normalization is limited to Zebra consumption when comparing otherwise identical world structure.
 
 Financial tests use the explicit validation-only grant/home setup already used by Zebra QA, followed by actual welcome/build/refill/edit/admission commands. Labelled prior-spending and unsafe-route/IDB fixtures are negative validation conditions, not gameplay or proposed-grant affordability evidence. IndexedDB emulation is separate from actual internal-browser storage proof. No FPS, soak, five-species visual-matrix or release PASS is implied.
+
+Actual browser low/high switching updated production models in the same canonical owner; it did not recreate the engine (retired-owner count stayed0). The native UI proves Undo survives that quality change. A separate actual source-command test recreates the engine from the live consumed-stock state plus its page-session editor memento, then restores without rewinding stock, revisions, routes or needs. Native engine-remount Undo is not claimed from the quality case.
