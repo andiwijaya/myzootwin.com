@@ -1,0 +1,103 @@
+{
+  "status": "PASS_Z4_05_AUTHORITATIVE_QUESTS_WITH_OPEN_RECOVERY_GATE",
+  "verifiedProgress": 32,
+  "total": 54,
+  "source": "90cd1650430893ebdb38509f93ce3fd8be608435",
+  "sourceFingerprint": "48256c1b7d4159b339c9952d547a9edba224bfddd842ac94a8c2beba19379fd9",
+  "tests": 33,
+  "browserRecords": 17,
+  "acceptedCurrentBrowserReports": 15,
+  "build": {
+    "receipt": ".qa/visual3d/h1-03-zebra-quests-v1/source.json",
+    "lab": "29083478187c1c6978fa998c4394ff21c6929ac651145dcbeb452a88e8e4ffa8",
+    "production": "116213b16b7c23f9729d312ec6d34ecb0093c16f21d7fc6d203e6791fd98617e",
+    "productionExclusion": {
+      "status": "PASS",
+      "markers": [
+        "myzootwin-visual3d-",
+        "Asset Lab internal",
+        "__VIS3D_SOURCE__",
+        "scripts/qa/visual3d",
+        "visual3d-frozen-v4",
+        "__qaVisual3dTag",
+        "QA-only constructor side-table",
+        "Step cosmetic Studio100ms",
+        "matrix-result"
+      ],
+      "files": 31
+    }
+  },
+  "sourceFlow": {
+    "ticks": 6904,
+    "claims": 4,
+    "coins": 350,
+    "viewers": 3,
+    "oldCompletedMissionGrantAndRewardProofs": "EXACT"
+  },
+  "browser": {
+    "ticks": 290,
+    "claims": 1,
+    "commandBefore": 142,
+    "commandAfter": 143,
+    "tick": 24033,
+    "cash": 3571,
+    "revision": 622,
+    "hash": "ab0a0e09568c6b16d6c1fcd711cd32a999cde2799d9906df1ec564031b0cae90",
+    "backupV4": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf"
+  },
+  "cleanup": {
+    "tabs": "Own unit tabs32,33,34 CLOSED",
+    "server": "Own pid1984/session83373/port52907 STOPPED via stdin; exit0",
+    "rendererOwners": 0,
+    "callbacks": 0,
+    "ownedResources": 0,
+    "viewport": "RESET",
+    "soakOrBenchmark": "NONE",
+    "farm": "Exclusive10-15minute slot available now; do not resume Zebra browser/build/soak until released; all work stops by10:00UTC/17:00WIB"
+  },
+  "open": [
+    "Z4-06 carried checkpoint Mira/Zuri enrichment-port recovery investigation; see recovery-discovery.json. No release-ready/no-softlock claim.",
+    "Z2-06 proposed1700grant affordability/exactly-once/defaultV5 adoption",
+    "Z4-07/Z5/HP6 and fullR7 regression/visual/native soak/performance",
+    "Library Windows materialization remains blocked byos.setxattr; original complete official reads used without bypass",
+    "R7-08 Zebra push/deploy not authorized; none performed"
+  ],
+  "next": "After Farm releases slot, address Z4-06 only if a safe checkpoint can finish before10:00UTC/17:00WIB. Otherwise stop and wait for new instructions.",
+  "artifacts": [
+    {
+      "path": "docs/qa/zebra/z4-05/design.md",
+      "bytes": 5281,
+      "sha256": "a5e0a383864cf489f39edce09d27118b3352603a3294e446af3b378e28d9ca76"
+    },
+    {
+      "path": "docs/qa/zebra/z4-05/tests.json",
+      "bytes": 7710,
+      "sha256": "d4b9576f3a10c80f3e549946384f95cc5493653f5889530af34a39aad1714a24"
+    },
+    {
+      "path": "docs/qa/zebra/z4-05/browser.json",
+      "bytes": 454836,
+      "sha256": "01f6d44f8ecb4e97f843617024d0dcb20cfc7ee14192306c6e654ac01618ac2d"
+    },
+    {
+      "path": "docs/qa/zebra/z4-05/recovery-discovery.json",
+      "bytes": 6019,
+      "sha256": "80297ebc66147a921808ff5afff056e4d1b32a02895588060fe7019821fd2f19"
+    },
+    {
+      "path": "docs/qa/zebra/z4-05/desktop-en.png",
+      "bytes": 123454,
+      "sha256": "e413c19bcfe7ad77bc1159e724dee69897482df772581ae120c80e246a79c0e0"
+    },
+    {
+      "path": "docs/qa/zebra/z4-05/portrait-en.png",
+      "bytes": 45707,
+      "sha256": "654acbfe55260b10b2675d9bb5efb7d33a2c205d662e15be749fff9383e8e63a"
+    },
+    {
+      "path": "docs/qa/zebra/z4-05/landscape-id.png",
+      "bytes": 47207,
+      "sha256": "1390eeb758e789218503cce59ba861ab0ae471a9fdff05ae18262e38a21d83ea"
+    }
+  ]
+}

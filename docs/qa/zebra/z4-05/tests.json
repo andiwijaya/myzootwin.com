@@ -1,0 +1,279 @@
+{
+  "status": "PASS",
+  "source": "90cd1650430893ebdb38509f93ce3fd8be608435",
+  "uniquePassing": 33,
+  "composition": "8 new mission cases +2 original baseline +10 Zebra economy +7 strictV5 save +6 five-habitat visitors. No duplicate test count.",
+  "logs": [
+    {
+      "path": ".qa/zebra-audit/z4-05-tests-final.log",
+      "bytes": 14319,
+      "sha256": "d4e6ac606e5d3df10915b87b50c522802a1e2353d47a83667a270d1da6e1c12b"
+    },
+    {
+      "path": ".qa/zebra-audit/z4-05-types-accepted.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".qa/zebra-audit/z4-05-check-accepted.log",
+      "bytes": 216,
+      "sha256": "febe0510dc07e5fcbb716b60ea32b7569e5e3802abff0d89f0741bc83a1d3b98"
+    },
+    {
+      "path": ".qa/zebra-audit/z4-05-build.log",
+      "bytes": 2601,
+      "sha256": "3d86e54eb575ac885f586705194ba8fd1bb4eebbbca20143b9606047c240c8a8"
+    }
+  ],
+  "strictTypes": "PASS",
+  "astroCheck": "556 files;0 errors/warnings/hints",
+  "flow": {
+    "canonicalTicks": 6904,
+    "claims": [
+      {
+        "id": "ZQ01",
+        "reward": {
+          "missionId": "ZQ01",
+          "command": 133,
+          "tick": 13580,
+          "ledgerEntryId": null,
+          "award": "grassland-founder",
+          "connection": {
+            "habitatId": "habitat-zebra-codec",
+            "viewingCell": {
+              "x": 14,
+              "z": 11
+            },
+            "route": [
+              {
+                "x": 1,
+                "z": 8
+              },
+              {
+                "x": 1,
+                "z": 9
+              },
+              {
+                "x": 1,
+                "z": 10
+              },
+              {
+                "x": 2,
+                "z": 10
+              },
+              {
+                "x": 3,
+                "z": 10
+              },
+              {
+                "x": 4,
+                "z": 10
+              },
+              {
+                "x": 5,
+                "z": 10
+              },
+              {
+                "x": 6,
+                "z": 10
+              },
+              {
+                "x": 7,
+                "z": 10
+              },
+              {
+                "x": 8,
+                "z": 10
+              },
+              {
+                "x": 9,
+                "z": 10
+              },
+              {
+                "x": 10,
+                "z": 10
+              },
+              {
+                "x": 11,
+                "z": 10
+              },
+              {
+                "x": 12,
+                "z": 10
+              },
+              {
+                "x": 13,
+                "z": 10
+              },
+              {
+                "x": 14,
+                "z": 10
+              },
+              {
+                "x": 14,
+                "z": 11
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "ZQ02",
+        "tick": 14367,
+        "cash": 3745,
+        "command": 135,
+        "reward": {
+          "missionId": "ZQ02",
+          "command": 134,
+          "tick": 14367,
+          "ledgerEntryId": "mission-zq02",
+          "award": null
+        }
+      },
+      {
+        "id": "ZQ03",
+        "tick": 15120,
+        "cash": 3735,
+        "command": 136,
+        "reward": {
+          "missionId": "ZQ03",
+          "command": 135,
+          "tick": 15120,
+          "ledgerEntryId": null,
+          "award": "striped-meadow"
+        }
+      },
+      {
+        "id": "ZQ04",
+        "tick": 20484,
+        "cash": 3927,
+        "command": 141,
+        "reward": {
+          "missionId": "ZQ04",
+          "command": 140,
+          "tick": 20484,
+          "ledgerEntryId": "mission-zq04",
+          "award": "zebra-keeper"
+        }
+      }
+    ],
+    "objectives": {
+      "fedIds": [
+        "zebra-zaki",
+        "zebra-zuri",
+        "zebra-mira",
+        "zebra-kira"
+      ],
+      "wateredIds": [
+        "zebra-zaki",
+        "zebra-zuri",
+        "zebra-mira",
+        "zebra-kira"
+      ],
+      "comfortableTicks": 50,
+      "groomings": 5,
+      "restedIds": [
+        "zebra-zaki",
+        "zebra-zuri",
+        "zebra-mira",
+        "zebra-kira"
+      ],
+      "enrichedIds": [
+        "zebra-zaki",
+        "zebra-zuri",
+        "zebra-mira",
+        "zebra-kira"
+      ],
+      "thrivingTicks": 100,
+      "viewedVisitorIds": [
+        "arrival-40",
+        "arrival-45",
+        "arrival-50"
+      ]
+    },
+    "sourceEvents": {
+      "grazed": 16,
+      "drank": 16,
+      "groomed": 5,
+      "rested": 15,
+      "enriched": 19
+    },
+    "viewed": [
+      {
+        "id": "arrival-40",
+        "admission": {
+          "id": "admission-arrival-40",
+          "visitorId": "arrival-40",
+          "tick": 14671,
+          "ledgerEntryId": "ticket-arrival-40",
+          "entry": {
+            "habitatId": "habitat-zebra-codec",
+            "gate": {
+              "x": 1,
+              "z": 8
+            },
+            "cell": {
+              "x": 1,
+              "z": 9
+            },
+            "price": 10
+          }
+        }
+      },
+      {
+        "id": "arrival-45",
+        "admission": {
+          "id": "admission-arrival-45",
+          "visitorId": "arrival-45",
+          "tick": 17375,
+          "ledgerEntryId": "ticket-arrival-45",
+          "entry": {
+            "habitatId": "habitat-zebra-codec",
+            "gate": {
+              "x": 1,
+              "z": 8
+            },
+            "cell": {
+              "x": 1,
+              "z": 9
+            },
+            "price": 10
+          }
+        }
+      },
+      {
+        "id": "arrival-50",
+        "admission": {
+          "id": "admission-arrival-50",
+          "visitorId": "arrival-50",
+          "tick": 20127,
+          "ledgerEntryId": "ticket-arrival-50",
+          "entry": {
+            "habitatId": "habitat-zebra-codec",
+            "gate": {
+              "x": 1,
+              "z": 8
+            },
+            "cell": {
+              "x": 1,
+              "z": 9
+            },
+            "price": 10
+          }
+        }
+      }
+    ]
+  },
+  "coverage": [
+    "Real welcome/build/refill/path commands;6904 canonical ticks earn four sequential claims with actual four meals/drinks, grooming/rest/enrichment and three paid full Zebra views. Old completed missions, grants and reward receipts exact.",
+    "Threshold59/60 and69/70 boundaries, continuous reset, no ordinary-event tick inflation, latched earned windows. Boundary/invalid feedback fixtures are unit data, not gameplay evidence.",
+    "Pure quote, pause, dispose, out-of-order/stale/forged/replayed claims; exact stable coin and award IDs. Historical connection survives real safe path removal/Undo after visitors leave.",
+    "Strict claimed route/reward corruption negatives, financial compaction pins original admission/claim receipts, final cold state unchanged.",
+    "Actual V5 backend under fakeIndexedDB: one CAS race winner, injected quota rollback preserves primary/originalV4, retry/cold yields exactly four rewards. Emulation is separate from native browser evidence.",
+    "Original V1-V4 exact fixture projections plus financial edits/80cycles/upkeep/ticket and five-habitat route/feedback regression. Visitor regression now preserves unclaimed namespace/reward identities while allowing the newly implemented objective collection."
+  ],
+  "discovery": [
+    "First path-removal test correctly refused visitor-occupied; fixture now closes gate and waits for actual departure before removal. No guard weakened.",
+    "Initial QA report type lacked schema narrowing; corrected to explicit schemaVersion5. Initial Astro executable path was wrong; npm run check is the accepted check."
+  ]
+}

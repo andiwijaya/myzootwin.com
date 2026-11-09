@@ -1,0 +1,239 @@
+{
+  "status": "OPEN_Z4_06",
+  "source": "90cd1650430893ebdb38509f93ce3fd8be608435",
+  "case": "care-window-not-yet-earned",
+  "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+  "tick": 24033,
+  "observed": "Mira and Zuri repeatedly return idle/seek at the two enrichment service points while needs deteriorate; no comfortable interval is credited. This is a recovery/navigation investigation, not a verified permanent deadlock or a mission-logic failure.",
+  "actors": [
+    {
+      "id": "zebra-zuri",
+      "name": "Zuri",
+      "sex": "female",
+      "speciesId": "equus-quagga",
+      "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+      "position": {
+        "x": 21.15,
+        "z": 18.8
+      },
+      "target": null,
+      "targetResourceId": null,
+      "hunger": 44.82000000000133,
+      "thirst": 37.897999999991434,
+      "energy": 29.04821445509129,
+      "habitatFit": 91.12426035502959,
+      "enrichment": 62.960000000000406,
+      "welfare": 58,
+      "care": {
+        "low": true,
+        "hungry": true,
+        "thirsty": true,
+        "tired": true,
+        "bored": false
+      },
+      "currentBehavior": "idle",
+      "motion": {
+        "phase": "idle",
+        "ticksLeft": 6,
+        "sequence": 254,
+        "heading": -1.1683780475235177,
+        "waypoints": [],
+        "waypointIndex": 0,
+        "partnerId": null,
+        "herdLeaderId": null,
+        "lastStep": {
+          "x": 0,
+          "z": 0
+        },
+        "distanceWalked": 177.65733853684577,
+        "blockedTicks": 0
+      },
+      "foodEaten": 4,
+      "waterDrunk": 4,
+      "restedTicks": 240,
+      "enrichedTicks": 240,
+      "socialComfort": 61.95999999999625,
+      "shadeRest": 43.44000000000395,
+      "groomCooldownTicks": 0,
+      "trotCooldownTicks": 0,
+      "enrichmentCooldownTicks": 0,
+      "grazes": 4,
+      "groomings": 1,
+      "trots": 0
+    },
+    {
+      "id": "zebra-mira",
+      "name": "Mira",
+      "sex": "female",
+      "speciesId": "equus-quagga",
+      "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+      "position": {
+        "x": 19.8,
+        "z": 18.85
+      },
+      "target": null,
+      "targetResourceId": null,
+      "hunger": 42.59800000000378,
+      "thirst": 40.215999999998424,
+      "energy": 37.42499999999333,
+      "habitatFit": 91.12426035502959,
+      "enrichment": 22.95999999999211,
+      "welfare": 52,
+      "care": {
+        "low": true,
+        "hungry": true,
+        "thirsty": true,
+        "tired": true,
+        "bored": true
+      },
+      "currentBehavior": "idle",
+      "motion": {
+        "phase": "idle",
+        "ticksLeft": 6,
+        "sequence": 255,
+        "heading": -1.4175817207286214,
+        "waypoints": [],
+        "waypointIndex": 0,
+        "partnerId": null,
+        "herdLeaderId": null,
+        "lastStep": {
+          "x": 0,
+          "z": 0
+        },
+        "distanceWalked": 190.48088040486232,
+        "blockedTicks": 0
+      },
+      "foodEaten": 4,
+      "waterDrunk": 4,
+      "restedTicks": 240,
+      "enrichedTicks": 180,
+      "socialComfort": 26.960000000002793,
+      "shadeRest": 49.940000000004964,
+      "groomCooldownTicks": 0,
+      "trotCooldownTicks": 0,
+      "enrichmentCooldownTicks": 0,
+      "grazes": 4,
+      "groomings": 0,
+      "trots": 0
+    }
+  ],
+  "resources": [
+    {
+      "id": "zebra-graze-126",
+      "kind": "zebra-graze",
+      "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+      "cell": {
+        "x": 14,
+        "z": 14
+      },
+      "stock": 3,
+      "capacity": 12,
+      "revision": 136,
+      "approaches": [
+        {
+          "x": 15.15,
+          "z": 13.8
+        },
+        {
+          "x": 15.15,
+          "z": 15.2
+        }
+      ],
+      "refillPrice": 12
+    },
+    {
+      "id": "zebra-graze-127",
+      "kind": "zebra-graze",
+      "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+      "cell": {
+        "x": 21,
+        "z": 14
+      },
+      "stock": 3,
+      "capacity": 12,
+      "revision": 137,
+      "approaches": [
+        {
+          "x": 20.85,
+          "z": 13.8
+        },
+        {
+          "x": 20.85,
+          "z": 15.2
+        }
+      ],
+      "refillPrice": 12
+    },
+    {
+      "id": "zebra-water-128",
+      "kind": "zebra-water",
+      "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+      "cell": {
+        "x": 17,
+        "z": 12
+      },
+      "stock": 6,
+      "capacity": 12,
+      "revision": 148,
+      "approaches": [
+        {
+          "x": 16.8,
+          "z": 13.15
+        },
+        {
+          "x": 18.2,
+          "z": 13.15
+        }
+      ],
+      "refillPrice": 6
+    },
+    {
+      "id": "zebra-shade-129",
+      "kind": "zebra-shade",
+      "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+      "cell": {
+        "x": 17,
+        "z": 19
+      },
+      "stock": 1,
+      "capacity": 1,
+      "revision": 129,
+      "approaches": [
+        {
+          "x": 16.8,
+          "z": 18.85
+        },
+        {
+          "x": 18.2,
+          "z": 18.85
+        }
+      ],
+      "refillPrice": 0
+    },
+    {
+      "id": "zebra-enrichment-130",
+      "kind": "zebra-enrichment",
+      "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+      "cell": {
+        "x": 20,
+        "z": 19
+      },
+      "stock": 4,
+      "capacity": 6,
+      "revision": 147,
+      "approaches": [
+        {
+          "x": 21.15,
+          "z": 18.8
+        },
+        {
+          "x": 19.8,
+          "z": 18.85
+        }
+      ],
+      "refillPrice": 4
+    }
+  ],
+  "sourceHypothesis": "Current shortest-turn body guard plus backward-only recovery may be trapped by the east boundary and companion. Preserve exact current save and reproduce before changing movement; do not teleport, bypass body/fence guards or credit care.",
+  "scope": "Full fresh source gameplay completes all four quests; the carried browser checkpoint exposes a distinct long-running care-access case. Z4-06 remains unverified and release remains held."
+}
