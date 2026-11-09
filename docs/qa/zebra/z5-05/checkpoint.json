@@ -1,22 +1,22 @@
 {
-  "status": "SAFE_FARM_D06_RETRY_FOCUS_PASS_FULL_Z5_05_MATRIX_PENDING",
-  "at": "2026-11-09T21:45:44.000Z",
-  "verified": 38,
+  "status": "PASS_Z5_05_SAFE_RESOURCE_RELEASE",
+  "at": "2026-11-09T22:23:10.000Z",
+  "verified": 39,
   "total": 54,
-  "pendingUnit": "Z5-05",
-  "candidateSource": "3fa9374a4b6157d4a344068066b828ca0f8c3934",
-  "sourceFingerprint": "d3b432844646e5a7e599a4069df4be52425fa07d227acc1feebba536bdd6b601",
+  "pendingUnit": null,
+  "candidateSource": "b0d17408696fc37ba973f7f09985e12577cd94c2",
+  "sourceFingerprint": "07b0314afafd2fc94dd32341607a4609f8f905d7645364967e6e7aceb3c33129",
   "build": {
-    "runId": "h1-03-zebra-accessible3",
-    "lab": "79bbf892ca065c2d05a6fb0d87c768d4932f2d338cfa894f84800a5deccc11eb",
-    "productEntry": ".qa/visual3d/h1-03-zebra-accessible3/input/product.html"
+    "runId": "h1-03-zebra-accessible4",
+    "lab": "14f29f2a23dfb3be355b4abe0668065440c720e5f14916b06e77a06d184aa2ab",
+    "productEntry": ".qa/visual3d/h1-03-zebra-accessible4/input/product.html"
   },
   "qaResume": {
     "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
     "tick": 27849,
     "cash": 3581,
     "command": 143,
-    "revision": 814,
+    "revision": 827,
     "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
     "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
     "preferences": {
@@ -469,14 +469,14 @@
       }
     ],
     "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
-    "scope": "Fresh final-source cold V5 primary and original V4 backup verified, exact payload unchanged."
+    "scope": "Final source full native ID matrix and fresh cold V5 primary/V4 backup exact; all owners disposed."
   },
   "responsiveResume": {
     "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
     "tick": 13771,
     "cash": 3910,
     "command": 125,
-    "revision": 74,
+    "revision": 87,
     "generation": "zebra-build-synthetic",
     "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
     "preferences": {
@@ -825,51 +825,56 @@
       }
     ],
     "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
-    "scope": "Fresh final-source cold V5/V4 archives verified; latest native EN preview audit was cf195, not final3fa."
+    "scope": "Final source EN/mobile matrix, temporary ID preview tests then original EN preference restored; exact full cold V5 primary/V4 backup."
   },
   "resources": {
-    "at": "2026-11-09T21:45:44.000Z",
-    "activeZebraBuildTestsServerRenderer": 0,
+    "at": "2026-11-09T22:23:10.000Z",
+    "activeOwnedBuildTestsServerBrowserRenderer": 0,
     "server": {
       "port": 52907,
-      "pid": 25628,
-      "session": 56179,
+      "pid": 21576,
+      "session": 89000,
       "exit": 0
     },
     "browser": {
       "kind": "internal IAB",
-      "id": "3",
-      "activeQaTab": "43",
+      "id": "2",
+      "ownedTabs": [
+        "45",
+        "46"
+      ],
       "closed": true,
       "viewportReset": true,
       "remaining": [
         {
-          "id": "40",
-          "title": "This site can't be reached",
-          "engineLoaded": false,
-          "issue": "Initial sandbox server timeout created an error page. Binding/navigation via the documented API was rejected by Browser Use URL policy for its data: error URL. Could not obtain a handle to explicitly close it. It is an unmarked temporary agent-created tab; automatic end-of-turn cleanup is expected, not observed."
+          "id": "44",
+          "url": "https://myzootwin.com/",
+          "scope": "Pre-existing static production homepage, unmodified and preserved. No QA/game owner."
         }
-      ]
+      ],
+      "oldErrorTab40": "Absent from current IAB inventory; prior explicit-close limitation is no longer present."
     },
-    "completed": {
-      "tests": 59175,
-      "types": 78044,
-      "check": 43882,
-      "build": 83692,
+    "completedChecks": {
+      "tests": 46978,
+      "types": 16883,
+      "astro": 32533,
+      "build": 86198,
       "allExit": 0
     },
     "owners": 0,
     "audioContexts": 0,
     "pendingCallbacks": 0,
-    "rendererCounters": "Final-source ID retired owners all0; earlier EN auto-quality disposed cache retained one program, owned resources0. No heap/FPS claim.",
-    "farm": "D06 slot available; no new heavy work/browser until explicit Farm release"
+    "geometries": 0,
+    "textures": 0,
+    "programs": 0,
+    "ownedMaterials": 0,
+    "simulationSubscribers": 0,
+    "scope": "Final-source four retired source owners all0. This does not certify heap leaks, physical devices, speakers, screen readers or presented FPS.",
+    "farm": "Slot available; no new heavy/browser work until coordinated release",
+    "stopDeadline": "2026-11-10T01:00:00Z (08:00 WIB); all owned QA work already stopped at this checkpoint"
   },
-  "pending": [
-    "Complete full final-source ID/EN keyboard/ARIA/labels/reference IDs, roving HUD, help/welfare disclosure, modal focus and preview Enter/Space/Escape/cancel regression; previous broader native observations belong to cf195/bc9 and are intermediate only.",
-    "Repeat final-source EN/mobile preview/focus and keyboard Retry where applicable. Current final-source native acceptance is ID actual context-loss Help + Enter Retry focus only, plus both cold archives.",
-    "Then drain/dispose and close own resources, promote Z5-05 to39/54 only when the complete matrix passes. No physical device/screen-reader/FPS/soak certification."
-  ],
-  "next": "After explicit Farm D06 release, reuse immutable accessible3 if inputs unchanged and complete final-source ID/EN Z5-05 regression. Retry focus and both cold archives passed, but38/54 remains. No push/deploy.",
+  "pending": [],
+  "next": "HP6-01 homepage V5 audit after coordination. Keep Z2-06 and R7 gates explicit; no push/deploy. Respect01:00UTC stop deadline and wait for Farm slot release before heavy/browser work.",
   "open": [
     "Z2-06 proposed1700ZC grant budget/exactly-once/publicV5 adoption; public bootstrap still V4. Historical fixture prerequisites are validation-only; this unit accepts no grant",
     "Internal viewport/native mouse+keyboard and source touch-adapter tests; no physical-device/touch or presented FPS claim",
@@ -877,10 +882,9 @@
     "R7 native10x render/control latency, true native background, full fifth-species matrix and15-minute active soak unresolved. Historical3346231 native1x191ticks/152callbacks/16.8ms dropped time is not a current-source benchmark",
     "Original Library materialization BLOCKED_WINDOWS_XATTR; complete official text reads retained historically",
     "R7-08 explicit Zebra push/deploy authorization absent; no publish",
-    "Z5-05 complete keyboard/focus/ARIA/help audit remains separate from camera shortcuts accepted here",
     "Physical multi-touch/native touch capture and full posed fifth-species/performance/background/soak matrix remain open R7 scope; no physical-device or FPS claim",
-    "Z5-05 complete accessibility/keyboard/help/context-loss audit remains separate",
     "Z5-04 native graph/signal and factory-injected failures accepted; physical speaker/device/system preference/native autoplay denial not claimed"
   ],
-  "noPushOrDeploy": true
+  "noPushOrDeploy": true,
+  "verifiedSource": "b0d17408696fc37ba973f7f09985e12577cd94c2"
 }
