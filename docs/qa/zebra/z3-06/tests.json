@@ -1,0 +1,38 @@
+{
+  "uniquePassing": 43,
+  "tenThousandTickRun": {
+    "ticks": 10000,
+    "cold10xReplayTicks": 5000,
+    "followActorTicks": 1544,
+    "trotLeaderTicks": 280,
+    "maximumFollowers": 2,
+    "minimumBodyGap": 0.5399999999999849,
+    "maximumRootStep": 0.07500000000000205,
+    "actualTrotEvents": 11,
+    "finalHash": "8b6c946950541440bb3fae2014d57c821585fd771ff38a4ab637dd042f0c93b3"
+  },
+  "logs": [
+    {
+      "path": ".qa/zebra-audit/z3-06-tests-initial.log",
+      "scope": "Discovery: new trot amplitude exceeded original body capsule; preserved, repaired by using proven walk amplitudes with actual diagonal/faster-distance cadence."
+    },
+    {
+      "path": ".qa/zebra-audit/z3-06-tests-final.log",
+      "sha256": "12782c21b144ca7854d459206106f6ddd9508caa78900048e3fe786b3cc0f79e",
+      "tests": 43,
+      "passed": 42,
+      "failed": 1,
+      "scope": "Only failure: legacy animation assertion expected nonzero moving legs at alpha0. New idle-to-walk blending correctly starts at the exact previous stationary pose."
+    },
+    {
+      "path": ".qa/zebra-audit/z3-06-movement-final.log",
+      "sha256": "5af70e152fbb6348862cd3234991c3cd2c6a71b319179567ad8da006d115c96d",
+      "tests": 4,
+      "passed": 4,
+      "failed": 0,
+      "scope": "Updated transition assertion checks alpha0 remains idle and every later interpolation moves; all four movement tests pass. No runtime code changed after the43-test run;10k replay and other39 tests remain accepted without redundant rerun."
+    }
+  ],
+  "strictTypes": "PASS",
+  "astroCheck": "537 files;0 errors/warnings/hints"
+}

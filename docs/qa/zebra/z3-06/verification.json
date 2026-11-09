@@ -1,0 +1,120 @@
+{
+  "status": "PASS_Z3_06_GUARDED_HERD_FOLLOW_AND_CAUSAL_TROT",
+  "source": "6c4cbae39a63ce9f7d76ba30f422f6cc316976c1",
+  "sourceFingerprint": "9c3a53613c32934eb805114529778bb37dbdb487eda4349663576b8a8ddc1934",
+  "tests": 43,
+  "strictTypes": "PASS",
+  "astroCheck": "537 files;0 errors/warnings/hints",
+  "productionExclusion": {
+    "status": "PASS",
+    "markers": [
+      "myzootwin-visual3d-",
+      "Asset Lab internal",
+      "__VIS3D_SOURCE__",
+      "scripts/qa/visual3d",
+      "visual3d-frozen-v4",
+      "__qaVisual3dTag",
+      "QA-only constructor side-table",
+      "Step cosmetic Studio100ms",
+      "matrix-result"
+    ],
+    "files": 31
+  },
+  "browserCases": 22,
+  "native": {
+    "ticks": 27,
+    "callbacks": 24,
+    "followTicks": 11,
+    "trotTicks": 16,
+    "samples": [
+      {
+        "tick": 20664,
+        "cpu": {
+          "count": 20,
+          "retained": 20,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 22.200000017881393,
+          "maxMs": 109.09999999403954,
+          "p50Ms": 63.5,
+          "p95Ms": 98.10000002384186,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "droppedWallMs": 3033.300000000003,
+        "droppedSimMs": 3033.300000000003
+      },
+      {
+        "tick": 21700,
+        "cpu": {
+          "count": 14,
+          "retained": 14,
+          "capacity": 120,
+          "invalid": 0,
+          "minMs": 7.4000000059604645,
+          "maxMs": 105.30000001192093,
+          "p50Ms": 29.099999994039536,
+          "p95Ms": 100,
+          "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+        },
+        "droppedWallMs": 3800.7000000000007,
+        "droppedSimMs": 3800.7000000000007
+      }
+    ],
+    "presentedFps": null,
+    "performance": "OPEN_R7: native samples recorded dropped wall/simulation time. Cause is not attributed; callback CPU and presentation are separate measurements. No release performance/15min soak PASS."
+  },
+  "sourcePlayback": {
+    "totalCanonicalTicks": 2386,
+    "manualTicks": 2359,
+    "scope": "Original sole frame driver, explicit bounded100ms source pulses. This is deterministic playback, not native wall time or presented FPS."
+  },
+  "cold": {
+    "followHash": "7b7d8e1e9348ebba1e5014b23e5eaa282111d0d46aa57c55e95506293c0e6127",
+    "trotHash": "c23182172a6483be56f9ab0000b66ea3e46ab76bc204c2db2192339717b14ade",
+    "finalHash": "9b59b58741254e924de7bdffa2b5e1998d6fe4f6bd074f3d1860337a772a2119",
+    "tick": 21729,
+    "cash": 3591,
+    "command": 136,
+    "finalTrots": 1
+  },
+  "scope": [
+    "Healthy idle/wandering adults can follow one real leader through original route/ground/fence/body guards; maximum two followers, bounded trail offset/repath/episode/cooldown and no leader chains. Basic needs preempt optional follow/trot. No teleport or second canonical movement pass.",
+    "Trot distance is accumulated only from actual forward ground steps; bounded reverse yields do not earn it. Completion needs at least0.75cells; cancellation never grants completion. Actual native-discovered episode credits only Zaki, while Zuri remains below the minimum. No direct care/social/mission/cash credit comes from gait animation.",
+    "Strict V5 accepts preexisting records with the optional distance absent and refuses unknown, undefined, negative, excessive or phase-inconsistent distance, invalid/cyclic leaders and excess followers. OldV1-V4 shapes remain closed. Cold mid-follow and mid-trot retain poses/routes/timers/leader/distance/full hashes; final once-only counter survives another cold load.",
+    "10,000 canonical ticks and5,000 additional cold10x replay ticks use actual welcome/care/refill commands over an explicitly validation-only grant/home. Four stable identities, all fixed/interpolated body pairs, fences, step bounds,1x/10x exact state and11 actual unique distance-qualified events pass. This does not validate the proposed grant.",
+    "Original high/low posed skins over the full gait cycle remain inside the existing capsule and above ground; diagonal pairs use actual distance and conservative amplitudes, and transitions blend from the previous pose. Reduced motion retains essential movement. Native angles0/45/90 andID/EN1366desktop/360portrait/780landscape are representative, not a complete fifth-species pixel matrix or physical devices.",
+    "One real4ZC enrichment refill is the only new paid command. Stocks track actual meals/drinks/enrichment; old species continue their existing simulation. OriginalV4 archive remains exact; owned resources/callbacks/owners return0 after close. Public bootstrap remainsV4; no push/deploy."
+  ],
+  "artifacts": [
+    {
+      "path": "docs\\qa\\zebra\\z3-06\\browser.json",
+      "bytes": 467170,
+      "sha256": "1420600fa6d49de042ca88d905b7755697902f9f373bd6029441b0ae122e8f0c"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z3-06\\completed-trot-id-90.png",
+      "bytes": 131540,
+      "sha256": "ff9c345d0ffdc6ac0c0db0ae57dd3870ab90afaeeaf6bff98cdd06fe9adad8f8"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z3-06\\completed-trot-mobile-en.png",
+      "bytes": 51396,
+      "sha256": "6d4f77881e95af691dc3f75c0350b501b669d95aed885f4d09bdddc9e880d2ed"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z3-06\\follow-id-45.png",
+      "bytes": 120138,
+      "sha256": "eb4e7eddc27c9c73cb646709c1e9497f438c59ed90034396f9df47b7837f4b07"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z3-06\\mid-trot-id-45.png",
+      "bytes": 120912,
+      "sha256": "a3f4f53eb63e12bbc8de6ac60b25ba4aa6ffb1367ab75650ee7122d62ccb8d99"
+    },
+    {
+      "path": "docs\\qa\\zebra\\z3-06\\tests.json",
+      "bytes": 1589,
+      "sha256": "f9a46a5a02d60dc53e6cbc896ae13da2762302dc18bcde37309faabd5687c679"
+    }
+  ]
+}
