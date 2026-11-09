@@ -107,6 +107,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     publish(Object.freeze({type:'tick',tick:state.tick,gameTimeMs:state.gameTimeMs,randomSample:random.value}));
     // Urgent bath autosave observes the complete world/visitor/economy/mission tick.
     for(const bath of bathed)publish(Object.freeze(bath));
+    for(const event of zebraEvents?.socialEvents??[])publish(Object.freeze({...event,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     for(const event of zebraEvents?.herdEvents??[])publish(Object.freeze({...event,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     for(const event of zebraEvents?.events??[])publish(Object.freeze({...event,tick:state.tick,gameTimeMs:state.gameTimeMs}));
     for(const event of giraffeEvents?.events??[])publish(Object.freeze({...event,tick:state.tick,gameTimeMs:state.gameTimeMs}));
@@ -130,7 +131,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     localeView:()=>state.preferences.locale,
     worldSize:()=>({width:state.world.width,height:state.world.height}),
     zebraHabitatView:()=>zebraHabitatView(state),
-    zebraCareView:()=>({exists:state.world.habitats.some(h=>'kind'in h&&h.kind==='zebra-grasslands'),qualified:zebraHabitatView(state).qualified,command:state.economy.nextCommand,balance:state.currency,residents:zebras(state.animals).map(a=>({id:a.id,name:a.name,hunger:Math.round(a.hunger),thirst:Math.round(a.thirst),foodEaten:a.foodEaten,waterDrunk:a.waterDrunk,energy:Math.round(a.energy),shadeRest:Math.round(a.shadeRest),enrichment:Math.round(a.enrichment),restedTicks:a.restedTicks,enrichedTicks:a.enrichedTicks,trots:a.trots,leader:zebras(state.animals).find(b=>b.id===a.motion.herdLeaderId)?.name??null,behavior:a.currentBehavior})),resources:zebraResources(state.world.resources).map(r=>({...structuredClone(r),refillPrice:zebraServicePrice(r.kind)}))}),
+    zebraCareView:()=>({exists:state.world.habitats.some(h=>'kind'in h&&h.kind==='zebra-grasslands'),qualified:zebraHabitatView(state).qualified,command:state.economy.nextCommand,balance:state.currency,residents:zebras(state.animals).map(a=>({id:a.id,name:a.name,hunger:Math.round(a.hunger),thirst:Math.round(a.thirst),foodEaten:a.foodEaten,waterDrunk:a.waterDrunk,energy:Math.round(a.energy),shadeRest:Math.round(a.shadeRest),enrichment:Math.round(a.enrichment),restedTicks:a.restedTicks,enrichedTicks:a.enrichedTicks,trots:a.trots,socialComfort:Math.round(a.socialComfort),groomings:a.groomings,partner:zebras(state.animals).find(b=>b.id===a.motion.partnerId)?.name??null,leader:zebras(state.animals).find(b=>b.id===a.motion.herdLeaderId)?.name??null,behavior:a.currentBehavior})),resources:zebraResources(state.world.resources).map(r=>({...structuredClone(r),refillPrice:zebraServicePrice(r.kind)}))}),
     defaultZebraCareCell:(kind:import('./zebra-state.ts').ZebraResourceKind)=>defaultZebraCareCell(state,kind),
     validateZebraCarePlacement:(kind:import('./zebra-state.ts').ZebraResourceKind,cell:Point|null)=>validateZebraCarePlacement(state,kind,cell),
     prepareZebraCare:(q:ZebraCareQuote)=>disposed||clock.inspect().paused?{ok:false as const,reason:'stale' as const}:prepareZebraCarePlacement(state,q),

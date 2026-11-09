@@ -1,4 +1,5 @@
-import {ZEBRA_NEEDS as N,ZEBRA_GROUND as G} from '../../animals/zebras/rules.ts';
+import{zebraGroomAmount}from'../../animals/zebras/groom-contact.ts';
+import {ZEBRA_NEEDS as N,ZEBRA_GROUND as G,ZEBRA_SOCIAL as S} from '../../animals/zebras/rules.ts';
 import {Box3,Group,MeshStandardMaterial} from 'three';
 import type {ZebraAnimal} from '../../core/zebra-state.ts';
 import {sceneOrigin} from '../../world/scene-coordinates.ts';
@@ -10,8 +11,9 @@ export function zebraPose(previous:ZebraAnimal,a:ZebraAnimal,alpha:number,timeMs
  // Diagonal pairs and actual distance give a light, faster cadence. Keep the
  // proven walk amplitudes inside the original collision capsule; blend changes.
  const gait=(knee=false)=>after.map((offset,i)=>{const value=(b:ZebraAnimal,o:number)=>moving(b)?(knee?Math.max(0,-Math.sin(phase+o))*.24:Math.sin(phase+o)*.20):0,next=value(a,offset),old=value(previous,before[i]!);return transition?old+(next-old)*blend:next;});
+ const grooming=a.currentBehavior==='groom',groomAmount=grooming?zebraGroomAmount(a,blend):zebraGroomAmount(previous,0)*(1-blend);
  const grazing=a.currentBehavior==='graze',drinking=a.currentBehavior==='drink',sniffing=a.currentBehavior==='enrich',resting=a.currentBehavior==='rest',contact=grazing||drinking||sniffing,elapsed=(drinking?N.drinkTicks:sniffing?N.enrichTicks:N.grazeTicks)-a.motion.ticksLeft+blend,lower=contact?Math.max(0,Math.min(1,elapsed/N.headLowerTicks)):0;
- return{mouth:contact?{y:1.31+((drinking||sniffing?N.waterHeight:N.feedHeight)-1.31)*lower,z:.8+(N.feedReach-.8)*lower}:undefined,bodyDrop:-.05*lower,neckPitch:resting?.025:!reduced&&a.currentBehavior==='idle'?.012*Math.sin(timeMs/2200):0,headPitch:resting?.035:0,jaw:contact&&!sniffing&&lower>=1?(reduced?.02:.02+Math.sin(timeMs/150)*.015):0,legs:gait(),knees:gait(true),tail:reduced?0:Math.sin(timeMs/1700)*(resting?.03:.08),earLeft:reduced?0:Math.sin(timeMs/2400)*.025,earRight:reduced?0:Math.sin(timeMs/2600)*.025};
+ return{mouth:groomAmount>0?{x:S.mouthX*groomAmount,y:1.31+(S.mouthY-1.31)*groomAmount,z:.8+(S.mouthZ-.8)*groomAmount}:contact?{y:1.31+((drinking||sniffing?N.waterHeight:N.feedHeight)-1.31)*lower,z:.8+(N.feedReach-.8)*lower}:undefined,bodyDrop:-.05*lower,neckPitch:resting?.025:!reduced&&a.currentBehavior==='idle'?.012*Math.sin(timeMs/2200):0,headPitch:resting?.035:0,jaw:grooming?(reduced?.015:.015+Math.sin(timeMs/190)*.01):contact&&!sniffing&&lower>=1?(reduced?.02:.02+Math.sin(timeMs/150)*.015):0,legs:gait(),knees:gait(true),tail:reduced?0:Math.sin(timeMs/1700)*(resting?.03:.08),earLeft:reduced?0:Math.sin(timeMs/2400)*.025,earRight:reduced?0:Math.sin(timeMs/2600)*.025};
 }
 /** Render-only canonical residents. No spawning, counters, RNG or behavior invention. */
 export function createZebraResidentsScene(catalog:SceneCatalog){

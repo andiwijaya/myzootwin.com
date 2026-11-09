@@ -8,3 +8,6 @@ export const ZEBRA_MISSION_RULES=Object.freeze({ZQ01:{coins:0,award:'grassland-f
 
 /** Fictional optional herd episodes, bounded by real route/body clearance. */
 export const ZEBRA_HERD=Object.freeze({checkEvery:80,followTicks:120,repathEvery:8,gap:2,side:.75,maxGap:5.5,followers:2,minEnergy:65,trotEnergy:75,trotTicks:50,trotCooldown:800,minTrotTravel:.75,trotEnergyPerMovingTick:.03});
+/** Fictional reciprocal social encounter. Geometry is shared by canonical guards
+ * and the original rig; social relief requires the completed two-actor contact. */
+export const ZEBRA_SOCIAL=Object.freeze({checkEvery:40,ticks:80,firstEnd:32,secondStart:48,approachTimeout:400,cooldown:900,retry:120,startAt:75,perTick:.01,relief:35,minEnergy:60,side:.78,forward:1.08,mouthX:.62,mouthY:1.18,mouthZ:.74,neutralHeadZ:.65,headRadius:.20});
