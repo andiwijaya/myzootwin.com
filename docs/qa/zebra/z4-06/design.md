@@ -1,6 +1,6 @@
 # Z4-06 bounded recovery and essential access
 
-Candidate in progress;32/54 remains verified. The user explicitly resumed work after the earlier daily stop, at2026-11-09T13:22UTC. Zebra has the first browser/heavy-test slot; Farm resources are untouched. No Zebra push/deploy authorization is inferred.
+Historical source-design record. Final source ff54b4c and browser acceptance are in verification.json;33/54 is now verified. The dated pending statements below describe the earlier source-only checkpoint. The user explicitly resumed work after the earlier daily stop, at2026-11-09T13:22UTC. Zebra has the first browser/heavy-test slot; Farm resources are untouched. No Zebra push/deploy authorization is inferred.
 
 The carried internal-browser checkpoint24033 contains Mira and Zuri at the two enrichment service points. Its exact four Zebra actors and five facilities are retained as an observation fixture with source/hash provenance. A source reproduction transplants those values into the existing validated command fixture; old species/economy/RNG are fixture data, not a reconstructed full browser save. The original movement source leaves both roots unchanged and food/drink counters4 after1200ticks, with needs worsening. The real QA database remains untouched until actual browser acceptance.
 
