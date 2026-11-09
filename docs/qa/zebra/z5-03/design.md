@@ -1,0 +1,9 @@
+# Z5-03 five-habitat camera and gesture isolation
+
+Pending acceptance;36/54 remains verified. Farm released the browser/heavy slot. Use the isolated carried V5 UUID and original product UI/renderer/assets, without accepting grant/public V5 adoption or release gates.
+
+Verify original overview/reset, all five habitat focus actions, eight45-degree azimuths, zoom/pan bounds, portrait/landscape resizing and visible-triangle picking. Compare full payload/gameplay/actor/mission hashes: camera and unpaid preview gestures must never buy, remove, refill, teleport or grant progress. Existing12x10 navigation tests are supplemented with the actual24x26 V5 world/origin6,5, five paid habitat areas and original Zebra meshes. Native internal-browser mouse/keyboard actions provide actual UI proof; four viewport sizes are representative coverage, not a complete Cartesian animation/performance matrix.
+
+QA-only probes dispatch explicitly untrusted two-pointer events through the original canvas handlers to exercise pinch, held-pointer cancellation and late releases. They never alter simulation time, call gameplay commands, replace the input adapter or claim physical-touch/native pointer-capture proof. Original adapter source tests cover set/release capture and cancellation. Native UI clicks cancel held synthetic inputs; native mouse drag/keyboard Q/E/Home and actual triangle picks remain separately labelled. All probes and projection diagnostics stay outside production bundles. Fix only observed defects and repeat affected checks on the final source.
+
+Bound evidence, retain useful original screenshots, preserve the V4 predecessor, dispose every owner/callback and close only this unit's own tabs/server before handing the next slot to Farm. Z2-06, full physical-device/pinch/posed-scene/performance/background/soak and R7-08 authorization gates retain their stated limits.

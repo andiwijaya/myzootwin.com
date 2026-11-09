@@ -6,7 +6,7 @@ import {raycastScene} from '../../../src/game/render3d/scene-picking.ts';
 export function interactionTargets(catalog:SceneCatalog,camera:Camera,rect:{left:number;top:number;width:number;height:number}){
  const result=[];
  for(const identity of catalog.identities.values()){
-  if(identity.category!=='object'||identity.kind!=='zebra-facility'&&!(identity.kind==='habitat'&&identity.habitatKind==='zebra-grasslands'))continue;
+  if(identity.category!=='object'||identity.kind!=='zebra-facility'&&identity.kind!=='habitat')continue;
   const bounds=catalog.bounds.get(identity.id);if(!bounds)continue;
   let point:{x:number;y:number}|null=null,tries=0;
   // Bounded samples in actual world bounds; only a genuine frontmost triangle counts.

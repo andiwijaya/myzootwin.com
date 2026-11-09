@@ -1,0 +1,5 @@
+import {Vector3,type Camera} from 'three';
+import type {RuntimeWorld} from '../../../src/game/core/state.ts';
+import {sceneOrigin} from '../../../src/game/world/scene-coordinates.ts';
+/** Read-only camera-contract envelope, not posed-mesh/occlusion acceptance. */
+export function cameraEnvelopes(world:RuntimeWorld,camera:Camera){const o=sceneOrigin(world);return world.habitats.map(h=>{const x=Math.min(...h.cells.map(c=>c.x)),z=Math.min(...h.cells.map(c=>c.z)),width=Math.max(...h.cells.map(c=>c.x))-x+1,depth=Math.max(...h.cells.map(c=>c.z))-z+1,points=[];for(const px of[x,x+width])for(const pz of[z,z+depth])for(const y of[0,3.4]){const p=new Vector3(px-o.x,y,pz-o.z).project(camera);points.push({x:p.x,y:p.y,z:p.z});}return{id:h.id,kind:h.kind??'macaw-aviary',area:{x:x-o.x,z:z-o.z,width,depth},points,inside:points.every(p=>Math.abs(p.x)<=1.001&&Math.abs(p.y)<=1.001&&Math.abs(p.z)<=1.001),scope:'Actual paid footprint corners at y0/3.4, the inherited focusArea camera envelope; not full posed-mesh visibility/occlusion proof'};});}
