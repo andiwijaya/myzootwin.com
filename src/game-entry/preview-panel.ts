@@ -346,7 +346,11 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     renderStudio();
     if(next.status==='ready'&&guidedStart){guidedStart=false;if(!missionPanel.focusCare())onboardingPanel.focus();}
     if (previous !== next.status && next.status !== 'closed' && (root.dataset.guided!=='true'||failed) && !root.querySelector('dialog[open]')) {
-      (failed ? next.status === 'error' && next.reason === 'load' ? reload : retry : close).focus();
+      // The close action can live in collapsed Options. After a retry, return
+      // keyboard users to the saved-world resume gate or the visible world.
+      const resume=root.querySelector<HTMLButtonElement>('[data-save-resume-button]');
+      const target=next.status==='ready'?(resume&&!resume.hidden&&resume.getClientRects().length?resume:host):failed?next.status==='error'&&next.reason==='load'?reload:retry:close;
+      target.focus({preventScroll:true});
     }
   }
 
