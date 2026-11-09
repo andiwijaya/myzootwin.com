@@ -1,0 +1,147 @@
+{
+  "status": "SOURCE_PASS_BROWSER_PENDING_Z5_03",
+  "at": "2026-11-09T18:25:42.000Z",
+  "verified": 36,
+  "total": 54,
+  "pendingUnit": "Z5-03",
+  "source": "99ba305caf6e3ad211980948268dbc09edc55b06",
+  "sourceFingerprint": "148fc99877b163c8ca919bb9199ab805a2a4980b2e41d648e6f6dfefc7535a65",
+  "production": "No product code/assets/dependency change. Actual24x26 V5 source camera and original Zebra meshes; QA-only diagnostics and untrusted pointer probes, never a mock viewer.",
+  "tests": {
+    "uniquePassing": 26,
+    "sourceFocusCases": 160,
+    "sourceTrianglePicks": 160,
+    "diagnostics": [
+      {
+        "case": "five-habitat-camera",
+        "width": 360,
+        "height": 780,
+        "focuses": 40,
+        "angles": 8,
+        "picks": 40,
+        "scope": "Actual world/meshes/source adapter; camera3.4height contract envelope, not full posed-mesh/native-device proof"
+      },
+      {
+        "case": "five-habitat-camera",
+        "width": 780,
+        "height": 360,
+        "focuses": 40,
+        "angles": 8,
+        "picks": 40,
+        "scope": "Actual world/meshes/source adapter; camera3.4height contract envelope, not full posed-mesh/native-device proof"
+      },
+      {
+        "case": "five-habitat-camera",
+        "width": 1366,
+        "height": 768,
+        "focuses": 40,
+        "angles": 8,
+        "picks": 40,
+        "scope": "Actual world/meshes/source adapter; camera3.4height contract envelope, not full posed-mesh/native-device proof"
+      },
+      {
+        "case": "five-habitat-camera",
+        "width": 1920,
+        "height": 1080,
+        "focuses": 40,
+        "angles": 8,
+        "picks": 40,
+        "scope": "Actual world/meshes/source adapter; camera3.4height contract envelope, not full posed-mesh/native-device proof"
+      }
+    ],
+    "cancellationPaths": [
+      "pause",
+      "resize",
+      "blur",
+      "rotate",
+      "focus",
+      "pointercancel",
+      "lostpointercapture",
+      "dispose"
+    ],
+    "scope": "Original source adapter with EventTarget/capture test double; native/physical capture and complete posed-mesh visibility not claimed. Ready real Zebra preview unchanged, no commits or strict-save mutation.",
+    "types": "PASS strict noEmit/noUnused",
+    "astroCheck": "577 files;0 errors/warnings/hints",
+    "logs": [
+      {
+        "path": ".qa/zebra-audit/z5-03-tests.log",
+        "bytes": 4210,
+        "sha256": "3ff1e45180ad45a90cbdfe364fc6232c0078dea8e6f6194fd1ef751899b6805b"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-03-types.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-03-check.log",
+        "bytes": 216,
+        "sha256": "57587d7345f42cbbe1775c26f24721565611e4238c80f631c1ee16ee8b74b95a"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-03-build.log",
+        "bytes": 2549,
+        "sha256": "6c251abfc16ad2651f0be50a3cd89c7cd34c1bbd084ac198c3b5fbb2bf00fd89"
+      }
+    ]
+  },
+  "build": {
+    "receipt": {
+      "path": ".qa/visual3d/h1-03-zebra-camera1/source.json",
+      "bytes": 106518,
+      "sha256": "f8da6946de66ac16c95ca692cf7b9d2feb1faff193c255e535213f13ead1772c"
+    },
+    "lab": "f9a8802f95d72e5cc96d0f83997e06ac7d8f458002012c2bdf6b9c5efde2cb57",
+    "production": "c50a29a6a58c3d21a772ff33f4a1e5cc4fa4c2283dd7b4e172a050a59a39bae8",
+    "pages": 10,
+    "productionExclusion": {
+      "status": "PASS",
+      "markers": [
+        "myzootwin-visual3d-",
+        "Asset Lab internal",
+        "__VIS3D_SOURCE__",
+        "scripts/qa/visual3d",
+        "visual3d-frozen-v4",
+        "__qaVisual3dTag",
+        "QA-only constructor side-table",
+        "Step cosmetic Studio100ms",
+        "matrix-result"
+      ],
+      "files": 31
+    },
+    "extraPointerMarkers": "ABSENT_FROM_PRODUCT",
+    "warning": "Existing large chunk warning remains"
+  },
+  "browser": {
+    "status": "NOT_RUN_THIS_UNIT",
+    "reason": "Farm requested next slot after safe source/build checkpoint. No browser/server was started for this unit.",
+    "physicalDevice": false,
+    "presentedFps": null
+  },
+  "resources": {
+    "at": "2026-11-09T18:25:42.000Z",
+    "currentUnitBrowserTabsOpened": 0,
+    "currentUnitServerStarted": false,
+    "buildAndCheckSession": {
+      "id": 46771,
+      "exit": 0
+    },
+    "typecheckSession": {
+      "id": 16280,
+      "exit": 0
+    },
+    "testsSession": {
+      "id": 6821,
+      "exit": 0
+    },
+    "activeOwnedBuildTestsServersBrowsers": 0,
+    "farm": "Exclusive slot available for Farm C05 correction QA; no new Zebra browser/build/benchmark/soak until explicit Farm release"
+  },
+  "pending": [
+    "Actual internal-browser all five habitat focus/overview, eight azimuth native picks and representative viewport/zoom/pan/keyboard cases",
+    "Execute labelled untrusted pinch/hold/late-release probes against original canvas listeners; separately record native UI cancellation and native mouse actions. Do not call synthetic capture physical/native proof",
+    "Exact carried main payload/cold primary/V4 archive after all camera/preview gestures; confirm no purchase/remove/refill/mission/ledger change",
+    "Dispose every owner/callback and close own tabs/server; update verified37/54 only after feature-specific browser verification"
+  ],
+  "noPushOrDeploy": true
+}
