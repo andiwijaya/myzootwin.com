@@ -7,6 +7,8 @@ import {resolve,extname,sep} from 'node:path';
 // default game database or engine is opened merely by testing a homepage CTA.
 const root=resolve(process.argv[2]??''),workspace=resolve('.qa'),port=Number(process.argv[3]??52907);
 if(!root.startsWith(workspace+sep)||!Number.isSafeInteger(port)||port<0||port>65535)throw Error('Explicit repository .qa root and loopback port required');
+const receiptPath=resolve(process.argv[4]??'.qa/zebra-audit/hp6-02-server.json');
+if(!receiptPath.startsWith(workspace+sep))throw Error('Server receipt must stay inside repository .qa');
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript','.css':'text/css','.webp':'image/webp','.jpg':'image/jpeg','.svg':'image/svg+xml','.json':'application/json','.xml':'application/xml','.txt':'text/plain; charset=utf-8'};
 const play=await readFile(resolve(root,'play/index.html'),'utf8'),suppressedPlayScripts=[...play.matchAll(/<script\b[^>]*src="([^"]+)"[^>]*>[\s\S]*?<\/script>/gi)].map(m=>m[1]);
 if(!suppressedPlayScripts.length)throw Error('Expected actual game scripts to suppress for navigation-only QA');
@@ -18,5 +20,5 @@ const server=createServer(async(req,res)=>{try{
  if(inertPlay){body=Buffer.from(body.toString('utf8').replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,''));res.setHeader('Content-Security-Policy',"script-src 'none'");}
  res.writeHead(200,{'Content-Type':mime[extname(file)]??'application/octet-stream','Cache-Control':'no-store'});res.end(body);
  }catch{res.writeHead(404);res.end('Not found');}});
-server.listen(port,'127.0.0.1',async()=>{const receipt={origin:'http://127.0.0.1:'+server.address().port,pid:process.pid,root,inertPlay:true,suppressedPlayScripts,scope:'Actual built homepage and destination markup. Play scripts suppressed only in this QA server response; navigation/path proof, not gameplay acceptance.'};await writeFile('.qa/zebra-audit/hp6-02-server.json',JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt));});
+server.listen(port,'127.0.0.1',async()=>{const receipt={origin:'http://127.0.0.1:'+server.address().port,pid:process.pid,root,inertPlay:true,suppressedPlayScripts,scope:'Actual built homepage and destination markup. Play scripts suppressed only in this QA server response; navigation/path proof, not gameplay acceptance.'};await writeFile(receiptPath,JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify(receipt));});
 process.stdin.setEncoding('utf8');process.stdin.on('data',s=>{if(s.trim()==='stop')server.close(()=>process.exit(0));});
