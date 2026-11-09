@@ -1,0 +1,9 @@
+# Z5-05 keyboard, help, ARIA and context recovery
+
+Pending acceptance;38/54 remains verified. Read-only native baseline on the immutable comfort2/d47c979 build found three concrete UI issues: Q/E removed from aria-keyshortcuts during render despite working camera actions; Zebra Help hidden after actual context loss; Escape on an unpaid care preview arrow did nothing and keyboard Cancel focused an empty status paragraph. Native Help Tab/Shift+Tab trap and Escape focus-return already worked. Enter retry recovered a real context with exact V5 payload.
+
+Targeted UI changes advertise Q/E, keep the informational modal guide for a known Zebra habitat when live tools are hidden, and route Escape/cancel through the original unpaid-preview handler with focus returned to its Plan action. Pending/paused/busy transactions remain guarded; no engine, save, price, mission or ledger changes. Care tool visibility still follows the renderer. No claim about a habitat never observed by the UI.
+
+Verify original native Tab/Enter/Space/Escape, roving HUD roles/labels, guide/welfare/missions/care text in ID/EN, meaningful focus on preview cancel and modal close, actual WEBGL_lose_context event and keyboard retry to a fresh renderer. Compare exact gameplay/full payload, cold primary and V4 backup. Native browser accessibility tree/DOM and keyboard observations are not an external screen-reader or physical-device certification. Extension-requested actual context loss is not a physical GPU fault; no presented FPS/soak claim.
+
+Use carried isolated UUID saves and original assets; avoid claiming QA controls as game UI. Retain bounded discovery/final evidence separately, drain saves, dispose every owner/audio/callback and close own browser/server/reset viewport before resource handoff. R7-08 push/deploy authorization remains absent.
