@@ -1,3 +1,4 @@
+import{prepareZebraEdit,type ZebraEditRequest}from'../economy/zebra-editing.ts';
 import{zebraWelfareExplanation}from'../animals/zebras/welfare.ts';
 import {prepareZebraCarePlacement,prepareZebraRefill,defaultZebraCareCell,validateZebraCarePlacement,zebraServicePrice,type ZebraCareQuote,type ZebraRefillQuote} from '../animals/zebras/resources.ts';
 import {zebraResources} from './zebra-state.ts';
@@ -46,7 +47,7 @@ import {waterTransaction,waterView} from '../animals/watering.ts';
 import {foodTransaction,foodView,type FoodAction} from '../animals/feeding.ts';
 import {stepAnimals,welcomeBirds,reserveBird,birdsView,type BirdCommand} from '../animals/autonomy.ts';
 import {editLedger,refundable} from '../economy/refunds.ts';
-import {quoteRemoval,removedWorld,sameWorld,targetId,elephantRestorationBlocked,giraffeRestorationBlocked,elephantResourceUndoWorld,type EditTarget,type RemovalQuote,type EditorState} from '../world/editing.ts';
+import {quoteRemoval,removedWorld,sameWorld,targetId,elephantRestorationBlocked,giraffeRestorationBlocked,elephantResourceUndoWorld,zebraResourceUndo,type EditTarget,type RemovalQuote,type EditorState} from '../world/editing.ts';
 import {preparePath,reconcilePathAccess,accessSummary} from '../world/paths.ts';
 import {prepareHabitat} from '../world/build-habitat.ts';
 import {prepareSpeciesHabitat} from '../world/species-habitat.ts';
@@ -132,7 +133,9 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     localeView:()=>state.preferences.locale,
     worldSize:()=>({width:state.world.width,height:state.world.height}),
     zebraHabitatView:()=>zebraHabitatView(state),
-    zebraCareView:()=>({exists:state.world.habitats.some(h=>'kind'in h&&h.kind==='zebra-grasslands'),qualified:zebraHabitatView(state).qualified,command:state.economy.nextCommand,balance:state.currency,residents:zebras(state.animals).map(a=>({id:a.id,name:a.name,welfare:zebraWelfareExplanation(state,a),hunger:Math.round(a.hunger),thirst:Math.round(a.thirst),foodEaten:a.foodEaten,waterDrunk:a.waterDrunk,energy:Math.round(a.energy),shadeRest:Math.round(a.shadeRest),enrichment:Math.round(a.enrichment),restedTicks:a.restedTicks,enrichedTicks:a.enrichedTicks,trots:a.trots,socialComfort:Math.round(a.socialComfort),groomings:a.groomings,partner:zebras(state.animals).find(b=>b.id===a.motion.partnerId)?.name??null,leader:zebras(state.animals).find(b=>b.id===a.motion.herdLeaderId)?.name??null,behavior:a.currentBehavior})),resources:zebraResources(state.world.resources).map(r=>({...structuredClone(r),refillPrice:zebraServicePrice(r.kind)}))}),
+    zebraCareView:()=>({exists:state.world.habitats.some(h=>'kind'in h&&h.kind==='zebra-grasslands'),qualified:zebraHabitatView(state).qualified,command:state.economy.nextCommand,balance:state.currency,editRevision:editor.revision,undoCost:zebraResourceUndo(editor.undo)?editor.undo!.refundIds.reduce((n,id)=>n+(ledgerProof(state,id)?.amount??0),0):null,residents:zebras(state.animals).map(a=>({id:a.id,name:a.name,welfare:zebraWelfareExplanation(state,a),hunger:Math.round(a.hunger),thirst:Math.round(a.thirst),foodEaten:a.foodEaten,waterDrunk:a.waterDrunk,energy:Math.round(a.energy),shadeRest:Math.round(a.shadeRest),enrichment:Math.round(a.enrichment),restedTicks:a.restedTicks,enrichedTicks:a.enrichedTicks,trots:a.trots,socialComfort:Math.round(a.socialComfort),groomings:a.groomings,partner:zebras(state.animals).find(b=>b.id===a.motion.partnerId)?.name??null,leader:zebras(state.animals).find(b=>b.id===a.motion.herdLeaderId)?.name??null,behavior:a.currentBehavior})),resources:zebraResources(state.world.resources).map(r=>({...structuredClone(r),refillPrice:zebraServicePrice(r.kind)}))}),
+    prepareZebraEdit:(q:ZebraEditRequest)=>disposed||clock.inspect().paused?{ok:false as const,reason:'command' as const}:prepareZebraEdit(state,editor,q),
+    acceptCommittedZebraEdit(candidate:ZooSave,q:ZebraEditRequest){if(disposed||candidate.schemaVersion!==5||!validateState(candidate).ok)return false;const prepared=prepareZebraEdit(state,editor,q);if(!prepared.ok)return false;const next=structuredClone(candidate);next.preferences={...state.preferences};prepared.state.preferences={...state.preferences};if(serializeZooSave(next)!==serializeZooSave(prepared.state))return false;state=next;editor=prepared.editor;publish(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;},
     defaultZebraCareCell:(kind:import('./zebra-state.ts').ZebraResourceKind)=>defaultZebraCareCell(state,kind),
     validateZebraCarePlacement:(kind:import('./zebra-state.ts').ZebraResourceKind,cell:Point|null)=>validateZebraCarePlacement(state,kind,cell),
     prepareZebraCare:(q:ZebraCareQuote)=>disposed||clock.inspect().paused?{ok:false as const,reason:'stale' as const}:prepareZebraCarePlacement(state,q),
@@ -313,6 +316,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     remove(quote:RemovalQuote,operationId:string){
       if(disposed||clock.inspect().paused)return {ok:false as const,reason:'command' as const};
       if(quote.revision!==editor.revision||!authorized(quote.command))return {ok:false as const,reason:'stale' as const};
+      if(quote.target.kind==='zebra-resource'){if(!/^edit-[a-f0-9]{32}$/.test(operationId))return{ok:false as const,reason:'command' as const};const prepared=prepareZebraEdit(state,editor,{action:'remove',quote});if(!prepared.ok)return prepared;state=prepared.state;editor=prepared.editor;publish(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));return{ok:true as const};}
       const checked=quoteRemoval(state,quote.target,editor.revision);if(!checked.ok)return checked;
       const transaction=editLedger(state,operationId,refundable(state,targetId(quote.target)).map(r=>({kind:'refund' as const,relatedId:r.paidId,amount:r.amount})));
       if(!transaction)return {ok:false as const,reason:'funds' as const};
@@ -325,6 +329,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     },
     undo(operationId:string,expectedCommand?:number){
       if(disposed||clock.inspect().paused)return {ok:false as const,reason:'command' as const};
+      if(zebraResourceUndo(editor.undo)){if(!authorized(expectedCommand))return{ok:false as const,reason:'stale' as const};if(!/^edit-[a-f0-9]{32}$/.test(operationId))return{ok:false as const,reason:'command' as const};const prepared=prepareZebraEdit(state,editor,{action:'undo',command:expectedCommand??state.economy.nextCommand,revision:editor.revision});if(!prepared.ok)return prepared;state=prepared.state;editor=prepared.editor;publish(Object.freeze({type:'world-edited',tick:state.tick,gameTimeMs:state.gameTimeMs}));return{ok:true as const};}
       const undo=editor.undo;if(!authorized(expectedCommand)||!undo)return {ok:false as const,reason:'stale' as const};
       const elephantWorld=elephantResourceUndoWorld(state.world,undo);if(!elephantWorld&&!sameWorld(undo.after,state.world))return {ok:false as const,reason:'stale' as const};
       const refunds=undo.refundIds.map(id=>ledgerProof(state,id));
