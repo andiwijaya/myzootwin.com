@@ -1,18 +1,16 @@
 {
-  "status": "SAFE_FARM_SLOT_Z5_02_PENDING_TOUCH_FIX",
-  "at": "2026-11-09T17:16:57.000Z",
-  "verified": 35,
+  "status": "SAFE_FARM_SLOT_Z5_02_VERIFIED",
+  "at": "2026-11-09T17:44:27.000Z",
+  "verified": 36,
   "total": 54,
-  "pendingUnit": "Z5-02",
-  "candidateSource": "b7b5e56c2ae73281d56da39f803ae1b0778c4360",
-  "testedSource": "3346231c8bfe1e2536a6a30a12c6faf41661dbe2",
-  "sourceFingerprint": "e2862dbdf973154a6900a188323e920024b9b9bb3c080445416f33fe8b6acde9",
+  "candidateSource": "3918d0d2be36f4190c40ee2bbeb04d0a0436df28",
+  "sourceFingerprint": "2c5231ac6f115ff8dc442ca234e3068149bb6d9a9865cd32c909388df16878dc",
   "qaResume": {
     "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
     "tick": 27849,
     "cash": 3581,
     "command": 143,
-    "revision": 740,
+    "revision": 745,
     "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
     "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
     "preferences": {
@@ -469,11 +467,11 @@
   "responsiveResume": {
     "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
     "tick": 13771,
-    "cash": 4018,
-    "command": 122,
-    "revision": 39,
+    "cash": 3910,
+    "command": 125,
+    "revision": 54,
     "generation": "zebra-build-synthetic",
-    "hash": "f9f5372d8086d3bfcf006eb260c55836a3ae37ca481d6e06391f904c07d78661",
+    "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
     "preferences": {
       "graphics": "auto",
       "locale": "en",
@@ -517,9 +515,9 @@
         "hunger": 48.43800000000013,
         "thirst": 49.20199999999971,
         "energy": 70.22499999999891,
-        "habitatFit": 94.67455621301775,
+        "habitatFit": 92.89940828402366,
         "enrichment": 36.1799999999994,
-        "welfare": 46,
+        "welfare": 48,
         "care": {
           "low": true,
           "hungry": true,
@@ -580,9 +578,9 @@
         "hunger": 48.43800000000013,
         "thirst": 4.201999999999889,
         "energy": 70.22499999999891,
-        "habitatFit": 94.67455621301775,
+        "habitatFit": 92.89940828402366,
         "enrichment": 36.1799999999994,
-        "welfare": 57,
+        "welfare": 59,
         "care": {
           "low": true,
           "hungry": true,
@@ -643,9 +641,9 @@
         "hunger": 48.43800000000013,
         "thirst": 49.20199999999971,
         "energy": 70.22499999999891,
-        "habitatFit": 94.67455621301775,
+        "habitatFit": 92.89940828402366,
         "enrichment": 36.1799999999994,
-        "welfare": 46,
+        "welfare": 48,
         "care": {
           "low": true,
           "hungry": true,
@@ -701,9 +699,9 @@
         "hunger": 48.43800000000013,
         "thirst": 49.20199999999971,
         "energy": 70.22499999999891,
-        "habitatFit": 94.67455621301775,
+        "habitatFit": 92.89940828402366,
         "enrichment": 36.1799999999994,
-        "welfare": 46,
+        "welfare": 48,
         "care": {
           "low": true,
           "hungry": true,
@@ -822,48 +820,34 @@
     "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf"
   },
   "resources": {
-    "closedAt": "2026-11-09T17:10:21.000Z",
-    "ownersDisposed": 6,
-    "finalSourceOwnersDisposed": 3,
-    "preflightProductOwnersDisposed": 2,
-    "preparationHarnessOwnersDisposed": 1,
+    "closedAt": "2026-11-09T17:42:41.000Z",
+    "ownersDisposed": 3,
     "tabsClosed": [
-      21,
-      22,
-      23,
-      24,
-      25,
-      26,
-      27
+      28,
+      29,
+      30,
+      31
     ],
     "finalIabInventory": [],
+    "iabBrowserId": "3",
     "viewportReset": true,
-    "servers": [
-      {
-        "session": 35993,
-        "pid": 5052,
-        "port": 52907,
-        "exit": 0
-      },
-      {
-        "session": 71649,
-        "pid": 12320,
-        "port": 52907,
-        "exit": 0
-      }
-    ],
+    "server": {
+      "session": 19011,
+      "pid": 32200,
+      "port": 52907,
+      "exit": 0
+    },
     "activeBuildOrTests": 0,
-    "farm": "Browser and heavy slot available; do not start Zebra build/benchmark/soak until explicit Farm release"
+    "farm": "Slot available; no new Zebra browser/build/soak/benchmark until explicit Farm release"
   },
-  "next": "After explicit Farm slot release: finish Z5-02 CSS candidate b7b5e56; final strict types/check/build and actual four-viewport regression of all legacy/Zebra disclosure targets >=44CSSpx, keyboard disclosure/focus, no picker flicker, actual care/select and exact cold state. Do not promote36/54 or start Z5-03 before this passes.",
+  "next": "After explicit Farm slot release: Z5-03 five-habitat camera/overview/focus/orbit/zoom/pan/pinch and gesture cancellation. Keep Z2-06 and R7 release gates open.",
   "open": [
-    "Z5-02 remains pending:8 distinct legacy welfare disclosures below44CSSpx in128 observations; CSS candidate b7b5e56 has not had final build/check/native four-viewport regression after Farm release",
-    "Z2-06 proposed1700ZC grant budget/exactly-once/publicV5 adoption; public home-build entry remains gated, this unit prepares the home with the original command via QA harness",
-    "Z5-03 full gesture/pinch/orbit/five-habitat camera matrix and Z5-05 full keyboard/focus audit remain separate",
-    "Internal viewport and native mouse/keyboard proof; no physical touch/device test or presented FPS claim",
-    "Native10x cost/control latency, true native background and15-minute active soak remain R7; this1x sample records16.8ms dropped time",
-    "1920 CSS bounds/native controls verified; ordinary native host raster is cropped/scaled. Original browser area clip confirms full HUD width. Full-page experimental capture changed layout/inner scrolling and cancelled preview without purchase; retained ignored, not a viewport screenshot or timing proof",
-    "Original Library materialization BLOCKED_WINDOWS_XATTR; complete official reads retained historically",
+    "Z2-06 proposed1700ZC grant budget/exactly-once/publicV5 adoption; public bootstrap still V4. Historical fixture prerequisites are validation-only; this unit accepts no grant",
+    "Z5-03 full gesture/pinch/orbit/five-habitat camera matrix and Z5-05 complete keyboard/focus audit remain separate",
+    "Internal viewport/native mouse+keyboard and source touch-adapter tests; no physical-device/touch or presented FPS claim",
+    "1920 DOM bounds/native controls verified; native host raster cropped/scaled. Historical browser area clip shows HUD width; no full1920 raster claim. Full-page experimental capture changed layout/inner scroll and safely cancelled unpaid preview",
+    "R7 native10x render/control latency, true native background, full fifth-species matrix and15-minute active soak unresolved. Historical3346231 native1x191ticks/152callbacks/16.8ms dropped time is not a current-source benchmark",
+    "Original Library materialization BLOCKED_WINDOWS_XATTR; complete official text reads retained historically",
     "R7-08 explicit Zebra push/deploy authorization absent; no publish"
   ],
   "noPushOrDeploy": true
