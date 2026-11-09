@@ -1,6 +1,6 @@
 # Z4-07 canonical clock and lifecycle
 
-Pending acceptance;33/54 remains verified. Zebra owns the browser/heavy slot after the explicit Farm release. Only this repo, its own loopback port and UUID QA databases may be used. No Zebra push/deploy authorization is inferred.
+Accepted at the bounded scope in verification.json;34/54 is verified. The plan below describes the original gates. Production runtime remained unchanged; tests and QA-only lifecycle diagnostics prove the inherited behavior. Zebra owns the browser/heavy slot after the explicit Farm release. Only this repo, its own loopback port and UUID QA databases may be used. No Zebra push/deploy authorization is inferred.
 
 The existing clock is100ms, with250ms maximum accepted wall delta,3 normal or25 fast intermediate steps per callback, explicit dropped-time accounting, and a non-reentrant atomic tick. A real speed change reanchors the browser adapter and retains only the sub-tick simulation remainder. Pause resets that remainder and anchor. Continue/cold creation starts from serialized state and never uses saved wall timestamps to add game progress.
 
