@@ -1,22 +1,21 @@
 {
-  "status": "SAFE_FARM_D01_Z5_04_BROWSER_PENDING",
-  "at": "2026-11-09T20:03:59.000Z",
-  "verified": 37,
+  "status": "VERIFIED_Z5_04_SAFE_RESOURCE_HANDOFF",
+  "at": "2026-11-09T20:31:12.000Z",
+  "verified": 38,
   "total": 54,
-  "pendingUnit": "Z5-04",
-  "candidateSource": "e9858fd29ab4e88339c26b468e52dc1b856c44de",
-  "sourceFingerprint": "23c5fa7e9619dc4bcf71d9d6ca10dde6d36ac01e8e3637002c05ccec9f9b8e42",
+  "candidateSource": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+  "sourceFingerprint": "ba094c09771b7ca0ddc88fdb75174cd6ba408f777c9668d96ab3488487390188",
   "build": {
-    "runId": "h1-03-zebra-comfort1",
-    "lab": "d688921ddfd4ad75f4eb3f6b7dec77d1d769ed1330127a8d6af849fc328486a4",
-    "productEntry": ".qa/visual3d/h1-03-zebra-comfort1/input/product.html"
+    "runId": "h1-03-zebra-comfort2",
+    "lab": "4ed91275655fd4e197cd104266f6d07f29699b166d5fc74375bd346813aca3e9",
+    "productEntry": ".qa/visual3d/h1-03-zebra-comfort2/input/product.html"
   },
   "qaResume": {
     "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
     "tick": 27849,
     "cash": 3581,
     "command": 143,
-    "revision": 760,
+    "revision": 790,
     "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
     "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
     "preferences": {
@@ -469,14 +468,14 @@
       }
     ],
     "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
-    "scope": "Fresh unchanged full V5 payload and fully drained/disposed save. Current-stage cold primary/V4 archive read still pending; original backup hash carried from verified Z5-03."
+    "scope": "Original preferences restored, full gameplay unchanged, save fully drained, subsequent cold no-owner V5 primary/V4 archive read exact."
   },
   "responsiveResume": {
     "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
     "tick": 13771,
     "cash": 3910,
     "command": 125,
-    "revision": 57,
+    "revision": 68,
     "generation": "zebra-build-synthetic",
     "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
     "preferences": {
@@ -825,24 +824,32 @@
       }
     ],
     "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
-    "scope": "Unopened this stage; carried verified Z5-03 EN checkpoint."
+    "scope": "Original preferences restored, full gameplay unchanged, save fully drained, subsequent cold no-owner V5 primary/V4 archive read exact."
   },
   "resources": {
-    "at": "2026-11-09T20:03:59.000Z",
+    "at": "2026-11-09T20:31:12.000Z",
     "activeOwnedBuildTestsServersBrowsers": 0,
     "browser": {
       "kind": "ChatGPT in-app browser",
-      "id": "2",
-      "tab": "36",
+      "id": "3",
+      "ownTabs": [
+        "37",
+        "38"
+      ],
       "closed": true,
-      "viewportReset": true,
       "remainingTabs": 0,
-      "scope": "Selected IAB ID changed; new tab opened symbolically as iab, then bound to documented current ID2. No owner Chrome use."
+      "viewportReset": true,
+      "scope": "New tab opened symbolically as iab; current IAB3 documented. Initial binding assignment failed after opening37; existing own37 was claimed instead of opening a duplicate. No owner Chrome or Farm tabs used."
     },
     "server": {
       "port": 52907,
-      "session": 34676,
-      "pid": 8300,
+      "session": 2609,
+      "pid": 21848,
+      "exit": 0
+    },
+    "discoveryServer": {
+      "session": 16306,
+      "pid": 20556,
       "exit": 0
     },
     "owners": 0,
@@ -856,23 +863,16 @@
     "simulationSubscribers": 0,
     "cleanupErrors": 0,
     "completedSessions": {
-      "tests": 16299,
-      "types": 99874,
-      "build": 40661,
-      "check": 28865,
+      "tests": 40360,
+      "types": 45928,
+      "build": 2409,
+      "check": 78799,
       "allExit": 0
     },
-    "farm": "D01 browser matrix slot available; no new Zebra browser/build/benchmark/soak until explicit Farm release"
+    "farm": "Browser/heavy slot available; no new Zebra benchmark/build/soak until next coordinated slot"
   },
-  "pending": [
-    "Investigate native settings locator activation: Options menu visible but Settings dialog remained closed; keyboard Enter timed out. Capture fresh button bounds and trusted event/focus outcome; cause unconfirmed, no production defect/fix claim.",
-    "Discard exploratory hidden-form value before acceptance. selectOption high returned while settings dialog was closed, then checkbox interaction refused invisible input. No Apply clicked, canonical preferences exact; this is an unaccepted QA attempt, not a settings PASS.",
-    "Native ID/EN settings apply/discard; low/high/auto across desktop/portrait; manual reduced-motion, original14 actors and readable feedback. Source tests already prove essential Zebra displacement/gait and all5-species causal equivalence.",
-    "Native WebAudio unmute/gesture/pause/dialog/mute/close; cold stored-unmute does not autoplay. Explicit throw-once audio-factory unavailable feedback and retry; do not call this native autoplay denial or physical speaker proof.",
-    "Explicit null-once WebGL factory failure: truthful native fallback guide/language/journal UI, retry to actual WebGL, one owner and preserved state. Both ID/EN. Current browser has not exercised injected factories yet.",
-    "Restore original main/secondary preferences, fully drain saves, cold primary/V4 archive read, dispose all owners/audio/resources and update38/54 only after feature-specific browser verification."
-  ],
-  "next": "After explicit Farm D01 release: reuse immutable h1-03-zebra-comfort1 if compiled inputs unchanged. Select browser symbolically as iab; investigate settings activation, then complete native comfort/audio and explicitly injected factory fallback matrix. Restore original preferences, cold/archive check, close resources. Keep37/54 until accepted.",
+  "pending": [],
+  "next": "Z5-05 complete accessible HUD/help/ARIA/keyboard-focus/context-loss native recovery audit after the next coordinated slot. Reuse final paused QA UUIDs. Historical source/partial writers must not overwrite final acceptance.",
   "open": [
     "Z2-06 proposed1700ZC grant budget/exactly-once/publicV5 adoption; public bootstrap still V4. Historical fixture prerequisites are validation-only; this unit accepts no grant",
     "Internal viewport/native mouse+keyboard and source touch-adapter tests; no physical-device/touch or presented FPS claim",
@@ -881,7 +881,9 @@
     "Original Library materialization BLOCKED_WINDOWS_XATTR; complete official text reads retained historically",
     "R7-08 explicit Zebra push/deploy authorization absent; no publish",
     "Z5-05 complete keyboard/focus/ARIA/help audit remains separate from camera shortcuts accepted here",
-    "Physical multi-touch/native touch capture and full posed fifth-species/performance/background/soak matrix remain open R7 scope; no physical-device or FPS claim"
+    "Physical multi-touch/native touch capture and full posed fifth-species/performance/background/soak matrix remain open R7 scope; no physical-device or FPS claim",
+    "Z5-05 complete accessibility/keyboard/help/context-loss audit remains separate",
+    "Z5-04 native graph/signal and factory-injected failures accepted; physical speaker/device/system preference/native autoplay denial not claimed"
   ],
   "noPushOrDeploy": true
 }

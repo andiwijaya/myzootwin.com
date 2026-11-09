@@ -1,0 +1,3360 @@
+{
+  "status": "PASS_Z5_04",
+  "at": "2026-11-09T20:31:12.000Z",
+  "verified": 38,
+  "total": 54,
+  "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+  "sourceFingerprint": "ba094c09771b7ca0ddc88fdb75174cd6ba408f777c9668d96ab3488487390188",
+  "change": {
+    "file": "src/game-entry/game-entry.ts",
+    "cause": "Cold Continue applied inert to the whole guide toolbar while resumePending, leaving enabled-looking Settings/Help/language unreachable. Native Resume removed the gate and then the same Settings opened.",
+    "behavior": "Gameplay layout/stage and guided exit remain gated until Resume. Comfort/language/help are available while continue-pending; conflict/unreadable/restart toolbar blocking remains. Both renderSave and renderPause use the same gate.",
+    "protected": "No engine, gameplay, save-codec, assets or dependency delta."
+  },
+  "tests": {
+    "uniquePassing": 41,
+    "newV5Cases": 3,
+    "scope": "12 preference combinations/strict V5 roundtrip,300 causal ticks identical across visual policy for14 actors/5 habitats, original4 Zebra reduced/low rigs retain essential displacement/gait; original audio/policy/controller/pause/restart suites.",
+    "types": "PASS strict noEmit/noUnused",
+    "astroCheck": "584 files;0 errors/warnings/hints",
+    "logs": [
+      {
+        "path": ".qa/zebra-audit/z5-04-final-tests-r2.log",
+        "bytes": 4322,
+        "sha256": "34f3f2b58b5117f7e3213882ba2f0a3c136c4204a895a8d9238a7fd296d305b7"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-04-final-types-r2.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-04-final-check.log",
+        "bytes": 216,
+        "sha256": "634eed92b6b65ea2d7c82b5fe70eae20dafd1b57f2f898351c88bbed92aa40cf"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-04-final-build.log",
+        "bytes": 2575,
+        "sha256": "dcec24bbea98c1aa47279fbe190106ee3e44a8e8167706dec8aacf911f4e04cb"
+      }
+    ]
+  },
+  "build": {
+    "receipt": {
+      "path": ".qa/visual3d/h1-03-zebra-comfort2/source.json",
+      "bytes": 107695,
+      "sha256": "74692cb054fa838663713aed76f568083ef57868109358c47cadaf6bcc23c61d"
+    },
+    "lab": "4ed91275655fd4e197cd104266f6d07f29699b166d5fc74375bd346813aca3e9",
+    "production": "fe5442ab3425a2514dfb747a3b3f57daed1df5f0ad14c9d5ad2b293c26a68687",
+    "pages": 10,
+    "qaExclusion": "PASS including factory faults and pointer diagnostics"
+  },
+  "browser": {
+    "runner": "internal-browser",
+    "sourceBoundObservations": 29,
+    "nativeDialogObservations": 18,
+    "viewports": [
+      [
+        1366,
+        768
+      ],
+      [
+        360,
+        780
+      ]
+    ],
+    "locales": [
+      "id",
+      "en"
+    ],
+    "qualityReducedCombinations": [
+      "auto:false",
+      "auto:true",
+      "high:false",
+      "high:true",
+      "low:false",
+      "low:true"
+    ],
+    "physicalDevice": false,
+    "presentedFps": null,
+    "mutedColdAndStoredUnmute": "No graph at cold menu/Continue. Native Apply/Resume creates one graph; settled running AudioContext and nonzero analyser samples verified. Pause/dialog/mute gain0; all4 sessions close their sole context.",
+    "audioScope": "Actual native WebAudio graph/signal, not physical speaker audibility. Suspended/muted analyser can retain its last buffer, so gain/context state establish silence rather than demanding stale RMS0. An initial observation labelled playing was still waiting during the async transition; only later settled records accept running playback.",
+    "motionScope": "Manual native reduced setting and actual native media query observed. Source policy tests cover system reduced=true; OS preference/physical-device changes are not claimed. Essential movement source-tested; frozen0ms browser cases retain all14 models and exact gameplay.",
+    "faultScope": "Explicit null-once WebGL/throw-once audio factory injection through original production seams. Visible bilingual fallback/help/unavailable feedback and retries to actual native factories; not hardware-unsupported or native autoplay-denial evidence.",
+    "storageScope": "QA disables global menu preference storage to protect owner namespaces. Native UI truthfully reports temporary menu preferences; actual isolated durable V5 preferences persist and restore exactly.",
+    "limitations": [
+      "Native QA inspector clicks sometimes timed out after execution; fresh source-bound reports confirmed outcomes before proceeding, without repeating uncertain mutations. Heavy QA ray projections are not a game FPS benchmark.",
+      "Complete keyboard/focus/help/context-loss matrix remains Z5-05/R7; physical-device/native background/full posed-scene/performance/15-minute soak gates remain separate."
+    ],
+    "console": "Captured warn/error logs empty in the normal audio check and both final fault sessions.",
+    "records": [
+      {
+        "label": "main-cold-continue-fixed-muted",
+        "at": "2026-11-09T20:21:39.123Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": true,
+          "layoutInert": true,
+          "resumeVisible": true,
+          "stageInert": true,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "muted",
+          "muted": true,
+          "allowed": false,
+          "unlocked": false,
+          "contextState": "absent",
+          "contextsCreated": 0,
+          "contextsClosed": 0,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": true,
+          "reduced": false,
+          "shadow": false,
+          "pixelRatio": 1,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "muted",
+          "audioText": "Suara senyap.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": true,
+          "notice": "",
+          "pauseReasons": "continue",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 766,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "main-draft-discarded-fixed",
+        "at": "2026-11-09T20:21:57.470Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": true,
+          "layoutInert": true,
+          "resumeVisible": true,
+          "stageInert": true,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "muted",
+          "muted": true,
+          "allowed": false,
+          "unlocked": false,
+          "contextState": "absent",
+          "contextsCreated": 0,
+          "contextsClosed": 0,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": true,
+          "reduced": false,
+          "shadow": false,
+          "pixelRatio": 1,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "muted",
+          "audioText": "Suara senyap.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": true,
+          "notice": "",
+          "pauseReasons": "continue",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 767,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "main-high-unmuted-still-cold-paused",
+        "at": "2026-11-09T20:22:07.902Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "66c0ccb843534599db1a995709455c1477d719fd71a0fbe166d1d95b2d288d9f",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "high",
+          "locale": "id",
+          "muted": false,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": true,
+          "layoutInert": true,
+          "resumeVisible": true,
+          "stageInert": true,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "paused",
+          "muted": false,
+          "allowed": false,
+          "unlocked": true,
+          "contextState": "suspended",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": false,
+          "reduced": false,
+          "shadow": true,
+          "pixelRatio": 1.0000000298023224,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "paused",
+          "audioText": "Suara dijeda bersama suaka.",
+          "documentWidth": 1351,
+          "graphics": "high",
+          "height": 768,
+          "lang": "id",
+          "muted": false,
+          "notice": "Pengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.",
+          "pauseReasons": "continue",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 768,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "main-native-audio-playing",
+        "at": "2026-11-09T20:22:21.831Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "66c0ccb843534599db1a995709455c1477d719fd71a0fbe166d1d95b2d288d9f",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "high",
+          "locale": "id",
+          "muted": false,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": false,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "waiting",
+          "muted": false,
+          "allowed": true,
+          "unlocked": true,
+          "contextState": "suspended",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0.18000000715255737,
+          "signalRms": 0.0065986078326265105,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": false,
+          "reduced": false,
+          "shadow": true,
+          "pixelRatio": 1.0000000298023224,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "playing",
+          "audioText": "Ambience suaka aktif.",
+          "documentWidth": 1351,
+          "graphics": "high",
+          "height": 768,
+          "lang": "id",
+          "muted": false,
+          "notice": "Pengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.",
+          "pauseReasons": "",
+          "paused": "false",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 768,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "main-native-audio-paused",
+        "at": "2026-11-09T20:22:34.846Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "66c0ccb843534599db1a995709455c1477d719fd71a0fbe166d1d95b2d288d9f",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "high",
+          "locale": "id",
+          "muted": false,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": true,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "paused",
+          "muted": false,
+          "allowed": false,
+          "unlocked": true,
+          "contextState": "suspended",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0,
+          "signalRms": 0.007111135903949698,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": false,
+          "reduced": false,
+          "shadow": true,
+          "pixelRatio": 1.0000000298023224,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "paused",
+          "audioText": "Suara dijeda bersama suaka.",
+          "documentWidth": 1351,
+          "graphics": "high",
+          "height": 768,
+          "lang": "id",
+          "muted": false,
+          "notice": "Pengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.",
+          "pauseReasons": "manual",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 769,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "main-native-audio-settled",
+        "at": "2026-11-09T20:23:13.972Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "66c0ccb843534599db1a995709455c1477d719fd71a0fbe166d1d95b2d288d9f",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "high",
+          "locale": "id",
+          "muted": false,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": false,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "playing",
+          "muted": false,
+          "allowed": true,
+          "unlocked": true,
+          "contextState": "running",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0.18000000715255737,
+          "signalRms": 0.009470981577993361,
+          "analyserSampleActive": true,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": false,
+          "reduced": false,
+          "shadow": true,
+          "pixelRatio": 1.0000000298023224,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "playing",
+          "audioText": "Ambience suaka aktif.",
+          "documentWidth": 1351,
+          "graphics": "high",
+          "height": 768,
+          "lang": "id",
+          "muted": false,
+          "notice": "Pengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.",
+          "pauseReasons": "",
+          "paused": "false",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 769,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "main-high-reduced-applied",
+        "at": "2026-11-09T20:23:28.315Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "6c6aa1fe946fbff8fa95120f57ec4e9cf7c2c61f170b74723f68d3e696fe7eae",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "high",
+          "locale": "id",
+          "muted": false,
+          "reducedMotion": true,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": false,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "playing",
+          "muted": false,
+          "allowed": true,
+          "unlocked": true,
+          "contextState": "running",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0.18000000715255737,
+          "signalRms": 0.008451945387705596,
+          "analyserSampleActive": true,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": false,
+          "reduced": true,
+          "shadow": true,
+          "pixelRatio": 1.0000000298023224,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "playing",
+          "audioText": "Ambience suaka aktif.",
+          "documentWidth": 1351,
+          "graphics": "high",
+          "height": 768,
+          "lang": "id",
+          "muted": false,
+          "notice": "Pengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.",
+          "pauseReasons": "",
+          "paused": "false",
+          "reduced": true,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 771,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "main-low-reduced-applied",
+        "at": "2026-11-09T20:23:52.132Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "f364667d0505e34240fac0a1a4b2468a87b3e08bd3234215de009bdb7aa86822",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": false,
+          "reducedMotion": true,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": false,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "playing",
+          "muted": false,
+          "allowed": true,
+          "unlocked": true,
+          "contextState": "running",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0.18000000715255737,
+          "signalRms": 0.008425284005331778,
+          "analyserSampleActive": true,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": true,
+          "reduced": true,
+          "shadow": false,
+          "pixelRatio": 1,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "playing",
+          "audioText": "Ambience suaka aktif.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": false,
+          "notice": "Pengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.",
+          "pauseReasons": "",
+          "paused": "false",
+          "reduced": true,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 773,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "main-low-unmuted-before-cold-test",
+        "at": "2026-11-09T20:24:08.324Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "68ed82587c0b6f27ef0d9165145ade6fd01159632091515aeb82dcfc88e3b2c8",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": false,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": false,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "playing",
+          "muted": false,
+          "allowed": true,
+          "unlocked": true,
+          "contextState": "running",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0.18000000715255737,
+          "signalRms": 0.011829078062161168,
+          "analyserSampleActive": true,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": true,
+          "reduced": false,
+          "shadow": false,
+          "pixelRatio": 1,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "playing",
+          "audioText": "Ambience suaka aktif.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": false,
+          "notice": "Pengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.",
+          "pauseReasons": "",
+          "paused": "false",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 775,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "main-session1-disposed-unmuted",
+        "at": "2026-11-09T20:24:26.288Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "68ed82587c0b6f27ef0d9165145ade6fd01159632091515aeb82dcfc88e3b2c8",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": false,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 0,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": true,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "disposed",
+          "muted": false,
+          "allowed": false,
+          "unlocked": true,
+          "contextState": "absent",
+          "contextsCreated": 1,
+          "contextsClosed": 1,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": true,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": null,
+        "ui": {
+          "alerts": [],
+          "audioState": "paused",
+          "audioText": "Suara dijeda bersama suaka.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": false,
+          "notice": "Pengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.",
+          "pauseReasons": "manual",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 777,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "stored-unmute-cold-menu-no-autoplay",
+        "at": "2026-11-09T20:24:39.257Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "68ed82587c0b6f27ef0d9165145ade6fd01159632091515aeb82dcfc88e3b2c8",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": false,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 0,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": false,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "waiting",
+          "muted": false,
+          "allowed": false,
+          "unlocked": false,
+          "contextState": "absent",
+          "contextsCreated": 0,
+          "contextsClosed": 0,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": null,
+        "ui": {
+          "alerts": [],
+          "audioState": "waiting",
+          "audioText": "Suara diaktifkan. Tutup pengaturan lalu Lanjut atau gunakan kontrol game untuk mendengarnya.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": false,
+          "notice": "",
+          "pauseReasons": "",
+          "paused": "false",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 777,
+          "phase": "available",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "stored-unmute-continue-no-autoplay",
+        "at": "2026-11-09T20:24:46.184Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "68ed82587c0b6f27ef0d9165145ade6fd01159632091515aeb82dcfc88e3b2c8",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": false,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": true,
+          "layoutInert": true,
+          "resumeVisible": true,
+          "stageInert": true,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "waiting",
+          "muted": false,
+          "allowed": false,
+          "unlocked": false,
+          "contextState": "absent",
+          "contextsCreated": 0,
+          "contextsClosed": 0,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": true,
+          "reduced": false,
+          "shadow": false,
+          "pixelRatio": 1,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "waiting",
+          "audioText": "Suara diaktifkan. Tutup pengaturan lalu Lanjut atau gunakan kontrol game untuk mendengarnya.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": false,
+          "notice": "",
+          "pauseReasons": "continue",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 778,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "stored-unmute-native-resume-playing",
+        "at": "2026-11-09T20:25:00.124Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "68ed82587c0b6f27ef0d9165145ade6fd01159632091515aeb82dcfc88e3b2c8",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": false,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": false,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "playing",
+          "muted": false,
+          "allowed": true,
+          "unlocked": true,
+          "contextState": "running",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0.18000000715255737,
+          "signalRms": 0.006933033017057183,
+          "analyserSampleActive": true,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": true,
+          "reduced": false,
+          "shadow": false,
+          "pixelRatio": 1,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "playing",
+          "audioText": "Ambience suaka aktif.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": false,
+          "notice": "",
+          "pauseReasons": "",
+          "paused": "false",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 778,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "main-original-preferences-restored",
+        "at": "2026-11-09T20:25:10.179Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": false,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "muted",
+          "muted": true,
+          "allowed": true,
+          "unlocked": true,
+          "contextState": "suspended",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0,
+          "signalRms": 0.008255647223635892,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": true,
+          "reduced": false,
+          "shadow": false,
+          "pixelRatio": 1,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "muted",
+          "audioText": "Suara senyap.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": true,
+          "notice": "Pengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.",
+          "pauseReasons": "",
+          "paused": "false",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 780,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "main-session2-disposed-restored",
+        "at": "2026-11-09T20:25:25.750Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 0,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": true,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "disposed",
+          "muted": true,
+          "allowed": false,
+          "unlocked": true,
+          "contextState": "absent",
+          "contextsCreated": 1,
+          "contextsClosed": 1,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": true,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": null,
+        "ui": {
+          "alerts": [],
+          "audioState": "muted",
+          "audioText": "Suara senyap.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": true,
+          "notice": "Pengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.",
+          "pauseReasons": "manual",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 782,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "webgl-null-once-fallback-id",
+        "at": "2026-11-09T20:25:43.181Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 0,
+        "controlGates": {
+          "exitInert": true,
+          "layoutInert": true,
+          "resumeVisible": true,
+          "stageInert": false,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "muted",
+          "muted": true,
+          "allowed": false,
+          "unlocked": false,
+          "contextState": "absent",
+          "contextsCreated": 0,
+          "contextsClosed": 0,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "null-once",
+          "contextAttempts": 1,
+          "contextNulls": 1,
+          "audioMode": "throw-once",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": null,
+        "ui": {
+          "alerts": [
+            "Pratinjau 3D tidak tersediaBrowser ini tidak dapat memulai WebGL 2. Panduan, pengaturan bahasa, dan jurnal tetap tersedia."
+          ],
+          "audioState": "muted",
+          "audioText": "Suara senyap.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": true,
+          "notice": "",
+          "pauseReasons": "continue",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 783,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "webgl-retry-real-context-id",
+        "at": "2026-11-09T20:26:34.435Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": true,
+          "layoutInert": true,
+          "resumeVisible": true,
+          "stageInert": true,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "muted",
+          "muted": true,
+          "allowed": false,
+          "unlocked": false,
+          "contextState": "absent",
+          "contextsCreated": 0,
+          "contextsClosed": 0,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "null-once",
+          "contextAttempts": 2,
+          "contextNulls": 1,
+          "audioMode": "throw-once",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": true,
+          "reduced": false,
+          "shadow": false,
+          "pixelRatio": 1,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "muted",
+          "audioText": "Suara senyap.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": true,
+          "notice": "",
+          "pauseReasons": "continue",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 784,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "audio-retry-paused-real-context-id",
+        "at": "2026-11-09T20:27:00.889Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "68ed82587c0b6f27ef0d9165145ade6fd01159632091515aeb82dcfc88e3b2c8",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": false,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": true,
+          "layoutInert": true,
+          "resumeVisible": true,
+          "stageInert": true,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "paused",
+          "muted": false,
+          "allowed": false,
+          "unlocked": true,
+          "contextState": "suspended",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "null-once",
+          "contextAttempts": 2,
+          "contextNulls": 1,
+          "audioMode": "throw-once",
+          "audioAttempts": 2,
+          "audioThrows": 1,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": true,
+          "reduced": false,
+          "shadow": false,
+          "pixelRatio": 1,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "paused",
+          "audioText": "Suara dijeda bersama suaka.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": false,
+          "notice": "Pengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.",
+          "pauseReasons": "continue",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 786,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "audio-retry-native-playing-id",
+        "at": "2026-11-09T20:27:14.705Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "68ed82587c0b6f27ef0d9165145ade6fd01159632091515aeb82dcfc88e3b2c8",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": false,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": false,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "playing",
+          "muted": false,
+          "allowed": true,
+          "unlocked": true,
+          "contextState": "running",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0.18000000715255737,
+          "signalRms": 0.011247717233405785,
+          "analyserSampleActive": true,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "null-once",
+          "contextAttempts": 2,
+          "contextNulls": 1,
+          "audioMode": "throw-once",
+          "audioAttempts": 2,
+          "audioThrows": 1,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": true,
+          "reduced": false,
+          "shadow": false,
+          "pixelRatio": 1,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "playing",
+          "audioText": "Ambience suaka aktif.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": false,
+          "notice": "Pengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.",
+          "pauseReasons": "",
+          "paused": "false",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 786,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "main-restored-after-faults",
+        "at": "2026-11-09T20:27:24.980Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": false,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "muted",
+          "muted": true,
+          "allowed": true,
+          "unlocked": true,
+          "contextState": "suspended",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0,
+          "signalRms": 0.007592841568416737,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "null-once",
+          "contextAttempts": 2,
+          "contextNulls": 1,
+          "audioMode": "throw-once",
+          "audioAttempts": 2,
+          "audioThrows": 1,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": true,
+          "reduced": false,
+          "shadow": false,
+          "pixelRatio": 1,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "muted",
+          "audioText": "Suara senyap.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": true,
+          "notice": "Pengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.",
+          "pauseReasons": "",
+          "paused": "false",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 788,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "main-session3-disposed-restored",
+        "at": "2026-11-09T20:27:50.071Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 0,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": true,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "disposed",
+          "muted": true,
+          "allowed": false,
+          "unlocked": true,
+          "contextState": "absent",
+          "contextsCreated": 1,
+          "contextsClosed": 1,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": true,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "null-once",
+          "contextAttempts": 2,
+          "contextNulls": 1,
+          "audioMode": "throw-once",
+          "audioAttempts": 2,
+          "audioThrows": 1,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": null,
+        "ui": {
+          "alerts": [],
+          "audioState": "muted",
+          "audioText": "Suara senyap.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": true,
+          "notice": "Pengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.",
+          "pauseReasons": "manual",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 790,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "webgl-null-once-fallback-en360",
+        "at": "2026-11-09T20:28:33.447Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 360,
+          "height": 780,
+          "documentWidth": 345
+        },
+        "owners": 0,
+        "controlGates": {
+          "exitInert": true,
+          "layoutInert": true,
+          "resumeVisible": true,
+          "stageInert": false,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "muted",
+          "muted": true,
+          "allowed": false,
+          "unlocked": false,
+          "contextState": "absent",
+          "contextsCreated": 0,
+          "contextsClosed": 0,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "null-once",
+          "contextAttempts": 1,
+          "contextNulls": 1,
+          "audioMode": "throw-once",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": null,
+        "ui": {
+          "alerts": [
+            "3D preview unavailableThis browser could not start WebGL 2. The guide, language settings and journal are still available."
+          ],
+          "audioState": "muted",
+          "audioText": "Sound muted.",
+          "documentWidth": 345,
+          "graphics": "auto",
+          "height": 780,
+          "lang": "en",
+          "muted": true,
+          "notice": "",
+          "pauseReasons": "continue",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "en",
+          "settingsOpen": false,
+          "width": 360
+        },
+        "save": {
+          "revision": 58,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "webgl-retry-real-context-en360",
+        "at": "2026-11-09T20:28:47.119Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 360,
+          "height": 780,
+          "documentWidth": 345
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": true,
+          "layoutInert": true,
+          "resumeVisible": true,
+          "stageInert": true,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "muted",
+          "muted": true,
+          "allowed": false,
+          "unlocked": false,
+          "contextState": "absent",
+          "contextsCreated": 0,
+          "contextsClosed": 0,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "null-once",
+          "contextAttempts": 2,
+          "contextNulls": 1,
+          "audioMode": "throw-once",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": true,
+          "reduced": false,
+          "shadow": false,
+          "pixelRatio": 1,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "muted",
+          "audioText": "Sound muted.",
+          "documentWidth": 345,
+          "graphics": "auto",
+          "height": 780,
+          "lang": "en",
+          "muted": true,
+          "notice": "",
+          "pauseReasons": "continue",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "en",
+          "settingsOpen": false,
+          "width": 360
+        },
+        "save": {
+          "revision": 59,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "en-auto-reduced-paused360",
+        "at": "2026-11-09T20:29:07.454Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "5caa73cb82fd57e1eefd835099309ca5d34b303a856a483baa916788de5ad1fd",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": false,
+          "reducedMotion": true,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 360,
+          "height": 780,
+          "documentWidth": 345
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": true,
+          "layoutInert": true,
+          "resumeVisible": true,
+          "stageInert": true,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "paused",
+          "muted": false,
+          "allowed": false,
+          "unlocked": true,
+          "contextState": "suspended",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "null-once",
+          "contextAttempts": 2,
+          "contextNulls": 1,
+          "audioMode": "throw-once",
+          "audioAttempts": 2,
+          "audioThrows": 1,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": true,
+          "reduced": true,
+          "shadow": false,
+          "pixelRatio": 1,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "paused",
+          "audioText": "Sound paused with the sanctuary.",
+          "documentWidth": 345,
+          "graphics": "auto",
+          "height": 780,
+          "lang": "en",
+          "muted": false,
+          "notice": "Settings applied for this visit. Menu preference could not be saved; check game save status.",
+          "pauseReasons": "continue",
+          "paused": "true",
+          "reduced": true,
+          "rootLang": "en",
+          "settingsOpen": false,
+          "width": 360
+        },
+        "save": {
+          "revision": 62,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "en-audio-native-playing360",
+        "at": "2026-11-09T20:29:19.964Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "5caa73cb82fd57e1eefd835099309ca5d34b303a856a483baa916788de5ad1fd",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": false,
+          "reducedMotion": true,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 360,
+          "height": 780,
+          "documentWidth": 345
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": false,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "playing",
+          "muted": false,
+          "allowed": true,
+          "unlocked": true,
+          "contextState": "running",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0.18000000715255737,
+          "signalRms": 0.01026532771361948,
+          "analyserSampleActive": true,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "null-once",
+          "contextAttempts": 2,
+          "contextNulls": 1,
+          "audioMode": "throw-once",
+          "audioAttempts": 2,
+          "audioThrows": 1,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": true,
+          "reduced": true,
+          "shadow": false,
+          "pixelRatio": 1,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "playing",
+          "audioText": "Sanctuary ambience active.",
+          "documentWidth": 345,
+          "graphics": "auto",
+          "height": 780,
+          "lang": "en",
+          "muted": false,
+          "notice": "Settings applied for this visit. Menu preference could not be saved; check game save status.",
+          "pauseReasons": "",
+          "paused": "false",
+          "reduced": true,
+          "rootLang": "en",
+          "settingsOpen": false,
+          "width": 360
+        },
+        "save": {
+          "revision": 62,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "en-auto-reduced-desktop-policy",
+        "at": "2026-11-09T20:29:26.809Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "5caa73cb82fd57e1eefd835099309ca5d34b303a856a483baa916788de5ad1fd",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": false,
+          "reducedMotion": true,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": false,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "playing",
+          "muted": false,
+          "allowed": true,
+          "unlocked": true,
+          "contextState": "running",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0.18000000715255737,
+          "signalRms": 0.005892386266697084,
+          "analyserSampleActive": true,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "null-once",
+          "contextAttempts": 2,
+          "contextNulls": 1,
+          "audioMode": "throw-once",
+          "audioAttempts": 2,
+          "audioThrows": 1,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": false,
+          "reduced": true,
+          "shadow": true,
+          "pixelRatio": 1.0000000298023224,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "playing",
+          "audioText": "Sanctuary ambience active.",
+          "documentWidth": 1351,
+          "graphics": "auto",
+          "height": 768,
+          "lang": "en",
+          "muted": false,
+          "notice": "Settings applied for this visit. Menu preference could not be saved; check game save status.",
+          "pauseReasons": "",
+          "paused": "false",
+          "reduced": true,
+          "rootLang": "en",
+          "settingsOpen": false,
+          "width": 1366
+        },
+        "save": {
+          "revision": 62,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "en-forced-high360-applied",
+        "at": "2026-11-09T20:29:59.450Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "e918ead8070614010c01a6ded9e2db2f225ec5fa97ca2929b244a5578868c4cd",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "preferences": {
+          "graphics": "high",
+          "locale": "en",
+          "muted": false,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 360,
+          "height": 780,
+          "documentWidth": 345
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": false,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "playing",
+          "muted": false,
+          "allowed": true,
+          "unlocked": true,
+          "contextState": "running",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0.18000000715255737,
+          "signalRms": 0.00682380909808544,
+          "analyserSampleActive": true,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "null-once",
+          "contextAttempts": 2,
+          "contextNulls": 1,
+          "audioMode": "throw-once",
+          "audioAttempts": 2,
+          "audioThrows": 1,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": false,
+          "reduced": false,
+          "shadow": true,
+          "pixelRatio": 1.0000000298023224,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "playing",
+          "audioText": "Sanctuary ambience active.",
+          "documentWidth": 345,
+          "graphics": "high",
+          "height": 780,
+          "lang": "en",
+          "muted": false,
+          "notice": "Settings applied for this visit. Menu preference could not be saved; check game save status.",
+          "pauseReasons": "",
+          "paused": "false",
+          "reduced": false,
+          "rootLang": "en",
+          "settingsOpen": false,
+          "width": 360
+        },
+        "save": {
+          "revision": 64,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "en-original-preferences-restored",
+        "at": "2026-11-09T20:30:08.121Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 360,
+          "height": 780,
+          "documentWidth": 345
+        },
+        "owners": 1,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": false,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "muted",
+          "muted": true,
+          "allowed": true,
+          "unlocked": true,
+          "contextState": "suspended",
+          "contextsCreated": 1,
+          "contextsClosed": 0,
+          "liveContexts": 1,
+          "liveNodes": 3,
+          "looping": true,
+          "gain": 0,
+          "signalRms": 0.007076782899646861,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "null-once",
+          "contextAttempts": 2,
+          "contextNulls": 1,
+          "audioMode": "throw-once",
+          "audioAttempts": 2,
+          "audioThrows": 1,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": {
+          "low": true,
+          "reduced": false,
+          "shadow": false,
+          "pixelRatio": 1,
+          "models": [
+            2,
+            2,
+            3,
+            3,
+            4
+          ]
+        },
+        "ui": {
+          "alerts": [],
+          "audioState": "muted",
+          "audioText": "Sound muted.",
+          "documentWidth": 345,
+          "graphics": "auto",
+          "height": 780,
+          "lang": "en",
+          "muted": true,
+          "notice": "Settings applied for this visit. Menu preference could not be saved; check game save status.",
+          "pauseReasons": "",
+          "paused": "false",
+          "reduced": false,
+          "rootLang": "en",
+          "settingsOpen": false,
+          "width": 360
+        },
+        "save": {
+          "revision": 66,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "en-session4-disposed-restored",
+        "at": "2026-11-09T20:30:38.235Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "preferences": {
+          "graphics": "auto",
+          "locale": "en",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "viewport": {
+          "width": 360,
+          "height": 780,
+          "documentWidth": 345
+        },
+        "owners": 0,
+        "controlGates": {
+          "exitInert": false,
+          "layoutInert": false,
+          "resumeVisible": false,
+          "stageInert": true,
+          "toolbarInert": false
+        },
+        "audio": {
+          "status": "disposed",
+          "muted": true,
+          "allowed": false,
+          "unlocked": true,
+          "contextState": "absent",
+          "contextsCreated": 1,
+          "contextsClosed": 1,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": true,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "null-once",
+          "contextAttempts": 2,
+          "contextNulls": 1,
+          "audioMode": "throw-once",
+          "audioAttempts": 2,
+          "audioThrows": 1,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "visual": null,
+        "ui": {
+          "alerts": [],
+          "audioState": "muted",
+          "audioText": "Sound muted.",
+          "documentWidth": 345,
+          "graphics": "auto",
+          "height": 780,
+          "lang": "en",
+          "muted": true,
+          "notice": "Settings applied for this visit. Menu preference could not be saved; check game save status.",
+          "pauseReasons": "manual",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "en",
+          "settingsOpen": false,
+          "width": 360
+        },
+        "save": {
+          "revision": 68,
+          "phase": "saved",
+          "inflight": false
+        },
+        "errors": [],
+        "failures": []
+      }
+    ],
+    "dialogs": [
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "cold-continue-settings-open-id",
+        "ui": {
+          "audioState": "muted",
+          "graphics": "low",
+          "height": 768,
+          "motion": false,
+          "muted": true,
+          "open": true,
+          "rect": {
+            "bottom": 752,
+            "height": 736,
+            "left": 395.3333435058594,
+            "right": 955.3333435058594,
+            "top": 16,
+            "width": 560,
+            "x": 395.3333435058594,
+            "y": 16
+          },
+          "text": "Buat dirimu nyaman\n\nPilih bahasa untuk suaka ini.\n\nBahasa\nEnglish\nBahasa Indonesia\n\nBahasamu tersedia untuk kunjungan ini, tetapi penyimpanan browser tidak tersedia.\n\nKenyamanan dan suara\n\nBahasa langsung tersimpan. Perubahan visual dan suara diterapkan hanya saat kamu menekan Terapkan.\n\nKualitas grafis\nOtomatis\nHemat daya\nTinggi\nKurangi gerakan dekoratif\n\nHemat daya membatasi resolusi, mematikan bayangan matahari dan kilau air, serta menampilkan satu model pengunjung. Pencahayaan tanaman dan bayangan kontak lembut tetap terlihat. Semua satwa, pengunjung dan ekonomi tetap disimulasikan. Pengurangan gerakan tetap mempertahankan gerak penting satwa; Jeda menghentikan dunia. Preferensi gerakan sistem juga dihormati.\n\nSenyapkan ambience suaka\n\nAmbience sungai dan burung bergaya, dibuat asli. Suara aktif setelah tindakanmu dan berhenti saat dijeda atau ditinggalkan. Mikrofon tidak digunakan.\n\nSuara senyap.\n\nTerapkan pengaturan\n\nPengaturan tetap di perangkat ini; tidak perlu akun. Periksa status simpan permainan sebelum pergi.\n\nPrivasi dan progres lokal\n\nTidak ada akun atau permintaan data pribadi. Progres dan pilihan tersimpan di profil browser ini, tanpa sinkronisasi daring.\n\nMulai ulang menyimpan cadangan pemulihan lokal. Membersihkan data browser situs ini menghapus progres dan cadangan. Orang yang berbagi profil browser dapat mengakses suakamu.\n\nGame tidak memuat analytics atau font jarak jauh dan tidak mengunggah simpanan. Tautan jurnal meninggalkan game dan memakai integrasi situs jurnal yang terpisah.\n\nPilihan privasi situs\nTutup / abaikan perubahan",
+          "width": 1366
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "draft-edits-cold-id",
+        "ui": {
+          "audioState": "muted",
+          "graphics": "high",
+          "height": 768,
+          "motion": true,
+          "muted": false,
+          "open": true,
+          "rect": {
+            "bottom": 752,
+            "height": 736,
+            "left": 395.3333435058594,
+            "right": 955.3333435058594,
+            "top": 16,
+            "width": 560,
+            "x": 395.3333435058594,
+            "y": 16
+          },
+          "text": "Buat dirimu nyaman\n\nPilih bahasa untuk suaka ini.\n\nBahasa\nEnglish\nBahasa Indonesia\n\nBahasamu tersedia untuk kunjungan ini, tetapi penyimpanan browser tidak tersedia.\n\nKenyamanan dan suara\n\nBahasa langsung tersimpan. Perubahan visual dan suara diterapkan hanya saat kamu menekan Terapkan.\n\nKualitas grafis\nOtomatis\nHemat daya\nTinggi\nKurangi gerakan dekoratif\n\nHemat daya membatasi resolusi, mematikan bayangan matahari dan kilau air, serta menampilkan satu model pengunjung. Pencahayaan tanaman dan bayangan kontak lembut tetap terlihat. Semua satwa, pengunjung dan ekonomi tetap disimulasikan. Pengurangan gerakan tetap mempertahankan gerak penting satwa; Jeda menghentikan dunia. Preferensi gerakan sistem juga dihormati.\n\nSenyapkan ambience suaka\n\nAmbience sungai dan burung bergaya, dibuat asli. Suara aktif setelah tindakanmu dan berhenti saat dijeda atau ditinggalkan. Mikrofon tidak digunakan.\n\nSuara senyap.\n\nTerapkan pengaturan\n\nPengaturan tetap di perangkat ini; tidak perlu akun. Periksa status simpan permainan sebelum pergi.\n\nPrivasi dan progres lokal\n\nTidak ada akun atau permintaan data pribadi. Progres dan pilihan tersimpan di profil browser ini, tanpa sinkronisasi daring.\n\nMulai ulang menyimpan cadangan pemulihan lokal. Membersihkan data browser situs ini menghapus progres dan cadangan. Orang yang berbagi profil browser dapat mengakses suakamu.\n\nGame tidak memuat analytics atau font jarak jauh dan tidak mengunggah simpanan. Tautan jurnal meninggalkan game dan memakai integrasi situs jurnal yang terpisah.\n\nPilihan privasi situs\nTutup / abaikan perubahan",
+          "width": 1366
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "apply-high-unmuted-id",
+        "ui": {
+          "audioState": "paused",
+          "graphics": "high",
+          "height": 768,
+          "motion": false,
+          "muted": false,
+          "open": true,
+          "rect": {
+            "bottom": 752,
+            "height": 736,
+            "left": 395.3333435058594,
+            "right": 955.3333435058594,
+            "top": 16,
+            "width": 560,
+            "x": 395.3333435058594,
+            "y": 16
+          },
+          "text": "Buat dirimu nyaman\n\nPilih bahasa untuk suaka ini.\n\nBahasa\nEnglish\nBahasa Indonesia\n\nBahasamu tersedia untuk kunjungan ini, tetapi penyimpanan browser tidak tersedia.\n\nKenyamanan dan suara\n\nBahasa langsung tersimpan. Perubahan visual dan suara diterapkan hanya saat kamu menekan Terapkan.\n\nKualitas grafis\nOtomatis\nHemat daya\nTinggi\nKurangi gerakan dekoratif\n\nHemat daya membatasi resolusi, mematikan bayangan matahari dan kilau air, serta menampilkan satu model pengunjung. Pencahayaan tanaman dan bayangan kontak lembut tetap terlihat. Semua satwa, pengunjung dan ekonomi tetap disimulasikan. Pengurangan gerakan tetap mempertahankan gerak penting satwa; Jeda menghentikan dunia. Preferensi gerakan sistem juga dihormati.\n\nSenyapkan ambience suaka\n\nAmbience sungai dan burung bergaya, dibuat asli. Suara aktif setelah tindakanmu dan berhenti saat dijeda atau ditinggalkan. Mikrofon tidak digunakan.\n\nSuara dijeda bersama suaka.\n\nTerapkan pengaturan\n\nPengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.\n\nPengaturan tetap di perangkat ini; tidak perlu akun. Periksa status simpan permainan sebelum pergi.\n\nPrivasi dan progres lokal\n\nTidak ada akun atau permintaan data pribadi. Progres dan pilihan tersimpan di profil browser ini, tanpa sinkronisasi daring.\n\nMulai ulang menyimpan cadangan pemulihan lokal. Membersihkan data browser situs ini menghapus progres dan cadangan. Orang yang berbagi profil browser dapat mengakses suakamu.\n\nGame tidak memuat analytics atau font jarak jauh dan tidak mengunggah simpanan. Tautan jurnal meninggalkan game dan memakai integrasi situs jurnal yang terpisah.\n\nPilihan privasi situs\nTutup / abaikan perubahan",
+          "width": 1366
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "running-settings-pauses-audio-id",
+        "ui": {
+          "audioState": "paused",
+          "graphics": "high",
+          "height": 768,
+          "motion": false,
+          "muted": false,
+          "open": true,
+          "rect": {
+            "bottom": 752,
+            "height": 736,
+            "left": 395.3333435058594,
+            "right": 955.3333435058594,
+            "top": 16,
+            "width": 560,
+            "x": 395.3333435058594,
+            "y": 16
+          },
+          "text": "Buat dirimu nyaman\n\nPilih bahasa untuk suaka ini.\n\nBahasa\nEnglish\nBahasa Indonesia\n\nBahasamu tersedia untuk kunjungan ini, tetapi penyimpanan browser tidak tersedia.\n\nKenyamanan dan suara\n\nBahasa langsung tersimpan. Perubahan visual dan suara diterapkan hanya saat kamu menekan Terapkan.\n\nKualitas grafis\nOtomatis\nHemat daya\nTinggi\nKurangi gerakan dekoratif\n\nHemat daya membatasi resolusi, mematikan bayangan matahari dan kilau air, serta menampilkan satu model pengunjung. Pencahayaan tanaman dan bayangan kontak lembut tetap terlihat. Semua satwa, pengunjung dan ekonomi tetap disimulasikan. Pengurangan gerakan tetap mempertahankan gerak penting satwa; Jeda menghentikan dunia. Preferensi gerakan sistem juga dihormati.\n\nSenyapkan ambience suaka\n\nAmbience sungai dan burung bergaya, dibuat asli. Suara aktif setelah tindakanmu dan berhenti saat dijeda atau ditinggalkan. Mikrofon tidak digunakan.\n\nSuara dijeda bersama suaka.\n\nTerapkan pengaturan\n\nPengaturan tetap di perangkat ini; tidak perlu akun. Periksa status simpan permainan sebelum pergi.\n\nPrivasi dan progres lokal\n\nTidak ada akun atau permintaan data pribadi. Progres dan pilihan tersimpan di profil browser ini, tanpa sinkronisasi daring.\n\nMulai ulang menyimpan cadangan pemulihan lokal. Membersihkan data browser situs ini menghapus progres dan cadangan. Orang yang berbagi profil browser dapat mengakses suakamu.\n\nGame tidak memuat analytics atau font jarak jauh dan tidak mengunggah simpanan. Tautan jurnal meninggalkan game dan memakai integrasi situs jurnal yang terpisah.\n\nPilihan privasi situs\nTutup / abaikan perubahan",
+          "width": 1366
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "apply-high-reduced-id",
+        "ui": {
+          "audioState": "paused",
+          "graphics": "high",
+          "height": 768,
+          "motion": true,
+          "muted": false,
+          "open": true,
+          "rect": {
+            "bottom": 752,
+            "height": 736,
+            "left": 395.3333435058594,
+            "right": 955.3333435058594,
+            "top": 16,
+            "width": 560,
+            "x": 395.3333435058594,
+            "y": 16
+          },
+          "text": "Buat dirimu nyaman\n\nPilih bahasa untuk suaka ini.\n\nBahasa\nEnglish\nBahasa Indonesia\n\nBahasamu tersedia untuk kunjungan ini, tetapi penyimpanan browser tidak tersedia.\n\nKenyamanan dan suara\n\nBahasa langsung tersimpan. Perubahan visual dan suara diterapkan hanya saat kamu menekan Terapkan.\n\nKualitas grafis\nOtomatis\nHemat daya\nTinggi\nKurangi gerakan dekoratif\n\nHemat daya membatasi resolusi, mematikan bayangan matahari dan kilau air, serta menampilkan satu model pengunjung. Pencahayaan tanaman dan bayangan kontak lembut tetap terlihat. Semua satwa, pengunjung dan ekonomi tetap disimulasikan. Pengurangan gerakan tetap mempertahankan gerak penting satwa; Jeda menghentikan dunia. Preferensi gerakan sistem juga dihormati.\n\nSenyapkan ambience suaka\n\nAmbience sungai dan burung bergaya, dibuat asli. Suara aktif setelah tindakanmu dan berhenti saat dijeda atau ditinggalkan. Mikrofon tidak digunakan.\n\nSuara dijeda bersama suaka.\n\nTerapkan pengaturan\n\nPengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.\n\nPengaturan tetap di perangkat ini; tidak perlu akun. Periksa status simpan permainan sebelum pergi.\n\nPrivasi dan progres lokal\n\nTidak ada akun atau permintaan data pribadi. Progres dan pilihan tersimpan di profil browser ini, tanpa sinkronisasi daring.\n\nMulai ulang menyimpan cadangan pemulihan lokal. Membersihkan data browser situs ini menghapus progres dan cadangan. Orang yang berbagi profil browser dapat mengakses suakamu.\n\nGame tidak memuat analytics atau font jarak jauh dan tidak mengunggah simpanan. Tautan jurnal meninggalkan game dan memakai integrasi situs jurnal yang terpisah.\n\nPilihan privasi situs\nTutup / abaikan perubahan",
+          "width": 1366
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "apply-low-reduced-id",
+        "ui": {
+          "audioState": "paused",
+          "graphics": "low",
+          "height": 768,
+          "motion": true,
+          "muted": false,
+          "open": true,
+          "rect": {
+            "bottom": 752,
+            "height": 736,
+            "left": 395.3333435058594,
+            "right": 955.3333435058594,
+            "top": 16,
+            "width": 560,
+            "x": 395.3333435058594,
+            "y": 16
+          },
+          "text": "Buat dirimu nyaman\n\nPilih bahasa untuk suaka ini.\n\nBahasa\nEnglish\nBahasa Indonesia\n\nBahasamu tersedia untuk kunjungan ini, tetapi penyimpanan browser tidak tersedia.\n\nKenyamanan dan suara\n\nBahasa langsung tersimpan. Perubahan visual dan suara diterapkan hanya saat kamu menekan Terapkan.\n\nKualitas grafis\nOtomatis\nHemat daya\nTinggi\nKurangi gerakan dekoratif\n\nHemat daya membatasi resolusi, mematikan bayangan matahari dan kilau air, serta menampilkan satu model pengunjung. Pencahayaan tanaman dan bayangan kontak lembut tetap terlihat. Semua satwa, pengunjung dan ekonomi tetap disimulasikan. Pengurangan gerakan tetap mempertahankan gerak penting satwa; Jeda menghentikan dunia. Preferensi gerakan sistem juga dihormati.\n\nSenyapkan ambience suaka\n\nAmbience sungai dan burung bergaya, dibuat asli. Suara aktif setelah tindakanmu dan berhenti saat dijeda atau ditinggalkan. Mikrofon tidak digunakan.\n\nSuara dijeda bersama suaka.\n\nTerapkan pengaturan\n\nPengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.\n\nPengaturan tetap di perangkat ini; tidak perlu akun. Periksa status simpan permainan sebelum pergi.\n\nPrivasi dan progres lokal\n\nTidak ada akun atau permintaan data pribadi. Progres dan pilihan tersimpan di profil browser ini, tanpa sinkronisasi daring.\n\nMulai ulang menyimpan cadangan pemulihan lokal. Membersihkan data browser situs ini menghapus progres dan cadangan. Orang yang berbagi profil browser dapat mengakses suakamu.\n\nGame tidak memuat analytics atau font jarak jauh dan tidak mengunggah simpanan. Tautan jurnal meninggalkan game dan memakai integrasi situs jurnal yang terpisah.\n\nPilihan privasi situs\nTutup / abaikan perubahan",
+          "width": 1366
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "apply-low-motion-normal-unmuted-id",
+        "ui": {
+          "audioState": "paused",
+          "graphics": "low",
+          "height": 768,
+          "motion": false,
+          "muted": false,
+          "open": true,
+          "rect": {
+            "bottom": 752,
+            "height": 736,
+            "left": 395.3333435058594,
+            "right": 955.3333435058594,
+            "top": 16,
+            "width": 560,
+            "x": 395.3333435058594,
+            "y": 16
+          },
+          "text": "Buat dirimu nyaman\n\nPilih bahasa untuk suaka ini.\n\nBahasa\nEnglish\nBahasa Indonesia\n\nBahasamu tersedia untuk kunjungan ini, tetapi penyimpanan browser tidak tersedia.\n\nKenyamanan dan suara\n\nBahasa langsung tersimpan. Perubahan visual dan suara diterapkan hanya saat kamu menekan Terapkan.\n\nKualitas grafis\nOtomatis\nHemat daya\nTinggi\nKurangi gerakan dekoratif\n\nHemat daya membatasi resolusi, mematikan bayangan matahari dan kilau air, serta menampilkan satu model pengunjung. Pencahayaan tanaman dan bayangan kontak lembut tetap terlihat. Semua satwa, pengunjung dan ekonomi tetap disimulasikan. Pengurangan gerakan tetap mempertahankan gerak penting satwa; Jeda menghentikan dunia. Preferensi gerakan sistem juga dihormati.\n\nSenyapkan ambience suaka\n\nAmbience sungai dan burung bergaya, dibuat asli. Suara aktif setelah tindakanmu dan berhenti saat dijeda atau ditinggalkan. Mikrofon tidak digunakan.\n\nSuara dijeda bersama suaka.\n\nTerapkan pengaturan\n\nPengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.\n\nPengaturan tetap di perangkat ini; tidak perlu akun. Periksa status simpan permainan sebelum pergi.\n\nPrivasi dan progres lokal\n\nTidak ada akun atau permintaan data pribadi. Progres dan pilihan tersimpan di profil browser ini, tanpa sinkronisasi daring.\n\nMulai ulang menyimpan cadangan pemulihan lokal. Membersihkan data browser situs ini menghapus progres dan cadangan. Orang yang berbagi profil browser dapat mengakses suakamu.\n\nGame tidak memuat analytics atau font jarak jauh dan tidak mengunggah simpanan. Tautan jurnal meninggalkan game dan memakai integrasi situs jurnal yang terpisah.\n\nPilihan privasi situs\nTutup / abaikan perubahan",
+          "width": 1366
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "restore-original-main-muted-id",
+        "ui": {
+          "audioState": "muted",
+          "graphics": "low",
+          "height": 768,
+          "motion": false,
+          "muted": true,
+          "open": true,
+          "rect": {
+            "bottom": 752,
+            "height": 736,
+            "left": 395.3333435058594,
+            "right": 955.3333435058594,
+            "top": 16,
+            "width": 560,
+            "x": 395.3333435058594,
+            "y": 16
+          },
+          "text": "Buat dirimu nyaman\n\nPilih bahasa untuk suaka ini.\n\nBahasa\nEnglish\nBahasa Indonesia\n\nBahasamu tersedia untuk kunjungan ini, tetapi penyimpanan browser tidak tersedia.\n\nKenyamanan dan suara\n\nBahasa langsung tersimpan. Perubahan visual dan suara diterapkan hanya saat kamu menekan Terapkan.\n\nKualitas grafis\nOtomatis\nHemat daya\nTinggi\nKurangi gerakan dekoratif\n\nHemat daya membatasi resolusi, mematikan bayangan matahari dan kilau air, serta menampilkan satu model pengunjung. Pencahayaan tanaman dan bayangan kontak lembut tetap terlihat. Semua satwa, pengunjung dan ekonomi tetap disimulasikan. Pengurangan gerakan tetap mempertahankan gerak penting satwa; Jeda menghentikan dunia. Preferensi gerakan sistem juga dihormati.\n\nSenyapkan ambience suaka\n\nAmbience sungai dan burung bergaya, dibuat asli. Suara aktif setelah tindakanmu dan berhenti saat dijeda atau ditinggalkan. Mikrofon tidak digunakan.\n\nSuara senyap.\n\nTerapkan pengaturan\n\nPengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.\n\nPengaturan tetap di perangkat ini; tidak perlu akun. Periksa status simpan permainan sebelum pergi.\n\nPrivasi dan progres lokal\n\nTidak ada akun atau permintaan data pribadi. Progres dan pilihan tersimpan di profil browser ini, tanpa sinkronisasi daring.\n\nMulai ulang menyimpan cadangan pemulihan lokal. Membersihkan data browser situs ini menghapus progres dan cadangan. Orang yang berbagi profil browser dapat mengakses suakamu.\n\nGame tidak memuat analytics atau font jarak jauh dan tidak mengunggah simpanan. Tautan jurnal meninggalkan game dan memakai integrasi situs jurnal yang terpisah.\n\nPilihan privasi situs\nTutup / abaikan perubahan",
+          "width": 1366
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "fallback-help-id",
+        "ui": {
+          "open": true,
+          "text": "Satu langkah peduli setiap kali\n\nCoba misi pertama sekarang: pratinjau dan konfirmasi habitat, sambungkan petak jalur yang disorot, lalu klaim hadiah. Batal selalu gratis.\n\nBangun rumah yang aman\nTempatkan habitat dan hubungkan ke pintu masuk dengan jalan.\nRawat dua makaw\nSediakan makanan, air, dan tempat istirahat. Amati respons mereka.\nSambut pengunjung\nJalan yang terhubung akan membawa tamu dan pemasukan tiket.\nJaga suaka tetap tumbuh\nIkuti Misi dari Q01 sampai Q04 dan klaim setiap hadiah sekali. Jeda dengan aman, periksa status simpan, lalu gunakan Lanjutkan dan Lanjut bermain saat kembali.\n\nGunakan Misi untuk langkah berikutnya, Rawat untuk kebutuhan satwa dan Opsi untuk pengaturan tampilan dan suara. Jeda menghentikan dunia. Lanjutkan memuat dalam keadaan dijeda; tidak ada progres offline.\n\nKebutuhan dan kesejahteraan dalam game adalah aturan sederhana, bukan petunjuk merawat satwa nyata. Bagian Learn menjelaskan perbedaan ini sambil menyiapkan artikel berbasis sumber.\n\nJelajahi Learn\nTutup"
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "audio-factory-unavailable-visible-id",
+        "ui": {
+          "audioState": "unavailable",
+          "graphics": "low",
+          "height": 768,
+          "motion": false,
+          "muted": false,
+          "open": true,
+          "rect": {
+            "bottom": 752,
+            "height": 736,
+            "left": 395.3333435058594,
+            "right": 955.3333435058594,
+            "top": 16,
+            "width": 560,
+            "x": 395.3333435058594,
+            "y": 16
+          },
+          "text": "Buat dirimu nyaman\n\nPilih bahasa untuk suaka ini.\n\nBahasa\nEnglish\nBahasa Indonesia\n\nBahasamu tersedia untuk kunjungan ini, tetapi penyimpanan browser tidak tersedia.\n\nKenyamanan dan suara\n\nBahasa langsung tersimpan. Perubahan visual dan suara diterapkan hanya saat kamu menekan Terapkan.\n\nKualitas grafis\nOtomatis\nHemat daya\nTinggi\nKurangi gerakan dekoratif\n\nHemat daya membatasi resolusi, mematikan bayangan matahari dan kilau air, serta menampilkan satu model pengunjung. Pencahayaan tanaman dan bayangan kontak lembut tetap terlihat. Semua satwa, pengunjung dan ekonomi tetap disimulasikan. Pengurangan gerakan tetap mempertahankan gerak penting satwa; Jeda menghentikan dunia. Preferensi gerakan sistem juga dihormati.\n\nSenyapkan ambience suaka\n\nAmbience sungai dan burung bergaya, dibuat asli. Suara aktif setelah tindakanmu dan berhenti saat dijeda atau ditinggalkan. Mikrofon tidak digunakan.\n\nSuara belum bisa dimulai. Terapkan lagi untuk mencoba; game tetap bisa dimainkan.\n\nTerapkan pengaturan\n\nPengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.\n\nPengaturan tetap di perangkat ini; tidak perlu akun. Periksa status simpan permainan sebelum pergi.\n\nPrivasi dan progres lokal\n\nTidak ada akun atau permintaan data pribadi. Progres dan pilihan tersimpan di profil browser ini, tanpa sinkronisasi daring.\n\nMulai ulang menyimpan cadangan pemulihan lokal. Membersihkan data browser situs ini menghapus progres dan cadangan. Orang yang berbagi profil browser dapat mengakses suakamu.\n\nGame tidak memuat analytics atau font jarak jauh dan tidak mengunggah simpanan. Tautan jurnal meninggalkan game dan memakai integrasi situs jurnal yang terpisah.\n\nPilihan privasi situs\nTutup / abaikan perubahan",
+          "width": 1366
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "audio-factory-retry-apply-id",
+        "ui": {
+          "audioState": "paused",
+          "graphics": "low",
+          "height": 768,
+          "motion": false,
+          "muted": false,
+          "open": true,
+          "rect": {
+            "bottom": 752,
+            "height": 736,
+            "left": 395.3333435058594,
+            "right": 955.3333435058594,
+            "top": 16,
+            "width": 560,
+            "x": 395.3333435058594,
+            "y": 16
+          },
+          "text": "Buat dirimu nyaman\n\nPilih bahasa untuk suaka ini.\n\nBahasa\nEnglish\nBahasa Indonesia\n\nBahasamu tersedia untuk kunjungan ini, tetapi penyimpanan browser tidak tersedia.\n\nKenyamanan dan suara\n\nBahasa langsung tersimpan. Perubahan visual dan suara diterapkan hanya saat kamu menekan Terapkan.\n\nKualitas grafis\nOtomatis\nHemat daya\nTinggi\nKurangi gerakan dekoratif\n\nHemat daya membatasi resolusi, mematikan bayangan matahari dan kilau air, serta menampilkan satu model pengunjung. Pencahayaan tanaman dan bayangan kontak lembut tetap terlihat. Semua satwa, pengunjung dan ekonomi tetap disimulasikan. Pengurangan gerakan tetap mempertahankan gerak penting satwa; Jeda menghentikan dunia. Preferensi gerakan sistem juga dihormati.\n\nSenyapkan ambience suaka\n\nAmbience sungai dan burung bergaya, dibuat asli. Suara aktif setelah tindakanmu dan berhenti saat dijeda atau ditinggalkan. Mikrofon tidak digunakan.\n\nSuara dijeda bersama suaka.\n\nTerapkan pengaturan\n\nPengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.\n\nPengaturan tetap di perangkat ini; tidak perlu akun. Periksa status simpan permainan sebelum pergi.\n\nPrivasi dan progres lokal\n\nTidak ada akun atau permintaan data pribadi. Progres dan pilihan tersimpan di profil browser ini, tanpa sinkronisasi daring.\n\nMulai ulang menyimpan cadangan pemulihan lokal. Membersihkan data browser situs ini menghapus progres dan cadangan. Orang yang berbagi profil browser dapat mengakses suakamu.\n\nGame tidak memuat analytics atau font jarak jauh dan tidak mengunggah simpanan. Tautan jurnal meninggalkan game dan memakai integrasi situs jurnal yang terpisah.\n\nPilihan privasi situs\nTutup / abaikan perubahan",
+          "width": 1366
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "restore-main-after-faults-id",
+        "ui": {
+          "audioState": "muted",
+          "graphics": "low",
+          "height": 768,
+          "motion": false,
+          "muted": true,
+          "open": true,
+          "rect": {
+            "bottom": 752,
+            "height": 736,
+            "left": 395.3333435058594,
+            "right": 955.3333435058594,
+            "top": 16,
+            "width": 560,
+            "x": 395.3333435058594,
+            "y": 16
+          },
+          "text": "Buat dirimu nyaman\n\nPilih bahasa untuk suaka ini.\n\nBahasa\nEnglish\nBahasa Indonesia\n\nBahasamu tersedia untuk kunjungan ini, tetapi penyimpanan browser tidak tersedia.\n\nKenyamanan dan suara\n\nBahasa langsung tersimpan. Perubahan visual dan suara diterapkan hanya saat kamu menekan Terapkan.\n\nKualitas grafis\nOtomatis\nHemat daya\nTinggi\nKurangi gerakan dekoratif\n\nHemat daya membatasi resolusi, mematikan bayangan matahari dan kilau air, serta menampilkan satu model pengunjung. Pencahayaan tanaman dan bayangan kontak lembut tetap terlihat. Semua satwa, pengunjung dan ekonomi tetap disimulasikan. Pengurangan gerakan tetap mempertahankan gerak penting satwa; Jeda menghentikan dunia. Preferensi gerakan sistem juga dihormati.\n\nSenyapkan ambience suaka\n\nAmbience sungai dan burung bergaya, dibuat asli. Suara aktif setelah tindakanmu dan berhenti saat dijeda atau ditinggalkan. Mikrofon tidak digunakan.\n\nSuara senyap.\n\nTerapkan pengaturan\n\nPengaturan diterapkan selama kunjungan ini. Pilihan menu belum tersimpan; periksa status simpan permainan.\n\nPengaturan tetap di perangkat ini; tidak perlu akun. Periksa status simpan permainan sebelum pergi.\n\nPrivasi dan progres lokal\n\nTidak ada akun atau permintaan data pribadi. Progres dan pilihan tersimpan di profil browser ini, tanpa sinkronisasi daring.\n\nMulai ulang menyimpan cadangan pemulihan lokal. Membersihkan data browser situs ini menghapus progres dan cadangan. Orang yang berbagi profil browser dapat mengakses suakamu.\n\nGame tidak memuat analytics atau font jarak jauh dan tidak mengunggah simpanan. Tautan jurnal meninggalkan game dan memakai integrasi situs jurnal yang terpisah.\n\nPilihan privasi situs\nTutup / abaikan perubahan",
+          "width": 1366
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "fallback-help-en360",
+        "ui": {
+          "open": true,
+          "text": "One kind step at a time\n\nTry the first mission now: preview and confirm a habitat, connect the highlighted path tiles, then claim your reward. Cancel is always free.\n\nBuild a safe home\nPlace a habitat and connect it to the entrance with a path.\nCare for two macaws\nOffer food, water and a place to rest. Watch how they respond.\nWelcome visitors\nConnected paths will bring guests and ticket income.\nKeep the creek thriving\nFollow Missions through Q01–Q04 and claim each reward once. Pause safely, check save status, then use Continue and Resume when returning.\n\nUse Missions for the next action, Care for animal needs and Options for visual and sound settings. Pause stops the world. Continue loads paused; no offline progress is added.\n\nGame needs and welfare are simplified rules, not wildlife-care instructions. The journal’s Learn section explains this distinction while researched articles are being prepared.\n\nExplore Learn\nClose"
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "cold-continue-settings-open-en360",
+        "ui": {
+          "audioState": "muted",
+          "graphics": "auto",
+          "height": 780,
+          "motion": false,
+          "muted": true,
+          "open": true,
+          "rect": {
+            "bottom": 764,
+            "height": 748,
+            "left": 6.7291669845581055,
+            "right": 337.92710399627686,
+            "top": 16,
+            "width": 331.19793701171875,
+            "x": 6.7291669845581055,
+            "y": 16
+          },
+          "text": "Make yourself at home\n\nChoose the language for this sanctuary.\n\nLanguage\nEnglish\nBahasa Indonesia\n\nYour language is available for this visit, but browser storage is unavailable.\n\nComfort and sound\n\nLanguage saves immediately. Visual and sound changes apply only when you press Apply.\n\nGraphics quality\nAutomatic\nLow power\nHigh\nReduce decorative motion\n\nLow power caps resolution, turns off sun shadows and water glints, and shows one guest model. Lit plants and soft contact shade stay visible. All animals, guests and economy still simulate. Reduced motion keeps essential animal movement; Pause stops the world. Your system motion preference is also respected.\n\nMute sanctuary ambience\n\nOriginal stylized creek and bird ambience. Sound starts after your action and stops while paused or away. No microphone is used.\n\nSound muted.\n\nApply settings\n\nSettings stay on this device; no account is needed. Check game save status before leaving.\n\nPrivacy and local progress\n\nNo account or personal details are requested. Progress and preferences stay in this browser profile, with no cloud sync.\n\nRestart keeps a local recovery copy. Clearing this site’s browser data removes progress and backups. People sharing this browser profile may access your sanctuary.\n\nThe game loads no analytics or remote fonts and does not upload your save. Journal links leave the game and use the journal’s separate site integrations.\n\nSite privacy choices\nClose / discard edits",
+          "width": 360
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "audio-factory-unavailable-visible-en360",
+        "ui": {
+          "audioState": "unavailable",
+          "graphics": "auto",
+          "height": 780,
+          "motion": false,
+          "muted": false,
+          "open": true,
+          "rect": {
+            "bottom": 764,
+            "height": 748,
+            "left": 6.7291669845581055,
+            "right": 337.92710399627686,
+            "top": 16,
+            "width": 331.19793701171875,
+            "x": 6.7291669845581055,
+            "y": 16
+          },
+          "text": "Make yourself at home\n\nChoose the language for this sanctuary.\n\nLanguage\nEnglish\nBahasa Indonesia\n\nYour language is available for this visit, but browser storage is unavailable.\n\nComfort and sound\n\nLanguage saves immediately. Visual and sound changes apply only when you press Apply.\n\nGraphics quality\nAutomatic\nLow power\nHigh\nReduce decorative motion\n\nLow power caps resolution, turns off sun shadows and water glints, and shows one guest model. Lit plants and soft contact shade stay visible. All animals, guests and economy still simulate. Reduced motion keeps essential animal movement; Pause stops the world. Your system motion preference is also respected.\n\nMute sanctuary ambience\n\nOriginal stylized creek and bird ambience. Sound starts after your action and stops while paused or away. No microphone is used.\n\nSound could not start. Apply again to retry; the game remains playable.\n\nApply settings\n\nSettings applied for this visit. Menu preference could not be saved; check game save status.\n\nSettings stay on this device; no account is needed. Check game save status before leaving.\n\nPrivacy and local progress\n\nNo account or personal details are requested. Progress and preferences stay in this browser profile, with no cloud sync.\n\nRestart keeps a local recovery copy. Clearing this site’s browser data removes progress and backups. People sharing this browser profile may access your sanctuary.\n\nThe game loads no analytics or remote fonts and does not upload your save. Journal links leave the game and use the journal’s separate site integrations.\n\nSite privacy choices\nClose / discard edits",
+          "width": 360
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "audio-retry-auto-reduced-en360",
+        "ui": {
+          "audioState": "paused",
+          "graphics": "auto",
+          "height": 780,
+          "motion": true,
+          "muted": false,
+          "open": true,
+          "rect": {
+            "bottom": 764,
+            "height": 748,
+            "left": 6.7291669845581055,
+            "right": 337.92710399627686,
+            "top": 16,
+            "width": 331.19793701171875,
+            "x": 6.7291669845581055,
+            "y": 16
+          },
+          "text": "Make yourself at home\n\nChoose the language for this sanctuary.\n\nLanguage\nEnglish\nBahasa Indonesia\n\nYour language is available for this visit, but browser storage is unavailable.\n\nComfort and sound\n\nLanguage saves immediately. Visual and sound changes apply only when you press Apply.\n\nGraphics quality\nAutomatic\nLow power\nHigh\nReduce decorative motion\n\nLow power caps resolution, turns off sun shadows and water glints, and shows one guest model. Lit plants and soft contact shade stay visible. All animals, guests and economy still simulate. Reduced motion keeps essential animal movement; Pause stops the world. Your system motion preference is also respected.\n\nMute sanctuary ambience\n\nOriginal stylized creek and bird ambience. Sound starts after your action and stops while paused or away. No microphone is used.\n\nSound paused with the sanctuary.\n\nApply settings\n\nSettings applied for this visit. Menu preference could not be saved; check game save status.\n\nSettings stay on this device; no account is needed. Check game save status before leaving.\n\nPrivacy and local progress\n\nNo account or personal details are requested. Progress and preferences stay in this browser profile, with no cloud sync.\n\nRestart keeps a local recovery copy. Clearing this site’s browser data removes progress and backups. People sharing this browser profile may access your sanctuary.\n\nThe game loads no analytics or remote fonts and does not upload your save. Journal links leave the game and use the journal’s separate site integrations.\n\nSite privacy choices\nClose / discard edits",
+          "width": 360
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "forced-high-en360",
+        "ui": {
+          "audioState": "paused",
+          "graphics": "high",
+          "height": 780,
+          "motion": false,
+          "muted": false,
+          "open": true,
+          "rect": {
+            "bottom": 764,
+            "height": 748,
+            "left": 6.7291669845581055,
+            "right": 337.92710399627686,
+            "top": 16,
+            "width": 331.19793701171875,
+            "x": 6.7291669845581055,
+            "y": 16
+          },
+          "text": "Make yourself at home\n\nChoose the language for this sanctuary.\n\nLanguage\nEnglish\nBahasa Indonesia\n\nYour language is available for this visit, but browser storage is unavailable.\n\nComfort and sound\n\nLanguage saves immediately. Visual and sound changes apply only when you press Apply.\n\nGraphics quality\nAutomatic\nLow power\nHigh\nReduce decorative motion\n\nLow power caps resolution, turns off sun shadows and water glints, and shows one guest model. Lit plants and soft contact shade stay visible. All animals, guests and economy still simulate. Reduced motion keeps essential animal movement; Pause stops the world. Your system motion preference is also respected.\n\nMute sanctuary ambience\n\nOriginal stylized creek and bird ambience. Sound starts after your action and stops while paused or away. No microphone is used.\n\nSound paused with the sanctuary.\n\nApply settings\n\nSettings applied for this visit. Menu preference could not be saved; check game save status.\n\nSettings stay on this device; no account is needed. Check game save status before leaving.\n\nPrivacy and local progress\n\nNo account or personal details are requested. Progress and preferences stay in this browser profile, with no cloud sync.\n\nRestart keeps a local recovery copy. Clearing this site’s browser data removes progress and backups. People sharing this browser profile may access your sanctuary.\n\nThe game loads no analytics or remote fonts and does not upload your save. Journal links leave the game and use the journal’s separate site integrations.\n\nSite privacy choices\nClose / discard edits",
+          "width": 360
+        }
+      },
+      {
+        "source": "d47c979287c697664c505b0e725d3b20fd5d63a6",
+        "label": "restore-original-en360",
+        "ui": {
+          "audioState": "muted",
+          "graphics": "auto",
+          "height": 780,
+          "motion": false,
+          "muted": true,
+          "open": true,
+          "rect": {
+            "bottom": 764,
+            "height": 748,
+            "left": 6.7291669845581055,
+            "right": 337.92710399627686,
+            "top": 16,
+            "width": 331.19793701171875,
+            "x": 6.7291669845581055,
+            "y": 16
+          },
+          "text": "Make yourself at home\n\nChoose the language for this sanctuary.\n\nLanguage\nEnglish\nBahasa Indonesia\n\nYour language is available for this visit, but browser storage is unavailable.\n\nComfort and sound\n\nLanguage saves immediately. Visual and sound changes apply only when you press Apply.\n\nGraphics quality\nAutomatic\nLow power\nHigh\nReduce decorative motion\n\nLow power caps resolution, turns off sun shadows and water glints, and shows one guest model. Lit plants and soft contact shade stay visible. All animals, guests and economy still simulate. Reduced motion keeps essential animal movement; Pause stops the world. Your system motion preference is also respected.\n\nMute sanctuary ambience\n\nOriginal stylized creek and bird ambience. Sound starts after your action and stops while paused or away. No microphone is used.\n\nSound muted.\n\nApply settings\n\nSettings applied for this visit. Menu preference could not be saved; check game save status.\n\nSettings stay on this device; no account is needed. Check game save status before leaving.\n\nPrivacy and local progress\n\nNo account or personal details are requested. Progress and preferences stay in this browser profile, with no cloud sync.\n\nRestart keeps a local recovery copy. Clearing this site’s browser data removes progress and backups. People sharing this browser profile may access your sanctuary.\n\nThe game loads no analytics or remote fonts and does not upload your save. Journal links leave the game and use the journal’s separate site integrations.\n\nSite privacy choices\nClose / discard edits",
+          "width": 360
+        }
+      }
+    ],
+    "rawReceipts": [
+      {
+        "path": ".qa/zebra-audit/z5-04-browser-final.json",
+        "bytes": 1181879,
+        "sha256": "f708146514f82ad8908b558a8d608d0ad168beff1b6f69d2e760444b88b4f7d5"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-04-ui-final.json",
+        "bytes": 34725,
+        "sha256": "1464c9f3b1ffe959bf8a0e88111431b7f522876958926a64e7496bf1d0f8eff4"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-04-archives-final.json",
+        "bytes": 3262,
+        "sha256": "b7fc0b32d897c25a023d6a6899dd0151ed440076f2518fd70f50882448a03c1c"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-04-inert-discovery.json",
+        "bytes": 129,
+        "sha256": "e23cad737224f15557e963a0e286a9c25349b469060779a11af8c33bbeb207be"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-04-browser-r2.json",
+        "bytes": 1234542,
+        "sha256": "752de364ed8557ee5aae7f45009f02bbac0eff98f136d05807c7dac865d9f904"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-04-ui-r2.json",
+        "bytes": 39248,
+        "sha256": "6398a583f706d65cdace226a725509bf6e56874d81980b85c2b00e3dbb3106cb"
+      }
+    ]
+  },
+  "durability": [
+    {
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "version": 5,
+      "revision": 790,
+      "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+      "schema": 5,
+      "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
+      "backupSchema": 4
+    },
+    {
+      "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+      "version": 5,
+      "revision": 68,
+      "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+      "schema": 5,
+      "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
+      "backupSchema": 4
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "docs/qa/zebra/z5-04/cold-settings-id.jpg",
+      "bytes": 94891,
+      "sha256": "66d6c2d4bbe755d17f514641bf80c4697426c9b3a6d1971bbf814bbfe2e22465"
+    },
+    {
+      "path": "docs/qa/zebra/z5-04/low-reduced-zebra-id.jpg",
+      "bytes": 123200,
+      "sha256": "6f390aba92a96ffd590c9bdf63d7d68f540c6c7a098f41c947c057bace6c71ff"
+    },
+    {
+      "path": "docs/qa/zebra/z5-04/webgl-fallback-id.jpg",
+      "bytes": 67912,
+      "sha256": "f09f56fb413a1e64815f9551a80619f5ce6b7ffaa39d362f48f7c7467fb1cf7a"
+    },
+    {
+      "path": "docs/qa/zebra/z5-04/audio-unavailable-id.jpg",
+      "bytes": 105604,
+      "sha256": "6b8cf33635eaba72b729951a138d3a26331463f4005552f1d21f87afdefaddad"
+    },
+    {
+      "path": "docs/qa/zebra/z5-04/webgl-fallback-en360.jpg",
+      "bytes": 27967,
+      "sha256": "3a3ce0bc15600af8dc383e1dd4d61f4b558ea2af72b1dd038f9329fb563673e2"
+    },
+    {
+      "path": "docs/qa/zebra/z5-04/audio-unavailable-en360.jpg",
+      "bytes": 46841,
+      "sha256": "5d3998d5030be12677140cf9475c8d7c463515df66fa84792a746962668cbf1f"
+    }
+  ],
+  "resources": {
+    "at": "2026-11-09T20:31:12.000Z",
+    "activeOwnedBuildTestsServersBrowsers": 0,
+    "browser": {
+      "kind": "ChatGPT in-app browser",
+      "id": "3",
+      "ownTabs": [
+        "37",
+        "38"
+      ],
+      "closed": true,
+      "remainingTabs": 0,
+      "viewportReset": true,
+      "scope": "New tab opened symbolically as iab; current IAB3 documented. Initial binding assignment failed after opening37; existing own37 was claimed instead of opening a duplicate. No owner Chrome or Farm tabs used."
+    },
+    "server": {
+      "port": 52907,
+      "session": 2609,
+      "pid": 21848,
+      "exit": 0
+    },
+    "discoveryServer": {
+      "session": 16306,
+      "pid": 20556,
+      "exit": 0
+    },
+    "owners": 0,
+    "pendingCallbacks": 0,
+    "audioContexts": 0,
+    "audioNodes": 0,
+    "geometries": 0,
+    "textures": 0,
+    "programs": 0,
+    "ownedMaterials": 0,
+    "simulationSubscribers": 0,
+    "cleanupErrors": 0,
+    "completedSessions": {
+      "tests": 40360,
+      "types": 45928,
+      "build": 2409,
+      "check": 78799,
+      "allExit": 0
+    },
+    "farm": "Browser/heavy slot available; no new Zebra benchmark/build/soak until next coordinated slot"
+  },
+  "noPushOrDeploy": true
+}
