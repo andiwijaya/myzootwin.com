@@ -346,11 +346,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     renderStudio();
     if(next.status==='ready'&&guidedStart){guidedStart=false;if(!missionPanel.focusCare())onboardingPanel.focus();}
     if (previous !== next.status && next.status !== 'closed' && (root.dataset.guided!=='true'||failed) && !root.querySelector('dialog[open]')) {
-      // The close action can live in collapsed Options. After a retry, return
-      // keyboard users to the saved-world resume gate or the visible world.
-      const resume=root.querySelector<HTMLButtonElement>('[data-save-resume-button]');
-      const target=next.status==='ready'?(resume&&!resume.hidden&&resume.getClientRects().length?resume:host):failed?next.status==='error'&&next.reason==='load'?reload:retry:close;
-      target.focus({preventScroll:true});
+      (failed ? next.status === 'error' && next.reason === 'load' ? reload : retry : close).focus();
     }
   }
 
@@ -429,7 +425,16 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   root.querySelector<HTMLSelectElement>('[data-guide-language]')?.addEventListener('change',event=>{const value=(event.target as HTMLSelectElement).value;if(value!=='en'&&value!=='id')return;locale=value;render(state);root.dispatchEvent(new CustomEvent('entry-locale-request',{detail:value}));},{signal:events.signal});
   const mayOpen=()=>options.canOpen?.()!==false&&options.beforeOpen?.()!==false;
   open.addEventListener('click', () => { if(mayOpen())void controller.open(); }, { signal: events.signal });
-  retry.addEventListener('click', () => { if(mayOpen())void controller.open(); }, { signal: events.signal });
+  retry.addEventListener('click', () => {
+    if(!mayOpen())return;
+    void controller.open().then(()=>{
+      if(state.status!=='ready'||root.querySelector('dialog[open]'))return;
+      // Wait for ready and the pause gate's layout update. The world may still
+      // be inert, and the close action may be inside collapsed Options.
+      const targets=[root.querySelector<HTMLElement>('[data-save-resume-button]'),host,root.querySelector<HTMLElement>('[data-pause-toggle]')];
+      targets.find(target=>target&&!target.closest('[hidden],[inert]')&&target.getClientRects().length)?.focus({preventScroll:true});
+    });
+  }, { signal: events.signal });
   close.addEventListener('click', () => { controller.close(); open.focus(); }, { signal: events.signal });
   reload.addEventListener('click', () => window.location.reload(), { signal: events.signal });
   // Close GPU resources on navigation while keeping entry controls usable in BFCache.
