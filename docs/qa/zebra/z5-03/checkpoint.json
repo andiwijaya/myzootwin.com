@@ -1,22 +1,21 @@
 {
-  "status": "SAFE_FARM_SLOT_Z5_03_PICK270_UNRESOLVED",
-  "at": "2026-11-09T18:52:12.000Z",
-  "verified": 36,
+  "status": "VERIFIED_Z5_03_SAFE_FARM_SLOT",
+  "at": "2026-11-09T19:31:01.000Z",
+  "verified": 37,
   "total": 54,
-  "pendingUnit": "Z5-03",
-  "candidateSource": "99ba305caf6e3ad211980948268dbc09edc55b06",
-  "sourceFingerprint": "148fc99877b163c8ca919bb9199ab805a2a4980b2e41d648e6f6dfefc7535a65",
+  "candidateSource": "0e361e815a13c4b8475d613a5dabf2df96b6a271",
+  "sourceFingerprint": "7697ca88df18c91de9548b041821933d32a8bb47b65d5eaff50a81ad04f7932b",
   "build": {
-    "runId": "h1-03-zebra-camera1",
-    "lab": "f9a8802f95d72e5cc96d0f83997e06ac7d8f458002012c2bdf6b9c5efde2cb57",
-    "productEntry": ".qa/visual3d/h1-03-zebra-camera1/input/product.html"
+    "runId": "h1-03-zebra-camera3",
+    "lab": "dd723071bb8a87570d1bb71c62864c11a4741973ee8b6bc19a0d131e026129b2",
+    "productEntry": ".qa/visual3d/h1-03-zebra-camera3/input/product.html"
   },
   "qaResume": {
     "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
     "tick": 27849,
     "cash": 3581,
     "command": 143,
-    "revision": 746,
+    "revision": 757,
     "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
     "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
     "preferences": {
@@ -469,14 +468,14 @@
       }
     ],
     "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
-    "scope": "Fresh Z5-03 browser payload exact at tick27849/cash3581/command143. Stable revision746 observed; close revision747 inflight/unconfirmed, cold/archive still pending."
+    "scope": "Exact final browser payload, fully drained save, subsequent cold backend primary/V4 archive read without renderer."
   },
   "responsiveResume": {
     "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
     "tick": 13771,
     "cash": 3910,
     "command": 125,
-    "revision": 54,
+    "revision": 57,
     "generation": "zebra-build-synthetic",
     "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
     "preferences": {
@@ -825,52 +824,63 @@
       }
     ],
     "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
-    "scope": "Carried verified Z5-02 transaction checkpoint, not freshly observed by Z5-03"
+    "scope": "Exact final browser payload, fully drained save, subsequent cold backend primary/V4 archive read without renderer."
   },
   "resources": {
-    "at": "2026-11-09T18:52:12.000Z",
+    "at": "2026-11-09T19:31:01.000Z",
+    "activeOwnedBuildTestsServersBrowsers": 0,
+    "browser": {
+      "kind": "ChatGPT in-app browser",
+      "id": "3",
+      "ownTabs": [
+        "33",
+        "34",
+        "35"
+      ],
+      "closed": true,
+      "remainingTabs": 0,
+      "viewportReset": true
+    },
+    "server": {
+      "port": 52907,
+      "session": 27336,
+      "pid": 22236,
+      "exit": 0
+    },
+    "earlierServers": [
+      {
+        "session": 57771,
+        "exit": 0
+      },
+      {
+        "session": 52822,
+        "exit": 0
+      }
+    ],
     "owners": 0,
     "pendingCallbacks": 0,
     "geometries": 0,
     "textures": 0,
-    "programs": 0,
     "ownedMaterials": 0,
     "simulationSubscribers": 0,
-    "cleanupErrors": 0,
-    "browser": {
-      "kind": "ChatGPT in-app browser",
-      "id": "3",
-      "ownTab": "32",
-      "closed": true,
-      "viewportReset": true,
-      "remainingTabs": 0,
-      "scope": "Observed CUA close/reset/list, not a claim about other browser profiles"
-    },
-    "server": {
-      "port": 52907,
-      "session": 80609,
-      "pid": 8160,
-      "exit": 0
-    },
-    "activeOwnedBuildTestsServersBrowsers": 0,
-    "farm": "C06 exclusive browser/heavy slot available; no new Zebra server/build/benchmark/soak until explicit Farm release"
+    "rendererProgramCounters": [
+      0,
+      1
+    ],
+    "programScope": "One retained renderer program cache in auto-quality secondary; owned geometry/texture/material/actor/subscriber/callback counters zero. Bounded inherited cache behavior, not literal-zero program or heap-leak proof.",
+    "farm": "Browser/heavy slot available; no new Zebra build/benchmark/soak until next coordinated slot"
   },
-  "pending": [
-    "Investigate 270-degree projected-target/native-pick disagreement before accepting correct picking at every angle. Compare source projection/DOM-scroll timing, actual canvas bounds and native event coordinates; cause unconfirmed, no product fix made.",
-    "Complete 270 and315-degree native picks, keyboard zoom/pan/orbit/reset, representative portrait/landscape/wide browser cases and labelled untrusted pinch/held-cancel/late-release probes.",
-    "Cold-check durable V5 primary and original V4 archive after gestures. Last observed stable revision746; close-triggered revision747 was still inflight when tab closed, outcome unconfirmed. Payload exact throughout, no cold persistence PASS claimed.",
-    "Complete feature-specific verification before37/54; keep Z2-06 grant/publicV5 adoption and R7 release/performance gates separate."
-  ],
-  "next": "After explicit Farm C06 release, investigate270 picking mismatch, then finish remaining Z5-03 browser matrix and cold/archive verification. Reuse immutable h1-03-zebra-camera1 if compiled inputs unchanged. Only IAB, isolated UUID saves, no publish.",
+  "pending": [],
+  "next": "Z5-04 muted/autoplay/reduced-motion/quality/no-WebGL feedback after next coordinated browser slot. Reuse final paused QA saves; do not overwrite with historical pending checkpoint writers.",
   "open": [
     "Z2-06 proposed1700ZC grant budget/exactly-once/publicV5 adoption; public bootstrap still V4. Historical fixture prerequisites are validation-only; this unit accepts no grant",
-    "Z5-03 full gesture/pinch/orbit/five-habitat camera matrix and Z5-05 complete keyboard/focus audit remain separate",
     "Internal viewport/native mouse+keyboard and source touch-adapter tests; no physical-device/touch or presented FPS claim",
     "1920 DOM bounds/native controls verified; native host raster cropped/scaled. Historical browser area clip shows HUD width; no full1920 raster claim. Full-page experimental capture changed layout/inner scroll and safely cancelled unpaid preview",
     "R7 native10x render/control latency, true native background, full fifth-species matrix and15-minute active soak unresolved. Historical3346231 native1x191ticks/152callbacks/16.8ms dropped time is not a current-source benchmark",
     "Original Library materialization BLOCKED_WINDOWS_XATTR; complete official text reads retained historically",
-    "R7-08 explicit Zebra push/deploy authorization absent; no publish"
+    "R7-08 explicit Zebra push/deploy authorization absent; no publish",
+    "Z5-05 complete keyboard/focus/ARIA/help audit remains separate from camera shortcuts accepted here",
+    "Physical multi-touch/native touch capture and full posed fifth-species/performance/background/soak matrix remain open R7 scope; no physical-device or FPS claim"
   ],
-  "noPushOrDeploy": true,
-  "browserPartial": "docs/qa/zebra/z5-03/browser-partial.json"
+  "noPushOrDeploy": true
 }

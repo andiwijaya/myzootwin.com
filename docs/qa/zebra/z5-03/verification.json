@@ -1,0 +1,3320 @@
+{
+  "status": "PASS_Z5_03",
+  "at": "2026-11-09T19:31:01.000Z",
+  "verified": 37,
+  "total": 54,
+  "source": "0e361e815a13c4b8475d613a5dabf2df96b6a271",
+  "sourceFingerprint": "7697ca88df18c91de9548b041821933d32a8bb47b65d5eaff50a81ad04f7932b",
+  "productChange": "None. Reused original production camera/gesture/picker; repaired QA projection target stability and added passive native pointer evidence. Product assets, game, engine and saves unchanged.",
+  "tests": {
+    "uniquePassing": 26,
+    "focusEnvelopes": 160,
+    "sourceVisibleSafeTargets": 146,
+    "roundedScrollVariantPicks": 438,
+    "sourceCases": [
+      {
+        "case": "five-habitat-camera",
+        "width": 360,
+        "height": 780,
+        "focuses": 40,
+        "angles": 8,
+        "picks": 34,
+        "scope": "Actual world/meshes/source adapter; camera3.4height contract envelope, not full posed-mesh/native-device proof"
+      },
+      {
+        "case": "five-habitat-camera",
+        "width": 780,
+        "height": 360,
+        "focuses": 40,
+        "angles": 8,
+        "picks": 35,
+        "scope": "Actual world/meshes/source adapter; camera3.4height contract envelope, not full posed-mesh/native-device proof"
+      },
+      {
+        "case": "five-habitat-camera",
+        "width": 1366,
+        "height": 768,
+        "focuses": 40,
+        "angles": 8,
+        "picks": 38,
+        "scope": "Actual world/meshes/source adapter; camera3.4height contract envelope, not full posed-mesh/native-device proof"
+      },
+      {
+        "case": "five-habitat-camera",
+        "width": 1920,
+        "height": 1080,
+        "focuses": 40,
+        "angles": 8,
+        "picks": 39,
+        "scope": "Actual world/meshes/source adapter; camera3.4height contract envelope, not full posed-mesh/native-device proof"
+      }
+    ],
+    "types": "PASS strict noEmit/noUnused",
+    "astroCheck": "580 files;0 errors/warnings/hints",
+    "logs": [
+      {
+        "path": ".qa/zebra-audit/z5-03-safe-target-tests-r2.log",
+        "bytes": 4215,
+        "sha256": "d035f9c6d525516ad8fb013f457152bb52baad38248c94f53b50be58e2f90ed4"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-03-safe-target-types.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-03-safe-target-check.log",
+        "bytes": 216,
+        "sha256": "ae52ecabba7dc710b857605c244c2d770de83c42906c138f85095cf3fde6a0c6"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-03-safe-target-build.log",
+        "bytes": 2549,
+        "sha256": "b66de8b81a8319e801a039ad060917a626b1c3b8809016c7ca755998c7358f86"
+      }
+    ]
+  },
+  "build": {
+    "receipt": {
+      "path": ".qa/visual3d/h1-03-zebra-camera3/source.json",
+      "bytes": 107014,
+      "sha256": "e16a9638ab0be68fe313b89a1b9911231fb56949b9785c86223ead5032309fe7"
+    },
+    "lab": "dd723071bb8a87570d1bb71c62864c11a4741973ee8b6bc19a0d131e026129b2",
+    "production": "3d06b398bc877bc9886e8a0a46a1c68b7aee023b4d0af102f22f2091b01bfe2d",
+    "pages": 10,
+    "qaExclusion": "PASS including native pointer trace/synthetic probe markers"
+  },
+  "browser": {
+    "runner": "internal-browser",
+    "finalSourceRecords": 53,
+    "nativeVisibleTargetPicks": 11,
+    "angles": 8,
+    "viewports": [
+      [
+        1366,
+        768
+      ],
+      [
+        360,
+        780
+      ],
+      [
+        780,
+        360
+      ],
+      [
+        1920,
+        1080
+      ]
+    ],
+    "locales": [
+      "id",
+      "en"
+    ],
+    "cameraEnvelopes": "Actual paid footprint y0/3.4 inherited focusArea contract. Not full posed-mesh/occlusion proof.",
+    "physicalDevice": false,
+    "pinch": "EXPLICIT untrusted PointerEvents on original canvas listeners; native capture not established by synthetic IDs. Source adapter capture/cancel tests complement native mouse/keyboard/UI cancellation.",
+    "presentedFps": null,
+    "performance": "No benchmark/soak. Some QA inspector CDP clicks timed out after execution; fresh source-bound reports confirmed outcome before proceeding. Full-catalogue diagnostic projections are QA cost, not game FPS evidence.",
+    "console": "Actual captured warn/error logs empty in both final product sessions",
+    "cases": [
+      {
+        "label": "cold-main-final-source",
+        "at": "2026-11-09T19:19:11.016Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "0",
+          "panZ": "0",
+          "zoom": "1"
+        },
+        "selection": null,
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "macaw-aviary",
+          "elephant-grove",
+          "lion-savanna",
+          "giraffe-plains",
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "overview-final1366",
+        "at": "2026-11-09T19:19:29.501Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "0",
+          "panZ": "0",
+          "zoom": "1"
+        },
+        "selection": null,
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "macaw-aviary",
+          "elephant-grove",
+          "lion-savanna",
+          "giraffe-plains",
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "focus-macaw-final",
+        "at": "2026-11-09T19:19:37.702Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "-6.089398645437681",
+          "panZ": "-6.990769514670738",
+          "zoom": "3"
+        },
+        "selection": null,
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "macaw-aviary"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "focus-elephant-final",
+        "at": "2026-11-09T19:19:45.100Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "-5.089398645437681",
+          "panZ": "2.0092304853292617",
+          "zoom": "2.475"
+        },
+        "selection": null,
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "elephant-grove"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "focus-lion-final",
+        "at": "2026-11-09T19:19:52.171Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "-4.589398645437681",
+          "panZ": "7.879650903750183",
+          "zoom": "2.425"
+        },
+        "selection": null,
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "lion-savanna"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "focus-giraffe-final",
+        "at": "2026-11-09T19:19:58.410Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "5.410601354562319",
+          "panZ": "-6.490769514670738",
+          "zoom": "2.325"
+        },
+        "selection": null,
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "giraffe-plains"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "focus-angle0-final",
+        "at": "2026-11-09T19:20:15.107Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "6.7148734661249",
+          "panZ": "4.009230485329262",
+          "zoom": "2.2"
+        },
+        "selection": null,
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "pick-angle0-final",
+        "at": "2026-11-09T19:20:23.263Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "6.7148734661249",
+          "panZ": "4.009230485329262",
+          "zoom": "2.2"
+        },
+        "selection": "zebra-graze-127",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 574,
+          "y": 422,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "2.2",
+            "azimuth": "0",
+            "panX": "6.7148734661249",
+            "panZ": "4.009230485329262"
+          },
+          "selectedId": "zebra-graze-127"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "focus-angle45-final",
+        "at": "2026-11-09T19:20:32.765Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "45",
+          "panX": "6.6867365778728844",
+          "panZ": "3.089203997649409",
+          "zoom": "2.1"
+        },
+        "selection": "zebra-graze-127",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 574,
+          "y": 422,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "2.2",
+            "azimuth": "0",
+            "panX": "6.7148734661249",
+            "panZ": "4.009230485329262"
+          },
+          "selectedId": "zebra-graze-127"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "pick-angle45-final",
+        "at": "2026-11-09T19:20:43.899Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "45",
+          "panX": "6.6867365778728844",
+          "panZ": "3.089203997649409",
+          "zoom": "2.1"
+        },
+        "selection": "zebra-graze-127",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 505,
+          "y": 500,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "2.1",
+            "azimuth": "45",
+            "panX": "6.6867365778728844",
+            "panZ": "3.089203997649409"
+          },
+          "selectedId": "zebra-graze-127"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "focus-angle90-final",
+        "at": "2026-11-09T19:20:52.443Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "90",
+          "panX": "6.847202298387743",
+          "panZ": "2.116922878302061",
+          "zoom": "2.225"
+        },
+        "selection": "zebra-graze-127",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 505,
+          "y": 500,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "2.1",
+            "azimuth": "45",
+            "panX": "6.6867365778728844",
+            "panZ": "3.089203997649409"
+          },
+          "selectedId": "zebra-graze-127"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "pick-angle90-final",
+        "at": "2026-11-09T19:20:58.955Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "90",
+          "panX": "6.847202298387743",
+          "panZ": "2.116922878302061",
+          "zoom": "2.225"
+        },
+        "selection": "zebra-water-128",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 531,
+          "y": 434,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "2.225",
+            "azimuth": "90",
+            "panX": "6.847202298387743",
+            "panZ": "2.116922878302061"
+          },
+          "selectedId": "zebra-water-128"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "focus-angle135-final",
+        "at": "2026-11-09T19:21:06.730Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "135",
+          "panX": "5.374473396763775",
+          "panZ": "1.6619362205615982",
+          "zoom": "1.875"
+        },
+        "selection": "zebra-water-128",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 531,
+          "y": 434,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "2.225",
+            "azimuth": "90",
+            "panX": "6.847202298387743",
+            "panZ": "2.116922878302061"
+          },
+          "selectedId": "zebra-water-128"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "pick-angle135-final",
+        "at": "2026-11-09T19:21:13.579Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "135",
+          "panX": "5.374473396763775",
+          "panZ": "1.6619362205615982",
+          "zoom": "1.875"
+        },
+        "selection": "zebra-shade-129",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 383,
+          "y": 282,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "1.875",
+            "azimuth": "135",
+            "panX": "5.374473396763775",
+            "panZ": "1.6619362205615982"
+          },
+          "selectedId": "zebra-shade-129"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "focus-angle180-final",
+        "at": "2026-11-09T19:21:22.888Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "180",
+          "panX": "5.144447588003599",
+          "panZ": "1.99076903783358",
+          "zoom": "2.2"
+        },
+        "selection": "zebra-shade-129",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 383,
+          "y": 282,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "1.875",
+            "azimuth": "135",
+            "panX": "5.374473396763775",
+            "panZ": "1.6619362205615982"
+          },
+          "selectedId": "zebra-shade-129"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "pick-angle180-final",
+        "at": "2026-11-09T19:21:29.457Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "180",
+          "panX": "5.144447588003599",
+          "panZ": "1.99076903783358",
+          "zoom": "2.2"
+        },
+        "selection": "zebra-graze-127",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 243,
+          "y": 360,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "2.2",
+            "azimuth": "180",
+            "panX": "5.144447588003599",
+            "panZ": "1.99076903783358"
+          },
+          "selectedId": "zebra-graze-127"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "focus-angle225-final",
+        "at": "2026-11-09T19:21:36.820Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "225",
+          "panX": "4.689460930263137",
+          "panZ": "2.910795525513432",
+          "zoom": "1.975"
+        },
+        "selection": "zebra-graze-127",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 243,
+          "y": 360,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "2.2",
+            "azimuth": "180",
+            "panX": "5.144447588003599",
+            "panZ": "1.99076903783358"
+          },
+          "selectedId": "zebra-graze-127"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "pick-angle225-final",
+        "at": "2026-11-09T19:21:51.388Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "225",
+          "panX": "4.689460930263137",
+          "panZ": "2.910795525513432",
+          "zoom": "1.975"
+        },
+        "selection": "zebra-graze-127",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 317,
+          "y": 295,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "1.975",
+            "azimuth": "225",
+            "panX": "4.689460930263137",
+            "panZ": "2.910795525513432"
+          },
+          "selectedId": "zebra-graze-127"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "focus-angle270-final",
+        "at": "2026-11-09T19:22:01.382Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "270",
+          "panX": "5.018293747535118",
+          "panZ": "3.8830766448607807",
+          "zoom": "2.2"
+        },
+        "selection": "zebra-graze-127",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 317,
+          "y": 295,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "1.975",
+            "azimuth": "225",
+            "panX": "4.689460930263137",
+            "panZ": "2.910795525513432"
+          },
+          "selectedId": "zebra-graze-127"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "boundary270-native449-302-graze",
+        "at": "2026-11-09T19:22:18.487Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "270",
+          "panX": "5.018293747535118",
+          "panZ": "3.8830766448607807",
+          "zoom": "2.2"
+        },
+        "selection": "zebra-graze-127",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 449,
+          "y": 302,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "2.2",
+            "azimuth": "270",
+            "panX": "5.018293747535118",
+            "panZ": "3.8830766448607807"
+          },
+          "selectedId": "zebra-graze-127"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "boundary270-native449-303-shade",
+        "at": "2026-11-09T19:22:26.399Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "270",
+          "panX": "5.018293747535118",
+          "panZ": "3.8830766448607807",
+          "zoom": "2.2"
+        },
+        "selection": "zebra-shade-129",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 449,
+          "y": 303,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "2.2",
+            "azimuth": "270",
+            "panX": "5.018293747535118",
+            "panZ": "3.8830766448607807"
+          },
+          "selectedId": "zebra-shade-129"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "pick-angle270-final",
+        "at": "2026-11-09T19:22:33.387Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "270",
+          "panX": "5.018293747535118",
+          "panZ": "3.8830766448607807",
+          "zoom": "2.2"
+        },
+        "selection": "zebra-shade-129",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 501,
+          "y": 372,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "2.2",
+            "azimuth": "270",
+            "panX": "5.018293747535118",
+            "panZ": "3.8830766448607807"
+          },
+          "selectedId": "zebra-shade-129"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "focus-angle315-final",
+        "at": "2026-11-09T19:22:45.803Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "315",
+          "panX": "5.209498486450122",
+          "panZ": "4.338063302601243",
+          "zoom": "1.85"
+        },
+        "selection": "zebra-shade-129",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 501,
+          "y": 372,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "2.2",
+            "azimuth": "270",
+            "panX": "5.018293747535118",
+            "panZ": "3.8830766448607807"
+          },
+          "selectedId": "zebra-shade-129"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "pick-angle315-final",
+        "at": "2026-11-09T19:22:52.718Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "315",
+          "panX": "5.209498486450122",
+          "panZ": "4.338063302601243",
+          "zoom": "1.85"
+        },
+        "selection": "zebra-water-128",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 397,
+          "y": 286,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "1.85",
+            "azimuth": "315",
+            "panX": "5.209498486450122",
+            "panZ": "4.338063302601243"
+          },
+          "selectedId": "zebra-water-128"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "keyboard-final",
+        "at": "2026-11-09T19:23:11.322Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "-0.7890043771034179",
+          "panZ": "-2.278153902934147",
+          "zoom": "1.25"
+        },
+        "selection": "zebra-water-128",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 397,
+          "y": 286,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "1.85",
+            "azimuth": "315",
+            "panX": "5.209498486450122",
+            "panZ": "4.338063302601243"
+          },
+          "selectedId": "zebra-water-128"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "macaw-aviary",
+          "elephant-grove",
+          "giraffe-plains",
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "native-drag-final",
+        "at": "2026-11-09T19:23:24.836Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "-2.097879729087536",
+          "panZ": "-2.169157331864804",
+          "zoom": "1.25"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 470,
+          "y": 410,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 72.22917175292969,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "1.25",
+            "azimuth": "0",
+            "panX": "-2.097879729087536",
+            "panZ": "-2.169157331864804"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "macaw-aviary",
+          "elephant-grove",
+          "lion-savanna",
+          "giraffe-plains",
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "synthetic-pinch-main-final",
+        "at": "2026-11-09T19:23:39.117Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "-0.5649509027014473",
+          "panZ": "0.45632602768563535",
+          "zoom": "1.8571428571428572"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 472.6250104904175,
+          "y": 706.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "1.8571428571428572",
+            "azimuth": "0",
+            "panX": "-0.5649509027014473",
+            "panZ": "0.45632602768563535"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "elephant-grove",
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "synthetic-hold-main-final",
+        "at": "2026-11-09T19:23:48.321Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "-0.5649509027014473",
+          "panZ": "0.45632602768563535",
+          "zoom": "1.8571428571428572"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerdown",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 442.6250104904175,
+          "y": 698.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "1.8571428571428572",
+            "azimuth": "0",
+            "panX": "-0.5649509027014473",
+            "panZ": "0.45632602768563535"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "elephant-grove",
+          "zebra-grasslands"
+        ],
+        "pointers": 2,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "native-options-cancel-main-final",
+        "at": "2026-11-09T19:24:04.633Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "-0.5649509027014473",
+          "panZ": "0.45632602768563535",
+          "zoom": "1.8571428571428572"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerdown",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 442.6250104904175,
+          "y": 698.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "1.8571428571428572",
+            "azimuth": "0",
+            "panX": "-0.5649509027014473",
+            "panZ": "0.45632602768563535"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "elephant-grove",
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "late-release-main-final",
+        "at": "2026-11-09T19:24:14.677Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "-0.5649509027014473",
+          "panZ": "0.45632602768563535",
+          "zoom": "1.8571428571428572"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 442.6250104904175,
+          "y": 698.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "1.8571428571428572",
+            "azimuth": "0",
+            "panX": "-0.5649509027014473",
+            "panZ": "0.45632602768563535"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "elephant-grove",
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "overview360-final",
+        "at": "2026-11-09T19:24:30.650Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 360,
+          "height": 780,
+          "documentWidth": 345
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "0",
+          "panZ": "0",
+          "zoom": "1"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 442.6250104904175,
+          "y": 698.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "1.8571428571428572",
+            "azimuth": "0",
+            "panX": "-0.5649509027014473",
+            "panZ": "0.45632602768563535"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "macaw-aviary",
+          "elephant-grove",
+          "lion-savanna",
+          "giraffe-plains",
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "focus360-final",
+        "at": "2026-11-09T19:24:42.196Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 360,
+          "height": 780,
+          "documentWidth": 345
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "6.448410233342167",
+          "panZ": "4.009230485329262",
+          "zoom": "2.1"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 442.6250104904175,
+          "y": 698.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "1.8571428571428572",
+            "azimuth": "0",
+            "panX": "-0.5649509027014473",
+            "panZ": "0.45632602768563535"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "pick360-final",
+        "at": "2026-11-09T19:24:51.357Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 360,
+          "height": 780,
+          "documentWidth": 345
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "6.448410233342167",
+          "panZ": "4.009230485329262",
+          "zoom": "2.1"
+        },
+        "selection": "zebra-graze-127",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 241,
+          "y": 227,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 92.3125,
+            "width": 324.1458435058594,
+            "height": 242.25
+          },
+          "camera": {
+            "zoom": "2.1",
+            "azimuth": "0",
+            "panX": "6.448410233342167",
+            "panZ": "4.009230485329262"
+          },
+          "selectedId": "zebra-graze-127"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "overview780-final",
+        "at": "2026-11-09T19:25:05.003Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 780,
+          "height": 360,
+          "documentWidth": 765
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "0",
+          "panZ": "0",
+          "zoom": "1"
+        },
+        "selection": "zebra-graze-127",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 241,
+          "y": 227,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 92.3125,
+            "width": 324.1458435058594,
+            "height": 242.25
+          },
+          "camera": {
+            "zoom": "2.1",
+            "azimuth": "0",
+            "panX": "6.448410233342167",
+            "panZ": "4.009230485329262"
+          },
+          "selectedId": "zebra-graze-127"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "macaw-aviary",
+          "elephant-grove",
+          "lion-savanna",
+          "giraffe-plains",
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "focus780-final",
+        "at": "2026-11-09T19:25:15.322Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 780,
+          "height": 360,
+          "documentWidth": 765
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "5.375051295653969",
+          "panZ": "4.009230485329262",
+          "zoom": "1.775"
+        },
+        "selection": "zebra-graze-127",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 241,
+          "y": 227,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 92.3125,
+            "width": 324.1458435058594,
+            "height": 242.25
+          },
+          "camera": {
+            "zoom": "2.1",
+            "azimuth": "0",
+            "panX": "6.448410233342167",
+            "panZ": "4.009230485329262"
+          },
+          "selectedId": "zebra-graze-127"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "pick780-final",
+        "at": "2026-11-09T19:25:22.918Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 780,
+          "height": 360,
+          "documentWidth": 765
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "5.375051295653969",
+          "panZ": "4.009230485329262",
+          "zoom": "1.775"
+        },
+        "selection": "zebra-graze-127",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 316,
+          "y": 206,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 69.48958587646484,
+            "width": 443.125,
+            "height": 233.1979217529297
+          },
+          "camera": {
+            "zoom": "1.775",
+            "azimuth": "0",
+            "panX": "5.375051295653969",
+            "panZ": "4.009230485329262"
+          },
+          "selectedId": "zebra-graze-127"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "overview1920-final",
+        "at": "2026-11-09T19:25:31.934Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1920,
+          "height": 1080,
+          "documentWidth": 1905
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "0",
+          "panZ": "0",
+          "zoom": "1"
+        },
+        "selection": "zebra-graze-127",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 316,
+          "y": 206,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 69.48958587646484,
+            "width": 443.125,
+            "height": 233.1979217529297
+          },
+          "camera": {
+            "zoom": "1.775",
+            "azimuth": "0",
+            "panX": "5.375051295653969",
+            "panZ": "4.009230485329262"
+          },
+          "selectedId": "zebra-graze-127"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "macaw-aviary",
+          "elephant-grove",
+          "lion-savanna",
+          "giraffe-plains",
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "focus1920-final",
+        "at": "2026-11-09T19:25:40.311Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1920,
+          "height": 1080,
+          "documentWidth": 1905
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "6.910601354562319",
+          "panZ": "4.009230485329262",
+          "zoom": "2.55"
+        },
+        "selection": "zebra-graze-127",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 316,
+          "y": 206,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 69.48958587646484,
+            "width": 443.125,
+            "height": 233.1979217529297
+          },
+          "camera": {
+            "zoom": "1.775",
+            "azimuth": "0",
+            "panX": "5.375051295653969",
+            "panZ": "4.009230485329262"
+          },
+          "selectedId": "zebra-graze-127"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "pick1920-final",
+        "at": "2026-11-09T19:25:50.905Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1920,
+          "height": 1080,
+          "documentWidth": 1905
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "6.910601354562319",
+          "panZ": "4.009230485329262",
+          "zoom": "2.55"
+        },
+        "selection": "zebra-graze-126",
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 537,
+          "y": 434,
+          "rect": {
+            "left": 157,
+            "top": 72.63542175292969,
+            "width": 951.0416870117188,
+            "height": 950.1979370117188
+          },
+          "camera": {
+            "zoom": "2.55",
+            "azimuth": "0",
+            "panX": "6.910601354562319",
+            "panZ": "4.009230485329262"
+          },
+          "selectedId": "zebra-graze-126"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "main-disposed-final",
+        "at": "2026-11-09T19:26:10.595Z",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "tick": 27849,
+        "cash": 3581,
+        "command": 143,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {},
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": true,
+          "pointerType": "mouse",
+          "id": 1,
+          "x": 537,
+          "y": 434,
+          "rect": {
+            "left": 157,
+            "top": 72.63542175292969,
+            "width": 951.0416870117188,
+            "height": 950.1979370117188
+          },
+          "camera": {
+            "zoom": "2.55",
+            "azimuth": "0",
+            "panX": "6.910601354562319",
+            "panZ": "4.009230485329262"
+          },
+          "selectedId": "zebra-graze-126"
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 1,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [],
+        "owners": 0,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "secondary-cold-final",
+        "at": "2026-11-09T19:26:46.718Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "command": 125,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "0",
+          "panZ": "0",
+          "zoom": "1"
+        },
+        "selection": null,
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-graze",
+          "cell": null,
+          "revision": 0,
+          "command": 0,
+          "reason": "ready",
+          "failure": null,
+          "price": 90
+        },
+        "insideEnvelopes": [
+          "macaw-aviary",
+          "elephant-grove",
+          "lion-savanna",
+          "giraffe-plains",
+          "zebra-grasslands"
+        ],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "secondary-preview-ready",
+        "at": "2026-11-09T19:27:17.619Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "command": 125,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "7.38636081273739",
+          "panZ": "7.509230485329262",
+          "zoom": "2.5"
+        },
+        "selection": null,
+        "preview": {
+          "active": true,
+          "pending": false,
+          "kind": "zebra-enrichment",
+          "cell": {
+            "x": 20,
+            "z": 19
+          },
+          "revision": 1,
+          "command": 125,
+          "reason": "busy",
+          "failure": null,
+          "price": 65
+        },
+        "insideEnvelopes": [],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "secondary-preview-pinch",
+        "at": "2026-11-09T19:27:25.627Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "command": 125,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "7.1027883597558645",
+          "panZ": "7.3231468055234545",
+          "zoom": "3"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 472.6250104904175,
+          "y": 706.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "3",
+            "azimuth": "0",
+            "panX": "7.1027883597558645",
+            "panZ": "7.3231468055234545"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": true,
+          "pending": false,
+          "kind": "zebra-enrichment",
+          "cell": {
+            "x": 20,
+            "z": 19
+          },
+          "revision": 1,
+          "command": 125,
+          "reason": "busy",
+          "failure": null,
+          "price": 65
+        },
+        "insideEnvelopes": [],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "secondary-preview-moved",
+        "at": "2026-11-09T19:28:11.571Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "command": 125,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "7.1027883597558645",
+          "panZ": "7.3231468055234545",
+          "zoom": "3"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 472.6250104904175,
+          "y": 706.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "3",
+            "azimuth": "0",
+            "panX": "7.1027883597558645",
+            "panZ": "7.3231468055234545"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": true,
+          "pending": false,
+          "kind": "zebra-enrichment",
+          "cell": {
+            "x": 20,
+            "z": 18
+          },
+          "revision": 2,
+          "command": 125,
+          "reason": "busy",
+          "failure": null,
+          "price": 65
+        },
+        "insideEnvelopes": [],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "secondary-preview-routes-checked",
+        "at": "2026-11-09T19:28:39.401Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "command": 125,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "7.1027883597558645",
+          "panZ": "7.3231468055234545",
+          "zoom": "3"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 472.6250104904175,
+          "y": 706.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "3",
+            "azimuth": "0",
+            "panX": "7.1027883597558645",
+            "panZ": "7.3231468055234545"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": true,
+          "pending": false,
+          "kind": "zebra-enrichment",
+          "cell": {
+            "x": 18,
+            "z": 17
+          },
+          "revision": 5,
+          "command": 125,
+          "reason": "busy",
+          "failure": null,
+          "price": 65
+        },
+        "insideEnvelopes": [],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "secondary-preview-ready-cell18-16",
+        "at": "2026-11-09T19:28:58.204Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "command": 125,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "7.1027883597558645",
+          "panZ": "7.3231468055234545",
+          "zoom": "3"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 472.6250104904175,
+          "y": 706.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "3",
+            "azimuth": "0",
+            "panX": "7.1027883597558645",
+            "panZ": "7.3231468055234545"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": true,
+          "pending": false,
+          "kind": "zebra-enrichment",
+          "cell": {
+            "x": 18,
+            "z": 16
+          },
+          "revision": 6,
+          "command": 125,
+          "reason": "ready",
+          "failure": null,
+          "price": 65
+        },
+        "insideEnvelopes": [],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "secondary-ready-pinch-final",
+        "at": "2026-11-09T19:29:11.694Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "command": 125,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "6.89257700128535",
+          "panZ": "7.137064396442009",
+          "zoom": "3"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 472.6250104904175,
+          "y": 706.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "3",
+            "azimuth": "0",
+            "panX": "6.89257700128535",
+            "panZ": "7.137064396442009"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": true,
+          "pending": false,
+          "kind": "zebra-enrichment",
+          "cell": {
+            "x": 18,
+            "z": 16
+          },
+          "revision": 6,
+          "command": 125,
+          "reason": "ready",
+          "failure": null,
+          "price": 65
+        },
+        "insideEnvelopes": [],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "secondary-ready-hold-final",
+        "at": "2026-11-09T19:29:20.543Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "command": 125,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "6.89257700128535",
+          "panZ": "7.137064396442009",
+          "zoom": "3"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerdown",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 442.6250104904175,
+          "y": 698.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "3",
+            "azimuth": "0",
+            "panX": "6.89257700128535",
+            "panZ": "7.137064396442009"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": true,
+          "pending": false,
+          "kind": "zebra-enrichment",
+          "cell": {
+            "x": 18,
+            "z": 16
+          },
+          "revision": 6,
+          "command": 125,
+          "reason": "ready",
+          "failure": null,
+          "price": 65
+        },
+        "insideEnvelopes": [],
+        "pointers": 2,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "secondary-native-options-cancel-final",
+        "at": "2026-11-09T19:29:27.596Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "command": 125,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "6.89257700128535",
+          "panZ": "7.137064396442009",
+          "zoom": "3"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerdown",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 442.6250104904175,
+          "y": 698.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "3",
+            "azimuth": "0",
+            "panX": "6.89257700128535",
+            "panZ": "7.137064396442009"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-enrichment",
+          "cell": null,
+          "revision": 7,
+          "command": 125,
+          "reason": "ready",
+          "failure": null,
+          "price": 65
+        },
+        "insideEnvelopes": [],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "secondary-late-release-final",
+        "at": "2026-11-09T19:29:37.210Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "command": 125,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "6.89257700128535",
+          "panZ": "7.137064396442009",
+          "zoom": "3"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 442.6250104904175,
+          "y": 698.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "3",
+            "azimuth": "0",
+            "panX": "6.89257700128535",
+            "panZ": "7.137064396442009"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-enrichment",
+          "cell": null,
+          "revision": 7,
+          "command": 125,
+          "reason": "ready",
+          "failure": null,
+          "price": 65
+        },
+        "insideEnvelopes": [],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "secondary-ready-before-escape",
+        "at": "2026-11-09T19:29:54.800Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "command": 125,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "7.38636081273739",
+          "panZ": "7.509230485329262",
+          "zoom": "2.5"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 442.6250104904175,
+          "y": 698.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "3",
+            "azimuth": "0",
+            "panX": "6.89257700128535",
+            "panZ": "7.137064396442009"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": true,
+          "pending": false,
+          "kind": "zebra-enrichment",
+          "cell": {
+            "x": 18,
+            "z": 16
+          },
+          "revision": 13,
+          "command": 125,
+          "reason": "ready",
+          "failure": null,
+          "price": 65
+        },
+        "insideEnvelopes": [],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "secondary-escape-final",
+        "at": "2026-11-09T19:30:03.653Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "command": 125,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {
+          "azimuth": "0",
+          "panX": "7.38636081273739",
+          "panZ": "7.509230485329262",
+          "zoom": "2.5"
+        },
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 442.6250104904175,
+          "y": 698.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "3",
+            "azimuth": "0",
+            "panX": "6.89257700128535",
+            "panZ": "7.137064396442009"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-enrichment",
+          "cell": null,
+          "revision": 14,
+          "command": 125,
+          "reason": "ready",
+          "failure": null,
+          "price": 65
+        },
+        "insideEnvelopes": [],
+        "pointers": 0,
+        "owners": 1,
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "secondary-disposed-final",
+        "at": "2026-11-09T19:30:26.673Z",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+        "gameplayHash": "3e4355016fd5cf2afc5693d645a5c37ea0af456a3e45dfdf7e8743c338c9257f",
+        "tick": 13771,
+        "cash": 3910,
+        "command": 125,
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "camera": {},
+        "selection": null,
+        "nativePointer": {
+          "type": "pointerup",
+          "trusted": false,
+          "pointerType": "touch",
+          "id": 900002,
+          "x": 442.6250104904175,
+          "y": 698.6614685058594,
+          "rect": {
+            "left": 10.260416984558105,
+            "top": 379.5625,
+            "width": 794.7291870117188,
+            "height": 638.1979370117188
+          },
+          "camera": {
+            "zoom": "3",
+            "azimuth": "0",
+            "panX": "6.89257700128535",
+            "panZ": "7.137064396442009"
+          },
+          "selectedId": null
+        },
+        "preview": {
+          "active": false,
+          "pending": false,
+          "kind": "zebra-enrichment",
+          "cell": null,
+          "revision": 15,
+          "command": 125,
+          "reason": "ready",
+          "failure": null,
+          "price": 65
+        },
+        "insideEnvelopes": [],
+        "owners": 0,
+        "errors": [],
+        "failures": []
+      }
+    ]
+  },
+  "discovery": {
+    "originalSource": "99ba305",
+    "traceSource": "ac44de3",
+    "requested": {
+      "x": 449.3231683599065,
+      "y": 302.6239710195863
+    },
+    "native": {
+      "x": 449,
+      "y": 303,
+      "trusted": true
+    },
+    "cause": "QA fractional projected target lies on graze/shade occlusion edge; actual native input rounds onto frontmost shade triangle. Native449,302 selects graze127 and449,303 selects shade129 at identical camera/bounds. Production picker requires no fix.",
+    "resolution": "QA nativeSafe target rejects25-sample1CSSpx neighbourhood with mixed identities; exact source projection mode retained for historical fractional tests. Stable native target identity matches at all8angles.",
+    "scope": "No guarantee every facility is fully visible behind another object; no click-through occluder requirement.",
+    "rawReceipts": [
+      {
+        "path": ".qa/zebra-audit/z5-03-browser-raw.json",
+        "bytes": 917651,
+        "sha256": "81795dfacacf4c8eafb4eefddabb169c8b3b73a4d784001eb0b71e3d67bd83e4"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-03-actions.json",
+        "bytes": 3709,
+        "sha256": "8c8ef363c355e9da6b912f75dda6fd95592bd913fa9c5fd4e177aeda57c4c6ae"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-03-browser-r2.json",
+        "bytes": 274194,
+        "sha256": "81a20778c02b0afee5186d9f55cb17f20d84df274529b8f5d7221e866af746f8"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-03-browser-r3.json",
+        "bytes": 2517987,
+        "sha256": "b60e223dc8e9062ed5734a725a0b761e6f52720f2030d1eaf07b4c486def3718"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-03-actions-r3.json",
+        "bytes": 7761,
+        "sha256": "c32b4dd2ecc095fe82f23198dd34ef00d81b99b2d15dfaf2c55bf864580e2826"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-03-archives-r3.json",
+        "bytes": 3280,
+        "sha256": "85d5a68cdf2ebce69b8740fe8dcf36aa223600cb463fdc8baeb722298f1c1980"
+      }
+    ],
+    "initialFailedKernel": "Initial8-corner2px filter failed6/26 source cases;25-sample1px mode plus separate fractional projection resolves final26/26. Failed log retained under .qa, not accepted."
+  },
+  "durability": [
+    {
+      "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+      "version": 5,
+      "revision": 757,
+      "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+      "schema": 5,
+      "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
+      "backupSchema": 4
+    },
+    {
+      "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+      "version": 5,
+      "revision": 57,
+      "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+      "schema": 5,
+      "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
+      "backupSchema": 4
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "docs/qa/zebra/z5-03/final-angle270-id.jpg",
+      "bytes": 135540,
+      "sha256": "21a2987be284d5eb54e27e8bd4524040b55cde72d5aaa0b1b7fbe66bc06a408c"
+    },
+    {
+      "path": "docs/qa/zebra/z5-03/final-portrait-id.jpg",
+      "bytes": 47069,
+      "sha256": "3cfa55897da58b8ee03e5569cbb78fb532f3f620c4d9e174ea36ca71b19a9439"
+    },
+    {
+      "path": "docs/qa/zebra/z5-03/final-unpaid-preview-en.jpg",
+      "bytes": 121088,
+      "sha256": "457e5d6c304da5df2e001a7a399078b05f3c74b0f9738a1bcdfc96606a59c557"
+    }
+  ],
+  "resources": {
+    "at": "2026-11-09T19:31:01.000Z",
+    "activeOwnedBuildTestsServersBrowsers": 0,
+    "browser": {
+      "kind": "ChatGPT in-app browser",
+      "id": "3",
+      "ownTabs": [
+        "33",
+        "34",
+        "35"
+      ],
+      "closed": true,
+      "remainingTabs": 0,
+      "viewportReset": true
+    },
+    "server": {
+      "port": 52907,
+      "session": 27336,
+      "pid": 22236,
+      "exit": 0
+    },
+    "earlierServers": [
+      {
+        "session": 57771,
+        "exit": 0
+      },
+      {
+        "session": 52822,
+        "exit": 0
+      }
+    ],
+    "owners": 0,
+    "pendingCallbacks": 0,
+    "geometries": 0,
+    "textures": 0,
+    "ownedMaterials": 0,
+    "simulationSubscribers": 0,
+    "rendererProgramCounters": [
+      0,
+      1
+    ],
+    "programScope": "One retained renderer program cache in auto-quality secondary; owned geometry/texture/material/actor/subscriber/callback counters zero. Bounded inherited cache behavior, not literal-zero program or heap-leak proof.",
+    "farm": "Browser/heavy slot available; no new Zebra build/benchmark/soak until next coordinated slot"
+  },
+  "noPushOrDeploy": true
+}
