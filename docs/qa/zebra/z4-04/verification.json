@@ -1,0 +1,122 @@
+{
+  "status": "PASS_Z4_04_FIVE_HABITAT_VISITORS",
+  "verifiedProgress": 31,
+  "total": 54,
+  "source": "b5aa901810e616b3ab3d64c62ba69e0bda8fb227",
+  "sourceFingerprint": "fc0e43717530b510c076bd0f8de510b1c320a36ae3dbd89b83cd3d0b2e17fcc2",
+  "build": {
+    "receipt": ".qa/visual3d/h1-03-zebra-visitors-b5aa901/source.json",
+    "lab": "1e83461a7624dce02d4547677fd318e5af376c107e05b53e1725bd52361010c7",
+    "production": "84457345f95fa1114b8bcb6ac2f5117b21a36febebeeab577afa2364b25bfc01",
+    "productionExclusion": {
+      "status": "PASS",
+      "markers": [
+        "myzootwin-visual3d-",
+        "Asset Lab internal",
+        "__VIS3D_SOURCE__",
+        "scripts/qa/visual3d",
+        "visual3d-frozen-v4",
+        "__qaVisual3dTag",
+        "QA-only constructor side-table",
+        "Step cosmetic Studio100ms",
+        "matrix-result"
+      ],
+      "files": 31
+    }
+  },
+  "tests": 29,
+  "browserCases": 22,
+  "sourceFlow": {
+    "ticks": 5206,
+    "completed": 10,
+    "paid": 10,
+    "income": 100,
+    "rounds": 2,
+    "habitats": 5,
+    "oldRewardAndGrantProofs": "EXACT"
+  },
+  "actualBrowser": {
+    "timing": {
+      "totalTicks": 664,
+      "explicitSourceTicks": 641,
+      "nativeTicks": 23,
+      "nativeCallbacks": 18,
+      "nativeSpeed": 1,
+      "nativeDroppedWallMs": 6050.499999999993,
+      "nativeDroppedSimMs": 6050.499999999993,
+      "presentedFps": null,
+      "physicalDevice": false,
+      "scope": "640 explicit source ticks at10x before cold restart,23 actual native1x ticks during viewing,one final source tick at1x. Not a performance benchmark or soak. Callback cadence is not presented FPS. Cause of dropped time unassigned; OPEN_R7."
+    },
+    "entryTick": 23386,
+    "ticket": 10,
+    "feedback": {
+      "visitorId": "arrival-55",
+      "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
+      "tick": 23743,
+      "outcome": "comfortable",
+      "reason": "none",
+      "score": 67,
+      "observedWelfare": 67,
+      "samples": 30,
+      "occupiedSamples": 30,
+      "welfareHundredths": 200600
+    },
+    "coldMidview": "e7b65160006b2ec14955db8f9fb7d90c01e3d55863b9856de490e557e9daeb3b",
+    "final": "5d140b57cc8a52bd1a81d62c5b2e0505061086dde47d60e3c736fa90a0b4e2f9",
+    "revision": 596,
+    "backupV4": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
+    "command": 142,
+    "cash": 3581
+  },
+  "cleanup": {
+    "tabs": "Own Z4-04 tabs28,29,30,31 CLOSED",
+    "server": "Own pid28236/session74216/52907 STOPPED via stdin; exit0",
+    "rendererOwners": 0,
+    "callbacks": 0,
+    "ownedResources": 0,
+    "viewport": "RESET",
+    "soakOrBenchmark": "NONE",
+    "farm": "Exclusive10-15minute slot available; do not start Zebra browser/build/soak until released"
+  },
+  "open": [
+    "Z2-06 proposed1700grant affordability/exactly-once/defaultV5 adoption",
+    "Z4-05 four authoritative Zebra quests",
+    "Z5 and HP6 full UX/homepage work; fullR7 regression/visual matrix/native active soak/performance",
+    "Original Library Windows materialization blocked byos.setxattr; official full reads used without bypass",
+    "R7-08 Zebra push/deploy not authorized; none performed"
+  ],
+  "next": "After Farm release and only before10:00UTC/17:00WIB: Z4-05. Stop all coding/build/testing/server/browser by deadline and wait for new instructions.",
+  "artifacts": [
+    {
+      "path": "docs/qa/zebra/z4-04/design.md",
+      "bytes": 4042,
+      "sha256": "9f193e9a829f0184a43e324dfbc716589d69181be7c0e1b9d216d50626b824ad"
+    },
+    {
+      "path": "docs/qa/zebra/z4-04/tests.json",
+      "bytes": 13614,
+      "sha256": "4adc3bab1c5aa784a8afbde7a6d264246ca1fea52ed4e5c1fde99e9c33fd51aa"
+    },
+    {
+      "path": "docs/qa/zebra/z4-04/browser.json",
+      "bytes": 628313,
+      "sha256": "bca5b4e1ea4400804451b6810925fc73a8a75817fb76aad608c413bf41027203"
+    },
+    {
+      "path": "docs/qa/zebra/z4-04/desktop-id.png",
+      "bytes": 159862,
+      "sha256": "c2daf56c75f3e52cfc927824b3d6bf208183dd8adbe9b4e8190a3a0b0f81065c"
+    },
+    {
+      "path": "docs/qa/zebra/z4-04/portrait-en.png",
+      "bytes": 49087,
+      "sha256": "bd06fbead2fcf7ed5e6fb7cac68e322b2b6c13e85bbd952b04d6a6d20dab49cc"
+    },
+    {
+      "path": "docs/qa/zebra/z4-04/landscape-id.png",
+      "bytes": 45292,
+      "sha256": "2b7da2510289556a681c9a013fe3df5b4798a0d91fc41fa4d8b198a5f8a15dde"
+    }
+  ]
+}

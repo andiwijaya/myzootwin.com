@@ -1,0 +1,488 @@
+{
+  "status": "PASS",
+  "uniquePassing": 29,
+  "deduplication": "23 existing elephant/visitor-satisfaction/baseline regressions plus six new Zebra cases. The final six-case pack repeats and strengthens Zebra receipt capture at actual completed views, independent of later journal retirement.",
+  "source": "b5aa901810e616b3ab3d64c62ba69e0bda8fb227",
+  "strictTypes": "PASS",
+  "astroCheck": "552 files;0 errors/warnings/hints",
+  "logs": [
+    {
+      "path": ".qa/zebra-audit/z4-04-tests-first.log",
+      "bytes": 5554,
+      "sha256": "435f59fec9dcce89ec38a330cbebd5d7956efd6b45e3731f8f0063c3ad32c633"
+    },
+    {
+      "path": ".qa/zebra-audit/z4-04-tests-final.log",
+      "bytes": 7615,
+      "sha256": "7573950cde9d4b216668998a02dd79c3e4ff1a2127fdb13109e50a0d6d3233a5"
+    },
+    {
+      "path": ".qa/zebra-audit/z4-04-types.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".qa/zebra-audit/z4-04-check-final.log",
+      "bytes": 216,
+      "sha256": "0b005d61e04521cdc69ba1821fae7a6ecabbb89cccb024fe63e1fcc71e553765"
+    },
+    {
+      "path": ".qa/zebra-audit/z4-04-build.log",
+      "bytes": 2783,
+      "sha256": "194112995f5fa7ee57326fd9bef5b341373676cf14f57588af3c168c0077adee"
+    }
+  ],
+  "sourceFlow": {
+    "canonicalTicks": 5206,
+    "completed": 10,
+    "paid": 10,
+    "revenue": 100,
+    "sequence": [
+      {
+        "id": "arrival-39",
+        "habitat": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+        "tick": 14253
+      },
+      {
+        "id": "arrival-40",
+        "habitat": "habitat-zebra-codec",
+        "tick": 15017
+      },
+      {
+        "id": "arrival-41",
+        "habitat": "habitat-actual-elephant-test",
+        "tick": 15542
+      },
+      {
+        "id": "arrival-42",
+        "habitat": "habitat-care-mission",
+        "tick": 15845
+      },
+      {
+        "id": "arrival-43",
+        "habitat": "habitat-lion-test",
+        "tick": 16288
+      },
+      {
+        "id": "arrival-44",
+        "habitat": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+        "tick": 16960
+      },
+      {
+        "id": "arrival-45",
+        "habitat": "habitat-zebra-codec",
+        "tick": 17724
+      },
+      {
+        "id": "arrival-46",
+        "habitat": "habitat-actual-elephant-test",
+        "tick": 18249
+      },
+      {
+        "id": "arrival-47",
+        "habitat": "habitat-care-mission",
+        "tick": 18568
+      },
+      {
+        "id": "arrival-48",
+        "habitat": "habitat-lion-test",
+        "tick": 19060
+      }
+    ],
+    "zebraFeedback": [
+      {
+        "visitorId": "arrival-40",
+        "habitatId": "habitat-zebra-codec",
+        "tick": 15017,
+        "outcome": "comfortable",
+        "reason": "none",
+        "score": 67,
+        "observedWelfare": 67,
+        "samples": 30,
+        "occupiedSamples": 30,
+        "welfareHundredths": 199750
+      },
+      {
+        "visitorId": "arrival-45",
+        "habitatId": "habitat-zebra-codec",
+        "tick": 17724,
+        "outcome": "comfortable",
+        "reason": "none",
+        "score": 72,
+        "observedWelfare": 72,
+        "samples": 30,
+        "occupiedSamples": 30,
+        "welfareHundredths": 215175
+      }
+    ],
+    "viewProofs": [
+      {
+        "event": {
+          "type": "visitor-viewed",
+          "visitorId": "arrival-39",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "tick": 14253,
+          "gameTimeMs": 1425300
+        },
+        "admission": {
+          "id": "admission-arrival-39",
+          "visitorId": "arrival-39",
+          "tick": 13901,
+          "ledgerEntryId": "ticket-arrival-39",
+          "entry": {
+            "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+            "gate": {
+              "x": 1,
+              "z": 8
+            },
+            "cell": {
+              "x": 1,
+              "z": 9
+            },
+            "price": 10
+          }
+        },
+        "entry": {
+          "id": "ticket-arrival-39",
+          "operationId": "admit-arrival-39",
+          "kind": "ticket",
+          "amount": 10,
+          "balanceAfter": 3595,
+          "tick": 13901,
+          "relatedId": "admission-arrival-39"
+        }
+      },
+      {
+        "event": {
+          "type": "visitor-viewed",
+          "visitorId": "arrival-40",
+          "habitatId": "habitat-zebra-codec",
+          "tick": 15017,
+          "gameTimeMs": 1501700
+        },
+        "admission": {
+          "id": "admission-arrival-40",
+          "visitorId": "arrival-40",
+          "tick": 14660,
+          "ledgerEntryId": "ticket-arrival-40",
+          "entry": {
+            "habitatId": "habitat-zebra-codec",
+            "gate": {
+              "x": 1,
+              "z": 8
+            },
+            "cell": {
+              "x": 1,
+              "z": 9
+            },
+            "price": 10
+          }
+        },
+        "entry": {
+          "id": "ticket-arrival-40",
+          "operationId": "admit-arrival-40",
+          "kind": "ticket",
+          "amount": 10,
+          "balanceAfter": 3595,
+          "tick": 14660,
+          "relatedId": "admission-arrival-40"
+        }
+      },
+      {
+        "event": {
+          "type": "visitor-viewed",
+          "visitorId": "arrival-41",
+          "habitatId": "habitat-actual-elephant-test",
+          "tick": 15542,
+          "gameTimeMs": 1554200
+        },
+        "admission": {
+          "id": "admission-arrival-41",
+          "visitorId": "arrival-41",
+          "tick": 15431,
+          "ledgerEntryId": "ticket-arrival-41",
+          "entry": {
+            "habitatId": "habitat-actual-elephant-test",
+            "gate": {
+              "x": 1,
+              "z": 8
+            },
+            "cell": {
+              "x": 1,
+              "z": 9
+            },
+            "price": 10
+          }
+        },
+        "entry": {
+          "id": "ticket-arrival-41",
+          "operationId": "admit-arrival-41",
+          "kind": "ticket",
+          "amount": 10,
+          "balanceAfter": 3595,
+          "tick": 15431,
+          "relatedId": "admission-arrival-41"
+        }
+      },
+      {
+        "event": {
+          "type": "visitor-viewed",
+          "visitorId": "arrival-42",
+          "habitatId": "habitat-care-mission",
+          "tick": 15845,
+          "gameTimeMs": 1584500
+        },
+        "admission": {
+          "id": "admission-arrival-42",
+          "visitorId": "arrival-42",
+          "tick": 15705,
+          "ledgerEntryId": "ticket-arrival-42",
+          "entry": {
+            "habitatId": "habitat-care-mission",
+            "gate": {
+              "x": 1,
+              "z": 8
+            },
+            "cell": {
+              "x": 1,
+              "z": 7
+            },
+            "price": 10
+          }
+        },
+        "entry": {
+          "id": "ticket-arrival-42",
+          "operationId": "admit-arrival-42",
+          "kind": "ticket",
+          "amount": 10,
+          "balanceAfter": 3595,
+          "tick": 15705,
+          "relatedId": "admission-arrival-42"
+        }
+      },
+      {
+        "event": {
+          "type": "visitor-viewed",
+          "visitorId": "arrival-43",
+          "habitatId": "habitat-lion-test",
+          "tick": 16288,
+          "gameTimeMs": 1628800
+        },
+        "admission": {
+          "id": "admission-arrival-43",
+          "visitorId": "arrival-43",
+          "tick": 16023,
+          "ledgerEntryId": "ticket-arrival-43",
+          "entry": {
+            "habitatId": "habitat-lion-test",
+            "gate": {
+              "x": 1,
+              "z": 8
+            },
+            "cell": {
+              "x": 1,
+              "z": 9
+            },
+            "price": 10
+          }
+        },
+        "entry": {
+          "id": "ticket-arrival-43",
+          "operationId": "admit-arrival-43",
+          "kind": "ticket",
+          "amount": 10,
+          "balanceAfter": 3605,
+          "tick": 16023,
+          "relatedId": "admission-arrival-43"
+        }
+      },
+      {
+        "event": {
+          "type": "visitor-viewed",
+          "visitorId": "arrival-44",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "tick": 16960,
+          "gameTimeMs": 1696000
+        },
+        "admission": {
+          "id": "admission-arrival-44",
+          "visitorId": "arrival-44",
+          "tick": 16608,
+          "ledgerEntryId": "ticket-arrival-44",
+          "entry": {
+            "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+            "gate": {
+              "x": 1,
+              "z": 8
+            },
+            "cell": {
+              "x": 1,
+              "z": 9
+            },
+            "price": 10
+          }
+        },
+        "entry": {
+          "id": "ticket-arrival-44",
+          "operationId": "admit-arrival-44",
+          "kind": "ticket",
+          "amount": 10,
+          "balanceAfter": 3605,
+          "tick": 16608,
+          "relatedId": "admission-arrival-44"
+        }
+      },
+      {
+        "event": {
+          "type": "visitor-viewed",
+          "visitorId": "arrival-45",
+          "habitatId": "habitat-zebra-codec",
+          "tick": 17724,
+          "gameTimeMs": 1772400
+        },
+        "admission": {
+          "id": "admission-arrival-45",
+          "visitorId": "arrival-45",
+          "tick": 17367,
+          "ledgerEntryId": "ticket-arrival-45",
+          "entry": {
+            "habitatId": "habitat-zebra-codec",
+            "gate": {
+              "x": 1,
+              "z": 8
+            },
+            "cell": {
+              "x": 1,
+              "z": 9
+            },
+            "price": 10
+          }
+        },
+        "entry": {
+          "id": "ticket-arrival-45",
+          "operationId": "admit-arrival-45",
+          "kind": "ticket",
+          "amount": 10,
+          "balanceAfter": 3605,
+          "tick": 17367,
+          "relatedId": "admission-arrival-45"
+        }
+      },
+      {
+        "event": {
+          "type": "visitor-viewed",
+          "visitorId": "arrival-46",
+          "habitatId": "habitat-actual-elephant-test",
+          "tick": 18249,
+          "gameTimeMs": 1824900
+        },
+        "admission": {
+          "id": "admission-arrival-46",
+          "visitorId": "arrival-46",
+          "tick": 18138,
+          "ledgerEntryId": "ticket-arrival-46",
+          "entry": {
+            "habitatId": "habitat-actual-elephant-test",
+            "gate": {
+              "x": 1,
+              "z": 8
+            },
+            "cell": {
+              "x": 1,
+              "z": 9
+            },
+            "price": 10
+          }
+        },
+        "entry": {
+          "id": "ticket-arrival-46",
+          "operationId": "admit-arrival-46",
+          "kind": "ticket",
+          "amount": 10,
+          "balanceAfter": 3595,
+          "tick": 18138,
+          "relatedId": "admission-arrival-46"
+        }
+      },
+      {
+        "event": {
+          "type": "visitor-viewed",
+          "visitorId": "arrival-47",
+          "habitatId": "habitat-care-mission",
+          "tick": 18568,
+          "gameTimeMs": 1856800
+        },
+        "admission": {
+          "id": "admission-arrival-47",
+          "visitorId": "arrival-47",
+          "tick": 18428,
+          "ledgerEntryId": "ticket-arrival-47",
+          "entry": {
+            "habitatId": "habitat-care-mission",
+            "gate": {
+              "x": 1,
+              "z": 8
+            },
+            "cell": {
+              "x": 1,
+              "z": 7
+            },
+            "price": 10
+          }
+        },
+        "entry": {
+          "id": "ticket-arrival-47",
+          "operationId": "admit-arrival-47",
+          "kind": "ticket",
+          "amount": 10,
+          "balanceAfter": 3605,
+          "tick": 18428,
+          "relatedId": "admission-arrival-47"
+        }
+      },
+      {
+        "event": {
+          "type": "visitor-viewed",
+          "visitorId": "arrival-48",
+          "habitatId": "habitat-lion-test",
+          "tick": 19060,
+          "gameTimeMs": 1906000
+        },
+        "admission": {
+          "id": "admission-arrival-48",
+          "visitorId": "arrival-48",
+          "tick": 18795,
+          "ledgerEntryId": "ticket-arrival-48",
+          "entry": {
+            "habitatId": "habitat-lion-test",
+            "gate": {
+              "x": 1,
+              "z": 8
+            },
+            "cell": {
+              "x": 1,
+              "z": 9
+            },
+            "price": 10
+          }
+        },
+        "entry": {
+          "id": "ticket-arrival-48",
+          "operationId": "admit-arrival-48",
+          "kind": "ticket",
+          "amount": 10,
+          "balanceAfter": 3605,
+          "tick": 18795,
+          "relatedId": "admission-arrival-48"
+        }
+      }
+    ]
+  },
+  "coverage": [
+    "Two complete real round-robin cycles,10 paid views/100ZC, all five populated reachable habitats. Actual route speed/no teleport/outside-adjacent viewing and immutable target.",
+    "Original old mission/grant objects and ledger receipts remain exact, Zebra quest namespace unchanged. Per-tick four-resident Zebra feedback independently recomputed.",
+    "Equal habitat weights, not14-animal weights; empty/disconnected Zebra excluded. Actual four paid path additions preserve an old pinned visitor unchanged.",
+    "Mid-walk/view strict cold pause1x10x equality and archived-ticket fairness, actual access loss/Undo without retarget/second ticket/feedback rewrite.",
+    "All10 ID/EN labels preserve old names, actual Zebra prefix corrected; original unlabelledV1 feedback and input objects unchanged."
+  ]
+}
