@@ -1,0 +1,98 @@
+{
+  "source": "0e91fe9b817bfa25c0cf34074896697194894e3f",
+  "tests": 50,
+  "log": {
+    "path": ".qa/zebra-audit/z3-07-tests-release.log",
+    "sha256": "6cd6372dd687ff6efab0f7f5df3fc2fcb6878ce112de8b8a5169eb9f096402f2"
+  },
+  "strictTypes": "PASS",
+  "astroCheck": "541 files;0 errors/warnings/hints",
+  "naturalPlay": {
+    "canonicalTicks": 9712,
+    "encounters": 3,
+    "minimumBodyGap": 0.5399999999999991,
+    "actors": [
+      {
+        "id": "zebra-zaki",
+        "groomings": 2,
+        "social": 22.880000000010277
+      },
+      {
+        "id": "zebra-zuri",
+        "groomings": 1,
+        "social": 35
+      },
+      {
+        "id": "zebra-mira",
+        "groomings": 1,
+        "social": 0
+      },
+      {
+        "id": "zebra-kira",
+        "groomings": 2,
+        "social": 35
+      }
+    ]
+  },
+  "tenThousandTickRegression": {
+    "stats": {
+      "ticks": 10000,
+      "followTicks": 664,
+      "trotTicks": 125,
+      "maximumFollowers": 1,
+      "minimumBodyGap": 0.5399999999999849,
+      "maximumRootStep": 0.07500000000000176
+    },
+    "trotEvents": 3,
+    "hash": "8278d0dbb60d0d047deacfaf0583cde9bf7440b2ce5e5cdb82b66114345cc0e9",
+    "actors": [
+      {
+        "id": "zebra-zaki",
+        "trots": 0
+      },
+      {
+        "id": "zebra-zuri",
+        "trots": 1
+      },
+      {
+        "id": "zebra-mira",
+        "trots": 2
+      },
+      {
+        "id": "zebra-kira",
+        "trots": 0
+      }
+    ]
+  },
+  "cold10xReplayTicks": 5000,
+  "geometry": {
+    "sequenceTicks": 80,
+    "firstBout": [
+      0,
+      32
+    ],
+    "neutralGap": [
+      32,
+      48
+    ],
+    "secondBout": [
+      48,
+      80
+    ],
+    "highContactDistance": 0.0018127898149829724,
+    "lowContactDistance": 0.0030178316611787245,
+    "scope": "Original CPU-skinned high/low tessellated muzzle/neck contact in both actual source bouts; no sampled head penetration, planted hooves, declared render bounds and full transition collision envelope. Reduced motion preserves essential contact."
+  },
+  "discoveries": [
+    "Simultaneous prototype head poses intersected; replaced with two reciprocal bouts separated by a neutral gap. This is an original-rig correction, not an artistic overhaul.",
+    "Adequate adults may choose social contact before optional enrichment; urgent food/water and deficient energy/shade retain priority. Initial6000tick observation did not include all four; the final natural acceptance reaches all four by9712ticks without forced stats.",
+    "World-transformed hoof arithmetic was below zero by about1e-16; geometry bounds assertions use1e-7 tolerance, matching existing geometric checks.",
+    "A final-pose head ray did not cover the intermediate sideways muzzle. The canonical guard now includes the neutral-to-contact sweep. All80original poses fit the declared body/head envelope; representative transition head/ground checks pass."
+  ],
+  "discoveryLogs": [
+    ".qa/zebra-audit/z3-07-tests-initial.log",
+    ".qa/zebra-audit/z3-07-tests-expanded.log",
+    ".qa/zebra-audit/z3-07-tests-final.log",
+    ".qa/zebra-audit/z3-07-transition-geometry.log"
+  ]
+}
