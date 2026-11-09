@@ -8,7 +8,7 @@ import {ZEBRA_LAYOUT} from '../world/zebra-layout.ts';
 import {analyzePaths} from '../world/paths.ts';
 import {V4_SAVE_FIELDS,validateV4SpeciesRelationships,migrateToV4,validateSaveV4} from './save-v4.ts';
 import {MAX_SAVE_CHARS,saveRules,economyRule,type Rule,type SaveResult} from './save-v1.ts';
-import {ledgerProof,purchaseBook,admissionProofs} from '../economy/journal.ts';
+import {ledgerProof,purchaseBook,admissionProofs,hasPurchaseProofRoom} from '../economy/journal.ts';
 const {requireValue:require,number,integer,percent,oneOf,bool,id,nullable,array,object,point,cell,tick}=saveRules;
 /** Full validation fixture:26 resources /96,895 characters. Keep37 resource/35 ticket bounds and1M chars.
  * Only habitats4->5, actors10->14 and retained cash receipts11+3->14 need additional room. */
@@ -35,7 +35,7 @@ function relationships(s:ZooSaveV5){
  const receipt=(entryId:string,amount:number,relatedId:string,at:number,operationId:string)=>{const e=ledgerProof(s,entryId);require(Boolean(e&&e.kind==='reward'&&e.amount===amount&&e.relatedId===relatedId&&e.tick===at&&e.operationId===operationId),'$.zebraGrasslands.rewardReceipt');extras.push(entryId);};
  if(g.grant){const q=s.giraffePlains.missions.rewards.find(r=>r.missionId==='GQ04'),p=g.grant,u=g.unlock;require(zebraUnlocked(s)&&q!==undefined&&u!==null&&u.missionId==='GQ04'&&u.ledgerEntryId===q.ledgerEntryId&&u.tick===q.tick&&u.command===q.command&&p.command>q.command&&p.command<s.economy.nextCommand&&p.tick>=q.tick&&p.tick<=s.tick&&p.ledgerEntryId===p.id,'$.zebraGrasslands.grant');receipt(p.ledgerEntryId,ZEBRA_PRICES.grant,'zebra-grasslands',p.tick,p.id);}
  else require(unstartedZebraProgress(g)&&!homes.length&&!herd.length&&!resources.length,'$.zebraGrasslands.unclaimed');
- const book=purchaseBook(s.ledger,s.economy.checkpoint);require(book!==null,'$.zebraGrasslands.purchases');
+ const book=purchaseBook(s.ledger,s.economy.checkpoint);require(book!==null&&hasPurchaseProofRoom(s,0),'$.zebraGrasslands.purchases');
  const paid=(relatedId:string,price:number)=>{const proofs=[...book!.purchases.values()].filter(p=>p.entry.relatedId===relatedId&&p.refunded<-p.entry.amount);require(proofs.length===1&&proofs[0]!.refunded===0&&proofs[0]!.entry.amount===-price,'$.zebraGrasslands.paid');};
  for(const h of homes){const a=zebraBounds(h);require(g.grant!==null&&h.cells.length===64&&a.x>=ZEBRA_LAYOUT.minX&&a.x<=ZEBRA_LAYOUT.maxX&&a.z>=ZEBRA_LAYOUT.minZ&&a.z<=ZEBRA_LAYOUT.maxZ&&h.cells.every(c=>c.x>=a.x&&c.x<a.x+8&&c.z>=a.z&&c.z<a.z+8),'$.zebraGrasslands.footprint');paid(h.id,ZEBRA_PRICES.habitat);const access=analyzePaths(s.world).habitats.find(a=>a.habitatId===h.id);require(Boolean(access&&(h.viewingCell?access.viewingCell&&key(h.viewingCell)===key(access.viewingCell):access.viewingCell===null)),'$.zebraGrasslands.viewingCell');}
  for(const kind of ZEBRA_RESOURCE_KINDS)require(resources.filter(r=>r.kind===kind).length<=(kind==='zebra-graze'?2:1),'$.zebraGrasslands.resourceLimit');

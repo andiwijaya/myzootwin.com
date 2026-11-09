@@ -10,6 +10,7 @@ const zebraRewardIds=(s:FinancialState)=>s.zebraGrasslands?[...(s.zebraGrassland
 const missionVisitorIds=(s:FinancialState)=>[...s.missions.objectives.viewedVisitorIds,...s.missions.objectives.admittedVisitorIds,...(s.elephantGrove?.missions.objectives.viewedVisitorIds??[]),...(s.lionSavanna?.missions.objectives.viewedVisitorIds??[]),...(s.giraffePlains?.missions.objectives.viewedVisitorIds??[]),...(s.zebraGrasslands?.missions.objectives.viewedVisitorIds??[])];
 import {MONEY_RULES} from './prices.ts';
 export const LEDGER_KINDS:readonly LedgerKind[]=['starter','build','supplies','maintenance','ticket','reward','refund','restore'];
+export const PURCHASE_PROOF_LIMIT=256;
 export const emptyTotals=():Record<LedgerKind,number>=>({starter:0,build:0,supplies:0,maintenance:0,ticket:0,reward:0,refund:0,restore:0});
 export function emptyCheckpoint():FinanceCheckpoint{return{version:1,balance:0,entries:0,lastTick:0,compactions:0,commandThrough:0,visitorThrough:0,openSerials:[],maintenancePeriod:0,totals:emptyTotals(),counts:emptyTotals(),purchases:[],refunds:[],tickets:[],rewards:[],lastTicket:null};}
 export function totals(s:FinancialState){const amounts={...s.economy.checkpoint.totals},counts={...s.economy.checkpoint.counts};for(const e of s.ledger){amounts[e.kind]+=e.amount;counts[e.kind]++;}return{amounts,counts,entries:s.economy.checkpoint.entries+s.ledger.length};}
@@ -24,6 +25,9 @@ export function purchaseBook(ledger:LedgerEntry[],base?:Pick<FinanceCheckpoint,'
  }
  return{purchases,refunds};
 }
+/** Count live paid construction, including unarchived entries. A subsequent build
+ * ends page-session Undo, so fully refunded purchases need not occupy a new slot. */
+export function hasPurchaseProofRoom(s:FinancialState,additional=1){const book=purchaseBook(s.ledger,s.economy.checkpoint);return Boolean(book&&Number.isSafeInteger(additional)&&additional>=0&&[...book.purchases.values()].filter(p=>p.refunded<-p.entry.amount).length+additional<=PURCHASE_PROOF_LIMIT);}
 const negative=(kind:LedgerKind)=>['build','supplies','maintenance','restore'].includes(kind);
 const safe=(n:number)=>Number.isSafeInteger(n)&&n>=0;
 const same=(a:unknown,b:unknown)=>JSON.stringify(a)===JSON.stringify(b);

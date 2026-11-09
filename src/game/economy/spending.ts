@@ -1,4 +1,4 @@
-import {totals,ledgerProof} from './journal.ts';
+import {totals,ledgerProof,hasPurchaseProofRoom} from './journal.ts';
 import {refundable} from './refunds.ts';
 import {PRICES,MONEY_RULES} from './prices.ts';
 export {PRICES,MONEY_RULES} from './prices.ts';
@@ -13,6 +13,7 @@ export function debit(s:RuntimeState,amount:number,kind:'build'|'supplies'|'main
  const old=s.ledger.find(e=>e.operationId===operationId);if(old)return old.kind===kind&&old.amount===-amount&&old.relatedId===relatedId?'duplicate':'capacity';
  const reason=moneyReason(s,amount);if(reason)return reason;
  if(!Number.isSafeInteger(amount)||amount<=0||!/^[a-z][a-z0-9-]{0,47}$/.test(operationId))return 'funds';
+ if(s.schemaVersion===5&&kind==='build'&&!hasPurchaseProofRoom(s))return 'capacity';
  const entry:LedgerEntry={id:operationId,operationId,kind,amount:-amount,balanceAfter:s.currency-amount,tick:s.tick,relatedId};
  s.currency=entry.balanceAfter;s.ledger.push(entry);return null;
 }
