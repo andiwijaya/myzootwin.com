@@ -5,3 +5,6 @@ export const ZEBRA_GROUND=Object.freeze({margin:.85,propClearance:.82,separation
 /** Fictional fixed-tick needs, not real feeding or husbandry guidance. */
 export const ZEBRA_NEEDS=Object.freeze({energyPerTick:.025,shadePerTick:.02,enrichmentPerTick:.02,restAt:60,enrichAt:70,restTicks:80,enrichTicks:60,restEnergy:55,shadeRelief:65,enrichRelief:40,enrichCooldown:450,hungerPerTick:.018,thirstPerTick:.022,waterRelief:45,drinkTicks:28,waterHeight:.188,seekAt:35,foodRelief:40,grazeTicks:24,headLowerTicks:4,feedReach:.7,feedHeight:.20,maxFeedApproach:1});
 export const ZEBRA_MISSION_RULES=Object.freeze({ZQ01:{coins:0,award:'grassland-founder' as const},ZQ02:{coins:150,award:null},ZQ03:{coins:0,award:'striped-meadow' as const},ZQ04:{coins:200,award:'zebra-keeper' as const},comfortableTicks:50,thrivingTicks:100,viewers:3});
+
+/** Fictional optional herd episodes, bounded by real route/body clearance. */
+export const ZEBRA_HERD=Object.freeze({checkEvery:80,followTicks:120,repathEvery:8,gap:2,side:.75,maxGap:5.5,followers:2,minEnergy:65,trotEnergy:75,trotTicks:50,trotCooldown:800,minTrotTravel:.75,trotEnergyPerMovingTick:.03});

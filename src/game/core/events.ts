@@ -1,4 +1,5 @@
 export type SimulationEvent =
+  | {type:'zebra-trotted';animalId:string;eventId:string;distance:number;tick:number;gameTimeMs:number}
   | {type:'zebra-grazed';animalId:string;resourceId:string;eventId:string;tick:number;gameTimeMs:number}
   | {type:'zebra-drank';animalId:string;resourceId:string;eventId:string;tick:number;gameTimeMs:number}
   | {type:'zebra-rested'|'zebra-enriched';animalId:string;resourceId:string;eventId:string;tick:number;gameTimeMs:number}

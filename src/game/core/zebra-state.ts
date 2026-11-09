@@ -18,6 +18,8 @@ export interface ZebraMotion {
  phase:ZebraBehavior;ticksLeft:number;sequence:number;heading:number;
  waypoints:Point[];waypointIndex:number;partnerId:string|null;herdLeaderId:string|null;
  lastStep:Point;distanceWalked:number;blockedTicks:number;
+ /** Optional accumulated forward ground distance during an actual trot episode. */
+ trotDistance?:number;
 }
 interface ZebraAnimalState extends Omit<Animal,'id'|'speciesId'|'habitatId'|'position'|'currentBehavior'|'motion'> {
  speciesId:typeof ZEBRA_SPECIES_ID;

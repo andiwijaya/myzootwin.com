@@ -1,6 +1,7 @@
+import{prepareZebraHerd,stepZebraHerd}from'./herd.ts';
 import type {RuntimeState} from '../../core/runtime-state.ts';
 import {zebras,type ZebraAnimal,type ZebraHabitat,type ZebraResource} from '../../core/zebra-state.ts';
-import {ZEBRA_NEEDS as N,ZEBRA_GROUND as G} from './rules.ts';
+import {ZEBRA_NEEDS as N,ZEBRA_GROUND as G,ZEBRA_HERD as H} from './rules.ts';
 import {zebraDistance as distance,zebraGroundRoute} from './ground.ts';
 import {zebraBodySweepAllowed} from './body.ts';
 import {stepZebraMovement,walkZebraGround,zebraIdle,zebraAngle} from './movement.ts';
@@ -26,7 +27,8 @@ function chooseResource(s:RuntimeState,a:ZebraAnimal,slot:number,herd:ZebraAnima
  * No rendering, wall-time, extra random draw, automatic refill or mission credit. */
 export function stepZebraCare(s:RuntimeState){
  const herd=zebras(s.animals),fed:{animalId:string;resourceId:string}[]=[],watered:{animalId:string;resourceId:string}[]=[],events:CareEvent[]=[],offset=herd.length?s.tick%herd.length:0;
- for(let n=0;n<herd.length;n++){const a=herd[(n+offset)%herd.length]!;a.hunger=Math.min(100,a.hunger+N.hungerPerTick);a.thirst=Math.min(100,a.thirst+N.thirstPerTick);a.energy=Math.max(0,a.energy-N.energyPerTick);a.shadeRest=Math.max(0,a.shadeRest-N.shadePerTick);a.enrichment=Math.max(0,a.enrichment-N.enrichmentPerTick);a.enrichmentCooldownTicks=Math.max(0,a.enrichmentCooldownTicks-1);
+ for(let n=0;n<herd.length;n++){const a=herd[(n+offset)%herd.length]!;a.hunger=Math.min(100,a.hunger+N.hungerPerTick);a.thirst=Math.min(100,a.thirst+N.thirstPerTick);a.energy=Math.max(0,a.energy-N.energyPerTick);a.shadeRest=Math.max(0,a.shadeRest-N.shadePerTick);a.enrichment=Math.max(0,a.enrichment-N.enrichmentPerTick);a.enrichmentCooldownTicks=Math.max(0,a.enrichmentCooldownTicks-1);a.trotCooldownTicks=Math.max(0,a.trotCooldownTicks-1);
+  if(['follow-herd','trot'].includes(a.currentBehavior)&&(a.hunger>=N.seekAt||a.thirst>=N.seekAt||a.energy<H.minEnergy||a.shadeRest<55||a.enrichment<35))zebraIdle(a,0);
   if(['seek-shade','rest','seek-enrichment','enrich'].includes(a.currentBehavior)&&(a.hunger>=75||a.thirst>=75))zebraIdle(a,0);
   if(!['idle','wander'].includes(a.currentBehavior))continue;
   const thirsty=a.thirst>=N.seekAt,hungry=a.hunger>=N.seekAt;
@@ -36,7 +38,7 @@ export function stepZebraCare(s:RuntimeState){
   if(hungry||thirsty)continue;
   if((a.energy<N.restAt||a.shadeRest<55)&&chooseResource(s,a,n,herd,'zebra-shade'))continue;
   if(a.enrichment<N.enrichAt&&a.enrichmentCooldownTicks===0)chooseResource(s,a,n,herd,'zebra-enrichment');
- }stepZebraMovement(s);
+ }prepareZebraHerd(s);stepZebraMovement(s);const herdEvents=stepZebraHerd(s);
  for(let n=0;n<herd.length;n++){const a=herd[(n+offset)%herd.length]!;if(!isCare(a))continue;
   const kind=(Object.keys(phases)as Kind[]).find(k=>(phases[k]as readonly string[]).includes(a.currentBehavior))!,drinking=kind==='zebra-water',resting=kind==='zebra-shade',enriching=kind==='zebra-enrichment',r=s.world.resources.find((r):r is ZebraResource=>r.kind===kind&&r.id===a.targetResourceId&&r.habitatId===a.habitatId),h=home(s,a);
   if(!r||r.stock<=0||!h||!a.target||distance(a.target,{x:r.cell.x+.5,z:r.cell.z+.5})>N.maxFeedApproach){zebraIdle(a,0);continue;}
@@ -57,5 +59,5 @@ export function stepZebraCare(s:RuntimeState){
  }
  // Another resident may consume the last portion later in this same atomic tick.
  for(const a of herd)if(isCare(a)&&!s.world.resources.some(r=>r.id===a.targetResourceId&&r.stock>0))zebraIdle(a,0);
- return{fed,watered,events};
+ return{fed,watered,events,herdEvents};
 }
