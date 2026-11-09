@@ -1,0 +1,906 @@
+{
+  "status": "PASS_SOURCE_ONLY_BROWSER_PENDING",
+  "source": "1f703179c626dd56774286665585fa60cda41253",
+  "sourceFingerprint": "eac495a2660ed96c840ec1de54a215bae2e74789583c8f752ffebb03acb42546",
+  "uniquePassing": 59,
+  "deduplication": "58 unmodified cases passed in the broad59-case pack; its sole failure was exact interpolation-endpoint float equality at3e-17. Only that assertion changed to1e-12; the actual source-timeline/posed-skin case reran and passed.59 distinct cases, not60. Runtime behavior was unchanged after the broad pack.",
+  "types": "PASS",
+  "astroCheck": "562 files;0 errors/warnings/hints",
+  "logs": [
+    {
+      "path": ".qa/zebra-audit/z4-06-tests-final.log",
+      "bytes": 27370,
+      "sha256": "c24218323563f4d0e60cb8cd352a96ef3752ee8fc3a646b4c1922686b6b450ec"
+    },
+    {
+      "path": ".qa/zebra-audit/z4-06-tests-pose-final.log",
+      "bytes": 335,
+      "sha256": "0396489f3cfe9d9f75d588a97b2c641e7d8e350a584e9f7139b68c62d08a58df"
+    },
+    {
+      "path": ".qa/zebra-audit/z4-06-types-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": ".qa/zebra-audit/z4-06-check-final.log",
+      "bytes": 216,
+      "sha256": "6b6724c922aa07baac5ad3bde76326a9da40ba85e0c44595331829beadd94d85"
+    },
+    {
+      "path": ".qa/zebra-audit/z4-06-reproduction.log",
+      "bytes": 3463,
+      "sha256": "63549a35efce142aed98e5ed17649afab1a556606eae6601ec5336f662ca98c8"
+    }
+  ],
+  "observedFixture": {
+    "path": "tests/fixtures/zebra-exit-observation.json",
+    "source": "90cd1650430893ebdb38509f93ce3fd8be608435",
+    "checkpointHash": "ab0a0e09568c6b16d6c1fcd711cd32a999cde2799d9906df1ec564031b0cae90",
+    "scope": "Exact observed Zebra actors and facilities from isolated internal-browser QA; not a complete canonical save or owner data."
+  },
+  "exit": {
+    "case": "observed-enrichment-exit",
+    "ticks": 1200,
+    "maximumStep": 0.04500000000000214,
+    "minimumBodyGap": 0.5400727192057628,
+    "escapeMoves": 16,
+    "trace": [
+      {
+        "tick": 24133,
+        "actors": [
+          {
+            "id": "zebra-zaki",
+            "position": {
+              "x": 17.135000000000005,
+              "z": 16
+            },
+            "heading": 1.5707963267948966,
+            "phase": "wander",
+            "food": 5,
+            "water": 5,
+            "energy": 72.49999999999375,
+            "welfare": 83
+          },
+          {
+            "id": "zebra-zuri",
+            "position": {
+              "x": 21,
+              "z": 16.5
+            },
+            "heading": -1.741592653589793,
+            "phase": "seek-graze",
+            "food": 4,
+            "water": 4,
+            "energy": 26.548214455091433,
+            "welfare": 56
+          },
+          {
+            "id": "zebra-mira",
+            "position": {
+              "x": 19.455790899673435,
+              "z": 17.58660027093794
+            },
+            "heading": -1.7585582733084608,
+            "phase": "seek-graze",
+            "food": 4,
+            "water": 4,
+            "energy": 34.924999999993474,
+            "welfare": 50
+          },
+          {
+            "id": "zebra-kira",
+            "position": {
+              "x": 18.863725347540793,
+              "z": 16.126402794083706
+            },
+            "heading": 2.8694931361288956,
+            "phase": "wander",
+            "food": 5,
+            "water": 5,
+            "energy": 91.69999999999811,
+            "welfare": 83
+          }
+        ]
+      },
+      {
+        "tick": 24233,
+        "actors": [
+          {
+            "id": "zebra-zaki",
+            "position": {
+              "x": 17.395270263547882,
+              "z": 16.43749973753864
+            },
+            "heading": 1.0091778475469315,
+            "phase": "seek-enrichment",
+            "food": 5,
+            "water": 5,
+            "energy": 69.99999999999318,
+            "welfare": 81
+          },
+          {
+            "id": "zebra-zuri",
+            "position": {
+              "x": 20.85,
+              "z": 15.2
+            },
+            "heading": 2.393214606066276,
+            "phase": "graze",
+            "food": 4,
+            "water": 4,
+            "energy": 24.048214455091575,
+            "welfare": 55
+          },
+          {
+            "id": "zebra-mira",
+            "position": {
+              "x": 15.5,
+              "z": 17.5
+            },
+            "heading": -2.130796326794897,
+            "phase": "seek-graze",
+            "food": 4,
+            "water": 4,
+            "energy": 32.42499999999362,
+            "welfare": 49
+          },
+          {
+            "id": "zebra-kira",
+            "position": {
+              "x": 18.598588324014568,
+              "z": 15.919110398688984
+            },
+            "heading": -0.8836926216885782,
+            "phase": "seek-enrichment",
+            "food": 5,
+            "water": 5,
+            "energy": 89.19999999999754,
+            "welfare": 82
+          }
+        ]
+      },
+      {
+        "tick": 24333,
+        "actors": [
+          {
+            "id": "zebra-zaki",
+            "position": {
+              "x": 19.590000000000003,
+              "z": 17.5
+            },
+            "heading": 1.5707963267948966,
+            "phase": "seek-enrichment",
+            "food": 5,
+            "water": 5,
+            "energy": 67.49999999999261,
+            "welfare": 80
+          },
+          {
+            "id": "zebra-zuri",
+            "position": {
+              "x": 18.2,
+              "z": 13.15
+            },
+            "heading": -2.3191743743184157,
+            "phase": "drink",
+            "food": 5,
+            "water": 4,
+            "energy": 21.548214455091717,
+            "welfare": 63
+          },
+          {
+            "id": "zebra-mira",
+            "position": {
+              "x": 15.18,
+              "z": 15.5
+            },
+            "heading": 1.5707963267948966,
+            "phase": "seek-graze",
+            "food": 4,
+            "water": 4,
+            "energy": 29.92499999999376,
+            "welfare": 47
+          },
+          {
+            "id": "zebra-kira",
+            "position": {
+              "x": 19.8,
+              "z": 18.85
+            },
+            "heading": 0.8224182792713789,
+            "phase": "enrich",
+            "food": 5,
+            "water": 5,
+            "energy": 86.69999999999698,
+            "welfare": 80
+          }
+        ]
+      },
+      {
+        "tick": 24433,
+        "actors": [
+          {
+            "id": "zebra-zaki",
+            "position": {
+              "x": 19.83818210000328,
+              "z": 16.988727586253628
+            },
+            "heading": -2.4093986697358285,
+            "phase": "wander",
+            "food": 5,
+            "water": 5,
+            "energy": 64.99999999999204,
+            "welfare": 78
+          },
+          {
+            "id": "zebra-zuri",
+            "position": {
+              "x": 18.2,
+              "z": 15.714999999999996
+            },
+            "heading": 0,
+            "phase": "seek-shade",
+            "food": 5,
+            "water": 5,
+            "energy": 19.04821445509186,
+            "welfare": 72
+          },
+          {
+            "id": "zebra-mira",
+            "position": {
+              "x": 15.15,
+              "z": 13.8
+            },
+            "heading": -0.7483780475235191,
+            "phase": "graze",
+            "food": 4,
+            "water": 4,
+            "energy": 27.4249999999939,
+            "welfare": 45
+          },
+          {
+            "id": "zebra-kira",
+            "position": {
+              "x": 19.8,
+              "z": 18.85
+            },
+            "heading": 0.8224182792713789,
+            "phase": "idle",
+            "food": 5,
+            "water": 5,
+            "energy": 84.19999999999641,
+            "welfare": 82
+          }
+        ]
+      },
+      {
+        "tick": 24533,
+        "actors": [
+          {
+            "id": "zebra-zaki",
+            "position": {
+              "x": 19.5,
+              "z": 17
+            },
+            "heading": -0.24990521460311188,
+            "phase": "seek-enrichment",
+            "food": 5,
+            "water": 5,
+            "energy": 62.49999999999191,
+            "welfare": 76
+          },
+          {
+            "id": "zebra-zuri",
+            "position": {
+              "x": 18.2,
+              "z": 18.85
+            },
+            "heading": 0.0991461142464718,
+            "phase": "seek-shade",
+            "food": 5,
+            "water": 5,
+            "energy": 16.548214455092,
+            "welfare": 71
+          },
+          {
+            "id": "zebra-mira",
+            "position": {
+              "x": 16.8,
+              "z": 13.15
+            },
+            "heading": -2.84401093286117,
+            "phase": "seek-shade",
+            "food": 5,
+            "water": 5,
+            "energy": 24.924999999994043,
+            "welfare": 65
+          },
+          {
+            "id": "zebra-kira",
+            "position": {
+              "x": 21,
+              "z": 17.364999999999995
+            },
+            "heading": 3.141592653589793,
+            "phase": "wander",
+            "food": 5,
+            "water": 5,
+            "energy": 81.69999999999584,
+            "welfare": 80
+          }
+        ]
+      },
+      {
+        "tick": 24633,
+        "actors": [
+          {
+            "id": "zebra-zaki",
+            "position": {
+              "x": 19.8,
+              "z": 18.85
+            },
+            "heading": 0.8224182792713789,
+            "phase": "enrich",
+            "food": 5,
+            "water": 5,
+            "energy": 59.99999999999205,
+            "welfare": 74
+          },
+          {
+            "id": "zebra-zuri",
+            "position": {
+              "x": 18.2,
+              "z": 18.85
+            },
+            "heading": -2.5024182792713803,
+            "phase": "wander",
+            "food": 5,
+            "water": 5,
+            "energy": 69.04821445509194,
+            "welfare": 81
+          },
+          {
+            "id": "zebra-mira",
+            "position": {
+              "x": 16.5,
+              "z": 16.49500000000002
+            },
+            "heading": 0,
+            "phase": "seek-shade",
+            "food": 5,
+            "water": 5,
+            "energy": 22.424999999994185,
+            "welfare": 63
+          },
+          {
+            "id": "zebra-kira",
+            "position": {
+              "x": 20.5,
+              "z": 14.505
+            },
+            "heading": 3.141592653589793,
+            "phase": "wander",
+            "food": 5,
+            "water": 5,
+            "energy": 79.19999999999527,
+            "welfare": 79
+          }
+        ]
+      },
+      {
+        "tick": 24733,
+        "actors": [
+          {
+            "id": "zebra-zaki",
+            "position": {
+              "x": 19.364999999999995,
+              "z": 19
+            },
+            "heading": -1.5707963267948966,
+            "phase": "seek-shade",
+            "food": 5,
+            "water": 5,
+            "energy": 57.49999999999219,
+            "welfare": 77
+          },
+          {
+            "id": "zebra-zuri",
+            "position": {
+              "x": 19.315000000000012,
+              "z": 16.5
+            },
+            "heading": 1.5707963267948966,
+            "phase": "seek-enrichment",
+            "food": 5,
+            "water": 5,
+            "energy": 66.54821445509137,
+            "welfare": 79
+          },
+          {
+            "id": "zebra-mira",
+            "position": {
+              "x": 16.8,
+              "z": 18.85
+            },
+            "heading": 0.8224182792713789,
+            "phase": "rest",
+            "food": 5,
+            "water": 5,
+            "energy": 19.924999999994327,
+            "welfare": 61
+          },
+          {
+            "id": "zebra-kira",
+            "position": {
+              "x": 18.24540864826843,
+              "z": 13.625765225288605
+            },
+            "heading": -1.4056476493802739,
+            "phase": "wander",
+            "food": 5,
+            "water": 5,
+            "energy": 76.6999999999947,
+            "welfare": 77
+          }
+        ]
+      },
+      {
+        "tick": 24833,
+        "actors": [
+          {
+            "id": "zebra-zaki",
+            "position": {
+              "x": 18.2,
+              "z": 18.85
+            },
+            "heading": -0.8224182792713789,
+            "phase": "rest",
+            "food": 5,
+            "water": 5,
+            "energy": 54.99999999999233,
+            "welfare": 75
+          },
+          {
+            "id": "zebra-zuri",
+            "position": {
+              "x": 21,
+              "z": 18.5
+            },
+            "heading": 0.14,
+            "phase": "seek-enrichment",
+            "food": 5,
+            "water": 5,
+            "energy": 64.0482144550908,
+            "welfare": 77
+          },
+          {
+            "id": "zebra-mira",
+            "position": {
+              "x": 16.5,
+              "z": 17.955
+            },
+            "heading": 3.141592653589793,
+            "phase": "seek-enrichment",
+            "food": 5,
+            "water": 5,
+            "energy": 72.42499999999407,
+            "welfare": 71
+          },
+          {
+            "id": "zebra-kira",
+            "position": {
+              "x": 16.79549512883484,
+              "z": 14.795495128834862
+            },
+            "heading": 0.7853981633974626,
+            "phase": "wander",
+            "food": 5,
+            "water": 5,
+            "energy": 74.19999999999413,
+            "welfare": 75
+          }
+        ]
+      },
+      {
+        "tick": 24933,
+        "actors": [
+          {
+            "id": "zebra-zaki",
+            "position": {
+              "x": 18.5,
+              "z": 18.364999999999995
+            },
+            "heading": 3.141592653589793,
+            "phase": "wander",
+            "food": 5,
+            "water": 5,
+            "energy": 98.39999999999964,
+            "welfare": 81
+          },
+          {
+            "id": "zebra-zuri",
+            "position": {
+              "x": 21.131314767032908,
+              "z": 18.575777204394896
+            },
+            "heading": -3.0584514217013523,
+            "phase": "wander",
+            "food": 5,
+            "water": 5,
+            "energy": 61.548214455090935,
+            "welfare": 80
+          },
+          {
+            "id": "zebra-mira",
+            "position": {
+              "x": 19.5,
+              "z": 17.5
+            },
+            "heading": 0.5907963267948959,
+            "phase": "seek-enrichment",
+            "food": 5,
+            "water": 5,
+            "energy": 69.9249999999935,
+            "welfare": 70
+          },
+          {
+            "id": "zebra-kira",
+            "position": {
+              "x": 19.27000000000001,
+              "z": 14.5
+            },
+            "heading": 1.5707963267948966,
+            "phase": "wander",
+            "food": 5,
+            "water": 5,
+            "energy": 71.69999999999357,
+            "welfare": 73
+          }
+        ]
+      },
+      {
+        "tick": 25033,
+        "actors": [
+          {
+            "id": "zebra-zaki",
+            "position": {
+              "x": 16.14999819524251,
+              "z": 17.548346525739316
+            },
+            "heading": -1.8825969607987052,
+            "phase": "wander",
+            "food": 5,
+            "water": 5,
+            "energy": 95.89999999999907,
+            "welfare": 80
+          },
+          {
+            "id": "zebra-zuri",
+            "position": {
+              "x": 20.104042571054272,
+              "z": 16.443817011630692
+            },
+            "heading": -1.0756630633264705,
+            "phase": "seek-shade",
+            "food": 5,
+            "water": 5,
+            "energy": 59.04821445509108,
+            "welfare": 78
+          },
+          {
+            "id": "zebra-mira",
+            "position": {
+              "x": 19.8,
+              "z": 18.85
+            },
+            "heading": -0.2391461142464718,
+            "phase": "seek-enrichment",
+            "food": 5,
+            "water": 5,
+            "energy": 67.42499999999293,
+            "welfare": 68
+          },
+          {
+            "id": "zebra-kira",
+            "position": {
+              "x": 17.65200883732499,
+              "z": 15.282663720891676
+            },
+            "heading": -1.2490457723982638,
+            "phase": "wander",
+            "food": 5,
+            "water": 5,
+            "energy": 69.199999999993,
+            "welfare": 72
+          }
+        ]
+      },
+      {
+        "tick": 25133,
+        "actors": [
+          {
+            "id": "zebra-zaki",
+            "position": {
+              "x": 15.5,
+              "z": 15
+            },
+            "heading": 1.570796326794897,
+            "phase": "approach-companion",
+            "food": 5,
+            "water": 5,
+            "energy": 93.3999999999985,
+            "welfare": 78
+          },
+          {
+            "id": "zebra-zuri",
+            "position": {
+              "x": 18.5,
+              "z": 18.5
+            },
+            "heading": 0,
+            "phase": "seek-shade",
+            "food": 5,
+            "water": 5,
+            "energy": 56.54821445509122,
+            "welfare": 76
+          },
+          {
+            "id": "zebra-mira",
+            "position": {
+              "x": 19.833068515198423,
+              "z": 18.130759794434063
+            },
+            "heading": 3.095647997781671,
+            "phase": "wander",
+            "food": 5,
+            "water": 5,
+            "energy": 64.92499999999237,
+            "welfare": 70
+          },
+          {
+            "id": "zebra-kira",
+            "position": {
+              "x": 15.510102311582692,
+              "z": 13.637627889478365
+            },
+            "heading": 2.1363335958133445,
+            "phase": "approach-companion",
+            "food": 5,
+            "water": 5,
+            "energy": 66.69999999999243,
+            "welfare": 70
+          }
+        ]
+      },
+      {
+        "tick": 25233,
+        "actors": [
+          {
+            "id": "zebra-zaki",
+            "position": {
+              "x": 15,
+              "z": 17.5
+            },
+            "heading": -0.19739555984990437,
+            "phase": "idle",
+            "food": 5,
+            "water": 5,
+            "energy": 90.89999999999793,
+            "welfare": 76
+          },
+          {
+            "id": "zebra-zuri",
+            "position": {
+              "x": 18.2,
+              "z": 18.85
+            },
+            "heading": -1.3824182792713793,
+            "phase": "wander",
+            "food": 5,
+            "water": 5,
+            "energy": 99.87499999999997,
+            "welfare": 81
+          },
+          {
+            "id": "zebra-mira",
+            "position": {
+              "x": 20.174730561810943,
+              "z": 14.237904157283582
+            },
+            "heading": 2.5535900500422244,
+            "phase": "wander",
+            "food": 5,
+            "water": 5,
+            "energy": 62.42499999999225,
+            "welfare": 68
+          },
+          {
+            "id": "zebra-kira",
+            "position": {
+              "x": 16.486088086152854,
+              "z": 13.123840673846074
+            },
+            "heading": -1.6539375586833394,
+            "phase": "wander",
+            "food": 5,
+            "water": 6,
+            "energy": 64.19999999999186,
+            "welfare": 77
+          }
+        ]
+      }
+    ],
+    "events": [
+      {
+        "type": "zebra-grazed",
+        "animalId": "zebra-zuri",
+        "resourceId": "zebra-graze-121",
+        "eventId": "zebra-zuri:graze:5",
+        "tick": 24246,
+        "gameTimeMs": 2424600
+      },
+      {
+        "type": "zebra-drank",
+        "animalId": "zebra-zuri",
+        "resourceId": "zebra-water-122",
+        "eventId": "zebra-zuri:drink:5",
+        "tick": 24360,
+        "gameTimeMs": 2436000
+      },
+      {
+        "type": "zebra-enriched",
+        "animalId": "zebra-kira",
+        "resourceId": "zebra-enrichment-124",
+        "eventId": "zebra-kira:enrich:240",
+        "tick": 24382,
+        "gameTimeMs": 2438200
+      },
+      {
+        "type": "zebra-grazed",
+        "animalId": "zebra-mira",
+        "resourceId": "zebra-graze-120",
+        "eventId": "zebra-mira:graze:5",
+        "tick": 24436,
+        "gameTimeMs": 2443600
+      },
+      {
+        "type": "zebra-drank",
+        "animalId": "zebra-mira",
+        "resourceId": "zebra-water-122",
+        "eventId": "zebra-mira:drink:5",
+        "tick": 24524,
+        "gameTimeMs": 2452400
+      },
+      {
+        "type": "zebra-rested",
+        "animalId": "zebra-zuri",
+        "resourceId": "zebra-shade-123",
+        "eventId": "zebra-zuri:rest:320",
+        "tick": 24620,
+        "gameTimeMs": 2462000
+      },
+      {
+        "type": "zebra-enriched",
+        "animalId": "zebra-zaki",
+        "resourceId": "zebra-enrichment-124",
+        "eventId": "zebra-zaki:enrich:300",
+        "tick": 24645,
+        "gameTimeMs": 2464500
+      },
+      {
+        "type": "zebra-rested",
+        "animalId": "zebra-mira",
+        "resourceId": "zebra-shade-123",
+        "eventId": "zebra-mira:rest:320",
+        "tick": 24777,
+        "gameTimeMs": 2477700
+      },
+      {
+        "type": "zebra-rested",
+        "animalId": "zebra-zaki",
+        "resourceId": "zebra-shade-123",
+        "eventId": "zebra-zaki:rest:400",
+        "tick": 24869,
+        "gameTimeMs": 2486900
+      },
+      {
+        "type": "zebra-enriched",
+        "animalId": "zebra-zuri",
+        "resourceId": "zebra-enrichment-124",
+        "eventId": "zebra-zuri:enrich:300",
+        "tick": 24911,
+        "gameTimeMs": 2491100
+      },
+      {
+        "type": "zebra-enriched",
+        "animalId": "zebra-mira",
+        "resourceId": "zebra-enrichment-124",
+        "eventId": "zebra-mira:enrich:240",
+        "tick": 25101,
+        "gameTimeMs": 2510100
+      },
+      {
+        "type": "zebra-drank",
+        "animalId": "zebra-kira",
+        "resourceId": "zebra-water-122",
+        "eventId": "zebra-kira:drink:6",
+        "tick": 25209,
+        "gameTimeMs": 2520900
+      },
+      {
+        "type": "zebra-rested",
+        "animalId": "zebra-zuri",
+        "resourceId": "zebra-shade-123",
+        "eventId": "zebra-zuri:rest:400",
+        "tick": 25228,
+        "gameTimeMs": 2522800
+      }
+    ]
+  },
+  "zeroWallet": {
+    "refund": [
+      {
+        "case": "zero-cash-refund",
+        "enrichment": true,
+        "refund": 65,
+        "ticks": 732,
+        "cash": 37,
+        "food": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "water": [
+          1,
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "case": "zero-cash-refund",
+        "enrichment": false,
+        "refund": 90,
+        "ticks": 488,
+        "cash": 72,
+        "food": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "water": [
+          1,
+          1,
+          1,
+          1
+        ]
+      }
+    ],
+    "ticket": {
+      "case": "zero-cash-real-tickets",
+      "ticks": 3264,
+      "ticketIncome": 60,
+      "cash": 2,
+      "upkeepPaid": -40
+    },
+    "scope": "Explicit zero-wallet financial boundary fixtures; after initialization every refund/refill/ticket uses actual commands. Initial boundary is not a real purchase sequence or grant budget proof."
+  },
+  "coverage": [
+    "Exact observed enrichment exit with1200valid canonical ticks, bounded guarded translations, original root/body/head/prop protection and true subsequent meals/drinks.",
+    "Safety translations cannot add trot reward distance; actual herd/trot10k timeline, grooming/contact/high-low/reduced rig skins and old drinking-turn recovery regression pass.",
+    "Exact cold pause and1x10x accepted-tick parity, readonly views never move actors or issue money.",
+    "Zero cash/depleted essentials: real65optional or90spare-food refund,18paid refills, all four actual meals/drinks; no repeated refund or free stock/money.",
+    "No spare: real paid visitors provide60ZC;18paid essentials and40upkeep leave2ZC, all four actual meals/drinks. A stable-wallet review delay avoids a same-tick purchase assumption.",
+    "Guidance distinguishes care, actual mechanical port access, depleted/waiting, missing, outside path/cost and gate; in-use optional objects never recommended for refund; ID/EN honest costs and separate confirmations.",
+    "Old baseline source invariants, shared finance/compaction/refund/CAS and all four real Zebra missions remain covered."
+  ],
+  "unrun": [
+    "Immutable production+QA build and production harness exclusion",
+    "Actual carried QA browser escape, review/refill/refund controls and cold restore",
+    "Any native simulation, soak, presented FPS or physical devices"
+  ],
+  "open": "Financial256purchase proof capacity throw remains a separate explicit release gate; see capacity-discovery.json. Do not publish V5 until fixed and regressed."
+}
