@@ -42,7 +42,7 @@ export interface ZebraProgress {
  unlock:ZebraUnlockProof|null;
  grant:null|{id:'zebra-grasslands-grant-v1';ledgerEntryId:string;tick:number;command:number};
  missions:{currentId:ZebraMissionId|null;completedIds:ZebraMissionId[];
-  rewards:{missionId:ZebraMissionId;tick:number;command:number;ledgerEntryId:string|null;award:ZebraAward|null}[];
+  rewards:{missionId:ZebraMissionId;tick:number;command:number;ledgerEntryId:string|null;award:ZebraAward|null;connection?:{habitatId:string;viewingCell:Point;route:Point[]}}[];
   objectives:{fedIds:string[];wateredIds:string[];comfortableTicks:number;groomings:number;restedIds:string[];enrichedIds:string[];thrivingTicks:number;viewedVisitorIds:string[]}};
 }
 export const initialZebraProgress=():ZebraProgress=>({unlock:null,grant:null,missions:{currentId:'ZQ01',completedIds:[],rewards:[],objectives:{fedIds:[],wateredIds:[],comfortableTicks:0,groomings:0,restedIds:[],enrichedIds:[],thrivingTicks:0,viewedVisitorIds:[]}}});
