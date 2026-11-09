@@ -1,0 +1,1141 @@
+{
+  "status": "RETRY_FOCUS_AND_COLD_PASS_FULL_Z5_05_MATRIX_PENDING",
+  "at": "2026-11-09T21:45:44.000Z",
+  "verified": 38,
+  "total": 54,
+  "source": "3fa9374a4b6157d4a344068066b828ca0f8c3934",
+  "sourceFingerprint": "d3b432844646e5a7e599a4069df4be52425fa07d227acc1feebba536bdd6b601",
+  "scope": "UI only. Await original controller.open before focusing visible non-inert Resume/world/session control. No engine/save/gameplay/asset/dependency delta.",
+  "tests": {
+    "passed": 40,
+    "types": "PASS strict",
+    "astro": "PASS586 files,0 diagnostics",
+    "logs": [
+      {
+        "path": ".qa/zebra-audit/z5-05-settled-tests.log",
+        "bytes": 4284,
+        "sha256": "3f7afe6722694694f0cdd25a76f860d23eba7a9868c2b7ccf05e7707fc784ece"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-05-settled-types.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-05-settled-check.log",
+        "bytes": 168,
+        "sha256": "b6f77eed9992c8f77bf9bc0fe23c6a88e628e7f53304127e8d2346352bd1a9ae"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-05-settled-build.log",
+        "bytes": 2653,
+        "sha256": "ef0d3f9c3d96d4d362896f7e8be69aa3860dd89ede8437ff29637fe53824e58b"
+      }
+    ]
+  },
+  "build": {
+    "receipt": {
+      "path": ".qa/visual3d/h1-03-zebra-accessible3/source.json",
+      "bytes": 108163,
+      "sha256": "bc16d07ea53cc5b1a414704126f07b2524b515829cb301da91227538b94dddfb"
+    },
+    "lab": "79bbf892ca065c2d05a6fb0d87c768d4932f2d338cfa894f84800a5deccc11eb",
+    "production": "edbbb530a2d2b18ffd7093f43d2faa23972db7e7a83600b1fad381fa7506893f",
+    "pages": 10,
+    "qaExclusion": "PASS"
+  },
+  "native": {
+    "rawReceipts": [
+      {
+        "path": ".qa/zebra-audit/z5-05-settled-browser.json",
+        "bytes": 722128,
+        "sha256": "3a1306a375a3ca0d60742f1e084c211b3ad255cf06202794291375a437c1d471"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-05-settled-ui.json",
+        "bytes": 10124,
+        "sha256": "c25f890eaae70b8ad9149b564ea76856a94a93a73f6d12fb00bb3df361341341"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-05-settled-cold.json",
+        "bytes": 4065,
+        "sha256": "d7f0c83feab75e3bd8a7e393e6d725cf19cc243a59a52b8a45045763b8ac7294"
+      }
+    ],
+    "ui": [
+      {
+        "label": "id-initial-continue",
+        "source": "3fa9374a4b6157d4a344068066b828ca0f8c3934",
+        "at": "2026-11-09T21:44:36.417Z",
+        "azimuth": "0",
+        "details": [
+          {
+            "hidden": false,
+            "kind": "zebra-zaki",
+            "lang": "",
+            "open": false,
+            "steps": 0
+          },
+          {
+            "hidden": false,
+            "kind": "zebra-zuri",
+            "lang": "",
+            "open": false,
+            "steps": 0
+          },
+          {
+            "hidden": false,
+            "kind": "zebra-mira",
+            "lang": "",
+            "open": false,
+            "steps": 0
+          },
+          {
+            "hidden": false,
+            "kind": "zebra-kira",
+            "lang": "",
+            "open": false,
+            "steps": 0
+          },
+          {
+            "hidden": false,
+            "kind": "care",
+            "lang": "id",
+            "open": false,
+            "steps": 7
+          },
+          {
+            "hidden": false,
+            "kind": "dialog",
+            "lang": "id",
+            "open": false,
+            "steps": 7
+          }
+        ],
+        "dialogs": [],
+        "focus": {
+          "html": "<button type=\"button\" data-save-resume-button=\"\" data-astro-cid-d56su4gk=\"\">Lanjut bermain</button>",
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Lanjut bermain"
+        },
+        "lang": "id",
+        "overflow": false,
+        "panels": [
+          {
+            "hidden": false,
+            "id": "hud-pane-missions",
+            "labelledby": "hud-tab-missions"
+          },
+          {
+            "hidden": true,
+            "id": "hud-pane-care",
+            "labelledby": "hud-tab-care"
+          },
+          {
+            "hidden": true,
+            "id": "hud-pane-visitors",
+            "labelledby": "hud-tab-visitors"
+          },
+          {
+            "hidden": true,
+            "id": "hud-pane-build",
+            "labelledby": "hud-tab-build"
+          }
+        ],
+        "scrollY": 359.3333435058594,
+        "tabs": [
+          {
+            "controls": "hud-pane-missions",
+            "id": "hud-tab-missions",
+            "selected": "true",
+            "tabIndex": 0
+          },
+          {
+            "controls": "hud-pane-care",
+            "id": "hud-tab-care",
+            "selected": "false",
+            "tabIndex": -1
+          },
+          {
+            "controls": "hud-pane-visitors",
+            "id": "hud-tab-visitors",
+            "selected": "false",
+            "tabIndex": -1
+          },
+          {
+            "controls": "hud-pane-build",
+            "id": "hud-tab-build",
+            "selected": "false",
+            "tabIndex": -1
+          }
+        ],
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        },
+        "world": "ArrowUp ArrowDown ArrowLeft ArrowRight Q E Home Escape Enter"
+      },
+      {
+        "label": "id-actual-context-lost",
+        "source": "3fa9374a4b6157d4a344068066b828ca0f8c3934",
+        "at": "2026-11-09T21:45:01.750Z",
+        "azimuth": null,
+        "details": [
+          {
+            "hidden": false,
+            "kind": "zebra-zaki",
+            "lang": "",
+            "open": false,
+            "steps": 0
+          },
+          {
+            "hidden": false,
+            "kind": "zebra-zuri",
+            "lang": "",
+            "open": false,
+            "steps": 0
+          },
+          {
+            "hidden": false,
+            "kind": "zebra-mira",
+            "lang": "",
+            "open": false,
+            "steps": 0
+          },
+          {
+            "hidden": false,
+            "kind": "zebra-kira",
+            "lang": "",
+            "open": false,
+            "steps": 0
+          },
+          {
+            "hidden": true,
+            "kind": "care",
+            "lang": "id",
+            "open": false,
+            "steps": 7
+          },
+          {
+            "hidden": false,
+            "kind": "dialog",
+            "lang": "id",
+            "open": false,
+            "steps": 7
+          }
+        ],
+        "dialogs": [],
+        "focus": {
+          "html": "<button id=\"matrix-context-loss\">Lose actual WebGL context while paused</button>",
+          "id": "matrix-context-loss",
+          "tag": "BUTTON",
+          "text": "Lose actual WebGL context while paused"
+        },
+        "lang": "id",
+        "overflow": false,
+        "panels": [
+          {
+            "hidden": false,
+            "id": "hud-pane-missions",
+            "labelledby": "hud-tab-missions"
+          },
+          {
+            "hidden": false,
+            "id": "hud-pane-care",
+            "labelledby": "hud-tab-care"
+          },
+          {
+            "hidden": false,
+            "id": "hud-pane-visitors",
+            "labelledby": "hud-tab-visitors"
+          },
+          {
+            "hidden": false,
+            "id": "hud-pane-build",
+            "labelledby": "hud-tab-build"
+          }
+        ],
+        "scrollY": 0,
+        "tabs": [
+          {
+            "controls": "hud-pane-missions",
+            "id": "hud-tab-missions",
+            "selected": "true",
+            "tabIndex": 0
+          },
+          {
+            "controls": "hud-pane-care",
+            "id": "hud-tab-care",
+            "selected": "false",
+            "tabIndex": -1
+          },
+          {
+            "controls": "hud-pane-visitors",
+            "id": "hud-tab-visitors",
+            "selected": "false",
+            "tabIndex": -1
+          },
+          {
+            "controls": "hud-pane-build",
+            "id": "hud-tab-build",
+            "selected": "false",
+            "tabIndex": -1
+          }
+        ],
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        },
+        "world": "ArrowUp ArrowDown ArrowLeft ArrowRight Q E Home Escape Enter"
+      },
+      {
+        "label": "id-help-after-loss",
+        "source": "3fa9374a4b6157d4a344068066b828ca0f8c3934",
+        "at": "2026-11-09T21:45:02.027Z",
+        "azimuth": null,
+        "details": [
+          {
+            "hidden": false,
+            "kind": "zebra-zaki",
+            "lang": "",
+            "open": false,
+            "steps": 0
+          },
+          {
+            "hidden": false,
+            "kind": "zebra-zuri",
+            "lang": "",
+            "open": false,
+            "steps": 0
+          },
+          {
+            "hidden": false,
+            "kind": "zebra-mira",
+            "lang": "",
+            "open": false,
+            "steps": 0
+          },
+          {
+            "hidden": false,
+            "kind": "zebra-kira",
+            "lang": "",
+            "open": false,
+            "steps": 0
+          },
+          {
+            "hidden": true,
+            "kind": "care",
+            "lang": "id",
+            "open": false,
+            "steps": 7
+          },
+          {
+            "hidden": false,
+            "kind": "dialog",
+            "lang": "id",
+            "open": false,
+            "steps": 7
+          }
+        ],
+        "dialogs": [
+          "play-help"
+        ],
+        "focus": {
+          "html": "<h2 id=\"play-help-title\" tabindex=\"-1\" data-dialog-heading=\"\" data-entry-text=\"helpTitle\" data-astro-cid-d56su4gk=\"\">Satu langkah peduli setiap kali</h2>",
+          "id": "play-help-title",
+          "tag": "H2",
+          "text": "Satu langkah peduli setiap kali"
+        },
+        "lang": "id",
+        "overflow": false,
+        "panels": [
+          {
+            "hidden": false,
+            "id": "hud-pane-missions",
+            "labelledby": "hud-tab-missions"
+          },
+          {
+            "hidden": false,
+            "id": "hud-pane-care",
+            "labelledby": "hud-tab-care"
+          },
+          {
+            "hidden": false,
+            "id": "hud-pane-visitors",
+            "labelledby": "hud-tab-visitors"
+          },
+          {
+            "hidden": false,
+            "id": "hud-pane-build",
+            "labelledby": "hud-tab-build"
+          }
+        ],
+        "scrollY": 140,
+        "tabs": [
+          {
+            "controls": "hud-pane-missions",
+            "id": "hud-tab-missions",
+            "selected": "true",
+            "tabIndex": 0
+          },
+          {
+            "controls": "hud-pane-care",
+            "id": "hud-tab-care",
+            "selected": "false",
+            "tabIndex": -1
+          },
+          {
+            "controls": "hud-pane-visitors",
+            "id": "hud-tab-visitors",
+            "selected": "false",
+            "tabIndex": -1
+          },
+          {
+            "controls": "hud-pane-build",
+            "id": "hud-tab-build",
+            "selected": "false",
+            "tabIndex": -1
+          }
+        ],
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        },
+        "world": "ArrowUp ArrowDown ArrowLeft ArrowRight Q E Home Escape Enter"
+      },
+      {
+        "label": "id-enter-retry-focus",
+        "source": "3fa9374a4b6157d4a344068066b828ca0f8c3934",
+        "at": "2026-11-09T21:45:03.504Z",
+        "azimuth": "0",
+        "details": [
+          {
+            "hidden": false,
+            "kind": "zebra-zaki",
+            "lang": "",
+            "open": false,
+            "steps": 0
+          },
+          {
+            "hidden": false,
+            "kind": "zebra-zuri",
+            "lang": "",
+            "open": false,
+            "steps": 0
+          },
+          {
+            "hidden": false,
+            "kind": "zebra-mira",
+            "lang": "",
+            "open": false,
+            "steps": 0
+          },
+          {
+            "hidden": false,
+            "kind": "zebra-kira",
+            "lang": "",
+            "open": false,
+            "steps": 0
+          },
+          {
+            "hidden": false,
+            "kind": "care",
+            "lang": "id",
+            "open": false,
+            "steps": 7
+          },
+          {
+            "hidden": false,
+            "kind": "dialog",
+            "lang": "id",
+            "open": false,
+            "steps": 7
+          }
+        ],
+        "dialogs": [],
+        "focus": {
+          "html": "<button type=\"button\" data-pause-toggle=\"\" aria-pressed=\"true\" data-astro-cid-d56su4gk=\"\" aria-describedby=\"hud-pause-status\">Lanjut bermain</button>",
+          "id": "",
+          "tag": "BUTTON",
+          "text": "Lanjut bermain"
+        },
+        "lang": "id",
+        "overflow": false,
+        "panels": [
+          {
+            "hidden": false,
+            "id": "hud-pane-missions",
+            "labelledby": "hud-tab-missions"
+          },
+          {
+            "hidden": true,
+            "id": "hud-pane-care",
+            "labelledby": "hud-tab-care"
+          },
+          {
+            "hidden": true,
+            "id": "hud-pane-visitors",
+            "labelledby": "hud-tab-visitors"
+          },
+          {
+            "hidden": true,
+            "id": "hud-pane-build",
+            "labelledby": "hud-tab-build"
+          }
+        ],
+        "scrollY": 333.3333435058594,
+        "tabs": [
+          {
+            "controls": "hud-pane-missions",
+            "id": "hud-tab-missions",
+            "selected": "true",
+            "tabIndex": 0
+          },
+          {
+            "controls": "hud-pane-care",
+            "id": "hud-tab-care",
+            "selected": "false",
+            "tabIndex": -1
+          },
+          {
+            "controls": "hud-pane-visitors",
+            "id": "hud-tab-visitors",
+            "selected": "false",
+            "tabIndex": -1
+          },
+          {
+            "controls": "hud-pane-build",
+            "id": "hud-tab-build",
+            "selected": "false",
+            "tabIndex": -1
+          }
+        ],
+        "viewport": {
+          "height": 720,
+          "width": 1280
+        },
+        "world": "ArrowUp ArrowDown ArrowLeft ArrowRight Q E Home Escape Enter"
+      }
+    ],
+    "records": [
+      {
+        "label": "id-retry-focus-pass",
+        "source": "3fa9374a4b6157d4a344068066b828ca0f8c3934",
+        "state": {
+          "tick": 27849,
+          "cash": 3581,
+          "valid": true,
+          "sha256": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+          "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+          "seedGameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+          "preferences": {
+            "graphics": "low",
+            "locale": "id",
+            "muted": true,
+            "reducedMotion": false,
+            "speed": 1
+          },
+          "basePreferences": {
+            "graphics": "low",
+            "locale": "id",
+            "muted": true,
+            "reducedMotion": false,
+            "speed": 1
+          },
+          "actors": [
+            {
+              "id": "macaw-1",
+              "species": "ara-ararauna",
+              "phase": "perch",
+              "position": {
+                "x": 4.5,
+                "z": 4.5
+              }
+            },
+            {
+              "id": "macaw-2",
+              "species": "ara-ararauna",
+              "phase": "descend",
+              "position": {
+                "x": 5.5,
+                "z": 5.25
+              }
+            },
+            {
+              "id": "elephant-ayu",
+              "species": "elephas-maximus",
+              "phase": "idle",
+              "position": {
+                "x": 7.5,
+                "z": 15.5
+              }
+            },
+            {
+              "id": "elephant-nara",
+              "species": "elephas-maximus",
+              "phase": "idle",
+              "position": {
+                "x": 4.520101012677711,
+                "z": 13.52010101267762
+              }
+            },
+            {
+              "id": "lion-raka",
+              "species": "panthera-leo",
+              "phase": "idle",
+              "position": {
+                "x": 6.5,
+                "z": 23
+              }
+            },
+            {
+              "id": "lion-sena",
+              "species": "panthera-leo",
+              "phase": "wander",
+              "position": {
+                "x": 6.852419513485015,
+                "z": 20.42620975674251
+              }
+            },
+            {
+              "id": "lion-tala",
+              "species": "panthera-leo",
+              "phase": "idle",
+              "position": {
+                "x": 8.5,
+                "z": 21.5
+              }
+            },
+            {
+              "id": "giraffe-dira",
+              "species": "giraffa-sp",
+              "phase": "seek-shade",
+              "position": {
+                "x": 14.5,
+                "z": 7.5
+              }
+            },
+            {
+              "id": "giraffe-sora",
+              "species": "giraffa-sp",
+              "phase": "seek-shade",
+              "position": {
+                "x": 14,
+                "z": 6.5
+              }
+            },
+            {
+              "id": "giraffe-lila",
+              "species": "giraffa-sp",
+              "phase": "wander",
+              "position": {
+                "x": 15.014175525077025,
+                "z": 5.0567021003081045
+              }
+            },
+            {
+              "id": "zebra-zaki",
+              "species": "equus-quagga",
+              "phase": "wander",
+              "position": {
+                "x": 17.27000000000001,
+                "z": 15.5
+              }
+            },
+            {
+              "id": "zebra-zuri",
+              "species": "equus-quagga",
+              "phase": "wander",
+              "position": {
+                "x": 18.75455844122715,
+                "z": 13.254558441227159
+              }
+            },
+            {
+              "id": "zebra-mira",
+              "species": "equus-quagga",
+              "phase": "rest",
+              "position": {
+                "x": 18.2,
+                "z": 18.85
+              }
+            },
+            {
+              "id": "zebra-kira",
+              "species": "equus-quagga",
+              "phase": "wander",
+              "position": {
+                "x": 18.5,
+                "z": 15.045
+              }
+            }
+          ]
+        },
+        "save": {
+          "phase": "saved",
+          "active": true,
+          "hasSave": true,
+          "revision": 813,
+          "savedTick": 27849,
+          "savedAt": 1794260703173,
+          "savedCurrency": 3581,
+          "savedMissions": 4,
+          "savedBirds": 2,
+          "fault": null,
+          "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+          "recovery": {
+            "kind": "none",
+            "problem": null,
+            "quote": null,
+            "source": null,
+            "hasPreserved": false
+          },
+          "recoveryBusy": false,
+          "restartBusy": false,
+          "restartAvailable": false,
+          "dirty": false,
+          "pendingTimer": false,
+          "inflight": false,
+          "storageReady": true,
+          "disposed": false
+        },
+        "owners": 1,
+        "maxOwners": 1,
+        "frames": {
+          "mode": "manual",
+          "pending": 0,
+          "nativePending": 0,
+          "manualTime": 0,
+          "manualDeliveries": 0,
+          "nativeDeliveries": 0,
+          "disposed": false,
+          "cpuFrame": {
+            "count": 0,
+            "retained": 0,
+            "capacity": 120,
+            "invalid": 0,
+            "minMs": null,
+            "maxMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+          },
+          "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+        },
+        "audio": {
+          "status": "muted",
+          "muted": true,
+          "allowed": false,
+          "unlocked": false,
+          "contextState": "absent",
+          "contextsCreated": 0,
+          "contextsClosed": 0,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "events": [
+          {
+            "type": "webglcontextlost",
+            "at": 1794260701489,
+            "trusted": true
+          }
+        ],
+        "failures": [
+          "context-lost"
+        ],
+        "errors": [],
+        "retired": [
+          {
+            "disposed": true,
+            "lost": true,
+            "geometries": 0,
+            "textures": 0,
+            "programs": 0,
+            "materials": 0,
+            "callbacks": 0,
+            "subscribers": 0,
+            "cleanupErrors": 0
+          }
+        ]
+      },
+      {
+        "label": "id-final-owner-disposed",
+        "source": "3fa9374a4b6157d4a344068066b828ca0f8c3934",
+        "state": {
+          "tick": 27849,
+          "cash": 3581,
+          "valid": true,
+          "sha256": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+          "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+          "seedGameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+          "preferences": {
+            "graphics": "low",
+            "locale": "id",
+            "muted": true,
+            "reducedMotion": false,
+            "speed": 1
+          },
+          "basePreferences": {
+            "graphics": "low",
+            "locale": "id",
+            "muted": true,
+            "reducedMotion": false,
+            "speed": 1
+          },
+          "actors": [
+            {
+              "id": "macaw-1",
+              "species": "ara-ararauna",
+              "phase": "perch",
+              "position": {
+                "x": 4.5,
+                "z": 4.5
+              }
+            },
+            {
+              "id": "macaw-2",
+              "species": "ara-ararauna",
+              "phase": "descend",
+              "position": {
+                "x": 5.5,
+                "z": 5.25
+              }
+            },
+            {
+              "id": "elephant-ayu",
+              "species": "elephas-maximus",
+              "phase": "idle",
+              "position": {
+                "x": 7.5,
+                "z": 15.5
+              }
+            },
+            {
+              "id": "elephant-nara",
+              "species": "elephas-maximus",
+              "phase": "idle",
+              "position": {
+                "x": 4.520101012677711,
+                "z": 13.52010101267762
+              }
+            },
+            {
+              "id": "lion-raka",
+              "species": "panthera-leo",
+              "phase": "idle",
+              "position": {
+                "x": 6.5,
+                "z": 23
+              }
+            },
+            {
+              "id": "lion-sena",
+              "species": "panthera-leo",
+              "phase": "wander",
+              "position": {
+                "x": 6.852419513485015,
+                "z": 20.42620975674251
+              }
+            },
+            {
+              "id": "lion-tala",
+              "species": "panthera-leo",
+              "phase": "idle",
+              "position": {
+                "x": 8.5,
+                "z": 21.5
+              }
+            },
+            {
+              "id": "giraffe-dira",
+              "species": "giraffa-sp",
+              "phase": "seek-shade",
+              "position": {
+                "x": 14.5,
+                "z": 7.5
+              }
+            },
+            {
+              "id": "giraffe-sora",
+              "species": "giraffa-sp",
+              "phase": "seek-shade",
+              "position": {
+                "x": 14,
+                "z": 6.5
+              }
+            },
+            {
+              "id": "giraffe-lila",
+              "species": "giraffa-sp",
+              "phase": "wander",
+              "position": {
+                "x": 15.014175525077025,
+                "z": 5.0567021003081045
+              }
+            },
+            {
+              "id": "zebra-zaki",
+              "species": "equus-quagga",
+              "phase": "wander",
+              "position": {
+                "x": 17.27000000000001,
+                "z": 15.5
+              }
+            },
+            {
+              "id": "zebra-zuri",
+              "species": "equus-quagga",
+              "phase": "wander",
+              "position": {
+                "x": 18.75455844122715,
+                "z": 13.254558441227159
+              }
+            },
+            {
+              "id": "zebra-mira",
+              "species": "equus-quagga",
+              "phase": "rest",
+              "position": {
+                "x": 18.2,
+                "z": 18.85
+              }
+            },
+            {
+              "id": "zebra-kira",
+              "species": "equus-quagga",
+              "phase": "wander",
+              "position": {
+                "x": 18.5,
+                "z": 15.045
+              }
+            }
+          ]
+        },
+        "save": {
+          "phase": "saved",
+          "active": true,
+          "hasSave": true,
+          "revision": 814,
+          "savedTick": 27849,
+          "savedAt": 1794260720046,
+          "savedCurrency": 3581,
+          "savedMissions": 4,
+          "savedBirds": 2,
+          "fault": null,
+          "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+          "recovery": {
+            "kind": "none",
+            "problem": null,
+            "quote": null,
+            "source": null,
+            "hasPreserved": false
+          },
+          "recoveryBusy": false,
+          "restartBusy": false,
+          "restartAvailable": false,
+          "dirty": false,
+          "pendingTimer": false,
+          "inflight": false,
+          "storageReady": true,
+          "disposed": true
+        },
+        "owners": 0,
+        "maxOwners": 1,
+        "frames": {
+          "mode": "manual",
+          "pending": 0,
+          "nativePending": 0,
+          "manualTime": 0,
+          "manualDeliveries": 0,
+          "nativeDeliveries": 0,
+          "disposed": true,
+          "cpuFrame": {
+            "count": 0,
+            "retained": 0,
+            "capacity": 120,
+            "invalid": 0,
+            "minMs": null,
+            "maxMs": null,
+            "p50Ms": null,
+            "p95Ms": null,
+            "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+          },
+          "method": "Explicit deterministic callback timestamps; not native wall-time/FPS"
+        },
+        "audio": {
+          "status": "disposed",
+          "muted": true,
+          "allowed": false,
+          "unlocked": false,
+          "contextState": "absent",
+          "contextsCreated": 0,
+          "contextsClosed": 0,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": true,
+          "failed": false
+        },
+        "events": [
+          {
+            "type": "webglcontextlost",
+            "at": 1794260701489,
+            "trusted": true
+          }
+        ],
+        "failures": [
+          "context-lost"
+        ],
+        "errors": [],
+        "retired": [
+          {
+            "disposed": true,
+            "lost": true,
+            "geometries": 0,
+            "textures": 0,
+            "programs": 0,
+            "materials": 0,
+            "callbacks": 0,
+            "subscribers": 0,
+            "cleanupErrors": 0
+          },
+          {
+            "disposed": true,
+            "lost": false,
+            "geometries": 0,
+            "textures": 0,
+            "programs": 0,
+            "materials": 0,
+            "callbacks": 0,
+            "subscribers": 0,
+            "cleanupErrors": 0
+          }
+        ]
+      }
+    ],
+    "cold": [
+      {
+        "source": "3fa9374a4b6157d4a344068066b828ca0f8c3934",
+        "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+        "durable": {
+          "version": 5,
+          "revision": 814,
+          "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+          "schema": 5,
+          "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
+          "backupSchema": 4
+        },
+        "owners": 0,
+        "callbacks": 0,
+        "errors": []
+      },
+      {
+        "source": "3fa9374a4b6157d4a344068066b828ca0f8c3934",
+        "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+        "durable": {
+          "version": 5,
+          "revision": 74,
+          "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+          "schema": 5,
+          "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
+          "backupSchema": 4
+        },
+        "owners": 0,
+        "callbacks": 0,
+        "errors": []
+      }
+    ],
+    "scope": "Trusted WEBGL_lose_context extension-requested loss and actual Enter key recovery; not physical GPU failure/background/soak/FPS proof."
+  },
+  "screenshots": [
+    {
+      "path": "docs/qa/zebra/z5-05/id-help-after-loss-final.jpg",
+      "bytes": 94193,
+      "sha256": "05a736daf3733618f42d64bfd05f94723c8025c0d2e4986745de816e1b7d0219",
+      "source": "3fa9374a4b6157d4a344068066b828ca0f8c3934",
+      "scope": "Native Help dialog after actual loss; Zebra guide is below the visible scroll fold, its presence is in DOM evidence."
+    },
+    {
+      "path": "docs/qa/zebra/z5-05/id-help-after-loss.jpg",
+      "bytes": 94193,
+      "sha256": "05a736daf3733618f42d64bfd05f94723c8025c0d2e4986745de816e1b7d0219",
+      "source": "bc9ef69cb8b5198dcbc66b0b595983213790d249",
+      "scope": "Historical intermediate capture, not final acceptance."
+    }
+  ],
+  "intermediateReceipts": [
+    {
+      "path": ".qa/zebra-audit/z5-05-cf195-ui.json",
+      "bytes": 110900,
+      "sha256": "1a2a2f48479241bab8e1b1850cd74b4f68e7e6ef1b623eb4a2e298926c148b7d"
+    },
+    {
+      "path": ".qa/zebra-audit/z5-05-cf195-browser.json",
+      "bytes": 1388574,
+      "sha256": "cf8423e61917e201901416248ceaa14a8e6cba93ecf7e8f3639bb61edc4b0917"
+    },
+    {
+      "path": ".qa/zebra-audit/z5-05-bc9-ui.json",
+      "bytes": 74196,
+      "sha256": "88e9a7cc4b2bfb29e02262a39f29db68ec19bdcc77c8e27a4ab81261e87d18d8"
+    },
+    {
+      "path": ".qa/zebra-audit/z5-05-bc9-browser.json",
+      "bytes": 722126,
+      "sha256": "20236f9e61d115e38e02f5a0ba1682f645f98bb762199b2d20a110c11ce9671d"
+    }
+  ],
+  "resources": {
+    "at": "2026-11-09T21:45:44.000Z",
+    "activeZebraBuildTestsServerRenderer": 0,
+    "server": {
+      "port": 52907,
+      "pid": 25628,
+      "session": 56179,
+      "exit": 0
+    },
+    "browser": {
+      "kind": "internal IAB",
+      "id": "3",
+      "activeQaTab": "43",
+      "closed": true,
+      "viewportReset": true,
+      "remaining": [
+        {
+          "id": "40",
+          "title": "This site can't be reached",
+          "engineLoaded": false,
+          "issue": "Initial sandbox server timeout created an error page. Binding/navigation via the documented API was rejected by Browser Use URL policy for its data: error URL. Could not obtain a handle to explicitly close it. It is an unmarked temporary agent-created tab; automatic end-of-turn cleanup is expected, not observed."
+        }
+      ]
+    },
+    "completed": {
+      "tests": 59175,
+      "types": 78044,
+      "check": 43882,
+      "build": 83692,
+      "allExit": 0
+    },
+    "owners": 0,
+    "audioContexts": 0,
+    "pendingCallbacks": 0,
+    "rendererCounters": "Final-source ID retired owners all0; earlier EN auto-quality disposed cache retained one program, owned resources0. No heap/FPS claim.",
+    "farm": "D06 slot available; no new heavy work/browser until explicit Farm release"
+  },
+  "pending": [
+    "Complete full final-source ID/EN keyboard/ARIA/labels/reference IDs, roving HUD, help/welfare disclosure, modal focus and preview Enter/Space/Escape/cancel regression; previous broader native observations belong to cf195/bc9 and are intermediate only.",
+    "Repeat final-source EN/mobile preview/focus and keyboard Retry where applicable. Current final-source native acceptance is ID actual context-loss Help + Enter Retry focus only, plus both cold archives.",
+    "Then drain/dispose and close own resources, promote Z5-05 to39/54 only when the complete matrix passes. No physical device/screen-reader/FPS/soak certification."
+  ],
+  "noPushOrDeploy": true
+}
