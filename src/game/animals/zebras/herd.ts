@@ -16,7 +16,7 @@ export function prepareZebraHerd(s:RuntimeState){const herd=zebras(s.animals);fo
   return;
  }
 }
-function recordTrotStep(a:ZebraAnimal){const step=Math.hypot(a.motion.lastStep.x,a.motion.lastStep.z);if(a.motion.lastStep.x*Math.sin(a.motion.heading)+a.motion.lastStep.z*Math.cos(a.motion.heading)<=1e-8)return;a.motion.trotDistance=(a.motion.trotDistance??0)+step;a.energy=Math.max(0,a.energy-H.trotEnergyPerMovingTick*step/G.trotSpeed);}
+function recordTrotStep(a:ZebraAnimal){if(a.motion.blockedTicks>0)return;const step=Math.hypot(a.motion.lastStep.x,a.motion.lastStep.z);if(a.motion.lastStep.x*Math.sin(a.motion.heading)+a.motion.lastStep.z*Math.cos(a.motion.heading)<=1e-8)return;a.motion.trotDistance=(a.motion.trotDistance??0)+step;a.energy=Math.max(0,a.energy-H.trotEnergyPerMovingTick*step/G.trotSpeed);}
 function finishTrot(a:ZebraAnimal,events:ZebraTrotEvent[]){const traveled=a.motion.trotDistance??0;if(traveled+1e-8>=H.minTrotTravel){a.trots++;events.push({type:'zebra-trotted',animalId:a.id,eventId:a.id+':trot:'+a.trots,distance:traveled});}delete a.motion.trotDistance;}
 /** Real bounded ground steps after original idle/wander movement. No cosmetic credit. */
 export function stepZebraHerd(s:RuntimeState){const herd=zebras(s.animals),events:ZebraTrotEvent[]=[],offset=herd.length?s.tick%herd.length:0,ordered=Array.from({length:herd.length},(_,i)=>herd[(i+offset)%herd.length]!);

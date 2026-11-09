@@ -1,0 +1,25 @@
+{
+  "status": "OPEN_RELEASE_FINANCIAL_CAPACITY",
+  "at": "2026-11-09T13:33:50.489Z",
+  "baseCommit": "1a66bfda5983ab546ce7075e3d881fc086357ee4",
+  "runtimeBase": "90cd1650430893ebdb38509f93ce3fd8be608435",
+  "relevantUnchangedSource": {
+    "path": "src/game/economy/journal.ts",
+    "sha256": "a488eba59c7e6f179a9bbae64c7522be0b7d2673e7912aa60faef4f4693a5a42"
+  },
+  "raw": {
+    "path": ".qa/zebra-audit/z4-06-zero-probe.log",
+    "bytes": 851,
+    "sha256": "efeec0597657630d6014bfb94033d7c2e0cace05b733cda371f29d0cd163608d"
+  },
+  "trigger": "Source-only attempt to lower funds by buying hundreds of legal path cells exceeds256 retained outstanding purchase proofs at automatic journal compaction.",
+  "error": "Financial proof exceeds bounded world contract",
+  "stack": [
+    "compactFinance journal.ts63",
+    "compactNow simulation.ts",
+    "buildPath simulation.ts"
+  ],
+  "scope": "Synthetic fixture only; no browser/owner save. Movement/recovery candidate changes were uncommitted at the probe; relevant finance implementation is unchanged from the recorded base.",
+  "required": "Preflight capacity before accepting any new build/candidate; retain bounded codec and exact old proofs. Refuse safely without partial mutation or deferred autosave failure. Do not solve by raising all limits or dropping lineage.",
+  "gate": "Resolve and regress in financial-capacity/clock/release audit before any public V5 release. Z4-06 zero-wallet tests use labelled financial boundary fixtures, not this overflowing purchase sequence."
+}
