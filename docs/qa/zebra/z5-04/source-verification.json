@@ -1,0 +1,438 @@
+{
+  "status": "SOURCE_PASS_BROWSER_PARTIAL_Z5_04",
+  "at": "2026-11-09T20:03:59.000Z",
+  "verified": 37,
+  "total": 54,
+  "source": "e9858fd29ab4e88339c26b468e52dc1b856c44de",
+  "sourceFingerprint": "23c5fa7e9619dc4bcf71d9d6ca10dde6d36ac01e8e3637002c05ccec9f9b8e42",
+  "productChange": "No product/game/engine/save/assets/dependency change. QA-only explicit one-shot factory failures and passive native media reporting, plus three V5 source tests.",
+  "tests": {
+    "uniquePassing": 26,
+    "newV5Cases": 3,
+    "scope": "12 V5 preference combinations/strict-codec roundtrip,300 canonical tick equivalence across visual policies for14 actors/5 habitats, original4 Zebra full rigs retain displacement/gait under reduced motion and release. Existing audio/policy/controller lifecycle tests include missing/blocked support; not browser acceptance.",
+    "types": "PASS strict noEmit/noUnused",
+    "astroCheck": "583 files;0 errors/warnings/hints",
+    "logs": [
+      {
+        "path": ".qa/zebra-audit/z5-04-tests.log",
+        "bytes": 2770,
+        "sha256": "19c4897d5ed6b75a159e832740ab483390145c3cadda2c70d4dbfb90e1b0c391"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-04-types.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-04-check.log",
+        "bytes": 216,
+        "sha256": "83566c613bc47a583efff06733c253029fe415a4c8a4e538cc5032de0f9efccb"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-04-build.log",
+        "bytes": 2575,
+        "sha256": "3d35d7fac90ce71373057cf6fab500e2c41bb45fabed30ae04e23bc9609127ef"
+      }
+    ]
+  },
+  "build": {
+    "receipt": {
+      "path": ".qa/visual3d/h1-03-zebra-comfort1/source.json",
+      "bytes": 107534,
+      "sha256": "a0a19e54bffe1367bfac89e1e0b41e599f6e8782eb62cef763c2ee8198d7ad62"
+    },
+    "lab": "d688921ddfd4ad75f4eb3f6b7dec77d1d769ed1330127a8d6af849fc328486a4",
+    "production": "051647552e7cb4aa48d945a1906921a8eb620963d5ced82a674b4f5bafb81a0a",
+    "pages": 10,
+    "productionExclusion": "PASS including new factory faults"
+  },
+  "browser": {
+    "status": "PARTIAL_NOT_ACCEPTED",
+    "runner": "internal-browser",
+    "physicalDevice": false,
+    "presentedFps": null,
+    "rawReceipts": [
+      {
+        "path": ".qa/zebra-audit/z5-04-browser-raw.json",
+        "bytes": 149116,
+        "sha256": "0a8b7bf0fc6aae5d01eea6bc6a106c23a1cc477dc2517c1e323ac78e09a71e68"
+      },
+      {
+        "path": ".qa/zebra-audit/z5-04-ui.json",
+        "bytes": 646,
+        "sha256": "d7f179bc61721b961c00cefc48914c747a1c152b06f8a1d2e4dadcb604df3154"
+      }
+    ],
+    "records": [
+      {
+        "label": "main-cold-menu-muted",
+        "at": "2026-11-09T20:01:24.648Z",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "tick": 27849,
+        "cash": 3581,
+        "owners": 0,
+        "ui": {
+          "alerts": [],
+          "audioState": "muted",
+          "audioText": "Suara senyap.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": true,
+          "notice": "",
+          "pauseReasons": "",
+          "paused": "false",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "stageHidden": true,
+          "width": 1366
+        },
+        "audio": {
+          "status": "muted",
+          "muted": true,
+          "allowed": false,
+          "unlocked": false,
+          "contextState": "absent",
+          "contextsCreated": 0,
+          "contextsClosed": 0,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "save": {
+          "phase": "available",
+          "revision": 757,
+          "inflight": false,
+          "disposed": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "main-cold-paused-muted",
+        "at": "2026-11-09T20:01:32.320Z",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "tick": 27849,
+        "cash": 3581,
+        "owners": 1,
+        "ui": {
+          "alerts": [],
+          "audioState": "muted",
+          "audioText": "Suara senyap.",
+          "documentWidth": 1351,
+          "graphics": "low",
+          "height": 768,
+          "lang": "id",
+          "muted": true,
+          "notice": "",
+          "pauseReasons": "continue",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "stageHidden": false,
+          "width": 1366
+        },
+        "audio": {
+          "status": "muted",
+          "muted": true,
+          "allowed": false,
+          "unlocked": false,
+          "contextState": "absent",
+          "contextsCreated": 0,
+          "contextsClosed": 0,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "save": {
+          "phase": "saved",
+          "revision": 758,
+          "inflight": false,
+          "disposed": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "discovery-settings-not-open-unapplied",
+        "at": "2026-11-09T20:03:11.248Z",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "tick": 27849,
+        "cash": 3581,
+        "owners": 1,
+        "ui": {
+          "alerts": [],
+          "audioState": "muted",
+          "audioText": "Suara senyap.",
+          "documentWidth": 1351,
+          "graphics": "high",
+          "height": 768,
+          "lang": "id",
+          "muted": true,
+          "notice": "",
+          "pauseReasons": "continue",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "stageHidden": false,
+          "width": 1366
+        },
+        "audio": {
+          "status": "muted",
+          "muted": true,
+          "allowed": false,
+          "unlocked": false,
+          "contextState": "absent",
+          "contextsCreated": 0,
+          "contextsClosed": 0,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": false,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "save": {
+          "phase": "saved",
+          "revision": 759,
+          "inflight": false,
+          "disposed": false
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "disposed-for-farm-d01",
+        "at": "2026-11-09T20:03:36.410Z",
+        "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+        "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+        "preferences": {
+          "graphics": "low",
+          "locale": "id",
+          "muted": true,
+          "reducedMotion": false,
+          "speed": 1
+        },
+        "tick": 27849,
+        "cash": 3581,
+        "owners": 0,
+        "ui": {
+          "alerts": [],
+          "audioState": "muted",
+          "audioText": "Suara senyap.",
+          "documentWidth": 1351,
+          "graphics": "high",
+          "height": 768,
+          "lang": "id",
+          "muted": true,
+          "notice": "",
+          "pauseReasons": "continue",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "stageHidden": true,
+          "width": 1366
+        },
+        "audio": {
+          "status": "disposed",
+          "muted": true,
+          "allowed": false,
+          "unlocked": false,
+          "contextState": "absent",
+          "contextsCreated": 0,
+          "contextsClosed": 0,
+          "liveContexts": 0,
+          "liveNodes": 0,
+          "looping": false,
+          "gain": 0,
+          "signalRms": 0,
+          "analyserSampleActive": false,
+          "disposed": true,
+          "failed": false
+        },
+        "visualFaults": {
+          "contextMode": "native",
+          "contextAttempts": 0,
+          "contextNulls": 0,
+          "audioMode": "native",
+          "audioAttempts": 0,
+          "audioThrows": 0,
+          "scope": "EXPLICIT QA first-factory fault through original production seams. Subsequent attempt uses actual browser WebGL/WebAudio. No hardware/OS unsupported or native autoplay-denial claim."
+        },
+        "nativeMedia": {
+          "reducedMotion": false,
+          "coarsePointer": false,
+          "devicePixelRatio": 1.0000000298023224
+        },
+        "save": {
+          "phase": "saved",
+          "revision": 760,
+          "inflight": false,
+          "disposed": true
+        },
+        "errors": [],
+        "failures": []
+      }
+    ],
+    "discovery": [
+      {
+        "label": "settings-activation-unconfirmed",
+        "scope": "Native locator click returned but dialog remained closed; keyboard activation timed out with no open dialog. A selectOption high returned on closed dialog before checkbox rejected invisible. No Apply was clicked; canonical preferences remain original. Cause not established; not product defect acceptance.",
+        "ui": {
+          "alerts": [],
+          "audioState": "muted",
+          "audioText": "Suara senyap.",
+          "documentWidth": 1351,
+          "graphics": "high",
+          "height": 768,
+          "lang": "id",
+          "muted": true,
+          "notice": "",
+          "pauseReasons": "continue",
+          "paused": "true",
+          "reduced": false,
+          "rootLang": "id",
+          "settingsOpen": false,
+          "stageHidden": false,
+          "width": 1366
+        }
+      }
+    ],
+    "passedScope": "Cold menu/Continue remains muted with zero audio contexts. Main payload exact through exploratory UI attempt and fully drained disposal. No applied settings, audible graph, fallback or retry accepted.",
+    "console": "Captured warn/error logs empty at close",
+    "screenshot": {
+      "path": "docs/qa/zebra/z5-04/discovery-settings-activation-id.jpg",
+      "bytes": 122478,
+      "sha256": "b839f0685b7fe57bdc1e8f424074361ee494c2d6cb03c76e3e5d49bf84c67a76"
+    }
+  },
+  "resources": {
+    "at": "2026-11-09T20:03:59.000Z",
+    "activeOwnedBuildTestsServersBrowsers": 0,
+    "browser": {
+      "kind": "ChatGPT in-app browser",
+      "id": "2",
+      "tab": "36",
+      "closed": true,
+      "viewportReset": true,
+      "remainingTabs": 0,
+      "scope": "Selected IAB ID changed; new tab opened symbolically as iab, then bound to documented current ID2. No owner Chrome use."
+    },
+    "server": {
+      "port": 52907,
+      "session": 34676,
+      "pid": 8300,
+      "exit": 0
+    },
+    "owners": 0,
+    "pendingCallbacks": 0,
+    "audioContexts": 0,
+    "audioNodes": 0,
+    "geometries": 0,
+    "textures": 0,
+    "programs": 0,
+    "ownedMaterials": 0,
+    "simulationSubscribers": 0,
+    "cleanupErrors": 0,
+    "completedSessions": {
+      "tests": 16299,
+      "types": 99874,
+      "build": 40661,
+      "check": 28865,
+      "allExit": 0
+    },
+    "farm": "D01 browser matrix slot available; no new Zebra browser/build/benchmark/soak until explicit Farm release"
+  },
+  "pending": [
+    "Investigate native settings locator activation: Options menu visible but Settings dialog remained closed; keyboard Enter timed out. Capture fresh button bounds and trusted event/focus outcome; cause unconfirmed, no production defect/fix claim.",
+    "Discard exploratory hidden-form value before acceptance. selectOption high returned while settings dialog was closed, then checkbox interaction refused invisible input. No Apply clicked, canonical preferences exact; this is an unaccepted QA attempt, not a settings PASS.",
+    "Native ID/EN settings apply/discard; low/high/auto across desktop/portrait; manual reduced-motion, original14 actors and readable feedback. Source tests already prove essential Zebra displacement/gait and all5-species causal equivalence.",
+    "Native WebAudio unmute/gesture/pause/dialog/mute/close; cold stored-unmute does not autoplay. Explicit throw-once audio-factory unavailable feedback and retry; do not call this native autoplay denial or physical speaker proof.",
+    "Explicit null-once WebGL factory failure: truthful native fallback guide/language/journal UI, retry to actual WebGL, one owner and preserved state. Both ID/EN. Current browser has not exercised injected factories yet.",
+    "Restore original main/secondary preferences, fully drain saves, cold primary/V4 archive read, dispose all owners/audio/resources and update38/54 only after feature-specific browser verification."
+  ],
+  "noPushOrDeploy": true
+}
