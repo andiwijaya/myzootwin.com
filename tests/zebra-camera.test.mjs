@@ -22,8 +22,14 @@ for(const [width,height]of [[360,780],[780,360],[1366,768],[1920,1080]])test(`ac
   for(let angle=0;angle<8;angle++){
    assert.equal(c.inspect().cameraAzimuth,angle*45);
    for(const h of cameraEnvelopes(s.state.world,s.camera)){c.focusArea(h.area);const projected=cameraEnvelopes(s.state.world,s.camera).find(x=>x.id===h.id);assert.equal(projected.inside,true,JSON.stringify({width,height,angle,kind:h.kind,projected}));assert.ok(c.inspect().cameraZoom>=1&&c.inspect().cameraZoom<=3);focuses++;}
-   const targets=interactionTargets(s.world.catalog,s.camera,s.canvas.box).filter(t=>t.kind==='zebra-facility'&&t.point);assert.ok(targets.length>0,`visible original facility at angle${angle}`);
-   for(const t of targets){assert.equal(raycastScene(s.world.catalog,s.camera,t.point,s.canvas.box)?.id,t.id);picks++;}
+   const targets=interactionTargets(s.world.catalog,s.camera,s.canvas.box,true).filter(t=>t.kind==='zebra-facility'&&t.point);assert.ok(targets.length>0,`visible original facility at angle${angle}`);
+   for(const t of targets){assert.equal(raycastScene(s.world.catalog,s.camera,t.point,s.canvas.box)?.id,t.id);
+    // Actual native mouse inputs round CSS coordinates after a page scroll.
+    for(const shift of [{x:0,y:0},{x:.260416984558104,y:-307.3333282470703},{x:-3.6,y:44.8}]){
+     const box={...s.canvas.box,left:s.canvas.box.left+shift.x,top:s.canvas.box.top+shift.y};
+     const native={x:Math.round(t.point.x+shift.x),y:Math.round(t.point.y+shift.y)};
+     assert.equal(raycastScene(s.world.catalog,s.camera,native,box)?.id,t.id,JSON.stringify({angle,width,height,id:t.id,native,box}));
+    }picks++;}
    c.command('rotate-right');assert.equal(serializeSaveV5(s.sim.snapshot()),before);
   }
   c.command('reset');assert.equal(c.inspect().cameraAzimuth,0);assert.equal(c.inspect().cameraZoom,1);assert.equal(c.inspect().cameraPanX,0);assert.equal(c.inspect().cameraPanZ,0);assert.deepEqual(parseSaveV5(before).value,s.sim.snapshot());
