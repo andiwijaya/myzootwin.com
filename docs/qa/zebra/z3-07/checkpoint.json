@@ -1,0 +1,214 @@
+{
+  "status": "PARTIAL_Z3_07_AWAITING_NATIVE_CONTACT_QA",
+  "verifiedProgress": 27,
+  "total": 54,
+  "source": "0e91fe9b817bfa25c0cf34074896697194894e3f",
+  "sourceFingerprint": "416e9f3ab129900ea6b1ed33a2cf3e6de27dd82ea33b279cef0317435330bffd",
+  "tests": {
+    "uniquePassing": 50,
+    "log": ".qa/zebra-audit/z3-07-tests-release.log",
+    "sha256": "6cd6372dd687ff6efab0f7f5df3fc2fcb6878ce112de8b8a5169eb9f096402f2",
+    "strictTypes": "PASS",
+    "astroCheck": "541 files;0 errors/warnings/hints",
+    "naturalPlay": {
+      "allFourFirstCompletedAt": 9712,
+      "encounters": 3,
+      "scope": "Actual welcome/care/refill commands over validation-only grant/home. No grant/budget acceptance."
+    },
+    "deterministicHerd": {
+      "ticks": 10000,
+      "cold10xReplayTicks": 5000,
+      "followActorTicks": 664,
+      "trotLeaderTicks": 125,
+      "trotEvents": 3,
+      "minimumBodyGap": 0.5399999999999849,
+      "maximumRootStep": 0.07500000000000176,
+      "finalHash": "8278d0dbb60d0d047deacfaf0583cde9bf7440b2ce5e5cdb82b66114345cc0e9"
+    },
+    "geometry": {
+      "reciprocalSequenceTicks": 80,
+      "firstBout": [
+        0,
+        32
+      ],
+      "neutralGap": [
+        32,
+        48
+      ],
+      "secondBout": [
+        48,
+        80
+      ],
+      "minimumActualMeshDistanceHigh": 0.0018127898149829724,
+      "minimumActualMeshDistanceLow": 0.0030178316611787245,
+      "headPenetration": false,
+      "allTransitionSkinsInsideGuards": true,
+      "scope": "Original CPU-skinned high/low geometry; not a native visual acceptance claim."
+    }
+  },
+  "build": {
+    "run": ".qa/visual3d/h1-03-zebra-groom-0e91fe9",
+    "production": "7f3e775bf42343100b000aa9095f590635b4296f804f87b2b60276386f4be4b7",
+    "lab": "ca898592cf5849a7a9adbaab38350b607e39f478590574d2458e58fcf20bc6a1",
+    "productionExclusion": {
+      "status": "PASS",
+      "markers": [
+        "myzootwin-visual3d-",
+        "Asset Lab internal",
+        "__VIS3D_SOURCE__",
+        "scripts/qa/visual3d",
+        "visual3d-frozen-v4",
+        "__qaVisual3dTag",
+        "QA-only constructor side-table",
+        "Step cosmetic Studio100ms",
+        "matrix-result"
+      ],
+      "files": 31
+    }
+  },
+  "browserPartial": {
+    "raw": {
+      "path": ".qa/zebra-audit/z3-07-browser-part1.json",
+      "bytes": 1988642,
+      "sha256": "d7f581aa884c9e78e76da432f9fd2106f3cbc4a6bcb99f36c3f0dbf3eb8da9a5"
+    },
+    "cases": [
+      {
+        "label": "cold-before-groom",
+        "tick": 21729,
+        "hash": "9b59b58741254e924de7bdffa2b5e1998d6fe4f6bd074f3d1860337a772a2119",
+        "cash": 3591,
+        "command": 136,
+        "valid": true,
+        "owners": 1,
+        "maxOwners": 1,
+        "frames": {
+          "pending": 0,
+          "nativePending": 0,
+          "nativeDeliveries": 0,
+          "manualDeliveries": 0
+        },
+        "resources": {
+          "geometries": 82,
+          "materials": 48,
+          "textures": 12,
+          "renderTargets": 0,
+          "skeletons": 12,
+          "shared": 36,
+          "debugRoots": 0
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "paid-water-refill",
+        "tick": 21729,
+        "hash": "5a44f098ece0d342630efad00b7da93c4fa1e4eb7fd79d9314808072f608018b",
+        "cash": 3585,
+        "command": 137,
+        "valid": true,
+        "owners": 1,
+        "maxOwners": 1,
+        "frames": {
+          "pending": 1,
+          "nativePending": 0,
+          "nativeDeliveries": 0,
+          "manualDeliveries": 1
+        },
+        "resources": {
+          "geometries": 82,
+          "materials": 48,
+          "textures": 12,
+          "renderTargets": 0,
+          "skeletons": 12,
+          "shared": 36,
+          "debugRoots": 0
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "paused-mid-approach",
+        "tick": 21809,
+        "hash": "310a4796c5b55007709095ad4ef7dce37e57b5973c0a989ce4fcb24cccf66534",
+        "cash": 3585,
+        "command": 137,
+        "valid": true,
+        "owners": 1,
+        "maxOwners": 1,
+        "frames": {
+          "pending": 0,
+          "nativePending": 0,
+          "nativeDeliveries": 0,
+          "manualDeliveries": 81
+        },
+        "resources": {
+          "geometries": 81,
+          "materials": 48,
+          "textures": 12,
+          "renderTargets": 0,
+          "skeletons": 12,
+          "shared": 35,
+          "debugRoots": 0
+        },
+        "errors": [],
+        "failures": []
+      },
+      {
+        "label": "closed-mid-approach",
+        "tick": 21809,
+        "hash": "310a4796c5b55007709095ad4ef7dce37e57b5973c0a989ce4fcb24cccf66534",
+        "cash": 3585,
+        "command": 137,
+        "valid": true,
+        "owners": 0,
+        "maxOwners": 1,
+        "frames": {
+          "pending": 0,
+          "nativePending": 0,
+          "nativeDeliveries": 0,
+          "manualDeliveries": 81
+        },
+        "resources": {
+          "geometries": 0,
+          "materials": 0,
+          "textures": 0,
+          "renderTargets": 0,
+          "skeletons": 0,
+          "shared": 0,
+          "debugRoots": 0
+        },
+        "errors": [],
+        "failures": []
+      }
+    ],
+    "durable": {
+      "version": 5,
+      "revision": 405,
+      "hash": "310a4796c5b55007709095ad4ef7dce37e57b5973c0a989ce4fcb24cccf66534",
+      "schema": 5,
+      "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
+      "backupSchema": 4
+    },
+    "logs": [],
+    "scope": "Actual cold baseline preserves9b59b58; one real6ZC water refill,80original source ticks, Zaki/Zuri reciprocal approach. No contact/nativeRAF/completion acceptance yet."
+  },
+  "resourceHold": {
+    "releasedAt": "2026-11-09T04:50:47Z",
+    "reason": "Parent requested another exclusive Farm atlas/build/capture slot. Zebra tabs, renderer, own52907server and tests closed. Await explicit Farm slot-ended checkpoint before browser/build/heavy tests/benchmark/soak."
+  },
+  "next": [
+    "ColdContinue the same UUID at21809/hash310a4796 with both approach timers390, zero grooming counters, speed1/ID/low. Main DB:myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd; immutable product entry is recorded in build source.json.",
+    "This early approach may correctly preempt as water needs reach35 before full contact. Preserve that outcome, refill only through actual controls when needed, and find a real eligible encounter; never patch actor state.",
+    "Verify both source bouts/neutral pause and completion-only35social relief plus one counter each, exact mid-contact cold/pause/native1x continuation; representative original-mesh angles and ID/EN desktop/mobile, console, backup and zero disposal resources.",
+    "Write source-bound final receipt/verifier and update progress to28 only after native QA passes. Next unit is Z4-02 causal welfare/needs explanation, with Z2-06 grant budget/defaultV5 adoption still open."
+  ],
+  "release": "No Zebra push/deploy; R7-08 held. Public bootstrap remainsV4.",
+  "geometryNote": "Contact and head clearance are established at the tested CPU poses; full native visual acceptance remains pending.",
+  "screenshot": {
+    "path": "docs/qa/zebra/z3-07/approach-checkpoint.png",
+    "bytes": 101542,
+    "sha256": "12ca2f9cdd4e7285e5c2134bdd88a7f7a1e71c1a989815c3710974caf46bb604",
+    "scope": "Actual paused approach only; not a completed grooming encounter."
+  }
+}
