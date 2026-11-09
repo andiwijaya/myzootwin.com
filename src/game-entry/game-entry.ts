@@ -253,7 +253,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         }, { signal: events.signal });
     }
     recoveryPanel = mountRecoveryPanel(root, { save: durable, allowDownload: options.allowRecoveryDownload !== false, locale: () => locale, pause: () => pauseGate.hold('dialog', true), closeGame: () => { resumePending = false; preview?.close(); }, restored: () => { locale = chooseGameLocale(locale, manualLocale, durable.savedLocale()); syncEffectivePreferences(); render(locale); } });
-    function gateGameplay(paused: boolean, hard: boolean) {
+    function gateGameplay(paused: boolean, hard: boolean, toolbarBlocked: boolean) {
         const hud = root.dataset.hudActive === 'true';
         const layout = root.querySelector<HTMLElement>('[data-guide-layout]'), stage = root.querySelector<HTMLElement>('[data-preview-stage]');
         if (layout) layout.inert = hud ? hard : paused;
@@ -261,7 +261,11 @@ export function mountGameEntry(root: HTMLElement, options: {
         for (const gate of root.querySelectorAll<HTMLFieldSetElement>('[data-hud-controls]')) gate.disabled = hud && paused;
         const speed = root.querySelector<HTMLElement>('[data-speed-tools]'), toolbar = root.querySelector<HTMLElement>('[data-guide-toolbar]');
         if (speed) speed.inert = paused;
-        if (toolbar) toolbar.inert = hard;
+        // A cold Continue still requires Resume before gameplay, but comfort,
+        // language and help must remain reachable while the world is paused.
+        if (toolbar) toolbar.inert = toolbarBlocked;
+        const exit = root.querySelector<HTMLElement>('[data-onboarding-exit]');
+        if (exit) exit.inert = hard;
     }
     function anyDialogOpen() { return Boolean(root.querySelector('dialog[open]') || root.ownerDocument.querySelector('#site-privacy-dialog[open]')); }
     function syncPause() {
@@ -287,7 +291,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         }
         if (status)
             status.textContent = locale === 'id' ? (pauseGate.has('background') ? 'Dijeda saat kamu pergi. Lanjutkan saat siap; tidak ada progres offline.' : paused ? 'Suaka dijeda. Satwa, pengunjung, uang dan misi tidak berjalan.' : 'Suaka berjalan. Jeda kapan saja untuk berhenti dengan aman.') : (pauseGate.has('background') ? 'Paused while you were away. Resume when ready; no offline progress.' : paused ? 'Zoo paused. Animals, visitors, money and missions are frozen.' : 'Zoo running. Pause any time to stop safely.');
-        gateGameplay(pauseGate.paused(), resumePending || blocked);
+        gateGameplay(pauseGate.paused(), resumePending || blocked, blocked);
         ambience.setPlaying(v.active && ready && !paused && !document.hidden && !blocked);
         if(!ready && ambience.inspect().liveContexts)ambience.stopSession();
     }
