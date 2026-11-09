@@ -7,7 +7,7 @@ import{zebraGroomContact,zebraGroomHeading,zebraGroomOffset}from'./groom-contact
 import{walkZebraGround,zebraAngle,zebraIdle}from'./movement.ts';
 export type ZebraGroomEvent={type:'zebra-groomed';animalIds:[string,string];eventId:string};
 export const zebraSocialPhase=(a:ZebraAnimal)=>a.currentBehavior==='approach-companion'||a.currentBehavior==='groom';
-export const zebraSocialHealthy=(a:ZebraAnimal)=>a.hunger<N.seekAt&&a.thirst<N.seekAt&&a.energy>=S.minEnergy&&a.shadeRest>=55&&a.enrichment>=35;
+export const zebraSocialHealthy=(a:ZebraAnimal)=>a.hunger<N.seekAt&&a.thirst<N.seekAt&&a.energy>=S.minEnergy&&a.shadeRest>=55;
 const home=(s:RuntimeState,a:ZebraAnimal)=>s.world.habitats.find((h):h is ZebraHabitat=>h.kind==='zebra-grasslands'&&h.id===a.habitatId);
 const posts=(s:RuntimeState,a:ZebraAnimal)=>s.world.resources.filter(r=>r.kind==='zebra-shade'&&r.habitatId===a.habitatId).map(r=>({x:r.cell.x+.5,z:r.cell.z+.5}));
 /** Release both reservations atomically; an interrupted approach/contact earns no

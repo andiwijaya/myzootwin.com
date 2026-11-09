@@ -1,3 +1,4 @@
+import{reconcileZebraWelfare}from'./welfare.ts';
 import{cancelZebraSocial,prepareZebraSocial,stepZebraSocial,zebraSocialPhase,zebraSocialHealthy}from'./social.ts';
 import{prepareZebraHerd,stepZebraHerd}from'./herd.ts';
 import type {RuntimeState} from '../../core/runtime-state.ts';
@@ -30,7 +31,7 @@ export function stepZebraCare(s:RuntimeState){
  const herd=zebras(s.animals),fed:{animalId:string;resourceId:string}[]=[],watered:{animalId:string;resourceId:string}[]=[],events:CareEvent[]=[],offset=herd.length?s.tick%herd.length:0;
  for(let n=0;n<herd.length;n++){const a=herd[(n+offset)%herd.length]!;a.hunger=Math.min(100,a.hunger+N.hungerPerTick);a.thirst=Math.min(100,a.thirst+N.thirstPerTick);a.energy=Math.max(0,a.energy-N.energyPerTick);a.shadeRest=Math.max(0,a.shadeRest-N.shadePerTick);a.enrichment=Math.max(0,a.enrichment-N.enrichmentPerTick);a.enrichmentCooldownTicks=Math.max(0,a.enrichmentCooldownTicks-1);a.trotCooldownTicks=Math.max(0,a.trotCooldownTicks-1);a.groomCooldownTicks=Math.max(0,a.groomCooldownTicks-1);a.socialComfort=Math.max(0,a.socialComfort-S.perTick);
   if(zebraSocialPhase(a)&&!zebraSocialHealthy(a))cancelZebraSocial(s,a);
-  if(['follow-herd','trot'].includes(a.currentBehavior)&&(a.hunger>=N.seekAt||a.thirst>=N.seekAt||a.energy<H.minEnergy||a.shadeRest<55||a.enrichment<35))zebraIdle(a,0);
+  if(['follow-herd','trot'].includes(a.currentBehavior)&&(a.hunger>=N.seekAt||a.thirst>=N.seekAt||a.energy<H.minEnergy||a.shadeRest<55))zebraIdle(a,0);
   if(['seek-shade','rest','seek-enrichment','enrich'].includes(a.currentBehavior)&&(a.hunger>=75||a.thirst>=75))zebraIdle(a,0);
  }
  // Food/water and deficient shade/energy preempt via the healthy predicate.
@@ -66,5 +67,5 @@ export function stepZebraCare(s:RuntimeState){
  }
  // Another resident may consume the last portion later in this same atomic tick.
  for(const a of herd)if(isCare(a)&&!s.world.resources.some(r=>r.id===a.targetResourceId&&r.stock>0))zebraIdle(a,0);
- return{fed,watered,events,herdEvents,socialEvents};
+ reconcileZebraWelfare(s);return{fed,watered,events,herdEvents,socialEvents};
 }

@@ -21,3 +21,13 @@ export function zebraGroundRoute(world:Pick<V5ZooWorld,'resources'>,h:ZebraHabit
  for(let i=0;i<queue.length;i++){const p=queue[i]!;if(zebraDistance(p,to)<=.76&&segment(c,p,to,others)){end=key(p);break;}for(const q of [{x:p.x,z:p.z-.5},{x:p.x-.5,z:p.z},{x:p.x+.5,z:p.z},{x:p.x,z:p.z+.5}])if(map.has(key(q))&&!parents.has(key(q))&&segment(c,p,q,others)){parents.set(key(q),key(p));queue.push(q);}}
  if(end===null)return null;const route=[{...to}];for(let cursor:string|null=end;cursor!==null;cursor=parents.get(cursor)??null)route.unshift({...map.get(cursor)!});return route;
 }
+/** Read-only welfare access uses the exact original route graph, without temporary
+ * actor reservations. Cache only geometry; stocks and animal needs remain live. */
+const accessCache=new WeakMap<object,{signature:string;value:ReturnType<typeof makeAccess>}>();
+function makeAccess(world:Pick<V5ZooWorld,'resources'>,h:ZebraHabitat){
+ const c=context(world,h),available=nodes(c),map=new Map(available.map((p,i)=>[key(p),i])),groups=new Map<number,number>();let group=0;
+ for(let i=0;i<available.length;i++){if(groups.has(i))continue;const queue=[i];groups.set(i,group);for(let j=0;j<queue.length;j++){const p=available[queue[j]!]!;for(const q of[{x:p.x,z:p.z-.5},{x:p.x-.5,z:p.z},{x:p.x+.5,z:p.z},{x:p.x,z:p.z+.5}]){const n=map.get(key(q));if(n!==undefined&&!groups.has(n)&&segment(c,p,q)){groups.set(n,group);queue.push(n);}}}group++;}
+ const ports=new Map<string,Set<number>>(),connections=(p:Point)=>new Set(available.flatMap((q,i)=>zebraDistance(p,q)<=.76&&segment(c,p,q)?[groups.get(i)!]:[]));
+ return{nodes:available.length,allowed:(p:Point)=>c.allowed(p),from(p:Point){const own=connections(p);return(to:Point)=>{if(!c.allowed(p)||!c.allowed(to))return false;let target=ports.get(key(to));if(!target){target=connections(to);ports.set(key(to),target);}return [...own].some(g=>target!.has(g))||segment(c,p,to);};}};
+}
+export function zebraGroundAccess(world:Pick<V5ZooWorld,'resources'>,h:ZebraHabitat){const signature=JSON.stringify([h.cells,world.resources.filter(r=>r.habitatId===h.id&&r.kind.startsWith('zebra-')).map(r=>r.cell)]),prior=accessCache.get(world);if(prior?.signature===signature)return prior.value;const value=makeAccess(world,h);accessCache.set(world,{signature,value});return value;}
