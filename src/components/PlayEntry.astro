@@ -1,7 +1,8 @@
 ---
-import { english as copy } from '../game-entry/locale';
+import { entryMessages } from '../game-entry/locale';
+const copy=entryMessages.id;
 ---
-<section class="play-shell" data-play-entry data-preview-state="first-mission-preview" lang="en" aria-labelledby="play-title">
+<section class="play-shell" data-play-entry data-preview-state="first-mission-preview" lang="id" aria-labelledby="play-title">
 <div class="hud-chrome" data-hud-chrome>
   <div class="hud-stats" data-hud-stats hidden aria-label="Sanctuary status" aria-live="off"><strong data-hud-coins></strong><span data-hud-welfare></span><span data-hud-guests></span><span data-hud-mission></span><span data-hud-speed aria-label="Simulation speed">1×</span></div>
 <section class="save-panel" data-save-panel aria-label="Local game progress"><details class="hud-save-details" data-hud-save-details><summary><span data-save-status role="status" aria-live="off">Checking local progress...</span><span data-hud-text="saveDetails">Save details</span></summary><small data-save-detail></small></details><p data-save-error role="alert" hidden></p><button type="button" data-save-retry hidden>Retry save</button><button type="button" data-save-reload hidden>Reload saved progress</button><button type="button" data-save-recovery-review hidden>Check save recovery</button><button type="button" data-save-recovery-download hidden>Download recovery copy</button><p data-save-recovery-note role="status" hidden></p><div data-save-resume hidden><p data-save-resume-note></p><button type="button" data-save-resume-button>Resume zoo</button></div></section>

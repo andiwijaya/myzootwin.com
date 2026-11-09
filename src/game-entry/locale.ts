@@ -642,9 +642,10 @@ export function isEntryLocale(value: unknown): value is EntryLocale {
   return value === 'en' || value === 'id';
 }
 
-export function readEntryLocale(storage: PreferenceReader | undefined, browserLanguage: string) {
-  const fallback: EntryLocale = browserLanguage.toLowerCase().startsWith('id') ? 'id' : 'en';
-  if (!storage) return { locale: fallback, source: 'browser' as const, storageAvailable: false };
+export function readEntryLocale(storage: PreferenceReader | undefined, _browserLanguage: string) {
+  // Product default is Indonesian. Explicit entry or save locale still wins.
+  const fallback: EntryLocale = 'id';
+  if (!storage) return { locale: fallback, source: 'default' as const, storageAvailable: false };
   try {
     const raw = storage.getItem(ENTRY_PREFERENCES_KEY);
     if (raw) {
@@ -657,9 +658,9 @@ export function readEntryLocale(storage: PreferenceReader | undefined, browserLa
         // Ignore invalid preference data; never erase an existing save or setting.
       }
     }
-    return { locale: fallback, source: 'browser' as const, storageAvailable: true };
+    return { locale: fallback, source: 'default' as const, storageAvailable: true };
   } catch {
-    return { locale: fallback, source: 'browser' as const, storageAvailable: false };
+    return { locale: fallback, source: 'default' as const, storageAvailable: false };
   }
 }
 

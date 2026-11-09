@@ -1,9 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PlayEntry from '../components/PlayEntry.astro';
-import { english } from '../game-entry/locale';
+import { entryMessages } from '../game-entry/locale';
+const copy=entryMessages.id;
 import {sanctuaryImage} from '../site-content';
 ---
-<BaseLayout title={english.pageTitle} description={english.description} canonical="https://myzootwin.com/play/" socialImage={sanctuaryImage}>
+<BaseLayout locale="id" title={copy.pageTitle} description={copy.description} canonical="https://myzootwin.com/play/" socialImage={sanctuaryImage}>
   <PlayEntry />
 </BaseLayout>

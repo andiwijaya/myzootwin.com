@@ -2,10 +2,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { ENTRY_PREFERENCES_KEY, entryMessages, readEntryLocale, saveEntryLocale } from '../src/game-entry/locale.ts';
 
-test('browser Indonesian preference and other-language fallback', () => {
+test('Indonesian is the product default for every browser language', () => {
   assert.equal(readEntryLocale({ getItem: () => null }, 'id-ID').locale, 'id');
   assert.equal(readEntryLocale({ getItem: () => null }, 'ID').locale, 'id');
-  assert.equal(readEntryLocale({ getItem: () => null }, 'ja-JP').locale, 'en');
+  for(const language of ['en-US','ja-JP','fr',''])assert.deepEqual(readEntryLocale({getItem:()=>null},language),{locale:'id',source:'default',storageAvailable:true});
 });
 
 test('valid saved choice overrides browser language', () => {
@@ -22,12 +22,12 @@ test('malformed preferences fall back without deleting or rewriting storage', ()
 
 test('unsupported schemas and locales are ignored', () => {
   for (const raw of ['{"schemaVersion":2,"locale":"id"}', '{"schemaVersion":1,"locale":"xx"}', 'null', '[]']) {
-    assert.equal(readEntryLocale({ getItem: () => raw }, 'en').locale, 'en');
+    assert.equal(readEntryLocale({ getItem: () => raw }, 'en').locale, 'id');
   }
 });
 
 test('blocked storage remains usable for the current visit', () => {
-  assert.deepEqual(readEntryLocale({ getItem: () => { throw new Error('blocked'); } }, 'id'), { locale: 'id', source: 'browser', storageAvailable: false });
+  assert.deepEqual(readEntryLocale({ getItem: () => { throw new Error('blocked'); } }, 'id'), { locale: 'id', source: 'default', storageAvailable: false });
   assert.equal(readEntryLocale(undefined, 'en').storageAvailable, false);
 });
 
