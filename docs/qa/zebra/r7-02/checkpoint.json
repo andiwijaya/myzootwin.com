@@ -1,6 +1,6 @@
 {
-  "status": "PREPARED_NOT_RUN_R7_02",
-  "at": "2026-11-10T06:20:36.103Z",
+  "status": "PARTIAL_NATIVE_REVIEW_R7_02_UNCHECKED",
+  "at": "2026-11-10T07:58:24.389Z",
   "verified": 45,
   "total": 54,
   "pendingUnit": "R7-02",
@@ -8,14 +8,14 @@
   "testedApplicationSource": "2e923dc75be2f1780bccf784c76863ec9bff0882",
   "testedR7_01Source": "b6d8b0ac51fd7a0d1fd8ce0c05eee70ab4b897d1",
   "proof": {
-    "path": "docs/qa/zebra/r7-02/preparation.json",
-    "bytes": 13829,
-    "sha256": "b260d09d4fb7ec91e1774031a732e80e167695470354ef18a12ba84a1da9c4dd"
+    "path": "docs/qa/zebra/r7-02/verification.json",
+    "bytes": 11103,
+    "sha256": "cc286af89b48957ffed948333f02621851e386542198181b50ac78adc94cb406"
   },
   "matrix": {
     "path": "docs/qa/zebra/r7-02/matrix.json",
-    "bytes": 32006,
-    "sha256": "a680618ad20d58547460a49b9670f74d3b0a30b3c857db4f98e7b6759faade21"
+    "bytes": 32887,
+    "sha256": "810c577724e753a39f648f6a7b631b9d78002e2a74f0b18bf7f1c74a1e6fdb9a"
   },
   "qaResume": {
     "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
@@ -51,30 +51,26 @@
     },
     "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf"
   },
-  "saveScope": "No QA/owner/browser DB opened. Identities carried read-only from R7-01.",
+  "saveScope": "Fresh myzootwin-visual3d UUID per lineage; historical synthetic grant/home prerequisite explicitly validation-only. No public adoption/grant acceptance. Carried main/secondary identities preserved below and NOT opened.",
   "readiness": {
     "readyForNextSlot": true,
     "readyForNativeAcceptance": false,
-    "reason": "QA V4/V5 fixture, reporting, spatial, selectors and phase/build identity bridges are required before the first new V5 Asset Lab capture.",
-    "firstSlotOrder": [
-      "Implement QA-only strict V4/V5 fixture/report/world/spatial/selector/build bridge, preserving old V4 output and original renderer APIs",
-      "Run focused existing visual3d fixture/spatial/registry/isolation/observer tests plus new V5 negatives and strict types/Astro",
-      "Produce bounded causal V5 phase fixtures with real commands; validate exact original V4 backup and label synthetic grant setup",
-      "Build fresh immutable matrix with production QA exclusion; planned run h1-09-r7-matrix1 becomes valid only AFTER bridge implementation",
-      "Launch own loopback server on a confirmed free port; internal-browser-only baseline V4/V5/preservation/first visual cases; checkpoint before Farm handoff"
-    ],
-    "slotManagement": "Do not start heavy work/browser/build until explicit resource release. Work in bounded checkpoints; do not promise the entire native matrix in one slot."
+    "reason": "Native matrix remains incomplete; see verification.remaining. Existing immutable matrix4 build is reusable if current source remains identical."
   },
   "resources": {
-    "at": "2026-11-10T06:20:36.103Z",
-    "activeOwnedBrowserServerBuildTestsRenderer": 0,
-    "browserOpened": false,
-    "serverOpened": false,
-    "buildStarted": false,
-    "heavyTestsStarted": false,
-    "simulationStarted": false,
-    "onlyLightAstAudit": true,
-    "farm": "Exclusive heavy/GPU/browser slot remains with Farm"
+    "releasedAt": "2026-11-10T07:55:24Z",
+    "sceneClosed": true,
+    "activeTab10Closed": true,
+    "viewportReset": true,
+    "server": {
+      "pid": 15844,
+      "session": 31196,
+      "port": 60161,
+      "exitCode": 0,
+      "listening": false
+    },
+    "activeOwnedRenderBuildTestsServer": 0,
+    "errorTabs": "Earlier owned error tabs5 and7 could not be controlled/closed through browser URL policy on generated error URLs; engine absent/closed before failure. Temporary browser cleanup not observed. No takeover or policy bypass."
   },
   "stopDeadline": {
     "utc": "2026-11-10T10:00:00.000Z",
@@ -102,6 +98,7 @@
     "Physical multi-touch/native touch capture and full posed fifth-species/performance/background/soak matrix remain open R7 scope; no physical-device or FPS claim",
     "Z5-04 native graph/signal and factory-injected failures accepted; physical speaker/device/system preference/native autoplay denial not claimed"
   ],
-  "next": "After Farm slot release, implement and verify the listed QA-only V5 bridges before building/opening R7-02 native Asset Lab. Keep R7-02 unchecked;45/54. Stop10:00UTC/17:00WIB10 November; no push/deploy.",
-  "noPushOrDeploy": true
+  "next": "Farm D09 slot available now; do only lightweight docs/source audits until explicit release. On next Zebra slot finish remaining R7-02 groups and current Astro check. Keep45/54. No push/deploy; stop10:00UTC.",
+  "noPushOrDeploy": true,
+  "harnessSource": "af69397090b9a92ffcabdcc5affac239494e1f3e"
 }

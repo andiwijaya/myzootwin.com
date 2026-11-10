@@ -1,10 +1,10 @@
 # R7-02 preparation: native five-species visual matrix
 
-Status: **PREPARED / NOT RUN**. Progress remains **45/54**; R7-02 stays unchecked. Preparation source `04a5739`; accepted source regression `b6d8b0a`, application repair `2e923dc`. Farm owns the heavy/GPU/browser slot. No browser, server, build, heavy tests or simulation were started for this preparation. Stop all work by **10:00 UTC / 17:00 WIB, 10 November**, then await new instructions. No Zebra push/deploy authorization.
+Current status: **PARTIAL NATIVE REVIEW / NOT ACCEPTED**, progress **45/54**. See [native review](native-review.md), [verification](verification.json) and [checkpoint](checkpoint.json). The V4/V5 QA bridges below were implemented at `6307d2d`, camera reporting corrected at `1d9398a`, and inspector shadow invalidation corrected at `af69397`. Actual native phase/actor and partial environment coverage is recorded separately from inventory. All36 current product files remain identical to accepted R7-01. Resources were closed/released to Farm at07:55UTC. Latest Astro check after the two inspector fixes and the rest of the native matrix remain pending. Stop all work by **10:00 UTC /17:00 WIB,10 November**. No Zebra push/deploy authorization.
 
 [Preparation audit](preparation.json) records exact source excerpts and hashes, [matrix](matrix.json) defines the planned observations, and [checkpoint](checkpoint.json) carries the isolated QA identities without opening them. R7-01 remains accepted at its white-box scope; its full pass is not a fresh browser or visual acceptance.
 
-## Findings and readiness
+## Historical preparation findings (before the bridges)
 
 A read-only AST registry scan took 1.30 seconds: 205 runtime modules, 56 render modules, 514 registry records, 287 constructor sites. Zebra has 59 records/30 constructors/6 modules. Every record still says `NOT_RUN`. The complete raw preparation registry is retained under `.qa/zebra-audit/r7-02/preparation-registry.json`, with its hash in the audit; these are inventory counts, not rendered asset counts.
 
@@ -24,7 +24,7 @@ The existing Asset Lab is V4-only. The product harness can render V5, but normal
 
 The audit links each finding to the current exact file/line. These are QA integration gaps, not nine new PRD micro-features or newly observed production visual defects. No production behavior, artwork, renderer, codec or save schema needs changing merely to adapt the lab.
 
-## Work order after slot release
+## Original work order (current completion is in verification.json)
 
 1. Implement the QA-only bridges above. Keep `mountFoundationScene`, production models, strict codecs/backend, viewer, canonical clock and original controls. Do not create a second engine/viewer with substitute art. Disable V4-only storage probes on populated V5 cases rather than passing V5 into their V4 contracts; fault/recovery acceptance belongs to R7-03.
 2. Verify old V4 fixture/overlay outputs exactly and add meaningful V5 positive/negative cases: wrong UUID/schema/lineage/file hash, malformed state, original backup identity, correct five habitats/14 actors and original point/body/path rules. Run focused fixture/spatial/registry/isolation/phase/observer checks and strict types/Astro before browser work. No full regression rerun is needed solely for unchanged production code; any production fix requires appropriate regressions and a new source binding.
@@ -35,7 +35,7 @@ The audit links each finding to the current exact file/line. These are QA integr
 
 ## Planned visual coverage
 
-The 46 matrix groups comprise two baselines, 15 legacy canonical phase cases, 13 Zebra phase cases, eight scene/facility/visitor/camera groups, six locale/viewport pairs and two cleanup/cold cases. Group count is independent of the 54 PRD units. No group is accepted yet.
+The46 matrix groups comprise two baselines,15 legacy canonical phase cases,13 Zebra phase cases,eight scene/facility/visitor/camera groups,six locale/viewport pairs and two cleanup/cold cases. Group count is independent of the54 PRD units. Current observed/partial/not-run statuses are in matrix.json; the whole R7-02 unit is not accepted.
 
 - **Baselines:** original earned four-habitat fixture and a strict five-habitat fixture with all 14 distinct source residents. Preserve the 24×26 grid, 624 tile bindings, origin `(6,5)`, original habitats and Zebra cells `x14..21,z12..19`. Verify five original gate-to-viewing routes after paid source connection.
 - **Legacy phases:** original macaw drink/eat/flight/rest/enrichment; giraffe social/drink/browse; lion nuzzle/roar; elephant rest/bathe/spray/enrich/trunk-touch. Historical reference ticks are recipe evidence only; current producer output must match the actual phase.
