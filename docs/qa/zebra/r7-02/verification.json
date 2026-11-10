@@ -1,6 +1,6 @@
 {
   "status": "PARTIAL_NATIVE_REVIEW_R7_02_UNCHECKED",
-  "at": "2026-11-10T09:23:53.828Z",
+  "at": "2026-11-10T12:51:34.642Z",
   "verified": 45,
   "total": 54,
   "applicationSource": "2e923dc75be2f1780bccf784c76863ec9bff0882",
@@ -451,7 +451,9 @@
     "observations": 619,
     "selectedCaptures": 135,
     "domReports": 8,
-    "scope": "Actual original assets, source engine, native mouse/keyboard and internal browser at representative pairwise settings. No registry-wide PASS, physical device, touch, native gameplay-time/soak, GPU performance or presented FPS claim."
+    "scope": "Previous619 snapshots plus76 new legacy-preview snapshots; none implies blanket visual PASS. Selected-image index includes retained rejected frames/contact sheets. See latestLegacyPreview.",
+    "additionalLegacyPreviewObservations": 76,
+    "totalRawObservations": 695
   },
   "registry": {
     "historicalInventoryRecords": 514,
@@ -497,6 +499,80 @@
     "errors": []
   },
   "close": {
+    "owners": 0,
+    "resources": {
+      "debugRoots": 0,
+      "geometries": 0,
+      "materials": 0,
+      "renderTargets": 0,
+      "shared": 0,
+      "skeletons": 0,
+      "textures": 0
+    },
+    "pending": 0,
+    "saveDirty": false,
+    "saveInflight": false,
+    "browser": {
+      "at": "2026-11-10T12:48:31.025Z",
+      "ownTab": "1",
+      "closed": true,
+      "viewportReset": true,
+      "remainingTabs": []
+    },
+    "server": {
+      "at": "2026-11-10T12:49:23.4888110Z",
+      "pid": 23004,
+      "processPresent": false,
+      "port": 65287,
+      "listening": false,
+      "normalStopExitCode": 0,
+      "scope": "Only the Zebra-owned server inspected; all other project processes untouched."
+    },
+    "activeOwnedRenderBuildTestsServer": 0
+  },
+  "resources": {
+    "releasedAt": "2026-11-10T12:48:31.025Z",
+    "activeOwnedRenderBuildTestsServer": 0,
+    "sceneClosed": true,
+    "viewportReset": true,
+    "server": {
+      "at": "2026-11-10T12:49:23.4888110Z",
+      "pid": 23004,
+      "processPresent": false,
+      "port": 65287,
+      "listening": false,
+      "normalStopExitCode": 0,
+      "scope": "Only the Zebra-owned server inspected; all other project processes untouched."
+    },
+    "errorTabs": "Current internal browser inventory empty; only own tab1 touched."
+  },
+  "remaining": [
+    "Macaw water/perch original ready/invalid previews",
+    "Original49-cell and small placement previews",
+    "Final per-family constructor/trigger/capture attribution and explicit occlusion decisions; assess R7-02 DoD before incrementing"
+  ],
+  "noPushOrDeploy": true,
+  "continuation": {
+    "path": "docs/qa/zebra/r7-02/continuation.json",
+    "bytes": 26546,
+    "sha256": "8c16009acc523778553410ffdfdc45a879993a8762afcb9d7adbc39b111766e8"
+  },
+  "continuationReview": {
+    "path": "docs/qa/zebra/r7-02/continuation-review.md",
+    "bytes": 9111,
+    "sha256": "50c3be3ee7c02f63d747c3a7836e6e5c954b3a8dcb7eb52c021c3b54e32dc9cf"
+  },
+  "latestLegacyPreview": {
+    "path": "docs/qa/zebra/r7-02/legacy-preview/verification.json",
+    "bytes": 19129,
+    "sha256": "e57819da7489d294b6deb58854545324f37ea48d1aba7bcd12fa2bd72b16c70d"
+  },
+  "resume": {
+    "at": "2026-11-10T12:27:12Z",
+    "scope": "New owner instruction resumes after historical10:00UTC stop. No new absolute stop time supplied."
+  },
+  "historicalStopDeadline": "2026-11-10T10:00:00Z",
+  "previousClose": {
     "at": "2026-11-10T09:19:35.332Z",
     "owners": 0,
     "frames": {
@@ -558,54 +634,5 @@
       "storageReady": true
     },
     "errors": []
-  },
-  "resources": {
-    "releasedAt": "2026-11-10T09:19:45.641Z",
-    "sceneClosed": true,
-    "viewportReset": true,
-    "ownedTabsClosed": [
-      9,
-      10,
-      11,
-      12,
-      13,
-      14
-    ],
-    "remainingTabs": [
-      {
-        "id": "8",
-        "providerTabId": "browser-use:5d0fc806-a252-416a-8dd5-acfbc233d47f",
-        "title": "MyZooTwin — Bangun Zoo, Rawat Satwa, Jelajahi Empat Habitat",
-        "url": "https://myzootwin.com/",
-        "browserId": "3"
-      }
-    ],
-    "server": {
-      "at": "2026-11-10T09:20:53.2423344Z",
-      "pid": 21920,
-      "processPresent": false,
-      "port": 52234,
-      "listening": false,
-      "normalStopExitCode": 0,
-      "scope": "Only the owned Zebra QA server was inspected. No other project processes were touched."
-    },
-    "activeOwnedRenderBuildTestsServer": 0,
-    "errorTabs": "Earlier owned error tabs5/7 absent in continuation inventory; only untouched production tab8 remains. Previous cleanup uncertainty resolved."
-  },
-  "remaining": [
-    "Fresh four-angle valid/invalid current-source legacy care ghosts and original 49-cell/small placement preview review; unchanged historical source is continuity evidence, not fresh pixels. Zebra 64-cell and all four Zebra care triggers covered separately.",
-    "Finalize per-family source/trigger/capture attribution, occlusion limitations and review acceptance against universal harness PRD. Do not infer visual PASS from286 constructor sites or514 inventory records."
-  ],
-  "noPushOrDeploy": true,
-  "stopDeadline": "2026-11-10T10:00:00Z",
-  "continuation": {
-    "path": "docs/qa/zebra/r7-02/continuation.json",
-    "bytes": 26546,
-    "sha256": "8c16009acc523778553410ffdfdc45a879993a8762afcb9d7adbc39b111766e8"
-  },
-  "continuationReview": {
-    "path": "docs/qa/zebra/r7-02/continuation-review.md",
-    "bytes": 9111,
-    "sha256": "50c3be3ee7c02f63d747c3a7836e6e5c954b3a8dcb7eb52c021c3b54e32dc9cf"
   }
 }
