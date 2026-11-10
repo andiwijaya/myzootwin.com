@@ -1,0 +1,683 @@
+{
+  "at": "2026-11-10T16:31:34.450Z",
+  "records": [
+    {
+      "archive": "native1.jsonl.br",
+      "line": 1,
+      "label": "parse-migration",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 0,
+      "errors": [],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 2,
+      "label": "namespace-absent-refusal",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 0,
+      "errors": [],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 3,
+      "label": "first-and-post-atomic-faults",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 0,
+      "errors": [
+        "Run first/post quota + actual abort: Error: Fault not atomic"
+      ],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 4,
+      "label": "corrupt-future-discovery",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 0,
+      "errors": [
+        "Run first/post quota + actual abort: Error: Fault not atomic"
+      ],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 5,
+      "label": "backup-provenance-discovery",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 0,
+      "errors": [
+        "Run first/post quota + actual abort: Error: Fault not atomic"
+      ],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 6,
+      "label": "stale-recovery-quote-discovery",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 0,
+      "errors": [
+        "Run first/post quota + actual abort: Error: Fault not atomic"
+      ],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 7,
+      "label": "backup-provenance-completed",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 0,
+      "errors": [
+        "Run first/post quota + actual abort: Error: Fault not atomic",
+        "Run missing / corrupt backup guards: Error: Expected unreadable, received conflict"
+      ],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 8,
+      "label": "restart-generation-undo",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 0,
+      "errors": [
+        "Run first/post quota + actual abort: Error: Fault not atomic",
+        "Run missing / corrupt backup guards: Error: Expected unreadable, received conflict"
+      ],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 9,
+      "label": "old-v4-native-barriers",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 0,
+      "errors": [
+        "Run first/post quota + actual abort: Error: Fault not atomic",
+        "Run missing / corrupt backup guards: Error: Expected unreadable, received conflict"
+      ],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 10,
+      "label": "pending-close-unsettled",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 0,
+      "errors": [
+        "Run first/post quota + actual abort: Error: Fault not atomic",
+        "Run missing / corrupt backup guards: Error: Expected unreadable, received conflict",
+        "Run pending autosave candidate close: Error: Close lost reward or latest preference"
+      ],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 11,
+      "label": "cash-mission-lineage",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 0,
+      "errors": [
+        "Run first/post quota + actual abort: Error: Fault not atomic",
+        "Run missing / corrupt backup guards: Error: Expected unreadable, received conflict",
+        "Run pending autosave candidate close: Error: Close lost reward or latest preference"
+      ],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 12,
+      "label": "cash-writer-a-prepared",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 1,
+      "errors": [
+        "Run first/post quota + actual abort: Error: Fault not atomic",
+        "Run missing / corrupt backup guards: Error: Expected unreadable, received conflict",
+        "Run pending autosave candidate close: Error: Close lost reward or latest preference"
+      ],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 13,
+      "label": "cash-writer-b-prepared",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 1,
+      "errors": [],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 14,
+      "label": "cash-race-a",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 1,
+      "errors": [
+        "Run first/post quota + actual abort: Error: Fault not atomic",
+        "Run missing / corrupt backup guards: Error: Expected unreadable, received conflict",
+        "Run pending autosave candidate close: Error: Close lost reward or latest preference"
+      ],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 15,
+      "label": "cash-race-b",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 1,
+      "errors": [],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 16,
+      "label": "cash-cold-ticket-replay",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 1,
+      "errors": [],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 17,
+      "label": "discovery-b-close",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 0,
+      "errors": [],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 18,
+      "label": "discovery-a-close",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 0,
+      "errors": [
+        "Run first/post quota + actual abort: Error: Fault not atomic",
+        "Run missing / corrupt backup guards: Error: Expected unreadable, received conflict",
+        "Run pending autosave candidate close: Error: Close lost reward or latest preference"
+      ],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 19,
+      "label": "original-ui-ready",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 1,
+      "errors": [],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 20,
+      "label": "original-ui-cancel-unchanged",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 1,
+      "errors": [],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 21,
+      "label": "original-ui-id",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 1,
+      "errors": [],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 22,
+      "label": "original-ui-id-confirmed",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 1,
+      "errors": [],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 23,
+      "label": "original-ui-closed",
+      "source": "99b25adaaf4420996c5c54a47b0329c7f893c7de",
+      "input": "4624e4da8a421cb76cf5d807062b34301b365b914db05d2fbab22e27d8e9ac87",
+      "owners": 0,
+      "errors": [],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 24,
+      "label": "final-parse-migrations",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 0,
+      "errors": [],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 25,
+      "label": "final-lineage-guards",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 0,
+      "errors": [],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native1.jsonl.br",
+      "line": 26,
+      "label": "final-first-and-post-atomicity",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 0,
+      "errors": [],
+      "scope": "Discovery/intermediate source-bound reports, including rejected QA assumptions."
+    },
+    {
+      "archive": "native2.jsonl.br",
+      "line": 1,
+      "label": "final-parser-isolation-atomic-complete",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native2.jsonl.br",
+      "line": 2,
+      "label": "final-backup-provenance",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native2.jsonl.br",
+      "line": 3,
+      "label": "final-corrupt-future",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native2.jsonl.br",
+      "line": 4,
+      "label": "final-pending-candidate-close",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native2.jsonl.br",
+      "line": 5,
+      "label": "final-stale-recovery-quote",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native2.jsonl.br",
+      "line": 6,
+      "label": "final-generation-reset-undo",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native2.jsonl.br",
+      "line": 7,
+      "label": "final-old-v4-barriers",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native2.jsonl.br",
+      "line": 8,
+      "label": "final-cash-lineage",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native2.jsonl.br",
+      "line": 9,
+      "label": "final-writer-a-prepared",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 1,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native2.jsonl.br",
+      "line": 10,
+      "label": "final-writer-b-prepared",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 1,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native2.jsonl.br",
+      "line": 11,
+      "label": "final-race-a",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 1,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native2.jsonl.br",
+      "line": 12,
+      "label": "final-race-b",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 1,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native2.jsonl.br",
+      "line": 13,
+      "label": "final-cold-ticket-replay",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 1,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native2.jsonl.br",
+      "line": 14,
+      "label": "final-a-close",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native2.jsonl.br",
+      "line": 15,
+      "label": "final-b-close",
+      "source": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+      "input": "51ac7dc411c4264e9b1b3c1364e41973056995c9edaf8e6bb11515a519c0f57a",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 1,
+      "label": "v3-parse-migrations",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 2,
+      "label": "v3-lineage-guards",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 3,
+      "label": "v3-first-post-quota-abort",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 4,
+      "label": "v3-corrupt-future-branches",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 5,
+      "label": "v3-missing-corrupt-backups",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 6,
+      "label": "v3-stale-recovery-quote",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 7,
+      "label": "v3-reset-generation-undo",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 8,
+      "label": "v3-held-old-v4-barrier",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 9,
+      "label": "v3-pending-close",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 10,
+      "label": "v3-create-cash-lineage",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 11,
+      "label": "v3-writer-a-prepared",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 1,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 12,
+      "label": "v3-writer-b-prepared",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 1,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 13,
+      "label": "v3-race-a",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 1,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 14,
+      "label": "v3-race-b",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 1,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 15,
+      "label": "v3-a-close",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 16,
+      "label": "v3-b-close",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 17,
+      "label": "v3-cold-page-ticket-replay",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 18,
+      "label": "v3-original-ui-ready",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 1,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 19,
+      "label": "v3-ui-cancel-no-write",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 1,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 20,
+      "label": "v3-ui-quota-refused",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 1,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 21,
+      "label": "v3-ui-indonesian",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 1,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 22,
+      "label": "v3-ui-retry-confirmed",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 1,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    },
+    {
+      "archive": "native3.jsonl.br",
+      "line": 23,
+      "label": "v3-ui-final-close",
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+      "owners": 0,
+      "errors": [],
+      "scope": "Native source-bound case records, not independent test counts."
+    }
+  ],
+  "scope": "Raw includes discovery/rejected/intermediate rows. Acceptance uses final source labels and explicit invariant checks."
+}

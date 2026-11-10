@@ -1,6 +1,6 @@
 # Execution checkpoint
 
-Current verified progress: **46/54 (85.19%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
+Current verified progress: **47/54 (87.04%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
 
 All four Library inputs were read completely: master PRD 335 lines, harness 128, checklist 200, handoff 42. Official Windows materialization failed at `os.setxattr` after the authorized retry. The destination is empty; no original source-file identity is claimed. This requested derived repository checklist uses the complete official reads. Original Library documents remain unchanged. See [input-access record](qa/zebra/z0-01/input-access.json).
 
@@ -94,11 +94,13 @@ Open gates: static registry records retain their default **NOT_RUN** labels; fea
 
 | R7-02 | 2e923dc /96289e2 /a85c2ce | [Grouped native visual acceptance](qa/zebra/r7-02/final-preview/verification.json): 781 source-bound observations,514 record attributions,286 observed constructors plus1 explained hook; all5species/phase/placement/environment/visitor/camera families, ID/EN and CSS1366/1920/360/780 at representative scope. QA V4 early-close defect fixed;26 focused tests/types/Astro605/QA-excluded build/native clean cold pass.36 product files in each of3 builds exact R7-01. Soak/FPS/release remain separate. |
 
-Next: **R7-03 strict V5/backend fault and recovery**. [R7-02 final acceptance](qa/zebra/r7-02/final-preview/verification.json) and [review](qa/zebra/r7-02/final-preview/review.md) close the grouped native visual matrix at **46/54**.781 cumulative observations (86 new/48 capture records), not781 independent tests or514 pixel passes. Every514 record attributed;286/287 constructor sites observed, real renderer-hook fallback explained. All5species/environment/visitor/Studio/camera and original1/4/49/64-cell previews covered at representative/pairwise scope.12 raw errors from2 inactive zero-vertex factories explicitly reproduced/adjudicated; other structural errors0. CSS1920 zoo board reviewed; host1905x1001 raster crops far-right HUD, no physical-device/presented-FPS claim. DisposableV5 paid care/100canonical ticks cold payloadabe872ea at13680/3803ZC exact; V4 unpaid63a16044 at5578/2163ZC and empty541bad44 at0/1500ZC exact. Rejected early V4 QA-backend close retained; QA-only a85c2ce fix has26 fresh tests, strict types, Astro605/0 diagnostics, immutable build and saved/clean/zero-resource same-UUID cold retest. All36 production files in each of3 builds exact R7-01; fixed input differs only QA README/product-matrix. No owner/default/carried save touched. All own tabs/viewport/servers closed by14:47UTC; port61203 free. Farm slot available. Prior1021 full suite inherited at its SHA, not rerun. Proposed1700ZC grant/exactly-once/publicV5, HP6-02, R7-03..08 and V5 maintenance remain open; separate release permission absent; NOT DEPLOYED.
+| R7-03 | 59af0f7 /cb9f09d | [Fault/recovery](qa/zebra/r7-03/verification.json): real late-flush/close defect fixed with one disposal drain; original-source red/current green IndexedDB regression, initial125 fault tests and fresh full1030/1030 across162 files. Strict types, Astro610/0diagnostics,36-file QA-excluded build. Native quota/abort before+after V5, corrupt/future, exact originalV4/provenance guards, stale recovery quote, reset generation/Undo, oldV4 barrier, two-tab real150ZC ZQ02 race/losing memory/cold ticket replay, ID/EN source recovery controller cancel/quota/retry/keyboard.23 final snapshots at representative native/source scope; actual Zebra grant/public adoption remains Z2-06. All own resources closed; no push/deploy. |
+
+Next: **R7-04 native15-minute active1x soak and10x stress**, after the next coordinated slot. [R7-03 accepted review](qa/zebra/r7-03/review.md),47/54. User/default/carried saves and preview untouched; all test/browser/server resource closed. Proposed1700ZC grant/exactly-once/public V5, HP6-02 playability, R7-04..08 and V5 maintenance remain open. Separate release permission absent; NOT DEPLOYED.
 
 ---
 
-R7-03 preparation while Farm owns the heavy/browser slot: [design](qa/zebra/r7-03/design.md), [18 planned fault/recovery groups](qa/zebra/r7-03/matrix.json) and [static source inventory](qa/zebra/r7-03/preparation.json). Fourteen existing test files contain125 declared test titles; none was executed for this preparation. The source-only inventory script starts no browser, server, simulation, test worker or build. The old storage probe does not cover corrupt-row recovery or actual Zebra reward races; dedicated QA controls and current-source/native verification remain pending. The Zebra grant command is absent; a synthetic claimed-grant fixture cannot close Z2-06. Verified progress stays46/54, R7-03 unchecked. User preview untouched; no push/deploy.
+Historical R7-03 preparation and125-title inventory remain in [preparation.json](qa/zebra/r7-03/preparation.json). The [accepted matrix](qa/zebra/r7-03/acceptance-matrix.json) and [final receipt](qa/zebra/r7-03/verification.json) supersede its NOT_RUN state; its original hashes/source identity remain historical.
 
 # MYZOOTWIN — ZEBRA GRASSLANDS + UNIVERSAL 3D HARNESS LIVING CHECKLIST
 
@@ -268,7 +270,7 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
 - [x] **R7-02** — Black-box H1 harness matrix for all old+new assets, terrain, enclosure, props, visitor and camera; fix regressions first.
   - **DoD:** Real asset and Full Zoo screenshot evidence, no falsely marked NA, no unsupported clipping/sprite issues.
   - **Proof:** `docs/qa/zebra/r7-02/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
-- [ ] **R7-03** — Fault injection strict V5 parse/migration/CAS/races/quota/corrupt/future-content/2-tab and recovery.
+- [x] **R7-03** — Fault injection strict V5 parse/migration/CAS/races/quota/corrupt/future-content/2-tab and recovery.
   - **DoD:** No owner storage touched, no duplicate grant/mission/ticket, preserved V4 backup.
   - **Proof:** `docs/qa/zebra/r7-03/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 - [ ] **R7-04** — Real internal-browser 15-min active 1× soak & 10× stress with 5 habitats, all actors, app heap & scene metrics.

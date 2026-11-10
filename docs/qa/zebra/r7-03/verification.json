@@ -1,0 +1,939 @@
+{
+  "at": "2026-11-10T16:31:34.450Z",
+  "status": "PASS_R7_03_STORAGE_FAULT_RECOVERY",
+  "verified": 47,
+  "total": 54,
+  "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+  "autosaveFix": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+  "input": "9d5a48ef320a90bfe4463f59653e83ba5c80ca496610eb309be2d0b85b4d4f40",
+  "sourceDelta": [
+    "scripts/qa/zebra/fault-recovery.html",
+    "scripts/qa/zebra/fault-recovery.mjs",
+    "scripts/qa/zebra/run-fault-regression.mjs",
+    "src/game/persistence/autosave.ts",
+    "tests/autosave-candidate-drain.test.mjs"
+  ],
+  "fixture": {
+    "producer": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+    "ticks": 787,
+    "state": "e26dd79b80d20e6d466158b88d2bb98cdb0cec22102331f70fac127c63b4ac20",
+    "candidate": "70dd0c162262984df55314f6168dfbff1fefe98bcd861afdc83958e1b4fc8d89",
+    "consumerDelta": [
+      "scripts/qa/zebra/fault-recovery.mjs"
+    ],
+    "scope": "Labelled synthetic grant/home prerequisite from original strict helper; every welcome/care/refill/path/ZQ01/admission and bounded tick uses actual source commands. ZQ02 not claimed. Not public grant/budget acceptance."
+  },
+  "tests": {
+    "initialFaultPack": {
+      "tests": 125,
+      "pass": 125,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "redGreen": {
+      "before": {
+        "pass": 1,
+        "fail": 1
+      },
+      "after": {
+        "pass": 2,
+        "fail": 0
+      },
+      "scope": "The new case fails on isolated original source; current closing regression and prior drain regression pass."
+    },
+    "full": {
+      "tests": 1030,
+      "files": 162,
+      "counts": {
+        "tests": 1030,
+        "suites": 0,
+        "pass": 1030,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "inputUnchanged": true,
+      "completeTap": true,
+      "exit": 0,
+      "receipt": {
+        "path": "docs/qa/zebra/r7-03/full-suite.json.gz",
+        "bytes": 73020,
+        "sha256": "4377318cb276f0566c67f88b6b05d993f24307be1ccbdbbe90a9756a5923ba22"
+      }
+    },
+    "types": {
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "exit": 0,
+      "at": "2026-11-10T16:18:21.5241820Z"
+    },
+    "astro": {
+      "files": 610,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 0,
+      "result": {
+        "exit": 0,
+        "signal": null,
+        "timedOut": false,
+        "overflow": false
+      }
+    }
+  },
+  "build": {
+    "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+    "product": "07b6f07223af28448e63d71bafa8a704403f96c257927cebbb54ff6190f4ae31",
+    "lab": "00393aa4ace3ccd00c655d68325bfe50025d798cb54b7bad6f0a0e8b8404e58a",
+    "qaExcluded": "PASS",
+    "files": 36,
+    "comparison": {
+      "path": "docs/qa/zebra/r7-03/product-comparison.json",
+      "bytes": 1320,
+      "sha256": "e2deb724a5394512908e8ae6dbbc17e21eff994d2ec0e997877e30c0bf69266b"
+    }
+  },
+  "native": {
+    "finalSnapshots": 23,
+    "scope": "18 documented groups combine source coverage/native representative branches; snapshots are not independent test counts. Native production recovery controller uses generic QA component host, no full-play renderer or styling rerun.",
+    "databaseCount": 19,
+    "parse": {
+      "at": "2026-11-10T16:12:02.906Z",
+      "historicalFixtures": 12,
+      "id": "parse-migrate",
+      "rejections": [
+        {
+          "id": "malformed",
+          "result": {
+            "code": "invalid-json",
+            "ok": false,
+            "path": "$"
+          }
+        },
+        {
+          "id": "oversized",
+          "result": {
+            "code": "too-large",
+            "ok": false,
+            "path": "$"
+          }
+        },
+        {
+          "id": "future",
+          "result": {
+            "code": "unsupported-schema",
+            "ok": false,
+            "path": "$.schemaVersion"
+          }
+        },
+        {
+          "id": "unknown",
+          "result": {
+            "code": "unsupported-schema",
+            "ok": false,
+            "path": "$.preferences"
+          }
+        },
+        {
+          "id": "finance",
+          "result": {
+            "code": "invalid-state",
+            "ok": false,
+            "path": "$.economy.journal"
+          }
+        }
+      ],
+      "stateHash": "e26dd79b80d20e6d466158b88d2bb98cdb0cec22102331f70fac127c63b4ac20",
+      "status": "PASS"
+    },
+    "atomic": {
+      "at": "2026-11-10T16:12:05.592Z",
+      "cases": [
+        {
+          "database": "myzootwin-zebra-fault-5b010c63-af61-42a5-937c-3b6e3a152984",
+          "mode": "quota",
+          "originalHash": "b3a75bfbe830818452c16a599cb98bb086f633e63e47b36423a52671e12eaf4f",
+          "retryHash": "a4dedaaec56a7b09ae0852a6c8e54c12f7072e76fd90f3a9fbba32bfd67065e0",
+          "reward": [],
+          "started": false,
+          "unchanged": true
+        },
+        {
+          "database": "myzootwin-zebra-fault-3331150e-a4d9-41b2-a116-a9c22af143ee",
+          "mode": "abort",
+          "originalHash": "0ec57e8cb0c0529e299509832c2fdc3ce7b36e62c65ead22bf51bdf4794fa948",
+          "retryHash": "090ad793a47f737188f6ee4f945adaec3504485ed68569b32a4f8e3ec9c44384",
+          "reward": [],
+          "started": false,
+          "unchanged": true
+        },
+        {
+          "database": "myzootwin-zebra-fault-586889d4-f5af-4633-8cfb-5960f89f0dd4",
+          "mode": "quota",
+          "originalHash": "85d14548cab3c1cbaadd8f8516fb76c11395da5a5863523ae7bc9bf4a0e72f94",
+          "retryHash": "bbfb32ccade060b63a7e45027e443b648a8fc118a2e31b53e69842ae2a94df6e",
+          "reward": [
+            {
+              "award": "grassland-founder",
+              "command": 133,
+              "connection": {
+                "habitatId": "habitat-zebra-codec",
+                "route": "[MaxDepth]",
+                "viewingCell": "[MaxDepth]"
+              },
+              "ledgerEntryId": null,
+              "missionId": "ZQ01",
+              "tick": 13580
+            },
+            {
+              "award": null,
+              "command": 134,
+              "ledgerEntryId": "mission-zq02",
+              "missionId": "ZQ02",
+              "tick": 14367
+            }
+          ],
+          "started": true,
+          "unchanged": true
+        },
+        {
+          "database": "myzootwin-zebra-fault-239feff1-6b90-41c0-a904-300030ca588a",
+          "mode": "abort",
+          "originalHash": "584028adeaa7faa0271729a0e71f980e3c0191912e527df0cae03e0ffb9fc77a",
+          "retryHash": "d21e340ebf55ce63b92de76b7787fe97ad1209b9eaf0c8612e175faca175c095",
+          "reward": [
+            {
+              "award": "grassland-founder",
+              "command": 133,
+              "connection": {
+                "habitatId": "habitat-zebra-codec",
+                "route": "[MaxDepth]",
+                "viewingCell": "[MaxDepth]"
+              },
+              "ledgerEntryId": null,
+              "missionId": "ZQ01",
+              "tick": 13580
+            },
+            {
+              "award": null,
+              "command": 134,
+              "ledgerEntryId": "mission-zq02",
+              "missionId": "ZQ02",
+              "tick": 14367
+            }
+          ],
+          "started": true,
+          "unchanged": true
+        }
+      ],
+      "id": "atomic",
+      "status": "PASS"
+    },
+    "corruption": {
+      "at": "2026-11-10T16:12:13.914Z",
+      "cases": [
+        {
+          "afterHash": "ef57e5ac41ce3ce7f1fd7a547bf298d5a649e2cb28161484fa659e698eee5204",
+          "beforeHash": "4a4f4613b3c2a476a4569d257e2524a2ed546744c17bea567383f41166f522de",
+          "database": "myzootwin-zebra-fault-af35df8f-759c-40ef-b76e-585f422d00dc",
+          "kind": "malformed",
+          "preserved": true,
+          "recovery": "restore"
+        },
+        {
+          "database": "myzootwin-zebra-fault-f5424bd3-5bbf-4bfe-8a34-b3b77678a069",
+          "kind": "future-schema",
+          "rawHash": "d329a4afabed70b55e06cbd421670eebce14236135a79da8228dd8a4a68b876b",
+          "recovery": "blocked",
+          "unchanged": true
+        },
+        {
+          "database": "myzootwin-zebra-fault-c27db3ed-b628-43f6-b526-530ae22f7e88",
+          "kind": "future-format",
+          "rawHash": "2e828beb14f58998dd95c33984c2749b0e5b0e6d783853873ffa38c54a11e577",
+          "recovery": "blocked",
+          "unchanged": true
+        },
+        {
+          "database": "myzootwin-zebra-fault-08b75fbc-9374-42f9-aabd-501e5ae2d78a",
+          "kind": "unknown",
+          "rawHash": "49ea9dff5b7b774541a5322341e15f22dae6e443a79c800aabc93c4d68dcc8bd",
+          "recovery": "blocked",
+          "unchanged": true
+        },
+        {
+          "database": "myzootwin-zebra-fault-b1284049-96c8-43ac-b35c-ff5e8633cb56",
+          "kind": "no-previous",
+          "rawHash": "e9a04b66e570d445c30fb3b596cf9e6595abe7f09d120808e810dce7cab1de80",
+          "recovery": "blocked",
+          "unchanged": true
+        }
+      ],
+      "id": "corruption",
+      "status": "PASS"
+    },
+    "provenance": {
+      "at": "2026-11-10T16:12:15.635Z",
+      "cases": [
+        {
+          "database": "myzootwin-zebra-fault-06a5427d-b639-4da2-9758-0febcc1f322b",
+          "invalid": "missing",
+          "key": "zebra-v4-backup",
+          "rawHash": "81923c126da67cfbedcd22002e354b7c7e43d05922f0c3abea2c007d3fa970a1",
+          "unchanged": true
+        },
+        {
+          "database": "myzootwin-zebra-fault-31a2867a-78e3-49ed-ae06-1f824483f17b",
+          "invalid": "corrupt",
+          "key": "zebra-v4-backup",
+          "rawHash": "c675920587b4b9d8f03e99cd8f62794b417f0433116a0428691da050b6d167db",
+          "unchanged": true
+        },
+        {
+          "database": "myzootwin-zebra-fault-3e71e7af-28fe-437c-b517-074f1433b631",
+          "invalid": "missing",
+          "key": "giraffe-v3-backup",
+          "rawHash": "4908b27caf8fcc4a17419edb80f4afeea9b40c5d35ee1eaa74c226f2539d1bea",
+          "unchanged": true
+        },
+        {
+          "database": "myzootwin-zebra-fault-018c0c4a-32bc-4b48-99af-eba48dd4f8bc",
+          "invalid": "corrupt",
+          "key": "giraffe-v3-backup",
+          "rawHash": "3e37d0a70d0445ef850e11b62e92e28c5ba50996d5438a9d59a7381a22a61d8c",
+          "unchanged": true
+        }
+      ],
+      "id": "provenance",
+      "status": "PASS"
+    },
+    "pendingClose": {
+      "at": "2026-11-10T16:12:19.680Z",
+      "cashAfter": 3745,
+      "cashBefore": 3595,
+      "close": {
+        "active": true,
+        "dirty": false,
+        "disposed": true,
+        "fault": null,
+        "generation": "r7-03-8e44c725-7ad4-4c68-9aae-1175ef578d07",
+        "hasSave": true,
+        "inflight": false,
+        "pendingTimer": false,
+        "phase": "saved",
+        "recovery": {
+          "hasPreserved": false,
+          "kind": "none",
+          "problem": null,
+          "quote": null,
+          "source": null
+        },
+        "recoveryBusy": false,
+        "restartAvailable": false,
+        "restartBusy": false,
+        "revision": 4,
+        "savedAt": 1794327139607,
+        "savedBirds": 2,
+        "savedCurrency": 3745,
+        "savedMissions": 4,
+        "savedTick": 14367,
+        "storageReady": true
+      },
+      "database": "myzootwin-zebra-fault-f3f97227-daf0-4cac-b810-f8a57e242796",
+      "id": "pending-candidate-close",
+      "preservedPreference": false,
+      "scope": "Explicit backend-promise hold before the actual native commit, not a stalled physical disk or live IDB transaction.",
+      "status": "PASS",
+      "storedHash": "fcc6197cde99e9f047ef84a6832f9423d134d47b54346c032b03bdf6dcff5840"
+    },
+    "race": {
+      "a": {
+        "accepted": true,
+        "afterCash": 3745,
+        "at": "2026-11-10T16:12:36.224Z",
+        "beforeCash": 3595,
+        "beforeHash": "e26dd79b80d20e6d466158b88d2bb98cdb0cec22102331f70fac127c63b4ac20",
+        "database": "myzootwin-zebra-fault-2f4f8a4d-f6d0-4c75-a491-8691cba9b7d4",
+        "id": "mission-race",
+        "memoryHash": "70dd0c162262984df55314f6168dfbff1fefe98bcd861afdc83958e1b4fc8d89",
+        "phase": "saved",
+        "rewards": [
+          {
+            "award": "grassland-founder",
+            "command": 133,
+            "connection": {
+              "habitatId": "habitat-zebra-codec",
+              "route": [
+                {
+                  "x": 1,
+                  "z": 8
+                },
+                {
+                  "x": 1,
+                  "z": 9
+                },
+                {
+                  "x": 1,
+                  "z": 10
+                },
+                {
+                  "x": 2,
+                  "z": 10
+                },
+                {
+                  "x": 3,
+                  "z": 10
+                },
+                {
+                  "x": 4,
+                  "z": 10
+                },
+                {
+                  "x": 5,
+                  "z": 10
+                },
+                {
+                  "x": 6,
+                  "z": 10
+                },
+                {
+                  "x": 7,
+                  "z": 10
+                },
+                {
+                  "x": 8,
+                  "z": 10
+                },
+                {
+                  "x": 9,
+                  "z": 10
+                },
+                {
+                  "x": 10,
+                  "z": 10
+                },
+                {
+                  "x": 11,
+                  "z": 10
+                },
+                {
+                  "x": 12,
+                  "z": 10
+                },
+                {
+                  "x": 13,
+                  "z": 10
+                },
+                {
+                  "x": 14,
+                  "z": 10
+                },
+                {
+                  "x": 14,
+                  "z": 11
+                }
+              ],
+              "viewingCell": {
+                "x": 14,
+                "z": 11
+              }
+            },
+            "ledgerEntryId": null,
+            "missionId": "ZQ01",
+            "tick": 13580
+          },
+          {
+            "award": null,
+            "command": 134,
+            "ledgerEntryId": "mission-zq02",
+            "missionId": "ZQ02",
+            "tick": 14367
+          }
+        ],
+        "status": "PASS",
+        "stored": "7c1f60fd6bd1c7603808b39398269b556e7ffc4092656d514581ff335cb3cce6",
+        "storedCash": 3745
+      },
+      "b": {
+        "accepted": false,
+        "afterCash": 3595,
+        "at": "2026-11-10T16:12:36.299Z",
+        "beforeCash": 3595,
+        "beforeHash": "e26dd79b80d20e6d466158b88d2bb98cdb0cec22102331f70fac127c63b4ac20",
+        "database": "myzootwin-zebra-fault-2f4f8a4d-f6d0-4c75-a491-8691cba9b7d4",
+        "id": "mission-race",
+        "memoryHash": "e26dd79b80d20e6d466158b88d2bb98cdb0cec22102331f70fac127c63b4ac20",
+        "phase": "conflict",
+        "rewards": [
+          {
+            "award": "grassland-founder",
+            "command": 133,
+            "connection": {
+              "habitatId": "habitat-zebra-codec",
+              "route": [
+                {
+                  "x": 1,
+                  "z": 8
+                },
+                {
+                  "x": 1,
+                  "z": 9
+                },
+                {
+                  "x": 1,
+                  "z": 10
+                },
+                {
+                  "x": 2,
+                  "z": 10
+                },
+                {
+                  "x": 3,
+                  "z": 10
+                },
+                {
+                  "x": 4,
+                  "z": 10
+                },
+                {
+                  "x": 5,
+                  "z": 10
+                },
+                {
+                  "x": 6,
+                  "z": 10
+                },
+                {
+                  "x": 7,
+                  "z": 10
+                },
+                {
+                  "x": 8,
+                  "z": 10
+                },
+                {
+                  "x": 9,
+                  "z": 10
+                },
+                {
+                  "x": 10,
+                  "z": 10
+                },
+                {
+                  "x": 11,
+                  "z": 10
+                },
+                {
+                  "x": 12,
+                  "z": 10
+                },
+                {
+                  "x": 13,
+                  "z": 10
+                },
+                {
+                  "x": 14,
+                  "z": 10
+                },
+                {
+                  "x": 14,
+                  "z": 11
+                }
+              ],
+              "viewingCell": {
+                "x": 14,
+                "z": 11
+              }
+            },
+            "ledgerEntryId": null,
+            "missionId": "ZQ01",
+            "tick": 13580
+          },
+          {
+            "award": null,
+            "command": 134,
+            "ledgerEntryId": "mission-zq02",
+            "missionId": "ZQ02",
+            "tick": 14367
+          }
+        ],
+        "status": "PASS",
+        "stored": "7c1f60fd6bd1c7603808b39398269b556e7ffc4092656d514581ff335cb3cce6",
+        "storedCash": 3745
+      },
+      "cold": {
+        "admissions": 22,
+        "at": "2026-11-10T16:12:55.530Z",
+        "cash": 3745,
+        "compactedDuplicate": {
+          "duplicate": true,
+          "ok": true,
+          "paid": true
+        },
+        "duplicate": {
+          "duplicate": true,
+          "ok": true,
+          "paid": true
+        },
+        "id": "cold-ticket-replay",
+        "scope": "Read cold durable state; original admission rechecks and compaction on a clone only, no durable compaction write.",
+        "stateHash": "70dd0c162262984df55314f6168dfbff1fefe98bcd861afdc83958e1b4fc8d89",
+        "status": "PASS",
+        "storedHash": "7c1f60fd6bd1c7603808b39398269b556e7ffc4092656d514581ff335cb3cce6",
+        "visitor": "arrival-39"
+      }
+    },
+    "ui": {
+      "ready": {
+        "at": "2026-11-10T16:12:56.265Z",
+        "backupHashes": {
+          "elephant-v1-backup": "1ee8ebb15a86c8356822d13cdcbefadd26466ed6daa26a72004fa0010f753d74",
+          "giraffe-v3-backup": "46b1fc6c036292ff4439f6b0768ad5648e7cfa66f78bc6081840124159189138",
+          "lion-v2-backup": "ab00baf69b7703548bcc4a06c2a79747b90d7449a70f93b1b199e6648d501c33",
+          "zebra-v4-backup": "54c74fbd4dc3df56b8a6ef729d38cc11f6eb56592814f13e22a04fe37e1a42cd"
+        },
+        "damaged": "b3082503b0def14c2776dfc856b7d8655a8fe9e72ee628fddb49225133b006d9",
+        "database": "myzootwin-zebra-fault-a6436543-e05a-43af-aa58-7e4022bbc9d0",
+        "id": "recovery-ui-ready",
+        "original": "a0c064d9166c8d8ac24db8215103eeedf3d67a92ed1ff85a8178aba1d7dd4432",
+        "originalPayload": "8ea8e014baa29a9d0f4f92a05f12b43c876c17aced7a1791064a605396c89d96",
+        "save": {
+          "active": false,
+          "dirty": false,
+          "disposed": false,
+          "fault": "unreadable",
+          "generation": "empty",
+          "hasSave": false,
+          "inflight": false,
+          "pendingTimer": false,
+          "phase": "unreadable",
+          "recovery": {
+            "hasPreserved": false,
+            "kind": "restore",
+            "problem": "invalid-json",
+            "quote": "1a9696f5-dce5-4b25-8ba5-74c905e69503",
+            "source": {
+              "birds": 2,
+              "currency": 3595,
+              "locale": "id",
+              "missions": 4,
+              "revision": 2,
+              "tick": 14367,
+              "writtenAt": 2
+            }
+          },
+          "recoveryBusy": false,
+          "restartAvailable": false,
+          "restartBusy": false,
+          "revision": 0,
+          "savedAt": null,
+          "savedBirds": null,
+          "savedCurrency": null,
+          "savedMissions": null,
+          "savedTick": null,
+          "storageReady": false
+        },
+        "scope": "Actual production mountRecoveryPanel and autosave on damaged fresh UUID; no renderer mounted."
+      },
+      "cancel": {
+        "at": "2026-11-10T16:12:57.595Z",
+        "backupHashes": {
+          "elephant-v1-backup": "1ee8ebb15a86c8356822d13cdcbefadd26466ed6daa26a72004fa0010f753d74",
+          "giraffe-v3-backup": "46b1fc6c036292ff4439f6b0768ad5648e7cfa66f78bc6081840124159189138",
+          "lion-v2-backup": "ab00baf69b7703548bcc4a06c2a79747b90d7449a70f93b1b199e6648d501c33",
+          "zebra-v4-backup": "54c74fbd4dc3df56b8a6ef729d38cc11f6eb56592814f13e22a04fe37e1a42cd"
+        },
+        "database": "myzootwin-zebra-fault-a6436543-e05a-43af-aa58-7e4022bbc9d0",
+        "id": "recovery-ui-inspected",
+        "payload": "e08e437cb3c6bc0c917c14d6b52cf8a5cea06cde15cff3a889a09a4710ce3b6d",
+        "preserved": false,
+        "preservedPrimary": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "primary": "04c41e61517c3dc0ee1c45569760505761832eea06f723adeeaf1381f8f7ea67",
+        "rows": "b3082503b0def14c2776dfc856b7d8655a8fe9e72ee628fddb49225133b006d9",
+        "save": {
+          "active": false,
+          "dirty": false,
+          "disposed": false,
+          "fault": "unreadable",
+          "generation": "empty",
+          "hasSave": false,
+          "inflight": false,
+          "pendingTimer": false,
+          "phase": "unreadable",
+          "recovery": {
+            "hasPreserved": false,
+            "kind": "restore",
+            "problem": "invalid-json",
+            "quote": "168bd36f-571a-4b40-8814-a5400a4a0e0e",
+            "source": {
+              "birds": 2,
+              "currency": 3595,
+              "locale": "id",
+              "missions": 4,
+              "revision": 2,
+              "tick": 14367,
+              "writtenAt": 2
+            }
+          },
+          "recoveryBusy": false,
+          "restartAvailable": false,
+          "restartBusy": false,
+          "revision": 0,
+          "savedAt": null,
+          "savedBirds": null,
+          "savedCurrency": null,
+          "savedMissions": null,
+          "savedTick": null,
+          "storageReady": false
+        }
+      },
+      "quota": {
+        "at": "2026-11-10T16:12:59.549Z",
+        "backupHashes": {
+          "elephant-v1-backup": "1ee8ebb15a86c8356822d13cdcbefadd26466ed6daa26a72004fa0010f753d74",
+          "giraffe-v3-backup": "46b1fc6c036292ff4439f6b0768ad5648e7cfa66f78bc6081840124159189138",
+          "lion-v2-backup": "ab00baf69b7703548bcc4a06c2a79747b90d7449a70f93b1b199e6648d501c33",
+          "zebra-v4-backup": "54c74fbd4dc3df56b8a6ef729d38cc11f6eb56592814f13e22a04fe37e1a42cd"
+        },
+        "database": "myzootwin-zebra-fault-a6436543-e05a-43af-aa58-7e4022bbc9d0",
+        "id": "recovery-ui-inspected",
+        "payload": "e08e437cb3c6bc0c917c14d6b52cf8a5cea06cde15cff3a889a09a4710ce3b6d",
+        "preserved": false,
+        "preservedPrimary": "74234e98afe7498fb5daf1f36ac2d78acc339464f950703b8c019892f982b90b",
+        "primary": "04c41e61517c3dc0ee1c45569760505761832eea06f723adeeaf1381f8f7ea67",
+        "rows": "b3082503b0def14c2776dfc856b7d8655a8fe9e72ee628fddb49225133b006d9",
+        "save": {
+          "active": false,
+          "dirty": false,
+          "disposed": false,
+          "fault": "quota",
+          "generation": "empty",
+          "hasSave": false,
+          "inflight": false,
+          "pendingTimer": false,
+          "phase": "error",
+          "recovery": {
+            "hasPreserved": false,
+            "kind": "restore",
+            "problem": "invalid-json",
+            "quote": "df6d0eee-69db-4a9a-9837-cf96aa11cf5d",
+            "source": {
+              "birds": 2,
+              "currency": 3595,
+              "locale": "id",
+              "missions": 4,
+              "revision": 2,
+              "tick": 14367,
+              "writtenAt": 2
+            }
+          },
+          "recoveryBusy": false,
+          "restartAvailable": false,
+          "restartBusy": false,
+          "revision": 0,
+          "savedAt": null,
+          "savedBirds": null,
+          "savedCurrency": null,
+          "savedMissions": null,
+          "savedTick": null,
+          "storageReady": false
+        }
+      },
+      "restored": {
+        "at": "2026-11-10T16:13:20.799Z",
+        "backupHashes": {
+          "elephant-v1-backup": "1ee8ebb15a86c8356822d13cdcbefadd26466ed6daa26a72004fa0010f753d74",
+          "giraffe-v3-backup": "46b1fc6c036292ff4439f6b0768ad5648e7cfa66f78bc6081840124159189138",
+          "lion-v2-backup": "ab00baf69b7703548bcc4a06c2a79747b90d7449a70f93b1b199e6648d501c33",
+          "zebra-v4-backup": "54c74fbd4dc3df56b8a6ef729d38cc11f6eb56592814f13e22a04fe37e1a42cd"
+        },
+        "database": "myzootwin-zebra-fault-a6436543-e05a-43af-aa58-7e4022bbc9d0",
+        "id": "recovery-ui-inspected",
+        "payload": "8ea8e014baa29a9d0f4f92a05f12b43c876c17aced7a1791064a605396c89d96",
+        "preserved": true,
+        "preservedPrimary": "04c41e61517c3dc0ee1c45569760505761832eea06f723adeeaf1381f8f7ea67",
+        "primary": "2c4b08777c4d2f163b24e23e93472e36812f1a9a8e9612dfaa0340248cdacf74",
+        "rows": "361ccf08db00879c54a643bd30cae706309a52d486e755a5211094c280bf957e",
+        "save": {
+          "active": false,
+          "dirty": false,
+          "disposed": false,
+          "fault": null,
+          "generation": "ddc51477-47e8-4e98-b454-82b2ae4af34c",
+          "hasSave": true,
+          "inflight": false,
+          "pendingTimer": false,
+          "phase": "available",
+          "recovery": {
+            "hasPreserved": true,
+            "kind": "none",
+            "problem": null,
+            "quote": null,
+            "source": null
+          },
+          "recoveryBusy": false,
+          "restartAvailable": false,
+          "restartBusy": false,
+          "revision": 3,
+          "savedAt": 1794327200365,
+          "savedBirds": 2,
+          "savedCurrency": 3595,
+          "savedMissions": 4,
+          "savedTick": 14367,
+          "storageReady": true
+        }
+      },
+      "keyboard": {
+        "dialogOpen": true,
+        "focused": "Pulihkan titik simpan ini",
+        "lang": "id"
+      }
+    }
+  },
+  "archives": [
+    {
+      "path": "docs/qa/zebra/r7-03/native1.jsonl.br",
+      "bytes": 5880,
+      "sha256": "0a2b14b6d473ba277499c06d87c98248edd73fb64c3c84e3e1d68ce88e4f8cc2",
+      "original": {
+        "path": ".qa/zebra-audit/r7-03/native1.jsonl",
+        "bytes": 151604,
+        "sha256": "c68f00ba5e6f7e6f0df7ef4035b8e7efdd958496c4dbb658c9d5dd66c258eb21"
+      }
+    },
+    {
+      "path": "docs/qa/zebra/r7-03/native2.jsonl.br",
+      "bytes": 5287,
+      "sha256": "287ff790d0b4f235d7b6cec6b091aef42af1c812687b370c63d46b6d62768a37",
+      "original": {
+        "path": ".qa/zebra-audit/r7-03/native2.jsonl",
+        "bytes": 139086,
+        "sha256": "9b6a18f2f857267cd602cebf409c587ef62130ce75e88df8621af64ad9a09d0e"
+      }
+    },
+    {
+      "path": "docs/qa/zebra/r7-03/native3.jsonl.br",
+      "bytes": 6625,
+      "sha256": "32fd89d3af5e729f6000129d8fd3be2217e28cb09c018086c331d4c70626958e",
+      "original": {
+        "path": ".qa/zebra-audit/r7-03/native3.jsonl",
+        "bytes": 187737,
+        "sha256": "546eb4b909422a19862edacfe9ca858175d4781e580832360f1d82f28d8afdc8"
+      }
+    },
+    {
+      "path": "docs/qa/zebra/r7-03/full-suite.tap.br",
+      "bytes": 64811,
+      "sha256": "cef3032fea628f9a64e57734dcec6f628a70329f17bf607959e42b61d92e47a7",
+      "original": {
+        "path": ".qa/zebra-audit/r7-01/r7-01-r7-03-final2/stdout.tap",
+        "bytes": 325898,
+        "sha256": "fb5370010485f18cb66fb4a58a1b6e2959dab8d520b94aec148d9bc7c32eb491"
+      }
+    },
+    {
+      "path": "docs/qa/zebra/r7-03/initial-fault-pack.tap.br",
+      "bytes": 9396,
+      "sha256": "2721d20dd7595620afbfa4e6d5d97d7ecf8f47557c83b016f2ce499d09085330",
+      "original": {
+        "path": ".qa/zebra-audit/r7-03/r7-03-source1/stdout.tap",
+        "bytes": 45286,
+        "sha256": "9e5af128c3ee3a73863f9e106dba7cc665e08c399b92858b11db56580f558917"
+      }
+    },
+    {
+      "path": "docs/qa/zebra/r7-03/interrupted-full-suite.tap.br",
+      "bytes": 4591,
+      "sha256": "45b7eeb94bf918fb526e60343eeb555845e6623d16498ad1e7608cdf9e82337d",
+      "original": {
+        "path": ".qa/zebra-audit/r7-01/r7-01-r7-03-close-fix/stdout.tap",
+        "bytes": 19800,
+        "sha256": "0e156a3687667a18f0153a74ad65ce0f03194a78369965d0e6b3f30311545fab"
+      }
+    },
+    {
+      "path": "docs/qa/zebra/r7-03/source-causal-fixture.json.br",
+      "bytes": 20874,
+      "sha256": "fce39f52db5d10a97ea749252c6caed17985990505f52abcdd9604c33332bd5f",
+      "original": {
+        "path": ".qa/zebra-audit/r7-03/causal3/fixture.json",
+        "bytes": 426802,
+        "sha256": "982e267078bd7784c09b58a9e8f19b8039110430c8e9ad1085038c601f9282d4"
+      }
+    }
+  ],
+  "matrix": {
+    "path": "docs/qa/zebra/r7-03/acceptance-matrix.json",
+    "bytes": 10588,
+    "sha256": "97c98d7c2e45898a79c4e4588a6043d2330297e77aaafe8487b6708ffdb90b1d"
+  },
+  "review": {
+    "path": "docs/qa/zebra/r7-03/review.md",
+    "bytes": 8068,
+    "sha256": "2c96e8d5d1910a33c3c4810ef258f9d94cf647d253128c6f5557cd6621ccd373"
+  },
+  "resources": {
+    "browser": {
+      "at": "2026-11-10T16:14:01.974Z",
+      "browser": "2",
+      "ownedTabsClosed": [
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "remainingTabs": [],
+      "viewportOverrideUsed": false,
+      "scope": "Only own Zebra fault QA tabs. User/Farm preview tabs untouched; no renderer mounted."
+    },
+    "servers": {
+      "normalStopExitCodes": [
+        0,
+        0,
+        0
+      ],
+      "scope": "Only own Zebra named QA server PIDs/ports checked. Preview user/Farm processes untouched. Full regression runner remains separately active.",
+      "pids": [
+        13404,
+        31852,
+        24344
+      ],
+      "at": "2026-11-10T16:14:35.3959267Z",
+      "listeningPorts": [],
+      "remainingOwnPids": [],
+      "ports": [
+        50508,
+        63063,
+        51120
+      ]
+    },
+    "tests": {
+      "remainingOwnPids": [],
+      "scope": "Completed full regression,2workers,normal exit0. Only recorded Zebra runner/child/descendants inspected. No user/Farm preview process touched.",
+      "runnerPid": 17468,
+      "childPid": 6832,
+      "remainingOwnedTestWorkers": [],
+      "source": "cb9f09dcfbf8cf9fb436b8bc3770650ee2e92d97",
+      "at": "2026-11-10T16:31:33.7400018Z",
+      "normalExit": 0
+    },
+    "activeOwnedTestBuildBrowserServers": 0,
+    "userPreviewTouched": false,
+    "scope": "Only explicitly owned Zebra processes/tabs inspected or closed; user/Farm preview untouched."
+  },
+  "remainingDependencies": [
+    "Z2-06 actual Zebra grant command/proposed1700ZC budget/exactly-once/public bootstrap remains open; synthetic fixture proves no claim acceptance",
+    "HP6-02 public five-habitat playability remains open",
+    "R7-04 native active soak/performance and R7-05 host/device limits",
+    "R7-06 cleanup/security/provenance, R7-07 V5 maintenance/fix-forward",
+    "R7-08 separate Zebra push/deploy authorization absent"
+  ],
+  "noPushOrDeploy": true,
+  "next": "R7-04 active native soak/10x stress after coordinated resource slot"
+}
