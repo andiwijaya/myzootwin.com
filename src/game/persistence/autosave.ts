@@ -123,9 +123,15 @@ export function createAutosave<State extends PersistedZooSave=ZooSaveV1>(backend
         notify();
         return inflight;
     }
+    let closingDrain:Promise<void>|undefined;
     async function drain(insideCandidate=false) {
+        // Once disposal starts, its drain is the sole owner of the final write.
+        // A late public/session flush must join it, not start another write just
+        // before disposal closes the backend.
+        if(closing){await closingDrain;return;}
         if(candidateBusy&&!insideCandidate){if(inflight)await inflight;return;}
         await flush();
+        if(closing)return;
         if (dirty && !blocked() && phase !== 'error' && storageReady)
             await flush();
     }
@@ -388,7 +394,7 @@ export function createAutosave<State extends PersistedZooSave=ZooSaveV1>(backend
                 return;
             closing = true;
             stopTimer();
-            void (async () => {
+            closingDrain = (async () => {
                 await flush();
                 if (dirty && !blocked() && storageReady)
                     await flush();
