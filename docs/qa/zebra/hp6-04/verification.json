@@ -1,0 +1,1574 @@
+{
+  "status": "PASS_HP6_04",
+  "at": "2026-11-10T00:28:37.000Z",
+  "verified": 42,
+  "total": 54,
+  "source": "bef8579022d1a67c3f19ad9d651c923234230999",
+  "captureSource": "5e9baca9108ba4eca52e5abcfcf24b8571736720",
+  "sourceFingerprint": "854cc54617debadb9e0cd3ff53111afe7e6e0ac6a0d207169d5b413448552aa4",
+  "scope": "Original actual V5 renderer/assets, camera-only frozen QA checkpoint. SSR homepage preview media with responsive WebP and social derivative. No engine/save/gameplay/dependency changes; default player saves unopened.",
+  "checks": {
+    "types": "PASS strict noEmit/noUnused",
+    "astro": "PASS596 files,0 errors/warnings/hints",
+    "build": "PASS10 pages and production QA exclusion; existing large-chunk advisory only",
+    "lazyImageScope": "One route-switch observation (language-id-mobile) has the Zebra image pending below the viewport. Initial verifier incorrectly required every lazy image eagerly complete; corrected to visible images plus successful ID/EN samples at all3 sizes. All other samples load both media; no application defect implied.",
+    "logs": [
+      {
+        "path": ".qa/zebra-audit/hp6-04-types.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-04-check.log",
+        "bytes": 168,
+        "sha256": "28ff43204ca99a16c86d45cb497b83b2466cbbbe1d3ede088d378158f5ba80fc"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-04-build.log",
+        "bytes": 2627,
+        "sha256": "4e68142a2279fb42feb1d3fef461dff173e10518a1388e3089dc6e769847a4a0"
+      }
+    ],
+    "unitTests": "No new unit tests for image/copy/CSS. Exact game/other-page output invariance, native camera/cold-state and actual media/navigation assertions cover this change."
+  },
+  "provenance": {
+    "path": "docs/qa/zebra/hp6-04/image-provenance.json",
+    "bytes": 83945,
+    "sha256": "31e7d14caadcf4c3a96bd9ac13aaee0e479537e74df0c24e7522b871c912d711"
+  },
+  "media": [
+    {
+      "source": "docs/qa/zebra/hp6-04/overview-native.jpg",
+      "crop": {
+        "left": 30,
+        "top": 160,
+        "width": 770,
+        "height": 520
+      },
+      "operation": "Native screenshot crop, downsize only, WebP quality82",
+      "path": "public/images/home/v5-zoo-480.webp",
+      "sha256": "1e47118c613aa474f517bfda8ce30a8be6459444ba53571b3aae810e0217b6f7",
+      "bytes": 14596,
+      "width": 480,
+      "height": 324
+    },
+    {
+      "source": "docs/qa/zebra/hp6-04/overview-native.jpg",
+      "crop": {
+        "left": 30,
+        "top": 160,
+        "width": 770,
+        "height": 520
+      },
+      "operation": "Native screenshot crop, downsize only, WebP quality82",
+      "path": "public/images/home/v5-zoo-770.webp",
+      "sha256": "7e9a2db2cc9df38890bebdbf63374d1ebb8e4ef00f6d6e2177146785e32613a3",
+      "bytes": 26374,
+      "width": 770,
+      "height": 520
+    },
+    {
+      "source": "docs/qa/zebra/hp6-04/zebra-native.jpg",
+      "crop": {
+        "left": 90,
+        "top": 210,
+        "width": 660,
+        "height": 460
+      },
+      "operation": "Native screenshot crop, downsize only, WebP quality82",
+      "path": "public/images/home/v5-zebra-440.webp",
+      "sha256": "9e1f77add5ec0462d9aebd82a10daf898d027aabdadb61387e0ae22d2fc9376d",
+      "bytes": 16934,
+      "width": 440,
+      "height": 307
+    },
+    {
+      "source": "docs/qa/zebra/hp6-04/zebra-native.jpg",
+      "crop": {
+        "left": 90,
+        "top": 210,
+        "width": 660,
+        "height": 460
+      },
+      "operation": "Native screenshot crop, downsize only, WebP quality82",
+      "path": "public/images/home/v5-zebra-660.webp",
+      "sha256": "ec2599c98994e59e7d36abbc3b7142f2bf6f159f1b7bdd6e3119fd69adeecf21",
+      "bytes": 26710,
+      "width": 660,
+      "height": 460
+    },
+    {
+      "source": "docs/qa/zebra/hp6-04/overview-native.jpg",
+      "crop": {
+        "left": 30,
+        "top": 160,
+        "width": 770,
+        "height": 520
+      },
+      "operation": "Contain original crop without enlargement on1200x630 solid background; no text/animals or gameplay composited",
+      "path": "public/images/home/v5-zoo-social.jpg",
+      "sha256": "d59a9a5dc6d2f1b85f3bfac09f5d26448fadd5b63344cc4332d468bc6d2df927",
+      "bytes": 37842,
+      "width": 1200,
+      "height": 630
+    }
+  ],
+  "build": {
+    "receipt": {
+      "path": ".qa/visual3d/h1-03-zebra-homemedia1/source.json",
+      "bytes": 111480,
+      "sha256": "9544c4eb2ccb50a32103a9bf87b1cc4c95a26ecaa31845108241eee20942d3f3"
+    },
+    "lab": "80488c05048ca1550b046c6bf45022764a8ca693fb80cbed50033479b4fbe582",
+    "product": "55fb3985ed4225b29942cded1ffe9a57e887a72909ca85a90fd104b2d0ca5b49",
+    "unchanged": [
+      {
+        "path": "_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js",
+        "sha256": "b4f4f51eb078143844adf51707e8d801b4f340bd9f8444254d7fedad90794f02"
+      },
+      {
+        "path": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.CIODW4z_.js",
+        "sha256": "0fc9a7c5f6ea20f521e9059c18d03cb4256b04be9cb0e25429e4b059daa4d6c9"
+      },
+      {
+        "path": "_astro/dialog-focus.CS_awhan.js",
+        "sha256": "1c49e5f75581f00265e803464e1caea211865f20cc06223682b8336e763d2d64"
+      },
+      {
+        "path": "_astro/foundation-scene.GhcJ0N1N.js",
+        "sha256": "3d6e9c916ccb7bc5b05419f3224fc9481d1862ce059903f78b4e1464ad5fe366"
+      },
+      {
+        "path": "about/index.html",
+        "sha256": "75f4bd4381f5523531a89f236a3005b9f8ad81607537c200ff46f8f77115e32c"
+      },
+      {
+        "path": "adventures/index.html",
+        "sha256": "fd4e1b4c363a0843dfdc6b2ba1645bec44fe0b7a748dd2a4b939c0a716136d8f"
+      },
+      {
+        "path": "animals/index.html",
+        "sha256": "e76a453010c7885d081ebbe60c800ced1d5ad326707830a2453c17b0d03f4e42"
+      },
+      {
+        "path": "gear/index.html",
+        "sha256": "8b435fd4e647b9e5f0a683c206d8b37cf562cc0c080ddcf0f892198ea3e3a0ec"
+      },
+      {
+        "path": "images/home/giraffes-480.webp",
+        "sha256": "1c2eee2a30808155f7277c14dffeda17e20c6a3899aa2fe4310d6e66e4a60060"
+      },
+      {
+        "path": "images/home/giraffes-800.webp",
+        "sha256": "d0bdf2b3196f3b769bc4b4e0e977249d2ed86ea64fa2f3f2bf560ed4bd9fa1b7"
+      },
+      {
+        "path": "images/home/zoo-640.webp",
+        "sha256": "6809ac121c8a10f63b07c53c21357fd0d65b3255b76ce13fecdecbb9e6c27a07"
+      },
+      {
+        "path": "images/home/zoo-960.webp",
+        "sha256": "93ea04c81e7658ab73e92cd13302ceb4575585729d7dc120f3a83ed85c8b5e5b"
+      },
+      {
+        "path": "images/home/zoo-social.jpg",
+        "sha256": "7cb245af00cb0301dfd032ee1e886a4df1b55f64bfa20fdca9e716ea294968ad"
+      },
+      {
+        "path": "images/myzootwin-beranda.png",
+        "sha256": "194a2cb5178f255ebf0289aabac75135fc65a8f716f26c01dcfeaebe00960169"
+      },
+      {
+        "path": "images/tropical-creek-game.jpg",
+        "sha256": "6edf52437618a80b94911b846cb2722257739be87c4f96c793f1e808d848e880"
+      },
+      {
+        "path": "images/tropical-creek-journal.svg",
+        "sha256": "cf2f03404f8d72367c385fbbdfaabb0bd21ae0a262804525c20e027a34ea94cc"
+      },
+      {
+        "path": "learn/index.html",
+        "sha256": "5faff54683eb2382df7b9a47c68a64527b8ca94d8215c60af71bd92b5e039722"
+      },
+      {
+        "path": "pets/index.html",
+        "sha256": "c96393aa9267095c4f9d6d22437c0483e906ba646d92497d9777ecece2dcde12"
+      },
+      {
+        "path": "play/index.html",
+        "sha256": "eaaeec56f3a0c829999b1117ad1a7e5212e0df6ae20147ec049a5e9a9859bbbb"
+      },
+      {
+        "path": "robots.txt",
+        "sha256": "91803eeb5a8dbbbae903fce53e66d6f5856f8e0894e7d7d21465c532381dd147"
+      },
+      {
+        "path": "sitemap-0.xml",
+        "sha256": "dbbec59a45a2b89f869b2a277fce46020f49e16649d635a48c479b9868b3c0bf"
+      },
+      {
+        "path": "sitemap-index.xml",
+        "sha256": "f956f18339cf090382bb71b5dadff01ca95c9bd0958046cef03c002851a7b550"
+      },
+      {
+        "path": "wildlife/index.html",
+        "sha256": "4b7db5f1a1160a8d5322f2a630e8d68e338970e896afa3a52d69255f4f7cbb43"
+      }
+    ],
+    "addedImages": [
+      {
+        "path": "images/home/v5-zebra-440.webp",
+        "sha256": "9e1f77add5ec0462d9aebd82a10daf898d027aabdadb61387e0ae22d2fc9376d"
+      },
+      {
+        "path": "images/home/v5-zebra-660.webp",
+        "sha256": "ec2599c98994e59e7d36abbc3b7142f2bf6f159f1b7bdd6e3119fd69adeecf21"
+      },
+      {
+        "path": "images/home/v5-zoo-480.webp",
+        "sha256": "1e47118c613aa474f517bfda8ce30a8be6459444ba53571b3aae810e0217b6f7"
+      },
+      {
+        "path": "images/home/v5-zoo-770.webp",
+        "sha256": "7e9a2db2cc9df38890bebdbf63374d1ebb8e4ef00f6d6e2177146785e32613a3"
+      },
+      {
+        "path": "images/home/v5-zoo-social.jpg",
+        "sha256": "d59a9a5dc6d2f1b85f3bfac09f5d26448fadd5b63344cc4332d468bc6d2df927"
+      }
+    ]
+  },
+  "capture": {
+    "raw": {
+      "path": ".qa/zebra-audit/hp6-04-capture-browser.json",
+      "bytes": 2016057,
+      "sha256": "a5af753d4dc157af6e9ed79f2ec9b325fda236561d0a187e1d36be02e7137e79"
+    },
+    "observations": 6,
+    "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+    "gameplayHash": "af3d25c59917fd06c0238907999034cdc85f76993b22d7a3f4bf20862d69421d",
+    "revision": 830,
+    "tick": 27849,
+    "cash": 3581,
+    "actors": 14,
+    "pausedCanonicalTicksAdvanced": 0,
+    "nativeRafCallbacks": 0,
+    "ownedRendererCycles": 1,
+    "closedOwnedResources": true,
+    "poseScope": "Native overview and Zebra camera focus, low quality, actual saved poses. No native FPS/active-time/physical-device or grant-budget claim.",
+    "initialCaptureNote": "Oversized DOM viewport raster and an over-scrolled overview were rejected during framing. Accepted final native rasters1385x865 have all derivative crops inside visible canvas. Disabled Home at original overview was observed; no source defect or repeated click claimed."
+  },
+  "native": {
+    "rawReceipts": [
+      {
+        "path": ".qa/zebra-audit/hp6-04-home-browser.json",
+        "bytes": 143739,
+        "sha256": "a4d686adc6a7a63d82d92beee97eb7be5a835b3f97a57dbbd86d5fc8050c0ff6"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-04-home-logs.json",
+        "bytes": 2,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-04-home-server.json",
+        "bytes": 500,
+        "sha256": "ac4e5ae196a094e011051b989d44f142238aa2fc1dd1b063211614a6ae1318f2"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-04-capture-browser.json",
+        "bytes": 2016057,
+        "sha256": "a5af753d4dc157af6e9ed79f2ec9b325fda236561d0a187e1d36be02e7137e79"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-04-capture-logs.json",
+        "bytes": 2,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-04-capture-server.json",
+        "bytes": 114,
+        "sha256": "59fbf03c6ee97efe1ea37e5634ed294f587bb370fcd888ce62b7c2f3eedd2eb6"
+      }
+    ],
+    "observations": 29,
+    "homeObservations": 27,
+    "inertPlayDestinations": 2,
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 900
+      },
+      {
+        "width": 780,
+        "height": 460
+      },
+      {
+        "width": 360,
+        "height": 800
+      }
+    ],
+    "cases": [
+      {
+        "label": "id-desktop-hero",
+        "at": "2026-11-10T00:24:32.861Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-770.webp",
+          "rect": {
+            "bottom": 575.0833435058594,
+            "height": 426.90625,
+            "left": 569.15625,
+            "right": 1200.6666870117188,
+            "top": 148.17709350585938,
+            "width": 631.5104370117188,
+            "x": 569.15625,
+            "y": 148.17709350585938
+          },
+          "caption": "Pratinjau aktual V5 · Empat habitat tersedia; Zebra belum tersedia di versi publik."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-660.webp",
+          "rect": {
+            "bottom": 1441.7500915527344,
+            "height": 365.0833435058594,
+            "left": 64,
+            "right": 587.25,
+            "top": 1076.666748046875,
+            "width": 523.25,
+            "x": 64,
+            "y": 1076.666748046875
+          },
+          "caption": "Capture aktual build QA V5 · Zebra belum tersedia di versi publik."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "id-desktop-zebra",
+        "at": "2026-11-10T00:24:33.009Z",
+        "url": "http://127.0.0.1:52907/#zebra-preview-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-770.webp",
+          "rect": {
+            "bottom": -265.5833740234375,
+            "height": 426.90625,
+            "left": 569.15625,
+            "right": 1200.6666870117188,
+            "top": -692.4896240234375,
+            "width": 631.5104370117188,
+            "x": 569.15625,
+            "y": -692.4896240234375
+          },
+          "caption": "Pratinjau aktual V5 · Empat habitat tersedia; Zebra belum tersedia di versi publik."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-660.webp",
+          "rect": {
+            "bottom": 601.0833435058594,
+            "height": 365.0833435058594,
+            "left": 64,
+            "right": 587.25,
+            "top": 236,
+            "width": 523.25,
+            "x": 64,
+            "y": 236
+          },
+          "caption": "Capture aktual build QA V5 · Zebra belum tersedia di versi publik."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "id-desktop-zebra-heading",
+        "at": "2026-11-10T00:24:45.728Z",
+        "url": "http://127.0.0.1:52907/#zebra-preview-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-770.webp",
+          "rect": {
+            "bottom": -130.91668701171875,
+            "height": 426.90625,
+            "left": 569.15625,
+            "right": 1200.6666870117188,
+            "top": -557.8229370117188,
+            "width": 631.5104370117188,
+            "x": 569.15625,
+            "y": -557.8229370117188
+          },
+          "caption": "Pratinjau aktual V5 · Empat habitat tersedia; Zebra belum tersedia di versi publik."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-660.webp",
+          "rect": {
+            "bottom": 735.7500305175781,
+            "height": 365.0833435058594,
+            "left": 64,
+            "right": 587.25,
+            "top": 370.6666870117187,
+            "width": 523.25,
+            "x": 64,
+            "y": 370.6666870117187
+          },
+          "caption": "Capture aktual build QA V5 · Zebra belum tersedia di versi publik."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "en-desktop-hero",
+        "at": "2026-11-10T00:24:46.407Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-770.webp",
+          "rect": {
+            "bottom": 566.90625,
+            "height": 426.90625,
+            "left": 569.15625,
+            "right": 1200.6666870117188,
+            "top": 140,
+            "width": 631.5104370117188,
+            "x": 569.15625,
+            "y": 140
+          },
+          "caption": "Actual V5 preview · Four habitats are available; Zebras are not in the public version yet."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-660.webp",
+          "rect": {
+            "bottom": 1425.3958435058594,
+            "height": 365.0833435058594,
+            "left": 64,
+            "right": 587.25,
+            "top": 1060.3125,
+            "width": 523.25,
+            "x": 64,
+            "y": 1060.3125
+          },
+          "caption": "Actual V5 QA build capture · Zebras are not in the public version yet."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "en-desktop-zebra",
+        "at": "2026-11-10T00:24:46.484Z",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-770.webp",
+          "rect": {
+            "bottom": -257.09375,
+            "height": 426.90625,
+            "left": 569.15625,
+            "right": 1200.6666870117188,
+            "top": -684,
+            "width": 631.5104370117188,
+            "x": 569.15625,
+            "y": -684
+          },
+          "caption": "Actual V5 preview · Four habitats are available; Zebras are not in the public version yet."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-660.webp",
+          "rect": {
+            "bottom": 601.3958435058594,
+            "height": 365.0833435058594,
+            "left": 64,
+            "right": 587.25,
+            "top": 236.3125,
+            "width": 523.25,
+            "x": 64,
+            "y": 236.3125
+          },
+          "caption": "Actual V5 QA build capture · Zebras are not in the public version yet."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "en-landscape-zebra",
+        "at": "2026-11-10T00:24:46.541Z",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-770.webp",
+          "rect": {
+            "bottom": 194.27084350585935,
+            "height": 464.1458435058594,
+            "left": 39,
+            "right": 725.6666870117188,
+            "top": -269.875,
+            "width": 686.6666870117188,
+            "x": 39,
+            "y": -269.875
+          },
+          "caption": "Actual V5 preview · Four habitats are available; Zebras are not in the public version yet."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-660.webp",
+          "rect": {
+            "bottom": 1013.5729675292968,
+            "height": 478.9895935058594,
+            "left": 39,
+            "right": 725.6666870117188,
+            "top": 534.5833740234375,
+            "width": 686.6666870117188,
+            "x": 39,
+            "y": 534.5833740234375
+          },
+          "caption": "Actual V5 QA build capture · Zebras are not in the public version yet."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "en-landscape-hero",
+        "at": "2026-11-10T00:24:46.599Z",
+        "url": "http://127.0.0.1:52907/en/#game-title",
+        "lang": "en",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-770.webp",
+          "rect": {
+            "bottom": 856.2708435058594,
+            "height": 464.1458435058594,
+            "left": 39,
+            "right": 725.6666870117188,
+            "top": 392.125,
+            "width": 686.6666870117188,
+            "x": 39,
+            "y": 392.125
+          },
+          "caption": "Actual V5 preview · Four habitats are available; Zebras are not in the public version yet."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-660.webp",
+          "rect": {
+            "bottom": 1675.5729675292969,
+            "height": 478.9895935058594,
+            "left": 39,
+            "right": 725.6666870117188,
+            "top": 1196.5833740234375,
+            "width": 686.6666870117188,
+            "x": 39,
+            "y": 1196.5833740234375
+          },
+          "caption": "Actual V5 QA build capture · Zebras are not in the public version yet."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "id-landscape-hero",
+        "at": "2026-11-10T00:24:46.880Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-770.webp",
+          "rect": {
+            "bottom": 1018.2708435058594,
+            "height": 464.1458435058594,
+            "left": 39,
+            "right": 725.6666870117188,
+            "top": 554.125,
+            "width": 686.6666870117188,
+            "x": 39,
+            "y": 554.125
+          },
+          "caption": "Pratinjau aktual V5 · Empat habitat tersedia; Zebra belum tersedia di versi publik."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-660.webp",
+          "rect": {
+            "bottom": 1837.5729675292969,
+            "height": 478.9895935058594,
+            "left": 39,
+            "right": 725.6666870117188,
+            "top": 1358.5833740234375,
+            "width": 686.6666870117188,
+            "x": 39,
+            "y": 1358.5833740234375
+          },
+          "caption": "Capture aktual build QA V5 · Zebra belum tersedia di versi publik."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "id-landscape-zebra",
+        "at": "2026-11-10T00:24:46.954Z",
+        "url": "http://127.0.0.1:52907/#zebra-preview-title",
+        "lang": "id",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-770.webp",
+          "rect": {
+            "bottom": -203.72915649414065,
+            "height": 464.1458435058594,
+            "left": 39,
+            "right": 725.6666870117188,
+            "top": -667.875,
+            "width": 686.6666870117188,
+            "x": 39,
+            "y": -667.875
+          },
+          "caption": "Pratinjau aktual V5 · Empat habitat tersedia; Zebra belum tersedia di versi publik."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-660.webp",
+          "rect": {
+            "bottom": 615.5729370117188,
+            "height": 478.9895935058594,
+            "left": 39,
+            "right": 725.6666870117188,
+            "top": 136.58334350585938,
+            "width": 686.6666870117188,
+            "x": 39,
+            "y": 136.58334350585938
+          },
+          "caption": "Capture aktual build QA V5 · Zebra belum tersedia di versi publik."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "id-mobile-hero",
+        "at": "2026-11-10T00:25:07.972Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": 930.4166870117188,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": 723.2604370117188,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": 723.2604370117188
+          },
+          "caption": "Pratinjau aktual V5 · Empat habitat tersedia; Zebra belum tersedia di versi publik."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": 1655.09375,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": 1441,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": 1441
+          },
+          "caption": "Capture aktual build QA V5 · Zebra belum tersedia di versi publik."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "id-mobile-zebra",
+        "at": "2026-11-10T00:25:08.041Z",
+        "url": "http://127.0.0.1:52907/#zebra-preview-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": -214.25,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -421.40625,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -421.40625
+          },
+          "caption": "Pratinjau aktual V5 · Empat habitat tersedia; Zebra belum tersedia di versi publik."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": 510.4270935058594,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": 296.3333435058594,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": 296.3333435058594
+          },
+          "caption": "Capture aktual build QA V5 · Zebra belum tersedia di versi publik."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "en-mobile-hero",
+        "at": "2026-11-10T00:25:08.323Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": 874.8021240234375,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": 667.6458740234375,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": 667.6458740234375
+          },
+          "caption": "Actual V5 preview · Four habitats are available; Zebras are not in the public version yet."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": 1533.84375,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": 1319.75,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": 1319.75
+          },
+          "caption": "Actual V5 QA build capture · Zebras are not in the public version yet."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "en-mobile-hero-image-visible",
+        "at": "2026-11-10T00:25:08.417Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": 434.8020935058594,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": 227.64584350585935,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": 227.64584350585935
+          },
+          "caption": "Actual V5 preview · Four habitats are available; Zebras are not in the public version yet."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": 1093.84375,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": 879.75,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": 879.75
+          },
+          "caption": "Actual V5 QA build capture · Zebras are not in the public version yet."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "en-mobile-zebra",
+        "at": "2026-11-10T00:25:08.813Z",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": -214.53125,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -421.6875,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -421.6875
+          },
+          "caption": "Actual V5 preview · Four habitats are available; Zebras are not in the public version yet."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": 444.5104217529297,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": 230.4166717529297,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": 230.4166717529297
+          },
+          "caption": "Actual V5 QA build capture · Zebras are not in the public version yet."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "en-mobile-zebra-image-visible",
+        "at": "2026-11-10T00:25:08.878Z",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": -374.53125,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -581.6875,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -581.6875
+          },
+          "caption": "Actual V5 preview · Four habitats are available; Zebras are not in the public version yet."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": 284.5104217529297,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": 70.41667175292969,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": 70.41667175292969
+          },
+          "caption": "Actual V5 QA build capture · Zebras are not in the public version yet."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "en-tab-promo-primary",
+        "at": "2026-11-10T00:25:24.922Z",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": -1019.197998046875,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -1226.354248046875,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -1226.354248046875
+          },
+          "caption": "Actual V5 preview · Four habitats are available; Zebras are not in the public version yet."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": -360.15625,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -574.25,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -574.25
+          },
+          "caption": "Actual V5 QA build capture · Zebras are not in the public version yet."
+        },
+        "focus": "<a class=\"button\" href=\"/play/\" data-site-source=\"home\" aria-describedby=\"zebra-preview-availability\" data-astro-cid-sotxr3hy=\"\">Start caring for your zoo<span aria-hidden=\"true\" data-astro-cid-sotxr3hy=\"\">↗</span></a>",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "en-tab-promo-secondary",
+        "at": "2026-11-10T00:25:24.978Z",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": -1019.197998046875,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -1226.354248046875,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -1226.354248046875
+          },
+          "caption": "Actual V5 preview · Four habitats are available; Zebras are not in the public version yet."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": -360.15625,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -574.25,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -574.25
+          },
+          "caption": "Actual V5 QA build capture · Zebras are not in the public version yet."
+        },
+        "focus": "<a class=\"preview-link\" href=\"#habitats\" data-astro-cid-sotxr3hy=\"\">See the available habitats<span aria-hidden=\"true\" data-astro-cid-sotxr3hy=\"\">↓</span></a>",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "en-shift-tab-promo-primary",
+        "at": "2026-11-10T00:25:25.035Z",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": -1019.197998046875,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -1226.354248046875,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -1226.354248046875
+          },
+          "caption": "Actual V5 preview · Four habitats are available; Zebras are not in the public version yet."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": -360.15625,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -574.25,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -574.25
+          },
+          "caption": "Actual V5 QA build capture · Zebras are not in the public version yet."
+        },
+        "focus": "<a class=\"button\" href=\"/play/\" data-site-source=\"home\" aria-describedby=\"zebra-preview-availability\" data-astro-cid-sotxr3hy=\"\">Start caring for your zoo<span aria-hidden=\"true\" data-astro-cid-sotxr3hy=\"\">↗</span></a>",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "en-inert-play-destination",
+        "at": "2026-11-10T00:25:25.267Z",
+        "url": "http://127.0.0.1:52907/play/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": null,
+        "zebra": null,
+        "focus": "<body><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\" aria-current=\"page\">Play Zoo</a><a ",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "en-play-back-promo",
+        "at": "2026-11-10T00:25:25.455Z",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": -1019.197998046875,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -1226.354248046875,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -1226.354248046875
+          },
+          "caption": "Actual V5 preview · Four habitats are available; Zebras are not in the public version yet."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": -360.15625,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -574.25,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -574.25
+          },
+          "caption": "Actual V5 QA build capture · Zebras are not in the public version yet."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "en-promo-card-anchor",
+        "at": "2026-11-10T00:25:25.552Z",
+        "url": "http://127.0.0.1:52907/en/#habitats",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": -1525.8646240234375,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -1733.0208740234375,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -1733.0208740234375
+          },
+          "caption": "Actual V5 preview · Four habitats are available; Zebras are not in the public version yet."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": -866.822998046875,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -1080.916748046875,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -1080.916748046875
+          },
+          "caption": "Actual V5 QA build capture · Zebras are not in the public version yet."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "language-id-mobile",
+        "at": "2026-11-10T00:25:25.747Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": 930.4166870117188,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": 723.2604370117188,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": 723.2604370117188
+          },
+          "caption": "Pratinjau aktual V5 · Empat habitat tersedia; Zebra belum tersedia di versi publik."
+        },
+        "zebra": {
+          "currentSrc": "",
+          "rect": {
+            "bottom": 1654.8645935058594,
+            "height": 213.86459350585935,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": 1441,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": 1441
+          },
+          "caption": "Capture aktual build QA V5 · Zebra belum tersedia di versi publik."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "language-back-en-mobile",
+        "at": "2026-11-10T00:25:26.001Z",
+        "url": "http://127.0.0.1:52907/en/#habitats",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": 874.8021240234375,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": 667.6458740234375,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": 667.6458740234375
+          },
+          "caption": "Actual V5 preview · Four habitats are available; Zebras are not in the public version yet."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": 1533.84375,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": 1319.75,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": 1319.75
+          },
+          "caption": "Actual V5 QA build capture · Zebras are not in the public version yet."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "language-forward-id-mobile",
+        "at": "2026-11-10T00:25:26.198Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": 930.4166870117188,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": 723.2604370117188,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": 723.2604370117188
+          },
+          "caption": "Pratinjau aktual V5 · Empat habitat tersedia; Zebra belum tersedia di versi publik."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": 1655.09375,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": 1441,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": 1441
+          },
+          "caption": "Capture aktual build QA V5 · Zebra belum tersedia di versi publik."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "id-tab-promo-primary",
+        "at": "2026-11-10T00:25:26.283Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": -1218.916748046875,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -1426.072998046875,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -1426.072998046875
+          },
+          "caption": "Pratinjau aktual V5 · Empat habitat tersedia; Zebra belum tersedia di versi publik."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": -494.2396240234375,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -708.3333740234375,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -708.3333740234375
+          },
+          "caption": "Capture aktual build QA V5 · Zebra belum tersedia di versi publik."
+        },
+        "focus": "<a class=\"button\" href=\"/play/\" data-site-source=\"home\" aria-describedby=\"zebra-preview-availability\" data-astro-cid-sotxr3hy=\"\">Mulai merawat zoo kamu<span aria-hidden=\"true\" data-astro-cid-sotxr3hy=\"\">↗</span></a>",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "id-tab-promo-secondary",
+        "at": "2026-11-10T00:25:26.336Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": -1218.916748046875,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -1426.072998046875,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -1426.072998046875
+          },
+          "caption": "Pratinjau aktual V5 · Empat habitat tersedia; Zebra belum tersedia di versi publik."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": -494.2396240234375,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -708.3333740234375,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -708.3333740234375
+          },
+          "caption": "Capture aktual build QA V5 · Zebra belum tersedia di versi publik."
+        },
+        "focus": "<a class=\"preview-link\" href=\"#habitats\" data-astro-cid-sotxr3hy=\"\">Lihat habitat yang tersedia<span aria-hidden=\"true\" data-astro-cid-sotxr3hy=\"\">↓</span></a>",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "id-shift-tab-promo-primary",
+        "at": "2026-11-10T00:25:26.389Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": -1218.916748046875,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -1426.072998046875,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -1426.072998046875
+          },
+          "caption": "Pratinjau aktual V5 · Empat habitat tersedia; Zebra belum tersedia di versi publik."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": -494.2396240234375,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -708.3333740234375,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -708.3333740234375
+          },
+          "caption": "Capture aktual build QA V5 · Zebra belum tersedia di versi publik."
+        },
+        "focus": "<a class=\"button\" href=\"/play/\" data-site-source=\"home\" aria-describedby=\"zebra-preview-availability\" data-astro-cid-sotxr3hy=\"\">Mulai merawat zoo kamu<span aria-hidden=\"true\" data-astro-cid-sotxr3hy=\"\">↗</span></a>",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "id-inert-play-destination",
+        "at": "2026-11-10T00:25:26.557Z",
+        "url": "http://127.0.0.1:52907/play/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": null,
+        "zebra": null,
+        "focus": "<body><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\" aria-current=\"page\">Play Zoo</a><a ",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      },
+      {
+        "label": "id-play-back-promo",
+        "at": "2026-11-10T00:25:26.774Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "hero": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zoo-480.webp",
+          "rect": {
+            "bottom": -1218.916748046875,
+            "height": 207.15625,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -1426.072998046875,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -1426.072998046875
+          },
+          "caption": "Pratinjau aktual V5 · Empat habitat tersedia; Zebra belum tersedia di versi publik."
+        },
+        "zebra": {
+          "currentSrc": "http://127.0.0.1:52907/images/home/v5-zebra-440.webp",
+          "rect": {
+            "bottom": -494.2396240234375,
+            "height": 214.09375,
+            "left": 19.197917938232425,
+            "right": 325.4687614440918,
+            "top": -708.3333740234375,
+            "width": 306.2708435058594,
+            "x": 19.197917938232425,
+            "y": -708.3333740234375
+          },
+          "caption": "Capture aktual build QA V5 · Zebra belum tersedia di versi publik."
+        },
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refs": []
+      }
+    ],
+    "logs": [],
+    "scope": "Actual ID/EN viewport layout/image selection and native Tab/Shift+Tab/Enter, fragment/CTA/language/back-forward. Inert Play proves navigation only; no game-start/language-handoff acceptance."
+  },
+  "screenshots": [
+    {
+      "path": "docs/qa/zebra/hp6-04/id-desktop-home.jpg",
+      "bytes": 93369,
+      "sha256": "a667e4fc3bf785d0dfce0d1fd7ae50b52e25f96e3aa2ae08e73cdecd95005bd6",
+      "width": 1265,
+      "height": 864
+    },
+    {
+      "path": "docs/qa/zebra/hp6-04/id-desktop-zebra.jpg",
+      "bytes": 106080,
+      "sha256": "eae0f659490c5d72c2813ef304b26531e48ffb3230bca8b70b3576d68be2b7b2",
+      "width": 1265,
+      "height": 864
+    },
+    {
+      "path": "docs/qa/zebra/hp6-04/en-mobile-hero.jpg",
+      "bytes": 34218,
+      "sha256": "e1020f1fb66339691c4270a0c2ddf509eb5edf0c14d6e83724ef82f8e983987a",
+      "width": 345,
+      "height": 767
+    },
+    {
+      "path": "docs/qa/zebra/hp6-04/en-mobile-zebra.jpg",
+      "bytes": 48772,
+      "sha256": "bdb87ecffd120cc9ceb59f654888a76252db02e12849b19f35b553ba84da94c1",
+      "width": 345,
+      "height": 767
+    }
+  ],
+  "resources": {
+    "at": "2026-11-10T00:25:41.000Z",
+    "activeOwnedBrowserServerBuildTestsRenderer": 0,
+    "browser": {
+      "kind": "internal IAB",
+      "symbolic": "iab",
+      "ownTabs": [
+        "51",
+        "52"
+      ],
+      "closed": true,
+      "viewportReset": true,
+      "remainingTabs": 0
+    },
+    "servers": [
+      {
+        "scope": "capture",
+        "port": 52907,
+        "pid": 32808,
+        "session": 83418,
+        "exit": 0
+      },
+      {
+        "scope": "homepage",
+        "port": 52907,
+        "pid": 28572,
+        "session": 48865,
+        "exit": 0,
+        "inertPlay": true
+      }
+    ],
+    "completed": {
+      "strictTypes": 41562,
+      "astro": 18836,
+      "build": 3476,
+      "allExit": 0
+    },
+    "renderer": {
+      "owners": 0,
+      "canonicalOwner": false,
+      "retiredGeometries": 0,
+      "retiredTextures": 0,
+      "retiredOwnedMaterials": 0,
+      "retiredSubscribers": 0,
+      "retiredCallbacks": 0
+    },
+    "defaultGameDatabaseOpened": false,
+    "farm": "Slot released; coordinate before next browser/heavy work",
+    "stopDeadline": "2026-11-10T01:00:00Z (08:00 WIB)"
+  },
+  "blockers": [
+    {
+      "id": "HP6-02_PLAYABILITY",
+      "reason": "PRD calls for five playable habitats. Current public bootstrap/grant gate Z2-06 is still open, and the candidate intentionally represents4 available-through-progression plus1 preview. Do not increment verified progress or claim public Zebra playability.",
+      "closeWhen": "Actual V5 bootstrap, grant budget/exactly-once and availability/release gates are proved. Update and retest copy/status against that enabled state."
+    },
+    {
+      "id": "R7-08",
+      "reason": "Separate explicit Zebra push/deploy authorization remains absent. Nothing was pushed or deployed."
+    }
+  ],
+  "noPushOrDeploy": true
+}
