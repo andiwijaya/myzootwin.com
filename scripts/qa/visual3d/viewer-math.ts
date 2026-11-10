@@ -1,4 +1,7 @@
 import {Box3,Vector3,OrthographicCamera} from 'three';
+/** Report the actual QA camera yaw, including production reset and free orbit.
+ * Round diagnostic degrees only; camera/model coordinates remain untouched. */
+export function viewerAzimuth(camera:OrthographicCamera,target:Vector3){return Math.round(((Math.atan2(camera.position.x-target.x,camera.position.z-target.z)*180/Math.PI+360)%360)*1e9)/1e9%360;}
 /** QA camera only. Original production objects and their authoritative coordinates never move. */
 export function fitViewerCamera(camera:OrthographicCamera,bounds:Box3,width:number,height:number,degrees:number,zoom=1){
  if(bounds.isEmpty()||![width,height,degrees,zoom].every(Number.isFinite)||width<=0||height<=0||zoom<=0)throw Error('Invalid viewer camera bounds');
