@@ -1,6 +1,6 @@
 # Execution checkpoint
 
-Current verified progress: **48/54 (88.89%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
+Current verified progress: **49/54 (90.74%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
 
 All four Library inputs were read completely: master PRD 335 lines, harness 128, checklist 200, handoff 42. Official Windows materialization failed at `os.setxattr` after the authorized retry. The destination is empty; no original source-file identity is claimed. This requested derived repository checklist uses the complete official reads. Original Library documents remain unchanged. See [input-access record](qa/zebra/z0-01/input-access.json).
 
@@ -98,7 +98,9 @@ Open gates: static registry records retain their default **NOT_RUN** labels; fea
 
 | R7-04 | fb868d9 /754f38e | [Native soak and deterministic stress](qa/zebra/r7-04/verification.json): actual933,996ms active1x/9,294canonical ticks,11 yielding10x blocks/10,960actual ticks,5habitats/14actors strictV5,20 actual product reopen/dispose cycles with exact save and zero owned geometry/texture/material/subscriber/callback counters after every close. Native heap estimate54.55�123.99MB/end95.44MB; callback CPU mean111.35ms/p95 lower136ms and interval mean135.09ms are host proxies, NOT presented FPS. Strict cold native hashf5f04f0 and final6db1789/tick34736/cash2139/revision904, exact V3/V4 backups, original paid refills/no extra grants. QA synchronous input deadline repaired with bounded yielding controller;19 targeted tests/types/Astro618 clean, both36-file product builds byte-exact R7-03 and QA-excluded.32 lossless archives/210 verification assertions; all own resources closed. Presented/device FPS and retained-heap attribution UNMEASURED; no push/deploy. |
 
-Next: **R7-05 host-supported profiles/ID-EN/responsive/gesture smoke**, after coordination of the next browser slot. [R7-04 accepted review](qa/zebra/r7-04/review.md),48/54. [R7-05 static preparation](qa/zebra/r7-05/preparation.json) records six language/viewport pairs and native-vs-synthetic input boundaries; its browser/build/test matrix remains NOT_RUN. User/default/carried saves and preview untouched; all owned test/browser/server resources closed. Proposed1700ZC grant/exactly-once/public V5, HP6-02 playability, R7-05..08 and V5 maintenance remain open. Native host CPU/interval limits are disclosed; no60/30FPS or physical-device pass. Separate release permission absent; NOT DEPLOYED.
+| R7-05 | 7bcb81f | [Supported internal profiles](qa/zebra/r7-05/verification.json):84 labelled observations,actual home/game ID+EN at1280x720/360x780/780x360,no overflow; all4 panels,Settings/Help/Privacy keyboard,Pause/Resume,CTA/back-forward. Trusted original triangle pick and zoomed native mouse/keyboard camera; explicitly synthetic touch pinch/held-pair pause cancellation/late releases, no physical-touch claim. Exact gameplay ca4ef00/tick14367/cash3595/command134,14actors5habitats; intended preferences only,cold2bd39c8/revision18,originalV3/V4 backups intact.38 targeted tests/types/Astro618 clean,36 production files byte-exact R7-04/QA excluded;26 lossless archives,6 screenshots,432 verifier assertions. All own resources closed/viewport reset; host-only profiles,FPS/device/UA limits disclosed,no push/deploy. |
+
+Next: **R7-06 runtime reachability/package-security/provenance/repo-size audit**, then R7-07 V5 maintenance/fix-forward. [R7-05 accepted review](qa/zebra/r7-05/review.md),49/54. User/default/carried saves and preview untouched; all owned test/browser/server resources closed. Proposed1700ZC grant/exactly-once/public V5, HP6-02 playability and R7-06..08 remain open. Native host CPU/interval limits and untested physical/unsupported-browser profiles remain disclosed; no60/30FPS/device pass. Separate release permission absent; NOT DEPLOYED.
 
 ---
 
@@ -278,7 +280,7 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
 - [x] **R7-04** — Real internal-browser 15-min active 1× soak & 10× stress with 5 habitats, all actors, app heap & scene metrics.
   - **DoD:** No crashes/leaks, live save exact after cold; rendered FPS only if directly measured; callback Hz≠FPS.
   - **Proof:** `docs/qa/zebra/r7-04/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
-- [ ] **R7-05** — Cross-browser-host-supported internal profiles, ID/EN 3+viewports, mobile gesture simulation, homepage and /play smoke.
+- [x] **R7-05** — Cross-browser-host-supported internal profiles, ID/EN 3+viewports, mobile gesture simulation, homepage and /play smoke.
   - **DoD:** Actual browser vs injected/emulated claims separated; no Take over computer.
   - **Proof:** `docs/qa/zebra/r7-05/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 - [ ] **R7-06** — Dead/reachable code, runtime package/security/asset provenance and repo-size cleanup audit; preserve old media/QA evidence.
@@ -299,7 +301,7 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
 - V5 migration + IndexedDB CAS / old-binary barrier / backup: **UNRUN**
 - Universal Asset Lab inventory: **UNRUN** (all asset categories)
 - Full Zoo scene, five habitats, geometry/picking/LOD/clip checks: **UNRUN**
-- Black-box internal browser desktop/portrait/landscape ID+EN: **UNRUN**
+- Black-box internal browser desktop/portrait/landscape ID+EN: **PASS at R7-05 supported-host scope**; physical/unsupported browsers untested
 - Native 15-minute active 1× soak & 10× deterministic stress: **UNRUN**
 - Actual presented FPS: **UNMEASURED** until directly measured
 - Homepage five cards, promo, metadata/hreflang, live-claim truth: **UNRUN**
