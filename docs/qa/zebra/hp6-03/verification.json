@@ -1,0 +1,1250 @@
+{
+  "status": "PASS_HP6_03_PREVIEW",
+  "at": "2026-11-10T00:05:36.000Z",
+  "verified": 41,
+  "total": 54,
+  "source": "5e9baca9108ba4eca52e5abcfcf24b8571736720",
+  "applicationChecksSource": "eec27a8f1fe71c983acc3ef0920da5a3864ae2d0",
+  "strictTypesSource": "8f97aced87d358364fd1637c31157be7360e420b",
+  "applicationChecksScope": "Two Astro copy strings changed after standalone TS checks; all TS sources identical. Final Astro check covers eec27a8. Only QA server bookkeeping/docs changed from eec27a8 to final5e9baca build.",
+  "sourceFingerprint": "1d9839f0cf1e92059682ee450bca9057c34fdca050eb44edb83c1269ba874e8e",
+  "change": "SSR-only bilingual preview promotion and ZooHome insertion. Grounded four-resident herd/care teaser, explicit future/public availability and benefit-led generic Play CTA. No game/engine/save/asset/dependency change.",
+  "acceptance": "HP6-03 explicitly permits preview/coming-soon before release. Its verified count increases by1; HP6-02 five-playable acceptance remains OPEN and uncounted.",
+  "checks": {
+    "strictTypes": "PASS noEmit/noUnused",
+    "astro": "PASS594 files,0 errors/warnings/hints",
+    "build": "PASS10 pages and production QA exclusion; existing large-chunk advisory only",
+    "logs": [
+      {
+        "path": ".qa/zebra-audit/hp6-03-types.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-03-check.log",
+        "bytes": 168,
+        "sha256": "613a42af8b4860adcab87a8b3b4bf791c5d38f8c1eb8de0bc9261e6a80dbb903"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-03-build-final.log",
+        "bytes": 2627,
+        "sha256": "0cea9e4ede4562c433859df8543b57e024155d325ea8b9b0bb378c0032126b32"
+      }
+    ],
+    "unitTests": "No new unit tests for static SSR copy/CSS. Source/output invariance and actual browser layout/navigation are the relevant regressions."
+  },
+  "build": {
+    "receipt": {
+      "path": ".qa/visual3d/h1-03-zebra-homepromo2/source.json",
+      "bytes": 109394,
+      "sha256": "efc70bc5eb615b2ce45ff4d52476b1fadc904a14209b3e9697e3ce4ffa2cc59b"
+    },
+    "lab": "a3daa543ebdf2b2ecd6bee391f3cdc80dfe7510c3e713574a5ea15c88b08f750",
+    "product": "b0fccd9418fed1a9203c246d2cf09a756ae1f2f9ed3df05fcfb2cb13843a1771",
+    "unchanged": [
+      {
+        "path": "_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js",
+        "sha256": "b4f4f51eb078143844adf51707e8d801b4f340bd9f8444254d7fedad90794f02"
+      },
+      {
+        "path": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.CIODW4z_.js",
+        "sha256": "0fc9a7c5f6ea20f521e9059c18d03cb4256b04be9cb0e25429e4b059daa4d6c9"
+      },
+      {
+        "path": "_astro/dialog-focus.CS_awhan.js",
+        "sha256": "1c49e5f75581f00265e803464e1caea211865f20cc06223682b8336e763d2d64"
+      },
+      {
+        "path": "_astro/foundation-scene.GhcJ0N1N.js",
+        "sha256": "3d6e9c916ccb7bc5b05419f3224fc9481d1862ce059903f78b4e1464ad5fe366"
+      },
+      {
+        "path": "about/index.html",
+        "sha256": "75f4bd4381f5523531a89f236a3005b9f8ad81607537c200ff46f8f77115e32c"
+      },
+      {
+        "path": "adventures/index.html",
+        "sha256": "fd4e1b4c363a0843dfdc6b2ba1645bec44fe0b7a748dd2a4b939c0a716136d8f"
+      },
+      {
+        "path": "animals/index.html",
+        "sha256": "e76a453010c7885d081ebbe60c800ced1d5ad326707830a2453c17b0d03f4e42"
+      },
+      {
+        "path": "gear/index.html",
+        "sha256": "8b435fd4e647b9e5f0a683c206d8b37cf562cc0c080ddcf0f892198ea3e3a0ec"
+      },
+      {
+        "path": "images/home/giraffes-480.webp",
+        "sha256": "1c2eee2a30808155f7277c14dffeda17e20c6a3899aa2fe4310d6e66e4a60060"
+      },
+      {
+        "path": "images/home/giraffes-800.webp",
+        "sha256": "d0bdf2b3196f3b769bc4b4e0e977249d2ed86ea64fa2f3f2bf560ed4bd9fa1b7"
+      },
+      {
+        "path": "images/home/zoo-640.webp",
+        "sha256": "6809ac121c8a10f63b07c53c21357fd0d65b3255b76ce13fecdecbb9e6c27a07"
+      },
+      {
+        "path": "images/home/zoo-960.webp",
+        "sha256": "93ea04c81e7658ab73e92cd13302ceb4575585729d7dc120f3a83ed85c8b5e5b"
+      },
+      {
+        "path": "images/home/zoo-social.jpg",
+        "sha256": "7cb245af00cb0301dfd032ee1e886a4df1b55f64bfa20fdca9e716ea294968ad"
+      },
+      {
+        "path": "images/myzootwin-beranda.png",
+        "sha256": "194a2cb5178f255ebf0289aabac75135fc65a8f716f26c01dcfeaebe00960169"
+      },
+      {
+        "path": "images/tropical-creek-game.jpg",
+        "sha256": "6edf52437618a80b94911b846cb2722257739be87c4f96c793f1e808d848e880"
+      },
+      {
+        "path": "images/tropical-creek-journal.svg",
+        "sha256": "cf2f03404f8d72367c385fbbdfaabb0bd21ae0a262804525c20e027a34ea94cc"
+      },
+      {
+        "path": "learn/index.html",
+        "sha256": "5faff54683eb2382df7b9a47c68a64527b8ca94d8215c60af71bd92b5e039722"
+      },
+      {
+        "path": "pets/index.html",
+        "sha256": "c96393aa9267095c4f9d6d22437c0483e906ba646d92497d9777ecece2dcde12"
+      },
+      {
+        "path": "play/index.html",
+        "sha256": "eaaeec56f3a0c829999b1117ad1a7e5212e0df6ae20147ec049a5e9a9859bbbb"
+      },
+      {
+        "path": "robots.txt",
+        "sha256": "91803eeb5a8dbbbae903fce53e66d6f5856f8e0894e7d7d21465c532381dd147"
+      },
+      {
+        "path": "sitemap-0.xml",
+        "sha256": "dbbec59a45a2b89f869b2a277fce46020f49e16649d635a48c479b9868b3c0bf"
+      },
+      {
+        "path": "sitemap-index.xml",
+        "sha256": "f956f18339cf090382bb71b5dadff01ca95c9bd0958046cef03c002851a7b550"
+      },
+      {
+        "path": "wildlife/index.html",
+        "sha256": "4b7db5f1a1160a8d5322f2a630e8d68e338970e896afa3a52d69255f4f7cbb43"
+      }
+    ]
+  },
+  "native": {
+    "rawReceipts": [
+      {
+        "path": ".qa/zebra-audit/hp6-03-browser.json",
+        "bytes": 77365,
+        "sha256": "7463cd3543fdfccc547d1abfbc7a7a97e71b6f8e7d62a836af359406f469a9d3"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-03-browser-logs.json",
+        "bytes": 2,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-03-server.json",
+        "bytes": 500,
+        "sha256": "5a1d1d807c371624c64edd140d23d55809d89c93e39b91455ee70a717c056c14"
+      }
+    ],
+    "observations": 22,
+    "homeObservations": 19,
+    "inertPlayDestinations": 3,
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 900
+      },
+      {
+        "width": 780,
+        "height": 460
+      },
+      {
+        "width": 360,
+        "height": 800
+      }
+    ],
+    "method": "Internal browser native Tab/Shift+Tab/Enter, fragment navigation, CTA/back/forward and language switch/back/forward. Viewport overrides are not physical devices.",
+    "cases": [
+      {
+        "label": "id-desktop-preview",
+        "url": "http://127.0.0.1:52907/#zebra-preview-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 478.8229179382324,
+              "height": 51.82291793823242,
+              "left": 64,
+              "right": 298.5,
+              "top": 427,
+              "width": 234.5,
+              "x": 64,
+              "y": 427
+            },
+            "text": "Mulai merawat zoo kamu↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 474.90625,
+              "height": 44,
+              "left": 322.5,
+              "right": 523.2604217529297,
+              "top": 430.90625,
+              "width": 200.7604217529297,
+              "x": 322.5,
+              "y": 430.90625
+            },
+            "text": "Lihat habitat yang tersedia↓"
+          }
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\">Main Sekarang</a><a class=\"language-link\" href=\"/en/\" lang=\"en\" hreflang=\"",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "id-tab-promo-primary",
+        "url": "http://127.0.0.1:52907/#zebra-preview-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 476.1562614440918,
+              "height": 51.82291793823242,
+              "left": 64,
+              "right": 298.5,
+              "top": 424.3333435058594,
+              "width": 234.5,
+              "x": 64,
+              "y": 424.3333435058594
+            },
+            "text": "Mulai merawat zoo kamu↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 472.2395935058594,
+              "height": 44,
+              "left": 322.5,
+              "right": 523.2604217529297,
+              "top": 428.2395935058594,
+              "width": 200.7604217529297,
+              "x": 322.5,
+              "y": 428.2395935058594
+            },
+            "text": "Lihat habitat yang tersedia↓"
+          }
+        ],
+        "focus": "<a class=\"button\" href=\"/play/\" data-site-source=\"home\" aria-describedby=\"zebra-preview-availability\" data-astro-cid-sotxr3hy=\"\">Mulai merawat zoo kamu<span aria-hidden=\"true\" data-astro-cid-sotxr3hy=\"\">↗</span></a>",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "id-tab-promo-secondary",
+        "url": "http://127.0.0.1:52907/#zebra-preview-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 476.1562614440918,
+              "height": 51.82291793823242,
+              "left": 64,
+              "right": 298.5,
+              "top": 424.3333435058594,
+              "width": 234.5,
+              "x": 64,
+              "y": 424.3333435058594
+            },
+            "text": "Mulai merawat zoo kamu↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 472.2395935058594,
+              "height": 44,
+              "left": 322.5,
+              "right": 523.2604217529297,
+              "top": 428.2395935058594,
+              "width": 200.7604217529297,
+              "x": 322.5,
+              "y": 428.2395935058594
+            },
+            "text": "Lihat habitat yang tersedia↓"
+          }
+        ],
+        "focus": "<a class=\"preview-link\" href=\"#habitats\" data-astro-cid-sotxr3hy=\"\">Lihat habitat yang tersedia<span aria-hidden=\"true\" data-astro-cid-sotxr3hy=\"\">↓</span></a>",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "id-shift-tab-promo-primary",
+        "url": "http://127.0.0.1:52907/#zebra-preview-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 476.1562614440918,
+              "height": 51.82291793823242,
+              "left": 64,
+              "right": 298.5,
+              "top": 424.3333435058594,
+              "width": 234.5,
+              "x": 64,
+              "y": 424.3333435058594
+            },
+            "text": "Mulai merawat zoo kamu↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 472.2395935058594,
+              "height": 44,
+              "left": 322.5,
+              "right": 523.2604217529297,
+              "top": 428.2395935058594,
+              "width": 200.7604217529297,
+              "x": 322.5,
+              "y": 428.2395935058594
+            },
+            "text": "Lihat habitat yang tersedia↓"
+          }
+        ],
+        "focus": "<a class=\"button\" href=\"/play/\" data-site-source=\"home\" aria-describedby=\"zebra-preview-availability\" data-astro-cid-sotxr3hy=\"\">Mulai merawat zoo kamu<span aria-hidden=\"true\" data-astro-cid-sotxr3hy=\"\">↗</span></a>",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "id-inert-play-destination",
+        "url": "http://127.0.0.1:52907/play/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "preview": null,
+        "links": [],
+        "focus": "<body><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\" aria-current=\"page\">Play Zoo</a><a href=\"/animals/\">Animals</a><a href=\"/wildlife/\">Wildlife</a><a href=\"/pets/\">Pets</a><a href=\"/lear",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": []
+      },
+      {
+        "label": "id-play-back-promo",
+        "url": "http://127.0.0.1:52907/#zebra-preview-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 476.1562614440918,
+              "height": 51.82291793823242,
+              "left": 64,
+              "right": 298.5,
+              "top": 424.3333435058594,
+              "width": 234.5,
+              "x": 64,
+              "y": 424.3333435058594
+            },
+            "text": "Mulai merawat zoo kamu↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 472.2395935058594,
+              "height": 44,
+              "left": 322.5,
+              "right": 523.2604217529297,
+              "top": 428.2395935058594,
+              "width": 200.7604217529297,
+              "x": 322.5,
+              "y": 428.2395935058594
+            },
+            "text": "Lihat habitat yang tersedia↓"
+          }
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\">Main Sekarang</a><a class=\"language-link\" href=\"/en/\" lang=\"en\" hreflang=\"",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "id-play-forward-inert",
+        "url": "http://127.0.0.1:52907/play/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "preview": null,
+        "links": [],
+        "focus": "<body><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\" aria-current=\"page\">Play Zoo</a><a href=\"/animals/\">Animals</a><a href=\"/wildlife/\">Wildlife</a><a href=\"/pets/\">Pets</a><a href=\"/lear",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": []
+      },
+      {
+        "label": "id-promo-card-anchor",
+        "url": "http://127.0.0.1:52907/#habitats",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": -53.17708206176758,
+              "height": 51.82291793823242,
+              "left": 64,
+              "right": 298.5,
+              "top": -105,
+              "width": 234.5,
+              "x": 64,
+              "y": -105
+            },
+            "text": "Mulai merawat zoo kamu↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": -57.09375,
+              "height": 44,
+              "left": 322.5,
+              "right": 523.2604217529297,
+              "top": -101.09375,
+              "width": 200.7604217529297,
+              "x": 322.5,
+              "y": -101.09375
+            },
+            "text": "Lihat habitat yang tersedia↓"
+          }
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\">Main Sekarang</a><a class=\"language-link\" href=\"/en/\" lang=\"en\" hreflang=\"",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "en-desktop-preview",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 1350.40629196167,
+              "height": 51.82291793823242,
+              "left": 64,
+              "right": 296.0729217529297,
+              "top": 1298.5833740234375,
+              "width": 232.0729217529297,
+              "x": 64,
+              "y": 1298.5833740234375
+            },
+            "text": "Start caring for your zoo↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 1346.4896240234375,
+              "height": 44,
+              "left": 320.07293701171875,
+              "right": 513.6666870117188,
+              "top": 1302.4896240234375,
+              "width": 193.59375,
+              "x": 320.07293701171875,
+              "y": 1302.4896240234375
+            },
+            "text": "See the available habitats↓"
+          }
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\">Play Now</a><a class=\"language-link\" href=\"/\" lang=\"id\" hreflang=\"id\">Indones",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "en-landscape-preview",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 1974.3541679382324,
+              "height": 51.82291793823242,
+              "left": 39,
+              "right": 271.0729217529297,
+              "top": 1922.53125,
+              "width": 232.0729217529297,
+              "x": 39,
+              "y": 1922.53125
+            },
+            "text": "Start caring for your zoo↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 1970.4375,
+              "height": 44,
+              "left": 295.07293701171875,
+              "right": 488.6666870117187,
+              "top": 1926.4375,
+              "width": 193.59375,
+              "x": 295.07293701171875,
+              "y": 1926.4375
+            },
+            "text": "See the available habitats↓"
+          }
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\">Play Now</a><a class=\"language-link\" href=\"/\" lang=\"id\" hreflang=\"id\">Indones",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "en-mobile-preview",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 2070.4896659851074,
+              "height": 51.82291793823242,
+              "left": 19.197917938232425,
+              "right": 251.2708396911621,
+              "top": 2018.666748046875,
+              "width": 232.0729217529297,
+              "x": 19.197917938232425,
+              "y": 2018.666748046875
+            },
+            "text": "Start caring for your zoo↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 2126.48974609375,
+              "height": 44,
+              "left": 19.197917938232425,
+              "right": 212.7916679382324,
+              "top": 2082.48974609375,
+              "width": 193.59375,
+              "x": 19.197917938232425,
+              "y": 2082.48974609375
+            },
+            "text": "See the available habitats↓"
+          }
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\">Play Now</a><a class=\"language-link\" href=\"/\" lang=\"id\" hreflang=\"id\">Indones",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "en-mobile-preview-heading",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 1065.8229179382324,
+              "height": 51.82291793823242,
+              "left": 19.197917938232425,
+              "right": 251.2708396911621,
+              "top": 1014,
+              "width": 232.0729217529297,
+              "x": 19.197917938232425,
+              "y": 1014
+            },
+            "text": "Start caring for your zoo↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 1121.822998046875,
+              "height": 44,
+              "left": 19.197917938232425,
+              "right": 212.7916679382324,
+              "top": 1077.822998046875,
+              "width": 193.59375,
+              "x": 19.197917938232425,
+              "y": 1077.822998046875
+            },
+            "text": "See the available habitats↓"
+          }
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\">Play Now</a><a class=\"language-link\" href=\"/\" lang=\"id\" hreflang=\"id\">Indones",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "en-tab-promo-primary",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 425.8229179382324,
+              "height": 51.82291793823242,
+              "left": 19.197917938232425,
+              "right": 251.2708396911621,
+              "top": 374,
+              "width": 232.0729217529297,
+              "x": 19.197917938232425,
+              "y": 374
+            },
+            "text": "Start caring for your zoo↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 481.8229370117187,
+              "height": 44,
+              "left": 19.197917938232425,
+              "right": 212.7916679382324,
+              "top": 437.8229370117187,
+              "width": 193.59375,
+              "x": 19.197917938232425,
+              "y": 437.8229370117187
+            },
+            "text": "See the available habitats↓"
+          }
+        ],
+        "focus": "<a class=\"button\" href=\"/play/\" data-site-source=\"home\" aria-describedby=\"zebra-preview-availability\" data-astro-cid-sotxr3hy=\"\">Start caring for your zoo<span aria-hidden=\"true\" data-astro-cid-sotxr3hy=\"\">↗</span></a>",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "en-tab-promo-secondary",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 425.8229179382324,
+              "height": 51.82291793823242,
+              "left": 19.197917938232425,
+              "right": 251.2708396911621,
+              "top": 374,
+              "width": 232.0729217529297,
+              "x": 19.197917938232425,
+              "y": 374
+            },
+            "text": "Start caring for your zoo↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 481.8229370117187,
+              "height": 44,
+              "left": 19.197917938232425,
+              "right": 212.7916679382324,
+              "top": 437.8229370117187,
+              "width": 193.59375,
+              "x": 19.197917938232425,
+              "y": 437.8229370117187
+            },
+            "text": "See the available habitats↓"
+          }
+        ],
+        "focus": "<a class=\"preview-link\" href=\"#habitats\" data-astro-cid-sotxr3hy=\"\">See the available habitats<span aria-hidden=\"true\" data-astro-cid-sotxr3hy=\"\">↓</span></a>",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "en-shift-tab-promo-primary",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 425.8229179382324,
+              "height": 51.82291793823242,
+              "left": 19.197917938232425,
+              "right": 251.2708396911621,
+              "top": 374,
+              "width": 232.0729217529297,
+              "x": 19.197917938232425,
+              "y": 374
+            },
+            "text": "Start caring for your zoo↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 481.8229370117187,
+              "height": 44,
+              "left": 19.197917938232425,
+              "right": 212.7916679382324,
+              "top": 437.8229370117187,
+              "width": 193.59375,
+              "x": 19.197917938232425,
+              "y": 437.8229370117187
+            },
+            "text": "See the available habitats↓"
+          }
+        ],
+        "focus": "<a class=\"button\" href=\"/play/\" data-site-source=\"home\" aria-describedby=\"zebra-preview-availability\" data-astro-cid-sotxr3hy=\"\">Start caring for your zoo<span aria-hidden=\"true\" data-astro-cid-sotxr3hy=\"\">↗</span></a>",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "en-inert-play-destination",
+        "url": "http://127.0.0.1:52907/play/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "preview": null,
+        "links": [],
+        "focus": "<body><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\" aria-current=\"page\">Play Zoo</a><a href=\"/animals/\">Animals</a><a href=\"/wildlife/\">Wildlife</a><a href=\"/pets/\">Pets</a><a href=\"/lear",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": []
+      },
+      {
+        "label": "en-play-back-promo",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 425.8229179382324,
+              "height": 51.82291793823242,
+              "left": 19.197917938232425,
+              "right": 251.2708396911621,
+              "top": 374,
+              "width": 232.0729217529297,
+              "x": 19.197917938232425,
+              "y": 374
+            },
+            "text": "Start caring for your zoo↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 481.8229370117187,
+              "height": 44,
+              "left": 19.197917938232425,
+              "right": 212.7916679382324,
+              "top": 437.8229370117187,
+              "width": 193.59375,
+              "x": 19.197917938232425,
+              "y": 437.8229370117187
+            },
+            "text": "See the available habitats↓"
+          }
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\">Play Now</a><a class=\"language-link\" href=\"/\" lang=\"id\" hreflang=\"id\">Indones",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "en-promo-card-anchor",
+        "url": "http://127.0.0.1:52907/en/#habitats",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": -80.84375381469727,
+              "height": 51.82291793823242,
+              "left": 19.197917938232425,
+              "right": 251.2708396911621,
+              "top": -132.6666717529297,
+              "width": 232.0729217529297,
+              "x": 19.197917938232425,
+              "y": -132.6666717529297
+            },
+            "text": "Start caring for your zoo↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": -24.84375,
+              "height": 44,
+              "left": 19.197917938232425,
+              "right": 212.7916679382324,
+              "top": -68.84375,
+              "width": 193.59375,
+              "x": 19.197917938232425,
+              "y": -68.84375
+            },
+            "text": "See the available habitats↓"
+          }
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\">Play Now</a><a class=\"language-link\" href=\"/\" lang=\"id\" hreflang=\"id\">Indones",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "id-mobile-preview",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 2325.2501640319824,
+              "height": 51.82291793823242,
+              "left": 19.197917938232425,
+              "right": 253.6979179382324,
+              "top": 2273.42724609375,
+              "width": 234.5,
+              "x": 19.197917938232425,
+              "y": 2273.42724609375
+            },
+            "text": "Mulai merawat zoo kamu↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 2381.25,
+              "height": 44,
+              "left": 19.197917938232425,
+              "right": 219.9583396911621,
+              "top": 2337.25,
+              "width": 200.7604217529297,
+              "x": 19.197917938232425,
+              "y": 2337.25
+            },
+            "text": "Lihat habitat yang tersedia↓"
+          }
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\">Main Sekarang</a><a class=\"language-link\" href=\"/en/\" lang=\"en\" hreflang=\"",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "id-landscape-preview",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 2000.1041679382324,
+              "height": 51.82291793823242,
+              "left": 39,
+              "right": 273.5,
+              "top": 1948.28125,
+              "width": 234.5,
+              "x": 39,
+              "y": 1948.28125
+            },
+            "text": "Mulai merawat zoo kamu↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 1996.1875,
+              "height": 44,
+              "left": 297.5,
+              "right": 498.2604217529297,
+              "top": 1952.1875,
+              "width": 200.7604217529297,
+              "x": 297.5,
+              "y": 1952.1875
+            },
+            "text": "Lihat habitat yang tersedia↓"
+          }
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\">Main Sekarang</a><a class=\"language-link\" href=\"/en/\" lang=\"en\" hreflang=\"",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "language-back-en-landscape",
+        "url": "http://127.0.0.1:52907/en/#habitats",
+        "lang": "en",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 1974.3541679382324,
+              "height": 51.82291793823242,
+              "left": 39,
+              "right": 271.0729217529297,
+              "top": 1922.53125,
+              "width": 232.0729217529297,
+              "x": 39,
+              "y": 1922.53125
+            },
+            "text": "Start caring for your zoo↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 1970.4375,
+              "height": 44,
+              "left": 295.07293701171875,
+              "right": 488.6666870117187,
+              "top": 1926.4375,
+              "width": 193.59375,
+              "x": 295.07293701171875,
+              "y": 1926.4375
+            },
+            "text": "See the available habitats↓"
+          }
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\">Play Now</a><a class=\"language-link\" href=\"/\" lang=\"id\" hreflang=\"id\">Indones",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      },
+      {
+        "label": "language-forward-id-landscape",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "preview": "preview",
+        "links": [
+          {
+            "describedby": "zebra-preview-availability",
+            "href": "/play/",
+            "rect": {
+              "bottom": 2000.1041679382324,
+              "height": 51.82291793823242,
+              "left": 39,
+              "right": 273.5,
+              "top": 1948.28125,
+              "width": 234.5,
+              "x": 39,
+              "y": 1948.28125
+            },
+            "text": "Mulai merawat zoo kamu↗"
+          },
+          {
+            "describedby": null,
+            "href": "#habitats",
+            "rect": {
+              "bottom": 1996.1875,
+              "height": 44,
+              "left": 297.5,
+              "right": 498.2604217529297,
+              "top": 1952.1875,
+              "width": 200.7604217529297,
+              "x": 297.5,
+              "y": 1952.1875
+            },
+            "text": "Lihat habitat yang tersedia↓"
+          }
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\">Main Sekarang</a><a class=\"language-link\" href=\"/en/\" lang=\"en\" hreflang=\"",
+        "refIssues": 0,
+        "overflow": false,
+        "canvas": 0,
+        "scriptSrc": [
+          "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js"
+        ]
+      }
+    ],
+    "logs": []
+  },
+  "screenshots": [
+    {
+      "path": "docs/qa/zebra/hp6-03/id-desktop-preview.jpg",
+      "bytes": 88208,
+      "sha256": "59ae67b6d7d9ba720e515135195f4b1e64a4cacb817d355e4dfcc60e4b01ae1a",
+      "width": 1265,
+      "height": 864
+    },
+    {
+      "path": "docs/qa/zebra/hp6-03/en-mobile-preview-heading.jpg",
+      "bytes": 45911,
+      "sha256": "50a8b211722dbc9a74691d53bcf8b08543e6c6adf673e891efd41e411612159e",
+      "width": 345,
+      "height": 767
+    },
+    {
+      "path": "docs/qa/zebra/hp6-03/en-mobile-preview-cta.jpg",
+      "bytes": 40097,
+      "sha256": "2d93965931cd4ec8cd493a1d9e7f259cb078fd5b01f7b60db1f1adc8f9a1541b",
+      "width": 345,
+      "height": 767
+    }
+  ],
+  "historicalReceiptIntegrity": {
+    "status": "PASS",
+    "receipts": [
+      {
+        "path": ".qa/zebra-audit/hp6-02-browser.json",
+        "bytes": 92149,
+        "sha256": "d4d7834b1d124a1b6dd5bb8a97052c363cdc7f1ad76a8486266bb1dce189aaed"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-02-browser-logs.json",
+        "bytes": 2,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-02-server.json",
+        "bytes": 500,
+        "sha256": "86a8fe6e370bf47dc6fb450985cb7857a563f987adad2bf7310417ea2cebfbf1"
+      }
+    ],
+    "note": "First HP6-03 server startup initially reused HP6-02 receipt path. Archived separately and original restored byte-exact before browser QA. Explicit per-unit receipt path added to QA server; final build repeated. Old evidence hashes remain exact."
+  },
+  "resources": {
+    "at": "2026-11-10T00:05:36.000Z",
+    "activeOwnedBrowserServerBuildTestsRenderer": 0,
+    "browser": {
+      "kind": "internal IAB",
+      "symbolic": "iab",
+      "ownTab": "50",
+      "closed": true,
+      "viewportReset": true,
+      "remainingTabs": 0
+    },
+    "server": {
+      "port": 52907,
+      "pid": 30240,
+      "session": 34432,
+      "exit": 0,
+      "inertPlay": true
+    },
+    "completed": {
+      "strictTypes": 81610,
+      "astro": 64472,
+      "build": 73748,
+      "allExit": 0
+    },
+    "retiredInitialServer": {
+      "session": 92333,
+      "pid": 29064,
+      "exit": 0,
+      "browserQa": false
+    },
+    "engineLaunched": false,
+    "defaultGameDatabaseOpened": false,
+    "scope": "Actual homepage scripts. Play navigation uses built markup with all scripts suppressed only in the QA HTTP response. Path/back-forward proof, not game-start or locale-handoff acceptance; generic Play markup remains ID in both paths. Product files unchanged.",
+    "farm": "Browser/heavy slot released; wait for coordination",
+    "stopDeadline": "2026-11-10T01:00:00Z (08:00 WIB)"
+  },
+  "blockers": [
+    {
+      "id": "HP6-02_PLAYABILITY",
+      "reason": "PRD calls for five playable habitats. Current public bootstrap/grant gate Z2-06 is still open, and the candidate intentionally represents4 available-through-progression plus1 preview. Do not increment verified progress or claim public Zebra playability.",
+      "closeWhen": "Actual V5 bootstrap, grant budget/exactly-once and availability/release gates are proved. Update and retest copy/status against that enabled state."
+    },
+    {
+      "id": "R7-08",
+      "reason": "Separate explicit Zebra push/deploy authorization remains absent. Nothing was pushed or deployed."
+    }
+  ],
+  "noPushOrDeploy": true
+}
