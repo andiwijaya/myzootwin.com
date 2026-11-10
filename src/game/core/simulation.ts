@@ -8,11 +8,12 @@ import {prepareZebraWelcome,zebraResidentsView} from '../animals/zebras/resident
 import {giraffeWelfareExplanation,reconcileGiraffeWelfare} from '../animals/giraffes/welfare.ts';
 import {evaluateGiraffeMissions,giraffeMissionView,prepareGiraffeMission,type GiraffeMissionQuote} from '../missions/giraffe-missions.ts';
 import {evaluateZebraMissions,zebraMissionView,prepareZebraMission,type ZebraMissionQuote} from '../missions/zebra-missions.ts';
-import {ZEBRA_MISSION_RULES} from '../animals/zebras/rules.ts';
+import {ZEBRA_MISSION_RULES,ZEBRA_PRICES} from '../animals/zebras/rules.ts';
 import {zebraRecoveryView} from '../economy/zebra-recovery.ts';
 import {GIRAFFE_MISSION_RULES,GIRAFFE_PRICES} from '../animals/giraffes/rules.ts';
 import {stepGiraffeCare} from '../animals/giraffes/care-simulation.ts';
 import {giraffeGrantView,prepareGiraffeGrant,type GiraffeGrantQuote} from '../economy/giraffe-grant.ts';
+import {zebraGrantView,prepareZebraGrant,type ZebraGrantQuote} from '../economy/zebra-grant.ts';
 import {giraffeHabitatView,prepareGiraffeConstruction} from '../economy/giraffe-construction.ts';
 import {zebraHabitatView,prepareZebraConstruction} from '../economy/zebra-construction.ts';
 import {giraffeResidentsView,prepareGiraffeWelcome} from '../animals/giraffes/residents.ts';
@@ -135,6 +136,11 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
     setLocale(value:unknown){if(disposed||(value!=='en'&&value!=='id')||state.preferences.locale===value)return false;state.preferences.locale=value;publish(Object.freeze({type:'preferences-changed',tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;},
     localeView:()=>state.preferences.locale,
     worldSize:()=>({width:state.world.width,height:state.world.height}),
+    zebraGrantView:()=>zebraGrantView(state),
+    prepareZebraGrant:(q:ZebraGrantQuote)=>disposed||clock.inspect().paused?{ok:false as const,reason:'stale' as const}:prepareZebraGrant(state,q),
+    acceptCommittedZebraGrant(candidate:ZooSave,q:ZebraGrantQuote){
+      if(disposed||candidate.schemaVersion!==5||!validateState(candidate).ok)return false;const prepared=prepareZebraGrant(state,q);if(!prepared.ok)return false;const next=structuredClone(candidate);next.preferences={...state.preferences};prepared.state.preferences={...state.preferences};if(serializeZooSave(next)!==serializeZooSave(prepared.state))return false;state=next;invalidateEdit();compactNow();publish(Object.freeze({type:'zebra-grant-claimed',amount:ZEBRA_PRICES.grant,tick:state.tick,gameTimeMs:state.gameTimeMs}));return true;
+    },
     zebraHabitatView:()=>zebraHabitatView(state),
     zebraMissionView:()=>zebraMissionView(state),
     prepareZebraMission:(q:ZebraMissionQuote)=>disposed||clock.inspect().paused?{ok:false as const,reason:'stale' as const}:prepareZebraMission(state,q),

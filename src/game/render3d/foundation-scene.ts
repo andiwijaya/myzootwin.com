@@ -1,4 +1,6 @@
 import type{ZebraEditRequest}from'../economy/zebra-editing.ts';
+import type {ZebraGrantQuote} from '../economy/zebra-grant.ts';
+import type {ZebraGrantSceneView} from '../../game-entry/zebra-grant-panel.ts';
 import type {ZebraMissionQuote} from '../missions/zebra-missions.ts';
 import type {ZebraMissionSceneView} from '../../game-entry/zebra-mission-panel.ts';
 import {createZebraCareScene} from './zebra/care-scene.ts';
@@ -81,7 +83,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   let lost = false;
   let zebraModels:ReturnType<typeof createZebraResidentsScene>|undefined;
   let zebraCareWorld:ReturnType<typeof createZebraCareScene>|undefined,zebraCareGhost:ReturnType<typeof createZebraCareGhost>|undefined,zebraCarePreview:ReturnType<typeof createZebraCarePreview>|undefined,zebraCareFailure:string|null=null,zebraCareViewKey='';let zebraRemoval:RemovalQuote|null=null;const zebraCareInput=new AbortController();
-  let zebraWelcomeFailure:string|null=null;
+  let zebraWelcomeFailure:string|null=null,zebraGrantFailure:string|null=null,zebraGrantViewKey='';
   let zebraViewKey='';let zebraWorld:ReturnType<typeof createZebraWorldScene>|undefined,zebraBuildFailure:string|null=null;
   let paused = false;
   let giraffeModels:ReturnType<typeof createGiraffeResidentsScene>|undefined,giraffeWorld:ReturnType<typeof createGiraffeWorldScene>|undefined,giraffeGhost:ReturnType<typeof createGiraffeCareGhost>|undefined,giraffePreview:ReturnType<typeof createGiraffeCarePreview>|undefined,giraffeFailure:string|null=null,giraffeViewKey='',giraffePathKey='';
@@ -153,7 +155,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   async function onZebraCare(event:Event){if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;const q=(event as CustomEvent<ZebraCareAction>).detail;if(!q||typeof q.action!=='string')return;zebraCareFailure=null;if(q.action==='plan'){zebraRemoval=null;if(!ZEBRA_RESOURCE_KINDS.includes(q.kind))return;placement?.command('cancel');zebraCarePreview?.cancel();giraffePreview?.cancel();lionPreview?.cancel();elephantCarePreview?.cancel();foodPreview=false;waterPreview=false;perchPreview=false;foodDirty=waterDirty=perchDirty=true;picker?.clear();zebraCarePreview?.setEnabled(true);zebraCarePreview?.begin(q.kind);const p=simulation.defaultZebraCareCell(q.kind);if(p){const o=sceneOrigin(simulation.worldSnapshot());controls?.focus({x:p.x+.5-o.x,z:p.z+.5-o.z});}}
    else if(q.action==='refill'){zebraRemoval=null;const result=await commitZebraResource(q);if(!result.ok)zebraCareFailure=result.reason;}else if(q.action==='remove'){zebraCarePreview?.cancel();const quote=simulation.quoteRemoval({kind:'zebra-resource',id:q.id});if(quote.ok)zebraRemoval=quote.quote;else zebraCareFailure=quote.reason;}else if(q.action==='remove-cancel')zebraRemoval=null;else if(q.action==='remove-confirm'){if(!zebraRemoval||zebraRemoval.target.kind!=='zebra-resource'||zebraRemoval.target.id!==q.id||zebraRemoval.command!==q.command||zebraRemoval.revision!==q.revision)zebraCareFailure='stale';else{const result=await commitZebraEdit({action:'remove',quote:zebraRemoval});if(!result.ok)zebraCareFailure=result.reason;}}else if(q.action==='undo'){const result=await commitZebraEdit({action:'undo',command:q.command,revision:q.revision});if(!result.ok)zebraCareFailure=result.reason;}else if(['confirm','cancel','left','right','up','down'].includes(q.action))await zebraCarePreview?.command(q.action as import('./zebra/care-preview.ts').ZebraCareCommand,q.revision);if(!disposed){announceZebraCare();render();}}
   host.addEventListener('scene-zebra-care-command',onZebraCare,{signal:zebraCareInput.signal});
-  function announceZebraAccess(){const frame=simulation.inspect(),key=[frame.commandRevision,frame.editorRevision,frame.currency,paused,grantBusy,zebraWelcomeFailure,options.stateStore?.canCommit?.(),simulation.localeView()].join(':');if(key===zebraViewKey)return;zebraViewKey=key;host.dispatchEvent(new CustomEvent('scene-zebra-access-change',{detail:{...zebraAccessView(simulation.snapshot()),residents:simulation.zebraResidentsView(),welcomeFailure:zebraWelcomeFailure,savingAvailable:options.stateStore?.canCommit?.()===true,locale:simulation.localeView(),paused:paused||lost||grantBusy}}));}
+  function announceZebraAccess(){const frame=simulation.inspect(),grantKey=[frame.commandRevision,frame.currency,paused,lost,grantBusy,zebraGrantFailure,options.stateStore?.canCommit?.(),simulation.localeView()].join(':');if(grantKey!==zebraGrantViewKey){zebraGrantViewKey=grantKey;const view:ZebraGrantSceneView={grant:simulation.zebraGrantView(),habitat:simulation.zebraHabitatView(),failure:zebraGrantFailure,busy:grantBusy,paused:paused||lost,savingAvailable:options.stateStore?.canCommit?.()===true,locale:simulation.localeView()};host.dispatchEvent(new CustomEvent('scene-zebra-grant-change',{detail:view}));}const key=[frame.commandRevision,frame.editorRevision,frame.currency,paused,grantBusy,zebraWelcomeFailure,options.stateStore?.canCommit?.(),simulation.localeView()].join(':');if(key===zebraViewKey)return;zebraViewKey=key;host.dispatchEvent(new CustomEvent('scene-zebra-access-change',{detail:{...zebraAccessView(simulation.snapshot()),residents:simulation.zebraResidentsView(),welcomeFailure:zebraWelcomeFailure,savingAvailable:options.stateStore?.canCommit?.()===true,locale:simulation.localeView(),paused:paused||lost||grantBusy}}));}
   function announceGiraffe(){
     const frame=simulation.inspect(),key=[frame.tick,frame.commandRevision,giraffePreview?.view().revision,giraffeFailure,grantBusy,options.stateStore?.canCommit?.(),paused,simulation.localeView()].join(':');if(key===giraffeViewKey)return;giraffeViewKey=key;const habitat=simulation.giraffeHabitatView(),pathKey=[frame.commandRevision,frame.editorRevision].join(':');
     if(pathKey!==giraffePathKey){giraffePathKey=pathKey;const w=simulation.worldSnapshot(),h=w.habitats.find(h=>'kind'in h&&h.kind==='giraffe-plains');giraffePath=h&&!h.viewingCell?missingConnection(simulation.snapshot(),h.id):null;}
@@ -505,6 +507,14 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     },
     focusElephantGuide:target=>{
       if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;const view=simulation.elephantOnboardingView(),area=view.focus[target];if(!view.active||!area)return;const origin=sceneOrigin(simulation.worldSnapshot());controls?.focusArea({...area,x:area.x-origin.x,z:area.z-origin.z});render();
+    },
+    async claimZebraGrant(quote:ZebraGrantQuote){
+      if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;
+      zebraGrantFailure=null;const prepared=simulation.prepareZebraGrant(quote);if(!prepared.ok){zebraGrantFailure=prepared.reason;announceZebraAccess();return;}
+      if(!options.stateStore?.commitCandidate||options.stateStore.canCommit?.()!==true){zebraGrantFailure='storage';announceZebraAccess();return;}
+      placement?.command('cancel');zebraCarePreview?.cancel();giraffePreview?.cancel();lionPreview?.cancel();elephantCarePreview?.cancel();grantBusy=true;updateRunning();announceZebraAccess();
+      try{const committed=await options.stateStore.commitCandidate(prepared.state,{tick:prepared.state.tick,command:quote.command});if(disposed)return;if(!committed||!simulation.acceptCommittedZebraGrant(committed,quote))zebraGrantFailure='storage';else saveSession();}
+      catch{zebraGrantFailure='storage';}finally{grantBusy=false;if(!disposed){updateRunning();announceZebraAccess();announceEdit();render();}}
     },
     beginZebraPath:()=>{
       if(disposed||paused||grantBusy||lost||document.hidden||macaw?.view().active)return;const v=zebraAccessView(simulation.snapshot());if(!v.path)return;

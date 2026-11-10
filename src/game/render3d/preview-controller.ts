@@ -27,6 +27,7 @@ export class PreviewFailure extends Error {
 }
 
 export interface PreviewSession {
+  claimZebraGrant?(quote:import('../economy/zebra-grant.ts').ZebraGrantQuote):void;
   beginZebraHabitat?():void;
   beginZebraPath?():void;
   focusZebraHabitat?():void;
@@ -131,6 +132,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     visualSettings(value:VisualSettings){visual={...value};session?.visualSettings?.(visual);},
     locale(value:"en"|"id"){locale=value;session?.locale?.(value);},
     speed(value:number){if(!isPaused()&&state.status==='ready'&&(value===1||value===10))session?.speed?.(value);},
+    claimZebraGrant(quote:import('../economy/zebra-grant.ts').ZebraGrantQuote){if(!isPaused()&&state.status==='ready')session?.claimZebraGrant?.(quote);},
     beginZebraHabitat(){if(!isPaused()&&state.status==='ready')session?.beginZebraHabitat?.();},
     beginZebraPath(){if(!isPaused()&&state.status==='ready')session?.beginZebraPath?.();},
     welcomeZebra(){if(!isPaused()&&state.status==='ready')session?.welcomeZebra?.();},

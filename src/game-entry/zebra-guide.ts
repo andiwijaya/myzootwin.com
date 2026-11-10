@@ -6,7 +6,7 @@ import type {ZebraCareSceneView} from './zebra-care-panel.ts';
 
 export const zebraGuideCopy={
  id:{title:'Panduan Zebra Grasslands',notice:'Kebutuhan dan kesejahteraan ini adalah aturan permainan, bukan panduan merawat satwa nyata.',steps:[
-  'Di Bangun, sambut Zaki, lalu Zuri, Mira, dan Kira. Sambungkan jalur pengamatan di luar pagar; setiap petak jalur berbiaya {path} ZC.',
+  'Setelah GQ04 diklaim, di Bangun klaim hibah Zebra {grant} ZC sekali dan rencanakan habitat 8×8 seharga {habitat} ZC. Sambut Zaki, lalu Zuri, Mira, dan Kira. Sambungkan jalur pengamatan di luar pagar; setiap petak jalur berbiaya {path} ZC.',
   'Di Rawat, rencanakan pakan {food} ZC, bak air {water} ZC, dan naungan {shade} ZC. Pengayaan debu dan batang bersifat opsional, {enrichment} ZC. Tinjau lokasi, lalu konfirmasi pembelian.',
   'Fasilitas pakan, air, dan pengayaan mulai kosong. Isi ulang pakan {foodRefill} ZC, air {waterRefill} ZC, atau pengayaan {enrichmentRefill} ZC. Isi ulang menambah stok; Zebra tetap harus datang dan menyelesaikan kegiatan sebelum memperoleh manfaat.',
   'Sisakan ruang ke titik layanan. Zebra mencari pakan, air, dan naungan sesuai kebutuhan. Saling merawat memerlukan dua Zebra yang benar-benar bertemu; berlari kecil dan pengayaan tidak menggantikan kebutuhan pokok.',
@@ -15,7 +15,7 @@ export const zebraGuideCopy={
   'Kecepatan 10× mempercepat kebutuhan, biaya, dan waktu misi. Jeda menghentikan dunia. Periksa status Tersimpan sebelum pergi; Lanjutkan membuka simpanan dalam keadaan dijeda tanpa progres selama ditinggalkan.'
  ]},
  en:{title:'Zebra Grasslands guide',notice:'These needs and welfare scores are game rules, not instructions for caring for real wildlife.',steps:[
-  'In Build, welcome Zaki, then Zuri, Mira and Kira. Connect the viewing path outside the fence; each path cell costs {path} ZC.',
+  'After claiming GQ04, in Build claim the {grant} ZC Zebra grant once and plan the 8×8 habitat for {habitat} ZC. Welcome Zaki, then Zuri, Mira and Kira. Connect the viewing path outside the fence; each path cell costs {path} ZC.',
   'In Care, plan a feeder for {food} ZC, a drinking trough for {water} ZC and shade for {shade} ZC. Dust and scratch enrichment is optional, at {enrichment} ZC. Review the location, then confirm the purchase.',
   'Feed, water and enrichment facilities start empty. Refill feed for {foodRefill} ZC, water for {waterRefill} ZC or enrichment for {enrichmentRefill} ZC. A refill adds stock; the Zebra still has to arrive and finish the activity before receiving its benefit.',
   'Leave clear routes to service points. Zebras seek feed, water and shade according to their needs. Mutual grooming requires two Zebras to actually meet; trotting and enrichment do not replace basic care.',
@@ -25,7 +25,7 @@ export const zebraGuideCopy={
  ]}
 }as const;
 export function presentZebraGuide(locale:'id'|'en'){
- const values={upkeep:PRICES.maintenance,upkeepTime:MONEY_RULES.maintenanceTicks*TICK_MS/1000,path:PRICES.path,food:ZEBRA_PRICES['zebra-graze'],water:ZEBRA_PRICES['zebra-water'],shade:ZEBRA_PRICES['zebra-shade'],enrichment:ZEBRA_PRICES['zebra-enrichment'],foodRefill:ZEBRA_PRICES.foodRefill,waterRefill:ZEBRA_PRICES.waterRefill,enrichmentRefill:ZEBRA_PRICES.enrichmentRefill,comfortable:ZEBRA_MISSION_RULES.comfortableTicks*TICK_MS/1000,thriving:ZEBRA_MISSION_RULES.thrivingTicks*TICK_MS/1000,viewers:ZEBRA_MISSION_RULES.viewers},c=zebraGuideCopy[locale];
+ const values={grant:ZEBRA_PRICES.grant,habitat:ZEBRA_PRICES.habitat,upkeep:PRICES.maintenance,upkeepTime:MONEY_RULES.maintenanceTicks*TICK_MS/1000,path:PRICES.path,food:ZEBRA_PRICES['zebra-graze'],water:ZEBRA_PRICES['zebra-water'],shade:ZEBRA_PRICES['zebra-shade'],enrichment:ZEBRA_PRICES['zebra-enrichment'],foodRefill:ZEBRA_PRICES.foodRefill,waterRefill:ZEBRA_PRICES.waterRefill,enrichmentRefill:ZEBRA_PRICES.enrichmentRefill,comfortable:ZEBRA_MISSION_RULES.comfortableTicks*TICK_MS/1000,thriving:ZEBRA_MISSION_RULES.thrivingTicks*TICK_MS/1000,viewers:ZEBRA_MISSION_RULES.viewers},c=zebraGuideCopy[locale];
  return{title:c.title,notice:c.notice,steps:c.steps.map(text=>text.replace(/\{(\w+)\}/g,(_,key:string)=>formatNumber(values[key as keyof typeof values],locale)))};
 }
 /** Stable help in Care and the existing native Help dialog; no gameplay authority. */

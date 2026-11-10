@@ -1,4 +1,5 @@
 export type SimulationEvent =
+  | {type:'zebra-grant-claimed';amount:number;tick:number;gameTimeMs:number}
   | {type:'zebra-mission-claimed';missionId:import('./zebra-state.ts').ZebraMissionId;amount:number;tick:number;gameTimeMs:number}
   | {type:'zebra-groomed';animalIds:[string,string];eventId:string;tick:number;gameTimeMs:number}
   | {type:'zebra-trotted';animalId:string;eventId:string;distance:number;tick:number;gameTimeMs:number}
