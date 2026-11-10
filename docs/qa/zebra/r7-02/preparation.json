@@ -1,0 +1,346 @@
+{
+  "status": "PREPARED_NOT_RUN_R7_02",
+  "at": "2026-11-10T06:20:36.103Z",
+  "source": "04a57399add90c1ce37fd1c06e837e4555fb3088",
+  "verified": 45,
+  "total": 54,
+  "pendingUnit": "R7-02",
+  "runtimeSource": "2e923dc75be2f1780bccf784c76863ec9bff0882",
+  "r7_01": {
+    "path": "docs/qa/zebra/r7-01/verification.json",
+    "bytes": 41940,
+    "sha256": "359af4b45d55c73bec61b57a7cbd88c897eb5ea142f692f0ac87bbbfce457ef3"
+  },
+  "r7_01Build": {
+    "path": "docs/qa/zebra/r7-01/build-manifest.json",
+    "bytes": 17371,
+    "sha256": "68fa577a8f84e4c1c0bd78daec0edbc539f7b102532cbc0b7beca18de23f089f"
+  },
+  "historicalH1": {
+    "path": "docs/qa/zebra/h1-09/verification.json",
+    "bytes": 8533,
+    "sha256": "74e5e3a53d1c0daf35fbc5cfef294f4a7d0198298094b17e2aaedb1380964c4b"
+  },
+  "sourceFingerprintUnchanged": "b4af17819fe786a0b3e1dd3321344bdb62f35be65778c57474089cd7677aca83",
+  "sourceBinding": "Current src/tests/scripts/public inputs exactly match accepted R7-01; preparation changes repository docs only.",
+  "inventory": {
+    "method": "Read-only TypeScript AST registry generation; no renderer, game simulation, browser or build",
+    "processSession": 49106,
+    "exit": 0,
+    "durationMs": 1298.3234,
+    "raw": {
+      "path": ".qa/zebra-audit/r7-02/preparation-registry.json",
+      "bytes": 726110,
+      "sha256": "d84478379dc63bb8d6e97c6dece7ee6c68dfbe3fdcc5bfca361b207bd033ba9f"
+    },
+    "modules": 205,
+    "renderModules": 56,
+    "records": 514,
+    "constructors": 287,
+    "categories": {
+      "game-ui": {
+        "records": 19,
+        "constructors": 0,
+        "modules": 19,
+        "status": "NOT_RUN"
+      },
+      "audio": {
+        "records": 2,
+        "constructors": 0,
+        "modules": 1,
+        "status": "NOT_RUN"
+      },
+      "camera-picking": {
+        "records": 11,
+        "constructors": 5,
+        "modules": 5,
+        "status": "NOT_RUN"
+      },
+      "elephant": {
+        "records": 94,
+        "constructors": 51,
+        "modules": 14,
+        "status": "NOT_RUN"
+      },
+      "shared-world": {
+        "records": 95,
+        "constructors": 71,
+        "modules": 12,
+        "status": "NOT_RUN"
+      },
+      "giraffe": {
+        "records": 64,
+        "constructors": 32,
+        "modules": 5,
+        "status": "NOT_RUN"
+      },
+      "lion": {
+        "records": 53,
+        "constructors": 25,
+        "modules": 5,
+        "status": "NOT_RUN"
+      },
+      "macaw": {
+        "records": 41,
+        "constructors": 31,
+        "modules": 6,
+        "status": "NOT_RUN"
+      },
+      "lighting": {
+        "records": 6,
+        "constructors": 3,
+        "modules": 1,
+        "status": "NOT_RUN"
+      },
+      "environment": {
+        "records": 24,
+        "constructors": 17,
+        "modules": 1,
+        "status": "NOT_RUN"
+      },
+      "visitors": {
+        "records": 24,
+        "constructors": 22,
+        "modules": 1,
+        "status": "NOT_RUN"
+      },
+      "zebra": {
+        "records": 59,
+        "constructors": 30,
+        "modules": 6,
+        "status": "NOT_RUN"
+      },
+      "static-ui": {
+        "records": 4,
+        "constructors": 0,
+        "modules": 0,
+        "status": "NOT_RUN"
+      },
+      "renderer-textures": {
+        "records": 1,
+        "constructors": 0,
+        "modules": 0,
+        "status": "NOT_RUN"
+      },
+      "site-media": {
+        "records": 17,
+        "constructors": 0,
+        "modules": 0,
+        "status": "NOT_RUN"
+      }
+    },
+    "renderModulePaths": [
+      "src/game/render3d/camera-controls.ts",
+      "src/game/render3d/camera-gestures.ts",
+      "src/game/render3d/camera-navigation.ts",
+      "src/game/render3d/elephant-care-preview.ts",
+      "src/game/render3d/elephant-care-scene.ts",
+      "src/game/render3d/elephant-habitat-scene.ts",
+      "src/game/render3d/elephant-residents-scene.ts",
+      "src/game/render3d/elephant/elephant-bathing.ts",
+      "src/game/render3d/elephant/elephant-consumption.ts",
+      "src/game/render3d/elephant/elephant-enrichment-geometry.ts",
+      "src/game/render3d/elephant/elephant-enrichment.ts",
+      "src/game/render3d/elephant/elephant-geometry.ts",
+      "src/game/render3d/elephant/elephant-locomotion.ts",
+      "src/game/render3d/elephant/elephant-pond-geometry.ts",
+      "src/game/render3d/elephant/elephant-rig.ts",
+      "src/game/render3d/elephant/elephant-social.ts",
+      "src/game/render3d/elephant/elephant-spray.ts",
+      "src/game/render3d/feeder-scene.ts",
+      "src/game/render3d/foundation-scene.ts",
+      "src/game/render3d/frame-loop.ts",
+      "src/game/render3d/giraffe-care-preview.ts",
+      "src/game/render3d/giraffe/care-ghost.ts",
+      "src/game/render3d/giraffe/residents-scene.ts",
+      "src/game/render3d/giraffe/rig.ts",
+      "src/game/render3d/giraffe/world-scene.ts",
+      "src/game/render3d/habitat-scene.ts",
+      "src/game/render3d/isometric-camera.ts",
+      "src/game/render3d/lion-care-preview.ts",
+      "src/game/render3d/lion/care-ghost.ts",
+      "src/game/render3d/lion/residents-scene.ts",
+      "src/game/render3d/lion/rig.ts",
+      "src/game/render3d/lion/world-scene.ts",
+      "src/game/render3d/macaw/autonomous-birds.ts",
+      "src/game/render3d/macaw/macaw-animation.ts",
+      "src/game/render3d/macaw/macaw-geometry.ts",
+      "src/game/render3d/macaw/macaw-rig.ts",
+      "src/game/render3d/macaw/macaw-studio.ts",
+      "src/game/render3d/macaw/studio-contract.ts",
+      "src/game/render3d/path-scene.ts",
+      "src/game/render3d/perch-scene.ts",
+      "src/game/render3d/placement-preview.ts",
+      "src/game/render3d/preview-controller.ts",
+      "src/game/render3d/reward-decoration.ts",
+      "src/game/render3d/sanctuary-lighting.ts",
+      "src/game/render3d/scene-picking.ts",
+      "src/game/render3d/thriving-banner.ts",
+      "src/game/render3d/tropical-diorama.ts",
+      "src/game/render3d/visitor-scene.ts",
+      "src/game/render3d/water-scene.ts",
+      "src/game/render3d/webgl-cleanup.ts",
+      "src/game/render3d/zebra/care-ghost.ts",
+      "src/game/render3d/zebra/care-preview.ts",
+      "src/game/render3d/zebra/care-scene.ts",
+      "src/game/render3d/zebra/residents-scene.ts",
+      "src/game/render3d/zebra/rig.ts",
+      "src/game/render3d/zebra/world-scene.ts"
+    ],
+    "allVisualStatuses": "NOT_RUN"
+  },
+  "integrationGaps": [
+    {
+      "id": "FIXTURE_V4",
+      "status": "OPEN_QA_INTEGRATION",
+      "evidence": {
+        "path": "scripts/qa/visual3d/fixture.ts",
+        "bytes": 4281,
+        "sha256": "066ab43e4180de83e4293767d4bc7537d3361858c3ea4cc6b6b51dc11f9ce53f",
+        "line": 14,
+        "fragment": "let seeded:ZooSaveV4"
+      },
+      "finding": "Asset Lab uses V4 fixture validation/backend; populated V5 cannot be loaded here.",
+      "required": "Add explicit strict V4/V5 case dispatch and isolated fresh UUID provenance, preserving current V4 cases. No owner/default DB access."
+    },
+    {
+      "id": "REPORT_V4",
+      "status": "OPEN_QA_INTEGRATION",
+      "evidence": {
+        "path": "scripts/qa/visual3d/lab.ts",
+        "bytes": 20552,
+        "sha256": "544b401db291d397da31e06c1127e1e6a8613f97fa45bf8b3d6e2cee9411f1bd",
+        "line": 55,
+        "fragment": "checked=validateSaveV4(snapshot)"
+      },
+      "finding": "Lab state validity/report and status are V4-specific.",
+      "required": "Use the matching strict codec and dynamic schema/habitat/actor counts; bind the actual case file hash."
+    },
+    {
+      "id": "WORLD_V4",
+      "status": "OPEN_QA_INTEGRATION",
+      "evidence": {
+        "path": "scripts/qa/visual3d/world-fixture.ts",
+        "bytes": 2486,
+        "sha256": "06bd5c13989882d4a6852d33d2441ff4b98ff546d1cb45f7ce8bd8c77974f18e",
+        "line": 10,
+        "fragment": "Full Zoo fixture is not strict-valid V4"
+      },
+      "finding": "World overlay description refuses V5 and labels Zebra unbuilt.",
+      "required": "Accept strict V5 as an explicit second branch, derive actual64-cell footprint/facilities/ports/access; preserve V4 output exactly."
+    },
+    {
+      "id": "SPATIAL_V4",
+      "status": "OPEN_QA_INTEGRATION",
+      "evidence": {
+        "path": "scripts/qa/visual3d/spatial-state.ts",
+        "bytes": 4985,
+        "sha256": "b1f4ea6fc0471c7f3e501fe2c5fd1659f868bdc388ac6617aa941e984d5d36e4",
+        "line": 7,
+        "fragment": "Current spatial lab requires strict V4 lineage"
+      },
+      "finding": "Authoritative spatial query rejects V5 and has no Zebra point/body checks.",
+      "required": "Extend QA queries with original Zebra ground/body/head/prop checks; retain old species, visitors,624 tile bindings and origin(6,5)."
+    },
+    {
+      "id": "PHASES_V4",
+      "status": "OPEN_QA_INTEGRATION",
+      "evidence": {
+        "path": "scripts/qa/visual3d/phase-fixtures.mjs",
+        "bytes": 6587,
+        "sha256": "88e1c6ba24f94f097f7876f4ee1878c907ff7a8f4977e4900cca91a288677f33",
+        "line": 11,
+        "fragment": "const valid=validateSaveV4(state)"
+      },
+      "finding": "The15 legacy phase snapshots use the V4 recipe; there is no compiled causal V5 phase set.",
+      "required": "Add a separately labelled V5 source-command recipe/cache; no forced poses/needs/positions. Search real phases with bounds and strict metadata; do not overwrite historical caches."
+    },
+    {
+      "id": "CONTROLS_FOUR",
+      "status": "OPEN_QA_INTEGRATION",
+      "evidence": {
+        "path": "scripts/qa/visual3d/lab.ts",
+        "bytes": 20552,
+        "sha256": "544b401db291d397da31e06c1127e1e6a8613f97fa45bf8b3d6e2cee9411f1bd",
+        "line": 90,
+        "fragment": "?'lion':'giraffe'"
+      },
+      "finding": "Habitat-focus dispatch falls through to Giraffe; UI/species/lifecycle selectors list four species.",
+      "required": "Add explicit Zebra family mapping/controls and derive actual habitat options; keep the original renderer/viewer/timeline."
+    },
+    {
+      "id": "PRODUCT_EXISTING_DB",
+      "status": "OPEN_QA_INTEGRATION",
+      "evidence": {
+        "path": "scripts/qa/visual3d/zebra-product-fixture.ts",
+        "bytes": 2583,
+        "sha256": "d7ae34f5456b5ad53a79cf8b60c5e0d7a3cbf8ecb67830826e6bac2f2e012a72",
+        "line": 13,
+        "fragment": "A named loopback Zebra construction QA database is required"
+      },
+      "finding": "Current V5 product fixture normally opens an existing QA DB. freshEntry is empty, not a five-habitat case.",
+      "required": "Provide immutable V5 case loading into fresh QA UUIDs with exact V4 history; leave main830 and secondary87 untouched."
+    },
+    {
+      "id": "REGISTRY_FIXTURE_LABEL",
+      "status": "OPEN_QA_INTEGRATION",
+      "evidence": {
+        "path": "scripts/qa/visual3d/registry-build.mjs",
+        "bytes": 6810,
+        "sha256": "74c04a7ad064ccbde4e2ff32d63f66ec8f466893656f359481fa9e5eb6a058a4",
+        "line": 6,
+        "fragment": "testFixtures:[{id:'frozen-earned-v4',status:'AVAILABLE'}"
+      },
+      "finding": "Registry includes59 Zebra records but default fixture availability names only V4.",
+      "required": "Mark appropriate V5 cases PLANNED until produced/validated, then AVAILABLE only in the actual build manifest. Never promote visualStatus from construction alone."
+    },
+    {
+      "id": "BUILD_CASE_IDENTITY",
+      "status": "OPEN_QA_INTEGRATION",
+      "evidence": {
+        "path": "scripts/qa/visual3d/build.mjs",
+        "bytes": 7923,
+        "sha256": "928bb2856b6a17beac63874ab1fde32b2fa573a5f5e3fa93dc8568504ef485a3",
+        "line": 7,
+        "fragment": "fixtureHash=sha256(await readFile('tests/fixtures/giraffe-v4-golden.json'))"
+      },
+      "finding": "Build defines a V4 fixture hash; run-ID routes compile either legacy matrix or Zebra construction/product, not a combined V5 Asset Lab matrix.",
+      "required": "Compile explicit V4/V5 cases and matching entry/case metadata. Keep all QA output under.qa and recheck production exclusion."
+    }
+  ],
+  "matrix": {
+    "path": "docs/qa/zebra/r7-02/matrix.json",
+    "bytes": 32006,
+    "sha256": "a680618ad20d58547460a49b9670f74d3b0a30b3c857db4f98e7b6759faade21"
+  },
+  "readiness": {
+    "readyForNextSlot": true,
+    "readyForNativeAcceptance": false,
+    "reason": "QA V4/V5 fixture, reporting, spatial, selectors and phase/build identity bridges are required before the first new V5 Asset Lab capture.",
+    "firstSlotOrder": [
+      "Implement QA-only strict V4/V5 fixture/report/world/spatial/selector/build bridge, preserving old V4 output and original renderer APIs",
+      "Run focused existing visual3d fixture/spatial/registry/isolation/observer tests plus new V5 negatives and strict types/Astro",
+      "Produce bounded causal V5 phase fixtures with real commands; validate exact original V4 backup and label synthetic grant setup",
+      "Build fresh immutable matrix with production QA exclusion; planned run h1-09-r7-matrix1 becomes valid only AFTER bridge implementation",
+      "Launch own loopback server on a confirmed free port; internal-browser-only baseline V4/V5/preservation/first visual cases; checkpoint before Farm handoff"
+    ],
+    "slotManagement": "Do not start heavy work/browser/build until explicit resource release. Work in bounded checkpoints; do not promise the entire native matrix in one slot."
+  },
+  "resources": {
+    "at": "2026-11-10T06:20:36.103Z",
+    "activeOwnedBrowserServerBuildTestsRenderer": 0,
+    "browserOpened": false,
+    "serverOpened": false,
+    "buildStarted": false,
+    "heavyTestsStarted": false,
+    "simulationStarted": false,
+    "onlyLightAstAudit": true,
+    "farm": "Exclusive heavy/GPU/browser slot remains with Farm"
+  },
+  "stopDeadline": {
+    "utc": "2026-11-10T10:00:00.000Z",
+    "local": "17:00 WIB",
+    "scope": "Stop all coding/tests/build/browser/server by the deadline and await new instructions"
+  },
+  "noPushOrDeploy": true
+}

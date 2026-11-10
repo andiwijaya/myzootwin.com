@@ -1,0 +1,107 @@
+{
+  "status": "PREPARED_NOT_RUN_R7_02",
+  "at": "2026-11-10T06:20:36.103Z",
+  "verified": 45,
+  "total": 54,
+  "pendingUnit": "R7-02",
+  "preparationSource": "04a57399add90c1ce37fd1c06e837e4555fb3088",
+  "testedApplicationSource": "2e923dc75be2f1780bccf784c76863ec9bff0882",
+  "testedR7_01Source": "b6d8b0ac51fd7a0d1fd8ce0c05eee70ab4b897d1",
+  "proof": {
+    "path": "docs/qa/zebra/r7-02/preparation.json",
+    "bytes": 13829,
+    "sha256": "b260d09d4fb7ec91e1774031a732e80e167695470354ef18a12ba84a1da9c4dd"
+  },
+  "matrix": {
+    "path": "docs/qa/zebra/r7-02/matrix.json",
+    "bytes": 32006,
+    "sha256": "a680618ad20d58547460a49b9670f74d3b0a30b3c857db4f98e7b6759faade21"
+  },
+  "qaResume": {
+    "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
+    "tick": 27849,
+    "cash": 3581,
+    "command": 143,
+    "revision": 830,
+    "generation": "45874679-5499-44c6-9ab8-6a527e4f9391",
+    "hash": "e70827160d1c40e22b0bf3b63cdc8a4ec3a327ea76b5ab19e3cc0489b62921ed",
+    "preferences": {
+      "graphics": "low",
+      "locale": "id",
+      "muted": true,
+      "reducedMotion": false,
+      "speed": 1
+    },
+    "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf"
+  },
+  "responsiveResume": {
+    "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
+    "tick": 13771,
+    "cash": 3910,
+    "command": 125,
+    "revision": 87,
+    "generation": "zebra-build-synthetic",
+    "hash": "b9749ac5549c583eb383d5a61fb77f0221e7627522b63eabf857f5d1e1b54b6e",
+    "preferences": {
+      "graphics": "auto",
+      "locale": "en",
+      "muted": true,
+      "reducedMotion": false,
+      "speed": 1
+    },
+    "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf"
+  },
+  "saveScope": "No QA/owner/browser DB opened. Identities carried read-only from R7-01.",
+  "readiness": {
+    "readyForNextSlot": true,
+    "readyForNativeAcceptance": false,
+    "reason": "QA V4/V5 fixture, reporting, spatial, selectors and phase/build identity bridges are required before the first new V5 Asset Lab capture.",
+    "firstSlotOrder": [
+      "Implement QA-only strict V4/V5 fixture/report/world/spatial/selector/build bridge, preserving old V4 output and original renderer APIs",
+      "Run focused existing visual3d fixture/spatial/registry/isolation/observer tests plus new V5 negatives and strict types/Astro",
+      "Produce bounded causal V5 phase fixtures with real commands; validate exact original V4 backup and label synthetic grant setup",
+      "Build fresh immutable matrix with production QA exclusion; planned run h1-09-r7-matrix1 becomes valid only AFTER bridge implementation",
+      "Launch own loopback server on a confirmed free port; internal-browser-only baseline V4/V5/preservation/first visual cases; checkpoint before Farm handoff"
+    ],
+    "slotManagement": "Do not start heavy work/browser/build until explicit resource release. Work in bounded checkpoints; do not promise the entire native matrix in one slot."
+  },
+  "resources": {
+    "at": "2026-11-10T06:20:36.103Z",
+    "activeOwnedBrowserServerBuildTestsRenderer": 0,
+    "browserOpened": false,
+    "serverOpened": false,
+    "buildStarted": false,
+    "heavyTestsStarted": false,
+    "simulationStarted": false,
+    "onlyLightAstAudit": true,
+    "farm": "Exclusive heavy/GPU/browser slot remains with Farm"
+  },
+  "stopDeadline": {
+    "utc": "2026-11-10T10:00:00.000Z",
+    "local": "17:00 WIB",
+    "scope": "Stop all coding/tests/build/browser/server by the deadline and await new instructions"
+  },
+  "blockers": [
+    {
+      "id": "HP6-02_PLAYABILITY",
+      "reason": "PRD calls for five playable habitats. Current public bootstrap/grant gate Z2-06 is still open, and the candidate intentionally represents4 available-through-progression plus1 preview. Do not increment verified progress or claim public Zebra playability.",
+      "closeWhen": "Actual V5 bootstrap, grant budget/exactly-once and availability/release gates are proved. Update and retest copy/status against that enabled state."
+    },
+    {
+      "id": "R7-08",
+      "reason": "Separate explicit Zebra push/deploy authorization remains absent. Nothing was pushed or deployed."
+    }
+  ],
+  "open": [
+    "Z2-06 proposed1700ZC grant budget/exactly-once/publicV5 adoption; public bootstrap still V4. Historical fixture prerequisites are validation-only; this unit accepts no grant",
+    "Internal viewport/native mouse+keyboard and source touch-adapter tests; no physical-device/touch or presented FPS claim",
+    "1920 DOM bounds/native controls verified; native host raster cropped/scaled. Historical browser area clip shows HUD width; no full1920 raster claim. Full-page experimental capture changed layout/inner scroll and safely cancelled unpaid preview",
+    "R7 native10x render/control latency, true native background, full fifth-species matrix and15-minute active soak unresolved. Historical3346231 native1x191ticks/152callbacks/16.8ms dropped time is not a current-source benchmark",
+    "Original Library materialization BLOCKED_WINDOWS_XATTR; complete official text reads retained historically",
+    "R7-08 explicit Zebra push/deploy authorization absent; no publish",
+    "Physical multi-touch/native touch capture and full posed fifth-species/performance/background/soak matrix remain open R7 scope; no physical-device or FPS claim",
+    "Z5-04 native graph/signal and factory-injected failures accepted; physical speaker/device/system preference/native autoplay denial not claimed"
+  ],
+  "next": "After Farm slot release, implement and verify the listed QA-only V5 bridges before building/opening R7-02 native Asset Lab. Keep R7-02 unchecked;45/54. Stop10:00UTC/17:00WIB10 November; no push/deploy.",
+  "noPushOrDeploy": true
+}
