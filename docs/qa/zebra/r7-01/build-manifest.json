@@ -1,0 +1,464 @@
+{
+  "status": "PASS",
+  "source": "b6d8b0ac51fd7a0d1fd8ce0c05eee70ab4b897d1",
+  "inputBefore": "b4af17819fe786a0b3e1dd3321344bdb62f35be65778c57474089cd7677aca83",
+  "inputAfter": "b4af17819fe786a0b3e1dd3321344bdb62f35be65778c57474089cd7677aca83",
+  "inputUnchanged": true,
+  "results": [
+    {
+      "kind": "types",
+      "args": [
+        "node_modules/typescript/lib/tsc.js",
+        "-p",
+        "tsconfig.json",
+        "--noEmit",
+        "--noUnusedLocals",
+        "--noUnusedParameters"
+      ],
+      "startedAt": "2026-11-10T05:56:28.964Z",
+      "finishedAt": "2026-11-10T05:56:43.540Z",
+      "status": "PASS",
+      "process": {
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "overflow": false
+      },
+      "logs": [
+        {
+          "path": ".qa/zebra-audit/r7-01/checks2/types.stdout.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": ".qa/zebra-audit/r7-01/checks2/types.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "kind": "astro",
+      "args": [
+        "C:\\MyZooTwin\\node_modules\\astro\\bin\\astro.mjs",
+        "check"
+      ],
+      "startedAt": "2026-11-10T05:56:43.542Z",
+      "finishedAt": "2026-11-10T05:57:32.046Z",
+      "status": "PASS",
+      "process": {
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "overflow": false
+      },
+      "logs": [
+        {
+          "path": ".qa/zebra-audit/r7-01/checks2/astro.stdout.log",
+          "bytes": 161,
+          "sha256": "e3ed2551c0b7fad75a6c5221af12ac2d6889b583e887b1a2002827a2a436c6c5"
+        },
+        {
+          "path": ".qa/zebra-audit/r7-01/checks2/astro.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    },
+    {
+      "kind": "build",
+      "args": [
+        "C:\\MyZooTwin\\node_modules\\astro\\bin\\astro.mjs",
+        "build",
+        "--outDir",
+        "C:\\MyZooTwin\\.qa\\zebra-audit\\r7-01\\checks2\\product"
+      ],
+      "startedAt": "2026-11-10T05:57:32.047Z",
+      "finishedAt": "2026-11-10T05:57:38.359Z",
+      "status": "PASS",
+      "process": {
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "overflow": false
+      },
+      "logs": [
+        {
+          "path": ".qa/zebra-audit/r7-01/checks2/build.stdout.log",
+          "bytes": 1520,
+          "sha256": "1cad377524152ff53b051bcea9ce6cac1747078e1555b715e070841eba492ccd"
+        },
+        {
+          "path": ".qa/zebra-audit/r7-01/checks2/build.stderr.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ]
+    }
+  ],
+  "product": {
+    "directory": ".qa/zebra-audit/r7-01/checks2/product",
+    "files": [
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/_astro/BaseLayout.astro_astro_type_script_index_0_lang.EOnjK5fP.js",
+        "name": "_astro/BaseLayout.astro_astro_type_script_index_0_lang.EOnjK5fP.js",
+        "bytes": 12920,
+        "sha256": "ca69c2685c1e3ef6db416b00ff71710bb2d9d83567b0d97c66f81237f558dab6"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/_astro/BaseLayout.CobipK0U.css",
+        "name": "_astro/BaseLayout.CobipK0U.css",
+        "bytes": 5675,
+        "sha256": "b25de5e982e5c2a87f5a5b97323f92b49358136e0005cbe97a36736eb1353805"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/_astro/dialog-focus.CS_awhan.js",
+        "name": "_astro/dialog-focus.CS_awhan.js",
+        "bytes": 697,
+        "sha256": "1c49e5f75581f00265e803464e1caea211865f20cc06223682b8336e763d2d64"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/_astro/foundation-scene.CD0NQccH.js",
+        "name": "_astro/foundation-scene.CD0NQccH.js",
+        "bytes": 922187,
+        "sha256": "b9b8ce804dd3cce2014285e7b114b31017dd47a09c34795369e6b504b0f5709e"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/_astro/play.DS-4tSYl.css",
+        "name": "_astro/play.DS-4tSYl.css",
+        "bytes": 40383,
+        "sha256": "b27c9ee89c0848e356a2920fb8daef6e40cda5805cc7a2ed5f2bab965c1854ac"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/_astro/PlayEntry.astro_astro_type_script_index_0_lang.CLbXpYSf.js",
+        "name": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.CLbXpYSf.js",
+        "bytes": 460861,
+        "sha256": "385e27467a5ffb764ca84796acc31ec67f73ac54225e4c6bb37e95212dbf0f7e"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/_astro/ZooHome.ewIXrXkW.css",
+        "name": "_astro/ZooHome.ewIXrXkW.css",
+        "bytes": 11049,
+        "sha256": "96b49a4b465619ef821c06eeccdd8ee0c18d262b8a2f518a47b31e8b2477eaa7"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/about/index.html",
+        "name": "about/index.html",
+        "bytes": 8351,
+        "sha256": "393dc467011100a828175de83b3a9eed40b6262763c727653cd4598f3e7eb157"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/adventures/index.html",
+        "name": "adventures/index.html",
+        "bytes": 8215,
+        "sha256": "29e3c638b509bab3c46651eadb91459cb5c9baa459791619686f4b54552f6627"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/animals/index.html",
+        "name": "animals/index.html",
+        "bytes": 7845,
+        "sha256": "29c9cbfe58585babae2426232334bd06d2123459bc0eb6b5db720f0350251c4a"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/en/index.html",
+        "name": "en/index.html",
+        "bytes": 21256,
+        "sha256": "9e7ead9949f0f5c4a7570d101ea53969342f1c060d0af35860485d0bbf45da47"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/favicon.svg",
+        "name": "favicon.svg",
+        "bytes": 793,
+        "sha256": "78c28be8daea587e629661600e55c3250d521adcfa32cf88b3113d33267db702"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/gear/index.html",
+        "name": "gear/index.html",
+        "bytes": 8186,
+        "sha256": "c7b6f06025d0a4dbae864e5d24c88105c5f7cc5eb06b49918bf432ff36526abd"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/images/home/giraffes-480.webp",
+        "name": "images/home/giraffes-480.webp",
+        "bytes": 17728,
+        "sha256": "1c2eee2a30808155f7277c14dffeda17e20c6a3899aa2fe4310d6e66e4a60060"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/images/home/giraffes-800.webp",
+        "name": "images/home/giraffes-800.webp",
+        "bytes": 30524,
+        "sha256": "d0bdf2b3196f3b769bc4b4e0e977249d2ed86ea64fa2f3f2bf560ed4bd9fa1b7"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/images/home/v5-zebra-440.webp",
+        "name": "images/home/v5-zebra-440.webp",
+        "bytes": 16934,
+        "sha256": "9e1f77add5ec0462d9aebd82a10daf898d027aabdadb61387e0ae22d2fc9376d"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/images/home/v5-zebra-660.webp",
+        "name": "images/home/v5-zebra-660.webp",
+        "bytes": 26710,
+        "sha256": "ec2599c98994e59e7d36abbc3b7142f2bf6f159f1b7bdd6e3119fd69adeecf21"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/images/home/v5-zoo-480.webp",
+        "name": "images/home/v5-zoo-480.webp",
+        "bytes": 14596,
+        "sha256": "1e47118c613aa474f517bfda8ce30a8be6459444ba53571b3aae810e0217b6f7"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/images/home/v5-zoo-770.webp",
+        "name": "images/home/v5-zoo-770.webp",
+        "bytes": 26374,
+        "sha256": "7e9a2db2cc9df38890bebdbf63374d1ebb8e4ef00f6d6e2177146785e32613a3"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/images/home/v5-zoo-social.jpg",
+        "name": "images/home/v5-zoo-social.jpg",
+        "bytes": 37842,
+        "sha256": "d59a9a5dc6d2f1b85f3bfac09f5d26448fadd5b63344cc4332d468bc6d2df927"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/images/home/zoo-640.webp",
+        "name": "images/home/zoo-640.webp",
+        "bytes": 18384,
+        "sha256": "6809ac121c8a10f63b07c53c21357fd0d65b3255b76ce13fecdecbb9e6c27a07"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/images/home/zoo-960.webp",
+        "name": "images/home/zoo-960.webp",
+        "bytes": 27974,
+        "sha256": "93ea04c81e7658ab73e92cd13302ceb4575585729d7dc120f3a83ed85c8b5e5b"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/images/home/zoo-social.jpg",
+        "name": "images/home/zoo-social.jpg",
+        "bytes": 86167,
+        "sha256": "7cb245af00cb0301dfd032ee1e886a4df1b55f64bfa20fdca9e716ea294968ad"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/images/myzootwin-beranda.png",
+        "name": "images/myzootwin-beranda.png",
+        "bytes": 171632,
+        "sha256": "194a2cb5178f255ebf0289aabac75135fc65a8f716f26c01dcfeaebe00960169"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/images/tropical-creek-game.jpg",
+        "name": "images/tropical-creek-game.jpg",
+        "bytes": 91888,
+        "sha256": "6edf52437618a80b94911b846cb2722257739be87c4f96c793f1e808d848e880"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/images/tropical-creek-journal.svg",
+        "name": "images/tropical-creek-journal.svg",
+        "bytes": 6173,
+        "sha256": "cf2f03404f8d72367c385fbbdfaabb0bd21ae0a262804525c20e027a34ea94cc"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/index.html",
+        "name": "index.html",
+        "bytes": 21466,
+        "sha256": "8d0aa6dd30f4e657974298fe2eec645b95bfde407f901b797009fbac31f8b145"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/learn/index.html",
+        "name": "learn/index.html",
+        "bytes": 9150,
+        "sha256": "66b32e6fa059782b0f2565b11d585bcc3590224067c3d7106742036ad4b2e410"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/licenses/third-party-notices.txt",
+        "name": "licenses/third-party-notices.txt",
+        "bytes": 1224,
+        "sha256": "a5eff5cf91485bdf2f7ada50d30832c648db248314b3897e3c80e9da66efa29b"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/licenses/three-MIT.txt",
+        "name": "licenses/three-MIT.txt",
+        "bytes": 1081,
+        "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/pets/index.html",
+        "name": "pets/index.html",
+        "bytes": 8166,
+        "sha256": "b596bd4778547677907eaab0de04d9a8dfde5a3ca2cd852d7e0d1973f4b4f0ef"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/play/index.html",
+        "name": "play/index.html",
+        "bytes": 58676,
+        "sha256": "58a6a95ccd0c587a63e730ca5330fd6ea129fff3a052deba535318b8c53f88d9"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/robots.txt",
+        "name": "robots.txt",
+        "bytes": 73,
+        "sha256": "91803eeb5a8dbbbae903fce53e66d6f5856f8e0894e7d7d21465c532381dd147"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/sitemap-0.xml",
+        "name": "sitemap-0.xml",
+        "bytes": 832,
+        "sha256": "dbbec59a45a2b89f869b2a277fce46020f49e16649d635a48c479b9868b3c0bf"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/sitemap-index.xml",
+        "name": "sitemap-index.xml",
+        "bytes": 184,
+        "sha256": "f956f18339cf090382bb71b5dadff01ca95c9bd0958046cef03c002851a7b550"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/checks2/product/wildlife/index.html",
+        "name": "wildlife/index.html",
+        "bytes": 8165,
+        "sha256": "303ea4c230db8bc7ea611654fd13c4abe9df1f097431b42c98619e258f29e5e8"
+      }
+    ],
+    "pages": 10,
+    "metadata": [
+      {
+        "path": "about/index.html",
+        "title": "About MyZooTwin — A curious animal learning journal",
+        "canonical": "https://myzootwin.com/about/",
+        "h1": "A little morecuriosity, every day."
+      },
+      {
+        "path": "adventures/index.html",
+        "title": "Field notes & adventures — MyZooTwin",
+        "canonical": "https://myzootwin.com/adventures/",
+        "h1": "Field notes & adventures"
+      },
+      {
+        "path": "animals/index.html",
+        "title": "Animals — MyZooTwin",
+        "canonical": "https://myzootwin.com/animals/",
+        "h1": "Meet theneighborhood."
+      },
+      {
+        "path": "en/index.html",
+        "title": "MyZooTwin — 3D Zoo Game & Zebra Preview",
+        "canonical": "https://myzootwin.com/en/",
+        "h1": "Build your 3D zoo.Care for every resident."
+      },
+      {
+        "path": "gear/index.html",
+        "title": "Gear & field notes — MyZooTwin",
+        "canonical": "https://myzootwin.com/gear/",
+        "h1": "Gear & field notes"
+      },
+      {
+        "path": "index.html",
+        "title": "MyZooTwin — Game Zoo 3D & Pratinjau Zebra",
+        "canonical": "https://myzootwin.com/",
+        "h1": "Bangun zoo 3D kamu.Rawat setiap penghuni."
+      },
+      {
+        "path": "learn/index.html",
+        "title": "Learn something wild — MyZooTwin",
+        "canonical": "https://myzootwin.com/learn/",
+        "h1": "Learn something wild"
+      },
+      {
+        "path": "pets/index.html",
+        "title": "Life with pets — MyZooTwin",
+        "canonical": "https://myzootwin.com/pets/",
+        "h1": "Life with pets"
+      },
+      {
+        "path": "play/index.html",
+        "title": "Main Zoo — Tropical Creek | MyZooTwin",
+        "canonical": "https://myzootwin.com/play/",
+        "h1": "Dunia kecil untuk dirawat."
+      },
+      {
+        "path": "wildlife/index.html",
+        "title": "Into the wild — MyZooTwin",
+        "canonical": "https://myzootwin.com/wildlife/",
+        "h1": "Into the wild"
+      }
+    ],
+    "publicUnchangedFromAcceptedHP6_06": [
+      {
+        "path": "images/home/giraffes-480.webp",
+        "sha256": "1c2eee2a30808155f7277c14dffeda17e20c6a3899aa2fe4310d6e66e4a60060"
+      },
+      {
+        "path": "images/home/giraffes-800.webp",
+        "sha256": "d0bdf2b3196f3b769bc4b4e0e977249d2ed86ea64fa2f3f2bf560ed4bd9fa1b7"
+      },
+      {
+        "path": "images/home/v5-zebra-440.webp",
+        "sha256": "9e1f77add5ec0462d9aebd82a10daf898d027aabdadb61387e0ae22d2fc9376d"
+      },
+      {
+        "path": "images/home/v5-zebra-660.webp",
+        "sha256": "ec2599c98994e59e7d36abbc3b7142f2bf6f159f1b7bdd6e3119fd69adeecf21"
+      },
+      {
+        "path": "images/home/v5-zoo-480.webp",
+        "sha256": "1e47118c613aa474f517bfda8ce30a8be6459444ba53571b3aae810e0217b6f7"
+      },
+      {
+        "path": "images/home/v5-zoo-770.webp",
+        "sha256": "7e9a2db2cc9df38890bebdbf63374d1ebb8e4ef00f6d6e2177146785e32613a3"
+      },
+      {
+        "path": "images/home/v5-zoo-social.jpg",
+        "sha256": "d59a9a5dc6d2f1b85f3bfac09f5d26448fadd5b63344cc4332d468bc6d2df927"
+      },
+      {
+        "path": "images/home/zoo-640.webp",
+        "sha256": "6809ac121c8a10f63b07c53c21357fd0d65b3255b76ce13fecdecbb9e6c27a07"
+      },
+      {
+        "path": "images/home/zoo-960.webp",
+        "sha256": "93ea04c81e7658ab73e92cd13302ceb4575585729d7dc120f3a83ed85c8b5e5b"
+      },
+      {
+        "path": "images/home/zoo-social.jpg",
+        "sha256": "7cb245af00cb0301dfd032ee1e886a4df1b55f64bfa20fdca9e716ea294968ad"
+      },
+      {
+        "path": "images/myzootwin-beranda.png",
+        "sha256": "194a2cb5178f255ebf0289aabac75135fc65a8f716f26c01dcfeaebe00960169"
+      },
+      {
+        "path": "images/tropical-creek-game.jpg",
+        "sha256": "6edf52437618a80b94911b846cb2722257739be87c4f96c793f1e808d848e880"
+      },
+      {
+        "path": "images/tropical-creek-journal.svg",
+        "sha256": "cf2f03404f8d72367c385fbbdfaabb0bd21ae0a262804525c20e027a34ea94cc"
+      },
+      {
+        "path": "robots.txt",
+        "sha256": "91803eeb5a8dbbbae903fce53e66d6f5856f8e0894e7d7d21465c532381dd147"
+      },
+      {
+        "path": "sitemap-0.xml",
+        "sha256": "dbbec59a45a2b89f869b2a277fce46020f49e16649d635a48c479b9868b3c0bf"
+      },
+      {
+        "path": "sitemap-index.xml",
+        "sha256": "f956f18339cf090382bb71b5dadff01ca95c9bd0958046cef03c002851a7b550"
+      }
+    ],
+    "productionExclusion": {
+      "status": "PASS",
+      "markers": [
+        "myzootwin-visual3d-",
+        "Asset Lab internal",
+        "__VIS3D_SOURCE__",
+        "scripts/qa/visual3d",
+        "visual3d-frozen-v4",
+        "__qaVisual3dTag",
+        "QA-only constructor side-table",
+        "Step cosmetic Studio100ms",
+        "matrix-result"
+      ]
+    }
+  },
+  "scope": "Fresh sequential strict noEmit/noUnused, Astro check, production-only build and10-route title/canonical/H1 equality. Existing image/robots/sitemap bytes stay exact. Corrected body guard legitimately changes the game bundle; no byte-identical game-bundle or new browser/performance claim. Immutable source-bound artifact manifest retained for R7 follow-up. No browser was opened."
+}

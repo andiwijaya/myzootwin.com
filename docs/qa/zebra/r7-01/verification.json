@@ -1,0 +1,1133 @@
+{
+  "status": "PASS_R7_01_FULL_SOURCE_REGRESSION",
+  "at": "2026-11-10T06:09:39.717Z",
+  "verified": 45,
+  "total": 54,
+  "completedUnit": "R7-01",
+  "source": "b6d8b0ac51fd7a0d1fd8ce0c05eee70ab4b897d1",
+  "applicationRepairSource": "2e923dc75be2f1780bccf784c76863ec9bff0882",
+  "sourceFingerprint": "b4af17819fe786a0b3e1dd3321344bdb62f35be65778c57474089cd7677aca83",
+  "scope": "Complete161-file white-box/unit/integration regression plus fresh strict types/Astro/production build. Actual original and fifth-species source/model/care/clock/save/economy/mission/visitor contracts are verified at this scope. No owner/browser storage, browser rendering, real-time soak, physical device, grant budget/public adoption or presented FPS acceptance.",
+  "fullSuite": {
+    "runId": "r7-01-full3",
+    "args": [
+      "--experimental-strip-types",
+      "--test",
+      "--test-reporter=tap",
+      "--test-concurrency=2",
+      "tests/animal-actions-qa.test.mjs",
+      "tests/animal-autonomy.test.mjs",
+      "tests/audio-settings.test.mjs",
+      "tests/autosave-candidate-drain.test.mjs",
+      "tests/autosave.test.mjs",
+      "tests/camera-navigation.test.mjs",
+      "tests/care-mission.test.mjs",
+      "tests/cashflow.test.mjs",
+      "tests/clock-reentrancy.test.mjs",
+      "tests/conservation-grant.test.mjs",
+      "tests/elephant-attraction.test.mjs",
+      "tests/elephant-bath-render.test.mjs",
+      "tests/elephant-care-info.test.mjs",
+      "tests/elephant-care.test.mjs",
+      "tests/elephant-construction.test.mjs",
+      "tests/elephant-consumption.test.mjs",
+      "tests/elephant-economy.test.mjs",
+      "tests/elephant-editing.test.mjs",
+      "tests/elephant-enrichment-render.test.mjs",
+      "tests/elephant-enrichment.test.mjs",
+      "tests/elephant-expansion.test.mjs",
+      "tests/elephant-footprint.test.mjs",
+      "tests/elephant-layout-plan.test.mjs",
+      "tests/elephant-legacy-baseline.test.mjs",
+      "tests/elephant-legacy-regression.test.mjs",
+      "tests/elephant-localization.test.mjs",
+      "tests/elephant-locomotion.test.mjs",
+      "tests/elephant-migration-clock.test.mjs",
+      "tests/elephant-missions.test.mjs",
+      "tests/elephant-multispecies-save.test.mjs",
+      "tests/elephant-onboarding.test.mjs",
+      "tests/elephant-pond.test.mjs",
+      "tests/elephant-recovery.test.mjs",
+      "tests/elephant-residents.test.mjs",
+      "tests/elephant-rig.test.mjs",
+      "tests/elephant-runtime.test.mjs",
+      "tests/elephant-save-v2.test.mjs",
+      "tests/elephant-scene-anchor.test.mjs",
+      "tests/elephant-social-render.test.mjs",
+      "tests/elephant-social.test.mjs",
+      "tests/elephant-species.test.mjs",
+      "tests/elephant-visitors.test.mjs",
+      "tests/elephant-visual-settings.test.mjs",
+      "tests/elephant-welfare.test.mjs",
+      "tests/entry-preferences.test.mjs",
+      "tests/feeding.test.mjs",
+      "tests/giraffe-baseline.test.mjs",
+      "tests/giraffe-editing.test.mjs",
+      "tests/giraffe-expansion.test.mjs",
+      "tests/giraffe-facility-select.test.mjs",
+      "tests/giraffe-grazing-route.test.mjs",
+      "tests/giraffe-layout-plan.test.mjs",
+      "tests/giraffe-native-metrics.test.mjs",
+      "tests/giraffe-play.test.mjs",
+      "tests/giraffe-render.test.mjs",
+      "tests/giraffe-return.test.mjs",
+      "tests/giraffe-runtime-v4.test.mjs",
+      "tests/giraffe-save-v4.test.mjs",
+      "tests/giraffe-scene-anchor.test.mjs",
+      "tests/giraffe-shade-clearance.test.mjs",
+      "tests/giraffe-species.test.mjs",
+      "tests/giraffe-storage-v4.test.mjs",
+      "tests/giraffe-world-description.test.mjs",
+      "tests/gpu-timing-records.test.mjs",
+      "tests/habitat-construction.test.mjs",
+      "tests/hud-navigation.test.mjs",
+      "tests/lion-care-simulation.test.mjs",
+      "tests/lion-care-transactions.test.mjs",
+      "tests/lion-checkpoint-stress.test.mjs",
+      "tests/lion-editing.test.mjs",
+      "tests/lion-facility-select.test.mjs",
+      "tests/lion-foundation.test.mjs",
+      "tests/lion-ground-design.test.mjs",
+      "tests/lion-maintenance.test.mjs",
+      "tests/lion-missions.test.mjs",
+      "tests/lion-render.test.mjs",
+      "tests/lion-save-v3.test.mjs",
+      "tests/lion-soak-route.test.mjs",
+      "tests/lion-storage-v3.test.mjs",
+      "tests/lion-welfare.test.mjs",
+      "tests/lion-zero-cash.test.mjs",
+      "tests/localization.test.mjs",
+      "tests/macaw-model.test.mjs",
+      "tests/missions.test.mjs",
+      "tests/mixed-invariants.test.mjs",
+      "tests/onboarding.test.mjs",
+      "tests/path-connectivity.test.mjs",
+      "tests/pause-restart.test.mjs",
+      "tests/performance-baseline.test.mjs",
+      "tests/performance-reads.test.mjs",
+      "tests/placement-preview.test.mjs",
+      "tests/preview-lifecycle.test.mjs",
+      "tests/qa-workflow.test.mjs",
+      "tests/recovery.test.mjs",
+      "tests/resting.test.mjs",
+      "tests/sanctuary-lighting.test.mjs",
+      "tests/save-recovery.test.mjs",
+      "tests/scene-picking.test.mjs",
+      "tests/security-privacy.test.mjs",
+      "tests/simulation-atomic-events.test.mjs",
+      "tests/simulation-contract.test.mjs",
+      "tests/simulation-speed.test.mjs",
+      "tests/site-consent.test.mjs",
+      "tests/site-integration.test.mjs",
+      "tests/spending.test.mjs",
+      "tests/thriving-banner.test.mjs",
+      "tests/thriving-mission.test.mjs",
+      "tests/ticket-admission.test.mjs",
+      "tests/tropical-diorama.test.mjs",
+      "tests/visitor-arrivals.test.mjs",
+      "tests/visitor-mission.test.mjs",
+      "tests/visitor-navigation.test.mjs",
+      "tests/visitor-satisfaction.test.mjs",
+      "tests/visual-settings.test.mjs",
+      "tests/visual3d-isolation.test.mjs",
+      "tests/visual3d-lifecycle-controls.test.mjs",
+      "tests/visual3d-mesh-audit.test.mjs",
+      "tests/visual3d-phase-backend.test.mjs",
+      "tests/visual3d-phase-contract.test.mjs",
+      "tests/visual3d-registry.test.mjs",
+      "tests/visual3d-resource-observation.test.mjs",
+      "tests/visual3d-shared-lifecycle.test.mjs",
+      "tests/visual3d-snapshot-observer.test.mjs",
+      "tests/visual3d-spatial-scene.test.mjs",
+      "tests/visual3d-spatial-state.test.mjs",
+      "tests/visual3d-timeline-driver.test.mjs",
+      "tests/visual3d-timeline.test.mjs",
+      "tests/visual3d-viewer.test.mjs",
+      "tests/visual3d-world-fixture.test.mjs",
+      "tests/watering.test.mjs",
+      "tests/welfare.test.mjs",
+      "tests/world-editing.test.mjs",
+      "tests/zebra-access.test.mjs",
+      "tests/zebra-baseline.test.mjs",
+      "tests/zebra-camera.test.mjs",
+      "tests/zebra-capacity.test.mjs",
+      "tests/zebra-clock.test.mjs",
+      "tests/zebra-construction.test.mjs",
+      "tests/zebra-copy.test.mjs",
+      "tests/zebra-drinking.test.mjs",
+      "tests/zebra-economy.test.mjs",
+      "tests/zebra-grazing.test.mjs",
+      "tests/zebra-grooming.test.mjs",
+      "tests/zebra-herd-follow.test.mjs",
+      "tests/zebra-herd.test.mjs",
+      "tests/zebra-layout-design.test.mjs",
+      "tests/zebra-missions.test.mjs",
+      "tests/zebra-movement.test.mjs",
+      "tests/zebra-placement.test.mjs",
+      "tests/zebra-recovery.test.mjs",
+      "tests/zebra-render.test.mjs",
+      "tests/zebra-resources.test.mjs",
+      "tests/zebra-responsive.test.mjs",
+      "tests/zebra-rest-enrichment.test.mjs",
+      "tests/zebra-save-v5.test.mjs",
+      "tests/zebra-species.test.mjs",
+      "tests/zebra-storage-v5.test.mjs",
+      "tests/zebra-visitors.test.mjs",
+      "tests/zebra-visual-inventory.test.mjs",
+      "tests/zebra-visual-settings.test.mjs",
+      "tests/zebra-welfare.test.mjs"
+    ],
+    "node": "v24.12.0",
+    "platform": "win32",
+    "arch": "x64",
+    "startedAt": "2026-11-10T05:58:00.565Z",
+    "finishedAt": "2026-11-10T06:09:12.294Z",
+    "counts": {
+      "tests": 1021,
+      "suites": 0,
+      "pass": 1021,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "topLevelPlan": 1021,
+    "topLevelCompleted": 1021,
+    "fullOutput": true,
+    "process": {
+      "exitCode": 0,
+      "signal": null,
+      "childPid": 35648,
+      "overflow": false,
+      "timedOut": false,
+      "durationMs": 671729
+    },
+    "inputBefore": "b4af17819fe786a0b3e1dd3321344bdb62f35be65778c57474089cd7677aca83",
+    "inputAfter": "b4af17819fe786a0b3e1dd3321344bdb62f35be65778c57474089cd7677aca83",
+    "testDataBefore": [
+      {
+        "path": "docs/ASSET_MANIFEST.json",
+        "bytes": 69469,
+        "sha256": "8c1bb7da6fc2260941b0a0f198bce3ca3aa1b44573193c012821d458d0fba48d"
+      },
+      {
+        "path": "docs/qa/zebra/z0-03/inventory.json",
+        "bytes": 276803,
+        "sha256": "f189298767cb934a515f6ffc0054510bd0fba1daeec9156adfa8d3338dece93b"
+      },
+      {
+        "path": "docs/qa/zebra/hp6-04/image-provenance.json",
+        "bytes": 83945,
+        "sha256": "31e7d14caadcf4c3a96bd9ac13aaee0e479537e74df0c24e7522b871c912d711"
+      }
+    ],
+    "testDataAfter": [
+      {
+        "path": "docs/ASSET_MANIFEST.json",
+        "bytes": 69469,
+        "sha256": "8c1bb7da6fc2260941b0a0f198bce3ca3aa1b44573193c012821d458d0fba48d"
+      },
+      {
+        "path": "docs/qa/zebra/z0-03/inventory.json",
+        "bytes": 276803,
+        "sha256": "f189298767cb934a515f6ffc0054510bd0fba1daeec9156adfa8d3338dece93b"
+      },
+      {
+        "path": "docs/qa/zebra/hp6-04/image-provenance.json",
+        "bytes": 83945,
+        "sha256": "31e7d14caadcf4c3a96bd9ac13aaee0e479537e74df0c24e7522b871c912d711"
+      }
+    ],
+    "testDataUnchanged": true,
+    "inputUnchanged": true,
+    "receipts": [
+      {
+        "path": ".qa/zebra-audit/r7-01/r7-01-full3/start.json",
+        "bytes": 137798,
+        "sha256": "615159b77bb464f9abc122b955a3133162e17163f6e6cb1d16aa7379716e5c83"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/r7-01-full3/progress.json",
+        "bytes": 488,
+        "sha256": "2054097ec08fb3efc541395d321ff6d3fc57b4027e86eb06916bfba096c55a47"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/r7-01-full3/result.json",
+        "bytes": 240883,
+        "sha256": "55b788781cec58ef9fda0371600a561ee14aa461a993a4df978beeaca3c9887f"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/r7-01-full3/stdout.tap",
+        "bytes": 323046,
+        "sha256": "bee113cc7a90f2c7ccb743f93fd2df5fe11a5125b39e4f98bf8cfe4d05d746ad"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/r7-01-full3/stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/r7-01-full3/resources-closed.json",
+        "bytes": 253,
+        "sha256": "95aa025b521de8b08c01bf2d146ab3c880efcac6985e6c1a89f2e80bc14050e0"
+      }
+    ],
+    "versionedCompleteTap": {
+      "path": "docs/qa/zebra/r7-01/full3.stdout.tap.gz",
+      "bytes": 65185,
+      "sha256": "70a56ce20ec74ab5569754dc20786c79d3187be17e634c99b0b0ec1ce8b9dbc3"
+    }
+  },
+  "resolvedFailures": [
+    {
+      "previousFailure": 461,
+      "file": "tests/localization.test.mjs",
+      "passingCase": {
+        "number": 461,
+        "title": "every paired game panel dictionary has matching keys and placeholder contracts"
+      }
+    },
+    {
+      "previousFailure": 936,
+      "file": "tests/zebra-herd.test.mjs",
+      "passingCase": {
+        "number": 936,
+        "title": "all four move with rotating priority without actual body overlap or fence escape, and cold state continues deterministically without respawning"
+      }
+    },
+    {
+      "previousFailure": 1011,
+      "file": "tests/zebra-visual-inventory.test.mjs",
+      "passingCase": {
+        "number": 1012,
+        "title": "all production-reachable visual sources and nested geometry/part sites remain registered without needing QA build artifacts"
+      }
+    },
+    {
+      "previousFailure": 1019,
+      "file": "tests/zebra-welfare.test.mjs",
+      "passingCase": {
+        "number": 1020,
+        "title": "last-portion meal/drink and completed rest/groom/enrichment increase their causal components; optional enrichment is not required for real grooming"
+      }
+    }
+  ],
+  "newPairRegression": {
+    "number": 937,
+    "title": "simultaneous canonical pair sweep refuses the exact Kira retreat and Zaki turn whose clear endpoints hide a mid-frame overlap, and releases transient origins"
+  },
+  "selectedCoverage": {
+    "legacy": [
+      {
+        "file": {
+          "path": "tests/zebra-baseline.test.mjs",
+          "bytes": 1726,
+          "sha256": "dbdc278fffd543482354024642356b42f4de7835255871731c0cc9b8c9cc9586"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 869,
+            "title": "Zebra baseline freezes all original V1–V4 bytes, actors, world, mission, admission, ledger, clock and preference projections"
+          },
+          {
+            "number": 870,
+            "title": "baseline cold reads/pause are exact and canonical clock partitions retain all old species and financial proofs"
+          }
+        ]
+      },
+      {
+        "file": {
+          "path": "tests/elephant-legacy-regression.test.mjs",
+          "bytes": 4948,
+          "sha256": "5d146039959324b94148081b682a5103f6df84cf0ded9d62084dff5f8f5c2dc0"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 184,
+            "title": "actual Q01-Q04 first-run construction, care, admissions and original60ZCrewards stay exactly identical to V1 through two partial cold loads and1x10x"
+          },
+          {
+            "number": 185,
+            "title": "6000mixed-species ticks preserve every macaw FSM/position/need/counter and real original resource stock, one clock/RNG and claimed Qproof against a V1reference"
+          },
+          {
+            "number": 186,
+            "title": "old quests cannot be reactivated, reclaimed or replaced while real elephants and EHawards remain; paused/repeated claims never credit legacy cash"
+          },
+          {
+            "number": 187,
+            "title": "archived mixed finance retains original20/40receipts,1400grant,150/200EHcoins and typed awards in separate displays with bounded one-ticket proof after cold"
+          }
+        ]
+      },
+      {
+        "file": {
+          "path": "tests/giraffe-baseline.test.mjs",
+          "bytes": 3190,
+          "sha256": "c330fc1388f74485edfe164c2da4c80262aa7738a9c1f18bc3041c0030ca2bc3"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 340,
+            "title": "frozen synthetic V1/V2/V3 saves retain exact source hashes and distinct earned namespaces"
+          },
+          {
+            "number": 341,
+            "title": "all frozen versions cold-load without changes, pause adds no offline progress, and 1x/10x share authoritative outcomes"
+          },
+          {
+            "number": 342,
+            "title": "frozen V3 coordinate and scene-space identities cover every cell and previous movable entity"
+          }
+        ]
+      }
+    ],
+    "fiveSpeciesClock": [
+      {
+        "file": {
+          "path": "tests/zebra-clock.test.mjs",
+          "bytes": 11166,
+          "sha256": "7704c24ec4231cf114f64cd3ca827f728f80b643899d62c1af88156f8ba8ca40"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 881,
+            "title": "populated five-habitat V5:6000 accepted ticks match at1x/10x/fractional frames with30 cold reloads, pauses and real paid care"
+          },
+          {
+            "number": 882,
+            "title": "populated V5 frame timestamps, pause owners and speed changes never consume a background gap or award offline care"
+          },
+          {
+            "number": 883,
+            "title": "one real frame-loop owner: repeated V5 remounts reject stale queued callbacks and nested time without duplicate events"
+          },
+          {
+            "number": 884,
+            "title": "populated V5 actual backend restart/one-time restore keeps all animals/mission/ledger bytes, original V4 and stale-generation guard"
+          }
+        ]
+      }
+    ],
+    "strictV5": [
+      {
+        "file": {
+          "path": "tests/zebra-save-v5.test.mjs",
+          "bytes": 6821,
+          "sha256": "e7a9758b91dbc4bf403e2c7090a59d11ccc44a4d620495639f3363e637ea6e39"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 985,
+            "title": "every original V1-V4 checkpoint migrates through validated source with exact V4 projection, no cash/actors/paths/grant and owned clones"
+          },
+          {
+            "number": 986,
+            "title": "source corruption, future versions and unknown nested V5 content are refused without lossy normalization"
+          },
+          {
+            "number": 987,
+            "title": "validation-only populated data proves five habitats, fourteen separate actors and all five resource roles fit a strict bounded codec"
+          },
+          {
+            "number": 988,
+            "title": "Zebra identity, per-species FSM/resource targets, stocks, shape, population and movement cannot masquerade as legacy data"
+          },
+          {
+            "number": 989,
+            "title": "grooming requires a reciprocal legal pair and herd following refuses cycles, not an animation flag"
+          },
+          {
+            "number": 990,
+            "title": "grant and GQ04 proof survive actual financial compaction and cannot be duplicated, removed or retargeted"
+          },
+          {
+            "number": 991,
+            "title": "empty or cosmetic mission progress cannot invent ZQ rewards or viewer proof"
+          }
+        ]
+      },
+      {
+        "file": {
+          "path": "tests/zebra-storage-v5.test.mjs",
+          "bytes": 15578,
+          "sha256": "f347cf964be238b7ef6263f917715df448fbb1db9b4c541b074f74269e9aa96c"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 995,
+            "title": "IDB emulation: same single store version5 atomically retains exact original V4 envelope/payload and every historical backup"
+          },
+          {
+            "number": 996,
+            "title": "IDB emulation: every V1-V3 source is retained exactly, with explicitly labelled validated V4/V3 intermediates"
+          },
+          {
+            "number": 997,
+            "title": "IDB emulation: first-write quota and actual abort roll back V4 backup, previous and primary together"
+          },
+          {
+            "number": 998,
+            "title": "IDB emulation with native abort semantics: a second abort throws but cannot escape or replace the original fault"
+          },
+          {
+            "number": 999,
+            "title": "IDB emulation: held V4 connection blocks safely; active old backend closes on versionchange and cannot reopen/write over5"
+          },
+          {
+            "number": 1000,
+            "title": "IDB emulation: independent autosave candidates have one winner; loser stays unchanged with no grant or optimistic reward"
+          },
+          {
+            "number": 1001,
+            "title": "IDB emulation: generation CAS rejects stale writer even after reset returns revision1; reset/undo stayV5 and retain originalV4"
+          },
+          {
+            "number": 1002,
+            "title": "IDB emulation: pending second autosave drain is joined before candidate CAS; quota cannot adopt candidate in memory"
+          },
+          {
+            "number": 1003,
+            "title": "IDB emulation: missing/corrupt V4 or V3 provenance blocks read, writes, recovery and reset without reconstructing backups"
+          },
+          {
+            "number": 1004,
+            "title": "IDB emulation: future data, V4 downgrade payload and corrupt recovery preserve exact bytes and never use archival backup as primary"
+          },
+          {
+            "number": 1005,
+            "title": "IDB emulation: new game has labelled predecessors; cold Continue does not advance time, and V4 binary is barred"
+          }
+        ]
+      }
+    ],
+    "economy": [
+      {
+        "file": {
+          "path": "tests/zebra-economy.test.mjs",
+          "bytes": 19094,
+          "sha256": "98e97b15a3e439ae0d4479e316955a685b1542b9761fe8f823b80ad81a4c69a4"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 904,
+            "title": "existing trusted engine edit API and pure Zebra CAS candidates produce identical state/editor; invalid operation IDs and missing compacted command nonce cannot bypass either path"
+          },
+          {
+            "number": 905,
+            "title": "pure paid Zebra removal refunds only the original construction debit; exact CAS adoption/Undo preserves supplies, actors, old missions and world with no replay credit"
+          },
+          {
+            "number": 906,
+            "title": "eighty real remove/restore cycles cannot mint cash or stock; shared compaction retains exact purchase/refund/grant proofs and cold restore state"
+          },
+          {
+            "number": 907,
+            "title": "Undo after real grazing and engine recreation preserves current stocks/revisions at every other facility and does not rewind an animal or its route"
+          },
+          {
+            "number": 908,
+            "title": "using facilities, wrong species, stale commands, paused/disposed candidates and unsafe root/route restoration are refused without relocation or partial money changes"
+          },
+          {
+            "number": 909,
+            "title": "insufficient restore funds and malformed editor/refund lineage cannot restore a different structure or overdraw the shared wallet"
+          },
+          {
+            "number": 910,
+            "title": "five habitats incur the original10ZC upkeep per600 ticks, exactly once; unpaid arrears remain due without negative cash or load/offline charges"
+          },
+          {
+            "number": 911,
+            "title": "all five reachable habitats share one real gate receipt per visitor; paid rechecks, destination changes, cold1x10x and archive compaction never multiply tickets"
+          },
+          {
+            "number": 912,
+            "title": "IDB emulation: one racing refund candidate wins the actual V5 CAS; quota rolls back money/world/history and retry pays exactly once with exact originalV4 backup"
+          },
+          {
+            "number": 913,
+            "title": "new financial review/errors are readable in both languages and disclose stock loss and session-only Undo without implying a refill refund"
+          }
+        ]
+      },
+      {
+        "file": {
+          "path": "tests/mixed-invariants.test.mjs",
+          "bytes": 8938,
+          "sha256": "8db4ba33249aeffe52f8d5c95ed35c4f1f7a0c83ea4c6cb4503ac9838292fb8b"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 491,
+            "title": "seeded mixed public-command traces preserve independent money/topology oracles, exact events and codec replay across speed partitions and journal folds"
+          },
+          {
+            "number": 492,
+            "title": "isolated path edits preserve the exact active visitor route, position, progress and observation"
+          }
+        ]
+      }
+    ],
+    "missions": [
+      {
+        "file": {
+          "path": "tests/zebra-missions.test.mjs",
+          "bytes": 15544,
+          "sha256": "d5d06bd04e53b53cb0ab550c019597c45198bc172861e66ab14f775cdc26dcf6"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 942,
+            "title": "four ordered Zebra quests are earned by actual meals/drinks/groom/rest and three paid completed Zebra views; claims preserve all old reward proofs"
+          },
+          {
+            "number": 943,
+            "title": "continuous windows reset below exact thresholds; ordinary event evaluation cannot add ticks and claimed progress stays latched"
+          },
+          {
+            "number": 944,
+            "title": "read-only views and pure incomplete/stale/out-of-order quotes cannot fabricate rewards, unearned cash, clocks or source mutation"
+          },
+          {
+            "number": 945,
+            "title": "cold final state, pinned viewer receipts and historical connection survive compaction and real path removal/Undo without revoking earned achievements"
+          },
+          {
+            "number": 946,
+            "title": "cosmetic, unpaid, interrupted, other-habitat and partial-view feedback cannot count as Zebra viewers; duplicate true feedback counts once"
+          },
+          {
+            "number": 947,
+            "title": "IDB emulation: mission race has one CAS winner, quota leaves exact primary/backup and failed owner; retry and cold load award once"
+          },
+          {
+            "number": 948,
+            "title": "ID/EN quest copy has all four names, concrete requirements and honest storage status; namespaces and awards remain distinct"
+          },
+          {
+            "number": 949,
+            "title": "claimed connection proof is mandatory, bounded, orthogonal, outside the fence and exclusive to ZQ01; reward/claim IDs and amounts cannot be forged"
+          }
+        ]
+      }
+    ],
+    "visitors": [
+      {
+        "file": {
+          "path": "tests/zebra-visitors.test.mjs",
+          "bytes": 11996,
+          "sha256": "497f7758cc4bc163f304679260654d70939012e88fd09f56b1c889c6e056e0bc"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 1006,
+            "title": "ten real paid completed views fairly cycle twice over all five reachable occupied habitats, retain pinned routes, stay outside fences and preserve old mission/grant proofs"
+          },
+          {
+            "number": 1007,
+            "title": "five-habitat attraction weights each habitat equally rather than fourteen animals; empty/unreachable Zebra cannot divert or inflate the remaining four"
+          },
+          {
+            "number": 1008,
+            "title": "connecting Zebra with actual paid paths cannot retarget or rewind an existing old-species walk"
+          },
+          {
+            "number": 1009,
+            "title": "mid-Zebra walk/view and fairness survive strict cold1x10x and pinned-ticket financial compaction; pause cannot fabricate viewing, feedback or tickets"
+          },
+          {
+            "number": 1010,
+            "title": "loss of Zebra access interrupts the pinned paid visit without teleporting, resampling another habitat or issuing a second ticket; restoring the path does not rewrite feedback"
+          },
+          {
+            "number": 1011,
+            "title": "one exhaustive ID/EN habitat label serves attraction, destinations and immutable feedback; all four old names and unlabelled V1 feedback stay exact"
+          }
+        ]
+      }
+    ],
+    "legacyLionCheckpoint": [
+      {
+        "number": 419,
+        "title": "every actual tick remains checkpoint-valid across three occupied habitats, paid viewers and all lion phases; seed 1"
+      },
+      {
+        "number": 420,
+        "title": "every actual tick remains checkpoint-valid across three occupied habitats, paid viewers and all lion phases; seed 42"
+      },
+      {
+        "number": 421,
+        "title": "every actual tick remains checkpoint-valid across three occupied habitats, paid viewers and all lion phases; seed 12345"
+      }
+    ]
+  },
+  "sourceDiagnostics": {
+    "clock": {
+      "case": "zebra-six-thousand-clock-parity",
+      "ticks": 6000,
+      "simulatedMinutes": 10,
+      "reloads": 30,
+      "pauses": 30,
+      "actors": 14,
+      "habitats": 5,
+      "cash": 3737,
+      "eventDigest": "c6cc3f23262781c301fe39b70ad0ddfdd9ec678f135920fb9323f4cf8af61da7",
+      "normalizedStateDigest": "953d7ea5cda351a0e630015c22f133a878a38a47dee80c24d548f6e8adfeefe4",
+      "scope": "Source simulated time, not a native soak/performance or grant-budget test"
+    },
+    "herd": {
+      "stats": {
+        "ticks": 10000,
+        "followTicks": 957,
+        "trotTicks": 244,
+        "maximumFollowers": 2,
+        "minimumBodyGap": 0.5399999999999849,
+        "maximumRootStep": 0.07500000000000152
+      },
+      "trotEvents": 6,
+      "hash": "8edc6044a09f9f9077291aa68fcaa6c3ef03c9baf7db79ae6589263b9bac563a",
+      "actors": [
+        {
+          "id": "zebra-zaki",
+          "trots": 2
+        },
+        {
+          "id": "zebra-zuri",
+          "trots": 0
+        },
+        {
+          "id": "zebra-mira",
+          "trots": 2
+        },
+        {
+          "id": "zebra-kira",
+          "trots": 2
+        }
+      ]
+    },
+    "groom": {
+      "canonicalTicks": 9488,
+      "encounters": 5,
+      "minimumBodyGap": 0.5399999999999849,
+      "actors": [
+        {
+          "id": "zebra-zaki",
+          "groomings": 1,
+          "social": 35
+        },
+        {
+          "id": "zebra-zuri",
+          "groomings": 3,
+          "social": 60.12000000001095
+        },
+        {
+          "id": "zebra-mira",
+          "groomings": 2,
+          "social": 53.61000000000038
+        },
+        {
+          "id": "zebra-kira",
+          "groomings": 4,
+          "social": 95.12000000000363
+        }
+      ]
+    },
+    "welfare": {
+      "canonicalTicks": 1008,
+      "events": [
+        {
+          "type": "zebra-grazed",
+          "tick": 13662
+        },
+        {
+          "type": "zebra-grazed",
+          "tick": 13718
+        },
+        {
+          "type": "zebra-grazed",
+          "tick": 13728
+        },
+        {
+          "type": "zebra-drank",
+          "tick": 13892
+        },
+        {
+          "type": "zebra-grazed",
+          "tick": 13908
+        },
+        {
+          "type": "zebra-drank",
+          "tick": 13933
+        },
+        {
+          "type": "zebra-drank",
+          "tick": 14105
+        },
+        {
+          "type": "zebra-rested",
+          "tick": 14185
+        },
+        {
+          "type": "zebra-drank",
+          "tick": 14392
+        },
+        {
+          "type": "zebra-rested",
+          "tick": 14434
+        },
+        {
+          "type": "zebra-rested",
+          "tick": 14520
+        },
+        {
+          "type": "zebra-groomed",
+          "tick": 14588
+        }
+      ],
+      "welfare": [
+        {
+          "id": "zebra-zaki",
+          "nutrition": 76.85599999999938,
+          "hydration": 77.82400000000081,
+          "rest": 82.3824999999998,
+          "space": 92.89940828402366,
+          "social": 74.920000000002,
+          "enrichment": 0,
+          "welfare": 72,
+          "food": "ready",
+          "water": "ready",
+          "shade": "ready",
+          "enrichmentAccess": "missing",
+          "company": true
+        },
+        {
+          "id": "zebra-zuri",
+          "nutrition": 76.85599999999933,
+          "hydration": 77.82400000000155,
+          "rest": 29.81999999999937,
+          "space": 92.89940828402366,
+          "social": 39.920000000002005,
+          "enrichment": 0,
+          "welfare": 58,
+          "food": "ready",
+          "water": "ready",
+          "shade": "ready",
+          "enrichmentAccess": "missing",
+          "company": true
+        },
+        {
+          "id": "zebra-mira",
+          "nutrition": 76.85599999999931,
+          "hydration": 77.82400000000119,
+          "rest": 86.57000000000014,
+          "space": 92.89940828402366,
+          "social": 39.920000000002005,
+          "enrichment": 0,
+          "welfare": 69,
+          "food": "ready",
+          "water": "ready",
+          "shade": "ready",
+          "enrichmentAccess": "missing",
+          "company": true
+        },
+        {
+          "id": "zebra-kira",
+          "nutrition": 76.85599999999934,
+          "hydration": 77.82400000000088,
+          "rest": 85.49500000000005,
+          "space": 92.89940828402366,
+          "social": 74.920000000002,
+          "enrichment": 0,
+          "welfare": 73,
+          "food": "ready",
+          "water": "ready",
+          "shade": "ready",
+          "enrichmentAccess": "missing",
+          "company": true
+        }
+      ]
+    }
+  },
+  "focusedChecks": [
+    {
+      "receipt": {
+        "path": ".qa/zebra-audit/r7-01/focus1/result.json",
+        "bytes": 1174,
+        "sha256": "f468d4abc40b21f968b76ec0401328eacedb9a936b56333a3ce5126b53692256"
+      },
+      "counts": {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "inputUnchanged": true,
+      "process": {
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "overflow": false
+      }
+    },
+    {
+      "receipt": {
+        "path": ".qa/zebra-audit/r7-01/focus2/result.json",
+        "bytes": 1309,
+        "sha256": "1f81a2217746d05a9ad24a1b9e2be4bd4430d23a206eae83bfc4257393541568"
+      },
+      "counts": {
+        "tests": 38,
+        "pass": 38,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "inputUnchanged": true,
+      "process": {
+        "exitCode": 0,
+        "signal": null,
+        "timedOut": false,
+        "overflow": false
+      }
+    }
+  ],
+  "build": {
+    "receipt": {
+      "path": "docs/qa/zebra/r7-01/build-manifest.json",
+      "bytes": 17371,
+      "sha256": "68fa577a8f84e4c1c0bd78daec0edbc539f7b102532cbc0b7beca18de23f089f"
+    },
+    "pages": 10,
+    "files": 36,
+    "productionExclusion": {
+      "status": "PASS",
+      "markers": [
+        "myzootwin-visual3d-",
+        "Asset Lab internal",
+        "__VIS3D_SOURCE__",
+        "scripts/qa/visual3d",
+        "visual3d-frozen-v4",
+        "__qaVisual3dTag",
+        "QA-only constructor side-table",
+        "Step cosmetic Studio100ms",
+        "matrix-result"
+      ]
+    },
+    "checks": [
+      {
+        "kind": "types",
+        "args": [
+          "node_modules/typescript/lib/tsc.js",
+          "-p",
+          "tsconfig.json",
+          "--noEmit",
+          "--noUnusedLocals",
+          "--noUnusedParameters"
+        ],
+        "startedAt": "2026-11-10T05:56:28.964Z",
+        "finishedAt": "2026-11-10T05:56:43.540Z",
+        "status": "PASS",
+        "process": {
+          "exitCode": 0,
+          "signal": null,
+          "timedOut": false,
+          "overflow": false
+        },
+        "logs": [
+          {
+            "path": ".qa/zebra-audit/r7-01/checks2/types.stdout.log",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          },
+          {
+            "path": ".qa/zebra-audit/r7-01/checks2/types.stderr.log",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ]
+      },
+      {
+        "kind": "astro",
+        "args": [
+          "C:\\MyZooTwin\\node_modules\\astro\\bin\\astro.mjs",
+          "check"
+        ],
+        "startedAt": "2026-11-10T05:56:43.542Z",
+        "finishedAt": "2026-11-10T05:57:32.046Z",
+        "status": "PASS",
+        "process": {
+          "exitCode": 0,
+          "signal": null,
+          "timedOut": false,
+          "overflow": false
+        },
+        "logs": [
+          {
+            "path": ".qa/zebra-audit/r7-01/checks2/astro.stdout.log",
+            "bytes": 161,
+            "sha256": "e3ed2551c0b7fad75a6c5221af12ac2d6889b583e887b1a2002827a2a436c6c5"
+          },
+          {
+            "path": ".qa/zebra-audit/r7-01/checks2/astro.stderr.log",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ]
+      },
+      {
+        "kind": "build",
+        "args": [
+          "C:\\MyZooTwin\\node_modules\\astro\\bin\\astro.mjs",
+          "build",
+          "--outDir",
+          "C:\\MyZooTwin\\.qa\\zebra-audit\\r7-01\\checks2\\product"
+        ],
+        "startedAt": "2026-11-10T05:57:32.047Z",
+        "finishedAt": "2026-11-10T05:57:38.359Z",
+        "status": "PASS",
+        "process": {
+          "exitCode": 0,
+          "signal": null,
+          "timedOut": false,
+          "overflow": false
+        },
+        "logs": [
+          {
+            "path": ".qa/zebra-audit/r7-01/checks2/build.stdout.log",
+            "bytes": 1520,
+            "sha256": "1cad377524152ff53b051bcea9ce6cac1747078e1555b715e070841eba492ccd"
+          },
+          {
+            "path": ".qa/zebra-audit/r7-01/checks2/build.stderr.log",
+            "bytes": 0,
+            "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+          }
+        ]
+      }
+    ],
+    "scope": "Fresh sequential strict noEmit/noUnused, Astro check, production-only build and10-route title/canonical/H1 equality. Existing image/robots/sitemap bytes stay exact. Corrected body guard legitimately changes the game bundle; no byte-identical game-bundle or new browser/performance claim."
+  },
+  "legacy": {
+    "manifest": {
+      "path": "tests/fixtures/zebra-v1-v4-baseline.json",
+      "bytes": 41740,
+      "sha256": "42649aa9cf61661ade798128345cde0791d75644a244aa4a26286954d7f1468a"
+    },
+    "fixtures": 12,
+    "schemaVersions": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "projectionGroups": [
+      "world",
+      "animals",
+      "visitors",
+      "finance",
+      "missions",
+      "clock",
+      "preferences"
+    ],
+    "originalGoldenReceipts": [
+      {
+        "path": "tests/fixtures/elephant-legacy-v1.json",
+        "bytes": 141169,
+        "sha256": "82fd14ab17cdf3445cdd31aa9281aac5dba6d465879c9c4c5b83bec2ff4d9d77"
+      },
+      {
+        "path": "tests/fixtures/lion-v2-golden.json",
+        "bytes": 81147,
+        "sha256": "7232657bbc2e0a89c2255c50aa0fbacb9356d8e8332425a8f4f592dfa0335fae"
+      },
+      {
+        "path": "tests/fixtures/giraffe-v3-golden.json",
+        "bytes": 128852,
+        "sha256": "6dbb58106a495f1fddb115138b1c8b92524ed47cc9bcac21c60a3a760cede921"
+      },
+      {
+        "path": "tests/fixtures/giraffe-v4-golden.json",
+        "bytes": 209403,
+        "sha256": "5c186919ca88e6563204f5a993200410e96d8d2736aef27e62cf92287d09e145"
+      },
+      {
+        "path": "tests/fixtures/zebra-v1-v4-baseline.json",
+        "bytes": 41740,
+        "sha256": "42649aa9cf61661ade798128345cde0791d75644a244aa4a26286954d7f1468a"
+      }
+    ],
+    "unchangedSince": "4ae67ba",
+    "previousProjectionReceipt": {
+      "path": "docs/qa/zebra/r7-01/legacy-projections.json",
+      "bytes": 17065,
+      "sha256": "9c6bd639480ad75e1efe8a8e234bbb30d03d65c23f7d85937361a6666756d123"
+    }
+  },
+  "history": {
+    "full1Timeout": {
+      "path": "docs/qa/zebra/r7-01/partial-verification.json",
+      "bytes": 5572,
+      "sha256": "77ca66d22d73ae2e03d462812e4af21b2ce954606ddc0105ec823b3d4635db3e"
+    },
+    "full2Failure": {
+      "path": "docs/qa/zebra/r7-01/failure-verification.json",
+      "bytes": 29264,
+      "sha256": "b6821b3bfc85ce22af4f1aebd2854a88a4f1674e8c145f2cacbf46bf2b86cbd5"
+    },
+    "repair": {
+      "path": "docs/qa/zebra/r7-01/repair-verification.json",
+      "bytes": 14723,
+      "sha256": "df2661be2748867be5d545cd21b1809a22937e6f735d31c0f551a1bf929b2696"
+    },
+    "scope": "Historical failures remain preserved. Source-bound current complete PASS supersedes them for R7-01 only."
+  },
+  "resources": {
+    "at": "2026-11-10T06:09:38.3314989Z",
+    "method": "Read-only host query of full3 runner35372, child35648 and their direct Node workers after normal exit0",
+    "remaining": 0,
+    "nodes": [],
+    "browserOpened": false,
+    "serverOpened": false,
+    "activeOwnedBrowserServerBuildTestsRenderer": 0,
+    "fullRunSession": 3182,
+    "fullRunExit": 0,
+    "focusSessions": [
+      99914,
+      53137
+    ],
+    "checksSession": 80100,
+    "allSessionExit": 0,
+    "farm": "Slot available; coordinate before next heavy/browser/native matrix",
+    "stopDeadline": {
+      "utc": "2026-11-10T10:00:00.000Z",
+      "local": "17:00 WIB",
+      "scope": "Stop all coding/tests/build/browser/server by the deadline and await new instructions"
+    }
+  },
+  "openGates": [
+    "Z2-06 proposed1700ZC grant budget/exactly-once/publicV5 adoption; public bootstrap still V4. Historical fixture prerequisites are validation-only; this unit accepts no grant",
+    "Internal viewport/native mouse+keyboard and source touch-adapter tests; no physical-device/touch or presented FPS claim",
+    "1920 DOM bounds/native controls verified; native host raster cropped/scaled. Historical browser area clip shows HUD width; no full1920 raster claim. Full-page experimental capture changed layout/inner scroll and safely cancelled unpaid preview",
+    "R7 native10x render/control latency, true native background, full fifth-species matrix and15-minute active soak unresolved. Historical3346231 native1x191ticks/152callbacks/16.8ms dropped time is not a current-source benchmark",
+    "Original Library materialization BLOCKED_WINDOWS_XATTR; complete official text reads retained historically",
+    "R7-08 explicit Zebra push/deploy authorization absent; no publish",
+    "Physical multi-touch/native touch capture and full posed fifth-species/performance/background/soak matrix remain open R7 scope; no physical-device or FPS claim",
+    "Z5-04 native graph/signal and factory-injected failures accepted; physical speaker/device/system preference/native autoplay denial not claimed"
+  ],
+  "blockers": [
+    {
+      "id": "HP6-02_PLAYABILITY",
+      "reason": "PRD calls for five playable habitats. Current public bootstrap/grant gate Z2-06 is still open, and the candidate intentionally represents4 available-through-progression plus1 preview. Do not increment verified progress or claim public Zebra playability.",
+      "closeWhen": "Actual V5 bootstrap, grant budget/exactly-once and availability/release gates are proved. Update and retest copy/status against that enabled state."
+    },
+    {
+      "id": "R7-08",
+      "reason": "Separate explicit Zebra push/deploy authorization remains absent. Nothing was pushed or deployed."
+    }
+  ],
+  "noPushOrDeploy": true
+}
