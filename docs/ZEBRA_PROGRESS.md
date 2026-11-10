@@ -1,6 +1,6 @@
 # Execution checkpoint
 
-Current verified progress: **51/54 (94.44%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
+Current verified progress: **52/54 (96.30%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
 
 All four Library inputs were read completely: master PRD 335 lines, harness 128, checklist 200, handoff 42. Official Windows materialization failed at `os.setxattr` after the authorized retry. The destination is empty; no original source-file identity is claimed. This requested derived repository checklist uses the complete official reads. Original Library documents remain unchanged. See [input-access record](qa/zebra/z0-01/input-access.json).
 
@@ -104,7 +104,9 @@ Open gates: static registry records retain their default **NOT_RUN** labels; fea
 
 | R7-07 | 604f429 /9099ffe | [Maintenance and candidate gates](qa/zebra/r7-07/verification.json): separate V5-compatible readonly maintenance, no-version open/abort absent DB, strict backup/future guards, no writer/engine/renderer;54 actual bundle modules. Normal37 files exact R7-06; separate38-file fallback changes only/play HTML plus one104665B script.24 native receipts across6 UUID variants, exact whole-store/row/version cold/retry/language, ID/EN/3 CSS profiles/44px controls, real standalone empty-origin page and clean console.5 maintenance tests/8 targeted correction tests/types/Astro626 clean; fresh full1046/1046 across167 files,0fail/skip/cancel/todo, original1045/1046 stale-inventory red retained then tightly bound to immutable R7-06 provenance/license audit. Only2 reviewed test/fixture inputs differ from original native/build source; every runtime/public/package/config/scripts byte exact, no evidence relabelling. [Fix-forward plan](ZEBRA_V5_RELEASE_PLAN.md) prohibits V4 binary rollback and documents existing-tab/CDN limits. Current main634de84/existing Pages de1f5a36/four-live-habitat HTTP facts verified read-only. 379935 compressed proof bytes plus5 screenshots, all own resources closed, no push/deploy. |
 
-Next: **Z2-06 actual grant/budget/exactly-once and public V5 adoption**, then HP6-02 truthful five-playable acceptance and R7-08 authorized release/live verification. [R7-07 accepted review](qa/zebra/r7-07/review.md),51/54. All owned test/build/browser/server resources closed; user/Farm/default/carried saves and previews untouched. Runtime public entry remains V4; existing QA prerequisites do not prove the proposed1700ZC grant. Presented FPS/physical/unsupported-browser limits remain disclosed. Explicit Zebra push/deploy permission absent; NOT DEPLOYED.
+| Z2-06 | c2d179d /cce38e3 /4157e2b | [Actual grant and V5 adoption](qa/zebra/z2-06/review.md): strict GQ04 proof/compaction, explicit once-only1700 ZC durable CAS/adopt, quota/retry/reset/overflow/paused/disposed guards, original old projections/backups. Local public entry now V5; fresh actual unmodified entry on owned loopback origin starts1500/no grant. Essential6000-tick source budget costs1151/reserve549 without old money/tickets/later rewards; transient minimum welfare44 disclosed.45 native observations: actual grant/build700/four paid paths/four welcomes/care/earned ZQ02, cold canonical state exact, readonly maintenance hash-exact, fresh/earned/quota cases, ID/EN/3 CSS profiles. Native wrong300 price red retained and canonical700 fix/debit verified. Fresh full1055/1055 across169 files,19 final grant/copy/localization tests,types/Astro633 clean,37-file QA-excluded product. Current normal+38-file fallback reassembly binds53 byte-identical actual reader modules; not relabelled compilation.359 portable evidence assertions,231090 compressed bytes+4 screenshots. All recorded own PID/ports closed; one own failed-navigation tab left ephemeral under browser URL-policy cleanup. No push/deploy/user/Farm save or preview changes. |
+
+Next: **HP6-02 truthful five-playable homepage acceptance**, retaining preview labels until an authorized game release, then **R7-08 exact-candidate push/deploy and live verification**. Local five-habitat paid play is proven in [Z2-06](qa/zebra/z2-06/verification.json),52/54; production remains the separate historical V4/four-habitat release. All game/inspector tabs and own server/test processes closed; user/Farm saves/previews untouched. Presented FPS/physical/unsupported-browser limits remain disclosed. Explicit Zebra push/deploy permission absent; NOT DEPLOYED.
 
 ---
 
@@ -178,7 +180,7 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
 - [x] **Z2-05** — Upgrade database version 5 di store yang sama; atomic V4 backup, generation/revision CAS, old-client barrier, abort/quota/multi-tab tests.
   - **DoD:** Losing tab no reward and no mutation; never downgrade, delete, overwrite V5 with V4 or other backup.
   - **Proof:** `docs/qa/zebra/z2-05/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
-- [ ] **Z2-06** — Unlock setelah GQ04 claimed dengan proof; explicit once-only 1,700 ZC proposed starter grant and safe recovery, price fixture before lock.
+- [x] **Z2-06** - Unlock setelah GQ04 claimed dengan proof; explicit once-only 1,700 ZC proposed starter grant and safe recovery, price fixture before lock.
   - **DoD:** Proof survives compaction/cold; grant cannot double-claim; budgeting leaves >=150 ZC after viable essential setup.
   - **Proof:** `docs/qa/zebra/z2-06/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 - [x] **Z2-07** - Bangun paid visitor path ke viewing spot, visitor topology, cold Continue/camera fit/reset/Undo/regression in shared world.
@@ -300,13 +302,13 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
 
 ## Release closeout status
 
-- Implementation/build source604f429; final regression9099ffe (only reviewed test/fixture delta). Exact manifests and current remote main634de84 / existing Cloudflare deployment de1f5a36: [R7-07](qa/zebra/r7-07/verification.json). No Zebra deployment ID exists.
-- V1–V4 frozen save projections: **PASS**, original fixtures and geometry/media guards retained; full1046/1046 regression at9099ffe.
-- Strict V5 migration / IndexedDB CAS / old-client barrier / original backup: **PASS at isolated R7-03/07 scope**; actual grant and public adoption remain **OPEN Z2-06**.
+- Current runtime/build/full regression source4157e2b and exact source-bound manifests: [Z2-06](qa/zebra/z2-06/verification.json). R7-07 source604f429/regression9099ffe remains historical; readonly reader53 source modules/dependencies byte-identical in current fallback reassembly. Last read-only remote main634de84 / existing Cloudflare deployment de1f5a36 remains separate. No Zebra deployment ID exists.
+- V1-V4 frozen save projections: **PASS**, original fixtures and geometry/media guards retained; fresh full1055/1055 regression at4157e2b.
+- Strict V5 migration / IndexedDB CAS / old-client barrier / original backup: **PASS at isolated R7-03/07 and Z2-06 scopes**. Actual once-only1700 grant, viable budget and local original public entry V5 adoption **PASS Z2-06**; production activation still held.
 - Universal Asset Lab construction inventory and representative native5-species/Full Zoo/camera matrix: **PASS at R7-02 recorded scope**; inventory is not a Cartesian visual or every-animation-instant proof.
 - Actual internal-browser desktop/portrait/landscape ID+EN: **PASS R7-05 supported-host scope**; physical and unsupported browser engines untested.
 - Native15-minute active1x soak / deterministic10x stress / repeated disposal: **PASS at R7-04 recorded scope**; heap estimates and callback CPU/intervals are bounded proxies, not retained-leak or GPU timing proof.
 - Actual presented FPS: **UNMEASURED**; no callback-Hz or render-submit substitution.
 - Homepage preview cards/promo/media/metadata/hreflang/routes: **PASS at HP6-03..06/R7-05 scope**; five actually playable live claim **OPEN HP6-02**.
-- V5-compatible no-write maintenance and fix-forward preparation: **PASS R7-07**; no historical V4 binary rollback after V5 adoption.
+- V5-compatible no-write maintenance and fix-forward preparation: **PASS R7-07**, current normal/fallback reassembly parity and post-grant native no-write probes **PASS Z2-06**; no historical V4 binary rollback after V5 adoption.
 - Production Zebra publish/live smoke: **HELD R7-08**, separate explicit release authorization absent. Historical homepage deployment authorization does not cover Zebra.

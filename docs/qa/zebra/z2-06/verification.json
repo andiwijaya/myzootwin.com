@@ -1,0 +1,68 @@
+{
+  "at": "2026-11-10T20:47:06.341Z",
+  "source": "4157e2b19bd94a30716faccd69d20f349c4e9bee",
+  "input": "5a681f90e534a13ae2930ac321cb459cd197288553d21315009eed0d0da71508",
+  "status": "PASS_Z2_06_LOCAL",
+  "verified": 52,
+  "total": 54,
+  "nativeObservations": 45,
+  "normalBuild": "24377fb9f68059626434edc10fe5c8c018efef541e6adddc47c620d486f03694",
+  "maintenanceBuild": "70b3a4d40edda88b48f80616bad801e753c83836b23cb7aba472869cf22c51c8",
+  "fullTests": {
+    "tests": 1055,
+    "suites": 0,
+    "pass": 1055,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "normalFiles": 37,
+  "maintenanceFiles": 38,
+  "budget": {
+    "scope": "Deterministic source commands, emulated successful adoption; not native wall-time/physical-device/FPS or storage acceptance",
+    "ticks": 6000,
+    "grant": 1700,
+    "costs": 1151,
+    "reserve": 549,
+    "refills": 4,
+    "minWelfare": 44
+  },
+  "screenshots": [
+    {
+      "file": "five-habitats-desktop-id.png",
+      "bytes": 94964,
+      "sha256": "3d45042d8fb9ac0e2e7ddd514977642d09d8d58ea0bae82ce5c12414377d593b"
+    },
+    {
+      "file": "five-habitats-portrait-en.png",
+      "bytes": 40901,
+      "sha256": "b1d54c952ae7561fddbcc033a91bded3403f342e78721b3398a3e959b77daf67"
+    },
+    {
+      "file": "grant-retry-portrait-id.png",
+      "bytes": 38617,
+      "sha256": "14828a143469a4df479f732bf8484863f6a10631b1c4124d8b54b5c4faf437ef"
+    },
+    {
+      "file": "default-entry.png",
+      "bytes": 76338,
+      "sha256": "11e7e36bd77b1c728329df1de262cbf6f12fe884cc466416bb98c7b79b0cb2b0"
+    }
+  ],
+  "compressedBytes": 231090,
+  "noPushOrDeploy": true,
+  "openGates": [
+    "HP6-02 five-playable homepage acceptance (preview labels retained until authorized game release)",
+    "R7-08 explicit Zebra publication authorization and resulting live acceptance"
+  ],
+  "limits": [
+    "Native UI uses actual product renderer/engine and isolated source backend namespace; QA callback timestamps are explicit deterministic stepping, not native wall-time or presented FPS.",
+    "Grant CAS concurrency/reset/preclaim compaction use original-source tests with emulated IndexedDB; existing native R7-03 two-tab race remains separately scoped. No new native two-tab grant race is claimed.",
+    "Cold menu and maintenance preserve entire store. Continue refreshes normal autosave envelope metadata; canonical gameplay state, receipts, positions and backups remain exact.",
+    "Essential budget closes visitors and claims no later rewards: no old money, ticket or reward subsidy. Minimum welfare44 transient; final all>=60; not a claim of continuous70+ welfare.",
+    "One initial own smoke navigation failed due sandbox loopback reachability; a host loopback server passed. Its ephemeral error tab cannot be rebound under data-URL policy and auto-closes at turn end. No user tab/process was touched.",
+    "Maintenance candidate explicitly reassembled from current normal build and byte-identical prior reader graph, not claimed newly compiled.",
+    "Game chunk size warning remains; homepage still excludes game engine. Physical devices, unsupported browser engines and presented FPS unmeasured."
+  ]
+}
