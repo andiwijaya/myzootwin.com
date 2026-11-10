@@ -12,6 +12,9 @@ const retainedReasons={
  'src/game/persistence/giraffe-maintenance.ts':'Prior V4 no-write maintenance artifact source, retained for recovery/release regression.',
  'src/game/persistence/lion-maintenance.ts':'Prior V3 no-write maintenance artifact source, retained for recovery/release regression.',
  'src/game/persistence/zebra-backend.ts':'Explicit V5 QA/test adapter; public adoption remains gated by Z2-06, not dead/deletable code.',
+ 'src/game/persistence/zebra-maintenance.ts':'V5-compatible standalone no-write maintenance artifact; not part of the normal browser game.',
+ 'src/maintenance/zebra-page.ts':'Standalone bilingual no-write maintenance UI; compiled separately, not normal Astro route code.',
+ 'src/maintenance/zebra-entry.ts':'Standalone no-write maintenance release entry, never imported by the normal game.',
  'src/game/render3d/scene-selection.ts':'Shared TypeScript selection type contracts, erased from emitted runtime.',
  'src/home-habitats.ts':'Astro build-time homepage content import, not a browser executable module.',
  'src/site-content.ts':'Astro build-time shared-site content import, not a browser executable module.'};
