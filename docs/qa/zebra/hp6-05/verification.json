@@ -1,0 +1,2464 @@
+{
+  "status": "PASS_HP6_05",
+  "at": "2026-11-10T02:49:22.696Z",
+  "verified": 43,
+  "total": 54,
+  "source": "9dbbda54166e629c70747318b0920d0b1e7e75b3",
+  "sourceFingerprint": "9fd20abe27e8ab6e88629a2e35d2a40feb364a98ce5ed1969f0afd7d4988ad47",
+  "scope": "One SSR home component changes title/description/H1, two truthful FAQ answers and an existing-section internal link ID/EN. Correct inherited canonical/hreflang/social/VideoGame/robots/sitemap retained and verified. No game/engine/save/mission/ledger/assets/config/dependency change.",
+  "checks": {
+    "types": "PASS strict noEmit/noUnused",
+    "astro": "PASS597 files,0 diagnostics",
+    "build": "PASS10 pages and production QA exclusion; existing large-chunk advisory only",
+    "logs": [
+      {
+        "path": ".qa/zebra-audit/hp6-05-types.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-05-check.log",
+        "bytes": 168,
+        "sha256": "30a7d80ff8854280f9cf1cf719e3f299367213e95cb9252869663d2d665ad2af"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-05-build.log",
+        "bytes": 2575,
+        "sha256": "ecc2862c293a86c913d520b91df5109f9b34179dbd150e7c8de0551e7ca091f9"
+      }
+    ],
+    "unitTests": "No new unit tests for SSR copy. Exact game/asset/output invariance, route/metadata graph and native FAQ/navigation are the relevant regression."
+  },
+  "live": {
+    "receipt": {
+      "path": "docs/qa/zebra/hp6-05/live-state.json",
+      "bytes": 1554,
+      "sha256": "9d5bd24684bbd18ef872427b0adc01ce16f37516810e140ff6db9353848050e9"
+    },
+    "scope": "Fresh read-only public HTML/robots; homepage availability claims only, not backend migration or deployment identity proof.",
+    "at": "2026-11-10T02:36:08.933Z",
+    "publicState": "Fresh four-habitat ID/EN HTML; no public Zebra claim. No new deployment identity/backend migration certification.",
+    "network": "Initial sandbox DNS ENOTFOUND; successful authorized read-only network run. No writes to production."
+  },
+  "build": {
+    "receipt": {
+      "path": ".qa/visual3d/h1-03-zebra-homeseo1/source.json",
+      "bytes": 111538,
+      "sha256": "bcccbf96df55b29127e0fcb32116aca04995ee805d8112b2b92c2a4fb9790824"
+    },
+    "lab": "58ac5e3b628030712ad7a9c8549a313856aef1f882e0df434fe109a6be2e1005",
+    "product": "f646d90baae068ea4d1850ddba5a3e6dea9b378c384f0a1e665da95a35ac333a",
+    "unchanged": [
+      {
+        "path": "_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js",
+        "sha256": "b4f4f51eb078143844adf51707e8d801b4f340bd9f8444254d7fedad90794f02"
+      },
+      {
+        "path": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.CIODW4z_.js",
+        "sha256": "0fc9a7c5f6ea20f521e9059c18d03cb4256b04be9cb0e25429e4b059daa4d6c9"
+      },
+      {
+        "path": "_astro/dialog-focus.CS_awhan.js",
+        "sha256": "1c49e5f75581f00265e803464e1caea211865f20cc06223682b8336e763d2d64"
+      },
+      {
+        "path": "_astro/foundation-scene.GhcJ0N1N.js",
+        "sha256": "3d6e9c916ccb7bc5b05419f3224fc9481d1862ce059903f78b4e1464ad5fe366"
+      },
+      {
+        "path": "about/index.html",
+        "sha256": "75f4bd4381f5523531a89f236a3005b9f8ad81607537c200ff46f8f77115e32c"
+      },
+      {
+        "path": "adventures/index.html",
+        "sha256": "fd4e1b4c363a0843dfdc6b2ba1645bec44fe0b7a748dd2a4b939c0a716136d8f"
+      },
+      {
+        "path": "animals/index.html",
+        "sha256": "e76a453010c7885d081ebbe60c800ced1d5ad326707830a2453c17b0d03f4e42"
+      },
+      {
+        "path": "gear/index.html",
+        "sha256": "8b435fd4e647b9e5f0a683c206d8b37cf562cc0c080ddcf0f892198ea3e3a0ec"
+      },
+      {
+        "path": "images/home/giraffes-480.webp",
+        "sha256": "1c2eee2a30808155f7277c14dffeda17e20c6a3899aa2fe4310d6e66e4a60060"
+      },
+      {
+        "path": "images/home/giraffes-800.webp",
+        "sha256": "d0bdf2b3196f3b769bc4b4e0e977249d2ed86ea64fa2f3f2bf560ed4bd9fa1b7"
+      },
+      {
+        "path": "images/home/v5-zebra-440.webp",
+        "sha256": "9e1f77add5ec0462d9aebd82a10daf898d027aabdadb61387e0ae22d2fc9376d"
+      },
+      {
+        "path": "images/home/v5-zebra-660.webp",
+        "sha256": "ec2599c98994e59e7d36abbc3b7142f2bf6f159f1b7bdd6e3119fd69adeecf21"
+      },
+      {
+        "path": "images/home/v5-zoo-480.webp",
+        "sha256": "1e47118c613aa474f517bfda8ce30a8be6459444ba53571b3aae810e0217b6f7"
+      },
+      {
+        "path": "images/home/v5-zoo-770.webp",
+        "sha256": "7e9a2db2cc9df38890bebdbf63374d1ebb8e4ef00f6d6e2177146785e32613a3"
+      },
+      {
+        "path": "images/home/v5-zoo-social.jpg",
+        "sha256": "d59a9a5dc6d2f1b85f3bfac09f5d26448fadd5b63344cc4332d468bc6d2df927"
+      },
+      {
+        "path": "images/home/zoo-640.webp",
+        "sha256": "6809ac121c8a10f63b07c53c21357fd0d65b3255b76ce13fecdecbb9e6c27a07"
+      },
+      {
+        "path": "images/home/zoo-960.webp",
+        "sha256": "93ea04c81e7658ab73e92cd13302ceb4575585729d7dc120f3a83ed85c8b5e5b"
+      },
+      {
+        "path": "images/home/zoo-social.jpg",
+        "sha256": "7cb245af00cb0301dfd032ee1e886a4df1b55f64bfa20fdca9e716ea294968ad"
+      },
+      {
+        "path": "images/myzootwin-beranda.png",
+        "sha256": "194a2cb5178f255ebf0289aabac75135fc65a8f716f26c01dcfeaebe00960169"
+      },
+      {
+        "path": "images/tropical-creek-game.jpg",
+        "sha256": "6edf52437618a80b94911b846cb2722257739be87c4f96c793f1e808d848e880"
+      },
+      {
+        "path": "images/tropical-creek-journal.svg",
+        "sha256": "cf2f03404f8d72367c385fbbdfaabb0bd21ae0a262804525c20e027a34ea94cc"
+      },
+      {
+        "path": "learn/index.html",
+        "sha256": "5faff54683eb2382df7b9a47c68a64527b8ca94d8215c60af71bd92b5e039722"
+      },
+      {
+        "path": "pets/index.html",
+        "sha256": "c96393aa9267095c4f9d6d22437c0483e906ba646d92497d9777ecece2dcde12"
+      },
+      {
+        "path": "play/index.html",
+        "sha256": "eaaeec56f3a0c829999b1117ad1a7e5212e0df6ae20147ec049a5e9a9859bbbb"
+      },
+      {
+        "path": "robots.txt",
+        "sha256": "91803eeb5a8dbbbae903fce53e66d6f5856f8e0894e7d7d21465c532381dd147"
+      },
+      {
+        "path": "sitemap-0.xml",
+        "sha256": "dbbec59a45a2b89f869b2a277fce46020f49e16649d635a48c479b9868b3c0bf"
+      },
+      {
+        "path": "sitemap-index.xml",
+        "sha256": "f956f18339cf090382bb71b5dadff01ca95c9bd0958046cef03c002851a7b550"
+      },
+      {
+        "path": "wildlife/index.html",
+        "sha256": "4b7db5f1a1160a8d5322f2a630e8d68e338970e896afa3a52d69255f4f7cbb43"
+      }
+    ]
+  },
+  "seo": {
+    "routes": [
+      {
+        "route": "/about/",
+        "lang": "en",
+        "title": "About MyZooTwin — A curious animal learning journal",
+        "canonical": "https://myzootwin.com/about/",
+        "h1": [
+          "A little more curiosity, every day."
+        ]
+      },
+      {
+        "route": "/adventures/",
+        "lang": "en",
+        "title": "Field notes & adventures — MyZooTwin",
+        "canonical": "https://myzootwin.com/adventures/",
+        "h1": [
+          "Field notes & adventures"
+        ]
+      },
+      {
+        "route": "/animals/",
+        "lang": "en",
+        "title": "Animals — MyZooTwin",
+        "canonical": "https://myzootwin.com/animals/",
+        "h1": [
+          "Meet the neighborhood."
+        ]
+      },
+      {
+        "route": "/en/",
+        "lang": "en",
+        "title": "MyZooTwin — 3D Zoo Game & Zebra Preview",
+        "canonical": "https://myzootwin.com/en/",
+        "h1": [
+          "Build your 3D zoo. Care for every resident."
+        ]
+      },
+      {
+        "route": "/gear/",
+        "lang": "en",
+        "title": "Gear & field notes — MyZooTwin",
+        "canonical": "https://myzootwin.com/gear/",
+        "h1": [
+          "Gear & field notes"
+        ]
+      },
+      {
+        "route": "/",
+        "lang": "id",
+        "title": "MyZooTwin — Game Zoo 3D & Pratinjau Zebra",
+        "canonical": "https://myzootwin.com/",
+        "h1": [
+          "Bangun zoo 3D kamu. Rawat setiap penghuni."
+        ]
+      },
+      {
+        "route": "/learn/",
+        "lang": "en",
+        "title": "Learn something wild — MyZooTwin",
+        "canonical": "https://myzootwin.com/learn/",
+        "h1": [
+          "Learn something wild"
+        ]
+      },
+      {
+        "route": "/pets/",
+        "lang": "en",
+        "title": "Life with pets — MyZooTwin",
+        "canonical": "https://myzootwin.com/pets/",
+        "h1": [
+          "Life with pets"
+        ]
+      },
+      {
+        "route": "/play/",
+        "lang": "id",
+        "title": "Main Zoo — Tropical Creek | MyZooTwin",
+        "canonical": "https://myzootwin.com/play/",
+        "h1": [
+          "Dunia kecil untuk dirawat."
+        ]
+      },
+      {
+        "route": "/wildlife/",
+        "lang": "en",
+        "title": "Into the wild — MyZooTwin",
+        "canonical": "https://myzootwin.com/wildlife/",
+        "h1": [
+          "Into the wild"
+        ]
+      }
+    ],
+    "sitemap": [
+      "https://myzootwin.com/",
+      "https://myzootwin.com/about/",
+      "https://myzootwin.com/adventures/",
+      "https://myzootwin.com/animals/",
+      "https://myzootwin.com/en/",
+      "https://myzootwin.com/gear/",
+      "https://myzootwin.com/learn/",
+      "https://myzootwin.com/pets/",
+      "https://myzootwin.com/play/",
+      "https://myzootwin.com/wildlife/"
+    ],
+    "robots": "PASS allow root and absolute production sitemap",
+    "internalLinks": {
+      "count": 174,
+      "broken": 0,
+      "edges": [
+        {
+          "from": "/about/",
+          "href": "#main-content",
+          "to": "/about/",
+          "fragment": "#main-content"
+        },
+        {
+          "from": "/about/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/about/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/about/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/about/",
+          "href": "/wildlife/",
+          "to": "/wildlife/",
+          "fragment": ""
+        },
+        {
+          "from": "/about/",
+          "href": "/pets/",
+          "to": "/pets/",
+          "fragment": ""
+        },
+        {
+          "from": "/about/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/about/",
+          "href": "/adventures/",
+          "to": "/adventures/",
+          "fragment": ""
+        },
+        {
+          "from": "/about/",
+          "href": "/gear/",
+          "to": "/gear/",
+          "fragment": ""
+        },
+        {
+          "from": "/about/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/about/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/about/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/about/",
+          "href": "/wildlife/",
+          "to": "/wildlife/",
+          "fragment": ""
+        },
+        {
+          "from": "/about/",
+          "href": "/pets/",
+          "to": "/pets/",
+          "fragment": ""
+        },
+        {
+          "from": "/about/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/about/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/adventures/",
+          "href": "#main-content",
+          "to": "/adventures/",
+          "fragment": "#main-content"
+        },
+        {
+          "from": "/adventures/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/adventures/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/adventures/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/adventures/",
+          "href": "/wildlife/",
+          "to": "/wildlife/",
+          "fragment": ""
+        },
+        {
+          "from": "/adventures/",
+          "href": "/pets/",
+          "to": "/pets/",
+          "fragment": ""
+        },
+        {
+          "from": "/adventures/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/adventures/",
+          "href": "/adventures/",
+          "to": "/adventures/",
+          "fragment": ""
+        },
+        {
+          "from": "/adventures/",
+          "href": "/gear/",
+          "to": "/gear/",
+          "fragment": ""
+        },
+        {
+          "from": "/adventures/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/adventures/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/adventures/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/adventures/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/adventures/",
+          "href": "/wildlife/",
+          "to": "/wildlife/",
+          "fragment": ""
+        },
+        {
+          "from": "/adventures/",
+          "href": "/pets/",
+          "to": "/pets/",
+          "fragment": ""
+        },
+        {
+          "from": "/adventures/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/adventures/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/animals/",
+          "href": "#main-content",
+          "to": "/animals/",
+          "fragment": "#main-content"
+        },
+        {
+          "from": "/animals/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/animals/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/animals/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/animals/",
+          "href": "/wildlife/",
+          "to": "/wildlife/",
+          "fragment": ""
+        },
+        {
+          "from": "/animals/",
+          "href": "/pets/",
+          "to": "/pets/",
+          "fragment": ""
+        },
+        {
+          "from": "/animals/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/animals/",
+          "href": "/adventures/",
+          "to": "/adventures/",
+          "fragment": ""
+        },
+        {
+          "from": "/animals/",
+          "href": "/gear/",
+          "to": "/gear/",
+          "fragment": ""
+        },
+        {
+          "from": "/animals/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/animals/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/animals/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/animals/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/animals/",
+          "href": "/wildlife/",
+          "to": "/wildlife/",
+          "fragment": ""
+        },
+        {
+          "from": "/animals/",
+          "href": "/pets/",
+          "to": "/pets/",
+          "fragment": ""
+        },
+        {
+          "from": "/animals/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/animals/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/en/",
+          "href": "#main-content",
+          "to": "/en/",
+          "fragment": "#main-content"
+        },
+        {
+          "from": "/en/",
+          "href": "/en/",
+          "to": "/en/",
+          "fragment": ""
+        },
+        {
+          "from": "/en/",
+          "href": "/en/",
+          "to": "/en/",
+          "fragment": ""
+        },
+        {
+          "from": "/en/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/en/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/en/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/en/",
+          "href": "#habitats",
+          "to": "/en/",
+          "fragment": "#habitats"
+        },
+        {
+          "from": "/en/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/en/",
+          "href": "#habitats",
+          "to": "/en/",
+          "fragment": "#habitats"
+        },
+        {
+          "from": "/en/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/en/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/en/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/en/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/en/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/en/",
+          "href": "#zebra-preview-title",
+          "to": "/en/",
+          "fragment": "#zebra-preview-title"
+        },
+        {
+          "from": "/en/",
+          "href": "/en/",
+          "to": "/en/",
+          "fragment": ""
+        },
+        {
+          "from": "/en/",
+          "href": "/en/",
+          "to": "/en/",
+          "fragment": ""
+        },
+        {
+          "from": "/en/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/gear/",
+          "href": "#main-content",
+          "to": "/gear/",
+          "fragment": "#main-content"
+        },
+        {
+          "from": "/gear/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/gear/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/gear/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/gear/",
+          "href": "/wildlife/",
+          "to": "/wildlife/",
+          "fragment": ""
+        },
+        {
+          "from": "/gear/",
+          "href": "/pets/",
+          "to": "/pets/",
+          "fragment": ""
+        },
+        {
+          "from": "/gear/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/gear/",
+          "href": "/adventures/",
+          "to": "/adventures/",
+          "fragment": ""
+        },
+        {
+          "from": "/gear/",
+          "href": "/gear/",
+          "to": "/gear/",
+          "fragment": ""
+        },
+        {
+          "from": "/gear/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/gear/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/gear/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/gear/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/gear/",
+          "href": "/wildlife/",
+          "to": "/wildlife/",
+          "fragment": ""
+        },
+        {
+          "from": "/gear/",
+          "href": "/pets/",
+          "to": "/pets/",
+          "fragment": ""
+        },
+        {
+          "from": "/gear/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/gear/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/",
+          "href": "#main-content",
+          "to": "/",
+          "fragment": "#main-content"
+        },
+        {
+          "from": "/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/",
+          "href": "/en/",
+          "to": "/en/",
+          "fragment": ""
+        },
+        {
+          "from": "/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/",
+          "href": "#habitats",
+          "to": "/",
+          "fragment": "#habitats"
+        },
+        {
+          "from": "/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/",
+          "href": "#habitats",
+          "to": "/",
+          "fragment": "#habitats"
+        },
+        {
+          "from": "/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/",
+          "href": "#zebra-preview-title",
+          "to": "/",
+          "fragment": "#zebra-preview-title"
+        },
+        {
+          "from": "/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "#main-content",
+          "to": "/learn/",
+          "fragment": "#main-content"
+        },
+        {
+          "from": "/learn/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "/wildlife/",
+          "to": "/wildlife/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "/pets/",
+          "to": "/pets/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "/adventures/",
+          "to": "/adventures/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "/gear/",
+          "to": "/gear/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "/wildlife/",
+          "to": "/wildlife/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "/pets/",
+          "to": "/pets/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/learn/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/pets/",
+          "href": "#main-content",
+          "to": "/pets/",
+          "fragment": "#main-content"
+        },
+        {
+          "from": "/pets/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/pets/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/pets/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/pets/",
+          "href": "/wildlife/",
+          "to": "/wildlife/",
+          "fragment": ""
+        },
+        {
+          "from": "/pets/",
+          "href": "/pets/",
+          "to": "/pets/",
+          "fragment": ""
+        },
+        {
+          "from": "/pets/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/pets/",
+          "href": "/adventures/",
+          "to": "/adventures/",
+          "fragment": ""
+        },
+        {
+          "from": "/pets/",
+          "href": "/gear/",
+          "to": "/gear/",
+          "fragment": ""
+        },
+        {
+          "from": "/pets/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/pets/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/pets/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/pets/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/pets/",
+          "href": "/wildlife/",
+          "to": "/wildlife/",
+          "fragment": ""
+        },
+        {
+          "from": "/pets/",
+          "href": "/pets/",
+          "to": "/pets/",
+          "fragment": ""
+        },
+        {
+          "from": "/pets/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/pets/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "#main-content",
+          "to": "/play/",
+          "fragment": "#main-content"
+        },
+        {
+          "from": "/play/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/wildlife/",
+          "to": "/wildlife/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/pets/",
+          "to": "/pets/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/adventures/",
+          "to": "/adventures/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/gear/",
+          "to": "/gear/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/licenses/third-party-notices.txt",
+          "to": "/licenses/third-party-notices.txt",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/wildlife/",
+          "to": "/wildlife/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/pets/",
+          "to": "/pets/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/play/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/wildlife/",
+          "href": "#main-content",
+          "to": "/wildlife/",
+          "fragment": "#main-content"
+        },
+        {
+          "from": "/wildlife/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/wildlife/",
+          "href": "/play/",
+          "to": "/play/",
+          "fragment": ""
+        },
+        {
+          "from": "/wildlife/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/wildlife/",
+          "href": "/wildlife/",
+          "to": "/wildlife/",
+          "fragment": ""
+        },
+        {
+          "from": "/wildlife/",
+          "href": "/pets/",
+          "to": "/pets/",
+          "fragment": ""
+        },
+        {
+          "from": "/wildlife/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/wildlife/",
+          "href": "/adventures/",
+          "to": "/adventures/",
+          "fragment": ""
+        },
+        {
+          "from": "/wildlife/",
+          "href": "/gear/",
+          "to": "/gear/",
+          "fragment": ""
+        },
+        {
+          "from": "/wildlife/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        },
+        {
+          "from": "/wildlife/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/wildlife/",
+          "href": "/",
+          "to": "/",
+          "fragment": ""
+        },
+        {
+          "from": "/wildlife/",
+          "href": "/animals/",
+          "to": "/animals/",
+          "fragment": ""
+        },
+        {
+          "from": "/wildlife/",
+          "href": "/wildlife/",
+          "to": "/wildlife/",
+          "fragment": ""
+        },
+        {
+          "from": "/wildlife/",
+          "href": "/pets/",
+          "to": "/pets/",
+          "fragment": ""
+        },
+        {
+          "from": "/wildlife/",
+          "href": "/learn/",
+          "to": "/learn/",
+          "fragment": ""
+        },
+        {
+          "from": "/wildlife/",
+          "href": "/about/",
+          "to": "/about/",
+          "fragment": ""
+        }
+      ]
+    },
+    "homepages": {
+      "id": {
+        "title": "MyZooTwin — Game Zoo 3D & Pratinjau Zebra",
+        "meta": {
+          "viewport": "width=device-width",
+          "description": "Bangun zoo 3D di browser. Rawat makaw, gajah, singa dan jerapah, jalankan misi, lalu lihat pratinjau Zebra Grasslands.",
+          "og:type": "website",
+          "og:site_name": "MyZooTwin",
+          "og:title": "MyZooTwin — Game Zoo 3D & Pratinjau Zebra",
+          "og:description": "Bangun zoo 3D di browser. Rawat makaw, gajah, singa dan jerapah, jalankan misi, lalu lihat pratinjau Zebra Grasslands.",
+          "og:url": "https://myzootwin.com/",
+          "twitter:card": "summary_large_image",
+          "twitter:title": "MyZooTwin — Game Zoo 3D & Pratinjau Zebra",
+          "twitter:description": "Bangun zoo 3D di browser. Rawat makaw, gajah, singa dan jerapah, jalankan misi, lalu lihat pratinjau Zebra Grasslands.",
+          "og:image": "https://myzootwin.com/images/home/v5-zoo-social.jpg",
+          "og:image:alt": "Pratinjau build V5 MyZooTwin: aviary makaw, habitat gajah, savana singa, jerapah dan Zebra di satu pulau. Zebra belum tersedia di versi publik.",
+          "twitter:image": "https://myzootwin.com/images/home/v5-zoo-social.jpg",
+          "twitter:image:alt": "Pratinjau build V5 MyZooTwin: aviary makaw, habitat gajah, savana singa, jerapah dan Zebra di satu pulau. Zebra belum tersedia di versi publik.",
+          "og:locale": "id_ID",
+          "og:locale:alternate": "en_US",
+          "og:image:width": "1200",
+          "og:image:height": "630"
+        },
+        "canonical": "https://myzootwin.com/",
+        "alternates": [
+          {
+            "lang": "id",
+            "href": "https://myzootwin.com/"
+          },
+          {
+            "lang": "en",
+            "href": "https://myzootwin.com/en/"
+          },
+          {
+            "lang": "x-default",
+            "href": "https://myzootwin.com/"
+          }
+        ],
+        "h1": [
+          "Bangun zoo 3D kamu. Rawat setiap penghuni."
+        ],
+        "faq": [
+          {
+            "question": "Apakah perlu mengunduh atau membuat akun?",
+            "answer": "Tidak. Permainan berjalan di browser tanpa akun. JavaScript dan browser yang mendukung WebGL diperlukan untuk bermain."
+          },
+          {
+            "question": "Apakah semua habitat langsung terbuka?",
+            "answer": "Perjalanan dimulai di Macaw Aviary. Perluasan Elephant Grove, Lion Savanna dan Giraffe Plains mengikuti progres serta misi zoo."
+          },
+          {
+            "question": "Apakah isi ulang langsung memenuhi kebutuhan satwa?",
+            "answer": "Tidak. Isi ulang menyiapkan stok pakan, air atau pengayaan. Satwa perlu mencapai fasilitas dan memakainya sampai selesai agar mendapat manfaat."
+          },
+          {
+            "question": "Apakah Zebra Grasslands sudah bisa dimainkan?",
+            "answer": "Belum di versi publik. Gambar Zebra Grasslands di halaman ini adalah pratinjau build V5. Saat ini kamu bisa memainkan empat habitat melalui progres zoo."
+          },
+          {
+            "question": "Di mana progres disimpan?",
+            "answer": "Progres disimpan lokal di profil browser ini saat penyimpanan tersedia. Tidak ada sinkronisasi antarperangkat. Menghapus data situs akan menghapus progres lokal."
+          }
+        ],
+        "structured": [
+          {
+            "@context": "https://schema.org",
+            "@type": "VideoGame",
+            "name": "MyZooTwin",
+            "url": "https://myzootwin.com/play/",
+            "description": "Bangun zoo 3D di browser. Rawat makaw, gajah, singa dan jerapah, jalankan misi, lalu lihat pratinjau Zebra Grasslands.",
+            "genre": "Simulation",
+            "gamePlatform": "Web browser",
+            "inLanguage": [
+              "id",
+              "en"
+            ],
+            "image": "https://myzootwin.com/images/home/v5-zoo-social.jpg"
+          }
+        ]
+      },
+      "en": {
+        "title": "MyZooTwin — 3D Zoo Game & Zebra Preview",
+        "meta": {
+          "viewport": "width=device-width",
+          "description": "Build a 3D zoo in your browser. Care for macaws, elephants, lions and giraffes, complete missions and explore the Zebra Grasslands preview.",
+          "og:type": "website",
+          "og:site_name": "MyZooTwin",
+          "og:title": "MyZooTwin — 3D Zoo Game & Zebra Preview",
+          "og:description": "Build a 3D zoo in your browser. Care for macaws, elephants, lions and giraffes, complete missions and explore the Zebra Grasslands preview.",
+          "og:url": "https://myzootwin.com/en/",
+          "twitter:card": "summary_large_image",
+          "twitter:title": "MyZooTwin — 3D Zoo Game & Zebra Preview",
+          "twitter:description": "Build a 3D zoo in your browser. Care for macaws, elephants, lions and giraffes, complete missions and explore the Zebra Grasslands preview.",
+          "og:image": "https://myzootwin.com/images/home/v5-zoo-social.jpg",
+          "og:image:alt": "MyZooTwin V5 build preview showing macaw, elephant, lion, giraffe and Zebra habitats on one island. Zebras are not in the public version yet.",
+          "twitter:image": "https://myzootwin.com/images/home/v5-zoo-social.jpg",
+          "twitter:image:alt": "MyZooTwin V5 build preview showing macaw, elephant, lion, giraffe and Zebra habitats on one island. Zebras are not in the public version yet.",
+          "og:locale": "en_US",
+          "og:locale:alternate": "id_ID",
+          "og:image:width": "1200",
+          "og:image:height": "630"
+        },
+        "canonical": "https://myzootwin.com/en/",
+        "alternates": [
+          {
+            "lang": "id",
+            "href": "https://myzootwin.com/"
+          },
+          {
+            "lang": "en",
+            "href": "https://myzootwin.com/en/"
+          },
+          {
+            "lang": "x-default",
+            "href": "https://myzootwin.com/"
+          }
+        ],
+        "h1": [
+          "Build your 3D zoo. Care for every resident."
+        ],
+        "faq": [
+          {
+            "question": "Do I need a download or an account?",
+            "answer": "No. Play in your browser without an account. JavaScript and a WebGL-capable browser are required to play."
+          },
+          {
+            "question": "Are all habitats open from the start?",
+            "answer": "Your journey starts at Macaw Aviary. Elephant Grove, Lion Savanna and Giraffe Plains unlock through zoo progress and missions."
+          },
+          {
+            "question": "Do refills immediately satisfy animal needs?",
+            "answer": "No. Refills prepare food, water or enrichment supplies. Animals need to reach a facility and finish using it to benefit."
+          },
+          {
+            "question": "Can I play Zebra Grasslands now?",
+            "answer": "Not in the public version. The Zebra Grasslands images on this page are previews of the V5 build. You can currently play four habitats through zoo progress."
+          },
+          {
+            "question": "Where is my progress saved?",
+            "answer": "Progress stays locally in this browser profile when storage is available. There is no cross-device sync. Clearing site data removes local progress."
+          }
+        ],
+        "structured": [
+          {
+            "@context": "https://schema.org",
+            "@type": "VideoGame",
+            "name": "MyZooTwin",
+            "url": "https://myzootwin.com/play/",
+            "description": "Build a 3D zoo in your browser. Care for macaws, elephants, lions and giraffes, complete missions and explore the Zebra Grasslands preview.",
+            "genre": "Simulation",
+            "gamePlatform": "Web browser",
+            "inLanguage": [
+              "id",
+              "en"
+            ],
+            "image": "https://myzootwin.com/images/home/v5-zoo-social.jpg"
+          }
+        ]
+      }
+    },
+    "limits": "Built local HTML and native DOM proof; no crawler indexing, ranking or rich-result guarantee."
+  },
+  "native": {
+    "rawReceipts": [
+      {
+        "path": ".qa/zebra-audit/hp6-05-browser.json",
+        "bytes": 554323,
+        "sha256": "851959aefddfb158b4953605a430fe53bd8c2df13be0b74a74d9ec5e300bd9aa"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-05-browser-logs.json",
+        "bytes": 2,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-05-home-server.json",
+        "bytes": 498,
+        "sha256": "93dc72310475d00b805f237a30fdf285c69a149e4d592d59615cc2e4c2bd9bd1"
+      }
+    ],
+    "observations": 54,
+    "homeObservations": 52,
+    "inertPlayDestinations": 2,
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 900
+      },
+      {
+        "width": 780,
+        "height": 460
+      },
+      {
+        "width": 360,
+        "height": 800
+      }
+    ],
+    "cases": [
+      {
+        "label": "id-desktop-home",
+        "at": "2026-11-10T02:42:22.720Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-faq1-enter-open",
+        "at": "2026-11-10T02:42:42.311Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [
+          0
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Apakah perlu mengunduh atau membuat akun?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-faq1-space-close",
+        "at": "2026-11-10T02:42:42.358Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Apakah perlu mengunduh atau membuat akun?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-tab-faq2",
+        "at": "2026-11-10T02:42:42.403Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Apakah semua habitat langsung terbuka?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-faq2-enter-open",
+        "at": "2026-11-10T02:42:42.452Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [
+          1
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Apakah semua habitat langsung terbuka?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-faq2-space-close",
+        "at": "2026-11-10T02:42:42.501Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Apakah semua habitat langsung terbuka?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-tab-faq3",
+        "at": "2026-11-10T02:42:42.541Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Apakah isi ulang langsung memenuhi kebutuhan satwa?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-faq3-enter-open",
+        "at": "2026-11-10T02:42:42.591Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [
+          2
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Apakah isi ulang langsung memenuhi kebutuhan satwa?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-faq3-space-close",
+        "at": "2026-11-10T02:42:42.638Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Apakah isi ulang langsung memenuhi kebutuhan satwa?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-tab-faq4",
+        "at": "2026-11-10T02:42:42.687Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Apakah Zebra Grasslands sudah bisa dimainkan?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-faq4-enter-open",
+        "at": "2026-11-10T02:42:42.735Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [
+          3
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Apakah Zebra Grasslands sudah bisa dimainkan?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-faq4-space-close",
+        "at": "2026-11-10T02:42:42.785Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Apakah Zebra Grasslands sudah bisa dimainkan?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-tab-faq5",
+        "at": "2026-11-10T02:42:42.832Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Di mana progres disimpan?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-faq5-enter-open",
+        "at": "2026-11-10T02:42:42.890Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [
+          4
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Di mana progres disimpan?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-faq5-space-close",
+        "at": "2026-11-10T02:42:42.935Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Di mana progres disimpan?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-desktop-care-zebra-open",
+        "at": "2026-11-10T02:42:44.364Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [
+          2,
+          3
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Apakah Zebra Grasslands sudah bisa dimainkan?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-desktop-faq-settled",
+        "at": "2026-11-10T02:42:56.020Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [
+          2,
+          3
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Apakah Zebra Grasslands sudah bisa dimainkan?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-related-preview-anchor",
+        "at": "2026-11-10T02:42:56.445Z",
+        "url": "http://127.0.0.1:52907/#zebra-preview-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [
+          2,
+          3
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-related-back",
+        "at": "2026-11-10T02:42:56.513Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [
+          2,
+          3
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-related-forward",
+        "at": "2026-11-10T02:42:56.580Z",
+        "url": "http://127.0.0.1:52907/#zebra-preview-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [
+          2,
+          3
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-desktop-home",
+        "at": "2026-11-10T02:42:57.577Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "openFaq": [],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-landscape-home",
+        "at": "2026-11-10T02:43:25.673Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "openFaq": [],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-landscape-faq",
+        "at": "2026-11-10T02:43:25.797Z",
+        "url": "http://127.0.0.1:52907/en/#faq-title",
+        "lang": "en",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "openFaq": [
+          2,
+          3
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Can I play Zebra Grasslands now?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-landscape-home",
+        "at": "2026-11-10T02:43:26.808Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "openFaq": [],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-landscape-faq",
+        "at": "2026-11-10T02:43:26.950Z",
+        "url": "http://127.0.0.1:52907/#faq-title",
+        "lang": "id",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "openFaq": [
+          2,
+          3
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Apakah Zebra Grasslands sudah bisa dimainkan?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-mobile-faq",
+        "at": "2026-11-10T02:43:27.004Z",
+        "url": "http://127.0.0.1:52907/#faq-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [
+          2,
+          3
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Apakah Zebra Grasslands sudah bisa dimainkan?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-mobile-home",
+        "at": "2026-11-10T02:43:27.054Z",
+        "url": "http://127.0.0.1:52907/#game-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [
+          2,
+          3
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-mobile-home",
+        "at": "2026-11-10T02:43:27.716Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-faq1-enter-open",
+        "at": "2026-11-10T02:43:27.808Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [
+          0
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Do I need a download or an account?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-faq1-space-close",
+        "at": "2026-11-10T02:43:27.855Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Do I need a download or an account?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-tab-faq2",
+        "at": "2026-11-10T02:43:27.899Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Are all habitats open from the start?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-faq2-enter-open",
+        "at": "2026-11-10T02:43:27.962Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [
+          1
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Are all habitats open from the start?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-faq2-space-close",
+        "at": "2026-11-10T02:43:28.006Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Are all habitats open from the start?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-tab-faq3",
+        "at": "2026-11-10T02:43:28.057Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Do refills immediately satisfy animal needs?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-faq3-enter-open",
+        "at": "2026-11-10T02:43:28.114Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [
+          2
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Do refills immediately satisfy animal needs?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-faq3-space-close",
+        "at": "2026-11-10T02:43:28.168Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Do refills immediately satisfy animal needs?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-tab-faq4",
+        "at": "2026-11-10T02:43:28.219Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Can I play Zebra Grasslands now?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-faq4-enter-open",
+        "at": "2026-11-10T02:43:28.285Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [
+          3
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Can I play Zebra Grasslands now?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-faq4-space-close",
+        "at": "2026-11-10T02:43:28.341Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Can I play Zebra Grasslands now?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-tab-faq5",
+        "at": "2026-11-10T02:43:28.393Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Where is my progress saved?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-faq5-enter-open",
+        "at": "2026-11-10T02:43:28.452Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [
+          4
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Where is my progress saved?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-faq5-space-close",
+        "at": "2026-11-10T02:43:28.509Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Where is my progress saved?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-mobile-care-zebra-open",
+        "at": "2026-11-10T02:43:28.612Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [
+          2,
+          3
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Can I play Zebra Grasslands now?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-mobile-faq-settled",
+        "at": "2026-11-10T02:43:46.516Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [
+          2,
+          3
+        ],
+        "focus": "<summary data-astro-cid-zatxzzfi=\"\">Can I play Zebra Grasslands now?</summary>",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-related-preview-anchor",
+        "at": "2026-11-10T02:43:46.915Z",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [
+          2,
+          3
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-related-back",
+        "at": "2026-11-10T02:43:46.991Z",
+        "url": "http://127.0.0.1:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [
+          2,
+          3
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-related-forward",
+        "at": "2026-11-10T02:43:47.062Z",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [
+          2,
+          3
+        ],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-inert-play-destination",
+        "at": "2026-11-10T02:43:47.228Z",
+        "url": "http://127.0.0.1:52907/play/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<body><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\" aria-current=\"page\">Play Zoo</a><a ",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-play-back-home",
+        "at": "2026-11-10T02:43:47.353Z",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "language-id-mobile",
+        "at": "2026-11-10T02:43:47.506Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "language-back-en-mobile",
+        "at": "2026-11-10T02:43:47.641Z",
+        "url": "http://127.0.0.1:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=\"page\">Home</a><a class=\"play-link\" href=\"/play/\" ",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "language-forward-id-mobile",
+        "at": "2026-11-10T02:43:47.783Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-inert-play-destination",
+        "at": "2026-11-10T02:43:47.971Z",
+        "url": "http://127.0.0.1:52907/play/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<body><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a class=\"play-link\" href=\"/play/\" data-site-source=\"nav\" aria-current=\"page\">Play Zoo</a><a ",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-play-back-home",
+        "at": "2026-11-10T02:43:48.087Z",
+        "url": "http://127.0.0.1:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "openFaq": [],
+        "focus": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      }
+    ],
+    "logs": [],
+    "scope": "Actual ID/EN Enter/Space/Tab on all5 native details, responsive headline/FAQ/link wrapping, preview anchor/back-forward, language and inert Play path/back proof. No game-start/language-handoff/physical-device certification.",
+    "captureNote": "First ID FAQ raster preceded the latest disclosure paint; observed settled DOM and retook it before acceptance. Current native host raster is1265x771 for desktop DOM1280x900, and345x748 for portrait DOM360x800; intended content is shown, no full900px desktop raster or physical-device claim. Initial audit parser required a bare p tag and missed Astro-scoped attributes; corrected parser, no application defect."
+  },
+  "screenshots": [
+    {
+      "path": "docs/qa/zebra/hp6-05/id-desktop-home.jpg",
+      "bytes": 76857,
+      "sha256": "3472ca39e33e3cf5e855332a5a843e57e4f5c30c6fb02e2b67bbe36d3bc61993",
+      "width": 1265,
+      "height": 771,
+      "scope": "DOM1280x900; native host raster1265x771 vertically cropped, intended headline/FAQ content visible; no full900px raster claim"
+    },
+    {
+      "path": "docs/qa/zebra/hp6-05/id-desktop-faq.jpg",
+      "bytes": 51992,
+      "sha256": "838744b68640c8936b8f74c312e017c7ac5d25f4e86554d0231eb1f2f2764674",
+      "width": 1265,
+      "height": 771,
+      "scope": "DOM1280x900; native host raster1265x771 vertically cropped, intended headline/FAQ content visible; no full900px raster claim"
+    },
+    {
+      "path": "docs/qa/zebra/hp6-05/en-mobile-faq.jpg",
+      "bytes": 37536,
+      "sha256": "a990d21eb76fed3af2dd127bcc910215ed1232d875ada34cee2c787ceba3ecce",
+      "width": 345,
+      "height": 748,
+      "scope": "DOM360x800; native host raster345x748, not physical-device proof"
+    }
+  ],
+  "resources": {
+    "at": "2026-11-10T02:44:05.000Z",
+    "activeOwnedBrowserServerBuildTestsRenderer": 0,
+    "browser": {
+      "kind": "internal IAB",
+      "symbolic": "iab",
+      "ownTab": "1",
+      "closed": true,
+      "viewportReset": true,
+      "remainingTabs": 0
+    },
+    "server": {
+      "port": 52907,
+      "pid": 17704,
+      "session": 69118,
+      "exit": 0,
+      "inertPlay": true
+    },
+    "completed": {
+      "strictTypes": 35693,
+      "astro": 67282,
+      "build": 20275,
+      "allExit": 0
+    },
+    "engineLaunched": false,
+    "defaultGameDatabaseOpened": false,
+    "farm": "D04 slot released; no new browser/heavy work before coordination",
+    "resume": "User explicitly resumed both projects after the earlier08:00WIB stop; no new stop deadline was specified."
+  },
+  "blockers": [
+    {
+      "id": "HP6-02_PLAYABILITY",
+      "reason": "PRD calls for five playable habitats. Current public bootstrap/grant gate Z2-06 is still open, and the candidate intentionally represents4 available-through-progression plus1 preview. Do not increment verified progress or claim public Zebra playability.",
+      "closeWhen": "Actual V5 bootstrap, grant budget/exactly-once and availability/release gates are proved. Update and retest copy/status against that enabled state."
+    },
+    {
+      "id": "R7-08",
+      "reason": "Separate explicit Zebra push/deploy authorization remains absent. Nothing was pushed or deployed."
+    }
+  ],
+  "noPushOrDeploy": true
+}
