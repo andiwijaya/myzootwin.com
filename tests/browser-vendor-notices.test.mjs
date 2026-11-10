@@ -1,0 +1,8 @@
+import test from'node:test';import assert from'node:assert/strict';import{readFileSync}from'node:fs';import{createHash}from'node:crypto';
+const read=p=>readFileSync(new URL('../'+p,import.meta.url)),hash=b=>createHash('sha256').update(b).digest('hex');
+test('actual browser vendor versions retain complete installed licenses and the historical Three notice prefix',()=>{
+ const vite=JSON.parse(read('node_modules/vite/package.json')),three=JSON.parse(read('node_modules/three/package.json')),source=read('node_modules/vite/LICENSE.md').toString(),core=source.split('# Licenses of bundled dependencies')[0].trimEnd()+'\n',notice=read('public/licenses/third-party-notices.txt'),manifest=JSON.parse(read('docs/ASSET_MANIFEST.json'));
+ assert.equal(read('public/licenses/vite-MIT.txt').toString(),core);assert.ok(notice.includes(Buffer.from(core)));assert.ok(notice.includes(read('node_modules/three/LICENSE')));assert.deepEqual(read('public/licenses/three-MIT.txt'),read('node_modules/three/LICENSE'));assert.ok(notice.includes(Buffer.from('Vite '+vite.version)));assert.ok(notice.includes(Buffer.from('Three.js '+three.version)));
+ const old=manifest.assets.find(a=>a.id==='browser-software-notices-m6-06');assert.equal(hash(notice.subarray(0,old.bytes)),old.sha256,'Existing exact Three notice prefix remains unchanged');
+ for(const path of['public/licenses/vite-MIT.txt','public/licenses/third-party-notices.txt']){const bytes=read(path),record=manifest.assets.find(a=>a.path===path&&a.sha256===hash(bytes));assert.ok(record,'Current public notice has content-matched provenance');assert.equal(record.bytes,bytes.length);}
+});
