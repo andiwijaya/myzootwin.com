@@ -1,0 +1,125 @@
+{
+  "status": "UNVERIFIED_R7_01_FULL_RUN_TIMEOUT",
+  "at": "2026-11-10T04:30:38.000Z",
+  "verified": 44,
+  "total": 54,
+  "pendingUnit": "R7-01",
+  "testedRunSource": "57901d97335ea31d9fa95e6d709a1b8650cebaae",
+  "applicationSource": "48c07660cbc415ad88e7fda7ffea9c2fbec54213",
+  "run": {
+    "id": "r7-01-full1",
+    "files": 161,
+    "concurrency": 1,
+    "timeoutSeconds": 600,
+    "complete": false,
+    "counts": {},
+    "observedCompletedRoot": 418,
+    "observedNotOkAny": 0,
+    "lastCompleted": [
+      "controller input cancellation reaches only its one active session and never reopens a disposed renderer",
+      "private first-male vertical slice really walks to stocked food/water, consumes stock and resumes identical fixed-tick care after cold save",
+      "three lions get fair independent turns, bounded physical motion and real rest, scent, scratch and ramp roar events",
+      "empty sources never produce phantom meals or drinks; actual paid refills precede recovery and pause cannot age lions",
+      "EH04 claimed unlocks explicit 1800 grant; ready/legacy saves stay locked; candidate is pure and only exact committed adoption succeeds",
+      "paid 49-cell construction rejects locked, invalid, paused and stale operations without debit; first male and full pride persist distinct stable sex and identity",
+      "all seven real facilities have paid receipts, bounded collision-safe access and explicit priced initial stock; duplicate/stale refill never charges",
+      "emulated durable two-writer grant CAS credits exactly once; failed/losing session shows no optimistic grant"
+    ],
+    "inputUnchanged": true,
+    "inputBefore": "4e5705a1ce422fbb8d00bee1be5bb881c4ba0161367b3028dd5121dd43952f4b",
+    "inputAfter": "4e5705a1ce422fbb8d00bee1be5bb881c4ba0161367b3028dd5121dd43952f4b",
+    "process": {
+      "exitCode": null,
+      "signal": "SIGTERM",
+      "overflow": false,
+      "timedOut": true,
+      "durationMs": 600535
+    },
+    "receipts": [
+      {
+        "path": ".qa/zebra-audit/r7-01/r7-01-full1/start.json",
+        "bytes": 136854,
+        "sha256": "5534d49ec6f0e08f8123bd0b1cb15123c9758adcfe572fbe1380c5648a012b64"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/r7-01-full1/result.json",
+        "bytes": 239068,
+        "sha256": "fb6160dc9cd162407e8af0a5787f441cb167054583012d611e20e629e7a3bf9d"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/r7-01-full1/stdout.tap",
+        "bytes": 123086,
+        "sha256": "348dc937b35abe90960bd9493ae84b80c95214ab0a1d0cdf9bb954aace993c52"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/r7-01-full1/stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    ]
+  },
+  "legacy": {
+    "receipt": {
+      "path": "docs/qa/zebra/r7-01/legacy-projections.json",
+      "bytes": 17065,
+      "sha256": "9c6bd639480ad75e1efe8a8e234bbb30d03d65c23f7d85937361a6666756d123"
+    },
+    "fixtures": 12,
+    "versions": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "groups": [
+      "world",
+      "animals",
+      "visitors",
+      "finance",
+      "missions",
+      "clock",
+      "preferences"
+    ],
+    "goldensUnchangedSince": "4ae67ba",
+    "scope": "Exact frozen synthetic manifest reproduction, not owner/browser saves, grant budget or publicV5 adoption"
+  },
+  "nextRunner": {
+    "command": "node scripts/qa/zebra/run-full-regression.mjs r7-01-full2 2 1800",
+    "syntaxCheck": "PASS node --check",
+    "runtime": "UNRUN",
+    "change": "Bounded1..4 workers/600..3600s plus15-second progress/owned child PID. No test, fixture, game or assertion changes."
+  },
+  "resources": {
+    "at": "2026-11-10T04:30:38.000Z",
+    "activeOwnedBrowserServerBuildTestsRenderer": 0,
+    "fullRunSession": 73058,
+    "exit": 1,
+    "termination": "Own child SIGTERM at600s timeout; complete stdout/stderr captured before source rehash",
+    "ownedNodeCheck": {
+      "method": "Read-only elevated Win32_Process filtered to C:\\MyZooTwin or r7-01-full1",
+      "remaining": 0
+    },
+    "browserOpened": false,
+    "serverOpened": false,
+    "gpuOrNativeSoak": false,
+    "farm": "Exclusive20-minute soak slot released; only light QA/docs preparation after closure"
+  },
+  "pending": [
+    "R7-01 stays unverified44/54. No complete161-file TAP summary/plan;418 observed root passes are not a full-suite PASS.",
+    "After Farm soak release, run node scripts/qa/zebra/run-full-regression.mjs r7-01-full2 2 1800. Use fresh immutable output; do not overwrite full1.",
+    "New explicit worker/time settings and live progress/child PID recording have syntax verification only; no full rerun yet. Do not weaken any assertions/goldens.",
+    "Then map complete passing tests to all5 species, legacy projections, V5/CAS, economy/mission/visitor invariants and finish required current-source checks before incrementing."
+  ],
+  "blockers": [
+    {
+      "id": "HP6-02_PLAYABILITY",
+      "reason": "PRD calls for five playable habitats. Current public bootstrap/grant gate Z2-06 is still open, and the candidate intentionally represents4 available-through-progression plus1 preview. Do not increment verified progress or claim public Zebra playability.",
+      "closeWhen": "Actual V5 bootstrap, grant budget/exactly-once and availability/release gates are proved. Update and retest copy/status against that enabled state."
+    },
+    {
+      "id": "R7-08",
+      "reason": "Separate explicit Zebra push/deploy authorization remains absent. Nothing was pushed or deployed."
+    }
+  ],
+  "noPushOrDeploy": true
+}
