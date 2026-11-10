@@ -1,0 +1,52 @@
+TAP version 13
+# Subtest: phase case selection only accepts exact immutable build records and preserves original checkpoint lineage
+ok 1 - phase case selection only accepts exact immutable build records and preserves original checkpoint lineage
+  ---
+  duration_ms: 0.8741
+  type: 'test'
+  ...
+# Subtest: canonical visual cases cover real four-species contact, motion, rest, social and enrichment without a fabricated zebra case
+ok 2 - canonical visual cases cover real four-species contact, motion, rest, social and enrichment without a fabricated zebra case
+  ---
+  duration_ms: 0.1984
+  type: 'test'
+  ...
+# Subtest: strict V5 visual case validates actual content/phase identity before any database access; corrupt hashes and future metadata cannot masquerade as a phase
+ok 3 - strict V5 visual case validates actual content/phase identity before any database access; corrupt hashes and future metadata cannot masquerade as a phase
+  ---
+  duration_ms: 594.5446
+  type: 'test'
+  ...
+# Subtest: fresh V5 visual UUID uses original V3-to-V4-to-V5 backends, preserves exact V4 backup and cold state, and refuses durable phase mutation
+ok 4 - fresh V5 visual UUID uses original V3-to-V4-to-V5 backends, preserves exact V4 backup and cold state, and refuses durable phase mutation
+  ---
+  duration_ms: 607.6866
+  type: 'test'
+  ...
+# Subtest: existing missing/wrong-version/default database lookups refuse without creating or upgrading a V4 checkpoint
+ok 5 - existing missing/wrong-version/default database lookups refuse without creating or upgrading a V4 checkpoint
+  ---
+  duration_ms: 495.6016
+  type: 'test'
+  ...
+# Subtest: frozen Asset Lab refuses drift while a separately labelled product case cold-loads actual saved preferences without replacing V4 history
+ok 6 - frozen Asset Lab refuses drift while a separately labelled product case cold-loads actual saved preferences without replacing V4 history
+  ---
+  duration_ms: 657.2777
+  type: 'test'
+  ...
+# Subtest: V5 Full Zoo description and spatial queries use all five actual habitats, source Zebra bodies/ports and paid routes without mutating a save
+ok 7 - V5 Full Zoo description and spatial queries use all five actual habitats, source Zebra bodies/ports and paid routes without mutating a save
+  ---
+  duration_ms: 1229.5701
+  type: 'test'
+  ...
+1..7
+# tests 7
+# suites 0
+# pass 7
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4394.4416

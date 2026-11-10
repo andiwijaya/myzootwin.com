@@ -1,3 +1,5 @@
+> **Current continuation:** see [continuation-review.md](continuation-review.md) and [verification.json](verification.json). The review below is the historical07:58UTC checkpoint; its pending Astro/product/environment groups and error-tab closure limitation have since been narrowed/resolved as explicitly recorded. R7-02 remains unchecked at45/54.
+
 # R7-02 native checkpoint — incomplete
 
 At 07:55 UTC, 10 November 2026, the active scene, tab10 and own server were closed and the viewport reset. Farm can use the heavy/browser slot. Progress remains **45/54**. No Zebra push or deployment. Stop all work by10:00 UTC/17:00 WIB.

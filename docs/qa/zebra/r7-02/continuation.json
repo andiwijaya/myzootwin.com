@@ -1,0 +1,643 @@
+{
+  "at": "2026-11-10T09:23:53.828Z",
+  "status": "PARTIAL_NATIVE_REVIEW_R7_02_UNCHECKED",
+  "verified": 45,
+  "total": 54,
+  "applicationSource": "2e923dc75be2f1780bccf784c76863ec9bff0882",
+  "harnessSource": "96289e206a5ebf80e03eceb6a0b2c62735ea1ac9",
+  "archives": [
+    {
+      "path": "docs/qa/zebra/r7-02/browser-matrix4-continuation.jsonl.br",
+      "bytes": 49642,
+      "sha256": "b7128722e6cd7c0ba518a27b28b69c7e7bc605b54ec3fe58e19538cdde86e833",
+      "uncompressed": {
+        "path": ".qa/zebra-audit/r7-02/browser-matrix4-continuation.jsonl",
+        "bytes": 16484543,
+        "sha256": "4ab5a83fedcffff4095ed524e5254d0599b693afe1acda02732266e89d0d12f8"
+      },
+      "rows": 133
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/browser-product4.jsonl.br",
+      "bytes": 60099,
+      "sha256": "e70634784c16a27450fa524081cbc1a2d7fd9d1275d025b8a7ed5c559658ddd3",
+      "uncompressed": {
+        "path": ".qa/zebra-audit/r7-02/browser-product4.jsonl",
+        "bytes": 16871229,
+        "sha256": "33155035a4abf6619168192b89eed7ffa105419e105e0d8beaeea1eaea664189"
+      },
+      "rows": 46
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/browser-product4-recovered.jsonl.br",
+      "bytes": 11553,
+      "sha256": "4daee8be8ad690232e10e9f56df3bfa1dca824d1b7ee4ee10c6e6cbe744ce230",
+      "uncompressed": {
+        "path": ".qa/zebra-audit/r7-02/browser-product4-recovered.jsonl",
+        "bytes": 105496,
+        "sha256": "ab05cebf9249d52563c653e2b75b8905ed211d9f73fe3e5ef01182c18f2fa6d9"
+      },
+      "rows": 2
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/browser-product5.jsonl.br",
+      "bytes": 48004,
+      "sha256": "08ad3f12bf99885374b4d7cab9f13b9cf067143c4025dcd4539101ef5efad2c6",
+      "uncompressed": {
+        "path": ".qa/zebra-audit/r7-02/browser-product5.jsonl",
+        "bytes": 8384848,
+        "sha256": "e727c121c3f01f011c10a7063a66cf3a02309c991f20269ba6db0c48c30ebe9d"
+      },
+      "rows": 28
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/browser-product6.jsonl.br",
+      "bytes": 39136,
+      "sha256": "a2756754b9d0f6207f639b5c4afa948c9df183bd36ea9f28e17f34d2be5bb4c1",
+      "uncompressed": {
+        "path": ".qa/zebra-audit/r7-02/browser-product6.jsonl",
+        "bytes": 4133213,
+        "sha256": "7c3a1230f3a901b0edd6f86b4451fc75e08694990e719cdd251a4f7a2126d6f0"
+      },
+      "rows": 15
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/browser-dom5.jsonl.br",
+      "bytes": 658,
+      "sha256": "2d3ab4c11acf51823794177f4080a4a571a973f4039e1a96cfbd373775e166c2",
+      "uncompressed": {
+        "path": ".qa/zebra-audit/r7-02/browser-dom5.jsonl",
+        "bytes": 3937,
+        "sha256": "8939cbef70415eeabd0d5b44fc9e4b5852705e2b1d4ec9b175998dc659f398ea"
+      },
+      "rows": 8
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/native-pick-actions.jsonl.br",
+      "bytes": 340,
+      "sha256": "17faabb39468a52d46e2e1707d26d464874d852b7b49d549aaab49e7e934a4d7",
+      "uncompressed": {
+        "path": ".qa/zebra-audit/r7-02/native-pick-actions.jsonl",
+        "bytes": 1173,
+        "sha256": "5b397715a611a7fbcc86944a874341bc1a46377bcd329938415c30a58a45cc06"
+      },
+      "rows": 2
+    }
+  ],
+  "builds": [
+    {
+      "runId": "h1-09-r7-matrix5",
+      "source": "c9ebd1170d280cb28a17011a8b2b020e25f42baf",
+      "input": "c3c8424136047fca656ea7c53879f6948bfecae959fb815253d09debdb0e232c",
+      "lab": "d39e11195d7bbd8d246db1829bdeadd451af0fe5cf51e89ff3c27128b4de62d9",
+      "product": "d3d135b1707fb05a7fddaf5651084f525dc7c6f9bf900a1a97110ed8ca521873",
+      "productionExclusion": {
+        "status": "PASS",
+        "markers": [
+          "myzootwin-visual3d-",
+          "Asset Lab internal",
+          "__VIS3D_SOURCE__",
+          "scripts/qa/visual3d",
+          "visual3d-frozen-v4",
+          "__qaVisual3dTag",
+          "QA-only constructor side-table",
+          "Step cosmetic Studio100ms",
+          "matrix-result"
+        ],
+        "files": 36
+      },
+      "receipt": {
+        "path": "docs/qa/zebra/r7-02/matrix5-source.json.gz",
+        "bytes": 46077,
+        "sha256": "8b52189c22b16efccfb081489600c4403018012d9d2eed646601f8e90088d618"
+      }
+    },
+    {
+      "runId": "h1-09-r7-matrix6",
+      "source": "96289e206a5ebf80e03eceb6a0b2c62735ea1ac9",
+      "input": "d8fcc643710a4ed4c40b24da6878dd20123d03b6c485effcc226c59077bce578",
+      "lab": "e3b58e1913285fdf943ce679ea2b262309911e84ef92a173e47729db8d6229d5",
+      "product": "f3e0d4eee27cd80260d0aa1aebb8faa6ecb0f5807ceeb60c99961f9b31060871",
+      "productionExclusion": {
+        "status": "PASS",
+        "markers": [
+          "myzootwin-visual3d-",
+          "Asset Lab internal",
+          "__VIS3D_SOURCE__",
+          "scripts/qa/visual3d",
+          "visual3d-frozen-v4",
+          "__qaVisual3dTag",
+          "QA-only constructor side-table",
+          "Step cosmetic Studio100ms",
+          "matrix-result"
+        ],
+        "files": 36
+      },
+      "receipt": {
+        "path": "docs/qa/zebra/r7-02/matrix6-source.json.gz",
+        "bytes": 46467,
+        "sha256": "6d1bef6559749be18dab779a858eadd0482792baae4bc33d418726c6fc3daa6c"
+      }
+    }
+  ],
+  "productComparison": {
+    "status": "PASS",
+    "files": 36,
+    "filesAndBytesRehashed": true,
+    "baseline": "docs/qa/zebra/r7-01/build-manifest.json",
+    "differences": [],
+    "actual": [
+      {
+        "name": "_astro/BaseLayout.CobipK0U.css",
+        "sha256": "b25de5e982e5c2a87f5a5b97323f92b49358136e0005cbe97a36736eb1353805"
+      },
+      {
+        "name": "_astro/BaseLayout.astro_astro_type_script_index_0_lang.EOnjK5fP.js",
+        "sha256": "ca69c2685c1e3ef6db416b00ff71710bb2d9d83567b0d97c66f81237f558dab6"
+      },
+      {
+        "name": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.CLbXpYSf.js",
+        "sha256": "385e27467a5ffb764ca84796acc31ec67f73ac54225e4c6bb37e95212dbf0f7e"
+      },
+      {
+        "name": "_astro/ZooHome.ewIXrXkW.css",
+        "sha256": "96b49a4b465619ef821c06eeccdd8ee0c18d262b8a2f518a47b31e8b2477eaa7"
+      },
+      {
+        "name": "_astro/dialog-focus.CS_awhan.js",
+        "sha256": "1c49e5f75581f00265e803464e1caea211865f20cc06223682b8336e763d2d64"
+      },
+      {
+        "name": "_astro/foundation-scene.CD0NQccH.js",
+        "sha256": "b9b8ce804dd3cce2014285e7b114b31017dd47a09c34795369e6b504b0f5709e"
+      },
+      {
+        "name": "_astro/play.DS-4tSYl.css",
+        "sha256": "b27c9ee89c0848e356a2920fb8daef6e40cda5805cc7a2ed5f2bab965c1854ac"
+      },
+      {
+        "name": "about/index.html",
+        "sha256": "393dc467011100a828175de83b3a9eed40b6262763c727653cd4598f3e7eb157"
+      },
+      {
+        "name": "adventures/index.html",
+        "sha256": "29e3c638b509bab3c46651eadb91459cb5c9baa459791619686f4b54552f6627"
+      },
+      {
+        "name": "animals/index.html",
+        "sha256": "29c9cbfe58585babae2426232334bd06d2123459bc0eb6b5db720f0350251c4a"
+      },
+      {
+        "name": "en/index.html",
+        "sha256": "9e7ead9949f0f5c4a7570d101ea53969342f1c060d0af35860485d0bbf45da47"
+      },
+      {
+        "name": "favicon.svg",
+        "sha256": "78c28be8daea587e629661600e55c3250d521adcfa32cf88b3113d33267db702"
+      },
+      {
+        "name": "gear/index.html",
+        "sha256": "c7b6f06025d0a4dbae864e5d24c88105c5f7cc5eb06b49918bf432ff36526abd"
+      },
+      {
+        "name": "images/home/giraffes-480.webp",
+        "sha256": "1c2eee2a30808155f7277c14dffeda17e20c6a3899aa2fe4310d6e66e4a60060"
+      },
+      {
+        "name": "images/home/giraffes-800.webp",
+        "sha256": "d0bdf2b3196f3b769bc4b4e0e977249d2ed86ea64fa2f3f2bf560ed4bd9fa1b7"
+      },
+      {
+        "name": "images/home/v5-zebra-440.webp",
+        "sha256": "9e1f77add5ec0462d9aebd82a10daf898d027aabdadb61387e0ae22d2fc9376d"
+      },
+      {
+        "name": "images/home/v5-zebra-660.webp",
+        "sha256": "ec2599c98994e59e7d36abbc3b7142f2bf6f159f1b7bdd6e3119fd69adeecf21"
+      },
+      {
+        "name": "images/home/v5-zoo-480.webp",
+        "sha256": "1e47118c613aa474f517bfda8ce30a8be6459444ba53571b3aae810e0217b6f7"
+      },
+      {
+        "name": "images/home/v5-zoo-770.webp",
+        "sha256": "7e9a2db2cc9df38890bebdbf63374d1ebb8e4ef00f6d6e2177146785e32613a3"
+      },
+      {
+        "name": "images/home/v5-zoo-social.jpg",
+        "sha256": "d59a9a5dc6d2f1b85f3bfac09f5d26448fadd5b63344cc4332d468bc6d2df927"
+      },
+      {
+        "name": "images/home/zoo-640.webp",
+        "sha256": "6809ac121c8a10f63b07c53c21357fd0d65b3255b76ce13fecdecbb9e6c27a07"
+      },
+      {
+        "name": "images/home/zoo-960.webp",
+        "sha256": "93ea04c81e7658ab73e92cd13302ceb4575585729d7dc120f3a83ed85c8b5e5b"
+      },
+      {
+        "name": "images/home/zoo-social.jpg",
+        "sha256": "7cb245af00cb0301dfd032ee1e886a4df1b55f64bfa20fdca9e716ea294968ad"
+      },
+      {
+        "name": "images/myzootwin-beranda.png",
+        "sha256": "194a2cb5178f255ebf0289aabac75135fc65a8f716f26c01dcfeaebe00960169"
+      },
+      {
+        "name": "images/tropical-creek-game.jpg",
+        "sha256": "6edf52437618a80b94911b846cb2722257739be87c4f96c793f1e808d848e880"
+      },
+      {
+        "name": "images/tropical-creek-journal.svg",
+        "sha256": "cf2f03404f8d72367c385fbbdfaabb0bd21ae0a262804525c20e027a34ea94cc"
+      },
+      {
+        "name": "index.html",
+        "sha256": "8d0aa6dd30f4e657974298fe2eec645b95bfde407f901b797009fbac31f8b145"
+      },
+      {
+        "name": "learn/index.html",
+        "sha256": "66b32e6fa059782b0f2565b11d585bcc3590224067c3d7106742036ad4b2e410"
+      },
+      {
+        "name": "licenses/third-party-notices.txt",
+        "sha256": "a5eff5cf91485bdf2f7ada50d30832c648db248314b3897e3c80e9da66efa29b"
+      },
+      {
+        "name": "licenses/three-MIT.txt",
+        "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+      },
+      {
+        "name": "pets/index.html",
+        "sha256": "b596bd4778547677907eaab0de04d9a8dfde5a3ca2cd852d7e0d1973f4b4f0ef"
+      },
+      {
+        "name": "play/index.html",
+        "sha256": "58a6a95ccd0c587a63e730ca5330fd6ea129fff3a052deba535318b8c53f88d9"
+      },
+      {
+        "name": "robots.txt",
+        "sha256": "91803eeb5a8dbbbae903fce53e66d6f5856f8e0894e7d7d21465c532381dd147"
+      },
+      {
+        "name": "sitemap-0.xml",
+        "sha256": "dbbec59a45a2b89f869b2a277fce46020f49e16649d635a48c479b9868b3c0bf"
+      },
+      {
+        "name": "sitemap-index.xml",
+        "sha256": "f956f18339cf090382bb71b5dadff01ca95c9bd0958046cef03c002851a7b550"
+      },
+      {
+        "name": "wildlife/index.html",
+        "sha256": "303ea4c230db8bc7ea611654fd13c4abe9df1f097431b42c98619e258f29e5e8"
+      }
+    ]
+  },
+  "fixtureContinuity": {
+    "status": "PASS",
+    "oldV5Cases": 18,
+    "currentV5Cases": 19,
+    "unchanged": [
+      {
+        "id": "v5-zoo-baseline",
+        "stateHash": "8daeb326dc9d41024170c504707f4a27e77531dae6cd70ae7891f3a1a0b04675",
+        "gameplayHash": "6ee797fca398520319e35cbfb203b073031ed8d6ebf7aa1d08d9f8c19576e069"
+      },
+      {
+        "id": "v5-zebra-empty",
+        "stateHash": "f2b4cb9af3ed536b1d9ee4ed5d6f7b1c3b9825a93813762f1c21fd57897145d5",
+        "gameplayHash": "27c4d86f72ffa1cfe47d0ddb3a20eeb71e63b8db074211c4ac6317f0b3fe5882"
+      },
+      {
+        "id": "v5-zebra-idle",
+        "stateHash": "8daeb326dc9d41024170c504707f4a27e77531dae6cd70ae7891f3a1a0b04675",
+        "gameplayHash": "6ee797fca398520319e35cbfb203b073031ed8d6ebf7aa1d08d9f8c19576e069"
+      },
+      {
+        "id": "v5-zebra-graze",
+        "stateHash": "af07d29e1f22b60dbc902aae059a7bd62da9a218424f1c046e95f7010619c4c0",
+        "gameplayHash": "d9b14cefdb8ed20f03b426328de446588371cfa474ea80240cb305ce2bebacee"
+      },
+      {
+        "id": "v5-zebra-walk",
+        "stateHash": "71c633cff2acf342b54830d535f06d08a43535fb45287c56c976ddacb1eb3462",
+        "gameplayHash": "d0324b80011ddbff83ccfff42ecd1ce8f283de2ccd92a086010adb1098052a41"
+      },
+      {
+        "id": "v5-zebra-drink",
+        "stateHash": "b3b0e3f29ed373903fecf56e038894567b95b05327fabdcf49bde82349a7283a",
+        "gameplayHash": "0589f00ed482b9d9008d093f99362cda1922623fc40a9f4b4544e75fb17f5416"
+      },
+      {
+        "id": "v5-zebra-rest",
+        "stateHash": "07865096e30aa34adf6032e0a7bd62fc30edcfda05f2fc785a613e93b4a95f90",
+        "gameplayHash": "d28a97edaa2c8de887d1901ff82485ef5ed420de036d9b48b11dcdb4e7a225d2"
+      },
+      {
+        "id": "v5-zebra-enrich",
+        "stateHash": "d7fd61ecc73bb6458080b5ada6cd908bb77a894954da00a2f007aa380bb0ce58",
+        "gameplayHash": "141d72d682896fcbf42d8245c3199a4c84a533fb959e858310f9ee66a4e6279e"
+      },
+      {
+        "id": "v5-visitor-walk",
+        "stateHash": "331764e1df2da021dbcea2ffa6b2840e9ad68a621b89a71b6456296045e652d9",
+        "gameplayHash": "c653a920e233a50bd1d9b92985bac74fdfe47070c9f9de84a0ce4cdc0f543209"
+      },
+      {
+        "id": "v5-zebra-approach",
+        "stateHash": "915e6782ee1d54e7770add03f1edc0a4ac79bb927ec8aca381f5d5df928ae569",
+        "gameplayHash": "20be97be1b5ae202cf6867a6396f3fd61ed1850ddb8cb752cc82757d85d4ff6d"
+      },
+      {
+        "id": "v5-zebra-trot",
+        "stateHash": "8cad5fc38ff7a9fbcd3f8311221758356ad8d19f2840174af9f8f94616e088bd",
+        "gameplayHash": "bce3cd2d307ae063db510d8f00b5e89ca8e99ed4a00f18b9b458ae733748984e"
+      },
+      {
+        "id": "v5-zebra-follow",
+        "stateHash": "7ffb4d66f92bf20ceee1216264018841f137131d1789ccffa55f46baf7a58180",
+        "gameplayHash": "eea7723708120a0403ca004b021de0f567e9cbba9677cc96ce034c2d219f9b9e"
+      },
+      {
+        "id": "v5-visitor-view",
+        "stateHash": "de6f30e2a0ad70b2284cab16b5e3a6c6219e879ef6398703da30cb0ac640ff9c",
+        "gameplayHash": "c4a9ac921bb15afd6701da69f6eb961d956df5e61e4288c15c25d802363b3dc8"
+      },
+      {
+        "id": "v5-zebra-groom-first",
+        "stateHash": "3676dff419a44cedb54f7ddac27ed93b20ae77fc253083377cc4bbc6372c0d2a",
+        "gameplayHash": "3dabef5533d2fa9c624ceab4fe4598523686c564cc4673a352dfed809aba5bf8"
+      },
+      {
+        "id": "v5-zebra-groom-neutral",
+        "stateHash": "100d18ccc14d4edcfec08911d9be05b7e6c6826682f7a94f186ec27e6e778b55",
+        "gameplayHash": "0b0c17aa008b7657bea6377bb99e494cdf849939669da02765bbbb142a241ebc"
+      },
+      {
+        "id": "v5-zebra-groom-second",
+        "stateHash": "aea2bb83230f765872b095873574985d92c414a39d696606aa1a6e07eb59078d",
+        "gameplayHash": "5edd61d855599253b761d647e952ed64d8e0ad053d45e10632209671e8ffe459"
+      },
+      {
+        "id": "v5-zebra-groom-last",
+        "stateHash": "c9e0fae0e6f7a0ea2a14acd7e19dfb62bd48eb3b42fb269f6d69b7e08d08675d",
+        "gameplayHash": "d3f6bf06914648b50462f2f00e8b1bcc3a856fdc6d9be5cd4a85c18d100aa2e6"
+      },
+      {
+        "id": "v5-zebra-groom-completion",
+        "stateHash": "b359992058a67084f4a948f9369b710d57d0622d197c409096840ff4b66b760f",
+        "gameplayHash": "8d57010b701df2d36ca77f94601243dfc807704de1cdd236c3d7cdc3cbbefa09"
+      }
+    ],
+    "added": [
+      {
+        "id": "v5-zebra-unserviced",
+        "stateHash": "5819d0786abab711986f414b63d31849b0c42f6ab6bf85b58ef4c82266f13b3c",
+        "gameplayHash": "f4c8d7fb7aff38af32fc50a09cfe11e96624588e83c5876d3e763ee81b9dbd56",
+        "mode": "validation-only-empty-data",
+        "detail": {
+          "scope": "Validation-only claimed-grant and empty8x8 home prerequisite, no Zebra residents/care/connection. Original V4 content preserved; this is not public grant/adoption/construction acceptance. Actual product care previews remain unpaid unless explicitly confirmed."
+        }
+      }
+    ],
+    "scope": "All 18 previous complete state/gameplay hashes identical after current producer rerun. Added empty home is synthetic validation-only, not grant/adoption approval."
+  },
+  "construction": {
+    "at": "2026-11-10T09:11:23.659Z",
+    "scope": "Runtime construction attribution union only. NOT visual acceptance.",
+    "rows": 604,
+    "constructedUnion": 286,
+    "notObserved": [
+      "game/render3d/foundation-scene:mountFoundationScene:WebGLRenderer:WebGLRenderer:3"
+    ],
+    "maxUnmapped": 0,
+    "fallback": {
+      "status": "SOURCE_HOOK_FALLBACK_EXPLAINED_NOT_VISUAL_PASS",
+      "unobservedConstructor": "game/render3d/foundation-scene:mountFoundationScene:WebGLRenderer:WebGLRenderer:3",
+      "reason": "Original mountFoundationScene accepts createRenderer injection. QA injects a real WebGLRenderer on the original canvas/context with antialias true and alpha false. Thus the inline fallback constructor site does not execute. The production scene and original real renderer are still used; this is neither absent asset nor automatic NA.",
+      "sources": [
+        {
+          "path": "src/game/render3d/foundation-scene.ts",
+          "bytes": 86978,
+          "sha256": "6e4c3618afa2467334a0c2e450282933233365bbd7381511d21d6d17a64c7fa0",
+          "excerpts": [
+            {
+              "line": 391,
+              "text": "    renderer = options.createRenderer ? options.createRenderer(canvas, context) : new WebGLRenderer({ canvas, context, antialias: true, alpha: false });\r"
+            }
+          ]
+        },
+        {
+          "path": "scripts/qa/visual3d/lab.ts",
+          "bytes": 21696,
+          "sha256": "fe112b0972814d1ec7fef194091a5dae12ea9287739ad13fafb05d275a2af613",
+          "excerpts": [
+            {
+              "line": 73,
+              "text": "   const real=new WebGLRenderer({canvas,context,antialias:true,alpha:false});renderer=real;const render=real.render.bind(real);rawDraw=(scene,view)=>{const start=performance.now();render(scene,view);inspectionRenderCpu.push(performance.now()-start);lastInspectionRender={...real.info.render};qaSubmissions++;};real.render=(scene,view)=>{world=scene as Scene;camera=view;const start=performance.now();render(scene,view);sourceRenderCpu.push(performance.now()-start);lastSourceRender={...real.info.render};submissions++;};return real;"
+            }
+          ]
+        },
+        {
+          "path": "scripts/qa/visual3d/product-zebra.ts",
+          "bytes": 15935,
+          "sha256": "9a499b35fd30206185e070538e1270201516b1f1382fb9aae7a77329ad965918",
+          "excerpts": [
+            {
+              "line": 23,
+              "text": "const handle=mountGameEntry(root,{...(visualFaults.audioFactory?{audioFactory:visualFaults.audioFactory}:{}),backend,broadcast:false,allowRecoveryDownload:false,preferenceStorage:null,browserLanguage:'en-US',loadRenderer:async stateStore=>{const initial=stateStore.read();if(!initial)throw Error('Missing active isolated QA state');observer.write(initial);return failure=>{if(owners)throw Error('Another QA product owner is live');resetVisualConstructions();const real=mountFoundationScene(host,reason=>{failures.push(reason);failure(reason);},{...(visualFaults.contextFactory?{createContext:visualFaults.contextFactory}:{}),frames,stateStore:{...stateState(stateStore)},createRenderer(canvas,context){const r=new WebGLRenderer({canvas,context,antialias:true,alpha:false}),draw=r.render.bind(r);renderer=r;r.render=(s,c)=>{scene=s as Scene;camera=c;draw(s,c);};return r;}});owners++;maxOwners=Math.max(maxOwners,owners);let disposed=false;return {...real,dispose(){if(disposed)return;disposed=true;real.dispose();observer.read();owners--;retired.push(real.inspect?.());scene=undefined;camera=undefined;renderer=undefined;releaseCanonicalSimulation();}};};}});"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "legacyPreviewSourceContinuity": [
+    {
+      "path": "src/game/render3d/giraffe/care-ghost.ts",
+      "bytes": 1065,
+      "sha256": "115c9f7e1758fb8e45a48f5b1609c1b95d5dcd2aa88e6069848393871d7d4ea6",
+      "historicalSource": "8a04c8b",
+      "canonicalLfIdentical": true,
+      "scope": "Source continuity only. Inactive preview construction is NOT a fresh four-angle native visual pass."
+    },
+    {
+      "path": "src/game/render3d/lion/care-ghost.ts",
+      "bytes": 1047,
+      "sha256": "24e5a0f9f504e286d4eb5e206c90bac67bfdd9a9e5d1575934dfdf66cdbe8afa",
+      "historicalSource": "8a04c8b",
+      "canonicalLfIdentical": true,
+      "scope": "Source continuity only. Inactive preview construction is NOT a fresh four-angle native visual pass."
+    },
+    {
+      "path": "src/game/render3d/elephant-care-scene.ts",
+      "bytes": 8602,
+      "sha256": "b16b5daf075313b70b9a6729f70b611b33394045dff35d3e9fa02437b1bc265d",
+      "historicalSource": "8a04c8b",
+      "canonicalLfIdentical": true,
+      "scope": "Source continuity only. Inactive preview construction is NOT a fresh four-angle native visual pass."
+    },
+    {
+      "path": "src/game/render3d/perch-scene.ts",
+      "bytes": 3136,
+      "sha256": "d90b0cf38e0aeeafbe32f8b758018836c87e92649e9b21c7fefb95c59bb719aa",
+      "historicalSource": "8a04c8b",
+      "canonicalLfIdentical": true,
+      "scope": "Source continuity only. Inactive preview construction is NOT a fresh four-angle native visual pass."
+    },
+    {
+      "path": "src/game/render3d/water-scene.ts",
+      "bytes": 2964,
+      "sha256": "7b8a9c96fe257ffc59f7e9d39407b12f7c1391d744687a5ece37e02259aeaff0",
+      "historicalSource": "8a04c8b",
+      "canonicalLfIdentical": true,
+      "scope": "Source continuity only. Inactive preview construction is NOT a fresh four-angle native visual pass."
+    },
+    {
+      "path": "src/game/render3d/feeder-scene.ts",
+      "bytes": 3351,
+      "sha256": "094a4e71c812e4d84d3717d16f0be9272cb81019c7bb9cde2b48c4ecab900a9a",
+      "historicalSource": "8a04c8b",
+      "canonicalLfIdentical": true,
+      "scope": "Source continuity only. Inactive preview construction is NOT a fresh four-angle native visual pass."
+    }
+  ],
+  "native": {
+    "observations": 619,
+    "selectedCaptures": 135,
+    "domReports": 8,
+    "scope": "Actual original assets, source engine, native mouse/keyboard and internal browser at representative pairwise settings. No registry-wide PASS, physical device, touch, native gameplay-time/soak, GPU performance or presented FPS claim."
+  },
+  "save": {
+    "completeProductCold": {
+      "source": "c9ebd1170d280cb28a17011a8b2b020e25f42baf",
+      "stateHash": "0d92112485536ebabd5a088a87ebf325eedcbcae9e4e008a25565fb3cabf62cc",
+      "gameplayHash": "6ee797fca398520319e35cbfb203b073031ed8d6ebf7aa1d08d9f8c19576e069",
+      "preferences": {
+        "graphics": "high",
+        "locale": "en",
+        "muted": true,
+        "reducedMotion": true,
+        "speed": 1
+      }
+    },
+    "unserviced": {
+      "stateHash": "5819d0786abab711986f414b63d31849b0c42f6ab6bf85b58ef4c82266f13b3c",
+      "gameplayHash": "f4c8d7fb7aff38af32fc50a09cfe11e96624588e83c5876d3e763ee81b9dbd56",
+      "tick": 13580,
+      "cash": 4099,
+      "command": 118,
+      "previewActive": false,
+      "all15ObservationsExact": true
+    },
+    "scope": "Fresh QA UUIDs only. Carried main/secondary and owner/default saves unopened. Manual inspections freeze canonical time. Studio pulses are cosmetic; not presented FPS."
+  },
+  "finalClose": {
+    "at": "2026-11-10T09:19:35.332Z",
+    "owners": 0,
+    "frames": {
+      "cpuFrame": {
+        "capacity": 120,
+        "count": 13,
+        "invalid": 0,
+        "maxMs": 55.80000001192093,
+        "minMs": 32.40000003576279,
+        "p50Ms": 45.29999995231629,
+        "p95Ms": 55.80000001192093,
+        "retained": 13,
+        "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+      },
+      "disposed": true,
+      "manualDeliveries": 13,
+      "manualTime": 0,
+      "method": "Explicit deterministic callback timestamps; not native wall-time/FPS",
+      "mode": "manual",
+      "nativeDeliveries": 0,
+      "nativePending": 0,
+      "pending": 0
+    },
+    "resources": {
+      "debugRoots": 0,
+      "geometries": 0,
+      "materials": 0,
+      "renderTargets": 0,
+      "shared": 0,
+      "skeletons": 0,
+      "textures": 0
+    },
+    "save": {
+      "active": true,
+      "dirty": false,
+      "disposed": true,
+      "fault": null,
+      "generation": "visual3d-synthetic-v5-zebra-unserviced",
+      "hasSave": true,
+      "inflight": false,
+      "pendingTimer": false,
+      "phase": "saved",
+      "recovery": {
+        "hasPreserved": false,
+        "kind": "none",
+        "problem": null,
+        "quote": null,
+        "source": null
+      },
+      "recoveryBusy": false,
+      "restartAvailable": false,
+      "restartBusy": false,
+      "revision": 5,
+      "savedAt": 1794302374879,
+      "savedBirds": 2,
+      "savedCurrency": 4099,
+      "savedMissions": 4,
+      "savedTick": 13580,
+      "storageReady": true
+    },
+    "errors": []
+  },
+  "resources": {
+    "releasedAt": "2026-11-10T09:19:45.641Z",
+    "sceneClosed": true,
+    "viewportReset": true,
+    "ownedTabsClosed": [
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "remainingTabs": [
+      {
+        "id": "8",
+        "providerTabId": "browser-use:5d0fc806-a252-416a-8dd5-acfbc233d47f",
+        "title": "MyZooTwin — Bangun Zoo, Rawat Satwa, Jelajahi Empat Habitat",
+        "url": "https://myzootwin.com/",
+        "browserId": "3"
+      }
+    ],
+    "server": {
+      "at": "2026-11-10T09:20:53.2423344Z",
+      "pid": 21920,
+      "processPresent": false,
+      "port": 52234,
+      "listening": false,
+      "normalStopExitCode": 0,
+      "scope": "Only the owned Zebra QA server was inspected. No other project processes were touched."
+    },
+    "activeOwnedRenderBuildTestsServer": 0,
+    "errorTabs": "Earlier owned error tabs5/7 absent in continuation inventory; only untouched production tab8 remains. Previous cleanup uncertainty resolved."
+  },
+  "tests": {
+    "probeGating": "10/10 PASS; strict types exit0 and Astro605 files/0 diagnostics on c9ebd11 code",
+    "unservicedFixture": "7/7 PASS; JS syntax check and immutable matrix6 build on96289e2",
+    "priorInspector": "Astro605 files/0 diagnostics after yaw/shadow fixes",
+    "fullSuite": "R7-01 accepted1021/1021 at b6d8b0a; not repeated solely for QA changes"
+  },
+  "remaining": [
+    "Fresh four-angle valid/invalid current-source legacy care ghosts and original 49-cell/small placement preview review; unchanged historical source is continuity evidence, not fresh pixels. Zebra 64-cell and all four Zebra care triggers covered separately.",
+    "Finalize per-family source/trigger/capture attribution, occlusion limitations and review acceptance against universal harness PRD. Do not infer visual PASS from286 constructor sites or514 inventory records."
+  ],
+  "noPushOrDeploy": true,
+  "stopDeadline": "2026-11-10T10:00:00Z"
+}

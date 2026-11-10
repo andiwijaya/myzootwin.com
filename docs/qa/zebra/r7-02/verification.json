@@ -1,11 +1,11 @@
 {
   "status": "PARTIAL_NATIVE_REVIEW_R7_02_UNCHECKED",
-  "at": "2026-11-10T07:58:24.389Z",
+  "at": "2026-11-10T09:23:53.828Z",
   "verified": 45,
   "total": 54,
   "applicationSource": "2e923dc75be2f1780bccf784c76863ec9bff0882",
-  "harnessSource": "af69397090b9a92ffcabdcc5affac239494e1f3e",
-  "input": "1ad9e5191c0360ce95c967b3637626a38199549767c14ae71a7c1a7d5c895476",
+  "harnessSource": "96289e206a5ebf80e03eceb6a0b2c62735ea1ac9",
+  "input": "d8fcc643710a4ed4c40b24da6878dd20123d03b6c485effcc226c59077bce578",
   "builds": [
     {
       "runId": "h1-09-r7-matrix1",
@@ -98,12 +98,66 @@
         "files": 36
       },
       "nativeOpened": true
+    },
+    {
+      "runId": "h1-09-r7-matrix5",
+      "source": "c9ebd1170d280cb28a17011a8b2b020e25f42baf",
+      "input": "c3c8424136047fca656ea7c53879f6948bfecae959fb815253d09debdb0e232c",
+      "lab": "d39e11195d7bbd8d246db1829bdeadd451af0fe5cf51e89ff3c27128b4de62d9",
+      "product": "d3d135b1707fb05a7fddaf5651084f525dc7c6f9bf900a1a97110ed8ca521873",
+      "productionExclusion": {
+        "status": "PASS",
+        "markers": [
+          "myzootwin-visual3d-",
+          "Asset Lab internal",
+          "__VIS3D_SOURCE__",
+          "scripts/qa/visual3d",
+          "visual3d-frozen-v4",
+          "__qaVisual3dTag",
+          "QA-only constructor side-table",
+          "Step cosmetic Studio100ms",
+          "matrix-result"
+        ],
+        "files": 36
+      },
+      "receipt": {
+        "path": "docs/qa/zebra/r7-02/matrix5-source.json.gz",
+        "bytes": 46077,
+        "sha256": "8b52189c22b16efccfb081489600c4403018012d9d2eed646601f8e90088d618"
+      }
+    },
+    {
+      "runId": "h1-09-r7-matrix6",
+      "source": "96289e206a5ebf80e03eceb6a0b2c62735ea1ac9",
+      "input": "d8fcc643710a4ed4c40b24da6878dd20123d03b6c485effcc226c59077bce578",
+      "lab": "e3b58e1913285fdf943ce679ea2b262309911e84ef92a173e47729db8d6229d5",
+      "product": "f3e0d4eee27cd80260d0aa1aebb8faa6ecb0f5807ceeb60c99961f9b31060871",
+      "productionExclusion": {
+        "status": "PASS",
+        "markers": [
+          "myzootwin-visual3d-",
+          "Asset Lab internal",
+          "__VIS3D_SOURCE__",
+          "scripts/qa/visual3d",
+          "visual3d-frozen-v4",
+          "__qaVisual3dTag",
+          "QA-only constructor side-table",
+          "Step cosmetic Studio100ms",
+          "matrix-result"
+        ],
+        "files": 36
+      },
+      "receipt": {
+        "path": "docs/qa/zebra/r7-02/matrix6-source.json.gz",
+        "bytes": 46467,
+        "sha256": "6d1bef6559749be18dab779a858eadd0482792baae4bc33d418726c6fc3daa6c"
+      }
     }
   ],
   "currentBuildReceipt": {
-    "path": "docs/qa/zebra/r7-02/matrix4-source.json.gz",
-    "bytes": 46075,
-    "sha256": "1966ec7babd9621f1ca6c3779af702daa2cd20a7478fd821decfdd5822c9aa58"
+    "path": "docs/qa/zebra/r7-02/matrix6-source.json.gz",
+    "bytes": 46467,
+    "sha256": "6d1bef6559749be18dab779a858eadd0482792baae4bc33d418726c6fc3daa6c"
   },
   "archives": [
     {
@@ -138,22 +192,247 @@
         "sha256": "1124991632e4f087852c5098ee387f90460480bc961261cc43cd3d2ffa2d22ea"
       },
       "rows": 21
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/browser-matrix4-continuation.jsonl.br",
+      "bytes": 49642,
+      "sha256": "b7128722e6cd7c0ba518a27b28b69c7e7bc605b54ec3fe58e19538cdde86e833",
+      "uncompressed": {
+        "path": ".qa/zebra-audit/r7-02/browser-matrix4-continuation.jsonl",
+        "bytes": 16484543,
+        "sha256": "4ab5a83fedcffff4095ed524e5254d0599b693afe1acda02732266e89d0d12f8"
+      },
+      "rows": 133
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/browser-product4.jsonl.br",
+      "bytes": 60099,
+      "sha256": "e70634784c16a27450fa524081cbc1a2d7fd9d1275d025b8a7ed5c559658ddd3",
+      "uncompressed": {
+        "path": ".qa/zebra-audit/r7-02/browser-product4.jsonl",
+        "bytes": 16871229,
+        "sha256": "33155035a4abf6619168192b89eed7ffa105419e105e0d8beaeea1eaea664189"
+      },
+      "rows": 46
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/browser-product4-recovered.jsonl.br",
+      "bytes": 11553,
+      "sha256": "4daee8be8ad690232e10e9f56df3bfa1dca824d1b7ee4ee10c6e6cbe744ce230",
+      "uncompressed": {
+        "path": ".qa/zebra-audit/r7-02/browser-product4-recovered.jsonl",
+        "bytes": 105496,
+        "sha256": "ab05cebf9249d52563c653e2b75b8905ed211d9f73fe3e5ef01182c18f2fa6d9"
+      },
+      "rows": 2
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/browser-product5.jsonl.br",
+      "bytes": 48004,
+      "sha256": "08ad3f12bf99885374b4d7cab9f13b9cf067143c4025dcd4539101ef5efad2c6",
+      "uncompressed": {
+        "path": ".qa/zebra-audit/r7-02/browser-product5.jsonl",
+        "bytes": 8384848,
+        "sha256": "e727c121c3f01f011c10a7063a66cf3a02309c991f20269ba6db0c48c30ebe9d"
+      },
+      "rows": 28
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/browser-product6.jsonl.br",
+      "bytes": 39136,
+      "sha256": "a2756754b9d0f6207f639b5c4afa948c9df183bd36ea9f28e17f34d2be5bb4c1",
+      "uncompressed": {
+        "path": ".qa/zebra-audit/r7-02/browser-product6.jsonl",
+        "bytes": 4133213,
+        "sha256": "7c3a1230f3a901b0edd6f86b4451fc75e08694990e719cdd251a4f7a2126d6f0"
+      },
+      "rows": 15
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/browser-dom5.jsonl.br",
+      "bytes": 658,
+      "sha256": "2d3ab4c11acf51823794177f4080a4a571a973f4039e1a96cfbd373775e166c2",
+      "uncompressed": {
+        "path": ".qa/zebra-audit/r7-02/browser-dom5.jsonl",
+        "bytes": 3937,
+        "sha256": "8939cbef70415eeabd0d5b44fc9e4b5852705e2b1d4ec9b175998dc659f398ea"
+      },
+      "rows": 8
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/native-pick-actions.jsonl.br",
+      "bytes": 340,
+      "sha256": "17faabb39468a52d46e2e1707d26d464874d852b7b49d549aaab49e7e934a4d7",
+      "uncompressed": {
+        "path": ".qa/zebra-audit/r7-02/native-pick-actions.jsonl",
+        "bytes": 1173,
+        "sha256": "5b397715a611a7fbcc86944a874341bc1a46377bcd329938415c30a58a45cc06"
+      },
+      "rows": 2
     }
   ],
   "productComparison": {
     "status": "PASS",
     "files": 36,
+    "filesAndBytesRehashed": true,
     "baseline": "docs/qa/zebra/r7-01/build-manifest.json",
     "differences": [],
-    "filesAndBytesRehashed": true,
-    "scope": "All 36 current product files identical by logical path and actual SHA-256 to accepted R7-01. QA changes never enter product."
+    "actual": [
+      {
+        "name": "_astro/BaseLayout.CobipK0U.css",
+        "sha256": "b25de5e982e5c2a87f5a5b97323f92b49358136e0005cbe97a36736eb1353805"
+      },
+      {
+        "name": "_astro/BaseLayout.astro_astro_type_script_index_0_lang.EOnjK5fP.js",
+        "sha256": "ca69c2685c1e3ef6db416b00ff71710bb2d9d83567b0d97c66f81237f558dab6"
+      },
+      {
+        "name": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.CLbXpYSf.js",
+        "sha256": "385e27467a5ffb764ca84796acc31ec67f73ac54225e4c6bb37e95212dbf0f7e"
+      },
+      {
+        "name": "_astro/ZooHome.ewIXrXkW.css",
+        "sha256": "96b49a4b465619ef821c06eeccdd8ee0c18d262b8a2f518a47b31e8b2477eaa7"
+      },
+      {
+        "name": "_astro/dialog-focus.CS_awhan.js",
+        "sha256": "1c49e5f75581f00265e803464e1caea211865f20cc06223682b8336e763d2d64"
+      },
+      {
+        "name": "_astro/foundation-scene.CD0NQccH.js",
+        "sha256": "b9b8ce804dd3cce2014285e7b114b31017dd47a09c34795369e6b504b0f5709e"
+      },
+      {
+        "name": "_astro/play.DS-4tSYl.css",
+        "sha256": "b27c9ee89c0848e356a2920fb8daef6e40cda5805cc7a2ed5f2bab965c1854ac"
+      },
+      {
+        "name": "about/index.html",
+        "sha256": "393dc467011100a828175de83b3a9eed40b6262763c727653cd4598f3e7eb157"
+      },
+      {
+        "name": "adventures/index.html",
+        "sha256": "29e3c638b509bab3c46651eadb91459cb5c9baa459791619686f4b54552f6627"
+      },
+      {
+        "name": "animals/index.html",
+        "sha256": "29c9cbfe58585babae2426232334bd06d2123459bc0eb6b5db720f0350251c4a"
+      },
+      {
+        "name": "en/index.html",
+        "sha256": "9e7ead9949f0f5c4a7570d101ea53969342f1c060d0af35860485d0bbf45da47"
+      },
+      {
+        "name": "favicon.svg",
+        "sha256": "78c28be8daea587e629661600e55c3250d521adcfa32cf88b3113d33267db702"
+      },
+      {
+        "name": "gear/index.html",
+        "sha256": "c7b6f06025d0a4dbae864e5d24c88105c5f7cc5eb06b49918bf432ff36526abd"
+      },
+      {
+        "name": "images/home/giraffes-480.webp",
+        "sha256": "1c2eee2a30808155f7277c14dffeda17e20c6a3899aa2fe4310d6e66e4a60060"
+      },
+      {
+        "name": "images/home/giraffes-800.webp",
+        "sha256": "d0bdf2b3196f3b769bc4b4e0e977249d2ed86ea64fa2f3f2bf560ed4bd9fa1b7"
+      },
+      {
+        "name": "images/home/v5-zebra-440.webp",
+        "sha256": "9e1f77add5ec0462d9aebd82a10daf898d027aabdadb61387e0ae22d2fc9376d"
+      },
+      {
+        "name": "images/home/v5-zebra-660.webp",
+        "sha256": "ec2599c98994e59e7d36abbc3b7142f2bf6f159f1b7bdd6e3119fd69adeecf21"
+      },
+      {
+        "name": "images/home/v5-zoo-480.webp",
+        "sha256": "1e47118c613aa474f517bfda8ce30a8be6459444ba53571b3aae810e0217b6f7"
+      },
+      {
+        "name": "images/home/v5-zoo-770.webp",
+        "sha256": "7e9a2db2cc9df38890bebdbf63374d1ebb8e4ef00f6d6e2177146785e32613a3"
+      },
+      {
+        "name": "images/home/v5-zoo-social.jpg",
+        "sha256": "d59a9a5dc6d2f1b85f3bfac09f5d26448fadd5b63344cc4332d468bc6d2df927"
+      },
+      {
+        "name": "images/home/zoo-640.webp",
+        "sha256": "6809ac121c8a10f63b07c53c21357fd0d65b3255b76ce13fecdecbb9e6c27a07"
+      },
+      {
+        "name": "images/home/zoo-960.webp",
+        "sha256": "93ea04c81e7658ab73e92cd13302ceb4575585729d7dc120f3a83ed85c8b5e5b"
+      },
+      {
+        "name": "images/home/zoo-social.jpg",
+        "sha256": "7cb245af00cb0301dfd032ee1e886a4df1b55f64bfa20fdca9e716ea294968ad"
+      },
+      {
+        "name": "images/myzootwin-beranda.png",
+        "sha256": "194a2cb5178f255ebf0289aabac75135fc65a8f716f26c01dcfeaebe00960169"
+      },
+      {
+        "name": "images/tropical-creek-game.jpg",
+        "sha256": "6edf52437618a80b94911b846cb2722257739be87c4f96c793f1e808d848e880"
+      },
+      {
+        "name": "images/tropical-creek-journal.svg",
+        "sha256": "cf2f03404f8d72367c385fbbdfaabb0bd21ae0a262804525c20e027a34ea94cc"
+      },
+      {
+        "name": "index.html",
+        "sha256": "8d0aa6dd30f4e657974298fe2eec645b95bfde407f901b797009fbac31f8b145"
+      },
+      {
+        "name": "learn/index.html",
+        "sha256": "66b32e6fa059782b0f2565b11d585bcc3590224067c3d7106742036ad4b2e410"
+      },
+      {
+        "name": "licenses/third-party-notices.txt",
+        "sha256": "a5eff5cf91485bdf2f7ada50d30832c648db248314b3897e3c80e9da66efa29b"
+      },
+      {
+        "name": "licenses/three-MIT.txt",
+        "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+      },
+      {
+        "name": "pets/index.html",
+        "sha256": "b596bd4778547677907eaab0de04d9a8dfde5a3ca2cd852d7e0d1973f4b4f0ef"
+      },
+      {
+        "name": "play/index.html",
+        "sha256": "58a6a95ccd0c587a63e730ca5330fd6ea129fff3a052deba535318b8c53f88d9"
+      },
+      {
+        "name": "robots.txt",
+        "sha256": "91803eeb5a8dbbbae903fce53e66d6f5856f8e0894e7d7d21465c532381dd147"
+      },
+      {
+        "name": "sitemap-0.xml",
+        "sha256": "dbbec59a45a2b89f869b2a277fce46020f49e16649d635a48c479b9868b3c0bf"
+      },
+      {
+        "name": "sitemap-index.xml",
+        "sha256": "f956f18339cf090382bb71b5dadff01ca95c9bd0958046cef03c002851a7b550"
+      },
+      {
+        "name": "wildlife/index.html",
+        "sha256": "303ea4c230db8bc7ea611654fd13c4abe9df1f097431b42c98619e258f29e5e8"
+      }
+    ]
   },
   "tests": {
     "bridge": "26/26 PASS; bridge strict types and Astro604 files/0 diagnostics",
     "yaw": "6/6 PASS; strict types",
     "shadow": "8/8 PASS; strict types",
-    "latestAstro": "NOT_RERUN_AFTER_YAW_AND_SHADOW_HELPER; pending next heavy slot",
-    "fullSuite": "Accepted R7-01 1021/1021; not rerun solely for QA-only changes"
+    "latestAstro": "605 files/0 diagnostics after inspector and probe gating changes; latest fixture-only JS change verified by7 tests/syntax and matrix6 build",
+    "fullSuite": "R7-01 accepted1021/1021 at b6d8b0a; not repeated solely for QA changes",
+    "probeGating": "10/10 PASS; strict types exit0 and Astro605 files/0 diagnostics on c9ebd11 code",
+    "unservicedFixture": "7/7 PASS; JS syntax check and immutable matrix6 build on96289e2",
+    "priorInspector": "Astro605 files/0 diagnostics after yaw/shadow fixes"
   },
   "baseline": {
     "schema": 5,
@@ -169,32 +448,19 @@
     "scope": "Fresh myzootwin-visual3d UUID per lineage; historical synthetic grant/home prerequisite explicitly validation-only. No public adoption/grant acceptance."
   },
   "nativeReview": {
-    "observations": 395,
-    "captures": 58,
-    "actors": 14,
-    "legacyPhaseFamilies": 15,
-    "zebraPhaseFamilies": 13,
-    "scope": "Representative four-angle high and low pairwise evidence. Not every Cartesian setting/instant, and capture-lag/roof occlusion limitations remain explicit. No registry-wide visual PASS."
+    "observations": 619,
+    "selectedCaptures": 135,
+    "domReports": 8,
+    "scope": "Actual original assets, source engine, native mouse/keyboard and internal browser at representative pairwise settings. No registry-wide PASS, physical device, touch, native gameplay-time/soak, GPU performance or presented FPS claim."
   },
   "registry": {
     "historicalInventoryRecords": 514,
     "historicalConstructorSites": 287,
-    "constructedUnion": 275,
+    "constructedUnion": 286,
     "notObservedConstructors": [
-      "game/render3d/foundation-scene:mountFoundationScene:WebGLRenderer:WebGLRenderer:3",
-      "game/render3d/macaw/macaw-studio:allocate:CircleGeometry:CircleGeometry:10",
-      "game/render3d/macaw/macaw-studio:allocate:CircleGeometry:CircleGeometry:5",
-      "game/render3d/macaw/macaw-studio:allocate:CylinderGeometry:CylinderGeometry:4",
-      "game/render3d/macaw/macaw-studio:allocate:CylinderGeometry:CylinderGeometry:6",
-      "game/render3d/macaw/macaw-studio:allocate:CylinderGeometry:CylinderGeometry:7",
-      "game/render3d/macaw/macaw-studio:allocate:CylinderGeometry:CylinderGeometry:9",
-      "game/render3d/macaw/macaw-studio:allocate:Group:Group:2",
-      "game/render3d/macaw/macaw-studio:allocate:LatheGeometry:LatheGeometry:8",
-      "game/render3d/macaw/macaw-studio:allocate:SphereGeometry:SphereGeometry:11",
-      "game/render3d/macaw/macaw-studio:mesh:Mesh:Mesh:3",
-      "game/render3d/placement-preview:ensureFills:tile:Mesh:11"
+      "game/render3d/foundation-scene:mountFoundationScene:WebGLRenderer:WebGLRenderer:3"
     ],
-    "scope": "Construction union is inventory/runtime attribution only; source trigger review and visual acceptance for missing/covered constructors remain incomplete."
+    "scope": "Original mountFoundationScene accepts createRenderer injection. QA injects a real WebGLRenderer on the original canvas/context with antialias true and alpha false. Thus the inline fallback constructor site does not execute. The production scene and original real renderer are still used; this is neither absent asset nor automatic NA."
   },
   "finalMesh": {
     "status": "PASS_STRUCTURAL_WITH_SEPARATE_VISUAL_REVIEW",
@@ -231,12 +497,28 @@
     "errors": []
   },
   "close": {
-    "at": "2026-11-10T07:55:07.516Z",
+    "at": "2026-11-10T09:19:35.332Z",
     "owners": 0,
-    "pendingRafCallbacks": 0,
-    "canonicalOwner": {
-      "disposed": null,
-      "present": false
+    "frames": {
+      "cpuFrame": {
+        "capacity": 120,
+        "count": 13,
+        "invalid": 0,
+        "maxMs": 55.80000001192093,
+        "minMs": 32.40000003576279,
+        "p50Ms": 45.29999995231629,
+        "p95Ms": 55.80000001192093,
+        "retained": 13,
+        "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
+      },
+      "disposed": true,
+      "manualDeliveries": 13,
+      "manualTime": 0,
+      "method": "Explicit deterministic callback timestamps; not native wall-time/FPS",
+      "mode": "manual",
+      "nativeDeliveries": 0,
+      "nativePending": 0,
+      "pending": 0
     },
     "resources": {
       "debugRoots": 0,
@@ -247,54 +529,83 @@
       "skeletons": 0,
       "textures": 0
     },
-    "errors": [],
-    "driver": {
-      "cpuFrame": {
-        "capacity": 120,
-        "count": 0,
-        "invalid": 0,
-        "maxMs": null,
-        "minMs": null,
-        "p50Ms": null,
-        "p95Ms": null,
-        "retained": 0,
-        "scope": "CPU wall duration of actual source callback or renderer submission; excludes GPU completion/presented frames. Bounded trailing samples, not a benchmark claim."
-      },
+    "save": {
+      "active": true,
+      "dirty": false,
       "disposed": true,
-      "manualDeliveries": 0,
-      "manualTime": 0,
-      "method": "Actual native requestAnimationFrame; callback cadence is not presented FPS",
-      "mode": "native",
-      "nativeDeliveries": 0,
-      "nativePending": 0,
-      "pending": 0
+      "fault": null,
+      "generation": "visual3d-synthetic-v5-zebra-unserviced",
+      "hasSave": true,
+      "inflight": false,
+      "pendingTimer": false,
+      "phase": "saved",
+      "recovery": {
+        "hasPreserved": false,
+        "kind": "none",
+        "problem": null,
+        "quote": null,
+        "source": null
+      },
+      "recoveryBusy": false,
+      "restartAvailable": false,
+      "restartBusy": false,
+      "revision": 5,
+      "savedAt": 1794302374879,
+      "savedBirds": 2,
+      "savedCurrency": 4099,
+      "savedMissions": 4,
+      "savedTick": 13580,
+      "storageReady": true
     },
-    "controlsDisposed": true,
-    "resizeObserverActive": false
+    "errors": []
   },
   "resources": {
-    "releasedAt": "2026-11-10T07:55:24Z",
+    "releasedAt": "2026-11-10T09:19:45.641Z",
     "sceneClosed": true,
-    "activeTab10Closed": true,
     "viewportReset": true,
+    "ownedTabsClosed": [
+      9,
+      10,
+      11,
+      12,
+      13,
+      14
+    ],
+    "remainingTabs": [
+      {
+        "id": "8",
+        "providerTabId": "browser-use:5d0fc806-a252-416a-8dd5-acfbc233d47f",
+        "title": "MyZooTwin — Bangun Zoo, Rawat Satwa, Jelajahi Empat Habitat",
+        "url": "https://myzootwin.com/",
+        "browserId": "3"
+      }
+    ],
     "server": {
-      "pid": 15844,
-      "session": 31196,
-      "port": 60161,
-      "exitCode": 0,
-      "listening": false
+      "at": "2026-11-10T09:20:53.2423344Z",
+      "pid": 21920,
+      "processPresent": false,
+      "port": 52234,
+      "listening": false,
+      "normalStopExitCode": 0,
+      "scope": "Only the owned Zebra QA server was inspected. No other project processes were touched."
     },
     "activeOwnedRenderBuildTestsServer": 0,
-    "errorTabs": "Earlier owned error tabs5 and7 could not be controlled/closed through browser URL policy on generated error URLs; engine absent/closed before failure. Temporary browser cleanup not observed. No takeover or policy bypass."
+    "errorTabs": "Earlier owned error tabs5/7 absent in continuation inventory; only untouched production tab8 remains. Previous cleanup uncertainty resolved."
   },
   "remaining": [
-    "Current-source Astro check after QA helper changes",
-    "V4 complete angle/quality baseline",
-    "Remaining individual facility/environment/visitor/source-trigger coverage",
-    "Current-source actual product ID/EN x three viewports, Studio, valid/invalid ghosts and original picking/camera matrix",
-    "Cold reopen on final helper source and constructor trigger reconciliation",
-    "R7-02 review/receipt completion; remain45/54"
+    "Fresh four-angle valid/invalid current-source legacy care ghosts and original 49-cell/small placement preview review; unchanged historical source is continuity evidence, not fresh pixels. Zebra 64-cell and all four Zebra care triggers covered separately.",
+    "Finalize per-family source/trigger/capture attribution, occlusion limitations and review acceptance against universal harness PRD. Do not infer visual PASS from286 constructor sites or514 inventory records."
   ],
   "noPushOrDeploy": true,
-  "stopDeadline": "2026-11-10T10:00:00Z"
+  "stopDeadline": "2026-11-10T10:00:00Z",
+  "continuation": {
+    "path": "docs/qa/zebra/r7-02/continuation.json",
+    "bytes": 26546,
+    "sha256": "8c16009acc523778553410ffdfdc45a879993a8762afcb9d7adbc39b111766e8"
+  },
+  "continuationReview": {
+    "path": "docs/qa/zebra/r7-02/continuation-review.md",
+    "bytes": 9111,
+    "sha256": "50c3be3ee7c02f63d747c3a7836e6e5c954b3a8dcb7eb52c021c3b54e32dc9cf"
+  }
 }
