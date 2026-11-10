@@ -1,0 +1,86 @@
+{
+  "source": "9dbbda54166e629c70747318b0920d0b1e7e75b3",
+  "at": "2026-11-10T03:03:03.978Z",
+  "defect": {
+    "selector": "#site-privacy-dialog a",
+    "target": {
+      "disabled": false,
+      "rect": {
+        "bottom": 620.3958549499512,
+        "height": 16.666667938232422,
+        "left": 340,
+        "right": 495.1979217529297,
+        "top": 603.7291870117188,
+        "width": 155.1979217529297,
+        "x": 340,
+        "y": 603.7291870117188
+      },
+      "tag": "A",
+      "text": "Informasi privasi Google"
+    },
+    "minimumHeight": 44
+  },
+  "rawReceipt": {
+    "path": ".qa/zebra-audit/hp6-06-discovery-browser.json",
+    "bytes": 51989,
+    "sha256": "77ba7c4d460321c6b1df4c53e7083f4e1c0d0b3bfd5af0f68aa8b2778fc723cf"
+  },
+  "cases": [
+    {
+      "label": "initial-id-desktop",
+      "source": "9dbbda54166e629c70747318b0920d0b1e7e75b3",
+      "focus": {
+        "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=\"page\">Beranda</a><a class=\"play-link\" href=\"/play",
+        "id": "",
+        "insideDialog": false,
+        "tag": "BODY"
+      },
+      "dialogOpen": false
+    },
+    {
+      "label": "id-skip-focus",
+      "source": "9dbbda54166e629c70747318b0920d0b1e7e75b3",
+      "focus": {
+        "html": "<a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a>",
+        "id": "",
+        "insideDialog": false,
+        "tag": "A"
+      },
+      "dialogOpen": false
+    },
+    {
+      "label": "id-skip-main",
+      "source": "9dbbda54166e629c70747318b0920d0b1e7e75b3",
+      "focus": {
+        "html": "<main id=\"main-content\" tabindex=\"-1\"><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"VideoGame\",\"name\":\"MyZooTwin\",\"url\":\"https://myzootwin.com/play/\",\"description\":\"Bangun zoo 3D di browser. Rawat makaw, gajah, singa dan jerapah, jalankan misi, lalu lihat pratinjau Zebra Grasslands.\",\"genre\":\"Simulation\",\"gamePlatform\":\"Web browser\",\"inLanguage\":[\"id\",\"en\"],\"image\":\"",
+        "id": "main-content",
+        "insideDialog": false,
+        "tag": "MAIN"
+      },
+      "dialogOpen": false
+    },
+    {
+      "label": "discovery-id-privacy",
+      "source": "9dbbda54166e629c70747318b0920d0b1e7e75b3",
+      "focus": {
+        "html": "<h2 id=\"site-privacy-title\" data-privacy-text=\"title\" tabindex=\"-1\" data-astro-cid-eab6cvjj=\"\">Privasi di perangkat ini</h2>",
+        "id": "site-privacy-title",
+        "insideDialog": true,
+        "tag": "H2"
+      },
+      "dialogOpen": true
+    },
+    {
+      "label": "discovery-escape-return",
+      "source": "9dbbda54166e629c70747318b0920d0b1e7e75b3",
+      "focus": {
+        "html": "<button class=\"privacy-footer\" type=\"button\" data-open-site-privacy=\"\">Pilihan privasi</button>",
+        "id": "",
+        "insideDialog": false,
+        "tag": "BUTTON"
+      },
+      "dialogOpen": false
+    }
+  ],
+  "scope": "Original native DOM confirms16.6667px provider target. No game/save opened. WebPerformance API is unavailable in supported evaluator; use local HTTP trace plus static graph instead."
+}
