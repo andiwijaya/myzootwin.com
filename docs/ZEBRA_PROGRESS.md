@@ -1,6 +1,6 @@
 # Execution checkpoint
 
-Current verified progress: **52/54 (96.30%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
+Current verified progress: **53/54 (98.15%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy. Five-habitat homepage claims are prepared only in the local V5 candidate; production remains four habitats.
 
 All four Library inputs were read completely: master PRD 335 lines, harness 128, checklist 200, handoff 42. Official Windows materialization failed at `os.setxattr` after the authorized retry. The destination is empty; no original source-file identity is claimed. This requested derived repository checklist uses the complete official reads. Original Library documents remain unchanged. See [input-access record](qa/zebra/z0-01/input-access.json).
 
@@ -106,7 +106,9 @@ Open gates: static registry records retain their default **NOT_RUN** labels; fea
 
 | Z2-06 | c2d179d /cce38e3 /4157e2b | [Actual grant and V5 adoption](qa/zebra/z2-06/review.md): strict GQ04 proof/compaction, explicit once-only1700 ZC durable CAS/adopt, quota/retry/reset/overflow/paused/disposed guards, original old projections/backups. Local public entry now V5; fresh actual unmodified entry on owned loopback origin starts1500/no grant. Essential6000-tick source budget costs1151/reserve549 without old money/tickets/later rewards; transient minimum welfare44 disclosed.45 native observations: actual grant/build700/four paid paths/four welcomes/care/earned ZQ02, cold canonical state exact, readonly maintenance hash-exact, fresh/earned/quota cases, ID/EN/3 CSS profiles. Native wrong300 price red retained and canonical700 fix/debit verified. Fresh full1055/1055 across169 files,19 final grant/copy/localization tests,types/Astro633 clean,37-file QA-excluded product. Current normal+38-file fallback reassembly binds53 byte-identical actual reader modules; not relabelled compilation.359 portable evidence assertions,231090 compressed bytes+4 screenshots. All recorded own PID/ports closed; one own failed-navigation tab left ephemeral under browser URL-policy cleanup. No push/deploy/user/Farm save or preview changes. |
 
-Next: **HP6-02 truthful five-playable homepage acceptance**, retaining preview labels until an authorized game release, then **R7-08 exact-candidate push/deploy and live verification**. Local five-habitat paid play is proven in [Z2-06](qa/zebra/z2-06/verification.json),52/54; production remains the separate historical V4/four-habitat release. All game/inspector tabs and own server/test processes closed; user/Farm saves/previews untouched. Presented FPS/physical/unsupported-browser limits remain disclosed. Explicit Zebra push/deploy permission absent; NOT DEPLOYED.
+| HP6-02 | 9272a5d | [Final local five-habitat home](qa/zebra/hp6-02/final/review.md): ID/EN5 cards with44px generic Play links, GQ04/once-only grant/paid facilities progression, consistent hero/FAQ/promo/title/social copy. Exactly3 SSR home sources changed;37 output files,34 unchanged including all game bundles/media/other8 routes. Source/game parity carries actual Z2-06 paid5-habitat/care/1055 regression at original4157e2b scope, not a rerun. Fresh types/Astro633 clean/10-page build,10-route184-link/SEO/sitemap audit.71 native observations (55 home/16 real Play): all5 CTA destinations/back both languages,6 CSS profiles,FAQ Enter/Space,privacy Close/Escape,history/anchors,real New Game1500/GQ04 lock/Options English/cold Continue. No overflow/dangling ARIA/console errors; no engine on home.1752 portable assertions,79040 compressed bytes+4 unedited JPEG captures; current38-file maintenance reassembly parity. Production21:04UTC still main634de84/existing Pages de1f5a36/four habitats. All own tabs/PID/port closed. Local copy may ship only with verified V5 game; no push/deploy. |
+
+Next: **R7-08 separate explicit authorization of the exact final candidate, controlled fast-forward push/deploy and live verification**. All local feature gates complete,53/54. [Current candidate](qa/zebra/hp6-02/final/verification.json) binds9272a5d/inputcf86c849; game source4157e2b remains exact. Production is still the separate historical V4/four-habitat release. All game/inspector tabs, build/check/test work and own servers closed; user/Farm saves/previews untouched. Presented FPS/physical/unsupported-browser limits remain disclosed. Never publish five-habitat copy independently over the old game. Explicit Zebra push/deploy permission absent; NOT DEPLOYED.
 
 ---
 
@@ -257,7 +259,7 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
 - [x] **HP6-01** — Audit existing ZooHome.astro ID / EN, hero, four cards, Giraffe spotlight, SEO, sitemap & current deployed feature flags.
   - **DoD:** Baseline screenshots and metadata, no claim zebra live before deployed.
   - **Proof:** `docs/qa/zebra/hp6-01/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
-- [ ] **HP6-02** — Refresh homepage cards to 5 playable habitats with latest functionality; accurate progression, no dead/disabled mislabel.
+- [x] **HP6-02** - Refresh homepage cards to 5 playable habitats with latest functionality; accurate progression, no dead/disabled mislabel.
   - **DoD:** Macaw/Elephant/Lion/Giraffe/Zebra card copy ID/EN, working /play link, descriptive alt.
   - **Proof:** `docs/qa/zebra/hp6-02/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 - [x] **HP6-03** - Make new promo feature Zebra Grasslands with grounded teaser, benefit-driven CTA and section featuring herd/grazing.
@@ -295,20 +297,20 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
 - [x] **R7-07** — Prepare V5-compatible read-only maintenance/fix-forward rollback plan, immutable source/build manifest and candidate release checklist.
   - **DoD:** Do not deploy V4 code over V5 database; tested no-write maintenance, current production facts verified.
   - **Proof:** `docs/qa/zebra/r7-07/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
-- [ ] **R7-08** — After verified and release authorization, controlled fast-forward publish to main + deployment/live smoke; then complete 5-habitat homepage claim.
+- [ ] **R7-08** - After verified and release authorization, controlled fast-forward publish to main + deployment/live smoke; verify prepared 5-habitat homepage claims against the resulting live V5 game.
   - **DoD:** Exact SHA/Pages build, isolated test saves, live assets/metadata, rollback evidence; hold if authorization unavailable.
   - **Proof:** `docs/qa/zebra/r7-08/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 
 
 ## Release closeout status
 
-- Current runtime/build/full regression source4157e2b and exact source-bound manifests: [Z2-06](qa/zebra/z2-06/verification.json). R7-07 source604f429/regression9099ffe remains historical; readonly reader53 source modules/dependencies byte-identical in current fallback reassembly. Last read-only remote main634de84 / existing Cloudflare deployment de1f5a36 remains separate. No Zebra deployment ID exists.
+- Current home/build source9272a5d and exact source-bound manifests: [HP6-02 final](qa/zebra/hp6-02/final/verification.json). Game/full regression source4157e2b is byte-identical across all runtime/tests/public/package/config inputs except3 SSR home files. R7-07 source604f429/regression9099ffe remains historical; readonly reader53 source modules/dependencies byte-identical in current fallback reassembly. Fresh21:04UTC read-only remote main634de84 / existing Cloudflare deployment de1f5a36 remains separate. No Zebra deployment ID exists.
 - V1-V4 frozen save projections: **PASS**, original fixtures and geometry/media guards retained; fresh full1055/1055 regression at4157e2b.
 - Strict V5 migration / IndexedDB CAS / old-client barrier / original backup: **PASS at isolated R7-03/07 and Z2-06 scopes**. Actual once-only1700 grant, viable budget and local original public entry V5 adoption **PASS Z2-06**; production activation still held.
 - Universal Asset Lab construction inventory and representative native5-species/Full Zoo/camera matrix: **PASS at R7-02 recorded scope**; inventory is not a Cartesian visual or every-animation-instant proof.
 - Actual internal-browser desktop/portrait/landscape ID+EN: **PASS R7-05 supported-host scope**; physical and unsupported browser engines untested.
 - Native15-minute active1x soak / deterministic10x stress / repeated disposal: **PASS at R7-04 recorded scope**; heap estimates and callback CPU/intervals are bounded proxies, not retained-leak or GPU timing proof.
 - Actual presented FPS: **UNMEASURED**; no callback-Hz or render-submit substitution.
-- Homepage preview cards/promo/media/metadata/hreflang/routes: **PASS at HP6-03..06/R7-05 scope**; five actually playable live claim **OPEN HP6-02**.
+- Homepage cards/promo/media/metadata/hreflang/routes: historical preview **PASS HP6-03..06/R7-05** retained; current five-playable **local candidate PASS HP6-02 final**, actual live claim acceptance held in R7-08. Do not publish new home separately from its V5 game.
 - V5-compatible no-write maintenance and fix-forward preparation: **PASS R7-07**, current normal/fallback reassembly parity and post-grant native no-write probes **PASS Z2-06**; no historical V4 binary rollback after V5 adoption.
 - Production Zebra publish/live smoke: **HELD R7-08**, separate explicit release authorization absent. Historical homepage deployment authorization does not cover Zebra.
