@@ -1,0 +1,331 @@
+{
+  "at": "2026-11-10T18:24:22.044Z",
+  "status": "PASS_R7_06_RELEASE_SURFACE_AUDIT",
+  "verified": 50,
+  "total": 54,
+  "source": "eace966662a3920c3712fe2043d017e0f2afe157",
+  "input": "622d401ab8f4e294ebec8883e7c91e298503c68dd815ffda3f0b2ef923831738",
+  "scope": "Source-reachable AST closure plus exact actual client bundle module metadata, locked/installed dependencies, current official npm responses, content-bound distributed assets and tracked-tree sizing. Not a whole-program/function-level dead-code proof, penetration test or visual/performance rerun.",
+  "runtimeModules": 205,
+  "renderModules": 56,
+  "retainedModules": [
+    {
+      "path": "src/game/persistence/elephant-backend.ts",
+      "reason": "Historical V1/V2 native adapter retained for frozen regression/QA, not current browser bootstrap.",
+      "action": "KEEP"
+    },
+    {
+      "path": "src/game/persistence/giraffe-maintenance.ts",
+      "reason": "Prior V4 no-write maintenance artifact source, retained for recovery/release regression.",
+      "action": "KEEP"
+    },
+    {
+      "path": "src/game/persistence/lion-backend.ts",
+      "reason": "Historical V2/V3 native adapter retained for frozen regression/QA, not current browser bootstrap.",
+      "action": "KEEP"
+    },
+    {
+      "path": "src/game/persistence/lion-maintenance.ts",
+      "reason": "Prior V3 no-write maintenance artifact source, retained for recovery/release regression.",
+      "action": "KEEP"
+    },
+    {
+      "path": "src/game/persistence/zebra-backend.ts",
+      "reason": "Explicit V5 QA/test adapter; public adoption remains gated by Z2-06, not dead/deletable code.",
+      "action": "KEEP"
+    },
+    {
+      "path": "src/game/render3d/scene-selection.ts",
+      "reason": "Shared TypeScript selection type contracts, erased from emitted runtime.",
+      "action": "KEEP"
+    },
+    {
+      "path": "src/home-habitats.ts",
+      "reason": "Astro build-time homepage content import, not a browser executable module.",
+      "action": "KEEP"
+    },
+    {
+      "path": "src/site-content.ts",
+      "reason": "Astro build-time shared-site content import, not a browser executable module.",
+      "action": "KEEP"
+    }
+  ],
+  "clientVendors": [
+    {
+      "chunk": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.CdJOs4Xb.js",
+      "id": "\u0000vite/preload-helper.js",
+      "renderedLength": 3201
+    },
+    {
+      "chunk": "_astro/foundation-scene.BM3kneo7.js",
+      "id": "node_modules/three/build/three.module.js",
+      "renderedLength": 540949
+    },
+    {
+      "chunk": "_astro/foundation-scene.BM3kneo7.js",
+      "id": "node_modules/three/build/three.core.js",
+      "renderedLength": 368042
+    },
+    {
+      "chunk": "_astro/foundation-scene.BM3kneo7.js",
+      "id": "node_modules/three/examples/jsm/utils/BufferGeometryUtils.js",
+      "renderedLength": 6965
+    }
+  ],
+  "packages": [
+    {
+      "name": "@astrojs/sitemap",
+      "specifier": "^3.2.1",
+      "version": "3.7.4",
+      "license": "MIT",
+      "lockIntegrity": "sha512-LbKNC24bdUWcQf/pThB6qLlSqHojxGjZDURIzFocY8rlWnAn2t74nnhnK6S5x0NHriHoAduLEpVjRykmeGiVvA=="
+    },
+    {
+      "name": "astro",
+      "specifier": "7.4.4",
+      "version": "7.4.4",
+      "license": "MIT",
+      "lockIntegrity": "sha512-e+BzhGCaIY/H1tV/BQPTbOPZVZ8wuu6+bbpc+3oSMH2UgoB1l9peSGASk6nswtYra9PO9OoMREhldKtQkZ5TVw=="
+    },
+    {
+      "name": "three",
+      "specifier": "0.187.0",
+      "version": "0.187.0",
+      "license": "MIT",
+      "lockIntegrity": "sha512-Qiu7R+Cmh8CstZsY1uJOSWnVlfo7ZtNLV7mF8Jltk3LB3AtDu9cRZlcnRKkAk8Y4z6KKw35z7Y7Urd7jWY8etA=="
+    },
+    {
+      "name": "typescript",
+      "specifier": "^5.7.2",
+      "version": "5.9.3",
+      "license": "Apache-2.0",
+      "lockIntegrity": "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw=="
+    }
+  ],
+  "currentOfficialRegistryAudit": {
+    "runtime": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "all": {
+      "info": 0,
+      "low": 0,
+      "moderate": 0,
+      "high": 0,
+      "critical": 0,
+      "total": 0
+    },
+    "scope": "Official npm registry audit endpoint, current retrieval. Initial sandbox DNS failure preserved separately; authorized outside-sandbox read succeeded. No install/update."
+  },
+  "publicAssetCount": 18,
+  "productionFiles": 37,
+  "productionChanges": [
+    {
+      "path": "licenses/third-party-notices.txt",
+      "sha256": "9d8b037d4f92c6b6bc54c45c3a5eb1185525f74e63bdef49fef9bc02658f9b47",
+      "kind": "CHANGED"
+    },
+    {
+      "path": "licenses/vite-MIT.txt",
+      "sha256": "e373c2e74cd342b9e74d0b8813a8fddf3c9788515669a79c2ac238195673d38b",
+      "kind": "ADDED"
+    }
+  ],
+  "sourceRuntimeDependencyChange": "None: git diff from accepted R7-05 src/,package.json,package-lock.json is empty",
+  "noticeFix": "Actual Vite8.3.5 virtual preload helper is bundled. Appended verbatim core MIT content, preserved entire1224byte historical Three notice prefix and original three-MIT.txt bytes. Added1162byte vite-MIT.txt and content-hash provenance. Five retained older homepage captures now also have explicit content-matched records; no art regenerated/deleted.",
+  "checks": {
+    "tests": 20,
+    "pass": 20,
+    "fail": 0,
+    "skip": 0,
+    "cancel": 0,
+    "strictTypesExit": 0,
+    "astroFiles": 620,
+    "astroErrors": 0,
+    "astroWarnings": 0,
+    "astroHints": 0,
+    "buildPages": 10,
+    "unresolvedImports": 0,
+    "unexpectedClientVendor": 0,
+    "qaModulesBundled": 0,
+    "secretShapeFindings": 0
+  },
+  "repo": {
+    "files": 4542,
+    "bytes": 326153676,
+    "categories": [
+      {
+        "category": ".env.example",
+        "bytes": 94
+      },
+      {
+        "category": ".gitattributes",
+        "bytes": 3651
+      },
+      {
+        "category": ".gitignore",
+        "bytes": 75
+      },
+      {
+        "category": "README.md",
+        "bytes": 2297
+      },
+      {
+        "category": "art",
+        "bytes": 313572
+      },
+      {
+        "category": "astro.config.mjs",
+        "bytes": 561
+      },
+      {
+        "category": "docs",
+        "bytes": 1781877
+      },
+      {
+        "category": "docs/qa",
+        "bytes": 318324445
+      },
+      {
+        "category": "package-lock.json",
+        "bytes": 177829
+      },
+      {
+        "category": "package.json",
+        "bytes": 839
+      },
+      {
+        "category": "public",
+        "bytes": 578549
+      },
+      {
+        "category": "scripts",
+        "bytes": 993958
+      },
+      {
+        "category": "src",
+        "bytes": 1471041
+      },
+      {
+        "category": "tests",
+        "bytes": 2504772
+      },
+      {
+        "category": "tsconfig.json",
+        "bytes": 116
+      }
+    ],
+    "largest": [
+      {
+        "path": "docs/qa/m6-02/generated-history.zip",
+        "bytes": 9911803
+      },
+      {
+        "path": "docs/qa/m6-01/frozen-baseline-runtime.zip",
+        "bytes": 7550681
+      },
+      {
+        "path": "docs/qa/m3-07/interaction-matrix.json",
+        "bytes": 7099927
+      },
+      {
+        "path": "docs/qa/m5-07/candidate-history.zip",
+        "bytes": 6805774
+      },
+      {
+        "path": "docs/qa/m3-06/interaction-matrix.json",
+        "bytes": 6544752
+      },
+      {
+        "path": "docs/qa/m3-05/interaction-matrix.json",
+        "bytes": 6529866
+      },
+      {
+        "path": "docs/qa/m3-04/interaction-matrix.json",
+        "bytes": 5967873
+      },
+      {
+        "path": "docs/qa/m3-03/interaction-matrix.json",
+        "bytes": 5465633
+      },
+      {
+        "path": "docs/qa/m3-02/interaction-matrix.json",
+        "bytes": 4995570
+      },
+      {
+        "path": "docs/qa/m3-01/interaction-matrix.json",
+        "bytes": 4401623
+      },
+      {
+        "path": "docs/qa/m2-06/interaction-matrix.json",
+        "bytes": 3675226
+      },
+      {
+        "path": "docs/qa/m2-07/interaction-matrix.json",
+        "bytes": 3667446
+      },
+      {
+        "path": "docs/qa/m2-05/interaction-matrix.json",
+        "bytes": 3388105
+      },
+      {
+        "path": "docs/qa/m4-03/archived-preflight-owned-runs.zip",
+        "bytes": 2654724
+      },
+      {
+        "path": "docs/qa/m2-04/interaction-matrix.json",
+        "bytes": 2385462
+      }
+    ],
+    "gitObjectStats": "count: 308\nsize: 6.24 MiB\nin-pack: 9419\npacks: 4\nsize-pack: 128.54 MiB\nprune-packable: 0\ngarbage: 0\nsize-garbage: 0 bytes\n",
+    "ignoredRoots": [
+      ".qa/",
+      "node_modules/",
+      "dist/",
+      ".astro/"
+    ],
+    "cleanup": "No old media/QA evidence deleted. Prior large scratch remains ignored and preserved; new evidence uses bounded compressed receipts. No git history rewrite/prune or external workspace changes."
+  },
+  "consumedEvidence": [
+    {
+      "path": "docs/ASSET_MANIFEST.json",
+      "sha256": "1f393da08f60e001cad6b183d1cc5284efed752a923a70ba8057c9761b189c71"
+    },
+    {
+      "path": "docs/qa/zebra/r7-05/production.json",
+      "sha256": "0ee6f616fae5ada905a977018ff725e1dcb29bfa1630ac9b240bff9182edd686"
+    },
+    {
+      "path": "docs/qa/zebra/r7-04/verification.json",
+      "sha256": "217898cd482a13b3beff26234a2fc0c46408c1d82b8913e642b9ff26921cf2cb"
+    },
+    {
+      "path": ".qa/zebra-audit/r7-06/npm-audit-official.json",
+      "sha256": "f5f1acda9840ff8bfe8d891f92b270ba7a4ed5e9ddb9c6768ad16c5f5f793cca"
+    },
+    {
+      "path": ".qa/zebra-audit/r7-06/npm-audit-all.json",
+      "sha256": "f5f1acda9840ff8bfe8d891f92b270ba7a4ed5e9ddb9c6768ad16c5f5f793cca"
+    }
+  ],
+  "limits": [
+    "npm audit is a timestamped known-advisory check, not a guarantee that all vulnerabilities are absent. Initial sandbox DNS failure is preserved; official registry reads succeeded outside sandbox without install/update.",
+    "AST/bundle module reachability over-approximates executed paths; no whole-program function-level dead-code or all-branch execution claim. Eight intentional historical/type/build/maintenance/QA modules kept.",
+    "Three conservative textual secret shapes only, no credential values emitted. Not a complete secret scanner.",
+    "No new browser visual/performance run: all prior37minusnewnotice files exact R7-05 except the expanded notice. Presented FPS/physical-device limitations remain.",
+    "Historical326MB tracked working-tree size is dominated by318MB existing docs/qa. Media/evidence/history retained; no blanket deletion, history rewrite, GC/prune or other-repo action."
+  ],
+  "resources": {
+    "browserTabsOpened": 0,
+    "serversStarted": 0,
+    "testBuildSessionsCompletedNormally": true,
+    "activeOwnedTestBuildBrowserServers": 0,
+    "userPreviewTouched": false
+  },
+  "next": "R7-07 V5-compatible no-write maintenance/fix-forward artifact and current production/release-candidate gates. Z2-06,HP6-02,R7-08 remain open; no Zebra push/deploy authorization.",
+  "noPushOrDeploy": true
+}
