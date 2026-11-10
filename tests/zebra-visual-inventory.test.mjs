@@ -1,8 +1,11 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import {createHash} from 'node:crypto';
 import {readFileSync} from 'node:fs';
 import {discoverVisualInventory} from '../scripts/qa/zebra/visual-inventory.mjs';
 const frozen=JSON.parse(readFileSync(new URL('../docs/qa/zebra/z0-03/inventory.json',import.meta.url),'utf8'));
+const extension=JSON.parse(readFileSync(new URL('./fixtures/zebra-visual-v5-extension.json',import.meta.url),'utf8'));
+const withoutLine=({line,...record})=>record;
 // Keep the immutable Z0-03 receipt. H1 found Box3Helper and spray's Object3D transform helper omitted by the original regex.
 // Compare its original source inventory after projecting out that explicit scanner correction.
 const addedType=t=>t?.endsWith('Helper')||t==='Object3D'||t==='LOD';
@@ -20,7 +23,19 @@ test('all production-reachable visual sources and nested geometry/part sites rem
  const protectedAsset=a=>!integration.has(a.sourcePath)&&!a.sourcePath.startsWith('src/game/render3d/zebra/')&&a.sourcePath!=='src/game/render3d/scene-selection.ts';
  assert.deepEqual(current.assets.filter(protectedAsset),historical.assets.filter(protectedAsset),'Original protected visual parts remain exact');
  for(const path of integration)assert.deepEqual(current.assets.filter(a=>a.sourcePath===path).map(({line,...a})=>a),historical.assets.filter(a=>a.sourcePath===path).map(({line,...a})=>a),'Integration retains original constructors/parts: '+path);
- for(const key of ['staticVisuals','generatedResources','publicAssets'])assert.deepEqual(current[key],historical[key],key+' visual inventory drift requires explicit review');
+ // HP6 adds one reviewed preview image and five exact original capture derivatives.
+ // Keep original media bytes/provenance exact; only two retired source references change.
+ const originalStatic=new Set(historical.staticVisuals.map(a=>a.assetId)),originalPublic=new Set(historical.publicAssets.map(a=>a.path));
+ assert.deepEqual(current.staticVisuals.filter(a=>originalStatic.has(a.assetId)).map(withoutLine),historical.staticVisuals.map(withoutLine));
+ assert.deepEqual(current.staticVisuals.filter(a=>!originalStatic.has(a.assetId)).map(withoutLine),extension.staticAdditions);
+ assert.ok(current.staticVisuals.every(a=>Number.isSafeInteger(a.line)&&a.line>0));
+ assert.deepEqual(current.generatedResources,historical.generatedResources);
+ const retired=new Map(extension.retiredSourceReferences.map(a=>[a.path,a.sourceStringReferences]));
+ assert.deepEqual(current.publicAssets.filter(a=>originalPublic.has(a.path)),historical.publicAssets.map(a=>retired.has(a.path)?{...a,sourceStringReferences:retired.get(a.path)}:a));
+ assert.deepEqual(current.publicAssets.filter(a=>!originalPublic.has(a.path)),extension.publicAdditions);
+ assert.equal(createHash('sha256').update(readFileSync(new URL('../'+extension.evidence.path,import.meta.url))).digest('hex'),extension.evidence.sha256);
+ assert.equal(extension.staticAdditions.length,1);assert.equal(extension.publicAdditions.length,5);
+ assert.ok(extension.publicAdditions.every(a=>Array.isArray(a.provenance)&&a.provenance.length===1&&a.provenance[0].rights==='original_project_work_no_external_art_inputs'));
  assert.ok(actual.modules.some(m=>m.path===newFactory&&m.family==='zebra'));
  assert.deepEqual(actual.unresolved,[]);assert.equal(new Set(actual.assets.map(a=>a.assetId)).size,actual.assets.length);
  for(const family of ['macaw','elephant','lion','giraffe','zebra','environment','visitors','lighting','camera-picking'])assert.ok(actual.assets.some(a=>a.family===family),family);

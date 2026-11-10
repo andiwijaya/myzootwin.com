@@ -5,7 +5,7 @@ import type {RuntimeState} from '../../core/runtime-state.ts';
 import {zebras,type ZebraAnimal,type ZebraHabitat,type ZebraResource} from '../../core/zebra-state.ts';
 import {ZEBRA_NEEDS as N,ZEBRA_GROUND as G,ZEBRA_HERD as H,ZEBRA_SOCIAL as S} from './rules.ts';
 import {zebraDistance as distance,zebraGroundRoute} from './ground.ts';
-import {zebraBodySweepAllowed} from './body.ts';
+import {beginZebraBodyFrame,zebraBodySweepAllowed} from './body.ts';
 import {stepZebraMovement,walkZebraGround,zebraIdle,zebraAngle} from './movement.ts';
 type CareEvent={type:'zebra-grazed'|'zebra-drank'|'zebra-rested'|'zebra-enriched';animalId:string;resourceId:string;eventId:string};
 type Kind='zebra-graze'|'zebra-water'|'zebra-shade'|'zebra-enrichment';
@@ -28,6 +28,7 @@ function chooseResource(s:RuntimeState,a:ZebraAnimal,slot:number,herd:ZebraAnima
 /** One canonical100ms step. Only completed true contact consumes one real portion.
  * No rendering, wall-time, extra random draw, automatic refill or mission credit. */
 export function stepZebraCare(s:RuntimeState){
+ const endBodyFrame=beginZebraBodyFrame(zebras(s.animals));try{
  const herd=zebras(s.animals),fed:{animalId:string;resourceId:string}[]=[],watered:{animalId:string;resourceId:string}[]=[],events:CareEvent[]=[],offset=herd.length?s.tick%herd.length:0;
  for(let n=0;n<herd.length;n++){const a=herd[(n+offset)%herd.length]!;a.hunger=Math.min(100,a.hunger+N.hungerPerTick);a.thirst=Math.min(100,a.thirst+N.thirstPerTick);a.energy=Math.max(0,a.energy-N.energyPerTick);a.shadeRest=Math.max(0,a.shadeRest-N.shadePerTick);a.enrichment=Math.max(0,a.enrichment-N.enrichmentPerTick);a.enrichmentCooldownTicks=Math.max(0,a.enrichmentCooldownTicks-1);a.trotCooldownTicks=Math.max(0,a.trotCooldownTicks-1);a.groomCooldownTicks=Math.max(0,a.groomCooldownTicks-1);a.socialComfort=Math.max(0,a.socialComfort-S.perTick);
   if(zebraSocialPhase(a)&&!zebraSocialHealthy(a))cancelZebraSocial(s,a);
@@ -68,4 +69,5 @@ export function stepZebraCare(s:RuntimeState){
  // Another resident may consume the last portion later in this same atomic tick.
  for(const a of herd)if(isCare(a)&&!s.world.resources.some(r=>r.id===a.targetResourceId&&r.stock>0))zebraIdle(a,0);
  reconcileZebraWelfare(s);return{fed,watered,events,herdEvents,socialEvents};
+ }finally{endBodyFrame();}
 }
