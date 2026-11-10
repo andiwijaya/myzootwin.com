@@ -1,3 +1,5 @@
+> **Final R7-02 acceptance:** [final review](final-preview/review.md) and [verification](final-preview/verification.json),46/54. Historical pending lists below are superseded; raw/rejected observations and limits remain retained.
+
 # R7-02 preparation: native five-species visual matrix
 
 Current status: **PARTIAL NATIVE REVIEW / NOT ACCEPTED**, progress **45/54**. [Current continuation review](continuation-review.md), [verification](verification.json) and [checkpoint](checkpoint.json) supersede the older pending lists below. Current QA source96289e2; probe gatingc9ebd11; all36 product files remain identical to R7-01.619 raw observations/135 selected captures, not a blanket inventory pass. Native legacy previews and final per-family attribution remain open. Own browser/server resources closed by09:21UTC; no tests/builds active. Stop10:00UTC/17:00WIB; no Zebra push/deploy authorization.

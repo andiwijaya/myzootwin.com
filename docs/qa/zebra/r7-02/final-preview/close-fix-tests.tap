@@ -1,0 +1,166 @@
+TAP version 13
+# Subtest: a reward candidate joins a follow-up autosave started by another already-running drain before using its revision
+ok 1 - a reward candidate joins a follow-up autosave started by another already-running drain before using its revision
+  ---
+  duration_ms: 62.7936
+  type: 'test'
+  ...
+# Subtest: empty read does not write or create progress; Continue needs a real saved game
+ok 2 - empty read does not write or create progress; Continue needs a real saved game
+  ---
+  duration_ms: 4.4604
+  type: 'test'
+  ...
+# Subtest: new game durably stores full versioned starter state and exposes truthful saved summary
+ok 3 - new game durably stores full versioned starter state and exposes truthful saved summary
+  ---
+  duration_ms: 11.0127
+  type: 'test'
+  ...
+# Subtest: saved game blocks fresh overwrite and Continue restores all data with no elapsed-time catchup
+ok 4 - saved game blocks fresh overwrite and Continue restores all data with no elapsed-time catchup
+  ---
+  duration_ms: 23.0291
+  type: 'test'
+  ...
+# Subtest: many tick checkpoints coalesce to one bounded timer and latest snapshot, not one write per tick
+ok 5 - many tick checkpoints coalesce to one bounded timer and latest snapshot, not one write per tick
+  ---
+  duration_ms: 12.3681
+  type: 'test'
+  ...
+# Subtest: critical checkpoint replaces a delayed timer without dropping latest committed transaction state
+ok 6 - critical checkpoint replaces a delayed timer without dropping latest committed transaction state
+  ---
+  duration_ms: 4.4936
+  type: 'test'
+  ...
+# Subtest: one in-flight write serializes latest dirty progress and revision; saving never means pending data is saved
+ok 7 - one in-flight write serializes latest dirty progress and revision; saving never means pending data is saved
+  ---
+  duration_ms: 6.3594
+  type: 'test'
+  ...
+# Subtest: quota failure keeps primary and previous bytes, stops automatic retries and retries latest state explicitly
+ok 8 - quota failure keeps primary and previous bytes, stops automatic retries and retries latest state explicitly
+  ---
+  duration_ms: 6.8766
+  type: 'test'
+  ...
+# Subtest: unreadable stored data is never erased replaced or silently loaded as new game
+ok 9 - unreadable stored data is never erased replaced or silently loaded as new game
+  ---
+  duration_ms: 2.0992
+  type: 'test'
+  ...
+# Subtest: blocked storage permits explicitly temporary play without claiming a save or retrying each tick
+ok 10 - blocked storage permits explicitly temporary play without claiming a save or retrying each tick
+  ---
+  duration_ms: 0.3752
+  type: 'test'
+  ...
+# Subtest: retry after unavailable access cannot overwrite an existing hidden save with temporary progress
+ok 11 - retry after unavailable access cannot overwrite an existing hidden save with temporary progress
+  ---
+  duration_ms: 1.3811
+  type: 'test'
+  ...
+# Subtest: retry after unavailable empty storage can persist temporary progress safely
+ok 12 - retry after unavailable empty storage can persist temporary progress safely
+  ---
+  duration_ms: 2.4412
+  type: 'test'
+  ...
+# Subtest: two writers cannot both replace the same revision; loser pauses with conflict and winner proof remains
+ok 13 - two writers cannot both replace the same revision; loser pauses with conflict and winner proof remains
+  ---
+  duration_ms: 11.0872
+  type: 'test'
+  ...
+# Subtest: external revision notification freezes active writer but refreshes inactive Continue metadata
+ok 14 - external revision notification freezes active writer but refreshes inactive Continue metadata
+  ---
+  duration_ms: 6.466
+  type: 'test'
+  ...
+# Subtest: dispose drains in-flight and latest state before close, cancels timers and cannot schedule afterward
+ok 15 - dispose drains in-flight and latest state before close, cancels timers and cannot schedule afterward
+  ---
+  duration_ms: 6.3256
+  type: 'test'
+  ...
+# Subtest: invalid in-memory checkpoint does not reach backend or damage valid primary
+ok 16 - invalid in-memory checkpoint does not reach backend or damage valid primary
+  ---
+  duration_ms: 2.0632
+  type: 'test'
+  ...
+# Subtest: all four missions compacted economy birds visitors resources RNG speed and required settings roundtrip intact
+ok 17 - all four missions compacted economy birds visitors resources RNG speed and required settings roundtrip intact
+  ---
+  duration_ms: 796.6467
+  type: 'test'
+  ...
+# Subtest: envelope bounds reject future format extra fields malformed writer and invalid revisions
+ok 18 - envelope bounds reject future format extra fields malformed writer and invalid revisions
+  ---
+  duration_ms: 4.5223
+  type: 'test'
+  ...
+# Subtest: no IndexedDB capability rejects explicitly and cannot claim a successful write
+ok 19 - no IndexedDB capability rejects explicitly and cannot claim a successful write
+  ---
+  duration_ms: 1.5179
+  type: 'test'
+  ...
+# Subtest: closing an unresolved IDB open rejects its reader and closes a late connection without hanging
+ok 20 - closing an unresolved IDB open rejects its reader and closes a late connection without hanging
+  ---
+  duration_ms: 0.218
+  type: 'test'
+  ...
+# Subtest: locale changes while paused preserve time money commands and serialize once as an actual preference
+ok 21 - locale changes while paused preserve time money commands and serialize once as an actual preference
+  ---
+  duration_ms: 2.4813
+  type: 'test'
+  ...
+# Subtest: unavailable temporary session freezes safely if retry discovers unreadable stored data
+ok 22 - unavailable temporary session freezes safely if retry discovers unreadable stored data
+  ---
+  duration_ms: 1.0504
+  type: 'test'
+  ...
+# Subtest: closed-tab notification failure cannot report a successful commit as failure or prevent latest drain
+ok 23 - closed-tab notification failure cannot report a successful commit as failure or prevent latest drain
+  ---
+  duration_ms: 8.5815
+  type: 'test'
+  ...
+# Subtest: out-of-range saved timestamps are unreadable and never reach locale date formatting
+ok 24 - out-of-range saved timestamps are unreadable and never reach locale date formatting
+  ---
+  duration_ms: 1.4993
+  type: 'test'
+  ...
+# Subtest: reentrant saving notification serializes pause checkpoints instead of conflicting with its own revision
+ok 25 - reentrant saving notification serializes pause checkpoints instead of conflicting with its own revision
+  ---
+  duration_ms: 3.1178
+  type: 'test'
+  ...
+# Subtest: phase QA lineage survives original V3 backup, real V4 CAS and a cold connection without creating a player database
+ok 26 - phase QA lineage survives original V3 backup, real V4 CAS and a cold connection without creating a player database
+  ---
+  duration_ms: 81.946
+  type: 'test'
+  ...
+1..26
+# tests 26
+# suites 0
+# pass 26
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1416.7501

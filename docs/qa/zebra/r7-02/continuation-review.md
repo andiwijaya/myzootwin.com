@@ -1,3 +1,5 @@
+> **Final R7-02 acceptance:** [final review](final-preview/review.md) and [verification](final-preview/verification.json),46/54. Historical pending lists below are superseded; raw/rejected observations and limits remain retained.
+
 # R7-02 continuation, 10 November
 
 **Partial review; 45/54 remains unchanged. No push or deployment.** This adds current native evidence to the earlier checkpoint, without accepting inactive legacy previews or equating constructor counts with visual coverage. [Continuation receipt](continuation.json), [verification](verification.json), [matrix](matrix.json) and [checkpoint](checkpoint.json) hold the exact bindings. Resource closure was observed before 09:21 UTC, well before the 10:00 UTC /17:00 WIB stop.

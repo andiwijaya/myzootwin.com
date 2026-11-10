@@ -1,0 +1,619 @@
+{
+  "at": "2026-11-10T14:28:20.379Z",
+  "status": "PASS_SOURCE_ADJUDICATION_OF_TWO_INACTIVE_EMPTY_AUDIT_FALSE_POSITIVES",
+  "scope": "Actual current production factories, no browser/app mutation. Raw audit ERROR is retained, not silently changed or marked NA. Exception applies only to source-bound invisible zero-vertex factories in an empty initial world. Populated source factories must pass unchanged.",
+  "sources": [
+    {
+      "path": "src/game/render3d/elephant-habitat-scene.ts",
+      "sha256": "a369c67c3f0c725b87399d513a71d4ca43a3940af7c2c4d66861728ece61cf1d"
+    },
+    {
+      "path": "src/game/render3d/path-scene.ts",
+      "sha256": "a92541829abb61452f485bdca9eb4e61fd99188724f6c57c8b4f233541c42f21"
+    },
+    {
+      "path": "src/game/render3d/tropical-diorama.ts",
+      "sha256": "6ad571a6643a1dc77ad69db86e0745a787b975e907c4092f200d390374ab9245"
+    },
+    {
+      "path": "scripts/qa/visual3d/mesh-audit.ts",
+      "sha256": "3fb5047149452062b79daec8af50aa2d77c7c8051b2d09316989356f25d3ceb0"
+    }
+  ],
+  "emptyState": {
+    "elephant": {
+      "visible": false,
+      "vertices": 0,
+      "hasPosition": false,
+      "attributes": {},
+      "indexCount": 0,
+      "bounds": null
+    },
+    "paths": {
+      "visible": false,
+      "vertices": 0,
+      "hasPosition": true,
+      "attributes": {
+        "position": {
+          "count": 0,
+          "itemSize": 3
+        },
+        "normal": {
+          "count": 0,
+          "itemSize": 3
+        },
+        "color": {
+          "count": 0,
+          "itemSize": 3
+        }
+      },
+      "indexCount": 0,
+      "bounds": {
+        "min": [
+          "Infinity",
+          "Infinity",
+          "Infinity"
+        ],
+        "max": [
+          "-Infinity",
+          "-Infinity",
+          "-Infinity"
+        ]
+      }
+    },
+    "rawAudit": {
+      "status": "FAIL_STRUCTURAL",
+      "scope": "All real current scene objects/resources excluding explicitly owned QA overlays. Read-only; no replacement geometry, pose, state, clock or production mutation.",
+      "counts": {
+        "objects": 5,
+        "geometries": 2,
+        "materials": 2,
+        "textures": 0,
+        "materialTextures": 0,
+        "skeletonTextures": 0,
+        "skinned": 0,
+        "sprites": 0,
+        "points": 0,
+        "errors": 2,
+        "review": 0
+      },
+      "thresholds": {
+        "zeroAreaCrossSquared": 1e-20,
+        "unitNormalTolerance": 0.005,
+        "skinWeightSumTolerance": 0.001,
+        "maxLocalExtent": 520
+      },
+      "issues": [
+        {
+          "code": "POSITION_LAYOUT",
+          "severity": "ERROR",
+          "path": "/Scene[0]/Elephant Grove enclosure[0]/Elephant Grove ground and timber fence[0]",
+          "detail": "Renderable geometry requires vec3 positions"
+        },
+        {
+          "code": "NONFINITE_BOUNDS",
+          "severity": "ERROR",
+          "path": "/Scene[0]/Visitor path topology[1]/Player paths[0]",
+          "detail": "Stored bounds contain nonfinite values"
+        }
+      ],
+      "objects": [
+        {
+          "path": "/Scene[0]",
+          "source": null,
+          "type": "Scene",
+          "visible": true,
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "bounds": null,
+          "cameraIntersects": null,
+          "geometry": null,
+          "skeletonBones": 0,
+          "instances": 0
+        },
+        {
+          "path": "/Scene[0]/Elephant Grove enclosure[0]",
+          "source": null,
+          "type": "Group",
+          "visible": true,
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "bounds": null,
+          "cameraIntersects": null,
+          "geometry": null,
+          "skeletonBones": 0,
+          "instances": 0
+        },
+        {
+          "path": "/Scene[0]/Elephant Grove enclosure[0]/Elephant Grove ground and timber fence[0]",
+          "source": null,
+          "type": "Mesh",
+          "visible": false,
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "bounds": null,
+          "cameraIntersects": null,
+          "geometry": 0,
+          "skeletonBones": 0,
+          "instances": 0
+        },
+        {
+          "path": "/Scene[0]/Visitor path topology[1]",
+          "source": null,
+          "type": "Group",
+          "visible": true,
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "bounds": null,
+          "cameraIntersects": null,
+          "geometry": null,
+          "skeletonBones": 0,
+          "instances": 0
+        },
+        {
+          "path": "/Scene[0]/Visitor path topology[1]/Player paths[0]",
+          "source": null,
+          "type": "Mesh",
+          "visible": false,
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "bounds": null,
+          "cameraIntersects": null,
+          "geometry": 1,
+          "skeletonBones": 0,
+          "instances": 0
+        }
+      ],
+      "geometries": [
+        {
+          "id": 0,
+          "source": null,
+          "type": "BufferGeometry",
+          "vertices": 0,
+          "triangles": 0,
+          "indexed": false,
+          "bounds": null,
+          "normal": null,
+          "degenerateTriangles": 0,
+          "invertedNormalTriangles": 0,
+          "groups": [],
+          "drawRange": {
+            "start": 0,
+            "count": "Infinity (full source geometry)"
+          }
+        },
+        {
+          "id": 1,
+          "source": null,
+          "type": "BufferGeometry",
+          "vertices": 0,
+          "triangles": 0,
+          "indexed": false,
+          "bounds": null,
+          "normal": {
+            "zeroNormals": 0,
+            "nonUnitNormals": 0
+          },
+          "degenerateTriangles": 0,
+          "invertedNormalTriangles": 0,
+          "groups": [],
+          "drawRange": {
+            "start": 0,
+            "count": "Infinity (full source geometry)"
+          }
+        }
+      ],
+      "materials": [
+        {
+          "id": 0,
+          "source": null,
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "alphaTest": 0,
+          "side": 0,
+          "depthTest": true,
+          "depthWrite": true,
+          "polygonOffset": false,
+          "polygonOffsetFactor": 0,
+          "polygonOffsetUnits": 0,
+          "visible": true,
+          "blending": 1,
+          "maps": []
+        },
+        {
+          "id": 1,
+          "source": null,
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "alphaTest": 0,
+          "side": 0,
+          "depthTest": true,
+          "depthWrite": true,
+          "polygonOffset": false,
+          "polygonOffsetFactor": 0,
+          "polygonOffsetUnits": 0,
+          "visible": true,
+          "blending": 1,
+          "maps": []
+        }
+      ],
+      "visualChecks": {
+        "clipping": "VISUAL_REVIEW_REQUIRED: bounds/frustum is broad phase only, not pixel occlusion or world collision",
+        "zFighting": "VISUAL_REVIEW_REQUIRED: depth/polygon offset/alpha metadata captured, no unsupported automatic pixel guarantee",
+        "pivot": "Local source pivot and actual posed world bounds captured; alignment requires authoritative entity/port checks H1-07",
+        "lod": "Actual production low/high tiers must each be captured; no mock LOD",
+        "sprites": "NA when actual current runtime and source registry both show absent; never infer particles absent from zero active count",
+        "skeleton": "Actual bone hierarchy, inverse matrices, skin index and weights checked; animation quality separate"
+      }
+    }
+  },
+  "populated": {
+    "elephant": {
+      "visible": true,
+      "vertices": 2304,
+      "hasPosition": true,
+      "attributes": {
+        "position": {
+          "count": 2304,
+          "itemSize": 3
+        },
+        "normal": {
+          "count": 2304,
+          "itemSize": 3
+        },
+        "color": {
+          "count": 2304,
+          "itemSize": 3
+        }
+      },
+      "indexCount": 0,
+      "bounds": {
+        "min": [
+          "-3",
+          "0.02500000037252903",
+          "6"
+        ],
+        "max": [
+          "3",
+          "0.6949999928474426",
+          "12"
+        ]
+      }
+    },
+    "paths": {
+      "visible": true,
+      "vertices": 4320,
+      "hasPosition": true,
+      "attributes": {
+        "position": {
+          "count": 4320,
+          "itemSize": 3
+        },
+        "normal": {
+          "count": 4320,
+          "itemSize": 3
+        },
+        "color": {
+          "count": 4320,
+          "itemSize": 3
+        }
+      },
+      "indexCount": 0,
+      "bounds": {
+        "min": [
+          "-4.974999904632568",
+          "0.02250000089406967",
+          "0.02500000037252903"
+        ],
+        "max": [
+          "6.974999904632568",
+          "0.41499999165534973",
+          "12.975000381469727"
+        ]
+      }
+    },
+    "audit": {
+      "status": "PASS_STRUCTURAL_WITH_SEPARATE_VISUAL_REVIEW",
+      "scope": "All real current scene objects/resources excluding explicitly owned QA overlays. Read-only; no replacement geometry, pose, state, clock or production mutation.",
+      "counts": {
+        "objects": 5,
+        "geometries": 2,
+        "materials": 2,
+        "textures": 0,
+        "materialTextures": 0,
+        "skeletonTextures": 0,
+        "skinned": 0,
+        "sprites": 0,
+        "points": 0,
+        "errors": 0,
+        "review": 0
+      },
+      "thresholds": {
+        "zeroAreaCrossSquared": 1e-20,
+        "unitNormalTolerance": 0.005,
+        "skinWeightSumTolerance": 0.001,
+        "maxLocalExtent": 520
+      },
+      "issues": [],
+      "objects": [
+        {
+          "path": "/Scene[0]",
+          "source": null,
+          "type": "Scene",
+          "visible": true,
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "bounds": null,
+          "cameraIntersects": null,
+          "geometry": null,
+          "skeletonBones": 0,
+          "instances": 0
+        },
+        {
+          "path": "/Scene[0]/Elephant Grove enclosure[0]",
+          "source": null,
+          "type": "Group",
+          "visible": true,
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "bounds": null,
+          "cameraIntersects": null,
+          "geometry": null,
+          "skeletonBones": 0,
+          "instances": 0
+        },
+        {
+          "path": "/Scene[0]/Elephant Grove enclosure[0]/Elephant Grove ground and timber fence[0]",
+          "source": null,
+          "type": "Mesh",
+          "visible": true,
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "bounds": {
+            "min": [
+              -3,
+              0.02500000037252903,
+              6
+            ],
+            "max": [
+              3,
+              0.6949999928474426,
+              12
+            ]
+          },
+          "cameraIntersects": null,
+          "geometry": 0,
+          "skeletonBones": 0,
+          "instances": 0
+        },
+        {
+          "path": "/Scene[0]/Visitor path topology[1]",
+          "source": null,
+          "type": "Group",
+          "visible": true,
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "bounds": null,
+          "cameraIntersects": null,
+          "geometry": null,
+          "skeletonBones": 0,
+          "instances": 0
+        },
+        {
+          "path": "/Scene[0]/Visitor path topology[1]/Player paths[0]",
+          "source": null,
+          "type": "Mesh",
+          "visible": true,
+          "scale": [
+            1,
+            1,
+            1
+          ],
+          "pivot": [
+            0,
+            0,
+            0
+          ],
+          "bounds": {
+            "min": [
+              -4.974999904632568,
+              0.02250000089406967,
+              0.02500000037252903
+            ],
+            "max": [
+              6.974999904632568,
+              0.41499999165534973,
+              12.975000381469727
+            ]
+          },
+          "cameraIntersects": null,
+          "geometry": 1,
+          "skeletonBones": 0,
+          "instances": 0
+        }
+      ],
+      "geometries": [
+        {
+          "id": 0,
+          "source": null,
+          "type": "BufferGeometry",
+          "vertices": 2304,
+          "triangles": 768,
+          "indexed": false,
+          "bounds": {
+            "min": [
+              -3,
+              0.02500000037252903,
+              6
+            ],
+            "max": [
+              3,
+              0.6949999928474426,
+              12
+            ]
+          },
+          "normal": {
+            "zeroNormals": 0,
+            "nonUnitNormals": 0
+          },
+          "degenerateTriangles": 0,
+          "invertedNormalTriangles": 0,
+          "groups": [],
+          "drawRange": {
+            "start": 0,
+            "count": "Infinity (full source geometry)"
+          }
+        },
+        {
+          "id": 1,
+          "source": null,
+          "type": "BufferGeometry",
+          "vertices": 4320,
+          "triangles": 1440,
+          "indexed": false,
+          "bounds": {
+            "min": [
+              -4.974999904632568,
+              0.02250000089406967,
+              0.02500000037252903
+            ],
+            "max": [
+              6.974999904632568,
+              0.41499999165534973,
+              12.975000381469727
+            ]
+          },
+          "normal": {
+            "zeroNormals": 0,
+            "nonUnitNormals": 0
+          },
+          "degenerateTriangles": 0,
+          "invertedNormalTriangles": 0,
+          "groups": [],
+          "drawRange": {
+            "start": 0,
+            "count": "Infinity (full source geometry)"
+          }
+        }
+      ],
+      "materials": [
+        {
+          "id": 0,
+          "source": null,
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "alphaTest": 0,
+          "side": 0,
+          "depthTest": true,
+          "depthWrite": true,
+          "polygonOffset": false,
+          "polygonOffsetFactor": 0,
+          "polygonOffsetUnits": 0,
+          "visible": true,
+          "blending": 1,
+          "maps": []
+        },
+        {
+          "id": 1,
+          "source": null,
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "alphaTest": 0,
+          "side": 0,
+          "depthTest": true,
+          "depthWrite": true,
+          "polygonOffset": false,
+          "polygonOffsetFactor": 0,
+          "polygonOffsetUnits": 0,
+          "visible": true,
+          "blending": 1,
+          "maps": []
+        }
+      ],
+      "visualChecks": {
+        "clipping": "VISUAL_REVIEW_REQUIRED: bounds/frustum is broad phase only, not pixel occlusion or world collision",
+        "zFighting": "VISUAL_REVIEW_REQUIRED: depth/polygon offset/alpha metadata captured, no unsupported automatic pixel guarantee",
+        "pivot": "Local source pivot and actual posed world bounds captured; alignment requires authoritative entity/port checks H1-07",
+        "lod": "Actual production low/high tiers must each be captured; no mock LOD",
+        "sprites": "NA when actual current runtime and source registry both show absent; never infer particles absent from zero active count",
+        "skeleton": "Actual bone hierarchy, inverse matrices, skin index and weights checked; animation quality separate"
+      }
+    }
+  }
+}

@@ -1,3 +1,5 @@
+> **Final R7-02 acceptance:** [final review](final-preview/review.md) and [verification](final-preview/verification.json),46/54. Historical pending lists below are superseded; raw/rejected observations and limits remain retained.
+
 > **Current continuation:** see [continuation-review.md](continuation-review.md) and [verification.json](verification.json). The review below is the historical07:58UTC checkpoint; its pending Astro/product/environment groups and error-tab closure limitation have since been narrowed/resolved as explicitly recorded. R7-02 remains unchecked at45/54.
 
 # R7-02 native checkpoint — incomplete

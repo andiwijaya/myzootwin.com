@@ -1,21 +1,21 @@
 {
-  "status": "PARTIAL_NATIVE_REVIEW_R7_02_UNCHECKED",
-  "at": "2026-11-10T12:51:34.642Z",
-  "verified": 45,
+  "status": "PASS_R7_02_GROUPED_NATIVE_VISUAL_MATRIX",
+  "at": "2026-11-10T14:48:04.944Z",
+  "verified": 46,
   "total": 54,
-  "pendingUnit": "R7-02",
+  "pendingUnit": "R7-03",
   "preparationSource": "04a57399add90c1ce37fd1c06e837e4555fb3088",
   "testedApplicationSource": "2e923dc75be2f1780bccf784c76863ec9bff0882",
   "testedR7_01Source": "b6d8b0ac51fd7a0d1fd8ce0c05eee70ab4b897d1",
   "proof": {
     "path": "docs/qa/zebra/r7-02/verification.json",
-    "bytes": 22694,
-    "sha256": "d5d1d44847cba20fb64bbceb8d79785d7c7f9c78b5fbf65579113696865d439e"
+    "bytes": 23022,
+    "sha256": "48157919575011333b8554e0820ecfc412139f3699464b5a99115840a0149026"
   },
   "matrix": {
     "path": "docs/qa/zebra/r7-02/matrix.json",
-    "bytes": 34090,
-    "sha256": "926c631dd5397b753188855b582b3fc61b15b959154ca11b902bb7a3f1677940"
+    "bytes": 33591,
+    "sha256": "7ceab56e5860060be5b330fc580d0b7b9c9a433eeade0491e7ed64b073886b2d"
   },
   "qaResume": {
     "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
@@ -54,24 +54,41 @@
   "saveScope": "Fresh myzootwin-visual3d UUID per lineage; historical synthetic grant/home prerequisite explicitly validation-only. No public adoption/grant acceptance. Carried main/secondary identities preserved below and NOT opened.",
   "readiness": {
     "readyForNextSlot": true,
-    "readyForNativeAcceptance": false,
-    "reason": "Macaw water/perch original ready/invalid previews; Original49-cell and small placement previews; Final per-family constructor/trigger/capture attribution and explicit occlusion decisions; assess R7-02 DoD before incrementing"
+    "readyForNativeAcceptance": true,
+    "reason": "R7-02 grouped matrix accepted; separate R7-03 fault/recovery next."
   },
   "resources": {
-    "releasedAt": "2026-11-10T12:48:31.025Z",
+    "releasedAt": "2026-11-10T14:46:13.025Z",
     "activeOwnedRenderBuildTestsServer": 0,
     "sceneClosed": true,
     "viewportReset": true,
     "server": {
-      "at": "2026-11-10T12:49:23.4888110Z",
-      "pid": 23004,
-      "processPresent": false,
-      "port": 65287,
+      "at": "2026-11-10T14:46:41.3336696Z",
+      "pids": [
+        20444,
+        7844,
+        12356,
+        14028
+      ],
+      "remainingOwnPids": [],
+      "port": 61203,
       "listening": false,
-      "normalStopExitCode": 0,
-      "scope": "Only the Zebra-owned server inspected; all other project processes untouched."
+      "normalStopExitCodes": [
+        0,
+        0,
+        0
+      ],
+      "scope": "Only named Zebra-owned servers inspected. First three stopped normally; final fixed-profile server stopped by verified PID after browser close because stdin session handle was unavailable. No user/Farm server process touched.",
+      "finalVerifiedPidStop": 14028
     },
-    "errorTabs": "Current internal browser inventory empty; only own tab1 touched."
+    "browser": {
+      "at": "2026-11-10T14:46:13.025Z",
+      "browser": "2",
+      "ownTabClosed": "6",
+      "tabs": [],
+      "viewportReset": true
+    },
+    "scope": "User/Farm preview never touched."
   },
   "blockers": [
     {
@@ -88,15 +105,15 @@
     "Z2-06 proposed1700ZC grant budget/exactly-once/publicV5 adoption; public bootstrap still V4. Historical fixture prerequisites are validation-only; this unit accepts no grant",
     "Internal viewport/native mouse+keyboard and source touch-adapter tests; no physical-device/touch or presented FPS claim",
     "1920 DOM bounds/native controls verified; native host raster cropped/scaled. Historical browser area clip shows HUD width; no full1920 raster claim. Full-page experimental capture changed layout/inner scroll and safely cancelled unpaid preview",
-    "R7 native10x render/control latency, true native background, full fifth-species matrix and15-minute active soak unresolved. Historical3346231 native1x191ticks/152callbacks/16.8ms dropped time is not a current-source benchmark",
+    "R7 native10x render/control latency, true native background and15-minute active soak unresolved. R7-02 grouped fifth-species visual matrix is accepted. Historical3346231 native1x191ticks/152callbacks/16.8ms dropped time is not a current-source benchmark",
     "Original Library materialization BLOCKED_WINDOWS_XATTR; complete official text reads retained historically",
     "R7-08 explicit Zebra push/deploy authorization absent; no publish",
-    "Physical multi-touch/native touch capture and full posed fifth-species/performance/background/soak matrix remain open R7 scope; no physical-device or FPS claim",
+    "Physical multi-touch/native touch capture and performance/background/soak remain open R7 scope; grouped fifth-species visual evidence is accepted in R7-02; no physical-device or FPS claim",
     "Z5-04 native graph/signal and factory-injected failures accepted; physical speaker/device/system preference/native autoplay denial not claimed"
   ],
-  "next": "Farm local preview slot available now; only lightweight work until Zebra slot released. Resume Macaw water/perch and original49/small previews, then attribution/acceptance. Keep45/54. No push/deploy.",
+  "next": "R7-03 strict V5 fault/recovery after next resource slot; resource slot released for Farm; no push/deploy.",
   "noPushOrDeploy": true,
-  "harnessSource": "96289e206a5ebf80e03eceb6a0b2c62735ea1ac9",
+  "harnessSource": "a85c2ce7dc0642afe1612b89a20408104bb46382",
   "historicalStopDeadline": {
     "utc": "2026-11-10T10:00:00.000Z",
     "local": "17:00 WIB",

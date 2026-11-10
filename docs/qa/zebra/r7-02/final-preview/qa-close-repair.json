@@ -1,0 +1,31 @@
+{
+  "source": "a85c2ce7dc0642afe1612b89a20408104bb46382",
+  "scope": "V4 QA helper owns no independent backend close; original autosave.dispose drains final checkpoint before closing. Production sources unchanged.",
+  "changedInputs": [
+    "scripts/qa/visual3d/README.md",
+    "scripts/qa/visual3d/product-matrix.ts"
+  ],
+  "rejected": {
+    "label": "legacy-v4-final-close-exact",
+    "phase": "error",
+    "dirty": true,
+    "fault": "unavailable",
+    "payload": "63a1604467924fc345e73f122db8458ade4bc833749b5ca362d28e0e65a52210"
+  },
+  "accepted": {
+    "label": "legacy-v4-fixed-final-close-exact",
+    "phase": "saved",
+    "dirty": false,
+    "inflight": false,
+    "fault": null,
+    "payload": "63a1604467924fc345e73f122db8458ade4bc833749b5ca362d28e0e65a52210"
+  },
+  "tests": 26,
+  "strictTypes": "PASS",
+  "astro": {
+    "files": 605,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0
+  }
+}

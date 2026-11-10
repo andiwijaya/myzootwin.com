@@ -1,0 +1,344 @@
+{
+  "at": "2026-11-10T14:48:04.944Z",
+  "status": "PASS_R7_02_GROUPED_NATIVE_VISUAL_MATRIX",
+  "verified": 46,
+  "total": 54,
+  "applicationSource": "2e923dc75be2f1780bccf784c76863ec9bff0882",
+  "nativeHarnessSources": [
+    "96289e206a5ebf80e03eceb6a0b2c62735ea1ac9",
+    "e82216f3087a3160a4659f95767958f39a472e48",
+    "a85c2ce7dc0642afe1612b89a20408104bb46382"
+  ],
+  "builds": [
+    {
+      "runId": "h1-09-r7-matrix6",
+      "source": "96289e206a5ebf80e03eceb6a0b2c62735ea1ac9",
+      "input": "d8fcc643710a4ed4c40b24da6878dd20123d03b6c485effcc226c59077bce578",
+      "lab": "e3b58e1913285fdf943ce679ea2b262309911e84ef92a173e47729db8d6229d5",
+      "product": "f3e0d4eee27cd80260d0aa1aebb8faa6ecb0f5807ceeb60c99961f9b31060871",
+      "productionExclusion": {
+        "status": "PASS",
+        "markers": [
+          "myzootwin-visual3d-",
+          "Asset Lab internal",
+          "__VIS3D_SOURCE__",
+          "scripts/qa/visual3d",
+          "visual3d-frozen-v4",
+          "__qaVisual3dTag",
+          "QA-only constructor side-table",
+          "Step cosmetic Studio100ms",
+          "matrix-result"
+        ],
+        "files": 36
+      }
+    },
+    {
+      "runId": "h1-09-v4-r7-final",
+      "source": "e82216f3087a3160a4659f95767958f39a472e48",
+      "input": "d8fcc643710a4ed4c40b24da6878dd20123d03b6c485effcc226c59077bce578",
+      "lab": "d5c2c25c66b69be5254cab840c6dbd272bb0b4ee2d392245d4ac5379440b1daf",
+      "product": "9bc800ad30e9b1816d258a33294cc78a171c637dde136ce71312601521f0ee6c",
+      "productionExclusion": {
+        "status": "PASS",
+        "markers": [
+          "myzootwin-visual3d-",
+          "Asset Lab internal",
+          "__VIS3D_SOURCE__",
+          "scripts/qa/visual3d",
+          "visual3d-frozen-v4",
+          "__qaVisual3dTag",
+          "QA-only constructor side-table",
+          "Step cosmetic Studio100ms",
+          "matrix-result"
+        ],
+        "files": 36
+      }
+    },
+    {
+      "runId": "h1-09-v4-r7-close-fixed",
+      "source": "a85c2ce7dc0642afe1612b89a20408104bb46382",
+      "input": "05ae2571af90c2432c804018cd3c56e5199373e0ed44078907c288b40028eea8",
+      "lab": "fcd0270f8198db3c9d2e0ff64409cad1af76c1e7deb515cad709d344830ddbbc",
+      "product": "d1f61996aed0be80094e7c01a29e78b4878de2f0c68448df4458856e75552e24",
+      "productionExclusion": {
+        "status": "PASS",
+        "markers": [
+          "myzootwin-visual3d-",
+          "Asset Lab internal",
+          "__VIS3D_SOURCE__",
+          "scripts/qa/visual3d",
+          "visual3d-frozen-v4",
+          "__qaVisual3dTag",
+          "QA-only constructor side-table",
+          "Step cosmetic Studio100ms",
+          "matrix-result"
+        ],
+        "files": 36
+      }
+    }
+  ],
+  "productFilesRehashedExactPerBuild": 36,
+  "qaCloseRepair": {
+    "path": "docs/qa/zebra/r7-02/final-preview/qa-close-repair.json",
+    "bytes": 904,
+    "sha256": "6f08a08bf09e4dc04b8d3637ef5c1719a98f725d1d9b35fdcf1b7b96be08078a"
+  },
+  "native": {
+    "cumulativeObservations": 781,
+    "newObservations": 86,
+    "newCaptureRecords": 48,
+    "selectedImages": 18,
+    "scope": "Grouped/pairwise human visual review, separate constructor attribution. Manual causal100ticks in disposableV5, not native time/soak/FPS."
+  },
+  "coverage": {
+    "path": "docs/qa/zebra/r7-02/final-preview/coverage.json",
+    "bytes": 601307,
+    "sha256": "7e2366f84b672c0c344148778008b3545b8f2977d07eda8400d473402b5f4566"
+  },
+  "review": {
+    "path": "docs/qa/zebra/r7-02/final-preview/review.md",
+    "bytes": 9336,
+    "sha256": "94999e39fd15b9a519e8282b41cd6a3b9b7b43441241a21c468eaa6d7ed8a48c"
+  },
+  "archives": [
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/native.jsonl.br",
+      "bytes": 116412,
+      "sha256": "9667f900594c3dc165500271a77922817d1c8d2baaa094db47ae2ed77987a195",
+      "uncompressed": {
+        "path": ".qa/zebra-audit/r7-02/final-preview/native.jsonl",
+        "bytes": 22382489,
+        "sha256": "b47ffcbd9aa235a35dfe18dddfdc5d1798852b93ef5fd8abed0f18c645942321"
+      },
+      "rows": 86
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/captures.jsonl.br",
+      "bytes": 1712,
+      "sha256": "162f7cc240c9bb11a9e07a4fc551b76cda67c01b1a71c9b7bf25825870e3b731",
+      "uncompressed": {
+        "path": ".qa/zebra-audit/r7-02/final-preview/captures.jsonl",
+        "bytes": 25356,
+        "sha256": "d9d832c9014f7e94b3fbe7395f83c82ad23e062b243885644e205803d1bf3aa5"
+      },
+      "rows": 48
+    }
+  ],
+  "images": [
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/full-v5-1920-0.jpg",
+      "bytes": 141651,
+      "sha256": "03cd12cbca52923af16f25fb76a14f2d8712a4ea7ca0f77581142c612c9a3cce",
+      "scope": "Actual native screenshot;1920 host raster limitation in review.md."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/full-v5-1920-contact.jpg",
+      "bytes": 139369,
+      "sha256": "068678da9accf18b6181b32fcee55f1946839e570dfce1098d28ed4cc52bda96",
+      "scope": "Reviewed actual native contact sheet; original full rasters retained locally. No repainted game content."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/legacy49-outside-0.png",
+      "bytes": 108445,
+      "sha256": "32210960a70daa7767aff88709df7b5c1d2efd3983cfce2311172b2145d820e9",
+      "scope": "Actual native screenshot;1920 host raster limitation in review.md."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/legacy49-outside-contact.jpg",
+      "bytes": 193562,
+      "sha256": "3a65feec61814d9666685c05013d6799e1cabce91f7cb4fc80991c817fefb210",
+      "scope": "Reviewed actual native contact sheet; original full rasters retained locally. No repainted game content."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/legacy49-ready-0.png",
+      "bytes": 105224,
+      "sha256": "81d5d3432a3df5016e65c8f61db3d818cc17e491048bd13f6b035f2b277206fc",
+      "scope": "Actual native screenshot;1920 host raster limitation in review.md."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/legacy49-ready-contact.jpg",
+      "bytes": 196196,
+      "sha256": "c62461191ccfcfbebec51d5cef45f96101da94977e9ec6a2b5406d380b795a22",
+      "scope": "Reviewed actual native contact sheet; original full rasters retained locally. No repainted game content."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/macaw-food-busy-contact.jpg",
+      "bytes": 251045,
+      "sha256": "abc9503bd36ba4d5f7ea490a6061bf3759bd239a42d8ff4aec85a4d1aa4803b5",
+      "scope": "Reviewed actual native contact sheet; original full rasters retained locally. No repainted game content."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/macaw-perch-busy-270.png",
+      "bytes": 133966,
+      "sha256": "5aff83f47822e047b7a43258ca41f7abb2a601d03a0e57e2f617965e9a84891d",
+      "scope": "Actual native screenshot;1920 host raster limitation in review.md."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/macaw-perch-busy-contact.jpg",
+      "bytes": 250186,
+      "sha256": "b865b47ac549cfa758dab3815be92dd7a3ca5fe092d5b7623fabed59e844b0d7",
+      "scope": "Reviewed actual native contact sheet; original full rasters retained locally. No repainted game content."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/macaw-perch-ready-90.png",
+      "bytes": 148193,
+      "sha256": "7007d3b885d4af0f6609b50bab495e32e6213b72f8f61f807ea378f2c811eca1",
+      "scope": "Actual native screenshot;1920 host raster limitation in review.md."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/macaw-perch-ready-contact.jpg",
+      "bytes": 252262,
+      "sha256": "dd7ff94962750a534d2976d1d4154dcb2099133b64b65cd48b194976d91e6486",
+      "scope": "Reviewed actual native contact sheet; original full rasters retained locally. No repainted game content."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/macaw-water-busy-contact.jpg",
+      "bytes": 256825,
+      "sha256": "7be7bde36bff7743f31c7513e209f55ac4ecb96cff7e099729de36b7f553f31f",
+      "scope": "Reviewed actual native contact sheet; original full rasters retained locally. No repainted game content."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/macaw-water-ready-contact.jpg",
+      "bytes": 259413,
+      "sha256": "49d35b7425f4ef5c6d08cea0b425ea7682d85af35af8266f98ea9f5aa224fa3f",
+      "scope": "Reviewed actual native contact sheet; original full rasters retained locally. No repainted game content."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/path1-ready-contact.jpg",
+      "bytes": 233905,
+      "sha256": "2ee20bde046c94f01fce71a1073235c67c3b59bd3fab53b4af5e789534c17a9d",
+      "scope": "Reviewed actual native contact sheet; original full rasters retained locally. No repainted game content."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/path1-scenery-contact.jpg",
+      "bytes": 233743,
+      "sha256": "39fe40b730d345b2cf34adce5e1e43a038e4a57b0958ba36f5dce949647ab76d",
+      "scope": "Reviewed actual native contact sheet; original full rasters retained locally. No repainted game content."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/small4-duplicate-contact.jpg",
+      "bytes": 233855,
+      "sha256": "4be1031954bbbadc7e94c5dd9f4d3268f16457b863fc9f6f3d6996c53b5d3e90",
+      "scope": "Reviewed actual native contact sheet; original full rasters retained locally. No repainted game content."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/small4-fresh-ready-0.png",
+      "bytes": 102227,
+      "sha256": "e884ccadca0fef81f156f6794fc8e0e67d4c1f018ba13e061612eb4df31286ef",
+      "scope": "Actual native screenshot;1920 host raster limitation in review.md."
+    },
+    {
+      "path": "docs/qa/zebra/r7-02/final-preview/small4-fresh-ready-contact.jpg",
+      "bytes": 180799,
+      "sha256": "3e5c5d88ab42864c326edc4c414508327769da77f23af37c25d7a535d43e60f7",
+      "scope": "Reviewed actual native contact sheet; original full rasters retained locally. No repainted game content."
+    }
+  ],
+  "sourceReproduction": {
+    "path": "docs/qa/zebra/r7-02/final-preview/empty-source-review.json",
+    "bytes": 16238,
+    "sha256": "fe360ae2f7f36968f523f1bac6aa1d6eb76931b30529e2459f0366454dc78c73"
+  },
+  "coldPairs": [
+    {
+      "before": "product-final-closed-before-cold",
+      "cold": "product-cold-entry-exact",
+      "database": "myzootwin-visual3d-1aa12af9-31c8-4590-b2b8-0c2eaf83e41c",
+      "stateHash": "abe872eaee661728239f92e222d331fd12ea2d1376d021d65e2f6e3b7c46c0e9",
+      "gameplayHash": "b65be803dad5422c72119c5aeb30551fe28465c53fe7dcfa843f9b3da5f43a8b",
+      "tick": 13680,
+      "cash": 3803,
+      "livePhase": "saved",
+      "coldPhase": "available",
+      "revision": 26
+    },
+    {
+      "before": "legacy-v4-fixed-final-close-exact",
+      "cold": "legacy-v4-fixed-cold-entry-exact",
+      "database": "myzootwin-visual3d-7276fbb6-bd66-499d-9c1e-bb94e6139e4f",
+      "stateHash": "63a1604467924fc345e73f122db8458ade4bc833749b5ca362d28e0e65a52210",
+      "gameplayHash": "04378405581763bb928c079e87722f3357cac58972f7b8712155290fc26356ed",
+      "tick": 5578,
+      "cash": 2163,
+      "livePhase": "saved",
+      "coldPhase": "available",
+      "revision": 5
+    },
+    {
+      "before": "fresh-small-final-close",
+      "cold": "fresh-small-cold-existing-db-exact",
+      "database": "myzootwin-zebra-build-05186593-7b1e-4001-b870-1970f3df3dca",
+      "stateHash": "541bad44d61631936e2e91b99210b0ee4efbef05504c2b258a4ddc0a5ef34bca",
+      "gameplayHash": "d5d09f2464e730d5ab40ff5430eec0a58bdb1e8be57100d7a596c57a7fc7c4aa",
+      "tick": 0,
+      "cash": 1500,
+      "livePhase": "saved",
+      "coldPhase": "available",
+      "revision": 2
+    }
+  ],
+  "finalClose": {
+    "at": "2026-11-10T14:23:59.044Z",
+    "owners": 0,
+    "resources": {
+      "debugRoots": 0,
+      "geometries": 0,
+      "materials": 0,
+      "renderTargets": 0,
+      "shared": 0,
+      "skeletons": 0,
+      "textures": 0
+    },
+    "pendingCallbacks": 0,
+    "savePhase": "saved",
+    "dirty": false,
+    "inflight": false,
+    "errors": []
+  },
+  "resources": {
+    "releasedAt": "2026-11-10T14:46:13.025Z",
+    "activeOwnedRenderBuildTestsServer": 0,
+    "sceneClosed": true,
+    "viewportReset": true,
+    "server": {
+      "at": "2026-11-10T14:46:41.3336696Z",
+      "pids": [
+        20444,
+        7844,
+        12356,
+        14028
+      ],
+      "remainingOwnPids": [],
+      "port": 61203,
+      "listening": false,
+      "normalStopExitCodes": [
+        0,
+        0,
+        0
+      ],
+      "scope": "Only named Zebra-owned servers inspected. First three stopped normally; final fixed-profile server stopped by verified PID after browser close because stdin session handle was unavailable. No user/Farm server process touched.",
+      "finalVerifiedPidStop": 14028
+    },
+    "browser": {
+      "at": "2026-11-10T14:46:13.025Z",
+      "browser": "2",
+      "ownTabClosed": "6",
+      "tabs": [],
+      "viewportReset": true
+    },
+    "scope": "User/Farm preview never touched."
+  },
+  "tests": {
+    "current": "Fresh26 autosave/candidate-drain/V4-backend tests; strict types exit0; Astro605/0 diagnostics; fixed V4 immutable build/exclusion, same-UUID native clean drain/cold exact and36-file product rehash per all3 builds; factory reproduction;781-record attribution/structural adjudication/hash/roundtrip/closure checks.",
+    "inherited": "R7-01 full1021/1021; prior QA bridge26,yaw6,shadow8,probe10,fixture7, strict types/Astro605 diagnostics0 remain source-bound. No fresh full suite claimed; application source unchanged, QA-only close fix has fresh focused tests/types/Astro/build/native retest."
+  },
+  "limits": [
+    "No781 independent tests/514 independent pixel passes",
+    "CSS1920x1080; host raster1905x1001 crops far-right HUD. Full zoo board visible; no full painted1920HUD/device claim",
+    "Ordinary roof/fence/tree occlusion addressed by alternate/subtree views, not automatic pixel-perfect collision testing",
+    "Two invisible empty source factories produce raw audit ERRORs, reproduced/adjudicated explicitly; no other ERROR suppressed",
+    "PublicV5/grant/HP6-02, native soak/performance/background, maintenance and release permission remain separate"
+  ],
+  "noPushOrDeploy": true,
+  "next": "R7-03 strict V5 fault/recovery after next resource slot"
+}

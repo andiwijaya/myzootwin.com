@@ -1,11 +1,11 @@
 {
-  "status": "PARTIAL_NATIVE_REVIEW_R7_02_UNCHECKED",
-  "at": "2026-11-10T12:51:34.642Z",
-  "verified": 45,
+  "status": "PASS_R7_02_GROUPED_NATIVE_VISUAL_MATRIX",
+  "at": "2026-11-10T14:48:04.944Z",
+  "verified": 46,
   "total": 54,
   "applicationSource": "2e923dc75be2f1780bccf784c76863ec9bff0882",
-  "harnessSource": "96289e206a5ebf80e03eceb6a0b2c62735ea1ac9",
-  "input": "d8fcc643710a4ed4c40b24da6878dd20123d03b6c485effcc226c59077bce578",
+  "harnessSource": "a85c2ce7dc0642afe1612b89a20408104bb46382",
+  "input": "05ae2571af90c2432c804018cd3c56e5199373e0ed44078907c288b40028eea8",
   "builds": [
     {
       "runId": "h1-09-r7-matrix1",
@@ -155,9 +155,9 @@
     }
   ],
   "currentBuildReceipt": {
-    "path": "docs/qa/zebra/r7-02/matrix6-source.json.gz",
-    "bytes": 46467,
-    "sha256": "6d1bef6559749be18dab779a858eadd0482792baae4bc33d418726c6fc3daa6c"
+    "path": "docs/qa/zebra/r7-02/final-preview/close-fixed-source.json.gz",
+    "bytes": 37936,
+    "sha256": "eeb39ccb37fd1739517bcfdf32e2fc569d14df1a59f66627bc82eab266012b34"
   },
   "archives": [
     {
@@ -428,11 +428,29 @@
     "bridge": "26/26 PASS; bridge strict types and Astro604 files/0 diagnostics",
     "yaw": "6/6 PASS; strict types",
     "shadow": "8/8 PASS; strict types",
-    "latestAstro": "605 files/0 diagnostics after inspector and probe gating changes; latest fixture-only JS change verified by7 tests/syntax and matrix6 build",
+    "latestAstro": "Fresh605 files/0 errors, warnings or hints on a85c2ce QA-only close repair",
     "fullSuite": "R7-01 accepted1021/1021 at b6d8b0a; not repeated solely for QA changes",
     "probeGating": "10/10 PASS; strict types exit0 and Astro605 files/0 diagnostics on c9ebd11 code",
     "unservicedFixture": "7/7 PASS; JS syntax check and immutable matrix6 build on96289e2",
-    "priorInspector": "Astro605 files/0 diagnostics after yaw/shadow fixes"
+    "priorInspector": "Astro605 files/0 diagnostics after yaw/shadow fixes",
+    "qaV4Close": {
+      "source": "a85c2ce7dc0642afe1612b89a20408104bb46382",
+      "tests": 26,
+      "strictTypes": "PASS",
+      "astro": {
+        "files": 605,
+        "errors": 0,
+        "warnings": 0,
+        "hints": 0
+      },
+      "immutableBuild": "PASS_QA_EXCLUSION",
+      "native": "PASS_CLEAN_DRAIN_EXACT_COLD",
+      "evidence": {
+        "path": "docs/qa/zebra/r7-02/final-preview/qa-close-repair.json",
+        "bytes": 904,
+        "sha256": "6f08a08bf09e4dc04b8d3637ef5c1719a98f725d1d9b35fdcf1b7b96be08078a"
+      }
+    }
   },
   "baseline": {
     "schema": 5,
@@ -448,21 +466,25 @@
     "scope": "Fresh myzootwin-visual3d UUID per lineage; historical synthetic grant/home prerequisite explicitly validation-only. No public adoption/grant acceptance."
   },
   "nativeReview": {
-    "observations": 619,
-    "selectedCaptures": 135,
-    "domReports": 8,
-    "scope": "Previous619 snapshots plus76 new legacy-preview snapshots; none implies blanket visual PASS. Selected-image index includes retained rejected frames/contact sheets. See latestLegacyPreview.",
-    "additionalLegacyPreviewObservations": 76,
-    "totalRawObservations": 695
+    "observations": 781,
+    "scope": "Grouped/pairwise human visual review, separate constructor attribution. Manual causal100ticks in disposableV5, not native time/soak/FPS.",
+    "coverage": {
+      "path": "docs/qa/zebra/r7-02/final-preview/coverage.json",
+      "bytes": 601307,
+      "sha256": "7e2366f84b672c0c344148778008b3545b8f2977d07eda8400d473402b5f4566"
+    }
   },
   "registry": {
-    "historicalInventoryRecords": 514,
-    "historicalConstructorSites": 287,
-    "constructedUnion": 286,
-    "notObservedConstructors": [
-      "game/render3d/foundation-scene:mountFoundationScene:WebGLRenderer:WebGLRenderer:3"
-    ],
-    "scope": "Original mountFoundationScene accepts createRenderer injection. QA injects a real WebGLRenderer on the original canvas/context with antialias true and alpha false. Thus the inline fallback constructor site does not execute. The production scene and original real renderer are still used; this is neither absent asset nor automatic NA."
+    "records": 514,
+    "constructorSites": 287,
+    "constructed": 286,
+    "explainedFallback": 1,
+    "unmapped": 0,
+    "coverage": {
+      "path": "docs/qa/zebra/r7-02/final-preview/coverage.json",
+      "bytes": 601307,
+      "sha256": "7e2366f84b672c0c344148778008b3545b8f2977d07eda8400d473402b5f4566"
+    }
   },
   "finalMesh": {
     "status": "PASS_STRUCTURAL_WITH_SEPARATE_VISUAL_REVIEW",
@@ -499,6 +521,7 @@
     "errors": []
   },
   "close": {
+    "at": "2026-11-10T14:23:59.044Z",
     "owners": 0,
     "resources": {
       "debugRoots": 0,
@@ -509,48 +532,46 @@
       "skeletons": 0,
       "textures": 0
     },
-    "pending": 0,
-    "saveDirty": false,
-    "saveInflight": false,
-    "browser": {
-      "at": "2026-11-10T12:48:31.025Z",
-      "ownTab": "1",
-      "closed": true,
-      "viewportReset": true,
-      "remainingTabs": []
-    },
-    "server": {
-      "at": "2026-11-10T12:49:23.4888110Z",
-      "pid": 23004,
-      "processPresent": false,
-      "port": 65287,
-      "listening": false,
-      "normalStopExitCode": 0,
-      "scope": "Only the Zebra-owned server inspected; all other project processes untouched."
-    },
-    "activeOwnedRenderBuildTestsServer": 0
+    "pendingCallbacks": 0,
+    "savePhase": "saved",
+    "dirty": false,
+    "inflight": false,
+    "errors": []
   },
   "resources": {
-    "releasedAt": "2026-11-10T12:48:31.025Z",
+    "releasedAt": "2026-11-10T14:46:13.025Z",
     "activeOwnedRenderBuildTestsServer": 0,
     "sceneClosed": true,
     "viewportReset": true,
     "server": {
-      "at": "2026-11-10T12:49:23.4888110Z",
-      "pid": 23004,
-      "processPresent": false,
-      "port": 65287,
+      "at": "2026-11-10T14:46:41.3336696Z",
+      "pids": [
+        20444,
+        7844,
+        12356,
+        14028
+      ],
+      "remainingOwnPids": [],
+      "port": 61203,
       "listening": false,
-      "normalStopExitCode": 0,
-      "scope": "Only the Zebra-owned server inspected; all other project processes untouched."
+      "normalStopExitCodes": [
+        0,
+        0,
+        0
+      ],
+      "scope": "Only named Zebra-owned servers inspected. First three stopped normally; final fixed-profile server stopped by verified PID after browser close because stdin session handle was unavailable. No user/Farm server process touched.",
+      "finalVerifiedPidStop": 14028
     },
-    "errorTabs": "Current internal browser inventory empty; only own tab1 touched."
+    "browser": {
+      "at": "2026-11-10T14:46:13.025Z",
+      "browser": "2",
+      "ownTabClosed": "6",
+      "tabs": [],
+      "viewportReset": true
+    },
+    "scope": "User/Farm preview never touched."
   },
-  "remaining": [
-    "Macaw water/perch original ready/invalid previews",
-    "Original49-cell and small placement previews",
-    "Final per-family constructor/trigger/capture attribution and explicit occlusion decisions; assess R7-02 DoD before incrementing"
-  ],
+  "remaining": [],
   "noPushOrDeploy": true,
   "continuation": {
     "path": "docs/qa/zebra/r7-02/continuation.json",
@@ -559,8 +580,8 @@
   },
   "continuationReview": {
     "path": "docs/qa/zebra/r7-02/continuation-review.md",
-    "bytes": 9111,
-    "sha256": "50c3be3ee7c02f63d747c3a7836e6e5c954b3a8dcb7eb52c021c3b54e32dc9cf"
+    "bytes": 9342,
+    "sha256": "32fd4c926c55ac944b89ab614aa8930282acb551d203ddab29fd7b759b8766ac"
   },
   "latestLegacyPreview": {
     "path": "docs/qa/zebra/r7-02/legacy-preview/verification.json",
@@ -634,5 +655,12 @@
       "storageReady": true
     },
     "errors": []
-  }
+  },
+  "finalReview": {
+    "path": "docs/qa/zebra/r7-02/final-preview/verification.json",
+    "bytes": 14296,
+    "sha256": "e4cfb48d8464cc40766abd9050c9fc131700909ce5a59f0915f57e24db21e774"
+  },
+  "next": "R7-03 strict V5 fault/recovery after next resource slot",
+  "historicalHarnessSource": "96289e206a5ebf80e03eceb6a0b2c62735ea1ac9"
 }
