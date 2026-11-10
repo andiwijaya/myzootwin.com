@@ -2,35 +2,35 @@
 import {homeHabitatCards} from '../home-habitats';
 const {locale='id'}=Astro.props;
 const zebra=homeHabitatCards.find(habitat=>habitat.id==='zebra');
-if(!zebra||zebra.availability!=='preview')throw new Error('Review the Zebra promotion against actual release availability before publishing.');
+if(!zebra||zebra.availability!=='progression')throw new Error('Zebra release promotion requires the verified progression habitat.');
 const copy=locale==='id'?{
- label:'Pratinjau versi berikutnya',title:'Empat Zebra. Kehidupan dalam kawanan.',
- imageAlt:'Pratinjau build V5: empat Zebra di kandang berpagar dengan naungan dan bak air. Zebra belum tersedia di versi publik.',
- imageCaption:'Capture aktual build QA V5 · Zebra belum tersedia di versi publik.',
- intro:'Kenali Zaki, Zuri, Mira dan Kira di Zebra Grasslands yang sedang disiapkan. Kebutuhan dasar, ruang gerak dan kegiatan kawanan saling berkaitan dalam perawatan mereka.',
+ label:'Dibuka setelah Giraffe Plains',title:'Empat Zebra. Kehidupan dalam kawanan.',
+ imageAlt:'Empat Zebra di Zebra Grasslands, dalam habitat berpagar dengan pohon naungan, rumput dan bak air.',
+ imageCaption:'Gameplay aktual · Kawanan Zebra Grasslands.',
+ intro:'Kenali Zaki, Zuri, Mira dan Kira di Zebra Grasslands. Kebutuhan dasar, ruang gerak dan kegiatan kawanan saling berkaitan dalam perawatan mereka.',
  features:[
   ['Amati kawanan merumput dan minum','Isi stok pakan dan air, lalu sisakan jalan agar Zebra bisa mendekat dan benar-benar memakainya. Isi ulang menyiapkan persediaan, bukan langsung memenuhi kebutuhan.'],
   ['Ruang untuk bergerak dan berteduh','Sediakan naungan dan tanah bebas untuk berjalan. Beri kesempatan kawanan beristirahat sampai selesai saat mereka membutuhkannya.'],
   ['Saling merawat dalam kawanan','Saling merawat memerlukan dua Zebra yang bertemu. Debu dan batang pengayaan menambah kegiatan, tanpa menggantikan pakan, air atau istirahat.']
- ],play:'Mulai merawat zoo kamu',explore:'Lihat habitat yang tersedia',
- availability:'Zebra Grasslands masih pratinjau dan belum dapat dimainkan di versi publik. Kamu bisa memulai zoo dengan empat habitat yang tersedia melalui progres.'
+ ],play:'Mulai merawat zoo kamu',explore:'Jelajahi lima habitat',
+ availability:'Mulai bersama makaw dan kembangkan zoo melalui misi. Selesaikan dan klaim GQ04 di Giraffe Plains, lalu klaim hibah Zebra satu kali untuk memulai pembangunan Zebra Grasslands. Jalur dan fasilitas dibeli terpisah.'
 }:{
- label:'Preview of a future version',title:'Four Zebras. Life with the herd.',
- imageAlt:'V5 build preview: four Zebras in a fenced habitat with shade and a water bowl. Zebras are not in the public version yet.',
- imageCaption:'Actual V5 QA build capture · Zebras are not in the public version yet.',
- intro:'Meet Zaki, Zuri, Mira and Kira in the Zebra Grasslands being prepared for a future version. Basic needs, room to move and herd activities all play a part in their care.',
+ label:'Unlocked after Giraffe Plains',title:'Four Zebras. Life with the herd.',
+ imageAlt:'Four Zebras in Zebra Grasslands, inside a fenced habitat with shade trees, grass and a water bowl.',
+ imageCaption:'Actual gameplay · The Zebra Grasslands herd.',
+ intro:'Meet Zaki, Zuri, Mira and Kira in Zebra Grasslands. Basic needs, room to move and herd activities all play a part in their care.',
  features:[
   ['Watch the herd graze and drink','Refill feed and water, then leave clear routes so Zebras can reach and use them. Refills prepare supplies, rather than immediately satisfying needs.'],
   ['Room to move and rest in shade','Provide shade and clear ground for walking. Give the herd time to finish resting when they need it.'],
   ['Mutual grooming within the herd','Mutual grooming takes two Zebras meeting. Dust and scratch enrichment adds activities without replacing food, water or rest.']
- ],play:'Start caring for your zoo',explore:'See the available habitats',
- availability:'Zebra Grasslands is still a preview and is not playable in the public version yet. You can start your zoo with the four habitats available through progress.'
+ ],play:'Start caring for your zoo',explore:'Explore five habitats',
+ availability:'Begin with macaws and grow your zoo through missions. Complete and claim GQ04 in Giraffe Plains, then claim the Zebra grant once to begin building Zebra Grasslands. Paths and facilities are purchased separately.'
 };
 ---
-<section class="zebra-preview" aria-labelledby="zebra-preview-title" data-zebra-home-preview data-availability={zebra.availability}>
- <div class="preview-copy"><p class="preview-status">{copy.label}</p><p class="eyebrow" lang="en">{zebra.name}</p><h2 id="zebra-preview-title">{copy.title}</h2><p class="preview-intro">{copy.intro}</p><figure><img src="/images/home/v5-zebra-660.webp" srcset="/images/home/v5-zebra-440.webp 440w, /images/home/v5-zebra-660.webp 660w" sizes="(max-width: 900px) 90vw, 44vw" width="660" height="460" alt={copy.imageAlt} loading="lazy" decoding="async" /><figcaption>{copy.imageCaption}</figcaption></figure></div>
+<section class="zebra-preview" aria-labelledby="zebra-grasslands-title" data-zebra-home-spotlight data-availability={zebra.availability}>
+ <div class="preview-copy"><p class="preview-status">{copy.label}</p><p class="eyebrow" lang="en">{zebra.name}</p><h2 id="zebra-grasslands-title">{copy.title}</h2><p class="preview-intro">{copy.intro}</p><figure><img src="/images/home/v5-zebra-660.webp" srcset="/images/home/v5-zebra-440.webp 440w, /images/home/v5-zebra-660.webp 660w" sizes="(max-width: 900px) 90vw, 44vw" width="660" height="460" alt={copy.imageAlt} loading="lazy" decoding="async" /><figcaption>{copy.imageCaption}</figcaption></figure></div>
  <ul class="preview-features">{copy.features.map(([title,text])=><li><h3>{title}</h3><p>{text}</p></li>)}</ul>
- <div class="preview-actions"><p id="zebra-preview-availability">{copy.availability}</p><div><a class="button" href="/play/" data-site-source="home" aria-describedby="zebra-preview-availability">{copy.play}<span aria-hidden="true">↗</span></a><a class="preview-link" href="#habitats">{copy.explore}<span aria-hidden="true">↓</span></a></div></div>
+ <div class="preview-actions"><p id="zebra-progression-note">{copy.availability}</p><div><a class="button" href="/play/" data-site-source="home" aria-describedby="zebra-progression-note">{copy.play}<span aria-hidden="true">↗</span></a><a class="preview-link" href="#habitats">{copy.explore}<span aria-hidden="true">↓</span></a></div></div>
 </section>
 <style>
 .preview-copy figure{margin:1.4rem 0 0}.preview-copy img{display:block;width:100%;height:auto;border:1px solid #acbca2;border-radius:16px}.preview-copy figcaption{font-size:.75rem;line-height:1.6;color:#435744;margin:.65rem .2rem 0}
