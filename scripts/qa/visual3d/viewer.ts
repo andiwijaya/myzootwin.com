@@ -20,7 +20,7 @@ export function createAssetViewer(scene:Scene,productionCamera:Camera,renderer:W
  category.replaceChildren(new Option('Semua kategori','all'),...[...new Set(entries.map(e=>e.family))].sort().map(f=>new Option(f,f)));
  function clearOverlays(){for(const child of [...overlay.children]){overlay.remove(child);child.traverse(o=>{if(o instanceof Mesh||o instanceof Line||o instanceof Points){o.geometry.dispose();for(const m of Array.isArray(o.material)?o.material:[o.material])m.dispose();}});}}
  function restoreMaterials(){for(const [mesh,m] of originals)mesh.material=m;originals.clear();for(const m of debugMaterials)m.dispose();debugMaterials.clear();}
- function restoreVisibility(){for(const [o,v] of visibility)o.visible=v;visibility.clear();}
+ function restoreVisibility(){if(visibility.size)renderer.shadowMap.needsUpdate=true;for(const [o,v] of visibility)o.visible=v;visibility.clear();}
  function render(){if(disposed)return;draw(scene,camera);}
  function inspectSelection(){const b=selected?.bounds(),record=selected&&visualRecords.get(selected.assetId);info.textContent=JSON.stringify({id:selected?.id,label:selected?.label,assetId:selected?.assetId,source:record?`${record.sourcePath}:${record.line??1}`:null,owner:record?.owner,bounds:b&&!b.isEmpty()?{min:b.min.toArray(),max:b.max.toArray()}:null,batched:!!selected?.identity,debugScope:selected?.identity?'Authoritative batched-identity bounds only. Select the runtime mesh for material/skeleton debug; merged identity has no isolated subtree.':'Actual production object subtree',skeleton: selected?.object?'Actual Bone hierarchy if present; macaws use transform rigs':'Select actor subtree for skeleton',pose:'Current canonical snapshot only; no fabricated phase/consumption. H1-05 adds authoritative timeline.',visualStatus:'NOT_RUN'},null,2);}
  function refreshDebug(){
@@ -30,6 +30,9 @@ export function createAssetViewer(scene:Scene,productionCamera:Camera,renderer:W
   if(root&&(wireframe||normals))root.traverse(o=>{if(!(o instanceof Mesh))return;originals.set(o,o.material);o.material=(Array.isArray(o.material)?o.material:[o.material]).map(m=>{const debug=normals?new MeshNormalMaterial({wireframe}):m.clone();if('wireframe'in debug)debug.wireframe=wireframe;debug.userData.qaVisual3dDebug=true;debugMaterials.add(debug);return debug;});if(originals.get(o)&&!Array.isArray(originals.get(o)))o.material=o.material[0];});
   if(isolate&&root&&root!==scene){const descendants=new Set<Object3D>();root.traverse(o=>descendants.add(o));const ancestors=new Set<Object3D>();for(let o:Object3D|null=root;o;o=o.parent)ancestors.add(o);scene.traverse(o=>{if(debugObject(o)||o.type.endsWith('Light')||o.type==='Object3D'&&o.parent===scene)return;if(!descendants.has(o)&&!ancestors.has(o)){visibility.set(o,o.visible);o.visible=false;}});}
   if(habitatFamily)scene.traverse(o=>{if(debugObject(o))return;const site=visualSite(o),record=site&&visualRecords.get(site);if(!record)return;const family=['macaw','elephant','lion','giraffe','zebra'].includes(record.category)?record.category:/\/(?:feeder-scene|water-scene|perch-scene|habitat-scene)\.ts$/.test(record.sourcePath)?'macaw':undefined;if(family&&family!==habitatFamily){if(!visibility.has(o))visibility.set(o,o.visible);o.visible=false;}});
+  // Production shadows are cached. QA-only subtree/family visibility must refresh
+  // that cache so hidden residents cannot leave phantom shadows in asset evidence.
+  if(visibility.size)renderer.shadowMap.needsUpdate=true;
   inspectSelection();render();
  }
  function filter(){const family=category.value;selection.replaceChildren(new Option('Pilih objek produksi…',''),...entries.filter(e=>family==='all'||e.family===family).map(e=>new Option(e.label+' · '+e.assetId,e.id)));}
