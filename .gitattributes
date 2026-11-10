@@ -80,3 +80,5 @@ docs/qa/homepage-refresh/*.log -whitespace
 # Zebra source-bound receipts preserve exact bytes across checkouts.
 docs/qa/zebra/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
 docs/qa/zebra/**/*.log -whitespace
+# Original Node TAP diagnostics preserve intentional indentation on blank lines.
+docs/qa/zebra/r7-03/*.tap -whitespace
