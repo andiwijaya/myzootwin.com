@@ -1,10 +1,13 @@
+import {loadV5VisualCase} from './fixture.ts';
+import {selectPhaseRecord,type PhaseIndex} from './phase-contract.ts';
+declare const __VIS3D_PHASE_INDEX__:PhaseIndex;
 import {createZebraIndexedDbBackend} from '../../../src/game/persistence/zebra-backend.ts';
 import {parseSaveV5,ZEBRA_CHECKPOINT_CODEC} from '../../../src/game/persistence/save-v5.ts';
 import {createInitialState} from '../../../src/game/core/initial-state.ts';
 /** Existing UUID lookup is read-only. Explicit freshEntry creates only an empty
  * randomly named QA database, for actual product default-language/new-game tests. */
 export async function loadZebraProductFixture(){
- const url=new URL(location.href),database=url.searchParams.get('buildDb');if(!['127.0.0.1','localhost','[::1]'].includes(url.hostname))throw Error('Loopback QA origin required');
+ const url=new URL(location.href),database=url.searchParams.get('buildDb');const phase=selectPhaseRecord(__VIS3D_PHASE_INDEX__,url.searchParams.get('case'));if(phase){if(phase.schema!==5)throw Error('V5 product requires explicit V5 case');if(database||url.searchParams.has('freshEntry'))throw Error('V5 case cannot override another fixture selector');return loadV5VisualCase(phase,url,true);}if(!['127.0.0.1','localhost','[::1]'].includes(url.hostname))throw Error('Loopback QA origin required');
  if(url.searchParams.get('freshEntry')==='1'){
   if(database)throw Error('Fresh entry cannot target an existing database');
   const fresh='myzootwin-zebra-build-'+crypto.randomUUID(),backend=createZebraIndexedDbBackend(indexedDB,fresh);

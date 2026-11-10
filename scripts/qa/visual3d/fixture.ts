@@ -1,3 +1,5 @@
+import {openV5VisualFixture,validateV5VisualPayload} from './v5-visual-fixture.ts';
+import type {ZooSaveV3} from '../../../src/game/core/zoo-state.ts';
 import v3 from '../../../tests/fixtures/giraffe-v3-golden.json';
 import v4 from '../../../tests/fixtures/giraffe-v4-golden.json';
 import {createGiraffeIndexedDbBackend} from '../../../src/game/persistence/giraffe-backend.ts';
@@ -7,11 +9,16 @@ import type {ZooSaveV4} from '../../../src/game/core/giraffe-state.ts';
 import type {ZooSave} from '../../../src/game/core/zoo-state.ts';
 import {selectPhaseRecord,phaseGeneration,type PhaseIndex} from './phase-contract.ts';
 declare const __VIS3D_PHASE_INDEX__:PhaseIndex;
+export async function loadV5VisualCase(phase:import('./phase-contract.ts').PhaseRecord,url=new URL(location.href),allowSavedChanges=false){
+ if(!['127.0.0.1','localhost','[::1]'].includes(url.hostname))throw Error('Loopback V5 visual origin required');
+ const response=await fetch('/fixtures/'+phase.id+'.json');if(!response.ok)throw Error('Missing immutable V5 visual fixture');const text=await response.text();if(await textHash(text)!==phase.fileHash)throw Error('V5 phase fixture content hash mismatch');const state=await validateV5VisualPayload(JSON.parse(text),phase);let database=url.searchParams.get('fixtureDb');const fresh=database===null;if(fresh){database='myzootwin-visual3d-'+crypto.randomUUID();url.searchParams.set('fixtureDb',database);history.replaceState(null,'',url);}
+ return openV5VisualFixture({factory:indexedDB,database:database!,fresh,record:phase,state,v3:v3.state as unknown as ZooSaveV3,v4:v4.state as unknown as ZooSaveV4,allowSavedChanges});
+}
 async function textHash(text:string){return [...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text)))].map(b=>b.toString(16).padStart(2,'0')).join('');}
 
 /** QA origin + UUID database only. Real production backend preserves original V3 atomically. */
 export async function loadVisualFixture(){
- const url=new URL(location.href);if(!['127.0.0.1','localhost','[::1]'].includes(url.hostname))throw Error('Asset Lab fixture is loopback-only');const phase=selectPhaseRecord(__VIS3D_PHASE_INDEX__,url.searchParams.get('case')),generation=phaseGeneration(phase?.id??null);let seeded:ZooSaveV4=v4.state as unknown as ZooSaveV4;if(phase){const response=await fetch('/fixtures/'+phase.id+'.json');if(!response.ok)throw Error('Missing immutable phase fixture');const text=await response.text();if(await textHash(text)!==phase.fileHash)throw Error('Phase fixture content hash mismatch');const payload=JSON.parse(text)as{metadata:{id:string};state:unknown},checked=validateSaveV4(payload.state);if(payload.metadata.id!==phase.id||!checked.ok||checked.value.tick!==phase.tick||phase.species&&!checked.value.animals.some(a=>a.speciesId===phase.species&&a.motion.phase===phase.phase))throw Error('Invalid actual phase fixture');seeded=checked.value;}let name=url.searchParams.get('fixtureDb');const fresh=name===null;
+ const url=new URL(location.href);if(!['127.0.0.1','localhost','[::1]'].includes(url.hostname))throw Error('Asset Lab fixture is loopback-only');const phase=selectPhaseRecord(__VIS3D_PHASE_INDEX__,url.searchParams.get('case')),generation=phaseGeneration(phase?.id??null);if(phase?.schema===5)return loadV5VisualCase(phase,url);let seeded:ZooSaveV4=v4.state as unknown as ZooSaveV4;if(phase){const response=await fetch('/fixtures/'+phase.id+'.json');if(!response.ok)throw Error('Missing immutable phase fixture');const text=await response.text();if(await textHash(text)!==phase.fileHash)throw Error('Phase fixture content hash mismatch');const payload=JSON.parse(text)as{metadata:{id:string};state:unknown},checked=validateSaveV4(payload.state);if(payload.metadata.id!==phase.id||!checked.ok||checked.value.tick!==phase.tick||phase.species&&!checked.value.animals.some(a=>a.speciesId===phase.species&&a.motion.phase===phase.phase))throw Error('Invalid actual phase fixture');seeded=checked.value;}let name=url.searchParams.get('fixtureDb');const fresh=name===null;
  if(fresh){name='myzootwin-visual3d-'+crypto.randomUUID();url.searchParams.set('fixtureDb',name);history.replaceState(null,'',url);}
  if(!name||!/^myzootwin-visual3d-[a-f0-9-]{36}$/.test(name))throw Error('Refusing non-QA database');
  const database=name;

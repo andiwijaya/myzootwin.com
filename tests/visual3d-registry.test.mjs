@@ -6,7 +6,7 @@ test('typed registry covers every reachable visual module/site, real generated r
  const inventory=discoverVisualInventory();assert.equal(new Set(registry.records.map(r=>r.assetId)).size,registry.records.length);assert.equal(registry.renderModules,inventory.visualModuleCount);
  for(const m of inventory.modules.filter(m=>m.path.startsWith('src/game/render3d/')))assert.ok(registry.records.some(r=>r.kind==='module'&&r.sourcePath===m.path));
  for(const a of inventory.assets)assert.ok(registry.records.some(r=>r.assetId===a.assetId));for(const a of inventory.staticVisuals)assert.ok(registry.records.some(r=>r.assetId===a.assetId));
- for(const r of registry.records){assert.match(r.sourceHash,/^[a-f0-9]{64}$/);assert.equal(r.visualStatus,'NOT_RUN');assert.ok(r.owner&&r.provenance.license&&r.stateRule&&r.fallback);assert.deepEqual(r.qualityTiers,['low','high']);assert.ok(r.testFixtures.some(f=>f.status==='AVAILABLE'));}
+ for(const r of registry.records){assert.match(r.sourceHash,/^[a-f0-9]{64}$/);assert.equal(r.visualStatus,'NOT_RUN');assert.ok(r.owner&&r.provenance.license&&r.stateRule&&r.fallback);assert.deepEqual(r.qualityTiers,['low','high']);if(r.category==='zebra'){assert.deepEqual(r.testFixtures,[{id:'v5-zoo-baseline',status:'PLANNED'}]);}else assert.ok(r.testFixtures.some(f=>f.status==='AVAILABLE'));}
  assert.ok(registry.records.some(r=>r.category==='renderer-textures'));assert.ok(registry.records.some(r=>r.category==='audio'));assert.ok(registry.records.some(r=>r.category==='public-file'||r.kind==='public-file'));assert.equal(registry.dependencies[0].license,'MIT');
 });
 test('QA constructor transform covers every source constructor exactly once with parseable nested source, no mutation of disk',()=>{
