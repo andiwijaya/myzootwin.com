@@ -3,7 +3,7 @@ import {createGiraffeIndexedDbBackend} from '../../../src/game/persistence/giraf
 import {createAutosave} from '../../../src/game/persistence/autosave.ts';
 import {SAVE_STORE,ELEPHANT_V1_BACKUP,LION_V2_BACKUP,GIRAFFE_V3_BACKUP,ZEBRA_V4_BACKUP} from '../../../src/game/persistence/durable-backend.ts';
 import {rawSignature} from '../../../src/game/persistence/checkpoint.ts';
-import {migrateToV5,parseSaveV5,serializeSaveV5,projectUnstartedV5,ZEBRA_CHECKPOINT_CODEC} from '../../../src/game/persistence/save-v5.ts';
+import {migrateToV5,parseSaveV5,serializeSaveV5,projectUnstartedV5} from '../../../src/game/persistence/save-v5.ts';
 import {MAX_SAVE_CHARS} from '../../../src/game/persistence/save-v1.ts';
 import {migrateToV4} from '../../../src/game/persistence/save-v4.ts';
 import {prepareZebraMission} from '../../../src/game/missions/zebra-missions.ts';
@@ -18,7 +18,7 @@ assert(['localhost','127.0.0.1','[::1]'].includes(url.hostname),'Loopback only')
 const response=await fetch('./fixture.json');assert(response.ok,'Missing immutable source fixture');const fixture=await response.json();assert(await stateFingerprint(fixture.state)===fixture.metadata.stateHash,'Fixture hash mismatch');
 const v4=fixture.baseline.find(x=>x.state.schemaVersion===4).state,baseline=fixture.state,marker={owner:'myzootwin-r7-03',source,input,fixture:fixture.metadata.stateHash};
 const req=q=>new Promise((resolve,reject)=>{q.onsuccess=()=>resolve(q.result);q.onerror=()=>reject(q.error);}),done=t=>new Promise((resolve,reject)=>{t.oncomplete=resolve;t.onabort=t.onerror=()=>reject(t.error);}),code=e=>e?.code??e?.name??String(e);
-let current=url.searchParams.get('faultDb'),busy=false,save,backend,ui,uiSave,uiName,closed=false,seq=0;const receipts=[],errors=[],owners=new Set(),created=[],raceTimers=new Set();
+let current=url.searchParams.get('faultDb'),busy=false,save,ui,uiSave,uiName,closed=false;const receipts=[],errors=[],owners=new Set(),created=[],raceTimers=new Set();
 window.addEventListener('error',e=>errors.push(e.message));window.addEventListener('unhandledrejection',e=>errors.push(String(e.reason)));
 const status=document.querySelector('#status'),output=document.querySelector('#result'),controls=document.querySelector('#controls');
 function guard(name){assert(/^myzootwin-zebra-fault-[a-f0-9-]{36}$/.test(name),'Refusing non-fault UUID');}
