@@ -1,6 +1,6 @@
 # Execution checkpoint
 
-Current verified progress: **50/54 (92.59%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
+Current verified progress: **51/54 (94.44%)**. Zebra V5 is **NOT DEPLOYED**. R7-08 is held: authorization covers local coding/release preparation, not Zebra push/deploy.
 
 All four Library inputs were read completely: master PRD 335 lines, harness 128, checklist 200, handoff 42. Official Windows materialization failed at `os.setxattr` after the authorized retry. The destination is empty; no original source-file identity is claimed. This requested derived repository checklist uses the complete official reads. Original Library documents remain unchanged. See [input-access record](qa/zebra/z0-01/input-access.json).
 
@@ -96,13 +96,15 @@ Open gates: static registry records retain their default **NOT_RUN** labels; fea
 
 | R7-03 | 59af0f7 /cb9f09d | [Fault/recovery](qa/zebra/r7-03/verification.json): real late-flush/close defect fixed with one disposal drain; original-source red/current green IndexedDB regression, initial125 fault tests and fresh full1030/1030 across162 files. Strict types, Astro610/0diagnostics,36-file QA-excluded build. Native quota/abort before+after V5, corrupt/future, exact originalV4/provenance guards, stale recovery quote, reset generation/Undo, oldV4 barrier, two-tab real150ZC ZQ02 race/losing memory/cold ticket replay, ID/EN source recovery controller cancel/quota/retry/keyboard.23 final snapshots at representative native/source scope; actual Zebra grant/public adoption remains Z2-06. All own resources closed; no push/deploy. |
 
-| R7-04 | fb868d9 /754f38e | [Native soak and deterministic stress](qa/zebra/r7-04/verification.json): actual933,996ms active1x/9,294canonical ticks,11 yielding10x blocks/10,960actual ticks,5habitats/14actors strictV5,20 actual product reopen/dispose cycles with exact save and zero owned geometry/texture/material/subscriber/callback counters after every close. Native heap estimate54.55�123.99MB/end95.44MB; callback CPU mean111.35ms/p95 lower136ms and interval mean135.09ms are host proxies, NOT presented FPS. Strict cold native hashf5f04f0 and final6db1789/tick34736/cash2139/revision904, exact V3/V4 backups, original paid refills/no extra grants. QA synchronous input deadline repaired with bounded yielding controller;19 targeted tests/types/Astro618 clean, both36-file product builds byte-exact R7-03 and QA-excluded.32 lossless archives/210 verification assertions; all own resources closed. Presented/device FPS and retained-heap attribution UNMEASURED; no push/deploy. |
+| R7-04 | fb868d9 /754f38e | [Native soak and deterministic stress](qa/zebra/r7-04/verification.json): actual933,996ms active1x/9,294canonical ticks,11 yielding10x blocks/10,960actual ticks,5habitats/14actors strictV5,20 actual product reopen/dispose cycles with exact save and zero owned geometry/texture/material/subscriber/callback counters after every close. Native heap estimate54.55�123.99MB/end95.44MB; callback CPU mean111.35ms/p95 lower136ms and interval mean135.09ms are host proxies, NOT presented FPS. Strict cold native hashf5f04f0 and final6db1789/tick34736/cash2139/revision904, exact V3/V4 backups, original paid refills/no extra grants. QA synchronous input deadline repaired with bounded yielding controller;19 targeted tests/types/Astro618 clean, both36-file product builds byte-exact R7-03 and QA-excluded.32 lossless archives/210 verification assertions; all own resources closed. Presented/device FPS and retained-heap attribution UNMEASURED; no push/deploy. |
 
 | R7-05 | 7bcb81f | [Supported internal profiles](qa/zebra/r7-05/verification.json):84 labelled observations,actual home/game ID+EN at1280x720/360x780/780x360,no overflow; all4 panels,Settings/Help/Privacy keyboard,Pause/Resume,CTA/back-forward. Trusted original triangle pick and zoomed native mouse/keyboard camera; explicitly synthetic touch pinch/held-pair pause cancellation/late releases, no physical-touch claim. Exact gameplay ca4ef00/tick14367/cash3595/command134,14actors5habitats; intended preferences only,cold2bd39c8/revision18,originalV3/V4 backups intact.38 targeted tests/types/Astro618 clean,36 production files byte-exact R7-04/QA excluded;26 lossless archives,6 screenshots,432 verifier assertions. All own resources closed/viewport reset; host-only profiles,FPS/device/UA limits disclosed,no push/deploy. |
 
 | R7-06 | aada9f8 /eace966 | [Release surface audit](qa/zebra/r7-06/verification.json):205 runtime/56 render modules,8 intentional historical/type/build/maintenance/QA modules retained,exact emitted client module hashes,no QA modules.18 public assets content-bound; current official npm production+all dependency audits0 known advisories. Actual bundled Vite preload helper lacked browser attribution: added installed8.3.5 core MIT notice while preserving exact prior Three prefix/standalone license.37 product files,35 unchanged vs R7-05 plus only expanded/new notice; src/package/lock/media unchanged.20 targeted tests/types/Astro620 clean,81 archive assertions,10 compressed receipts~59KB. Historical326MB tracked tree/318MB docs evidence preserved; no mass deletion/prune. No new browser/server,user/Farm untouched,no push/deploy. |
 
-Next: **R7-07 V5-compatible no-write maintenance/fix-forward artifact and release preparation**. [R7-06 accepted review](qa/zebra/r7-06/review.md),50/54. All owned test/build/browser/server resources closed; user/default/carried saves and previews untouched. Proposed1700ZC grant/exactly-once/public V5, HP6-02 playability and R7-07/08 remain open. Native host CPU/interval limits and physical/unsupported-browser/FPS gaps remain disclosed. Separate Zebra release permission absent; NOT DEPLOYED.
+| R7-07 | 604f429 /9099ffe | [Maintenance and candidate gates](qa/zebra/r7-07/verification.json): separate V5-compatible readonly maintenance, no-version open/abort absent DB, strict backup/future guards, no writer/engine/renderer;54 actual bundle modules. Normal37 files exact R7-06; separate38-file fallback changes only/play HTML plus one104665B script.24 native receipts across6 UUID variants, exact whole-store/row/version cold/retry/language, ID/EN/3 CSS profiles/44px controls, real standalone empty-origin page and clean console.5 maintenance tests/8 targeted correction tests/types/Astro626 clean; fresh full1046/1046 across167 files,0fail/skip/cancel/todo, original1045/1046 stale-inventory red retained then tightly bound to immutable R7-06 provenance/license audit. Only2 reviewed test/fixture inputs differ from original native/build source; every runtime/public/package/config/scripts byte exact, no evidence relabelling. [Fix-forward plan](ZEBRA_V5_RELEASE_PLAN.md) prohibits V4 binary rollback and documents existing-tab/CDN limits. Current main634de84/existing Pages de1f5a36/four-live-habitat HTTP facts verified read-only. 379935 compressed proof bytes plus5 screenshots, all own resources closed, no push/deploy. |
+
+Next: **Z2-06 actual grant/budget/exactly-once and public V5 adoption**, then HP6-02 truthful five-playable acceptance and R7-08 authorized release/live verification. [R7-07 accepted review](qa/zebra/r7-07/review.md),51/54. All owned test/build/browser/server resources closed; user/Farm/default/carried saves and previews untouched. Runtime public entry remains V4; existing QA prerequisites do not prove the proposed1700ZC grant. Presented FPS/physical/unsupported-browser limits remain disclosed. Explicit Zebra push/deploy permission absent; NOT DEPLOYED.
 
 ---
 
@@ -288,7 +290,7 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
 - [x] **R7-06** — Dead/reachable code, runtime package/security/asset provenance and repo-size cleanup audit; preserve old media/QA evidence.
   - **DoD:** No unlicensed/new telemetry; old routes untouched; no massive QA artifacts or destructive cleanup.
   - **Proof:** `docs/qa/zebra/r7-06/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
-- [ ] **R7-07** — Prepare V5-compatible read-only maintenance/fix-forward rollback plan, immutable source/build manifest and candidate release checklist.
+- [x] **R7-07** — Prepare V5-compatible read-only maintenance/fix-forward rollback plan, immutable source/build manifest and candidate release checklist.
   - **DoD:** Do not deploy V4 code over V5 database; tested no-write maintenance, current production facts verified.
   - **Proof:** `docs/qa/zebra/r7-07/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 - [ ] **R7-08** — After verified and release authorization, controlled fast-forward publish to main + deployment/live smoke; then complete 5-habitat homepage claim.
@@ -296,15 +298,15 @@ Progress report each feature: `verified n/54`, latest source SHA, tests, actual 
   - **Proof:** `docs/qa/zebra/r7-08/` + source SHA + tests + native browser observation when applicable; update `docs/ZEBRA_PROGRESS.md`.
 
 
-## Release closeout template
+## Release closeout status
 
-- Source SHA / build digest / remote main SHA / Cloudflare deployment ID: **UNRUN**
-- V1–V4 frozen save projection tests: **UNRUN**
-- V5 migration + IndexedDB CAS / old-binary barrier / backup: **UNRUN**
-- Universal Asset Lab inventory: **UNRUN** (all asset categories)
-- Full Zoo scene, five habitats, geometry/picking/LOD/clip checks: **UNRUN**
-- Black-box internal browser desktop/portrait/landscape ID+EN: **PASS at R7-05 supported-host scope**; physical/unsupported browsers untested
-- Native 15-minute active 1× soak & 10× deterministic stress: **UNRUN**
-- Actual presented FPS: **UNMEASURED** until directly measured
-- Homepage five cards, promo, metadata/hreflang, live-claim truth: **UNRUN**
-- Production publish/live smoke: **BLOCKED until authorized**, unless explicit release authorization already exists at task start
+- Implementation/build source604f429; final regression9099ffe (only reviewed test/fixture delta). Exact manifests and current remote main634de84 / existing Cloudflare deployment de1f5a36: [R7-07](qa/zebra/r7-07/verification.json). No Zebra deployment ID exists.
+- V1–V4 frozen save projections: **PASS**, original fixtures and geometry/media guards retained; full1046/1046 regression at9099ffe.
+- Strict V5 migration / IndexedDB CAS / old-client barrier / original backup: **PASS at isolated R7-03/07 scope**; actual grant and public adoption remain **OPEN Z2-06**.
+- Universal Asset Lab construction inventory and representative native5-species/Full Zoo/camera matrix: **PASS at R7-02 recorded scope**; inventory is not a Cartesian visual or every-animation-instant proof.
+- Actual internal-browser desktop/portrait/landscape ID+EN: **PASS R7-05 supported-host scope**; physical and unsupported browser engines untested.
+- Native15-minute active1x soak / deterministic10x stress / repeated disposal: **PASS at R7-04 recorded scope**; heap estimates and callback CPU/intervals are bounded proxies, not retained-leak or GPU timing proof.
+- Actual presented FPS: **UNMEASURED**; no callback-Hz or render-submit substitution.
+- Homepage preview cards/promo/media/metadata/hreflang/routes: **PASS at HP6-03..06/R7-05 scope**; five actually playable live claim **OPEN HP6-02**.
+- V5-compatible no-write maintenance and fix-forward preparation: **PASS R7-07**; no historical V4 binary rollback after V5 adoption.
+- Production Zebra publish/live smoke: **HELD R7-08**, separate explicit release authorization absent. Historical homepage deployment authorization does not cover Zebra.

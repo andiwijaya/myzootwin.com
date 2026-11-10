@@ -1,0 +1,93 @@
+{
+  "at": "2026-11-10T19:37:18.483Z",
+  "status": "PASS_R7_07_LOCAL_MAINTENANCE_PREPARATION",
+  "verified": 51,
+  "total": 54,
+  "source": "604f429792accf4c5b93c28aedd17dd8eab0e6ed",
+  "input": "c600030f42a87e612a97b97389acb3346860b7c487d7dccbd34a56191ce71685",
+  "regressionSource": "9099ffe5bd66c0d6a8e8d82d067054fc299f5f27",
+  "regressionInput": "9a5c167408808f7291327a8b08aeed9b9c02a2de607ed3506e4f7d4b9f24f78f",
+  "normalBuild": "6a573dcba1597d740a89c2b7f68b0c9d91a9c3b7edbce8d99c5ca242bd326849",
+  "maintenanceBuild": "dba4a900e523d99d521dbee451276e3705317c29ec4c1e3c4292f3b16321d864",
+  "normalFiles": 37,
+  "maintenanceFiles": 38,
+  "normalUnchangedFromR706": true,
+  "changes": [
+    {
+      "path": "_zebra-maintenance-assets/zebra-BHjMyjFF.js",
+      "sha256": "01a1e8155d8180de5f9fa3a9a6e61048add353deb8a0271d91a766da6bbb816d"
+    },
+    {
+      "path": "play/index.html",
+      "sha256": "72dc00ea827f9b49cdf31d9b2da6bac1a06656381677383c35b615a28f7d93bb"
+    }
+  ],
+  "nativeObservations": 24,
+  "variants": [
+    "v5",
+    "v4",
+    "corrupt",
+    "future",
+    "no-backup",
+    "version6"
+  ],
+  "nativeAllRowsUnchanged": true,
+  "fullSuite": {
+    "tests": 1046,
+    "suites": 0,
+    "pass": 1046,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "testsFiles": 167,
+  "sourceUnchanged": true,
+  "screenshots": [
+    {
+      "file": "blocked-portrait-id.png",
+      "bytes": 35464,
+      "sha256": "31d9d69e22c9c4ead793f1941fc8d115fe4fa3ea9bf75b76404cbaaaa86dc81a"
+    },
+    {
+      "file": "v5-desktop-en.png",
+      "bytes": 45873,
+      "sha256": "d19df2e0727cb4243bb7e8def58b61276309edd25e01f05e3dd3b2abbd451dbc"
+    },
+    {
+      "file": "v5-portrait-en.png",
+      "bytes": 38784,
+      "sha256": "af0009511206b2e0060bed7299fb9e01334cdcb408f0ec7e859b23ac8ca8a2c1"
+    },
+    {
+      "file": "standalone-desktop-en.png",
+      "bytes": 31964,
+      "sha256": "252acfda3b6f991a44de3f113982abf70f9bfd951beea226a7e5a080d82f431e"
+    },
+    {
+      "file": "standalone-portrait-en.png",
+      "bytes": 27794,
+      "sha256": "cf7188104ba1a25aeaa7a8083a2c52e76618864c222a0b752b44e5a2aed7dcfd"
+    }
+  ],
+  "archivesBytes": 379935,
+  "resources": {
+    "at": "2026-11-10T19:37:16.6320541Z",
+    "remainingPids": [],
+    "remainingListeners": [],
+    "activeOwnedHeavyProcesses": 0,
+    "browserTabClosed": true,
+    "viewportReset": true,
+    "fullSuiteExitCode": 0,
+    "previousFullSuiteExitCode": 1,
+    "serverStop": "Lab exited0 via normal stdin; standalone stdin closed, exact command-line-verified owned PID stopped; both ports/PIDs absent",
+    "scope": "Only recorded Zebra servers, full runners and observed child workers verified absent. No user/Farm process, browser, save or preview stopped."
+  },
+  "noPushOrDeploy": true,
+  "openGates": [
+    "Z2-06 actual proposed grant/budget/exactly-once/public V5 adoption",
+    "HP6-02 five actually playable/live homepage claim",
+    "R7-08 explicit Zebra publication permission and live acceptance"
+  ],
+  "limits": "QA causal V5 fixture has explicit synthetic already-claimed prerequisites; no grant/public-adoption acceptance. Native internal host/CSS profiles only, no physical device/unsupported engine/presented FPS claim. Maintenance cannot suspend already-open game tabs. No deployment or user-storage test."
+}
