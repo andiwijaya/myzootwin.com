@@ -1,0 +1,393 @@
+{
+  "status": "READY_R7_01_REPAIR_CANDIDATE_NOT_ACCEPTED",
+  "at": "2026-11-10T05:30:18.179Z",
+  "verified": 44,
+  "total": 54,
+  "pendingUnit": "R7-01",
+  "source": "2e923dc75be2f1780bccf784c76863ec9bff0882",
+  "parentSource": "2717fa1e1adf88f53826b4c9169513add4de1907",
+  "sourceFingerprint": "fd09273368f61f181c93b24435dd9b0ec78fc2e1545a203e9745652af1ab33b1",
+  "sourceBinding": "Light tests ran on the relevant final working-tree inputs committed unchanged as2e923dc. Explicit per-file hashes below; this is not a new complete-suite receipt.",
+  "changedFiles": [
+    {
+      "path": "docs/ASSET_MANIFEST.json",
+      "bytes": 69469,
+      "sha256": "8c1bb7da6fc2260941b0a0f198bce3ca3aa1b44573193c012821d458d0fba48d"
+    },
+    {
+      "path": "src/game/animals/zebras/body.ts",
+      "bytes": 6124,
+      "sha256": "cdf2b922dda59c07f7e9d397ce88aa07090fc4e910ea609c1546b85fe70c40a8"
+    },
+    {
+      "path": "src/game/animals/zebras/care-simulation.ts",
+      "bytes": 7793,
+      "sha256": "d6e9ec8e45d8407584a18c2ce652b8fe7f4a8f2535e79f1a85ca6b34efa077f3"
+    },
+    {
+      "path": "tests/fixtures/zebra-visual-v5-extension.json",
+      "bytes": 4296,
+      "sha256": "e10a1c529e86f1ae187942e606c836f194bc1bbf3b6e64342dd11f95425a07d4"
+    },
+    {
+      "path": "tests/localization.test.mjs",
+      "bytes": 4021,
+      "sha256": "a39491f2c5de5a2a8debfa8eeeab03379de817831d1fbe3e4b31cd20d8499052"
+    },
+    {
+      "path": "tests/zebra-herd.test.mjs",
+      "bytes": 8327,
+      "sha256": "135e46c0321b1902d9ce0df75dddad795b43e62a6f07d8d1e2bc72133d98fb79"
+    },
+    {
+      "path": "tests/zebra-visual-inventory.test.mjs",
+      "bytes": 6489,
+      "sha256": "bacabe55f429ef731cc7c8ad3514ba360d5c9003c06ba3044c6180fa55dcb660"
+    },
+    {
+      "path": "tests/zebra-welfare.test.mjs",
+      "bytes": 7245,
+      "sha256": "a68ab70da9f40df3daeb00c8b7ab727fdd9c9370c0346c31cb4ad22ad559e5bd"
+    }
+  ],
+  "fixes": [
+    {
+      "failure": 461,
+      "file": "tests/localization.test.mjs",
+      "status": "PASS_LIGHT_SELECTED",
+      "change": "Retain all key/placeholder/content checks, explicitly inventory10 Zebra dictionary pairs across9 files, preserve23 original pairs and cover745 keys."
+    },
+    {
+      "failure": 936,
+      "file": "src/game/animals/zebras/body.ts",
+      "status": "PASS_LIGHT_SELECTED_PENDING_LONG_REGRESSION",
+      "reproduction": {
+        "tick": 13839,
+        "index": 258,
+        "alpha": 0.5,
+        "gap": 0.5390615279883934,
+        "endGap": 0.5402214341153909,
+        "actors": [
+          "zebra-kira",
+          "zebra-zaki"
+        ],
+        "durationMs": 1225.8605,
+        "receipt": {
+          "path": ".qa/zebra-audit/r7-01/pair-before.json",
+          "bytes": 440536,
+          "sha256": "1fa79caf15cbff5ed5dfe94ebd0d3a11205d71dfadc748ebdd52c8e73d44804f"
+        }
+      },
+      "change": "Runtime-only WeakMap tick origins add synchronized pair capsule sampling to existing static body/head/post guards. A proven far-distance bound skips unnecessary samples. try/finally clears origins; no persisted field. Rejects the unsafe joint retreat/turn rather than relocating an actor. Exact-pair guard and400-tick/cold replay tests pass.",
+      "limits": "Finite bounded samples follow existing collision style; no continuous-collision or native/performance acceptance. Long10k/five-habitat/care/social regressions remain required."
+    },
+    {
+      "failure": 1011,
+      "file": "tests/zebra-visual-inventory.test.mjs",
+      "status": "PASS_LIGHT_SELECTED",
+      "change": "Immutable Z0/protected old factories remain exact. Explicit reviewed extension adds1 static preview image/5 HP6-04 media; only2 retired source-reference lists change. Original media bytes retained. Register five exact existing media hashes/provenance in ASSET_MANIFEST; all generated-resource records remain exact.",
+      "receipts": [
+        {
+          "path": "tests/fixtures/zebra-visual-v5-extension.json",
+          "bytes": 4296,
+          "sha256": "e10a1c529e86f1ae187942e606c836f194bc1bbf3b6e64342dd11f95425a07d4"
+        },
+        {
+          "path": "docs/ASSET_MANIFEST.json",
+          "bytes": 69469,
+          "sha256": "8c1bb7da6fc2260941b0a0f198bce3ca3aa1b44573193c012821d458d0fba48d"
+        },
+        {
+          "path": "docs/qa/zebra/hp6-04/image-provenance.json",
+          "bytes": 83945,
+          "sha256": "31e7d14caadcf4c3a96bd9ac13aaee0e479537e74df0c24e7522b871c912d711"
+        }
+      ]
+    },
+    {
+      "failure": 1019,
+      "file": "tests/zebra-welfare.test.mjs",
+      "status": "FIXTURE_READY_LONG_CAUSAL_CASE_UNRUN",
+      "change": "Explicitly initialize only the four synthetic Zebra enrichment values to0; retain real source care purchases, no enrichment facility, every completion/component-increase assertion and final true grooming/zero-enrichment condition. Avoid depending on the default40 decaying before legitimate grooming.",
+      "fixtureProbe": {
+        "status": "PASS_FIXTURE_ONLY",
+        "durationMs": 420.1664999999999,
+        "actors": [
+          {
+            "id": "zebra-zaki",
+            "enrichment": 0,
+            "groomings": 0
+          },
+          {
+            "id": "zebra-zuri",
+            "enrichment": 0,
+            "groomings": 0
+          },
+          {
+            "id": "zebra-mira",
+            "enrichment": 0,
+            "groomings": 0
+          },
+          {
+            "id": "zebra-kira",
+            "enrichment": 0,
+            "groomings": 0
+          }
+        ],
+        "initialValid": true,
+        "noEnrichmentFacility": true,
+        "onlyInitialZebraEnrichmentChanged": true,
+        "strictColdRoundTrip": true,
+        "pausedExact": true,
+        "scope": "Synthetic source-command test fixture only. No real grooming event, owner/browser storage, grant budget or public adoption acceptance.",
+        "receipt": {
+          "path": ".qa/zebra-audit/r7-01/zero-enrichment-fixture-light.json",
+          "bytes": 725,
+          "sha256": "2bb66bbddc4d6d0d1c1d9b06beea27198c84190b2660d0484319465085b63b4b"
+        }
+      },
+      "limits": "Actual long grooming event/component test has not run after this change; must execute with full care/social coverage when Farm releases slot."
+    }
+  ],
+  "selectedTests": {
+    "uniquePassing": 11,
+    "packs": [
+      {
+        "name": "pair-light-final",
+        "counts": {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "receipt": {
+          "path": ".qa/zebra-audit/r7-01/pair-light-final.tap",
+          "bytes": 860,
+          "sha256": "2beb87b4d401182e54a1778d278515c21c5e7a992dfaad82af0b394887710326"
+        },
+        "cases": [
+          "all four move with rotating priority without actual body overlap or fence escape, and cold state continues deterministically without respawning",
+          "simultaneous canonical pair sweep refuses the exact Kira retreat and Zaki turn whose clear endpoints hide a mid-frame overlap, and releases transient origins"
+        ]
+      },
+      {
+        "name": "inventory-light",
+        "counts": {
+          "tests": 7,
+          "pass": 7,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "receipt": {
+          "path": ".qa/zebra-audit/r7-01/inventory-light.tap",
+          "bytes": 1943,
+          "sha256": "50052c086642dce5a433d13664db974f13492c4cdc510d734fcf20df070b2500"
+        },
+        "cases": [
+          "all entry translations keep required parameters and only neutral identical labels",
+          "every paired game panel dictionary has matching keys and placeholder contracts",
+          "localized numbers and exact one-decimal simulation-time displays never affect numeric inputs",
+          "latest explicit language choice survives old saved locale while browser fallback can use saved preference",
+          "entry accessibility hooks use translated keys and stale future-game copy is removed",
+          "all production-reachable visual sources and nested geometry/part sites remain registered without needing QA build artifacts",
+          "absence/provenance records distinguish actual spray, generated textures/audio and replaced historical media"
+        ]
+      },
+      {
+        "name": "baseline-light",
+        "counts": {
+          "tests": 2,
+          "pass": 2,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "receipt": {
+          "path": ".qa/zebra-audit/r7-01/baseline-light.tap",
+          "bytes": 731,
+          "sha256": "ac8994f7e7c35d4f8e31167d2d2f77cca3519940e42a91125685915fb8bf612e"
+        },
+        "cases": [
+          "Zebra baseline freezes all original V1–V4 bytes, actors, world, mission, admission, ledger, clock and preference projections",
+          "baseline cold reads/pause are exact and canonical clock partitions retain all old species and financial proofs"
+        ]
+      }
+    ]
+  },
+  "syntax": "node --check passed4 modified test modules; Node strip-types syntax checks passed2 modified runtime TS modules. This is not strict typechecking.",
+  "legacy": {
+    "receipt": {
+      "path": "docs/qa/zebra/r7-01/legacy-projections.json",
+      "bytes": 17065,
+      "sha256": "9c6bd639480ad75e1efe8a8e234bbb30d03d65c23f7d85937361a6666756d123"
+    },
+    "originalGoldens": [
+      {
+        "path": "tests/fixtures/elephant-legacy-v1.json",
+        "bytes": 141169,
+        "sha256": "82fd14ab17cdf3445cdd31aa9281aac5dba6d465879c9c4c5b83bec2ff4d9d77"
+      },
+      {
+        "path": "tests/fixtures/lion-v2-golden.json",
+        "bytes": 81147,
+        "sha256": "7232657bbc2e0a89c2255c50aa0fbacb9356d8e8332425a8f4f592dfa0335fae"
+      },
+      {
+        "path": "tests/fixtures/giraffe-v3-golden.json",
+        "bytes": 128852,
+        "sha256": "6dbb58106a495f1fddb115138b1c8b92524ed47cc9bcac21c60a3a760cede921"
+      },
+      {
+        "path": "tests/fixtures/giraffe-v4-golden.json",
+        "bytes": 209403,
+        "sha256": "5c186919ca88e6563204f5a993200410e96d8d2736aef27e62cf92287d09e145"
+      },
+      {
+        "path": "tests/fixtures/zebra-v1-v4-baseline.json",
+        "bytes": 41740,
+        "sha256": "42649aa9cf61661ade798128345cde0791d75644a244aa4a26286954d7f1468a"
+      }
+    ],
+    "unchangedSince": "4ae67ba"
+  },
+  "audits": {
+    "localization": {
+      "receipt": {
+        "path": ".qa/zebra-audit/r7-01/localization-inventory.json",
+        "bytes": 8551,
+        "sha256": "bc6f9f4f9b331745cfcd84543d923850cff0ed7983a0403e3fb177f6ad3ca24f"
+      },
+      "originalPairs": 23,
+      "currentPairs": 33,
+      "keys": 745,
+      "newFiles": [
+        {
+          "file": "zebra-access-panel.ts",
+          "pairs": 1
+        },
+        {
+          "file": "zebra-behavior-copy.ts",
+          "pairs": 1
+        },
+        {
+          "file": "zebra-care-panel.ts",
+          "pairs": 2
+        },
+        {
+          "file": "zebra-copy.ts",
+          "pairs": 1
+        },
+        {
+          "file": "zebra-edit-copy.ts",
+          "pairs": 1
+        },
+        {
+          "file": "zebra-guide.ts",
+          "pairs": 1
+        },
+        {
+          "file": "zebra-mission-panel.ts",
+          "pairs": 1
+        },
+        {
+          "file": "zebra-recovery-panel.ts",
+          "pairs": 1
+        },
+        {
+          "file": "zebra-welfare-copy.ts",
+          "pairs": 1
+        }
+      ]
+    },
+    "media": {
+      "receipt": {
+        "path": ".qa/zebra-audit/r7-01/visual-inventory-review.json",
+        "bytes": 16696,
+        "sha256": "0ba2ae5dc06303e5fe0176532cbee514e4787d96a2dcf10e527c6f73b102dbd7"
+      },
+      "new": 5,
+      "oldMediaDeleted": 0
+    }
+  },
+  "previousFullFailure": "docs/qa/zebra/r7-01/failure-verification.json",
+  "notRun": [
+    "Modified long zero-enrichment welfare causal case",
+    "Long herd/groom/care/movement/clock/storage/economy suites",
+    "Strict typecheck/Astro/production build",
+    "Fresh full suite (expected1,021tests after1 added regression),2 workers/1,800s",
+    "Native browser/five-species matrix/performance/soak"
+  ],
+  "next": [
+    "After explicit Farm slot release, run focused herd/welfare/groom/care/movement/clock/save/storage packs without parallel build. Retain exact outcomes and fix any real regressions.",
+    "Run strict noEmit/noUnused, Astro and fresh production QA-exclusion build. Body JS legitimately changes; the old scratch final-checks1 byte-identical-HP6-06 expectation is obsolete and must not be reused.",
+    "Run fresh full3 with2 workers/1,800s and immutable complete TAP. Also record before/after hashes for docs/ASSET_MANIFEST, Z0 inventory and HP6-04 provenance consumed by the inventory test.",
+    "Only promote R7-01 after complete clean regression and current checks; then coordinate R7-02 native matrix."
+  ],
+  "resources": {
+    "at": "2026-11-10T05:30:18.179Z",
+    "activeOwnedBrowserServerBuildTestsRenderer": 0,
+    "browserOpened": false,
+    "serverOpened": false,
+    "heavySuiteBuildSoakStarted": false,
+    "method": "All light probe/test exec sessions returned exit0; no persistent process was started. Previous full2 ownership query is retained in failure-verification.json.",
+    "lightSessions": [
+      {
+        "session": 11793,
+        "exit": 0,
+        "scope": "400-tick bounded first-failure probe;1.23s"
+      },
+      {
+        "session": 93616,
+        "exit": 0,
+        "scope": "Initial2-case pair pack;4.47s, superseded after broad-phase optimization"
+      },
+      {
+        "session": 85919,
+        "exit": 0,
+        "scope": "AST dictionary audit only"
+      },
+      {
+        "session": 18286,
+        "exit": 0,
+        "scope": "AST/static media audit only"
+      },
+      {
+        "session": 54216,
+        "exit": 0,
+        "scope": "Manifest registration/static inventory only"
+      },
+      {
+        "session": 18536,
+        "exit": 0,
+        "scope": "Final7-case inventory pack;1.78s"
+      },
+      {
+        "session": 61784,
+        "exit": 0,
+        "scope": "Final2-case pair pack;2.81s"
+      },
+      {
+        "session": 2574,
+        "exit": 0,
+        "scope": "Final2-case legacy baseline pack;.91s"
+      },
+      {
+        "session": 32206,
+        "exit": 0,
+        "scope": "Zero-enrichment strict fixture/cold/pause probe;.42s"
+      }
+    ],
+    "farm": "Exclusive heavy/GPU/browser slot remains with Farm; no new heavy work until released",
+    "stopDeadline": {
+      "utc": "2026-11-10T10:00:00.000Z",
+      "local": "17:00 WIB",
+      "scope": "Stop all coding/tests/build/browser/server by the deadline and await new instructions"
+    }
+  },
+  "noPushOrDeploy": true
+}

@@ -1,15 +1,15 @@
 {
-  "status": "FAIL_R7_01_COMPLETE_SUITE_FOUR_REGRESSIONS",
-  "at": "2026-11-10T05:17:52.048Z",
+  "status": "READY_R7_01_REPAIR_CANDIDATE_NOT_ACCEPTED",
+  "at": "2026-11-10T05:30:18.179Z",
   "verified": 44,
   "total": 54,
   "pendingUnit": "R7-01",
   "testedRunSource": "4780273e40e13505e3ab9543fc6cb6edcbfa3671",
-  "applicationSource": "48c07660cbc415ad88e7fda7ffea9c2fbec54213",
+  "applicationSource": "2e923dc75be2f1780bccf784c76863ec9bff0882",
   "proof": {
-    "path": "docs/qa/zebra/r7-01/failure-verification.json",
-    "bytes": 29264,
-    "sha256": "b6821b3bfc85ce22af4f1aebd2854a88a4f1674e8c145f2cacbf46bf2b86cbd5"
+    "path": "docs/qa/zebra/r7-01/repair-verification.json",
+    "bytes": 14723,
+    "sha256": "df2661be2748867be5d545cd21b1809a22937e6f735d31c0f551a1bf929b2696"
   },
   "runSummary": {
     "files": 161,
@@ -61,16 +61,65 @@
   "previousFullSaveCheckpoint": "docs/qa/zebra/hp6-06/checkpoint.json",
   "saveScope": "No owner/game/browser save opened. Main830/secondary87/V4 identity carried from HP6-04/Z5-05, not freshly reread.",
   "resources": {
-    "at": "2026-11-10T05:16:25.0168729Z",
-    "method": "Read-only host query of full2 runner14972, child22776 and their direct Node workers",
-    "remaining": 0,
-    "nodes": [],
+    "at": "2026-11-10T05:30:18.179Z",
+    "activeOwnedBrowserServerBuildTestsRenderer": 0,
     "browserOpened": false,
     "serverOpened": false,
-    "activeOwnedBrowserServerBuildTestsRenderer": 0,
-    "fullRunSession": 30735,
-    "sessionExit": 1,
-    "farm": "Slot available; no further heavy tests/build/browser/soak until Farm coordination"
+    "heavySuiteBuildSoakStarted": false,
+    "method": "All light probe/test exec sessions returned exit0; no persistent process was started. Previous full2 ownership query is retained in failure-verification.json.",
+    "lightSessions": [
+      {
+        "session": 11793,
+        "exit": 0,
+        "scope": "400-tick bounded first-failure probe;1.23s"
+      },
+      {
+        "session": 93616,
+        "exit": 0,
+        "scope": "Initial2-case pair pack;4.47s, superseded after broad-phase optimization"
+      },
+      {
+        "session": 85919,
+        "exit": 0,
+        "scope": "AST dictionary audit only"
+      },
+      {
+        "session": 18286,
+        "exit": 0,
+        "scope": "AST/static media audit only"
+      },
+      {
+        "session": 54216,
+        "exit": 0,
+        "scope": "Manifest registration/static inventory only"
+      },
+      {
+        "session": 18536,
+        "exit": 0,
+        "scope": "Final7-case inventory pack;1.78s"
+      },
+      {
+        "session": 61784,
+        "exit": 0,
+        "scope": "Final2-case pair pack;2.81s"
+      },
+      {
+        "session": 2574,
+        "exit": 0,
+        "scope": "Final2-case legacy baseline pack;.91s"
+      },
+      {
+        "session": 32206,
+        "exit": 0,
+        "scope": "Zero-enrichment strict fixture/cold/pause probe;.42s"
+      }
+    ],
+    "farm": "Exclusive heavy/GPU/browser slot remains with Farm; no new heavy work until released",
+    "stopDeadline": {
+      "utc": "2026-11-10T10:00:00.000Z",
+      "local": "17:00 WIB",
+      "scope": "Stop all coding/tests/build/browser/server by the deadline and await new instructions"
+    }
   },
   "failures": [
     {
@@ -128,6 +177,58 @@
     "Physical multi-touch/native touch capture and full posed fifth-species/performance/background/soak matrix remain open R7 scope; no physical-device or FPS claim",
     "Z5-04 native graph/signal and factory-injected failures accepted; physical speaker/device/system preference/native autoplay denial not claimed"
   ],
-  "next": "After Farm slot coordination, first isolate canonical pair interpolation at the exact failing tick/alpha, then review localisation/visual inventory and zero-enrichment grooming scenario. Repair actual contracts without weakening assertions or modifying goldens. Run focused regressions/current checks, then a fresh complete suite. R7-01 remains44/54 and unchecked. No push/deploy.",
-  "noPushOrDeploy": true
+  "next": "After explicit Farm slot release, run focused herd/welfare/groom/care/movement/clock/save/storage packs without parallel build. Retain exact outcomes and fix any real regressions. Run strict noEmit/noUnused, Astro and fresh production QA-exclusion build. Body JS legitimately changes; the old scratch final-checks1 byte-identical-HP6-06 expectation is obsolete and must not be reused. Run fresh full3 with2 workers/1,800s and immutable complete TAP. Also record before/after hashes for docs/ASSET_MANIFEST, Z0 inventory and HP6-04 provenance consumed by the inventory test. Only promote R7-01 after complete clean regression and current checks; then coordinate R7-02 native matrix.",
+  "noPushOrDeploy": true,
+  "candidateSource": "2e923dc75be2f1780bccf784c76863ec9bff0882",
+  "previousCompleteFailure": {
+    "source": "4780273e40e13505e3ab9543fc6cb6edcbfa3671",
+    "summary": {
+      "files": 161,
+      "tests": 1020,
+      "pass": 1016,
+      "fail": 4,
+      "skipped": 0,
+      "cancelled": 0,
+      "todo": 0,
+      "durationMs": 1066218,
+      "fullOutput": true,
+      "inputUnchanged": true,
+      "timedOut": false
+    },
+    "receipt": "docs/qa/zebra/r7-01/failure-verification.json"
+  },
+  "repairStatus": [
+    {
+      "failure": 461,
+      "file": "tests/localization.test.mjs",
+      "status": "PASS_LIGHT_SELECTED",
+      "change": "Retain all key/placeholder/content checks, explicitly inventory10 Zebra dictionary pairs across9 files, preserve23 original pairs and cover745 keys."
+    },
+    {
+      "failure": 936,
+      "file": "src/game/animals/zebras/body.ts",
+      "status": "PASS_LIGHT_SELECTED_PENDING_LONG_REGRESSION",
+      "change": "Runtime-only WeakMap tick origins add synchronized pair capsule sampling to existing static body/head/post guards. A proven far-distance bound skips unnecessary samples. try/finally clears origins; no persisted field. Rejects the unsafe joint retreat/turn rather than relocating an actor. Exact-pair guard and400-tick/cold replay tests pass.",
+      "limits": "Finite bounded samples follow existing collision style; no continuous-collision or native/performance acceptance. Long10k/five-habitat/care/social regressions remain required."
+    },
+    {
+      "failure": 1011,
+      "file": "tests/zebra-visual-inventory.test.mjs",
+      "status": "PASS_LIGHT_SELECTED",
+      "change": "Immutable Z0/protected old factories remain exact. Explicit reviewed extension adds1 static preview image/5 HP6-04 media; only2 retired source-reference lists change. Original media bytes retained. Register five exact existing media hashes/provenance in ASSET_MANIFEST; all generated-resource records remain exact."
+    },
+    {
+      "failure": 1019,
+      "file": "tests/zebra-welfare.test.mjs",
+      "status": "FIXTURE_READY_LONG_CAUSAL_CASE_UNRUN",
+      "change": "Explicitly initialize only the four synthetic Zebra enrichment values to0; retain real source care purchases, no enrichment facility, every completion/component-increase assertion and final true grooming/zero-enrichment condition. Avoid depending on the default40 decaying before legitimate grooming.",
+      "limits": "Actual long grooming event/component test has not run after this change; must execute with full care/social coverage when Farm releases slot."
+    }
+  ],
+  "stopDeadline": {
+    "utc": "2026-11-10T10:00:00.000Z",
+    "local": "17:00 WIB",
+    "scope": "Stop all coding/tests/build/browser/server by the deadline and await new instructions"
+  },
+  "lastVerifiedApplicationSource": "48c07660cbc415ad88e7fda7ffea9c2fbec54213"
 }
