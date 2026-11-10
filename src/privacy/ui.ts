@@ -48,7 +48,12 @@ function mountNew(root: HTMLElement, options: {storage?: ConsentStorage; analyti
     const target = event.target instanceof Element ? event.target.closest<HTMLElement>('[data-site-choice],[data-site-close]') : null;
     if (!target) return;
     if (target.hasAttribute('data-site-close')) dialog.close();
-    else if (target.dataset.siteChoice === 'allowed' || target.dataset.siteChoice === 'denied') consent.choose(target.dataset.siteChoice);
+    else if (target.dataset.siteChoice === 'allowed' || target.dataset.siteChoice === 'denied') {
+      consent.choose(target.dataset.siteChoice);
+      if (dialog.open && target.matches(':disabled') && !last.reloading) {
+        dialog.querySelector<HTMLButtonElement>('[data-site-close]')!.focus();
+      }
+    }
   }, {signal: events.signal});
   dialog.addEventListener('close', () => {doc.dispatchEvent(new Event('myzootwin:privacy-modal')); if (opener?.isConnected) opener.focus();}, {signal: events.signal});
   win.addEventListener('storage', event => {if (event.key === CONSENT_KEY || event.key === null) consent.refresh();}, {signal: events.signal});
