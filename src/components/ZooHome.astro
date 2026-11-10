@@ -9,8 +9,8 @@ const copy = locale === 'id' ? {
  eyebrow:'Zoo kecilmu, cerita yang terus tumbuh', headline:'Rumah untuk satwa.', accent:'Dunia untuk dirawat.',
  intro:'Mulai dari aviary tropis. Rawat satwamu, sambut pengunjung, lalu kembangkan zoo hingga ke Giraffe Plains.',
  play:'Main Sekarang', explore:'Jelajahi habitat', details:'Langsung di browser · Tanpa akun', save:'Progres tersimpan di browser pada perangkat ini.',
- caption:'Cuplikan gameplay aktual · Zoo setelah habitat dikembangkan',
- heroAlt:'Gameplay MyZooTwin: aviary makaw, habitat gajah, savana singa dan habitat jerapah di satu pulau dengan jalur pengunjung.',
+ caption:'Pratinjau aktual V5 · Empat habitat tersedia; Zebra belum tersedia di versi publik.',
+ heroAlt:'Pratinjau build V5 MyZooTwin: aviary makaw, habitat gajah, savana singa, jerapah dan Zebra di satu pulau. Zebra belum tersedia di versi publik.',
  habitatsLabel:'Kenali para penghuni', habitatsTitle:'Empat habitat untuk dimainkan. Satu kawanan berikutnya.',
  habitatsIntro:'Mulai bersama makaw, lalu buka Elephant Grove, Lion Savanna dan Giraffe Plains melalui progres serta misi. Kenali juga pratinjau Zebra Grasslands yang sedang disiapkan.',
  habitatStatus:{start:'Mulai di sini',progression:'Dibuka lewat progres',preview:'Pratinjau · Belum tersedia'},
@@ -30,8 +30,8 @@ const copy = locale === 'id' ? {
  eyebrow:'Your little zoo, a growing story',headline:'A home for animals.',accent:'A world to care for.',
  intro:'Begin with a tropical aviary. Care for your animals, welcome visitors and grow your zoo all the way to Giraffe Plains.',
  play:'Play Now',explore:'Explore the habitats',details:'In your browser · No account needed',save:'Progress is saved in this browser on this device.',
- caption:'Actual gameplay · A zoo with its habitat expansions built',
- heroAlt:'MyZooTwin gameplay showing the macaw aviary, elephant habitat, lion savanna and giraffe habitat on one island with visitor paths.',
+ caption:'Actual V5 preview · Four habitats are available; Zebras are not in the public version yet.',
+ heroAlt:'MyZooTwin V5 build preview showing macaw, elephant, lion, giraffe and Zebra habitats on one island. Zebras are not in the public version yet.',
  habitatsLabel:'Meet your neighbours',habitatsTitle:'Four habitats to play. A preview of the next herd.',habitatsIntro:'Start with macaws, then unlock Elephant Grove, Lion Savanna and Giraffe Plains through progress and missions. Meet the Zebra Grasslands preview being prepared for a future version.',
  habitatStatus:{start:'Start here',progression:'Unlocked through progress',preview:'Preview · Not available yet'},
  habitatsPlay:'Play the available habitats',habitatsNote:'The current game has four habitats. Later habitats follow progress and missions; Zebras are not available in the public version yet.',
@@ -41,14 +41,14 @@ const copy = locale === 'id' ? {
  startTitle:'Your first zoo starts here.',startText:'Open the game to begin a new adventure or continue progress saved in this browser.',journal:'Explore the animal journal',about:'About MyZooTwin',
  faqTitle:'Before you begin',faq:[['Do I need a download or an account?','No. Play in your browser without an account. JavaScript and a WebGL-capable browser are required to play.'],['Are all habitats open from the start?','Your journey starts at Macaw Aviary. Elephant Grove, Lion Savanna and Giraffe Plains unlock through zoo progress and missions.'],['Where is my progress saved?','Progress stays locally in this browser profile when storage is available. There is no cross-device sync. Clearing site data removes local progress.']]
 };
-const socialImage = {src:'/images/home/zoo-social.jpg',alt:copy.heroAlt,width:1200,height:630};
-const structuredData = {'@context':'https://schema.org','@type':'VideoGame',name:'MyZooTwin',url:'https://myzootwin.com/play/',description:copy.description,genre:'Simulation',gamePlatform:'Web browser',inLanguage:['id','en'],image:'https://myzootwin.com/images/home/zoo-social.jpg'};
+const socialImage = {src:'/images/home/v5-zoo-social.jpg',alt:copy.heroAlt,width:1200,height:630};
+const structuredData = {'@context':'https://schema.org','@type':'VideoGame',name:'MyZooTwin',url:'https://myzootwin.com/play/',description:copy.description,genre:'Simulation',gamePlatform:'Web browser',inLanguage:['id','en'],image:'https://myzootwin.com/images/home/v5-zoo-social.jpg'};
 ---
 <BaseLayout gameHome locale={locale} title={copy.title} description={copy.description} socialImage={socialImage}>
  <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
  <section class="zoo-hero" aria-labelledby="game-title">
   <div class="hero-copy"><p class="eyebrow">{copy.eyebrow}</p><h1 id="game-title">{copy.headline}<br /><em>{copy.accent}</em></h1><p class="intro">{copy.intro}</p><div class="hero-actions"><a class="button" href="/play/" data-site-source="home">{copy.play}<span aria-hidden="true">↗</span></a><a class="text-link" href="#habitats">{copy.explore}<span aria-hidden="true">↓</span></a></div><p class="play-details">{copy.details}<br />{copy.save}</p></div>
-  <figure class="hero-image"><img src="/images/home/zoo-960.webp" srcset="/images/home/zoo-640.webp 640w, /images/home/zoo-960.webp 960w" sizes="(max-width: 900px) 92vw, 57vw" width="960" height="760" alt={copy.heroAlt} fetchpriority="high" /><figcaption>{copy.caption}</figcaption></figure>
+  <figure class="hero-image"><img src="/images/home/v5-zoo-770.webp" srcset="/images/home/v5-zoo-480.webp 480w, /images/home/v5-zoo-770.webp 770w" sizes="(max-width: 900px) 92vw, 57vw" width="770" height="520" alt={copy.heroAlt} fetchpriority="high" /><figcaption>{copy.caption}</figcaption></figure>
  </section>
  <ZebraHomePreview locale={locale} />
  <section class="habitats section" id="habitats" aria-labelledby="habitats-title"><div class="section-heading"><p class="eyebrow">{copy.habitatsLabel}</p><h2 id="habitats-title">{copy.habitatsTitle}</h2><p>{copy.habitatsIntro}</p></div><div class="habitat-grid">{homeHabitatCards.map((habitat,i) => {

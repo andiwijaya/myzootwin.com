@@ -1,0 +1,5 @@
+# HP6-04 original V5 homepage media
+
+Capture the existing isolated V5 QA checkpoint through the immutable5e9baca product harness, original product camera/renderer/assets and native internal browser. No poses or care state are fabricated. Camera-only navigation must preserve the full payload/gameplay hashes; default player saves stay unopened. Use overview and Zebra framing, retain the native capture plus source/pose/viewport receipts, and record any cropping/resize/compression explicitly. A dedicated QA server receipt path avoids overwriting older unit evidence.
+
+The public version remains four-habitat V4. Candidate V5 imagery must visibly say preview; alt/caption/social descriptions must not imply publicly playable Zebras. Keep existing useful Giraffe/four-habitat media. Add responsive WebP, dimensions/sizes and a social derivative without engine imports on the homepage. Verify final source types/Astro/build, immutable game output, and actual ID/EN responsive image/CTA rendering. Stop before10 November01:00UTC/08:00WIB; if unfinished, keep HP6-04 unchecked with a safe resumable checkpoint. No push/deploy.
