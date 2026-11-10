@@ -1,0 +1,144 @@
+{
+  "at": "2026-11-10T17:43:36.579Z",
+  "status": "PREPARED_STATIC_ONLY_NOT_RUN",
+  "unit": "R7-05",
+  "verified": 48,
+  "total": 54,
+  "checkpoint": "093fe01",
+  "testedRuntime": "754f38e64d1736a7c74c6edd2396ed07c9159815",
+  "scope": "Read-only inspection of existing QA input/probe and prior accepted profile receipts; current R7-05 native observations, builds and test runs remain NOT_RUN. No new browser/server started.",
+  "inputs": [
+    {
+      "path": "scripts/qa/visual3d/product-zebra.ts",
+      "sha256": "3923f44c5b7db39da1abd9572f19d8d7b0821e2dc59aff5b3115e5f19b269c86"
+    },
+    {
+      "path": "scripts/qa/visual3d/native-pointer-trace.ts",
+      "sha256": "f6c44587364b9da106087f4978b42dcd4011f3dd73f7cb9e7ecd22906951d233"
+    },
+    {
+      "path": "scripts/qa/visual3d/pointer-probes.ts",
+      "sha256": "5095dc48054d0b592bcaff92b53a78fc1cfd80523bb9cba6c8ddddf4e39a61b2"
+    },
+    {
+      "path": "scripts/qa/zebra/serve-homepage.mjs",
+      "sha256": "e6e966fb0841df9f16d676cecdc9d8be4c74990ee42a2d672330fabef3c69022"
+    },
+    {
+      "path": "docs/qa/zebra/z5-03/verification.json",
+      "sha256": "890306e9976cd4a080a60c27b117081181d8d53f287aa00c44deb3501997e9da"
+    },
+    {
+      "path": "docs/qa/zebra/z5-05/verification.json",
+      "sha256": "adf5347302167e6b9d01abac7cde85547f2327b607047202c59b3dcb2bb11990"
+    },
+    {
+      "path": "docs/qa/zebra/hp6-06/verification.json",
+      "sha256": "496f90adb06d666d1155e853d62158f984befd7380ea3eb5904e71c77675753e"
+    }
+  ],
+  "profiles": [
+    {
+      "width": 1280,
+      "height": 720,
+      "languages": [
+        "id",
+        "en"
+      ]
+    },
+    {
+      "width": 360,
+      "height": 780,
+      "languages": [
+        "id",
+        "en"
+      ]
+    },
+    {
+      "width": 780,
+      "height": 360,
+      "languages": [
+        "id",
+        "en"
+      ]
+    }
+  ],
+  "matrix": [
+    {
+      "id": "host",
+      "status": "NOT_RUN",
+      "checks": [
+        "Record supported internal host/browser capabilities and exact current CSS viewport/DPR",
+        "Internal browser only, no owner Chrome/session/takeover",
+        "Unsupported Safari/Firefox/physical Android/iOS are explicitly untested, not silently passed"
+      ]
+    },
+    {
+      "id": "home",
+      "status": "NOT_RUN",
+      "checks": [
+        "Current immutable actual / and /en/ homepage:3viewports each",
+        "Keyboard/skip/language/FAQ/Privacy and CTA/back-forward smoke",
+        "Document overflow/touch sizes/focus and source-bound console/local response trace",
+        "No eager game/Three/canvas on homepage"
+      ]
+    },
+    {
+      "id": "route",
+      "status": "NOT_RUN",
+      "checks": [
+        "Actual public /play/ destination may be served script-suppressed with explicit navigation-only label to keep default/user storage unopened",
+        "That inert route result cannot be promoted to V5 gameplay acceptance",
+        "Exercise current original V5 product DOM/renderer via explicit isolated QA fixture in the separate source-bound adapter"
+      ]
+    },
+    {
+      "id": "play",
+      "status": "NOT_RUN",
+      "checks": [
+        "Fresh official source-causal visual QA UUID, not the R7-04 lineage or historical/user/default save",
+        "ID/EN each viewport:Continue/Resume/Pause, four panels, Settings/Help disclosures, keyboard camera and valid original picking",
+        "Manual original driver at0ms when inspecting layout:assert exact gameplay hash, no care/mission/economy/time credit from layout/locale/gesture",
+        "Record original native pointer actions separately from synthetic QA touch-pair injection"
+      ]
+    },
+    {
+      "id": "gestures",
+      "status": "NOT_RUN",
+      "checks": [
+        "Original native mouse drag/keyboard/zoom controls, passive pointer trace",
+        "Explicit QA untrusted two-pointer pinch/cancel and late-pointer cleanup at portrait/landscape",
+        "Label synthetic touch/emulated CSS profiles accurately; no physical-device or native-touch capture claim"
+      ]
+    },
+    {
+      "id": "cold",
+      "status": "NOT_RUN",
+      "checks": [
+        "Pause/save/close/cold original isolated V5 with exact gameplay and intended preferences",
+        "Read only existing QA primary and old backup hashes; no reset/delete/default DB",
+        "At most one owner and zero owned resource/callback/subscriber counts after disposal"
+      ]
+    },
+    {
+      "id": "close",
+      "status": "NOT_RUN",
+      "checks": [
+        "Reset temporary viewport override",
+        "Close only owned QA tabs/servers and verify recorded PIDs/ports absent",
+        "Preserve user/Farm previews and send resource checkpoint before next heavy work"
+      ]
+    }
+  ],
+  "limits": [
+    "Presented FPS remains UNMEASURED; R7-04 CPU/interval costs and approximate heap scope are carried limitations, not converted to device performance.",
+    "Public V5 bootstrap/proposed1700ZC/exactly-once and five-playable-homepage claims remain Z2-06/HP6-02 gates.",
+    "R7-08 push/deploy requires separate explicit Zebra release permission."
+  ],
+  "resources": {
+    "browserServerBuildTestActive": false,
+    "heavySlotReleased": true,
+    "userPreviewTouched": false
+  },
+  "next": "Use next coordinated browser slot for the source-bound matrix; preparation does not increment progress."
+}
