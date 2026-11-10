@@ -1,0 +1,183 @@
+{
+  "at": "2026-11-10T17:39:43.358Z",
+  "status": "PASS_R7_04_SCOPED_INTERNAL_SOAK_STRESS",
+  "verified": 48,
+  "total": 54,
+  "nativeSource": "fb868d9ab2f4f76121f40abb48084885886687a6",
+  "nativeInput": "2e8219e90865c458b079089534c28914ac176509aa164b24a0b9a3ac8388809c",
+  "stressSource": "754f38e64d1736a7c74c6edd2396ed07c9159815",
+  "stressInput": "acfd378544e493a250abf0c67fd35e4864c07dfe4611f4ed46c2e24729d1a430",
+  "productionSourceUnchangedFrom": "59af0f7d68d82a34a89429e1a9273aa7027d57ae",
+  "scope": "Actual current product DOM/CSS/renderer/canonical simulation using original assets, isolated native IndexedDB UUID. Native1x measured separately from explicit deterministic10x callback playback. No owner/Farm save or preview touched.",
+  "database": "myzootwin-visual3d-efcbcdda-a56e-442d-8ef1-ca21c566dc25",
+  "native": {
+    "activeMs": 933996.1119999998,
+    "elapsedMs": 947957.699999988,
+    "excludedOrUnaccountedMs": 13961.58799998823,
+    "startTick": 14382,
+    "endTick": 23676,
+    "acceptedTicks": 9294,
+    "callbacks": 6931,
+    "cancellations": 16,
+    "maxPending": 1,
+    "endPending": 0,
+    "speedViolations": 0,
+    "samples": 40,
+    "callbackCpu": {
+      "count": 6931,
+      "maxMs": 197.69999998807907,
+      "meanMs": 111.3456788342884,
+      "overflowBucketMs": 2000,
+      "p50LowerBoundMs": 109.7,
+      "p95LowerBoundMs": 136,
+      "resolutionMs": 0.1
+    },
+    "renderSubmitCpu": {
+      "count": 7030,
+      "maxMs": 5.400000035762787,
+      "meanMs": 1.7147226173881107,
+      "overflowBucketMs": 2000,
+      "p50LowerBoundMs": 1.5,
+      "p95LowerBoundMs": 2.6,
+      "resolutionMs": 0.1
+    },
+    "callbackInterval": {
+      "count": 6914,
+      "maxMs": 383.60000000009313,
+      "meanMs": 135.08766444894414,
+      "overflowBucketMs": 2000,
+      "p50LowerBoundMs": 133.2,
+      "p95LowerBoundMs": 199.8,
+      "resolutionMs": 0.1
+    },
+    "droppedWallMs": 3765.799999999872,
+    "heapScope": "Approximate Chromium heap, no forced GC or retained-object attribution; sawtooth range is not proof that all leaks are impossible.",
+    "heapMin": 54548750,
+    "heapMax": 123988939,
+    "heapFinal": 95442060,
+    "viewport": {
+      "dpr": 1.5,
+      "h": 720,
+      "w": 1280
+    },
+    "sourceBuffer": {
+      "width": 743,
+      "height": 590,
+      "pixelRatio": 1
+    },
+    "lowGraphics": true,
+    "pausedHash": "f5f04f055fdd773c693a7f967d940d383a88db9cc2687ddcd9a6306d581c7f57",
+    "coldHash": "f5f04f055fdd773c693a7f967d940d383a88db9cc2687ddcd9a6306d581c7f57"
+  },
+  "stress": {
+    "blocks": 11,
+    "callbacks": 1100,
+    "acceptedTicks": 10960,
+    "deltas": [
+      1000,
+      1000,
+      990,
+      1000,
+      990,
+      1000,
+      990,
+      1000,
+      990,
+      1000,
+      1000
+    ],
+    "startTick": 23776,
+    "endTick": 34736,
+    "droppedWallMs": 0,
+    "scope": "100yielded original manual callbacks/block at explicit100ms. Four real resource transaction resumptions prime the original frame loop, causing four990tick blocks; observed ticks are counted, never imputed. Not native wall/FPS."
+  },
+  "lifecycle": {
+    "cycles": 20,
+    "maxOwner": 1,
+    "live": {
+      "geometries": 68,
+      "programs": 8,
+      "textures": 13
+    },
+    "ownedGeometryTextureMaterialSubscriberCallbacksAfterClose": 0,
+    "stateHashConstant": "6db1789958d4b025b8b7fa110569b86e8b5927faf8a29b91eaf57bb98fcf55a3",
+    "heapAcrossCycles": "UNMEASURED; resource counters were observed each cycle, not retained-object heap attribution.",
+    "scope": "Actual Continue/Resume/Return-to-entry controls, same app/driver and repeated renderer creation/disposal. New renderer contexts per open, not a shared-context cache stress."
+  },
+  "save": {
+    "tick": 34736,
+    "cash": 2139,
+    "command": 332,
+    "revision": 904,
+    "hash": "6db1789958d4b025b8b7fa110569b86e8b5927faf8a29b91eaf57bb98fcf55a3",
+    "payloadHash": "04a5cfc5408b191be3521946fcbd9a3a16ba67bc3073a6e8fade9bf0926d0415",
+    "v4Backup": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
+    "v3BackupEnvelope": "96e3c6b5f12620ccdef2cb5bb13ff9fd8a69e43208e3bfcc956015784ce65a61"
+  },
+  "checks": {
+    "tests": 19,
+    "pass": 19,
+    "fail": 0,
+    "skipped": 0,
+    "cancelled": 0,
+    "strictTypesExit": 0,
+    "astroFiles": 618,
+    "astroErrors": 0,
+    "astroWarnings": 0,
+    "astroHints": 0,
+    "productionFiles": 36,
+    "productionByteIdentical": true,
+    "productionQaExclusion": true,
+    "consoleErrorsWarnings": 0,
+    "fullRegressionScope": "R7-03 1030/1030 is carried source-bound evidence for unchanged production source; not rerun in R7-04. Current19targeted QA/clock/performance tests pass."
+  },
+  "changes": [
+    "QA-only native measurement around sole original RAF, bounded histograms/sample retention",
+    "QA-only yielding deterministic stress control and read-only existing UUID primary/backup receipt",
+    "No production src/, engine, gameplay, save contract, art, runtime dependencies or deployment changed"
+  ],
+  "discoveries": [
+    "Synchronous10callback QA key handler completed100ticks but exceeded browser input deadline; replaced stress entry with task-yielding playback, targeted tests passed. Raw completed outcome retained.",
+    "One redundant care-tab input deadline during yielded stress; completed source outcome inspected before continuing, no duplicate action. Product errors remained empty.",
+    "Long native callback CPU cost is recorded honestly; JS render submit CPU does not include GPU completion."
+  ],
+  "limits": [
+    "Presented FPS UNMEASURED; no60desktop/30mobile or physical-device pass claimed. Native interval mean~135ms and callback CPU p95~136ms on this internal host remain performance limitations for release review.",
+    "Heap is approximate/shared-browser supplied; no forced GC/retained-object investigation. Bounded renderer ownership/counters observed, not a universal leak-free proof.",
+    "Native visibility is document visibility, not a display compositor/presented-frame measurement.",
+    "Synthetic already-claimed grant/home prerequisite is validation-only; no Z2-06 grant budget/exactly-once/public-bootstrap acceptance.",
+    "Actual V3/V4 backups present in this lineage remained exact; V1/V2 backup keys were absent in this V3-seeded fixture, not invented as tested. Their fault/migration tests remain R7-03 evidence."
+  ],
+  "resources": {
+    "browser": {
+      "at": "2026-11-10T17:37:16.339Z",
+      "ownedTabsClosed": [
+        15,
+        16
+      ],
+      "remainingTabs": [],
+      "viewportOverrideUsed": false,
+      "owners": 0,
+      "pending": 0,
+      "disposed": true,
+      "userPreviewTouched": false,
+      "scope": "Only own Zebra QA tabs closed; owner Chrome and user/Farm preview untouched"
+    },
+    "server": {
+      "at": "2026-11-10T17:38:00.5958132Z",
+      "remainingOwnPids": [],
+      "listeningOwnPorts": [],
+      "normalServerStops": [
+        0,
+        0
+      ],
+      "userPreviewTouched": false,
+      "scope": "Only the two recorded Zebra QA server PIDs and their own port inspected. No user/Farm process touched."
+    },
+    "testBuildSessionsCompletedNormally": true,
+    "activeOwnedTestBuildBrowserServers": 0,
+    "userPreviewTouched": false
+  },
+  "next": "R7-05 host-supported profile/ID-EN/responsive/gesture smoke; then R7-06 audit and R7-07 V5 maintenance/fix-forward. R7-08 held for explicit Zebra release authorization.",
+  "noPushOrDeploy": true
+}
