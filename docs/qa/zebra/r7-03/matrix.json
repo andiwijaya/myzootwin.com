@@ -1,0 +1,205 @@
+{
+  "status": "PREPARED_NOT_RUN",
+  "source": "a979e11ae0136a009189386cfcbce9c0e493a0da",
+  "groups": 18,
+  "scope": "Static plan and source inventory only; no case status inferred from historical tests.",
+  "cases": [
+    {
+      "id": "F01",
+      "title": "Strict V5 parse boundary",
+      "sourceCoverage": [
+        "zebra-save-v5",
+        "save-recovery",
+        "zebra-capacity"
+      ],
+      "nativePlan": "Representative native readonly codec probe: malformed/future/unknown/oversized/invalid relationships; source unchanged.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F02",
+      "title": "All frozen V1-V4 migrations",
+      "sourceCoverage": [
+        "zebra-save-v5",
+        "zebra-storage-v5",
+        "zebra-baseline"
+      ],
+      "nativePlan": "Native representative V4 migration; exact legacy projections for all12 remain source-level coverage.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F03",
+      "title": "First V5 write atomic backup",
+      "sourceCoverage": [
+        "zebra-storage-v5"
+      ],
+      "nativePlan": "Before/after eight known checkpoint keys; original V4 envelope and existing historical backup exact.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F04",
+      "title": "Quota before first V5 write",
+      "sourceCoverage": [
+        "zebra-storage-v5"
+      ],
+      "nativePlan": "Synthetic target-primary quota error in actual native transaction; complete raw rows unchanged; retry succeeds once.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F05",
+      "title": "Actual transaction abort",
+      "sourceCoverage": [
+        "zebra-storage-v5"
+      ],
+      "nativePlan": "Call actual target transaction.abort; no escaped second-abort error; all rows unchanged.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F06",
+      "title": "Two independent V5 tab owners",
+      "sourceCoverage": [
+        "zebra-storage-v5",
+        "autosave-candidate-drain"
+      ],
+      "nativePlan": "Prepare same revision/generation, race real candidates, exactly one winner; loser memory unchanged/conflict.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F07",
+      "title": "Held and stale V4 binary barrier",
+      "sourceCoverage": [
+        "zebra-storage-v5",
+        "giraffe-storage-v4"
+      ],
+      "nativePlan": "Owned held connection blocks then releases; current old V4 client cannot reopen/write over version5.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F08",
+      "title": "Post-migration quota/abort and retry",
+      "sourceCoverage": [
+        "zebra-economy",
+        "zebra-missions"
+      ],
+      "nativePlan": "Original command candidate fails atomically then explicit retry/cold; no optimistic cash/stock/reward.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F09",
+      "title": "Corrupt primary with valid previous",
+      "sourceCoverage": [
+        "zebra-storage-v5",
+        "save-recovery"
+      ],
+      "nativePlan": "Read refuses; review/cancel do not write; explicit restore preserves corrupt original and exact archival backups.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F10",
+      "title": "Future schema/envelope and unknown content",
+      "sourceCoverage": [
+        "zebra-save-v5",
+        "zebra-storage-v5",
+        "save-recovery"
+      ],
+      "nativePlan": "Future schema/envelope blocked even with valid previous. Unknown-content refusal follows actual codec/recovery policy; no silent normalization.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F11",
+      "title": "Missing or corrupt migration provenance",
+      "sourceCoverage": [
+        "zebra-storage-v5"
+      ],
+      "nativePlan": "Separate disposable branches for V4/V3 backup missing/corrupt; read/write/reset/recovery blocked without reconstruction.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F12",
+      "title": "Stale reviewed recovery quote",
+      "sourceCoverage": [
+        "save-recovery",
+        "zebra-storage-v5"
+      ],
+      "nativePlan": "Second native tab changes the source; first quote cannot overwrite primary/previous/backups.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F13",
+      "title": "Generation/reset ABA and single-use Undo",
+      "sourceCoverage": [
+        "zebra-storage-v5",
+        "pause-restart"
+      ],
+      "nativePlan": "Fresh disposable branch only: reset reaches revision1/new generation; stale writer rejected; Undo once/cold retains V5 and exact V4 archive.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F14",
+      "title": "Pending autosave drain and closing candidate",
+      "sourceCoverage": [
+        "autosave",
+        "autosave-candidate-drain",
+        "conservation-grant"
+      ],
+      "nativePlan": "Original autosave serializes candidate and final checkpoint; saved/clean drain required before cold equality.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F15",
+      "title": "Actual Zebra mission award race/replay",
+      "sourceCoverage": [
+        "zebra-missions"
+      ],
+      "nativePlan": "Real source ZQ01 candidate/expected command; one durable reward, no losing-tab adoption, quota/retry/cold exact.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F16",
+      "title": "Legacy grants and Zebra grant dependency",
+      "sourceCoverage": [
+        "conservation-grant",
+        "zebra-economy",
+        "zebra-save-v5"
+      ],
+      "nativePlan": "Legacy grant/reward objects unchanged. No Zebra grant command exists; synthetic claimed-grant fixture does not close Z2-06 or prove1700ZC once-only.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F17",
+      "title": "One paid ticket per real admission",
+      "sourceCoverage": [
+        "zebra-economy",
+        "zebra-visitors"
+      ],
+      "nativePlan": "Source-caused paid admission, cold duplicate check and compacted receipt history; no duplicate revenue, identities or reward viewer credit.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    },
+    {
+      "id": "F18",
+      "title": "Final isolation, diagnostics and closure",
+      "sourceCoverage": [
+        "all selected source files plus native receipts"
+      ],
+      "nativePlan": "Only fresh fault UUIDs; named lineage reads before write; no owner/default/carried/profile clearing; zero owned processes/owners/pending writes after close.",
+      "status": "NOT_RUN",
+      "nativeEvidence": null
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+# R7-03 fault and recovery preparation
+
+Status: **PREPARED, NOT RUN; 46/54 remains verified.** Prepared from checkpoint `a979e11ae0136a009189386cfcbce9c0e493a0da`. Farm owns the heavy/browser slot. No R7-03 browser, build, simulation, test worker or server has started. User preview and all carried/default saves stay untouched. No push/deploy is authorized.
+
+The gate covers strict V5 parsing, historical migration, atomic backup/CAS writes, competing owners, quota/abort, recovery and reward/ticket replay. Passing R7-01 and Z2-05 is historical evidence, not a current native R7-03 result. The new matrix keeps source tests, native IndexedDB, original UI integration and release assumptions separate.
+
+## Source audit and missing native controls
+
+The production authority is `save-v5.ts` + `zebra-backend.ts` + `durable-backend.ts` + `autosave.ts`. Existing tests already specify the important contracts; [preparation.json](preparation.json) records their exact files, test titles and hashes without executing them. Twelve frozen historical states remain input fixtures rather than being regenerated from current behavior.
+
+The existing `scripts/qa/visual3d/v5-storage.ts` probe can create a fresh V4 lineage, prepare two independent V5 autosave owners, inject first-write quota/actual abort, commit one empty command slot and check the old V4 binary barrier. Its quota is a synthetic `QuotaExceededError` on a real transaction, not physical disk exhaustion. It does not expose recovery, corrupt/future rows, generation/reset races, post-migration faults or an actual Zebra mission reward. It is hidden for immutable V5 Asset Lab phase cases. Its inspector directly JSON-parses primary payload and would itself throw on malformed JSON; it cannot serve as evidence that production recovery failed.
+
+There is no production Zebra grant command yet. `zebra-v5-fixture.mjs` inserts a labelled synthetic claimed grant/home for validation. That fixture cannot establish the proposed 1,700 ZC grant's exactly-once claim, budget or public availability. Existing Elephant/Lion/Giraffe grant regressions remain relevant legacy checks; an accepted native Zebra mission race cannot close Z2-06. Record any remaining Zebra-grant gate explicitly instead of silently promoting R7-03.
+
+## Next slot execution order
+
+1. Confirm Farm released the heavy/browser slot. Preserve any user-facing preview process and tab. Do not reuse its port. Record an immutable source/input fingerprint and start a serial, bounded fault-focused source pack; retain complete TAP, exit/timeout/overflow and before/after hashes. Run fresh strict types/Astro and a QA-excluded build only after source changes or the gate's final verification needs them.
+2. Implement a dedicated QA-only fault/recovery control surface using the actual backends, autosave and command candidates. It must tolerate malformed rows in its diagnostics without swallowing production failures. All mutations use visible QA controls; browser evaluation stays read-only. Do not patch production behavior unless a reproducible defect demands it.
+3. Allocate a fresh `myzootwin-zebra-fault-<UUID>` on an owned loopback origin for each destructive fault branch. Enforce a lineage/run marker before any write, reset, corruption or recovery. Shared two-tab race opens only the same explicitly created lineage. An absent or mismatched existing database is refused without creating/upgrading it. Never enumerate, import, clear or delete owner/default/carried databases. No profile-wide clearing or prototype hook outside the target database/transaction; restore fault hooks in `finally` before reporting completion.
+4. Execute [matrix.json](matrix.json). All-frozen-fixture permutations belong to source tests; native cases cover representative real transaction paths, actual two-tab CAS and original product recovery integration. A valid state hash alone does not prove a saved/clean close. Corrupt, future and missing-provenance branches must preserve exact raw envelopes/previous/backups; a future-format/schema record remains blocked even if previous is valid.
+5. Use a real source-command ZQ01 candidate for a Zebra reward race and retry; do not increment money, claims or ledger by hand. Preserve/recheck all legacy reward objects and the original V4 envelope. Replay a real paid visitor receipt through the actual admission function after cold restore; do not call a visually viewing visitor a paid ticket. Native mission/ticket fixtures must carry explicit provenance and distinguish source-caused history from any validation-only grant prerequisite.
+6. Close both QA owners, await actual autosave drains, record clean/error outcomes honestly, cold-open the exact UUID, compare payload/gameplay/mission/ledger/admission/backup signatures, export console and compact proof. Close only owned QA tabs/server; reset viewport. Rehash production assets against R7-01. Then assess R7-03 acceptance and increment only if the gate's supported scope and remaining dependencies are explicit.
+
+## Invariants and evidence
+
+- CAS winner count exactly one; losing session/canonical state never adopts a candidate or optimistic money. A stale recovery quote cannot overwrite another writer. Generation comparison protects reset-to-revision-one ABA.
+- Quota and actual transaction abort leave primary, previous and every historical backup byte-exact. Explicit retry can commit once. An injected error is labelled; no storage-filling stress.
+- V1–V4 migration preserves exact legacy projections with labelled intermediates where required. Exact original V4 envelope/payload joins the first winning V5 transaction atomically. Missing/corrupt V4/V3 provenance remains blocked and is not reconstructed from a V5 record.
+- Reviewed recovery preserves corrupt originals in `preserved`, chooses only an explicitly validated previous checkpoint and cannot silently replace future/unknown content. Cancelling a review has no writes. Reset/Undo are used only in a fresh named disposable branch, never as repair of user progress.
+- Strict parsing rejects malformed/oversized/unknown/future/invalid finance, identity, movement, resource, route, mission and receipt relationships without mutation. Bounds tests need an explicit byte/character limit and no enormous allocation.
+- No duplicate old grants, ZQ rewards, refunds, ticket IDs or care supplies after conflict, retry, compaction or cold reload. Zebra grant acceptance remains a separate unimplemented dependency.
+- Source TAP, native controls/events, backend fault codes, raw-record signatures and screenshot context are distinct evidence. No physical-device, presented-FPS, benchmark, soak, public V5 adoption or release claim.
+
+Active soak/performance is R7-04. V5-safe maintenance/fix-forward is R7-07; a V4 binary is not a safe V5 rollback. R7-08 remains held for separate explicit release authorization.

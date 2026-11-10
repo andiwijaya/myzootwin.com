@@ -98,6 +98,8 @@ Next: **R7-03 strict V5/backend fault and recovery**. [R7-02 final acceptance](q
 
 ---
 
+R7-03 preparation while Farm owns the heavy/browser slot: [design](qa/zebra/r7-03/design.md), [18 planned fault/recovery groups](qa/zebra/r7-03/matrix.json) and [static source inventory](qa/zebra/r7-03/preparation.json). Fourteen existing test files contain125 declared test titles; none was executed for this preparation. The source-only inventory script starts no browser, server, simulation, test worker or build. The old storage probe does not cover corrupt-row recovery or actual Zebra reward races; dedicated QA controls and current-source/native verification remain pending. The Zebra grant command is absent; a synthetic claimed-grant fixture cannot close Z2-06. Verified progress stays46/54, R7-03 unchecked. User preview untouched; no push/deploy.
+
 # MYZOOTWIN — ZEBRA GRASSLANDS + UNIVERSAL 3D HARNESS LIVING CHECKLIST
 
 **Version:** 1.1 | **Date:** 2026-11-08 | **Start:** 0/54 = **0.00%** for *this new PRD* (not the existing Giraffe completion status).
