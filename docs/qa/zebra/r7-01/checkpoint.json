@@ -1,11 +1,29 @@
 {
-  "status": "UNVERIFIED_R7_01_FULL_RUN_TIMEOUT",
-  "at": "2026-11-10T04:30:38.000Z",
+  "status": "FAIL_R7_01_COMPLETE_SUITE_FOUR_REGRESSIONS",
+  "at": "2026-11-10T05:17:52.048Z",
   "verified": 44,
   "total": 54,
   "pendingUnit": "R7-01",
-  "testedRunSource": "57901d97335ea31d9fa95e6d709a1b8650cebaae",
+  "testedRunSource": "4780273e40e13505e3ab9543fc6cb6edcbfa3671",
   "applicationSource": "48c07660cbc415ad88e7fda7ffea9c2fbec54213",
+  "proof": {
+    "path": "docs/qa/zebra/r7-01/failure-verification.json",
+    "bytes": 29264,
+    "sha256": "b6821b3bfc85ce22af4f1aebd2854a88a4f1674e8c145f2cacbf46bf2b86cbd5"
+  },
+  "runSummary": {
+    "files": 161,
+    "tests": 1020,
+    "pass": 1016,
+    "fail": 4,
+    "skipped": 0,
+    "cancelled": 0,
+    "todo": 0,
+    "durationMs": 1066218,
+    "fullOutput": true,
+    "inputUnchanged": true,
+    "timedOut": false
+  },
   "qaResume": {
     "database": "myzootwin-zebra-build-4b908ff9-2abc-4499-b633-26aab41145bd",
     "tick": 27849,
@@ -21,450 +39,7 @@
       "reducedMotion": false,
       "speed": 1
     },
-    "zebraMissions": {
-      "currentId": "ZQ02",
-      "completedIds": [
-        "ZQ01"
-      ],
-      "rewards": [
-        {
-          "missionId": "ZQ01",
-          "command": 142,
-          "tick": 23743,
-          "ledgerEntryId": null,
-          "award": "grassland-founder",
-          "connection": {
-            "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
-            "viewingCell": {
-              "x": 14,
-              "z": 11
-            },
-            "route": [
-              {
-                "x": 1,
-                "z": 8
-              },
-              {
-                "x": 1,
-                "z": 9
-              },
-              {
-                "x": 1,
-                "z": 10
-              },
-              {
-                "x": 2,
-                "z": 10
-              },
-              {
-                "x": 3,
-                "z": 10
-              },
-              {
-                "x": 4,
-                "z": 10
-              },
-              {
-                "x": 5,
-                "z": 10
-              },
-              {
-                "x": 6,
-                "z": 10
-              },
-              {
-                "x": 7,
-                "z": 10
-              },
-              {
-                "x": 8,
-                "z": 10
-              },
-              {
-                "x": 9,
-                "z": 10
-              },
-              {
-                "x": 10,
-                "z": 10
-              },
-              {
-                "x": 11,
-                "z": 10
-              },
-              {
-                "x": 12,
-                "z": 10
-              },
-              {
-                "x": 13,
-                "z": 10
-              },
-              {
-                "x": 14,
-                "z": 10
-              },
-              {
-                "x": 14,
-                "z": 11
-              }
-            ]
-          }
-        }
-      ],
-      "objectives": {
-        "fedIds": [
-          "zebra-zaki",
-          "zebra-zuri",
-          "zebra-mira",
-          "zebra-kira"
-        ],
-        "wateredIds": [
-          "zebra-zaki",
-          "zebra-zuri",
-          "zebra-mira",
-          "zebra-kira"
-        ],
-        "comfortableTicks": 50,
-        "groomings": 3,
-        "restedIds": [
-          "zebra-zaki",
-          "zebra-zuri",
-          "zebra-mira",
-          "zebra-kira"
-        ],
-        "enrichedIds": [
-          "zebra-zaki",
-          "zebra-zuri",
-          "zebra-mira",
-          "zebra-kira"
-        ],
-        "thrivingTicks": 0,
-        "viewedVisitorIds": [
-          "arrival-55",
-          "arrival-60"
-        ]
-      }
-    },
-    "zebraActors": [
-      {
-        "id": "zebra-zaki",
-        "name": "Zaki",
-        "sex": "male",
-        "speciesId": "equus-quagga",
-        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
-        "position": {
-          "x": 17.27000000000001,
-          "z": 15.5
-        },
-        "target": {
-          "x": 17,
-          "z": 14
-        },
-        "targetResourceId": null,
-        "hunger": 33.63800000000224,
-        "thirst": 42.86799999999628,
-        "energy": 84.32499999999644,
-        "habitatFit": 91.12426035502959,
-        "enrichment": 26.640000000002516,
-        "welfare": 66,
-        "care": {
-          "low": false,
-          "hungry": true,
-          "thirsty": true,
-          "tired": false,
-          "bored": true
-        },
-        "currentBehavior": "wander",
-        "motion": {
-          "phase": "wander",
-          "ticksLeft": 587,
-          "sequence": 359,
-          "heading": -2.8923889803846885,
-          "waypoints": [
-            {
-              "x": 17,
-              "z": 15
-            },
-            {
-              "x": 17,
-              "z": 14.5
-            },
-            {
-              "x": 17,
-              "z": 14
-            }
-          ],
-          "waypointIndex": 0,
-          "partnerId": null,
-          "herdLeaderId": null,
-          "lastStep": {
-            "x": 0,
-            "z": 0
-          },
-          "distanceWalked": 350.3691457619406,
-          "blockedTicks": 0
-        },
-        "foodEaten": 6,
-        "waterDrunk": 6,
-        "restedTicks": 480,
-        "enrichedTicks": 300,
-        "socialComfort": 58.80000000000504,
-        "shadeRest": 87.4600000000025,
-        "groomCooldownTicks": 0,
-        "trotCooldownTicks": 0,
-        "enrichmentCooldownTicks": 0,
-        "grazes": 6,
-        "groomings": 2,
-        "trots": 2
-      },
-      {
-        "id": "zebra-zuri",
-        "name": "Zuri",
-        "sex": "female",
-        "speciesId": "equus-quagga",
-        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
-        "position": {
-          "x": 18.75455844122715,
-          "z": 13.254558441227159
-        },
-        "target": {
-          "x": 20,
-          "z": 15.5
-        },
-        "targetResourceId": null,
-        "hunger": 37.332000000001045,
-        "thirst": 76.84999999998992,
-        "energy": 40.374999999993165,
-        "habitatFit": 91.12426035502959,
-        "enrichment": 0,
-        "welfare": 42,
-        "care": {
-          "low": true,
-          "hungry": true,
-          "thirsty": true,
-          "tired": true,
-          "bored": true
-        },
-        "currentBehavior": "wander",
-        "motion": {
-          "phase": "wander",
-          "ticksLeft": 582,
-          "sequence": 341,
-          "heading": 0.7853981633974612,
-          "waypoints": [
-            {
-              "x": 19,
-              "z": 13.5
-            },
-            {
-              "x": 19.5,
-              "z": 13.5
-            },
-            {
-              "x": 20,
-              "z": 13.5
-            },
-            {
-              "x": 20,
-              "z": 14
-            },
-            {
-              "x": 20,
-              "z": 14.5
-            },
-            {
-              "x": 20,
-              "z": 15
-            },
-            {
-              "x": 20,
-              "z": 15.5
-            }
-          ],
-          "waypointIndex": 0,
-          "partnerId": null,
-          "herdLeaderId": null,
-          "lastStep": {
-            "x": 0.03181980515339333,
-            "z": 0.03181980515339511
-          },
-          "distanceWalked": 267.0819472141798,
-          "blockedTicks": 0
-        },
-        "foodEaten": 6,
-        "waterDrunk": 5,
-        "restedTicks": 400,
-        "enrichedTicks": 240,
-        "socialComfort": 23.800000000000928,
-        "shadeRest": 52.30000000000533,
-        "groomCooldownTicks": 0,
-        "trotCooldownTicks": 0,
-        "enrichmentCooldownTicks": 0,
-        "grazes": 6,
-        "groomings": 1,
-        "trots": 0
-      },
-      {
-        "id": "zebra-mira",
-        "name": "Mira",
-        "sex": "female",
-        "speciesId": "equus-quagga",
-        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
-        "position": {
-          "x": 18.2,
-          "z": 18.85
-        },
-        "target": {
-          "x": 18.2,
-          "z": 18.85
-        },
-        "targetResourceId": "zebra-shade-129",
-        "hunger": 34.434000000000935,
-        "thirst": 38.43399999999855,
-        "energy": 52.024999999992644,
-        "habitatFit": 91.12426035502959,
-        "enrichment": 0,
-        "welfare": 54,
-        "care": {
-          "low": true,
-          "hungry": true,
-          "thirsty": true,
-          "tired": true,
-          "bored": true
-        },
-        "currentBehavior": "rest",
-        "motion": {
-          "phase": "rest",
-          "ticksLeft": 42,
-          "sequence": 346,
-          "heading": -0.8224182792713789,
-          "waypoints": [],
-          "waypointIndex": 0,
-          "partnerId": null,
-          "herdLeaderId": null,
-          "lastStep": {
-            "x": 0,
-            "z": 0
-          },
-          "distanceWalked": 276.2946478259227,
-          "blockedTicks": 0
-        },
-        "foodEaten": 6,
-        "waterDrunk": 6,
-        "restedTicks": 400,
-        "enrichedTicks": 240,
-        "socialComfort": 0,
-        "shadeRest": 74.58000000000506,
-        "groomCooldownTicks": 0,
-        "trotCooldownTicks": 0,
-        "enrichmentCooldownTicks": 0,
-        "grazes": 6,
-        "groomings": 0,
-        "trots": 0
-      },
-      {
-        "id": "zebra-kira",
-        "name": "Kira",
-        "sex": "female",
-        "speciesId": "equus-quagga",
-        "habitatId": "habitat-7f74f973-fa43-470e-814b-5f4abc89d7bf",
-        "position": {
-          "x": 18.5,
-          "z": 15.045
-        },
-        "target": {
-          "x": 16,
-          "z": 17
-        },
-        "targetResourceId": null,
-        "hunger": 41.88600000000122,
-        "thirst": 18.63399999999993,
-        "energy": 91.67499999999811,
-        "habitatFit": 91.12426035502959,
-        "enrichment": 26.639999999999976,
-        "welfare": 74,
-        "care": {
-          "low": false,
-          "hungry": true,
-          "thirsty": true,
-          "tired": false,
-          "bored": true
-        },
-        "currentBehavior": "wander",
-        "motion": {
-          "phase": "wander",
-          "ticksLeft": 599,
-          "sequence": 279,
-          "heading": 0.14,
-          "waypoints": [
-            {
-              "x": 19,
-              "z": 15.5
-            },
-            {
-              "x": 19,
-              "z": 16
-            },
-            {
-              "x": 18.5,
-              "z": 16
-            },
-            {
-              "x": 18.5,
-              "z": 16.5
-            },
-            {
-              "x": 18.5,
-              "z": 17
-            },
-            {
-              "x": 18,
-              "z": 17
-            },
-            {
-              "x": 17.5,
-              "z": 17
-            },
-            {
-              "x": 17,
-              "z": 17
-            },
-            {
-              "x": 16.5,
-              "z": 17
-            },
-            {
-              "x": 16,
-              "z": 17
-            }
-          ],
-          "waypointIndex": 0,
-          "partnerId": null,
-          "herdLeaderId": null,
-          "lastStep": {
-            "x": 0,
-            "z": 0
-          },
-          "distanceWalked": 289.444337648686,
-          "blockedTicks": 0
-        },
-        "foodEaten": 6,
-        "waterDrunk": 7,
-        "restedTicks": 480,
-        "enrichedTicks": 300,
-        "socialComfort": 87.22999999999347,
-        "shadeRest": 93.34000000000133,
-        "groomCooldownTicks": 0,
-        "trotCooldownTicks": 0,
-        "enrichmentCooldownTicks": 0,
-        "grazes": 6,
-        "groomings": 3,
-        "trots": 0
-      }
-    ],
-    "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
-    "scope": "Actual HP6-04 frozen camera capture and cold read preserve full payload e708271 and gameplay af3d25c at tick27849/cash3581/command143. Revision830 observed after drained close. Original V4 backup hash carried from Z5-05, not reread here."
+    "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf"
   },
   "responsiveResume": {
     "database": "myzootwin-zebra-build-7cf0dca0-dcc1-412b-a65e-fa905a423ace",
@@ -481,369 +56,57 @@
       "reducedMotion": false,
       "speed": 1
     },
-    "zebraMissions": {
-      "currentId": "ZQ01",
-      "completedIds": [],
-      "rewards": [],
-      "objectives": {
-        "fedIds": [],
-        "wateredIds": [
-          "zebra-zuri"
-        ],
-        "comfortableTicks": 0,
-        "groomings": 0,
-        "restedIds": [],
-        "enrichedIds": [],
-        "thrivingTicks": 0,
-        "viewedVisitorIds": []
-      }
-    },
-    "zebraActors": [
-      {
-        "id": "zebra-zaki",
-        "name": "Zaki",
-        "sex": "male",
-        "speciesId": "equus-quagga",
-        "habitatId": "habitat-c526b5a8-f1d4-4942-9f8f-344d57cab7f3",
-        "position": {
-          "x": 15.37596227924661,
-          "z": 18.436056581130096
-        },
-        "target": {
-          "x": 15,
-          "z": 19
-        },
-        "targetResourceId": null,
-        "hunger": 48.43800000000013,
-        "thirst": 49.20199999999971,
-        "energy": 70.22499999999891,
-        "habitatFit": 92.89940828402366,
-        "enrichment": 36.1799999999994,
-        "welfare": 48,
-        "care": {
-          "low": true,
-          "hungry": true,
-          "thirsty": true,
-          "tired": true,
-          "bored": false
-        },
-        "currentBehavior": "wander",
-        "motion": {
-          "phase": "wander",
-          "ticksLeft": 574,
-          "sequence": 5,
-          "heading": -0.5880026035475757,
-          "waypoints": [
-            {
-              "x": 15,
-              "z": 19
-            }
-          ],
-          "waypointIndex": 0,
-          "partnerId": null,
-          "herdLeaderId": null,
-          "lastStep": {
-            "x": -0.02496150883013648,
-            "z": 0.03744226324520383
-          },
-          "distanceWalked": 5.392551191870196,
-          "blockedTicks": 0
-        },
-        "foodEaten": 0,
-        "waterDrunk": 0,
-        "restedTicks": 0,
-        "enrichedTicks": 0,
-        "socialComfort": 48.09000000000038,
-        "shadeRest": 26.18000000000008,
-        "groomCooldownTicks": 0,
-        "trotCooldownTicks": 0,
-        "enrichmentCooldownTicks": 0,
-        "grazes": 0,
-        "groomings": 0,
-        "trots": 0
-      },
-      {
-        "id": "zebra-zuri",
-        "name": "Zuri",
-        "sex": "female",
-        "speciesId": "equus-quagga",
-        "habitatId": "habitat-c526b5a8-f1d4-4942-9f8f-344d57cab7f3",
-        "position": {
-          "x": 20.65889023430462,
-          "z": 15.247792577350836
-        },
-        "target": {
-          "x": 21,
-          "z": 19
-        },
-        "targetResourceId": null,
-        "hunger": 48.43800000000013,
-        "thirst": 4.201999999999889,
-        "energy": 70.22499999999891,
-        "habitatFit": 92.89940828402366,
-        "enrichment": 36.1799999999994,
-        "welfare": 59,
-        "care": {
-          "low": true,
-          "hungry": true,
-          "thirsty": false,
-          "tired": true,
-          "bored": false
-        },
-        "currentBehavior": "wander",
-        "motion": {
-          "phase": "wander",
-          "ticksLeft": 549,
-          "sequence": 6,
-          "heading": 0.09065988720074511,
-          "waypoints": [
-            {
-              "x": 21,
-              "z": 19
-            }
-          ],
-          "waypointIndex": 0,
-          "partnerId": null,
-          "herdLeaderId": null,
-          "lastStep": {
-            "x": 0.004074108571913371,
-            "z": 0.04481519429104708
-          },
-          "distanceWalked": 4.959024710348437,
-          "blockedTicks": 0
-        },
-        "foodEaten": 0,
-        "waterDrunk": 1,
-        "restedTicks": 0,
-        "enrichedTicks": 0,
-        "socialComfort": 48.09000000000038,
-        "shadeRest": 26.18000000000008,
-        "groomCooldownTicks": 0,
-        "trotCooldownTicks": 0,
-        "enrichmentCooldownTicks": 0,
-        "grazes": 0,
-        "groomings": 0,
-        "trots": 0
-      },
-      {
-        "id": "zebra-mira",
-        "name": "Mira",
-        "sex": "female",
-        "speciesId": "equus-quagga",
-        "habitatId": "habitat-c526b5a8-f1d4-4942-9f8f-344d57cab7f3",
-        "position": {
-          "x": 16.8,
-          "z": 12.85
-        },
-        "target": {
-          "x": 16.8,
-          "z": 12.85
-        },
-        "targetResourceId": "zebra-water-120",
-        "hunger": 48.43800000000013,
-        "thirst": 49.20199999999971,
-        "energy": 70.22499999999891,
-        "habitatFit": 92.89940828402366,
-        "enrichment": 36.1799999999994,
-        "welfare": 48,
-        "care": {
-          "low": true,
-          "hungry": true,
-          "thirsty": true,
-          "tired": true,
-          "bored": false
-        },
-        "currentBehavior": "drink",
-        "motion": {
-          "phase": "drink",
-          "ticksLeft": 16,
-          "sequence": 2,
-          "heading": 0.8224182792713776,
-          "waypoints": [],
-          "waypointIndex": 0,
-          "partnerId": null,
-          "herdLeaderId": null,
-          "lastStep": {
-            "x": 0,
-            "z": 0
-          },
-          "distanceWalked": 5.422997834350365,
-          "blockedTicks": 0
-        },
-        "foodEaten": 0,
-        "waterDrunk": 0,
-        "restedTicks": 0,
-        "enrichedTicks": 0,
-        "socialComfort": 48.09000000000038,
-        "shadeRest": 26.18000000000008,
-        "groomCooldownTicks": 0,
-        "trotCooldownTicks": 0,
-        "enrichmentCooldownTicks": 0,
-        "grazes": 0,
-        "groomings": 0,
-        "trots": 0
-      },
-      {
-        "id": "zebra-kira",
-        "name": "Kira",
-        "sex": "female",
-        "speciesId": "equus-quagga",
-        "habitatId": "habitat-c526b5a8-f1d4-4942-9f8f-344d57cab7f3",
-        "position": {
-          "x": 17.864999999999995,
-          "z": 17.5
-        },
-        "target": {
-          "x": 18.2,
-          "z": 14.15
-        },
-        "targetResourceId": "zebra-water-120",
-        "hunger": 48.43800000000013,
-        "thirst": 49.20199999999971,
-        "energy": 70.22499999999891,
-        "habitatFit": 92.89940828402366,
-        "enrichment": 36.1799999999994,
-        "welfare": 48,
-        "care": {
-          "low": true,
-          "hungry": true,
-          "thirsty": true,
-          "tired": true,
-          "bored": false
-        },
-        "currentBehavior": "seek-water",
-        "motion": {
-          "phase": "seek-water",
-          "ticksLeft": 515,
-          "sequence": 4,
-          "heading": -1.5707963267948966,
-          "waypoints": [
-            {
-              "x": 19,
-              "z": 17
-            },
-            {
-              "x": 18.5,
-              "z": 17
-            },
-            {
-              "x": 18.5,
-              "z": 17.5
-            },
-            {
-              "x": 18,
-              "z": 17.5
-            },
-            {
-              "x": 17.5,
-              "z": 17.5
-            },
-            {
-              "x": 17,
-              "z": 17.5
-            },
-            {
-              "x": 16.5,
-              "z": 17.5
-            },
-            {
-              "x": 16.5,
-              "z": 17
-            },
-            {
-              "x": 16,
-              "z": 17
-            },
-            {
-              "x": 16,
-              "z": 16.5
-            },
-            {
-              "x": 16,
-              "z": 16
-            },
-            {
-              "x": 16,
-              "z": 15.5
-            },
-            {
-              "x": 16,
-              "z": 15
-            },
-            {
-              "x": 16.5,
-              "z": 15
-            },
-            {
-              "x": 16.5,
-              "z": 14.5
-            },
-            {
-              "x": 17,
-              "z": 14.5
-            },
-            {
-              "x": 17.5,
-              "z": 14.5
-            },
-            {
-              "x": 18,
-              "z": 14.5
-            },
-            {
-              "x": 18.2,
-              "z": 14.15
-            }
-          ],
-          "waypointIndex": 4,
-          "partnerId": null,
-          "herdLeaderId": null,
-          "lastStep": {
-            "x": -0.045000000000001705,
-            "z": 0
-          },
-          "distanceWalked": 3.889007209678543,
-          "blockedTicks": 0
-        },
-        "foodEaten": 0,
-        "waterDrunk": 0,
-        "restedTicks": 0,
-        "enrichedTicks": 0,
-        "socialComfort": 48.09000000000038,
-        "shadeRest": 26.18000000000008,
-        "groomCooldownTicks": 0,
-        "trotCooldownTicks": 0,
-        "enrichmentCooldownTicks": 0,
-        "grazes": 0,
-        "groomings": 0,
-        "trots": 0
-      }
-    ],
-    "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
-    "scope": "Final source EN/mobile matrix, temporary ID preview tests then original EN preference restored; exact full cold V5 primary/V4 backup."
+    "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf"
   },
+  "previousFullSaveCheckpoint": "docs/qa/zebra/hp6-06/checkpoint.json",
   "saveScope": "No owner/game/browser save opened. Main830/secondary87/V4 identity carried from HP6-04/Z5-05, not freshly reread.",
   "resources": {
-    "at": "2026-11-10T04:30:38.000Z",
-    "activeOwnedBrowserServerBuildTestsRenderer": 0,
-    "fullRunSession": 73058,
-    "exit": 1,
-    "termination": "Own child SIGTERM at600s timeout; complete stdout/stderr captured before source rehash",
-    "ownedNodeCheck": {
-      "method": "Read-only elevated Win32_Process filtered to C:\\MyZooTwin or r7-01-full1",
-      "remaining": 0
-    },
+    "at": "2026-11-10T05:16:25.0168729Z",
+    "method": "Read-only host query of full2 runner14972, child22776 and their direct Node workers",
+    "remaining": 0,
+    "nodes": [],
     "browserOpened": false,
     "serverOpened": false,
-    "gpuOrNativeSoak": false,
-    "farm": "Exclusive20-minute soak slot released; only light QA/docs preparation after closure"
+    "activeOwnedBrowserServerBuildTestsRenderer": 0,
+    "fullRunSession": 30735,
+    "sessionExit": 1,
+    "farm": "Slot available; no further heavy tests/build/browser/soak until Farm coordination"
   },
-  "pending": [
-    "R7-01 stays unverified44/54. No complete161-file TAP summary/plan;418 observed root passes are not a full-suite PASS.",
-    "After Farm soak release, run node scripts/qa/zebra/run-full-regression.mjs r7-01-full2 2 1800. Use fresh immutable output; do not overwrite full1.",
-    "New explicit worker/time settings and live progress/child PID recording have syntax verification only; no full rerun yet. Do not weaken any assertions/goldens.",
-    "Then map complete passing tests to all5 species, legacy projections, V5/CAS, economy/mission/visitor invariants and finish required current-source checks before incrementing."
+  "failures": [
+    {
+      "number": 461,
+      "file": "tests/localization.test.mjs",
+      "issue": "Dictionary pairs are33 versus the historical hard-coded23; actual key/placeholder checks ran before the count assertion.",
+      "next": "Audit all33 paired dictionaries and explicitly update/strengthen the inventory expectation while retaining key/placeholder/content checks.",
+      "classification": "LIKELY_STALE_INVENTORY_EXPECTATION",
+      "title": "every paired game panel dictionary has matching keys and placeholder contracts"
+    },
+    {
+      "number": 936,
+      "file": "tests/zebra-herd.test.mjs",
+      "issue": "Canonical pair interpolation falls below the0.54 capsule-segment threshold in the existing no-resource four-resident400-tick scenario.",
+      "next": "Reproduce the first exact tick/pair/alpha and save its before/after poses. Investigate simultaneous versus sequential sweep guards; preserve the collision assertion and old save contracts.",
+      "classification": "OPEN_POSSIBLE_RUNTIME_COLLISION",
+      "title": "all four move with rotating priority without actual body overlap or fence escape, and cold state continues deterministically without respawning"
+    },
+    {
+      "number": 1011,
+      "file": "tests/zebra-visual-inventory.test.mjs",
+      "issue": "Historical staticVisuals differ by reviewed homepage source line shifts plus the new ZebraHomePreview image. Later generated/public inventory assertions have not executed in this failed test.",
+      "next": "Review every static/generated/public asset delta against accepted homepage provenance; preserve immutable Z0 and protected old factories, then add an explicit versioned extension inventory.",
+      "classification": "OPEN_VISUAL_INVENTORY_REVIEW",
+      "title": "all production-reachable visual sources and nested geometry/part sites remain registered without needing QA build artifacts"
+    },
+    {
+      "number": 1019,
+      "file": "tests/zebra-welfare.test.mjs",
+      "issue": "Real meal/drink/rest/groom counters and component-increase checks complete, but final predicate requires a groomed actor whose enrichment is exactly0.",
+      "next": "Capture event tick and inherited initial enrichment40/decay. Prove grooming without an enrichment facility and at zero enrichment using an explicit source-bound scenario; do not remove the causal assertions.",
+      "classification": "OPEN_FIXTURE_OR_BEHAVIOR_ASSUMPTION",
+      "title": "last-portion meal/drink and completed rest/groom/enrichment increase their causal components; optional enrichment is not required for real grooming"
+    }
   ],
+  "previousTimeoutProof": "docs/qa/zebra/r7-01/partial-verification.json",
   "blockers": [
     {
       "id": "HP6-02_PLAYABILITY",
@@ -865,6 +128,6 @@
     "Physical multi-touch/native touch capture and full posed fifth-species/performance/background/soak matrix remain open R7 scope; no physical-device or FPS claim",
     "Z5-04 native graph/signal and factory-injected failures accepted; physical speaker/device/system preference/native autoplay denial not claimed"
   ],
-  "next": "Wait for explicit Farm20-minute soak slot release, then complete full2 with2 workers/1800s and current input fingerprints. R7-01 must stay unchecked until complete clean suite. No push/deploy.",
+  "next": "After Farm slot coordination, first isolate canonical pair interpolation at the exact failing tick/alpha, then review localisation/visual inventory and zero-enrichment grooming scenario. Repair actual contracts without weakening assertions or modifying goldens. Run focused regressions/current checks, then a fresh complete suite. R7-01 remains44/54 and unchecked. No push/deploy.",
   "noPushOrDeploy": true
 }

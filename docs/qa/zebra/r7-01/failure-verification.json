@@ -1,0 +1,532 @@
+{
+  "status": "FAIL_R7_01_COMPLETE_SUITE_FOUR_REGRESSIONS",
+  "at": "2026-11-10T05:17:52.048Z",
+  "verified": 44,
+  "total": 54,
+  "pendingUnit": "R7-01",
+  "source": "4780273e40e13505e3ab9543fc6cb6edcbfa3671",
+  "applicationSource": "48c07660cbc415ad88e7fda7ffea9c2fbec54213",
+  "run": {
+    "id": "r7-01-full2",
+    "node": "v24.12.0",
+    "platform": "win32",
+    "arch": "x64",
+    "concurrency": 2,
+    "timeoutSeconds": 1800,
+    "files": 161,
+    "counts": {
+      "tests": 1020,
+      "suites": 0,
+      "pass": 1016,
+      "fail": 4,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "fullOutput": true,
+    "startedAt": "2026-11-10T04:57:23.026Z",
+    "finishedAt": "2026-11-10T05:15:09.244Z",
+    "process": {
+      "exitCode": 1,
+      "signal": null,
+      "childPid": 22776,
+      "overflow": false,
+      "timedOut": false,
+      "durationMs": 1066218
+    },
+    "inputBefore": "6fd1ba1e15d674420dffd98e372a4afa771486358d53b5d53de56b66c78a9fd0",
+    "inputAfter": "6fd1ba1e15d674420dffd98e372a4afa771486358d53b5d53de56b66c78a9fd0",
+    "inputUnchanged": true,
+    "receipts": [
+      {
+        "path": ".qa/zebra-audit/r7-01/r7-01-full2/start.json",
+        "bytes": 136916,
+        "sha256": "9d4325587293c8e070ae3adefbfae62ec8a4738547949c1cba922d4a57583e9e"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/r7-01-full2/progress.json",
+        "bytes": 489,
+        "sha256": "11dfb472996b5991d7ff7248efa2a35c8d0217d9f7abce7d958c06371629ff30"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/r7-01-full2/result.json",
+        "bytes": 239272,
+        "sha256": "3d4103cb8e8a0929fe266cc4af903526eb9a7a6d118c7159fbc8d7d386924bdd"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/r7-01-full2/stdout.tap",
+        "bytes": 326210,
+        "sha256": "9d0cd3bbfe41dc32995fa873daba31bbe437c37d936d49317a467c78985e0179"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/r7-01-full2/stderr.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".qa/zebra-audit/r7-01/r7-01-full2/resources-closed.json",
+        "bytes": 234,
+        "sha256": "aab19ff14b7963cdceb1ca4ab2df775fab7b1d1f4e37c9e2595bab8b5b6f7a73"
+      }
+    ]
+  },
+  "failures": [
+    {
+      "number": 461,
+      "file": "tests/localization.test.mjs",
+      "issue": "Dictionary pairs are33 versus the historical hard-coded23; actual key/placeholder checks ran before the count assertion.",
+      "next": "Audit all33 paired dictionaries and explicitly update/strengthen the inventory expectation while retaining key/placeholder/content checks.",
+      "classification": "LIKELY_STALE_INVENTORY_EXPECTATION",
+      "title": "every paired game panel dictionary has matching keys and placeholder contracts",
+      "source": {
+        "path": "tests/localization.test.mjs",
+        "bytes": 3479,
+        "sha256": "58194f212dc9af06252a7d1539bea3b2d4561baad849dbe4ecce9f11064efff7"
+      },
+      "tapBlock": "not ok 461 - every paired game panel dictionary has matching keys and placeholder contracts\n  ---\n  duration_ms: 132.2925\n  type: 'test'\n  location: 'C:\\\\MyZooTwin\\\\tests\\\\localization.test.mjs:9:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly equal:\n    \n    33 !== 23\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: 23\n  actual: 33\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/localization.test.mjs:9:1272)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1106:25)\n    Test.processPendingSubtests (node:internal/test_runner/test:788:18)\n    Test.postRun (node:internal/test_runner/test:1235:19)\n    Test.run (node:internal/test_runner/test:1163:12)\n    async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)\n  ..."
+    },
+    {
+      "number": 936,
+      "file": "tests/zebra-herd.test.mjs",
+      "issue": "Canonical pair interpolation falls below the0.54 capsule-segment threshold in the existing no-resource four-resident400-tick scenario.",
+      "next": "Reproduce the first exact tick/pair/alpha and save its before/after poses. Investigate simultaneous versus sequential sweep guards; preserve the collision assertion and old save contracts.",
+      "classification": "OPEN_POSSIBLE_RUNTIME_COLLISION",
+      "title": "all four move with rotating priority without actual body overlap or fence escape, and cold state continues deterministically without respawning",
+      "source": {
+        "path": "tests/zebra-herd.test.mjs",
+        "bytes": 7108,
+        "sha256": "4461c51e32ff890a0319b8035eed6b48ef254bd556b0342fe55d7dfd7420f4f6"
+      },
+      "tapBlock": "not ok 936 - all four move with rotating priority without actual body overlap or fence escape, and cold state continues deterministically without respawning\n  ---\n  duration_ms: 1336.4517\n  type: 'test'\n  location: 'C:\\\\MyZooTwin\\\\tests\\\\zebra-herd.test.mjs:8:1'\n  failureType: 'testCodeFailure'\n  error: 'Actual canonical pair interpolation overlaps'\n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/zebra-herd.test.mjs:8:1119)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1106:25)\n    Test.processPendingSubtests (node:internal/test_runner/test:788:18)\n    Test.postRun (node:internal/test_runner/test:1235:19)\n    Test.run (node:internal/test_runner/test:1163:12)\n    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)\n  ..."
+    },
+    {
+      "number": 1011,
+      "file": "tests/zebra-visual-inventory.test.mjs",
+      "issue": "Historical staticVisuals differ by reviewed homepage source line shifts plus the new ZebraHomePreview image. Later generated/public inventory assertions have not executed in this failed test.",
+      "next": "Review every static/generated/public asset delta against accepted homepage provenance; preserve immutable Z0 and protected old factories, then add an explicit versioned extension inventory.",
+      "classification": "OPEN_VISUAL_INVENTORY_REVIEW",
+      "title": "all production-reachable visual sources and nested geometry/part sites remain registered without needing QA build artifacts",
+      "source": {
+        "path": "tests/zebra-visual-inventory.test.mjs",
+        "bytes": 4896,
+        "sha256": "03819aa3dfc0d715109b2e9880cc2adb31e4a5662f2f77beec8ddfca0cba67fb"
+      },
+      "tapBlock": "not ok 1011 - all production-reachable visual sources and nested geometry/part sites remain registered without needing QA build artifacts\n  ---\n  duration_ms: 1078.1958\n  type: 'test'\n  location: 'C:\\\\MyZooTwin\\\\tests\\\\zebra-visual-inventory.test.mjs:10:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    staticVisuals visual inventory drift requires explicit review\n    + actual - expected\n    ... Skipped lines\n    \n      [\n        {\n          assetId: 'src/components/PlayEntry.astro:inline-visual:0',\n    +     line: 36,\n    -     line: 35,\n          sourcePath: 'src/components/PlayEntry.astro',\n          status: 'NOT_RUN',\n          tag: 'svg'\n        },\n        {\n    +     assetId: 'src/components/ZebraHomePreview.astro:inline-visual:0',\n    +     line: 31,\n    +     sourcePath: 'src/components/ZebraHomePreview.astro',\n    +     status: 'NOT_RUN',\n    +     tag: 'img'\n    +   },\n    +   {\n          assetId: 'src/components/ZooHome.astro:inline-visual:0',\n          line: 51,\n          sourcePath: 'src/components/ZooHome.astro',\n          status: 'NOT_RUN',\n          tag: 'img'\n    ...\n          assetId: 'src/components/ZooHome.astro:inline-visual:1',\n    +     line: 58,\n    -     line: 54,\n          sourcePath: 'src/components/ZooHome.astro',\n          status: 'NOT_RUN',\n          tag: 'img'\n        }\n      ]\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected:\n    0:\n      assetId: 'src/components/PlayEntry.astro:inline-visual:0'\n      sourcePath: 'src/components/PlayEntry.astro'\n      tag: 'svg'\n      line: 35\n      status: 'NOT_RUN'\n    1:\n      assetId: 'src/components/ZooHome.astro:inline-visual:0'\n      sourcePath: 'src/components/ZooHome.astro'\n      tag: 'img'\n      line: 51\n      status: 'NOT_RUN'\n    2:\n      assetId: 'src/components/ZooHome.astro:inline-visual:1'\n      sourcePath: 'src/components/ZooHome.astro'\n      tag: 'img'\n      line: 54\n      status: 'NOT_RUN'\n  actual:\n    0:\n      assetId: 'src/components/PlayEntry.astro:inline-visual:0'\n      sourcePath: 'src/components/PlayEntry.astro'\n      tag: 'svg'\n      line: 36\n      status: 'NOT_RUN'\n    1:\n      assetId: 'src/components/ZebraHomePreview.astro:inline-visual:0'\n      sourcePath: 'src/components/ZebraHomePreview.astro'\n      tag: 'img'\n      line: 31\n      status: 'NOT_RUN'\n    2:\n      assetId: 'src/components/ZooHome.astro:inline-visual:0'\n      sourcePath: 'src/components/ZooHome.astro'\n      tag: 'img'\n      line: 51\n      status: 'NOT_RUN'\n    3:\n      assetId: 'src/components/ZooHome.astro:inline-visual:1'\n      sourcePath: 'src/components/ZooHome.astro'\n      tag: 'img'\n      line: 58\n      status: 'NOT_RUN'\n  operator: 'deepStrictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/zebra-visual-inventory.test.mjs:23:80)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1106:25)\n    Test.start (node:internal/test_runner/test:1003:17)\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17)\n  ..."
+    },
+    {
+      "number": 1019,
+      "file": "tests/zebra-welfare.test.mjs",
+      "issue": "Real meal/drink/rest/groom counters and component-increase checks complete, but final predicate requires a groomed actor whose enrichment is exactly0.",
+      "next": "Capture event tick and inherited initial enrichment40/decay. Prove grooming without an enrichment facility and at zero enrichment using an explicit source-bound scenario; do not remove the causal assertions.",
+      "classification": "OPEN_FIXTURE_OR_BEHAVIOR_ASSUMPTION",
+      "title": "last-portion meal/drink and completed rest/groom/enrichment increase their causal components; optional enrichment is not required for real grooming",
+      "source": {
+        "path": "tests/zebra-welfare.test.mjs",
+        "bytes": 6812,
+        "sha256": "35672e9c9d680413e7e61c973598632409d67cc56effc9ad046eaf5be9acae10"
+      },
+      "tapBlock": "not ok 1019 - last-portion meal/drink and completed rest/groom/enrichment increase their causal components; optional enrichment is not required for real grooming\n  ---\n  duration_ms: 12840.6057\n  type: 'test'\n  location: 'C:\\\\MyZooTwin\\\\tests\\\\zebra-welfare.test.mjs:22:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    The expression evaluated to a falsy value:\n    \n      assert.ok(zebras(s.animals).some(a=>a.groomings>0&&a.enrichment===0))\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: '=='\n  stack: |-\n    TestContext.<anonymous> (file:///C:/MyZooTwin/tests/zebra-welfare.test.mjs:27:126)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1106:25)\n    Test.processPendingSubtests (node:internal/test_runner/test:788:18)\n    Test.postRun (node:internal/test_runner/test:1235:19)\n    Test.run (node:internal/test_runner/test:1163:12)\n    async Test.processPendingSubtests (node:internal/test_runner/test:788:7)\n  ..."
+    }
+  ],
+  "selectedCoverage": {
+    "legacy": [
+      {
+        "file": {
+          "path": "tests/zebra-baseline.test.mjs",
+          "bytes": 1726,
+          "sha256": "dbdc278fffd543482354024642356b42f4de7835255871731c0cc9b8c9cc9586"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 869,
+            "title": "Zebra baseline freezes all original V1–V4 bytes, actors, world, mission, admission, ledger, clock and preference projections"
+          },
+          {
+            "number": 870,
+            "title": "baseline cold reads/pause are exact and canonical clock partitions retain all old species and financial proofs"
+          }
+        ]
+      },
+      {
+        "file": {
+          "path": "tests/elephant-legacy-regression.test.mjs",
+          "bytes": 4948,
+          "sha256": "5d146039959324b94148081b682a5103f6df84cf0ded9d62084dff5f8f5c2dc0"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 184,
+            "title": "actual Q01-Q04 first-run construction, care, admissions and original60ZCrewards stay exactly identical to V1 through two partial cold loads and1x10x"
+          },
+          {
+            "number": 185,
+            "title": "6000mixed-species ticks preserve every macaw FSM/position/need/counter and real original resource stock, one clock/RNG and claimed Qproof against a V1reference"
+          },
+          {
+            "number": 186,
+            "title": "old quests cannot be reactivated, reclaimed or replaced while real elephants and EHawards remain; paused/repeated claims never credit legacy cash"
+          },
+          {
+            "number": 187,
+            "title": "archived mixed finance retains original20/40receipts,1400grant,150/200EHcoins and typed awards in separate displays with bounded one-ticket proof after cold"
+          }
+        ]
+      },
+      {
+        "file": {
+          "path": "tests/giraffe-baseline.test.mjs",
+          "bytes": 3190,
+          "sha256": "c330fc1388f74485edfe164c2da4c80262aa7738a9c1f18bc3041c0030ca2bc3"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 340,
+            "title": "frozen synthetic V1/V2/V3 saves retain exact source hashes and distinct earned namespaces"
+          },
+          {
+            "number": 341,
+            "title": "all frozen versions cold-load without changes, pause adds no offline progress, and 1x/10x share authoritative outcomes"
+          },
+          {
+            "number": 342,
+            "title": "frozen V3 coordinate and scene-space identities cover every cell and previous movable entity"
+          }
+        ]
+      }
+    ],
+    "fiveSpeciesClock": [
+      {
+        "file": {
+          "path": "tests/zebra-clock.test.mjs",
+          "bytes": 11166,
+          "sha256": "7704c24ec4231cf114f64cd3ca827f728f80b643899d62c1af88156f8ba8ca40"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 881,
+            "title": "populated five-habitat V5:6000 accepted ticks match at1x/10x/fractional frames with30 cold reloads, pauses and real paid care"
+          },
+          {
+            "number": 882,
+            "title": "populated V5 frame timestamps, pause owners and speed changes never consume a background gap or award offline care"
+          },
+          {
+            "number": 883,
+            "title": "one real frame-loop owner: repeated V5 remounts reject stale queued callbacks and nested time without duplicate events"
+          },
+          {
+            "number": 884,
+            "title": "populated V5 actual backend restart/one-time restore keeps all animals/mission/ledger bytes, original V4 and stale-generation guard"
+          }
+        ]
+      }
+    ],
+    "strictV5": [
+      {
+        "file": {
+          "path": "tests/zebra-save-v5.test.mjs",
+          "bytes": 6821,
+          "sha256": "e7a9758b91dbc4bf403e2c7090a59d11ccc44a4d620495639f3363e637ea6e39"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 984,
+            "title": "every original V1-V4 checkpoint migrates through validated source with exact V4 projection, no cash/actors/paths/grant and owned clones"
+          },
+          {
+            "number": 985,
+            "title": "source corruption, future versions and unknown nested V5 content are refused without lossy normalization"
+          },
+          {
+            "number": 986,
+            "title": "validation-only populated data proves five habitats, fourteen separate actors and all five resource roles fit a strict bounded codec"
+          },
+          {
+            "number": 987,
+            "title": "Zebra identity, per-species FSM/resource targets, stocks, shape, population and movement cannot masquerade as legacy data"
+          },
+          {
+            "number": 988,
+            "title": "grooming requires a reciprocal legal pair and herd following refuses cycles, not an animation flag"
+          },
+          {
+            "number": 989,
+            "title": "grant and GQ04 proof survive actual financial compaction and cannot be duplicated, removed or retargeted"
+          },
+          {
+            "number": 990,
+            "title": "empty or cosmetic mission progress cannot invent ZQ rewards or viewer proof"
+          }
+        ]
+      },
+      {
+        "file": {
+          "path": "tests/zebra-storage-v5.test.mjs",
+          "bytes": 15578,
+          "sha256": "f347cf964be238b7ef6263f917715df448fbb1db9b4c541b074f74269e9aa96c"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 994,
+            "title": "IDB emulation: same single store version5 atomically retains exact original V4 envelope/payload and every historical backup"
+          },
+          {
+            "number": 995,
+            "title": "IDB emulation: every V1-V3 source is retained exactly, with explicitly labelled validated V4/V3 intermediates"
+          },
+          {
+            "number": 996,
+            "title": "IDB emulation: first-write quota and actual abort roll back V4 backup, previous and primary together"
+          },
+          {
+            "number": 997,
+            "title": "IDB emulation with native abort semantics: a second abort throws but cannot escape or replace the original fault"
+          },
+          {
+            "number": 998,
+            "title": "IDB emulation: held V4 connection blocks safely; active old backend closes on versionchange and cannot reopen/write over5"
+          },
+          {
+            "number": 999,
+            "title": "IDB emulation: independent autosave candidates have one winner; loser stays unchanged with no grant or optimistic reward"
+          },
+          {
+            "number": 1000,
+            "title": "IDB emulation: generation CAS rejects stale writer even after reset returns revision1; reset/undo stayV5 and retain originalV4"
+          },
+          {
+            "number": 1001,
+            "title": "IDB emulation: pending second autosave drain is joined before candidate CAS; quota cannot adopt candidate in memory"
+          },
+          {
+            "number": 1002,
+            "title": "IDB emulation: missing/corrupt V4 or V3 provenance blocks read, writes, recovery and reset without reconstructing backups"
+          },
+          {
+            "number": 1003,
+            "title": "IDB emulation: future data, V4 downgrade payload and corrupt recovery preserve exact bytes and never use archival backup as primary"
+          },
+          {
+            "number": 1004,
+            "title": "IDB emulation: new game has labelled predecessors; cold Continue does not advance time, and V4 binary is barred"
+          }
+        ]
+      }
+    ],
+    "economy": [
+      {
+        "file": {
+          "path": "tests/zebra-economy.test.mjs",
+          "bytes": 19094,
+          "sha256": "98e97b15a3e439ae0d4479e316955a685b1542b9761fe8f823b80ad81a4c69a4"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 904,
+            "title": "existing trusted engine edit API and pure Zebra CAS candidates produce identical state/editor; invalid operation IDs and missing compacted command nonce cannot bypass either path"
+          },
+          {
+            "number": 905,
+            "title": "pure paid Zebra removal refunds only the original construction debit; exact CAS adoption/Undo preserves supplies, actors, old missions and world with no replay credit"
+          },
+          {
+            "number": 906,
+            "title": "eighty real remove/restore cycles cannot mint cash or stock; shared compaction retains exact purchase/refund/grant proofs and cold restore state"
+          },
+          {
+            "number": 907,
+            "title": "Undo after real grazing and engine recreation preserves current stocks/revisions at every other facility and does not rewind an animal or its route"
+          },
+          {
+            "number": 908,
+            "title": "using facilities, wrong species, stale commands, paused/disposed candidates and unsafe root/route restoration are refused without relocation or partial money changes"
+          },
+          {
+            "number": 909,
+            "title": "insufficient restore funds and malformed editor/refund lineage cannot restore a different structure or overdraw the shared wallet"
+          },
+          {
+            "number": 910,
+            "title": "five habitats incur the original10ZC upkeep per600 ticks, exactly once; unpaid arrears remain due without negative cash or load/offline charges"
+          },
+          {
+            "number": 911,
+            "title": "all five reachable habitats share one real gate receipt per visitor; paid rechecks, destination changes, cold1x10x and archive compaction never multiply tickets"
+          },
+          {
+            "number": 912,
+            "title": "IDB emulation: one racing refund candidate wins the actual V5 CAS; quota rolls back money/world/history and retry pays exactly once with exact originalV4 backup"
+          },
+          {
+            "number": 913,
+            "title": "new financial review/errors are readable in both languages and disclose stock loss and session-only Undo without implying a refill refund"
+          }
+        ]
+      },
+      {
+        "file": {
+          "path": "tests/mixed-invariants.test.mjs",
+          "bytes": 8938,
+          "sha256": "8db4ba33249aeffe52f8d5c95ed35c4f1f7a0c83ea4c6cb4503ac9838292fb8b"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 491,
+            "title": "seeded mixed public-command traces preserve independent money/topology oracles, exact events and codec replay across speed partitions and journal folds"
+          },
+          {
+            "number": 492,
+            "title": "isolated path edits preserve the exact active visitor route, position, progress and observation"
+          }
+        ]
+      }
+    ],
+    "missions": [
+      {
+        "file": {
+          "path": "tests/zebra-missions.test.mjs",
+          "bytes": 15544,
+          "sha256": "d5d06bd04e53b53cb0ab550c019597c45198bc172861e66ab14f775cdc26dcf6"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 941,
+            "title": "four ordered Zebra quests are earned by actual meals/drinks/groom/rest and three paid completed Zebra views; claims preserve all old reward proofs"
+          },
+          {
+            "number": 942,
+            "title": "continuous windows reset below exact thresholds; ordinary event evaluation cannot add ticks and claimed progress stays latched"
+          },
+          {
+            "number": 943,
+            "title": "read-only views and pure incomplete/stale/out-of-order quotes cannot fabricate rewards, unearned cash, clocks or source mutation"
+          },
+          {
+            "number": 944,
+            "title": "cold final state, pinned viewer receipts and historical connection survive compaction and real path removal/Undo without revoking earned achievements"
+          },
+          {
+            "number": 945,
+            "title": "cosmetic, unpaid, interrupted, other-habitat and partial-view feedback cannot count as Zebra viewers; duplicate true feedback counts once"
+          },
+          {
+            "number": 946,
+            "title": "IDB emulation: mission race has one CAS winner, quota leaves exact primary/backup and failed owner; retry and cold load award once"
+          },
+          {
+            "number": 947,
+            "title": "ID/EN quest copy has all four names, concrete requirements and honest storage status; namespaces and awards remain distinct"
+          },
+          {
+            "number": 948,
+            "title": "claimed connection proof is mandatory, bounded, orthogonal, outside the fence and exclusive to ZQ01; reward/claim IDs and amounts cannot be forged"
+          }
+        ]
+      }
+    ],
+    "visitors": [
+      {
+        "file": {
+          "path": "tests/zebra-visitors.test.mjs",
+          "bytes": 11996,
+          "sha256": "497f7758cc4bc163f304679260654d70939012e88fd09f56b1c889c6e056e0bc"
+        },
+        "selectedPassingCases": [
+          {
+            "number": 1005,
+            "title": "ten real paid completed views fairly cycle twice over all five reachable occupied habitats, retain pinned routes, stay outside fences and preserve old mission/grant proofs"
+          },
+          {
+            "number": 1006,
+            "title": "five-habitat attraction weights each habitat equally rather than fourteen animals; empty/unreachable Zebra cannot divert or inflate the remaining four"
+          },
+          {
+            "number": 1007,
+            "title": "connecting Zebra with actual paid paths cannot retarget or rewind an existing old-species walk"
+          },
+          {
+            "number": 1008,
+            "title": "mid-Zebra walk/view and fairness survive strict cold1x10x and pinned-ticket financial compaction; pause cannot fabricate viewing, feedback or tickets"
+          },
+          {
+            "number": 1009,
+            "title": "loss of Zebra access interrupts the pinned paid visit without teleporting, resampling another habitat or issuing a second ticket; restoring the path does not rewrite feedback"
+          },
+          {
+            "number": 1010,
+            "title": "one exhaustive ID/EN habitat label serves attraction, destinations and immutable feedback; all four old names and unlabelled V1 feedback stay exact"
+          }
+        ]
+      }
+    ],
+    "legacyLionCheckpoint": [
+      {
+        "number": 419,
+        "title": "every actual tick remains checkpoint-valid across three occupied habitats, paid viewers and all lion phases; seed 1"
+      },
+      {
+        "number": 420,
+        "title": "every actual tick remains checkpoint-valid across three occupied habitats, paid viewers and all lion phases; seed 42"
+      },
+      {
+        "number": 421,
+        "title": "every actual tick remains checkpoint-valid across three occupied habitats, paid viewers and all lion phases; seed 12345"
+      }
+    ]
+  },
+  "legacy": {
+    "receipt": {
+      "path": "docs/qa/zebra/r7-01/legacy-projections.json",
+      "bytes": 17065,
+      "sha256": "9c6bd639480ad75e1efe8a8e234bbb30d03d65c23f7d85937361a6666756d123"
+    },
+    "frozenFiles": [
+      {
+        "path": "tests/fixtures/elephant-legacy-v1.json",
+        "bytes": 141169,
+        "sha256": "82fd14ab17cdf3445cdd31aa9281aac5dba6d465879c9c4c5b83bec2ff4d9d77"
+      },
+      {
+        "path": "tests/fixtures/lion-v2-golden.json",
+        "bytes": 81147,
+        "sha256": "7232657bbc2e0a89c2255c50aa0fbacb9356d8e8332425a8f4f592dfa0335fae"
+      },
+      {
+        "path": "tests/fixtures/giraffe-v3-golden.json",
+        "bytes": 128852,
+        "sha256": "6dbb58106a495f1fddb115138b1c8b92524ed47cc9bcac21c60a3a760cede921"
+      },
+      {
+        "path": "tests/fixtures/giraffe-v4-golden.json",
+        "bytes": 209403,
+        "sha256": "5c186919ca88e6563204f5a993200410e96d8d2736aef27e62cf92287d09e145"
+      },
+      {
+        "path": "tests/fixtures/zebra-v1-v4-baseline.json",
+        "bytes": 41740,
+        "sha256": "42649aa9cf61661ade798128345cde0791d75644a244aa4a26286954d7f1468a"
+      }
+    ],
+    "unchangedSince": "4ae67ba",
+    "scope": "All12 synthetic V1-V4 fixtures/7 projection groups match. Complete suite also passes named original projection/clock/finance/mission/visitor cases; this does not override4 actual failures."
+  },
+  "checks": {
+    "newTypesAstroBuild": "NOT_RUN_AFTER_FAILED_FULL_SUITE",
+    "reason": "No app/test edits; prioritize exact4-failure diagnosis before additional heavy checks. Prepared final-checks1 orchestration is syntax-checked only and refuses a failed suite.",
+    "browser": "NOT_APPLICABLE_TO_THIS_SOURCE_SUITE_NO_BROWSER_OPENED"
+  },
+  "resources": {
+    "at": "2026-11-10T05:16:25.0168729Z",
+    "method": "Read-only host query of full2 runner14972, child22776 and their direct Node workers",
+    "remaining": 0,
+    "nodes": [],
+    "browserOpened": false,
+    "serverOpened": false,
+    "activeOwnedBrowserServerBuildTestsRenderer": 0,
+    "fullRunSession": 30735,
+    "sessionExit": 1,
+    "farm": "Slot available; no further heavy tests/build/browser/soak until Farm coordination"
+  },
+  "scope": "Complete source/unit/integration regression failed; no application/test/golden/assertion/fixture changes, no owner/browser save access. Source/functional cases do not establish native presented FPS or15-minute active soak.",
+  "noPushOrDeploy": true
+}
