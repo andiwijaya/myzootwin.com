@@ -7,6 +7,8 @@ import {sha256} from '../tooling.mjs';
 const dir='docs/qa/zebra/hp6-06',source='48c07660cbc415ad88e7fda7ffea9c2fbec54213';
 const json=async p=>JSON.parse(await readFile(p,'utf8')),receipt=async path=>{const b=await readFile(path);return{path,bytes:b.length,sha256:sha256(b)};};
 const previous=await json('docs/qa/zebra/hp6-05/checkpoint.json');assert.equal(previous.verified,43);
+let current;try{current=await json(dir+'/checkpoint.json');}catch(error){if(error.code!=='ENOENT')throw error;}
+assert.ok(!current||current.verified===43,'Historical partial writer must not overwrite verified HP6-06 progress');
 const buildPath='.qa/visual3d/h1-03-zebra-homefinal2/source.json',build=await json(buildPath),root='.qa/visual3d/h1-03-zebra-homefinal2/product',old='.qa/visual3d/h1-03-zebra-homeseo1/product';
 assert.equal(build.source,source);assert.equal(build.productionExclusion.status,'PASS');
 for(const e of [...build.inputs.entries,...build.lab.entries,...build.product.entries])assert.equal(sha256(await readFile(e.path)),e.sha256,e.path);

@@ -1,9 +1,10 @@
 {
-  "status": "SAFE_FARM_D05_HP6_06_FINAL_BROWSER_PENDING",
-  "at": "2026-11-10T03:17:08.000Z",
-  "verified": 43,
+  "status": "PASS_HP6_06",
+  "at": "2026-11-10T03:47:32.423Z",
+  "verified": 44,
   "total": 54,
-  "pendingUnit": "HP6-06",
+  "completedUnit": "HP6-06",
+  "pendingUnit": "HP6-02",
   "candidateSource": "48c07660cbc415ad88e7fda7ffea9c2fbec54213",
   "build": {
     "runId": "h1-03-zebra-homefinal2",
@@ -825,61 +826,35 @@
     "backupHash": "f68c6602412a4401fe4955d5ff357147e22d8f732d0ab5cd69fc1991df71eeaf",
     "scope": "Final source EN/mobile matrix, temporary ID preview tests then original EN preference restored; exact full cold V5 primary/V4 backup."
   },
-  "saveScope": "No game/default save opened; main830/secondary87/V4 identity carried, not freshly reread. Only essential-only consent at127.0.0.1:52907 changed via real QA UI and cold-reloaded atf9300e8.",
+  "saveScope": "Game/default saves were never opened. Main830/secondary87/V4 identity carried from HP6-04/Z5-05, not freshly reread. Only separate localhost consent changed via native UI.",
   "resources": {
-    "at": "2026-11-10T03:17:08.000Z",
+    "at": "2026-11-10T03:40:13.000Z",
     "activeOwnedBrowserServerBuildTestsRenderer": 0,
     "browser": {
       "kind": "internal IAB",
-      "ownTabs": [
-        "2",
-        "3"
-      ],
+      "ownTab": "4",
       "closed": true,
       "viewportReset": true,
-      "remainingOwnedTabs": 0,
-      "final48BrowserStarted": false
+      "remainingTabs": 0
     },
-    "servers": [
-      {
-        "session": 30241,
-        "pid": 28140,
-        "exit": 0,
-        "scope": "Initial discovery"
-      },
-      {
-        "session": 97256,
-        "pid": 26420,
-        "exit": 0,
-        "scope": "f9300e8 discovery"
-      },
-      {
-        "session": 99031,
-        "pid": 12504,
-        "exit": 0,
-        "scope": "48c0766 started/stopped before any browser request"
-      }
-    ],
-    "port": 52907,
-    "portFreeConfirmed": true,
+    "server": {
+      "port": 52907,
+      "pid": 17904,
+      "session": 29968,
+      "exit": 0,
+      "traceDrained": true
+    },
     "completed": {
       "strictTypes": 54440,
       "astro": 79415,
       "build": 62052,
-      "tests17": true,
+      "tests": 17,
       "allExit": 0
     },
     "engineLaunched": false,
     "defaultGameDatabaseOpened": false,
-    "farm": "D05 browser/heavy slot released; no new browser/build/benchmark until Farm releases it"
+    "farm": "Slot released; coordinate before next heavy/browser work"
   },
-  "pending": [
-    "HP6-06 remains UNVERIFIED: final48c0766 native matrix has not run. Do not increment43/54.",
-    "Prove fresh essential-only keyboard action retains Close focus and persists after reload; use a fresh dedicated loopback QA origin through normal UI only.",
-    "Repeat full ID/EN1280x900,780x460,360x800 media/cards/FAQ/skip/Privacy focus+scroll/Escape/Close/language/related links/CTA/back-forward on final source.",
-    "Collect final-source local request trace; no eager game engine. WebPerformance unavailable in supported DOM evaluator; no bypass or packet/timing/FPS claim.",
-    "Reuse immutable h1-03-zebra-homefinal2 only if inputs unchanged. Restart52907 with NEW receipt hp6-06-final3-server.json and NEW trace hp6-06-final3-requests.jsonl; old final2 trace is intentionally empty and protected by wx."
-  ],
   "blockers": [
     {
       "id": "HP6-02_PLAYABILITY",
@@ -901,6 +876,6 @@
     "Physical multi-touch/native touch capture and full posed fifth-species/performance/background/soak matrix remain open R7 scope; no physical-device or FPS claim",
     "Z5-04 native graph/signal and factory-injected failures accepted; physical speaker/device/system preference/native autoplay denial not claimed"
   ],
-  "next": "After explicit Farm D05 resource release, finish final48c0766 native matrix and trace before promoting HP6-06. Keep HP6-02/Z2-06/R7 gates open. No push/deploy.",
+  "next": "After resource coordination, R7-01 full source/unit/integration regression and save/economy invariants. HP6-02 five-playable/Z2-06 grant/publicV5 adoption and separate R7-08 publish authorization remain open. No push/deploy.",
   "noPushOrDeploy": true
 }

@@ -1,0 +1,2762 @@
+{
+  "status": "PASS_HP6_06",
+  "at": "2026-11-10T03:47:32.423Z",
+  "verified": 44,
+  "total": 54,
+  "source": "48c07660cbc415ad88e7fda7ffea9c2fbec54213",
+  "sourceFingerprint": "cccc07f83c31f4e1af8cbce0cbfbfc027c860890a2124fcaaacc44b3e27d15f7",
+  "scope": "Two real shared-site Privacy UI defects fixed:16.6667px provider target becomes44px; saving a choice that disables its control retains Close focus inside the modal. No consent/analytics eligibility/storage/gameplay/engine/save/mission/ledger/assets/dependency changes. QA-only local response trace.",
+  "checks": {
+    "types": "PASS strict noEmit/noUnused",
+    "astro": "PASS598 files,0 diagnostics",
+    "tests": "PASS17 site consent/integration/security regressions",
+    "build": "PASS10 pages and production QA exclusion",
+    "logs": [
+      {
+        "path": ".qa/zebra-audit/hp6-06-final2-types.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-06-final2-check.log",
+        "bytes": 168,
+        "sha256": "9ff3d40fa8ec4ab96cfcd8cc9d32347f1c41d2c57739992e6dea814637e97257"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-06-final2-tests.log",
+        "bytes": 2179,
+        "sha256": "87ac822b5e25b196e2edd999d7b9ba390c2c8b00e0ba2f4e5af25bfd949f06ca"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-06-final2-build.log",
+        "bytes": 2627,
+        "sha256": "71fdec17d4cf4549c8f0a71e573932539226bb6a2c3f366de2202869eb0f7308"
+      }
+    ]
+  },
+  "build": {
+    "receipt": {
+      "path": ".qa/visual3d/h1-03-zebra-homefinal2/source.json",
+      "bytes": 111806,
+      "sha256": "3e6384bc4a331bf9247d8d356ffc01966f822a4e213cf3c25bfd97eceedea4e1"
+    },
+    "lab": "c086a60930db0cf8fa70758df6635f609edf2138d6fc5fd5fd8585c1c684c170",
+    "product": "145aa794b229f1385f907cea0fb9ef4d0781bf9d7d981eff68c26390ef35a78d",
+    "htmlNormalization": "All10 pages exactly match accepted HP6-05 after stylesheet/site-client URL normalization. Shared CSS/script references do change; no8-other-HTML-byte-identical claim.",
+    "html": [
+      {
+        "path": "about/index.html",
+        "bytes": 8351,
+        "previousBytes": 8351,
+        "sha256": "393dc467011100a828175de83b3a9eed40b6262763c727653cd4598f3e7eb157",
+        "normalizedSha256": "15666071d6e95f7ae9984a84ea6aa74f62905f708d0b152dcb8753bae33b6500"
+      },
+      {
+        "path": "adventures/index.html",
+        "bytes": 8215,
+        "previousBytes": 8215,
+        "sha256": "29e3c638b509bab3c46651eadb91459cb5c9baa459791619686f4b54552f6627",
+        "normalizedSha256": "a4b92aef94cd1ac56541117588014d1ffc7f18a18f1cea7af180cfb07cc0928a"
+      },
+      {
+        "path": "animals/index.html",
+        "bytes": 7845,
+        "previousBytes": 7845,
+        "sha256": "29c9cbfe58585babae2426232334bd06d2123459bc0eb6b5db720f0350251c4a",
+        "normalizedSha256": "c33bf3b66ca8e98697f2dc3cd72eabe63d0470a5cf19c78dc162e2fbd2522bbe"
+      },
+      {
+        "path": "en/index.html",
+        "bytes": 21256,
+        "previousBytes": 21256,
+        "sha256": "9e7ead9949f0f5c4a7570d101ea53969342f1c060d0af35860485d0bbf45da47",
+        "normalizedSha256": "d6feb9bd61469dff334749082550d14399748dbc3ba1d1b6f50f6b78af9faa09"
+      },
+      {
+        "path": "gear/index.html",
+        "bytes": 8186,
+        "previousBytes": 8186,
+        "sha256": "c7b6f06025d0a4dbae864e5d24c88105c5f7cc5eb06b49918bf432ff36526abd",
+        "normalizedSha256": "e5dc2742253200605d5bdd33e8ce2567f200e3bba20877098e434939b123cf5e"
+      },
+      {
+        "path": "index.html",
+        "bytes": 21466,
+        "previousBytes": 21466,
+        "sha256": "8d0aa6dd30f4e657974298fe2eec645b95bfde407f901b797009fbac31f8b145",
+        "normalizedSha256": "c811deff0aaf21d12c34e4f95f7907d43b752fc8d2b77bd989ad51fbc4b05e26"
+      },
+      {
+        "path": "learn/index.html",
+        "bytes": 9150,
+        "previousBytes": 9150,
+        "sha256": "66b32e6fa059782b0f2565b11d585bcc3590224067c3d7106742036ad4b2e410",
+        "normalizedSha256": "530260a43fddc3ad07a6ce715a5e45e2d172e9d0667b364f6785fb960b1659f4"
+      },
+      {
+        "path": "pets/index.html",
+        "bytes": 8166,
+        "previousBytes": 8166,
+        "sha256": "b596bd4778547677907eaab0de04d9a8dfde5a3ca2cd852d7e0d1973f4b4f0ef",
+        "normalizedSha256": "bb0b8cb9f2a3c5ca15e7c13c88ec9ca941e95b827ecd5523257cb2beaa7e88d6"
+      },
+      {
+        "path": "play/index.html",
+        "bytes": 58676,
+        "previousBytes": 58676,
+        "sha256": "3b1a682da4e6427c99c8bbaedcdd47a6de2675f129265a04cd61226ebd8c909a",
+        "normalizedSha256": "b1d1dea6c006fe9655228697c9a0ee626d7dff05c74141c85f7660897566575b"
+      },
+      {
+        "path": "wildlife/index.html",
+        "bytes": 8165,
+        "previousBytes": 8165,
+        "sha256": "303ea4c230db8bc7ea611654fd13c4abe9df1f097431b42c98619e258f29e5e8",
+        "normalizedSha256": "153a4f40ca5e2c6a1f95121f09c6f04348d3755d309be62f438a8e7e4bcd0a9d"
+      }
+    ],
+    "unchanged": [
+      {
+        "path": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.CIODW4z_.js",
+        "sha256": "0fc9a7c5f6ea20f521e9059c18d03cb4256b04be9cb0e25429e4b059daa4d6c9"
+      },
+      {
+        "path": "_astro/dialog-focus.CS_awhan.js",
+        "sha256": "1c49e5f75581f00265e803464e1caea211865f20cc06223682b8336e763d2d64"
+      },
+      {
+        "path": "_astro/foundation-scene.GhcJ0N1N.js",
+        "sha256": "3d6e9c916ccb7bc5b05419f3224fc9481d1862ce059903f78b4e1464ad5fe366"
+      },
+      {
+        "path": "images/home/giraffes-480.webp",
+        "sha256": "1c2eee2a30808155f7277c14dffeda17e20c6a3899aa2fe4310d6e66e4a60060"
+      },
+      {
+        "path": "images/home/giraffes-800.webp",
+        "sha256": "d0bdf2b3196f3b769bc4b4e0e977249d2ed86ea64fa2f3f2bf560ed4bd9fa1b7"
+      },
+      {
+        "path": "images/home/v5-zebra-440.webp",
+        "sha256": "9e1f77add5ec0462d9aebd82a10daf898d027aabdadb61387e0ae22d2fc9376d"
+      },
+      {
+        "path": "images/home/v5-zebra-660.webp",
+        "sha256": "ec2599c98994e59e7d36abbc3b7142f2bf6f159f1b7bdd6e3119fd69adeecf21"
+      },
+      {
+        "path": "images/home/v5-zoo-480.webp",
+        "sha256": "1e47118c613aa474f517bfda8ce30a8be6459444ba53571b3aae810e0217b6f7"
+      },
+      {
+        "path": "images/home/v5-zoo-770.webp",
+        "sha256": "7e9a2db2cc9df38890bebdbf63374d1ebb8e4ef00f6d6e2177146785e32613a3"
+      },
+      {
+        "path": "images/home/v5-zoo-social.jpg",
+        "sha256": "d59a9a5dc6d2f1b85f3bfac09f5d26448fadd5b63344cc4332d468bc6d2df927"
+      },
+      {
+        "path": "images/home/zoo-640.webp",
+        "sha256": "6809ac121c8a10f63b07c53c21357fd0d65b3255b76ce13fecdecbb9e6c27a07"
+      },
+      {
+        "path": "images/home/zoo-960.webp",
+        "sha256": "93ea04c81e7658ab73e92cd13302ceb4575585729d7dc120f3a83ed85c8b5e5b"
+      },
+      {
+        "path": "images/home/zoo-social.jpg",
+        "sha256": "7cb245af00cb0301dfd032ee1e886a4df1b55f64bfa20fdca9e716ea294968ad"
+      },
+      {
+        "path": "images/myzootwin-beranda.png",
+        "sha256": "194a2cb5178f255ebf0289aabac75135fc65a8f716f26c01dcfeaebe00960169"
+      },
+      {
+        "path": "images/tropical-creek-game.jpg",
+        "sha256": "6edf52437618a80b94911b846cb2722257739be87c4f96c793f1e808d848e880"
+      },
+      {
+        "path": "images/tropical-creek-journal.svg",
+        "sha256": "cf2f03404f8d72367c385fbbdfaabb0bd21ae0a262804525c20e027a34ea94cc"
+      },
+      {
+        "path": "robots.txt",
+        "sha256": "91803eeb5a8dbbbae903fce53e66d6f5856f8e0894e7d7d21465c532381dd147"
+      },
+      {
+        "path": "sitemap-0.xml",
+        "sha256": "dbbec59a45a2b89f869b2a277fce46020f49e16649d635a48c479b9868b3c0bf"
+      },
+      {
+        "path": "sitemap-index.xml",
+        "sha256": "f956f18339cf090382bb71b5dadff01ca95c9bd0958046cef03c002851a7b550"
+      }
+    ]
+  },
+  "seo": {
+    "inherited": {
+      "path": "docs/qa/zebra/hp6-05/verification.json",
+      "bytes": 76306,
+      "sha256": "5645381ef6d3e86c240330110d4cc62b62b9fb7792d5cfe17a9c4b83b7a56c2a"
+    },
+    "scope": "Exact semantic HTML and robots/sitemap preserve the accepted10 route canonicals/oneH1,174 valid internal links, bilingual metadata/FAQ, explicit preview availability and minimal fact-based VideoGame. No new public availability or indexing/rich-result claim."
+  },
+  "performance": {
+    "scope": "Exact built byte/import graph and actual local HTTP responses. Not external packet capture, WebPerformance/ResourceTiming, network benchmark or presented FPS.",
+    "before": {
+      "htmlBytes": 21466,
+      "js": {
+        "nodes": [
+          {
+            "path": "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.xrNKqg83.js",
+            "bytes": 12827,
+            "sha256": "b4f4f51eb078143844adf51707e8d801b4f340bd9f8444254d7fedad90794f02",
+            "imports": [
+              "/_astro/dialog-focus.CS_awhan.js"
+            ]
+          },
+          {
+            "path": "/_astro/dialog-focus.CS_awhan.js",
+            "bytes": 697,
+            "sha256": "1c49e5f75581f00265e803464e1caea211865f20cc06223682b8336e763d2d64",
+            "imports": []
+          }
+        ],
+        "bytes": 13524
+      },
+      "styles": [
+        {
+          "path": ".qa/visual3d/h1-03-zebra-homeseo1/product/_astro/BaseLayout.DzYf29kc.css",
+          "bytes": 5620,
+          "sha256": "9535b3cf894c198266311a82dfda9a86dd1fc41c4e445ee89dba465e9cf9256b"
+        },
+        {
+          "path": ".qa/visual3d/h1-03-zebra-homeseo1/product/_astro/ZooHome.ewIXrXkW.css",
+          "bytes": 11049,
+          "sha256": "96b49a4b465619ef821c06eeccdd8ee0c18d262b8a2f518a47b31e8b2477eaa7"
+        }
+      ]
+    },
+    "after": {
+      "htmlBytes": 21466,
+      "js": {
+        "nodes": [
+          {
+            "path": "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.EOnjK5fP.js",
+            "bytes": 12920,
+            "sha256": "ca69c2685c1e3ef6db416b00ff71710bb2d9d83567b0d97c66f81237f558dab6",
+            "imports": [
+              "/_astro/dialog-focus.CS_awhan.js"
+            ]
+          },
+          {
+            "path": "/_astro/dialog-focus.CS_awhan.js",
+            "bytes": 697,
+            "sha256": "1c49e5f75581f00265e803464e1caea211865f20cc06223682b8336e763d2d64",
+            "imports": []
+          }
+        ],
+        "bytes": 13617
+      },
+      "styles": [
+        {
+          "path": ".qa/visual3d/h1-03-zebra-homefinal2/product/_astro/BaseLayout.CobipK0U.css",
+          "bytes": 5675,
+          "sha256": "b25de5e982e5c2a87f5a5b97323f92b49358136e0005cbe97a36736eb1353805"
+        },
+        {
+          "path": ".qa/visual3d/h1-03-zebra-homefinal2/product/_astro/ZooHome.ewIXrXkW.css",
+          "bytes": 11049,
+          "sha256": "96b49a4b465619ef821c06eeccdd8ee0c18d262b8a2f518a47b31e8b2477eaa7"
+        }
+      ]
+    },
+    "jsDelta": 93,
+    "trace": {
+      "receipt": {
+        "path": ".qa/zebra-audit/hp6-06-final3-requests.jsonl",
+        "bytes": 15842,
+        "sha256": "bab58696a258d4f6615f6a723c140aaca3bef0564b00b2300ce8704ed1b11915"
+      },
+      "requests": 76,
+      "uniquePaths": 15,
+      "statuses": [
+        200
+      ],
+      "responses": [
+        {
+          "path": "/",
+          "bytes": 21466,
+          "sha256": "8d0aa6dd30f4e657974298fe2eec645b95bfde407f901b797009fbac31f8b145",
+          "inertPlay": false
+        },
+        {
+          "path": "/_astro/BaseLayout.CobipK0U.css",
+          "bytes": 5675,
+          "sha256": "b25de5e982e5c2a87f5a5b97323f92b49358136e0005cbe97a36736eb1353805",
+          "inertPlay": false
+        },
+        {
+          "path": "/_astro/ZooHome.ewIXrXkW.css",
+          "bytes": 11049,
+          "sha256": "96b49a4b465619ef821c06eeccdd8ee0c18d262b8a2f518a47b31e8b2477eaa7",
+          "inertPlay": false
+        },
+        {
+          "path": "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.EOnjK5fP.js",
+          "bytes": 12920,
+          "sha256": "ca69c2685c1e3ef6db416b00ff71710bb2d9d83567b0d97c66f81237f558dab6",
+          "inertPlay": false
+        },
+        {
+          "path": "/images/home/v5-zoo-770.webp",
+          "bytes": 26374,
+          "sha256": "7e9a2db2cc9df38890bebdbf63374d1ebb8e4ef00f6d6e2177146785e32613a3",
+          "inertPlay": false
+        },
+        {
+          "path": "/_astro/dialog-focus.CS_awhan.js",
+          "bytes": 697,
+          "sha256": "1c49e5f75581f00265e803464e1caea211865f20cc06223682b8336e763d2d64",
+          "inertPlay": false
+        },
+        {
+          "path": "/images/home/v5-zebra-660.webp",
+          "bytes": 26710,
+          "sha256": "ec2599c98994e59e7d36abbc3b7142f2bf6f159f1b7bdd6e3119fd69adeecf21",
+          "inertPlay": false
+        },
+        {
+          "path": "/favicon.svg",
+          "bytes": 793,
+          "sha256": "78c28be8daea587e629661600e55c3250d521adcfa32cf88b3113d33267db702",
+          "inertPlay": false
+        },
+        {
+          "path": "/images/home/giraffes-800.webp",
+          "bytes": 30524,
+          "sha256": "d0bdf2b3196f3b769bc4b4e0e977249d2ed86ea64fa2f3f2bf560ed4bd9fa1b7",
+          "inertPlay": false
+        },
+        {
+          "path": "/en/",
+          "bytes": 21256,
+          "sha256": "9e7ead9949f0f5c4a7570d101ea53969342f1c060d0af35860485d0bbf45da47",
+          "inertPlay": false
+        },
+        {
+          "path": "/images/home/v5-zoo-480.webp",
+          "bytes": 14596,
+          "sha256": "1e47118c613aa474f517bfda8ce30a8be6459444ba53571b3aae810e0217b6f7",
+          "inertPlay": false
+        },
+        {
+          "path": "/images/home/v5-zebra-440.webp",
+          "bytes": 16934,
+          "sha256": "9e1f77add5ec0462d9aebd82a10daf898d027aabdadb61387e0ae22d2fc9376d",
+          "inertPlay": false
+        },
+        {
+          "path": "/images/home/giraffes-480.webp",
+          "bytes": 17728,
+          "sha256": "1c2eee2a30808155f7277c14dffeda17e20c6a3899aa2fe4310d6e66e4a60060",
+          "inertPlay": false
+        },
+        {
+          "path": "/play/",
+          "bytes": 58467,
+          "sha256": "f2b1e86c7af8dcaa6b2cb9e3f5691bb467c3c34b00bdb0b4ae9469c4dca80460",
+          "inertPlay": true
+        },
+        {
+          "path": "/_astro/play.DS-4tSYl.css",
+          "bytes": 40383,
+          "sha256": "b27c9ee89c0848e356a2920fb8daef6e40cda5805cc7a2ed5f2bab965c1854ac",
+          "inertPlay": false
+        }
+      ],
+      "requestedJs": [
+        "/_astro/BaseLayout.astro_astro_type_script_index_0_lang.EOnjK5fP.js",
+        "/_astro/dialog-focus.CS_awhan.js"
+      ]
+    },
+    "graphNote": "One direct script tag imports the existing697byte DOM focus helper. This audit follows minified imports explicitly; historical receipts remain unchanged. The helper is shared UI, not game engine.",
+    "externalScope": "Native DOM has no remote script/font/preconnect/analytics tags;17 source tests cover unconfigured analytics guards. No external packet trace was taken."
+  },
+  "native": {
+    "rawReceipts": [
+      {
+        "path": ".qa/zebra-audit/hp6-06-accepted-browser.json",
+        "bytes": 889018,
+        "sha256": "246bd4f2ce258b378f7f2f71ac2e50e790f7f9de71eaaab6cbcb15b37af9fd28"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-06-accepted-logs.json",
+        "bytes": 2,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-06-final3-server.json",
+        "bytes": 662,
+        "sha256": "ac8844526e14706cba67990218391f75b095399d72bc5d67d7a920d30dbf48ef"
+      },
+      {
+        "path": ".qa/zebra-audit/hp6-06-final3-requests.jsonl",
+        "bytes": 15842,
+        "sha256": "bab58696a258d4f6615f6a723c140aaca3bef0564b00b2300ce8704ed1b11915"
+      }
+    ],
+    "observations": 80,
+    "homeObservations": 78,
+    "inertPlayDestinations": 2,
+    "bootstrapPending": [
+      "en-mobile-home",
+      "language-id-mobile"
+    ],
+    "bootstrapScope": "Two closed-dialog navigation samples precede the site controller mount; statuses/reason are still blank. Every opened-dialog sample is ready with the correct unconfigured reason, contained focus and44px controls. No application defect.",
+    "viewports": [
+      {
+        "width": 1280,
+        "height": 900
+      },
+      {
+        "width": 780,
+        "height": 460
+      },
+      {
+        "width": 360,
+        "height": 800
+      }
+    ],
+    "origin": "http://localhost:52907",
+    "cases": [
+      {
+        "label": "id-desktop-initial",
+        "at": "2026-11-10T03:38:17.431Z",
+        "url": "http://localhost:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Analytics opsional nonaktif. Belum ada pilihan tersimpan.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-skip-focus",
+        "at": "2026-11-10T03:38:17.511Z",
+        "url": "http://localhost:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "A"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Analytics opsional nonaktif. Belum ada pilihan tersimpan.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-skip-main",
+        "at": "2026-11-10T03:38:17.593Z",
+        "url": "http://localhost:52907/#main-content",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<main id=\"main-content\" tabindex=\"-1\"><script type=\"application/ld+json\">{\"@context\":\"https://schema.org\",\"@type\":\"VideoGame\",\"name\":\"MyZooTwin\",\"url\":\"https://myzootwin.com/play/\",\"description\":\"Bangun zoo 3D di browser. Rawat makaw, gajah, singa dan jerapah, jalankan misi, lalu lihat pratinjau Zebra Grasslands.\",\"genre\":\"Simulation\",\"gamePlatform",
+          "id": "main-content",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "MAIN"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Analytics opsional nonaktif. Belum ada pilihan tersimpan.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-hero-cta-focus",
+        "at": "2026-11-10T03:38:17.658Z",
+        "url": "http://localhost:52907/#main-content",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<a class=\"button\" href=\"/play/\" data-site-source=\"home\" data-astro-cid-zatxzzfi=\"\">Main Sekarang<span aria-hidden=\"true\" data-astro-cid-zatxzzfi=\"\">↗</span></a>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "A"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Analytics opsional nonaktif. Belum ada pilihan tersimpan.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-cards-anchor",
+        "at": "2026-11-10T03:38:17.755Z",
+        "url": "http://localhost:52907/#habitats",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Analytics opsional nonaktif. Belum ada pilihan tersimpan.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-desktop-media",
+        "at": "2026-11-10T03:38:17.873Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Analytics opsional nonaktif. Belum ada pilihan tersimpan.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-desktop-privacy-unknown",
+        "at": "2026-11-10T03:38:18.058Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<h2 id=\"site-privacy-title\" data-privacy-text=\"title\" tabindex=\"-1\" data-astro-cid-eab6cvjj=\"\">Privasi di perangkat ini</h2>",
+          "id": "site-privacy-title",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "H2"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Analytics opsional nonaktif. Belum ada pilihan tersimpan.",
+          "scrollTop": 0,
+          "scrollHeight": 706,
+          "clientHeight": 706
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-shift-wrap-close",
+        "at": "2026-11-10T03:38:25.418Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": true,
+          "html": "<button type=\"button\" data-site-close=\"\" data-privacy-text=\"close\" data-astro-cid-eab6cvjj=\"\">Tutup</button>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Analytics opsional nonaktif. Belum ada pilihan tersimpan.",
+          "scrollTop": 0,
+          "scrollHeight": 706,
+          "clientHeight": 706
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-wrap-provider",
+        "at": "2026-11-10T03:38:25.467Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<a href=\"https://policies.google.com/privacy\" rel=\"noopener noreferrer\" data-privacy-text=\"provider\" data-astro-cid-eab6cvjj=\"\">Informasi privasi Google</a>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "A"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Analytics opsional nonaktif. Belum ada pilihan tersimpan.",
+          "scrollTop": 0,
+          "scrollHeight": 706,
+          "clientHeight": 706
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-tab-essential",
+        "at": "2026-11-10T03:38:25.526Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<button type=\"button\" data-site-choice=\"denied\" data-privacy-text=\"essential\" data-astro-cid-eab6cvjj=\"\">Hanya yang diperlukan</button>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Analytics opsional nonaktif. Belum ada pilihan tersimpan.",
+          "scrollTop": 0,
+          "scrollHeight": 706,
+          "clientHeight": 706
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-essential-keyboard-focus-close",
+        "at": "2026-11-10T03:38:25.585Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": true,
+          "html": "<button type=\"button\" data-site-close=\"\" data-privacy-text=\"close\" data-astro-cid-eab6cvjj=\"\">Tutup</button>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 706,
+          "clientHeight": 706
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-choice-settled",
+        "at": "2026-11-10T03:38:34.977Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": true,
+          "html": "<button type=\"button\" data-site-close=\"\" data-privacy-text=\"close\" data-astro-cid-eab6cvjj=\"\">Tutup</button>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 706,
+          "clientHeight": 706
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-denied-wrap-provider",
+        "at": "2026-11-10T03:38:35.394Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<a href=\"https://policies.google.com/privacy\" rel=\"noopener noreferrer\" data-privacy-text=\"provider\" data-astro-cid-eab6cvjj=\"\">Informasi privasi Google</a>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "A"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 706,
+          "clientHeight": 706
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-denied-shift-close",
+        "at": "2026-11-10T03:38:35.447Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": true,
+          "html": "<button type=\"button\" data-site-close=\"\" data-privacy-text=\"close\" data-astro-cid-eab6cvjj=\"\">Tutup</button>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 706,
+          "clientHeight": 706
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-escape-return",
+        "at": "2026-11-10T03:38:35.522Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<button class=\"privacy-footer\" type=\"button\" data-open-site-privacy=\"\">Pilihan privasi</button>",
+          "id": "",
+          "insideDialog": false,
+          "opener": true,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-denied-cold",
+        "at": "2026-11-10T03:38:51.937Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-cold-dialog",
+        "at": "2026-11-10T03:38:52.058Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<h2 id=\"site-privacy-title\" data-privacy-text=\"title\" tabindex=\"-1\" data-astro-cid-eab6cvjj=\"\">Privasi di perangkat ini</h2>",
+          "id": "site-privacy-title",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "H2"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 706,
+          "clientHeight": 706
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-close-return",
+        "at": "2026-11-10T03:38:52.162Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<button class=\"privacy-footer\" type=\"button\" data-open-site-privacy=\"\">Pilihan privasi</button>",
+          "id": "",
+          "insideDialog": false,
+          "opener": true,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-desktop-home",
+        "at": "2026-11-10T03:38:52.498Z",
+        "url": "http://localhost:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-desktop-media",
+        "at": "2026-11-10T03:38:52.575Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-desktop-privacy",
+        "at": "2026-11-10T03:38:52.713Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<h2 id=\"site-privacy-title\" data-privacy-text=\"title\" tabindex=\"-1\" data-astro-cid-eab6cvjj=\"\">Privacy on this device</h2>",
+          "id": "site-privacy-title",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "H2"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 683,
+          "clientHeight": 683
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-shift-wrap-close",
+        "at": "2026-11-10T03:38:52.790Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": true,
+          "html": "<button type=\"button\" data-site-close=\"\" data-privacy-text=\"close\" data-astro-cid-eab6cvjj=\"\">Close</button>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 683,
+          "clientHeight": 683
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-wrap-provider",
+        "at": "2026-11-10T03:38:52.852Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<a href=\"https://policies.google.com/privacy\" rel=\"noopener noreferrer\" data-privacy-text=\"provider\" data-astro-cid-eab6cvjj=\"\">Google’s privacy information</a>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "A"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 683,
+          "clientHeight": 683
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-tab-close-skip-disabled",
+        "at": "2026-11-10T03:38:52.921Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": true,
+          "html": "<button type=\"button\" data-site-close=\"\" data-privacy-text=\"close\" data-astro-cid-eab6cvjj=\"\">Close</button>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 683,
+          "clientHeight": 683
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-escape-return",
+        "at": "2026-11-10T03:38:53.006Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 900,
+          "width": 1280
+        },
+        "focus": {
+          "close": false,
+          "html": "<button class=\"privacy-footer\" type=\"button\" data-open-site-privacy=\"\">Privacy choices</button>",
+          "id": "",
+          "insideDialog": false,
+          "opener": true,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-landscape-home",
+        "at": "2026-11-10T03:38:53.064Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "focus": {
+          "close": false,
+          "html": "<button class=\"privacy-footer\" type=\"button\" data-open-site-privacy=\"\">Privacy choices</button>",
+          "id": "",
+          "insideDialog": false,
+          "opener": true,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-landscape-privacy",
+        "at": "2026-11-10T03:38:53.181Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "focus": {
+          "close": false,
+          "html": "<h2 id=\"site-privacy-title\" data-privacy-text=\"title\" tabindex=\"-1\" data-astro-cid-eab6cvjj=\"\">Privacy on this device</h2>",
+          "id": "site-privacy-title",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "H2"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 674,
+          "clientHeight": 427
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-landscape-tab-close-scroll",
+        "at": "2026-11-10T03:38:53.249Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "focus": {
+          "close": true,
+          "html": "<button type=\"button\" data-site-close=\"\" data-privacy-text=\"close\" data-astro-cid-eab6cvjj=\"\">Close</button>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 246.6666717529297,
+          "scrollHeight": 674,
+          "clientHeight": 427
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-landscape-return",
+        "at": "2026-11-10T03:38:53.329Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "focus": {
+          "close": false,
+          "html": "<button class=\"privacy-footer\" type=\"button\" data-open-site-privacy=\"\">Privacy choices</button>",
+          "id": "",
+          "insideDialog": false,
+          "opener": true,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-landscape-home",
+        "at": "2026-11-10T03:38:53.596Z",
+        "url": "http://localhost:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-landscape-media",
+        "at": "2026-11-10T03:38:53.687Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-landscape-privacy",
+        "at": "2026-11-10T03:38:53.820Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "focus": {
+          "close": false,
+          "html": "<h2 id=\"site-privacy-title\" data-privacy-text=\"title\" tabindex=\"-1\" data-astro-cid-eab6cvjj=\"\">Privasi di perangkat ini</h2>",
+          "id": "site-privacy-title",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "H2"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 697,
+          "clientHeight": 427
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-landscape-tab-close-scroll",
+        "at": "2026-11-10T03:38:53.889Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "focus": {
+          "close": true,
+          "html": "<button type=\"button\" data-site-close=\"\" data-privacy-text=\"close\" data-astro-cid-eab6cvjj=\"\">Tutup</button>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 270,
+          "scrollHeight": 697,
+          "clientHeight": 427
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-landscape-return",
+        "at": "2026-11-10T03:38:53.951Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 460,
+          "width": 780
+        },
+        "focus": {
+          "close": false,
+          "html": "<button class=\"privacy-footer\" type=\"button\" data-open-site-privacy=\"\">Pilihan privasi</button>",
+          "id": "",
+          "insideDialog": false,
+          "opener": true,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-mobile-home",
+        "at": "2026-11-10T03:39:21.224Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<button class=\"privacy-footer\" type=\"button\" data-open-site-privacy=\"\">Pilihan privasi</button>",
+          "id": "",
+          "insideDialog": false,
+          "opener": true,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-mobile-media",
+        "at": "2026-11-10T03:39:21.289Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-mobile-privacy",
+        "at": "2026-11-10T03:39:21.366Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<h2 id=\"site-privacy-title\" data-privacy-text=\"title\" tabindex=\"-1\" data-astro-cid-eab6cvjj=\"\">Privasi di perangkat ini</h2>",
+          "id": "site-privacy-title",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "H2"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 1188,
+          "clientHeight": 767
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-mobile-close-scroll",
+        "at": "2026-11-10T03:39:21.435Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": true,
+          "html": "<button type=\"button\" data-site-close=\"\" data-privacy-text=\"close\" data-astro-cid-eab6cvjj=\"\">Tutup</button>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 421.3333435058594,
+          "scrollHeight": 1188,
+          "clientHeight": 767
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-mobile-escape-return",
+        "at": "2026-11-10T03:39:21.847Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<button class=\"privacy-footer\" type=\"button\" data-open-site-privacy=\"\">Pilihan privasi</button>",
+          "id": "",
+          "insideDialog": false,
+          "opener": true,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-final-faq1-open",
+        "at": "2026-11-10T03:39:21.921Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Apakah perlu mengunduh atau membuat akun?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-final-faq1-closed",
+        "at": "2026-11-10T03:39:21.984Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Apakah perlu mengunduh atau membuat akun?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-final-faq2-open",
+        "at": "2026-11-10T03:39:22.076Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Apakah semua habitat langsung terbuka?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-final-faq2-closed",
+        "at": "2026-11-10T03:39:22.143Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Apakah semua habitat langsung terbuka?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-final-faq3-open",
+        "at": "2026-11-10T03:39:22.226Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Apakah isi ulang langsung memenuhi kebutuhan satwa?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-final-faq3-closed",
+        "at": "2026-11-10T03:39:22.289Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Apakah isi ulang langsung memenuhi kebutuhan satwa?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-final-faq4-open",
+        "at": "2026-11-10T03:39:22.371Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Apakah Zebra Grasslands sudah bisa dimainkan?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-final-faq4-closed",
+        "at": "2026-11-10T03:39:22.428Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Apakah Zebra Grasslands sudah bisa dimainkan?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-final-faq5-open",
+        "at": "2026-11-10T03:39:22.516Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Di mana progres disimpan?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-final-faq5-closed",
+        "at": "2026-11-10T03:39:22.586Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Di mana progres disimpan?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-preview-anchor",
+        "at": "2026-11-10T03:39:22.676Z",
+        "url": "http://localhost:52907/#zebra-preview-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-preview-back",
+        "at": "2026-11-10T03:39:22.754Z",
+        "url": "http://localhost:52907/#spotlight-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-preview-forward",
+        "at": "2026-11-10T03:39:22.833Z",
+        "url": "http://localhost:52907/#zebra-preview-title",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-mobile-home",
+        "at": "2026-11-10T03:39:23.028Z",
+        "url": "http://localhost:52907/en/",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-mobile-media",
+        "at": "2026-11-10T03:39:23.131Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-mobile-privacy",
+        "at": "2026-11-10T03:39:23.247Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<h2 id=\"site-privacy-title\" data-privacy-text=\"title\" tabindex=\"-1\" data-astro-cid-eab6cvjj=\"\">Privacy on this device</h2>",
+          "id": "site-privacy-title",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "H2"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 1119,
+          "clientHeight": 767
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-mobile-close-scroll",
+        "at": "2026-11-10T03:39:23.317Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": true,
+          "html": "<button type=\"button\" data-site-close=\"\" data-privacy-text=\"close\" data-astro-cid-eab6cvjj=\"\">Close</button>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 352.6666564941406,
+          "scrollHeight": 1119,
+          "clientHeight": 767
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-mobile-wrap-provider",
+        "at": "2026-11-10T03:39:23.376Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<a href=\"https://policies.google.com/privacy\" rel=\"noopener noreferrer\" data-privacy-text=\"provider\" data-astro-cid-eab6cvjj=\"\">Google’s privacy information</a>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "A"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 352.6666564941406,
+          "scrollHeight": 1119,
+          "clientHeight": 767
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-mobile-wrap-close",
+        "at": "2026-11-10T03:39:23.445Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": true,
+          "html": "<button type=\"button\" data-site-close=\"\" data-privacy-text=\"close\" data-astro-cid-eab6cvjj=\"\">Close</button>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 352.6666564941406,
+          "scrollHeight": 1119,
+          "clientHeight": 767
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-mobile-privacy-settled",
+        "at": "2026-11-10T03:39:50.667Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": true,
+          "html": "<button type=\"button\" data-site-close=\"\" data-privacy-text=\"close\" data-astro-cid-eab6cvjj=\"\">Close</button>",
+          "id": "",
+          "insideDialog": true,
+          "opener": false,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": true,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 352.6666564941406,
+          "scrollHeight": 1119,
+          "clientHeight": 767
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-mobile-close-return",
+        "at": "2026-11-10T03:39:51.099Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<button class=\"privacy-footer\" type=\"button\" data-open-site-privacy=\"\">Privacy choices</button>",
+          "id": "",
+          "insideDialog": false,
+          "opener": true,
+          "tag": "BUTTON"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-final-faq1-open",
+        "at": "2026-11-10T03:39:51.175Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Do I need a download or an account?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-final-faq1-closed",
+        "at": "2026-11-10T03:39:51.232Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Do I need a download or an account?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-final-faq2-open",
+        "at": "2026-11-10T03:39:51.318Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Are all habitats open from the start?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-final-faq2-closed",
+        "at": "2026-11-10T03:39:51.381Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Are all habitats open from the start?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-final-faq3-open",
+        "at": "2026-11-10T03:39:51.467Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Do refills immediately satisfy animal needs?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-final-faq3-closed",
+        "at": "2026-11-10T03:39:51.531Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Do refills immediately satisfy animal needs?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-final-faq4-open",
+        "at": "2026-11-10T03:39:51.610Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Can I play Zebra Grasslands now?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-final-faq4-closed",
+        "at": "2026-11-10T03:39:51.679Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Can I play Zebra Grasslands now?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-final-faq5-open",
+        "at": "2026-11-10T03:39:51.766Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Where is my progress saved?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-final-faq5-closed",
+        "at": "2026-11-10T03:39:51.838Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<summary data-astro-cid-zatxzzfi=\"\">Where is my progress saved?</summary>",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "SUMMARY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-preview-anchor",
+        "at": "2026-11-10T03:39:51.948Z",
+        "url": "http://localhost:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-preview-back",
+        "at": "2026-11-10T03:39:52.027Z",
+        "url": "http://localhost:52907/en/#spotlight-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-preview-forward",
+        "at": "2026-11-10T03:39:52.117Z",
+        "url": "http://localhost:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-inert-play",
+        "at": "2026-11-10T03:39:52.376Z",
+        "url": "http://localhost:52907/play/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<body><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a class=\"play-link\" href=\"/play/\" data-sit",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "en-play-back",
+        "at": "2026-11-10T03:39:52.592Z",
+        "url": "http://localhost:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "language-id-mobile",
+        "at": "2026-11-10T03:39:52.790Z",
+        "url": "http://localhost:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "language-back-en",
+        "at": "2026-11-10T03:39:53.052Z",
+        "url": "http://localhost:52907/en/#zebra-preview-title",
+        "lang": "en",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"en\">Skip to main content</a><header class=\"site-header\" lang=\"en\"><a class=\"brand\" href=\"/en/\" aria-label=\"MyZooTwin home\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Main navigation\"><a href=\"/en/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Only essential storage is selected. Optional analytics is off.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "language-forward-id",
+        "at": "2026-11-10T03:39:53.280Z",
+        "url": "http://localhost:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-inert-play",
+        "at": "2026-11-10T03:39:53.522Z",
+        "url": "http://localhost:52907/play/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<body><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a class=\"play-link\" href=\"/play/\" data-sit",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      },
+      {
+        "label": "id-play-back",
+        "at": "2026-11-10T03:39:53.744Z",
+        "url": "http://localhost:52907/",
+        "lang": "id",
+        "viewport": {
+          "height": 800,
+          "width": 360
+        },
+        "focus": {
+          "close": false,
+          "html": "<body class=\"game-home\"><a class=\"skip-link\" href=\"#main-content\" lang=\"id\">Langsung ke konten utama</a><header class=\"site-header\" lang=\"id\"><a class=\"brand\" href=\"/\" aria-label=\"Beranda MyZooTwin\"><span class=\"brand-mark\">✦</span><span>MyZoo<span class=\"brand-accent\">Twin</span></span></a><nav aria-label=\"Navigasi utama\"><a href=\"/\" aria-current=",
+          "id": "",
+          "insideDialog": false,
+          "opener": false,
+          "tag": "BODY"
+        },
+        "dialog": {
+          "open": false,
+          "status": "Hanya penyimpanan yang diperlukan dipilih. Analytics opsional nonaktif.",
+          "scrollTop": 0,
+          "scrollHeight": 0,
+          "clientHeight": 0
+        },
+        "overflow": false,
+        "canvas": 0,
+        "refIssues": 0
+      }
+    ],
+    "logs": [],
+    "scope": "Native skip/Tab/Shift+Tab/Enter/Space/Escape, all5FAQ ID/EN,6 locale/viewport combinations, all original media/cards, modal scrolling/wrapping/return, actual fresh essential-only choice and cold reload, related anchors/language/CTA/back-forward. Play response is QA-only inert; no game-start or locale-handoff certification.",
+    "consent": "Only dedicated localhost loopback consent changed through real UI unknown->denied. Original127.0.0.1 QA consent/saves and owner/production profiles were not opened or changed in this final run."
+  },
+  "screenshots": [
+    {
+      "path": "docs/qa/zebra/hp6-06/id-desktop-privacy-final.jpg",
+      "bytes": 102440,
+      "sha256": "e5d67325955d4fedcd81bb303804fc5f559a25279962b48cfafa83fdf47117f8",
+      "width": 1265,
+      "height": 864,
+      "scope": "Actual native host raster; CSS viewport override is not a physical device or full-viewport raster guarantee."
+    },
+    {
+      "path": "docs/qa/zebra/hp6-06/id-mobile-privacy-final.jpg",
+      "bytes": 51991,
+      "sha256": "bbec20a1b8586b63acfefd96b259d82c74ade047ed472b4ab4de4f26e6a00495",
+      "width": 345,
+      "height": 767,
+      "scope": "Actual native host raster; CSS viewport override is not a physical device or full-viewport raster guarantee."
+    },
+    {
+      "path": "docs/qa/zebra/hp6-06/en-mobile-privacy-final.jpg",
+      "bytes": 49977,
+      "sha256": "b00ddaeed25e8437788bfc98741a85f66ea6ee399d22f78b382798a5e06046f3",
+      "width": 345,
+      "height": 767,
+      "scope": "Actual native host raster; CSS viewport override is not a physical device or full-viewport raster guarantee."
+    }
+  ],
+  "discoveries": [
+    {
+      "path": "docs/qa/zebra/hp6-06/discovery.json",
+      "bytes": 3442,
+      "sha256": "e032d00ba93cd4c333803be016b4c596d8920b3b16b4b77c038e601ef7a70336"
+    },
+    {
+      "path": "docs/qa/zebra/hp6-06/focus-discovery.json",
+      "bytes": 20580,
+      "sha256": "549ae7dd64518bfdf5462ff568ab376b8ba2ef99b38252c138dfe6c4bb6743c4"
+    },
+    {
+      "path": "docs/qa/zebra/hp6-06/partial-verification.json",
+      "bytes": 10333,
+      "sha256": "db84ca24cb0704272aeed8d4f0737df549fbe5dfb3c8de11fad13a4e59863a99"
+    }
+  ],
+  "resources": {
+    "at": "2026-11-10T03:40:13.000Z",
+    "activeOwnedBrowserServerBuildTestsRenderer": 0,
+    "browser": {
+      "kind": "internal IAB",
+      "ownTab": "4",
+      "closed": true,
+      "viewportReset": true,
+      "remainingTabs": 0
+    },
+    "server": {
+      "port": 52907,
+      "pid": 17904,
+      "session": 29968,
+      "exit": 0,
+      "traceDrained": true
+    },
+    "completed": {
+      "strictTypes": 54440,
+      "astro": 79415,
+      "build": 62052,
+      "tests": 17,
+      "allExit": 0
+    },
+    "engineLaunched": false,
+    "defaultGameDatabaseOpened": false,
+    "farm": "Slot released; coordinate before next heavy/browser work"
+  },
+  "blockers": [
+    {
+      "id": "HP6-02_PLAYABILITY",
+      "reason": "PRD calls for five playable habitats. Current public bootstrap/grant gate Z2-06 is still open, and the candidate intentionally represents4 available-through-progression plus1 preview. Do not increment verified progress or claim public Zebra playability.",
+      "closeWhen": "Actual V5 bootstrap, grant budget/exactly-once and availability/release gates are proved. Update and retest copy/status against that enabled state."
+    },
+    {
+      "id": "R7-08",
+      "reason": "Separate explicit Zebra push/deploy authorization remains absent. Nothing was pushed or deployed."
+    }
+  ],
+  "noPushOrDeploy": true
+}
