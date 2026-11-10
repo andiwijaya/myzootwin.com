@@ -1,0 +1,7 @@
+# HP6-05 truthful bilingual SEO and FAQ
+
+Resume authorized after the previous08:00WIB stop; local checkout is clean at63434b2 on zebra-grasslands, origin andiwijaya/myzootwin.com. Separate push/deploy authorization remains absent. Update one micro-feature before the next, using only MyZooTwin resources and the internal browser.
+
+Describe the current four public habitats and the future Zebra preview consistently. Update ID/EN title, description and one H1 to identify the browser3D zoo/care game. Inherit the existing canonical, hreflang, OG/Twitter, actual preview-image alt/dimensions and minimal fact-based VideoGame object when validation proves them correct. Add causal-refill and explicit public-Zebra-unavailability FAQs and a relevant existing preview-section link; do not invent species routes, mission totals, ratings, offers, dates or grant promises. Native FAQ disclosure, links/language and responsive keyboard checks must pass. Validate the complete built route/canonical/sitemap/robots/internal-link graph, plus game/assets invariance and no eager engine.
+
+No gameplay/engine/save/ledger/mission/asset/config/dependency change is intended. Strict types, Astro check and immutable production build are source-bound; native /play navigation uses the documented QA-only inert destination and cannot open default player saves. Keep Z2-06/HP6-02/publicV5 adoption and R7-08 release gates open. Preserve historical evidence and close owned servers/tabs before handing the resource slot back to Farm.
