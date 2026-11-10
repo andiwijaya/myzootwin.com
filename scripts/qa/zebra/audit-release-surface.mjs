@@ -1,8 +1,7 @@
-import ts from 'typescript';
 import{readFile,writeFile,stat,copyFile}from'node:fs/promises';import{resolve,relative,join}from'node:path';import{execFileSync}from'node:child_process';import{createHash}from'node:crypto';
 import{discoverVisualInventory}from'./visual-inventory.mjs';import{files,sourceFingerprint,fingerprint}from'../tooling.mjs';
 const run=process.argv[2];if(!/^r7-06-[a-z0-9-]{1,24}$/.test(run??''))throw Error('Explicit R7-06 run required');
-const root=resolve('.'),base=resolve('.qa/zebra-audit/r7-06',run),product=join(base,'product'),rel=p=>relative(root,p).replaceAll('\\','/'),hash=b=>createHash('sha256').update(b).digest('hex'),json=async p=>JSON.parse(await readFile(p,'utf8'));
+const root=resolve('.'),base=resolve('.qa/zebra-audit/r7-06',run),product=join(base,'product'),hash=b=>createHash('sha256').update(b).digest('hex'),json=async p=>JSON.parse(await readFile(p,'utf8'));
 const source=execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),input=await sourceFingerprint(root),inventory=discoverVisualInventory({productDirectory:product});if(inventory.unresolved.length)throw Error('Unresolved actual runtime imports');
 await copyFile('.qa/bundle-analysis.json',join(base,'bundle-analysis.json'));const bundle=await json(join(base,'bundle-analysis.json'));
 const built=await fingerprint(root,await files(product));for(const c of bundle.chunks){const bytes=await readFile(join(product,c.fileName));if(hash(bytes)!==c.sha256||bytes.length!==c.bytes)throw Error('Stale bundle analysis '+c.fileName);if(c.modules.some(m=>m.id.includes('scripts/qa/')))throw Error('QA module in public chunk');}
