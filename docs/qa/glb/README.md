@@ -1,6 +1,6 @@
 # Hasil harness dan rilis GLB MyZooTwin
 
-P1–P4 dan integrasi renderer selesai pada 15 November 2026 WIB. Library berisi 122 master Pelatuk yang cocok dengan sumber. Lima spesies MyZooTwin kini memakai artwork GLB original: 14 individu, 28 varian high/low dan 264 klip. Produk juga memakai 22 template fasilitas GLB, vegetasi/batu terpilih dan pengunjung Pelatuk. Kandidat produksi sudah diverifikasi; deployment dan pemeriksaan domain dicatat terpisah setelah selesai.
+P1–P4 dan integrasi renderer selesai pada 15 November 2026 WIB. Library berisi 122 master Pelatuk yang cocok dengan sumber. Lima spesies MyZooTwin kini memakai artwork GLB original: 14 individu, 28 varian high/low dan 264 klip. Produk juga memakai 22 template fasilitas GLB, vegetasi/batu terpilih dan pengunjung Pelatuk. Rilis fitur `9be8310` sudah deploy dan terverifikasi di [myzootwin.com](https://myzootwin.com). [Bukti deployment dan pemeriksaan domain](C:/MyZooTwin/docs/qa/glb/deployment-20261115.json) mencatat 318 pemeriksaan hash live dan smoke/cold-save produk.
 
 - [P3: struktur, raw/runtime, seluruh individu dan review Codex](C:/MyZooTwin/docs/qa/glb/p3-final-20261115.json).
 - [P4: 106 kasus, 530 capture, kontak, visual dan lifecycle](C:/MyZooTwin/docs/qa/glb/p4-final-20261115.json).

@@ -2,7 +2,7 @@
 
 Tanggal: 15 November 2026 WIB.
 
-Status: P1, P2, P3, P4 dan integrasi renderer produk SELESAI pada 15 November 2026 WIB. Seluruh 122 master library tersalin; lima paket satwa baru mencakup 14 individu, fasilitas dan lingkungan sudah diuji. Kandidat build produksi lulus; deploy dan verifikasi domain sedang disiapkan sesuai otorisasi pengguna.
+Status: SELESAI DAN SUDAH DEPLOY. P1–P4, lima paket GLB/14 individu, integrasi, regresi serta verifikasi live selesai pada 15 November 2026 WIB. Rilis fitur `9be8310` aktif di https://myzootwin.com. Bukti akhir: `docs/qa/glb/deployment-20261115.json`.
 
 ## Keputusan pengguna
 
@@ -240,7 +240,7 @@ Otorisasi pengguna telah diperluas sampai deploy. Bukti integrasi: `docs/qa/glb/
 - [x] I.04 Audit seluruh kelompok objek; catat alasan konkret lapisan terrain/jalur/pagar/preview/efek/dekorasi global tetap parametrik.
 - [x] I.05 Jalankan regresi gameplay/save/ekonomi/stok/onboarding/preview/accessibility/resource. Continue, native picking Zuri, refill, transaksi jalur, Studio, context recovery, cold save, portrait/landscape, high/low, reduced motion dan speed10 lulus.
 - [x] I.06 Siapkan kandidat produksi yang dapat ditinjau: Astro 0 error/warning/hint, 32 tes akhir terarah lulus, build10 halaman/160 file identik dengan acuan produk QA, tanpa QA/authoring tersalurkan.
-- [ ] I.07 Commit/push kandidat yang sudah diverifikasi, tunggu deployment Cloudflare Pages untuk SHA yang tepat, lalu periksa origin deployment dan myzootwin.com.
+- [x] I.07 Commit/push kandidat yang sudah diverifikasi, tunggu deployment Cloudflare Pages untuk SHA yang tepat, lalu periksa origin deployment dan myzootwin.com.
 
 ## Aturan memperbarui progres
 
@@ -257,9 +257,13 @@ Jika suatu pemeriksaan tidak berlaku pada model tertentu, catat alasan yang konk
 | Paket spesies GLB baru selesai | 5 dari 5; P3 raw/runtime E dan P4 finalG |
 | Individu MyZooTwin lolos harness GLB baru | 14 dari 14; seluruh53 konteks pada high dan low |
 | Konteks habitat gabungan | SELESAI; 106 kasus, 530 capture, 14/14 individu, 26 fasilitas, 17 dekorasi; error/warning 0 dan resource akhir 0 |
-| Kode produk dan rilis | Integrasi dan kandidat produksi SELESAI; deploy dan verifikasi domain BERJALAN |
+| Kode produk dan rilis | SELESAI DAN DEPLOY; 318 pemeriksaan hash HTTP lulus pada origin rilis dan myzootwin.com; live play/cold save lulus |
 
 ## Catatan progres
+
+- Rilis fitur `9be8310` berhasil di Cloudflare Pages, deployment `8310b9fc-ecff-4f19-90cb-1194c31f2f3d`. Seluruh 159 file publik per origin cocok dengan build yang memakai konfigurasi publik Cloudflare yang sama (318 pemeriksaan). Header GLB Brotli dan cache runtime benar. Path QA/authoring mengembalikan fallback homepage yang identik, bukan file privat.
+- Live native pada origin deployment baru: dua makaw GLB, pembangunan habitat dan ketiga fasilitas care, refill, konsumsi makanan/air, pause serta cold Continue berhasil tanpa error/warning. Saldo cold 960 ZC, air 6/8; save pemilik di apex tidak dibuka. Semua tab QA ditutup dan viewport dipulihkan.
+
 
 - Final P4: 106 kasus (53 high +53 low), 530 capture, semua14 individu hadir; tidak ada error/warning. Setiap close meluluskan geometri/tekstur/kanvas/frame dan native program witness 0. Review Codex10 board mencakup60 capture sumber; probe kontak makanan/air setiap spesies serta revisi penyangga mangkuk telah diperiksa. `p4-final-20261115.json`.
 - Final produk:16 catatan alur asli di `product-native-20261115.json`, cold reload mempertahankan hash gameplay, dan viewport412×915 serta915×412 lulus high/low. Viewport dipulihkan. Penutupan final owners0, frame0, geometry/texture/material/instance/canvas0, cleanup error0, save bersih tanpa inflight.
