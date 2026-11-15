@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "at": "2026-11-14T23:12:34.110Z",
+  "dateWIB": "15 November 2026",
+  "status": "PASS_P1_P2",
+  "scope": "Copy and actual-GLB QA only; no new MyZooTwin animal authoring, production renderer integration, commit/push or deployment",
+  "sourceHead": "91234fe12c01940426b6d66bc385476c148f1d68",
+  "sourceFingerprint": "02534f1e473fc4de26665f4a3e364e93b291c1eed59a2583cacfe38eea50dd5c",
+  "sourceLibrarySha256": "868ef9f2ede908b72479258b215b26b6e107f1611fcbe0ce698bc06fc949b4f4",
+  "libraryManifestSha256": "3d912ddba31dbe3d60a2445485df27444e61128f803ee161fb81fb6baa4ed068",
+  "copy": {
+    "masters": 122,
+    "bytes": 689550484,
+    "provenanceFiles": 21,
+    "sourceUnchanged": true,
+    "receipt": "docs/qa/glb/p1-copy-20261115.json"
+  },
+  "structure": {
+    "masters": 122,
+    "skins": 46,
+    "clips": 56,
+    "embeddedPNGInstances": 209,
+    "receipt": "docs/qa/glb/p2-structural-20261115.json"
+  },
+  "browser": {
+    "run": ".qa/glb/p2-20261115-d",
+    "job": "batch-20261114230043327-1",
+    "masters": 122,
+    "viewCaptures": 732,
+    "lowShadowCaptures": 122,
+    "animationClips": 56,
+    "animationNumericalSamples": 280,
+    "animationStripFrames": 224,
+    "independentSkeletonMasters": 8,
+    "restoredComponentPlacements": 80,
+    "stockCases": 20,
+    "stockCloseCaptures": 40,
+    "verifiedImageCaptures": 1092,
+    "errors": [],
+    "warnings": [],
+    "batchSummary": ".qa/glb/p2-20261115-d/evidence/batch-20261114230043327-1/summary.json"
+  },
+  "visualReview": {
+    "masters": 122,
+    "receipt": "docs/qa/glb/p2-visual-review-20261115.json"
+  },
+  "lifecycle": {
+    "cycles": 6,
+    "baseline": {
+      "geometries": 2,
+      "textures": 4
+    },
+    "eachCycleReturnedToBaseline": true,
+    "httpFailureRetry": true,
+    "identityFailureRetry": true,
+    "lateParseDisposal": true,
+    "receipt": ".qa/glb/p2-20261115-d/evidence/recovery-20261114230145041-2/result.json"
+  },
+  "nativeUI": "docs/qa/glb/p2-native-ui-20261115.json",
+  "validation": {
+    "focusedTests": {
+      "command": "node --experimental-strip-types --test tests/glb-master-pool.test.mjs tests/glb-library-inspection.test.mjs tests/visual3d-viewer.test.mjs",
+      "tests": 13,
+      "pass": 13,
+      "fail": 0
+    },
+    "astroCheck": {
+      "files": 642,
+      "errors": 0,
+      "warnings": 0,
+      "hints": 0
+    },
+    "productBuild": {
+      "pages": 10,
+      "files": 37,
+      "masterGLBs": 0,
+      "qaLeakage": false,
+      "receipt": "docs/qa/glb/p1-production-exclusion-20261115.json"
+    },
+    "vendorNoticeRegression": {
+      "command": "node --experimental-strip-types --test tests/browser-vendor-notices.test.mjs",
+      "tests": 1,
+      "pass": 1,
+      "fail": 0
+    },
+    "totalDistinctFocusedAndNoticeTests": 14
+  },
+  "cleanup": {
+    "ownedBrowserTabClosed": true,
+    "ownedLoopbackServersStopped": true,
+    "noListenersOnPorts": [
+      51370,
+      51390,
+      59929,
+      52073
+    ]
+  }
+}

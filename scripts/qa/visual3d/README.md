@@ -1,5 +1,7 @@
 # Internal visual QA
 
+The separate [GLB master inspection mode](glb/README.md) loads the imported Pelatuk authoring library for P1/P2. It reuses this lab's camera fitting and production sanctuary lighting, with its own immutable QA build and local resource owner. It has no player database or simulation, and is excluded from the product build.
+
 This entry imports the actual `mountFoundationScene`, strict V4 codec, and durable backend. It does not fork the models, gameplay engine or fixed clock. It starts paused before any RAF callback advances the game. Current H1-01 scope is entry, isolation, overview, close and cold identity. Viewer/registry/timeline/resource acceptance are separate checklist gates.
 
 Build an immutable run with `node scripts/qa/visual3d/build.mjs h1-01-new-name`. Output is under `.qa/visual3d/<run-id>/lab`; the companion `product` build is scanned for leaked QA entries and strings. The build records the exact source SHA, full source fingerprint, original fixture hash, and every output hash. A large single QA bundle is expected because it includes the production game renderer; it is never a public route or product dependency.

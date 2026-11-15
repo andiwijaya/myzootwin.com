@@ -1,0 +1,6558 @@
+{
+  "schemaVersion": 1,
+  "sourceLibrarySha256": "original-myzootwin-animals-v01",
+  "selectedMasters": 28,
+  "totalMasterBytes": 63172072,
+  "assets": [
+    {
+      "id": "zebra-zaki-high-v01",
+      "species": "zebra",
+      "scientificName": "Equus quagga",
+      "variant": "zaki",
+      "detail": "high",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/zebra-zaki-high-v01.glb",
+      "bytes": 2449480,
+      "sha256": "6a36d8a7f3360fd1044beb295444cf5b31a43d957e657725efa5c82a66660e7e",
+      "sourceSha256": "6a36d8a7f3360fd1044beb295444cf5b31a43d957e657725efa5c82a66660e7e",
+      "sourcePath": "masters/zebra-zaki-high-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "trot",
+        "graze",
+        "drink",
+        "rest",
+        "follow-herd",
+        "groom",
+        "enrich"
+      ],
+      "vertices": 20776,
+      "triangles": 34568,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            0.94,
+            -0.06
+          ]
+        },
+        {
+          "name": "neck",
+          "parent": "body",
+          "at": [
+            0,
+            0.94,
+            0.15
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "neck",
+          "at": [
+            0,
+            1.39,
+            0.4600000000000001
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            1.29,
+            0.6200000000000001
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            1.02,
+            -0.46
+          ]
+        },
+        {
+          "name": "earLeft",
+          "parent": "head",
+          "at": [
+            0.11,
+            1.51,
+            0.39000000000000007
+          ]
+        },
+        {
+          "name": "earRight",
+          "parent": "head",
+          "at": [
+            -0.11,
+            1.51,
+            0.39000000000000007
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.16,
+            0.87,
+            0.24
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.16,
+            0.45,
+            0.24
+          ]
+        },
+        {
+          "name": "foreLeftHoof",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.16,
+            0.044999999999999984,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.16,
+            0.87,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.16,
+            0.45,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRightHoof",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.16,
+            0.044999999999999984,
+            0.24
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.16,
+            0.87,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.16,
+            0.45,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftHoof",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.16,
+            0.044999999999999984,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.16,
+            0.87,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.16,
+            0.45,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightHoof",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.16,
+            0.044999999999999984,
+            -0.34
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.24186837673187256,
+          0.0002771946892607957,
+          -0.640999972820282
+        ],
+        "max": [
+          0.24186837673187256,
+          1.7680000066757202,
+          0.8563193678855896
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "2693e748e314392494f4974e119db9aee1284efd0043c31a470fc22971e56519",
+        "normalSha256": "cd1e8a6baa8d51457a1ef7c7ed1c0da3b71ff6362c660870f5d3742256403269"
+      }
+    },
+    {
+      "id": "zebra-zaki-low-v01",
+      "species": "zebra",
+      "scientificName": "Equus quagga",
+      "variant": "zaki",
+      "detail": "low",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/zebra-zaki-low-v01.glb",
+      "bytes": 1523960,
+      "sha256": "de119ab888f5ec600b830344f4574f585ff43e9ccc15c32094aeeaa7cf465211",
+      "sourceSha256": "de119ab888f5ec600b830344f4574f585ff43e9ccc15c32094aeeaa7cf465211",
+      "sourcePath": "masters/zebra-zaki-low-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "trot",
+        "graze",
+        "drink",
+        "rest",
+        "follow-herd",
+        "groom",
+        "enrich"
+      ],
+      "vertices": 6969,
+      "triangles": 10552,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            0.94,
+            -0.06
+          ]
+        },
+        {
+          "name": "neck",
+          "parent": "body",
+          "at": [
+            0,
+            0.94,
+            0.15
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "neck",
+          "at": [
+            0,
+            1.39,
+            0.4600000000000001
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            1.29,
+            0.6200000000000001
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            1.02,
+            -0.46
+          ]
+        },
+        {
+          "name": "earLeft",
+          "parent": "head",
+          "at": [
+            0.11,
+            1.51,
+            0.39000000000000007
+          ]
+        },
+        {
+          "name": "earRight",
+          "parent": "head",
+          "at": [
+            -0.11,
+            1.51,
+            0.39000000000000007
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.16,
+            0.87,
+            0.24
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.16,
+            0.45,
+            0.24
+          ]
+        },
+        {
+          "name": "foreLeftHoof",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.16,
+            0.044999999999999984,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.16,
+            0.87,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.16,
+            0.45,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRightHoof",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.16,
+            0.044999999999999984,
+            0.24
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.16,
+            0.87,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.16,
+            0.45,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftHoof",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.16,
+            0.044999999999999984,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.16,
+            0.87,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.16,
+            0.45,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightHoof",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.16,
+            0.044999999999999984,
+            -0.34
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.24169616401195526,
+          0.00019978760974481702,
+          -0.640999972820282
+        ],
+        "max": [
+          0.24169616401195526,
+          1.7680000066757202,
+          0.8569051623344421
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "4ddb9ee6583bced0d5e846ca78379113f15732238bb9da9e2094a2212bdad55b",
+        "normalSha256": "7c93d8faf23750dff1fe64de859f78091ee7180929ac145bd3fc3d19b1e3a5e2"
+      }
+    },
+    {
+      "id": "zebra-zuri-high-v01",
+      "species": "zebra",
+      "scientificName": "Equus quagga",
+      "variant": "zuri",
+      "detail": "high",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/zebra-zuri-high-v01.glb",
+      "bytes": 2445832,
+      "sha256": "529a35cb175879e2cf1f9acd53f4138fde95f95305f9294e8bf47f4097c6e194",
+      "sourceSha256": "529a35cb175879e2cf1f9acd53f4138fde95f95305f9294e8bf47f4097c6e194",
+      "sourcePath": "masters/zebra-zuri-high-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "trot",
+        "graze",
+        "drink",
+        "rest",
+        "follow-herd",
+        "groom",
+        "enrich"
+      ],
+      "vertices": 20776,
+      "triangles": 34568,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            0.94,
+            -0.06
+          ]
+        },
+        {
+          "name": "neck",
+          "parent": "body",
+          "at": [
+            0,
+            0.94,
+            0.15
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "neck",
+          "at": [
+            0,
+            1.39,
+            0.4600000000000001
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            1.29,
+            0.6200000000000001
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            1.02,
+            -0.46
+          ]
+        },
+        {
+          "name": "earLeft",
+          "parent": "head",
+          "at": [
+            0.11,
+            1.51,
+            0.39000000000000007
+          ]
+        },
+        {
+          "name": "earRight",
+          "parent": "head",
+          "at": [
+            -0.11,
+            1.51,
+            0.39000000000000007
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.16,
+            0.87,
+            0.24
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.16,
+            0.45,
+            0.24
+          ]
+        },
+        {
+          "name": "foreLeftHoof",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.16,
+            0.044999999999999984,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.16,
+            0.87,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.16,
+            0.45,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRightHoof",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.16,
+            0.044999999999999984,
+            0.24
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.16,
+            0.87,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.16,
+            0.45,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftHoof",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.16,
+            0.044999999999999984,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.16,
+            0.87,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.16,
+            0.45,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightHoof",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.16,
+            0.044999999999999984,
+            -0.34
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.24186837673187256,
+          0.0002771946892607957,
+          -0.640999972820282
+        ],
+        "max": [
+          0.24186837673187256,
+          1.7680000066757202,
+          0.8563193678855896
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "e24781c8fc85f3b9b4dee4a60c519bf87da6a2e53ca39fc43755e89eb86dd06a",
+        "normalSha256": "cd1e8a6baa8d51457a1ef7c7ed1c0da3b71ff6362c660870f5d3742256403269"
+      }
+    },
+    {
+      "id": "zebra-zuri-low-v01",
+      "species": "zebra",
+      "scientificName": "Equus quagga",
+      "variant": "zuri",
+      "detail": "low",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/zebra-zuri-low-v01.glb",
+      "bytes": 1519956,
+      "sha256": "d3dab7a9300c4e9fec5ede7a975f0b0322c6815ba253d4f5325d0aa96d04c016",
+      "sourceSha256": "d3dab7a9300c4e9fec5ede7a975f0b0322c6815ba253d4f5325d0aa96d04c016",
+      "sourcePath": "masters/zebra-zuri-low-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "trot",
+        "graze",
+        "drink",
+        "rest",
+        "follow-herd",
+        "groom",
+        "enrich"
+      ],
+      "vertices": 6969,
+      "triangles": 10552,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            0.94,
+            -0.06
+          ]
+        },
+        {
+          "name": "neck",
+          "parent": "body",
+          "at": [
+            0,
+            0.94,
+            0.15
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "neck",
+          "at": [
+            0,
+            1.39,
+            0.4600000000000001
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            1.29,
+            0.6200000000000001
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            1.02,
+            -0.46
+          ]
+        },
+        {
+          "name": "earLeft",
+          "parent": "head",
+          "at": [
+            0.11,
+            1.51,
+            0.39000000000000007
+          ]
+        },
+        {
+          "name": "earRight",
+          "parent": "head",
+          "at": [
+            -0.11,
+            1.51,
+            0.39000000000000007
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.16,
+            0.87,
+            0.24
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.16,
+            0.45,
+            0.24
+          ]
+        },
+        {
+          "name": "foreLeftHoof",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.16,
+            0.044999999999999984,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.16,
+            0.87,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.16,
+            0.45,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRightHoof",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.16,
+            0.044999999999999984,
+            0.24
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.16,
+            0.87,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.16,
+            0.45,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftHoof",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.16,
+            0.044999999999999984,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.16,
+            0.87,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.16,
+            0.45,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightHoof",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.16,
+            0.044999999999999984,
+            -0.34
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.24169616401195526,
+          0.00019978760974481702,
+          -0.640999972820282
+        ],
+        "max": [
+          0.24169616401195526,
+          1.7680000066757202,
+          0.8569051623344421
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "24b74f06367871b32d1c90f27a86bfb9c789573fc7721c551af397e9e85e74c0",
+        "normalSha256": "7c93d8faf23750dff1fe64de859f78091ee7180929ac145bd3fc3d19b1e3a5e2"
+      }
+    },
+    {
+      "id": "zebra-mira-high-v01",
+      "species": "zebra",
+      "scientificName": "Equus quagga",
+      "variant": "mira",
+      "detail": "high",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/zebra-mira-high-v01.glb",
+      "bytes": 2448536,
+      "sha256": "6055497b5807a7f74faacea8e1b1da71e871c2ae0b77f28de4da9354f59e659b",
+      "sourceSha256": "6055497b5807a7f74faacea8e1b1da71e871c2ae0b77f28de4da9354f59e659b",
+      "sourcePath": "masters/zebra-mira-high-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "trot",
+        "graze",
+        "drink",
+        "rest",
+        "follow-herd",
+        "groom",
+        "enrich"
+      ],
+      "vertices": 20776,
+      "triangles": 34568,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            0.94,
+            -0.06
+          ]
+        },
+        {
+          "name": "neck",
+          "parent": "body",
+          "at": [
+            0,
+            0.94,
+            0.15
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "neck",
+          "at": [
+            0,
+            1.39,
+            0.4600000000000001
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            1.29,
+            0.6200000000000001
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            1.02,
+            -0.46
+          ]
+        },
+        {
+          "name": "earLeft",
+          "parent": "head",
+          "at": [
+            0.11,
+            1.51,
+            0.39000000000000007
+          ]
+        },
+        {
+          "name": "earRight",
+          "parent": "head",
+          "at": [
+            -0.11,
+            1.51,
+            0.39000000000000007
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.16,
+            0.87,
+            0.24
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.16,
+            0.45,
+            0.24
+          ]
+        },
+        {
+          "name": "foreLeftHoof",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.16,
+            0.044999999999999984,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.16,
+            0.87,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.16,
+            0.45,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRightHoof",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.16,
+            0.044999999999999984,
+            0.24
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.16,
+            0.87,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.16,
+            0.45,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftHoof",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.16,
+            0.044999999999999984,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.16,
+            0.87,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.16,
+            0.45,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightHoof",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.16,
+            0.044999999999999984,
+            -0.34
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.24186837673187256,
+          0.0002771946892607957,
+          -0.640999972820282
+        ],
+        "max": [
+          0.24186837673187256,
+          1.7680000066757202,
+          0.8563193678855896
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "b76e4e210a205968f651208577da438002832dd9a55ef18fe39f72f86a90c0e5",
+        "normalSha256": "cd1e8a6baa8d51457a1ef7c7ed1c0da3b71ff6362c660870f5d3742256403269"
+      }
+    },
+    {
+      "id": "zebra-mira-low-v01",
+      "species": "zebra",
+      "scientificName": "Equus quagga",
+      "variant": "mira",
+      "detail": "low",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/zebra-mira-low-v01.glb",
+      "bytes": 1522928,
+      "sha256": "9119b5e76b45f983faf628666eb792d112c06352fef68f4ecd8b1fb655385cf3",
+      "sourceSha256": "9119b5e76b45f983faf628666eb792d112c06352fef68f4ecd8b1fb655385cf3",
+      "sourcePath": "masters/zebra-mira-low-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "trot",
+        "graze",
+        "drink",
+        "rest",
+        "follow-herd",
+        "groom",
+        "enrich"
+      ],
+      "vertices": 6969,
+      "triangles": 10552,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            0.94,
+            -0.06
+          ]
+        },
+        {
+          "name": "neck",
+          "parent": "body",
+          "at": [
+            0,
+            0.94,
+            0.15
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "neck",
+          "at": [
+            0,
+            1.39,
+            0.4600000000000001
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            1.29,
+            0.6200000000000001
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            1.02,
+            -0.46
+          ]
+        },
+        {
+          "name": "earLeft",
+          "parent": "head",
+          "at": [
+            0.11,
+            1.51,
+            0.39000000000000007
+          ]
+        },
+        {
+          "name": "earRight",
+          "parent": "head",
+          "at": [
+            -0.11,
+            1.51,
+            0.39000000000000007
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.16,
+            0.87,
+            0.24
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.16,
+            0.45,
+            0.24
+          ]
+        },
+        {
+          "name": "foreLeftHoof",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.16,
+            0.044999999999999984,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.16,
+            0.87,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.16,
+            0.45,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRightHoof",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.16,
+            0.044999999999999984,
+            0.24
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.16,
+            0.87,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.16,
+            0.45,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftHoof",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.16,
+            0.044999999999999984,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.16,
+            0.87,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.16,
+            0.45,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightHoof",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.16,
+            0.044999999999999984,
+            -0.34
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.24169616401195526,
+          0.00019978760974481702,
+          -0.640999972820282
+        ],
+        "max": [
+          0.24169616401195526,
+          1.7680000066757202,
+          0.8569051623344421
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "011de2b6d12984558e52d59792795efd11447e19f5fdb690659332de179fbabb",
+        "normalSha256": "7c93d8faf23750dff1fe64de859f78091ee7180929ac145bd3fc3d19b1e3a5e2"
+      }
+    },
+    {
+      "id": "zebra-kira-high-v01",
+      "species": "zebra",
+      "scientificName": "Equus quagga",
+      "variant": "kira",
+      "detail": "high",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/zebra-kira-high-v01.glb",
+      "bytes": 2451528,
+      "sha256": "3e708bc62f1a5da5dd26052d9c7cc4e3e641c87254cb87e4212a08a0589e7fd7",
+      "sourceSha256": "3e708bc62f1a5da5dd26052d9c7cc4e3e641c87254cb87e4212a08a0589e7fd7",
+      "sourcePath": "masters/zebra-kira-high-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "trot",
+        "graze",
+        "drink",
+        "rest",
+        "follow-herd",
+        "groom",
+        "enrich"
+      ],
+      "vertices": 20776,
+      "triangles": 34568,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            0.94,
+            -0.06
+          ]
+        },
+        {
+          "name": "neck",
+          "parent": "body",
+          "at": [
+            0,
+            0.94,
+            0.15
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "neck",
+          "at": [
+            0,
+            1.39,
+            0.4600000000000001
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            1.29,
+            0.6200000000000001
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            1.02,
+            -0.46
+          ]
+        },
+        {
+          "name": "earLeft",
+          "parent": "head",
+          "at": [
+            0.11,
+            1.51,
+            0.39000000000000007
+          ]
+        },
+        {
+          "name": "earRight",
+          "parent": "head",
+          "at": [
+            -0.11,
+            1.51,
+            0.39000000000000007
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.16,
+            0.87,
+            0.24
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.16,
+            0.45,
+            0.24
+          ]
+        },
+        {
+          "name": "foreLeftHoof",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.16,
+            0.044999999999999984,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.16,
+            0.87,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.16,
+            0.45,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRightHoof",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.16,
+            0.044999999999999984,
+            0.24
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.16,
+            0.87,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.16,
+            0.45,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftHoof",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.16,
+            0.044999999999999984,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.16,
+            0.87,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.16,
+            0.45,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightHoof",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.16,
+            0.044999999999999984,
+            -0.34
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.24186837673187256,
+          0.0002771946892607957,
+          -0.640999972820282
+        ],
+        "max": [
+          0.24186837673187256,
+          1.7680000066757202,
+          0.8563193678855896
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "c5652cca42b4b7dc9d5bd3bf87f8a90a390600d59e4a7bf2186598cc6a53f45d",
+        "normalSha256": "cd1e8a6baa8d51457a1ef7c7ed1c0da3b71ff6362c660870f5d3742256403269"
+      }
+    },
+    {
+      "id": "zebra-kira-low-v01",
+      "species": "zebra",
+      "scientificName": "Equus quagga",
+      "variant": "kira",
+      "detail": "low",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/zebra-kira-low-v01.glb",
+      "bytes": 1526336,
+      "sha256": "8ef6c262616c1679f084c1e81413817275ed2d2b8c4c84da5a1c2ad078fe5d12",
+      "sourceSha256": "8ef6c262616c1679f084c1e81413817275ed2d2b8c4c84da5a1c2ad078fe5d12",
+      "sourcePath": "masters/zebra-kira-low-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "trot",
+        "graze",
+        "drink",
+        "rest",
+        "follow-herd",
+        "groom",
+        "enrich"
+      ],
+      "vertices": 6969,
+      "triangles": 10552,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            0.94,
+            -0.06
+          ]
+        },
+        {
+          "name": "neck",
+          "parent": "body",
+          "at": [
+            0,
+            0.94,
+            0.15
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "neck",
+          "at": [
+            0,
+            1.39,
+            0.4600000000000001
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            1.29,
+            0.6200000000000001
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            1.02,
+            -0.46
+          ]
+        },
+        {
+          "name": "earLeft",
+          "parent": "head",
+          "at": [
+            0.11,
+            1.51,
+            0.39000000000000007
+          ]
+        },
+        {
+          "name": "earRight",
+          "parent": "head",
+          "at": [
+            -0.11,
+            1.51,
+            0.39000000000000007
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.16,
+            0.87,
+            0.24
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.16,
+            0.45,
+            0.24
+          ]
+        },
+        {
+          "name": "foreLeftHoof",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.16,
+            0.044999999999999984,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.16,
+            0.87,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.16,
+            0.45,
+            0.24
+          ]
+        },
+        {
+          "name": "foreRightHoof",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.16,
+            0.044999999999999984,
+            0.24
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.16,
+            0.87,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.16,
+            0.45,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftHoof",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.16,
+            0.044999999999999984,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.16,
+            0.87,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.16,
+            0.45,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightHoof",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.16,
+            0.044999999999999984,
+            -0.34
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.24169616401195526,
+          0.00019978760974481702,
+          -0.640999972820282
+        ],
+        "max": [
+          0.24169616401195526,
+          1.7680000066757202,
+          0.8569051623344421
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "ec38771a52ea1d4685499f871c31d2bef877b4da92c49b696657d52c9e76f179",
+        "normalSha256": "7c93d8faf23750dff1fe64de859f78091ee7180929ac145bd3fc3d19b1e3a5e2"
+      }
+    },
+    {
+      "id": "giraffe-dira-high-v01",
+      "species": "giraffe",
+      "scientificName": "Giraffa sp.",
+      "variant": "dira",
+      "detail": "high",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/giraffe-dira-high-v01.glb",
+      "bytes": 2235288,
+      "sha256": "0a8fdf3571bdd11beb35e0943af1bc348b29c2f81c5f5807fec0e11547669b4b",
+      "sourceSha256": "0a8fdf3571bdd11beb35e0943af1bc348b29c2f81c5f5807fec0e11547669b4b",
+      "sourcePath": "masters/giraffe-dira-high-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "browse",
+        "drink",
+        "rest",
+        "ruminate",
+        "social",
+        "enrich"
+      ],
+      "vertices": 18440,
+      "triangles": 30232,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            1.3,
+            0
+          ]
+        },
+        {
+          "name": "neckLower",
+          "parent": "body",
+          "at": [
+            0,
+            1.5,
+            0.25
+          ]
+        },
+        {
+          "name": "neckUpper",
+          "parent": "neckLower",
+          "at": [
+            0,
+            2.15,
+            0.25
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "neckUpper",
+          "at": [
+            0,
+            2.8,
+            0.25
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            2.72,
+            0.48
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            1.3,
+            -0.43
+          ]
+        },
+        {
+          "name": "tongue",
+          "parent": "jaw",
+          "at": [
+            0,
+            2.7,
+            0.58
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.18,
+            1.25,
+            0.3
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.18,
+            0.62,
+            0.3
+          ]
+        },
+        {
+          "name": "foreLeftHoof",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.18,
+            0.06999999999999995,
+            0.32
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.18,
+            1.25,
+            0.3
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.18,
+            0.62,
+            0.3
+          ]
+        },
+        {
+          "name": "foreRightHoof",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.18,
+            0.06999999999999995,
+            0.32
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.18,
+            1.25,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.18,
+            0.62,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftHoof",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.18,
+            0.06999999999999995,
+            -0.32
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.18,
+            1.25,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.18,
+            0.62,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightHoof",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.18,
+            0.06999999999999995,
+            -0.32
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.2919999957084656,
+          0.0018862474244087934,
+          -0.6669999957084656
+        ],
+        "max": [
+          0.2919999957084656,
+          3.140000104904175,
+          0.7250000238418579
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "55e956bf4709c6bf772d1bb6436a263f6a23e87af9f117178217368e7f5a24f8",
+        "normalSha256": "22f14c604fd6ba52e85228051faf0965e12c7b0c14e810a0b660cb67e542cbcd"
+      }
+    },
+    {
+      "id": "giraffe-dira-low-v01",
+      "species": "giraffe",
+      "scientificName": "Giraffa sp.",
+      "variant": "dira",
+      "detail": "low",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/giraffe-dira-low-v01.glb",
+      "bytes": 1423780,
+      "sha256": "83ee4c915ebc099b88365fe0aef55e6e4dfc3df1131e3e781f58f18b67cb65f1",
+      "sourceSha256": "83ee4c915ebc099b88365fe0aef55e6e4dfc3df1131e3e781f58f18b67cb65f1",
+      "sourcePath": "masters/giraffe-dira-low-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "browse",
+        "drink",
+        "rest",
+        "ruminate",
+        "social",
+        "enrich"
+      ],
+      "vertices": 6255,
+      "triangles": 8852,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            1.3,
+            0
+          ]
+        },
+        {
+          "name": "neckLower",
+          "parent": "body",
+          "at": [
+            0,
+            1.5,
+            0.25
+          ]
+        },
+        {
+          "name": "neckUpper",
+          "parent": "neckLower",
+          "at": [
+            0,
+            2.15,
+            0.25
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "neckUpper",
+          "at": [
+            0,
+            2.8,
+            0.25
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            2.72,
+            0.48
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            1.3,
+            -0.43
+          ]
+        },
+        {
+          "name": "tongue",
+          "parent": "jaw",
+          "at": [
+            0,
+            2.7,
+            0.58
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.18,
+            1.25,
+            0.3
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.18,
+            0.62,
+            0.3
+          ]
+        },
+        {
+          "name": "foreLeftHoof",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.18,
+            0.06999999999999995,
+            0.32
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.18,
+            1.25,
+            0.3
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.18,
+            0.62,
+            0.3
+          ]
+        },
+        {
+          "name": "foreRightHoof",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.18,
+            0.06999999999999995,
+            0.32
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.18,
+            1.25,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.18,
+            0.62,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftHoof",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.18,
+            0.06999999999999995,
+            -0.32
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.18,
+            1.25,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.18,
+            0.62,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightHoof",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.18,
+            0.06999999999999995,
+            -0.32
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.2919999957084656,
+          0.0008492094348184764,
+          -0.6669999957084656
+        ],
+        "max": [
+          0.2919999957084656,
+          3.140000104904175,
+          0.7250000238418579
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "a2f41fd67204a7b6187a5e60c0de86444e6737991a1a5ce1b9adb5df14e57a78",
+        "normalSha256": "2c61a4dfae47154414bced19fc75716269015744d675b9025e4570bea706eddb"
+      }
+    },
+    {
+      "id": "giraffe-sora-high-v01",
+      "species": "giraffe",
+      "scientificName": "Giraffa sp.",
+      "variant": "sora",
+      "detail": "high",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/giraffe-sora-high-v01.glb",
+      "bytes": 2234992,
+      "sha256": "eb9a836d8f0d17f5da9c9b2243afb454740aff7490689dc1e505d7a90c36f0e7",
+      "sourceSha256": "eb9a836d8f0d17f5da9c9b2243afb454740aff7490689dc1e505d7a90c36f0e7",
+      "sourcePath": "masters/giraffe-sora-high-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "browse",
+        "drink",
+        "rest",
+        "ruminate",
+        "social",
+        "enrich"
+      ],
+      "vertices": 18440,
+      "triangles": 30232,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            1.3,
+            0
+          ]
+        },
+        {
+          "name": "neckLower",
+          "parent": "body",
+          "at": [
+            0,
+            1.5,
+            0.25
+          ]
+        },
+        {
+          "name": "neckUpper",
+          "parent": "neckLower",
+          "at": [
+            0,
+            2.15,
+            0.25
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "neckUpper",
+          "at": [
+            0,
+            2.8,
+            0.25
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            2.72,
+            0.48
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            1.3,
+            -0.43
+          ]
+        },
+        {
+          "name": "tongue",
+          "parent": "jaw",
+          "at": [
+            0,
+            2.7,
+            0.58
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.18,
+            1.25,
+            0.3
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.18,
+            0.62,
+            0.3
+          ]
+        },
+        {
+          "name": "foreLeftHoof",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.18,
+            0.06999999999999995,
+            0.32
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.18,
+            1.25,
+            0.3
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.18,
+            0.62,
+            0.3
+          ]
+        },
+        {
+          "name": "foreRightHoof",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.18,
+            0.06999999999999995,
+            0.32
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.18,
+            1.25,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.18,
+            0.62,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftHoof",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.18,
+            0.06999999999999995,
+            -0.32
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.18,
+            1.25,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.18,
+            0.62,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightHoof",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.18,
+            0.06999999999999995,
+            -0.32
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.2919999957084656,
+          0.0018862474244087934,
+          -0.6669999957084656
+        ],
+        "max": [
+          0.2919999957084656,
+          3.140000104904175,
+          0.7250000238418579
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "64f954da65a0eafa5fbc2c15af1b65040a7d3bda18e9819dcb9e2a8eaa10bd57",
+        "normalSha256": "22f14c604fd6ba52e85228051faf0965e12c7b0c14e810a0b660cb67e542cbcd"
+      }
+    },
+    {
+      "id": "giraffe-sora-low-v01",
+      "species": "giraffe",
+      "scientificName": "Giraffa sp.",
+      "variant": "sora",
+      "detail": "low",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/giraffe-sora-low-v01.glb",
+      "bytes": 1422600,
+      "sha256": "1a9ec18dbf77c7f667a0aa541d9e3c224551f6c1c9cb6262b7bd55848a010909",
+      "sourceSha256": "1a9ec18dbf77c7f667a0aa541d9e3c224551f6c1c9cb6262b7bd55848a010909",
+      "sourcePath": "masters/giraffe-sora-low-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "browse",
+        "drink",
+        "rest",
+        "ruminate",
+        "social",
+        "enrich"
+      ],
+      "vertices": 6255,
+      "triangles": 8852,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            1.3,
+            0
+          ]
+        },
+        {
+          "name": "neckLower",
+          "parent": "body",
+          "at": [
+            0,
+            1.5,
+            0.25
+          ]
+        },
+        {
+          "name": "neckUpper",
+          "parent": "neckLower",
+          "at": [
+            0,
+            2.15,
+            0.25
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "neckUpper",
+          "at": [
+            0,
+            2.8,
+            0.25
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            2.72,
+            0.48
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            1.3,
+            -0.43
+          ]
+        },
+        {
+          "name": "tongue",
+          "parent": "jaw",
+          "at": [
+            0,
+            2.7,
+            0.58
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.18,
+            1.25,
+            0.3
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.18,
+            0.62,
+            0.3
+          ]
+        },
+        {
+          "name": "foreLeftHoof",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.18,
+            0.06999999999999995,
+            0.32
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.18,
+            1.25,
+            0.3
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.18,
+            0.62,
+            0.3
+          ]
+        },
+        {
+          "name": "foreRightHoof",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.18,
+            0.06999999999999995,
+            0.32
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.18,
+            1.25,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.18,
+            0.62,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftHoof",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.18,
+            0.06999999999999995,
+            -0.32
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.18,
+            1.25,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.18,
+            0.62,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightHoof",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.18,
+            0.06999999999999995,
+            -0.32
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.2919999957084656,
+          0.0008492094348184764,
+          -0.6669999957084656
+        ],
+        "max": [
+          0.2919999957084656,
+          3.140000104904175,
+          0.7250000238418579
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "65ee5c2832fc0de470abb5a84375e247ce9e4c63c14818d45084eb30609b6429",
+        "normalSha256": "2c61a4dfae47154414bced19fc75716269015744d675b9025e4570bea706eddb"
+      }
+    },
+    {
+      "id": "giraffe-lila-high-v01",
+      "species": "giraffe",
+      "scientificName": "Giraffa sp.",
+      "variant": "lila",
+      "detail": "high",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/giraffe-lila-high-v01.glb",
+      "bytes": 2233472,
+      "sha256": "a714e402e1b018e6a8016ee5d56450f73986fa791b57103bf81afd15a4eba95a",
+      "sourceSha256": "a714e402e1b018e6a8016ee5d56450f73986fa791b57103bf81afd15a4eba95a",
+      "sourcePath": "masters/giraffe-lila-high-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "browse",
+        "drink",
+        "rest",
+        "ruminate",
+        "social",
+        "enrich"
+      ],
+      "vertices": 18440,
+      "triangles": 30232,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            1.3,
+            0
+          ]
+        },
+        {
+          "name": "neckLower",
+          "parent": "body",
+          "at": [
+            0,
+            1.5,
+            0.25
+          ]
+        },
+        {
+          "name": "neckUpper",
+          "parent": "neckLower",
+          "at": [
+            0,
+            2.15,
+            0.25
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "neckUpper",
+          "at": [
+            0,
+            2.8,
+            0.25
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            2.72,
+            0.48
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            1.3,
+            -0.43
+          ]
+        },
+        {
+          "name": "tongue",
+          "parent": "jaw",
+          "at": [
+            0,
+            2.7,
+            0.58
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.18,
+            1.25,
+            0.3
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.18,
+            0.62,
+            0.3
+          ]
+        },
+        {
+          "name": "foreLeftHoof",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.18,
+            0.06999999999999995,
+            0.32
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.18,
+            1.25,
+            0.3
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.18,
+            0.62,
+            0.3
+          ]
+        },
+        {
+          "name": "foreRightHoof",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.18,
+            0.06999999999999995,
+            0.32
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.18,
+            1.25,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.18,
+            0.62,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftHoof",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.18,
+            0.06999999999999995,
+            -0.32
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.18,
+            1.25,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.18,
+            0.62,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightHoof",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.18,
+            0.06999999999999995,
+            -0.32
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.2919999957084656,
+          0.0018862474244087934,
+          -0.6669999957084656
+        ],
+        "max": [
+          0.2919999957084656,
+          3.140000104904175,
+          0.7250000238418579
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "79b68aecee11b448403601787d821504a25b3f1e237e57b78e52c34d5628b64c",
+        "normalSha256": "22f14c604fd6ba52e85228051faf0965e12c7b0c14e810a0b660cb67e542cbcd"
+      }
+    },
+    {
+      "id": "giraffe-lila-low-v01",
+      "species": "giraffe",
+      "scientificName": "Giraffa sp.",
+      "variant": "lila",
+      "detail": "low",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/giraffe-lila-low-v01.glb",
+      "bytes": 1421720,
+      "sha256": "c7f2f70c3f9352e278104f52ad5ad8d2f5706e91f77af61ca745675859f822ce",
+      "sourceSha256": "c7f2f70c3f9352e278104f52ad5ad8d2f5706e91f77af61ca745675859f822ce",
+      "sourcePath": "masters/giraffe-lila-low-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "browse",
+        "drink",
+        "rest",
+        "ruminate",
+        "social",
+        "enrich"
+      ],
+      "vertices": 6255,
+      "triangles": 8852,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            1.3,
+            0
+          ]
+        },
+        {
+          "name": "neckLower",
+          "parent": "body",
+          "at": [
+            0,
+            1.5,
+            0.25
+          ]
+        },
+        {
+          "name": "neckUpper",
+          "parent": "neckLower",
+          "at": [
+            0,
+            2.15,
+            0.25
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "neckUpper",
+          "at": [
+            0,
+            2.8,
+            0.25
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            2.72,
+            0.48
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            1.3,
+            -0.43
+          ]
+        },
+        {
+          "name": "tongue",
+          "parent": "jaw",
+          "at": [
+            0,
+            2.7,
+            0.58
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.18,
+            1.25,
+            0.3
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.18,
+            0.62,
+            0.3
+          ]
+        },
+        {
+          "name": "foreLeftHoof",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.18,
+            0.06999999999999995,
+            0.32
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.18,
+            1.25,
+            0.3
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.18,
+            0.62,
+            0.3
+          ]
+        },
+        {
+          "name": "foreRightHoof",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.18,
+            0.06999999999999995,
+            0.32
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.18,
+            1.25,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.18,
+            0.62,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindLeftHoof",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.18,
+            0.06999999999999995,
+            -0.32
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.18,
+            1.25,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.18,
+            0.62,
+            -0.34
+          ]
+        },
+        {
+          "name": "hindRightHoof",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.18,
+            0.06999999999999995,
+            -0.32
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.2919999957084656,
+          0.0008492094348184764,
+          -0.6669999957084656
+        ],
+        "max": [
+          0.2919999957084656,
+          3.140000104904175,
+          0.7250000238418579
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "0f6d31d56b2e79a1e4eef42b1622b2a7f1aeaf7ead05593ec0313b564e8f6694",
+        "normalSha256": "2c61a4dfae47154414bced19fc75716269015744d675b9025e4570bea706eddb"
+      }
+    },
+    {
+      "id": "elephant-ayu-high-v01",
+      "species": "elephant",
+      "scientificName": "Elephas maximus",
+      "variant": "ayu",
+      "detail": "high",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/elephant-ayu-high-v01.glb",
+      "bytes": 3980088,
+      "sha256": "ed444e12689d31c32e766fdb891391a68638c47faedf5ec48286da0c697de49f",
+      "sourceSha256": "ed444e12689d31c32e766fdb891391a68638c47faedf5ec48286da0c697de49f",
+      "sourcePath": "masters/elephant-ayu-high-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "eat",
+        "drink",
+        "bathe",
+        "spray",
+        "rest",
+        "enrich",
+        "trunk-touch"
+      ],
+      "vertices": 32741,
+      "triangles": 55092,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            1.05,
+            0
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "at": [
+            0,
+            1.43,
+            0.64
+          ]
+        },
+        {
+          "name": "earLeft",
+          "parent": "head",
+          "at": [
+            -0.35,
+            1.45,
+            0.62
+          ]
+        },
+        {
+          "name": "earRight",
+          "parent": "head",
+          "at": [
+            0.35,
+            1.45,
+            0.62
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            -0.35,
+            0.98,
+            0.43
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            -0.35,
+            0.53,
+            0.43
+          ]
+        },
+        {
+          "name": "foreLeftFoot",
+          "parent": "foreLeftKnee",
+          "at": [
+            -0.35,
+            0.17000000000000004,
+            0.455
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            0.35,
+            0.98,
+            0.43
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            0.35,
+            0.53,
+            0.43
+          ]
+        },
+        {
+          "name": "foreRightFoot",
+          "parent": "foreRightKnee",
+          "at": [
+            0.35,
+            0.17000000000000004,
+            0.455
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            -0.35,
+            0.98,
+            -0.49
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            -0.35,
+            0.53,
+            -0.49
+          ]
+        },
+        {
+          "name": "hindLeftFoot",
+          "parent": "hindLeftKnee",
+          "at": [
+            -0.35,
+            0.17000000000000004,
+            -0.46499999999999997
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            0.35,
+            0.98,
+            -0.49
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            0.35,
+            0.53,
+            -0.49
+          ]
+        },
+        {
+          "name": "hindRightFoot",
+          "parent": "hindRightKnee",
+          "at": [
+            0.35,
+            0.17000000000000004,
+            -0.46499999999999997
+          ]
+        },
+        {
+          "name": "trunk0",
+          "parent": "head",
+          "at": [
+            0,
+            1.41,
+            0.96
+          ]
+        },
+        {
+          "name": "trunk1",
+          "parent": "trunk0",
+          "at": [
+            0,
+            1.2794802014646567,
+            1.0239131136924966
+          ]
+        },
+        {
+          "name": "trunk2",
+          "parent": "trunk1",
+          "at": [
+            0,
+            1.072386262636294,
+            1.0702766282618852
+          ]
+        },
+        {
+          "name": "trunk3",
+          "parent": "trunk2",
+          "at": [
+            0,
+            0.8168908714195006,
+            1.0946172109739958
+          ]
+        },
+        {
+          "name": "trunk4",
+          "parent": "trunk3",
+          "at": [
+            0,
+            0.6108138773513282,
+            1.1147109006200286
+          ]
+        },
+        {
+          "name": "trunk5",
+          "parent": "trunk4",
+          "at": [
+            0,
+            0.3996595101480565,
+            1.1420747742300017
+          ]
+        },
+        {
+          "name": "trunk6",
+          "parent": "trunk5",
+          "at": [
+            0,
+            0.2535877983598224,
+            1.190150140163279
+          ]
+        },
+        {
+          "name": "trunk7",
+          "parent": "trunk6",
+          "at": [
+            0,
+            0.1800000000000001,
+            1.25
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            0.98,
+            -0.78
+          ]
+        },
+        {
+          "name": "tailTip",
+          "parent": "tail",
+          "at": [
+            0,
+            0.39,
+            -0.99
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.6909999847412109,
+          0.01001005806028843,
+          -1.0499999523162842
+        ],
+        "max": [
+          0.6909999847412109,
+          1.8197753429412842,
+          1.3289999961853027
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "de6349f82c504549d36ee59469c02129612d8095a786c1f804b213e087b46115",
+        "normalSha256": "2db2fdf7d66e97ec3ad6bb639fcf291effa34019cc6565f5bfe694526aeda695"
+      }
+    },
+    {
+      "id": "elephant-ayu-low-v01",
+      "species": "elephant",
+      "scientificName": "Elephas maximus",
+      "variant": "ayu",
+      "detail": "low",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/elephant-ayu-low-v01.glb",
+      "bytes": 2531940,
+      "sha256": "3a9a5831799ea7c1aa86974105eedeab6b353a2601dbc9e4c02403a9244bd090",
+      "sourceSha256": "3a9a5831799ea7c1aa86974105eedeab6b353a2601dbc9e4c02403a9244bd090",
+      "sourcePath": "masters/elephant-ayu-low-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "eat",
+        "drink",
+        "bathe",
+        "spray",
+        "rest",
+        "enrich",
+        "trunk-touch"
+      ],
+      "vertices": 11161,
+      "triangles": 16612,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            1.05,
+            0
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "at": [
+            0,
+            1.43,
+            0.64
+          ]
+        },
+        {
+          "name": "earLeft",
+          "parent": "head",
+          "at": [
+            -0.35,
+            1.45,
+            0.62
+          ]
+        },
+        {
+          "name": "earRight",
+          "parent": "head",
+          "at": [
+            0.35,
+            1.45,
+            0.62
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            -0.35,
+            0.98,
+            0.43
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            -0.35,
+            0.53,
+            0.43
+          ]
+        },
+        {
+          "name": "foreLeftFoot",
+          "parent": "foreLeftKnee",
+          "at": [
+            -0.35,
+            0.17000000000000004,
+            0.455
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            0.35,
+            0.98,
+            0.43
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            0.35,
+            0.53,
+            0.43
+          ]
+        },
+        {
+          "name": "foreRightFoot",
+          "parent": "foreRightKnee",
+          "at": [
+            0.35,
+            0.17000000000000004,
+            0.455
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            -0.35,
+            0.98,
+            -0.49
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            -0.35,
+            0.53,
+            -0.49
+          ]
+        },
+        {
+          "name": "hindLeftFoot",
+          "parent": "hindLeftKnee",
+          "at": [
+            -0.35,
+            0.17000000000000004,
+            -0.46499999999999997
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            0.35,
+            0.98,
+            -0.49
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            0.35,
+            0.53,
+            -0.49
+          ]
+        },
+        {
+          "name": "hindRightFoot",
+          "parent": "hindRightKnee",
+          "at": [
+            0.35,
+            0.17000000000000004,
+            -0.46499999999999997
+          ]
+        },
+        {
+          "name": "trunk0",
+          "parent": "head",
+          "at": [
+            0,
+            1.41,
+            0.96
+          ]
+        },
+        {
+          "name": "trunk1",
+          "parent": "trunk0",
+          "at": [
+            0,
+            1.2794802014646567,
+            1.0239131136924966
+          ]
+        },
+        {
+          "name": "trunk2",
+          "parent": "trunk1",
+          "at": [
+            0,
+            1.072386262636294,
+            1.0702766282618852
+          ]
+        },
+        {
+          "name": "trunk3",
+          "parent": "trunk2",
+          "at": [
+            0,
+            0.8168908714195006,
+            1.0946172109739958
+          ]
+        },
+        {
+          "name": "trunk4",
+          "parent": "trunk3",
+          "at": [
+            0,
+            0.6108138773513282,
+            1.1147109006200286
+          ]
+        },
+        {
+          "name": "trunk5",
+          "parent": "trunk4",
+          "at": [
+            0,
+            0.3996595101480565,
+            1.1420747742300017
+          ]
+        },
+        {
+          "name": "trunk6",
+          "parent": "trunk5",
+          "at": [
+            0,
+            0.2535877983598224,
+            1.190150140163279
+          ]
+        },
+        {
+          "name": "trunk7",
+          "parent": "trunk6",
+          "at": [
+            0,
+            0.1800000000000001,
+            1.25
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            0.98,
+            -0.78
+          ]
+        },
+        {
+          "name": "tailTip",
+          "parent": "tail",
+          "at": [
+            0,
+            0.39,
+            -0.99
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.6909999847412109,
+          0.010287150740623474,
+          -1.0499999523162842
+        ],
+        "max": [
+          0.6909999847412109,
+          1.8195605278015137,
+          1.3289999961853027
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "a3b8e1788accf69af9154d58e72935d96adfb7f0343ad6083c05ccbe3a15f11f",
+        "normalSha256": "f4b261a14c68a4476561253d56209bc035bc3527d88efd3a1319c0c3a7482d56"
+      }
+    },
+    {
+      "id": "elephant-nara-high-v01",
+      "species": "elephant",
+      "scientificName": "Elephas maximus",
+      "variant": "nara",
+      "detail": "high",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/elephant-nara-high-v01.glb",
+      "bytes": 3969304,
+      "sha256": "8f28e9128ae0d39dbad478a8ef4e9736d0b421150d4dfb22092d4033502f572f",
+      "sourceSha256": "8f28e9128ae0d39dbad478a8ef4e9736d0b421150d4dfb22092d4033502f572f",
+      "sourcePath": "masters/elephant-nara-high-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "eat",
+        "drink",
+        "bathe",
+        "spray",
+        "rest",
+        "enrich",
+        "trunk-touch"
+      ],
+      "vertices": 32741,
+      "triangles": 55092,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            1.05,
+            0
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "at": [
+            0,
+            1.43,
+            0.64
+          ]
+        },
+        {
+          "name": "earLeft",
+          "parent": "head",
+          "at": [
+            -0.35,
+            1.45,
+            0.62
+          ]
+        },
+        {
+          "name": "earRight",
+          "parent": "head",
+          "at": [
+            0.35,
+            1.45,
+            0.62
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            -0.35,
+            0.98,
+            0.43
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            -0.35,
+            0.53,
+            0.43
+          ]
+        },
+        {
+          "name": "foreLeftFoot",
+          "parent": "foreLeftKnee",
+          "at": [
+            -0.35,
+            0.17000000000000004,
+            0.455
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            0.35,
+            0.98,
+            0.43
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            0.35,
+            0.53,
+            0.43
+          ]
+        },
+        {
+          "name": "foreRightFoot",
+          "parent": "foreRightKnee",
+          "at": [
+            0.35,
+            0.17000000000000004,
+            0.455
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            -0.35,
+            0.98,
+            -0.49
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            -0.35,
+            0.53,
+            -0.49
+          ]
+        },
+        {
+          "name": "hindLeftFoot",
+          "parent": "hindLeftKnee",
+          "at": [
+            -0.35,
+            0.17000000000000004,
+            -0.46499999999999997
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            0.35,
+            0.98,
+            -0.49
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            0.35,
+            0.53,
+            -0.49
+          ]
+        },
+        {
+          "name": "hindRightFoot",
+          "parent": "hindRightKnee",
+          "at": [
+            0.35,
+            0.17000000000000004,
+            -0.46499999999999997
+          ]
+        },
+        {
+          "name": "trunk0",
+          "parent": "head",
+          "at": [
+            0,
+            1.41,
+            0.96
+          ]
+        },
+        {
+          "name": "trunk1",
+          "parent": "trunk0",
+          "at": [
+            0,
+            1.2794802014646567,
+            1.0239131136924966
+          ]
+        },
+        {
+          "name": "trunk2",
+          "parent": "trunk1",
+          "at": [
+            0,
+            1.072386262636294,
+            1.0702766282618852
+          ]
+        },
+        {
+          "name": "trunk3",
+          "parent": "trunk2",
+          "at": [
+            0,
+            0.8168908714195006,
+            1.0946172109739958
+          ]
+        },
+        {
+          "name": "trunk4",
+          "parent": "trunk3",
+          "at": [
+            0,
+            0.6108138773513282,
+            1.1147109006200286
+          ]
+        },
+        {
+          "name": "trunk5",
+          "parent": "trunk4",
+          "at": [
+            0,
+            0.3996595101480565,
+            1.1420747742300017
+          ]
+        },
+        {
+          "name": "trunk6",
+          "parent": "trunk5",
+          "at": [
+            0,
+            0.2535877983598224,
+            1.190150140163279
+          ]
+        },
+        {
+          "name": "trunk7",
+          "parent": "trunk6",
+          "at": [
+            0,
+            0.1800000000000001,
+            1.25
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            0.98,
+            -0.78
+          ]
+        },
+        {
+          "name": "tailTip",
+          "parent": "tail",
+          "at": [
+            0,
+            0.39,
+            -0.99
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.6909999847412109,
+          0.01001005806028843,
+          -1.0499999523162842
+        ],
+        "max": [
+          0.6909999847412109,
+          1.8197753429412842,
+          1.3289999961853027
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "ca292a6cdbbaaa0019a956cefb6901b6219d7be4043c88de9750bf0a8bc4e229",
+        "normalSha256": "2db2fdf7d66e97ec3ad6bb639fcf291effa34019cc6565f5bfe694526aeda695"
+      }
+    },
+    {
+      "id": "elephant-nara-low-v01",
+      "species": "elephant",
+      "scientificName": "Elephas maximus",
+      "variant": "nara",
+      "detail": "low",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/elephant-nara-low-v01.glb",
+      "bytes": 2520700,
+      "sha256": "be591a1e4104a0b3b1904179c1ffcee3ce26f52cb063eb6611a085ebdd038d85",
+      "sourceSha256": "be591a1e4104a0b3b1904179c1ffcee3ce26f52cb063eb6611a085ebdd038d85",
+      "sourcePath": "masters/elephant-nara-low-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "eat",
+        "drink",
+        "bathe",
+        "spray",
+        "rest",
+        "enrich",
+        "trunk-touch"
+      ],
+      "vertices": 11161,
+      "triangles": 16612,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            1.05,
+            0
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "at": [
+            0,
+            1.43,
+            0.64
+          ]
+        },
+        {
+          "name": "earLeft",
+          "parent": "head",
+          "at": [
+            -0.35,
+            1.45,
+            0.62
+          ]
+        },
+        {
+          "name": "earRight",
+          "parent": "head",
+          "at": [
+            0.35,
+            1.45,
+            0.62
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            -0.35,
+            0.98,
+            0.43
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            -0.35,
+            0.53,
+            0.43
+          ]
+        },
+        {
+          "name": "foreLeftFoot",
+          "parent": "foreLeftKnee",
+          "at": [
+            -0.35,
+            0.17000000000000004,
+            0.455
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            0.35,
+            0.98,
+            0.43
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            0.35,
+            0.53,
+            0.43
+          ]
+        },
+        {
+          "name": "foreRightFoot",
+          "parent": "foreRightKnee",
+          "at": [
+            0.35,
+            0.17000000000000004,
+            0.455
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            -0.35,
+            0.98,
+            -0.49
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            -0.35,
+            0.53,
+            -0.49
+          ]
+        },
+        {
+          "name": "hindLeftFoot",
+          "parent": "hindLeftKnee",
+          "at": [
+            -0.35,
+            0.17000000000000004,
+            -0.46499999999999997
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            0.35,
+            0.98,
+            -0.49
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            0.35,
+            0.53,
+            -0.49
+          ]
+        },
+        {
+          "name": "hindRightFoot",
+          "parent": "hindRightKnee",
+          "at": [
+            0.35,
+            0.17000000000000004,
+            -0.46499999999999997
+          ]
+        },
+        {
+          "name": "trunk0",
+          "parent": "head",
+          "at": [
+            0,
+            1.41,
+            0.96
+          ]
+        },
+        {
+          "name": "trunk1",
+          "parent": "trunk0",
+          "at": [
+            0,
+            1.2794802014646567,
+            1.0239131136924966
+          ]
+        },
+        {
+          "name": "trunk2",
+          "parent": "trunk1",
+          "at": [
+            0,
+            1.072386262636294,
+            1.0702766282618852
+          ]
+        },
+        {
+          "name": "trunk3",
+          "parent": "trunk2",
+          "at": [
+            0,
+            0.8168908714195006,
+            1.0946172109739958
+          ]
+        },
+        {
+          "name": "trunk4",
+          "parent": "trunk3",
+          "at": [
+            0,
+            0.6108138773513282,
+            1.1147109006200286
+          ]
+        },
+        {
+          "name": "trunk5",
+          "parent": "trunk4",
+          "at": [
+            0,
+            0.3996595101480565,
+            1.1420747742300017
+          ]
+        },
+        {
+          "name": "trunk6",
+          "parent": "trunk5",
+          "at": [
+            0,
+            0.2535877983598224,
+            1.190150140163279
+          ]
+        },
+        {
+          "name": "trunk7",
+          "parent": "trunk6",
+          "at": [
+            0,
+            0.1800000000000001,
+            1.25
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            0.98,
+            -0.78
+          ]
+        },
+        {
+          "name": "tailTip",
+          "parent": "tail",
+          "at": [
+            0,
+            0.39,
+            -0.99
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.6909999847412109,
+          0.010287150740623474,
+          -1.0499999523162842
+        ],
+        "max": [
+          0.6909999847412109,
+          1.8195605278015137,
+          1.3289999961853027
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "892115afd92d27e2018377df2d2519d82c7182d8eb0581e250052c3344ce0a7f",
+        "normalSha256": "f4b261a14c68a4476561253d56209bc035bc3527d88efd3a1319c0c3a7482d56"
+      }
+    },
+    {
+      "id": "lion-raka-high-v01",
+      "species": "lion",
+      "scientificName": "Panthera leo",
+      "variant": "raka",
+      "detail": "high",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/lion-raka-high-v01.glb",
+      "bytes": 2973624,
+      "sha256": "9f3a1726a941c6df7cc92490f81250ecb4b09a5d89d0f0d4a36423dbe839ae17",
+      "sourceSha256": "9f3a1726a941c6df7cc92490f81250ecb4b09a5d89d0f0d4a36423dbe839ae17",
+      "sourcePath": "masters/lion-raka-high-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "eat",
+        "drink",
+        "rest",
+        "climb-ramp",
+        "lookout",
+        "roar",
+        "descend",
+        "sniff",
+        "scratch",
+        "nuzzle"
+      ],
+      "vertices": 27532,
+      "triangles": 42684,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            0.4,
+            0
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "at": [
+            0,
+            0.5900000000000001,
+            0.24
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            0.5000000000000001,
+            0.37
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            0.4,
+            -0.3
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.13,
+            0.38,
+            0.19
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.13,
+            0.2,
+            0.19
+          ]
+        },
+        {
+          "name": "foreLeftPaw",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.13,
+            0.05499999999999999,
+            0.215
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.13,
+            0.38,
+            0.19
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.13,
+            0.2,
+            0.19
+          ]
+        },
+        {
+          "name": "foreRightPaw",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.13,
+            0.05499999999999999,
+            0.215
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.13,
+            0.38,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.13,
+            0.2,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindLeftPaw",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.13,
+            0.05499999999999999,
+            -0.185
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.13,
+            0.38,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.13,
+            0.2,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindRightPaw",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.13,
+            0.05499999999999999,
+            -0.185
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.20005278289318085,
+          0.005215406883507967,
+          -0.8809999823570251
+        ],
+        "max": [
+          0.20005278289318085,
+          0.8087438941001892,
+          0.5519999861717224
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "d01d5366fdd99b5016f89579c3869b3827f6b955d2874aece4af30e4670cbf8a",
+        "normalSha256": "ee7b48ec18432dd5ea52a2b64309773c6bc2d5f03d758f650b1558b8bbfa4438"
+      }
+    },
+    {
+      "id": "lion-raka-low-v01",
+      "species": "lion",
+      "scientificName": "Panthera leo",
+      "variant": "raka",
+      "detail": "low",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/lion-raka-low-v01.glb",
+      "bytes": 1786788,
+      "sha256": "b559a3e5d2eefa69a6229bba080e548f2346a301e5956fc8db3101d69f48e1b3",
+      "sourceSha256": "b559a3e5d2eefa69a6229bba080e548f2346a301e5956fc8db3101d69f48e1b3",
+      "sourcePath": "masters/lion-raka-low-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "eat",
+        "drink",
+        "rest",
+        "climb-ramp",
+        "lookout",
+        "roar",
+        "descend",
+        "sniff",
+        "scratch",
+        "nuzzle"
+      ],
+      "vertices": 9638,
+      "triangles": 12016,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            0.4,
+            0
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "at": [
+            0,
+            0.5900000000000001,
+            0.24
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            0.5000000000000001,
+            0.37
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            0.4,
+            -0.3
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.13,
+            0.38,
+            0.19
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.13,
+            0.2,
+            0.19
+          ]
+        },
+        {
+          "name": "foreLeftPaw",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.13,
+            0.05499999999999999,
+            0.215
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.13,
+            0.38,
+            0.19
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.13,
+            0.2,
+            0.19
+          ]
+        },
+        {
+          "name": "foreRightPaw",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.13,
+            0.05499999999999999,
+            0.215
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.13,
+            0.38,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.13,
+            0.2,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindLeftPaw",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.13,
+            0.05499999999999999,
+            -0.185
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.13,
+            0.38,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.13,
+            0.2,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindRightPaw",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.13,
+            0.05499999999999999,
+            -0.185
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.2000521719455719,
+          0.0056107924319803715,
+          -0.8809999823570251
+        ],
+        "max": [
+          0.2000521719455719,
+          0.8089430332183838,
+          0.5519999861717224
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "f34dfa900314ecea9b28bf7015084ae6ff71f23602ab6f6527f310df5dcbcd27",
+        "normalSha256": "3e6ecdd2675b7de9e718fe7358e5d160f6dd73931f89320633d7689a47d1bfb8"
+      }
+    },
+    {
+      "id": "lion-sena-high-v01",
+      "species": "lion",
+      "scientificName": "Panthera leo",
+      "variant": "sena",
+      "detail": "high",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/lion-sena-high-v01.glb",
+      "bytes": 2692760,
+      "sha256": "f825dfeb2ae62c08748b2d2937f5487e6d1a2af633cb584bb552e0e0b61c48b3",
+      "sourceSha256": "f825dfeb2ae62c08748b2d2937f5487e6d1a2af633cb584bb552e0e0b61c48b3",
+      "sourcePath": "masters/lion-sena-high-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "eat",
+        "drink",
+        "rest",
+        "climb-ramp",
+        "lookout",
+        "roar",
+        "descend",
+        "sniff",
+        "scratch",
+        "nuzzle"
+      ],
+      "vertices": 23828,
+      "triangles": 38124,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            0.4,
+            0
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "at": [
+            0,
+            0.5900000000000001,
+            0.24
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            0.5000000000000001,
+            0.37
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            0.4,
+            -0.3
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.13,
+            0.38,
+            0.19
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.13,
+            0.2,
+            0.19
+          ]
+        },
+        {
+          "name": "foreLeftPaw",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.13,
+            0.05499999999999999,
+            0.215
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.13,
+            0.38,
+            0.19
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.13,
+            0.2,
+            0.19
+          ]
+        },
+        {
+          "name": "foreRightPaw",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.13,
+            0.05499999999999999,
+            0.215
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.13,
+            0.38,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.13,
+            0.2,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindLeftPaw",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.13,
+            0.05499999999999999,
+            -0.185
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.13,
+            0.38,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.13,
+            0.2,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindRightPaw",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.13,
+            0.05499999999999999,
+            -0.185
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.20005278289318085,
+          0.005215406883507967,
+          -0.8809999823570251
+        ],
+        "max": [
+          0.20005278289318085,
+          0.7570000290870667,
+          0.5519999861717224
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "6956e2f9c8de9c0dd92572d8ae3e7e58f4a96bd0aa0d0c0ccabce0ad7112b9a5",
+        "normalSha256": "8cf7100e220f30d7648ec9025955e3a9b687e862add03c6ba1d261c6f0b2d55f"
+      }
+    },
+    {
+      "id": "lion-sena-low-v01",
+      "species": "lion",
+      "scientificName": "Panthera leo",
+      "variant": "sena",
+      "detail": "low",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/lion-sena-low-v01.glb",
+      "bytes": 1664452,
+      "sha256": "ebbc053c0448f84d0033ff66075cda9d3897457116624bd0d121a4bff6fac64b",
+      "sourceSha256": "ebbc053c0448f84d0033ff66075cda9d3897457116624bd0d121a4bff6fac64b",
+      "sourcePath": "masters/lion-sena-low-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "eat",
+        "drink",
+        "rest",
+        "climb-ramp",
+        "lookout",
+        "roar",
+        "descend",
+        "sniff",
+        "scratch",
+        "nuzzle"
+      ],
+      "vertices": 8392,
+      "triangles": 10792,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            0.4,
+            0
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "at": [
+            0,
+            0.5900000000000001,
+            0.24
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            0.5000000000000001,
+            0.37
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            0.4,
+            -0.3
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.13,
+            0.38,
+            0.19
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.13,
+            0.2,
+            0.19
+          ]
+        },
+        {
+          "name": "foreLeftPaw",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.13,
+            0.05499999999999999,
+            0.215
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.13,
+            0.38,
+            0.19
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.13,
+            0.2,
+            0.19
+          ]
+        },
+        {
+          "name": "foreRightPaw",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.13,
+            0.05499999999999999,
+            0.215
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.13,
+            0.38,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.13,
+            0.2,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindLeftPaw",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.13,
+            0.05499999999999999,
+            -0.185
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.13,
+            0.38,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.13,
+            0.2,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindRightPaw",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.13,
+            0.05499999999999999,
+            -0.185
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.2000521719455719,
+          0.0056107924319803715,
+          -0.8809999823570251
+        ],
+        "max": [
+          0.2000521719455719,
+          0.7570000290870667,
+          0.5519999861717224
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "e299f6f5f89b6b731e6c57c37ada9286ed01087c3dd11dfd61fd342c2d742e70",
+        "normalSha256": "6548758997f5a93d3adbdccf3a1eacf90edfc18fa222fbe73047f856698831b1"
+      }
+    },
+    {
+      "id": "lion-tala-high-v01",
+      "species": "lion",
+      "scientificName": "Panthera leo",
+      "variant": "tala",
+      "detail": "high",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/lion-tala-high-v01.glb",
+      "bytes": 2692508,
+      "sha256": "65ac3990703676fb1e9883d9e32da5e2d82215ab6b176c2dea73849dd949de6b",
+      "sourceSha256": "65ac3990703676fb1e9883d9e32da5e2d82215ab6b176c2dea73849dd949de6b",
+      "sourcePath": "masters/lion-tala-high-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "eat",
+        "drink",
+        "rest",
+        "climb-ramp",
+        "lookout",
+        "roar",
+        "descend",
+        "sniff",
+        "scratch",
+        "nuzzle"
+      ],
+      "vertices": 23828,
+      "triangles": 38124,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            0.4,
+            0
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "at": [
+            0,
+            0.5900000000000001,
+            0.24
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            0.5000000000000001,
+            0.37
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            0.4,
+            -0.3
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.13,
+            0.38,
+            0.19
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.13,
+            0.2,
+            0.19
+          ]
+        },
+        {
+          "name": "foreLeftPaw",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.13,
+            0.05499999999999999,
+            0.215
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.13,
+            0.38,
+            0.19
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.13,
+            0.2,
+            0.19
+          ]
+        },
+        {
+          "name": "foreRightPaw",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.13,
+            0.05499999999999999,
+            0.215
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.13,
+            0.38,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.13,
+            0.2,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindLeftPaw",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.13,
+            0.05499999999999999,
+            -0.185
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.13,
+            0.38,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.13,
+            0.2,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindRightPaw",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.13,
+            0.05499999999999999,
+            -0.185
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.20005278289318085,
+          0.005215406883507967,
+          -0.8809999823570251
+        ],
+        "max": [
+          0.20005278289318085,
+          0.7570000290870667,
+          0.5519999861717224
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "aaf2fee32f437b7a9a9eb9d60ebce1628eef5fec15c046b27c24315e3a117016",
+        "normalSha256": "8cf7100e220f30d7648ec9025955e3a9b687e862add03c6ba1d261c6f0b2d55f"
+      }
+    },
+    {
+      "id": "lion-tala-low-v01",
+      "species": "lion",
+      "scientificName": "Panthera leo",
+      "variant": "tala",
+      "detail": "low",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/lion-tala-low-v01.glb",
+      "bytes": 1663892,
+      "sha256": "c98c50edbdc74eb7c8208efb320a3ea7680652a9e28f2c6059a0f2d0dd492ed4",
+      "sourceSha256": "c98c50edbdc74eb7c8208efb320a3ea7680652a9e28f2c6059a0f2d0dd492ed4",
+      "sourcePath": "masters/lion-tala-low-v01.glb",
+      "category": "animal",
+      "animations": [
+        "idle",
+        "walk",
+        "eat",
+        "drink",
+        "rest",
+        "climb-ramp",
+        "lookout",
+        "roar",
+        "descend",
+        "sniff",
+        "scratch",
+        "nuzzle"
+      ],
+      "vertices": 8392,
+      "triangles": 10792,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "root",
+          "at": [
+            0,
+            0.4,
+            0
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "at": [
+            0,
+            0.5900000000000001,
+            0.24
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            0.5000000000000001,
+            0.37
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            0.4,
+            -0.3
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "root",
+          "at": [
+            0.13,
+            0.38,
+            0.19
+          ]
+        },
+        {
+          "name": "foreLeftKnee",
+          "parent": "foreLeft",
+          "at": [
+            0.13,
+            0.2,
+            0.19
+          ]
+        },
+        {
+          "name": "foreLeftPaw",
+          "parent": "foreLeftKnee",
+          "at": [
+            0.13,
+            0.05499999999999999,
+            0.215
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "root",
+          "at": [
+            -0.13,
+            0.38,
+            0.19
+          ]
+        },
+        {
+          "name": "foreRightKnee",
+          "parent": "foreRight",
+          "at": [
+            -0.13,
+            0.2,
+            0.19
+          ]
+        },
+        {
+          "name": "foreRightPaw",
+          "parent": "foreRightKnee",
+          "at": [
+            -0.13,
+            0.05499999999999999,
+            0.215
+          ]
+        },
+        {
+          "name": "hindLeft",
+          "parent": "root",
+          "at": [
+            0.13,
+            0.38,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindLeftKnee",
+          "parent": "hindLeft",
+          "at": [
+            0.13,
+            0.2,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindLeftPaw",
+          "parent": "hindLeftKnee",
+          "at": [
+            0.13,
+            0.05499999999999999,
+            -0.185
+          ]
+        },
+        {
+          "name": "hindRight",
+          "parent": "root",
+          "at": [
+            -0.13,
+            0.38,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindRightKnee",
+          "parent": "hindRight",
+          "at": [
+            -0.13,
+            0.2,
+            -0.21
+          ]
+        },
+        {
+          "name": "hindRightPaw",
+          "parent": "hindRightKnee",
+          "at": [
+            -0.13,
+            0.05499999999999999,
+            -0.185
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.2000521719455719,
+          0.0056107924319803715,
+          -0.8809999823570251
+        ],
+        "max": [
+          0.2000521719455719,
+          0.7570000290870667,
+          0.5519999861717224
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "be0ae226e402d229104022825d7aec3cefc4f4d40eb532f9cf1b321826ceadf3",
+        "normalSha256": "6548758997f5a93d3adbdccf3a1eacf90edfc18fa222fbe73047f856698831b1"
+      }
+    },
+    {
+      "id": "macaw-one-high-v01",
+      "species": "macaw",
+      "scientificName": "Ara ararauna",
+      "variant": "one",
+      "detail": "high",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/macaw-one-high-v01.glb",
+      "bytes": 3214084,
+      "sha256": "b1df9aa8c9845ead9923f3a81ff4bd9f46cf6ae998029442065866c7d00b923f",
+      "sourceSha256": "b1df9aa8c9845ead9923f3a81ff4bd9f46cf6ae998029442065866c7d00b923f",
+      "sourcePath": "masters/macaw-one-high-v01.glb",
+      "category": "animal",
+      "animations": [
+        "perch",
+        "walk",
+        "hop",
+        "fly",
+        "eat",
+        "drink",
+        "rest",
+        "takeoff",
+        "land"
+      ],
+      "vertices": 33554,
+      "triangles": 42436,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "motion",
+          "parent": "root",
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "motion",
+          "at": [
+            0,
+            0.16,
+            0
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "at": [
+            0,
+            0.66,
+            0.09
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            0.729,
+            0.249
+          ]
+        },
+        {
+          "name": "wingLeft",
+          "parent": "body",
+          "at": [
+            -0.14,
+            0.58,
+            0.005
+          ]
+        },
+        {
+          "name": "wingRight",
+          "parent": "body",
+          "at": [
+            0.14,
+            0.58,
+            0.005
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "wingLeft",
+          "at": [
+            -0.36,
+            0.568,
+            -0.03
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "wingRight",
+          "at": [
+            0.36,
+            0.568,
+            -0.03
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            0.22,
+            -0.1
+          ]
+        },
+        {
+          "name": "footLeft",
+          "parent": "motion",
+          "at": [
+            -0.075,
+            0,
+            0.025
+          ]
+        },
+        {
+          "name": "footRight",
+          "parent": "motion",
+          "at": [
+            0.075,
+            0,
+            0.025
+          ]
+        },
+        {
+          "name": "eyelids",
+          "parent": "head",
+          "at": [
+            0,
+            0.822,
+            0.208
+          ]
+        },
+        {
+          "name": "footLeftToe0",
+          "parent": "footLeft",
+          "at": [
+            -0.061,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footLeftToe1",
+          "parent": "footLeft",
+          "at": [
+            -0.089,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footLeftToe2",
+          "parent": "footLeft",
+          "at": [
+            -0.061,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footLeftToe3",
+          "parent": "footLeft",
+          "at": [
+            -0.089,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footRightToe0",
+          "parent": "footRight",
+          "at": [
+            0.089,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footRightToe1",
+          "parent": "footRight",
+          "at": [
+            0.061,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footRightToe2",
+          "parent": "footRight",
+          "at": [
+            0.089,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footRightToe3",
+          "parent": "footRight",
+          "at": [
+            0.061,
+            0.018,
+            0.025
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.7670404314994812,
+          -0.38499999046325684,
+          -0.28843989968299866
+        ],
+        "max": [
+          0.7670404314994812,
+          0.9189650416374207,
+          0.3538006544113159
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "c0728ea93b2ed771f95258967281efdab83701c4cef02e8739fefd99b47502d2",
+        "normalSha256": "7ae9c911d8a6aaddcb0e22cf856471c99ba1f14d80416be37c49b9fd6e0bd0a0"
+      }
+    },
+    {
+      "id": "macaw-one-low-v01",
+      "species": "macaw",
+      "scientificName": "Ara ararauna",
+      "variant": "one",
+      "detail": "low",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/macaw-one-low-v01.glb",
+      "bytes": 1703720,
+      "sha256": "bd0202570f21785774f4f076314898a8096c3421cad857866fe9007b4038f8dd",
+      "sourceSha256": "bd0202570f21785774f4f076314898a8096c3421cad857866fe9007b4038f8dd",
+      "sourcePath": "masters/macaw-one-low-v01.glb",
+      "category": "animal",
+      "animations": [
+        "perch",
+        "walk",
+        "hop",
+        "fly",
+        "eat",
+        "drink",
+        "rest",
+        "takeoff",
+        "land"
+      ],
+      "vertices": 10180,
+      "triangles": 10384,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "motion",
+          "parent": "root",
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "motion",
+          "at": [
+            0,
+            0.16,
+            0
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "at": [
+            0,
+            0.66,
+            0.09
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            0.729,
+            0.249
+          ]
+        },
+        {
+          "name": "wingLeft",
+          "parent": "body",
+          "at": [
+            -0.14,
+            0.58,
+            0.005
+          ]
+        },
+        {
+          "name": "wingRight",
+          "parent": "body",
+          "at": [
+            0.14,
+            0.58,
+            0.005
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "wingLeft",
+          "at": [
+            -0.36,
+            0.568,
+            -0.03
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "wingRight",
+          "at": [
+            0.36,
+            0.568,
+            -0.03
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            0.22,
+            -0.1
+          ]
+        },
+        {
+          "name": "footLeft",
+          "parent": "motion",
+          "at": [
+            -0.075,
+            0,
+            0.025
+          ]
+        },
+        {
+          "name": "footRight",
+          "parent": "motion",
+          "at": [
+            0.075,
+            0,
+            0.025
+          ]
+        },
+        {
+          "name": "eyelids",
+          "parent": "head",
+          "at": [
+            0,
+            0.822,
+            0.208
+          ]
+        },
+        {
+          "name": "footLeftToe0",
+          "parent": "footLeft",
+          "at": [
+            -0.061,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footLeftToe1",
+          "parent": "footLeft",
+          "at": [
+            -0.089,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footLeftToe2",
+          "parent": "footLeft",
+          "at": [
+            -0.061,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footLeftToe3",
+          "parent": "footLeft",
+          "at": [
+            -0.089,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footRightToe0",
+          "parent": "footRight",
+          "at": [
+            0.089,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footRightToe1",
+          "parent": "footRight",
+          "at": [
+            0.061,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footRightToe2",
+          "parent": "footRight",
+          "at": [
+            0.089,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footRightToe3",
+          "parent": "footRight",
+          "at": [
+            0.061,
+            0.018,
+            0.025
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.7698980569839478,
+          -0.38499999046325684,
+          -0.2883111536502838
+        ],
+        "max": [
+          0.7698980569839478,
+          0.9187790155410767,
+          0.35446417331695557
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "f238c147699dd617b64349bbe01b0a315bfa1051adba92f4511b138f46e59333",
+        "normalSha256": "e334677fa7217f51d8ac009b62ee17c491392d13bb816fafdf8149069eb21541"
+      }
+    },
+    {
+      "id": "macaw-two-high-v01",
+      "species": "macaw",
+      "scientificName": "Ara ararauna",
+      "variant": "two",
+      "detail": "high",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/macaw-two-high-v01.glb",
+      "bytes": 3214084,
+      "sha256": "b5dcc08cba17c797f2f40aa2a0ce1e521b24ca83a86cc24d4c9dbbb93db0d0e3",
+      "sourceSha256": "b5dcc08cba17c797f2f40aa2a0ce1e521b24ca83a86cc24d4c9dbbb93db0d0e3",
+      "sourcePath": "masters/macaw-two-high-v01.glb",
+      "category": "animal",
+      "animations": [
+        "perch",
+        "walk",
+        "hop",
+        "fly",
+        "eat",
+        "drink",
+        "rest",
+        "takeoff",
+        "land"
+      ],
+      "vertices": 33554,
+      "triangles": 42436,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "motion",
+          "parent": "root",
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "motion",
+          "at": [
+            0,
+            0.16,
+            0
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "at": [
+            0,
+            0.66,
+            0.09
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            0.729,
+            0.249
+          ]
+        },
+        {
+          "name": "wingLeft",
+          "parent": "body",
+          "at": [
+            -0.14,
+            0.58,
+            0.005
+          ]
+        },
+        {
+          "name": "wingRight",
+          "parent": "body",
+          "at": [
+            0.14,
+            0.58,
+            0.005
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "wingLeft",
+          "at": [
+            -0.36,
+            0.568,
+            -0.03
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "wingRight",
+          "at": [
+            0.36,
+            0.568,
+            -0.03
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            0.22,
+            -0.1
+          ]
+        },
+        {
+          "name": "footLeft",
+          "parent": "motion",
+          "at": [
+            -0.075,
+            0,
+            0.025
+          ]
+        },
+        {
+          "name": "footRight",
+          "parent": "motion",
+          "at": [
+            0.075,
+            0,
+            0.025
+          ]
+        },
+        {
+          "name": "eyelids",
+          "parent": "head",
+          "at": [
+            0,
+            0.822,
+            0.208
+          ]
+        },
+        {
+          "name": "footLeftToe0",
+          "parent": "footLeft",
+          "at": [
+            -0.061,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footLeftToe1",
+          "parent": "footLeft",
+          "at": [
+            -0.089,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footLeftToe2",
+          "parent": "footLeft",
+          "at": [
+            -0.061,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footLeftToe3",
+          "parent": "footLeft",
+          "at": [
+            -0.089,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footRightToe0",
+          "parent": "footRight",
+          "at": [
+            0.089,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footRightToe1",
+          "parent": "footRight",
+          "at": [
+            0.061,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footRightToe2",
+          "parent": "footRight",
+          "at": [
+            0.089,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footRightToe3",
+          "parent": "footRight",
+          "at": [
+            0.061,
+            0.018,
+            0.025
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.7670404314994812,
+          -0.38499999046325684,
+          -0.28843989968299866
+        ],
+        "max": [
+          0.7670404314994812,
+          0.9189650416374207,
+          0.3538006544113159
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "c0728ea93b2ed771f95258967281efdab83701c4cef02e8739fefd99b47502d2",
+        "normalSha256": "7ae9c911d8a6aaddcb0e22cf856471c99ba1f14d80416be37c49b9fd6e0bd0a0"
+      }
+    },
+    {
+      "id": "macaw-two-low-v01",
+      "species": "macaw",
+      "scientificName": "Ara ararauna",
+      "variant": "two",
+      "detail": "low",
+      "units": "sanctuary scene contract; see references.json",
+      "source": "art/animals/v01",
+      "provenance": "Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh",
+      "localPath": "masters/macaw-two-low-v01.glb",
+      "bytes": 1703720,
+      "sha256": "e8b88c76aa53f2304ecb3eef04c3f70db39492c3334cf87ac5d4e1ab71153507",
+      "sourceSha256": "e8b88c76aa53f2304ecb3eef04c3f70db39492c3334cf87ac5d4e1ab71153507",
+      "sourcePath": "masters/macaw-two-low-v01.glb",
+      "category": "animal",
+      "animations": [
+        "perch",
+        "walk",
+        "hop",
+        "fly",
+        "eat",
+        "drink",
+        "rest",
+        "takeoff",
+        "land"
+      ],
+      "vertices": 10180,
+      "triangles": 10384,
+      "joints": [
+        {
+          "name": "root",
+          "parent": null,
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "motion",
+          "parent": "root",
+          "at": [
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "body",
+          "parent": "motion",
+          "at": [
+            0,
+            0.16,
+            0
+          ]
+        },
+        {
+          "name": "head",
+          "parent": "body",
+          "at": [
+            0,
+            0.66,
+            0.09
+          ]
+        },
+        {
+          "name": "jaw",
+          "parent": "head",
+          "at": [
+            0,
+            0.729,
+            0.249
+          ]
+        },
+        {
+          "name": "wingLeft",
+          "parent": "body",
+          "at": [
+            -0.14,
+            0.58,
+            0.005
+          ]
+        },
+        {
+          "name": "wingRight",
+          "parent": "body",
+          "at": [
+            0.14,
+            0.58,
+            0.005
+          ]
+        },
+        {
+          "name": "foreLeft",
+          "parent": "wingLeft",
+          "at": [
+            -0.36,
+            0.568,
+            -0.03
+          ]
+        },
+        {
+          "name": "foreRight",
+          "parent": "wingRight",
+          "at": [
+            0.36,
+            0.568,
+            -0.03
+          ]
+        },
+        {
+          "name": "tail",
+          "parent": "body",
+          "at": [
+            0,
+            0.22,
+            -0.1
+          ]
+        },
+        {
+          "name": "footLeft",
+          "parent": "motion",
+          "at": [
+            -0.075,
+            0,
+            0.025
+          ]
+        },
+        {
+          "name": "footRight",
+          "parent": "motion",
+          "at": [
+            0.075,
+            0,
+            0.025
+          ]
+        },
+        {
+          "name": "eyelids",
+          "parent": "head",
+          "at": [
+            0,
+            0.822,
+            0.208
+          ]
+        },
+        {
+          "name": "footLeftToe0",
+          "parent": "footLeft",
+          "at": [
+            -0.061,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footLeftToe1",
+          "parent": "footLeft",
+          "at": [
+            -0.089,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footLeftToe2",
+          "parent": "footLeft",
+          "at": [
+            -0.061,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footLeftToe3",
+          "parent": "footLeft",
+          "at": [
+            -0.089,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footRightToe0",
+          "parent": "footRight",
+          "at": [
+            0.089,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footRightToe1",
+          "parent": "footRight",
+          "at": [
+            0.061,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footRightToe2",
+          "parent": "footRight",
+          "at": [
+            0.089,
+            0.018,
+            0.025
+          ]
+        },
+        {
+          "name": "footRightToe3",
+          "parent": "footRight",
+          "at": [
+            0.061,
+            0.018,
+            0.025
+          ]
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.7698980569839478,
+          -0.38499999046325684,
+          -0.2883111536502838
+        ],
+        "max": [
+          0.7698980569839478,
+          0.9187790155410767,
+          0.35446417331695557
+        ]
+      },
+      "textures": {
+        "width": 1536,
+        "height": 1024,
+        "colorSha256": "f238c147699dd617b64349bbe01b0a315bfa1051adba92f4511b138f46e59333",
+        "normalSha256": "e334677fa7217f51d8ac009b62ee17c491392d13bb816fafdf8149069eb21541"
+      }
+    }
+  ]
+}

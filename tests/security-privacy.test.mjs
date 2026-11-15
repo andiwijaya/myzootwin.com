@@ -14,7 +14,8 @@ test('analytics eligibility never opts the game in; all external font loading is
 });
 test('game CSP restricts active script, connection, font, form and object boundaries while retaining needed inline styles',()=>{
  const p=new Map(pagePrivacy('/play/',true).csp.split(';').map(x=>x.trim().split(/\s+/)).map(([key,...value])=>[key,value]));
- for(const key of ['default-src','script-src','connect-src','font-src'])assert.deepEqual(p.get(key),["'self'"]);
+ for(const key of ['default-src','script-src','font-src'])assert.deepEqual(p.get(key),["'self'"]);
+ assert.deepEqual(p.get('connect-src'),["'self'",'blob:']); // Hash-verified local GLB texture decoding; no external network host.
  assert.deepEqual(p.get('object-src'),["'none'"]);assert.deepEqual(p.get('form-action'),["'none'"]);
  assert.ok(p.get('style-src').includes("'unsafe-inline'"));assert.ok(!p.get('script-src').includes("'unsafe-inline'"));assert.ok(!pagePrivacy('/play',true).csp.includes('unsafe-eval'));
 });

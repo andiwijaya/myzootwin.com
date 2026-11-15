@@ -1,0 +1,17 @@
+import {Box3,Float32BufferAttribute,Group,Mesh,Vector3} from 'three';
+import type {SceneCatalog} from '../scene-selection.ts';
+import type {AnimalLibrary,SceneryInstance} from './animal-library.ts';
+
+/** Replace only owned decorative faces; tile, habitat and path ownership remain intact. */
+export function createGLBSceneryScene(catalog:SceneCatalog,library:AnimalLibrary){
+ const group=new Group();group.name='Pelatuk original foliage and rocks';let disposed=false,low=false;
+ const targets=[...catalog.identities.values()].filter(i=>['palm','tree','rock'].includes(i.kind)).map(i=>({identity:i,original:catalog.bounds.get(i.id)!.clone()})),hidden=new Set<string>(),records=new Map<string,{instance:SceneryInstance;entries:SceneCatalog['batches']}>();
+ const batches=catalog.batches.filter(b=>b.ranges.some(r=>r.id&&targets.some(t=>t.identity.id===r.id))).map(entry=>({entry,ranges:entry.ranges.map(r=>({...r})),attributes:Object.fromEntries(['position','normal','color'].map(k=>[k,Array.from(entry.mesh.geometry.getAttribute(k).array)]))}));
+ function filter(){for(const source of batches){let first=0;const ranges:typeof source.ranges=[],attributes:Record<string,number[]>={position:[],normal:[],color:[]};for(const r of source.ranges){if(r.id&&hidden.has(r.id))continue;for(const k of Object.keys(attributes))attributes[k].push(...source.attributes[k]!.slice(r.first*9,(r.first+r.count)*9));ranges.push({...r,first});first+=r.count;}for(const[k,values]of Object.entries(attributes))source.entry.mesh.geometry.setAttribute(k,new Float32BufferAttribute(values,3));source.entry.mesh.geometry.computeBoundingBox();source.entry.mesh.geometry.computeBoundingSphere();source.entry.ranges=ranges;}}
+ function sync(value=false){if(disposed)return;low=value;let changed=false;for(const target of targets){const {identity,original}=target,id=identity.id,model=identity.kind==='tree'?`broadleaf-${[17,203,841][(identity.ordinal-1)%3]}-${low?'low':'high'}-v01`:identity.kind==='palm'?`palm-17-${low?'low':'high'}-v01`:`boulder-${[17,48,79][(identity.ordinal-1)%3]}-low-v01`,old=records.get(id);if(old?.instance.id===model)continue;if(!library.ensure(model))continue;
+   const instance=library.instantiateScene(model,id),root=instance.scene,bounds=new Box3().setFromObject(root),center=bounds.getCenter(new Vector3()),height=bounds.getSize(new Vector3()).y,desired=original.getSize(new Vector3()).y,anchor=original.getCenter(new Vector3()),scale=desired/height;root.scale.setScalar(scale);root.position.set(anchor.x-center.x*scale,Math.max(.025,original.min.y)-bounds.min.y*scale,anchor.z-center.z*scale);root.updateMatrixWorld(true);const entries:SceneCatalog['batches']=[];root.traverse(o=>{if(o instanceof Mesh){o.castShadow=true;o.receiveShadow=true;entries.push({mesh:o,ranges:[{first:0,count:(o.geometry.index?.count??o.geometry.getAttribute('position').count)/3,id}]});}});
+   if(old){catalog.batches=catalog.batches.filter(e=>!old.entries.includes(e));library.release(old.instance);}records.set(id,{instance,entries});catalog.batches.push(...entries);catalog.bounds.set(id,new Box3().setFromObject(root));group.add(root);if(!hidden.has(id)){hidden.add(id);changed=true;}
+  }if(changed)filter();}
+ function dispose(){if(disposed)return;disposed=true;for(const r of records.values()){catalog.batches=catalog.batches.filter(e=>!r.entries.includes(e));library.release(r.instance);}records.clear();group.clear();}
+ return{group,sync,dispose,inspect:()=>({glbSceneryObjects:records.size,glbSceneryExpected:targets.length,glbSceneryLow:low,glbSceneryDisposed:disposed})};
+}

@@ -5,6 +5,8 @@ import {BIRD_PERCH_HEIGHT,birdHome} from '../../animals/autonomy.ts';
 import {createMacawAssets,MACAW_SCALE} from './macaw-geometry.ts';
 import {createMacawRig} from './macaw-rig.ts';
 import {sampleMacawPose,blendMacawPose,type MacawPose} from './macaw-animation.ts';
+import type {AnimalLibrary} from '../glb/animal-library.ts';
+import {createGLBResidentRig,type GLBResidentRig} from '../glb/resident-rig.ts';
 export function autonomousPose(a:Animal,time:number):MacawPose{
  const m=a.motion,walking=m.phase==='walk-out'||m.phase==='walk-home'||m.phase==='seek-food'||m.phase==='leave-food'||['seek-rest','seek-water','water-back','leave-water','water-home','water-abort'].includes(m.phase),flying=m.phase==='ascend'||m.phase==='descend';
  const p=sampleMacawPose(m.phase==='rest'?'rest':m.phase==='drink'?'drink':m.phase==='water-hop'?'hop':m.phase==='eat'?'eat':walking?'walk':'perch',m.phase==='eat'||m.phase==='drink'?(20-m.ticksLeft)*100:m.phase==='water-hop'?(8-m.ticksLeft)*100:time);
@@ -14,16 +16,17 @@ export function autonomousPose(a:Animal,time:number):MacawPose{
  p.lift=0;return p;
 }
 /** Two transforms share one original palette/geometry set. No timers, physics, RNG, or second RAF. */
-export function createAutonomousBirds(){
+export function createAutonomousBirds(library?:AnimalLibrary){
  const group=new Group();group.name='Two sanctuary macaws';let disposed=false,assets:ReturnType<typeof createMacawAssets>|undefined,branchGeometry:CylinderGeometry|undefined,branchMaterial:MeshStandardMaterial|undefined,layout='';
- type Record={rig:ReturnType<typeof createMacawRig>;previous:Animal;current:Animal;pose:MacawPose;from:MacawPose;changedAt:number;};
+ type Record={rig:ReturnType<typeof createMacawRig>|GLBResidentRig;previous:Animal;current:Animal;pose:MacawPose;from:MacawPose;changedAt:number;};
  const birds=new Map<string,Record>();const landingBranches:Mesh[]=[];let perchesVisible=true;
  function clear(){for(const b of birds.values())b.rig.dispose();birds.clear();landingBranches.length=0;group.clear();assets?.dispose();assets=undefined;branchGeometry?.dispose();branchGeometry=undefined;branchMaterial?.dispose();branchMaterial=undefined;layout='';}
- function sync(animals:Animal[],habitats:Habitat[],width:number,height:number,time:number){
+ function sync(animals:Animal[],habitats:Habitat[],width:number,height:number,time:number,low=false){
   if(disposed)return;const placed=animals.filter(a=>a.habitatId&&a.position).sort((a,b)=>a.id.localeCompare(b.id));const next=placed.map(a=>`${a.id}:${a.habitatId}`).join('|');
-  if(next!==layout){clear();layout=next;if(placed.length){assets=createMacawAssets();branchGeometry=new CylinderGeometry(1,1,1,8);branchMaterial=new MeshStandardMaterial({color:'#99754e',roughness:1});}}
+  if(next!==layout){clear();layout=next;if(placed.length){if(!library)assets=createMacawAssets();branchGeometry=new CylinderGeometry(1,1,1,8);branchMaterial=new MeshStandardMaterial({color:'#99754e',roughness:1});}}
   for(const [slot,a]of placed.entries()){
-   let b=birds.get(a.id);if(!b&&assets){const rig=createMacawRig(assets);rig.root.name=a.id;rig.root.scale.setScalar(MACAW_SCALE);group.add(rig.root);const pose=autonomousPose(a,time);b={rig,previous:structuredClone(a),current:structuredClone(a),pose,from:pose,changedAt:time};birds.set(a.id,b);
+   let b=birds.get(a.id);const variant=a.id==='macaw-1'?'one':'two';if(library&&b&&'sourceId'in b.rig&&b.rig.sourceId!==library.modelId('macaw',variant,low)&&library.ensure(library.modelId('macaw',variant,low))){const replacement=createGLBResidentRig(library,'macaw',variant,a.id,low)!;replacement.root.position.copy(b.rig.root.position);replacement.root.quaternion.copy(b.rig.root.quaternion);replacement.root.scale.copy(b.rig.root.scale);b.rig.dispose();b.rig=replacement;replacement.apply(b.pose);group.add(replacement.root);}
+   if(!b&&(assets||library)){const rig=library?createGLBResidentRig(library,'macaw',variant,a.id,low):createMacawRig(assets!);if(!rig)continue;rig.root.name=a.id;rig.root.scale.setScalar(MACAW_SCALE);group.add(rig.root);const pose=autonomousPose(a,time);b={rig,previous:structuredClone(a),current:structuredClone(a),pose,from:pose,changedAt:time};birds.set(a.id,b);
     const h=habitats.find(h=>h.id===a.habitatId)!;const p=birdHome(h,slot).perch,x=p.x-sceneOrigin({width,height}).x,z=p.z-sceneOrigin({width,height}).z-.025*MACAW_SCALE,y=.079+BIRD_PERCH_HEIGHT-.035*MACAW_SCALE;
     const branch=new Mesh(branchGeometry,branchMaterial);branch.rotation.z=Math.PI/2;branch.scale.set(.035*MACAW_SCALE,.34,.035*MACAW_SCALE);branch.position.set(x,y,z);branch.visible=perchesVisible;landingBranches.push(branch);group.add(branch);
     for(const dx of [-.15,.15]){const post=new Mesh(branchGeometry,branchMaterial);post.scale.set(.014,y-.079,.014);post.position.set(x+dx,.079+(y-.079)/2,z);post.visible=perchesVisible;landingBranches.push(post);group.add(post);}
@@ -38,5 +41,5 @@ export function createAutonomousBirds(){
   b.rig.root.position.set(p.position.x+(a.position.x-p.position.x)*t-group.userData.worldOriginX,.079+p.motion.elevation+(a.motion.elevation-p.motion.elevation)*t,p.position.z+(a.position.z-p.position.z)*t-group.userData.worldOriginZ);b.rig.root.rotation.y=heading;
   const sample=autonomousPose(a,time+(a.id==='macaw-1'?0:1300));b.pose=blendMacawPose(b.from,sample,Math.min(1,Math.max(0,time-b.changedAt)/280));b.rig.apply(b.pose);
  }}
- return {group,sync,update,setPerchesVisible(value:boolean){perchesVisible=value;for(const b of landingBranches)b.visible=value;},setVisible:(value:boolean)=>{group.visible=value;},dispose(){if(disposed)return;disposed=true;clear();},inspect:()=>({liveBirdModels:birds.size,birdAssetsGeometries:assets?.inspect().macawAssetGeometries??0,birdOwnedMaterials:assets?2:0,birdModelTriangles:assets?(assets.inspect().macawTriangles*birds.size):0,birdPerchTriangles:assets&&perchesVisible?3*32*birds.size:0,birdPerchesVisible:perchesVisible&&birds.size>0,birdSceneDisposed:disposed})};
+ return {group,sync,update,setPerchesVisible(value:boolean){perchesVisible=value;for(const b of landingBranches)b.visible=value;},setVisible:(value:boolean)=>{group.visible=value;},dispose(){if(disposed)return;disposed=true;clear();},inspect:()=>({liveBirdModels:birds.size,birdPerchMaterials:branchMaterial?1:0,birdAssetsGeometries:library?birds.size:assets?.inspect().macawAssetGeometries??0,birdOwnedMaterials:library?new Set([...birds.values()].map(b=>(b.rig as GLBResidentRig).material)).size+(branchMaterial?1:0):assets?2:0,birdModelTriangles:library?[...birds.values()].reduce((n,b)=>n+(b.rig as GLBResidentRig).triangles,0):assets?(assets.inspect().macawTriangles*birds.size):0,birdPerchTriangles:branchGeometry&&perchesVisible?3*32*birds.size:0,birdPerchesVisible:perchesVisible&&birds.size>0,birdSceneDisposed:disposed})};
 }

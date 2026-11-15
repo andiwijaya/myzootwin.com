@@ -7,6 +7,7 @@ import {discoverVisualInventory} from '../scripts/qa/zebra/visual-inventory.mjs'
 const frozen=JSON.parse(readFileSync(new URL('../docs/qa/zebra/z0-03/inventory.json',import.meta.url),'utf8'));
 const extension=JSON.parse(readFileSync(new URL('./fixtures/zebra-visual-v5-extension.json',import.meta.url),'utf8'));
 const releaseExtension=JSON.parse(readFileSync(new URL('./fixtures/zebra-release-public-extension.json',import.meta.url),'utf8'));
+const glbExtension=JSON.parse(readFileSync(new URL('./fixtures/glb-visual-extension.json',import.meta.url),'utf8'));
 const withoutLine=({line,...record})=>record;
 // Keep the immutable Z0-03 receipt. H1 found Box3Helper and spray's Object3D transform helper omitted by the original regex.
 // Compare its original source inventory after projecting out that explicit scanner correction.
@@ -18,13 +19,18 @@ test('all production-reachable visual sources and nested geometry/part sites rem
  // assets and media exact; core contract changes are covered by the V1-V4 golden projections.
  // Do not rewrite the immutable Z0 receipt or reject an intentional nonvisual schema extension.
  // Z2-03 adds one original Zebra fence factory and three reviewed integration modules.
- // All other47 original render modules stay byte/source-inventory exact. Never rewrite Z0.
+ // The explicit GLB extension binds the reviewed migration to exact source and
+ // public hashes. All other original render modules remain exact. Never rewrite Z0.
  const integration=new Set(['src/game/render3d/foundation-scene.ts','src/game/render3d/placement-preview.ts','src/game/render3d/preview-controller.ts']),newFactory='src/game/render3d/zebra/world-scene.ts';
  const protectedModule=m=>m.path.startsWith('src/game/render3d/')&&!integration.has(m.path)&&!m.path.startsWith('src/game/render3d/zebra/')&&m.path!=='src/game/render3d/scene-selection.ts';
- assert.deepEqual(current.modules.filter(protectedModule),historical.modules.filter(protectedModule),'Original protected render factory drift requires explicit review');
+ const migrated=new Set(glbExtension.changedPaths),retiredModules=new Set(glbExtension.retiredModules.map(m=>m.path)),ordered=(a,b)=>(a.path??a.sourcePath).localeCompare(b.path??b.sourcePath);
+ assert.deepEqual([...retiredModules],['src/game/render3d/visitor-scene.ts']);
+ for(const m of glbExtension.retiredModules){assert.deepEqual(m,historical.modules.find(h=>h.path===m.path));assert.equal(createHash('sha256').update(readFileSync(new URL('../'+m.path,import.meta.url),'utf8').replace(/\r\n/g,'\n')).digest('hex'),m.sha256,'Legacy visitor source remains exact but is no longer reached by the product');}
+ assert.deepEqual([...migrated].filter(p=>!p.startsWith('src/game/render3d/glb/')).sort(),['src/game/render3d/elephant-residents-scene.ts','src/game/render3d/macaw/autonomous-birds.ts','src/game/render3d/macaw/macaw-studio.ts']);
+ assert.deepEqual(current.modules.filter(protectedModule),[...historical.modules.filter(m=>protectedModule(m)&&!migrated.has(m.path)&&!retiredModules.has(m.path)),...glbExtension.modules.filter(protectedModule)].sort(ordered),'Original protected render factory drift requires explicit review');
  const protectedAsset=a=>!integration.has(a.sourcePath)&&!a.sourcePath.startsWith('src/game/render3d/zebra/')&&a.sourcePath!=='src/game/render3d/scene-selection.ts';
- assert.deepEqual(current.assets.filter(protectedAsset),historical.assets.filter(protectedAsset),'Original protected visual parts remain exact');
- for(const path of integration)assert.deepEqual(current.assets.filter(a=>a.sourcePath===path).map(({line,...a})=>a),historical.assets.filter(a=>a.sourcePath===path).map(({line,...a})=>a),'Integration retains original constructors/parts: '+path);
+ assert.deepEqual(current.assets.filter(protectedAsset),[...historical.assets.filter(a=>protectedAsset(a)&&!migrated.has(a.sourcePath)&&!retiredModules.has(a.sourcePath)),...glbExtension.assets.filter(protectedAsset)].sort(ordered),'Original protected visual parts remain exact outside the reviewed GLB migration');
+ for(const path of integration)assert.deepEqual(current.assets.filter(a=>a.sourcePath===path).map(({line,...a})=>a),(path==='src/game/render3d/foundation-scene.ts'?glbExtension.assets:historical.assets).filter(a=>a.sourcePath===path).map(({line,...a})=>a),'Reviewed integration constructors/parts: '+path);
  // HP6 adds one reviewed preview image and five exact original capture derivatives.
  // Keep original media bytes/provenance exact; only two retired source references change.
  const originalStatic=new Set(historical.staticVisuals.map(a=>a.assetId));
@@ -50,6 +56,17 @@ test('all production-reachable visual sources and nested geometry/part sites rem
   const audited=audit.publicAssets.find(a=>a.path===record.path);assert.ok(audited,'Actual reviewed R7-06 distribution '+record.path);
   assert.equal(record.sha256,audited.sha256);assert.equal(record.bytes,audited.bytes);
   assert.deepEqual(record.provenance,[{id:audited.record,rights:audited.rights,origin:audited.origin}]);
+ }
+ const glbEvidence=readFileSync(new URL('../'+glbExtension.evidence.path,import.meta.url));
+ assert.equal(createHash('sha256').update(glbEvidence).digest('hex'),glbExtension.evidence.sha256);
+ const glbAudit=normalize(JSON.parse(gunzipSync(glbEvidence)));
+ assert.deepEqual(glbAudit.modules.filter(m=>migrated.has(m.path)),glbExtension.modules.filter(m=>migrated.has(m.path)));
+ assert.equal(glbExtension.publicAdditions.length,123);
+ for(const added of glbExtension.publicAdditions){
+  assert.match(added.path,/^public\/(?:_headers$|zoo-(?:assets|environment|fixtures)\/v01\/)/);
+  assert.ok(!accepted.has(added.path));assert.deepEqual(added,glbAudit.publicAssets.find(a=>a.path===added.path));
+  assert.ok(Array.isArray(added.provenance)&&added.provenance.length===1,'Content-hash-bound GLB provenance '+added.path);
+  accepted.set(added.path,added);
  }
  assert.deepEqual(current.publicAssets,[...accepted.values()].sort((a,b)=>a.path.localeCompare(b.path)),'All copied assets remain exactly reviewed; no unregistered addition/deletion/content/provenance drift');
  assert.equal(createHash('sha256').update(readFileSync(new URL('../'+extension.evidence.path,import.meta.url))).digest('hex'),extension.evidence.sha256);

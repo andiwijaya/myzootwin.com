@@ -1,0 +1,3511 @@
+{
+  "version": 1,
+  "scope": "Explicit reviewed GLB migration. Original Z0 and Zebra receipts remain immutable; every other protected module, visual part and distributed file remains exact.",
+  "evidence": {
+    "path": "docs/qa/glb/glb-visual-inventory-20261115.json.gz",
+    "sha256": "e5ed1f7a3f996ff68252ce4f7805ec994e7b8902b9478028a9edf417a6c4d51d"
+  },
+  "changedPaths": [
+    "src/game/render3d/elephant-residents-scene.ts",
+    "src/game/render3d/macaw/autonomous-birds.ts",
+    "src/game/render3d/macaw/macaw-studio.ts",
+    "src/game/render3d/glb/animal-library.ts",
+    "src/game/render3d/glb/articulation.ts",
+    "src/game/render3d/glb/facilities-scene.ts",
+    "src/game/render3d/glb/foot-plants.ts",
+    "src/game/render3d/glb/resident-rig.ts",
+    "src/game/render3d/glb/residents-scene.ts",
+    "src/game/render3d/glb/scenery-scene.ts",
+    "src/game/render3d/glb/visitor-scene.ts"
+  ],
+  "modules": [
+    {
+      "path": "src/game/render3d/elephant-residents-scene.ts",
+      "sha256": "53358e66fba603c41642abc3d52f6fec30aab87225aab8801d2c58f8d79a17ce",
+      "family": "elephant",
+      "imports": [
+        "src/game/render3d/elephant/elephant-bathing.ts",
+        "src/game/render3d/elephant/elephant-consumption.ts",
+        "src/game/render3d/elephant/elephant-enrichment.ts",
+        "src/game/render3d/elephant/elephant-geometry.ts",
+        "src/game/render3d/elephant/elephant-locomotion.ts",
+        "src/game/render3d/elephant/elephant-rig.ts",
+        "src/game/render3d/elephant/elephant-social.ts",
+        "src/game/render3d/elephant/elephant-spray.ts",
+        "src/game/render3d/glb/resident-rig.ts",
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [
+        {
+          "type": "Group",
+          "owner": "createElephantResidentsScene",
+          "variable": "group",
+          "line": 25
+        },
+        {
+          "type": "MeshStandardMaterial",
+          "owner": "sync",
+          "variable": "MeshStandardMaterial",
+          "line": 31
+        }
+      ],
+      "labels": [
+        {
+          "label": "Ayu and Nara residents",
+          "owner": "createElephantResidentsScene",
+          "line": 25,
+          "kind": "runtime-object-name"
+        }
+      ],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "elephantAmbientPose",
+          "line": 17
+        },
+        {
+          "name": "createElephantResidentsScene",
+          "line": 24
+        },
+        {
+          "name": "bounds",
+          "line": 27
+        },
+        {
+          "name": "remove",
+          "line": 28
+        }
+      ],
+      "threeTypes": [
+        "Box3",
+        "Group",
+        "MeshStandardMaterial",
+        "Vector3"
+      ],
+      "exports": [
+        "createElephantResidentsScene",
+        "elephantAmbientPose"
+      ]
+    },
+    {
+      "path": "src/game/render3d/foundation-scene.ts",
+      "sha256": "eabbae817b3f0a5f3d269005adbc1ec559f0493aa753b63a10a9c76cb6d5e3e1",
+      "family": "shared-world",
+      "imports": [
+        "src/game/core/giraffe-state.ts",
+        "src/game/core/simulation.ts",
+        "src/game/core/visual-settings.ts",
+        "src/game/core/zebra-state.ts",
+        "src/game/economy/elephant-recovery.ts",
+        "src/game/persistence/save-v3.ts",
+        "src/game/render3d/camera-controls.ts",
+        "src/game/render3d/elephant-care-preview.ts",
+        "src/game/render3d/elephant-care-scene.ts",
+        "src/game/render3d/elephant-habitat-scene.ts",
+        "src/game/render3d/elephant-residents-scene.ts",
+        "src/game/render3d/feeder-scene.ts",
+        "src/game/render3d/frame-loop.ts",
+        "src/game/render3d/giraffe-care-preview.ts",
+        "src/game/render3d/giraffe/care-ghost.ts",
+        "src/game/render3d/giraffe/world-scene.ts",
+        "src/game/render3d/glb/animal-library.ts",
+        "src/game/render3d/glb/facilities-scene.ts",
+        "src/game/render3d/glb/residents-scene.ts",
+        "src/game/render3d/glb/scenery-scene.ts",
+        "src/game/render3d/glb/visitor-scene.ts",
+        "src/game/render3d/habitat-scene.ts",
+        "src/game/render3d/lion-care-preview.ts",
+        "src/game/render3d/lion/care-ghost.ts",
+        "src/game/render3d/lion/world-scene.ts",
+        "src/game/render3d/macaw/autonomous-birds.ts",
+        "src/game/render3d/macaw/macaw-studio.ts",
+        "src/game/render3d/path-scene.ts",
+        "src/game/render3d/perch-scene.ts",
+        "src/game/render3d/placement-preview.ts",
+        "src/game/render3d/preview-controller.ts",
+        "src/game/render3d/reward-decoration.ts",
+        "src/game/render3d/sanctuary-lighting.ts",
+        "src/game/render3d/scene-picking.ts",
+        "src/game/render3d/thriving-banner.ts",
+        "src/game/render3d/tropical-diorama.ts",
+        "src/game/render3d/water-scene.ts",
+        "src/game/render3d/webgl-cleanup.ts",
+        "src/game/render3d/zebra/care-ghost.ts",
+        "src/game/render3d/zebra/care-preview.ts",
+        "src/game/render3d/zebra/care-scene.ts",
+        "src/game/render3d/zebra/world-scene.ts",
+        "src/game/world/scene-coordinates.ts",
+        "src/game/world/zebra-access.ts"
+      ],
+      "constructors": [
+        {
+          "type": "Scene",
+          "owner": "mountFoundationScene",
+          "variable": "scene",
+          "line": 109
+        },
+        {
+          "type": "Group",
+          "owner": "mountFoundationScene",
+          "variable": "worldLayer",
+          "line": 110
+        },
+        {
+          "type": "OrthographicCamera",
+          "owner": "mountFoundationScene",
+          "variable": "camera",
+          "line": 113
+        },
+        {
+          "type": "WebGLRenderer",
+          "owner": "mountFoundationScene",
+          "variable": "WebGLRenderer",
+          "line": 400
+        }
+      ],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "structuralWorld",
+          "line": 48
+        },
+        {
+          "name": "mountFoundationScene",
+          "line": 79
+        },
+        {
+          "name": "visual",
+          "line": 116
+        },
+        {
+          "name": "announceFood",
+          "line": 132
+        },
+        {
+          "name": "announceWater",
+          "line": 134
+        },
+        {
+          "name": "announcePerch",
+          "line": 136
+        },
+        {
+          "name": "announceBirds",
+          "line": 139
+        },
+        {
+          "name": "announceVisitors",
+          "line": 141
+        },
+        {
+          "name": "announceZebraMissions",
+          "line": 145
+        },
+        {
+          "name": "onZebraMission",
+          "line": 146
+        },
+        {
+          "name": "announceZebraCare",
+          "line": 157
+        },
+        {
+          "name": "commitZebraResource",
+          "line": 158
+        },
+        {
+          "name": "commitZebraEdit",
+          "line": 159
+        },
+        {
+          "name": "onZebraCare",
+          "line": 160
+        },
+        {
+          "name": "announceZebraAccess",
+          "line": 163
+        },
+        {
+          "name": "announceGiraffe",
+          "line": 164
+        },
+        {
+          "name": "onGiraffeCommand",
+          "line": 169
+        },
+        {
+          "name": "announceLion",
+          "line": 197
+        },
+        {
+          "name": "onLionCommand",
+          "line": 202
+        },
+        {
+          "name": "announceElephantCare",
+          "line": 225
+        },
+        {
+          "name": "announceGrant",
+          "line": 226
+        },
+        {
+          "name": "claimGrant",
+          "line": 227
+        },
+        {
+          "name": "announceElephantMissions",
+          "line": 239
+        },
+        {
+          "name": "announceElephantGuide",
+          "line": 240
+        },
+        {
+          "name": "announceElephantRecovery",
+          "line": 241
+        },
+        {
+          "name": "claimElephantMission",
+          "line": 242
+        },
+        {
+          "name": "announceHabitat",
+          "line": 251
+        },
+        {
+          "name": "commitZebraHabitat",
+          "line": 252
+        },
+        {
+          "name": "saveSession",
+          "line": 262
+        },
+        {
+          "name": "announceEdit",
+          "line": 263
+        },
+        {
+          "name": "notifyContextLoss",
+          "line": 280
+        },
+        {
+          "name": "readGuide",
+          "line": 287
+        },
+        {
+          "name": "announceSpeed",
+          "line": 289
+        },
+        {
+          "name": "render",
+          "line": 290
+        },
+        {
+          "name": "updateRunning",
+          "line": 325
+        },
+        {
+          "name": "inspectFixtureFeatures",
+          "line": 341
+        },
+        {
+          "name": "resize",
+          "line": 342
+        },
+        {
+          "name": "onResize",
+          "line": 352
+        },
+        {
+          "name": "onMotionChange",
+          "line": 356
+        },
+        {
+          "name": "onStudioKey",
+          "line": 357
+        },
+        {
+          "name": "onLost",
+          "line": 358
+        },
+        {
+          "name": "safe",
+          "line": 359
+        },
+        {
+          "name": "dispose",
+          "line": 360
+        }
+      ],
+      "threeTypes": [
+        "BufferGeometry",
+        "Group",
+        "OrthographicCamera",
+        "SRGBColorSpace",
+        "Scene",
+        "WebGLRenderer"
+      ],
+      "exports": [
+        "mountFoundationScene"
+      ]
+    },
+    {
+      "path": "src/game/render3d/glb/animal-library.ts",
+      "sha256": "a50033912a1c15732ce767201e6c720eaa75b529850a2968b2f6c9c9de8814d1",
+      "family": "shared-world",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "abort",
+          "line": 47
+        },
+        {
+          "name": "hash",
+          "line": 48
+        },
+        {
+          "name": "textureList",
+          "line": 49
+        },
+        {
+          "name": "createAnimalLibrary",
+          "line": 55
+        },
+        {
+          "name": "check",
+          "line": 70
+        },
+        {
+          "name": "notify",
+          "line": 72
+        },
+        {
+          "name": "safeURL",
+          "line": 74
+        },
+        {
+          "name": "closeImage",
+          "line": 77
+        },
+        {
+          "name": "disposeUnpooled",
+          "line": 85
+        },
+        {
+          "name": "disposeTemplate",
+          "line": 95
+        },
+        {
+          "name": "imageData",
+          "line": 128
+        },
+        {
+          "name": "slot",
+          "line": 139
+        },
+        {
+          "name": "free",
+          "line": 141
+        },
+        {
+          "name": "load",
+          "line": 142
+        },
+        {
+          "name": "ensure",
+          "line": 260
+        },
+        {
+          "name": "instantiateScene",
+          "line": 263
+        },
+        {
+          "name": "instantiate",
+          "line": 264
+        },
+        {
+          "name": "release",
+          "line": 265
+        },
+        {
+          "name": "modelId",
+          "line": 274
+        },
+        {
+          "name": "dispose",
+          "line": 275
+        },
+        {
+          "name": "inspect",
+          "line": 281
+        }
+      ],
+      "threeTypes": [
+        "LoadingManager",
+        "Mesh",
+        "SkinnedMesh"
+      ],
+      "exports": [
+        "AnimalInstance",
+        "AnimalLibrary",
+        "AnimalModel",
+        "SceneryInstance",
+        "createAnimalLibrary"
+      ]
+    },
+    {
+      "path": "src/game/render3d/glb/articulation.ts",
+      "sha256": "d9217625fa495f48350516d6a9e7e31729bd81ebff08a8e65dd8a431866b8a74",
+      "family": "shared-world",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "cap",
+          "line": 12
+        },
+        {
+          "name": "n",
+          "line": 14
+        },
+        {
+          "name": "list",
+          "line": 15
+        },
+        {
+          "name": "applyAnimalPose",
+          "line": 17
+        },
+        {
+          "name": "bone",
+          "line": 18
+        },
+        {
+          "name": "sampleFootTargets",
+          "line": 128
+        },
+        {
+          "name": "stabilizeFeet",
+          "line": 137
+        },
+        {
+          "name": "boneContact",
+          "line": 155
+        }
+      ],
+      "threeTypes": [
+        "Vector3"
+      ],
+      "exports": [
+        "AnimalSpecies",
+        "Bones",
+        "Gait",
+        "applyAnimalPose",
+        "boneContact",
+        "sampleFootTargets",
+        "stabilizeFeet"
+      ]
+    },
+    {
+      "path": "src/game/render3d/glb/facilities-scene.ts",
+      "sha256": "5246514188318fbb6d3f31e8426fd3f94340bd4d65bdc01e0d6b2268f294dc98",
+      "family": "shared-world",
+      "imports": [
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [
+        {
+          "type": "Group",
+          "owner": "createGLBFacilitiesScene",
+          "variable": "group",
+          "line": 9
+        },
+        {
+          "type": "InstancedMesh",
+          "owner": "sync",
+          "variable": "mesh",
+          "line": 16
+        }
+      ],
+      "labels": [
+        {
+          "label": "Original MyZooTwin GLB care fixtures",
+          "owner": "createGLBFacilitiesScene",
+          "line": 9,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "retained-stock-batch",
+          "owner": "sync",
+          "line": 16,
+          "kind": "runtime-object-name"
+        }
+      ],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "createGLBFacilitiesScene",
+          "line": 8
+        },
+        {
+          "name": "remove",
+          "line": 11
+        },
+        {
+          "name": "sync",
+          "line": 12
+        },
+        {
+          "name": "dispose",
+          "line": 27
+        },
+        {
+          "name": "inspect",
+          "line": 28
+        },
+        {
+          "name": "waterVisible",
+          "line": 28
+        }
+      ],
+      "threeTypes": [
+        "Box3",
+        "Group",
+        "InstancedMesh",
+        "Matrix4",
+        "Mesh",
+        "Object3D"
+      ],
+      "exports": [
+        "createGLBFacilitiesScene"
+      ]
+    },
+    {
+      "path": "src/game/render3d/glb/foot-plants.ts",
+      "sha256": "0e52512e9bdc43c14ee26a4a68f9a8cd797459833cfd1c4bde99c444d1568079",
+      "family": "shared-world",
+      "imports": [
+        "src/game/render3d/glb/articulation.ts"
+      ],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "createFootPlants",
+          "line": 5
+        },
+        {
+          "name": "clear",
+          "line": 7
+        },
+        {
+          "name": "update",
+          "line": 8
+        },
+        {
+          "name": "grounded",
+          "line": 11
+        },
+        {
+          "name": "capture",
+          "line": 26
+        },
+        {
+          "name": "restore",
+          "line": 27
+        }
+      ],
+      "threeTypes": [
+        "Quaternion",
+        "Vector3"
+      ],
+      "exports": [
+        "createFootPlants"
+      ]
+    },
+    {
+      "path": "src/game/render3d/glb/resident-rig.ts",
+      "sha256": "5ed9060ebb83dd2f1c4465d5dd2cabdb5af280ead108df014b32fdccf3a906c7",
+      "family": "shared-world",
+      "imports": [
+        "src/game/render3d/glb/articulation.ts",
+        "src/game/render3d/glb/foot-plants.ts"
+      ],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "createGLBResidentRig",
+          "line": 9
+        },
+        {
+          "name": "setFrame",
+          "line": 15
+        },
+        {
+          "name": "apply",
+          "line": 16
+        },
+        {
+          "name": "dispose",
+          "line": 17
+        },
+        {
+          "name": "captureState",
+          "line": 18
+        },
+        {
+          "name": "clonePose",
+          "line": 18
+        },
+        {
+          "name": "restoreState",
+          "line": 19
+        }
+      ],
+      "threeTypes": [
+        "Box3",
+        "MeshStandardMaterial",
+        "Quaternion",
+        "Sphere",
+        "Vector3"
+      ],
+      "exports": [
+        "GLBResidentRig",
+        "createGLBResidentRig"
+      ]
+    },
+    {
+      "path": "src/game/render3d/glb/residents-scene.ts",
+      "sha256": "ac732a0ee3a162ad37b0b028c675f638cde80d464bd8c23531a121b96b46b3ce",
+      "family": "shared-world",
+      "imports": [
+        "src/game/animals/lions/ground.ts",
+        "src/game/animals/zebras/rules.ts",
+        "src/game/render3d/giraffe/residents-scene.ts",
+        "src/game/render3d/glb/resident-rig.ts",
+        "src/game/render3d/lion/residents-scene.ts",
+        "src/game/render3d/zebra/residents-scene.ts",
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [
+        {
+          "type": "Group",
+          "owner": "createResidents",
+          "variable": "group",
+          "line": 20
+        }
+      ],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "createResidents",
+          "line": 19
+        },
+        {
+          "name": "groundHeight",
+          "line": 22
+        },
+        {
+          "name": "remove",
+          "line": 23
+        },
+        {
+          "name": "syncCommon",
+          "line": 24
+        },
+        {
+          "name": "update",
+          "line": 37
+        },
+        {
+          "name": "dispose",
+          "line": 46
+        },
+        {
+          "name": "stats",
+          "line": 47
+        },
+        {
+          "name": "createGLBZebraResidentsScene",
+          "line": 51
+        },
+        {
+          "name": "createGLBGiraffeResidentsScene",
+          "line": 52
+        },
+        {
+          "name": "createGLBLionResidentsScene",
+          "line": 53
+        }
+      ],
+      "threeTypes": [
+        "Box3",
+        "Group"
+      ],
+      "exports": [
+        "createGLBGiraffeResidentsScene",
+        "createGLBLionResidentsScene",
+        "createGLBZebraResidentsScene"
+      ]
+    },
+    {
+      "path": "src/game/render3d/glb/scenery-scene.ts",
+      "sha256": "b69f303cf54c790f1cd42cb3bb616d9d2b48d0aa26820f41a1bdf7c2b7c8732f",
+      "family": "shared-world",
+      "imports": [],
+      "constructors": [
+        {
+          "type": "Group",
+          "owner": "createGLBSceneryScene",
+          "variable": "group",
+          "line": 7
+        }
+      ],
+      "labels": [
+        {
+          "label": "Pelatuk original foliage and rocks",
+          "owner": "createGLBSceneryScene",
+          "line": 7,
+          "kind": "runtime-object-name"
+        }
+      ],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "createGLBSceneryScene",
+          "line": 6
+        },
+        {
+          "name": "filter",
+          "line": 10
+        },
+        {
+          "name": "sync",
+          "line": 11
+        },
+        {
+          "name": "dispose",
+          "line": 15
+        }
+      ],
+      "threeTypes": [
+        "Box3",
+        "Float32BufferAttribute",
+        "Group",
+        "Mesh",
+        "Vector3"
+      ],
+      "exports": [
+        "createGLBSceneryScene"
+      ]
+    },
+    {
+      "path": "src/game/render3d/glb/visitor-scene.ts",
+      "sha256": "28335a4a0e44d70b3c0ff31d8b03f6a4750dbcbdecb1df8f8f8542e202772d2d",
+      "family": "visitors",
+      "imports": [
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [
+        {
+          "type": "Group",
+          "owner": "createGLBVisitorScene",
+          "variable": "group",
+          "line": 7
+        }
+      ],
+      "labels": [
+        {
+          "label": "Original Pelatuk GLB visitors",
+          "owner": "createGLBVisitorScene",
+          "line": 7,
+          "kind": "runtime-object-name"
+        }
+      ],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "createGLBVisitorScene",
+          "line": 6
+        },
+        {
+          "name": "remove",
+          "line": 9
+        },
+        {
+          "name": "sync",
+          "line": 10
+        },
+        {
+          "name": "update",
+          "line": 12
+        },
+        {
+          "name": "dispose",
+          "line": 13
+        }
+      ],
+      "threeTypes": [
+        "AnimationMixer",
+        "Group",
+        "Mesh",
+        "Vector3"
+      ],
+      "exports": [
+        "createGLBVisitorScene"
+      ]
+    },
+    {
+      "path": "src/game/render3d/macaw/autonomous-birds.ts",
+      "sha256": "f84ca59c32a49760a5b64cc96686e673c85bc793aca5a05c087f8df01ffd0d98",
+      "family": "macaw",
+      "imports": [
+        "src/game/animals/autonomy.ts",
+        "src/game/render3d/glb/resident-rig.ts",
+        "src/game/render3d/macaw/macaw-animation.ts",
+        "src/game/render3d/macaw/macaw-geometry.ts",
+        "src/game/render3d/macaw/macaw-rig.ts",
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [
+        {
+          "type": "Group",
+          "owner": "createAutonomousBirds",
+          "variable": "group",
+          "line": 20
+        },
+        {
+          "type": "CylinderGeometry",
+          "owner": "sync",
+          "variable": "CylinderGeometry",
+          "line": 26
+        },
+        {
+          "type": "MeshStandardMaterial",
+          "owner": "sync",
+          "variable": "MeshStandardMaterial",
+          "line": 26
+        },
+        {
+          "type": "Mesh",
+          "owner": "sync",
+          "variable": "branch",
+          "line": 31
+        },
+        {
+          "type": "Mesh",
+          "owner": "sync",
+          "variable": "post",
+          "line": 32
+        }
+      ],
+      "labels": [
+        {
+          "label": "Two sanctuary macaws",
+          "owner": "createAutonomousBirds",
+          "line": 20,
+          "kind": "runtime-object-name"
+        }
+      ],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "autonomousPose",
+          "line": 10
+        },
+        {
+          "name": "createAutonomousBirds",
+          "line": 19
+        },
+        {
+          "name": "clear",
+          "line": 23
+        },
+        {
+          "name": "sync",
+          "line": 24
+        },
+        {
+          "name": "update",
+          "line": 38
+        }
+      ],
+      "threeTypes": [
+        "CylinderGeometry",
+        "Group",
+        "Mesh",
+        "MeshStandardMaterial"
+      ],
+      "exports": [
+        "autonomousPose",
+        "createAutonomousBirds"
+      ]
+    },
+    {
+      "path": "src/game/render3d/macaw/macaw-studio.ts",
+      "sha256": "547ea37007c618982a5a83d311d41fcedc0a41556abc4ea3ca3e69837b206553",
+      "family": "macaw",
+      "imports": [
+        "src/game/render3d/glb/resident-rig.ts",
+        "src/game/render3d/macaw/macaw-animation.ts",
+        "src/game/render3d/macaw/macaw-geometry.ts",
+        "src/game/render3d/macaw/macaw-rig.ts",
+        "src/game/render3d/macaw/studio-contract.ts",
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [
+        {
+          "type": "Group",
+          "owner": "createMacawStudio",
+          "variable": "group",
+          "line": 12
+        },
+        {
+          "type": "OrthographicCamera",
+          "owner": "createMacawStudio",
+          "variable": "camera",
+          "line": 12
+        },
+        {
+          "type": "MeshStandardMaterial",
+          "owner": "allocate",
+          "variable": "MeshStandardMaterial",
+          "line": 20
+        },
+        {
+          "type": "Group",
+          "owner": "allocate",
+          "variable": "Group",
+          "line": 20
+        },
+        {
+          "type": "Mesh",
+          "owner": "mesh",
+          "variable": "Mesh",
+          "line": 21
+        },
+        {
+          "type": "CylinderGeometry",
+          "owner": "allocate",
+          "variable": "CylinderGeometry",
+          "line": 22
+        },
+        {
+          "type": "CircleGeometry",
+          "owner": "allocate",
+          "variable": "CircleGeometry",
+          "line": 23
+        },
+        {
+          "type": "CylinderGeometry",
+          "owner": "allocate",
+          "variable": "CylinderGeometry",
+          "line": 24
+        },
+        {
+          "type": "CylinderGeometry",
+          "owner": "allocate",
+          "variable": "CylinderGeometry",
+          "line": 25
+        },
+        {
+          "type": "LatheGeometry",
+          "owner": "allocate",
+          "variable": "LatheGeometry",
+          "line": 26
+        },
+        {
+          "type": "CylinderGeometry",
+          "owner": "allocate",
+          "variable": "CylinderGeometry",
+          "line": 27
+        },
+        {
+          "type": "CircleGeometry",
+          "owner": "allocate",
+          "variable": "CircleGeometry",
+          "line": 28
+        },
+        {
+          "type": "SphereGeometry",
+          "owner": "allocate",
+          "variable": "SphereGeometry",
+          "line": 29
+        }
+      ],
+      "labels": [
+        {
+          "label": "Macaw model and animation preview",
+          "owner": "createMacawStudio",
+          "line": 12,
+          "kind": "runtime-object-name"
+        }
+      ],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "createMacawStudio",
+          "line": 11
+        },
+        {
+          "name": "emit",
+          "line": 17
+        },
+        {
+          "name": "colored",
+          "line": 18
+        },
+        {
+          "name": "allocate",
+          "line": 19
+        },
+        {
+          "name": "mesh",
+          "line": 21
+        },
+        {
+          "name": "frameCamera",
+          "line": 32
+        },
+        {
+          "name": "apply",
+          "line": 33
+        },
+        {
+          "name": "release",
+          "line": 46
+        },
+        {
+          "name": "refresh",
+          "line": 47
+        },
+        {
+          "name": "command",
+          "line": 48
+        }
+      ],
+      "threeTypes": [
+        "CircleGeometry",
+        "Color",
+        "CylinderGeometry",
+        "Float32BufferAttribute",
+        "Group",
+        "LatheGeometry",
+        "Mesh",
+        "MeshStandardMaterial",
+        "OrthographicCamera",
+        "SphereGeometry",
+        "Vector2"
+      ],
+      "exports": [
+        "createMacawStudio"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "sourcePath": "src/game/render3d/elephant-residents-scene.ts",
+      "family": "elephant",
+      "kind": "constructor-site",
+      "type": "Group",
+      "owner": "createElephantResidentsScene",
+      "variable": "group",
+      "line": 25,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/elephant-residents-scene.ts",
+      "family": "elephant",
+      "kind": "constructor-site",
+      "type": "MeshStandardMaterial",
+      "owner": "sync",
+      "variable": "MeshStandardMaterial",
+      "line": 31,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/elephant-residents-scene.ts",
+      "family": "elephant",
+      "kind": "runtime-object-name",
+      "label": "Ayu and Nara residents",
+      "owner": "createElephantResidentsScene",
+      "line": 25,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/foundation-scene.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Scene",
+      "owner": "mountFoundationScene",
+      "variable": "scene",
+      "line": 109,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/foundation-scene.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Group",
+      "owner": "mountFoundationScene",
+      "variable": "worldLayer",
+      "line": 110,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/foundation-scene.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "OrthographicCamera",
+      "owner": "mountFoundationScene",
+      "variable": "camera",
+      "line": 113,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/foundation-scene.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "WebGLRenderer",
+      "owner": "mountFoundationScene",
+      "variable": "WebGLRenderer",
+      "line": 400,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/glb/facilities-scene.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Group",
+      "owner": "createGLBFacilitiesScene",
+      "variable": "group",
+      "line": 9,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/glb/facilities-scene.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "InstancedMesh",
+      "owner": "sync",
+      "variable": "mesh",
+      "line": 16,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/glb/facilities-scene.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Original MyZooTwin GLB care fixtures",
+      "owner": "createGLBFacilitiesScene",
+      "line": 9,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/glb/facilities-scene.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "retained-stock-batch",
+      "owner": "sync",
+      "line": 16,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/glb/residents-scene.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Group",
+      "owner": "createResidents",
+      "variable": "group",
+      "line": 20,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/glb/scenery-scene.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Group",
+      "owner": "createGLBSceneryScene",
+      "variable": "group",
+      "line": 7,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/glb/scenery-scene.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Pelatuk original foliage and rocks",
+      "owner": "createGLBSceneryScene",
+      "line": 7,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/glb/visitor-scene.ts",
+      "family": "visitors",
+      "kind": "constructor-site",
+      "type": "Group",
+      "owner": "createGLBVisitorScene",
+      "variable": "group",
+      "line": 7,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/glb/visitor-scene.ts",
+      "family": "visitors",
+      "kind": "runtime-object-name",
+      "label": "Original Pelatuk GLB visitors",
+      "owner": "createGLBVisitorScene",
+      "line": 7,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/autonomous-birds.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "Group",
+      "owner": "createAutonomousBirds",
+      "variable": "group",
+      "line": 20,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/autonomous-birds.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "CylinderGeometry",
+      "owner": "sync",
+      "variable": "CylinderGeometry",
+      "line": 26,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/autonomous-birds.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "MeshStandardMaterial",
+      "owner": "sync",
+      "variable": "MeshStandardMaterial",
+      "line": 26,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/autonomous-birds.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "Mesh",
+      "owner": "sync",
+      "variable": "branch",
+      "line": 31,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/autonomous-birds.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "Mesh",
+      "owner": "sync",
+      "variable": "post",
+      "line": 32,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/autonomous-birds.ts",
+      "family": "macaw",
+      "kind": "runtime-object-name",
+      "label": "Two sanctuary macaws",
+      "owner": "createAutonomousBirds",
+      "line": 20,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/macaw-studio.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "Group",
+      "owner": "createMacawStudio",
+      "variable": "group",
+      "line": 12,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/macaw-studio.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "OrthographicCamera",
+      "owner": "createMacawStudio",
+      "variable": "camera",
+      "line": 12,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/macaw-studio.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "MeshStandardMaterial",
+      "owner": "allocate",
+      "variable": "MeshStandardMaterial",
+      "line": 20,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/macaw-studio.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "Group",
+      "owner": "allocate",
+      "variable": "Group",
+      "line": 20,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/macaw-studio.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "Mesh",
+      "owner": "mesh",
+      "variable": "Mesh",
+      "line": 21,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/macaw-studio.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "CylinderGeometry",
+      "owner": "allocate",
+      "variable": "CylinderGeometry",
+      "line": 22,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/macaw-studio.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "CircleGeometry",
+      "owner": "allocate",
+      "variable": "CircleGeometry",
+      "line": 23,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/macaw-studio.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "CylinderGeometry",
+      "owner": "allocate",
+      "variable": "CylinderGeometry",
+      "line": 24,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/macaw-studio.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "CylinderGeometry",
+      "owner": "allocate",
+      "variable": "CylinderGeometry",
+      "line": 25,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/macaw-studio.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "LatheGeometry",
+      "owner": "allocate",
+      "variable": "LatheGeometry",
+      "line": 26,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/macaw-studio.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "CylinderGeometry",
+      "owner": "allocate",
+      "variable": "CylinderGeometry",
+      "line": 27,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/macaw-studio.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "CircleGeometry",
+      "owner": "allocate",
+      "variable": "CircleGeometry",
+      "line": 28,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/macaw-studio.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "SphereGeometry",
+      "owner": "allocate",
+      "variable": "SphereGeometry",
+      "line": 29,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/macaw-studio.ts",
+      "family": "macaw",
+      "kind": "runtime-object-name",
+      "label": "Macaw model and animation preview",
+      "owner": "createMacawStudio",
+      "line": 12,
+      "visualStatus": "NOT_RUN"
+    }
+  ],
+  "publicAdditions": [
+    {
+      "path": "public/_headers",
+      "url": "/_headers",
+      "bytes": 1154,
+      "sha256": "6976956a77e924777ca54400f37a26b5d72ff37efa568cc02dd6310893ac77d2",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-delivery-headers",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original project delivery header configuration for same-origin hash-bound GLB and WebP assets."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/manifest.json",
+      "url": "/zoo-assets/v01/manifest.json",
+      "bytes": 47358,
+      "sha256": "e50f9c9fcbbe19863f2ec1a81b2ca24f07162236e0cd61f64b8eaff2fbbb83b7",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-manifest.json",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/elephant-ayu-high-v01-db8693d7d96f0865.glb.br",
+      "url": "/zoo-assets/v01/models/elephant-ayu-high-v01-db8693d7d96f0865.glb.br",
+      "bytes": 614223,
+      "sha256": "787ec476bb8d4326b76ba9c71b2af7216c60a6da982d3515eb3a8f66031bd44c",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-elephant-ayu-high-v01-db8693d7d96f0865.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/elephant-ayu-low-v01-7ff19935c801470e.glb.br",
+      "url": "/zoo-assets/v01/models/elephant-ayu-low-v01-7ff19935c801470e.glb.br",
+      "bytes": 196564,
+      "sha256": "aa023ccc511b437787639824f18e8006810f894e9d94dc7498cd046acb7b5b3c",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-elephant-ayu-low-v01-7ff19935c801470e.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/elephant-nara-high-v01-8ed1148e65dd322c.glb.br",
+      "url": "/zoo-assets/v01/models/elephant-nara-high-v01-8ed1148e65dd322c.glb.br",
+      "bytes": 615863,
+      "sha256": "74ff65624148f3f14c271deecc152907bfe5e8b1a3ccbd64a41fde271495d311",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-elephant-nara-high-v01-8ed1148e65dd322c.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/elephant-nara-low-v01-f44f30e6b5d8d948.glb.br",
+      "url": "/zoo-assets/v01/models/elephant-nara-low-v01-f44f30e6b5d8d948.glb.br",
+      "bytes": 196561,
+      "sha256": "c0a07cc2cf4585d0ceb3a1438795c697c5aaec5b6bd3044154cc9d2f820f70c9",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-elephant-nara-low-v01-f44f30e6b5d8d948.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/giraffe-dira-high-v01-262535da6a096004.glb.br",
+      "url": "/zoo-assets/v01/models/giraffe-dira-high-v01-262535da6a096004.glb.br",
+      "bytes": 366486,
+      "sha256": "d19758c6ac34165504f15140105971fb5f1e4b62d168dff37a71523ec071725d",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-giraffe-dira-high-v01-262535da6a096004.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/giraffe-dira-low-v01-2a389835e723456f.glb.br",
+      "url": "/zoo-assets/v01/models/giraffe-dira-low-v01-2a389835e723456f.glb.br",
+      "bytes": 120613,
+      "sha256": "93567d6e1be9d54a713696b35e13346b40c178219d501a126c90e438026c9748",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-giraffe-dira-low-v01-2a389835e723456f.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/giraffe-lila-high-v01-709971c6a591c3e1.glb.br",
+      "url": "/zoo-assets/v01/models/giraffe-lila-high-v01-709971c6a591c3e1.glb.br",
+      "bytes": 366486,
+      "sha256": "b4f6ee8690cbe7a15c18972f623987eb0876c7112531887564810f2b46e4d611",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-giraffe-lila-high-v01-709971c6a591c3e1.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/giraffe-lila-low-v01-42910109b9ddc53e.glb.br",
+      "url": "/zoo-assets/v01/models/giraffe-lila-low-v01-42910109b9ddc53e.glb.br",
+      "bytes": 120610,
+      "sha256": "3cd06e514173b03b355d2aa1629b12d2d9f55aec68a7d7adb52b85a1270383d7",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-giraffe-lila-low-v01-42910109b9ddc53e.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/giraffe-sora-high-v01-847af78d63b628ba.glb.br",
+      "url": "/zoo-assets/v01/models/giraffe-sora-high-v01-847af78d63b628ba.glb.br",
+      "bytes": 366504,
+      "sha256": "43e22534a39b11581545274264a0a1805748582cbe6860dca883602506e3bb4e",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-giraffe-sora-high-v01-847af78d63b628ba.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/giraffe-sora-low-v01-fe30d0254269d718.glb.br",
+      "url": "/zoo-assets/v01/models/giraffe-sora-low-v01-fe30d0254269d718.glb.br",
+      "bytes": 120361,
+      "sha256": "0b98352fcc4e91be3948cb6c66e2082e791658220deec46ef0c4fcc0c25cb621",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-giraffe-sora-low-v01-fe30d0254269d718.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/lion-raka-high-v01-861a35c2532d0bfc.glb.br",
+      "url": "/zoo-assets/v01/models/lion-raka-high-v01-861a35c2532d0bfc.glb.br",
+      "bytes": 492436,
+      "sha256": "04698a98dac370fe71779e3fa7b800bce04ca52277fbb2d88d280fb897b69174",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-lion-raka-high-v01-861a35c2532d0bfc.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/lion-raka-low-v01-55bf3e8c40e9b97e.glb.br",
+      "url": "/zoo-assets/v01/models/lion-raka-low-v01-55bf3e8c40e9b97e.glb.br",
+      "bytes": 158666,
+      "sha256": "16512081f43922d4019dc38e0b3c68c62b5d0a1332a1eaf571a93fc397cec182",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-lion-raka-low-v01-55bf3e8c40e9b97e.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/lion-sena-high-v01-53ec6caeff4c1efe.glb.br",
+      "url": "/zoo-assets/v01/models/lion-sena-high-v01-53ec6caeff4c1efe.glb.br",
+      "bytes": 414229,
+      "sha256": "9382e43035e9cb61931c69f005b4a54bf813a5212d945947b14c95e208daa59a",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-lion-sena-high-v01-53ec6caeff4c1efe.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/lion-sena-low-v01-3dc1c9ef388a62cc.glb.br",
+      "url": "/zoo-assets/v01/models/lion-sena-low-v01-3dc1c9ef388a62cc.glb.br",
+      "bytes": 138221,
+      "sha256": "8c74d2948ac951305fc0f033bf9de6b2a2e74ded6c4b03a0f4cca03932148d4f",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-lion-sena-low-v01-3dc1c9ef388a62cc.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/lion-tala-high-v01-fadccdbe019f345f.glb.br",
+      "url": "/zoo-assets/v01/models/lion-tala-high-v01-fadccdbe019f345f.glb.br",
+      "bytes": 414787,
+      "sha256": "da22897e52a8cb3bdcbada0f303269792847b7307045895648444f67a3786be6",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-lion-tala-high-v01-fadccdbe019f345f.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/lion-tala-low-v01-7c71a0adad5de719.glb.br",
+      "url": "/zoo-assets/v01/models/lion-tala-low-v01-7c71a0adad5de719.glb.br",
+      "bytes": 138216,
+      "sha256": "7f9629ff9bfbb2029c790e1f9a085508ed8ec556e93ab7209379a427f003af61",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-lion-tala-low-v01-7c71a0adad5de719.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/macaw-one-high-v01-9bb854d7487c4cd0.glb.br",
+      "url": "/zoo-assets/v01/models/macaw-one-high-v01-9bb854d7487c4cd0.glb.br",
+      "bytes": 493640,
+      "sha256": "e086876c5764c7bff555a20fbdeb9b3eea2a5b8d30281be205fa749456f61dc4",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-macaw-one-high-v01-9bb854d7487c4cd0.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/macaw-one-low-v01-5ff383e363631ba2.glb.br",
+      "url": "/zoo-assets/v01/models/macaw-one-low-v01-5ff383e363631ba2.glb.br",
+      "bytes": 150754,
+      "sha256": "1606632606626ce68f2206b26da879e75b202260afc8340d7e8dda1da2fd7052",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-macaw-one-low-v01-5ff383e363631ba2.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/macaw-two-high-v01-5f07ac89147d7717.glb.br",
+      "url": "/zoo-assets/v01/models/macaw-two-high-v01-5f07ac89147d7717.glb.br",
+      "bytes": 493641,
+      "sha256": "82daa3705e2f471202844dda791657987c3f9631c562da55c66fc8f591010217",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-macaw-two-high-v01-5f07ac89147d7717.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/macaw-two-low-v01-b21f6b4516431a44.glb.br",
+      "url": "/zoo-assets/v01/models/macaw-two-low-v01-b21f6b4516431a44.glb.br",
+      "bytes": 150755,
+      "sha256": "0952309cb9709e1f260c0e1fb12744d8cc51e288f7ee1da5edb19d149870a310",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-macaw-two-low-v01-b21f6b4516431a44.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/zebra-kira-high-v01-bdd831a0381e13ac.glb.br",
+      "url": "/zoo-assets/v01/models/zebra-kira-high-v01-bdd831a0381e13ac.glb.br",
+      "bytes": 409364,
+      "sha256": "e9e779006637ae4dd53b8ff3565ca0d3dfcde454d67cc656a20f1e057ad8216c",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-zebra-kira-high-v01-bdd831a0381e13ac.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/zebra-kira-low-v01-0454d58875696ad5.glb.br",
+      "url": "/zoo-assets/v01/models/zebra-kira-low-v01-0454d58875696ad5.glb.br",
+      "bytes": 141969,
+      "sha256": "63cb33b3b6fede3e9bbb9dcac7f0c785a01c49c9282f514ff7025c7df366fd72",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-zebra-kira-low-v01-0454d58875696ad5.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/zebra-mira-high-v01-abfa90dd2a5f649f.glb.br",
+      "url": "/zoo-assets/v01/models/zebra-mira-high-v01-abfa90dd2a5f649f.glb.br",
+      "bytes": 409196,
+      "sha256": "3d6cbb0735bd594215a22dabc223f8e89b2cbda87f0113e9bd2dba31716bb466",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-zebra-mira-high-v01-abfa90dd2a5f649f.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/zebra-mira-low-v01-4e52ee02315f62da.glb.br",
+      "url": "/zoo-assets/v01/models/zebra-mira-low-v01-4e52ee02315f62da.glb.br",
+      "bytes": 142008,
+      "sha256": "74e4f3d6dd760884a1c4a9191fc2485a8ce2078da48419a7496413b53df9453e",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-zebra-mira-low-v01-4e52ee02315f62da.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/zebra-zaki-high-v01-7e6dade18913d014.glb.br",
+      "url": "/zoo-assets/v01/models/zebra-zaki-high-v01-7e6dade18913d014.glb.br",
+      "bytes": 409188,
+      "sha256": "80b8b3043b350d55564f5ab480692795612e67329ce5835e711ccf9a839496ef",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-zebra-zaki-high-v01-7e6dade18913d014.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/zebra-zaki-low-v01-b0ad2d560ad06d48.glb.br",
+      "url": "/zoo-assets/v01/models/zebra-zaki-low-v01-b0ad2d560ad06d48.glb.br",
+      "bytes": 142009,
+      "sha256": "d15675be3294023dcbb6981c70dc10206dc177347c3213869adb88edc1b095c3",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-zebra-zaki-low-v01-b0ad2d560ad06d48.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/zebra-zuri-high-v01-ad16e70a9edddfc5.glb.br",
+      "url": "/zoo-assets/v01/models/zebra-zuri-high-v01-ad16e70a9edddfc5.glb.br",
+      "bytes": 408680,
+      "sha256": "79768411e768e18bd76ee1b107bcd4785f35f4348fc4b5c9f5a3dc5498ae9269",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-zebra-zuri-high-v01-ad16e70a9edddfc5.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/models/zebra-zuri-low-v01-08b0244070662d77.glb.br",
+      "url": "/zoo-assets/v01/models/zebra-zuri-low-v01-08b0244070662d77.glb.br",
+      "bytes": 141983,
+      "sha256": "1c02df721e884578f817881ce27a046b10522c8934cc3a46403b342e3a24bafd",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-zebra-zuri-low-v01-08b0244070662d77.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/0a20cf49dab3ead26ae6fd684b5f467d143120d152549481db1867f6447c8bb3.webp",
+      "url": "/zoo-assets/v01/textures/0a20cf49dab3ead26ae6fd684b5f467d143120d152549481db1867f6447c8bb3.webp",
+      "bytes": 45750,
+      "sha256": "0a20cf49dab3ead26ae6fd684b5f467d143120d152549481db1867f6447c8bb3",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-0a20cf49dab3ead26ae6fd684b5f467d143120d152549481db1867f6447c8bb3.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/16d09c7d434aa4f83d0c492b2dade1b7891f0603aedf4174c754d0d04a1c7d04.webp",
+      "url": "/zoo-assets/v01/textures/16d09c7d434aa4f83d0c492b2dade1b7891f0603aedf4174c754d0d04a1c7d04.webp",
+      "bytes": 68150,
+      "sha256": "16d09c7d434aa4f83d0c492b2dade1b7891f0603aedf4174c754d0d04a1c7d04",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-16d09c7d434aa4f83d0c492b2dade1b7891f0603aedf4174c754d0d04a1c7d04.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/19b2313cd88037d19f2f12eca8e6fac52cac9c8e49d5e82a33432ead9264c2fd.webp",
+      "url": "/zoo-assets/v01/textures/19b2313cd88037d19f2f12eca8e6fac52cac9c8e49d5e82a33432ead9264c2fd.webp",
+      "bytes": 69714,
+      "sha256": "19b2313cd88037d19f2f12eca8e6fac52cac9c8e49d5e82a33432ead9264c2fd",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-19b2313cd88037d19f2f12eca8e6fac52cac9c8e49d5e82a33432ead9264c2fd.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/1b9e63632294e8e8915e73c12c71dfd8f364fbbb729e752c331acc10620c8ae8.webp",
+      "url": "/zoo-assets/v01/textures/1b9e63632294e8e8915e73c12c71dfd8f364fbbb729e752c331acc10620c8ae8.webp",
+      "bytes": 80656,
+      "sha256": "1b9e63632294e8e8915e73c12c71dfd8f364fbbb729e752c331acc10620c8ae8",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-1b9e63632294e8e8915e73c12c71dfd8f364fbbb729e752c331acc10620c8ae8.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/1ba18d025448c7c40184874476362dc2395b4677754c945eaca14f6868136d26.webp",
+      "url": "/zoo-assets/v01/textures/1ba18d025448c7c40184874476362dc2395b4677754c945eaca14f6868136d26.webp",
+      "bytes": 98438,
+      "sha256": "1ba18d025448c7c40184874476362dc2395b4677754c945eaca14f6868136d26",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-1ba18d025448c7c40184874476362dc2395b4677754c945eaca14f6868136d26.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/33bfe49bac9472766dd424407ed1858f32065a8de68b232093ff7adff8da4736.webp",
+      "url": "/zoo-assets/v01/textures/33bfe49bac9472766dd424407ed1858f32065a8de68b232093ff7adff8da4736.webp",
+      "bytes": 15286,
+      "sha256": "33bfe49bac9472766dd424407ed1858f32065a8de68b232093ff7adff8da4736",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-33bfe49bac9472766dd424407ed1858f32065a8de68b232093ff7adff8da4736.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/36766692e01a380e82cfa8ccbc5f27d02de6db69b444f0df44b6536c245a1d93.webp",
+      "url": "/zoo-assets/v01/textures/36766692e01a380e82cfa8ccbc5f27d02de6db69b444f0df44b6536c245a1d93.webp",
+      "bytes": 17412,
+      "sha256": "36766692e01a380e82cfa8ccbc5f27d02de6db69b444f0df44b6536c245a1d93",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-36766692e01a380e82cfa8ccbc5f27d02de6db69b444f0df44b6536c245a1d93.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/3ab38be093cc54524116efb7fc2f100701c6fdd358826951daf7286c1530b067.webp",
+      "url": "/zoo-assets/v01/textures/3ab38be093cc54524116efb7fc2f100701c6fdd358826951daf7286c1530b067.webp",
+      "bytes": 15594,
+      "sha256": "3ab38be093cc54524116efb7fc2f100701c6fdd358826951daf7286c1530b067",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-3ab38be093cc54524116efb7fc2f100701c6fdd358826951daf7286c1530b067.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/47bf460a9a93af6d58b6fcc48c99d42219523b000215fcad5db22d08b333051c.webp",
+      "url": "/zoo-assets/v01/textures/47bf460a9a93af6d58b6fcc48c99d42219523b000215fcad5db22d08b333051c.webp",
+      "bytes": 41010,
+      "sha256": "47bf460a9a93af6d58b6fcc48c99d42219523b000215fcad5db22d08b333051c",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-47bf460a9a93af6d58b6fcc48c99d42219523b000215fcad5db22d08b333051c.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/4bbe28cb912ba11fd93f1d4ec9faeb055b148576578848e1eab7b1f5a45456d3.webp",
+      "url": "/zoo-assets/v01/textures/4bbe28cb912ba11fd93f1d4ec9faeb055b148576578848e1eab7b1f5a45456d3.webp",
+      "bytes": 32590,
+      "sha256": "4bbe28cb912ba11fd93f1d4ec9faeb055b148576578848e1eab7b1f5a45456d3",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-4bbe28cb912ba11fd93f1d4ec9faeb055b148576578848e1eab7b1f5a45456d3.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/51a094ba05e5dc9d221bad2ff4905dc95d8548f3c1b85dc58bab8b1275caa6af.webp",
+      "url": "/zoo-assets/v01/textures/51a094ba05e5dc9d221bad2ff4905dc95d8548f3c1b85dc58bab8b1275caa6af.webp",
+      "bytes": 18528,
+      "sha256": "51a094ba05e5dc9d221bad2ff4905dc95d8548f3c1b85dc58bab8b1275caa6af",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-51a094ba05e5dc9d221bad2ff4905dc95d8548f3c1b85dc58bab8b1275caa6af.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/54872bf090d521b04b9921eef43caf96d8f0ae3d44b9a322239fad2ce46867b8.webp",
+      "url": "/zoo-assets/v01/textures/54872bf090d521b04b9921eef43caf96d8f0ae3d44b9a322239fad2ce46867b8.webp",
+      "bytes": 45530,
+      "sha256": "54872bf090d521b04b9921eef43caf96d8f0ae3d44b9a322239fad2ce46867b8",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-54872bf090d521b04b9921eef43caf96d8f0ae3d44b9a322239fad2ce46867b8.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/59300aa5748f77a20304c36a574e3e196d1dd201b1f3d820d87fa5c026bfde6f.webp",
+      "url": "/zoo-assets/v01/textures/59300aa5748f77a20304c36a574e3e196d1dd201b1f3d820d87fa5c026bfde6f.webp",
+      "bytes": 70576,
+      "sha256": "59300aa5748f77a20304c36a574e3e196d1dd201b1f3d820d87fa5c026bfde6f",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-59300aa5748f77a20304c36a574e3e196d1dd201b1f3d820d87fa5c026bfde6f.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/5e5bca5e7b9ee23fb840d87b6f464d2b87126ac90d6710343983400484ded8dc.webp",
+      "url": "/zoo-assets/v01/textures/5e5bca5e7b9ee23fb840d87b6f464d2b87126ac90d6710343983400484ded8dc.webp",
+      "bytes": 41080,
+      "sha256": "5e5bca5e7b9ee23fb840d87b6f464d2b87126ac90d6710343983400484ded8dc",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-5e5bca5e7b9ee23fb840d87b6f464d2b87126ac90d6710343983400484ded8dc.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/6fef053d4bad6d88d5f159d0fb7fdcab99a695952295a4a54bdc7c5954ba8f43.webp",
+      "url": "/zoo-assets/v01/textures/6fef053d4bad6d88d5f159d0fb7fdcab99a695952295a4a54bdc7c5954ba8f43.webp",
+      "bytes": 51222,
+      "sha256": "6fef053d4bad6d88d5f159d0fb7fdcab99a695952295a4a54bdc7c5954ba8f43",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-6fef053d4bad6d88d5f159d0fb7fdcab99a695952295a4a54bdc7c5954ba8f43.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/7894e5533582614332bd5f78512768244efdbd0ac0d3a8fba2a87e7b7990325d.webp",
+      "url": "/zoo-assets/v01/textures/7894e5533582614332bd5f78512768244efdbd0ac0d3a8fba2a87e7b7990325d.webp",
+      "bytes": 105150,
+      "sha256": "7894e5533582614332bd5f78512768244efdbd0ac0d3a8fba2a87e7b7990325d",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-7894e5533582614332bd5f78512768244efdbd0ac0d3a8fba2a87e7b7990325d.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/7974e14ca4826790aa0924bd629affc26db97d6963a581ec39bfdd8c37dcadc7.webp",
+      "url": "/zoo-assets/v01/textures/7974e14ca4826790aa0924bd629affc26db97d6963a581ec39bfdd8c37dcadc7.webp",
+      "bytes": 117866,
+      "sha256": "7974e14ca4826790aa0924bd629affc26db97d6963a581ec39bfdd8c37dcadc7",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-7974e14ca4826790aa0924bd629affc26db97d6963a581ec39bfdd8c37dcadc7.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/7cfda84a432727b73ae30658a08039b86ad37f3cf9142da87e28ad65c8b50d8c.webp",
+      "url": "/zoo-assets/v01/textures/7cfda84a432727b73ae30658a08039b86ad37f3cf9142da87e28ad65c8b50d8c.webp",
+      "bytes": 15744,
+      "sha256": "7cfda84a432727b73ae30658a08039b86ad37f3cf9142da87e28ad65c8b50d8c",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-7cfda84a432727b73ae30658a08039b86ad37f3cf9142da87e28ad65c8b50d8c.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/8b23101d03f288f6e40143cba0509e235cdb9fae79038e3d7c6fd2be6536b18a.webp",
+      "url": "/zoo-assets/v01/textures/8b23101d03f288f6e40143cba0509e235cdb9fae79038e3d7c6fd2be6536b18a.webp",
+      "bytes": 68924,
+      "sha256": "8b23101d03f288f6e40143cba0509e235cdb9fae79038e3d7c6fd2be6536b18a",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-8b23101d03f288f6e40143cba0509e235cdb9fae79038e3d7c6fd2be6536b18a.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/8dbf5e61925dd5ee6fcd33868ee50bf9d6ce5eb566f9528602f93c26c9ec501a.webp",
+      "url": "/zoo-assets/v01/textures/8dbf5e61925dd5ee6fcd33868ee50bf9d6ce5eb566f9528602f93c26c9ec501a.webp",
+      "bytes": 55818,
+      "sha256": "8dbf5e61925dd5ee6fcd33868ee50bf9d6ce5eb566f9528602f93c26c9ec501a",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-8dbf5e61925dd5ee6fcd33868ee50bf9d6ce5eb566f9528602f93c26c9ec501a.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/97c1f5954e832a8d3a774431267e2fbe722d4eb7f75b307230477ce7c0490dff.webp",
+      "url": "/zoo-assets/v01/textures/97c1f5954e832a8d3a774431267e2fbe722d4eb7f75b307230477ce7c0490dff.webp",
+      "bytes": 104362,
+      "sha256": "97c1f5954e832a8d3a774431267e2fbe722d4eb7f75b307230477ce7c0490dff",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-97c1f5954e832a8d3a774431267e2fbe722d4eb7f75b307230477ce7c0490dff.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/9a8ddbe1c98c5d2af33fce6fea83d90affe72000bc1a8178ad683f582b275165.webp",
+      "url": "/zoo-assets/v01/textures/9a8ddbe1c98c5d2af33fce6fea83d90affe72000bc1a8178ad683f582b275165.webp",
+      "bytes": 36134,
+      "sha256": "9a8ddbe1c98c5d2af33fce6fea83d90affe72000bc1a8178ad683f582b275165",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-9a8ddbe1c98c5d2af33fce6fea83d90affe72000bc1a8178ad683f582b275165.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/9b34cdbefd51215c5c062eab447ea7b0dac547d05bd1b3ab7f82dd208dd9cc8d.webp",
+      "url": "/zoo-assets/v01/textures/9b34cdbefd51215c5c062eab447ea7b0dac547d05bd1b3ab7f82dd208dd9cc8d.webp",
+      "bytes": 87042,
+      "sha256": "9b34cdbefd51215c5c062eab447ea7b0dac547d05bd1b3ab7f82dd208dd9cc8d",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-9b34cdbefd51215c5c062eab447ea7b0dac547d05bd1b3ab7f82dd208dd9cc8d.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/a2937506684ad2965086499bd7d1c48c4e27721e1e948cbe51e86c37f7c54669.webp",
+      "url": "/zoo-assets/v01/textures/a2937506684ad2965086499bd7d1c48c4e27721e1e948cbe51e86c37f7c54669.webp",
+      "bytes": 106624,
+      "sha256": "a2937506684ad2965086499bd7d1c48c4e27721e1e948cbe51e86c37f7c54669",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-a2937506684ad2965086499bd7d1c48c4e27721e1e948cbe51e86c37f7c54669.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/a29946561749011fb25e1731f4a8e60da958c2bf45c9ee7b8d6669130d7ad545.webp",
+      "url": "/zoo-assets/v01/textures/a29946561749011fb25e1731f4a8e60da958c2bf45c9ee7b8d6669130d7ad545.webp",
+      "bytes": 222908,
+      "sha256": "a29946561749011fb25e1731f4a8e60da958c2bf45c9ee7b8d6669130d7ad545",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-a29946561749011fb25e1731f4a8e60da958c2bf45c9ee7b8d6669130d7ad545.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/aa63dcc6fed3ba1b464fe10e2974ea103cb9cb108460e9c158d2429d0591f0ee.webp",
+      "url": "/zoo-assets/v01/textures/aa63dcc6fed3ba1b464fe10e2974ea103cb9cb108460e9c158d2429d0591f0ee.webp",
+      "bytes": 31326,
+      "sha256": "aa63dcc6fed3ba1b464fe10e2974ea103cb9cb108460e9c158d2429d0591f0ee",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-aa63dcc6fed3ba1b464fe10e2974ea103cb9cb108460e9c158d2429d0591f0ee.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/aafa38c2a629fb7b7730e86dc1cf2f5a699edcb862f35affcba903ab90d1dd80.webp",
+      "url": "/zoo-assets/v01/textures/aafa38c2a629fb7b7730e86dc1cf2f5a699edcb862f35affcba903ab90d1dd80.webp",
+      "bytes": 45208,
+      "sha256": "aafa38c2a629fb7b7730e86dc1cf2f5a699edcb862f35affcba903ab90d1dd80",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-aafa38c2a629fb7b7730e86dc1cf2f5a699edcb862f35affcba903ab90d1dd80.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/b7053f3b2350663f65e8b8de9ad1bfa2738d5d6d298f1ed233763eb358cd7311.webp",
+      "url": "/zoo-assets/v01/textures/b7053f3b2350663f65e8b8de9ad1bfa2738d5d6d298f1ed233763eb358cd7311.webp",
+      "bytes": 73014,
+      "sha256": "b7053f3b2350663f65e8b8de9ad1bfa2738d5d6d298f1ed233763eb358cd7311",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-b7053f3b2350663f65e8b8de9ad1bfa2738d5d6d298f1ed233763eb358cd7311.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/b8074e1e070219da9957ffc51bd11382b7cb8941495a3de6688089f6808e4637.webp",
+      "url": "/zoo-assets/v01/textures/b8074e1e070219da9957ffc51bd11382b7cb8941495a3de6688089f6808e4637.webp",
+      "bytes": 46018,
+      "sha256": "b8074e1e070219da9957ffc51bd11382b7cb8941495a3de6688089f6808e4637",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-b8074e1e070219da9957ffc51bd11382b7cb8941495a3de6688089f6808e4637.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/c04d90d02c6c5760e353a511d5007a0fd7828154fb2e93a763ca5a7e3df9c598.webp",
+      "url": "/zoo-assets/v01/textures/c04d90d02c6c5760e353a511d5007a0fd7828154fb2e93a763ca5a7e3df9c598.webp",
+      "bytes": 30756,
+      "sha256": "c04d90d02c6c5760e353a511d5007a0fd7828154fb2e93a763ca5a7e3df9c598",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-c04d90d02c6c5760e353a511d5007a0fd7828154fb2e93a763ca5a7e3df9c598.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/c369718ec146a27d61e7536df685bb0fad947944bede1560ae98b898bfbf6c6c.webp",
+      "url": "/zoo-assets/v01/textures/c369718ec146a27d61e7536df685bb0fad947944bede1560ae98b898bfbf6c6c.webp",
+      "bytes": 30868,
+      "sha256": "c369718ec146a27d61e7536df685bb0fad947944bede1560ae98b898bfbf6c6c",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-c369718ec146a27d61e7536df685bb0fad947944bede1560ae98b898bfbf6c6c.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/c36d8497ac8bacc4424a73f08bad8d43d84470f41482c080f3de6739a55937ff.webp",
+      "url": "/zoo-assets/v01/textures/c36d8497ac8bacc4424a73f08bad8d43d84470f41482c080f3de6739a55937ff.webp",
+      "bytes": 102622,
+      "sha256": "c36d8497ac8bacc4424a73f08bad8d43d84470f41482c080f3de6739a55937ff",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-c36d8497ac8bacc4424a73f08bad8d43d84470f41482c080f3de6739a55937ff.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/c9c80c1e3ab6f0563ae81e013edd9411043e24c0631aee73996a0b2fececf1c7.webp",
+      "url": "/zoo-assets/v01/textures/c9c80c1e3ab6f0563ae81e013edd9411043e24c0631aee73996a0b2fececf1c7.webp",
+      "bytes": 43254,
+      "sha256": "c9c80c1e3ab6f0563ae81e013edd9411043e24c0631aee73996a0b2fececf1c7",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-c9c80c1e3ab6f0563ae81e013edd9411043e24c0631aee73996a0b2fececf1c7.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/cf7ffa0131d27b6cde609df8615939f9f6f9841431b2b1f082092266d755fcfc.webp",
+      "url": "/zoo-assets/v01/textures/cf7ffa0131d27b6cde609df8615939f9f6f9841431b2b1f082092266d755fcfc.webp",
+      "bytes": 40704,
+      "sha256": "cf7ffa0131d27b6cde609df8615939f9f6f9841431b2b1f082092266d755fcfc",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-cf7ffa0131d27b6cde609df8615939f9f6f9841431b2b1f082092266d755fcfc.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/d683d6888fff624e47c3633cb2858cb3d18ce23c1a5658f2de47be40396ce940.webp",
+      "url": "/zoo-assets/v01/textures/d683d6888fff624e47c3633cb2858cb3d18ce23c1a5658f2de47be40396ce940.webp",
+      "bytes": 73418,
+      "sha256": "d683d6888fff624e47c3633cb2858cb3d18ce23c1a5658f2de47be40396ce940",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-d683d6888fff624e47c3633cb2858cb3d18ce23c1a5658f2de47be40396ce940.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/d95f6898cf8e32cfb6ff32958e55ecdad11184ec091032e658588ede7615a608.webp",
+      "url": "/zoo-assets/v01/textures/d95f6898cf8e32cfb6ff32958e55ecdad11184ec091032e658588ede7615a608.webp",
+      "bytes": 41832,
+      "sha256": "d95f6898cf8e32cfb6ff32958e55ecdad11184ec091032e658588ede7615a608",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-d95f6898cf8e32cfb6ff32958e55ecdad11184ec091032e658588ede7615a608.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/e8ebdd1ee473fb705bd9faef4d9434ff991198224220cc9e02c767f9b103e211.webp",
+      "url": "/zoo-assets/v01/textures/e8ebdd1ee473fb705bd9faef4d9434ff991198224220cc9e02c767f9b103e211.webp",
+      "bytes": 15398,
+      "sha256": "e8ebdd1ee473fb705bd9faef4d9434ff991198224220cc9e02c767f9b103e211",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-e8ebdd1ee473fb705bd9faef4d9434ff991198224220cc9e02c767f9b103e211.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-assets/v01/textures/fbbbee13f94f906c745823cca4d38b979963b8df8704aff1469ffad9f134b7a7.webp",
+      "url": "/zoo-assets/v01/textures/fbbbee13f94f906c745823cca4d38b979963b8df8704aff1469ffad9f134b7a7.webp",
+      "bytes": 95688,
+      "sha256": "fbbbee13f94f906c745823cca4d38b979963b8df8704aff1469ffad9f134b7a7",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-assets-fbbbee13f94f906c745823cca4d38b979963b8df8704aff1469ffad9f134b7a7.webp",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin anatomical meshes, UV coat paintings, rigs and behavior clips authored in art/animals/v01; scene contract and identities retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/manifest.json",
+      "url": "/zoo-environment/v01/manifest.json",
+      "bytes": 31271,
+      "sha256": "ecca8c70cdf767029bc188b543206e40243dd9a27deb5363715e6eecc62ecd97",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-manifest.json",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/birdwatcher-amber-17-low-v04-77077ba1c9720569.glb.br",
+      "url": "/zoo-environment/v01/models/birdwatcher-amber-17-low-v04-77077ba1c9720569.glb.br",
+      "bytes": 185067,
+      "sha256": "4502ccaa69919e6d3ddb51df83c6aa74c2f94bfc5d9c7a2f6f17a1b0a0537df5",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-birdwatcher-amber-17-low-v04-77077ba1c9720569.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/birdwatcher-rose-17-low-v04-0bf8135f6ada873f.glb.br",
+      "url": "/zoo-environment/v01/models/birdwatcher-rose-17-low-v04-0bf8135f6ada873f.glb.br",
+      "bytes": 185367,
+      "sha256": "271655daf72835b8df6f547985723a2ecc6a85fc46f0fcdf7d996cb6fce5bbf9",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-birdwatcher-rose-17-low-v04-0bf8135f6ada873f.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/birdwatcher-teal-17-low-v04-db7c16ce1ce7c34c.glb.br",
+      "url": "/zoo-environment/v01/models/birdwatcher-teal-17-low-v04-db7c16ce1ce7c34c.glb.br",
+      "bytes": 185327,
+      "sha256": "9acad1ac563efd8b177c917c46d0e33c7d9e07c674f09db0d65c9c8f755a77a9",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-birdwatcher-teal-17-low-v04-db7c16ce1ce7c34c.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/boulder-17-low-v01-54b8abc97e3a9077.glb.br",
+      "url": "/zoo-environment/v01/models/boulder-17-low-v01-54b8abc97e3a9077.glb.br",
+      "bytes": 4800,
+      "sha256": "6fad5d8be62cd81ae05f74df311c89dba05f38861f73df8d96dbc63796e6ec84",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-boulder-17-low-v01-54b8abc97e3a9077.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/boulder-48-low-v01-b1a4c7cb569b1ac5.glb.br",
+      "url": "/zoo-environment/v01/models/boulder-48-low-v01-b1a4c7cb569b1ac5.glb.br",
+      "bytes": 4784,
+      "sha256": "b31f217f0d8c1c1a2f539a1d1d390af1b9e9686ad1b4e388576683bf8b1ace3f",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-boulder-48-low-v01-b1a4c7cb569b1ac5.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/boulder-79-low-v01-bf04d91ab6169a27.glb.br",
+      "url": "/zoo-environment/v01/models/boulder-79-low-v01-bf04d91ab6169a27.glb.br",
+      "bytes": 4792,
+      "sha256": "94d3bfa06895fb6174ca650e7bd9bd711c19fd911ff2a32f2039fdb2b810f34b",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-boulder-79-low-v01-bf04d91ab6169a27.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/broadleaf-17-high-v01-888c8fc1f9fca93a.glb.br",
+      "url": "/zoo-environment/v01/models/broadleaf-17-high-v01-888c8fc1f9fca93a.glb.br",
+      "bytes": 153439,
+      "sha256": "8201d884b32802b33b02cc557f45d538a21974f9a358c6a4f9f2392d5ffc68f6",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-broadleaf-17-high-v01-888c8fc1f9fca93a.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/broadleaf-17-low-v01-bab1d02bf6bfa180.glb.br",
+      "url": "/zoo-environment/v01/models/broadleaf-17-low-v01-bab1d02bf6bfa180.glb.br",
+      "bytes": 46519,
+      "sha256": "e3dcc509696251fe25f5faa89129ba4d71d6886865c46da0bd56e04111b1db5b",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-broadleaf-17-low-v01-bab1d02bf6bfa180.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/broadleaf-203-high-v01-a7ad62b796fc423a.glb.br",
+      "url": "/zoo-environment/v01/models/broadleaf-203-high-v01-a7ad62b796fc423a.glb.br",
+      "bytes": 153347,
+      "sha256": "296ed26317a7e35e1f4e3cddbb4f3ab5ed1a5e0f2dca51e8a76f443be7a2821f",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-broadleaf-203-high-v01-a7ad62b796fc423a.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/broadleaf-203-low-v01-4c7c7b7ea4a6baa9.glb.br",
+      "url": "/zoo-environment/v01/models/broadleaf-203-low-v01-4c7c7b7ea4a6baa9.glb.br",
+      "bytes": 46335,
+      "sha256": "722e5e18e58bf12479a47f34e593c9544813c78417d61c01afb1ca9848efd1f5",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-broadleaf-203-low-v01-4c7c7b7ea4a6baa9.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/broadleaf-841-high-v01-be9a8655c79ae086.glb.br",
+      "url": "/zoo-environment/v01/models/broadleaf-841-high-v01-be9a8655c79ae086.glb.br",
+      "bytes": 153607,
+      "sha256": "39e45e51b452a6e1509550e1b1c7a8a3f05a7f32252f683f248452d67cc7abcf",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-broadleaf-841-high-v01-be9a8655c79ae086.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/broadleaf-841-low-v01-babf63c434ceb5f1.glb.br",
+      "url": "/zoo-environment/v01/models/broadleaf-841-low-v01-babf63c434ceb5f1.glb.br",
+      "bytes": 46370,
+      "sha256": "5143becfd8d2388644801ffd2499275f78c649e37bf4e091d65982aa66419e8f",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-broadleaf-841-low-v01-babf63c434ceb5f1.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/fern-17-high-v01-7df533098a896b64.glb.br",
+      "url": "/zoo-environment/v01/models/fern-17-high-v01-7df533098a896b64.glb.br",
+      "bytes": 176065,
+      "sha256": "2a311bdd6d648df805201e9a0d092a7eed0d034202ff3c2e4a7910701b41bc94",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-fern-17-high-v01-7df533098a896b64.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/fern-17-low-v01-b3c5f66ded435ea5.glb.br",
+      "url": "/zoo-environment/v01/models/fern-17-low-v01-b3c5f66ded435ea5.glb.br",
+      "bytes": 75272,
+      "sha256": "bdaba770f4642cf772f222d55f9fb649b6f4f6e3fc17ebbda1abaa21e9e0fd1d",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-fern-17-low-v01-b3c5f66ded435ea5.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/palm-17-high-v01-3faf20c95c738235.glb.br",
+      "url": "/zoo-environment/v01/models/palm-17-high-v01-3faf20c95c738235.glb.br",
+      "bytes": 478467,
+      "sha256": "01e7a9c4b3c3165e87f55d42b31d8ff5296240ebbcea161c60309d39d419ec42",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-palm-17-high-v01-3faf20c95c738235.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/palm-17-low-v01-aa6fedd08cdff080.glb.br",
+      "url": "/zoo-environment/v01/models/palm-17-low-v01-aa6fedd08cdff080.glb.br",
+      "bytes": 208437,
+      "sha256": "455124e0b470b27478ad8ef6736be99170efa043c0277cb73d8dadcf68ac63ad",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-palm-17-low-v01-aa6fedd08cdff080.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/shrub-17-high-v01-59ec132f984746e4.glb.br",
+      "url": "/zoo-environment/v01/models/shrub-17-high-v01-59ec132f984746e4.glb.br",
+      "bytes": 54703,
+      "sha256": "d605428debcf634c520b38c3b5e4b632b9a40b247646323be86c00764f682b07",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-shrub-17-high-v01-59ec132f984746e4.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/models/shrub-17-low-v01-272489eefba817b4.glb.br",
+      "url": "/zoo-environment/v01/models/shrub-17-low-v01-272489eefba817b4.glb.br",
+      "bytes": 27238,
+      "sha256": "21e2f39c0e97709f7ea8cc7d8615e28241f340486317521c5f854a08c4f68e30",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-shrub-17-low-v01-272489eefba817b4.glb.br",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/textures/1170f6240c70a533a79af59f0ae1210913b25b72532995a1ea59d1e9b8524864.webp",
+      "url": "/zoo-environment/v01/textures/1170f6240c70a533a79af59f0ae1210913b25b72532995a1ea59d1e9b8524864.webp",
+      "bytes": 54818,
+      "sha256": "1170f6240c70a533a79af59f0ae1210913b25b72532995a1ea59d1e9b8524864",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-1170f6240c70a533a79af59f0ae1210913b25b72532995a1ea59d1e9b8524864.webp",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/textures/15d15aa31a3a745dc12211e537d3d4af204b0ece1b884e83eb249afb6248f92d.webp",
+      "url": "/zoo-environment/v01/textures/15d15aa31a3a745dc12211e537d3d4af204b0ece1b884e83eb249afb6248f92d.webp",
+      "bytes": 81822,
+      "sha256": "15d15aa31a3a745dc12211e537d3d4af204b0ece1b884e83eb249afb6248f92d",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-15d15aa31a3a745dc12211e537d3d4af204b0ece1b884e83eb249afb6248f92d.webp",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/textures/26e76a63e49f124e819a0d40d244945e74a496a202ed65b018f82f5059312ff3.webp",
+      "url": "/zoo-environment/v01/textures/26e76a63e49f124e819a0d40d244945e74a496a202ed65b018f82f5059312ff3.webp",
+      "bytes": 1672,
+      "sha256": "26e76a63e49f124e819a0d40d244945e74a496a202ed65b018f82f5059312ff3",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-26e76a63e49f124e819a0d40d244945e74a496a202ed65b018f82f5059312ff3.webp",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/textures/2a8533bc31243310c339aa3613809259bba98e86ba9c4695f2752bcbbe188a2f.webp",
+      "url": "/zoo-environment/v01/textures/2a8533bc31243310c339aa3613809259bba98e86ba9c4695f2752bcbbe188a2f.webp",
+      "bytes": 379626,
+      "sha256": "2a8533bc31243310c339aa3613809259bba98e86ba9c4695f2752bcbbe188a2f",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-2a8533bc31243310c339aa3613809259bba98e86ba9c4695f2752bcbbe188a2f.webp",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/textures/666b241c18368c19aa1c7b62cabdbca9036584c7e3241d1620f13b76114d9a26.webp",
+      "url": "/zoo-environment/v01/textures/666b241c18368c19aa1c7b62cabdbca9036584c7e3241d1620f13b76114d9a26.webp",
+      "bytes": 106192,
+      "sha256": "666b241c18368c19aa1c7b62cabdbca9036584c7e3241d1620f13b76114d9a26",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-666b241c18368c19aa1c7b62cabdbca9036584c7e3241d1620f13b76114d9a26.webp",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/textures/6ac5717543fabdeeec40d613d6f4c2a637193604774446f3ad94893205747524.webp",
+      "url": "/zoo-environment/v01/textures/6ac5717543fabdeeec40d613d6f4c2a637193604774446f3ad94893205747524.webp",
+      "bytes": 1677100,
+      "sha256": "6ac5717543fabdeeec40d613d6f4c2a637193604774446f3ad94893205747524",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-6ac5717543fabdeeec40d613d6f4c2a637193604774446f3ad94893205747524.webp",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/textures/8fac10c12dbcab9d1f96cbb2dff5be58a88b873ee0dbbda959a9d29a57ea5db4.webp",
+      "url": "/zoo-environment/v01/textures/8fac10c12dbcab9d1f96cbb2dff5be58a88b873ee0dbbda959a9d29a57ea5db4.webp",
+      "bytes": 168278,
+      "sha256": "8fac10c12dbcab9d1f96cbb2dff5be58a88b873ee0dbbda959a9d29a57ea5db4",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-8fac10c12dbcab9d1f96cbb2dff5be58a88b873ee0dbbda959a9d29a57ea5db4.webp",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/textures/b6b97651e457627664e87bbfb8118856a41616c0d029be804b7516beb8cdf79f.webp",
+      "url": "/zoo-environment/v01/textures/b6b97651e457627664e87bbfb8118856a41616c0d029be804b7516beb8cdf79f.webp",
+      "bytes": 169204,
+      "sha256": "b6b97651e457627664e87bbfb8118856a41616c0d029be804b7516beb8cdf79f",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-b6b97651e457627664e87bbfb8118856a41616c0d029be804b7516beb8cdf79f.webp",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/textures/b924d3a4b6230a395b8733bf84f237d55249e2b6c9dd27691bbf2af884227697.webp",
+      "url": "/zoo-environment/v01/textures/b924d3a4b6230a395b8733bf84f237d55249e2b6c9dd27691bbf2af884227697.webp",
+      "bytes": 222822,
+      "sha256": "b924d3a4b6230a395b8733bf84f237d55249e2b6c9dd27691bbf2af884227697",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-b924d3a4b6230a395b8733bf84f237d55249e2b6c9dd27691bbf2af884227697.webp",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/textures/c4fd82b4cbc8c120a8b8827cbf3476375be8c08599262dd6c855320e79a66344.webp",
+      "url": "/zoo-environment/v01/textures/c4fd82b4cbc8c120a8b8827cbf3476375be8c08599262dd6c855320e79a66344.webp",
+      "bytes": 251348,
+      "sha256": "c4fd82b4cbc8c120a8b8827cbf3476375be8c08599262dd6c855320e79a66344",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-c4fd82b4cbc8c120a8b8827cbf3476375be8c08599262dd6c855320e79a66344.webp",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/textures/ccbf0bcf1b231200bcd7632b89749d265d61bc3941cb167eb969c076502715dd.webp",
+      "url": "/zoo-environment/v01/textures/ccbf0bcf1b231200bcd7632b89749d265d61bc3941cb167eb969c076502715dd.webp",
+      "bytes": 299924,
+      "sha256": "ccbf0bcf1b231200bcd7632b89749d265d61bc3941cb167eb969c076502715dd",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-ccbf0bcf1b231200bcd7632b89749d265d61bc3941cb167eb969c076502715dd.webp",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/textures/f7f2a4f3af6e68f52fe1861def77176cc3a1c810b08f48649fbb39ccc9a63b63.webp",
+      "url": "/zoo-environment/v01/textures/f7f2a4f3af6e68f52fe1861def77176cc3a1c810b08f48649fbb39ccc9a63b63.webp",
+      "bytes": 338754,
+      "sha256": "f7f2a4f3af6e68f52fe1861def77176cc3a1c810b08f48649fbb39ccc9a63b63",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-f7f2a4f3af6e68f52fe1861def77176cc3a1c810b08f48649fbb39ccc9a63b63.webp",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-environment/v01/textures/f851569b29ef5eb9268ad2cacb5a27aef023d63c7fa3c4c0579108e673a2bb58.webp",
+      "url": "/zoo-environment/v01/textures/f851569b29ef5eb9268ad2cacb5a27aef023d63c7fa3c4c0579108e673a2bb58.webp",
+      "bytes": 418984,
+      "sha256": "f851569b29ef5eb9268ad2cacb5a27aef023d63c7fa3c4c0579108e673a2bb58",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-environment-f851569b29ef5eb9268ad2cacb5a27aef023d63c7fa3c4c0579108e673a2bb58.webp",
+          "rights": "user_authorized_project_asset_reuse_pelatuk_provenance_retained",
+          "origin": "User-authorized reuse of selected Pelatuk project flora, boulders and visitors; exact source and delivery hashes retained."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/manifest.json",
+      "url": "/zoo-fixtures/v01/manifest.json",
+      "bytes": 18780,
+      "sha256": "26e5fbdf79bafbf4ef046b74bd98a62671572883e849a4db7e1cfe378f66d84e",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-manifest.json",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-elephant-browse-v01-6bc555c333e834c4.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-elephant-browse-v01-6bc555c333e834c4.glb.br",
+      "bytes": 19395,
+      "sha256": "7ad56e620fa995ca30da20b5d3c3ef5f2aac27aafe7afd82677bc4801d56c497",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-elephant-browse-v01-6bc555c333e834c4.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-elephant-log-v01-406b541640a4f887.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-elephant-log-v01-406b541640a4f887.glb.br",
+      "bytes": 2423,
+      "sha256": "1c2dbd0d039d0e01b6fdd48b6a96b4ef73a6a0f78aa7cf0912735007c5507524",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-elephant-log-v01-406b541640a4f887.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-elephant-pond-v01-a5826a82ef2e10c1.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-elephant-pond-v01-a5826a82ef2e10c1.glb.br",
+      "bytes": 17980,
+      "sha256": "7e51abb04a75de029091a37c00133d5fe7e9124de091df2655e5973f4923ff30",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-elephant-pond-v01-a5826a82ef2e10c1.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-elephant-shade-v01-3394f179c3791e5d.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-elephant-shade-v01-3394f179c3791e5d.glb.br",
+      "bytes": 7435,
+      "sha256": "1e438fe598e22c89e329f9034c96243d3cdd146334201b2bfdc1ec31cd1441e1",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-elephant-shade-v01-3394f179c3791e5d.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-elephant-water-v01-df6afcaa0499b40a.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-elephant-water-v01-df6afcaa0499b40a.glb.br",
+      "bytes": 13791,
+      "sha256": "d8050abd08c75ead2a31a178d88624c41106f3106b66e892fa0cdf4b68375074",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-elephant-water-v01-df6afcaa0499b40a.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-food-v01-5813afdc1aefbd91.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-food-v01-5813afdc1aefbd91.glb.br",
+      "bytes": 5070,
+      "sha256": "06bbb67029b8aea50d2c4300717b332cae1fb01d02714f03b2b162fa4b6ac7a1",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-food-v01-5813afdc1aefbd91.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-giraffe-browse-v01-c99d8142268268c3.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-giraffe-browse-v01-c99d8142268268c3.glb.br",
+      "bytes": 4892,
+      "sha256": "152565a438cb05841f698102d7b1ca3afdacd9b57b07179f9ca3a8b2353af505",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-giraffe-browse-v01-c99d8142268268c3.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-giraffe-enrichment-v01-32e05c11fcaaac2c.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-giraffe-enrichment-v01-32e05c11fcaaac2c.glb.br",
+      "bytes": 4900,
+      "sha256": "6fbe5fe388d8ecc3aaa64c7cca1af0f9bee00eb9067a99ccf980084e9d030ea2",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-giraffe-enrichment-v01-32e05c11fcaaac2c.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-giraffe-shade-v01-cc48a6d4467fc796.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-giraffe-shade-v01-cc48a6d4467fc796.glb.br",
+      "bytes": 7444,
+      "sha256": "281ea27832f02bfb58fb1b4c33b9c79413917473da0782bae2838c1f2b7dfabd",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-giraffe-shade-v01-cc48a6d4467fc796.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-giraffe-water-v01-04de8826a5d8b5dd.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-giraffe-water-v01-04de8826a5d8b5dd.glb.br",
+      "bytes": 3866,
+      "sha256": "e56ae073f625d3ac3e01d3a827bbd8580b74722ca2f09dbcc1bf98f80de52061",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-giraffe-water-v01-04de8826a5d8b5dd.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-lion-den-v01-e5e1b18834cf2335.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-lion-den-v01-e5e1b18834cf2335.glb.br",
+      "bytes": 7436,
+      "sha256": "2484c76f672037110a582a60cf53ae25789e65fdef3bc701b8c148937903da96",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-lion-den-v01-e5e1b18834cf2335.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-lion-kopje-v01-d5888cc2280177c6.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-lion-kopje-v01-d5888cc2280177c6.glb.br",
+      "bytes": 818,
+      "sha256": "377ef01c1ab5250820b214e23e3918a8e8b40473023145d56484d21e1919ec3d",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-lion-kopje-v01-d5888cc2280177c6.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-lion-meat-v01-1443fb91796512c1.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-lion-meat-v01-1443fb91796512c1.glb.br",
+      "bytes": 5304,
+      "sha256": "9c698da9b466809f162979dbc7cd62d54fbff8db852b8c8c0ab6ac7970c477a8",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-lion-meat-v01-1443fb91796512c1.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-lion-scent-v01-4be7822a4bf5e38d.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-lion-scent-v01-4be7822a4bf5e38d.glb.br",
+      "bytes": 3063,
+      "sha256": "d413d38876feb9710aade717ea681592ce5e24d9b5a70b7ec7b700cfa91cb67e",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-lion-scent-v01-4be7822a4bf5e38d.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-lion-scratch-v01-76c3f34aae251a81.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-lion-scratch-v01-76c3f34aae251a81.glb.br",
+      "bytes": 3880,
+      "sha256": "ffc846552b5f74f3e8d3bd012254f60ebc45e998947fc9f7addb7c9d83ec309b",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-lion-scratch-v01-76c3f34aae251a81.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-lion-water-v01-50503cdb923afc27.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-lion-water-v01-50503cdb923afc27.glb.br",
+      "bytes": 4264,
+      "sha256": "463b9f6171796ea265372bc3a5d77fd58b6b5d93ebee11b97f731523e49f1487",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-lion-water-v01-50503cdb923afc27.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-perch-v01-faaf10c3572fed5f.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-perch-v01-faaf10c3572fed5f.glb.br",
+      "bytes": 12066,
+      "sha256": "80740bcdced958d90b4d634ea3dce0755d1060737d90bf0305303ba6f5830a30",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-perch-v01-faaf10c3572fed5f.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-water-v01-19203a6795faa133.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-water-v01-19203a6795faa133.glb.br",
+      "bytes": 4090,
+      "sha256": "39df54d2a69ccda82a9f71031d4ea805694cccff081513d376ea7ff80dde22e1",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-water-v01-19203a6795faa133.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-zebra-enrichment-v01-7d49570c4be21fc7.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-zebra-enrichment-v01-7d49570c4be21fc7.glb.br",
+      "bytes": 3895,
+      "sha256": "20934ace39f39ba0e3f5f10013444e670bf4097214008d4238731fb449f49190",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-zebra-enrichment-v01-7d49570c4be21fc7.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-zebra-graze-v01-dab5efeca299faf6.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-zebra-graze-v01-dab5efeca299faf6.glb.br",
+      "bytes": 5281,
+      "sha256": "a4faf422565fc39e21c1026a945a688209fb53172be8cc089956a22152352077",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-zebra-graze-v01-dab5efeca299faf6.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-zebra-shade-v01-35bb330cf168c19c.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-zebra-shade-v01-35bb330cf168c19c.glb.br",
+      "bytes": 22903,
+      "sha256": "d2de81dea6025684586751b2250d02139dedc1041537220f4accd820b885066d",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-zebra-shade-v01-35bb330cf168c19c.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    },
+    {
+      "path": "public/zoo-fixtures/v01/models/fixture-zebra-water-v01-74cd0824bd4a7148.glb.br",
+      "url": "/zoo-fixtures/v01/models/fixture-zebra-water-v01-74cd0824bd4a7148.glb.br",
+      "bytes": 4258,
+      "sha256": "ccddd459a2a117584dc5c3b3e72af22babad218812d5ff094dfff0aa9c9f2d3d",
+      "sourceStringReferences": [],
+      "provenance": [
+        {
+          "id": "glb-v01-zoo-fixtures-fixture-zebra-water-v01-74cd0824bd4a7148.glb.br",
+          "rights": "original_project_work_no_external_art_inputs",
+          "origin": "Original MyZooTwin editable care fixture meshes authored in art/fixtures/v01 for canonical resource approaches."
+        }
+      ],
+      "distribution": "Copied from public by static build; reference absence does not prevent distribution"
+    }
+  ],
+  "retiredModules": [
+    {
+      "path": "src/game/render3d/visitor-scene.ts",
+      "sha256": "e7fc1f69bbdb2e3229e03c74be22e94b0774e43ab8b42c03621059e3a2a53134",
+      "family": "visitors",
+      "imports": [
+        "src/game/visitors/arrivals.ts",
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [
+        {
+          "type": "Group",
+          "owner": "createVisitorScene",
+          "variable": "group",
+          "line": 9
+        },
+        {
+          "type": "MeshStandardMaterial",
+          "owner": "assets",
+          "variable": "material",
+          "line": 11
+        },
+        {
+          "type": "MeshBasicMaterial",
+          "owner": "assets",
+          "variable": "shade",
+          "line": 11
+        },
+        {
+          "type": "BoxGeometry",
+          "owner": "assets",
+          "variable": "BoxGeometry",
+          "line": 15
+        },
+        {
+          "type": "CylinderGeometry",
+          "owner": "assets",
+          "variable": "CylinderGeometry",
+          "line": 15
+        },
+        {
+          "type": "IcosahedronGeometry",
+          "owner": "assets",
+          "variable": "IcosahedronGeometry",
+          "line": 15
+        },
+        {
+          "type": "CylinderGeometry",
+          "owner": "assets",
+          "variable": "CylinderGeometry",
+          "line": 15
+        },
+        {
+          "type": "CylinderGeometry",
+          "owner": "assets",
+          "variable": "CylinderGeometry",
+          "line": 15
+        },
+        {
+          "type": "BoxGeometry",
+          "owner": "assets",
+          "variable": "BoxGeometry",
+          "line": 15
+        },
+        {
+          "type": "BoxGeometry",
+          "owner": "assets",
+          "variable": "BoxGeometry",
+          "line": 15
+        },
+        {
+          "type": "BoxGeometry",
+          "owner": "assets",
+          "variable": "BoxGeometry",
+          "line": 15
+        },
+        {
+          "type": "BoxGeometry",
+          "owner": "assets",
+          "variable": "BoxGeometry",
+          "line": 16
+        },
+        {
+          "type": "BoxGeometry",
+          "owner": "assets",
+          "variable": "BoxGeometry",
+          "line": 16
+        },
+        {
+          "type": "IcosahedronGeometry",
+          "owner": "assets",
+          "variable": "IcosahedronGeometry",
+          "line": 16
+        },
+        {
+          "type": "BoxGeometry",
+          "owner": "assets",
+          "variable": "BoxGeometry",
+          "line": 17
+        },
+        {
+          "type": "BoxGeometry",
+          "owner": "assets",
+          "variable": "BoxGeometry",
+          "line": 17
+        },
+        {
+          "type": "CircleGeometry",
+          "owner": "assets",
+          "variable": "shadow",
+          "line": 17
+        },
+        {
+          "type": "Group",
+          "owner": "make",
+          "variable": "root",
+          "line": 20
+        },
+        {
+          "type": "Mesh",
+          "owner": "make",
+          "variable": "body",
+          "line": 20
+        },
+        {
+          "type": "Mesh",
+          "owner": "make",
+          "variable": "mesh",
+          "line": 21
+        },
+        {
+          "type": "Mesh",
+          "owner": "make",
+          "variable": "mesh",
+          "line": 22
+        },
+        {
+          "type": "Mesh",
+          "owner": "make",
+          "variable": "shadow",
+          "line": 23
+        }
+      ],
+      "labels": [
+        {
+          "label": "Entrance visitors",
+          "owner": "createVisitorScene",
+          "line": 9,
+          "kind": "runtime-object-name"
+        }
+      ],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "createVisitorScene",
+          "line": 8
+        },
+        {
+          "name": "assets",
+          "line": 11
+        },
+        {
+          "name": "part",
+          "line": 12
+        },
+        {
+          "name": "merged",
+          "line": 13
+        },
+        {
+          "name": "make",
+          "line": 20
+        }
+      ],
+      "threeTypes": [
+        "BoxGeometry",
+        "CircleGeometry",
+        "Color",
+        "CylinderGeometry",
+        "Float32BufferAttribute",
+        "Group",
+        "IcosahedronGeometry",
+        "Matrix4",
+        "Mesh",
+        "MeshBasicMaterial",
+        "MeshStandardMaterial",
+        "Vector3"
+      ],
+      "exports": [
+        "createVisitorScene"
+      ]
+    }
+  ]
+}

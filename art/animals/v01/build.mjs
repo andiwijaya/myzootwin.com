@@ -1,0 +1,22 @@
+import {readFile,writeFile,mkdir} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+import {resolve,join} from 'node:path';
+import {definitions,contract,mammal} from './mammals.mjs';
+import {unwrap} from './geometry.mjs';
+import {bakeAtlas,writeGLB} from './export.mjs';
+import {sampleClips} from './motion.mjs';
+import {macawDefinition,macawContract,macaw,macawClips} from './macaw.mjs';
+const root=resolve('art/animals/v01'),output=join(root,'masters'),filter=process.argv[2]??'zebra',variantOnly=process.argv[3],detailOnly=process.argv[4],sha=b=>createHash('sha256').update(b).digest('hex');await mkdir(output,{recursive:true});
+const recipeNames=['build.mjs','geometry.mjs','mammals.mjs','macaw.mjs','motion.mjs','export.mjs','references.json','behavior-map.json'],recipeEntries=[];
+for(const file of recipeNames)recipeEntries.push({file,sha256:sha(await readFile(join(root,file)))});
+const articulationPath=resolve('src/game/render3d/glb/articulation.ts'),articulation=await readFile(articulationPath);recipeEntries.push({file:'src/game/render3d/glb/articulation.ts',sha256:sha(articulation)});
+const recipeSha256=sha(Buffer.from(JSON.stringify(recipeEntries))),recipeFolder=join(root,'recipes',recipeSha256);await mkdir(recipeFolder,{recursive:true});
+for(const file of recipeNames){const bytes=await readFile(join(root,file));await writeFile(join(recipeFolder,file),bytes,{flag:'wx'}).catch(e=>{if(e.code!=='EEXIST')throw e;});}
+await writeFile(join(recipeFolder,'articulation.ts'),articulation,{flag:'wx'}).catch(e=>{if(e.code!=='EEXIST')throw e;});await writeFile(join(root,'recipe.json'),JSON.stringify({sha256:recipeSha256,files:recipeEntries},null,2)+'\n');
+const previous=await readFile(join(root,'manifest.json'),'utf8').then(JSON.parse).catch(()=>({assets:[]})),assets=previous.assets;
+for(const [species,definition]of Object.entries({...definitions,macaw:macawDefinition})){if(filter!=='all'&&species!==filter)continue;for(let variant=0;variant<definition.variants.length;variant++){const name=definition.variants[variant];if(variantOnly&&variantOnly!==name)continue;let atlas;
+ for(const detail of ['high','low']){if(detailOnly&&detailOnly!==detail)continue;const low=detail==='low',c=species==='macaw'?macawContract():contract(species,variant),{data,bounds}=species==='macaw'?macaw(variant,low,c.joints):mammal(species,variant,low,c.joints),uv=unwrap(data,bounds);atlas=bakeAtlas(data,uv,species,variant);const id=`${species}-${name}-${detail}-v01`,clips=species==='macaw'?macawClips(definition.clips,c):sampleClips(species,definition.clips,c),metadata={id,species,scientificName:definition.scientificName,variant:name,detail,units:'sanctuary scene contract; see references.json',source:'art/animals/v01',provenance:'Original implicit anatomical surfaces, blended skin weights, coat painting and sampled articulation; no external image or mesh'},bytes=writeGLB(uv.geometry,c.joints,clips,atlas,metadata),path=`masters/${id}.glb`;
+ const old=await readFile(join(root,path)).catch(()=>null);if(old&&sha(old)!==sha(bytes)){const history=join(root,'history');await mkdir(history,{recursive:true});await writeFile(join(history,id+'-'+sha(old)+'.glb'),old,{flag:'wx'}).catch(e=>{if(e.code!=='EEXIST')throw e;});}
+ await writeFile(join(root,path),bytes);await mkdir(join(root,'textures'),{recursive:true});await writeFile(join(root,'textures',id+'-coat.png'),atlas.color);await writeFile(join(root,'textures',id+'-normal.png'),atlas.normal);const entry={...metadata,localPath:path,bytes:bytes.length,sha256:sha(bytes),sourceSha256:sha(bytes),sourcePath:path,category:'animal',animations:clips.map(c=>c.name),vertices:uv.geometry.getAttribute('position').count,triangles:uv.geometry.getIndex().count/3,joints:c.joints,bounds:{min:uv.geometry.boundingBox.min.toArray(),max:uv.geometry.boundingBox.max.toArray()},textures:{width:atlas.width,height:atlas.height,colorSha256:sha(atlas.color),normalSha256:sha(atlas.normal)}};const at=assets.findIndex(a=>a.id===id);if(at<0)assets.push(entry);else assets[at]=entry;await writeFile(join(root,'manifest.json'),JSON.stringify({schemaVersion:1,sourceLibrarySha256:'original-myzootwin-animals-v01',selectedMasters:assets.length,totalMasterBytes:assets.reduce((n,a)=>n+a.bytes,0),assets},null,2)+'\n');console.log(JSON.stringify({id,bytes:bytes.length,triangles:entry.triangles,joints:c.joints.length,clips:clips.length,sha256:entry.sha256}));uv.geometry.dispose();c.dispose();
+ }
+}}

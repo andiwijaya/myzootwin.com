@@ -1,0 +1,7 @@
+# Low-detail parent surface masters
+
+Empat GLB low-detail baru: groundv01/rockv01/creekv01/pathv03. High-detail masters dan dua rejected path revisions dipertahankan;150 GLB sebelumnya tetap utuh. Parent manifest kini delapan master high/low. Actual attributes dibandingkan source dengan toleransi1e-6, closed rock/paver surfaces dan material/resource metadata diperiksa. Triangles high/low: ground3760/608, rock5920/1148, creek19800/6284, path10240/2228.
+
+16 fresh source/actual retained low-detail render pairs PASS: whole-quarter, whole-back, close-quarter/daylight, close-eye/studio untuk empat jenis.32sidecars memverifikasi framing/camera/state/SHA. Native captures tanpa resize; comparator memakai actual viewport/framing yang direkam.22 embedded PNG instances pada seluruh delapan parent dibandingkan alpha/opaque RGB ke original source dengan error<=1; fully transparent RGB dikecualikan karena canvas premultiplication.
+
+Enam fresh path-low reopen/dispose cycles stabilsource3geometry/8texture, imported6/11. Console kosong. Verifier `python tools/verify-aviary-surface-evidence.py`; inspector `node --experimental-strip-types tools/inspect-aviary-surface-glb.mjs`. Low detail diterima untuk penilaian jarak LOD dalam habitat, bukan hero close-up atau physical A56 acceptance.17 combined related tests dan build pada tahap components mencakup source surfaces, source component ownership/pivot, serta local authoring boundary.

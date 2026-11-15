@@ -1,85 +1,9 @@
-# Preserve exact captured QA bytes; do not normalize evidence line endings.
-docs/qa/m5-04/** -text
-docs/qa/m5-05/** -text
-docs/qa/m5-06/** -text
-docs/qa/m5-07/** -text
-docs/qa/m6-01/** -text
-docs/qa/m6-02/** -text
-docs/qa/m6-03/** -text
-
-docs/qa/m6-04/** -text
-
-docs/qa/m6-05/** -text
-
-docs/qa/m6-06/** -text
-public/licenses/third-party-notices.txt -text
-public/licenses/vite-MIT.txt -text
-
-docs/qa/m6-07/** -text
-
-docs/licenses/build-tooling/** -text
-docs/qa/m6-06-gap/** -text
-
-docs/qa/m6-01-gpu-investigation/** -text
-
-docs/qa/m6-03-import-investigation/** -text
-
-docs/qa/m6-06-notice-four/** -text
-
-art/site-assets/** -text
-public/images/tropical-creek-journal.svg -text
-public/favicon.svg -text
-docs/qa/m6-06-original-assets/** -text
-
-docs/qa/m6-03-desktop/** -text
-
-docs/qa/final-source-golden/** -text
-
-docs/qa/m4-07-duration/** -text
-
-# Preserve exact new Elephant soak and hygiene receipts across checkouts.
-docs/qa/elephant-soak/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
-docs/qa/elephant-hygiene/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
-
-# Captured vendor stdout retains its original trailing spaces as evidence.
-docs/qa/elephant-soak/*.log -whitespace
-docs/qa/elephant-hygiene/*.log -whitespace
-
-# Exact release evidence; captured tool logs keep verbatim formatting.
-docs/qa/elephant-release/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
-docs/qa/elephant-release/*.log -whitespace
-# Captured accessibility transcripts retain native list-marker spacing.
-docs/qa/elephant-release/*.txt -whitespace
-
-# Preserve exact new Giraffe evidence bytes and recorded log digests.
-docs/qa/giraffe-hygiene/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
-docs/qa/giraffe-hygiene/*.log -whitespace
-docs/qa/giraffe-playable/current-v4-cold.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
-docs/qa/giraffe-playable/recovered-fresh-v4.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
-docs/qa/giraffe-playable/native-final.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
-docs/qa/giraffe-playable/reset-and-recovery.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
-docs/qa/giraffe-playable/stress-final.json -text whitespace=trailing-space,space-before-tab,cr-at-eol
-docs/qa/giraffe-playable/recovery-*-dom.txt -text whitespace=trailing-space,space-before-tab,cr-at-eol
-# Original captured tool output is evidence, including its trailing spacing.
-docs/qa/giraffe-baseline/*.txt -whitespace
-docs/qa/giraffe-v4/*.txt -whitespace
-
-# Native failed-soak captures remain byte-exact, with the failed result explicit.
-docs/qa/giraffe-soak/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
-docs/qa/giraffe-soak/*.log -whitespace
-docs/qa/giraffe-soak/*.txt -whitespace
-
-# Final native evidence preserves exact JPEG/capture and projected-state bytes.
-docs/qa/giraffe-native-final/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
-docs/qa/giraffe-native-final/*.log -whitespace
-docs/qa/giraffe-native-final/*.diff -whitespace
-
-# Homepage receipts preserve exact capture bytes and vendor log formatting.
-docs/qa/homepage-refresh/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
-docs/qa/homepage-refresh/*.log -whitespace
-
-# Zebra source-bound receipts preserve exact bytes across checkouts.
-docs/qa/zebra/** -text whitespace=trailing-space,space-before-tab,cr-at-eol
-docs/qa/zebra/**/*.log -whitespace
-# Original Node TAP diagnostics preserve intentional indentation on blank lines.
-docs/qa/zebra/r7-03/*.tap -whitespace
+# These files carry content hashes or preserve exact imported evidence bytes.
+/art/imports/pelatuk-aviary/v01/** -text
+/art/animals/v01/** -text
+/art/fixtures/v01/** -text
+/public/zoo-assets/v01/** -text
+/public/zoo-environment/v01/** -text
+/public/zoo-fixtures/v01/** -text
+/public/_headers -text
+/docs/qa/glb/** -text

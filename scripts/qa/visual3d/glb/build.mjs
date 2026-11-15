@@ -1,0 +1,12 @@
+import {readFile,writeFile,mkdir,access} from 'node:fs/promises';import {resolve,join} from 'node:path';import {execFileSync} from 'node:child_process';import {build} from 'vite';
+import {files,fingerprint,sha256,sourceFingerprint} from '../../tooling.mjs';
+const runId=process.argv[2];if(!/^p[23]-\d{8}-[a-z0-9-]{1,24}$/.test(runId??''))throw Error('Use p2/p3-YYYYMMDD-name');
+const root=resolve('.'),base=join(root,'.qa/glb',runId);try{await access(base);throw Error('Immutable run exists; choose a fresh name');}catch(e){if(e.code!=='ENOENT')throw e;}await mkdir(base,{recursive:true});
+const runtimeMode=process.argv[3]==='runtime-animals',libraryRoot=runtimeMode?'public/zoo-assets/v01':process.argv[3]==='animals'?'art/animals/v01':'art/imports/pelatuk-aviary/v01';
+const inputs=await sourceFingerprint(root),library=await readFile(join(libraryRoot,'manifest.json')),manifest=JSON.parse(library),entry='scripts/qa/visual3d/glb/index.html';
+const assets=runtimeMode?manifest.models.map(a=>({id:a.id,bytes:a.rawBytes,sha256:a.rawSha256})):manifest.assets;
+await writeFile(join(base,'library-manifest.json'),library);
+if(libraryRoot==='art/animals/v01')await writeFile(join(base,'recipe.json'),await readFile(join(libraryRoot,'recipe.json')));
+await build({root,configFile:false,publicDir:false,base:'/',build:{outDir:join(base,'lab'),emptyOutDir:false,sourcemap:false,rollupOptions:{input:resolve(entry)}}});
+const receipt={schemaVersion:1,runId,libraryRoot,runtimeMode,builtAt:new Date().toISOString(),sourceHead:execFileSync('git',['rev-parse','HEAD'],{encoding:'utf8'}).trim(),inputs,libraryManifestSha256:sha256(library),sourceLibrarySha256:manifest.sourceLibrarySha256??manifest.sourceManifestSha256,masterHashes:assets.map(a=>({id:a.id,bytes:a.bytes,sha256:a.sha256})),entry,lab:await fingerprint(root,await files(join(base,'lab'))),scope:'Isolated actual-GLB asset inspection; imports production sanctuary lighting and shared Visual3D camera fitting; no gameplay or save session'};
+await writeFile(join(base,'source.json'),JSON.stringify(receipt,null,2)+'\n');console.log(JSON.stringify({runId,entry,sourceFingerprint:inputs.id,libraryMasters:assets.length,labFingerprint:receipt.lab.id}));

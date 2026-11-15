@@ -1,0 +1,3306 @@
+{
+  "rejected": [
+    {
+      "path": "assets/aviary/exports/surfaces/path-17-high-v01.glb",
+      "bytes": 10840408,
+      "sha256": "004ab423662180fb55b87e0faf766d36ebb0c0822a6691047b1749f63d76c24e",
+      "reason": "Flattened paving normals can oppose emitted face normals",
+      "actualFirstComponent": {
+        "triangles": 720,
+        "zeroArea": 0,
+        "volume": 0.012509784212533914,
+        "minNormalAlignment": -0.17608321843492836,
+        "boundaryEdges": 0,
+        "nonManifoldEdges": 0,
+        "inconsistentWindingEdges": 0
+      },
+      "retained": true,
+      "replacement": "assets/aviary/exports/surfaces/path-17-high-v02.glb",
+      "protected": "All positions, UVs, colours, non-stone normals, materials, samplers and embedded image bytes remain exactly v01."
+    },
+    {
+      "path": "assets/aviary/exports/surfaces/path-17-high-v02.glb",
+      "bytes": 10842196,
+      "sha256": "2e3bda27a8b6def5f06af2275396c2d41e0c3fa52e39b35b9e64d392bc37a73c",
+      "reason": "Visual review found overlapping paving and a slightly raised lower cap",
+      "retained": true,
+      "replacement": "assets/aviary/exports/surfaces/path-17-high-v03.glb",
+      "protected": "All UVs/colours, non-stone geometry, materials/samplers and image bytes remain v02. Only stone placement/shape/normals and source component metadata change."
+    }
+  ],
+  "scope": "Eight static high/low authoring masters. Numeric emitted/source tolerance 1e-6; actual closed rock surfaces, material factors, image embedding and sampler policy. Not final scene or mobile certification.",
+  "samplingPolicy": "Renderer anisotropy 4 is applied equally on source and import; glTF core does not encode it.",
+  "preserved": [
+    {
+      "evidence": "docs/QA_EVIDENCE/AVIARY_SURFACE_LAB_V02_2026-11-14/previous-master-identity.json",
+      "masters": 150,
+      "allBytesMatch": true
+    }
+  ],
+  "assets": [
+    {
+      "path": "assets/aviary/exports/surfaces/ground-17-high-v01.glb",
+      "bytes": 5964500,
+      "sha256": "3a7341855963c1a17d87c3a028d5e77b8a039390d2d0efe9c95fa956fab1a76d",
+      "kind": "ground",
+      "assetRevision": 1,
+      "seed": 17,
+      "detail": "high",
+      "widthM": 4,
+      "depthM": 4,
+      "units": "metres",
+      "source": "original-habitat-surfaces-v01",
+      "scope": "Original editable surface and static geometric water study, not a scan or a fluid simulation",
+      "provenance": "assets/aviary/README.md",
+      "triangles": 3760,
+      "geometry": [
+        {
+          "mesh": "soil",
+          "vertices": 9600,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "13438c51b6236119020a2df28162b1d94e2b7e7ad6743a923077ac090b7c4382",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "0952acbdaa404d16a52264ffca6351734480178e875698b284b1571eb1333622",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "58075832696faa6a0caf095cb5323d7030ebf76a25ca639cfb4ebc7f77e486b0",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "soil",
+              "firstVertex": 0,
+              "vertexCount": 9600,
+              "original": {
+                "originalGround": {
+                  "source": "original-habitat-surfaces-v01",
+                  "creek": false,
+                  "widthM": 4,
+                  "depthM": 4
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "litter",
+          "vertices": 1680,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "61a5e6de35f7f23c2250f8b8a205da0b036a42616804196315e7737509fdad80",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "f2869b1103b531fc540d7049c5d2a2d4fc8b4b5eb8f2f74fa470c69978329a1d",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "71d4f4c813d1144584333f530a2bbd6979040466afb0ad76930eae2c96de2233",
+              "maxAbsoluteSourceError": 0
+            },
+            "COLOR_0": {
+              "sha256": "ea7053eaf6eeb945597d1ca81ea26a674ab98dd77c2cfc9b500a71306f19ef56",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "leaf-litter",
+              "firstVertex": 0,
+              "vertexCount": 1680,
+              "original": {
+                "originalLitter": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 17,
+                  "scope": "Original curved fallen-leaf silhouettes over retained original floor albedo"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        }
+      ],
+      "images": [
+        {
+          "source": "assets/aviary/originals/forest-floor-v01a.png",
+          "bytes": 4265084,
+          "sha256": "9fe4dbb9be2b24bccdb0257f88bab385161bc611dfab6bd8cef774c15af1fb05",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "source": "assets/aviary/originals/fallen-leaf-atlas-v01a.png",
+          "bytes": 1314352,
+          "sha256": "894ae6ba3f04a78db58ac38d81fd3b30af34f691bbb4b096a81516b9bc8f0569",
+          "width": 1254,
+          "height": 1254
+        }
+      ]
+    },
+    {
+      "path": "assets/aviary/exports/surfaces/ground-17-low-v01.glb",
+      "bytes": 5645192,
+      "sha256": "9f9eeeffffb06659676f1284bbeac02cac28a7ae313054f51c0bf49219454bbb",
+      "kind": "ground",
+      "assetRevision": 1,
+      "seed": 17,
+      "detail": "low",
+      "widthM": 4,
+      "depthM": 4,
+      "units": "metres",
+      "source": "original-habitat-surfaces-v01",
+      "scope": "Original editable surface and static geometric water study, not a scan or a fluid simulation",
+      "provenance": "assets/aviary/README.md",
+      "triangles": 608,
+      "geometry": [
+        {
+          "mesh": "soil",
+          "vertices": 1536,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "ee9c81f0116e6f80c24055e18d55a6f0df51d05cde4e190f602a316b29619839",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "306fcb052e115a8b9709d5abf1f28ac798dd3f0de07cc6383567a26f5addca73",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "e9621c70bb2981a1d905ce36e73fe087435eb9ae841ce8d0e0db0cc858cb96ef",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "soil",
+              "firstVertex": 0,
+              "vertexCount": 1536,
+              "original": {
+                "originalGround": {
+                  "source": "original-habitat-surfaces-v01",
+                  "creek": false,
+                  "widthM": 4,
+                  "depthM": 4
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "litter",
+          "vertices": 288,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "354d900030d2d2ebba95210c53a0f408e30ca4e47419f1e96379b0162cff3c4c",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "af10bb55b7c485ec3cb75204460c7fbe28edd5e129fa397408bfce3da814a86c",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "b701f6f76608e06d98410ebeec8e880131c47a585197a85ee8a5db90f26fbf8a",
+              "maxAbsoluteSourceError": 0
+            },
+            "COLOR_0": {
+              "sha256": "6336611fd77df93a4dbd3c4b54b63b3fd084b96792844cbaf373977060f178a6",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "leaf-litter",
+              "firstVertex": 0,
+              "vertexCount": 288,
+              "original": {
+                "originalLitter": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 17,
+                  "scope": "Original curved fallen-leaf silhouettes over retained original floor albedo"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        }
+      ],
+      "images": [
+        {
+          "source": "assets/aviary/originals/forest-floor-v01a.png",
+          "bytes": 4265084,
+          "sha256": "9fe4dbb9be2b24bccdb0257f88bab385161bc611dfab6bd8cef774c15af1fb05",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "source": "assets/aviary/originals/fallen-leaf-atlas-v01a.png",
+          "bytes": 1314352,
+          "sha256": "894ae6ba3f04a78db58ac38d81fd3b30af34f691bbb4b096a81516b9bc8f0569",
+          "width": 1254,
+          "height": 1254
+        }
+      ]
+    },
+    {
+      "path": "assets/aviary/exports/surfaces/rock-17-high-v01.glb",
+      "bytes": 10424088,
+      "sha256": "682a948702084c8ba2ee28d13e47d3c1697a61309e91e1173c4b606c771bfb55",
+      "kind": "rock",
+      "assetRevision": 1,
+      "seed": 17,
+      "detail": "high",
+      "widthM": 4,
+      "depthM": 4,
+      "units": "metres",
+      "source": "original-habitat-surfaces-v01",
+      "scope": "Original editable surface and static geometric water study, not a scan or a fluid simulation",
+      "provenance": "assets/aviary/README.md",
+      "triangles": 5920,
+      "geometry": [
+        {
+          "mesh": "soil",
+          "vertices": 9600,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "13438c51b6236119020a2df28162b1d94e2b7e7ad6743a923077ac090b7c4382",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "0952acbdaa404d16a52264ffca6351734480178e875698b284b1571eb1333622",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "58075832696faa6a0caf095cb5323d7030ebf76a25ca639cfb4ebc7f77e486b0",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "soil",
+              "firstVertex": 0,
+              "vertexCount": 9600,
+              "original": {
+                "originalGround": {
+                  "source": "original-habitat-surfaces-v01",
+                  "creek": false,
+                  "widthM": 4,
+                  "depthM": 4
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "litter",
+          "vertices": 1680,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "61a5e6de35f7f23c2250f8b8a205da0b036a42616804196315e7737509fdad80",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "f2869b1103b531fc540d7049c5d2a2d4fc8b4b5eb8f2f74fa470c69978329a1d",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "71d4f4c813d1144584333f530a2bbd6979040466afb0ad76930eae2c96de2233",
+              "maxAbsoluteSourceError": 0
+            },
+            "COLOR_0": {
+              "sha256": "ea7053eaf6eeb945597d1ca81ea26a674ab98dd77c2cfc9b500a71306f19ef56",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "leaf-litter",
+              "firstVertex": 0,
+              "vertexCount": 1680,
+              "original": {
+                "originalLitter": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 17,
+                  "scope": "Original curved fallen-leaf silhouettes over retained original floor albedo"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "stone",
+          "vertices": 6480,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "fe8fc15ed55b9456c50c4edf09c7ddddbec086282cf1a848c594fbccc6f22148",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "8001288f488459fffaef4fbd5e2105da8df77e6988e5ac13451bb24fcee3c2ee",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "2b5c50e34c99312f7287bc663a339949c9f0ab80d17dea6a959409dcbbfd9060",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [
+            {
+              "name": "boulder-0",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.27769365597649903,
+              "minNormalAlignment": 0.9154208234359141,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "boulder-1",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.06680281774638082,
+              "minNormalAlignment": 0.9411000302985972,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "boulder-2",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.015318786269048486,
+              "minNormalAlignment": 0.908467038889583,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            }
+          ],
+          "sourceComponentRanges": [
+            {
+              "name": "boulder-0",
+              "firstVertex": 0,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 17,
+                  "radius": 0.5,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "boulder-1",
+              "firstVertex": 2160,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 48,
+                  "radius": 0.31,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "boulder-2",
+              "firstVertex": 4320,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 79,
+                  "radius": 0.19,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        }
+      ],
+      "images": [
+        {
+          "source": "assets/aviary/originals/forest-floor-v01a.png",
+          "bytes": 4265084,
+          "sha256": "9fe4dbb9be2b24bccdb0257f88bab385161bc611dfab6bd8cef774c15af1fb05",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "source": "assets/aviary/originals/fallen-leaf-atlas-v01a.png",
+          "bytes": 1314352,
+          "sha256": "894ae6ba3f04a78db58ac38d81fd3b30af34f691bbb4b096a81516b9bc8f0569",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "source": "assets/aviary/originals/forest-stone-v01a.png",
+          "bytes": 4250156,
+          "sha256": "6f058602f1f4e2c8af268188a4a1f60b586c2ef70f827c0aef7209295e4b3574",
+          "width": 1254,
+          "height": 1254
+        }
+      ]
+    },
+    {
+      "path": "assets/aviary/exports/surfaces/rock-17-low-v01.glb",
+      "bytes": 9949292,
+      "sha256": "512dc72f9dbdbc4f81068b07facc323f1073c38ef9891478a3d3f43ef44566fe",
+      "kind": "rock",
+      "assetRevision": 1,
+      "seed": 17,
+      "detail": "low",
+      "widthM": 4,
+      "depthM": 4,
+      "units": "metres",
+      "source": "original-habitat-surfaces-v01",
+      "scope": "Original editable surface and static geometric water study, not a scan or a fluid simulation",
+      "provenance": "assets/aviary/README.md",
+      "triangles": 1148,
+      "geometry": [
+        {
+          "mesh": "soil",
+          "vertices": 1536,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "ee9c81f0116e6f80c24055e18d55a6f0df51d05cde4e190f602a316b29619839",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "306fcb052e115a8b9709d5abf1f28ac798dd3f0de07cc6383567a26f5addca73",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "e9621c70bb2981a1d905ce36e73fe087435eb9ae841ce8d0e0db0cc858cb96ef",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "soil",
+              "firstVertex": 0,
+              "vertexCount": 1536,
+              "original": {
+                "originalGround": {
+                  "source": "original-habitat-surfaces-v01",
+                  "creek": false,
+                  "widthM": 4,
+                  "depthM": 4
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "litter",
+          "vertices": 288,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "354d900030d2d2ebba95210c53a0f408e30ca4e47419f1e96379b0162cff3c4c",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "af10bb55b7c485ec3cb75204460c7fbe28edd5e129fa397408bfce3da814a86c",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "b701f6f76608e06d98410ebeec8e880131c47a585197a85ee8a5db90f26fbf8a",
+              "maxAbsoluteSourceError": 0
+            },
+            "COLOR_0": {
+              "sha256": "6336611fd77df93a4dbd3c4b54b63b3fd084b96792844cbaf373977060f178a6",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "leaf-litter",
+              "firstVertex": 0,
+              "vertexCount": 288,
+              "original": {
+                "originalLitter": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 17,
+                  "scope": "Original curved fallen-leaf silhouettes over retained original floor albedo"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "stone",
+          "vertices": 1620,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "d9a184a59a71476c2147aaabff05075068d27c27dfbd6916e29fcf335894ec6e",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "5a0d39cbedd012aeab6fd392770271e101f6521f74ed8e74f6738e2aa431b2e1",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "3aaa9d43f03cc11578a43603978f624a583b75ff24c096a4db81c0ccd2647d86",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [
+            {
+              "name": "boulder-0",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.2645066293837536,
+              "minNormalAlignment": 0.9487393885423208,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "boulder-1",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.06383150750437233,
+              "minNormalAlignment": 0.934432886692548,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "boulder-2",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.01460688586414671,
+              "minNormalAlignment": 0.9435255896478038,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            }
+          ],
+          "sourceComponentRanges": [
+            {
+              "name": "boulder-0",
+              "firstVertex": 0,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 17,
+                  "radius": 0.5,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "boulder-1",
+              "firstVertex": 540,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 48,
+                  "radius": 0.31,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "boulder-2",
+              "firstVertex": 1080,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 79,
+                  "radius": 0.19,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        }
+      ],
+      "images": [
+        {
+          "source": "assets/aviary/originals/forest-floor-v01a.png",
+          "bytes": 4265084,
+          "sha256": "9fe4dbb9be2b24bccdb0257f88bab385161bc611dfab6bd8cef774c15af1fb05",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "source": "assets/aviary/originals/fallen-leaf-atlas-v01a.png",
+          "bytes": 1314352,
+          "sha256": "894ae6ba3f04a78db58ac38d81fd3b30af34f691bbb4b096a81516b9bc8f0569",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "source": "assets/aviary/originals/forest-stone-v01a.png",
+          "bytes": 4250156,
+          "sha256": "6f058602f1f4e2c8af268188a4a1f60b586c2ef70f827c0aef7209295e4b3574",
+          "width": 1254,
+          "height": 1254
+        }
+      ]
+    },
+    {
+      "path": "assets/aviary/exports/surfaces/creek-17-high-v01.glb",
+      "bytes": 11866148,
+      "sha256": "f83836b0852e3b49e7d17c9d4e4fc9c5a025098e6839d780eaf0b2638bb54bbe",
+      "kind": "creek",
+      "assetRevision": 1,
+      "seed": 17,
+      "detail": "high",
+      "widthM": 4,
+      "depthM": 4,
+      "units": "metres",
+      "source": "original-habitat-surfaces-v01",
+      "scope": "Original editable surface and static geometric water study, not a scan or a fluid simulation",
+      "provenance": "assets/aviary/README.md",
+      "triangles": 19800,
+      "geometry": [
+        {
+          "mesh": "soil",
+          "vertices": 9600,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "3df95a81175277b85524af242d69c76b02c27b95377418e2bc4b8ddc07b9eb4d",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "581fc86b87b4f5355b251a1f0fc8c5139c3a7b9edcb8fd2c917ebdbe4d29a18c",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "58075832696faa6a0caf095cb5323d7030ebf76a25ca639cfb4ebc7f77e486b0",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "soil",
+              "firstVertex": 0,
+              "vertexCount": 9600,
+              "original": {
+                "originalGround": {
+                  "source": "original-habitat-surfaces-v01",
+                  "creek": true,
+                  "widthM": 4,
+                  "depthM": 4
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "litter",
+          "vertices": 960,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "e78ae5749385fa22a95aa1016929619491dd2566463326335e0dc4254448e453",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "40b3aed1ca9330b168002a696f9976c671ea59fccca15578fa6973c54d0f64a5",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "cf8cd3f542bfbe69422082702088a06cd9020d2620ff8e5a69d5b33a60e6595a",
+              "maxAbsoluteSourceError": 0
+            },
+            "COLOR_0": {
+              "sha256": "4bb53d7a60e9aa7f197875f1dacbf6fc14abe916ef3e3a501f886bfdd9282b30",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "leaf-litter",
+              "firstVertex": 0,
+              "vertexCount": 960,
+              "original": {
+                "originalLitter": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 17,
+                  "scope": "Original curved fallen-leaf silhouettes over retained original floor albedo"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "water",
+          "vertices": 6720,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "54e286feeb476e1ea12ff4c6249e5a332338cef63270908d78851c9841071605",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "3ab9dc1ca4fe024bf8a0c7e776462f993af20cc46b32add244a1199e610bfded",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "85faa9a9ff9d330d6a2f08e86942c6f91f54da287bfa1710b8f3327bc862c918",
+              "maxAbsoluteSourceError": 0
+            },
+            "COLOR_0": {
+              "sha256": "9e66623e51d01afe25f29e94b9bd71db629f4d8d542845af4b033c9551062f73",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "water",
+              "firstVertex": 0,
+              "vertexCount": 6720,
+              "original": {
+                "originalWater": {
+                  "source": "original-habitat-surfaces-v01",
+                  "timeSeconds": 0,
+                  "scope": "Original geometric ripple study with environment reflection and soft shore alpha; no screen-space/refraction simulation"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "stone",
+          "vertices": 34560,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "47d21ae851416574e61d640bd5e4404118bd8c12ecf2fcb250d3a9271844b6f7",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "5155dfb2da7db3be2bd26e35c02ebb4dd875114a1c63113c8b7dd02bc4877c23",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "eaa2b644f022c93b1862aea64047b2c2e812fff321278aa0c7a056b59182230e",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [
+            {
+              "name": "bank-rock-0",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.026863865898033325,
+              "minNormalAlignment": 0.915420957950387,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-1",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.03361815858725352,
+              "minNormalAlignment": 0.9021100233819728,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-2",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.015406120285741513,
+              "minNormalAlignment": 0.902029634649283,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-3",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.007822364629013694,
+              "minNormalAlignment": 0.917227663808635,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-4",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.0019602164242358664,
+              "minNormalAlignment": 0.936830443595747,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-5",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.02670734199533072,
+              "minNormalAlignment": 0.9101533401837214,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-6",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.03317591336898175,
+              "minNormalAlignment": 0.8764067639590569,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-7",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.014998914624586631,
+              "minNormalAlignment": 0.8612049544763429,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-8",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.03247412633917464,
+              "minNormalAlignment": 0.8672031334352948,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-9",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.022516727618512995,
+              "minNormalAlignment": 0.8901529972480395,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-10",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.03402916366795336,
+              "minNormalAlignment": 0.9375933685156677,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-11",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.031218398510060696,
+              "minNormalAlignment": 0.9419615190021888,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-12",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.002712087309976581,
+              "minNormalAlignment": 0.9337620890636751,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-13",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.006679049517343321,
+              "minNormalAlignment": 0.9158185017938981,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-14",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.027702460944939666,
+              "minNormalAlignment": 0.9072608644893905,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-15",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.0016987159250373611,
+              "minNormalAlignment": 0.9120997963444474,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            }
+          ],
+          "sourceComponentRanges": [
+            {
+              "name": "bank-rock-0",
+              "firstVertex": 0,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 17,
+                  "radius": 0.2295289746671915,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-1",
+              "firstVertex": 2160,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 18,
+                  "radius": 0.2471944259852171,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-2",
+              "firstVertex": 4320,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 19,
+                  "radius": 0.19044096298515795,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-3",
+              "firstVertex": 6480,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 20,
+                  "radius": 0.1518090596050024,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-4",
+              "firstVertex": 8640,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 21,
+                  "radius": 0.09563423372805119,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-5",
+              "firstVertex": 10800,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 22,
+                  "radius": 0.2282521253079176,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-6",
+              "firstVertex": 12960,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 23,
+                  "radius": 0.2452348244935274,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-7",
+              "firstVertex": 15120,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 24,
+                  "radius": 0.1881584497541189,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-8",
+              "firstVertex": 17280,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 25,
+                  "radius": 0.2434019760042429,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-9",
+              "firstVertex": 19440,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 26,
+                  "radius": 0.21547731272876264,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-10",
+              "firstVertex": 21600,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 27,
+                  "radius": 0.2473906321078539,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-11",
+              "firstVertex": 23760,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 28,
+                  "radius": 0.24053494714200496,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-12",
+              "firstVertex": 25920,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 29,
+                  "radius": 0.10661393977701664,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-13",
+              "firstVertex": 28080,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 30,
+                  "radius": 0.14409703902900217,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-14",
+              "firstVertex": 30240,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 31,
+                  "radius": 0.2317057491093874,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-15",
+              "firstVertex": 32400,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 32,
+                  "radius": 0.09143122754991054,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "wetStone",
+          "vertices": 7560,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "a06bd6fe6e57930c60569f843a0fe29d46bd61f01bb2c97904c1320563b54644",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "0d657aef5b312a2478f5dbd964f12fcc85f7b938c96cf9a83b128dc0857149bc",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "4732fed3db909249524a881d58801371efb39d31cc81b870b43314e5d3ba9f62",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [
+            {
+              "name": "bed-pebble-0",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.000648571730609926,
+              "minNormalAlignment": 0.9396166081715798,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-1",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0008566875230604545,
+              "minNormalAlignment": 0.9412479354389605,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-2",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.00009503985592148502,
+              "minNormalAlignment": 0.940372226817846,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-3",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0003287883628772211,
+              "minNormalAlignment": 0.9321354899415749,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-4",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.00036524507732559476,
+              "minNormalAlignment": 0.9349973709206862,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-5",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0005127463886889738,
+              "minNormalAlignment": 0.9432037558190639,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-6",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0005716034891428003,
+              "minNormalAlignment": 0.9506945421885715,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-7",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.00015038084419535767,
+              "minNormalAlignment": 0.954755857190558,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-8",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.00016382287737323425,
+              "minNormalAlignment": 0.9484651543045999,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-9",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0009001109720486361,
+              "minNormalAlignment": 0.936670915810159,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-10",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0006406364718664436,
+              "minNormalAlignment": 0.9345139859738465,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-11",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0011374426846840085,
+              "minNormalAlignment": 0.9386316567705525,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-12",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0008775582626742784,
+              "minNormalAlignment": 0.9378319389818991,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-13",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0005524973235425932,
+              "minNormalAlignment": 0.9366177231886315,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            }
+          ],
+          "sourceComponentRanges": [
+            {
+              "name": "bed-pebble-0",
+              "firstVertex": 0,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 137,
+                  "radius": 0.06736972291488201,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-1",
+              "firstVertex": 540,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 138,
+                  "radius": 0.07385226802667604,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-2",
+              "firstVertex": 1080,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 139,
+                  "radius": 0.03545226030051708,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-3",
+              "firstVertex": 1620,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 140,
+                  "radius": 0.05356683428632096,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-4",
+              "firstVertex": 2160,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 141,
+                  "radius": 0.05542850523721427,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-5",
+              "firstVertex": 2700,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 142,
+                  "radius": 0.062029004029463986,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-6",
+              "firstVertex": 3240,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 143,
+                  "radius": 0.06429588775150478,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-7",
+              "firstVertex": 3780,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 144,
+                  "radius": 0.041194687879178675,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-8",
+              "firstVertex": 4320,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 145,
+                  "radius": 0.0423936294997111,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-9",
+              "firstVertex": 4860,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 146,
+                  "radius": 0.07483957156306134,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-10",
+              "firstVertex": 5400,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 147,
+                  "radius": 0.06686296029016375,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-11",
+              "firstVertex": 5940,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 148,
+                  "radius": 0.08103567459853367,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-12",
+              "firstVertex": 6480,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 149,
+                  "radius": 0.07439459656830877,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-13",
+              "firstVertex": 7020,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 150,
+                  "radius": 0.0638205664488487,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        }
+      ],
+      "images": [
+        {
+          "source": "assets/aviary/originals/forest-floor-v01a.png",
+          "bytes": 4265084,
+          "sha256": "9fe4dbb9be2b24bccdb0257f88bab385161bc611dfab6bd8cef774c15af1fb05",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "source": "assets/aviary/originals/fallen-leaf-atlas-v01a.png",
+          "bytes": 1314352,
+          "sha256": "894ae6ba3f04a78db58ac38d81fd3b30af34f691bbb4b096a81516b9bc8f0569",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "source": "assets/aviary/originals/forest-stone-v01a.png",
+          "bytes": 4250156,
+          "sha256": "6f058602f1f4e2c8af268188a4a1f60b586c2ef70f827c0aef7209295e4b3574",
+          "width": 1254,
+          "height": 1254
+        }
+      ]
+    },
+    {
+      "path": "assets/aviary/exports/surfaces/creek-17-low-v01.glb",
+      "bytes": 10466788,
+      "sha256": "f627f25382f083582e4e365865656fddd2799908318963e69100f9d5346a2bab",
+      "kind": "creek",
+      "assetRevision": 1,
+      "seed": 17,
+      "detail": "low",
+      "widthM": 4,
+      "depthM": 4,
+      "units": "metres",
+      "source": "original-habitat-surfaces-v01",
+      "scope": "Original editable surface and static geometric water study, not a scan or a fluid simulation",
+      "provenance": "assets/aviary/README.md",
+      "triangles": 6284,
+      "geometry": [
+        {
+          "mesh": "soil",
+          "vertices": 1536,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "201d508c29fbb7aa7f178203df038c6b2b55bed049724a55d6c630428b49bea4",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "e35a74621f7024b68a08c9f1c76e40b41c8dc09663b337388ff9d275665f5615",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "e9621c70bb2981a1d905ce36e73fe087435eb9ae841ce8d0e0db0cc858cb96ef",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "soil",
+              "firstVertex": 0,
+              "vertexCount": 1536,
+              "original": {
+                "originalGround": {
+                  "source": "original-habitat-surfaces-v01",
+                  "creek": true,
+                  "widthM": 4,
+                  "depthM": 4
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "litter",
+          "vertices": 156,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "1d3a5d1b9dac463ad1ce07f7832d4ed24536f876048721cec38be6b50fe19764",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "9ae128a8fa955ca0512c85c95ab7eefb58e3f3eab5568b7fce58eb47873dde50",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "db159c371d385f593f759c3baa8b7d0dd3926607f808d8f76e97e5c422190f1d",
+              "maxAbsoluteSourceError": 0
+            },
+            "COLOR_0": {
+              "sha256": "e0496eb98514dedbe8fedacd3a1e81057fe739b3d126fe42c5a2b736e05372a9",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "leaf-litter",
+              "firstVertex": 0,
+              "vertexCount": 156,
+              "original": {
+                "originalLitter": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 17,
+                  "scope": "Original curved fallen-leaf silhouettes over retained original floor albedo"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "water",
+          "vertices": 960,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "757ac5332e77dcbc52b2b6f6eced48761dd2a01ae12029f7d3819043fa76766e",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "262bd894671cf9fbbb6c5351c445b2062762720597980ae273f4b6de17996276",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "ee84c261df180ac213e33edd7a794d4c7468e0b6eac8997241db2d76e1e27b5e",
+              "maxAbsoluteSourceError": 0
+            },
+            "COLOR_0": {
+              "sha256": "0a3faf8776e00736c4f676f2f0a434e983a3adc51588d28a62a187fe2fa323c1",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "water",
+              "firstVertex": 0,
+              "vertexCount": 960,
+              "original": {
+                "originalWater": {
+                  "source": "original-habitat-surfaces-v01",
+                  "timeSeconds": 0,
+                  "scope": "Original geometric ripple study with environment reflection and soft shore alpha; no screen-space/refraction simulation"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "stone",
+          "vertices": 8640,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "8efeed6b09de89fbec8ccf8e4eafb78ff1faec82e835aa88be5cf0c7ae2a035e",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "7cb97c6d745f8778dc492ca9a610afbef5881323ab62adb456f44270f41185c5",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "1c45e260abac243eb900f5c7737592e7eda61664e55541637704caa488f30b4f",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [
+            {
+              "name": "bank-rock-0",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.025588162663787776,
+              "minNormalAlignment": 0.9487395416178673,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-1",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.03203278210650142,
+              "minNormalAlignment": 0.9399031168073214,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-2",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.014686627592700986,
+              "minNormalAlignment": 0.9407767635769937,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-3",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.007460562620345019,
+              "minNormalAlignment": 0.9413767849589518,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-4",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0018705798464061498,
+              "minNormalAlignment": 0.9323890735236602,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-5",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.025500453521171598,
+              "minNormalAlignment": 0.9343784894452734,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-6",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.031682620524197354,
+              "minNormalAlignment": 0.9428930488066234,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-7",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.014324994447526824,
+              "minNormalAlignment": 0.9499445973734637,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-8",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.031020083211572083,
+              "minNormalAlignment": 0.9543483709039013,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-9",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.021513112536079904,
+              "minNormalAlignment": 0.9497316380280107,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-10",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.03251674745974667,
+              "minNormalAlignment": 0.9371756622736913,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-11",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.02983045045327034,
+              "minNormalAlignment": 0.9346493406307878,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-12",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.002590806083039237,
+              "minNormalAlignment": 0.9379581762638467,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-13",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.006378392188411621,
+              "minNormalAlignment": 0.937566874889804,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-14",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.026445070233189257,
+              "minNormalAlignment": 0.9367049476043443,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bank-rock-15",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.001620883407869202,
+              "minNormalAlignment": 0.9366524121025234,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            }
+          ],
+          "sourceComponentRanges": [
+            {
+              "name": "bank-rock-0",
+              "firstVertex": 0,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 17,
+                  "radius": 0.2295289746671915,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-1",
+              "firstVertex": 540,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 18,
+                  "radius": 0.2471944259852171,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-2",
+              "firstVertex": 1080,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 19,
+                  "radius": 0.19044096298515795,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-3",
+              "firstVertex": 1620,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 20,
+                  "radius": 0.1518090596050024,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-4",
+              "firstVertex": 2160,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 21,
+                  "radius": 0.09563423372805119,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-5",
+              "firstVertex": 2700,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 22,
+                  "radius": 0.2282521253079176,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-6",
+              "firstVertex": 3240,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 23,
+                  "radius": 0.2452348244935274,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-7",
+              "firstVertex": 3780,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 24,
+                  "radius": 0.1881584497541189,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-8",
+              "firstVertex": 4320,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 25,
+                  "radius": 0.2434019760042429,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-9",
+              "firstVertex": 4860,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 26,
+                  "radius": 0.21547731272876264,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-10",
+              "firstVertex": 5400,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 27,
+                  "radius": 0.2473906321078539,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-11",
+              "firstVertex": 5940,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 28,
+                  "radius": 0.24053494714200496,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-12",
+              "firstVertex": 6480,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 29,
+                  "radius": 0.10661393977701664,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-13",
+              "firstVertex": 7020,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 30,
+                  "radius": 0.14409703902900217,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-14",
+              "firstVertex": 7560,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 31,
+                  "radius": 0.2317057491093874,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bank-rock-15",
+              "firstVertex": 8100,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 32,
+                  "radius": 0.09143122754991054,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "wetStone",
+          "vertices": 7560,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "a06bd6fe6e57930c60569f843a0fe29d46bd61f01bb2c97904c1320563b54644",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "0d657aef5b312a2478f5dbd964f12fcc85f7b938c96cf9a83b128dc0857149bc",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "4732fed3db909249524a881d58801371efb39d31cc81b870b43314e5d3ba9f62",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [
+            {
+              "name": "bed-pebble-0",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.000648571730609926,
+              "minNormalAlignment": 0.9396166081715798,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-1",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0008566875230604545,
+              "minNormalAlignment": 0.9412479354389605,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-2",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.00009503985592148502,
+              "minNormalAlignment": 0.940372226817846,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-3",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0003287883628772211,
+              "minNormalAlignment": 0.9321354899415749,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-4",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.00036524507732559476,
+              "minNormalAlignment": 0.9349973709206862,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-5",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0005127463886889738,
+              "minNormalAlignment": 0.9432037558190639,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-6",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0005716034891428003,
+              "minNormalAlignment": 0.9506945421885715,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-7",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.00015038084419535767,
+              "minNormalAlignment": 0.954755857190558,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-8",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.00016382287737323425,
+              "minNormalAlignment": 0.9484651543045999,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-9",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0009001109720486361,
+              "minNormalAlignment": 0.936670915810159,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-10",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0006406364718664436,
+              "minNormalAlignment": 0.9345139859738465,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-11",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0011374426846840085,
+              "minNormalAlignment": 0.9386316567705525,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-12",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0008775582626742784,
+              "minNormalAlignment": 0.9378319389818991,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "bed-pebble-13",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0005524973235425932,
+              "minNormalAlignment": 0.9366177231886315,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            }
+          ],
+          "sourceComponentRanges": [
+            {
+              "name": "bed-pebble-0",
+              "firstVertex": 0,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 137,
+                  "radius": 0.06736972291488201,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-1",
+              "firstVertex": 540,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 138,
+                  "radius": 0.07385226802667604,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-2",
+              "firstVertex": 1080,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 139,
+                  "radius": 0.03545226030051708,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-3",
+              "firstVertex": 1620,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 140,
+                  "radius": 0.05356683428632096,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-4",
+              "firstVertex": 2160,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 141,
+                  "radius": 0.05542850523721427,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-5",
+              "firstVertex": 2700,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 142,
+                  "radius": 0.062029004029463986,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-6",
+              "firstVertex": 3240,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 143,
+                  "radius": 0.06429588775150478,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-7",
+              "firstVertex": 3780,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 144,
+                  "radius": 0.041194687879178675,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-8",
+              "firstVertex": 4320,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 145,
+                  "radius": 0.0423936294997111,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-9",
+              "firstVertex": 4860,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 146,
+                  "radius": 0.07483957156306134,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-10",
+              "firstVertex": 5400,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 147,
+                  "radius": 0.06686296029016375,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-11",
+              "firstVertex": 5940,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 148,
+                  "radius": 0.08103567459853367,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-12",
+              "firstVertex": 6480,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 149,
+                  "radius": 0.07439459656830877,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            },
+            {
+              "name": "bed-pebble-13",
+              "firstVertex": 7020,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 150,
+                  "radius": 0.0638205664488487,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        }
+      ],
+      "images": [
+        {
+          "source": "assets/aviary/originals/forest-floor-v01a.png",
+          "bytes": 4265084,
+          "sha256": "9fe4dbb9be2b24bccdb0257f88bab385161bc611dfab6bd8cef774c15af1fb05",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "source": "assets/aviary/originals/fallen-leaf-atlas-v01a.png",
+          "bytes": 1314352,
+          "sha256": "894ae6ba3f04a78db58ac38d81fd3b30af34f691bbb4b096a81516b9bc8f0569",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "source": "assets/aviary/originals/forest-stone-v01a.png",
+          "bytes": 4250156,
+          "sha256": "6f058602f1f4e2c8af268188a4a1f60b586c2ef70f827c0aef7209295e4b3574",
+          "width": 1254,
+          "height": 1254
+        }
+      ]
+    },
+    {
+      "path": "assets/aviary/exports/surfaces/path-17-high-v03.glb",
+      "bytes": 10842316,
+      "sha256": "efdf32601726691615feca19648a174ee4bd9e6f2578c4754012ea0d19a3ccb8",
+      "kind": "path",
+      "assetRevision": 3,
+      "seed": 17,
+      "detail": "high",
+      "widthM": 4,
+      "depthM": 4,
+      "units": "metres",
+      "source": "original-habitat-surfaces-v01",
+      "scope": "Original editable surface and static geometric water study, not a scan or a fluid simulation",
+      "provenance": "assets/aviary/README.md",
+      "triangles": 10240,
+      "geometry": [
+        {
+          "mesh": "soil",
+          "vertices": 9600,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "13438c51b6236119020a2df28162b1d94e2b7e7ad6743a923077ac090b7c4382",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "0952acbdaa404d16a52264ffca6351734480178e875698b284b1571eb1333622",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "58075832696faa6a0caf095cb5323d7030ebf76a25ca639cfb4ebc7f77e486b0",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "soil",
+              "firstVertex": 0,
+              "vertexCount": 9600,
+              "original": {
+                "originalGround": {
+                  "source": "original-habitat-surfaces-v01",
+                  "creek": false,
+                  "widthM": 4,
+                  "depthM": 4
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "litter",
+          "vertices": 1680,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "61a5e6de35f7f23c2250f8b8a205da0b036a42616804196315e7737509fdad80",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "f2869b1103b531fc540d7049c5d2a2d4fc8b4b5eb8f2f74fa470c69978329a1d",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "71d4f4c813d1144584333f530a2bbd6979040466afb0ad76930eae2c96de2233",
+              "maxAbsoluteSourceError": 0
+            },
+            "COLOR_0": {
+              "sha256": "ea7053eaf6eeb945597d1ca81ea26a674ab98dd77c2cfc9b500a71306f19ef56",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "leaf-litter",
+              "firstVertex": 0,
+              "vertexCount": 1680,
+              "original": {
+                "originalLitter": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 17,
+                  "scope": "Original curved fallen-leaf silhouettes over retained original floor albedo"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "stone",
+          "vertices": 19440,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "0e8a6322ddd8b1c495f4e09c8308d044b2eb60586a02e15d8810505f3481de92",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "259d79b7e14c03b0b7c76b76e21425d01798768637c791b664b7d12e93912465",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "449491c16935446b884a48adff059c6142c0277711a1b698e0693c7bfd24d168",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [
+            {
+              "name": "path-stone-0",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.006491174242265549,
+              "minNormalAlignment": 0.7162845157102082,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "path-stone-1",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.007373679542722711,
+              "minNormalAlignment": 0.6355645370201549,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "path-stone-2",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.006251833345779715,
+              "minNormalAlignment": 0.6338740063623848,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "path-stone-3",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.005699970527025574,
+              "minNormalAlignment": 0.706255755025377,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "path-stone-4",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.0069022592946467,
+              "minNormalAlignment": 0.710029259012174,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "path-stone-5",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.0071861254730236435,
+              "minNormalAlignment": 0.6354990999099989,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "path-stone-6",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.005895741185721133,
+              "minNormalAlignment": 0.6496153748395711,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "path-stone-7",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.0059742016986083744,
+              "minNormalAlignment": 0.72074213053575,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "path-stone-8",
+              "triangles": 720,
+              "zeroArea": 0,
+              "volume": 0.007284362805919501,
+              "minNormalAlignment": 0.6883906672867746,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            }
+          ],
+          "sourceComponentRanges": [
+            {
+              "name": "path-stone-0",
+              "firstVertex": 0,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 51,
+                  "radius": 0.225,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            },
+            {
+              "name": "path-stone-1",
+              "firstVertex": 2160,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 52,
+                  "radius": 0.2349166481045247,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            },
+            {
+              "name": "path-stone-2",
+              "firstVertex": 4320,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 53,
+                  "radius": 0.22244458897973168,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            },
+            {
+              "name": "path-stone-3",
+              "firstVertex": 6480,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 54,
+                  "radius": 0.21574185317672268,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            },
+            {
+              "name": "path-stone-4",
+              "firstVertex": 8640,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 55,
+                  "radius": 0.2299411335113861,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            },
+            {
+              "name": "path-stone-5",
+              "firstVertex": 10800,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 56,
+                  "radius": 0.2329848711262349,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            },
+            {
+              "name": "path-stone-6",
+              "firstVertex": 12960,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 57,
+                  "radius": 0.21800125312406457,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            },
+            {
+              "name": "path-stone-7",
+              "firstVertex": 15120,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 58,
+                  "radius": 0.21881862887762968,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            },
+            {
+              "name": "path-stone-8",
+              "firstVertex": 17280,
+              "vertexCount": 2160,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 59,
+                  "radius": 0.23359161814856497,
+                  "high": true,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        }
+      ],
+      "images": [
+        {
+          "source": "assets/aviary/originals/forest-floor-v01a.png",
+          "bytes": 4265084,
+          "sha256": "9fe4dbb9be2b24bccdb0257f88bab385161bc611dfab6bd8cef774c15af1fb05",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "source": "assets/aviary/originals/fallen-leaf-atlas-v01a.png",
+          "bytes": 1314352,
+          "sha256": "894ae6ba3f04a78db58ac38d81fd3b30af34f691bbb4b096a81516b9bc8f0569",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "source": "assets/aviary/originals/forest-stone-v01a.png",
+          "bytes": 4250156,
+          "sha256": "6f058602f1f4e2c8af268188a4a1f60b586c2ef70f827c0aef7209295e4b3574",
+          "width": 1254,
+          "height": 1254
+        }
+      ]
+    },
+    {
+      "path": "assets/aviary/exports/surfaces/path-17-low-v03.glb",
+      "bytes": 10056472,
+      "sha256": "78f6d02c444957a8c405515c546ac682062ddb1c0d496b368f4aced0c91bd073",
+      "kind": "path",
+      "assetRevision": 3,
+      "seed": 17,
+      "detail": "low",
+      "widthM": 4,
+      "depthM": 4,
+      "units": "metres",
+      "source": "original-habitat-surfaces-v01",
+      "scope": "Original editable surface and static geometric water study, not a scan or a fluid simulation",
+      "provenance": "assets/aviary/README.md",
+      "triangles": 2228,
+      "geometry": [
+        {
+          "mesh": "soil",
+          "vertices": 1536,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "ee9c81f0116e6f80c24055e18d55a6f0df51d05cde4e190f602a316b29619839",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "306fcb052e115a8b9709d5abf1f28ac798dd3f0de07cc6383567a26f5addca73",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "e9621c70bb2981a1d905ce36e73fe087435eb9ae841ce8d0e0db0cc858cb96ef",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "soil",
+              "firstVertex": 0,
+              "vertexCount": 1536,
+              "original": {
+                "originalGround": {
+                  "source": "original-habitat-surfaces-v01",
+                  "creek": false,
+                  "widthM": 4,
+                  "depthM": 4
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "litter",
+          "vertices": 288,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "354d900030d2d2ebba95210c53a0f408e30ca4e47419f1e96379b0162cff3c4c",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "af10bb55b7c485ec3cb75204460c7fbe28edd5e129fa397408bfce3da814a86c",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "b701f6f76608e06d98410ebeec8e880131c47a585197a85ee8a5db90f26fbf8a",
+              "maxAbsoluteSourceError": 0
+            },
+            "COLOR_0": {
+              "sha256": "6336611fd77df93a4dbd3c4b54b63b3fd084b96792844cbaf373977060f178a6",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [],
+          "sourceComponentRanges": [
+            {
+              "name": "leaf-litter",
+              "firstVertex": 0,
+              "vertexCount": 288,
+              "original": {
+                "originalLitter": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 17,
+                  "scope": "Original curved fallen-leaf silhouettes over retained original floor albedo"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        },
+        {
+          "mesh": "stone",
+          "vertices": 4860,
+          "attributeSha256": {
+            "POSITION": {
+              "sha256": "dafb66d22640127034f6d17c6b4cbdf2ba1ae28f5492b4d35253bb4d7997208c",
+              "maxAbsoluteSourceError": 0
+            },
+            "NORMAL": {
+              "sha256": "65b80a5990261151feaef5db3f04d9a40ccea8f74b0df2fede506cdb4a63c7e2",
+              "maxAbsoluteSourceError": 0
+            },
+            "TEXCOORD_0": {
+              "sha256": "cd683903eb3f051bdb28c141577bdf53adf7201ed9c44df895da7b4d2afb9eb3",
+              "maxAbsoluteSourceError": 0
+            }
+          },
+          "closedComponents": [
+            {
+              "name": "path-stone-0",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0061961061433742195,
+              "minNormalAlignment": 0.8057829669890424,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "path-stone-1",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.007035029489840013,
+              "minNormalAlignment": 0.7267902662719674,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "path-stone-2",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.005960114504749092,
+              "minNormalAlignment": 0.8179775838492004,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "path-stone-3",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.00543036554727432,
+              "minNormalAlignment": 0.7138065663793579,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "path-stone-4",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0065733535813241595,
+              "minNormalAlignment": 0.7121728064182161,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "path-stone-5",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.006844011809372884,
+              "minNormalAlignment": 0.8166643562516928,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "path-stone-6",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.00561621386211033,
+              "minNormalAlignment": 0.7244486736808381,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "path-stone-7",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.0056936466744818195,
+              "minNormalAlignment": 0.7988703923370514,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            },
+            {
+              "name": "path-stone-8",
+              "triangles": 180,
+              "zeroArea": 0,
+              "volume": 0.006945230787364056,
+              "minNormalAlignment": 0.7962085438043096,
+              "boundaryEdges": 0,
+              "nonManifoldEdges": 0,
+              "inconsistentWindingEdges": 0
+            }
+          ],
+          "sourceComponentRanges": [
+            {
+              "name": "path-stone-0",
+              "firstVertex": 0,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 51,
+                  "radius": 0.225,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            },
+            {
+              "name": "path-stone-1",
+              "firstVertex": 540,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 52,
+                  "radius": 0.2349166481045247,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            },
+            {
+              "name": "path-stone-2",
+              "firstVertex": 1080,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 53,
+                  "radius": 0.22244458897973168,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            },
+            {
+              "name": "path-stone-3",
+              "firstVertex": 1620,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 54,
+                  "radius": 0.21574185317672268,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            },
+            {
+              "name": "path-stone-4",
+              "firstVertex": 2160,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 55,
+                  "radius": 0.2299411335113861,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            },
+            {
+              "name": "path-stone-5",
+              "firstVertex": 2700,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 56,
+                  "radius": 0.2329848711262349,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            },
+            {
+              "name": "path-stone-6",
+              "firstVertex": 3240,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 57,
+                  "radius": 0.21800125312406457,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            },
+            {
+              "name": "path-stone-7",
+              "firstVertex": 3780,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 58,
+                  "radius": 0.21881862887762968,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            },
+            {
+              "name": "path-stone-8",
+              "firstVertex": 4320,
+              "vertexCount": 540,
+              "original": {
+                "originalBoulder": {
+                  "source": "original-habitat-surfaces-v01",
+                  "seed": 59,
+                  "radius": 0.23359161814856497,
+                  "high": false,
+                  "scope": "Original deterministic eroded boulder, flattened buried base; not a scanned rock"
+                },
+                "originalPathNormal": {
+                  "source": "original-paving-normal-v02",
+                  "creaseAngleDegrees": 65,
+                  "scope": "Crease-aware area-weighted normals after nonuniform shaping; no changes to topology or vertex positions"
+                }
+              }
+            }
+          ],
+          "rangeScope": "Actual component ranges are embedded in GLB primitive extras and checked against the editable source within 1e-12."
+        }
+      ],
+      "images": [
+        {
+          "source": "assets/aviary/originals/forest-floor-v01a.png",
+          "bytes": 4265084,
+          "sha256": "9fe4dbb9be2b24bccdb0257f88bab385161bc611dfab6bd8cef774c15af1fb05",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "source": "assets/aviary/originals/fallen-leaf-atlas-v01a.png",
+          "bytes": 1314352,
+          "sha256": "894ae6ba3f04a78db58ac38d81fd3b30af34f691bbb4b096a81516b9bc8f0569",
+          "width": 1254,
+          "height": 1254
+        },
+        {
+          "source": "assets/aviary/originals/forest-stone-v01a.png",
+          "bytes": 4250156,
+          "sha256": "6f058602f1f4e2c8af268188a4a1f60b586c2ef70f827c0aef7209295e4b3574",
+          "width": 1254,
+          "height": 1254
+        }
+      ]
+    }
+  ]
+}

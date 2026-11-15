@@ -1,0 +1,942 @@
+{
+  "id": "P4-GLB-habitats-v01",
+  "at": "2026-11-15",
+  "status": "PASS_NATIVE_MATRIX_AND_CODEX_VISUAL_REVIEW",
+  "run": ".qa/glb/p4-20261115-full-g",
+  "job": "matrix-1794709312491",
+  "source": "18e9b1f084e4f8551152ebca1eb6a4d9b15ce8e6ec65e36e0cbb54860c9178fd",
+  "nativeEvidence": {
+    "path": "docs/qa/glb/p4-native-matrix-20261115.json.gz",
+    "sha256": "878f17833265ddb49b99f73f27b814b974a36f3da75d4a9d5af89cb466ea0f8c",
+    "cases": 106,
+    "nativeCaptures": 530,
+    "errors": 0,
+    "warnings": 0,
+    "allCasesFourteenIndividuals": true,
+    "allFinalOwnedResourcesZero": true,
+    "programWitness": "Every close verifies native WebGL context loss or isProgram handles zero, in addition to geometry/texture/canvas/manual-frame cleanup. Internal Three program-list counters retained separately; they are not live program handles."
+  },
+  "statistics": {
+    "high": {
+      "cases": 53,
+      "individuals": 14,
+      "medianDrawCalls": 180,
+      "medianTriangles": 736228,
+      "baselineReadyWallMs": 2408.400000035763,
+      "baselineFrameWorkMs": {
+        "method": "CPU wall around original manually driven FrameLoop callback; warmed QA preserveDrawingBuffer context; not presented FPS or physical-device evidence",
+        "count": 37,
+        "median": 23.69999998807907,
+        "p95": 30.30000001192093,
+        "max": 36.09999996423721
+      }
+    },
+    "low": {
+      "cases": 53,
+      "individuals": 14,
+      "medianDrawCalls": 179,
+      "medianTriangles": 285760,
+      "baselineReadyWallMs": 4771.699999988079,
+      "baselineFrameWorkMs": {
+        "method": "CPU wall around original manually driven FrameLoop callback; warmed QA preserveDrawingBuffer context; not presented FPS or physical-device evidence",
+        "count": 37,
+        "median": 31.400000035762787,
+        "p95": 45.69999998807907,
+        "max": 53.10000002384186
+      }
+    }
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "dpr": 1.5,
+    "physicalDevice": false,
+    "presentedFps": null
+  },
+  "runtimePackages": {
+    "models": 68,
+    "webp": 51,
+    "totalPayloadBytes": 17161161,
+    "method": "All retained high/low runtime packages combined, excluding JSON/header overhead. Lazy selection loads a subset; this is not an initial-page transfer measurement."
+  },
+  "visualReview": [
+    {
+      "path": ".qa/glb/p4-20261115-full-g/reviews/zebra-high.png",
+      "sha256": "29d201b60ae4960343dd585d499e30cfb5ebdd7a139d3faf9d9ee3bed46191d2",
+      "inputs": [
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-v5-zebra-graze-frame-10.png",
+          "sha256": "10205f8a44b87cd2fb031a2180934d56e7596b33f7d2da82df4d63361f1577cf",
+          "tick": 13657,
+          "camera": "zebra"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-v5-zebra-drink-frame-10.png",
+          "sha256": "632cafc0a9201a8cb92230c6ca5cfd72a640ba20da891806dce9f89838736476",
+          "tick": 13883,
+          "camera": "zebra"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-v5-zebra-walk-frame-10.png",
+          "sha256": "12a531de4b71b1a10f62795b7dedfa829f9c6129f6d85b3f1c189a0ae4b743ad",
+          "tick": 13753,
+          "camera": "zebra"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-v5-zebra-rest-frame-10.png",
+          "sha256": "715e031ccd8c98870ed47c97f38f3f0cf26d6d8ea95581d72ba14ac85d7f5942",
+          "tick": 14169,
+          "camera": "zebra"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-v5-zebra-groom-neutral-frame-10.png",
+          "sha256": "0225cef5d21ddc76d08f244a11d390710fbcf3e995cd363f50b575e91b8f2513",
+          "tick": 22584,
+          "camera": "zebra"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-v5-zebra-enrich-frame-10.png",
+          "sha256": "2b32f81af5c71d9e9ebf97fdfbae1e18db6db2baa47a2037a41ecd270160213d",
+          "tick": 14533,
+          "camera": "zebra"
+        }
+      ],
+      "method": "No redraw; original native QA PNGs scaled to640px, labelled and arranged; full-size images retained separately.",
+      "retainedDerivative": "docs/qa/glb/p4-zebra-high.png",
+      "review": "Codex visually reviewed actual high/low Foundation captures, contacts, support, source phases and individual variety. No remaining blocking mesh/material/support finding."
+    },
+    {
+      "path": ".qa/glb/p4-20261115-full-g/reviews/zebra-low.png",
+      "sha256": "1b064af096590247a24e3107cdf4c3d4caf566de52161b476e4f1f37536c1355",
+      "inputs": [
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-v5-zebra-graze-frame-10.png",
+          "sha256": "6423ab59136c8edf9bc6995b3ff40551af018c61f4f287e0ee6c36c402738e92",
+          "tick": 13657,
+          "camera": "zebra"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-v5-zebra-drink-frame-10.png",
+          "sha256": "2d0afc8252c458eb54798dcd0dc550c2fb9f0b7c0ab07895d478b21f2da82ee0",
+          "tick": 13883,
+          "camera": "zebra"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-v5-zebra-walk-frame-10.png",
+          "sha256": "d4deaa8a8f3a2629101eff90b21db4077454ac86e097808561f14af14a1b9125",
+          "tick": 13753,
+          "camera": "zebra"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-v5-zebra-rest-frame-10.png",
+          "sha256": "be5ab328d27210c9c9d1ba48d1d7b9c9cda8dc07a57799caa3e6064f92d2c9a9",
+          "tick": 14169,
+          "camera": "zebra"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-v5-zebra-groom-neutral-frame-10.png",
+          "sha256": "df16398ee0b336acc267193e3782f235b0186f3f8dc14327167b6a5475ad7d8f",
+          "tick": 22584,
+          "camera": "zebra"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-v5-zebra-enrich-frame-10.png",
+          "sha256": "f725703a60999551c85cda531546c303968cc06ecda367de0c5b9cde37108fd1",
+          "tick": 14533,
+          "camera": "zebra"
+        }
+      ],
+      "method": "No redraw; original native QA PNGs scaled to640px, labelled and arranged; full-size images retained separately.",
+      "retainedDerivative": "docs/qa/glb/p4-zebra-low.png",
+      "review": "Codex visually reviewed actual high/low Foundation captures, contacts, support, source phases and individual variety. No remaining blocking mesh/material/support finding."
+    },
+    {
+      "path": ".qa/glb/p4-20261115-full-g/reviews/giraffe-high.png",
+      "sha256": "60b77784019ddbfce7aff84e5af29f72a5d432e654a69f22ed20daa566bca7b4",
+      "inputs": [
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-giraffe-browse-frame-10.png",
+          "sha256": "a75e8111032dc252d9c9f8b1b2f0e6be788c17fb1b940ad4882eb40ab53374e8",
+          "tick": 14474,
+          "camera": "giraffe"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-giraffe-drink-frame-10.png",
+          "sha256": "3602fc0203fb1700ba34def225226ee41fbf5991261992970b81ddfb1b1f1cd2",
+          "tick": 14157,
+          "camera": "giraffe"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-giraffe-enrich-frame-10.png",
+          "sha256": "70f10f936fad1fce5b82586865998c1a1e2793f7eeba236cd6e32ce3f514c467",
+          "tick": 13591,
+          "camera": "giraffe"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-giraffe-rest-frame-10.png",
+          "sha256": "b64e9670cc6df9561834213c6f970baa2b45466eb0b45752cd2539e6933c1bff",
+          "tick": 14342,
+          "camera": "giraffe"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-giraffe-social-frame-10.png",
+          "sha256": "7c6d2fc72c63ff0d857c5899cef7784094c932dfd3c2aec8be05cd68e26e00da",
+          "tick": 14092,
+          "camera": "giraffe"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-giraffe-wander-frame-10.png",
+          "sha256": "86e8ff67ad881751df44e06c2c44b45e2e2fd2909a2ad3e13898cbd92b0e8469",
+          "tick": 13591,
+          "camera": "giraffe"
+        }
+      ],
+      "method": "No redraw; original native QA PNGs scaled to640px, labelled and arranged; full-size images retained separately.",
+      "retainedDerivative": "docs/qa/glb/p4-giraffe-high.png",
+      "review": "Codex visually reviewed actual high/low Foundation captures, contacts, support, source phases and individual variety. No remaining blocking mesh/material/support finding."
+    },
+    {
+      "path": ".qa/glb/p4-20261115-full-g/reviews/giraffe-low.png",
+      "sha256": "c06c5bd29662fd03de7bf1f1a89f7d60aaf47ccbdc7c88e3da3bf2e7f56011d5",
+      "inputs": [
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-giraffe-browse-frame-10.png",
+          "sha256": "a815cc937421dd37ef012250b12af2837e20c99a5179227d9c159e46770ac35f",
+          "tick": 14474,
+          "camera": "giraffe"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-giraffe-drink-frame-10.png",
+          "sha256": "d1f8e5ef5aa73a4737f43e7517efa57399a06e369bb73a3ae3b6dec08c3b0bc9",
+          "tick": 14157,
+          "camera": "giraffe"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-giraffe-enrich-frame-10.png",
+          "sha256": "c17c2f0aeb5c01787931670432566cc3da997c946095604874e92f95324c06d5",
+          "tick": 13591,
+          "camera": "giraffe"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-giraffe-rest-frame-10.png",
+          "sha256": "c282bd1d0ff2fb739b8da1cc2b328582d5e0535e2b5d6893139c9ea6f988746e",
+          "tick": 14342,
+          "camera": "giraffe"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-giraffe-social-frame-10.png",
+          "sha256": "362c49040a9be356da4c10b20dc81d5e5e465f7372a699b25c601bfdfec2985c",
+          "tick": 14092,
+          "camera": "giraffe"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-giraffe-wander-frame-10.png",
+          "sha256": "3f7e4b606a47a02a03e880717fb10fbed9b75b1e257b7a0df0b8fdb5a1262795",
+          "tick": 13591,
+          "camera": "giraffe"
+        }
+      ],
+      "method": "No redraw; original native QA PNGs scaled to640px, labelled and arranged; full-size images retained separately.",
+      "retainedDerivative": "docs/qa/glb/p4-giraffe-low.png",
+      "review": "Codex visually reviewed actual high/low Foundation captures, contacts, support, source phases and individual variety. No remaining blocking mesh/material/support finding."
+    },
+    {
+      "path": ".qa/glb/p4-20261115-full-g/reviews/elephant-high.png",
+      "sha256": "65701e188c6b1183d831d869405ea8ef59073f74d6b6f66a63172940ae8efedf",
+      "inputs": [
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-elephant-eat-frame-10.png",
+          "sha256": "40609860055a04776f370d1487edddb917c036da1dac38994f55f93da1699efa",
+          "tick": 13745,
+          "camera": "elephant"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-elephant-drink-frame-10.png",
+          "sha256": "e483e193e7b2c15a5aa4eec416134a52c5b4b95b77b29f3832291f010829b0a0",
+          "tick": 13598,
+          "camera": "elephant"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-elephant-bathe-frame-10.png",
+          "sha256": "a0eae5ea30147ca903e2fd70ff0ffbf3a93ee96de800fcd165a86bdcfd66c1c9",
+          "tick": 15287,
+          "camera": "elephant"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-elephant-spray-frame-10.png",
+          "sha256": "5e00bdde7faaa0830e8cc90315e686fab5fc61407a6088a511562dd38d1b140e",
+          "tick": 15305,
+          "camera": "elephant"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-elephant-enrich-frame-10.png",
+          "sha256": "1b971cdc4f9983a49150cc64735d5802426389d1cec4458395ca59b7e04a9bea",
+          "tick": 15384,
+          "camera": "elephant"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-elephant-trunk-touch-frame-10.png",
+          "sha256": "94b863c68b81f7b31b9a022200c0cc6be5528f1f42b37f2cf98540435ee9bcd0",
+          "tick": 15599,
+          "camera": "elephant"
+        }
+      ],
+      "method": "No redraw; original native QA PNGs scaled to640px, labelled and arranged; full-size images retained separately.",
+      "retainedDerivative": "docs/qa/glb/p4-elephant-high.png",
+      "review": "Codex visually reviewed actual high/low Foundation captures, contacts, support, source phases and individual variety. No remaining blocking mesh/material/support finding."
+    },
+    {
+      "path": ".qa/glb/p4-20261115-full-g/reviews/elephant-low.png",
+      "sha256": "878d2e799855ca43edd814f94d75c1ba2274aa6ccd0b9a0e18ae6491c639bda5",
+      "inputs": [
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-elephant-eat-frame-10.png",
+          "sha256": "ea32aee257d20d1d8f2035705050ee43a9f484bb485c9e99a8009d1ff2008737",
+          "tick": 13745,
+          "camera": "elephant"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-elephant-drink-frame-10.png",
+          "sha256": "13a760ebf058ebacab1ab0825189eeadb10d0d8967d0602fb96a1a7646f8a410",
+          "tick": 13598,
+          "camera": "elephant"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-elephant-bathe-frame-10.png",
+          "sha256": "20470e7f2e76f6d652347aeb54d71b589a43eab079eeafe6180b65da1ff514f9",
+          "tick": 15287,
+          "camera": "elephant"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-elephant-spray-frame-10.png",
+          "sha256": "2ccca3c391324fa7c46b596021f3fb0ec7d89d2dfd451d9c30edbf6ef7b88714",
+          "tick": 15305,
+          "camera": "elephant"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-elephant-enrich-frame-10.png",
+          "sha256": "65e1674febabe54e3a522d1efc52641b7507d8eb4da987ca3fc064e1faadd70b",
+          "tick": 15384,
+          "camera": "elephant"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-elephant-trunk-touch-frame-10.png",
+          "sha256": "a8a5f59014772289c44259d80d87057a829a8c55d3f3d68611b7213fc0e0110c",
+          "tick": 15599,
+          "camera": "elephant"
+        }
+      ],
+      "method": "No redraw; original native QA PNGs scaled to640px, labelled and arranged; full-size images retained separately.",
+      "retainedDerivative": "docs/qa/glb/p4-elephant-low.png",
+      "review": "Codex visually reviewed actual high/low Foundation captures, contacts, support, source phases and individual variety. No remaining blocking mesh/material/support finding."
+    },
+    {
+      "path": ".qa/glb/p4-20261115-full-g/reviews/lion-high.png",
+      "sha256": "c3f1e61830f682a1793447170efe8b60c86d2fe7b16984e9830cc67e292a8a5e",
+      "inputs": [
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-lion-eat-frame-10.png",
+          "sha256": "15d2baeb18ec3cf819e0b0d1c32895903c20f5444591b446fbfe87766f62bbcf",
+          "tick": 13709,
+          "camera": "lion"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-lion-drink-frame-10.png",
+          "sha256": "4cb4110b6dce67bb4421301760e03ed90782e1aacbc0d879e4b66ae9a289a974",
+          "tick": 13644,
+          "camera": "lion"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-lion-climb-ramp-frame-10.png",
+          "sha256": "cf6f2a8ab59f18dafabbad0b19185116242cf370e0f62d3c89512e790505609e",
+          "tick": 15087,
+          "camera": "lion"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-lion-descend-frame-10.png",
+          "sha256": "f2650509c02ac765b803ed5b3fe295f9ad428da37556871b23685cb1c9c2e2f1",
+          "tick": 15198,
+          "camera": "lion"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-lion-scratch-frame-10.png",
+          "sha256": "7800cfe320db8cf0b1c36d31456a08a6ff2d4841a92414ac0e524f32288efae8",
+          "tick": 13976,
+          "camera": "lion"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-lion-nuzzle-frame-10.png",
+          "sha256": "71b15513a529d3389f19dbc4717d1206a0fb65b5418d2e27cc098e1242781476",
+          "tick": 14963,
+          "camera": "lion"
+        }
+      ],
+      "method": "No redraw; original native QA PNGs scaled to640px, labelled and arranged; full-size images retained separately.",
+      "retainedDerivative": "docs/qa/glb/p4-lion-high.png",
+      "review": "Codex visually reviewed actual high/low Foundation captures, contacts, support, source phases and individual variety. No remaining blocking mesh/material/support finding."
+    },
+    {
+      "path": ".qa/glb/p4-20261115-full-g/reviews/lion-low.png",
+      "sha256": "9e108e0244e107e15eb54b86a134cad78a1d21e1401f3a7b237674d1336ce43a",
+      "inputs": [
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-lion-eat-frame-10.png",
+          "sha256": "abb88496a785457fd99abff53f322769ef3fe36bf3fbbd89ede594d2ec6a942c",
+          "tick": 13709,
+          "camera": "lion"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-lion-drink-frame-10.png",
+          "sha256": "307d2600976077126f27cd81c80e38407543dbda83b260dad64b2aa8de42fe95",
+          "tick": 13644,
+          "camera": "lion"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-lion-climb-ramp-frame-10.png",
+          "sha256": "82f18e024a26b9091f6d4a2b37ba4ee65981e8ad19ae1da5087a84b64af12682",
+          "tick": 15087,
+          "camera": "lion"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-lion-descend-frame-10.png",
+          "sha256": "be76c99e65f8db07f9b5ebad05be48bfd775cb880f9ef2d5c0d247e51aa798d5",
+          "tick": 15198,
+          "camera": "lion"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-lion-scratch-frame-10.png",
+          "sha256": "e40393be2dd67370a4b92c95a55d8bb5a6b73fa00ed4ddc4d952dbc2c4fde3de",
+          "tick": 13976,
+          "camera": "lion"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-lion-nuzzle-frame-10.png",
+          "sha256": "efa3176cad990104b913049214d2bbc563e22a28230e7cc4974e48a3bef05369",
+          "tick": 14963,
+          "camera": "lion"
+        }
+      ],
+      "method": "No redraw; original native QA PNGs scaled to640px, labelled and arranged; full-size images retained separately.",
+      "retainedDerivative": "docs/qa/glb/p4-lion-low.png",
+      "review": "Codex visually reviewed actual high/low Foundation captures, contacts, support, source phases and individual variety. No remaining blocking mesh/material/support finding."
+    },
+    {
+      "path": ".qa/glb/p4-20261115-full-g/reviews/macaw-high.png",
+      "sha256": "edc82bbabf40ba06ad593a130ae6a61a7f26dc6e0fbb47a45e38865cbfa91337",
+      "inputs": [
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-bird-eat-frame-10.png",
+          "sha256": "4982889d389b99b622e2a1a4267b52ab7361172cb4828b9bd894ee21ff0dd7d2",
+          "tick": 13676,
+          "camera": "macaw"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-bird-drink-frame-10.png",
+          "sha256": "15296f25ec1358b42040953f93eb75fb241a943722ddd2fb8eb38ce70f26224d",
+          "tick": 13617,
+          "camera": "macaw"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-bird-ascend-frame-10.png",
+          "sha256": "4f573594d67725909548a8d29b42c3513e9c4600850ccd6a95e41e88da9578bb",
+          "tick": 13931,
+          "camera": "macaw"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-bird-descend-frame-10.png",
+          "sha256": "4895d69f702b9f685d89948ac4967515bcf57b3be7e4efea8f84c552f064b418",
+          "tick": 13591,
+          "camera": "macaw"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-bird-rest-frame-10.png",
+          "sha256": "af2848061f0d02cbb586e948cce9e3f1835a2c424fe47ba8dfdbafa436d9f990",
+          "tick": 13955,
+          "camera": "macaw"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/high-glb-bird-enrich-frame-10.png",
+          "sha256": "969569a4dde48e79066587d5ece94a62f81b70eeca8d211aabaabce2117dd9d7",
+          "tick": 14000,
+          "camera": "macaw"
+        }
+      ],
+      "method": "No redraw; original native QA PNGs scaled to640px, labelled and arranged; full-size images retained separately.",
+      "retainedDerivative": "docs/qa/glb/p4-macaw-high.png",
+      "review": "Codex visually reviewed actual high/low Foundation captures, contacts, support, source phases and individual variety. No remaining blocking mesh/material/support finding."
+    },
+    {
+      "path": ".qa/glb/p4-20261115-full-g/reviews/macaw-low.png",
+      "sha256": "248a63d1b257aa320143d3a8269afb1cbbd944668d2a47251904dfb29f6d920c",
+      "inputs": [
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-bird-eat-frame-10.png",
+          "sha256": "10afa4dd0b215f05f83f0d14921b3b4892a36d1ae8567d438cdc0c2ec78cd7ba",
+          "tick": 13676,
+          "camera": "macaw"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-bird-drink-frame-10.png",
+          "sha256": "252b104780942f8bb659b6e97a86ed6ccb0f0a252ee2806a50af97c62d2f8551",
+          "tick": 13617,
+          "camera": "macaw"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-bird-ascend-frame-10.png",
+          "sha256": "d0fc980a68e45bab6359c64141ebc609189e2a507c6ff901523d3cf26b6e24e9",
+          "tick": 13931,
+          "camera": "macaw"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-bird-descend-frame-10.png",
+          "sha256": "613350b6d4dfc609525e5935babbf65802b63e175fc7233cacfc7e7a3bb9f82c",
+          "tick": 13591,
+          "camera": "macaw"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-bird-rest-frame-10.png",
+          "sha256": "7fdafa6d7d69151989e7731c4e10d26c2da34b5792be1da1e4e0b5d09242ac52",
+          "tick": 13955,
+          "camera": "macaw"
+        },
+        {
+          "path": ".qa/glb/p4-20261115-full-g/evidence/matrix-1794709312491/low-glb-bird-enrich-frame-10.png",
+          "sha256": "0a9a450ec6390e5ac8f5b0876645ed5fee5af7cbf8bed5fe364a931e30672746",
+          "tick": 14000,
+          "camera": "macaw"
+        }
+      ],
+      "method": "No redraw; original native QA PNGs scaled to640px, labelled and arranged; full-size images retained separately.",
+      "retainedDerivative": "docs/qa/glb/p4-macaw-low.png",
+      "review": "Codex visually reviewed actual high/low Foundation captures, contacts, support, source phases and individual variety. No remaining blocking mesh/material/support finding."
+    }
+  ],
+  "contactWitnesses": [
+    {
+      "quality": "high",
+      "species": "elephant",
+      "gap": 0.01809853217629337,
+      "file": "high-glb-elephant-drink-frame-3.json",
+      "id": "elephant-ayu",
+      "phase": "drink",
+      "tick": 13591,
+      "resource": "elephant-water-24",
+      "contact": [
+        2.3786813071182307,
+        0.3434014680099712,
+        9.59655692910173
+      ],
+      "verticalGap": 0.01809853217629337,
+      "horizontalOffset": 0.1550531063864818,
+      "surface": [
+        2.5,
+        0.36150000018626455,
+        9.5
+      ],
+      "receiptSha256": "7d4b277010c81d5cfc12843b1305fb086b9cdd5e1768013e312cfe50a7088e60"
+    },
+    {
+      "quality": "high",
+      "species": "elephant",
+      "gap": 0.024817525222049164,
+      "file": "high-glb-elephant-eat-frame-10.json",
+      "id": "elephant-ayu",
+      "phase": "eat",
+      "tick": 13745,
+      "resource": "elephant-browse-22",
+      "contact": [
+        -2.381041901072261,
+        0.6488175270101885,
+        7.61895809892774
+      ],
+      "distanceToVisiblePortionBounds": 0.024817525222049164,
+      "receiptSha256": "fac15c66464489c0f680fb4f2044e14f0bb26cf278ceebf8e57222616a7d635c"
+    },
+    {
+      "quality": "high",
+      "species": "giraffe",
+      "gap": 0.0,
+      "file": "high-glb-giraffe-browse-frame-10.json",
+      "id": "giraffe-sora",
+      "phase": "browse",
+      "tick": 14474,
+      "resource": "giraffe-browse-87",
+      "contact": [
+        7.7844582472000665,
+        2.6289999999999996,
+        -1.6422291236000333
+      ],
+      "distanceToVisiblePortionBounds": 0.0,
+      "receiptSha256": "ec2c4e7625d94b9708fb93ac480f27cf5ed25f85a52d2603ed09ed78bfe80211"
+    },
+    {
+      "quality": "high",
+      "species": "giraffe",
+      "gap": 0.0020000000949954577,
+      "file": "high-glb-giraffe-drink-frame-10.json",
+      "id": "giraffe-lila",
+      "phase": "drink",
+      "tick": 14157,
+      "resource": "giraffe-water-91",
+      "contact": [
+        13.050121220251185,
+        0.31899999999999945,
+        0.9191672848148524
+      ],
+      "verticalGap": 0.0020000000949954577,
+      "horizontalOffset": 0.02171830724006233,
+      "surface": [
+        13.065685424949237,
+        0.3210000000949949,
+        0.9343145750507622
+      ],
+      "receiptSha256": "3e3845177fe7d8a227866deba8e01559553d5e0f2d2c1e676cd28998f135b663"
+    },
+    {
+      "quality": "high",
+      "species": "lion",
+      "gap": 0.0019999893987172057,
+      "file": "high-glb-lion-drink-frame-10.json",
+      "id": "lion-raka",
+      "phase": "drink",
+      "tick": 13644,
+      "resource": "lion-water-52",
+      "contact": [
+        3.158366714372371,
+        0.17740701069627768,
+        15.816733428744744
+      ],
+      "verticalGap": 0.0019999893987172057,
+      "horizontalOffset": 1.2900840254187999e-09,
+      "surface": [
+        3.158366714949315,
+        0.17940700009499488,
+        15.81673342989863
+      ],
+      "receiptSha256": "2826a083d7e770c32c485b090575d525d3d2e80af6deb584030cbb7e39ee5305"
+    },
+    {
+      "quality": "high",
+      "species": "lion",
+      "gap": 0.0,
+      "file": "high-glb-lion-eat-frame-10.json",
+      "id": "lion-tala",
+      "phase": "eat",
+      "tick": 13709,
+      "resource": "lion-meat-51",
+      "contact": [
+        2.816733428744741,
+        0.17740701069627768,
+        14.158366714372368
+      ],
+      "distanceToVisiblePortionBounds": 0.0,
+      "receiptSha256": "62bf065ef0d651c498f7d6e9437752528636afbaddb384719135f1746fbfb6dd"
+    },
+    {
+      "quality": "high",
+      "species": "macaw",
+      "gap": 0.0023378611951122563,
+      "file": "high-glb-bird-drink-frame-10.json",
+      "id": "macaw-1",
+      "phase": "drink",
+      "tick": 13617,
+      "resource": "water-5-4",
+      "contact": [
+        -1.8203365888862795,
+        0.23933786129010715,
+        -0.14705525236725794
+      ],
+      "verticalGap": 0.0023378611951122563,
+      "horizontalOffset": 0.014368405296833014,
+      "surface": [
+        -1.8344,
+        0.2370000000949949,
+        -0.15000000000000002
+      ],
+      "receiptSha256": "da52893e0ca581702de07e9d822cc9b8d83da627d1c8bd9e436ba6b8435f80e8"
+    },
+    {
+      "quality": "high",
+      "species": "macaw",
+      "gap": 0.0,
+      "file": "high-glb-bird-eat-frame-10.json",
+      "id": "macaw-1",
+      "phase": "eat",
+      "tick": 13676,
+      "resource": "feeder-4-5",
+      "contact": [
+        -1.4970552523672576,
+        0.2636396077517714,
+        0.7606833417299836
+      ],
+      "distanceToVisiblePortionBounds": 0.0,
+      "receiptSha256": "64f66f423594fd20f31f655f114f189b776fb0fcede14fbd9acc8db274008aea"
+    },
+    {
+      "quality": "high",
+      "species": "zebra",
+      "gap": 0.002000000094995069,
+      "file": "high-v5-zebra-drink-frame-10.json",
+      "id": "zebra-zaki",
+      "phase": "drink",
+      "tick": 13883,
+      "resource": "zebra-water-122",
+      "contact": [
+        11.31295544413841,
+        0.26699999999999985,
+        7.673684230442905
+      ],
+      "verticalGap": 0.002000000094995069,
+      "horizontalOffset": 0.0,
+      "surface": [
+        11.31295544413841,
+        0.2690000000949949,
+        7.673684230442905
+      ],
+      "receiptSha256": "62917709d417fd6adaa4c2977ab5700e066f43fd0a0c928c54567960d9a2fb43"
+    },
+    {
+      "quality": "high",
+      "species": "zebra",
+      "gap": 0.0,
+      "file": "high-v5-zebra-drink-frame-20.json",
+      "id": "zebra-mira",
+      "phase": "graze",
+      "tick": 13893,
+      "resource": "zebra-graze-121",
+      "contact": [
+        15.326315769557095,
+        0.27900000000000025,
+        9.68704455586159
+      ],
+      "distanceToVisiblePortionBounds": 0.0,
+      "receiptSha256": "19a21bce6208a10889a78f7e52fe757e759bcce06601b82d31991742152047bb"
+    },
+    {
+      "quality": "low",
+      "species": "elephant",
+      "gap": 0.01809853217629337,
+      "file": "low-glb-elephant-drink-frame-3.json",
+      "id": "elephant-ayu",
+      "phase": "drink",
+      "tick": 13591,
+      "resource": "elephant-water-24",
+      "contact": [
+        2.3786813071182307,
+        0.3434014680099712,
+        9.59655692910173
+      ],
+      "verticalGap": 0.01809853217629337,
+      "horizontalOffset": 0.1550531063864818,
+      "surface": [
+        2.5,
+        0.36150000018626455,
+        9.5
+      ],
+      "receiptSha256": "2cfeb300150f7b56bb4273bc99aa92daac82f248d5e2913eb1ff2dd948e2f97f"
+    },
+    {
+      "quality": "low",
+      "species": "elephant",
+      "gap": 0.024817525222049164,
+      "file": "low-glb-elephant-eat-frame-10.json",
+      "id": "elephant-ayu",
+      "phase": "eat",
+      "tick": 13745,
+      "resource": "elephant-browse-22",
+      "contact": [
+        -2.381041901072261,
+        0.6488175270101885,
+        7.61895809892774
+      ],
+      "distanceToVisiblePortionBounds": 0.024817525222049164,
+      "receiptSha256": "13e59356e43384ed5abcf45858e06d3d1d9f8e1e15b51ec95e98a87be5c60c9e"
+    },
+    {
+      "quality": "low",
+      "species": "giraffe",
+      "gap": 0.0,
+      "file": "low-glb-giraffe-browse-frame-10.json",
+      "id": "giraffe-sora",
+      "phase": "browse",
+      "tick": 14474,
+      "resource": "giraffe-browse-87",
+      "contact": [
+        7.7844582472000665,
+        2.6289999999999996,
+        -1.6422291236000333
+      ],
+      "distanceToVisiblePortionBounds": 0.0,
+      "receiptSha256": "45f14a85f75cc440b8b7e3b18f5241aac9c0d49798ddcb3d4a3ed62e99ea7f4f"
+    },
+    {
+      "quality": "low",
+      "species": "giraffe",
+      "gap": 0.0020000000949954577,
+      "file": "low-glb-giraffe-drink-frame-10.json",
+      "id": "giraffe-lila",
+      "phase": "drink",
+      "tick": 14157,
+      "resource": "giraffe-water-91",
+      "contact": [
+        13.050121220251185,
+        0.31899999999999945,
+        0.9191672848148524
+      ],
+      "verticalGap": 0.0020000000949954577,
+      "horizontalOffset": 0.02171830724006233,
+      "surface": [
+        13.065685424949237,
+        0.3210000000949949,
+        0.9343145750507622
+      ],
+      "receiptSha256": "3be57c13f776d54b2fbbc5fa6de41e84dfab89afa6e4c71f54a9994ab555f63f"
+    },
+    {
+      "quality": "low",
+      "species": "lion",
+      "gap": 0.0019999893987172057,
+      "file": "low-glb-lion-drink-frame-10.json",
+      "id": "lion-raka",
+      "phase": "drink",
+      "tick": 13644,
+      "resource": "lion-water-52",
+      "contact": [
+        3.158366714372371,
+        0.17740701069627768,
+        15.816733428744744
+      ],
+      "verticalGap": 0.0019999893987172057,
+      "horizontalOffset": 1.2900840254187999e-09,
+      "surface": [
+        3.158366714949315,
+        0.17940700009499488,
+        15.81673342989863
+      ],
+      "receiptSha256": "6904c0c855cf1e3d6c1d98cfbf97f1b4237d77bbab5e6dcd13cd53c176ed89d9"
+    },
+    {
+      "quality": "low",
+      "species": "lion",
+      "gap": 0.0,
+      "file": "low-glb-lion-eat-frame-10.json",
+      "id": "lion-tala",
+      "phase": "eat",
+      "tick": 13709,
+      "resource": "lion-meat-51",
+      "contact": [
+        2.816733428744741,
+        0.17740701069627768,
+        14.158366714372368
+      ],
+      "distanceToVisiblePortionBounds": 0.0,
+      "receiptSha256": "c08ed8dc1bd64bf7b75be94aff386e08f8165c1294220ba1751b3ad796d74d34"
+    },
+    {
+      "quality": "low",
+      "species": "macaw",
+      "gap": 0.0023378611951122563,
+      "file": "low-glb-bird-drink-frame-10.json",
+      "id": "macaw-1",
+      "phase": "drink",
+      "tick": 13617,
+      "resource": "water-5-4",
+      "contact": [
+        -1.8203365888862795,
+        0.23933786129010715,
+        -0.14705525236725794
+      ],
+      "verticalGap": 0.0023378611951122563,
+      "horizontalOffset": 0.014368405296833014,
+      "surface": [
+        -1.8344,
+        0.2370000000949949,
+        -0.15000000000000002
+      ],
+      "receiptSha256": "4d494811db07e1c1a4d2f2f3fa1f7cc692b72911ba4b51ee13e80b586c5323a5"
+    },
+    {
+      "quality": "low",
+      "species": "macaw",
+      "gap": 0.0,
+      "file": "low-glb-bird-eat-frame-10.json",
+      "id": "macaw-1",
+      "phase": "eat",
+      "tick": 13676,
+      "resource": "feeder-4-5",
+      "contact": [
+        -1.4970552523672576,
+        0.2636396077517714,
+        0.7606833417299836
+      ],
+      "distanceToVisiblePortionBounds": 0.0,
+      "receiptSha256": "77a7ed417f8007824df76f48f3eee2435264108aa45394dc9a4af9b35e53ab07"
+    },
+    {
+      "quality": "low",
+      "species": "zebra",
+      "gap": 0.002000000094995069,
+      "file": "low-v5-zebra-drink-frame-10.json",
+      "id": "zebra-zaki",
+      "phase": "drink",
+      "tick": 13883,
+      "resource": "zebra-water-122",
+      "contact": [
+        11.31295544413841,
+        0.26699999999999985,
+        7.673684230442905
+      ],
+      "verticalGap": 0.002000000094995069,
+      "horizontalOffset": 0.0,
+      "surface": [
+        11.31295544413841,
+        0.2690000000949949,
+        7.673684230442905
+      ],
+      "receiptSha256": "949ded325d28c8be0c6d8d12a96cd5aa95a37ca61fecb460772f41ee8e7061e0"
+    },
+    {
+      "quality": "low",
+      "species": "zebra",
+      "gap": 0.0,
+      "file": "low-v5-zebra-drink-frame-20.json",
+      "id": "zebra-mira",
+      "phase": "graze",
+      "tick": 13893,
+      "resource": "zebra-graze-121",
+      "contact": [
+        15.326315769557095,
+        0.27900000000000025,
+        9.68704455586159
+      ],
+      "distanceToVisiblePortionBounds": 0.0,
+      "receiptSha256": "0b212cc6e7de8cdd5021ab140a8cdb915827bbf7f3d7bd3599710564c6f25e1f"
+    }
+  ],
+  "contactMethod": "Actual posed muzzle/beak/trunk-finger probes and visible retained food-portion bounds/water planes. Contact frames selected within actual source eat/browse/graze/drink phases. Units are the existing sanctuary scene contract; finite bound/probe checks do not alone prove pixel-level contact. Native receipts retain the complete source-motion capture sequences. Codex visually reviewed ten high/low scene boards (60 source captures), selected full-size contact frames and P3 off-key samples; these are separate from numerical checks.",
+  "footSupport": "Distance-driven planted feet have source-world tests for curved/reverse paths, whole sole orientation, pause and actual lion kopje grade. Native motion records retain posed feet/soles. A phase start may settle from a raised stepping foot over the280ms pose blend; do not treat all same-position snapshots as immutable stance anchors.",
+  "findingsClosed": [
+    {
+      "id": "P4-FIXTURE-SUPPORT",
+      "trial": "full-f",
+      "finding": "Giraffe side browse bowls lacked visible ground support; lion bowl radius encroached on forepaw space; shade post ended below roof.",
+      "resolution": "Original editable fixtures regenerated with side pedestals, smaller lion bowl/portion and roof-touching post; finalG actual files and new high/low captures reviewed."
+    },
+    {
+      "id": "P4-MACAW-SLOT",
+      "finding": "GLTF unique node suffixes hid second water slot from a literal-name query.",
+      "resolution": "Slot name matching handles suffixes; independent per-slot food/water tests and native product refill pass."
+    },
+    {
+      "id": "P4-WEBP",
+      "finding": "EXT_texture_webp image binding and verified blob decoding required explicit handling.",
+      "resolution": "Verified shared image resolver handles extension sources; product CSP permits locally verified blob fetch. Actual product loads14 models and all28 source files pass native WebP delivery tests."
+    }
+  ],
+  "limits": [
+    "Desktop browser with viewport emulation; no physical Samsung Galaxy A56 or physical touch claim.",
+    "CPU wall callback timings include QA readback context and instrumented renderer work, not GPU completion or presented FPS.",
+    "Some original parametric world/interaction/effect layers remain, explicitly audited in SCENE_ASSET_AUDIT.md.",
+    "Original source simulation controls all phases, movement, stock, money and rewards. QA fixtures are isolated and synthetically bootstrapped; they do not prove public adoption prerequisites were earned."
+  ]
+}

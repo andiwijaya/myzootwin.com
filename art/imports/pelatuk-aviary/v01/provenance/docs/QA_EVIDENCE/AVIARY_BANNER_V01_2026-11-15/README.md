@@ -1,0 +1,7 @@
+# Original Q04 ceremony banner
+
+Accepted for combined runtime integration after six high/low source-versus-GLB views with the native gate, independent source/binary inspection and six stable resource cycles. The gate sign remains readable and the cord/flags sit above its roof. Cloth folds are static authored surfaces, not a measured cloth simulation. High: 3,080 triangles and 3,994,316 bytes; low: 930 triangles and 3,710,536 bytes. Each canonical GLB embeds the owned timber image and needs no external image URL.
+
+The editable recipe is `src/aviary/asset-lab/banner-geometry.ts`; material/export ownership is in `banner-export.ts`. The existing Q04 unlock and economy semantics must stay authoritative at runtime. No new permission/download flow was used: same-origin loopback authoring writes a fixed new filename without replacing any existing master.
+
+`source-export-inspection.json` verifies both actual retained binaries against independently rebuilt source, including all expanded attributes and closed solid components; intentionally open cloth is excluded from the solid-volume check. All 234 preexisting master bytes and Git blob identities were reverified. `render-pair-analysis.json` contains the six pixel comparisons. `resource-cycles.json` records six 10/11 loaded and 7/10 released geometry/texture counts. Browser console warnings and errors were empty. Deployment and physical A56 evidence are separate gates.

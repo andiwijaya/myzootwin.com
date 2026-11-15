@@ -1,0 +1,59 @@
+{
+  "status": "PASS_WITH_EXPLICIT_INVENTORY_GATE_UPDATE",
+  "at": "2026-11-15",
+  "fullSuite": {
+    "tests": 1081,
+    "initialPass": 1080,
+    "initialFail": 1,
+    "failure": "Historical visual inventory expected procedural renderer; GLB migration was intentionally unregistered.",
+    "resolution": "Explicit content-hash-bound GLB inventory extension, retaining unchanged historical receipts and exact remaining protected modules/public files.",
+    "rerunInventoryTests": 2,
+    "rerunPass": 2,
+    "remainingFailures": 0
+  },
+  "finalFocused": {
+    "tests": 32,
+    "pass": 32,
+    "fail": 0
+  },
+  "astro": {
+    "files": 672,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0
+  },
+  "production": {
+    "pages": 10,
+    "files": 160,
+    "allFileBytesMatchProductQaReference": true,
+    "qaOrAuthoringLeak": false
+  },
+  "logs": [
+    {
+      "path": "docs/qa/glb/full-tests-final.tap.gz",
+      "sha256": "ab5f02f1bc08639436efafaa3cac6798c3fb36c01a9c536bfbfaa2213c91ab37",
+      "rawSha256": "fb7c738a875c44e4ed51df792b29017b6dfe831a7f7010a8ca161ef9daa32907"
+    },
+    {
+      "path": "docs/qa/glb/final-focused-regression.tap.gz",
+      "sha256": "ae3ae7df94cf4c79d4006da96b84f308212b75cdb22cd2dca548eb5eef8aae83",
+      "rawSha256": "c12acb106b5b89c759f194081aaea8e16a02194b0357de9495e062cf4da71b64"
+    },
+    {
+      "path": "docs/qa/glb/visual-inventory-final-tests.log.gz",
+      "sha256": "c41c3c42c1f6f0e29dd1f6458b5887544d58d4b53c23527afac450109c1e62e1",
+      "rawSha256": "05c311f8de48de730e7ccb933f4be7eb7a0b206efc2a4083ec600822e336c974"
+    },
+    {
+      "path": "docs/qa/glb/typecheck-release-final.log.gz",
+      "sha256": "2f7a250f2e085278f5c71bd29b7e48d650bbb9ef150334e859ac98cf9d60efeb",
+      "rawSha256": "697b33ba366d1807c2c346b01fdbda541000c5c022510507600bf8975c89bc14"
+    },
+    {
+      "path": "docs/qa/glb/build-release-final.log.gz",
+      "sha256": "6b5758f25cd5586ac8a1edfa3fb2da4772519227f5a49a5a723c87f03c867214",
+      "rawSha256": "a583cd0d31a256a6c4096b66110bdc51b53a7c2b18fa632e4ddaa963d045504f"
+    }
+  ],
+  "scope": "No production runtime change after the full suite; last fixture art-only corrections covered by focused actual-GLB tests and final106-case native matrix. Inventory test/metadata changes verified separately."
+}
