@@ -51,6 +51,7 @@ import { presentSelection } from './selection-presentation.ts';
 import type { CameraCommand } from '../game/render3d/camera-navigation.ts';
 import { createPreviewController, type PreviewLoader, type PreviewState } from '../game/render3d/preview-controller';
 import { entryMessages, type EntryLocale, type EntryMessage } from './locale';
+import {mountHabitatFocusPanel} from './habitat-focus-panel.ts';
 
 export interface PreviewPanelOptions { loadRenderer?: PreviewLoader; stateStore?:import("../game/core/session-state.ts").SanctuarySessionState<ZooSave>;canOpen?:()=>boolean;beforeOpen?:()=>boolean; }
 const setText=(element:Element|null,value:string)=>{if(element&&element.textContent!==value)element.textContent=value;};
@@ -70,7 +71,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const reload = root.querySelector<HTMLButtonElement>('[data-preview-reload]');
   if (!panel || !illustration || !host || !feedback || !title || !detail || !caption || !open || !close || !retry || !reload) throw new Error('Incomplete preview panel');
   let elephantUnlocked=false,lionUnlocked=false,giraffeUnlocked=false,zebraExists=false;
-  const canvasDescription=()=>sharedWorldDescription(locale,studio.active,giraffeUnlocked,lionUnlocked,elephantUnlocked,zebraExists);
+  let focusDescription:string|null=null;
+  const canvasDescription=()=>focusDescription??sharedWorldDescription(locale,studio.active,giraffeUnlocked,lionUnlocked,elephantUnlocked,zebraExists);
   let recovery:RecoveryView|undefined,recoveryPending:RecoveryQuote|null=null;
   const recoveryDialog=root.querySelector<HTMLDialogElement>('[data-recovery-dialog]');
   const recoveryText=()=>{if(!recovery)return'';const c=entryMessages[locale],key=({habitat:'recoveryHabitat',path:'recoveryPath',food:'recoveryFood',water:'recoveryWater',perch:'recoveryPerch','food-refill':'recoveryFoodRefill','water-refill':'recoveryWaterRefill',rations:'recoveryRations',welcome:'recoveryWelcome',open:'recoveryOpen',reclaim:'recoveryReclaim','repair-food':'recoveryRepairFood','repair-water':'recoveryRepairWater','repair-perch':'recoveryRepairPerch',wait:'recoveryWait',steady:'recoverySteady'}as const)[recovery.kind];return c[key].replace('{x}',formatNumber((recovery.cell?.x??0)+1,locale)).replace('{z}',formatNumber((recovery.cell?.z??0)+1,locale)).replace('{refund}',formatNumber(recovery.refund,locale));};
@@ -347,6 +349,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     title.textContent = copy[titleKey];
     detail.textContent = copy[detailKey];
     renderStudio();
+    focusPanel.update(next.status==='ready',locale);
     if(next.status==='ready'&&guidedStart){guidedStart=false;if(!missionPanel.focusCare())onboardingPanel.focus();}
     if (previous !== next.status && next.status !== 'closed' && (root.dataset.guided!=='true'||failed) && !root.querySelector('dialog[open]')) {
       (failed ? next.status === 'error' && next.reason === 'load' ? reload : retry : close).focus();
@@ -357,6 +360,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const module = await import('../game/render3d/foundation-scene');
     return (onFailure) => module.mountFoundationScene(host, onFailure,{stateStore:options.stateStore??sanctuarySessionFor(root)});
   });
+  const focusPanel=mountHabitatFocusPanel(root,host,events.signal,{command:(command,id)=>controller.habitatFocus(command,id),description:value=>{focusDescription=value;host.setAttribute('aria-label',canvasDescription());}});
   const controller = createPreviewController(load, render);
   host.addEventListener('scene-food-change',event=>{food=(event as CustomEvent<FoodView>).detail;renderFood();renderPlacement();},{signal:events.signal});
   for(const b of root.querySelectorAll<HTMLButtonElement>('[data-food-command]')){b.addEventListener('keydown',event=>{if(event.repeat&&(event.key==='Enter'||event.key===' '))event.preventDefault();},{signal:events.signal});b.addEventListener('click',event=>{if(event.detail>1)return;const cmd=b.dataset.foodCommand as FoodCommand;controller.food(cmd,food.revision);host.focus({preventScroll:true});scrollHudTarget(host);},{signal:events.signal});}
@@ -451,7 +455,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     refresh:()=>{if(!disposed)render(state);},
     async openGame(paused=false){if(disposed||!mayOpen())return;guidedStart=true;root.dataset.guided='true';controller.setExternalPaused(paused);await controller.open();},
     close: () => { if (!disposed) controller.close(); },
-    dispose() { if (disposed) return; disposed = true; controller.dispose();if(recoveryDialog?.open)recoveryDialog.close();if(editDialog?.open)editDialog.close(); events.abort(); if(foodDialog?.open)foodDialog.close();if(waterDialog?.open)waterDialog.close();if(perchDialog?.open)perchDialog.close();mounted.delete(root); },
+    dispose() { if (disposed) return; disposed = true; controller.dispose();focusPanel.dispose();if(recoveryDialog?.open)recoveryDialog.close();if(editDialog?.open)editDialog.close(); events.abort(); if(foodDialog?.open)foodDialog.close();if(waterDialog?.open)waterDialog.close();if(perchDialog?.open)perchDialog.close();mounted.delete(root); },
     getState: () => ({...controller.getState()}),
     inspect: () => ({ state: controller.getState(), session: controller.inspectSession() }),
   };

@@ -1,0 +1,17 @@
+.habitat-focus-toolbar{display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex-wrap:wrap;padding:.3rem .5rem;color:#183b32;background:#f5f7e9;border:1px solid #8aa582;border-radius:9px;flex:none;margin-bottom:.35rem;font-size:.85rem}
+.habitat-focus-toolbar[hidden],.habitat-focus-note[hidden],[data-habitat-zoom][hidden]{display:none!important}
+.habitat-focus-toolbar strong{overflow-wrap:anywhere;min-width:0;flex:1}
+.habitat-focus-toolbar button,[data-habitat-zoom]{font:inherit;min-height:44px;padding:.45rem .7rem;border:1px solid #52755d;border-radius:8px;color:#fff;background:#285b42;cursor:pointer;white-space:normal}
+.habitat-focus-toolbar button:focus-visible,[data-habitat-zoom]:focus-visible{outline:3px solid #ad7629;outline-offset:2px}
+.habitat-focus-note{padding:.6rem;border:1px solid #b4bea5;border-radius:8px;font-size:.82rem;line-height:1.45}
+[data-play-entry][data-habitat-focus="macaw-aviary"] [data-focus-kind]:not([data-focus-kind="macaw-aviary"]),
+[data-play-entry][data-habitat-focus="elephant-grove"] [data-focus-kind]:not([data-focus-kind="elephant-grove"]),
+[data-play-entry][data-habitat-focus="lion-savanna"] [data-focus-kind]:not([data-focus-kind="lion-savanna"]),
+[data-play-entry][data-habitat-focus="giraffe-plains"] [data-focus-kind]:not([data-focus-kind="giraffe-plains"]),
+[data-play-entry][data-habitat-focus="zebra-grasslands"] [data-focus-kind]:not([data-focus-kind="zebra-grasslands"]),
+[data-play-entry][data-habitat-focus] [data-placement-tools],
+[data-play-entry][data-habitat-focus] [data-edit-undo],
+[data-play-entry][data-habitat-focus] [data-edit-remove],
+[data-play-entry][data-habitat-focus] [data-guide-toolbar]{display:none!important}
+@media(max-width:420px){.habitat-focus-toolbar{font-size:.76rem;gap:.3rem}.habitat-focus-toolbar button{padding:.4rem .55rem}}
+@media(max-width:639px){.play-shell[data-habitat-focus][data-hud-active="true"] [data-guide-layout].hud-body{grid-template-rows:minmax(280px,58%) minmax(180px,1fr)!important}}

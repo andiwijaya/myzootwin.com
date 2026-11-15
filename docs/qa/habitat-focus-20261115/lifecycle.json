@@ -1,0 +1,53 @@
+{
+  "at": "2026-11-15T04:11:03.961Z",
+  "method": "Approved CUA native controls; explicit QA WebGL context-loss injection",
+  "physicalDevice": false,
+  "checks": [
+    {
+      "name": "Escape exits focus",
+      "passed": true
+    },
+    {
+      "name": "Exit while paused preserves pause",
+      "passed": true
+    },
+    {
+      "name": "Escape cancels preview before leaving focus",
+      "passed": true
+    },
+    {
+      "name": "Macaw studio exits habitat focus and retains its existing pause policy",
+      "passed": true
+    },
+    {
+      "name": "English focus labels and return control",
+      "passed": true
+    },
+    {
+      "name": "Context loss removes old canvas and clears focused mode",
+      "passed": true
+    },
+    {
+      "name": "Retry restores one canvas, valid save, and overview",
+      "passed": true
+    },
+    {
+      "name": "Cold reload preserves tick, cash, habitats and animals and starts in overview",
+      "passed": true,
+      "before": {
+        "tick": 15430,
+        "cash": 3647,
+        "habitats": 5,
+        "animals": 14,
+        "valid": true
+      },
+      "after": {
+        "tick": 15430,
+        "cash": 3647,
+        "habitats": 5,
+        "animals": 14,
+        "valid": true
+      }
+    }
+  ]
+}

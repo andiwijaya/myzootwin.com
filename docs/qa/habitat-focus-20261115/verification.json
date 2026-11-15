@@ -1,0 +1,264 @@
+{
+  "at": "2026-11-15T04:13:13.364Z",
+  "status": "PASS",
+  "build": "zoom-20261115-g",
+  "sourceFingerprint": "1fec641f9530a98fc11ce15fba302f55558e68f099a8711936b34644ce244f50",
+  "sourceUnchangedSinceBuild": true,
+  "regression": {
+    "tests": 1099,
+    "passed": 1099,
+    "failed": 0,
+    "run": "zoom-20261115-d",
+    "note": "Full regression run preceded the final two edge-case tests and UI layout refinement. The final changed camera/picking/localization/inventory paths were rechecked by the targeted run and final browser matrix."
+  },
+  "finalTargeted": {
+    "tests": 50,
+    "passed": 50,
+    "failed": 0,
+    "run": "zoom-20261115-g",
+    "notAdditiveToRegression": true
+  },
+  "astro": {
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0,
+    "pagesBuilt": 10
+  },
+  "browser": {
+    "checks": 165,
+    "profiles": [
+      {
+        "name": "desktop",
+        "viewport": {
+          "width": 1366,
+          "height": 768,
+          "documentWidth": 1351
+        },
+        "checks": 55,
+        "perHabitat": [
+          {
+            "kind": "macaw-aviary",
+            "passed": 11
+          },
+          {
+            "kind": "elephant-grove",
+            "passed": 11
+          },
+          {
+            "kind": "lion-savanna",
+            "passed": 11
+          },
+          {
+            "kind": "giraffe-plains",
+            "passed": 11
+          },
+          {
+            "kind": "zebra-grasslands",
+            "passed": 11
+          }
+        ],
+        "validDurableState": true,
+        "file": "desktop.json"
+      },
+      {
+        "name": "portrait",
+        "viewport": {
+          "width": 360,
+          "height": 780,
+          "documentWidth": 345
+        },
+        "checks": 55,
+        "perHabitat": [
+          {
+            "kind": "macaw-aviary",
+            "passed": 11
+          },
+          {
+            "kind": "elephant-grove",
+            "passed": 11
+          },
+          {
+            "kind": "lion-savanna",
+            "passed": 11
+          },
+          {
+            "kind": "giraffe-plains",
+            "passed": 11
+          },
+          {
+            "kind": "zebra-grasslands",
+            "passed": 11
+          }
+        ],
+        "validDurableState": true,
+        "file": "portrait.json"
+      },
+      {
+        "name": "landscape",
+        "viewport": {
+          "width": 780,
+          "height": 360,
+          "documentWidth": 765
+        },
+        "checks": 55,
+        "perHabitat": [
+          {
+            "kind": "macaw-aviary",
+            "passed": 11
+          },
+          {
+            "kind": "elephant-grove",
+            "passed": 11
+          },
+          {
+            "kind": "lion-savanna",
+            "passed": 11
+          },
+          {
+            "kind": "giraffe-plains",
+            "passed": 11
+          },
+          {
+            "kind": "zebra-grasslands",
+            "passed": 11
+          }
+        ],
+        "validDurableState": true,
+        "file": "landscape.json"
+      }
+    ],
+    "method": "Approved CUA browser. Integration suite uses injected DOM and PointerEvents with the actual product UI, renderer and native IndexedDB. All 15 focused scenes were visually inspected.",
+    "physicalDevice": false,
+    "lifecycleChecks": 8,
+    "screenshots": 15,
+    "finalOriginConsoleEntries": 0,
+    "olderStoppedQaOriginLogEntries": 1
+  },
+  "cleanup": {
+    "qaProductTabClosed": true,
+    "viewportOverrideReset": true,
+    "ownedServerStopped": true
+  },
+  "artifacts": [
+    {
+      "file": "desktop.json",
+      "bytes": 19067,
+      "sha256": "50f34ffa15b6e314c5030ceb0475c1feeebb8354d9c37e4160f46f728a03ab39"
+    },
+    {
+      "file": "portrait.json",
+      "bytes": 18993,
+      "sha256": "59dcb37f73c39e9bafe6e33b911dc54ede96aa2d7302e60501c630aa95b42f7d"
+    },
+    {
+      "file": "landscape.json",
+      "bytes": 19090,
+      "sha256": "fb19625ff7553fa7546699312abcd857ea3cdfc70430e7367f2317e17ff447f3"
+    },
+    {
+      "file": "lifecycle.json",
+      "bytes": 1250,
+      "sha256": "19cf88d9b0472117da12c5201aa95d6afe8bad554a42f505b4480eac67bf6335"
+    },
+    {
+      "file": "unit-tests.log",
+      "bytes": 166956,
+      "sha256": "6fa7d4a19c35639f80cb57f03f853b9a61b1475f12f80a1e1779d14ede0c6768"
+    },
+    {
+      "file": "focused-tests.log",
+      "bytes": 5881,
+      "sha256": "a6d5180be24be86faef6bc7ab593ef155befea50f5f305d988e3abe67278afb2"
+    },
+    {
+      "file": "check.log",
+      "bytes": 216,
+      "sha256": "01888650f42cf8634dc89c9941d6bfcd8dc4b6b2fb25ff6ff46b536bb9bf5fc6"
+    },
+    {
+      "file": "build.log",
+      "bytes": 1530,
+      "sha256": "cbe58f8678d1169248a505f531f2f85a16b96dd9b882e792665396489baf14e8"
+    },
+    {
+      "file": "source.json",
+      "bytes": 367,
+      "sha256": "1d9649f5236539800793f0d301138a0d75befc945e0438fdae1301eca2f78ec4"
+    },
+    {
+      "file": "desktop-macaw-aviary.jpg",
+      "bytes": 126620,
+      "sha256": "b3cf89b6a2ad7f8e1433deb126fdde334677a8a39c6da41583c27600de16adaa"
+    },
+    {
+      "file": "desktop-elephant-grove.jpg",
+      "bytes": 102593,
+      "sha256": "90adea3d71ec282b51107450ce509044610c00020d3748cc63ba86c89a07010a"
+    },
+    {
+      "file": "desktop-lion-savanna.jpg",
+      "bytes": 97063,
+      "sha256": "b81f1d32fb5356ff2d8b8be674b5bc993aabb9c3f1ce5614a200c4f0445b186f"
+    },
+    {
+      "file": "desktop-giraffe-plains.jpg",
+      "bytes": 104824,
+      "sha256": "e9410cd0fe0139d22f79867cf3b86b670ef59e5635b0d68ca6b9f1b036aa268b"
+    },
+    {
+      "file": "desktop-zebra-grasslands.jpg",
+      "bytes": 115720,
+      "sha256": "8f7aad7508b7f3e9a6bb71f2678f0df3311988d5d1577828425e344a792647c5"
+    },
+    {
+      "file": "portrait-macaw-aviary.jpg",
+      "bytes": 42097,
+      "sha256": "a31cd90869850e193f39b4b7436f753efdb4e98bcad4df4b0754bfe7e14bb0f1"
+    },
+    {
+      "file": "portrait-elephant-grove.jpg",
+      "bytes": 37250,
+      "sha256": "0dea0fac64f8d2dcb4e8c1a9279761177a2344b5e452800022b3d77b5672219c"
+    },
+    {
+      "file": "portrait-lion-savanna.jpg",
+      "bytes": 37350,
+      "sha256": "9aceec2bc43e4b5d5d62fa17fd7e009c3b7e115bdfecc97104bddd478a96ba8b"
+    },
+    {
+      "file": "portrait-giraffe-plains.jpg",
+      "bytes": 40313,
+      "sha256": "5c24a433472cdb4571789bada9602c43d249b3d79374fb4adf9e2cfcdc10f7e3"
+    },
+    {
+      "file": "portrait-zebra-grasslands.jpg",
+      "bytes": 43160,
+      "sha256": "817eb500c4e5d05935b25a16ffb5171f8f6b5a1f64f51807e279849bd7a5dadf"
+    },
+    {
+      "file": "landscape-macaw-aviary.jpg",
+      "bytes": 40190,
+      "sha256": "b2f2ac3aa29432ae0340d49a2df1248878e55577a5a7126e778e77d94b44194f"
+    },
+    {
+      "file": "landscape-elephant-grove.jpg",
+      "bytes": 35425,
+      "sha256": "43fef791329430a5b126d9032da77c85f040f9b02b17d8a9d150313cde40b0e1"
+    },
+    {
+      "file": "landscape-lion-savanna.jpg",
+      "bytes": 37337,
+      "sha256": "56612db4ed3a2167bc7eb209ed81e56a302fceb0909f88b73a158ac5b75eb651"
+    },
+    {
+      "file": "landscape-giraffe-plains.jpg",
+      "bytes": 38120,
+      "sha256": "c41703cd9ab437dd2ecd6f2f8f07028533cac0089737ef3cbccf733016b5635a"
+    },
+    {
+      "file": "landscape-zebra-grasslands.jpg",
+      "bytes": 42197,
+      "sha256": "de47ec5cf82f8016f1d66f52ceb84a9fe1529250990dee1b6014bdecea4faabc"
+    }
+  ]
+}

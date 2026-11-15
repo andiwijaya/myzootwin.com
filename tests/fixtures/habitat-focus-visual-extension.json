@@ -1,0 +1,325 @@
+{
+  "version": 1,
+  "scope": "Reviewed habitat zoom: bounded local camera, picking filter, reversible render clipping. Animal and environment factories remain pinned to prior receipts.",
+  "changedPaths": [
+    "src/game/render3d/camera-controls.ts",
+    "src/game/render3d/camera-navigation.ts",
+    "src/game/render3d/habitat-focus.ts",
+    "src/game/render3d/scene-picking.ts"
+  ],
+  "predecessors": [
+    {
+      "path": "src/game/render3d/camera-controls.ts",
+      "sha256": "03899e68311f582ebe1b85776a5ead39ddfc12839a0ad40630f1b4f2d56f1503"
+    },
+    {
+      "path": "src/game/render3d/camera-navigation.ts",
+      "sha256": "5a70c23e413ec8b9950ca970d88c7ebd31b9e4312189605910d359bc97e9b26d"
+    },
+    {
+      "path": "src/game/render3d/scene-picking.ts",
+      "sha256": "2dafb17b0d2c3799ed98f8623c69c5e30d9c4dcf61b2f4e7bbff28aef79685c7"
+    }
+  ],
+  "modules": [
+    {
+      "path": "src/game/render3d/camera-controls.ts",
+      "sha256": "a8932a57ee596ad23a8e71c99000c91d86deb8e4045e97ce4b8024f247f214d5",
+      "family": "camera-picking",
+      "imports": [
+        "src/game/render3d/camera-gestures.ts",
+        "src/game/render3d/camera-navigation.ts",
+        "src/game/render3d/isometric-camera.ts",
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "mountCameraControls",
+          "line": 7
+        },
+        {
+          "name": "release",
+          "line": 19
+        },
+        {
+          "name": "cancelAll",
+          "line": 20
+        },
+        {
+          "name": "point",
+          "line": 21
+        },
+        {
+          "name": "up",
+          "line": 33
+        },
+        {
+          "name": "reframe",
+          "line": 58
+        },
+        {
+          "name": "command",
+          "line": 66
+        }
+      ],
+      "threeTypes": [
+        "Vector3"
+      ],
+      "exports": [
+        "mountCameraControls"
+      ]
+    },
+    {
+      "path": "src/game/render3d/camera-navigation.ts",
+      "sha256": "c3417e6c3dab8c9749743838425eb568c5e01f2e78f0039a66b8dc840fce17b0",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "clamp",
+          "line": 8
+        },
+        {
+          "name": "createCameraNavigation",
+          "line": 11
+        },
+        {
+          "name": "limits",
+          "line": 13
+        },
+        {
+          "name": "commit",
+          "line": 19
+        },
+        {
+          "name": "ground",
+          "line": 20
+        },
+        {
+          "name": "zoomBy",
+          "line": 24
+        }
+      ],
+      "threeTypes": [],
+      "exports": [
+        "CameraCommand",
+        "CameraFrame",
+        "createCameraNavigation"
+      ]
+    },
+    {
+      "path": "src/game/render3d/habitat-focus.ts",
+      "sha256": "2a4fb71d107043b0c0390c75076f8143a5342b266487eaf348ac5274bbe39d27",
+      "family": "shared-world",
+      "imports": [
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "habitatKind",
+          "line": 16
+        },
+        {
+          "name": "habitatContains",
+          "line": 17
+        },
+        {
+          "name": "habitatUndoAllowed",
+          "line": 20
+        },
+        {
+          "name": "habitatForSelection",
+          "line": 27
+        },
+        {
+          "name": "habitatFocusArea",
+          "line": 34
+        },
+        {
+          "name": "habitatFocusBounds",
+          "line": 39
+        },
+        {
+          "name": "createHabitatRenderMask",
+          "line": 50
+        },
+        {
+          "name": "belongs",
+          "line": 54
+        },
+        {
+          "name": "restoreVisibility",
+          "line": 62
+        },
+        {
+          "name": "hide",
+          "line": 63
+        },
+        {
+          "name": "restoreMaterials",
+          "line": 64
+        },
+        {
+          "name": "set",
+          "line": 68
+        },
+        {
+          "name": "apply",
+          "line": 74
+        },
+        {
+          "name": "release",
+          "line": 87
+        }
+      ],
+      "threeTypes": [
+        "Box3",
+        "Plane",
+        "Vector3"
+      ],
+      "exports": [
+        "FocusHabitat",
+        "HabitatFocusView",
+        "createHabitatRenderMask",
+        "habitatContains",
+        "habitatFocusArea",
+        "habitatFocusBounds",
+        "habitatForSelection",
+        "habitatKind",
+        "habitatUndoAllowed"
+      ]
+    },
+    {
+      "path": "src/game/render3d/scene-picking.ts",
+      "sha256": "ae2b95555913b35b6ef58ee5d809e6d0ec76bc4647a42268dff8d63411c32bae",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [
+        {
+          "type": "Group",
+          "owner": "createScenePicker",
+          "variable": "group",
+          "line": 19
+        },
+        {
+          "type": "Mesh",
+          "owner": "createScenePicker",
+          "variable": "fill",
+          "line": 23
+        },
+        {
+          "type": "PlaneGeometry",
+          "owner": "createScenePicker",
+          "variable": "PlaneGeometry",
+          "line": 23
+        },
+        {
+          "type": "MeshBasicMaterial",
+          "owner": "createScenePicker",
+          "variable": "MeshBasicMaterial",
+          "line": 23
+        }
+      ],
+      "labels": [
+        {
+          "label": "Selection indicator",
+          "owner": "createScenePicker",
+          "line": 19,
+          "kind": "runtime-object-name"
+        }
+      ],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "raycastScene",
+          "line": 6
+        },
+        {
+          "name": "createScenePicker",
+          "line": 18
+        },
+        {
+          "name": "select",
+          "line": 26
+        }
+      ],
+      "threeTypes": [
+        "Box3",
+        "Box3Helper",
+        "DoubleSide",
+        "Group",
+        "Mesh",
+        "MeshBasicMaterial",
+        "PlaneGeometry",
+        "Raycaster",
+        "Vector2",
+        "Vector3"
+      ],
+      "exports": [
+        "PickRect",
+        "createScenePicker",
+        "raycastScene"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "sourcePath": "src/game/render3d/scene-picking.ts",
+      "family": "camera-picking",
+      "kind": "constructor-site",
+      "type": "Group",
+      "owner": "createScenePicker",
+      "variable": "group",
+      "line": 19,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/scene-picking.ts",
+      "family": "camera-picking",
+      "kind": "constructor-site",
+      "type": "Mesh",
+      "owner": "createScenePicker",
+      "variable": "fill",
+      "line": 23,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/scene-picking.ts",
+      "family": "camera-picking",
+      "kind": "constructor-site",
+      "type": "PlaneGeometry",
+      "owner": "createScenePicker",
+      "variable": "PlaneGeometry",
+      "line": 23,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/scene-picking.ts",
+      "family": "camera-picking",
+      "kind": "constructor-site",
+      "type": "MeshBasicMaterial",
+      "owner": "createScenePicker",
+      "variable": "MeshBasicMaterial",
+      "line": 23,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/scene-picking.ts",
+      "family": "camera-picking",
+      "kind": "runtime-object-name",
+      "label": "Selection indicator",
+      "owner": "createScenePicker",
+      "line": 19,
+      "visualStatus": "NOT_RUN"
+    }
+  ]
+}

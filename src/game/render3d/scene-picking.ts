@@ -3,18 +3,19 @@ import type { SceneCatalog, SceneIdentity } from './scene-selection.ts';
 export interface PickRect {left:number;top:number;width:number;height:number;}
 
 /** Visible triangle ownership, not broad bounding-box proxies or a plane through occluders. */
-export function raycastScene(catalog:SceneCatalog,camera:Camera,point:{x:number;y:number},rect:PickRect,raycaster=new Raycaster()):SceneIdentity|null {
+export function raycastScene(catalog:SceneCatalog,camera:Camera,point:{x:number;y:number},rect:PickRect,raycaster=new Raycaster(),accept?:(identity:SceneIdentity,point:Vector3)=>boolean):SceneIdentity|null {
   if(![point.x,point.y,rect.left,rect.top,rect.width,rect.height].every(Number.isFinite)||rect.width<=0||rect.height<=0||point.x<rect.left||point.x>rect.left+rect.width||point.y<rect.top||point.y>rect.top+rect.height)return null;
   camera.updateMatrixWorld(true);
   raycaster.setFromCamera(new Vector2((point.x-rect.left)/rect.width*2-1,1-(point.y-rect.top)/rect.height*2),camera);
-  const hit=raycaster.intersectObjects(catalog.batches.map(b=>b.mesh),false)[0];
+  const hits=raycaster.intersectObjects(catalog.batches.map(b=>b.mesh).filter(mesh=>{if(!accept)return true;for(let o:typeof mesh|import('three').Object3D|null=mesh;o;o=o.parent)if(!o.visible)return false;return true;}),false);
+  const hit=accept?hits.find(h=>{const batch=catalog.batches.find(b=>b.mesh===h.object),owner=batch?.ranges.find(r=>h.faceIndex!=null&&h.faceIndex>=r.first&&h.faceIndex<r.first+r.count),identity=owner?.id?catalog.identities.get(owner.id):undefined;return identity&&accept(identity,h.point);}):hits[0];
   if(!hit||hit.faceIndex===undefined)return null;
   const owner=catalog.batches.find(b=>b.mesh===hit.object)?.ranges.find(r=>hit.faceIndex!>=r.first&&hit.faceIndex!<r.first+r.count);
   const identity=owner?.id?catalog.identities.get(owner.id):undefined;
   return identity?{...identity,cell:{...identity.cell}}:null;
 }
 
-export function createScenePicker(catalog:SceneCatalog,camera:Camera,rect:()=>PickRect,onChange:(identity:SceneIdentity|null)=>void) {
+export function createScenePicker(catalog:SceneCatalog,camera:Camera,rect:()=>PickRect,onChange:(identity:SceneIdentity|null)=>void,accept?:(identity:SceneIdentity,point:Vector3)=>boolean) {
   const group=new Group();group.name='Selection indicator';group.visible=false;
   const outline=new Box3Helper(new Box3(),'#284d42');
   const outlineMaterials=Array.isArray(outline.material)?outline.material:[outline.material];
@@ -34,8 +35,9 @@ export function createScenePicker(catalog:SceneCatalog,camera:Camera,rect:()=>Pi
     onChange(next?{...next,cell:{...next.cell}}:null);
   }
   return {group,geometries:[outline.geometry,fill.geometry],materials:[...outlineMaterials,fill.material],
-    pick(point:{x:number;y:number}) {if(enabled&&!disposed)select(raycastScene(catalog,camera,point,rect(),raycaster));},
+    pick(point:{x:number;y:number}) {if(enabled&&!disposed)select(raycastScene(catalog,camera,point,rect(),raycaster,accept));},
     selection:()=>current?structuredClone(current):null,
+    setFilter(value?:typeof accept){accept=value;},
     clear(){select(null);},
     refresh(){if(current){const next=catalog.identities.get(current.id);select(next?{...next,cell:{...next.cell}}:null,true);}},
     setEnabled(value:boolean){enabled=value;},

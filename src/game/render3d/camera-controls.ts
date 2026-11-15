@@ -7,6 +7,8 @@ import {sceneOrigin} from '../world/scene-coordinates.ts';
 export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, camera:OrthographicCamera, bounds:Box3, map:{width:number;height:number}, onTap?:(point:CameraPointer)=>void,onCancel?:()=>void) {
   let disposed=false,enabled=true;const events=new AbortController();
   let basePosition=new Vector3(),width=0,height=0,azimuthStep=0;
+  let habitatView:{bounds:Box3;area:{x:number;z:number;width:number;depth:number}}|null=null;
+  let previousView:{zoom:number;focusX:number;focusZ:number;azimuth:number}|null=null;
   const navigation=createCameraNavigation(()=>{
     if(disposed)return;const view=navigation.inspect();
     camera.position.copy(basePosition).add(new Vector3(view.x,0,view.z));camera.zoom=view.zoom;camera.updateProjectionMatrix();camera.updateMatrixWorld(true);
@@ -55,10 +57,11 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
   // Refit only on an explicit view/size change, never per simulation/render frame.
   function reframe(preserveFocus=false){
     if(width<=0||height<=0)return;
-    const frame=fitIsometricCamera(camera,bounds,width/height,azimuthStep*Math.PI/4);basePosition=camera.position.clone();
+    const frame=fitIsometricCamera(camera,habitatView?.bounds??bounds,width/height,azimuthStep*Math.PI/4);basePosition=camera.position.clone();
     const right=new Vector3(1,0,0).applyQuaternion(camera.quaternion),up=new Vector3(0,1,0).applyQuaternion(camera.quaternion);
     const origin=sceneOrigin(map);
-    navigation.configure({width,height,halfWidth:frame.halfWidth,halfHeight:frame.halfHeight,rightX:right.x,rightZ:right.z,upX:up.x,upZ:up.z,upY:up.y,originX:frame.originX,originZ:frame.originZ,mapWidth:map.width,mapHeight:map.height,mapCenterX:map.width/2-origin.x,mapCenterZ:map.height/2-origin.z},preserveFocus);
+    const area=habitatView?.area;
+    navigation.configure({width,height,halfWidth:frame.halfWidth,halfHeight:frame.halfHeight,rightX:right.x,rightZ:right.z,upX:up.x,upZ:up.z,upY:up.y,originX:frame.originX,originZ:frame.originZ,mapWidth:area?.width??map.width,mapHeight:area?.depth??map.height,mapCenterX:area?area.x+area.width/2:map.width/2-origin.x,mapCenterZ:area?area.z+area.depth/2:map.height/2-origin.z,...(area?{panInset:.08}:{})},preserveFocus);
   }
   function command(value:CameraCommand){
     if(!enabled||disposed||!width||!height)return;cancelAll();
@@ -67,6 +70,11 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
     else navigation.command(value);
   }
   return {
+    setHabitatView(next:{bounds:Box3;area:{x:number;z:number;width:number;depth:number}}|null){
+      if(disposed)return;cancelAll();
+      if(next){if(!habitatView){const v=navigation.inspect();previousView={zoom:v.zoom,focusX:v.focusX,focusZ:v.focusZ,azimuth:azimuthStep};}habitatView=next;azimuthStep=0;reframe();navigation.command('reset');}
+      else if(habitatView){habitatView=null;if(previousView)azimuthStep=previousView.azimuth;reframe();if(previousView)navigation.restore(previousView);previousView=null;}
+    },
     resize(nextWidth:number,nextHeight:number) {
       if(disposed||!Number.isFinite(nextWidth)||!Number.isFinite(nextHeight)||nextWidth<=0||nextHeight<=0)return;
       cancelAll();width=nextWidth;height=nextHeight;reframe();

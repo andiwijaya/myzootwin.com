@@ -27,6 +27,7 @@ export class PreviewFailure extends Error {
 }
 
 export interface PreviewSession {
+  habitatFocus?(command:'enter'|'exit',habitatId?:string):void;
   claimZebraGrant?(quote:import('../economy/zebra-grant.ts').ZebraGrantQuote):void;
   beginZebraHabitat?():void;
   beginZebraPath?():void;
@@ -157,6 +158,7 @@ export function createPreviewController(load: PreviewLoader, onState: (state: Pr
     recover(quote:RecoveryQuote){if(!isPaused()&&state.status==='ready')session?.recover?.(quote);},
     visitors(command:'open'|'close'|'focus'|'follow'){if(!isPaused()&&state.status==='ready')session?.visitors?.(command);},
     camera(command:CameraCommand) {if(!isPaused()&&state.status==='ready')session?.camera?.(command);},
+    habitatFocus(command:'enter'|'exit',habitatId?:string) {if(state.status==='ready')session?.habitatFocus?.(command,habitatId);},
     clearSelection(){if(!isPaused()&&state.status==='ready')session?.clearSelection?.();},
     quoteRemoval:(target:EditTarget)=>!isPaused()&&state.status==='ready'?session?.quoteRemoval?.(target):undefined,
     edit(command:'remove'|'undo',quote?:RemovalQuote){if(!isPaused()&&state.status==='ready')session?.edit?.(command,quote);},

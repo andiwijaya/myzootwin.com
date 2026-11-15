@@ -2,7 +2,7 @@ export interface CameraFrame {
   width: number; height: number; halfWidth: number; halfHeight: number;
   rightX: number; rightZ: number; upX: number; upZ: number;
   originX: number; originZ: number; mapWidth: number; mapHeight: number;
-  mapCenterX?:number;mapCenterZ?:number;upY?:number;
+  mapCenterX?:number;mapCenterZ?:number;upY?:number;panInset?:number;
 }
 export type CameraCommand = 'zoom-in' | 'zoom-out' | 'reset' | 'rotate-left' | 'rotate-right';
 const clamp = (value:number, min:number, max:number) => Math.max(min,Math.min(max,value));
@@ -12,9 +12,9 @@ export function createCameraNavigation(onChange:()=>void = ()=>{}) {
   let frame:CameraFrame|undefined, zoom=1, x=0, z=0;
   function limits() {
     if(!frame)return {minX:0,maxX:0,minZ:0,maxZ:0};
-    const t=1-1/zoom, f=frame;
+    const t=1-1/zoom, f=frame, inset=f.panInset??.6;
     // At overview no pan; zoom progressively exposes travel, always inside the map.
-    return {minX:((f.mapCenterX??0)-f.mapWidth/2+.6-f.originX)*t,maxX:((f.mapCenterX??0)+f.mapWidth/2-.6-f.originX)*t,minZ:((f.mapCenterZ??0)-f.mapHeight/2+.6-f.originZ)*t,maxZ:((f.mapCenterZ??0)+f.mapHeight/2-.6-f.originZ)*t};
+    return {minX:((f.mapCenterX??0)-f.mapWidth/2+inset-f.originX)*t,maxX:((f.mapCenterX??0)+f.mapWidth/2-inset-f.originX)*t,minZ:((f.mapCenterZ??0)-f.mapHeight/2+inset-f.originZ)*t,maxZ:((f.mapCenterZ??0)+f.mapHeight/2-inset-f.originZ)*t};
   }
   function commit() {const b=limits();x=clamp(x,b.minX,b.maxX);z=clamp(z,b.minZ,b.maxZ);onChange();}
   function ground(u:number,v:number) {
@@ -29,7 +29,7 @@ export function createCameraNavigation(onChange:()=>void = ()=>{}) {
   }
   return {
     configure(next:CameraFrame, preserveFocus=false) {
-      if(!Object.values(next).every(Number.isFinite)||next.width<=0||next.height<=0||next.halfWidth<=0||next.halfHeight<=0||next.mapWidth<=2||next.mapHeight<=2||Math.abs(next.originX-(next.mapCenterX??0))>next.mapWidth/2-.6||Math.abs(next.originZ-(next.mapCenterZ??0))>next.mapHeight/2-.6||Math.abs(next.rightX*next.upZ-next.rightZ*next.upX)<.01)throw new RangeError('Invalid camera frame');
+      if(!Object.values(next).every(Number.isFinite)||next.width<=0||next.height<=0||next.halfWidth<=0||next.halfHeight<=0||next.mapWidth<=0||next.mapHeight<=0||(next.panInset??.6)<0||(next.panInset??.6)>=Math.min(next.mapWidth,next.mapHeight)/2||(next.panInset===undefined&&(next.mapWidth<=2||next.mapHeight<=2||Math.abs(next.originX-(next.mapCenterX??0))>next.mapWidth/2-.6||Math.abs(next.originZ-(next.mapCenterZ??0))>next.mapHeight/2-.6))||Math.abs(next.rightX*next.upZ-next.rightZ*next.upX)<.01)throw new RangeError('Invalid camera frame');
       const previous=frame?{x:frame.originX+x,z:frame.originZ+z}:undefined;
       frame={...next};if(preserveFocus&&previous&&zoom>1){x=previous.x-frame.originX;z=previous.z-frame.originZ;}commit();
     },
@@ -46,6 +46,7 @@ export function createCameraNavigation(onChange:()=>void = ()=>{}) {
       commit();
     },
     zoomBy,
+    restore(view:{zoom:number;focusX:number;focusZ:number}) {if(!frame||!Object.values(view).every(Number.isFinite))return;zoom=clamp(view.zoom,1,3);x=view.focusX-frame.originX;z=view.focusZ-frame.originZ;commit();},
     command(command:CameraCommand) {if(command==='reset'){zoom=1;x=z=0;commit();}else if(command==='zoom-in'||command==='zoom-out')zoomBy(command==='zoom-in'?1.25:.8);},
     inspect:()=>({zoom,x,z,focusX:(frame?.originX??0)+x,focusZ:(frame?.originZ??0)+z,...limits()}),
   };
