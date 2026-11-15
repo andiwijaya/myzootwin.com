@@ -48,7 +48,7 @@ Build browser akhir: `zoom-20261115-g`, fingerprint sumber `1fec641f9530a98fc11c
 - **15 screenshot kandang** diperiksa visual; **8 skenario tambahan** meliputi Escape, prioritas pembatalan preview, keluar saat jeda, studio Makaw, bahasa Inggris, context loss, Retry, dan cold reload.
 - Cold reload mempertahankan tick, saldo, lima habitat, dan 14 satwa pada fixture. Tidak ada migrasi atau reset progres akibat mode kamera.
 
-Lihat [laporan QA](qa/habitat-focus-20261115/REPORT.md) dan [verifikasi terstruktur](qa/habitat-focus-20261115/verification.json) untuk pemisahan metode, log, dan bukti. Hasil tersebut merekam verifikasi lokal. Rilis produksi selanjutnya memakai jalur GitHub `main` → Cloudflare Pages `myzootwin-com`, dengan build `npm run build` dan output `dist`. Hanya output produk yang dipublikasikan; lab/fixture QA tetap di luar output publik. Status deployment dan hasil pemeriksaan live dicatat terpisah setelah deployment selesai.
+Lihat [laporan QA](qa/habitat-focus-20261115/REPORT.md) dan [verifikasi terstruktur](qa/habitat-focus-20261115/verification.json) untuk pemisahan metode, log, dan bukti. Hasil tersebut merekam verifikasi lokal. Rilis produksi memakai jalur GitHub `main` → Cloudflare Pages `myzootwin-com`, dengan build `npm run build` dan output `dist`. Hanya output produk yang dipublikasikan; lab/fixture QA tetap di luar output publik. **Source `2fb696b` sudah live dan matriks 15/15 di internal browser lulus**; lihat [laporan rilis live](HABITAT_ZOOM_LIVE_RELEASE.md) untuk identitas deployment, bukti dan batas emulasi HP.
 
 ## Mengulang QA
 
