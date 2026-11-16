@@ -1,6 +1,6 @@
 # Navigasi HP setelah preview Bangun ditutup
 
-Tanggal: 17 November 2026. Status: seluruh gate lokal lulus; rilis sedang diproses.
+Tanggal: 17 November 2026. Status: selesai dan live sejak **05.44.58 WIB**.
 
 ## Temuan dan perubahan
 
@@ -28,4 +28,8 @@ Pengujian terarah **49/49** lulus; Astro **692 berkas, 0 error/0 warning/0 hint*
 
 Percobaan native awal memakai End sampai tombol Batal berada di luar viewport; fokus otomatis browser kemudian menggulirnya kembali. Bukti `failed-native-focus-initial.json` dipertahankan dan dikecualikan. Pengukuran native final menyiapkan fokus dan memastikan tombol terlihat sebelum menghitung pergeseran.
 
-Hasil akhir akan dicatat pada `verification.json`. Deployment dan pemeriksaan produksi dicatat pada `deployment.json`, `live-body-check.json`, serta `live-native.json` setelah seluruh gate lulus.
+Rilis: commit **`073576396ac03768e7420cf06e1ee2d2008bbe91`**, Cloudflare Pages **`787ff474-b3b0-4139-af7b-2664408a5005`**, selesai **17 November 2026 pukul 05.44.58 WIB**. Check Cloudflare pada commit tersebut completed/success. **130/130 body/hash produksi** cocok dengan build final, termasuk HTML, bundle dan runtime GLB; entry yang benar-benar dimuat `/_astro/PlayEntry.astro_astro_type_script_index_0_lang.BdVMjwKe.js`.
+
+**146/146 pemeriksaan native live** lulus: empat panel pada Zoo dan kelima kandang dalam dua ukuran HP, tanpa scroll atau menu berpindah lagi setelah jeda, layout penahan bersih, satu renderer dan tanpa overflow horizontal. Console tanpa warning/error. Campaign live tetap **4.381 ZC dan 14 satwa**, ditinggalkan pada Zoo/Misi dalam keadaan jeda; tidak ada belanja/refill/klaim/reset atau injeksi save di produksi. Tab QA ditutup, tiga server QA milik tugas dihentikan, viewport override dikembalikan. Tab produksi disimpan untuk pengguna.
+
+Bukti final: [verifikasi](verification.json), [deployment](deployment.json), [body/hash live](live-body-check.json), [native live](live-native.json), dan [screenshot HP live](live-mobile-390.jpg). Pemeriksaan HP memakai viewport browser internal 360 × 780 dan 390 × 844; perangkat fisik tidak diuji.
