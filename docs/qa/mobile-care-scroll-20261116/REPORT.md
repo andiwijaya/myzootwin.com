@@ -1,6 +1,6 @@
 # Scroll setelah isi ulang di HP — 16 November 2026
 
-Status: **LOCAL_PASS; publikasi dan pemeriksaan domain utama menunggu.**
+Status: **PASS — perbaikan sudah live dan lima kandang lulus pemeriksaan domain utama.**
 
 Laporan pengguna: setelah zoom makaw lalu scroll ke makanan, isi ulang membuat halaman kembali ke atas. Reproduksi asli ditemukan di handler makanan dan air: perintah refill ikut memfokuskan dan menggulir ke kanvas. Resize HUD juga memaksa scroll ke atas; perubahan tinggi bilah alamat/keyboard HP dapat memicunya. Zebra mengalami perpindahan ke bagian bawah panel ketika pemulihan fokus asinkron memicu scroll HUD.
 
@@ -23,3 +23,9 @@ Ketukan native makaw pada 360 px juga menjaga y dan posisi tombol untuk makanan 
 **291/291 pemeriksaan browser**: 68 pemeriksaan isi ulang/scroll pada masing-masing 390 × 844 dan 360 × 780, serta 155 pemeriksaan kamera/menu pada 360 px. Termasuk 20 transaksi nyata di fixture, makanan dan air kelima kandang, menu/fokus tetap, simulasi terus bertambah, resize tanpa lompatan, satu kanvas, 14 penghuni dan save valid. **122/122 pengujian terarah** lulus; Astro check bebas error/warning/hint, build 10 halaman. HTML serta seluruh aset _astro identik dengan kandidat QA.
 
 Fingerprint sumber: `a49ff63b0728b18add98a30832772e72911f9df22bd8d47119de5f73a4f62389`; entry `/_astro/PlayEntry.astro_astro_type_script_index_0_lang.D3vXhhy3.js`. [Verifikasi](verification.json), [reproduksi](before-390.json), [390 px](care-390.json), [360 px](care-360.json), [kamera dan menu](controls-360.json), [tests](tests.tap), [typecheck](check.log), [build](build.log).
+
+Commit `aa9186b30e2879f2985d001f1fe930c6555733c5` telah dipublikasikan ke main. Cloudflare Pages deployment `6d44e60d-22d5-4594-9c4d-2850f3dc16cb` berhasil pada **16 November 2026 pukul 15.32.21 WIB**. Domain [myzootwin.com/play/](https://myzootwin.com/play/) memuat entry `D3vXhhy3`; **130/130 body/hash** cocok dengan kandidat. [Deployment](deployment.json), [body/hash](live-body-check.json).
+
+Pemeriksaan native domain utama: zoom ke kelima kandang, masuk Rawat dengan keyboard, scroll secara native ke fasilitas, lalu ubah tinggi viewport 844 → 760. Pada setiap kandang, y dokumen tetap, fasilitas tetap terlihat, tab tetap Rawat dan game dijeda. Tidak ada isi ulang/pembelian/klaim/reset/transfer/injeksi save pada campaign pemilik. Stok diuji dalam fixture QA terpisah yang kode aplikasinya cocok dengan produksi. Saldo live 4.381 ZC dan populasi 14 tetap sama selama navigasi. Diakhiri di seluruh Zoo, dijeda, satu kanvas, console warning/error kosong (batas 100). [Receipt live](live-native.json), [panel makanan makaw live](live-macaw-care-390.jpg), [akhir Zoo](live-final-zoo-390.jpg).
+
+Sembilan server QA milik tugas dihentikan setelah command line/PID diverifikasi. Tab QA yang berhasil dibuka ditutup, override viewport dan visibilitas dipulihkan; tab percobaan koneksi awal tetap bersifat sementara untuk cleanup akhir turn.
