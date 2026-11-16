@@ -1,6 +1,6 @@
 # Posisi halaman setelah menutup preview Bangun
 
-Tanggal 16 November 2026. Status: seluruh gate lokal lulus, deploy dan verifikasi domain utama berikutnya.
+Tanggal 16 November 2026. Status: **selesai dan live**, seluruh gate lokal dan pemeriksaan domain utama lulus.
 
 Pengguna meminta posisi halaman benar-benar tetap setelah konfirmasi atau batal pada kelima kandang, termasuk penyesuaian scroll alami yang sebelumnya masih diizinkan. Pengujian kali ini memakai Codex internal browser seluruhnya.
 
@@ -26,4 +26,8 @@ Bukti visual native sebelum/sesudah: `native-preview-before-390.jpg` dan `native
 
 ## Rilis
 
-Belum deploy. Setelah lulus, rilis dicatat di `deployment.json`, kecocokan body produksi di `live-body-check.json` dan UI produksi di `live-native.json`. Transaksi QA dilakukan hanya pada origin terpisah; pemeriksaan campaign pemilik bersifat navigasi dalam keadaan jeda.
+Commit `642f16f2e3f95df8b3e1cc85773c20743766e280` berhasil dideploy oleh Cloudflare Pages `9e5edd5a-21b2-44cc-af59-2bd05b178d8f` pada **16 November 2026 pukul 21.12.53 WIB**. GitHub check terminal menunjukkan success untuk SHA yang tepat (`deployment.json`).
+
+**130/130 berkas produksi** cocok dengan dist final (`live-body-check.json`). Native halaman domain utama memuat entry final yang sama. **146/146 pemeriksaan live** lulus: Misi/Rawat/Tamu/Bangun di Zoo serta kelima kandang pada dua viewport, menu dan posisi halaman stabil setelah pembaruan tertunda, satu canvas, tanpa overflow, serta console tanpa warning/error (`live-native.json`). Screenshot: `live-mobile-390.jpg`.
+
+Campaign pemilik dipertahankan pada **4.381 ZC dan 14 satwa** selama navigasi dijeda, lalu dikembalikan ke Zoo dalam keadaan jeda. Pembelian/penutupan preview diuji melalui UI sebenarnya pada save QA terisolasi dengan produk yang identik; tidak ada pembelian, refill, klaim, transfer, reset atau injeksi save manual di domain produksi. Tab QA ditutup, viewport dikembalikan dan seluruh server QA milik sesi ini dihentikan.
