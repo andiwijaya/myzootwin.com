@@ -82,7 +82,7 @@ const destinations=[['zoo','zoo','Zoo'],['macaw-aviary','macaw','Makaw'],['eleph
   </nav>
   <p class="zoo-navigation-note" data-zoo-navigation-note role="status" hidden></p>
   <div class="zoo-camera-toolbar">
-    <fieldset class="hud-control-gate" data-hud-controls><legend class="selection-announcement" data-hud-text="actions">Aksi permainan</legend>
+    <fieldset class="hud-control-gate" data-hud-controls data-hud-camera-controls><legend class="selection-announcement" data-hud-text="actions">Aksi permainan</legend>
       <div class="camera-controls" data-camera-controls role="group" data-entry-aria="cameraControls" aria-label={copy.cameraControls} hidden>
         <button type="button" data-camera-command="zoom-in" data-entry-aria="cameraZoomIn" aria-label={copy.cameraZoomIn}><ZooUiIcon name="plus"/></button>
         <button type="button" data-camera-command="zoom-out" data-entry-aria="cameraZoomOut" aria-label={copy.cameraZoomOut}><ZooUiIcon name="minus"/></button>
@@ -94,7 +94,7 @@ const destinations=[['zoo','zoo','Zoo'],['macaw-aviary','macaw','Makaw'],['eleph
     </fieldset>
     <button type="button" data-zoo-back data-habitat-zoom-exit aria-label="Kembali ke zoo" disabled><ZooUiIcon name="left"/></button>
   </div>
-  <fieldset class="hud-control-gate zoo-pan-pad" id="zoo-pan-pad" data-zoo-pan-pad data-hud-controls hidden>
+  <fieldset class="hud-control-gate zoo-pan-pad" id="zoo-pan-pad" data-zoo-pan-pad data-hud-controls data-hud-camera-controls hidden>
     <legend class="selection-announcement" data-zoo-copy="pan">Geser kamera</legend>
     <button type="button" data-camera-command="pan-left" aria-label="Geser kamera ke kiri">←</button>
     <button type="button" data-camera-command="pan-up" aria-label="Geser kamera ke atas">↑</button>

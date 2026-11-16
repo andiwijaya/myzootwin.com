@@ -259,8 +259,9 @@ export function mountGameEntry(root: HTMLElement, options: {
         const hud = root.dataset.hudActive === 'true';
         const layout = root.querySelector<HTMLElement>('[data-guide-layout]'), stage = root.querySelector<HTMLElement>('[data-preview-stage]');
         if (layout) layout.inert = hud ? hard : paused;
-        if (stage) stage.inert = hud && paused;
-        for (const gate of root.querySelectorAll<HTMLFieldSetElement>('[data-hud-controls]')) gate.disabled = hud && paused;
+        if (stage) stage.inert = hud && hard;
+        for (const gate of root.querySelectorAll<HTMLFieldSetElement>('[data-hud-controls]'))
+            gate.disabled = hud && (gate.hasAttribute('data-hud-camera-controls') ? hard : paused);
         const speed = root.querySelector<HTMLElement>('[data-speed-tools]'), toolbar = root.querySelector<HTMLElement>('[data-guide-toolbar]');
         if (speed) speed.inert = paused;
         // A cold Continue still requires Resume before gameplay, but comfort,

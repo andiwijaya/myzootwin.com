@@ -10,6 +10,16 @@ function driver() {
 }
 function deferred() { let resolve; let reject; const promise = new Promise((a,b) => { resolve=a; reject=b; }); return { promise, resolve, reject }; }
 
+test('paused previews keep read-only camera commands while game mutations stay blocked',async()=>{
+  const viewed=[],changed=[];let paused;
+  const c=createPreviewController(async()=>()=>({dispose(){},setPaused:value=>paused=value,camera:command=>viewed.push(command),food:command=>changed.push(command)}),()=>{});
+  c.camera('zoom-in');assert.deepEqual(viewed,[]);
+  await c.open();c.setExternalPaused(true);
+  for(const command of ['zoom-in','zoom-out','rotate-left','rotate-right','pan-left','pan-right','pan-up','pan-down','reset'])c.camera(command);
+  c.food('refill');assert.equal(paused,true);assert.equal(viewed.length,9);assert.deepEqual(changed,[]);
+  c.dispose();c.camera('zoom-in');assert.equal(viewed.length,9);
+});
+
 test('RAF start is idempotent and stale cancelled callbacks cannot duplicate a restarted loop', () => {
   const frames = driver(); let draws = 0;
   const loop = createFrameLoop(frames, () => draws++, () => assert.fail('unexpected error'));

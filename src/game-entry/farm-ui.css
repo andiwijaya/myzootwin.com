@@ -39,10 +39,10 @@ section[data-play-entry].play-shell[data-hud-active="true"][data-enhanced="true"
 .zoo-camera-toolbar{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:0;align-items:center;padding:4px;background:var(--zoo-card);border:1px solid var(--zoo-line);border-radius:12px}
 .zoo-camera-toolbar>.hud-control-gate,.zoo-camera-toolbar [data-camera-controls]{display:contents!important}
 .zoo-camera-toolbar legend{display:none}
-section[data-play-entry].play-shell[data-hud-active="true"][data-enhanced="true"] .zoo-camera-toolbar button{display:flex;align-items:center;justify-content:center;min-width:0;min-height:44px;border:0;border-radius:8px;padding:8px 2px;margin:0;color:var(--zoo-accent);background:transparent;font:600 19px/1 'DM Sans',sans-serif;cursor:pointer}
+section[data-play-entry].play-shell[data-hud-active="true"][data-enhanced="true"] :is(.zoo-camera-toolbar,.zoo-pan-pad) button{display:flex;align-items:center;justify-content:center;min-width:0;min-height:44px;border:0;border-radius:8px;padding:8px 2px;margin:0;color:var(--zoo-accent);background:transparent;font:600 19px/1 'DM Sans',sans-serif;cursor:pointer}
 .zoo-camera-toolbar button svg{width:22px;height:22px}
 .zoo-camera-toolbar [data-camera-command="zoom-in"]{order:1}.zoo-camera-toolbar [data-camera-command="zoom-out"]{order:2}.zoo-camera-toolbar [data-camera-command="rotate-left"]{order:3}.zoo-camera-toolbar [data-camera-command="rotate-right"]{order:4}.zoo-camera-toolbar [data-zoo-pan-toggle]{order:5}.zoo-camera-toolbar [data-zoo-back]{order:6}.zoo-camera-toolbar [data-camera-command="reset"]{order:7;font-size:11px!important}
-.zoo-camera-toolbar button:hover:not(:disabled),.zoo-camera-toolbar [aria-expanded="true"]{background:var(--zoo-active)}
+.zoo-camera-toolbar button:hover:not(:disabled),.zoo-camera-toolbar [aria-expanded="true"],.zoo-pan-pad button:hover:not(:disabled){background:var(--zoo-active)}
 .zoo-pan-pad{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:8px 12px;border:1px solid var(--zoo-line);border-radius:12px;background:var(--zoo-card)}
 .zoo-pan-pad p{grid-column:1/-1;margin:0;font-size:11px;color:var(--zoo-muted)}
 section[data-play-entry].play-shell[data-hud-active="true"][data-enhanced="true"] [data-zoo-build]{display:flex;gap:9px;align-items:center;justify-content:center;width:100%;min-height:50px;margin:0;padding:12px 16px;border:1px solid #cad7ba;border-radius:11px;background:#e6eddb;color:#304c38;font:700 15px/1.3 'DM Sans',sans-serif;cursor:pointer}

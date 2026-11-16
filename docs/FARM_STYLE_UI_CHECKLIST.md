@@ -59,3 +59,15 @@ Audit sebelum perbaikan: `.qa/mobile-polish-20261116/before-audit.json`, `before
 - Typecheck final **0 error/0 warning/0 hint**, **42/42 pengujian terarah lulus**, build produksi **10 halaman**. HTML kandidat identik dengan produk QA, fingerprint `b1caf91d54271aec3b0bf0ecb110f85a2a570a50031ac402a326d760674a3017`. Bukti tindak lanjut: [laporan HP](qa/mobile-ui-20261116/REPORT.md), [verifikasi](qa/mobile-ui-20261116/verification.json). Rilis dan pemeriksaan produksi selesai.
 
 - Tindak lanjut HP sudah live: commit `e2fbe81`, Cloudflare Pages `fddb6acd-5558-4151-a51d-cbf02f8e1dc1`, **16 November 2026, 12:25:25 WIB**. **130/130 body/hash** cocok. Pemeriksaan native domain utama pada 360 × 780 dan 390 × 844 lulus untuk kelima spesies/14 individu/empat indikator; semua target sentuh menu dan toolbar minimal 44 px. Tick **96.191**, saldo **4.381 ZC** dan populasi **14** tetap selama menu dijeda, tanpa transaksi/reset manual. Console warning/error kosong. Bukti akhir: [rilis HP](qa/mobile-ui-20261116/deployment.json), [UI live](qa/mobile-ui-20261116/live-ui.json).
+
+## Tindak lanjut fungsi kontrol HP — 16 November 2026
+
+- [x] Audit native domain utama: enam tujuan, Misi/Rawat/Tamu/Bangun, kembali ke zoo, zoom +/−, putar kiri/kanan, empat arah geser, dan Utuh. Navigasi serta toolbar berjalan saat simulasi aktif.
+- [x] Mengidentifikasi masalah: saat jeda manual, fieldset dan canvas ikut terkunci sehingga kontrol kamera tidak dapat digunakan. Kamera seharusnya dapat dipakai untuk mengamati tanpa menggerakkan waktu/saldo/satwa.
+- [x] Memisahkan kontrol kamera dari aksi permainan saat jeda; menambahkan render kamera saat dibutuhkan dan mempertahankan penguncian transaksi serta cold Continue.
+- [x] Menguji semua kontrol di zoo dan kelima kandang pada HP kecil, HP umum, landscape dan desktop; memeriksa batas zoom, empat arah, gesture, reset, pindah kandang, menu opsi/dialog, serta progres tetap saat jeda.
+- [ ] Typecheck, pengujian terarah, build kandidat, deploy, dan verifikasi fungsi serta body/hash pada domain utama.
+
+Bukti audit awal: [toolbar saat jeda](qa/mobile-controls-20261116/before-paused.json), [kontrol saat berjalan](qa/mobile-controls-20261116/before-running.json), [menu lima kandang](qa/mobile-controls-20261116/before-menus.json).
+
+- Gate lokal fungsi kontrol HP: **775/775** kontrol pada lima viewport + **94/94** regresi pembangunan/refill = **869/869 pemeriksaan browser unik**. **76/76** pengujian terarah, typecheck bersih, build 10 halaman; HTML QA/kandidat identik. Perbaikan tambahan: empat tombol pan minimal 44 px. Bukti: [laporan kontrol HP](qa/mobile-controls-20261116/REPORT.md), [verifikasi](qa/mobile-controls-20261116/verification.json). Publikasi menunggu.

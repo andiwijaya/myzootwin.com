@@ -355,7 +355,8 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     const model=macaw?.view();
     simulation.setPaused(shouldPause||assetsWaiting||Boolean(model?.active));announceSpeed();
     if(shouldPause){saveSession();options.stateStore?.checkpoint?.(()=>simulation.snapshot(),true);options.stateStore?.flush?.();}
-    controls?.setEnabled(!shouldPause&&(!model?.active||model.habitat));
+    // Viewing the world is read-only; a manual pause only blocks simulation and edits.
+    controls?.setEnabled(!disposed&&!lost&&!grantBusy&&!document.hidden&&(!model?.active||model.habitat));
     picker?.setEnabled(!shouldPause&&!model?.active&&!foodPreview&&!waterPreview&&!perchPreview);
     placement?.setEnabled(!shouldPause&&!model?.active&&!foodPreview&&!waterPreview&&!perchPreview);
     giraffePreview?.setEnabled(!shouldPause&&!model?.active&&!foodPreview&&!waterPreview&&!perchPreview);
@@ -381,6 +382,11 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     try { resize(); }
     catch { onFailure('render'); }
   }
+  function onCameraView() {
+    if(disposed||lost||!paused||document.hidden)return;
+    try { render(); }
+    catch { onFailure('render'); }
+  }
   function onMotionChange(){if(visual().reducedMotion)macaw?.pauseForReducedMotion();updateRunning();}
   function onStudioKey(event:KeyboardEvent){if(event.key==='Escape'&&perchPreview){event.preventDefault();event.stopImmediatePropagation();perchPreview=false;perchPreviewHabitat=null;perchDirty=true;updateRunning();render();return;}if(event.key==='Escape'&&waterPreview){event.preventDefault();event.stopImmediatePropagation();waterPreview=false;waterPreviewHabitat=null;waterDirty=true;updateRunning();render();return;}if(event.key==='Escape'&&foodPreview){event.preventDefault();event.stopImmediatePropagation();foodPreview=false;foodPreviewHabitat=null;foodDirty=true;updateRunning();render();return;}if(event.key==='Escape'&&!event.repeat&&macaw?.view().active){event.preventDefault();event.stopImmediatePropagation();macaw.command('close');}}
   function onLost(event: Event) { event.preventDefault(); notifyContextLoss(); }
@@ -401,7 +407,7 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     safe(()=>feeder?.dispose());safe(()=>waterStation?.dispose());safe(()=>restKit?.dispose());
     safe(()=>birds?.dispose());safe(()=>visitors?.dispose());
     safe(()=>lighting?.dispose());
-    safe(()=>macaw?.dispose());safe(()=>scenery?.dispose());safe(()=>facilities?.dispose());safe(()=>fixturesLibrary?.dispose());safe(()=>animalLibrary?.dispose());safe(()=>sceneryLibrary?.dispose());assetStatus.remove();host.removeEventListener('keydown',onStudioKey,true);
+    safe(()=>macaw?.dispose());safe(()=>scenery?.dispose());safe(()=>facilities?.dispose());safe(()=>fixturesLibrary?.dispose());safe(()=>animalLibrary?.dispose());safe(()=>sceneryLibrary?.dispose());assetStatus.remove();host.removeEventListener('keydown',onStudioKey,true);host.removeEventListener('camera-view-change',onCameraView);
     safe(saveSession);safe(()=>options.stateStore?.checkpoint?.(()=>simulation.snapshot(),true));safe(()=>options.stateStore?.flush?.());
     unsubscribe();
     simulation.dispose();
@@ -465,6 +471,7 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     giraffePreview=createGiraffeCarePreview(()=>simulation.worldSnapshot(),camera,()=>canvas.getBoundingClientRect(),{command:()=>simulation.commandRevision(),defaultCell:kind=>simulation.defaultGiraffeCareCell(kind),validate:(kind,cell)=>simulation.validateGiraffeCarePlacement(kind,cell),commit:quote=>{const result=simulation.placeGiraffeCare(quote);if(result.ok){giraffeFailure=null;saveSession();}else giraffeFailure=result.reason;return result;}},()=>{careDirty=true;announceGiraffe();});
     lionPreview=createLionCarePreview(()=>simulation.worldSnapshot(),camera,()=>canvas.getBoundingClientRect(),{command:()=>simulation.commandRevision(),defaultCell:kind=>simulation.defaultLionCareCell(kind),validate:(kind,cell)=>simulation.validateLionCarePlacement(kind,cell),commit:quote=>{const result=simulation.placeLionCare(quote);if(result.ok){lionFailure=null;saveSession();}else lionFailure=result.reason;return result;}},()=>{careDirty=true;announceLion();});
     controls=mountCameraControls(host,canvas,camera,diorama.bounds,initialWorld,point=>{if(!macaw?.view().active){if(zebraCarePreview?.view().active)zebraCarePreview.pick(point);else if(giraffePreview?.view().active)giraffePreview.pick(point);else if(lionPreview?.view().active)lionPreview.pick(point);else if(elephantCarePreview?.view().active)elephantCarePreview.pick(point);else if(placement?.active())placement.pick(point);else picker?.pick(point);}},()=>zebraCarePreview?.view().active?zebraCarePreview.cancel():giraffePreview?.view().active?giraffePreview.cancel():lionPreview?.view().active?lionPreview.cancel():elephantCarePreview?.view().active?elephantCarePreview.cancel():placement?.active()?placement.command('cancel'):focusedHabitat?(exitHabitatFocus(),render()):picker?.clear());
+    host.addEventListener('camera-view-change',onCameraView);
     macaw=createMacawStudio(()=>simulation.macawWorldSnapshot(),view=>{birds?.setVisible(!view.active);worldLayer.visible=!view.active||view.habitat;host.dispatchEvent(new CustomEvent('scene-studio-change',{detail:view}));updateRunning();resize();},()=>visual().reducedMotion,animalLibrary,()=>visual().low);scene.add(macaw.group);host.addEventListener('keydown',onStudioKey,true);
     canvas.addEventListener('webglcontextlost', onLost);
     host.append(canvas);
@@ -583,7 +590,7 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
       announceEdit(result.ok?null:result.reason,result.ok?(command==='undo'?'restored':'removed'):null);
     },
     cancelInput() {zebraRemoval=null;zebraCarePreview?.cancel();lionPreview?.cancel();giraffePreview?.cancel();lionRemoval=null;giraffeRemoval=null; controls?.setEnabled(false); updateRunning(); },
-    setPaused(value) { paused = value; updateRunning(); announceLion();announceGiraffe();announceZebraAccess();announceZebraCare(); },
+    setPaused(value) {if(paused!==value)controls?.setEnabled(false);paused = value; updateRunning(); announceLion();announceGiraffe();announceZebraAccess();announceZebraCare(); },
     inspect: () => {
       // One coherent read per diagnostic call; never repeat full finance/views/clones for each field.
       const simulationState=simulation.inspect(),stateSnapshot=simulation.snapshot(),missionView=simulation.missionView(),perchView=simulation.perchView(),foodView=simulation.foodView(),waterView=simulation.waterView(),visitorView=simulation.visitorView(),birdsView=simulation.birdsView(),policy=visual(),guide=readGuide(simulationState);

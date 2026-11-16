@@ -31,7 +31,7 @@ export function mountFarmUi(root:HTMLElement){
     }
     const note=root.querySelector<HTMLElement>('[data-zoo-navigation-note]');if(note){note.hidden=!notice;note.textContent=c.lockedNote;}
     const guestNote=root.querySelector<HTMLElement>('[data-zoo-guests-scope]');if(guestNote){guestNote.hidden=root.dataset.hudTab!=='visitors';guestNote.textContent=c.allGuests;}
-    const pan=root.querySelector<HTMLButtonElement>('[data-zoo-pan-toggle]');if(pan){pan.disabled=!active||paused;pan.setAttribute('aria-expanded',String(panOpen));pan.setAttribute('aria-label',c.pan);pan.title=c.pan;}
+    const pan=root.querySelector<HTMLButtonElement>('[data-zoo-pan-toggle]');if(pan){pan.disabled=!active;pan.setAttribute('aria-expanded',String(panOpen));pan.setAttribute('aria-label',c.pan);pan.title=c.pan;}
     const pad=root.querySelector<HTMLElement>('[data-zoo-pan-pad]');if(pad)pad.hidden=!panOpen||!active;
     for(const [value,key]of [['pan-left','panLeft'],['pan-right','panRight'],['pan-up','panUp'],['pan-down','panDown']]as const){const b=root.querySelector(`[data-camera-command="${value}"]`);b?.setAttribute('aria-label',c[key]);b?.setAttribute('title',c[key]);}
     const back=root.querySelector<HTMLButtonElement>('[data-habitat-zoom-exit]');if(back){back.hidden=false;back.disabled=!kind;back.setAttribute('aria-label',c.back);back.title=c.back;}
@@ -55,7 +55,7 @@ export function mountFarmUi(root:HTMLElement){
       render();
     }
     if(target?.closest('[data-zoo-build]')){notice=false;root.dispatchEvent(new Event('hud-input-cancel'));root.dispatchEvent(new CustomEvent('hud-reveal',{detail:'build'}));render();if(window.innerWidth<900)root.querySelector('.zoo-notes-heading')?.scrollIntoView({block:'start',behavior:'instant'});}
-    if(target?.closest('[data-zoo-pan-toggle]')){panOpen=!panOpen;root.dispatchEvent(new Event('hud-input-cancel'));render();}
+    if(target?.closest('[data-zoo-pan-toggle]')){panOpen=!panOpen;root.dispatchEvent(new Event('hud-input-cancel'));if(panOpen&&Number(root.querySelector<HTMLElement>('[data-preview-stage]')?.dataset.cameraZoom??1)<=1)root.querySelector<HTMLButtonElement>('[data-camera-command="zoom-in"]')?.click();render();}
   },{signal:events.signal});
   root.querySelector('[data-zoo-navigation]')?.addEventListener('keydown',event=>{const e=event as KeyboardEvent;if(!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End'].includes(e.key))return;const buttons=[...root.querySelectorAll<HTMLButtonElement>('[data-zoo-destination]')],current=buttons.indexOf(e.target as HTMLButtonElement);if(current<0)return;e.preventDefault();const next=e.key==='Home'?0:e.key==='End'?buttons.length-1:(current+(['ArrowLeft','ArrowUp'].includes(e.key)?buttons.length-1:1))%buttons.length;buttons[next]?.focus();},{signal:events.signal});
   const observer=new MutationObserver(render);observer.observe(root,{subtree:true,attributes:true,attributeFilter:['lang','data-renderer-state','data-hud-tab']});

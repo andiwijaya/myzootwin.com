@@ -124,6 +124,60 @@ async function runSuite(){
   }catch(error){checks.push({name:'suite exception',passed:false,detail:String(error)});await report();}finally{button.disabled=false;}
 }
 const localeRefill=()=>root.lang==='en'?'Refill':'Isi ulang';
+const controlsButton=document.createElement('button');controlsButton.id='qa-controls';controlsButton.textContent='Run camera and menu checks';document.querySelector('#qa-actions')!.append(controlsButton);
+async function runControlsSuite(){
+  controlsButton.disabled=true;
+  const cam=()=>({zoom:Number(host.dataset.cameraZoom),angle:Number(host.dataset.cameraAzimuth),x:Number(host.dataset.cameraPanX),z:Number(host.dataset.cameraPanZ)});
+  const same=(a:ReturnType<typeof cam>,b:ReturnType<typeof cam>)=>Object.keys(a).every(k=>Math.abs(a[k as keyof typeof a]-b[k as keyof typeof b])<1e-7);
+  const command=(value:string)=>click(`[data-camera-command="${value}"]`);
+  try{
+    await waitFor(()=>session()?.assetsWaiting===false&&!!camera,'control assets');
+    const cold=root.querySelector<HTMLElement>('[data-save-resume]')!;
+    if(visible(cold)){
+      expect('cold Continue keeps camera and world gated',host.inert&&root.querySelector<HTMLButtonElement>('[data-camera-command="zoom-in"]')!.matches(':disabled'));
+      click('[data-save-resume-button]');
+    }
+    if(session()?.simulationPaused===false)click('[data-pause-toggle]');
+    await waitFor(()=>session()?.simulationPaused===true,'manual pause');await delay(250);
+    const before=JSON.stringify(current),tick=session()?.simulationTick,commandRevision=session()?.commandRevision;
+    expect('manual pause leaves read-only camera enabled',!host.inert&&!root.querySelector<HTMLButtonElement>('[data-camera-command="zoom-in"]')!.matches(':disabled')&&session()?.cameraInputEnabled===true);
+    expect('manual pause still disables all gameplay fieldsets',[...root.querySelectorAll<HTMLFieldSetElement>('[data-hud-controls]:not([data-hud-camera-controls])')].every(g=>g.disabled));
+    let zooView=cam();
+    for(const kind of ['zoo','macaw-aviary','elephant-grove','lion-savanna','giraffe-plains','zebra-grasslands']){
+      click(`[data-zoo-destination="${kind}"]`);await delay();await waitFor(()=>session()?.assetsWaiting===false,'control context assets');
+      const expected=kind==='zoo'?null:kind,submissions=session()!.renderSubmissions;
+      expect(kind+' primary navigation has one selected destination',(focus?.kind??null)===expected&&root.querySelectorAll('[data-zoo-destination][aria-pressed="true"]').length===1);
+      for(const tab of ['missions','care','visitors','build']){click(`[data-hud-tab="${tab}"]`);expect(kind+' '+tab+' panel',root.dataset.hudTab===tab&&visible(root.querySelector(`[data-hud-pane="${tab}"]`)!));}
+      click('[data-hud-tab="care"]');click('[data-zoo-build]');expect(kind+' arrange opens contextual Build',root.dataset.hudTab==='build'&&(focus?.kind??null)===expected);
+      if(!root.querySelector<HTMLButtonElement>('[data-camera-command="reset"]')!.disabled)command('reset');
+      command('zoom-in');const zoomed=cam();command('zoom-out');expect(kind+' plus and minus change zoom',zoomed.zoom>1&&cam().zoom===1);
+      command('rotate-left');expect(kind+' rotate left is 315 degrees',cam().angle===315);command('rotate-right');
+      for(let i=0;i<8;i++)command('rotate-right');expect(kind+' eight right turns restore orientation',cam().angle===0);
+      for(let i=0;i<10&&!root.querySelector<HTMLButtonElement>('[data-camera-command="zoom-in"]')!.disabled;i++)command('zoom-in');expect(kind+' zoom clamps at 300 percent',cam().zoom===3&&root.querySelector<HTMLButtonElement>('[data-camera-command="zoom-in"]')!.disabled);
+      for(let i=0;i<10&&!root.querySelector<HTMLButtonElement>('[data-camera-command="zoom-out"]')!.disabled;i++)command('zoom-out');expect(kind+' zoom clamps at 100 percent',cam().zoom===1&&root.querySelector<HTMLButtonElement>('[data-camera-command="zoom-out"]')!.disabled);
+      click('[data-zoo-pan-toggle]');expect(kind+' pan opens and provides room from overview',visible(root.querySelector('[data-zoo-pan-pad]')!)&&cam().zoom>1&&root.querySelector('[data-zoo-pan-toggle]')!.getAttribute('aria-expanded')==='true');
+      expect(kind+' camera and pan touch targets are at least 44 pixels',[...root.querySelectorAll<HTMLElement>('.zoo-camera-toolbar button,[data-zoo-pan-pad] button')].every(b=>{const r=b.getBoundingClientRect();return r.width>=44&&r.height>=44;}));
+      for(const direction of ['left','up','down','right']){const old=cam();command('pan-'+direction);expect(kind+' pan '+direction+' moves camera',!same(old,cam()));}
+      click('[data-zoo-pan-toggle]');expect(kind+' pan toggle closes controls',!visible(root.querySelector('[data-zoo-pan-pad]')!));
+      command('reset');command('zoom-in');
+      const rect=host.getBoundingClientRect(),x=rect.left+rect.width/2,y=rect.top+rect.height/2,start=cam();
+      pointer('pointerdown',20,x,y,1,'touch');pointer('pointermove',20,x+25,y+10,1,'touch');pointer('pointerup',20,x+25,y+10,0,'touch');expect(kind+' drag pans while paused and releases pointers',!same(start,cam())&&session()?.cameraPointers===0);
+      const pinchStart=cam().zoom;pointer('pointerdown',21,x-25,y,1,'touch');pointer('pointerdown',22,x+25,y,1,'touch');pointer('pointermove',22,x+45,y,1,'touch');pointer('pointerup',22,x+45,y,0,'touch');pointer('pointerup',21,x-25,y,0,'touch');expect(kind+' pinch zooms while paused and releases pointers',cam().zoom>pinchStart&&session()?.cameraPointers===0);
+      command('rotate-right');command('reset');expect(kind+' Fit restores whole current scope',same(cam(),{zoom:1,angle:0,x:0,z:0})&&(focus?.kind??null)===expected);
+      expect(kind+' camera submits actual paused renders',session()!.renderSubmissions>submissions);
+      expect(kind+' camera keeps simulation paused with one renderer',session()?.simulationPaused===true&&session()?.pendingFrames===0&&host.querySelectorAll('canvas').length===1&&session()?.simulationSubscribers===1);
+      if(kind==='zoo'){command('zoom-in');command('rotate-right');zooView=cam();}
+      else{click('[data-zoo-back]');expect(kind+' Back restores prior zoo camera',!focus?.active&&same(cam(),zooView));}
+    }
+    for(const kind of ['macaw-aviary','elephant-grove','lion-savanna','giraffe-plains','zebra-grasslands']){click(`[data-zoo-destination="${kind}"]`);expect(kind+' direct switch keeps correct scope',focus?.kind===kind);}
+    click('[data-zoo-destination="zoo"]');expect('Zoo destination restores original zoo view',!focus?.active&&same(cam(),zooView));
+    expect('all paused camera and menu input preserves full save and ledger',JSON.stringify(current)===before&&session()?.simulationTick===tick&&session()?.commandRevision===commandRevision);
+    const saved=await backend.read();expect('paused camera leaves durable save valid',!!saved&&validateSaveV5(JSON.parse(saved.payload)).ok);
+    expect('all camera scopes stay within page',document.documentElement.scrollWidth<=innerWidth);
+    await report();
+  }catch(error){checks.push({name:'controls suite exception',passed:false,detail:String(error)});await report();}finally{controlsButton.disabled=false;}
+}
+controlsButton.addEventListener('click',()=>{void runControlsSuite();});
 document.querySelector('#qa-suite')!.addEventListener('click',()=>{void runSuite();});
 document.querySelector('#qa-inspect')!.addEventListener('click',()=>{void report();});
 document.querySelector('#qa-context')!.addEventListener('click',()=>{renderer?.getContext().getExtension('WEBGL_lose_context')?.loseContext();});
