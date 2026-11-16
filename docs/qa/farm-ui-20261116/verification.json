@@ -1,6 +1,6 @@
 {
-  "at": "2026-11-16T04:45:57.319Z",
-  "verdict": "PASS local; deployment recorded separately",
+  "at": "2026-11-16T04:54:02.893Z",
+  "verdict": "PASS deployed",
   "sourceFingerprint": "d8858032cf9e9176fcf1b765f9a4e2db61bbca6a311d845c1e15cd84233bc4ec",
   "tests": {
     "tests": 1104,
@@ -13,11 +13,33 @@
   "browserChecks": 237,
   "lockedChecks": 6,
   "playHtmlSha256": "f42aee5adff4e1be5385ccba28f9c3bce250e3f8bf1a53f9501cc1eb440eab80",
+  "deployment": {
+    "featureCommit": "a3bbc99b0d64f0932f0f0b4bc71b7b2045eceef3",
+    "production": "https://myzootwin.com",
+    "immutableDeployment": "https://78e41764.myzootwin-com.pages.dev",
+    "cloudflareDeployment": "78e41764-ed09-4f5a-be54-a65fab317d6c",
+    "completedAt": "2026-11-16T04:48:01Z",
+    "check": {
+      "id": 133097553228,
+      "name": "Cloudflare Pages",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/andiwijaya/myzootwin.com/runs/133097553228"
+    },
+    "main": "a3bbc99b0d64f0932f0f0b4bc71b7b2045eceef3"
+  },
+  "liveChecks": {
+    "bodyHashes": 130,
+    "habitats": 5,
+    "individualCards": 14,
+    "pausedMenuTickAndCashPreserved": true,
+    "consoleWarningsAndErrors": 0
+  },
   "files": [
     {
       "path": "REPORT.md",
-      "bytes": 5931,
-      "sha256": "ee8d1f045c3811241f27eb8595571424e1335687cfc2b42a9642f05c9e2ed071"
+      "bytes": 7721,
+      "sha256": "578388435267c6da3c64e5c90ef1acfa58665ae7206b390e8184a4499a42537c"
     },
     {
       "path": "build.log",
@@ -38,6 +60,11 @@
       "path": "context-recovery.json",
       "bytes": 14237,
       "sha256": "ad9c55eadd266e45e234aa13c2eeca8d3e2026f255e4d5eb51d4c69a79c44783"
+    },
+    {
+      "path": "deployment.json",
+      "bytes": 542,
+      "sha256": "e0f6fdd7f02b28f3e35187466fa091873d23cb1ce0ac008b484a531cb6b06602"
     },
     {
       "path": "desktop-giraffe.jpg",
@@ -78,6 +105,31 @@
       "path": "landscape.json",
       "bytes": 20308,
       "sha256": "fa4e0d1a3f43e787693b621c383d0568b6de175cbf61b8b7131ae2498336869f"
+    },
+    {
+      "path": "live-body-check.json",
+      "bytes": 78954,
+      "sha256": "5a5f8ad3cacb117106fa11a935558897513b5c57e0abd07314fd1e9a82a967ae"
+    },
+    {
+      "path": "live-desktop-giraffe.jpg",
+      "bytes": 73745,
+      "sha256": "e0ef68a1d6ac410b428b6e8b24544a5d938e6daee76a3b5b052095fcc9c3392d"
+    },
+    {
+      "path": "live-desktop-parameters.jpg",
+      "bytes": 79939,
+      "sha256": "467cbe48b442bd0bbc8533390bb101a6790c5e646a60180530898a7ad714dc3a"
+    },
+    {
+      "path": "live-portrait-zoo.jpg",
+      "bytes": 28911,
+      "sha256": "02925defdf766c19a280e3b135cea96a72c1cb685388e8d927ee59b29f73fb87"
+    },
+    {
+      "path": "live-ui.json",
+      "bytes": 13078,
+      "sha256": "f006f1b9ada8b5b8cf786c38eb1f4ac3498373cbbf683353246e63a5bf3a8443"
     },
     {
       "path": "portrait-zoo.jpg",
