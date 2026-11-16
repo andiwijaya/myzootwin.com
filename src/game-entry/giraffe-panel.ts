@@ -1,3 +1,4 @@
+import {isHudToolVisible,watchHudVisibility} from './tool-visibility.ts';
 import {updateCareMetrics} from './care-metrics.ts';
 import {mountFacilityCatalog} from './facility-catalog.ts';
 import {revealHudTarget} from './hud-layout.ts';
@@ -15,6 +16,7 @@ const missionHints={en:['A paid home, a real outside viewing path and Dira','All
 /** Stable native controls: options/rows are created once, then only changed text is assigned. */
 export function syncGiraffeFacilitySelect(select:HTMLSelectElement,locale:'en'|'id',disabled:boolean){const label=giraffeCopy[locale].plan;if(select.getAttribute('aria-label')!==label)select.setAttribute('aria-label',label);for(const o of select.options){const kind=o.value as GiraffeResourceKind,text=`${giraffeResourceLabel(kind,locale)} · ${GIRAFFE_PRICES[kind]} ZC`;if(o.textContent!==text)o.textContent=text;}if(select.disabled!==disabled)select.disabled=disabled;}
 export function mountGiraffePanel(root:HTMLElement,host:HTMLElement,signal:AbortSignal){
+ watchHudVisibility(root,signal,render);
  const parents=['build','care','missions'].map(name=>root.querySelector(`[data-hud-pane="${name}"]`));if(parents.some(p=>!p))return {show(_visible:boolean,_locale:'en'|'id'){}};
  let view:GiraffeSceneView|undefined,visible=false,locale:'en'|'id'='id',pending:RemovalQuote|null=null;
  const sections=parents.map((parent,i)=>{const s=document.createElement('section');s.dataset.giraffePanel=['build','care','missions'][i];s.style.cssText='border-top:1px solid #b4bea5;padding-block:12px;margin-block:12px;min-width:0';parent!.prepend(s);return s;});
@@ -35,7 +37,7 @@ export function mountGiraffePanel(root:HTMLElement,host:HTMLElement,signal:Abort
  sections[1].prepend(careTitle);careTitle.after(animalList);animalList.dataset.zooAnimalList='';
  const catalog=mountFacilityCatalog(sections[0],select,plan,[hint,preview,arrows],signal);
  const resources=new Map<string,{row:HTMLElement;label:HTMLElement;refill:HTMLButtonElement;remove:HTMLButtonElement}>(),animals=new Map<string,{row:HTMLElement;title:HTMLElement;needs:HTMLElement;stats:HTMLElement;summary:HTMLElement;explanation:HTMLElement}>();
- function render(){sections.forEach((s,i)=>{s.hidden=!visible||!view||(i===1&&!view.habitat.exists)||(i===2&&!view.grant.qualified);});if(!view)return;const c=giraffeCopy[locale],disabled=view.busy||view.paused;for(const [e,value] of [[title,c.title],[intro,c.intro],[guide,c.guide],[careTitle,c.care],[note,c.note],[missionsTitle,c.quests],[plan,c.plan],[confirm,c.confirm],[cancel,c.cancel],[focus,c.focus],[build,c.build]] as const)text(e,value);
+ function render(){sections.forEach((s,i)=>{s.hidden=!visible||!view||(i===1&&!view.habitat.exists)||(i===2&&!view.grant.qualified);});if(!view||!sections.some(isHudToolVisible))return;const c=giraffeCopy[locale],disabled=view.busy||view.paused;for(const [e,value] of [[title,c.title],[intro,c.intro],[guide,c.guide],[careTitle,c.care],[note,c.note],[missionsTitle,c.quests],[plan,c.plan],[confirm,c.confirm],[cancel,c.cancel],[focus,c.focus],[build,c.build]] as const)text(e,value);
   text(landHint,c.landHint);landHint.hidden=view.habitat.exists;
   undo.hidden=!view.canUndo;text(undo,`${c.undo} · ${view.undoCost??0} ZC`);undo.disabled=disabled||view.care.balance<(view.undoCost??0);
   unlockCue.hidden=missionFocus.hidden=view.habitat.exists;text(unlockCue,c.unlockCue);text(missionFocus,c.focus);missionFocus.disabled=disabled;text(rescue,c.guests);rescue.hidden=view.care.balance>=12||view.entranceOpen;rescue.disabled=disabled;

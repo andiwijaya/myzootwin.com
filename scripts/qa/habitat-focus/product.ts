@@ -1,4 +1,5 @@
-import {WebGLRenderer,Vector3,type Camera} from 'three';
+import {WebGLRenderer,Vector3,SkinnedMesh,type Camera,type Object3D} from 'three';
+import {createFrameMetrics} from '../../../tests/browser/frame-metrics.mjs';
 import {mountGameEntry} from '../../../src/game-entry/game-entry.ts';
 import {mountFoundationScene} from '../../../src/game/render3d/foundation-scene.ts';
 import {createIndexedDbBackend} from '../../../src/game/persistence/durable-backend.ts';
@@ -16,13 +17,15 @@ const url=new URL(location.href);let db=url.searchParams.get('qaDb');const fresh
 if(db&&!/^myzootwin-focus-qa-[a-f0-9-]{36}$/.test(db))throw Error('QA UUID database required');
 db??='myzootwin-focus-qa-'+crypto.randomUUID();url.searchParams.set('qaDb',db);history.replaceState(null,'',url);
 const backend=createIndexedDbBackend<ZooSave>(indexedDB,db,{codec:ZEBRA_CHECKPOINT_CODEC,databaseVersion:5});
-if(fresh){const seed=url.searchParams.get('seed')==='fresh'?migrateToV5(createInitialState()):validateSaveV5(await(await fetch('/focus-fixture.json')).json());if(!seed.ok)throw Error('Invalid focus seed');await backend.commit(0,serializeSaveV5(seed.value),'focus-synthetic-qa',Date.now());}
+if(fresh){const seed=url.searchParams.get('seed')==='fresh'?migrateToV5(createInitialState()):validateSaveV5(await(await fetch(url.searchParams.get('bench')==='1'?'/performance-fixture.json':'/focus-fixture.json')).json());if(!seed.ok)throw Error('Invalid focus seed');await backend.commit(0,serializeSaveV5(seed.value),'focus-synthetic-qa',Date.now());}
 let current:ZooSave|undefined,camera:Camera|undefined,renderer:WebGLRenderer|undefined,focus:HabitatFocusView|undefined,closed=false;
+let renderScene:Object3D|undefined,measuring=false;const frameMetrics=createFrameMetrics(600),renderCpu:number[]=[],simulationCpu:number[]=[],sceneCpu:number[]=[];
+const perfFrames={request(callback:(time:number)=>void){return requestAnimationFrame(time=>{const started=performance.now();callback(time);if(measuring)frameMetrics.record(time,performance.now()-started);});},cancel(id:number){cancelAnimationFrame(id);}};
 const errors:string[]=[],checks:{name:string;passed:boolean;detail?:unknown}[]=[],selections:unknown[]=[];
 window.addEventListener('error',e=>errors.push(e.message));window.addEventListener('unhandledrejection',e=>errors.push(String(e.reason)));
 host.addEventListener('scene-habitat-focus-change',event=>{focus=(event as CustomEvent<HabitatFocusView>).detail;});
 const handle=mountGameEntry(root,{backend,broadcast:false,allowRecoveryDownload:false,preferenceStorage:null,browserLanguage:'id-ID',loadRenderer:async store=>failure=>{
-  current=store.read();return mountFoundationScene(host,failure,{stateStore:{...store,write(value){current=structuredClone(value);store.write(value);},checkpoint(reader,critical){current=structuredClone(reader());store.checkpoint?.(()=>current!,critical);}},createRenderer(canvas,context){const r=new WebGLRenderer({canvas,context,antialias:true,alpha:false}),draw=r.render.bind(r);renderer=r;r.render=(scene,c)=>{camera=c;draw(scene,c);};return r;}});
+  current=store.read();return mountFoundationScene(host,failure,{frames:perfFrames,onFrameTiming:sample=>{if(measuring&&simulationCpu.length<600){simulationCpu.push(sample.simulationMs);sceneCpu.push(sample.sceneMs);}},stateStore:{...store,write(value){current=structuredClone(value);store.write(value);},checkpoint(reader,critical){current=structuredClone(reader());store.checkpoint?.(()=>current!,critical);}},createRenderer(canvas,context){const r=new WebGLRenderer({canvas,context,antialias:true,alpha:false}),draw=r.render.bind(r);renderer=r;r.render=(scene,c)=>{camera=c;renderScene=scene;const started=performance.now();draw(scene,c);if(measuring&&renderCpu.length<600)renderCpu.push(performance.now()-started);};return r;}});
 }});
 const visible=(e:Element)=>e.checkVisibility();
 const click=(selector:string)=>{const b=root.querySelector<HTMLButtonElement>(selector);if(!b||b.disabled||!visible(b))throw Error('Unavailable UI '+selector);b.click();};
@@ -40,7 +43,7 @@ async function selectHome(kind:string){
     const p=new Vector3(cell.x+.5-origin.x,.15,cell.z+.5-origin.z).project(camera!);if(Math.abs(p.x)>.99||Math.abs(p.y)>.99)continue;
     const x=rect.left+(p.x+1)*rect.width/2,y=rect.top+(1-p.y)*rect.height/2;
     pointer('pointerdown',1,x,y,1);pointer('pointerup',1,x,y,0);await delay();
-    if(focus?.selectedHabitatId===h.id){selections.push({kind,x,y,method:'injected actual canvas PointerEvents'});return;}
+    if(focus?.selectedHabitatId===h.id||focus?.habitatId===h.id){selections.push({kind,x,y,method:'injected actual canvas PointerEvents'});return;}
   }
   throw Error('Cannot select '+kind+' through visible source triangles');
 }
@@ -137,7 +140,7 @@ async function runControlsSuite(){
       expect('cold Continue keeps camera and world gated',host.inert&&root.querySelector<HTMLButtonElement>('[data-camera-command="zoom-in"]')!.matches(':disabled'));
       click('[data-save-resume-button]');
     }
-    if(session()?.simulationPaused===false)click('[data-pause-toggle]');
+    if(root.dataset.sessionPaused==='false')click('[data-pause-toggle]');
     await waitFor(()=>session()?.simulationPaused===true,'manual pause');await delay(250);
     const before=JSON.stringify(current),tick=session()?.simulationTick,commandRevision=session()?.commandRevision;
     expect('manual pause leaves read-only camera enabled',!host.inert&&!root.querySelector<HTMLButtonElement>('[data-camera-command="zoom-in"]')!.matches(':disabled')&&session()?.cameraInputEnabled===true);
@@ -178,6 +181,48 @@ async function runControlsSuite(){
   }catch(error){checks.push({name:'controls suite exception',passed:false,detail:String(error)});await report();}finally{controlsButton.disabled=false;}
 }
 controlsButton.addEventListener('click',()=>{void runControlsSuite();});
+const performanceButton=document.createElement('button'),performanceOut=document.createElement('pre');performanceButton.id='qa-performance';performanceButton.textContent='Run moving navigation and performance checks';performanceOut.id='qa-performance-result';performanceOut.textContent='NOT RUN';document.querySelector('#qa-actions')!.append(performanceButton,performanceOut);
+function numericStats(values:number[]){const sorted=[...values].sort((a,b)=>a-b);return{samples:values.length,p50Ms:sorted.length?sorted[Math.ceil(sorted.length*.5)-1]:null,p95Ms:sorted.length?sorted[Math.ceil(sorted.length*.95)-1]:null,maxMs:sorted.at(-1)??null};}
+function animalPoses(){
+ return current!.animals.map(a=>{const object=renderScene?.getObjectByName(a.id),bones=new Set<import('three').Bone>();object?.traverse(o=>{if(o instanceof SkinnedMesh)for(const b of o.skeleton.bones)bones.add(b);});let hash=2166136261;for(const b of bones)for(const n of [...b.position.toArray(),...b.quaternion.toArray()])hash=Math.imul(hash^Math.round(n*100000),16777619)>>>0;return{id:a.id,habitatId:a.habitatId,species:a.speciesId,behavior:a.currentBehavior,bones:bones.size,poseHash:hash,position:object?.position.toArray()??null};});
+}
+async function runNavigationPerformance(){
+ performanceButton.disabled=true;const rows:unknown[]=[],tests:{name:string;passed:boolean;detail?:unknown}[]=[],longTasks:{start:number;duration:number}[]=[];let observer:PerformanceObserver|undefined,phaseStarted=0;
+ const check=(name:string,passed:boolean,detail?:unknown)=>{tests.push({name,passed,detail});if(!passed)throw Error(name+': '+JSON.stringify(detail));};
+ const dump=(status:string,error?:unknown)=>{performanceOut.textContent=JSON.stringify({at:new Date().toISOString(),status,error:error?String(error):undefined,scope:'Actual game renderer/simulation; synthetic full-care V5 fixture, injected canvas PointerEvents and native DOM handlers. Timings exclude browser automation and pose inspection. RAF callback Hz is not presented FPS; render CPU is synchronous submit, not GPU duration. No physical phone, CPU throttle or presentation timing claim.',viewport:{width:innerWidth,height:innerHeight,documentWidth:document.documentElement.scrollWidth,dpr:devicePixelRatio},graphics:{low:session()?.graphicsLow,pixelRatio:session()?.pixelRatio,reducedMotion:session()?.reducedMotion},tests,rows,errors:[...errors]},null,2);};
+ try{
+  if(visible(root.querySelector('[data-save-resume]')!))click('[data-save-resume-button]');
+  if(root.dataset.sessionPaused==='true')click('[data-pause-toggle]');
+  await waitFor(()=>session()?.assetsWaiting===false&&session()?.simulationPaused===false,'performance renderer');
+  if(PerformanceObserver.supportedEntryTypes.includes('longtask')){observer=new PerformanceObserver(list=>{for(const e of list.getEntries())if(measuring&&e.startTime>=phaseStarted)longTasks.push({start:e.startTime,duration:e.duration});});observer.observe({type:'longtask'});}
+  for(const kind of ['macaw-aviary','elephant-grove','lion-savanna','giraffe-plains','zebra-grasslands']){
+   if(focus?.active)click('[data-zoo-back]');await delay(100);host.scrollIntoView({block:'center',behavior:'instant'});
+   const scrollBefore=scrollY,navigationStarted=performance.now();await selectHome(kind);const navigationMs=performance.now()-navigationStarted;
+   check(kind+' canvas tap enters correct habitat',focus?.kind===kind&&root.dataset.habitatFocus===kind);
+   check(kind+' canvas tap keeps page on world',Math.abs(scrollY-scrollBefore)<2,{before:scrollBefore,after:scrollY});
+   const worldRect=host.getBoundingClientRect();check(kind+' timed world is inside the viewport',worldRect.top>=0&&worldRect.bottom<=innerHeight,{top:worldRect.top,bottom:worldRect.bottom,height:innerHeight});
+   await waitFor(()=>session()?.assetsWaiting===false,'performance focused assets');await delay(500);
+   // Select a real resident through its visible body where possible, then keep another tab selected.
+   let residentSelected=false;for(const a of current!.animals.filter(a=>a.habitatId===focus?.habitatId)){
+    const object=renderScene?.getObjectByName(a.id);if(!object)continue;const p=object.getWorldPosition(new Vector3()).add(new Vector3(0,kind==='giraffe-plains'?1.7:kind==='elephant-grove'?.9:kind==='macaw-aviary'?.3:.6,0)).project(camera!),r=host.getBoundingClientRect();if(Math.abs(p.x)>.98||Math.abs(p.y)>.98)continue;
+    const x=r.left+(p.x+1)*r.width/2,y=r.top+(1-p.y)*r.height/2;pointer('pointerdown',41,x,y,1,'touch');pointer('pointerup',41,x,y,0,'touch');if(host.dataset.selectedId===a.id){residentSelected=true;break;}
+   }
+   const stableTab=url.searchParams.get('panel')==='care'?'care':'visitors';click(`[data-hud-tab="${stableTab}"]`);const stableScroll=scrollY,startTick=session()!.simulationTick,startPoses=animalPoses(),startResources={geometries:renderer!.info.memory.geometries,textures:renderer!.info.memory.textures};
+   check(kind+' all 14 GLB residents are mounted',startPoses.length===14&&startPoses.every(p=>p.bones>0),startPoses.filter(p=>!p.bones));
+   frameMetrics.reset();renderCpu.length=0;simulationCpu.length=0;sceneCpu.length=0;longTasks.length=0;phaseStarted=performance.now();measuring=true;const inputs:{action:string;cpuMs:number}[]=[];
+   for(const action of ['zoom-in','rotate-right','pan-open','pan-right','pan-close','reset']){await delay(400);const started=performance.now();click(action.startsWith('pan-o')||action==='pan-close'?'[data-zoo-pan-toggle]':`[data-camera-command="${action}"]`);inputs.push({action,cpuMs:performance.now()-started});}
+   await delay(1600);measuring=false;const elapsedMs=performance.now()-phaseStarted,metrics=frameMetrics.summary(),endPoses=animalPoses(),changed=endPoses.filter(p=>startPoses.find(b=>b.id===p.id)?.poseHash!==p.poseHash),focusedChanged=changed.filter(p=>p.habitatId===focus?.habitatId);
+   const row={kind,visible:document.visibilityState,elapsedMs,navigationMs,metrics,simulationCpu:numericStats(simulationCpu),sceneCpu:numericStats(sceneCpu),renderSubmitCpu:numericStats(renderCpu),inputCpu:numericStats(inputs.map(i=>i.cpuMs)),inputs,longTasks:[...longTasks],startTick,endTick:session()?.simulationTick,residentSelected,selectionRefreshes:session()?.selectionRevision,startPoses,endPoses,changedResidentIds:changed.map(p=>p.id),focusedChangedIds:focusedChanged.map(p=>p.id),drawCalls:renderer!.info.render.calls,triangles:renderer!.info.render.triangles,startResources,endResources:{geometries:renderer!.info.memory.geometries,textures:renderer!.info.memory.textures}};rows.push(row);
+   check(kind+' active timing sample is valid',document.visibilityState==='visible'&&metrics.callbacksObserved>=20&&elapsedMs>=3900,{callbacks:metrics.callbacksObserved,elapsedMs});
+   check(kind+' chosen menu and scroll stay stable across animation updates',root.dataset.hudTab===stableTab&&Math.abs(scrollY-stableScroll)<2,{tab:root.dataset.hudTab,scrollBefore:stableScroll,scrollAfter:scrollY,residentSelected});
+   check(kind+' simulation and focused GLB poses keep advancing',Number(session()?.simulationTick)>Number(startTick)&&focusedChanged.length>0,{startTick,endTick:session()?.simulationTick,focusedChanged:focusedChanged.map(p=>p.id)});
+   check(kind+' one renderer and bounded GPU allocations',host.querySelectorAll('canvas').length===1&&session()?.simulationSubscribers===1&&session()?.pendingFrames===1&&row.endResources.geometries<=startResources.geometries+8&&row.endResources.textures===startResources.textures,{startResources,endResources:row.endResources,liveEffectGeometryAllowance:8});
+   dump('RUNNING');
+  }
+  click('[data-zoo-destination="zoo"]');check('timed run leaves all five species and fourteen residents',current!.animals.length===14&&animalPoses().every(p=>p.bones>0));dump('PASS');
+ }catch(error){dump('FAIL',error);}finally{measuring=false;observer?.disconnect();if(session()?.simulationPaused===false)click('[data-pause-toggle]');performanceButton.disabled=false;}
+}
+performanceButton.addEventListener('click',()=>{void runNavigationPerformance();});
 document.querySelector('#qa-suite')!.addEventListener('click',()=>{void runSuite();});
 document.querySelector('#qa-inspect')!.addEventListener('click',()=>{void report();});
 document.querySelector('#qa-context')!.addEventListener('click',()=>{renderer?.getContext().getExtension('WEBGL_lose_context')?.loseContext();});

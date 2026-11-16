@@ -73,3 +73,15 @@ Bukti audit awal: [toolbar saat jeda](qa/mobile-controls-20261116/before-paused.
 - Gate lokal fungsi kontrol HP: **775/775** kontrol pada lima viewport + **94/94** regresi pembangunan/refill = **869/869 pemeriksaan browser unik**. **76/76** pengujian terarah, typecheck bersih, build 10 halaman; HTML QA/kandidat identik. Perbaikan tambahan: empat tombol pan minimal 44 px. Bukti: [laporan kontrol HP](qa/mobile-controls-20261116/REPORT.md), [verifikasi](qa/mobile-controls-20261116/verification.json). Publikasi menunggu.
 
 - Fungsi kontrol HP selesai dan live: commit `3d1c5a8`, deployment `3a701e90-f407-41fe-bd9f-58449f379b07` berhasil **16 November 2026, 13:03:00 WIB**. **130/130 body/hash** cocok. **66/66 aksi kamera native** pada enam konteks lulus; 24 tab aksi, Tata, Back dan perpindahan langsung kelima kandang diperiksa. Drag saat jeda bekerja, semua tombol arah minimal 44 px. Tick **96.284**, saldo **4.381 ZC**, populasi **14** tetap; renderer tunggal dan console tanpa warning/error. [Laporan fungsi](qa/mobile-controls-20261116/REPORT.md), [deployment](qa/mobile-controls-20261116/deployment.json), [bukti live](qa/mobile-controls-20261116/live-controls.json).
+
+## Tindak lanjut performa dan ketukan kandang — 16 November 2026
+
+- [x] Reproduksi native bug: ketuk fasilitas di dalam kandang jerapah pada HP 390 px membuka Bangun dan menggulir halaman dari y 0 ke 3.396,67; kandang belum diperbesar.
+- [x] Menelusuri penyebab menu berubah sendiri: setiap refresh objek terpilih memicu pemilihan Bangun dan scroll ulang.
+- [x] Memperbaiki ketukan kandang pada tampilan zoo agar langsung masuk kandang melalui hit triangle asli, termasuk saat jeda; mempertahankan alur placement dan seleksi lama di luar UI farm.
+- [x] Menguji ketukan kelima kandang dan menu yang stabil saat animasi berjalan; mengukur frame callback, render-submit, latensi kontrol serta perubahan pose GLB pada viewport HP.
+- [ ] Memperbaiki lag/bug yang ditemukan, menjalankan regresi, typecheck/build, deploy dan memeriksa hasil pada domain utama.
+
+Bukti awal: [ketukan live](qa/mobile-performance-20261116/before-tap.json), [panel yang melompat](qa/mobile-performance-20261116/before-jumping-panel.jpg).
+
+- Kandidat performa HP: **641/641 pemeriksaan browser** dan **95/95 pengujian terarah lulus**, typecheck bersih, build 10 halaman. Pada 390 px, CPU p95 lima kandang 42,5–88,8 → 35,8–36,9 ms, long task 86 → 1; handler kontrol ≤2,1 ms. Pada 360 px dengan Rawat terbuka, CPU p95 35,9–38,9 ms. Semua 14 model tetap terpasang dan pose kandang aktif bergerak; scroll/menu stabil. [Laporan](qa/mobile-performance-20261116/REPORT.md). Publikasi menunggu.

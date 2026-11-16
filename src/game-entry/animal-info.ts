@@ -1,3 +1,4 @@
+import {isHudToolVisible,watchHudVisibility} from './tool-visibility.ts';
 import {updateCareMetrics} from './care-metrics.ts';
 import {formatNumber} from './i18n-format.ts';
 import { revealHudTarget, scrollHudTarget } from './hud-layout.ts';
@@ -8,12 +9,13 @@ const causes:Record<CareCause,EntryMessage>={habitat:'careCauseHabitat','food-mi
 const set=(el:Element|null,value:string)=>{if(el&&el.textContent!==value)el.textContent=value;};
 /** Stable keyed DOM, no timers or global listeners. Tick scores never replace a focused button. */
 export function mountAnimalInfo(root:HTMLElement,signal:AbortSignal){
+ watchHudVisibility(root,signal,draw);
  const list=root.querySelector('[data-birds-list]'),panel=root.querySelector<HTMLElement>('[data-animal-detail]'),announcement=root.querySelector('[data-care-announcement]');
  if(list){list.setAttribute('data-zoo-animal-list','');root.querySelector('h3')?.after(list);if(panel)list.after(panel);}list?.replaceChildren();if(panel){panel.hidden=true;panel.removeAttribute('data-animal-id');}set(announcement,'');const oldAlerts=root.querySelector('[data-care-alerts]');oldAlerts?.replaceChildren();oldAlerts?.removeAttribute('data-signature');oldAlerts?.removeAttribute('lang');
  let view:BirdsView={habitat:false,placed:0,birds:[],tick:0},locale:EntryLocale='en',active=false,selected:string|null=null,lastSignature='',lastAnnouncedTick=-100;
  const nodes=new Map<string,{row:HTMLLIElement;summary:HTMLHeadingElement;status:HTMLParagraphElement;consumption:HTMLParagraphElement;button:HTMLButtonElement}>();
  const name=(b:BirdInfo)=>entryMessages[locale].birdName.replace('{n}',formatNumber(b.ordinal,locale));
- function draw(){const c=entryMessages[locale];
+ function draw(){if(!isHudToolVisible(root))return;const c=entryMessages[locale];
   for(const [id,n]of nodes)if(!view.placed||!view.birds.some(b=>b.id===id)){n.row.remove();nodes.delete(id);}
   if(!view.placed){selected=null;lastSignature='';set(announcement,'');}
   if(view.placed)for(const b of view.birds){let n=nodes.get(b.id);if(!n){const row=document.createElement('li'),summary=document.createElement('h4'),status=document.createElement('p'),consumption=document.createElement('p'),button=document.createElement('button');row.dataset.birdId=b.id;summary.dataset.birdSummary='';status.dataset.birdWellbeing='';status.setAttribute('aria-live','off');button.type='button';button.dataset.animalInfo=b.id;button.setAttribute('aria-controls','animal-details');row.append(summary,status,consumption,button);list?.append(row);n={row,summary,status,consumption,button};nodes.set(b.id,n);}

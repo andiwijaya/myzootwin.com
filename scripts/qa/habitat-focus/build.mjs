@@ -36,6 +36,9 @@ await cp(join(lab,'.qa/habitat-focus',id,'input/index.html'),join(lab,'index.htm
 await cp(join(product,'_astro'),join(lab,'_astro'),{recursive:true});
 for(const folder of ['zoo-assets','zoo-environment','zoo-fixtures','fonts'])try{await cp(join(root,'public',folder),join(lab,folder),{recursive:true});}catch(e){if(e.code!=='ENOENT')throw e;}
 await writeFile(join(lab,'focus-fixture.json'),JSON.stringify(state));
+const perfSimulation=preparedZebraCare({supplies:true,enrichment:true}),perfState=perfSimulation.snapshot();perfSimulation.dispose();
+if(!validateSaveV5(perfState).ok)throw Error('Invalid performance fixture');
+await writeFile(join(lab,'performance-fixture.json'),JSON.stringify(perfState));
 const after=await sourceFingerprint(root);if(source.id!==after.id)throw Error('Source changed during QA build');
 await writeFile(join(base,'source.json'),JSON.stringify({at:new Date().toISOString(),sourceFingerprint:source.id,fixtureHash:sha256(JSON.stringify(state)),scope:'Synthetic fixture; actual UI, single native renderer/RAF, native IndexedDB with the core V5 codec. Not unlock or physical-device evidence.'},null,2));
 console.log(JSON.stringify({base,lab,product,sourceFingerprint:source.id}));

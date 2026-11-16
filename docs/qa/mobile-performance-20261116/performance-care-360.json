@@ -1,0 +1,2719 @@
+{
+  "at": "2026-11-16T07:35:22.902Z",
+  "status": "PASS",
+  "scope": "Actual game renderer/simulation; synthetic full-care V5 fixture, injected canvas PointerEvents and native DOM handlers. Timings exclude browser automation and pose inspection. RAF callback Hz is not presented FPS; render CPU is synchronous submit, not GPU duration. No physical phone, CPU throttle or presentation timing claim.",
+  "viewport": {
+    "width": 360,
+    "height": 780,
+    "documentWidth": 345,
+    "dpr": 1.0000000298023224
+  },
+  "graphics": {
+    "low": true,
+    "pixelRatio": 1
+  },
+  "tests": [
+    {
+      "name": "macaw-aviary canvas tap enters correct habitat",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary canvas tap keeps page on world",
+      "passed": true,
+      "detail": {
+        "before": 439.3333435058594,
+        "after": 439.3333435058594
+      }
+    },
+    {
+      "name": "macaw-aviary timed world is inside the viewport",
+      "passed": true,
+      "detail": {
+        "top": 234.9166717529297,
+        "bottom": 545.5833587646484,
+        "height": 780
+      }
+    },
+    {
+      "name": "macaw-aviary all 14 GLB residents are mounted",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "macaw-aviary active timing sample is valid",
+      "passed": true,
+      "detail": {
+        "callbacks": 216,
+        "elapsedMs": 4042.600000023842
+      }
+    },
+    {
+      "name": "macaw-aviary chosen menu and scroll stay stable across animation updates",
+      "passed": true,
+      "detail": {
+        "tab": "care",
+        "scrollBefore": 439.3333435058594,
+        "scrollAfter": 439.3333435058594,
+        "residentSelected": false
+      }
+    },
+    {
+      "name": "macaw-aviary simulation and focused GLB poses keep advancing",
+      "passed": true,
+      "detail": {
+        "startTick": 13587,
+        "endTick": 13628,
+        "focusedChanged": [
+          "macaw-1",
+          "macaw-2"
+        ]
+      }
+    },
+    {
+      "name": "macaw-aviary one renderer and bounded GPU allocations",
+      "passed": true,
+      "detail": {
+        "startResources": {
+          "geometries": 116,
+          "textures": 48
+        },
+        "endResources": {
+          "geometries": 116,
+          "textures": 48
+        },
+        "liveEffectGeometryAllowance": 8
+      }
+    },
+    {
+      "name": "elephant-grove canvas tap enters correct habitat",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove canvas tap keeps page on world",
+      "passed": true,
+      "detail": {
+        "before": 644,
+        "after": 644
+      }
+    },
+    {
+      "name": "elephant-grove timed world is inside the viewport",
+      "passed": true,
+      "detail": {
+        "top": 234.9166717529297,
+        "bottom": 545.5833587646484,
+        "height": 780
+      }
+    },
+    {
+      "name": "elephant-grove all 14 GLB residents are mounted",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "elephant-grove active timing sample is valid",
+      "passed": true,
+      "detail": {
+        "callbacks": 201,
+        "elapsedMs": 4084.899999976158
+      }
+    },
+    {
+      "name": "elephant-grove chosen menu and scroll stay stable across animation updates",
+      "passed": true,
+      "detail": {
+        "tab": "care",
+        "scrollBefore": 644,
+        "scrollAfter": 644,
+        "residentSelected": true
+      }
+    },
+    {
+      "name": "elephant-grove simulation and focused GLB poses keep advancing",
+      "passed": true,
+      "detail": {
+        "startTick": 13636,
+        "endTick": 13677,
+        "focusedChanged": [
+          "elephant-ayu",
+          "elephant-nara"
+        ]
+      }
+    },
+    {
+      "name": "elephant-grove one renderer and bounded GPU allocations",
+      "passed": true,
+      "detail": {
+        "startResources": {
+          "geometries": 116,
+          "textures": 48
+        },
+        "endResources": {
+          "geometries": 118,
+          "textures": 48
+        },
+        "liveEffectGeometryAllowance": 8
+      }
+    },
+    {
+      "name": "lion-savanna canvas tap enters correct habitat",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna canvas tap keeps page on world",
+      "passed": true,
+      "detail": {
+        "before": 644,
+        "after": 644
+      }
+    },
+    {
+      "name": "lion-savanna timed world is inside the viewport",
+      "passed": true,
+      "detail": {
+        "top": 234.9166717529297,
+        "bottom": 545.5833587646484,
+        "height": 780
+      }
+    },
+    {
+      "name": "lion-savanna all 14 GLB residents are mounted",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "lion-savanna active timing sample is valid",
+      "passed": true,
+      "detail": {
+        "callbacks": 203,
+        "elapsedMs": 4097.399999976158
+      }
+    },
+    {
+      "name": "lion-savanna chosen menu and scroll stay stable across animation updates",
+      "passed": true,
+      "detail": {
+        "tab": "care",
+        "scrollBefore": 644,
+        "scrollAfter": 644,
+        "residentSelected": true
+      }
+    },
+    {
+      "name": "lion-savanna simulation and focused GLB poses keep advancing",
+      "passed": true,
+      "detail": {
+        "startTick": 13686,
+        "endTick": 13727,
+        "focusedChanged": [
+          "lion-raka",
+          "lion-sena",
+          "lion-tala"
+        ]
+      }
+    },
+    {
+      "name": "lion-savanna one renderer and bounded GPU allocations",
+      "passed": true,
+      "detail": {
+        "startResources": {
+          "geometries": 118,
+          "textures": 48
+        },
+        "endResources": {
+          "geometries": 118,
+          "textures": 48
+        },
+        "liveEffectGeometryAllowance": 8
+      }
+    },
+    {
+      "name": "giraffe-plains canvas tap enters correct habitat",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains canvas tap keeps page on world",
+      "passed": true,
+      "detail": {
+        "before": 644,
+        "after": 644
+      }
+    },
+    {
+      "name": "giraffe-plains timed world is inside the viewport",
+      "passed": true,
+      "detail": {
+        "top": 234.9166717529297,
+        "bottom": 545.5833587646484,
+        "height": 780
+      }
+    },
+    {
+      "name": "giraffe-plains all 14 GLB residents are mounted",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "giraffe-plains active timing sample is valid",
+      "passed": true,
+      "detail": {
+        "callbacks": 204,
+        "elapsedMs": 4079.600000023842
+      }
+    },
+    {
+      "name": "giraffe-plains chosen menu and scroll stay stable across animation updates",
+      "passed": true,
+      "detail": {
+        "tab": "care",
+        "scrollBefore": 644,
+        "scrollAfter": 644,
+        "residentSelected": true
+      }
+    },
+    {
+      "name": "giraffe-plains simulation and focused GLB poses keep advancing",
+      "passed": true,
+      "detail": {
+        "startTick": 13736,
+        "endTick": 13777,
+        "focusedChanged": [
+          "giraffe-dira",
+          "giraffe-sora",
+          "giraffe-lila"
+        ]
+      }
+    },
+    {
+      "name": "giraffe-plains one renderer and bounded GPU allocations",
+      "passed": true,
+      "detail": {
+        "startResources": {
+          "geometries": 118,
+          "textures": 48
+        },
+        "endResources": {
+          "geometries": 118,
+          "textures": 48
+        },
+        "liveEffectGeometryAllowance": 8
+      }
+    },
+    {
+      "name": "zebra-grasslands canvas tap enters correct habitat",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands canvas tap keeps page on world",
+      "passed": true,
+      "detail": {
+        "before": 644,
+        "after": 644
+      }
+    },
+    {
+      "name": "zebra-grasslands timed world is inside the viewport",
+      "passed": true,
+      "detail": {
+        "top": 234.9166717529297,
+        "bottom": 545.5833587646484,
+        "height": 780
+      }
+    },
+    {
+      "name": "zebra-grasslands all 14 GLB residents are mounted",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "zebra-grasslands active timing sample is valid",
+      "passed": true,
+      "detail": {
+        "callbacks": 200,
+        "elapsedMs": 4086.600000023842
+      }
+    },
+    {
+      "name": "zebra-grasslands chosen menu and scroll stay stable across animation updates",
+      "passed": true,
+      "detail": {
+        "tab": "care",
+        "scrollBefore": 644,
+        "scrollAfter": 644,
+        "residentSelected": true
+      }
+    },
+    {
+      "name": "zebra-grasslands simulation and focused GLB poses keep advancing",
+      "passed": true,
+      "detail": {
+        "startTick": 13786,
+        "endTick": 13827,
+        "focusedChanged": [
+          "zebra-zaki",
+          "zebra-zuri",
+          "zebra-mira",
+          "zebra-kira"
+        ]
+      }
+    },
+    {
+      "name": "zebra-grasslands one renderer and bounded GPU allocations",
+      "passed": true,
+      "detail": {
+        "startResources": {
+          "geometries": 118,
+          "textures": 48
+        },
+        "endResources": {
+          "geometries": 118,
+          "textures": 48
+        },
+        "liveEffectGeometryAllowance": 8
+      }
+    },
+    {
+      "name": "timed run leaves all five species and fourteen residents",
+      "passed": true
+    }
+  ],
+  "rows": [
+    {
+      "kind": "macaw-aviary",
+      "visible": "visible",
+      "elapsedMs": 4042.600000023842,
+      "navigationMs": 132.60000002384186,
+      "metrics": {
+        "kind": "RAF callback intervals and synchronous JS/core/render-submit duration; NOT presented FPS or GPU time",
+        "callbacksObserved": 216,
+        "retainedIntervals": 215,
+        "retainedCpuSamples": 216,
+        "capacity": 600,
+        "retainedWindowMs": 4066.5,
+        "callbackHz": 52.87101930406984,
+        "intervalP50Ms": 16.699999999999818,
+        "intervalP95Ms": 33.30000000000018,
+        "cpuP50Ms": 5.300000011920929,
+        "cpuP95Ms": 35.89999997615814,
+        "actualPresentationFPS": "UNMEASURED"
+      },
+      "simulationCpu": {
+        "samples": 216,
+        "p50Ms": 0,
+        "p95Ms": 7.700000047683716,
+        "maxMs": 10.599999964237213
+      },
+      "sceneCpu": {
+        "samples": 216,
+        "p50Ms": 5.300000011920929,
+        "p95Ms": 28.30000001192093,
+        "maxMs": 31.099999964237213
+      },
+      "renderSubmitCpu": {
+        "samples": 216,
+        "p50Ms": 0.5999999642372131,
+        "p95Ms": 0.9000000357627869,
+        "maxMs": 1.5
+      },
+      "inputCpu": {
+        "samples": 6,
+        "p50Ms": 0.5999999642372131,
+        "p95Ms": 1.800000011920929,
+        "maxMs": 1.800000011920929
+      },
+      "inputs": [
+        {
+          "action": "zoom-in",
+          "cpuMs": 0.5
+        },
+        {
+          "action": "rotate-right",
+          "cpuMs": 0.5
+        },
+        {
+          "action": "pan-open",
+          "cpuMs": 1.800000011920929
+        },
+        {
+          "action": "pan-right",
+          "cpuMs": 0.6000000238418579
+        },
+        {
+          "action": "pan-close",
+          "cpuMs": 1.699999988079071
+        },
+        {
+          "action": "reset",
+          "cpuMs": 0.5999999642372131
+        }
+      ],
+      "longTasks": [],
+      "startTick": 13587,
+      "endTick": 13628,
+      "residentSelected": false,
+      "selectionRefreshes": 2,
+      "startPoses": [
+        {
+          "id": "macaw-1",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "perch",
+          "bones": 21,
+          "poseHash": 806447869,
+          "position": [
+            -1.5,
+            0.14050561199999992,
+            0.25
+          ]
+        },
+        {
+          "id": "macaw-2",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "idle",
+          "bones": 21,
+          "poseHash": 2754791181,
+          "position": [
+            -0.5,
+            0.079,
+            0.25
+          ]
+        },
+        {
+          "id": "elephant-ayu",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 2959588742,
+          "position": [
+            1.5,
+            0.079,
+            10.5
+          ]
+        },
+        {
+          "id": "elephant-nara",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 915592111,
+          "position": [
+            -1.4798989873222892,
+            0.079,
+            8.52010101267762
+          ]
+        },
+        {
+          "id": "lion-raka",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "idle",
+          "bones": 17,
+          "poseHash": 3793673198,
+          "position": [
+            2.1016652000000047,
+            0.079,
+            15.5
+          ]
+        },
+        {
+          "id": "lion-sena",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "seek-food",
+          "bones": 17,
+          "poseHash": 2078431232,
+          "position": [
+            0,
+            0.30866619000000056,
+            16.793334799999997
+          ]
+        },
+        {
+          "id": "lion-tala",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "seek-food",
+          "bones": 17,
+          "poseHash": 1536961764,
+          "position": [
+            -1.5,
+            0.079,
+            15.206665200000003
+          ]
+        },
+        {
+          "id": "giraffe-dira",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 1784295965,
+          "position": [
+            13,
+            0.079,
+            -0.5
+          ]
+        },
+        {
+          "id": "giraffe-sora",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "enrich",
+          "bones": 20,
+          "poseHash": 2531234525,
+          "position": [
+            10.5,
+            0.079,
+            2.5
+          ]
+        },
+        {
+          "id": "giraffe-lila",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "seek-enrichment",
+          "bones": 20,
+          "poseHash": 1563423542,
+          "position": [
+            8.308556261807944,
+            0.079,
+            2.0427813090397553
+          ]
+        },
+        {
+          "id": "zebra-zaki",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 1588932002,
+          "position": [
+            11,
+            0.079,
+            10
+          ]
+        },
+        {
+          "id": "zebra-zuri",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 1588932002,
+          "position": [
+            13,
+            0.079,
+            9
+          ]
+        },
+        {
+          "id": "zebra-mira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 2735217056,
+          "position": [
+            10,
+            0.079,
+            12
+          ]
+        },
+        {
+          "id": "zebra-kira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 2735217056,
+          "position": [
+            13,
+            0.079,
+            12
+          ]
+        }
+      ],
+      "endPoses": [
+        {
+          "id": "macaw-1",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "perch",
+          "bones": 21,
+          "poseHash": 3412793114,
+          "position": [
+            -1.5,
+            0.3394,
+            -0.5
+          ]
+        },
+        {
+          "id": "macaw-2",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "idle",
+          "bones": 21,
+          "poseHash": 1082930525,
+          "position": [
+            -0.5,
+            0.079,
+            0.25
+          ]
+        },
+        {
+          "id": "elephant-ayu",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 2959588742,
+          "position": [
+            1.5,
+            0.079,
+            10.5
+          ]
+        },
+        {
+          "id": "elephant-nara",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 915592111,
+          "position": [
+            -1.4798989873222892,
+            0.079,
+            8.52010101267762
+          ]
+        },
+        {
+          "id": "lion-raka",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "idle",
+          "bones": 17,
+          "poseHash": 3793673198,
+          "position": [
+            2.1016652000000047,
+            0.079,
+            15.5
+          ]
+        },
+        {
+          "id": "lion-sena",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "seek-food",
+          "bones": 17,
+          "poseHash": 2078431232,
+          "position": [
+            0,
+            0.30866619000000056,
+            16.793334799999997
+          ]
+        },
+        {
+          "id": "lion-tala",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "seek-food",
+          "bones": 17,
+          "poseHash": 1536961764,
+          "position": [
+            -1.5,
+            0.079,
+            15.206665200000003
+          ]
+        },
+        {
+          "id": "giraffe-dira",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "seek-shade",
+          "bones": 20,
+          "poseHash": 1784295965,
+          "position": [
+            13,
+            0.079,
+            -0.5
+          ]
+        },
+        {
+          "id": "giraffe-sora",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 2531234525,
+          "position": [
+            10.5,
+            0.079,
+            2.5
+          ]
+        },
+        {
+          "id": "giraffe-lila",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "enrich",
+          "bones": 20,
+          "poseHash": 1563423542,
+          "position": [
+            8.308556261807944,
+            0.079,
+            2.0427813090397553
+          ]
+        },
+        {
+          "id": "zebra-zaki",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 1588932002,
+          "position": [
+            11,
+            0.079,
+            10
+          ]
+        },
+        {
+          "id": "zebra-zuri",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 1588932002,
+          "position": [
+            13,
+            0.079,
+            9
+          ]
+        },
+        {
+          "id": "zebra-mira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 2735217056,
+          "position": [
+            10,
+            0.079,
+            12
+          ]
+        },
+        {
+          "id": "zebra-kira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 2735217056,
+          "position": [
+            13,
+            0.079,
+            12
+          ]
+        }
+      ],
+      "changedResidentIds": [
+        "macaw-1",
+        "macaw-2"
+      ],
+      "focusedChangedIds": [
+        "macaw-1",
+        "macaw-2"
+      ],
+      "drawCalls": 30,
+      "triangles": 41312,
+      "startResources": {
+        "geometries": 116,
+        "textures": 48
+      },
+      "endResources": {
+        "geometries": 116,
+        "textures": 48
+      }
+    },
+    {
+      "kind": "elephant-grove",
+      "visible": "visible",
+      "elapsedMs": 4084.899999976158,
+      "navigationMs": 99.5,
+      "metrics": {
+        "kind": "RAF callback intervals and synchronous JS/core/render-submit duration; NOT presented FPS or GPU time",
+        "callbacksObserved": 201,
+        "retainedIntervals": 200,
+        "retainedCpuSamples": 201,
+        "capacity": 600,
+        "retainedWindowMs": 4100.1,
+        "callbackHz": 48.779298065900825,
+        "intervalP50Ms": 16.700000000000728,
+        "intervalP95Ms": 33.399999999999636,
+        "cpuP50Ms": 5.800000011920929,
+        "cpuP95Ms": 38.90000003576279,
+        "actualPresentationFPS": "UNMEASURED"
+      },
+      "simulationCpu": {
+        "samples": 201,
+        "p50Ms": 0,
+        "p95Ms": 7.799999952316284,
+        "maxMs": 11
+      },
+      "sceneCpu": {
+        "samples": 201,
+        "p50Ms": 5.700000047683716,
+        "p95Ms": 31.30000001192093,
+        "maxMs": 34.10000002384186
+      },
+      "renderSubmitCpu": {
+        "samples": 201,
+        "p50Ms": 0.7999999523162842,
+        "p95Ms": 1.100000023841858,
+        "maxMs": 9.100000023841858
+      },
+      "inputCpu": {
+        "samples": 6,
+        "p50Ms": 0.30000001192092896,
+        "p95Ms": 1.2999999523162842,
+        "maxMs": 1.2999999523162842
+      },
+      "inputs": [
+        {
+          "action": "zoom-in",
+          "cpuMs": 0.30000001192092896
+        },
+        {
+          "action": "rotate-right",
+          "cpuMs": 0.40000003576278687
+        },
+        {
+          "action": "pan-open",
+          "cpuMs": 0.7999999523162842
+        },
+        {
+          "action": "pan-right",
+          "cpuMs": 0.19999998807907104
+        },
+        {
+          "action": "pan-close",
+          "cpuMs": 1.2999999523162842
+        },
+        {
+          "action": "reset",
+          "cpuMs": 0.30000001192092896
+        }
+      ],
+      "longTasks": [
+        {
+          "start": 11524.5,
+          "duration": 52
+        }
+      ],
+      "startTick": 13636,
+      "endTick": 13677,
+      "residentSelected": true,
+      "selectionRefreshes": 46,
+      "startPoses": [
+        {
+          "id": "macaw-1",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "perch",
+          "bones": 21,
+          "poseHash": 13405093,
+          "position": [
+            -1.5,
+            0.3394,
+            -0.5
+          ]
+        },
+        {
+          "id": "macaw-2",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "idle",
+          "bones": 21,
+          "poseHash": 112589971,
+          "position": [
+            -0.5,
+            0.079,
+            0.25
+          ]
+        },
+        {
+          "id": "elephant-ayu",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 421609364,
+          "position": [
+            1.5,
+            0.079,
+            10.5
+          ]
+        },
+        {
+          "id": "elephant-nara",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 2900044375,
+          "position": [
+            -1.4798989873222892,
+            0.079,
+            8.52010101267762
+          ]
+        },
+        {
+          "id": "lion-raka",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "idle",
+          "bones": 17,
+          "poseHash": 3034101333,
+          "position": [
+            2,
+            0.079,
+            15.5
+          ]
+        },
+        {
+          "id": "lion-sena",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "seek-food",
+          "bones": 17,
+          "poseHash": 3209735373,
+          "position": [
+            -0.5,
+            0.079,
+            17.151720200000003
+          ]
+        },
+        {
+          "id": "lion-tala",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "seek-food",
+          "bones": 17,
+          "poseHash": 4039919818,
+          "position": [
+            -0.20672020000000213,
+            0.079,
+            14.5
+          ]
+        },
+        {
+          "id": "giraffe-dira",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "seek-shade",
+          "bones": 20,
+          "poseHash": 2178634074,
+          "position": [
+            11.701892426032025,
+            0.079,
+            -0.3509462130160008
+          ]
+        },
+        {
+          "id": "giraffe-sora",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 3699407187,
+          "position": [
+            10.5,
+            0.079,
+            1.8867056
+          ]
+        },
+        {
+          "id": "giraffe-lila",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "enrich",
+          "bones": 20,
+          "poseHash": 4243831026,
+          "position": [
+            8.5,
+            0.079,
+            3
+          ]
+        },
+        {
+          "id": "zebra-zaki",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 3268593491,
+          "position": [
+            9.240297072077096,
+            0.079,
+            10.190238154370043
+          ]
+        },
+        {
+          "id": "zebra-zuri",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 967347595,
+          "position": [
+            11.9850438,
+            0.079,
+            8.5
+          ]
+        },
+        {
+          "id": "zebra-mira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 4136318806,
+          "position": [
+            11.496661800000012,
+            0.079,
+            12.5
+          ]
+        },
+        {
+          "id": "zebra-kira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 730047786,
+          "position": [
+            13.705687236396166,
+            0.079,
+            10.779351807314713
+          ]
+        }
+      ],
+      "endPoses": [
+        {
+          "id": "macaw-1",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "perch",
+          "bones": 21,
+          "poseHash": 13405093,
+          "position": [
+            -1.5,
+            0.3394,
+            -0.5
+          ]
+        },
+        {
+          "id": "macaw-2",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "rest",
+          "bones": 21,
+          "poseHash": 112589971,
+          "position": [
+            -0.5,
+            0.079,
+            0.25
+          ]
+        },
+        {
+          "id": "elephant-ayu",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 1259259530,
+          "position": [
+            1.5,
+            0.079,
+            10.5
+          ]
+        },
+        {
+          "id": "elephant-nara",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 62662579,
+          "position": [
+            -1.4798989873222892,
+            0.079,
+            8.52010101267762
+          ]
+        },
+        {
+          "id": "lion-raka",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "seek-shade",
+          "bones": 17,
+          "poseHash": 3034101333,
+          "position": [
+            2,
+            0.079,
+            15.5
+          ]
+        },
+        {
+          "id": "lion-sena",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "seek-food",
+          "bones": 17,
+          "poseHash": 3209735373,
+          "position": [
+            -0.5,
+            0.079,
+            17.151720200000003
+          ]
+        },
+        {
+          "id": "lion-tala",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "seek-food",
+          "bones": 17,
+          "poseHash": 4039919818,
+          "position": [
+            -0.20672020000000213,
+            0.079,
+            14.5
+          ]
+        },
+        {
+          "id": "giraffe-dira",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "seek-shade",
+          "bones": 20,
+          "poseHash": 2178634074,
+          "position": [
+            11.701892426032025,
+            0.079,
+            -0.3509462130160008
+          ]
+        },
+        {
+          "id": "giraffe-sora",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 3699407187,
+          "position": [
+            10.5,
+            0.079,
+            1.8867056
+          ]
+        },
+        {
+          "id": "giraffe-lila",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 4243831026,
+          "position": [
+            8.5,
+            0.079,
+            3
+          ]
+        },
+        {
+          "id": "zebra-zaki",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-water",
+          "bones": 20,
+          "poseHash": 3268593491,
+          "position": [
+            9.240297072077096,
+            0.079,
+            10.190238154370043
+          ]
+        },
+        {
+          "id": "zebra-zuri",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 967347595,
+          "position": [
+            11.9850438,
+            0.079,
+            8.5
+          ]
+        },
+        {
+          "id": "zebra-mira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 4136318806,
+          "position": [
+            11.496661800000012,
+            0.079,
+            12.5
+          ]
+        },
+        {
+          "id": "zebra-kira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 730047786,
+          "position": [
+            13.705687236396166,
+            0.079,
+            10.779351807314713
+          ]
+        }
+      ],
+      "changedResidentIds": [
+        "elephant-ayu",
+        "elephant-nara"
+      ],
+      "focusedChangedIds": [
+        "elephant-ayu",
+        "elephant-nara"
+      ],
+      "drawCalls": 51,
+      "triangles": 66496,
+      "startResources": {
+        "geometries": 116,
+        "textures": 48
+      },
+      "endResources": {
+        "geometries": 118,
+        "textures": 48
+      }
+    },
+    {
+      "kind": "lion-savanna",
+      "visible": "visible",
+      "elapsedMs": 4097.399999976158,
+      "navigationMs": 141.9000000357628,
+      "metrics": {
+        "kind": "RAF callback intervals and synchronous JS/core/render-submit duration; NOT presented FPS or GPU time",
+        "callbacksObserved": 203,
+        "retainedIntervals": 202,
+        "retainedCpuSamples": 203,
+        "capacity": 600,
+        "retainedWindowMs": 4099.800000000001,
+        "callbackHz": 49.2706961315186,
+        "intervalP50Ms": 16.700000000000728,
+        "intervalP95Ms": 33.399999999999636,
+        "cpuP50Ms": 6,
+        "cpuP95Ms": 37.5,
+        "actualPresentationFPS": "UNMEASURED"
+      },
+      "simulationCpu": {
+        "samples": 203,
+        "p50Ms": 0,
+        "p95Ms": 7.400000035762787,
+        "maxMs": 9.900000035762787
+      },
+      "sceneCpu": {
+        "samples": 203,
+        "p50Ms": 5.900000035762787,
+        "p95Ms": 30.599999964237213,
+        "maxMs": 35.40000003576279
+      },
+      "renderSubmitCpu": {
+        "samples": 203,
+        "p50Ms": 0.699999988079071,
+        "p95Ms": 1.100000023841858,
+        "maxMs": 2.200000047683716
+      },
+      "inputCpu": {
+        "samples": 6,
+        "p50Ms": 0.2999999523162842,
+        "p95Ms": 1.300000011920929,
+        "maxMs": 1.300000011920929
+      },
+      "inputs": [
+        {
+          "action": "zoom-in",
+          "cpuMs": 0.2999999523162842
+        },
+        {
+          "action": "rotate-right",
+          "cpuMs": 0.30000001192092896
+        },
+        {
+          "action": "pan-open",
+          "cpuMs": 1.300000011920929
+        },
+        {
+          "action": "pan-right",
+          "cpuMs": 0.20000004768371582
+        },
+        {
+          "action": "pan-close",
+          "cpuMs": 0.800000011920929
+        },
+        {
+          "action": "reset",
+          "cpuMs": 0.2999999523162842
+        }
+      ],
+      "longTasks": [
+        {
+          "start": 15728.300000011921,
+          "duration": 54
+        },
+        {
+          "start": 17124.69999998808,
+          "duration": 54
+        }
+      ],
+      "startTick": 13686,
+      "endTick": 13727,
+      "residentSelected": true,
+      "selectionRefreshes": 91,
+      "startPoses": [
+        {
+          "id": "macaw-1",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "perch",
+          "bones": 21,
+          "poseHash": 506555122,
+          "position": [
+            -1.5,
+            0.3394,
+            -0.5
+          ]
+        },
+        {
+          "id": "macaw-2",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "rest",
+          "bones": 21,
+          "poseHash": 3960935264,
+          "position": [
+            -0.5,
+            0.3394,
+            -0.5
+          ]
+        },
+        {
+          "id": "elephant-ayu",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 111865294,
+          "position": [
+            1.5,
+            0.079,
+            10.5
+          ]
+        },
+        {
+          "id": "elephant-nara",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 2465813709,
+          "position": [
+            -1.4798989873222892,
+            0.079,
+            8.52010101267762
+          ]
+        },
+        {
+          "id": "lion-raka",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "idle",
+          "bones": 17,
+          "poseHash": 2778955087,
+          "position": [
+            2,
+            0.079,
+            15.5
+          ]
+        },
+        {
+          "id": "lion-sena",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "seek-food",
+          "bones": 17,
+          "poseHash": 1435094052,
+          "position": [
+            -1.201539799999999,
+            0.079,
+            15.5
+          ]
+        },
+        {
+          "id": "lion-tala",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "seek-food",
+          "bones": 17,
+          "poseHash": 3302971600,
+          "position": [
+            2.2980736511200224,
+            0.079,
+            14.201926348879969
+          ]
+        },
+        {
+          "id": "giraffe-dira",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "seek-shade",
+          "bones": 20,
+          "poseHash": 3815827943,
+          "position": [
+            9.948850908759855,
+            0.079,
+            0.5255745456200831
+          ]
+        },
+        {
+          "id": "giraffe-sora",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 4145830447,
+          "position": [
+            10.905352073585014,
+            0.079,
+            1.9053520735850267
+          ]
+        },
+        {
+          "id": "giraffe-lila",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "idle",
+          "bones": 20,
+          "poseHash": 1662044751,
+          "position": [
+            8.5,
+            0.079,
+            2.1867456
+          ]
+        },
+        {
+          "id": "zebra-zaki",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-water",
+          "bones": 20,
+          "poseHash": 1226467096,
+          "position": [
+            9.319230312723247,
+            0.079,
+            10.103296964158144
+          ]
+        },
+        {
+          "id": "zebra-zuri",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 1737319151,
+          "position": [
+            9.9400888,
+            0.079,
+            8.5
+          ]
+        },
+        {
+          "id": "zebra-mira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 2373475420,
+          "position": [
+            12,
+            0.079,
+            13
+          ]
+        },
+        {
+          "id": "zebra-kira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 2356614702,
+          "position": [
+            14.809273716832944,
+            0.079,
+            8.870445462775445
+          ]
+        }
+      ],
+      "endPoses": [
+        {
+          "id": "macaw-1",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "idle",
+          "bones": 21,
+          "poseHash": 506555122,
+          "position": [
+            -1.5,
+            0.3394,
+            -0.5
+          ]
+        },
+        {
+          "id": "macaw-2",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "perch",
+          "bones": 21,
+          "poseHash": 3960935264,
+          "position": [
+            -0.5,
+            0.3394,
+            -0.5
+          ]
+        },
+        {
+          "id": "elephant-ayu",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 111865294,
+          "position": [
+            1.5,
+            0.079,
+            10.5
+          ]
+        },
+        {
+          "id": "elephant-nara",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 2465813709,
+          "position": [
+            -1.4798989873222892,
+            0.079,
+            8.52010101267762
+          ]
+        },
+        {
+          "id": "lion-raka",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "seek-shade",
+          "bones": 17,
+          "poseHash": 4276220460,
+          "position": [
+            2,
+            0.079,
+            15.5
+          ]
+        },
+        {
+          "id": "lion-sena",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "eat",
+          "bones": 17,
+          "poseHash": 2045658729,
+          "position": [
+            -2,
+            0.079,
+            15.5
+          ]
+        },
+        {
+          "id": "lion-tala",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "wander",
+          "bones": 17,
+          "poseHash": 1505597638,
+          "position": [
+            2.5,
+            0.079,
+            14
+          ]
+        },
+        {
+          "id": "giraffe-dira",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 3815827943,
+          "position": [
+            9.948850908759855,
+            0.079,
+            0.5255745456200831
+          ]
+        },
+        {
+          "id": "giraffe-sora",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 4145830447,
+          "position": [
+            10.905352073585014,
+            0.079,
+            1.9053520735850267
+          ]
+        },
+        {
+          "id": "giraffe-lila",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 1662044751,
+          "position": [
+            8.5,
+            0.079,
+            2.1867456
+          ]
+        },
+        {
+          "id": "zebra-zaki",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-water",
+          "bones": 20,
+          "poseHash": 1226467096,
+          "position": [
+            9.319230312723247,
+            0.079,
+            10.103296964158144
+          ]
+        },
+        {
+          "id": "zebra-zuri",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "graze",
+          "bones": 20,
+          "poseHash": 1737319151,
+          "position": [
+            9.9400888,
+            0.079,
+            8.5
+          ]
+        },
+        {
+          "id": "zebra-mira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 2373475420,
+          "position": [
+            12,
+            0.079,
+            13
+          ]
+        },
+        {
+          "id": "zebra-kira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-water",
+          "bones": 20,
+          "poseHash": 2356614702,
+          "position": [
+            14.809273716832944,
+            0.079,
+            8.870445462775445
+          ]
+        }
+      ],
+      "changedResidentIds": [
+        "lion-raka",
+        "lion-sena",
+        "lion-tala"
+      ],
+      "focusedChangedIds": [
+        "lion-raka",
+        "lion-sena",
+        "lion-tala"
+      ],
+      "drawCalls": 56,
+      "triangles": 58282,
+      "startResources": {
+        "geometries": 118,
+        "textures": 48
+      },
+      "endResources": {
+        "geometries": 118,
+        "textures": 48
+      }
+    },
+    {
+      "kind": "giraffe-plains",
+      "visible": "visible",
+      "elapsedMs": 4079.600000023842,
+      "navigationMs": 128.69999998807907,
+      "metrics": {
+        "kind": "RAF callback intervals and synchronous JS/core/render-submit duration; NOT presented FPS or GPU time",
+        "callbacksObserved": 204,
+        "retainedIntervals": 203,
+        "retainedCpuSamples": 204,
+        "capacity": 600,
+        "retainedWindowMs": 4099.899999999998,
+        "callbackHz": 49.51340276592115,
+        "intervalP50Ms": 16.700000000000728,
+        "intervalP95Ms": 33.400000000001455,
+        "cpuP50Ms": 5.800000011920929,
+        "cpuP95Ms": 37.60000002384186,
+        "actualPresentationFPS": "UNMEASURED"
+      },
+      "simulationCpu": {
+        "samples": 204,
+        "p50Ms": 0,
+        "p95Ms": 7.400000035762787,
+        "maxMs": 9.5
+      },
+      "sceneCpu": {
+        "samples": 204,
+        "p50Ms": 5.800000011920929,
+        "p95Ms": 30.5,
+        "maxMs": 36
+      },
+      "renderSubmitCpu": {
+        "samples": 204,
+        "p50Ms": 0.699999988079071,
+        "p95Ms": 1,
+        "maxMs": 1.600000023841858
+      },
+      "inputCpu": {
+        "samples": 6,
+        "p50Ms": 0.3999999761581421,
+        "p95Ms": 1.100000023841858,
+        "maxMs": 1.100000023841858
+      },
+      "inputs": [
+        {
+          "action": "zoom-in",
+          "cpuMs": 0.3999999761581421
+        },
+        {
+          "action": "rotate-right",
+          "cpuMs": 0.19999998807907104
+        },
+        {
+          "action": "pan-open",
+          "cpuMs": 1.100000023841858
+        },
+        {
+          "action": "pan-right",
+          "cpuMs": 0.2999999523162842
+        },
+        {
+          "action": "pan-close",
+          "cpuMs": 0.699999988079071
+        },
+        {
+          "action": "reset",
+          "cpuMs": 0.40000003576278687
+        }
+      ],
+      "longTasks": [],
+      "startTick": 13736,
+      "endTick": 13777,
+      "residentSelected": true,
+      "selectionRefreshes": 135,
+      "startPoses": [
+        {
+          "id": "macaw-1",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "idle",
+          "bones": 21,
+          "poseHash": 2832644404,
+          "position": [
+            -1.5,
+            0.079,
+            0.25
+          ]
+        },
+        {
+          "id": "macaw-2",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "idle",
+          "bones": 21,
+          "poseHash": 3204992912,
+          "position": [
+            -0.5,
+            0.08268118799999989,
+            0.25
+          ]
+        },
+        {
+          "id": "elephant-ayu",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 2941121592,
+          "position": [
+            1.5,
+            0.079,
+            10.5
+          ]
+        },
+        {
+          "id": "elephant-nara",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 3512431214,
+          "position": [
+            -1.4798989873222892,
+            0.079,
+            8.52010101267762
+          ]
+        },
+        {
+          "id": "lion-raka",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "idle",
+          "bones": 17,
+          "poseHash": 2560209395,
+          "position": [
+            2,
+            0.079,
+            15.5
+          ]
+        },
+        {
+          "id": "lion-sena",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "wander",
+          "bones": 17,
+          "poseHash": 3847380870,
+          "position": [
+            -2,
+            0.079,
+            15.5
+          ]
+        },
+        {
+          "id": "lion-tala",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "wander",
+          "bones": 17,
+          "poseHash": 1231691990,
+          "position": [
+            2.5,
+            0.079,
+            14
+          ]
+        },
+        {
+          "id": "giraffe-dira",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 1759430900,
+          "position": [
+            9.245164251720322,
+            0.079,
+            0.8774178741398497
+          ]
+        },
+        {
+          "id": "giraffe-sora",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 1900825713,
+          "position": [
+            11.368043692292943,
+            0.079,
+            2.3680436922929404
+          ]
+        },
+        {
+          "id": "giraffe-lila",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 234509632,
+          "position": [
+            8.586521246893248,
+            0.079,
+            1.7022952977631371
+          ]
+        },
+        {
+          "id": "zebra-zaki",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-water",
+          "bones": 20,
+          "poseHash": 160640313,
+          "position": [
+            11.26236620000001,
+            0.079,
+            10
+          ]
+        },
+        {
+          "id": "zebra-zuri",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 1455680057,
+          "position": [
+            9.15,
+            0.079,
+            8.8
+          ]
+        },
+        {
+          "id": "zebra-mira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 3203411102,
+          "position": [
+            12.942366200000016,
+            0.079,
+            13.5
+          ]
+        },
+        {
+          "id": "zebra-kira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-water",
+          "bones": 20,
+          "poseHash": 945227493,
+          "position": [
+            14.850000000000001,
+            0.079,
+            8.8
+          ]
+        }
+      ],
+      "endPoses": [
+        {
+          "id": "macaw-1",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "perch",
+          "bones": 21,
+          "poseHash": 2832644404,
+          "position": [
+            -1.5,
+            0.079,
+            0.25
+          ]
+        },
+        {
+          "id": "macaw-2",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "idle",
+          "bones": 21,
+          "poseHash": 3204992912,
+          "position": [
+            -0.5,
+            0.08268118799999989,
+            0.25
+          ]
+        },
+        {
+          "id": "elephant-ayu",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 2941121592,
+          "position": [
+            1.5,
+            0.079,
+            10.5
+          ]
+        },
+        {
+          "id": "elephant-nara",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 3512431214,
+          "position": [
+            -1.4798989873222892,
+            0.079,
+            8.52010101267762
+          ]
+        },
+        {
+          "id": "lion-raka",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "seek-shade",
+          "bones": 17,
+          "poseHash": 2560209395,
+          "position": [
+            2,
+            0.079,
+            15.5
+          ]
+        },
+        {
+          "id": "lion-sena",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "seek-shade",
+          "bones": 17,
+          "poseHash": 3847380870,
+          "position": [
+            -2,
+            0.079,
+            15.5
+          ]
+        },
+        {
+          "id": "lion-tala",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "wander",
+          "bones": 17,
+          "poseHash": 1231691990,
+          "position": [
+            2.5,
+            0.079,
+            14
+          ]
+        },
+        {
+          "id": "giraffe-dira",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 153353580,
+          "position": [
+            10.378848107420673,
+            0.079,
+            -0.12480848758675211
+          ]
+        },
+        {
+          "id": "giraffe-sora",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 3612773442,
+          "position": [
+            11,
+            0.079,
+            1.1468256000000006
+          ]
+        },
+        {
+          "id": "giraffe-lila",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 215423397,
+          "position": [
+            9.93317439999999,
+            0.079,
+            2
+          ]
+        },
+        {
+          "id": "zebra-zaki",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-water",
+          "bones": 20,
+          "poseHash": 160640313,
+          "position": [
+            11.26236620000001,
+            0.079,
+            10
+          ]
+        },
+        {
+          "id": "zebra-zuri",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 1455680057,
+          "position": [
+            9.15,
+            0.079,
+            8.8
+          ]
+        },
+        {
+          "id": "zebra-mira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 3203411102,
+          "position": [
+            12.942366200000016,
+            0.079,
+            13.5
+          ]
+        },
+        {
+          "id": "zebra-kira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-water",
+          "bones": 20,
+          "poseHash": 945227493,
+          "position": [
+            14.850000000000001,
+            0.079,
+            8.8
+          ]
+        }
+      ],
+      "changedResidentIds": [
+        "giraffe-dira",
+        "giraffe-sora",
+        "giraffe-lila"
+      ],
+      "focusedChangedIds": [
+        "giraffe-dira",
+        "giraffe-sora",
+        "giraffe-lila"
+      ],
+      "drawCalls": 54,
+      "triangles": 51292,
+      "startResources": {
+        "geometries": 118,
+        "textures": 48
+      },
+      "endResources": {
+        "geometries": 118,
+        "textures": 48
+      }
+    },
+    {
+      "kind": "zebra-grasslands",
+      "visible": "visible",
+      "elapsedMs": 4086.600000023842,
+      "navigationMs": 129.60000002384186,
+      "metrics": {
+        "kind": "RAF callback intervals and synchronous JS/core/render-submit duration; NOT presented FPS or GPU time",
+        "callbacksObserved": 200,
+        "retainedIntervals": 199,
+        "retainedCpuSamples": 200,
+        "capacity": 600,
+        "retainedWindowMs": 4116.5,
+        "callbackHz": 48.34203813919592,
+        "intervalP50Ms": 16.700000000000728,
+        "intervalP95Ms": 33.39999999999782,
+        "cpuP50Ms": 5.899999976158142,
+        "cpuP95Ms": 36.5,
+        "actualPresentationFPS": "UNMEASURED"
+      },
+      "simulationCpu": {
+        "samples": 200,
+        "p50Ms": 0,
+        "p95Ms": 7,
+        "maxMs": 10.800000011920929
+      },
+      "sceneCpu": {
+        "samples": 200,
+        "p50Ms": 5.800000011920929,
+        "p95Ms": 29.399999976158142,
+        "maxMs": 43.39999997615814
+      },
+      "renderSubmitCpu": {
+        "samples": 200,
+        "p50Ms": 0.7000000476837158,
+        "p95Ms": 1.2000000476837158,
+        "maxMs": 1.699999988079071
+      },
+      "inputCpu": {
+        "samples": 6,
+        "p50Ms": 0.30000001192092896,
+        "p95Ms": 1.199999988079071,
+        "maxMs": 1.199999988079071
+      },
+      "inputs": [
+        {
+          "action": "zoom-in",
+          "cpuMs": 0.19999998807907104
+        },
+        {
+          "action": "rotate-right",
+          "cpuMs": 0.30000001192092896
+        },
+        {
+          "action": "pan-open",
+          "cpuMs": 1.199999988079071
+        },
+        {
+          "action": "pan-right",
+          "cpuMs": 0.19999998807907104
+        },
+        {
+          "action": "pan-close",
+          "cpuMs": 0.800000011920929
+        },
+        {
+          "action": "reset",
+          "cpuMs": 0.5
+        }
+      ],
+      "longTasks": [
+        {
+          "start": 24723.100000023842,
+          "duration": 52
+        },
+        {
+          "start": 25220.100000023842,
+          "duration": 56
+        }
+      ],
+      "startTick": 13786,
+      "endTick": 13827,
+      "residentSelected": true,
+      "selectionRefreshes": 140,
+      "startPoses": [
+        {
+          "id": "macaw-1",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "enrich",
+          "bones": 21,
+          "poseHash": 2519727940,
+          "position": [
+            -1.5,
+            0.3394,
+            -0.48933499999999874
+          ]
+        },
+        {
+          "id": "macaw-2",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "perch",
+          "bones": 21,
+          "poseHash": 109114778,
+          "position": [
+            -0.5,
+            0.079,
+            0.25
+          ]
+        },
+        {
+          "id": "elephant-ayu",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 4089384407,
+          "position": [
+            1.5,
+            0.079,
+            10.5
+          ]
+        },
+        {
+          "id": "elephant-nara",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 2161669055,
+          "position": [
+            -1.4798989873222892,
+            0.079,
+            8.52010101267762
+          ]
+        },
+        {
+          "id": "lion-raka",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "idle",
+          "bones": 17,
+          "poseHash": 99122920,
+          "position": [
+            2,
+            0.079,
+            15.5
+          ]
+        },
+        {
+          "id": "lion-sena",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "idle",
+          "bones": 17,
+          "poseHash": 4281390757,
+          "position": [
+            -1,
+            0.079,
+            15.5
+          ]
+        },
+        {
+          "id": "lion-tala",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "wander",
+          "bones": 17,
+          "poseHash": 1762350312,
+          "position": [
+            0.6843852000000048,
+            0.079,
+            14
+          ]
+        },
+        {
+          "id": "giraffe-dira",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 4027525984,
+          "position": [
+            10.408816466803447,
+            0.079,
+            -0.15130183459887636
+          ]
+        },
+        {
+          "id": "giraffe-sora",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 2412954127,
+          "position": [
+            11,
+            0.079,
+            1.1068256000000005
+          ]
+        },
+        {
+          "id": "giraffe-lila",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 3911377396,
+          "position": [
+            9.973174399999989,
+            0.079,
+            2
+          ]
+        },
+        {
+          "id": "zebra-zaki",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-water",
+          "bones": 20,
+          "poseHash": 1861250714,
+          "position": [
+            12,
+            0.079,
+            9.5
+          ]
+        },
+        {
+          "id": "zebra-zuri",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 3940476295,
+          "position": [
+            9.5,
+            0.079,
+            10.2098512
+          ]
+        },
+        {
+          "id": "zebra-mira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 995474582,
+          "position": [
+            14,
+            0.079,
+            13
+          ]
+        },
+        {
+          "id": "zebra-kira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-water",
+          "bones": 20,
+          "poseHash": 2994933734,
+          "position": [
+            13.155148799999989,
+            0.079,
+            8.5
+          ]
+        }
+      ],
+      "endPoses": [
+        {
+          "id": "macaw-1",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "perch",
+          "bones": 21,
+          "poseHash": 2519727940,
+          "position": [
+            -1.5,
+            0.3394,
+            -0.48933499999999874
+          ]
+        },
+        {
+          "id": "macaw-2",
+          "habitatId": "habitat-care-mission",
+          "species": "ara-ararauna",
+          "behavior": "enrich",
+          "bones": 21,
+          "poseHash": 109114778,
+          "position": [
+            -0.5,
+            0.079,
+            0.25
+          ]
+        },
+        {
+          "id": "elephant-ayu",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 4089384407,
+          "position": [
+            1.5,
+            0.079,
+            10.5
+          ]
+        },
+        {
+          "id": "elephant-nara",
+          "habitatId": "habitat-actual-elephant-test",
+          "species": "elephas-maximus",
+          "behavior": "idle",
+          "bones": 27,
+          "poseHash": 2161669055,
+          "position": [
+            -1.4798989873222892,
+            0.079,
+            8.52010101267762
+          ]
+        },
+        {
+          "id": "lion-raka",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "seek-shade",
+          "bones": 17,
+          "poseHash": 99122920,
+          "position": [
+            2,
+            0.079,
+            15.5
+          ]
+        },
+        {
+          "id": "lion-sena",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "seek-shade",
+          "bones": 17,
+          "poseHash": 4281390757,
+          "position": [
+            -1,
+            0.079,
+            15.5
+          ]
+        },
+        {
+          "id": "lion-tala",
+          "habitatId": "habitat-lion-test",
+          "species": "panthera-leo",
+          "behavior": "idle",
+          "bones": 17,
+          "poseHash": 1762350312,
+          "position": [
+            0.6843852000000048,
+            0.079,
+            14
+          ]
+        },
+        {
+          "id": "giraffe-dira",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 4027525984,
+          "position": [
+            10.408816466803447,
+            0.079,
+            -0.15130183459887636
+          ]
+        },
+        {
+          "id": "giraffe-sora",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 2412954127,
+          "position": [
+            11,
+            0.079,
+            1.1068256000000005
+          ]
+        },
+        {
+          "id": "giraffe-lila",
+          "habitatId": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "species": "giraffa-sp",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 3911377396,
+          "position": [
+            9.973174399999989,
+            0.079,
+            2
+          ]
+        },
+        {
+          "id": "zebra-zaki",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-water",
+          "bones": 20,
+          "poseHash": 81821204,
+          "position": [
+            11.59669572413793,
+            0.079,
+            8.986530510344828
+          ]
+        },
+        {
+          "id": "zebra-zuri",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 3586816423,
+          "position": [
+            10,
+            0.079,
+            10.5897912
+          ]
+        },
+        {
+          "id": "zebra-mira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "seek-graze",
+          "bones": 20,
+          "poseHash": 2869766064,
+          "position": [
+            14.5,
+            0.079,
+            12.185208799999987
+          ]
+        },
+        {
+          "id": "zebra-kira",
+          "habitatId": "habitat-zebra-codec",
+          "species": "equus-quagga",
+          "behavior": "wander",
+          "bones": 20,
+          "poseHash": 2917797176,
+          "position": [
+            12.954999999999998,
+            0.079,
+            8.5
+          ]
+        }
+      ],
+      "changedResidentIds": [
+        "zebra-zaki",
+        "zebra-zuri",
+        "zebra-mira",
+        "zebra-kira"
+      ],
+      "focusedChangedIds": [
+        "zebra-zaki",
+        "zebra-zuri",
+        "zebra-mira",
+        "zebra-kira"
+      ],
+      "drawCalls": 54,
+      "triangles": 68952,
+      "startResources": {
+        "geometries": 118,
+        "textures": 48
+      },
+      "endResources": {
+        "geometries": 118,
+        "textures": 48
+      }
+    }
+  ],
+  "errors": []
+}

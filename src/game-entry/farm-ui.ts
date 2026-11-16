@@ -41,6 +41,7 @@ export function mountFarmUi(root:HTMLElement){
   root.addEventListener('scene-zoo-overview-change',e=>{overview=(e as CustomEvent<ZooOverview>).detail;render();},{signal:events.signal,capture:true});
   root.addEventListener('scene-habitat-focus-change',e=>{const v=(e as CustomEvent<HabitatFocusView>).detail;kind=v.active?v.kind:null;notice=false;panOpen=false;render();},{signal:events.signal,capture:true});
   root.addEventListener('scene-speed-change',e=>{const v=(e as CustomEvent<SpeedView>).detail;paused=v.paused;speed=v.speed;if(paused)panOpen=false;render();},{signal:events.signal,capture:true});
+  root.addEventListener('scene-habitat-tap',e=>{const id=(e as CustomEvent<{habitatId:string}>).detail.habitatId;if(kind||!ready()||!overview.habitats.some(h=>h.id===id))return;e.preventDefault();root.dispatchEvent(new Event('hud-input-cancel'));root.dispatchEvent(new CustomEvent('zoo-ui-navigate',{detail:id}));},{signal:events.signal});
   root.addEventListener('click',e=>{
     const target=e.target instanceof Element?e.target:null,b=target?.closest<HTMLButtonElement>('[data-zoo-destination]');
     if(b&&!b.disabled){

@@ -5,6 +5,7 @@ import type { EconomyView } from '../game/economy/spending.ts';
 import type { ArrivalView } from '../game/visitors/arrivals.ts';
 import type { MissionView } from '../game/missions/engine.ts';
 import type { SpeedView } from './speed-panel.ts';
+import type { SceneIdentity } from '../game/render3d/scene-selection.ts';
 const copy = { en: { actions: 'Game actions', missions: 'Missions', care: 'Care', visitors: 'Guests', build: 'Build', options: 'Options', saveDetails: 'Save details', saved: 'Saved on this device', dirty: 'Changes pending', saving: 'Saving…', error: 'Not saved', conflict: 'Game changed in another tab', unreadable: 'Save needs recovery', unavailable: 'Temporary progress', status: 'Sanctuary status', tools: 'Zoo tools', welfare: 'Macaws {n}%', welfareScope: 'Average welfare of placed macaws: {n}%. Inspect elephant welfare in Care.', noBirds: 'No macaws', guests: 'Guests {n}', speed: 'Simulation speed {n}×. Open options', done: 'All macaw missions complete', mission: 'Current macaw mission {id}', coins: 'Zoo Coins {n}' }, id: { actions: "Aksi permainan", missions: 'Misi', care: 'Rawat', visitors: 'Tamu', build: 'Bangun', options: 'Opsi', saveDetails: "Detail simpanan", saved: 'Tersimpan di perangkat', dirty: "Menunggu simpan otomatis", saving: 'Menyimpan…', error: 'Belum tersimpan', conflict: "Permainan berubah di tab lain", unreadable: "Simpanan perlu pemulihan", unavailable: 'Progres sementara', status: 'Status suaka', tools: 'Alat suaka', welfare: 'Makaw {n}%', welfareScope: 'Rata-rata kesejahteraan makaw di aviari: {n}%. Periksa kesejahteraan gajah di Rawat.', noBirds: 'Belum ada makaw', guests: 'Tamu {n}', speed: 'Kecepatan simulasi {n}×. Buka opsi', done: 'Semua misi makaw selesai', mission: 'Misi makaw saat ini {id}', coins: 'Zoo Coins {n}' } };
 /** The existing HUD receives the macaw view; keep its visible and accessible scope honest in a shared zoo. */
 export function presentMacawHud(welfare:number|null,mission:string|null,locale:'en'|'id'){
@@ -183,7 +184,7 @@ export function mountHudLayout(root: HTMLElement) {
         // Re-align after the action, without trapping ordinary page scrolling.
         if ((e.target as HTMLElement).closest('[data-hud-chrome], [data-hud-tabs], [data-hud-pane], [data-camera-controls], [data-preview-stage]'))
             queueMicrotask(() => {
-                if (!disposed && active && !root.querySelector('dialog[open]') && !(root.hasAttribute('data-zoo-scope')&&window.innerWidth<900&&(e.target as HTMLElement).closest('.hud-rail')))
+                if (!disposed && active && !root.querySelector('dialog[open]') && !(root.hasAttribute('data-zoo-scope')&&window.innerWidth<900))
                     root.scrollIntoView({ block: 'start', behavior: 'instant' });
             });
         if ((e.target as HTMLElement).closest('[data-onboarding-exit]')) {
@@ -256,8 +257,14 @@ export function mountHudLayout(root: HTMLElement) {
         if (options.open)
             root.dispatchEvent(new Event('hud-input-cancel'));
     }, { signal: events.signal });
+    let revealedSelection: string | null = null;
     root.addEventListener('scene-selection-change', e => {
-        if ((e as CustomEvent<unknown>).detail) {
+        const identity=(e as CustomEvent<SceneIdentity|null>).detail,key=identity?identity.kind+':'+identity.id:null;
+        if(key===revealedSelection)return;
+        revealedSelection=key;
+        // Live resident/facility refreshes must not steal the chosen tab or scroll the phone.
+        // Farm navigation keeps inspection available in Build without leaving the world.
+        if (identity&&!root.hasAttribute('data-zoo-scope')) {
             select('build');
             queueMicrotask(() => {
                 if (!disposed) {

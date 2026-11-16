@@ -11,6 +11,17 @@ import { presentSelection } from '../src/game-entry/selection-presentation.ts';
 function setup(){const state=createInitialState(),world=createTropicalDiorama(state.world),camera=new OrthographicCamera();let rect={left:120,top:80,width:504,height:350};fitIsometricCamera(camera,world.bounds,rect.width/rect.height);const changes=[];const picker=createScenePicker(world.catalog,camera,()=>rect,s=>changes.push(s));return {state,world,camera,changes,picker,get rect(){return rect;},resize(width,height){rect={...rect,width,height};fitIsometricCamera(camera,world.bounds,width/height);},dispose(){picker.dispose();for(const g of [...world.geometries,...picker.geometries])g.dispose();for(const m of [...world.materials,...picker.materials])m.dispose();}};}
 function point(s,xyz){const p=new Vector3(...xyz).project(s.camera);return {x:s.rect.left+(p.x+1)*s.rect.width/2,y:s.rect.top+(1-p.y)*s.rect.height/2};}
 
+test('read-only habitat hit handling precedes selection and works without enabling edits',()=>{
+ const s=setup();try{const p=point(s,[-.5,.022,.5]),hits=[];
+  s.picker.setEnabled(false);s.picker.pick(p,identity=>{hits.push(identity.id);return true;});
+  assert.deepEqual(hits,['tile-5-5']);assert.equal(s.picker.inspect().selectionActive,false);assert.equal(s.changes.length,0);
+  s.picker.pick(p,()=>false);assert.equal(s.picker.inspect().selectionActive,false);
+  s.picker.setEnabled(true);s.picker.pick(p,()=>true);assert.equal(s.changes.length,0);
+  s.picker.pick(p,()=>false);assert.equal(s.changes.at(-1).id,'tile-5-5');
+  s.picker.dispose();s.picker.pick(p,()=>{throw Error('Disposed hit callback');});
+ }finally{s.dispose();}
+});
+
 test('batched triangle ownership covers actual geometry,120 tiles and22 distinct scenery objects without changing state',()=>{
  const s=setup();try{
   assert.equal(JSON.stringify(s.state),JSON.stringify(createInitialState()));assert.equal(s.world.catalog.identities.size,142);assert.equal(s.world.catalog.batches.length,4);

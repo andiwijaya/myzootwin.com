@@ -35,7 +35,7 @@ export function createScenePicker(catalog:SceneCatalog,camera:Camera,rect:()=>Pi
     onChange(next?{...next,cell:{...next.cell}}:null);
   }
   return {group,geometries:[outline.geometry,fill.geometry],materials:[...outlineMaterials,fill.material],
-    pick(point:{x:number;y:number}) {if(enabled&&!disposed)select(raycastScene(catalog,camera,point,rect(),raycaster,accept));},
+    pick(point:{x:number;y:number},handle?:(identity:SceneIdentity|null)=>boolean) {if(disposed||(!enabled&&!handle))return;const identity=raycastScene(catalog,camera,point,rect(),raycaster,accept);if(!handle?.(identity)&&enabled)select(identity);},
     selection:()=>current?structuredClone(current):null,
     setFilter(value?:typeof accept){accept=value;},
     clear(){select(null);},

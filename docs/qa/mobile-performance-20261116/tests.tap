@@ -1,0 +1,584 @@
+TAP version 13
+# Subtest: toolbar pan follows native drag coordinates and stays bounded after repeated commands
+ok 1 - toolbar pan follows native drag coordinates and stays bounded after repeated commands
+  ---
+  duration_ms: 3.5021
+  type: 'test'
+  ...
+# Subtest: camera overview, zoom and adversarial panning keep the ground focus inside actual map at every aspect
+ok 2 - camera overview, zoom and adversarial panning keep the ground focus inside actual map at every aspect
+  ---
+  duration_ms: 4.6409
+  type: 'test'
+  ...
+# Subtest: anchored zoom keeps the pointed ground position stable away from clamps; bad data does not poison navigation
+ok 3 - anchored zoom keeps the pointed ground position stable away from clamps; bad data does not poison navigation
+  ---
+  duration_ms: 0.6162
+  type: 'test'
+  ...
+# Subtest: tap/drag threshold, pinch, third finger and lifting a pinch never create false taps or jumps
+ok 4 - tap/drag threshold, pinch, third finger and lifting a pinch never create false taps or jumps
+  ---
+  duration_ms: 0.6509
+  type: 'test'
+  ...
+# Subtest: pointer cancellation and reset invalidate all late moves/ups and never deliver a pick
+ok 5 - pointer cancellation and reset invalidate all late moves/ups and never deliver a pick
+  ---
+  duration_ms: 0.201
+  type: 'test'
+  ...
+# Subtest: real input adapter isolates canvas wheel/keys and releases capture on cancel, pause, resize, blur and disposal
+ok 6 - real input adapter isolates canvas wheel/keys and releases capture on cancel, pause, resize, blur and disposal
+  ---
+  duration_ms: 4.6037
+  type: 'test'
+  ...
+# Subtest: actual orthographic view-center ray stays on the ground map at zoom/pan bounds and after orientation changes
+ok 7 - actual orthographic view-center ray stays on the ground map at zoom/pan bounds and after orientation changes
+  ---
+  duration_ms: 7.7039
+  type: 'test'
+  ...
+# Subtest: keyboard center inspection/cancel callbacks work without repeats,modifiers or disposed input
+ok 8 - keyboard center inspection/cancel callbacks work without repeats,modifiers or disposed input
+  ---
+  duration_ms: 0.7411
+  type: 'test'
+  ...
+# Subtest: eight camera azimuths fit every world corner at overview for desktop, portrait and landscape; full reset restores the original view
+ok 9 - eight camera azimuths fit every world corner at overview for desktop, portrait and landscape; full reset restores the original view
+  ---
+  duration_ms: 2.089
+  type: 'test'
+  ...
+# Subtest: rotating preserves the focused ground point at zoom and world pan directions/bounds remain correct at every angle
+ok 10 - rotating preserves the focused ground point at zoom and world pan directions/bounds remain correct at every angle
+  ---
+  duration_ms: 4.9614
+  type: 'test'
+  ...
+# Subtest: rotation cancels held mouse/touch gestures, never selects, and keyboard Q/E respect repeat, modifiers, paused and disposed ownership
+ok 11 - rotation cancels held mouse/touch gestures, never selects, and keyboard Q/E respect repeat, modifiers, paused and disposed ownership
+  ---
+  duration_ms: 0.7833
+  type: 'test'
+  ...
+# Subtest: actual raycast and habitat ghost identify the same world tile after orbit, zoom, pan and resize; rotation/cancel never changes world state
+ok 12 - actual raycast and habitat ghost identify the same world tile after orbit, zoom, pan and resize; rotation/cancel never changes world state
+  ---
+  duration_ms: 113.9401
+  type: 'test'
+  ...
+# Subtest: navigation-only contract ignores orbit commands and invalid camera angles cannot poison matrices
+ok 13 - navigation-only contract ignores orbit commands and invalid camera angles cannot poison matrices
+  ---
+  duration_ms: 1.0801
+  type: 'test'
+  ...
+# Subtest: habitat camera fits macaw-aviary at 1366x768, bounds navigation and restores zoo view
+ok 14 - habitat camera fits macaw-aviary at 1366x768, bounds navigation and restores zoo view
+  ---
+  duration_ms: 22.3127
+  type: 'test'
+  ...
+# Subtest: habitat camera fits macaw-aviary at 360x780, bounds navigation and restores zoo view
+ok 15 - habitat camera fits macaw-aviary at 360x780, bounds navigation and restores zoo view
+  ---
+  duration_ms: 9.2711
+  type: 'test'
+  ...
+# Subtest: habitat camera fits macaw-aviary at 780x360, bounds navigation and restores zoo view
+ok 16 - habitat camera fits macaw-aviary at 780x360, bounds navigation and restores zoo view
+  ---
+  duration_ms: 2.2592
+  type: 'test'
+  ...
+# Subtest: habitat camera fits elephant-grove at 1366x768, bounds navigation and restores zoo view
+ok 17 - habitat camera fits elephant-grove at 1366x768, bounds navigation and restores zoo view
+  ---
+  duration_ms: 3.3952
+  type: 'test'
+  ...
+# Subtest: habitat camera fits elephant-grove at 360x780, bounds navigation and restores zoo view
+ok 18 - habitat camera fits elephant-grove at 360x780, bounds navigation and restores zoo view
+  ---
+  duration_ms: 4.7955
+  type: 'test'
+  ...
+# Subtest: habitat camera fits elephant-grove at 780x360, bounds navigation and restores zoo view
+ok 19 - habitat camera fits elephant-grove at 780x360, bounds navigation and restores zoo view
+  ---
+  duration_ms: 4.5507
+  type: 'test'
+  ...
+# Subtest: habitat camera fits lion-savanna at 1366x768, bounds navigation and restores zoo view
+ok 20 - habitat camera fits lion-savanna at 1366x768, bounds navigation and restores zoo view
+  ---
+  duration_ms: 5.0941
+  type: 'test'
+  ...
+# Subtest: habitat camera fits lion-savanna at 360x780, bounds navigation and restores zoo view
+ok 21 - habitat camera fits lion-savanna at 360x780, bounds navigation and restores zoo view
+  ---
+  duration_ms: 5.3069
+  type: 'test'
+  ...
+# Subtest: habitat camera fits lion-savanna at 780x360, bounds navigation and restores zoo view
+ok 22 - habitat camera fits lion-savanna at 780x360, bounds navigation and restores zoo view
+  ---
+  duration_ms: 6.0062
+  type: 'test'
+  ...
+# Subtest: habitat camera fits giraffe-plains at 1366x768, bounds navigation and restores zoo view
+ok 23 - habitat camera fits giraffe-plains at 1366x768, bounds navigation and restores zoo view
+  ---
+  duration_ms: 4.3852
+  type: 'test'
+  ...
+# Subtest: habitat camera fits giraffe-plains at 360x780, bounds navigation and restores zoo view
+ok 24 - habitat camera fits giraffe-plains at 360x780, bounds navigation and restores zoo view
+  ---
+  duration_ms: 4.0812
+  type: 'test'
+  ...
+# Subtest: habitat camera fits giraffe-plains at 780x360, bounds navigation and restores zoo view
+ok 25 - habitat camera fits giraffe-plains at 780x360, bounds navigation and restores zoo view
+  ---
+  duration_ms: 4.5758
+  type: 'test'
+  ...
+# Subtest: habitat camera fits zebra-grasslands at 1366x768, bounds navigation and restores zoo view
+ok 26 - habitat camera fits zebra-grasslands at 1366x768, bounds navigation and restores zoo view
+  ---
+  duration_ms: 3.7088
+  type: 'test'
+  ...
+# Subtest: habitat camera fits zebra-grasslands at 360x780, bounds navigation and restores zoo view
+ok 27 - habitat camera fits zebra-grasslands at 360x780, bounds navigation and restores zoo view
+  ---
+  duration_ms: 7.1895
+  type: 'test'
+  ...
+# Subtest: habitat camera fits zebra-grasslands at 780x360, bounds navigation and restores zoo view
+ok 28 - habitat camera fits zebra-grasslands at 780x360, bounds navigation and restores zoo view
+  ---
+  duration_ms: 4.9852
+  type: 'test'
+  ...
+# Subtest: selection resolves actual habitat, facility and occupied tile without assuming fixed anchors
+ok 29 - selection resolves actual habitat, facility and occupied tile without assuming fixed anchors
+  ---
+  duration_ms: 1.2707
+  type: 'test'
+  ...
+# Subtest: render isolation clips merged geometry/shadows, restores original visibility/materials, and never mutates world
+ok 30 - render isolation clips merged geometry/shadows, restores original visibility/materials, and never mutates world
+  ---
+  duration_ms: 4.4253
+  type: 'test'
+  ...
+# Subtest: focused ray picking rejects invisible and clipped outside faces instead of selecting through the mask
+ok 31 - focused ray picking rejects invisible and clipped outside faces instead of selecting through the mask
+  ---
+  duration_ms: 4.0427
+  type: 'test'
+  ...
+# Subtest: leaving focus restores the original nearest-unowned-surface picking rule
+ok 32 - leaving focus restores the original nearest-unowned-surface picking rule
+  ---
+  duration_ms: 3.4139
+  type: 'test'
+  ...
+# Subtest: a focused habitat cannot undo another habitat facility or a shared path edit
+ok 33 - a focused habitat cannot undo another habitat facility or a shared path edit
+  ---
+  duration_ms: 2.0438
+  type: 'test'
+  ...
+# Subtest: roving HUD keyboard wraps and preserves ordinary Tab Escape and text keys
+ok 34 - roving HUD keyboard wraps and preserves ordinary Tab Escape and text keys
+  ---
+  duration_ms: 1.5791
+  type: 'test'
+  ...
+# Subtest: HUD welfare distinguishes reserves from real aggregate and includes both birds
+ok 35 - HUD welfare distinguishes reserves from real aggregate and includes both birds
+  ---
+  duration_ms: 1.2512
+  type: 'test'
+  ...
+# Subtest: HUD coin formatting keeps exact normal amounts in both locales and bounds large labels
+ok 36 - HUD coin formatting keeps exact normal amounts in both locales and bounds large labels
+  ---
+  duration_ms: 22.6
+  type: 'test'
+  ...
+# Subtest: opening a UI surface cancels held pointers without producing a world tap
+ok 37 - opening a UI surface cancels held pointers without producing a world tap
+  ---
+  duration_ms: 0.9074
+  type: 'test'
+  ...
+# Subtest: controller input cancellation reaches only its one active session and never reopens a disposed renderer
+ok 38 - controller input cancellation reaches only its one active session and never reopens a disposed renderer
+  ---
+  duration_ms: 1.1989
+  type: 'test'
+  ...
+# Subtest: all entry translations keep required parameters and only neutral identical labels
+ok 39 - all entry translations keep required parameters and only neutral identical labels
+  ---
+  duration_ms: 2.261
+  type: 'test'
+  ...
+# Subtest: every paired game panel dictionary has matching keys and placeholder contracts
+ok 40 - every paired game panel dictionary has matching keys and placeholder contracts
+  ---
+  duration_ms: 229.921
+  type: 'test'
+  ...
+# Subtest: localized numbers and exact one-decimal simulation-time displays never affect numeric inputs
+ok 41 - localized numbers and exact one-decimal simulation-time displays never affect numeric inputs
+  ---
+  duration_ms: 17.1854
+  type: 'test'
+  ...
+# Subtest: latest explicit language choice survives old saved locale while browser fallback can use saved preference
+ok 42 - latest explicit language choice survives old saved locale while browser fallback can use saved preference
+  ---
+  duration_ms: 0.2051
+  type: 'test'
+  ...
+# Subtest: entry accessibility hooks use translated keys and stale future-game copy is removed
+ok 43 - entry accessibility hooks use translated keys and stale future-game copy is removed
+  ---
+  duration_ms: 2.2783
+  type: 'test'
+  ...
+# Subtest: independent pause owners cannot release manual storage or background holds by closing dialogs
+ok 44 - independent pause owners cannot release manual storage or background holds by closing dialogs
+  ---
+  duration_ms: 2.4623
+  type: 'test'
+  ...
+# Subtest: batched pause reason replacement cannot briefly resume simulation
+ok 45 - batched pause reason replacement cannot briefly resume simulation
+  ---
+  duration_ms: 0.3448
+  type: 'test'
+  ...
+# Subtest: actual simulation freezes all state and reward ledger while paused at both speeds
+ok 46 - actual simulation freezes all state and reward ledger while paused at both speeds
+  ---
+  duration_ms: 1773.1719
+  type: 'test'
+  ...
+# Subtest: foreground does not imply consent to resume after a background hold
+ok 47 - foreground does not imply consent to resume after a background hold
+  ---
+  duration_ms: 1.9808
+  type: 'test'
+  ...
+# Subtest: preview dialog release cannot override an external hold and actions remain blocked
+ok 48 - preview dialog release cannot override an external hold and actions remain blocked
+  ---
+  duration_ms: 0.6094
+  type: 'test'
+  ...
+# Subtest: external pause survives lazy retry and close/reopen without multiplying sessions
+ok 49 - external pause survives lazy retry and close/reopen without multiplying sessions
+  ---
+  duration_ms: 0.254
+  type: 'test'
+  ...
+# Subtest: restart review flushes latest current progress before issuing a replacement quote
+ok 50 - restart review flushes latest current progress before issuing a replacement quote
+  ---
+  duration_ms: 766.3895
+  type: 'test'
+  ...
+# Subtest: cancelling a reviewed restart is read-only with all money missions and state intact
+ok 51 - cancelling a reviewed restart is read-only with all money missions and state intact
+  ---
+  duration_ms: 810.0182
+  type: 'test'
+  ...
+# Subtest: restart busy hold is synchronous and rejects repeated confirm and checkpoint attempts
+ok 52 - restart busy hold is synchronous and rejects repeated confirm and checkpoint attempts
+  ---
+  duration_ms: 707.8814
+  type: 'test'
+  ...
+# Subtest: pre-restart restore rehydrates full compacted progress without reward duplication or offline time
+ok 53 - pre-restart restore rehydrates full compacted progress without reward duplication or offline time
+  ---
+  duration_ms: 873.6374
+  type: 'test'
+  ...
+# Subtest: quota or conflict restart failure retains current state and never reports fresh progress
+ok 54 - quota or conflict restart failure retains current state and never reports fresh progress
+  ---
+  duration_ms: 2526.1067
+  type: 'test'
+  ...
+# Subtest: failed pending write prevents issuing a reset quote or bypassing preservation
+ok 55 - failed pending write prevents issuing a reset quote or bypassing preservation
+  ---
+  duration_ms: 2205.5751
+  type: 'test'
+  ...
+# Subtest: external generation change during reviewed reset freezes the old branch before transition
+ok 56 - external generation change during reviewed reset freezes the old branch before transition
+  ---
+  duration_ms: 2036.0824
+  type: 'test'
+  ...
+# Subtest: disposing a pending restart cannot later create timers or resume simulation
+ok 57 - disposing a pending restart cannot later create timers or resume simulation
+  ---
+  duration_ms: 1911.7601
+  type: 'test'
+  ...
+# Subtest: late metadata read cannot replace a completed restart with obsolete saved progress
+ok 58 - late metadata read cannot replace a completed restart with obsolete saved progress
+  ---
+  duration_ms: 1937.4432
+  type: 'test'
+  ...
+# Subtest: baseline reports callback/JS-submit statistics without promoting them to presentation FPS
+ok 59 - baseline reports callback/JS-submit statistics without promoting them to presentation FPS
+  ---
+  duration_ms: 0.8078
+  type: 'test'
+  ...
+# Subtest: baseline collector rejects invalid/backward samples and reset discards the preceding window
+ok 60 - baseline collector rejects invalid/backward samples and reset discards the preceding window
+  ---
+  duration_ms: 0.3159
+  type: 'test'
+  ...
+# Subtest: unsupported memory remains unavailable and supported heap numbers retain their uncertainty label
+ok 61 - unsupported memory remains unavailable and supported heap numbers retain their uncertainty label
+  ---
+  duration_ms: 0.1879
+  type: 'test'
+  ...
+# Subtest: payload baseline refuses stale module-analysis bytes for the current built chunks
+ok 62 - payload baseline refuses stale module-analysis bytes for the current built chunks
+  ---
+  duration_ms: 1.1485
+  type: 'test'
+  ...
+# Subtest: probe collection cannot finish successfully while closed, paused, hidden or too short
+ok 63 - probe collection cannot finish successfully while closed, paused, hidden or too short
+  ---
+  duration_ms: 0.3341
+  type: 'test'
+  ...
+# Subtest: renderer callback eligibility accepts an active model with paused world but rejects stopped/disposed/unready renderers
+ok 64 - renderer callback eligibility accepts an active model with paused world but rejects stopped/disposed/unready renderers
+  ---
+  duration_ms: 0.3767
+  type: 'test'
+  ...
+# Subtest: renderer world copy cannot mutate authoritative occupancy, resources or later reads
+ok 65 - renderer world copy cannot mutate authoritative occupancy, resources or later reads
+  ---
+  duration_ms: 323.3652
+  type: 'test'
+  ...
+# Subtest: frequent renderer reads preserve exact seeded simulation, ledger and mission outcomes at both speeds
+ok 66 - frequent renderer reads preserve exact seeded simulation, ledger and mission outcomes at both speeds
+  ---
+  duration_ms: 844.3362
+  type: 'test'
+  ...
+# Subtest: lightened inspector retains complete authoritative finance summaries after actual spending
+ok 67 - lightened inspector retains complete authoritative finance summaries after actual spending
+  ---
+  duration_ms: 169.7217
+  type: 'test'
+  ...
+# Subtest: paused previews keep read-only camera commands while game mutations stay blocked
+ok 68 - paused previews keep read-only camera commands while game mutations stay blocked
+  ---
+  duration_ms: 1.5541
+  type: 'test'
+  ...
+# Subtest: RAF start is idempotent and stale cancelled callbacks cannot duplicate a restarted loop
+ok 69 - RAF start is idempotent and stale cancelled callbacks cannot duplicate a restarted loop
+  ---
+  duration_ms: 0.3004
+  type: 'test'
+  ...
+# Subtest: disposed RAF loop cannot render or restart
+ok 70 - disposed RAF loop cannot render or restart
+  ---
+  duration_ms: 0.1113
+  type: 'test'
+  ...
+# Subtest: render exceptions stop the RAF chain and report once
+ok 71 - render exceptions stop the RAF chain and report once
+  ---
+  duration_ms: 0.7417
+  type: 'test'
+  ...
+# Subtest: request failures become an explicit stopped error
+ok 72 - request failures become an explicit stopped error
+  ---
+  duration_ms: 0.2475
+  type: 'test'
+  ...
+# Subtest: lazy session opens once, closes once, and can reopen without overlap
+ok 73 - lazy session opens once, closes once, and can reopen without overlap
+  ---
+  duration_ms: 0.5608
+  type: 'test'
+  ...
+# Subtest: closing during import prevents a late mount and ready transition
+ok 74 - closing during import prevents a late mount and ready transition
+  ---
+  duration_ms: 0.199
+  type: 'test'
+  ...
+# Subtest: a failed lazy load is visible and a later attempt can recover
+ok 75 - a failed lazy load is visible and a later attempt can recover
+  ---
+  duration_ms: 0.437
+  type: 'test'
+  ...
+# Subtest: unsupported WebGL has its own fallback and retry state
+ok 76 - unsupported WebGL has its own fallback and retry state
+  ---
+  duration_ms: 0.6173
+  type: 'test'
+  ...
+# Subtest: initialization exceptions do not become false ready states
+ok 77 - initialization exceptions do not become false ready states
+  ---
+  duration_ms: 0.5213
+  type: 'test'
+  ...
+# Subtest: context loss disposes the active session once and supports a fresh retry
+ok 78 - context loss disposes the active session once and supports a fresh retry
+  ---
+  duration_ms: 0.5255
+  type: 'test'
+  ...
+# Subtest: synchronous failure while mounting still disposes the late-created session
+ok 79 - synchronous failure while mounting still disposes the late-created session
+  ---
+  duration_ms: 0.3053
+  type: 'test'
+  ...
+# Subtest: pause state is applied to newly loaded sessions without changing lifecycle status
+ok 80 - pause state is applied to newly loaded sessions without changing lifecycle status
+  ---
+  duration_ms: 0.4189
+  type: 'test'
+  ...
+# Subtest: disposing a pending import prevents later renderer creation
+ok 81 - disposing a pending import prevents later renderer creation
+  ---
+  duration_ms: 0.2599
+  type: 'test'
+  ...
+# Subtest: latest visual and mute choices reach every new session, including retry while paused
+ok 82 - latest visual and mute choices reach every new session, including retry while paused
+  ---
+  duration_ms: 0.4413
+  type: 'test'
+  ...
+# Subtest: read-only habitat hit handling precedes selection and works without enabling edits
+ok 83 - read-only habitat hit handling precedes selection and works without enabling edits
+  ---
+  duration_ms: 64.8522
+  type: 'test'
+  ...
+# Subtest: batched triangle ownership covers actual geometry,120 tiles and22 distinct scenery objects without changing state
+ok 84 - batched triangle ownership covers actual geometry,120 tiles and22 distinct scenery objects without changing state
+  ---
+  duration_ms: 28.2139
+  type: 'test'
+  ...
+# Subtest: actual visible triangles resolve exact grass,water,gate,palm,tree,rock and reed identities at all viewport sizes
+ok 85 - actual visible triangles resolve exact grass,water,gate,palm,tree,rock and reed identities at all viewport sizes
+  ---
+  duration_ms: 29.578
+  type: 'test'
+  ...
+# Subtest: nearest unowned soil and empty/outside/invalid coordinates do not select hidden tiles
+ok 86 - nearest unowned soil and empty/outside/invalid coordinates do not select hidden tiles
+  ---
+  duration_ms: 16.9037
+  type: 'test'
+  ...
+# Subtest: mouse/touch tap path selects once,while camera drag,pinch,cancel and late events never select
+ok 87 - mouse/touch tap path selects once,while camera drag,pinch,cancel and late events never select
+  ---
+  duration_ms: 16.3868
+  type: 'test'
+  ...
+# Subtest: selection marker/data remain coherent across camera movement/resize,clear,pausing and disposal with bounded resources
+ok 88 - selection marker/data remain coherent across camera movement/resize,clear,pausing and disposal with bounded resources
+  ---
+  duration_ms: 39.7808
+  type: 'test'
+  ...
+# Subtest: every actual scene identity has complete bilingual presentation with1-based locations and no unresolved keys
+ok 89 - every actual scene identity has complete bilingual presentation with1-based locations and no unresolved keys
+  ---
+  duration_ms: 18.1667
+  type: 'test'
+  ...
+# Subtest: UI dismissal forwards only to a live unpaused renderer and never a stale or closed session
+ok 90 - UI dismissal forwards only to a live unpaused renderer and never a stale or closed session
+  ---
+  duration_ms: 0.531
+  type: 'test'
+  ...
+# {"case":"five-habitat-camera","width":360,"height":780,"focuses":40,"angles":8,"picks":34,"scope":"Actual world/meshes/source adapter; camera3.4height contract envelope, not full posed-mesh/native-device proof"}
+# {"case":"five-habitat-camera","width":780,"height":360,"focuses":40,"angles":8,"picks":35,"scope":"Actual world/meshes/source adapter; camera3.4height contract envelope, not full posed-mesh/native-device proof"}
+# {"case":"five-habitat-camera","width":1366,"height":768,"focuses":40,"angles":8,"picks":38,"scope":"Actual world/meshes/source adapter; camera3.4height contract envelope, not full posed-mesh/native-device proof"}
+# {"case":"five-habitat-camera","width":1920,"height":1080,"focuses":40,"angles":8,"picks":39,"scope":"Actual world/meshes/source adapter; camera3.4height contract envelope, not full posed-mesh/native-device proof"}
+# Subtest: actual24x26 V5 camera focuses five paid footprints and picks original visible triangles at eight angles 360x780
+ok 91 - actual24x26 V5 camera focuses five paid footprints and picks original visible triangles at eight angles 360x780
+  ---
+  duration_ms: 2239.0716
+  type: 'test'
+  ...
+# Subtest: actual24x26 V5 camera focuses five paid footprints and picks original visible triangles at eight angles 780x360
+ok 92 - actual24x26 V5 camera focuses five paid footprints and picks original visible triangles at eight angles 780x360
+  ---
+  duration_ms: 4655.3652
+  type: 'test'
+  ...
+# Subtest: actual24x26 V5 camera focuses five paid footprints and picks original visible triangles at eight angles 1366x768
+ok 93 - actual24x26 V5 camera focuses five paid footprints and picks original visible triangles at eight angles 1366x768
+  ---
+  duration_ms: 3969.2176
+  type: 'test'
+  ...
+# Subtest: actual24x26 V5 camera focuses five paid footprints and picks original visible triangles at eight angles 1920x1080
+ok 94 - actual24x26 V5 camera focuses five paid footprints and picks original visible triangles at eight angles 1920x1080
+  ---
+  duration_ms: 3188.2107
+  type: 'test'
+  ...
+# Subtest: original touch adapter pinch and every cancellation path cannot tap, move a ready Zebra preview, purchase, remove or change a strict save
+ok 95 - original touch adapter pinch and every cancellation path cannot tap, move a ready Zebra preview, purchase, remove or change a strict save
+  ---
+  duration_ms: 965.1775
+  type: 'test'
+  ...
+1..95
+# tests 95
+# suites 0
+# pass 95
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 20248.4189
