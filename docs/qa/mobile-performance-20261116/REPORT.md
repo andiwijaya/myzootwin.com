@@ -1,6 +1,6 @@
 # Ketukan kandang dan performa HP — 16 November 2026
 
-Status: **semua gate lokal lulus; publikasi dan verifikasi produksi menunggu.**
+Status: **PASS — sudah live, ketukan dan kestabilan menu diverifikasi pada domain utama.**
 
 ## Masalah yang direproduksi
 
@@ -40,4 +40,10 @@ Scroll otomatis layout lama untuk tombol/world pada UI farm HP dihapus; Tata tet
 
 Fingerprint sumber `2cdd9d3ed5a304ea439d0552066eaf7b8ea96edf01a915b468cad2d7e5ce1ebe`. HTML kandidat identik dengan produk QA: SHA-256 `651a47e9a9dc8d332f285fae52c1b64dd2de41033d1e61c7463a909499c1f333`. [Verifikasi](verification.json), [kontrol HP](controls-360.json), [landscape](controls-landscape.json), [desktop](controls-desktop.json), [regresi transaksi](integration-360.json), [performa 390](performance-390.json), [performa Rawat 360](performance-care-360.json), [tests.tap](tests.tap), [check.log](check.log), [build.log](build.log).
 
-Publikasi dan smoke native domain utama menunggu. Bukti reproduksi: [before-tap.json](before-tap.json). Baseline: [baseline-performance-390.json](baseline-performance-390.json).
+Commit `8918db4e9d7d745e353cf3a014a5049c01b2571d` sudah di main. Cloudflare Pages deployment `af6c1d66-ca3e-474f-aca9-869c6be3ae79` berhasil **16 November 2026, 14:39:13 WIB**, check `133157691408`. Domain [myzootwin.com/play/](https://myzootwin.com/play/) memuat entry `BzfyUVO8`, foundation `C-Z4pblQ`, CSS `BG-7FAAS`. **130/130 body/hash** cocok dengan kandidat QA. [Deployment](deployment.json), [body/hash](live-body-check.json), [native live](live-native.json).
+
+Pada 390 × 844, ketukan native di bagian dalam kelima kandang langsung membuka kandang yang tepat dan Rawat; y halaman tetap **0 → 0**. Pemeriksaan ketukan saat jeda mempertahankan tick, saldo dan populasi. Titik awal yang mengenai atap/tepi objek kecil tidak dianggap hit kandang; titik pengujian akhir berada pada permukaan bagian dalam yang terlihat.
+
+Uji ulang bug menu: Sora dipilih melalui gambar 3D ketika game berjalan, kemudian Tamu dipilih. Tab tetap **visitors**, scroll tetap **574**, sementara tick simpan bertambah **97.826 → 98.154**. Pendapatan pengunjung dan pemeliharaan normal tetap disimulasikan. Tidak ada pembelian/refill/klaim/reset atau transfer save manual. Game dikembalikan ke seluruh zoo, dijeda pada tick **98.175** dengan **14 satwa**, satu kanvas, console warning/error kosong (batas 100). Semua tab buatan tugas ditutup, viewport/visibilitas dipulihkan, dan enam server QA milik tugas dihentikan.
+
+Bukti layar: [zoom makaw](live-tap-macaw-390.jpg), [gajah](live-tap-elephant-390.jpg), [singa](live-tap-lion-390.jpg), [jerapah](live-tap-giraffe-390.jpg), [zebra](live-tap-zebra-390.jpg), [menu Tamu saat berjalan](live-menu-stable-running.jpg), [akhir seluruh zoo](live-final-zoo-390.jpg). Bukti reproduksi: [before-tap.json](before-tap.json). Baseline: [baseline-performance-390.json](baseline-performance-390.json).

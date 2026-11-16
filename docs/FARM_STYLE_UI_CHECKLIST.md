@@ -80,8 +80,10 @@ Bukti audit awal: [toolbar saat jeda](qa/mobile-controls-20261116/before-paused.
 - [x] Menelusuri penyebab menu berubah sendiri: setiap refresh objek terpilih memicu pemilihan Bangun dan scroll ulang.
 - [x] Memperbaiki ketukan kandang pada tampilan zoo agar langsung masuk kandang melalui hit triangle asli, termasuk saat jeda; mempertahankan alur placement dan seleksi lama di luar UI farm.
 - [x] Menguji ketukan kelima kandang dan menu yang stabil saat animasi berjalan; mengukur frame callback, render-submit, latensi kontrol serta perubahan pose GLB pada viewport HP.
-- [ ] Memperbaiki lag/bug yang ditemukan, menjalankan regresi, typecheck/build, deploy dan memeriksa hasil pada domain utama.
+- [x] Memperbaiki lag/bug yang ditemukan, menjalankan regresi, typecheck/build, deploy dan memeriksa hasil pada domain utama.
 
 Bukti awal: [ketukan live](qa/mobile-performance-20261116/before-tap.json), [panel yang melompat](qa/mobile-performance-20261116/before-jumping-panel.jpg).
 
-- Kandidat performa HP: **641/641 pemeriksaan browser** dan **95/95 pengujian terarah lulus**, typecheck bersih, build 10 halaman. Pada 390 px, CPU p95 lima kandang 42,5–88,8 → 35,8–36,9 ms, long task 86 → 1; handler kontrol ≤2,1 ms. Pada 360 px dengan Rawat terbuka, CPU p95 35,9–38,9 ms. Semua 14 model tetap terpasang dan pose kandang aktif bergerak; scroll/menu stabil. [Laporan](qa/mobile-performance-20261116/REPORT.md). Publikasi menunggu.
+- Kandidat performa HP: **641/641 pemeriksaan browser** dan **95/95 pengujian terarah lulus**, typecheck bersih, build 10 halaman. Pada 390 px, CPU p95 lima kandang 42,5–88,8 → 35,8–36,9 ms, long task 86 → 1; handler kontrol ≤2,1 ms. Pada 360 px dengan Rawat terbuka, CPU p95 35,9–38,9 ms. Semua 14 model tetap terpasang dan pose kandang aktif bergerak; scroll/menu stabil. [Laporan](qa/mobile-performance-20261116/REPORT.md). Publikasi dan pemeriksaan domain utama telah lulus, dengan rincian di bawah.
+
+- Performa dan ketukan selesai/live: commit `8918db4`, Cloudflare Pages `af6c1d66-ca3e-474f-aca9-869c6be3ae79`, **16 November 2026, 14:39:13 WIB**. **130/130 body/hash** cocok. Ketukan native kelima kandang membuka kandang/Rawat yang tepat, y tetap 0. Sesudah memilih Sora lalu Tamu, tab/scroll tetap saat tick 97.826 → 98.154; game ditinggalkan dijeda pada tick 98.175. Console bersih, satu kanvas. Bukti: [laporan](qa/mobile-performance-20261116/REPORT.md), [rilis](qa/mobile-performance-20261116/deployment.json), [native live](qa/mobile-performance-20261116/live-native.json).
