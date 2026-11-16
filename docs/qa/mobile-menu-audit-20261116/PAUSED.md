@@ -1,6 +1,6 @@
-# Audit tombol HP dijeda
+# Catatan jeda audit HP - selesai
 
-Pengguna meminta berhenti pada 16 November 2026, lalu secara eksplisit meminta lanjut dari titik terakhir pada tanggal yang sama. Audit dilanjutkan; deploy diizinkan setelah seluruh pemeriksaan lulus. Status akhir dicatat di REPORT.md dan checklist.
+Pengguna meminta berhenti pada 16 November 2026, lalu secara eksplisit meminta lanjut dari titik terakhir pada tanggal yang sama. **Audit sudah selesai dan live pada 20.16.34 WIB**, commit `dccada6`. Catatan di bawah adalah titik lanjut historis saat jeda; status akhir ada di REPORT.md dan checklist. Tidak ada pekerjaan audit ini yang masih menunggu.
 
 ## Sudah tersimpan
 
@@ -9,7 +9,7 @@ Pengguna meminta berhenti pada 16 November 2026, lalu secara eksplisit meminta l
 - Bukti negatif awal: `before-full-390.json`, `before-slots-390.json`. Jangan dihitung sebagai release gate.
 - Profil browser valid dengan provenance kandidat: `fresh-390.json` (9 aksi/27 pemeriksaan, r10), `elephantGrant-390.json` (16/53, r10), `lionGrant-390.json` (19/63, r12). Kandidat-kandidat tersebut memakai source produk yang sama; perubahan berikutnya hanya menyempurnakan harness QA. Cocokkan produk setiap kandidat dengan dist final sebelum rilis.
 
-## Titik lanjut
+## Titik lanjut historis saat jeda
 
 - Kandidat QA terbaru `.qa/habitat-focus/all-panels-r13`, source fingerprint `33943c12fdc513449c7443e541cb2c542dd2ab473f678644074d3cabedc115aa`.
 - Profil terakhir `giraffeGrant` belum disahkan. Preview enrichment opsional terkunci sampai GQ03; harness sempat menunggu confirm yang memang disabled. Pastikan alur gate menampilkan alasan, dapat dibatalkan, dan tidak mengganti menu/scroll. Simpan bukti nyata, jangan melonggarkan hasil kegagalan mentah.
@@ -17,6 +17,6 @@ Pengguna meminta berhenti pada 16 November 2026, lalu secara eksplisit meminta l
 - Selesaikan pemeriksaan native/keyboard pada sesi QA terisolasi, laporan/verifikasi, checklist, commit dan deploy; setelah deploy verifikasi 130 body/hash dan UI domain utama.
 - Uji transaksi hanya di UUID IndexedDB QA. Campaign pemilik di domain utama tetap dijeda; jangan belanja/refill/klaim/reset untuk pengujian live.
 - Jangan ikut stage perubahan GLB yang sudah ada sebelum audit ini: `docs/GLB_ASSET_PLAN_CHECKLIST.md`, `docs/qa/glb/README.md`, dan bukti animasi GLB 20261115.
-- Branch `codex/habitat-zoom-live`, HEAD sebelum perubahan ini `db46f7e`; origin/main `aa9186b`. Cloudflare Pages project `myzootwin-com`. Deploy sesi ini belum dilakukan.
+- Branch `codex/habitat-zoom-live`, HEAD sebelum perubahan ini `db46f7e`; origin/main saat jeda `aa9186b`. Cloudflare Pages project `myzootwin-com`. Saat jeda deploy belum dilakukan; rilis akhir dan verifikasinya sekarang tersedia di `deployment.json`.
 
 Tab QA sesi ini telah ditutup, viewport dan visibilitas browser dikembalikan. Server QA yang dibuat sesi ini dihentikan saat jeda.
