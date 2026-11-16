@@ -82,7 +82,13 @@ async function runSuite(){
     expect('six primary destinations',root.querySelectorAll('[data-zoo-destination]').length===6);
     click('[data-pause-toggle]');await waitFor(()=>session()?.simulationPaused===true,'pause');await delay(250);
     const paused={tick:session()?.simulationTick,command:session()?.commandRevision,cash:current!.currency,animals:JSON.stringify(current!.animals),resources:JSON.stringify(current!.world.resources)};
-    for(const kind of ['macaw-aviary','elephant-grove','lion-savanna','giraffe-plains','zebra-grasslands']){click(`[data-zoo-destination="${kind}"]`);await delay();expect(kind+' paused navigation',focus?.kind===kind&&session()?.simulationPaused===true);}
+    for(const kind of ['macaw-aviary','elephant-grove','lion-savanna','giraffe-plains','zebra-grasslands']){
+      click(`[data-zoo-destination="${kind}"]`);await delay();expect(kind+' paused navigation',focus?.kind===kind&&session()?.simulationPaused===true);
+      const pane=root.querySelector<HTMLElement>('[data-hud-pane="care"]')!,cards=[...pane.querySelectorAll<HTMLElement>('.zoo-animal-card')].filter(visible),expected:Record<string,number>={'macaw-aviary':2,'elephant-grove':2,'lion-savanna':3,'giraffe-plains':3,'zebra-grasslands':4};
+      expect(kind+' complete individual condition cards',cards.length===expected[kind]&&cards.every(card=>card.querySelectorAll('[role="meter"]').length===4));
+      const section=cards[0]!.closest<HTMLElement>('[data-bird-tools],[data-elephant-care],[data-lion-panel="care"],[data-giraffe-panel="care"],[data-zebra-care]')!,offset=cards[0]!.getBoundingClientRect().top-section.getBoundingClientRect().top;expect(kind+' conditions immediately below species heading',offset>=0&&offset<180,{offset,paneOffset:cards[0]!.getBoundingClientRect().top-pane.getBoundingClientRect().top});
+      expect(kind+' readable indicator labels and values',cards.every(card=>[...card.querySelectorAll<HTMLElement>('.zoo-metric')].every(metric=>{const label=metric.firstElementChild!,value=metric.querySelector('strong')!,l=label.getBoundingClientRect(),v=value.getBoundingClientRect();return l.height<24&&v.top>=l.bottom&&metric.scrollWidth<=metric.clientWidth+1&&parseFloat(getComputedStyle(value).fontSize)>=15;})));
+    }
     click('[data-zoo-back]');await delay(250);
     expect('paused menu preserves clock, ledger and population',JSON.stringify(paused)===JSON.stringify({tick:session()?.simulationTick,command:session()?.commandRevision,cash:current!.currency,animals:JSON.stringify(current!.animals),resources:JSON.stringify(current!.world.resources)}));
     click('[data-pause-toggle]');await waitFor(()=>session()?.simulationPaused===false,'resume');

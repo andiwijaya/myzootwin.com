@@ -1,0 +1,262 @@
+TAP version 13
+# Subtest: toolbar pan follows native drag coordinates and stays bounded after repeated commands
+ok 1 - toolbar pan follows native drag coordinates and stays bounded after repeated commands
+  ---
+  duration_ms: 4.138
+  type: 'test'
+  ...
+# Subtest: camera overview, zoom and adversarial panning keep the ground focus inside actual map at every aspect
+ok 2 - camera overview, zoom and adversarial panning keep the ground focus inside actual map at every aspect
+  ---
+  duration_ms: 5.6161
+  type: 'test'
+  ...
+# Subtest: anchored zoom keeps the pointed ground position stable away from clamps; bad data does not poison navigation
+ok 3 - anchored zoom keeps the pointed ground position stable away from clamps; bad data does not poison navigation
+  ---
+  duration_ms: 0.9457
+  type: 'test'
+  ...
+# Subtest: tap/drag threshold, pinch, third finger and lifting a pinch never create false taps or jumps
+ok 4 - tap/drag threshold, pinch, third finger and lifting a pinch never create false taps or jumps
+  ---
+  duration_ms: 1.1893
+  type: 'test'
+  ...
+# Subtest: pointer cancellation and reset invalidate all late moves/ups and never deliver a pick
+ok 5 - pointer cancellation and reset invalidate all late moves/ups and never deliver a pick
+  ---
+  duration_ms: 0.3729
+  type: 'test'
+  ...
+# Subtest: real input adapter isolates canvas wheel/keys and releases capture on cancel, pause, resize, blur and disposal
+ok 6 - real input adapter isolates canvas wheel/keys and releases capture on cancel, pause, resize, blur and disposal
+  ---
+  duration_ms: 5.4633
+  type: 'test'
+  ...
+# Subtest: actual orthographic view-center ray stays on the ground map at zoom/pan bounds and after orientation changes
+ok 7 - actual orthographic view-center ray stays on the ground map at zoom/pan bounds and after orientation changes
+  ---
+  duration_ms: 9.5168
+  type: 'test'
+  ...
+# Subtest: keyboard center inspection/cancel callbacks work without repeats,modifiers or disposed input
+ok 8 - keyboard center inspection/cancel callbacks work without repeats,modifiers or disposed input
+  ---
+  duration_ms: 1.4876
+  type: 'test'
+  ...
+# Subtest: eight camera azimuths fit every world corner at overview for desktop, portrait and landscape; full reset restores the original view
+ok 9 - eight camera azimuths fit every world corner at overview for desktop, portrait and landscape; full reset restores the original view
+  ---
+  duration_ms: 3.3866
+  type: 'test'
+  ...
+# Subtest: rotating preserves the focused ground point at zoom and world pan directions/bounds remain correct at every angle
+ok 10 - rotating preserves the focused ground point at zoom and world pan directions/bounds remain correct at every angle
+  ---
+  duration_ms: 9.8154
+  type: 'test'
+  ...
+# Subtest: rotation cancels held mouse/touch gestures, never selects, and keyboard Q/E respect repeat, modifiers, paused and disposed ownership
+ok 11 - rotation cancels held mouse/touch gestures, never selects, and keyboard Q/E respect repeat, modifiers, paused and disposed ownership
+  ---
+  duration_ms: 1.2894
+  type: 'test'
+  ...
+# Subtest: actual raycast and habitat ghost identify the same world tile after orbit, zoom, pan and resize; rotation/cancel never changes world state
+ok 12 - actual raycast and habitat ghost identify the same world tile after orbit, zoom, pan and resize; rotation/cancel never changes world state
+  ---
+  duration_ms: 101.9033
+  type: 'test'
+  ...
+# Subtest: navigation-only contract ignores orbit commands and invalid camera angles cannot poison matrices
+ok 13 - navigation-only contract ignores orbit commands and invalid camera angles cannot poison matrices
+  ---
+  duration_ms: 0.5958
+  type: 'test'
+  ...
+# Subtest: habitat camera fits macaw-aviary at 1366x768, bounds navigation and restores zoo view
+ok 14 - habitat camera fits macaw-aviary at 1366x768, bounds navigation and restores zoo view
+  ---
+  duration_ms: 16.6861
+  type: 'test'
+  ...
+# Subtest: habitat camera fits macaw-aviary at 360x780, bounds navigation and restores zoo view
+ok 15 - habitat camera fits macaw-aviary at 360x780, bounds navigation and restores zoo view
+  ---
+  duration_ms: 11.726
+  type: 'test'
+  ...
+# Subtest: habitat camera fits macaw-aviary at 780x360, bounds navigation and restores zoo view
+ok 16 - habitat camera fits macaw-aviary at 780x360, bounds navigation and restores zoo view
+  ---
+  duration_ms: 6.4171
+  type: 'test'
+  ...
+# Subtest: habitat camera fits elephant-grove at 1366x768, bounds navigation and restores zoo view
+ok 17 - habitat camera fits elephant-grove at 1366x768, bounds navigation and restores zoo view
+  ---
+  duration_ms: 7.0047
+  type: 'test'
+  ...
+# Subtest: habitat camera fits elephant-grove at 360x780, bounds navigation and restores zoo view
+ok 18 - habitat camera fits elephant-grove at 360x780, bounds navigation and restores zoo view
+  ---
+  duration_ms: 6.754
+  type: 'test'
+  ...
+# Subtest: habitat camera fits elephant-grove at 780x360, bounds navigation and restores zoo view
+ok 19 - habitat camera fits elephant-grove at 780x360, bounds navigation and restores zoo view
+  ---
+  duration_ms: 4.6643
+  type: 'test'
+  ...
+# Subtest: habitat camera fits lion-savanna at 1366x768, bounds navigation and restores zoo view
+ok 20 - habitat camera fits lion-savanna at 1366x768, bounds navigation and restores zoo view
+  ---
+  duration_ms: 9.2346
+  type: 'test'
+  ...
+# Subtest: habitat camera fits lion-savanna at 360x780, bounds navigation and restores zoo view
+ok 21 - habitat camera fits lion-savanna at 360x780, bounds navigation and restores zoo view
+  ---
+  duration_ms: 8.728
+  type: 'test'
+  ...
+# Subtest: habitat camera fits lion-savanna at 780x360, bounds navigation and restores zoo view
+ok 22 - habitat camera fits lion-savanna at 780x360, bounds navigation and restores zoo view
+  ---
+  duration_ms: 6.1896
+  type: 'test'
+  ...
+# Subtest: habitat camera fits giraffe-plains at 1366x768, bounds navigation and restores zoo view
+ok 23 - habitat camera fits giraffe-plains at 1366x768, bounds navigation and restores zoo view
+  ---
+  duration_ms: 2.3769
+  type: 'test'
+  ...
+# Subtest: habitat camera fits giraffe-plains at 360x780, bounds navigation and restores zoo view
+ok 24 - habitat camera fits giraffe-plains at 360x780, bounds navigation and restores zoo view
+  ---
+  duration_ms: 4.1721
+  type: 'test'
+  ...
+# Subtest: habitat camera fits giraffe-plains at 780x360, bounds navigation and restores zoo view
+ok 25 - habitat camera fits giraffe-plains at 780x360, bounds navigation and restores zoo view
+  ---
+  duration_ms: 9.1905
+  type: 'test'
+  ...
+# Subtest: habitat camera fits zebra-grasslands at 1366x768, bounds navigation and restores zoo view
+ok 26 - habitat camera fits zebra-grasslands at 1366x768, bounds navigation and restores zoo view
+  ---
+  duration_ms: 3.0543
+  type: 'test'
+  ...
+# Subtest: habitat camera fits zebra-grasslands at 360x780, bounds navigation and restores zoo view
+ok 27 - habitat camera fits zebra-grasslands at 360x780, bounds navigation and restores zoo view
+  ---
+  duration_ms: 4.3544
+  type: 'test'
+  ...
+# Subtest: habitat camera fits zebra-grasslands at 780x360, bounds navigation and restores zoo view
+ok 28 - habitat camera fits zebra-grasslands at 780x360, bounds navigation and restores zoo view
+  ---
+  duration_ms: 3.4962
+  type: 'test'
+  ...
+# Subtest: selection resolves actual habitat, facility and occupied tile without assuming fixed anchors
+ok 29 - selection resolves actual habitat, facility and occupied tile without assuming fixed anchors
+  ---
+  duration_ms: 1.0132
+  type: 'test'
+  ...
+# Subtest: render isolation clips merged geometry/shadows, restores original visibility/materials, and never mutates world
+ok 30 - render isolation clips merged geometry/shadows, restores original visibility/materials, and never mutates world
+  ---
+  duration_ms: 5.3379
+  type: 'test'
+  ...
+# Subtest: focused ray picking rejects invisible and clipped outside faces instead of selecting through the mask
+ok 31 - focused ray picking rejects invisible and clipped outside faces instead of selecting through the mask
+  ---
+  duration_ms: 2.0696
+  type: 'test'
+  ...
+# Subtest: leaving focus restores the original nearest-unowned-surface picking rule
+ok 32 - leaving focus restores the original nearest-unowned-surface picking rule
+  ---
+  duration_ms: 2.0743
+  type: 'test'
+  ...
+# Subtest: a focused habitat cannot undo another habitat facility or a shared path edit
+ok 33 - a focused habitat cannot undo another habitat facility or a shared path edit
+  ---
+  duration_ms: 2.5622
+  type: 'test'
+  ...
+# Subtest: all entry translations keep required parameters and only neutral identical labels
+ok 34 - all entry translations keep required parameters and only neutral identical labels
+  ---
+  duration_ms: 6.5693
+  type: 'test'
+  ...
+# Subtest: every paired game panel dictionary has matching keys and placeholder contracts
+ok 35 - every paired game panel dictionary has matching keys and placeholder contracts
+  ---
+  duration_ms: 266.6995
+  type: 'test'
+  ...
+# Subtest: localized numbers and exact one-decimal simulation-time displays never affect numeric inputs
+ok 36 - localized numbers and exact one-decimal simulation-time displays never affect numeric inputs
+  ---
+  duration_ms: 17.0349
+  type: 'test'
+  ...
+# Subtest: latest explicit language choice survives old saved locale while browser fallback can use saved preference
+ok 37 - latest explicit language choice survives old saved locale while browser fallback can use saved preference
+  ---
+  duration_ms: 0.2003
+  type: 'test'
+  ...
+# Subtest: entry accessibility hooks use translated keys and stale future-game copy is removed
+ok 38 - entry accessibility hooks use translated keys and stale future-game copy is removed
+  ---
+  duration_ms: 1.4154
+  type: 'test'
+  ...
+# Subtest: all production-reachable visual sources and nested geometry/part sites remain registered without needing QA build artifacts
+ok 39 - all production-reachable visual sources and nested geometry/part sites remain registered without needing QA build artifacts
+  ---
+  duration_ms: 2048.0031
+  type: 'test'
+  ...
+# Subtest: absence/provenance records distinguish actual spray, generated textures/audio and replaced historical media
+ok 40 - absence/provenance records distinguish actual spray, generated textures/audio and replaced historical media
+  ---
+  duration_ms: 0.2372
+  type: 'test'
+  ...
+# Subtest: global animal total excludes reserve and unknown habitats without changing any save values
+ok 41 - global animal total excludes reserve and unknown habitats without changing any save values
+  ---
+  duration_ms: 493.3884
+  type: 'test'
+  ...
+# Subtest: care gauges preserve raw direction: hunger/thirst rise toward urgent, welfare/energy fall toward urgent
+ok 42 - care gauges preserve raw direction: hunger/thirst rise toward urgent, welfare/energy fall toward urgent
+  ---
+  duration_ms: 0.2128
+  type: 'test'
+  ...
+1..42
+# tests 42
+# suites 0
+# pass 42
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3470.7863

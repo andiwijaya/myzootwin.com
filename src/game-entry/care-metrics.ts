@@ -19,10 +19,12 @@ export function updateCareMetrics(host:HTMLElement,values:CareMetrics,locale:Ent
       const row=document.createElement('div'),label=document.createElement('span'),number=document.createElement('strong'),meter=document.createElement('span'),fill=document.createElement('i');
       row.className='zoo-metric';row.dataset.careMetric=kind;meter.className='zoo-meter';meter.setAttribute('role','meter');meter.setAttribute('aria-valuemin','0');meter.setAttribute('aria-valuemax','100');meter.append(fill);row.append(label,number,meter);group.append(row);metrics.set(kind,{label,number,meter,fill});
     }
-    host.insertBefore(group,host.querySelector('details,button'));group.after(legend);rows.set(host,metrics);
+    const heading=host.querySelector('h4,[data-bird-summary]');
+    if(heading?.parentElement===host)heading.after(group);else host.insertBefore(group,host.querySelector('details,button'));
+    group.after(legend);rows.set(host,metrics);
   }
   const c=zooUiCopy[locale];
-  host.querySelector('[data-care-metric-legend]')!.textContent=c.lower+' '+c.higher;
+  host.querySelector('[data-care-metric-legend]')!.textContent=c.metricHint;
   for(const kind of careMetricKinds){
     const row=metrics.get(kind)!,{value,lower,level}=careMetricValue(kind,values[kind]);
     row.label.textContent=c[kind]+(lower?' ↓':' ↑');row.number.textContent=value+'/100';

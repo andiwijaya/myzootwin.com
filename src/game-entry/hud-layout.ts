@@ -216,6 +216,9 @@ export function mountHudLayout(root: HTMLElement) {
         const scroller = pane.closest<HTMLElement>('[data-hud-panels]');
         if (!scroller)
             return;
+        // Phone panels flow in the document; keep native page keys on that scroll owner.
+        if (getComputedStyle(scroller).overflowY === 'visible')
+            return;
         const key = e.key, page = Math.max(44, scroller.clientHeight - 44);
         const step = key === 'PageDown' ? page : key === 'PageUp' ? -page : target === pane && key === 'ArrowDown' ? 44 : target === pane && key === 'ArrowUp' ? -44 : null;
         if (step !== null || (target === pane && (key === 'Home' || key === 'End'))) {

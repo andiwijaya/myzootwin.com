@@ -44,3 +44,16 @@ Keputusan UI: navigasi utama Zoo, Makaw, Gajah, Singa, Jerapah, Zebra. Misi, Raw
 ## Bukti
 
 Referensi inspeksi: `.qa/ui-reference-plan-20261116/reference-observation.json` dan `myfarmtwin-mobile-reference.jpg`. Bukti implementasi, pengujian, screenshot dan rilis: [laporan QA](qa/farm-ui-20261116/REPORT.md), [verifikasi](qa/farm-ui-20261116/verification.json), [deployment](qa/farm-ui-20261116/deployment.json), [hash live](qa/farm-ui-20261116/live-body-check.json), dan [UI live](qa/farm-ui-20261116/live-ui.json).
+
+## Tindak lanjut HP — 16 November 2026
+
+- [x] Memeriksa MyZooTwin live pada HP 320/360/390 px dan membandingkan MyFarmTwin live pada 390 × 844.
+- [x] Memeriksa kelima spesies: 14 kartu dan empat indikator tersedia, tetapi label panjang turun baris; kondisi Gajah/Singa/Jerapah muncul setelah daftar persediaan yang panjang. PageDown pada panel HP juga tidak menggulir halaman.
+- [x] Mengimplementasikan kondisi satwa sebelum persediaan, judul makaw yang konsisten, label/angka indikator bertumpuk, bantuan kamera lebih ringkas, header HP kecil, dan perbaikan pemilik gulir PageDown.
+- [x] Memeriksa ulang kelima spesies pada HP kecil/umum, landscape, desktop, ID/EN, transaksi asli dan jeda; menjalankan typecheck serta build.
+- [ ] Menerbitkan perbaikan dan mencocokkan body/hash serta tampilan HP produksi.
+
+Audit sebelum perbaikan: `.qa/mobile-polish-20261116/before-audit.json`, `before-parameters-360.jpg`, dan `myfarm-reference.jpg`. Pemeriksaan live dilakukan dalam kondisi jeda setelah masuk; tidak ada pembelian, refill, klaim, atau reset manual pada produksi.
+
+- Pemeriksaan final perbaikan HP: **470/470** pada 320 × 640, 360 × 780, 390 × 844, 844 × 390, dan 1280 × 800; masing-masing 94. Mencakup empat indikator per individu, kartu langsung setelah judul spesies, label dan angka tidak bertumpuk, jeda, kamera, pembangunan dan refill berbayar pada save sintetis terpisah. Halaman tidak meluber secara horizontal. ID/EN pada 320 px dan PageDown native HP/desktop diperiksa.
+- Typecheck final **0 error/0 warning/0 hint**, **42/42 pengujian terarah lulus**, build produksi **10 halaman**. HTML kandidat identik dengan produk QA, fingerprint `b1caf91d54271aec3b0bf0ecb110f85a2a570a50031ac402a326d760674a3017`. Bukti tindak lanjut: [laporan HP](qa/mobile-ui-20261116/REPORT.md), [verifikasi](qa/mobile-ui-20261116/verification.json). Rilis dan pemeriksaan produksi masih menunggu.
