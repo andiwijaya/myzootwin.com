@@ -66,8 +66,10 @@ Audit sebelum perbaikan: `.qa/mobile-polish-20261116/before-audit.json`, `before
 - [x] Mengidentifikasi masalah: saat jeda manual, fieldset dan canvas ikut terkunci sehingga kontrol kamera tidak dapat digunakan. Kamera seharusnya dapat dipakai untuk mengamati tanpa menggerakkan waktu/saldo/satwa.
 - [x] Memisahkan kontrol kamera dari aksi permainan saat jeda; menambahkan render kamera saat dibutuhkan dan mempertahankan penguncian transaksi serta cold Continue.
 - [x] Menguji semua kontrol di zoo dan kelima kandang pada HP kecil, HP umum, landscape dan desktop; memeriksa batas zoom, empat arah, gesture, reset, pindah kandang, menu opsi/dialog, serta progres tetap saat jeda.
-- [ ] Typecheck, pengujian terarah, build kandidat, deploy, dan verifikasi fungsi serta body/hash pada domain utama.
+- [x] Typecheck, pengujian terarah, build kandidat, deploy, dan verifikasi fungsi serta body/hash pada domain utama.
 
 Bukti audit awal: [toolbar saat jeda](qa/mobile-controls-20261116/before-paused.json), [kontrol saat berjalan](qa/mobile-controls-20261116/before-running.json), [menu lima kandang](qa/mobile-controls-20261116/before-menus.json).
 
 - Gate lokal fungsi kontrol HP: **775/775** kontrol pada lima viewport + **94/94** regresi pembangunan/refill = **869/869 pemeriksaan browser unik**. **76/76** pengujian terarah, typecheck bersih, build 10 halaman; HTML QA/kandidat identik. Perbaikan tambahan: empat tombol pan minimal 44 px. Bukti: [laporan kontrol HP](qa/mobile-controls-20261116/REPORT.md), [verifikasi](qa/mobile-controls-20261116/verification.json). Publikasi menunggu.
+
+- Fungsi kontrol HP selesai dan live: commit `3d1c5a8`, deployment `3a701e90-f407-41fe-bd9f-58449f379b07` berhasil **16 November 2026, 13:03:00 WIB**. **130/130 body/hash** cocok. **66/66 aksi kamera native** pada enam konteks lulus; 24 tab aksi, Tata, Back dan perpindahan langsung kelima kandang diperiksa. Drag saat jeda bekerja, semua tombol arah minimal 44 px. Tick **96.284**, saldo **4.381 ZC**, populasi **14** tetap; renderer tunggal dan console tanpa warning/error. [Laporan fungsi](qa/mobile-controls-20261116/REPORT.md), [deployment](qa/mobile-controls-20261116/deployment.json), [bukti live](qa/mobile-controls-20261116/live-controls.json).

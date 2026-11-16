@@ -1,6 +1,6 @@
 # Fungsi menu dan toolbar HP — 16 November 2026
 
-Status: **semua gate lokal lulus; publikasi dan verifikasi produksi menunggu.**
+Status: **PASS — sudah live dan fungsi diverifikasi pada domain utama.**
 
 ## Audit dan perbaikan
 
@@ -24,4 +24,10 @@ Receipt: [verification.json](verification.json), lima profil JSON, [integration-
 
 ## Publikasi
 
-Menunggu commit, deployment Cloudflare Pages, pencocokan body/hash, dan smoke fungsi pada domain utama.
+Commit `3d1c5a8494a7d2a1a559c520807ba5bb256e295c` sudah di main. Cloudflare Pages deployment `3a701e90-f407-41fe-bd9f-58449f379b07` berhasil **16 November 2026, 13:03:00 WIB**, check `133122237717`. Domain [myzootwin.com/play/](https://myzootwin.com/play/) memuat entry `Diy2Pl92`, CSS `BG-7FAAS`, foundation `B0B5CSKZ`. **130/130 body/hash** HTML, JS, CSS dan aset runtime identik dengan kandidat QA. [Deployment](deployment.json), [body/hash](live-body-check.json), [fungsi native live](live-controls.json).
+
+Native live pada 360 × 780 menguji **66 aksi kamera** (11 per konteks pada seluruh zoo + lima kandang), 24 perpindahan tab aksi, enam tombol Tata dan lima Back. Semua lulus. Kelima menu juga diperiksa dengan perpindahan langsung pada 390 × 844. Setelah override ukuran layar, snapshot UI diperbarui sebelum input berikutnya; perpindahan pertama Makaw pada 320 × 640 dan kelima perpindahan pada ukuran stabil berhasil. Detail percobaan awal setelah resize dipertahankan pada receipt.
+
+Pada 320 px seluruh tombol kamera/pan minimal 44 × 44 px. Native drag pada 390 px mengubah kamera jerapah saat dijeda. Kamera aktif, canvas dapat difokuskan, dan semua fieldset aksi permainan tetap terkunci saat jeda. **Tick 96.284, saldo 4.381 ZC dan 14 satwa tetap** selama semua pemeriksaan kamera/menu. Satu kanvas, renderer ready, console warning/error kosong (batas 100). Tidak ada transaksi, klaim, reset atau transfer save manual pada produksi. Sesi ditinggalkan dijeda pada tampilan zoo; tab pemeriksaan ditutup, viewport dipulihkan, dan tiga server QA milik tugas dihentikan.
+
+Bukti layar: [toolbar dan arah pan](live-overview-pan-390.jpg), [kamera jerapah](live-giraffe-pan-390.jpg), [panel geser 320 px](live-pan-320.jpg).
