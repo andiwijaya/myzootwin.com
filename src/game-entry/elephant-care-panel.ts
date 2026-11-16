@@ -1,7 +1,6 @@
 import {isHudToolVisible,watchHudVisibility} from './tool-visibility.ts';
 import {updateCareMetrics} from './care-metrics.ts';
 import {zooUiCopy} from './zoo-ui-copy.ts';
-import {revealHudTarget,scrollHudTarget} from './hud-layout.ts';
 import {presentElephantCareInfo} from './elephant-care-info.ts';
 import type {ElephantBehavior} from '../game/core/species.ts';
 import {formatNumber} from './i18n-format.ts';
@@ -33,5 +32,5 @@ export function mountElephantCarePanel(section:HTMLElement|null,signal:AbortSign
  }
  for(const scope of [section,builder])scope?.addEventListener('keydown',event=>{if(event.repeat&&(event.key==='Enter'||event.key===' '))event.preventDefault();},{signal});
  for(const scope of [section,builder])scope?.addEventListener('click',event=>{if(event.detail>1||!view)return;const target=event.target instanceof Element?event.target.closest<HTMLButtonElement>('button'):null;if(!target||target.disabled)return;const monetary=target.dataset.elephantCareAction==='confirm'||Boolean(target.dataset.elephantRefill);if(monetary){const key=target.dataset.elephantRefill?`refill:${target.dataset.elephantRefill}`:`place:${view.preview.kind}:${view.preview.cell?.x},${view.preview.cell?.z}:${view.preview.command}`;if(key===lastMonetaryKey&&event.timeStamp-lastMonetaryAt<300)return;lastMonetaryKey=key;lastMonetaryAt=event.timeStamp;}if(target.dataset.careKind){actions.begin(target.dataset.careKind as ElephantCareKind);return;}if(target.dataset.elephantCareAction){actions.command(target.dataset.elephantCareAction as ElephantCareCommand,view.preview.revision);return;}if(target.dataset.elephantRemove){actions.remove(target.dataset.elephantRemove,target.closest('article')?.querySelector('h4')?.textContent??'');return;}if(target.dataset.elephantRefill)actions.refill({command:view.command,id:target.dataset.elephantRefill,revision:Number(target.dataset.resourceRevision)});},{signal});
- return {update(next:ElephantCareSceneView){const previous=new Set(rows.keys());view=next;render();if(visible&&next.result==='placed'&&!next.preview.active){const row=[...rows].find(([id])=>!previous.has(id))?.[1];if(row)queueMicrotask(()=>{if(signal.aborted||!row.isConnected||section?.hidden||section?.closest('[data-play-entry]')?.querySelector('dialog[open]'))return;revealHudTarget(row);const button=row.querySelector<HTMLButtonElement>('[data-elephant-refill]:not([hidden]):not(:disabled)'),target=button??row;if(!button)row.setAttribute('tabindex','-1');target.focus({preventScroll:true});scrollHudTarget(row,'start');});}},show(next:boolean,language:EntryLocale){visible=next;locale=language;render();}};
+ return {update(next:ElephantCareSceneView){view=next;render();},show(next:boolean,language:EntryLocale){visible=next;locale=language;render();}};
 }

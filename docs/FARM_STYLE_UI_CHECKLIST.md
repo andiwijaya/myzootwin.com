@@ -99,3 +99,13 @@ Bukti awal: [ketukan live](qa/mobile-performance-20261116/before-tap.json), [pan
 - Kandidat perbaikan isi ulang HP: **291/291 pemeriksaan browser** (68 × dua ukuran HP + 155 kontrol) dan **122/122 pengujian terarah lulus**. Makanan dan air semua kandang bertambah melalui transaksi asli tanpa lompatan scroll; resize dan pembaruan fokus asinkron tetap stabil. Typecheck bersih, build 10 halaman. [Laporan](qa/mobile-care-scroll-20261116/REPORT.md). Sudah dipublikasikan; pemeriksaan domain utama lulus.
 
 - Isi ulang dan scroll HP selesai/live: commit `aa9186b`, deployment `6d44e60d-22d5-4594-9c4d-2850f3dc16cb`, **16 November 2026 pukul 15.32.21 WIB**. **130/130 body/hash** cocok; lima kandang lulus native scroll/Rawat dan perubahan tinggi viewport 844 → 760 tanpa kembali ke atas. Native isi makanan dan air makaw di QA mempertahankan y serta posisi tombol. Campaign live ditinggalkan dijeda, saldo/populasi tetap, console bersih. [Bukti rilis](qa/mobile-care-scroll-20261116/deployment.json), [native live](qa/mobile-care-scroll-20261116/live-native.json), [laporan](qa/mobile-care-scroll-20261116/REPORT.md).
+
+## Audit seluruh tombol empat panel HP — 16 November 2026
+
+- [x] Menelusuri handler Misi, Rawat, Tamu dan Bangun; membedakan navigasi berlabel tujuan dengan transaksi/konfirmasi yang harus menetap.
+- [x] Menginventarisasi tombol aktif, terkunci, dialog dan preview pada Zoo serta kelima jenis kandang dalam sesi QA terpisah.
+- [x] Mereproduksi dan memperbaiki scroll/fokus/menu yang berpindah otomatis: gerbang, konfirmasi hapus makaw, pratinjau gajah, perpindahan Bangun ke Rawat setelah pembelian, batal dan pemulihan fokus.
+- [x] Menguji seluruh keluarga tombol pada viewport HP 360 dan 390 px, kondisi awal/siap klaim/terisi, keyboard dan animasi berjalan. Matriks 16 profil **1.416/1.416 pemeriksaan dan 405 aksi**, regresi kamera/menu **155/155**, serta native keyboard/klik **9/9** lulus: **1.580 pemeriksaan browser**.
+- [ ] Menyelesaikan regresi yang relevan, typecheck, build, deploy dan pemeriksaan domain utama.
+
+Audit sempat dihentikan atas permintaan pengguna pada 16 November 2026, lalu dilanjutkan atas instruksi eksplisit pada tanggal yang sama. **209/209 tes regresi**, typecheck final **689 berkas/0 error/0 warning/0 hint**, build final **10 halaman**, serta **1.580 pemeriksaan browser** lulus. HTML dan tujuh bundle `_astro` setiap kandidat QA cocok dengan produk final. Publikasi/verifikasi domain utama berikutnya. Bukti: [laporan audit](qa/mobile-menu-audit-20261116/REPORT.md) dan [verifikasi final](qa/mobile-menu-audit-20261116/verification.json).

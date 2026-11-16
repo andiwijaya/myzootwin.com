@@ -5,6 +5,7 @@ import {build} from 'vite';
 import {preparedZebraCare} from '../../../tests/helpers/zebra-care-play.mjs';
 import {validateSaveV5} from '../../../src/game/persistence/save-v5.ts';
 import {astroCli,runNode,sourceFingerprint,sha256} from '../tooling.mjs';
+import {menuFixtures} from './menu-fixtures.mjs';
 
 const id=process.argv[2];if(!/^[a-z0-9-]{1,60}$/.test(id??''))throw Error('Pass a unique habitat focus QA ID');
 const root=resolve('.'),base=resolve('.qa/habitat-focus',id),product=join(base,'product'),lab=join(base,'lab');
@@ -42,6 +43,7 @@ await writeFile(join(lab,'performance-fixture.json'),JSON.stringify(perfState));
 const scrollSimulation=preparedZebraCare({supplies:false,enrichment:true}),scrollState=scrollSimulation.snapshot();scrollSimulation.dispose();
 if(!validateSaveV5(scrollState).ok)throw Error('Invalid care scroll fixture');
 await writeFile(join(lab,'care-scroll-fixture.json'),JSON.stringify(scrollState));
+await writeFile(join(lab,'menu-fixtures.json'),JSON.stringify(menuFixtures(scrollState,state)));
 const after=await sourceFingerprint(root);if(source.id!==after.id)throw Error('Source changed during QA build');
 await writeFile(join(base,'source.json'),JSON.stringify({at:new Date().toISOString(),sourceFingerprint:source.id,fixtureHash:sha256(JSON.stringify(state)),scope:'Synthetic fixture; actual UI, single native renderer/RAF, native IndexedDB with the core V5 codec. Not unlock or physical-device evidence.'},null,2));
 console.log(JSON.stringify({base,lab,product,sourceFingerprint:source.id}));

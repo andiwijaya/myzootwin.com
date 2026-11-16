@@ -17,6 +17,13 @@ export function revealHudTarget(target: Element | null) {
     if (root && pane)
         root.dispatchEvent(new CustomEvent('hud-reveal', { detail: pane.dataset.hudPane }));
 }
+/** Restore an action's logical focus without scrolling the document or changing tabs. */
+export function restoreHudActionFocus(target:Element|null|undefined,fallback?:Element|null){
+    const candidate=target instanceof HTMLElement&&target.isConnected&&target.checkVisibility()&&!target.matches(':disabled')?target:fallback instanceof HTMLElement&&fallback.isConnected&&fallback.checkVisibility()?fallback:null;
+    if(!candidate)return;
+    if(!candidate.matches('button,a[href],input,select,textarea,summary,[tabindex]'))candidate.tabIndex=-1;
+    candidate.focus({preventScroll:true});
+}
 /** Scroll a tool inside its own viewport; avoid moving the world behind the sticky chrome. */
 export function scrollHudTarget(target: Element | null | undefined, align: 'start' | 'nearest' = 'nearest') {
     if (!target)

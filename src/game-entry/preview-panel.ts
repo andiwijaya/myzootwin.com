@@ -25,7 +25,7 @@ import type {ElephantCareSceneView} from '../game/render3d/elephant-care-preview
 import {ELEPHANT_PRICES} from '../game/economy/elephant-prices.ts';
 import type {VisualSettings} from '../game/core/visual-settings.ts';
 import {formatNumber} from './i18n-format.ts';
-import { revealHudTarget, scrollHudTarget } from './hud-layout.ts';
+import { revealHudTarget, scrollHudTarget, restoreHudActionFocus } from './hud-layout.ts';
 import {mountSpeedPanel,type SpeedView} from './speed-panel.ts';
 import {mountOnboardingPanel} from './onboarding-panel.ts';
 import type {FirstMissionGuide} from '../game/missions/onboarding.ts';
@@ -151,9 +151,10 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   host.addEventListener('scene-elephant-missions-change',event=>elephantMissions.update((event as CustomEvent<ElephantMissionSceneView>).detail),{signal:events.signal});
   host.addEventListener('scene-missions-change',event=>missionPanel.update((event as CustomEvent<MissionView>).detail),{signal:events.signal});
   host.addEventListener('scene-mission-result',event=>missionPanel.result((event as CustomEvent<{ok:boolean}>).detail.ok),{signal:events.signal});
-  const elephantCatalog=mountElephantCatalog(root.querySelector('[data-elephant-catalog]'),events.signal,q=>controller.claimConservationGrant(q),()=>{root.dataset.guided='false';revealHudTarget(root.querySelector('[data-placement-tools]'));controller.beginElephantHabitat();host.focus({preventScroll:true});scrollHudTarget(host);},command=>{controller.welcomeElephants(command);host.focus({preventScroll:true});scrollHudTarget(host);});
+  const elephantCatalog=mountElephantCatalog(root.querySelector('[data-elephant-catalog]'),events.signal,q=>controller.claimConservationGrant(q),()=>{root.dataset.guided='false';revealHudTarget(root.querySelector('[data-placement-tools]'));controller.beginElephantHabitat();host.focus({preventScroll:true});scrollHudTarget(host);},command=>{controller.welcomeElephants(command);});
   host.addEventListener('scene-elephant-grove-change',event=>{const v=(event as CustomEvent<ElephantCatalogView>).detail;elephantUnlocked=v.qualified;elephantCatalog.update(v);host.setAttribute('aria-label',canvasDescription());},{signal:events.signal});
-  const elephantCare=mountElephantCarePanel(root.querySelector('[data-elephant-care]'),events.signal,{begin:kind=>{root.dataset.guided='false';controller.beginElephantCare(kind);host.focus({preventScroll:true});scrollHudTarget(host);scrollHudTarget(root.querySelector('[data-elephant-care-preview]'),'start');},command:(action,revision)=>{controller.elephantCare(action,revision);host.focus({preventScroll:true});scrollHudTarget(host);},refill:quote=>controller.refillElephantCare(quote),remove:(id,name)=>reviewRemoval({kind:'elephant-resource',id},name)});
+  let elephantPlanButton:HTMLElement|null=null;
+  const elephantCare=mountElephantCarePanel(root.querySelector('[data-elephant-care]'),events.signal,{begin:kind=>{root.dataset.guided='false';elephantPlanButton=root.querySelector(`[data-elephant-place="${kind}"]`);controller.beginElephantCare(kind);},command:(action,revision)=>{controller.elephantCare(action,revision);if(action==='confirm'||action==='cancel')restoreHudActionFocus(elephantPlanButton,elephantPlanButton?.closest('.zoo-resource-card'));},refill:quote=>controller.refillElephantCare(quote),remove:(id,name)=>reviewRemoval({kind:'elephant-resource',id},name)});
   host.addEventListener('scene-elephant-care-change',event=>elephantCare.update((event as CustomEvent<ElephantCareSceneView>).detail),{signal:events.signal});
   let selected:SceneIdentity|null=null;
   let studio:StudioView={active:false,habitat:false,clip:'perch',angle:'quarter',motionPaused:false,canHabitat:false};
@@ -183,11 +184,12 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     renderTickets(section,visitorView.tickets,locale);renderVisitorSummary(section,visitorView.feedback,locale,visitorView.ids,visitorView.habitatKinds);
   }
   host.addEventListener('scene-visitors-change',event=>{visitorView=(event as CustomEvent<ArrivalView>).detail;renderVisitors();},{signal:events.signal});
-  for(const b of root.querySelectorAll<HTMLButtonElement>('[data-visitors-command]'))b.addEventListener('click',()=>{controller.visitors(b.dataset.visitorsCommand as 'open'|'close'|'focus'|'follow');host.focus({preventScroll:true});scrollHudTarget(host);},{signal:events.signal});
+  for(const b of root.querySelectorAll<HTMLButtonElement>('[data-visitors-command]'))b.addEventListener('click',()=>{const command=b.dataset.visitorsCommand as 'open'|'close'|'focus'|'follow';controller.visitors(command);if(command==='focus'||command==='follow'){host.focus({preventScroll:true});scrollHudTarget(host);}},{signal:events.signal});
   let birds:BirdsView={tick:0,habitat:false,placed:0,birds:[]};
   const animalInfo=mountAnimalInfo(root.querySelector<HTMLElement>('[data-bird-tools]')!,events.signal);
   let editView:EditView={canUndo:false,reason:null,result:null};
   let removal:RemovalQuote|null=null;
+  let removalOpener:HTMLElement|null=null,removalPane:HTMLElement|null=null;
   let removalName='';
   const editDialog=root.querySelector<HTMLDialogElement>('[data-edit-dialog]');
   function renderEdit(){
@@ -369,43 +371,46 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const controller = createPreviewController(load, render);
   root.addEventListener('zoo-ui-navigate',event=>{const id=(event as CustomEvent<string|null>).detail;controller.cancelInput();controller.habitatFocus(id?'enter':'exit',id??undefined);},{signal:events.signal});
   host.addEventListener('scene-food-change',event=>{food=(event as CustomEvent<FoodView>).detail;renderFood();renderPlacement();},{signal:events.signal});
-  for(const b of root.querySelectorAll<HTMLButtonElement>('[data-food-command]')){b.addEventListener('keydown',event=>{if(event.repeat&&(event.key==='Enter'||event.key===' '))event.preventDefault();},{signal:events.signal});b.addEventListener('click',event=>{if(event.detail>1)return;const cmd=b.dataset.foodCommand as FoodCommand;controller.food(cmd,food.revision);if(cmd!=='refill'){host.focus({preventScroll:true});scrollHudTarget(host);}},{signal:events.signal});}
+  for(const b of root.querySelectorAll<HTMLButtonElement>('[data-food-command]')){b.addEventListener('keydown',event=>{if(event.repeat&&(event.key==='Enter'||event.key===' '))event.preventDefault();},{signal:events.signal});b.addEventListener('click',event=>{if(event.detail>1)return;const cmd=b.dataset.foodCommand as FoodCommand;controller.food(cmd,food.revision);if(cmd==='preview'){host.focus({preventScroll:true});scrollHudTarget(host);}else restoreHudActionFocus(b,b.closest<HTMLElement>('.zoo-resource-card'));},{signal:events.signal});}
   root.querySelector('[data-food-tools]')?.addEventListener('keydown',event=>{if((event as KeyboardEvent).key==='Escape')controller.food('cancel');},{signal:events.signal});
   host.addEventListener('scene-recovery-change',event=>{recovery=(event as CustomEvent<RecoveryView>).detail;renderRecovery();onboardingPanel.support(recovery.low&&recovery.available);},{signal:events.signal});
   function reviewRecovery(){if(!recoveryDialog||recoveryPending)return;const quote=controller.recoveryQuote();if(!quote){const help=root.querySelector<HTMLElement>('[data-recovery-tools]');revealHudTarget(help??null);scrollHudTarget(help);help?.setAttribute('tabindex','-1');help?.focus({preventScroll:true});return;}recoveryPending=quote;renderRecovery();recoveryDialog.showModal();controller.setPaused(true);root.querySelector<HTMLElement>('[data-recovery-cancel]')?.focus();}
   root.querySelector('[data-recovery-review]')?.addEventListener('click',reviewRecovery,{signal:events.signal});
   const dismissRecovery=()=>{recoveryPending=null;if(recoveryDialog?.open)recoveryDialog.close();controller.setPaused(false);};
   root.querySelector('[data-recovery-cancel]')?.addEventListener('click',dismissRecovery,{signal:events.signal});recoveryDialog?.addEventListener('close',()=>{recoveryPending=null;controller.setPaused(false);},{signal:events.signal});
-  root.querySelector('[data-recovery-confirm]')?.addEventListener('click',()=>{const quote=recoveryPending;if(!quote)return;dismissRecovery();controller.recover(quote);host.focus({preventScroll:true});scrollHudTarget(host);},{signal:events.signal});
+  root.querySelector('[data-recovery-confirm]')?.addEventListener('click',()=>{const quote=recoveryPending;if(!quote)return;dismissRecovery();controller.recover(quote);restoreHudActionFocus(root.querySelector('[data-recovery-review]'),root.querySelector('[data-recovery-tools]'));},{signal:events.signal});
   root.querySelector('[data-food-remove]')?.addEventListener('click',()=>{if(!food.exists||!foodDialog)return;foodRemovalRevision=food.revision;foodDialog.showModal();controller.setPaused(true);root.querySelector<HTMLElement>('[data-food-keep]')?.focus();},{signal:events.signal});
   const dismissFood=()=>{foodRemovalRevision=null;foodDialog?.close();controller.setPaused(false);};
   root.querySelector('[data-food-keep]')?.addEventListener('click',dismissFood,{signal:events.signal});foodDialog?.addEventListener('close',()=>{foodRemovalRevision=null;controller.setPaused(false);},{signal:events.signal});
-  root.querySelector('[data-food-remove-confirm]')?.addEventListener('click',()=>{const rev=foodRemovalRevision;foodRemovalRevision=null;dismissFood();if(rev!==null)controller.food('remove',rev);host.focus({preventScroll:true});scrollHudTarget(host);},{signal:events.signal});
+  root.querySelector('[data-food-remove-confirm]')?.addEventListener('click',()=>{const rev=foodRemovalRevision;foodRemovalRevision=null;dismissFood();if(rev!==null)controller.food('remove',rev);restoreHudActionFocus(root.querySelector('[data-food-remove]'),root.querySelector('[data-food-tools]'));},{signal:events.signal});
   host.addEventListener('scene-water-change',event=>{water=(event as CustomEvent<FoodView>).detail;renderWater();renderPlacement();},{signal:events.signal});
-  for(const b of root.querySelectorAll<HTMLButtonElement>('[data-water-command]')){b.addEventListener('keydown',event=>{if(event.repeat&&(event.key==='Enter'||event.key===' '))event.preventDefault();},{signal:events.signal});b.addEventListener('click',event=>{if(event.detail>1)return;const cmd=b.dataset.waterCommand as FoodCommand;controller.water(cmd,water.revision);if(cmd!=='refill'){host.focus({preventScroll:true});scrollHudTarget(host);}},{signal:events.signal});}
+  for(const b of root.querySelectorAll<HTMLButtonElement>('[data-water-command]')){b.addEventListener('keydown',event=>{if(event.repeat&&(event.key==='Enter'||event.key===' '))event.preventDefault();},{signal:events.signal});b.addEventListener('click',event=>{if(event.detail>1)return;const cmd=b.dataset.waterCommand as FoodCommand;controller.water(cmd,water.revision);if(cmd==='preview'){host.focus({preventScroll:true});scrollHudTarget(host);}else restoreHudActionFocus(b,b.closest<HTMLElement>('.zoo-resource-card'));},{signal:events.signal});}
   root.querySelector('[data-water-tools]')?.addEventListener('keydown',event=>{if((event as KeyboardEvent).key==='Escape')controller.water('cancel');},{signal:events.signal});
   root.querySelector('[data-water-remove]')?.addEventListener('click',()=>{if(!water.exists||!waterDialog)return;waterRemovalRevision=water.revision;waterDialog.showModal();controller.setPaused(true);root.querySelector<HTMLElement>('[data-water-keep]')?.focus();},{signal:events.signal});
   const dismissWater=()=>{waterRemovalRevision=null;waterDialog?.close();controller.setPaused(false);};
   root.querySelector('[data-water-keep]')?.addEventListener('click',dismissWater,{signal:events.signal});waterDialog?.addEventListener('close',()=>{waterRemovalRevision=null;controller.setPaused(false);},{signal:events.signal});
-  root.querySelector('[data-water-remove-confirm]')?.addEventListener('click',()=>{const rev=waterRemovalRevision;waterRemovalRevision=null;dismissWater();if(rev!==null)controller.water('remove',rev);host.focus({preventScroll:true});scrollHudTarget(host);},{signal:events.signal});
+  root.querySelector('[data-water-remove-confirm]')?.addEventListener('click',()=>{const rev=waterRemovalRevision;waterRemovalRevision=null;dismissWater();if(rev!==null)controller.water('remove',rev);restoreHudActionFocus(root.querySelector('[data-water-remove]'),root.querySelector('[data-water-tools]'));},{signal:events.signal});
   host.addEventListener('scene-perch-change',event=>{perch=(event as CustomEvent<PerchView>).detail;renderPerch();renderPlacement();},{signal:events.signal});
-  for(const b of root.querySelectorAll<HTMLButtonElement>('[data-perch-command]')){b.addEventListener('keydown',event=>{if(event.repeat&&(event.key==='Enter'||event.key===' '))event.preventDefault();},{signal:events.signal});b.addEventListener('click',event=>{if(event.detail>1)return;controller.perch(b.dataset.perchCommand as PerchCommand,perch.revision);host.focus({preventScroll:true});scrollHudTarget(host);},{signal:events.signal});}
+  for(const b of root.querySelectorAll<HTMLButtonElement>('[data-perch-command]')){b.addEventListener('keydown',event=>{if(event.repeat&&(event.key==='Enter'||event.key===' '))event.preventDefault();},{signal:events.signal});b.addEventListener('click',event=>{if(event.detail>1)return;const command=b.dataset.perchCommand as PerchCommand;controller.perch(command,perch.revision);if(command==='preview'){host.focus({preventScroll:true});scrollHudTarget(host);}else restoreHudActionFocus(b,b.closest<HTMLElement>('.zoo-resource-card'));},{signal:events.signal});}
   root.querySelector('[data-perch-tools]')?.addEventListener('keydown',event=>{if((event as KeyboardEvent).key==='Escape')controller.perch('cancel');},{signal:events.signal});
   root.querySelector('[data-perch-remove]')?.addEventListener('click',()=>{if(!perch.exists||!perchDialog)return;perchRemovalRevision=perch.revision;perchDialog.showModal();controller.setPaused(true);root.querySelector<HTMLElement>('[data-perch-keep]')?.focus();},{signal:events.signal});
   const dismissPerch=()=>{perchRemovalRevision=null;perchDialog?.close();controller.setPaused(false);};
   root.querySelector('[data-perch-keep]')?.addEventListener('click',dismissPerch,{signal:events.signal});perchDialog?.addEventListener('close',()=>{perchRemovalRevision=null;controller.setPaused(false);},{signal:events.signal});
-  root.querySelector('[data-perch-remove-confirm]')?.addEventListener('click',()=>{const rev=perchRemovalRevision;perchRemovalRevision=null;dismissPerch();if(rev!==null)controller.perch('remove',rev);host.focus({preventScroll:true});scrollHudTarget(host);},{signal:events.signal});
+  root.querySelector('[data-perch-remove-confirm]')?.addEventListener('click',()=>{const rev=perchRemovalRevision;perchRemovalRevision=null;dismissPerch();if(rev!==null)controller.perch('remove',rev);restoreHudActionFocus(root.querySelector('[data-perch-remove]'),root.querySelector('[data-perch-tools]'));},{signal:events.signal});
   host.addEventListener('scene-birds-change' ,event=>{birds=(event as CustomEvent<BirdsView>).detail;renderBirds();},{signal:events.signal});
-  for(const button of root.querySelectorAll<HTMLButtonElement>('[data-birds-command]'))button.addEventListener('click',()=>{controller.birds(button.dataset.birdsCommand as BirdCommand);host.focus({preventScroll:true});scrollHudTarget(host);},{signal:events.signal});
+  for(const button of root.querySelectorAll<HTMLButtonElement>('[data-birds-command]'))button.addEventListener('click',()=>{controller.birds(button.dataset.birdsCommand as BirdCommand);},{signal:events.signal});
   host.addEventListener('scene-studio-change' ,event=>{studio=(event as CustomEvent<StudioView>).detail;renderPlacement();renderSelection();renderStudio();},{signal:events.signal});
-  for(const button of root.querySelectorAll<HTMLButtonElement>('[data-studio-command]'))button.addEventListener('click',()=>{const command=button.dataset.studioCommand as StudioCommand;controller.studio(command);host.focus({preventScroll:true});if(command!=='pause')scrollHudTarget(host);},{signal:events.signal});
+  for(const button of root.querySelectorAll<HTMLButtonElement>('[data-studio-command]'))button.addEventListener('click',()=>{const command=button.dataset.studioCommand as StudioCommand;controller.studio(command);if(command!=='pause'){host.focus({preventScroll:true});scrollHudTarget(host);}},{signal:events.signal});
   root.querySelector<HTMLSelectElement>('[data-macaw-clip]')?.addEventListener('change',event=>{controller.studio('clip',(event.target as HTMLSelectElement).value);scrollHudTarget(host);},{signal:events.signal});
   root.querySelector<HTMLSelectElement>('[data-macaw-angle]')?.addEventListener('change',event=>{controller.studio('angle',(event.target as HTMLSelectElement).value);scrollHudTarget(host);},{signal:events.signal});
   function reviewRemoval(target:EditTarget,name:string){
     if(removal||!editDialog)return;
+    removalOpener=document.activeElement instanceof HTMLElement?document.activeElement:null;
+    removalPane=root.querySelector<HTMLElement>(`[data-hud-pane="${root.dataset.hudTab}"]`);
+    for(const message of root.querySelectorAll<HTMLElement>('[data-inline-edit-feedback]'))message.hidden=true;
     const result=controller.quoteRemoval(target);if(!result)return;
-    revealHudTarget(placementTools);scrollHudTarget(placementTools);
-    if(!result.ok){editView={...editView,reason:result.reason,result:null};renderEdit();return;}
+    if(!root.hasAttribute('data-zoo-scope')){revealHudTarget(placementTools);scrollHudTarget(placementTools);}
+    if(!result.ok){editView={...editView,reason:result.reason,result:null};renderEdit();if(root.dataset.hudTab==='care'&&removalOpener){const parent=removalOpener.closest('.zoo-resource-card,article')??removalPane;if(parent){let message=parent.querySelector<HTMLElement>('[data-inline-edit-feedback]');if(!message){message=document.createElement('p');message.dataset.inlineEditFeedback='';message.setAttribute('role','status');parent.append(message);}message.textContent=root.querySelector('[data-edit-status]')?.textContent??'';message.hidden=false;}}return;}
     controller.placement('cancel');removal=result.quote;removalName=name;renderEdit();
     editDialog.showModal();controller.setPaused(true);root.querySelector<HTMLElement>('[data-edit-cancel]')?.focus();
   }
@@ -414,19 +419,19 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     const target:EditTarget=selected.kind==='habitat'?{kind:'habitat',id:selected.id}:selected.kind==='giraffe-facility'?{kind:'giraffe-resource',id:selected.id}:selected.kind==='elephant-facility'?{kind:'elephant-resource',id:selected.id}:{kind:'path',cell:{...selected.cell}};
     reviewRemoval(target,presentSelection(selected,locale).title);
   },{signal:events.signal});
-  function dismissRemoval(){removal=null;if(editDialog?.open)editDialog.close();controller.setPaused(false);if(state.status==='ready')host?.focus({preventScroll:true});}
+  function dismissRemoval(){removal=null;if(editDialog?.open)editDialog.close();controller.setPaused(false);if(state.status==='ready')restoreHudActionFocus(removalOpener,removalPane);}
   root.querySelector('[data-edit-cancel]')?.addEventListener('click',dismissRemoval,{signal:events.signal});
   root.querySelector('[data-edit-confirm]')?.addEventListener('click',()=>{const quote=removal;if(!quote)return;dismissRemoval();controller.edit('remove',quote);},{signal:events.signal});
   editDialog?.addEventListener('close',()=>{removal=null;controller.setPaused(false);},{signal:events.signal});
-  root.querySelector('[data-edit-undo]')?.addEventListener('click',()=>{controller.edit('undo');host?.focus({preventScroll:true});},{signal:events.signal});
+  root.querySelector('[data-edit-undo]')?.addEventListener('click',()=>{controller.edit('undo');restoreHudActionFocus(root.querySelector('[data-edit-undo]'),placementTools);},{signal:events.signal});
   host.addEventListener('scene-edit-change',event=>{editView=(event as CustomEvent<EditView>).detail;renderEdit();},{signal:events.signal});
   host.addEventListener('scene-selection-change' ,event=>{const had=Boolean(selected);selected=(event as CustomEvent<SceneIdentity|null>).detail;renderSelection();if(!selected&&had&&selectionStatus)selectionStatus.value=entryMessages[locale].selectionCleared;},{signal:events.signal});
   host.addEventListener('scene-access-change',event=>{access=(event as CustomEvent<AccessSummary>).detail;renderPlacement();},{signal:events.signal});
   host.addEventListener('scene-habitat-change',event=>{habitatCount=(event as CustomEvent<{count:number}>).detail.count;renderPlacement();renderStudio();},{signal:events.signal});
   host.addEventListener('scene-placement-change',event=>{placement=(event as CustomEvent<PlacementView>).detail;missionPanel.setPreviewActive(placement.active);onboardingPanel.placement(placement);renderPlacement();},{signal:events.signal});
-  for(const button of root.querySelectorAll<HTMLButtonElement>('[data-placement-command]'))button.addEventListener('click',()=>{const command=button.dataset.placementCommand as PlacementCommand;controller.placement(command,placement?.revision);if(command==='begin'||command==='begin-path'||command==='cancel'||command==='confirm')host.focus({preventScroll:true});},{signal:events.signal});
-  placementTools?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();controller.placement('cancel');host.focus({preventScroll:true});}},{signal:events.signal});
-  const dismiss=()=>{controller.clearSelection();host.focus({preventScroll:true});};
+  for(const button of root.querySelectorAll<HTMLButtonElement>('[data-placement-command]'))button.addEventListener('click',()=>{const command=button.dataset.placementCommand as PlacementCommand;controller.placement(command,placement?.revision);if(command==='begin'||command==='begin-path'){host.focus({preventScroll:true});scrollHudTarget(host);}else restoreHudActionFocus(button,placementTools);},{signal:events.signal});
+  placementTools?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();controller.placement('cancel');restoreHudActionFocus(root.querySelector('[data-placement-command="begin"]'),placementTools);}},{signal:events.signal});
+  const dismiss=()=>{controller.clearSelection();restoreHudActionFocus(null,root.querySelector(`[data-hud-pane="${root.dataset.hudTab}"]`));};
   root.querySelector('[data-clear-selection]')?.addEventListener('click',dismiss,{signal:events.signal});
   selectionPanel?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();dismiss();}},{signal:events.signal});
   host.addEventListener('camera-view-change',()=>cameraState(),{signal:events.signal});

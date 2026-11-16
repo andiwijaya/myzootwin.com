@@ -1,0 +1,484 @@
+{
+  "at": "2026-11-16T13:15:02.964Z",
+  "status": "PASS",
+  "scope": "Actual source game UI and native IndexedDB transactions in isolated synthetic saves; DOM actions/source instrumentation plus native browser keyboard/click checks. Responsive browser viewports, not a physical phone. All stored profiles use product HTML and _astro bytes identical to final dist; earlier profiles differ only in QA instrumentation.",
+  "sourceFingerprint": "969c8e39203effc8372e866088e15fde7191abf6200441d64f3417d393859fba",
+  "tests": {
+    "tests": 209,
+    "pass": 209,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0
+  },
+  "astro": {
+    "files": 689,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0
+  },
+  "build": {
+    "pages": 10
+  },
+  "browser": {
+    "profiles": [
+      {
+        "file": "docs/qa/mobile-menu-audit-20261116/fresh-390.json",
+        "sha256": "5eafa478150fd261cd1a828718e4abd486231c8cbce6caa8afac07e783c731fc",
+        "seed": "fresh",
+        "viewport": {
+          "documentWidth": 375,
+          "height": 844,
+          "width": 390
+        },
+        "at": "2026-11-16T09:50:45.129Z",
+        "checks": 27,
+        "actions": 9,
+        "inventoryContexts": 4,
+        "qaCandidate": "all-panels-r10",
+        "qaSourceFingerprint": "a6da8d9090d347fda98e02fc4ec13c25d28c8c365a0403a75fe5930804062eed",
+        "bundles": [
+          {
+            "url": "/assets/index-Bmc_IBzM.js",
+            "sha256": "f6e32809f32af2f910fa9fff42b33389de5e88810270f47cff84ae6d41680a8e"
+          }
+        ]
+      },
+      {
+        "file": "docs/qa/mobile-menu-audit-20261116/elephantGrant-390.json",
+        "sha256": "82492a843dca7e267238a482b903883a284d53884480d6a6ded40051c20967f2",
+        "seed": "elephantGrant",
+        "viewport": {
+          "documentWidth": 375,
+          "height": 844,
+          "width": 390
+        },
+        "at": "2026-11-16T09:51:04.851Z",
+        "checks": 53,
+        "actions": 16,
+        "inventoryContexts": 8,
+        "qaCandidate": "all-panels-r10",
+        "qaSourceFingerprint": "a6da8d9090d347fda98e02fc4ec13c25d28c8c365a0403a75fe5930804062eed",
+        "bundles": [
+          {
+            "url": "/assets/index-Bmc_IBzM.js",
+            "sha256": "f6e32809f32af2f910fa9fff42b33389de5e88810270f47cff84ae6d41680a8e"
+          }
+        ]
+      },
+      {
+        "file": "docs/qa/mobile-menu-audit-20261116/lionGrant-390.json",
+        "sha256": "4571e5a9c101751e38172498eb43c70725afed24e37d5b7ce87266cb0efb2fbd",
+        "seed": "lionGrant",
+        "viewport": {
+          "width": 390,
+          "height": 844,
+          "documentWidth": 375
+        },
+        "at": "2026-11-16T13:10:49.544Z",
+        "checks": 63,
+        "actions": 19,
+        "inventoryContexts": 12,
+        "qaCandidate": "all-panels-r14",
+        "qaSourceFingerprint": "969c8e39203effc8372e866088e15fde7191abf6200441d64f3417d393859fba",
+        "bundles": [
+          {
+            "url": "/assets/index-CxQ_WIjX.js",
+            "sha256": "54e39735cff480ea1a593c5a598bb3e6842994f7c09a53b6d7b8fdee9bcaae8b"
+          }
+        ]
+      },
+      {
+        "file": "docs/qa/mobile-menu-audit-20261116/giraffeGrant-390.json",
+        "sha256": "07712892e5578589dc71336e490533e5ee3facc46a80a6d850ba8dbde931b75d",
+        "seed": "giraffeGrant",
+        "viewport": {
+          "documentWidth": 375,
+          "height": 844,
+          "width": 390
+        },
+        "at": "2026-11-16T12:51:47.227Z",
+        "checks": 52,
+        "actions": 15,
+        "inventoryContexts": 16,
+        "qaCandidate": "all-panels-r14",
+        "qaSourceFingerprint": "969c8e39203effc8372e866088e15fde7191abf6200441d64f3417d393859fba",
+        "bundles": [
+          {
+            "url": "/assets/index-CxQ_WIjX.js",
+            "sha256": "54e39735cff480ea1a593c5a598bb3e6842994f7c09a53b6d7b8fdee9bcaae8b"
+          }
+        ]
+      },
+      {
+        "file": "docs/qa/mobile-menu-audit-20261116/zebraGrant-390.json",
+        "sha256": "be25745e1e2ff883e93d30a91702f4c7fbc2db067549b62cfd620319343363f9",
+        "seed": "zebraGrant",
+        "viewport": {
+          "documentWidth": 375,
+          "height": 844,
+          "width": 390
+        },
+        "at": "2026-11-16T12:52:46.573Z",
+        "checks": 51,
+        "actions": 15,
+        "inventoryContexts": 20,
+        "qaCandidate": "all-panels-r14",
+        "qaSourceFingerprint": "969c8e39203effc8372e866088e15fde7191abf6200441d64f3417d393859fba",
+        "bundles": [
+          {
+            "url": "/assets/index-CxQ_WIjX.js",
+            "sha256": "54e39735cff480ea1a593c5a598bb3e6842994f7c09a53b6d7b8fdee9bcaae8b"
+          }
+        ]
+      },
+      {
+        "file": "docs/qa/mobile-menu-audit-20261116/q01-390.json",
+        "sha256": "4195513e96d76ea4096d59f855516c9457a020522b11fe66773ffc28cb458187",
+        "seed": "q01",
+        "viewport": {
+          "documentWidth": 375,
+          "height": 844,
+          "width": 390
+        },
+        "at": "2026-11-16T12:52:53.490Z",
+        "checks": 8,
+        "actions": 1,
+        "inventoryContexts": 8,
+        "qaCandidate": "all-panels-r14",
+        "qaSourceFingerprint": "969c8e39203effc8372e866088e15fde7191abf6200441d64f3417d393859fba",
+        "bundles": [
+          {
+            "url": "/assets/index-CxQ_WIjX.js",
+            "sha256": "54e39735cff480ea1a593c5a598bb3e6842994f7c09a53b6d7b8fdee9bcaae8b"
+          }
+        ]
+      },
+      {
+        "file": "docs/qa/mobile-menu-audit-20261116/q04-390.json",
+        "sha256": "02cf216d1c3ec4d0ce7aca9b1b044f789b5c50fd232ee64e529d3892ffd03de3",
+        "seed": "q04",
+        "viewport": {
+          "documentWidth": 375,
+          "height": 844,
+          "width": 390
+        },
+        "at": "2026-11-16T12:53:19.111Z",
+        "checks": 8,
+        "actions": 1,
+        "inventoryContexts": 8,
+        "qaCandidate": "all-panels-r14",
+        "qaSourceFingerprint": "969c8e39203effc8372e866088e15fde7191abf6200441d64f3417d393859fba",
+        "bundles": [
+          {
+            "url": "/assets/index-CxQ_WIjX.js",
+            "sha256": "54e39735cff480ea1a593c5a598bb3e6842994f7c09a53b6d7b8fdee9bcaae8b"
+          }
+        ]
+      },
+      {
+        "file": "docs/qa/mobile-menu-audit-20261116/eh-390.json",
+        "sha256": "bfcf8702ecfd11ca8391877af4a891f98e9dfdf83bfc9f3cce6ce0b5c6cd6e44",
+        "seed": "eh",
+        "viewport": {
+          "documentWidth": 375,
+          "height": 844,
+          "width": 390
+        },
+        "at": "2026-11-16T12:53:33.057Z",
+        "checks": 8,
+        "actions": 1,
+        "inventoryContexts": 12,
+        "qaCandidate": "all-panels-r14",
+        "qaSourceFingerprint": "969c8e39203effc8372e866088e15fde7191abf6200441d64f3417d393859fba",
+        "bundles": [
+          {
+            "url": "/assets/index-CxQ_WIjX.js",
+            "sha256": "54e39735cff480ea1a593c5a598bb3e6842994f7c09a53b6d7b8fdee9bcaae8b"
+          }
+        ]
+      },
+      {
+        "file": "docs/qa/mobile-menu-audit-20261116/lq-390.json",
+        "sha256": "1ec6544893ceb11379741c8fb3a714f36c49c2a64da6288d0531cd91188a912c",
+        "seed": "lq",
+        "viewport": {
+          "documentWidth": 375,
+          "height": 844,
+          "width": 390
+        },
+        "at": "2026-11-16T12:53:52.455Z",
+        "checks": 8,
+        "actions": 1,
+        "inventoryContexts": 16,
+        "qaCandidate": "all-panels-r14",
+        "qaSourceFingerprint": "969c8e39203effc8372e866088e15fde7191abf6200441d64f3417d393859fba",
+        "bundles": [
+          {
+            "url": "/assets/index-CxQ_WIjX.js",
+            "sha256": "54e39735cff480ea1a593c5a598bb3e6842994f7c09a53b6d7b8fdee9bcaae8b"
+          }
+        ]
+      },
+      {
+        "file": "docs/qa/mobile-menu-audit-20261116/gq-390.json",
+        "sha256": "00cfed5fb7e12e7e08b185d9f6fed4ae423d35adc96df1468eb829478b5b9d1e",
+        "seed": "gq",
+        "viewport": {
+          "documentWidth": 375,
+          "height": 844,
+          "width": 390
+        },
+        "at": "2026-11-16T12:54:14.687Z",
+        "checks": 8,
+        "actions": 1,
+        "inventoryContexts": 20,
+        "qaCandidate": "all-panels-r14",
+        "qaSourceFingerprint": "969c8e39203effc8372e866088e15fde7191abf6200441d64f3417d393859fba",
+        "bundles": [
+          {
+            "url": "/assets/index-CxQ_WIjX.js",
+            "sha256": "54e39735cff480ea1a593c5a598bb3e6842994f7c09a53b6d7b8fdee9bcaae8b"
+          }
+        ]
+      },
+      {
+        "file": "docs/qa/mobile-menu-audit-20261116/zq-390.json",
+        "sha256": "e1bec6666a3b7271deda71a14765e64c0d6a60b5b1d52b1c7a803c4ff7d287d9",
+        "seed": "zq",
+        "viewport": {
+          "documentWidth": 375,
+          "height": 844,
+          "width": 390
+        },
+        "at": "2026-11-16T12:54:45.115Z",
+        "checks": 8,
+        "actions": 1,
+        "inventoryContexts": 24,
+        "qaCandidate": "all-panels-r14",
+        "qaSourceFingerprint": "969c8e39203effc8372e866088e15fde7191abf6200441d64f3417d393859fba",
+        "bundles": [
+          {
+            "url": "/assets/index-CxQ_WIjX.js",
+            "sha256": "54e39735cff480ea1a593c5a598bb3e6842994f7c09a53b6d7b8fdee9bcaae8b"
+          }
+        ]
+      },
+      {
+        "file": "docs/qa/mobile-menu-audit-20261116/recovery-390.json",
+        "sha256": "0dcfd4e3c093b9e76128cb51ec4305015a4886cdd4ede2af12b1993fcb587a71",
+        "seed": "recovery",
+        "viewport": {
+          "documentWidth": 375,
+          "height": 844,
+          "width": 390
+        },
+        "at": "2026-11-16T12:55:04.965Z",
+        "checks": 19,
+        "actions": 4,
+        "inventoryContexts": 4,
+        "qaCandidate": "all-panels-r14",
+        "qaSourceFingerprint": "969c8e39203effc8372e866088e15fde7191abf6200441d64f3417d393859fba",
+        "bundles": [
+          {
+            "url": "/assets/index-CxQ_WIjX.js",
+            "sha256": "54e39735cff480ea1a593c5a598bb3e6842994f7c09a53b6d7b8fdee9bcaae8b"
+          }
+        ]
+      },
+      {
+        "file": "docs/qa/mobile-menu-audit-20261116/slots-390.json",
+        "sha256": "8893a3ff24c2ca4b420142730d2e16e4e795a4713ef596f757e8d21574ab6f73",
+        "seed": "slots",
+        "viewport": {
+          "documentWidth": 375,
+          "height": 844,
+          "width": 390
+        },
+        "at": "2026-11-16T12:56:21.022Z",
+        "checks": 143,
+        "actions": 42,
+        "inventoryContexts": 24,
+        "qaCandidate": "all-panels-r14",
+        "qaSourceFingerprint": "969c8e39203effc8372e866088e15fde7191abf6200441d64f3417d393859fba",
+        "bundles": [
+          {
+            "url": "/assets/index-CxQ_WIjX.js",
+            "sha256": "54e39735cff480ea1a593c5a598bb3e6842994f7c09a53b6d7b8fdee9bcaae8b"
+          }
+        ]
+      },
+      {
+        "file": "docs/qa/mobile-menu-audit-20261116/full-390.json",
+        "sha256": "053d0796ad367cc0823e288a17e3953ed7b3d17ca305efa5a76862494b25d998",
+        "seed": "full",
+        "viewport": {
+          "documentWidth": 375,
+          "height": 844,
+          "width": 390
+        },
+        "at": "2026-11-16T13:00:41.455Z",
+        "checks": 367,
+        "actions": 106,
+        "inventoryContexts": 24,
+        "qaCandidate": "all-panels-r14",
+        "qaSourceFingerprint": "969c8e39203effc8372e866088e15fde7191abf6200441d64f3417d393859fba",
+        "bundles": [
+          {
+            "url": "/assets/index-CxQ_WIjX.js",
+            "sha256": "54e39735cff480ea1a593c5a598bb3e6842994f7c09a53b6d7b8fdee9bcaae8b"
+          }
+        ]
+      },
+      {
+        "file": "docs/qa/mobile-menu-audit-20261116/slots-360.json",
+        "sha256": "ef61d925346831a8e4f198d3d3cb6708d07713873052129d4d6d798870b996d3",
+        "seed": "slots",
+        "viewport": {
+          "documentWidth": 345,
+          "height": 780,
+          "width": 360
+        },
+        "at": "2026-11-16T13:02:24.217Z",
+        "checks": 143,
+        "actions": 42,
+        "inventoryContexts": 24,
+        "qaCandidate": "all-panels-r14",
+        "qaSourceFingerprint": "969c8e39203effc8372e866088e15fde7191abf6200441d64f3417d393859fba",
+        "bundles": [
+          {
+            "url": "/assets/index-CxQ_WIjX.js",
+            "sha256": "54e39735cff480ea1a593c5a598bb3e6842994f7c09a53b6d7b8fdee9bcaae8b"
+          }
+        ]
+      },
+      {
+        "file": "docs/qa/mobile-menu-audit-20261116/full-360.json",
+        "sha256": "b6c04303cd51ea870cedcbaaaf8350e97f710a0190f374a0400757d5cf4efaed",
+        "seed": "full",
+        "viewport": {
+          "width": 360,
+          "height": 780,
+          "documentWidth": 345
+        },
+        "at": "2026-11-16T13:10:16.327Z",
+        "checks": 450,
+        "actions": 131,
+        "inventoryContexts": 24,
+        "qaCandidate": "all-panels-r14",
+        "qaSourceFingerprint": "969c8e39203effc8372e866088e15fde7191abf6200441d64f3417d393859fba",
+        "bundles": [
+          {
+            "url": "/assets/index-CxQ_WIjX.js",
+            "sha256": "54e39735cff480ea1a593c5a598bb3e6842994f7c09a53b6d7b8fdee9bcaae8b"
+          }
+        ]
+      }
+    ],
+    "matrixChecks": 1416,
+    "controlsChecks": 155,
+    "nativeChecks": 9,
+    "checks": 1580,
+    "actions": 405,
+    "fullInventoryContexts": [
+      {
+        "width": 390,
+        "contexts": 24
+      },
+      {
+        "width": 360,
+        "contexts": 24
+      }
+    ]
+  },
+  "productIdentity": [
+    {
+      "candidate": "all-panels-r10",
+      "files": 8,
+      "allMatch": true,
+      "comparisons": [
+        {
+          "path": "play/index.html",
+          "sha256": "45f78d611194cfdbb2a57a96bc8e0d465daadf5e0e57e1f1f92a3731500e7710"
+        },
+        {
+          "path": "_astro/BaseLayout.astro_astro_type_script_index_0_lang.BM0Yzlbn.js",
+          "sha256": "75f5c9dec97fc168bbd3df90166b33b3ee4c441d186d638cba9313295eaf7e13"
+        },
+        {
+          "path": "_astro/BaseLayout.CobipK0U.css",
+          "sha256": "b25de5e982e5c2a87f5a5b97323f92b49358136e0005cbe97a36736eb1353805"
+        },
+        {
+          "path": "_astro/dialog-focus.CS_awhan.js",
+          "sha256": "1c49e5f75581f00265e803464e1caea211865f20cc06223682b8336e763d2d64"
+        },
+        {
+          "path": "_astro/foundation-scene.BoRy5oTT.js",
+          "sha256": "cfa73d329246a4363532411f69bcc1e116454ed6d8e82c4b7e936f93aa8661c2"
+        },
+        {
+          "path": "_astro/play.BG-7FAAS.css",
+          "sha256": "bb3a0208707c551410b32ee9bdf359f3638377df6325b2b69dfee64f09273365"
+        },
+        {
+          "path": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.OGUlXuBE.js",
+          "sha256": "69de776c39860ace96b8785a30927f68c9ccedfdbb3f18b413f3ab88caa00a19"
+        },
+        {
+          "path": "_astro/ZooHome.Dg2zfea9.css",
+          "sha256": "c90df36514d498089cc7cedf47fc18c717b4d8473bcdd08f1442dae85ec77f3a"
+        }
+      ]
+    },
+    {
+      "candidate": "all-panels-r14",
+      "files": 8,
+      "allMatch": true,
+      "comparisons": [
+        {
+          "path": "play/index.html",
+          "sha256": "45f78d611194cfdbb2a57a96bc8e0d465daadf5e0e57e1f1f92a3731500e7710"
+        },
+        {
+          "path": "_astro/BaseLayout.astro_astro_type_script_index_0_lang.BM0Yzlbn.js",
+          "sha256": "75f5c9dec97fc168bbd3df90166b33b3ee4c441d186d638cba9313295eaf7e13"
+        },
+        {
+          "path": "_astro/BaseLayout.CobipK0U.css",
+          "sha256": "b25de5e982e5c2a87f5a5b97323f92b49358136e0005cbe97a36736eb1353805"
+        },
+        {
+          "path": "_astro/dialog-focus.CS_awhan.js",
+          "sha256": "1c49e5f75581f00265e803464e1caea211865f20cc06223682b8336e763d2d64"
+        },
+        {
+          "path": "_astro/foundation-scene.BoRy5oTT.js",
+          "sha256": "cfa73d329246a4363532411f69bcc1e116454ed6d8e82c4b7e936f93aa8661c2"
+        },
+        {
+          "path": "_astro/play.BG-7FAAS.css",
+          "sha256": "bb3a0208707c551410b32ee9bdf359f3638377df6325b2b69dfee64f09273365"
+        },
+        {
+          "path": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.OGUlXuBE.js",
+          "sha256": "69de776c39860ace96b8785a30927f68c9ccedfdbb3f18b413f3ab88caa00a19"
+        },
+        {
+          "path": "_astro/ZooHome.Dg2zfea9.css",
+          "sha256": "c90df36514d498089cc7cedf47fc18c717b4d8473bcdd08f1442dae85ec77f3a"
+        }
+      ]
+    }
+  ],
+  "excludedFromReleaseGates": [
+    "before-full-390.json",
+    "before-slots-390.json",
+    "intermediate-full-390.json",
+    "intermediate-slots-390.json",
+    "intermediate-full-360-background.json",
+    "intermediate-keyboard-layout.json",
+    "intermediate-keyboard-focus-expectation.json"
+  ],
+  "deployment": "PENDING"
+}

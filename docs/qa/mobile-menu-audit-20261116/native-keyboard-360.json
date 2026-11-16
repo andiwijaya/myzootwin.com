@@ -1,0 +1,207 @@
+{
+  "at": "2026-11-16T13:14:07.315Z",
+  "status": "PASS",
+  "qaCandidate": "all-panels-r14",
+  "method": "Browser locator clicks and real keyboard Enter/Escape; isolated UUID QA save; responsive viewport, not physical device",
+  "checks": [
+    {
+      "name": "Enter opens and Escape closes removal dialog in Rawat",
+      "passed": true
+    },
+    {
+      "name": "Enter close gate retains Tamu and scroll",
+      "passed": true
+    },
+    {
+      "name": "Enter open gate retains Tamu and scroll",
+      "passed": true
+    },
+    {
+      "name": "Escape cancels path preview and retains visible Build below world",
+      "passed": true,
+      "detail": "Preview collapse changed document scroll by 88px through browser anchoring; Build remains visible and world stays above the viewport."
+    },
+    {
+      "name": "Misi grove frames labelled area in shared zoo",
+      "passed": true
+    },
+    {
+      "name": "Misi aviary frames labelled area in shared zoo",
+      "passed": true
+    },
+    {
+      "name": "Native QA finishes paused with one canvas",
+      "passed": true
+    },
+    {
+      "name": "Native HP has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "Native QA has no warning or error",
+      "passed": true
+    }
+  ],
+  "rows": [
+    {
+      "name": "Macaw remove keyboard",
+      "before": {
+        "dialogs": 0,
+        "kind": "macaw-aviary",
+        "maxScroll": 3396,
+        "paused": "false",
+        "tab": "care",
+        "worldFocus": false,
+        "y": 2595.333251953125
+      },
+      "open": {
+        "dialogs": 1,
+        "kind": "macaw-aviary",
+        "maxScroll": 3396,
+        "paused": "true",
+        "tab": "care",
+        "worldFocus": false,
+        "y": 2595.333251953125
+      },
+      "after": {
+        "dialogs": 0,
+        "kind": "macaw-aviary",
+        "maxScroll": 3396,
+        "paused": "false",
+        "tab": "care",
+        "worldFocus": false,
+        "y": 2595.333251953125
+      }
+    },
+    {
+      "name": "gate close",
+      "before": {
+        "dialogs": 0,
+        "kind": "macaw-aviary",
+        "maxScroll": 2819,
+        "paused": "false",
+        "tab": "visitors",
+        "worldFocus": false,
+        "y": 1561.3333740234375
+      },
+      "after": {
+        "dialogs": 0,
+        "kind": "macaw-aviary",
+        "maxScroll": 2726,
+        "paused": "false",
+        "tab": "visitors",
+        "worldFocus": false,
+        "y": 1561.3333740234375
+      }
+    },
+    {
+      "name": "gate open",
+      "before": {
+        "dialogs": 0,
+        "kind": "macaw-aviary",
+        "maxScroll": 2726,
+        "paused": "false",
+        "tab": "visitors",
+        "worldFocus": false,
+        "y": 1561.3333740234375
+      },
+      "after": {
+        "dialogs": 0,
+        "kind": "macaw-aviary",
+        "maxScroll": 2813,
+        "paused": "false",
+        "tab": "visitors",
+        "worldFocus": false,
+        "y": 1561.3333740234375
+      }
+    },
+    {
+      "name": "path Escape",
+      "before": {
+        "dialogs": 0,
+        "kind": null,
+        "maxScroll": 5139,
+        "paused": "false",
+        "tab": "build",
+        "worldFocus": false,
+        "y": 4404
+      },
+      "after": {
+        "dialogs": 0,
+        "kind": null,
+        "maxScroll": 4993,
+        "paused": "false",
+        "tab": "build",
+        "worldFocus": false,
+        "y": 4492
+      }
+    },
+    {
+      "name": "Misi focus grove",
+      "after": {
+        "dialogs": 0,
+        "kind": null,
+        "maxScroll": 5524,
+        "paused": "false",
+        "tab": "missions",
+        "worldFocus": true,
+        "y": 643.3333129882812
+      }
+    },
+    {
+      "name": "Misi focus aviary",
+      "after": {
+        "dialogs": 0,
+        "kind": null,
+        "maxScroll": 5524,
+        "paused": "false",
+        "tab": "missions",
+        "worldFocus": true,
+        "y": 643.3333129882812
+      }
+    },
+    {
+      "name": "Misi camera grove",
+      "before": {
+        "x": "-5.634411987697219",
+        "z": "-7.910796002350591",
+        "zoom": "3"
+      },
+      "after": {
+        "scope": null,
+        "x": "-4.634411987697219",
+        "z": "1.0892039976494088",
+        "zoom": "2.65"
+      }
+    },
+    {
+      "name": "Misi camera aviary",
+      "before": {
+        "x": "-4.634411987697219",
+        "z": "1.0892039976494088",
+        "zoom": "2.65"
+      },
+      "after": {
+        "scope": null,
+        "x": "-5.634411987697219",
+        "z": "-7.910796002350591",
+        "zoom": "3"
+      }
+    }
+  ],
+  "final": {
+    "dialogs": 0,
+    "kind": "macaw-aviary",
+    "maxScroll": 3396,
+    "paused": "true",
+    "tab": "care",
+    "worldFocus": false,
+    "y": 1220.6666259765625
+  },
+  "geometry": {
+    "canvases": 1,
+    "documentWidth": 345,
+    "width": 360
+  },
+  "logs": []
+}

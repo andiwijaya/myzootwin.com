@@ -1,0 +1,642 @@
+{
+  "actions": [
+    {
+      "after": {
+        "command": 1,
+        "kind": null,
+        "maxScroll": 2473,
+        "tab": "care",
+        "top": 400.0208435058594,
+        "worldBottom": 1030.1770629882812,
+        "y": 1468
+      },
+      "attributes": {
+        "data-astro-cid-d56su4gk": "",
+        "data-recovery-review": ""
+      },
+      "before": {
+        "command": 1,
+        "kind": null,
+        "maxScroll": 2473,
+        "tab": "care",
+        "top": 400.0208435058594,
+        "worldBottom": 1030.1770629882812,
+        "y": 1468
+      },
+      "button": "Review next recovery step",
+      "contract": "dialog",
+      "focuses": [
+        {
+          "target": "dialog-close",
+          "world": false
+        }
+      ],
+      "name": "support review",
+      "scrolls": []
+    },
+    {
+      "after": {
+        "command": 1,
+        "kind": null,
+        "maxScroll": 2678,
+        "tab": "care",
+        "top": 0,
+        "worldBottom": 1234.8436889648438,
+        "y": 1672.6666259765625
+      },
+      "attributes": {
+        "data-astro-cid-d56su4gk": "",
+        "data-recovery-cancel": ""
+      },
+      "before": {
+        "command": 1,
+        "kind": null,
+        "maxScroll": 2678,
+        "tab": "care",
+        "top": 446.1875,
+        "worldBottom": 1234.8436889648438,
+        "y": 1672.6666259765625
+      },
+      "button": "Keep everything as it is",
+      "contract": "dialog",
+      "focuses": [],
+      "name": "support cancel",
+      "scrolls": []
+    },
+    {
+      "after": {
+        "command": 1,
+        "kind": null,
+        "maxScroll": 2678,
+        "tab": "care",
+        "top": 400.0208435058594,
+        "worldBottom": 1234.8436889648438,
+        "y": 1672.6666259765625
+      },
+      "attributes": {
+        "data-astro-cid-d56su4gk": "",
+        "data-recovery-review": ""
+      },
+      "before": {
+        "command": 1,
+        "kind": null,
+        "maxScroll": 2678,
+        "tab": "care",
+        "top": 400.0208435058594,
+        "worldBottom": 1234.8436889648438,
+        "y": 1672.6666259765625
+      },
+      "button": "Review next recovery step",
+      "contract": "dialog",
+      "focuses": [
+        {
+          "target": "dialog-close",
+          "world": false
+        }
+      ],
+      "name": "support review again",
+      "scrolls": []
+    },
+    {
+      "after": {
+        "command": 2,
+        "kind": null,
+        "maxScroll": 2743,
+        "tab": "care",
+        "top": 0,
+        "worldBottom": 1234.8436889648438,
+        "y": 1672.6666259765625
+      },
+      "attributes": {
+        "data-astro-cid-d56su4gk": "",
+        "data-recovery-confirm": ""
+      },
+      "before": {
+        "command": 1,
+        "kind": null,
+        "maxScroll": 2678,
+        "tab": "care",
+        "top": 506.1770935058594,
+        "worldBottom": 1234.8436889648438,
+        "y": 1672.6666259765625
+      },
+      "button": "Confirm step",
+      "contract": "dialog",
+      "focuses": [
+        {
+          "target": "",
+          "world": false
+        }
+      ],
+      "name": "support confirm",
+      "scrolls": []
+    }
+  ],
+  "at": "2026-11-16T12:55:04.965Z",
+  "checks": [
+    {
+      "detail": {
+        "after": {
+          "command": 1,
+          "kind": null,
+          "maxScroll": 2473,
+          "tab": "care",
+          "top": 400.0208435058594,
+          "worldBottom": 1030.1770629882812,
+          "y": 1468
+        },
+        "before": {
+          "command": 1,
+          "kind": null,
+          "maxScroll": 2473,
+          "tab": "care",
+          "top": 400.0208435058594,
+          "worldBottom": 1030.1770629882812,
+          "y": 1468
+        }
+      },
+      "name": "support review keeps chosen menu and habitat",
+      "passed": true
+    },
+    {
+      "detail": {
+        "focuses": [
+          {
+            "target": "dialog-close",
+            "world": false
+          }
+        ],
+        "scrolls": []
+      },
+      "name": "support review does not force scroll or world focus",
+      "passed": true
+    },
+    {
+      "detail": {
+        "after": {
+          "command": 1,
+          "kind": null,
+          "maxScroll": 2473,
+          "tab": "care",
+          "top": 400.0208435058594,
+          "worldBottom": 1030.1770629882812,
+          "y": 1468
+        },
+        "before": {
+          "command": 1,
+          "kind": null,
+          "maxScroll": 2473,
+          "tab": "care",
+          "top": 400.0208435058594,
+          "worldBottom": 1030.1770629882812,
+          "y": 1468
+        },
+        "connected": true,
+        "nativeClamp": false
+      },
+      "name": "support review keeps the viewed panel",
+      "passed": true
+    },
+    {
+      "name": "support review has no delayed menu switch",
+      "passed": true
+    },
+    {
+      "detail": {
+        "after": {
+          "command": 1,
+          "kind": null,
+          "maxScroll": 2678,
+          "tab": "care",
+          "top": 0,
+          "worldBottom": 1234.8436889648438,
+          "y": 1672.6666259765625
+        },
+        "before": {
+          "command": 1,
+          "kind": null,
+          "maxScroll": 2678,
+          "tab": "care",
+          "top": 446.1875,
+          "worldBottom": 1234.8436889648438,
+          "y": 1672.6666259765625
+        }
+      },
+      "name": "support cancel keeps chosen menu and habitat",
+      "passed": true
+    },
+    {
+      "detail": {
+        "focuses": [],
+        "scrolls": []
+      },
+      "name": "support cancel does not force scroll or world focus",
+      "passed": true
+    },
+    {
+      "detail": {
+        "after": {
+          "command": 1,
+          "kind": null,
+          "maxScroll": 2678,
+          "tab": "care",
+          "top": 0,
+          "worldBottom": 1234.8436889648438,
+          "y": 1672.6666259765625
+        },
+        "before": {
+          "command": 1,
+          "kind": null,
+          "maxScroll": 2678,
+          "tab": "care",
+          "top": 446.1875,
+          "worldBottom": 1234.8436889648438,
+          "y": 1672.6666259765625
+        },
+        "connected": false,
+        "nativeClamp": false
+      },
+      "name": "support cancel keeps the viewed panel",
+      "passed": true
+    },
+    {
+      "name": "support cancel has no delayed menu switch",
+      "passed": true
+    },
+    {
+      "detail": {
+        "after": {
+          "command": 1,
+          "kind": null,
+          "maxScroll": 2678,
+          "tab": "care",
+          "top": 400.0208435058594,
+          "worldBottom": 1234.8436889648438,
+          "y": 1672.6666259765625
+        },
+        "before": {
+          "command": 1,
+          "kind": null,
+          "maxScroll": 2678,
+          "tab": "care",
+          "top": 400.0208435058594,
+          "worldBottom": 1234.8436889648438,
+          "y": 1672.6666259765625
+        }
+      },
+      "name": "support review again keeps chosen menu and habitat",
+      "passed": true
+    },
+    {
+      "detail": {
+        "focuses": [
+          {
+            "target": "dialog-close",
+            "world": false
+          }
+        ],
+        "scrolls": []
+      },
+      "name": "support review again does not force scroll or world focus",
+      "passed": true
+    },
+    {
+      "detail": {
+        "after": {
+          "command": 1,
+          "kind": null,
+          "maxScroll": 2678,
+          "tab": "care",
+          "top": 400.0208435058594,
+          "worldBottom": 1234.8436889648438,
+          "y": 1672.6666259765625
+        },
+        "before": {
+          "command": 1,
+          "kind": null,
+          "maxScroll": 2678,
+          "tab": "care",
+          "top": 400.0208435058594,
+          "worldBottom": 1234.8436889648438,
+          "y": 1672.6666259765625
+        },
+        "connected": true,
+        "nativeClamp": false
+      },
+      "name": "support review again keeps the viewed panel",
+      "passed": true
+    },
+    {
+      "name": "support review again has no delayed menu switch",
+      "passed": true
+    },
+    {
+      "detail": {
+        "after": {
+          "command": 2,
+          "kind": null,
+          "maxScroll": 2743,
+          "tab": "care",
+          "top": 0,
+          "worldBottom": 1234.8436889648438,
+          "y": 1672.6666259765625
+        },
+        "before": {
+          "command": 1,
+          "kind": null,
+          "maxScroll": 2678,
+          "tab": "care",
+          "top": 506.1770935058594,
+          "worldBottom": 1234.8436889648438,
+          "y": 1672.6666259765625
+        }
+      },
+      "name": "support confirm keeps chosen menu and habitat",
+      "passed": true
+    },
+    {
+      "detail": {
+        "focuses": [
+          {
+            "target": "",
+            "world": false
+          }
+        ],
+        "scrolls": []
+      },
+      "name": "support confirm does not force scroll or world focus",
+      "passed": true
+    },
+    {
+      "detail": {
+        "after": {
+          "command": 2,
+          "kind": null,
+          "maxScroll": 2743,
+          "tab": "care",
+          "top": 0,
+          "worldBottom": 1234.8436889648438,
+          "y": 1672.6666259765625
+        },
+        "before": {
+          "command": 1,
+          "kind": null,
+          "maxScroll": 2678,
+          "tab": "care",
+          "top": 506.1770935058594,
+          "worldBottom": 1234.8436889648438,
+          "y": 1672.6666259765625
+        },
+        "connected": false,
+        "nativeClamp": false
+      },
+      "name": "support confirm keeps the viewed panel",
+      "passed": true
+    },
+    {
+      "name": "support confirm has no delayed menu switch",
+      "passed": true
+    },
+    {
+      "name": "valid V5 and one renderer after actions",
+      "passed": true
+    },
+    {
+      "name": "no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "no application errors",
+      "passed": true
+    }
+  ],
+  "currentAction": "support confirm",
+  "errors": [],
+  "final": {
+    "canvases": 1,
+    "kind": null,
+    "paused": "false",
+    "tab": "care",
+    "valid": true
+  },
+  "inventory": [
+    {
+      "buttons": [
+        {
+          "attributes": {
+            "data-astro-cid-d56su4gk": "",
+            "data-onboarding-action": ""
+          },
+          "disabled": false,
+          "label": null,
+          "text": "Review starter support"
+        },
+        {
+          "attributes": {
+            "data-astro-cid-d56su4gk": "",
+            "data-mission-claim": ""
+          },
+          "disabled": true,
+          "label": null,
+          "text": "Claim 20 ZC"
+        }
+      ],
+      "kind": "zoo",
+      "pane": "missions"
+    },
+    {
+      "buttons": [
+        {
+          "attributes": {
+            "data-astro-cid-d56su4gk": "",
+            "data-recovery-review": ""
+          },
+          "disabled": false,
+          "label": null,
+          "text": "Review next recovery step"
+        },
+        {
+          "attributes": {
+            "data-astro-cid-d56su4gk": "",
+            "data-birds-command": "welcome"
+          },
+          "disabled": true,
+          "label": null,
+          "text": "Welcome two macaws"
+        }
+      ],
+      "kind": "zoo",
+      "pane": "care"
+    },
+    {
+      "buttons": [
+        {
+          "attributes": {
+            "data-astro-cid-d56su4gk": "",
+            "data-visitors-command": "open"
+          },
+          "disabled": false,
+          "label": null,
+          "text": "Open entrance"
+        },
+        {
+          "attributes": {
+            "data-astro-cid-d56su4gk": "",
+            "data-visitors-command": "focus"
+          },
+          "disabled": false,
+          "label": null,
+          "text": "View entrance"
+        },
+        {
+          "attributes": {
+            "data-astro-cid-d56su4gk": "",
+            "data-visitors-command": "follow"
+          },
+          "disabled": true,
+          "label": null,
+          "text": "Find visitor"
+        }
+      ],
+      "kind": "zoo",
+      "pane": "visitors"
+    },
+    {
+      "buttons": [
+        {
+          "attributes": {},
+          "disabled": true,
+          "label": null,
+          "text": "Claim 1,800 ZC Savanna grant"
+        },
+        {
+          "attributes": {},
+          "disabled": true,
+          "label": null,
+          "text": "Plan 7 × 7 habitat · 750 ZC"
+        },
+        {
+          "attributes": {},
+          "disabled": true,
+          "label": null,
+          "text": "Welcome Raka · Free"
+        },
+        {
+          "attributes": {},
+          "disabled": false,
+          "label": null,
+          "text": "Focus Lion Savanna"
+        },
+        {
+          "attributes": {
+            "data-zebra-grant": ""
+          },
+          "disabled": true,
+          "label": null,
+          "text": "Claim Zebra grant · +1,700 ZC"
+        },
+        {
+          "attributes": {},
+          "disabled": true,
+          "label": null,
+          "text": "Claim 1,850 ZC reserve grant"
+        },
+        {
+          "attributes": {},
+          "disabled": true,
+          "label": null,
+          "text": "Plan 7 × 7 habitat · 700 ZC"
+        },
+        {
+          "attributes": {},
+          "disabled": true,
+          "label": null,
+          "text": "Welcome Dira · Free"
+        },
+        {
+          "attributes": {},
+          "disabled": false,
+          "label": null,
+          "text": "View the plot"
+        },
+        {
+          "attributes": {
+            "data-astro-cid-d56su4gk": "",
+            "data-elephant-grant-claim": ""
+          },
+          "disabled": true,
+          "label": null,
+          "text": "Claim 1,400 ZC conservation grant"
+        },
+        {
+          "attributes": {
+            "data-astro-cid-d56su4gk": "",
+            "data-placement-command": "begin"
+          },
+          "disabled": false,
+          "label": null,
+          "text": "Build a macaw habitat · 300 ZC"
+        },
+        {
+          "attributes": {
+            "data-astro-cid-d56su4gk": "",
+            "data-placement-command": "begin-path"
+          },
+          "disabled": false,
+          "label": null,
+          "text": "Build visitor paths · 15 ZC"
+        },
+        {
+          "attributes": {
+            "data-astro-cid-d56su4gk": "",
+            "data-studio-command": "open"
+          },
+          "disabled": false,
+          "label": null,
+          "text": "Meet the macaw"
+        },
+        {
+          "attributes": {
+            "data-astro-cid-d56su4gk": "",
+            "data-food-command": "preview"
+          },
+          "disabled": true,
+          "label": null,
+          "text": "Place feeder · 80 ZC"
+        },
+        {
+          "attributes": {
+            "data-astro-cid-d56su4gk": "",
+            "data-water-command": "preview"
+          },
+          "disabled": true,
+          "label": null,
+          "text": "Place water bowls · 60 ZC"
+        },
+        {
+          "attributes": {
+            "data-astro-cid-d56su4gk": "",
+            "data-perch-command": "preview"
+          },
+          "disabled": true,
+          "label": null,
+          "text": "Prepare rest perches · 80 ZC"
+        }
+      ],
+      "kind": "zoo",
+      "pane": "build"
+    }
+  ],
+  "scope": "Actual game controls and renderer; whole synthetic V5 starting save in UUID IndexedDB. DOM clicks and source instrumentation. Explicit navigation may reveal its labelled target; transactions must keep the panel. Native bottom clamping when preview content closes is recorded separately. Not a physical phone or unlock-progression claim.",
+  "seed": "recovery",
+  "status": "PASS",
+  "viewport": {
+    "documentWidth": 375,
+    "height": 844,
+    "width": 390
+  },
+  "qaCandidate": "all-panels-r14",
+  "qaBundle": [
+    "/assets/index-CxQ_WIjX.js"
+  ]
+}

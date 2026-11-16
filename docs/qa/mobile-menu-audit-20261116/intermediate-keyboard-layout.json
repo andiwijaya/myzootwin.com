@@ -1,0 +1,117 @@
+{
+  "at": "2026-11-16T13:13:05.672Z",
+  "checks": [
+    {
+      "name": "Enter opens and Escape closes removal dialog in Rawat",
+      "passed": true
+    },
+    {
+      "name": "Enter close gate retains Tamu and scroll",
+      "passed": true
+    },
+    {
+      "name": "Enter open gate retains Tamu and scroll",
+      "passed": true
+    },
+    {
+      "name": "Escape cancels path preview without world focus or panel change",
+      "passed": false
+    }
+  ],
+  "rows": [
+    {
+      "name": "Macaw remove keyboard",
+      "before": {
+        "dialogs": 0,
+        "kind": "macaw-aviary",
+        "maxScroll": 3396,
+        "paused": "false",
+        "tab": "care",
+        "worldFocus": false,
+        "y": 2595.333251953125
+      },
+      "open": {
+        "dialogs": 1,
+        "kind": "macaw-aviary",
+        "maxScroll": 3396,
+        "paused": "true",
+        "tab": "care",
+        "worldFocus": false,
+        "y": 2595.333251953125
+      },
+      "after": {
+        "dialogs": 0,
+        "kind": "macaw-aviary",
+        "maxScroll": 3396,
+        "paused": "false",
+        "tab": "care",
+        "worldFocus": false,
+        "y": 2595.333251953125
+      }
+    },
+    {
+      "name": "gate close",
+      "before": {
+        "dialogs": 0,
+        "kind": "macaw-aviary",
+        "maxScroll": 2819,
+        "paused": "false",
+        "tab": "visitors",
+        "worldFocus": false,
+        "y": 1561.3333740234375
+      },
+      "after": {
+        "dialogs": 0,
+        "kind": "macaw-aviary",
+        "maxScroll": 2726,
+        "paused": "false",
+        "tab": "visitors",
+        "worldFocus": false,
+        "y": 1561.3333740234375
+      }
+    },
+    {
+      "name": "gate open",
+      "before": {
+        "dialogs": 0,
+        "kind": "macaw-aviary",
+        "maxScroll": 2726,
+        "paused": "false",
+        "tab": "visitors",
+        "worldFocus": false,
+        "y": 1561.3333740234375
+      },
+      "after": {
+        "dialogs": 0,
+        "kind": "macaw-aviary",
+        "maxScroll": 2813,
+        "paused": "false",
+        "tab": "visitors",
+        "worldFocus": false,
+        "y": 1561.3333740234375
+      }
+    },
+    {
+      "name": "path Escape",
+      "before": {
+        "dialogs": 0,
+        "kind": null,
+        "maxScroll": 5139,
+        "paused": "false",
+        "tab": "build",
+        "worldFocus": false,
+        "y": 4404
+      },
+      "after": {
+        "dialogs": 0,
+        "kind": null,
+        "maxScroll": 4993,
+        "paused": "false",
+        "tab": "build",
+        "worldFocus": false,
+        "y": 4492
+      }
+    }
+  ],
+  "scope": "Initial keyboard geometry assertion. Escape collapsed preview content; document scroll anchored 88px inside Build, with no world focus or menu change. This exact-pixel assertion is not the panel-retention contract used for collapsing controls."
+}

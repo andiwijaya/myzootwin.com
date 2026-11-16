@@ -10,6 +10,11 @@ import {habitatKind,type HabitatFocusView} from '../../../src/game/render3d/habi
 import type {ZooSave} from '../../../src/game/core/zoo-state.ts';
 import {lionCopy,lionResourceLabel} from '../../../src/game-entry/lion-copy.ts';
 import {giraffeCopy,giraffeResourceLabel} from '../../../src/game-entry/giraffe-copy.ts';
+import {runMenuAudit} from './menu-audit.ts';
+import {validateSpeciesHabitatPlacement} from '../../../src/game/world/species-habitat.ts';
+import {validatePathPlacement} from '../../../src/game/world/paths.ts';
+import type {PlacementView} from '../../../src/game/world/placement-preview.ts';
+import type {HabitatKind} from '../../../src/game/core/species.ts';
 
 if(!['127.0.0.1','localhost'].includes(location.hostname))throw Error('Loopback QA only');
 const root=document.querySelector<HTMLElement>('[data-play-entry]')!,host=root.querySelector<HTMLElement>('[data-preview-stage]')!,out=document.querySelector<HTMLElement>('#qa-result')!;
@@ -17,8 +22,10 @@ const url=new URL(location.href);let db=url.searchParams.get('qaDb');const fresh
 if(db&&!/^myzootwin-focus-qa-[a-f0-9-]{36}$/.test(db))throw Error('QA UUID database required');
 db??='myzootwin-focus-qa-'+crypto.randomUUID();url.searchParams.set('qaDb',db);history.replaceState(null,'',url);
 const backend=createIndexedDbBackend<ZooSave>(indexedDB,db,{codec:ZEBRA_CHECKPOINT_CODEC,databaseVersion:5});
-if(fresh){const seed=url.searchParams.get('seed')==='fresh'?migrateToV5(createInitialState()):validateSaveV5(await(await fetch(url.searchParams.get('scroll')==='1'?'/care-scroll-fixture.json':url.searchParams.get('bench')==='1'?'/performance-fixture.json':'/focus-fixture.json')).json());if(!seed.ok)throw Error('Invalid focus seed');await backend.commit(0,serializeSaveV5(seed.value),'focus-synthetic-qa',Date.now());}
+if(fresh){const audit=url.searchParams.get('audit'),seed=url.searchParams.get('seed')==='fresh'?migrateToV5(createInitialState()):validateSaveV5(audit?(await(await fetch('/menu-fixtures.json')).json())[audit]:await(await fetch(url.searchParams.get('scroll')==='1'?'/care-scroll-fixture.json':url.searchParams.get('bench')==='1'?'/performance-fixture.json':'/focus-fixture.json')).json());if(!seed.ok)throw Error('Invalid focus seed');await backend.commit(0,serializeSaveV5(seed.value),'focus-synthetic-qa',Date.now());}
 let current:ZooSave|undefined,camera:Camera|undefined,renderer:WebGLRenderer|undefined,focus:HabitatFocusView|undefined,closed=false;
+let auditPlacement:(PlacementView&{habitatKind?:HabitatKind})|undefined;
+host.addEventListener('scene-placement-change',event=>{auditPlacement=(event as CustomEvent<PlacementView&{habitatKind?:HabitatKind}>).detail;});
 let renderScene:Object3D|undefined,measuring=false;const frameMetrics=createFrameMetrics(600),renderCpu:number[]=[],simulationCpu:number[]=[],sceneCpu:number[]=[];
 const perfFrames={request(callback:(time:number)=>void){return requestAnimationFrame(time=>{const started=performance.now();callback(time);if(measuring)frameMetrics.record(time,performance.now()-started);});},cancel(id:number){cancelAnimationFrame(id);}};
 const errors:string[]=[],checks:{name:string;passed:boolean;detail?:unknown}[]=[],selections:unknown[]=[];
@@ -290,6 +297,27 @@ async function runCareScroll(){
 }
 scrollButton.addEventListener('click',()=>{void runCareScroll();});
 if(url.searchParams.get('scroll')==='1')void runCareScroll();
+async function pickAuditPath(){
+ if(focus?.active)click('[data-zoo-back]');click('[data-camera-command="reset"]');host.scrollIntoView({block:'center',behavior:'instant'});await delay(100);
+ for(const tile of current!.world.tiles.filter(t=>t.path)){
+  const origin=sceneOrigin(current!.world),rect=host.getBoundingClientRect(),p=new Vector3(tile.cell.x+.5-origin.x,.12,tile.cell.z+.5-origin.z).project(camera!);
+  if(Math.abs(p.x)>.98||Math.abs(p.y)>.98)continue;const x=rect.left+(p.x+1)*rect.width/2,y=rect.top+(1-p.y)*rect.height/2;
+  pointer('pointerdown',1,x,y,1);pointer('pointerup',1,x,y,0);await delay(50);if(host.dataset.selectedId===`tile-${tile.cell.x}-${tile.cell.z}`)return true;
+ }
+ return false;
+}
+async function chooseAuditAnchor(){
+ const view=auditPlacement;if(!view?.active)return false;host.scrollIntoView({block:'center',behavior:'instant'});await delay(100);
+ const world=current!.world as import('../../../src/game/core/state.ts').RuntimeWorld,origin=sceneOrigin(world);
+ for(const tile of world.tiles){
+  const result=view.kind==='path'?validatePathPlacement(world,tile.cell):validateSpeciesHabitatPlacement(world,tile.cell,view.habitatKind??'macaw-aviary');if(result.reason!=='ready')continue;
+  const rect=host.getBoundingClientRect(),p=new Vector3(tile.cell.x+.5-origin.x,.01,tile.cell.z+.5-origin.z).project(camera!);if(Math.abs(p.x)>.98||Math.abs(p.y)>.98)continue;
+  const x=rect.left+(p.x+1)*rect.width/2,y=rect.top+(1-p.y)*rect.height/2;pointer('pointerdown',1,x,y,1);pointer('pointerup',1,x,y,0);await delay(60);
+  if(auditPlacement?.reason==='ready'&&!root.querySelector<HTMLButtonElement>('[data-placement-command="confirm"]')!.matches(':disabled'))return true;
+ }
+ return false;
+}
+if(url.searchParams.has('audit'))void runMenuAudit({root,host,seed:url.searchParams.get('audit')!,read:()=>current!,session,selectHome,pickPath:pickAuditPath,chooseAnchor:chooseAuditAnchor,errors});
 document.querySelector('#qa-inspect')!.addEventListener('click',()=>{void report();});
 document.querySelector('#qa-context')!.addEventListener('click',()=>{renderer?.getContext().getExtension('WEBGL_lose_context')?.loseContext();});
 window.addEventListener('pagehide',()=>{closed=true;handle.dispose();},{once:true});
