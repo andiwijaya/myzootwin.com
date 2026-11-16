@@ -44,6 +44,7 @@ export function scrollHudTarget(target: Element | null | undefined, align: 'star
 export function mountHudLayout(root: HTMLElement) {
     const events = new AbortController(), chrome = root.querySelector<HTMLElement>('[data-hud-chrome]'), options = root.querySelector<HTMLDetailsElement>('[data-hud-options]'), tabs = root.querySelector<HTMLElement>('[data-hud-tabs]'), stats = root.querySelector<HTMLElement>('[data-hud-stats]');
     let resizeTimer: ReturnType<typeof setTimeout> | undefined;
+    let viewportWidth = window.innerWidth;
     let pointerDown = false;
     let active = false, selected: HudTab = 'missions', disposed = false, balance = 1500, welfare: number | null = null, guests = 0, mission: string | null = 'Q01', speed: 1 | 10 = 1, lastChrome = 0;
     const set = (selector: string, text: string) => {
@@ -201,9 +202,13 @@ export function mountHudLayout(root: HTMLElement) {
             return;
         queueMicrotask(() => {
             if (!disposed && active && !root.querySelector('dialog[open]')) {
-                if (!(root.hasAttribute('data-zoo-scope')&&window.innerWidth<900))root.scrollIntoView({ block: 'start', behavior: 'instant' });
-                if (target.closest('[data-hud-pane]'))
-                    scrollHudTarget(target);
+                // Flowing phone panels already use the browser's native focus scrolling.
+                // Respect preventScroll during async care updates and focus restoration.
+                if (!(root.hasAttribute('data-zoo-scope')&&window.innerWidth<900)) {
+                    root.scrollIntoView({ block: 'start', behavior: 'instant' });
+                    if (target.closest('[data-hud-pane]'))
+                        scrollHudTarget(target);
+                }
             }
         });
     }, { signal: events.signal });
@@ -276,16 +281,22 @@ export function mountHudLayout(root: HTMLElement) {
         }
     }, { signal: events.signal, capture: true });
     window.addEventListener('resize', () => {
+        const widthChanged = viewportWidth !== window.innerWidth;
+        viewportWidth = window.innerWidth;
         if (!active || disposed)
             return;
-        root.dispatchEvent(new Event('hud-input-cancel'));
+        // Phone address bars and keyboards change height during normal page scrolling.
+        // Keep document position; only a new width requires cancelling held input here.
+        if (widthChanged || !root.hasAttribute('data-zoo-scope'))
+            root.dispatchEvent(new Event('hud-input-cancel'));
         if (resizeTimer)
             clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
             resizeTimer = undefined;
             if (!disposed && active) {
                 measure();
-                root.scrollIntoView({ block: 'start', behavior: 'instant' });
+                if (!root.hasAttribute('data-zoo-scope'))
+                    root.scrollIntoView({ block: 'start', behavior: 'instant' });
             }
         }, 60);
     }, { signal: events.signal });
@@ -303,6 +314,8 @@ export function mountHudLayout(root: HTMLElement) {
             events.abort();
             observer.disconnect();
             resize.disconnect();
+            if (resizeTimer)
+                clearTimeout(resizeTimer);
             root.style.removeProperty('--hud-chrome-height');
             delete root.dataset.hudActive;
             delete root.dataset.hudTab;

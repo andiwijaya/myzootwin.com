@@ -87,3 +87,13 @@ Bukti awal: [ketukan live](qa/mobile-performance-20261116/before-tap.json), [pan
 - Kandidat performa HP: **641/641 pemeriksaan browser** dan **95/95 pengujian terarah lulus**, typecheck bersih, build 10 halaman. Pada 390 px, CPU p95 lima kandang 42,5–88,8 → 35,8–36,9 ms, long task 86 → 1; handler kontrol ≤2,1 ms. Pada 360 px dengan Rawat terbuka, CPU p95 35,9–38,9 ms. Semua 14 model tetap terpasang dan pose kandang aktif bergerak; scroll/menu stabil. [Laporan](qa/mobile-performance-20261116/REPORT.md). Publikasi dan pemeriksaan domain utama telah lulus, dengan rincian di bawah.
 
 - Performa dan ketukan selesai/live: commit `8918db4`, Cloudflare Pages `af6c1d66-ca3e-474f-aca9-869c6be3ae79`, **16 November 2026, 14:39:13 WIB**. **130/130 body/hash** cocok. Ketukan native kelima kandang membuka kandang/Rawat yang tepat, y tetap 0. Sesudah memilih Sora lalu Tamu, tab/scroll tetap saat tick 97.826 → 98.154; game ditinggalkan dijeda pada tick 98.175. Console bersih, satu kanvas. Bukti: [laporan](qa/mobile-performance-20261116/REPORT.md), [rilis](qa/mobile-performance-20261116/deployment.json), [native live](qa/mobile-performance-20261116/live-native.json).
+
+## Perbaikan scroll setelah isi ulang di HP — 16 November 2026
+
+- [x] Menelusuri alur isi ulang: handler makanan/air makaw masih memfokuskan dan menggulir ke kanvas; handler resize HUD juga selalu menggulir ke atas.
+- [x] Mereproduksi ketukan isi ulang setelah zoom dan scroll ke panel dalam sesi QA terisolasi: makaw y 2.564,67/3.020,67 → 748; panel zebra bergeser setelah commit; resize memicu lompatan pada seluruh jenis kandang.
+- [x] Mempertahankan fokus dan posisi panel setelah isi ulang makaw, memakai elemen fasilitas zebra yang stabil, serta menghindari scroll paksa ketika ukuran layar HP berubah.
+- [x] Menguji makanan dan air kelima kandang, pembaruan simulasi, navigasi dan perubahan tinggi viewport pada ukuran HP.
+- [ ] Menjalankan pemeriksaan yang relevan, build, deploy, serta verifikasi berkas dan perilaku versi live.
+
+- Kandidat perbaikan isi ulang HP: **291/291 pemeriksaan browser** (68 × dua ukuran HP + 155 kontrol) dan **122/122 pengujian terarah lulus**. Makanan dan air semua kandang bertambah melalui transaksi asli tanpa lompatan scroll; resize dan pembaruan fokus asinkron tetap stabil. Typecheck bersih, build 10 halaman. [Laporan](qa/mobile-care-scroll-20261116/REPORT.md). Publikasi menunggu.

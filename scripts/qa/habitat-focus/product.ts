@@ -8,8 +8,8 @@ import {createInitialState} from '../../../src/game/core/initial-state.ts';
 import {sceneOrigin} from '../../../src/game/world/scene-coordinates.ts';
 import {habitatKind,type HabitatFocusView} from '../../../src/game/render3d/habitat-focus.ts';
 import type {ZooSave} from '../../../src/game/core/zoo-state.ts';
-import {lionCopy} from '../../../src/game-entry/lion-copy.ts';
-import {giraffeCopy} from '../../../src/game-entry/giraffe-copy.ts';
+import {lionCopy,lionResourceLabel} from '../../../src/game-entry/lion-copy.ts';
+import {giraffeCopy,giraffeResourceLabel} from '../../../src/game-entry/giraffe-copy.ts';
 
 if(!['127.0.0.1','localhost'].includes(location.hostname))throw Error('Loopback QA only');
 const root=document.querySelector<HTMLElement>('[data-play-entry]')!,host=root.querySelector<HTMLElement>('[data-preview-stage]')!,out=document.querySelector<HTMLElement>('#qa-result')!;
@@ -17,7 +17,7 @@ const url=new URL(location.href);let db=url.searchParams.get('qaDb');const fresh
 if(db&&!/^myzootwin-focus-qa-[a-f0-9-]{36}$/.test(db))throw Error('QA UUID database required');
 db??='myzootwin-focus-qa-'+crypto.randomUUID();url.searchParams.set('qaDb',db);history.replaceState(null,'',url);
 const backend=createIndexedDbBackend<ZooSave>(indexedDB,db,{codec:ZEBRA_CHECKPOINT_CODEC,databaseVersion:5});
-if(fresh){const seed=url.searchParams.get('seed')==='fresh'?migrateToV5(createInitialState()):validateSaveV5(await(await fetch(url.searchParams.get('bench')==='1'?'/performance-fixture.json':'/focus-fixture.json')).json());if(!seed.ok)throw Error('Invalid focus seed');await backend.commit(0,serializeSaveV5(seed.value),'focus-synthetic-qa',Date.now());}
+if(fresh){const seed=url.searchParams.get('seed')==='fresh'?migrateToV5(createInitialState()):validateSaveV5(await(await fetch(url.searchParams.get('scroll')==='1'?'/care-scroll-fixture.json':url.searchParams.get('bench')==='1'?'/performance-fixture.json':'/focus-fixture.json')).json());if(!seed.ok)throw Error('Invalid focus seed');await backend.commit(0,serializeSaveV5(seed.value),'focus-synthetic-qa',Date.now());}
 let current:ZooSave|undefined,camera:Camera|undefined,renderer:WebGLRenderer|undefined,focus:HabitatFocusView|undefined,closed=false;
 let renderScene:Object3D|undefined,measuring=false;const frameMetrics=createFrameMetrics(600),renderCpu:number[]=[],simulationCpu:number[]=[],sceneCpu:number[]=[];
 const perfFrames={request(callback:(time:number)=>void){return requestAnimationFrame(time=>{const started=performance.now();callback(time);if(measuring)frameMetrics.record(time,performance.now()-started);});},cancel(id:number){cancelAnimationFrame(id);}};
@@ -224,6 +224,72 @@ async function runNavigationPerformance(){
 }
 performanceButton.addEventListener('click',()=>{void runNavigationPerformance();});
 document.querySelector('#qa-suite')!.addEventListener('click',()=>{void runSuite();});
+
+// Care commands must keep the scrolled document and focused tool in place on phones.
+const scrollButton=document.createElement('button'),scrollOut=document.createElement('pre');
+scrollButton.id='qa-care-scroll';scrollButton.textContent='Run food and water scroll checks';
+scrollOut.id='qa-care-scroll-result';scrollOut.textContent='NOT RUN';document.querySelector('#qa-actions')!.append(scrollButton,scrollOut);
+async function runCareScroll(){
+ scrollButton.disabled=true;const tests:{name:string;passed:boolean;detail?:unknown}[]=[],rows:unknown[]=[];
+ const check=(name:string,passed:boolean,detail?:unknown)=>tests.push({name,passed,detail});
+ const state=()=>({y:scrollY,tab:root.dataset.hudTab,kind:root.dataset.habitatFocus,focus:(document.activeElement as HTMLElement)?.dataset,worldFocused:document.activeElement===host});
+ const dump=(status:string,error?:unknown)=>{scrollOut.textContent=JSON.stringify({at:new Date().toISOString(),status,error:error?String(error):undefined,scope:'Actual care handlers and renderer with isolated synthetic V5 save. Injected DOM clicks and resize events; browser viewport is not a physical phone.',viewport:{width:innerWidth,height:innerHeight,documentWidth:document.documentElement.scrollWidth},tests,rows,errors:[...errors]},null,2);};
+ try{
+  await waitFor(()=>!!host.querySelector('canvas')||!root.querySelector<HTMLButtonElement>('[data-continue]')?.disabled,'resume ready');
+  if(!host.querySelector('canvas'))click('[data-continue]');
+  await waitFor(()=>session()?.assetsWaiting===false,'scroll renderer',60000);
+  if(visible(root.querySelector('[data-save-resume]')!))click('[data-save-resume-button]');
+  if(root.dataset.sessionPaused==='true')click('[data-pause-toggle]');
+  await waitFor(()=>session()?.simulationPaused===false,'running care');
+  for(const [kind,kinds]of [
+   ['macaw-aviary',['food','water']],['elephant-grove',['elephant-browse','elephant-water']],
+   ['lion-savanna',['lion-meat','lion-water']],['giraffe-plains',['giraffe-browse','giraffe-water']],
+   ['zebra-grasslands',['zebra-graze','zebra-water']]
+  ]as const){
+   if(focus?.active)click('[data-zoo-back]');await delay(100);host.scrollIntoView({block:'center',behavior:'instant'});
+   await selectHome(kind);await waitFor(()=>session()?.assetsWaiting===false,'care habitat');await delay(120);
+   check(kind+' canvas tap enters care',focus?.kind===kind&&root.dataset.hudTab==='care');
+   let lastRefill:HTMLButtonElement|null=null;
+   for(const resourceKind of kinds){
+    const resource=current!.world.resources.find(r=>r.kind===resourceKind)!;if(!resource)throw Error('Missing '+resourceKind);
+    let b:HTMLButtonElement|null=null;
+    if(kind==='macaw-aviary')b=root.querySelector(`[data-${resourceKind}-command="refill"]`);
+    else if(kind==='elephant-grove')b=root.querySelector(`[data-elephant-refill="${resource.id}"]`);
+    else if(kind==='zebra-grasslands')b=root.querySelector(`[data-zebra-refill="${resource.id}"]`);
+    else{
+     const species=kind==='lion-savanna'?'lion':'giraffe',label=species==='lion'?lionResourceLabel(resourceKind as 'lion-meat'|'lion-water','id'):giraffeResourceLabel(resourceKind as 'giraffe-browse'|'giraffe-water','id');
+     b=[...root.querySelectorAll<HTMLButtonElement>(`[data-${species}-panel="care"] button`)].find(b=>b.getAttribute('aria-label')?.startsWith(label)&&b.textContent?.startsWith('Isi ulang'))??null;
+    }
+    if(!b||b.disabled||!visible(b))throw Error('Unavailable refill '+resourceKind);
+    b.scrollIntoView({block:'center',behavior:'instant'});b.focus({preventScroll:true});await delay(150);
+    lastRefill=b;
+    const before={...state(),controlTop:b.getBoundingClientRect().top},ids=new Set(current!.ledger.map(e=>e.id)),stockBefore=resource.stock;
+    check(resourceKind+' is reached by scrolling below the world',before.y>host.getBoundingClientRect().top+scrollY+host.clientHeight);
+    b.click();const immediate={...state(),controlTop:b.getBoundingClientRect().top};
+    await waitFor(()=>current!.ledger.some(e=>e.kind==='supplies'&&!ids.has(e.id)),'paid refill '+resourceKind);
+    await waitFor(()=>!session()?.zebraBuildBusy,'refill persistence');await delay(350);
+    const after={...state(),controlTop:b.getBoundingClientRect().top,controlConnected:b.isConnected},paid=current!.ledger.filter(e=>e.kind==='supplies'&&!ids.has(e.id)),stockAfter=current!.world.resources.find(r=>r.id===resource.id)!.stock;
+    check(resourceKind+' one paid refill adds stock',paid.length===1&&stockAfter>stockBefore,{paid:paid.length,stockBefore,stockAfter});
+    check(resourceKind+' immediate scroll stays in care',Math.abs(immediate.y-before.y)<2,{before:before.y,after:immediate.y});
+    // Native scroll anchoring can adjust document Y when text above changes size.
+    // The player's visible facility must stay at the same screen position.
+    check(resourceKind+' committed view and habitat stay with the same facility',after.controlConnected&&Math.abs(after.controlTop-before.controlTop)<2&&after.tab==='care'&&after.kind===kind,{before:before.y,after:after.y,controlBefore:before.controlTop,controlAfter:after.controlTop,tab:after.tab,kind:after.kind});
+    check(resourceKind+' focus stays out of canvas',!after.worldFocused);
+    rows.push({kind,resourceKind,before,immediate,after,stockBefore,stockAfter});
+   }
+   const tick=Number(session()!.simulationTick),stable=lastRefill!.getBoundingClientRect().top;await waitFor(()=>Number(session()!.simulationTick)>=tick+3,'care tick');
+   check(kind+' care stays with facility while simulation advances',Math.abs(lastRefill!.getBoundingClientRect().top-stable)<2&&root.dataset.hudTab==='care');
+   const beforeResize=scrollY;window.dispatchEvent(new Event('resize'));await delay(180);
+   check(kind+' viewport resize does not jump back to world',Math.abs(scrollY-beforeResize)<2,{before:beforeResize,after:scrollY});
+  }
+  check('all fourteen residents and one renderer retained',current!.animals.length===14&&host.querySelectorAll('canvas').length===1&&validateSaveV5(current).ok);
+  check('no page overflow',document.documentElement.scrollWidth<=innerWidth);
+  check('no application errors',errors.length===0);
+  dump(tests.every(t=>t.passed)?'PASS':'FAIL');
+ }catch(error){dump('FAIL',error);}finally{if(session()?.simulationPaused===false)click('[data-pause-toggle]');scrollButton.disabled=false;}
+}
+scrollButton.addEventListener('click',()=>{void runCareScroll();});
+if(url.searchParams.get('scroll')==='1')void runCareScroll();
 document.querySelector('#qa-inspect')!.addEventListener('click',()=>{void report();});
 document.querySelector('#qa-context')!.addEventListener('click',()=>{renderer?.getContext().getExtension('WEBGL_lose_context')?.loseContext();});
 window.addEventListener('pagehide',()=>{closed=true;handle.dispose();},{once:true});
