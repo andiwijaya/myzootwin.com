@@ -12,6 +12,7 @@ import {lionCopy,lionResourceLabel} from '../../../src/game-entry/lion-copy.ts';
 import {giraffeCopy,giraffeResourceLabel} from '../../../src/game-entry/giraffe-copy.ts';
 import {runMenuAudit} from './menu-audit.ts';
 import {runBuildScrollAudit} from './build-scroll-audit.ts';
+import {runBuildNavigationAudit} from './build-navigation-audit.ts';
 import {validateSpeciesHabitatPlacement} from '../../../src/game/world/species-habitat.ts';
 import {validatePathPlacement} from '../../../src/game/world/paths.ts';
 import type {PlacementView} from '../../../src/game/world/placement-preview.ts';
@@ -23,7 +24,7 @@ const url=new URL(location.href);let db=url.searchParams.get('qaDb');const fresh
 if(db&&!/^myzootwin-focus-qa-[a-f0-9-]{36}$/.test(db))throw Error('QA UUID database required');
 db??='myzootwin-focus-qa-'+crypto.randomUUID();url.searchParams.set('qaDb',db);history.replaceState(null,'',url);
 const backend=createIndexedDbBackend<ZooSave>(indexedDB,db,{codec:ZEBRA_CHECKPOINT_CODEC,databaseVersion:5});
-if(fresh){const audit=url.searchParams.get('audit'),seed=url.searchParams.get('seed')==='fresh'?migrateToV5(createInitialState()):validateSaveV5(audit?(await(await fetch('/menu-fixtures.json')).json())[audit]:await(await fetch(url.searchParams.get('scroll')==='1'?'/care-scroll-fixture.json':url.searchParams.has('build-scroll')?'/build-scroll-fixture.json':url.searchParams.get('bench')==='1'?'/performance-fixture.json':'/focus-fixture.json')).json());if(!seed.ok)throw Error('Invalid focus seed');await backend.commit(0,serializeSaveV5(seed.value),'focus-synthetic-qa',Date.now());}
+if(fresh){const audit=url.searchParams.get('audit'),seed=url.searchParams.get('seed')==='fresh'?migrateToV5(createInitialState()):validateSaveV5(audit?(await(await fetch('/menu-fixtures.json')).json())[audit]:await(await fetch(url.searchParams.get('scroll')==='1'?'/care-scroll-fixture.json':url.searchParams.has('build-scroll')||url.searchParams.has('build-nav')?'/build-scroll-fixture.json':url.searchParams.get('bench')==='1'?'/performance-fixture.json':'/focus-fixture.json')).json());if(!seed.ok)throw Error('Invalid focus seed');await backend.commit(0,serializeSaveV5(seed.value),'focus-synthetic-qa',Date.now());}
 let current:ZooSave|undefined,camera:Camera|undefined,renderer:WebGLRenderer|undefined,focus:HabitatFocusView|undefined,closed=false;
 let auditPlacement:(PlacementView&{habitatKind?:HabitatKind})|undefined;
 host.addEventListener('scene-placement-change',event=>{auditPlacement=(event as CustomEvent<PlacementView&{habitatKind?:HabitatKind}>).detail;});
@@ -320,6 +321,7 @@ async function chooseAuditAnchor(){
 }
 if(url.searchParams.has('audit'))void runMenuAudit({root,host,seed:url.searchParams.get('audit')!,read:()=>current!,session,selectHome,pickPath:pickAuditPath,chooseAnchor:chooseAuditAnchor,errors});
 if(url.searchParams.has('build-scroll'))void runBuildScrollAudit({root,host,read:()=>current!,session,errors,mode:url.searchParams.get('build-scroll')!});
+if(url.searchParams.has('build-nav'))void runBuildNavigationAudit({root,host,read:()=>current!,session,errors,mode:url.searchParams.get('build-nav')!});
 document.querySelector('#qa-inspect')!.addEventListener('click',()=>{void report();});
 document.querySelector('#qa-context')!.addEventListener('click',()=>{renderer?.getContext().getExtension('WEBGL_lose_context')?.loseContext();});
 window.addEventListener('pagehide',()=>{closed=true;handle.dispose();},{once:true});

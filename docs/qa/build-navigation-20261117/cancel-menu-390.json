@@ -1,0 +1,3853 @@
+{
+  "at": "2026-11-16T22:40:59.289Z",
+  "status": "PASS",
+  "mode": "cancel-menu",
+  "scope": "Codex internal-browser viewport; actual source UI/renderer/commands in UUID IndexedDB with synthetic closed-entrance fixture. Real purchases/cancellations followed by visible tab/destination controls. Includes touch pointerdown/pointercancel before committed navigation. Not a physical phone.",
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "documentWidth": 375
+  },
+  "checks": [
+    {
+      "name": "macaw-aviary close preserves page",
+      "passed": true,
+      "detail": {
+        "beforeClose": {
+          "y": 1496,
+          "pageHeight": 2340,
+          "rootHeight": 1768.604248046875,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 6,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 62.33331298828125,
+          "canvas": 1
+        },
+        "afterClose": {
+          "y": 1496,
+          "pageHeight": 2340,
+          "rootHeight": 1768.604248046875,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 6,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 62.33331298828125,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "macaw-aviary closed preview retains its space",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary cancelled navigation touch does not change layout",
+      "passed": true,
+      "detail": {
+        "preTouch": {
+          "y": 1145.3333740234375,
+          "pageHeight": 2340,
+          "rootHeight": 1768.604248046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 6,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 62.3333740234375,
+          "canvas": 1
+        },
+        "cancelledTouch": {
+          "y": 1145.3333740234375,
+          "pageHeight": 2340,
+          "rootHeight": 1768.604248046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 6,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 62.3333740234375,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "macaw-aviary visitors reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary visitors releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1145.3333740234375,
+          "pageHeight": 3279,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1145.3333740234375,
+          "pageHeight": 3279,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "macaw-aviary visitors has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 42.66664123535156
+      }
+    },
+    {
+      "name": "macaw-aviary visitors keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1145.3333740234375,
+          "pageHeight": 2340,
+          "rootHeight": 1768.604248046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 6,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 62.3333740234375,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1145.3333740234375,
+          "pageHeight": 2340,
+          "rootHeight": 1768.604248046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 6,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 62.3333740234375,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1145.3333740234375,
+          "pageHeight": 3279,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "macaw-aviary visitors has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary missions reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary missions releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 3037,
+          "rootHeight": 2260.291748046875,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 26.66668701171875,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3037,
+          "rootHeight": 2260.291748046875,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 26.66668701171875,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "macaw-aviary missions has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 26.66668701171875
+      }
+    },
+    {
+      "name": "macaw-aviary missions keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3037,
+          "rootHeight": 2260.291748046875,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 26.66668701171875,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "macaw-aviary missions has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary care reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary care releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 4069,
+          "rootHeight": 3292.041748046875,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 21.06243896484375,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 4069,
+          "rootHeight": 3292.041748046875,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 21.06243896484375,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "macaw-aviary care has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 21.06243896484375
+      }
+    },
+    {
+      "name": "macaw-aviary care keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 3037,
+          "rootHeight": 2260.291748046875,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 26.66668701171875,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 3037,
+          "rootHeight": 2260.291748046875,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 26.66668701171875,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 4069,
+          "rootHeight": 3292.041748046875,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 21.06243896484375,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "macaw-aviary care has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary return Build reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary return Build releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 2427,
+          "rootHeight": 1651.229248046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 62.3333740234375,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 2427,
+          "rootHeight": 1651.229248046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 62.3333740234375,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "macaw-aviary return Build has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 62.3333740234375
+      }
+    },
+    {
+      "name": "macaw-aviary return Build keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 4069,
+          "rootHeight": 3292.041748046875,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 21.06243896484375,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 4069,
+          "rootHeight": 3292.041748046875,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 21.06243896484375,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 2427,
+          "rootHeight": 1651.229248046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "scope": "macaw-aviary",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 62.3333740234375,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "macaw-aviary return Build has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary return Build has natural layout",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary running simulation and one canvas",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove close preserves page",
+      "passed": true,
+      "detail": {
+        "beforeClose": {
+          "y": 2136.666748046875,
+          "pageHeight": 2981,
+          "rootHeight": 2204.4375,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 30.6666259765625,
+          "canvas": 1
+        },
+        "afterClose": {
+          "y": 2136.666748046875,
+          "pageHeight": 2981,
+          "rootHeight": 2204.4375,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 284.4791564941406,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "elephant-grove closed preview retains its space",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove cancelled navigation touch does not change layout",
+      "passed": true,
+      "detail": {
+        "preTouch": {
+          "y": 1350,
+          "pageHeight": 2981,
+          "rootHeight": 2204.4375,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 284.47918701171875,
+          "canvas": 1
+        },
+        "cancelledTouch": {
+          "y": 1350,
+          "pageHeight": 2981,
+          "rootHeight": 2204.4375,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 284.47918701171875,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "elephant-grove missions reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove missions releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 3025,
+          "rootHeight": 2249.03125,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 33.06243896484375,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3025,
+          "rootHeight": 2249.03125,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 33.06243896484375,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "elephant-grove missions has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 33.06243896484375
+      }
+    },
+    {
+      "name": "elephant-grove missions keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 2981,
+          "rootHeight": 2204.4375,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 284.47918701171875,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 2981,
+          "rootHeight": 2204.4375,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 284.47918701171875,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3025,
+          "rootHeight": 2249.03125,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 33.06243896484375,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "elephant-grove missions has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove care reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove care releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 3667,
+          "rootHeight": 2890.45849609375,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 43.53131103515625,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3667,
+          "rootHeight": 2890.45849609375,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 43.53131103515625,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "elephant-grove care has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 43.53131103515625
+      }
+    },
+    {
+      "name": "elephant-grove care keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 3025,
+          "rootHeight": 2249.03125,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 33.06243896484375,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 3025,
+          "rootHeight": 2249.03125,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 33.06243896484375,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3667,
+          "rootHeight": 2890.45849609375,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 43.53131103515625,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "elephant-grove care has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove visitors reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove visitors releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "elephant-grove visitors has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 42.66664123535156
+      }
+    },
+    {
+      "name": "elephant-grove visitors keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 3667,
+          "rootHeight": 2890.45849609375,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 43.53131103515625,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 3667,
+          "rootHeight": 2890.45849609375,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 43.53131103515625,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "elephant-grove visitors has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove return Build reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove return Build releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 2733,
+          "rootHeight": 1956.21875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 36.26043701171875,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 2733,
+          "rootHeight": 1956.21875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 36.26043701171875,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "elephant-grove return Build has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 36.26043701171875
+      }
+    },
+    {
+      "name": "elephant-grove return Build keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 2733,
+          "rootHeight": 1956.21875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "scope": "elephant-grove",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 36.26043701171875,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "elephant-grove return Build has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove return Build has natural layout",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove running simulation and one canvas",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna close preserves page",
+      "passed": true,
+      "detail": {
+        "beforeClose": {
+          "y": 2015.3333740234375,
+          "pageHeight": 2859,
+          "rootHeight": 2082.697998046875,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 30.666641235351562,
+          "canvas": 1
+        },
+        "afterClose": {
+          "y": 2015.3333740234375,
+          "pageHeight": 2859,
+          "rootHeight": 2082.697998046875,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 174.4583282470703,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "lion-savanna closed preview retains its space",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna cancelled navigation touch does not change layout",
+      "passed": true,
+      "detail": {
+        "preTouch": {
+          "y": 1350,
+          "pageHeight": 2859,
+          "rootHeight": 2082.697998046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 174.4583740234375,
+          "canvas": 1
+        },
+        "cancelledTouch": {
+          "y": 1350,
+          "pageHeight": 2859,
+          "rootHeight": 2082.697998046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 174.4583740234375,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "lion-savanna care reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna care releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 3625,
+          "rootHeight": 2848.760498046875,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 44.33343505859375,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3625,
+          "rootHeight": 2848.760498046875,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 44.33343505859375,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "lion-savanna care has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 44.33343505859375
+      }
+    },
+    {
+      "name": "lion-savanna care keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 2859,
+          "rootHeight": 2082.697998046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 174.4583740234375,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 2859,
+          "rootHeight": 2082.697998046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 174.4583740234375,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3625,
+          "rootHeight": 2848.760498046875,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 44.33343505859375,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "lion-savanna care has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna visitors reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna visitors releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "lion-savanna visitors has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 42.66664123535156
+      }
+    },
+    {
+      "name": "lion-savanna visitors keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 3625,
+          "rootHeight": 2848.760498046875,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 44.33343505859375,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 3625,
+          "rootHeight": 2848.760498046875,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 44.33343505859375,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "lion-savanna visitors has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna missions reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna missions releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 2753,
+          "rootHeight": 1976.65625,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 56.33331298828125,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 2753,
+          "rootHeight": 1976.65625,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 56.33331298828125,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "lion-savanna missions has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 56.33331298828125
+      }
+    },
+    {
+      "name": "lion-savanna missions keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 2753,
+          "rootHeight": 1976.65625,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 56.33331298828125,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "lion-savanna missions has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna return Build reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna return Build releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 2723,
+          "rootHeight": 1946.90625,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 38.66668701171875,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 2723,
+          "rootHeight": 1946.90625,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 38.66668701171875,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "lion-savanna return Build has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 38.66668701171875
+      }
+    },
+    {
+      "name": "lion-savanna return Build keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 2753,
+          "rootHeight": 1976.65625,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 56.33331298828125,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 2753,
+          "rootHeight": 1976.65625,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 56.33331298828125,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 2723,
+          "rootHeight": 1946.90625,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "scope": "lion-savanna",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 38.66668701171875,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "lion-savanna return Build has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna return Build has natural layout",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna running simulation and one canvas",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains close preserves page",
+      "passed": true,
+      "detail": {
+        "beforeClose": {
+          "y": 1891.3333740234375,
+          "pageHeight": 2735,
+          "rootHeight": 1958.885498046875,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 30.666641235351562,
+          "canvas": 1
+        },
+        "afterClose": {
+          "y": 1891.3333740234375,
+          "pageHeight": 2735,
+          "rootHeight": 1958.885498046875,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 194.24999237060547,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains closed preview retains its space",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains cancelled navigation touch does not change layout",
+      "passed": true,
+      "detail": {
+        "preTouch": {
+          "y": 1350,
+          "pageHeight": 2735,
+          "rootHeight": 1958.885498046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 194.25003814697266,
+          "canvas": 1
+        },
+        "cancelledTouch": {
+          "y": 1350,
+          "pageHeight": 2735,
+          "rootHeight": 1958.885498046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 194.25003814697266,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains visitors reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains visitors releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains visitors has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 42.66664123535156
+      }
+    },
+    {
+      "name": "giraffe-plains visitors keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 2735,
+          "rootHeight": 1958.885498046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 194.25003814697266,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 2735,
+          "rootHeight": 1958.885498046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 3,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 194.25003814697266,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "giraffe-plains visitors has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains missions reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains missions releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 2793,
+          "rootHeight": 2016.2396240234375,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 56.33331298828125,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 2793,
+          "rootHeight": 2016.2396240234375,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 56.33331298828125,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains missions has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 56.33331298828125
+      }
+    },
+    {
+      "name": "giraffe-plains missions keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 2793,
+          "rootHeight": 2016.2396240234375,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 56.33331298828125,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "giraffe-plains missions has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains care reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains care releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 3355,
+          "rootHeight": 2578.510498046875,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 44.33343505859375,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3355,
+          "rootHeight": 2578.510498046875,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 44.33343505859375,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains care has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 44.33343505859375
+      }
+    },
+    {
+      "name": "giraffe-plains care keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 2793,
+          "rootHeight": 2016.2396240234375,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 56.33331298828125,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 2793,
+          "rootHeight": 2016.2396240234375,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 56.33331298828125,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3355,
+          "rootHeight": 2578.510498046875,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 44.33343505859375,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "giraffe-plains care has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains return Build reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains return Build releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 2579,
+          "rootHeight": 1803.3021240234375,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 38.666725158691406,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 2579,
+          "rootHeight": 1803.3021240234375,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 38.666725158691406,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains return Build has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 38.666725158691406
+      }
+    },
+    {
+      "name": "giraffe-plains return Build keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 3355,
+          "rootHeight": 2578.510498046875,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 44.33343505859375,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 3355,
+          "rootHeight": 2578.510498046875,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 44.33343505859375,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 2579,
+          "rootHeight": 1803.3021240234375,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "scope": "giraffe-plains",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 38.666725158691406,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "giraffe-plains return Build has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains return Build has natural layout",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains running simulation and one canvas",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands close preserves page",
+      "passed": true,
+      "detail": {
+        "beforeClose": {
+          "y": 2169.333251953125,
+          "pageHeight": 3013,
+          "rootHeight": 2236.760498046875,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 7,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 26.666725158691406,
+          "canvas": 1
+        },
+        "afterClose": {
+          "y": 2169.333251953125,
+          "pageHeight": 3013,
+          "rootHeight": 2236.760498046875,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 7,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 243.70839309692383,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands closed preview retains its space",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands cancelled navigation touch does not change layout",
+      "passed": true,
+      "detail": {
+        "preTouch": {
+          "y": 1350,
+          "pageHeight": 3013,
+          "rootHeight": 2236.760498046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 7,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 243.70839309692383,
+          "canvas": 1
+        },
+        "cancelledTouch": {
+          "y": 1350,
+          "pageHeight": 3013,
+          "rootHeight": 2236.760498046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 7,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 243.70839309692383,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands missions reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands missions releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 2769,
+          "rootHeight": 1992.7083740234375,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 12.00006103515625,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 2769,
+          "rootHeight": 1992.7083740234375,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 12.00006103515625,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands missions has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 12.00006103515625
+      }
+    },
+    {
+      "name": "zebra-grasslands missions keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 3013,
+          "rootHeight": 2236.760498046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 7,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 243.70839309692383,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 3013,
+          "rootHeight": 2236.760498046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 7,
+          "anchor": "none",
+          "paneVisible": true,
+          "paneTailGap": 243.70839309692383,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 2769,
+          "rootHeight": 1992.7083740234375,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 12.00006103515625,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "zebra-grasslands missions has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands care reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands care releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 4222,
+          "rootHeight": 3445.86474609375,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 12.00018310546875,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 4222,
+          "rootHeight": 3445.86474609375,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 12.00018310546875,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands care has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 12.00018310546875
+      }
+    },
+    {
+      "name": "zebra-grasslands care keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 2769,
+          "rootHeight": 1992.7083740234375,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 12.00006103515625,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 2769,
+          "rootHeight": 1992.7083740234375,
+          "buttonTop": 400.125,
+          "tab": "missions",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 12.00006103515625,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 4222,
+          "rootHeight": 3445.86474609375,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 12.00018310546875,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "zebra-grasslands care has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands visitors reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands visitors releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands visitors has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 42.66664123535156
+      }
+    },
+    {
+      "name": "zebra-grasslands visitors keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 4222,
+          "rootHeight": 3445.86474609375,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 12.00018310546875,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 4222,
+          "rootHeight": 3445.86474609375,
+          "buttonTop": 400.125,
+          "tab": "care",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 12.00018310546875,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "zebra-grasslands visitors has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands return Build reaches selected tab and habitat",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands return Build releases every reserved box and anchoring",
+      "passed": true,
+      "detail": {
+        "immediate": {
+          "y": 1350,
+          "pageHeight": 2814,
+          "rootHeight": 2037.385498046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 44.33333206176758,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 2814,
+          "rootHeight": 2037.385498046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 44.33333206176758,
+          "canvas": 1
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands return Build has no excessive blank panel tail",
+      "passed": true,
+      "detail": {
+        "gap": 44.33333206176758
+      }
+    },
+    {
+      "name": "zebra-grasslands return Build keeps visible navigation position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "down": {
+          "y": 1350,
+          "pageHeight": 3483,
+          "rootHeight": 2707.1875,
+          "buttonTop": 400.125,
+          "tab": "visitors",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 42.66664123535156,
+          "canvas": 1
+        },
+        "after": {
+          "y": 1350,
+          "pageHeight": 2814,
+          "rootHeight": 2037.385498046875,
+          "buttonTop": 400.125,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "scope": "zebra-grasslands",
+          "paused": "false",
+          "reserved": 0,
+          "anchor": "",
+          "paneVisible": true,
+          "paneTailGap": 44.33333206176758,
+          "canvas": 1
+        },
+        "dy": 0,
+        "dt": 0
+      }
+    },
+    {
+      "name": "zebra-grasslands return Build has no delayed switch",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands return Build has natural layout",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands running simulation and one canvas",
+      "passed": true
+    },
+    {
+      "name": "valid V5 and no app errors",
+      "passed": true
+    },
+    {
+      "name": "no horizontal overflow",
+      "passed": true
+    }
+  ],
+  "rows": [
+    {
+      "name": "macaw-aviary visitors",
+      "before": {
+        "y": 1145.3333740234375,
+        "pageHeight": 2340,
+        "rootHeight": 1768.604248046875,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "macaw-aviary",
+        "scope": "macaw-aviary",
+        "paused": "false",
+        "reserved": 6,
+        "anchor": "none",
+        "paneVisible": true,
+        "paneTailGap": 62.3333740234375,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1145.3333740234375,
+        "pageHeight": 2340,
+        "rootHeight": 1768.604248046875,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "macaw-aviary",
+        "scope": "macaw-aviary",
+        "paused": "false",
+        "reserved": 6,
+        "anchor": "none",
+        "paneVisible": true,
+        "paneTailGap": 62.3333740234375,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1145.3333740234375,
+        "pageHeight": 3279,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "macaw-aviary",
+        "scope": "macaw-aviary",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1145.3333740234375,
+        "pageHeight": 3279,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "macaw-aviary",
+        "scope": "macaw-aviary",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 39
+    },
+    {
+      "name": "macaw-aviary missions",
+      "before": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "macaw-aviary",
+        "scope": "macaw-aviary",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "macaw-aviary",
+        "scope": "macaw-aviary",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 3037,
+        "rootHeight": 2260.291748046875,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "macaw-aviary",
+        "scope": "macaw-aviary",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 26.66668701171875,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 3037,
+        "rootHeight": 2260.291748046875,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "macaw-aviary",
+        "scope": "macaw-aviary",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 26.66668701171875,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 39
+    },
+    {
+      "name": "macaw-aviary care",
+      "before": {
+        "y": 1350,
+        "pageHeight": 3037,
+        "rootHeight": 2260.291748046875,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "macaw-aviary",
+        "scope": "macaw-aviary",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 26.66668701171875,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 3037,
+        "rootHeight": 2260.291748046875,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "macaw-aviary",
+        "scope": "macaw-aviary",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 26.66668701171875,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 4069,
+        "rootHeight": 3292.041748046875,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "macaw-aviary",
+        "scope": "macaw-aviary",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 21.06243896484375,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 4069,
+        "rootHeight": 3292.041748046875,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "macaw-aviary",
+        "scope": "macaw-aviary",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 21.06243896484375,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 40
+    },
+    {
+      "name": "macaw-aviary return Build",
+      "before": {
+        "y": 1350,
+        "pageHeight": 4069,
+        "rootHeight": 3292.041748046875,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "macaw-aviary",
+        "scope": "macaw-aviary",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 21.06243896484375,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 4069,
+        "rootHeight": 3292.041748046875,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "macaw-aviary",
+        "scope": "macaw-aviary",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 21.06243896484375,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 2427,
+        "rootHeight": 1651.229248046875,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "macaw-aviary",
+        "scope": "macaw-aviary",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 62.3333740234375,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 2427,
+        "rootHeight": 1651.229248046875,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "macaw-aviary",
+        "scope": "macaw-aviary",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 62.3333740234375,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 46
+    },
+    {
+      "name": "elephant-grove missions",
+      "before": {
+        "y": 1350,
+        "pageHeight": 2981,
+        "rootHeight": 2204.4375,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "elephant-grove",
+        "scope": "elephant-grove",
+        "paused": "false",
+        "reserved": 3,
+        "anchor": "none",
+        "paneVisible": true,
+        "paneTailGap": 284.47918701171875,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 2981,
+        "rootHeight": 2204.4375,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "elephant-grove",
+        "scope": "elephant-grove",
+        "paused": "false",
+        "reserved": 3,
+        "anchor": "none",
+        "paneVisible": true,
+        "paneTailGap": 284.47918701171875,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 3025,
+        "rootHeight": 2249.03125,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "elephant-grove",
+        "scope": "elephant-grove",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 33.06243896484375,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 3025,
+        "rootHeight": 2249.03125,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "elephant-grove",
+        "scope": "elephant-grove",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 33.06243896484375,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 45
+    },
+    {
+      "name": "elephant-grove care",
+      "before": {
+        "y": 1350,
+        "pageHeight": 3025,
+        "rootHeight": 2249.03125,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "elephant-grove",
+        "scope": "elephant-grove",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 33.06243896484375,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 3025,
+        "rootHeight": 2249.03125,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "elephant-grove",
+        "scope": "elephant-grove",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 33.06243896484375,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 3667,
+        "rootHeight": 2890.45849609375,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "elephant-grove",
+        "scope": "elephant-grove",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 43.53131103515625,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 3667,
+        "rootHeight": 2890.45849609375,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "elephant-grove",
+        "scope": "elephant-grove",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 43.53131103515625,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 37
+    },
+    {
+      "name": "elephant-grove visitors",
+      "before": {
+        "y": 1350,
+        "pageHeight": 3667,
+        "rootHeight": 2890.45849609375,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "elephant-grove",
+        "scope": "elephant-grove",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 43.53131103515625,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 3667,
+        "rootHeight": 2890.45849609375,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "elephant-grove",
+        "scope": "elephant-grove",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 43.53131103515625,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "elephant-grove",
+        "scope": "elephant-grove",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "elephant-grove",
+        "scope": "elephant-grove",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 44
+    },
+    {
+      "name": "elephant-grove return Build",
+      "before": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "elephant-grove",
+        "scope": "elephant-grove",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "elephant-grove",
+        "scope": "elephant-grove",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 2733,
+        "rootHeight": 1956.21875,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "elephant-grove",
+        "scope": "elephant-grove",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 36.26043701171875,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 2733,
+        "rootHeight": 1956.21875,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "elephant-grove",
+        "scope": "elephant-grove",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 36.26043701171875,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 41
+    },
+    {
+      "name": "lion-savanna care",
+      "before": {
+        "y": 1350,
+        "pageHeight": 2859,
+        "rootHeight": 2082.697998046875,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "lion-savanna",
+        "scope": "lion-savanna",
+        "paused": "false",
+        "reserved": 3,
+        "anchor": "none",
+        "paneVisible": true,
+        "paneTailGap": 174.4583740234375,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 2859,
+        "rootHeight": 2082.697998046875,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "lion-savanna",
+        "scope": "lion-savanna",
+        "paused": "false",
+        "reserved": 3,
+        "anchor": "none",
+        "paneVisible": true,
+        "paneTailGap": 174.4583740234375,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 3625,
+        "rootHeight": 2848.760498046875,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "lion-savanna",
+        "scope": "lion-savanna",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 44.33343505859375,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 3625,
+        "rootHeight": 2848.760498046875,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "lion-savanna",
+        "scope": "lion-savanna",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 44.33343505859375,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 39
+    },
+    {
+      "name": "lion-savanna visitors",
+      "before": {
+        "y": 1350,
+        "pageHeight": 3625,
+        "rootHeight": 2848.760498046875,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "lion-savanna",
+        "scope": "lion-savanna",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 44.33343505859375,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 3625,
+        "rootHeight": 2848.760498046875,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "lion-savanna",
+        "scope": "lion-savanna",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 44.33343505859375,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "lion-savanna",
+        "scope": "lion-savanna",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "lion-savanna",
+        "scope": "lion-savanna",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 36
+    },
+    {
+      "name": "lion-savanna missions",
+      "before": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "lion-savanna",
+        "scope": "lion-savanna",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "lion-savanna",
+        "scope": "lion-savanna",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 2753,
+        "rootHeight": 1976.65625,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "lion-savanna",
+        "scope": "lion-savanna",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 56.33331298828125,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 2753,
+        "rootHeight": 1976.65625,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "lion-savanna",
+        "scope": "lion-savanna",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 56.33331298828125,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 36
+    },
+    {
+      "name": "lion-savanna return Build",
+      "before": {
+        "y": 1350,
+        "pageHeight": 2753,
+        "rootHeight": 1976.65625,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "lion-savanna",
+        "scope": "lion-savanna",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 56.33331298828125,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 2753,
+        "rootHeight": 1976.65625,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "lion-savanna",
+        "scope": "lion-savanna",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 56.33331298828125,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 2723,
+        "rootHeight": 1946.90625,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "lion-savanna",
+        "scope": "lion-savanna",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 38.66668701171875,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 2723,
+        "rootHeight": 1946.90625,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "lion-savanna",
+        "scope": "lion-savanna",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 38.66668701171875,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 41
+    },
+    {
+      "name": "giraffe-plains visitors",
+      "before": {
+        "y": 1350,
+        "pageHeight": 2735,
+        "rootHeight": 1958.885498046875,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "giraffe-plains",
+        "scope": "giraffe-plains",
+        "paused": "false",
+        "reserved": 3,
+        "anchor": "none",
+        "paneVisible": true,
+        "paneTailGap": 194.25003814697266,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 2735,
+        "rootHeight": 1958.885498046875,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "giraffe-plains",
+        "scope": "giraffe-plains",
+        "paused": "false",
+        "reserved": 3,
+        "anchor": "none",
+        "paneVisible": true,
+        "paneTailGap": 194.25003814697266,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "giraffe-plains",
+        "scope": "giraffe-plains",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "giraffe-plains",
+        "scope": "giraffe-plains",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 47
+    },
+    {
+      "name": "giraffe-plains missions",
+      "before": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "giraffe-plains",
+        "scope": "giraffe-plains",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "giraffe-plains",
+        "scope": "giraffe-plains",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 2793,
+        "rootHeight": 2016.2396240234375,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "giraffe-plains",
+        "scope": "giraffe-plains",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 56.33331298828125,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 2793,
+        "rootHeight": 2016.2396240234375,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "giraffe-plains",
+        "scope": "giraffe-plains",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 56.33331298828125,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 40
+    },
+    {
+      "name": "giraffe-plains care",
+      "before": {
+        "y": 1350,
+        "pageHeight": 2793,
+        "rootHeight": 2016.2396240234375,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "giraffe-plains",
+        "scope": "giraffe-plains",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 56.33331298828125,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 2793,
+        "rootHeight": 2016.2396240234375,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "giraffe-plains",
+        "scope": "giraffe-plains",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 56.33331298828125,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 3355,
+        "rootHeight": 2578.510498046875,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "giraffe-plains",
+        "scope": "giraffe-plains",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 44.33343505859375,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 3355,
+        "rootHeight": 2578.510498046875,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "giraffe-plains",
+        "scope": "giraffe-plains",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 44.33343505859375,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 37
+    },
+    {
+      "name": "giraffe-plains return Build",
+      "before": {
+        "y": 1350,
+        "pageHeight": 3355,
+        "rootHeight": 2578.510498046875,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "giraffe-plains",
+        "scope": "giraffe-plains",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 44.33343505859375,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 3355,
+        "rootHeight": 2578.510498046875,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "giraffe-plains",
+        "scope": "giraffe-plains",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 44.33343505859375,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 2579,
+        "rootHeight": 1803.3021240234375,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "giraffe-plains",
+        "scope": "giraffe-plains",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 38.666725158691406,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 2579,
+        "rootHeight": 1803.3021240234375,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "giraffe-plains",
+        "scope": "giraffe-plains",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 38.666725158691406,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 27
+    },
+    {
+      "name": "zebra-grasslands missions",
+      "before": {
+        "y": 1350,
+        "pageHeight": 3013,
+        "rootHeight": 2236.760498046875,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "zebra-grasslands",
+        "scope": "zebra-grasslands",
+        "paused": "false",
+        "reserved": 7,
+        "anchor": "none",
+        "paneVisible": true,
+        "paneTailGap": 243.70839309692383,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 3013,
+        "rootHeight": 2236.760498046875,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "zebra-grasslands",
+        "scope": "zebra-grasslands",
+        "paused": "false",
+        "reserved": 7,
+        "anchor": "none",
+        "paneVisible": true,
+        "paneTailGap": 243.70839309692383,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 2769,
+        "rootHeight": 1992.7083740234375,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "zebra-grasslands",
+        "scope": "zebra-grasslands",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 12.00006103515625,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 2769,
+        "rootHeight": 1992.7083740234375,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "zebra-grasslands",
+        "scope": "zebra-grasslands",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 12.00006103515625,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 46
+    },
+    {
+      "name": "zebra-grasslands care",
+      "before": {
+        "y": 1350,
+        "pageHeight": 2769,
+        "rootHeight": 1992.7083740234375,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "zebra-grasslands",
+        "scope": "zebra-grasslands",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 12.00006103515625,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 2769,
+        "rootHeight": 1992.7083740234375,
+        "buttonTop": 400.125,
+        "tab": "missions",
+        "kind": "zebra-grasslands",
+        "scope": "zebra-grasslands",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 12.00006103515625,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 4222,
+        "rootHeight": 3445.86474609375,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "zebra-grasslands",
+        "scope": "zebra-grasslands",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 12.00018310546875,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 4222,
+        "rootHeight": 3445.86474609375,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "zebra-grasslands",
+        "scope": "zebra-grasslands",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 12.00018310546875,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 37
+    },
+    {
+      "name": "zebra-grasslands visitors",
+      "before": {
+        "y": 1350,
+        "pageHeight": 4222,
+        "rootHeight": 3445.86474609375,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "zebra-grasslands",
+        "scope": "zebra-grasslands",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 12.00018310546875,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 4222,
+        "rootHeight": 3445.86474609375,
+        "buttonTop": 400.125,
+        "tab": "care",
+        "kind": "zebra-grasslands",
+        "scope": "zebra-grasslands",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 12.00018310546875,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "zebra-grasslands",
+        "scope": "zebra-grasslands",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "zebra-grasslands",
+        "scope": "zebra-grasslands",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 42
+    },
+    {
+      "name": "zebra-grasslands return Build",
+      "before": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "zebra-grasslands",
+        "scope": "zebra-grasslands",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "down": {
+        "y": 1350,
+        "pageHeight": 3483,
+        "rootHeight": 2707.1875,
+        "buttonTop": 400.125,
+        "tab": "visitors",
+        "kind": "zebra-grasslands",
+        "scope": "zebra-grasslands",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 42.66664123535156,
+        "canvas": 1
+      },
+      "immediate": {
+        "y": 1350,
+        "pageHeight": 2814,
+        "rootHeight": 2037.385498046875,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "zebra-grasslands",
+        "scope": "zebra-grasslands",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 44.33333206176758,
+        "canvas": 1
+      },
+      "after": {
+        "y": 1350,
+        "pageHeight": 2814,
+        "rootHeight": 2037.385498046875,
+        "buttonTop": 400.125,
+        "tab": "build",
+        "kind": "zebra-grasslands",
+        "scope": "zebra-grasslands",
+        "paused": "false",
+        "reserved": 0,
+        "anchor": "",
+        "paneVisible": true,
+        "paneTailGap": 44.33333206176758,
+        "canvas": 1
+      },
+      "maxScrollDelta": 0,
+      "maxControlDelta": 0,
+      "samples": 43
+    }
+  ],
+  "errors": [],
+  "final": {
+    "y": 1350,
+    "pageHeight": 2814,
+    "rootHeight": 2037.385498046875,
+    "tab": "build",
+    "kind": "zebra-grasslands",
+    "scope": "zebra-grasslands",
+    "paused": "false",
+    "reserved": 0,
+    "anchor": "",
+    "paneVisible": true,
+    "paneTailGap": 44.33333206176758,
+    "canvas": 1,
+    "valid": true
+  },
+  "qaCandidate": "build-nav-r3-20261117",
+  "qaBundle": [
+    "/assets/index-D-XuahU-.js"
+  ]
+}

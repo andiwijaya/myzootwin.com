@@ -1,0 +1,538 @@
+{
+  "at": "2026-11-16T22:31:36.048Z",
+  "method": "Codex internal browser at 390x844, native locator keyboard activation and click navigation. Controls focused and visible before measuring preview closure; isolated synthetic V5 campaign.",
+  "qaCandidate": "build-nav-r2-20261117",
+  "checks": [
+    {
+      "name": "native cancellation keeps scroll immediately and after delay",
+      "passed": true
+    },
+    {
+      "name": "native cancellation retains layout until navigation",
+      "passed": true
+    },
+    {
+      "name": "button[data-hud-tab=\"missions\"] correct selection and stable delayed state",
+      "passed": true
+    },
+    {
+      "name": "button[data-hud-tab=\"missions\"] keeps scroll and control position",
+      "passed": true
+    },
+    {
+      "name": "button[data-hud-tab=\"missions\"] clears held layout with one active renderer",
+      "passed": true
+    },
+    {
+      "name": "button[data-hud-tab=\"care\"] correct selection and stable delayed state",
+      "passed": true
+    },
+    {
+      "name": "button[data-hud-tab=\"care\"] keeps scroll and control position",
+      "passed": true
+    },
+    {
+      "name": "button[data-hud-tab=\"care\"] clears held layout with one active renderer",
+      "passed": true
+    },
+    {
+      "name": "button[data-hud-tab=\"visitors\"] correct selection and stable delayed state",
+      "passed": true
+    },
+    {
+      "name": "button[data-hud-tab=\"visitors\"] keeps scroll and control position",
+      "passed": true
+    },
+    {
+      "name": "button[data-hud-tab=\"visitors\"] clears held layout with one active renderer",
+      "passed": true
+    },
+    {
+      "name": "button[data-hud-tab=\"build\"] correct selection and stable delayed state",
+      "passed": true
+    },
+    {
+      "name": "button[data-hud-tab=\"build\"] keeps scroll and control position",
+      "passed": true
+    },
+    {
+      "name": "button[data-hud-tab=\"build\"] clears held layout with one active renderer",
+      "passed": true
+    },
+    {
+      "name": "second native cancellation holds layout for destination switch",
+      "passed": true
+    },
+    {
+      "name": "[data-zoo-destination=\"elephant-grove\"] correct selection and stable delayed state",
+      "passed": false
+    },
+    {
+      "name": "[data-zoo-destination=\"elephant-grove\"] keeps scroll and control position",
+      "passed": true
+    },
+    {
+      "name": "[data-zoo-destination=\"elephant-grove\"] clears held layout with one active renderer",
+      "passed": true
+    },
+    {
+      "name": "[data-zoo-destination=\"zoo\"] correct selection and stable delayed state",
+      "passed": false
+    },
+    {
+      "name": "[data-zoo-destination=\"zoo\"] keeps scroll and control position",
+      "passed": true
+    },
+    {
+      "name": "[data-zoo-destination=\"zoo\"] clears held layout with one active renderer",
+      "passed": true
+    },
+    {
+      "name": "native phone viewport remains 390x844",
+      "passed": true
+    },
+    {
+      "name": "native console clean",
+      "passed": true
+    }
+  ],
+  "rows": [
+    {
+      "selector": "button[data-hud-tab=\"missions\"]",
+      "before": {
+        "anchor": "none",
+        "animals": "14",
+        "buttonTop": 400.1979370117187,
+        "canvas": 1,
+        "coins": "3.645 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": null,
+        "pageHeight": 5734,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 3,
+        "scope": "zoo",
+        "tab": "build",
+        "width": 390,
+        "y": 1091.3333740234375
+      },
+      "immediate": {
+        "anchor": "",
+        "animals": "14",
+        "buttonTop": 400.1979370117187,
+        "canvas": 1,
+        "coins": "3.645 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": null,
+        "pageHeight": 6107,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 0,
+        "scope": "zoo",
+        "tab": "missions",
+        "width": 390,
+        "y": 1091.3333740234375
+      },
+      "after": {
+        "anchor": "",
+        "animals": "14",
+        "buttonTop": 400.1979370117187,
+        "canvas": 1,
+        "coins": "3.645 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": null,
+        "pageHeight": 6107,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 0,
+        "scope": "zoo",
+        "tab": "missions",
+        "width": 390,
+        "y": 1091.3333740234375
+      }
+    },
+    {
+      "selector": "button[data-hud-tab=\"care\"]",
+      "before": {
+        "anchor": "",
+        "animals": "14",
+        "buttonTop": 400.1979370117187,
+        "canvas": 1,
+        "coins": "3.645 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": null,
+        "pageHeight": 6107,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 0,
+        "scope": "zoo",
+        "tab": "missions",
+        "width": 390,
+        "y": 1091.3333740234375
+      },
+      "immediate": {
+        "anchor": "",
+        "animals": "14",
+        "buttonTop": 400.1979370117187,
+        "canvas": 1,
+        "coins": "3.645 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": null,
+        "pageHeight": 11883,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 0,
+        "scope": "zoo",
+        "tab": "care",
+        "width": 390,
+        "y": 1091.3333740234375
+      },
+      "after": {
+        "anchor": "",
+        "animals": "14",
+        "buttonTop": 400.1979370117187,
+        "canvas": 1,
+        "coins": "3.645 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": null,
+        "pageHeight": 11883,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 0,
+        "scope": "zoo",
+        "tab": "care",
+        "width": 390,
+        "y": 1091.3333740234375
+      }
+    },
+    {
+      "selector": "button[data-hud-tab=\"visitors\"]",
+      "before": {
+        "anchor": "",
+        "animals": "14",
+        "buttonTop": 400.1979370117187,
+        "canvas": 1,
+        "coins": "3.645 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": null,
+        "pageHeight": 11883,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 0,
+        "scope": "zoo",
+        "tab": "care",
+        "width": 390,
+        "y": 1091.3333740234375
+      },
+      "immediate": {
+        "anchor": "",
+        "animals": "14",
+        "buttonTop": 400.1979370117187,
+        "canvas": 1,
+        "coins": "3.645 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": null,
+        "pageHeight": 3316,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 0,
+        "scope": "zoo",
+        "tab": "visitors",
+        "width": 390,
+        "y": 1091.3333740234375
+      },
+      "after": {
+        "anchor": "",
+        "animals": "14",
+        "buttonTop": 400.1979370117187,
+        "canvas": 1,
+        "coins": "3.645 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": null,
+        "pageHeight": 3316,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 0,
+        "scope": "zoo",
+        "tab": "visitors",
+        "width": 390,
+        "y": 1091.3333740234375
+      }
+    },
+    {
+      "selector": "button[data-hud-tab=\"build\"]",
+      "before": {
+        "anchor": "",
+        "animals": "14",
+        "buttonTop": 400.1979370117187,
+        "canvas": 1,
+        "coins": "3.645 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": null,
+        "pageHeight": 3316,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 0,
+        "scope": "zoo",
+        "tab": "visitors",
+        "width": 390,
+        "y": 1091.3333740234375
+      },
+      "immediate": {
+        "anchor": "",
+        "animals": "14",
+        "buttonTop": 400.1979370117187,
+        "canvas": 1,
+        "coins": "3.645 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": null,
+        "pageHeight": 5589,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 0,
+        "scope": "zoo",
+        "tab": "build",
+        "width": 390,
+        "y": 1091.3333740234375
+      },
+      "after": {
+        "anchor": "",
+        "animals": "14",
+        "buttonTop": 400.1979370117187,
+        "canvas": 1,
+        "coins": "3.645 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": null,
+        "pageHeight": 5589,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 0,
+        "scope": "zoo",
+        "tab": "build",
+        "width": 390,
+        "y": 1091.3333740234375
+      }
+    },
+    {
+      "selector": "[data-zoo-destination=\"elephant-grove\"]",
+      "before": {
+        "anchor": "none",
+        "animals": "14",
+        "buttonTop": 397.2708435058594,
+        "canvas": 1,
+        "coins": "3.655 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": null,
+        "pageHeight": 5734,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 3,
+        "scope": "zoo",
+        "tab": "build",
+        "width": 390,
+        "y": 697.3333129882812
+      },
+      "immediate": {
+        "anchor": "",
+        "animals": "14",
+        "buttonTop": 397.2708435058594,
+        "canvas": 1,
+        "coins": "3.655 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": "elephant-grove",
+        "pageHeight": 3584,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 0,
+        "scope": "elephant-grove",
+        "tab": "care",
+        "width": 390,
+        "y": 697.3333129882812
+      },
+      "after": {
+        "anchor": "",
+        "animals": "14",
+        "buttonTop": 397.2708435058594,
+        "canvas": 1,
+        "coins": "3.655 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": "elephant-grove",
+        "pageHeight": 3584,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 0,
+        "scope": "elephant-grove",
+        "tab": "care",
+        "width": 390,
+        "y": 697.3333129882812
+      }
+    },
+    {
+      "selector": "[data-zoo-destination=\"zoo\"]",
+      "before": {
+        "anchor": "",
+        "animals": "14",
+        "buttonTop": 397.2708435058594,
+        "canvas": 1,
+        "coins": "3.655 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": "elephant-grove",
+        "pageHeight": 3584,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 0,
+        "scope": "elephant-grove",
+        "tab": "care",
+        "width": 390,
+        "y": 697.3333129882812
+      },
+      "immediate": {
+        "anchor": "",
+        "animals": "14",
+        "buttonTop": 397.2708435058594,
+        "canvas": 1,
+        "coins": "3.655 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": null,
+        "pageHeight": 11864,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 0,
+        "scope": "zoo",
+        "tab": "care",
+        "width": 390,
+        "y": 697.3333129882812
+      },
+      "after": {
+        "anchor": "",
+        "animals": "14",
+        "buttonTop": 397.2708435058594,
+        "canvas": 1,
+        "coins": "3.655 ZC",
+        "documentWidth": 375,
+        "height": 844,
+        "kind": null,
+        "pageHeight": 11864,
+        "paneVisible": true,
+        "paused": "false",
+        "reserved": 0,
+        "scope": "zoo",
+        "tab": "care",
+        "width": 390,
+        "y": 697.3333129882812
+      }
+    }
+  ],
+  "closeBefore": {
+    "anchor": "none",
+    "animals": "14",
+    "buttonTop": 399.9895935058594,
+    "canvas": 1,
+    "coins": "3.645 ZC",
+    "documentWidth": 375,
+    "height": 844,
+    "kind": null,
+    "pageHeight": 5734,
+    "paneTailGap": 65.44807815551758,
+    "paneVisible": true,
+    "paused": "false",
+    "reserved": 3,
+    "scope": "zoo",
+    "tab": "build",
+    "width": 390,
+    "y": 4258.66650390625
+  },
+  "closeAfter": {
+    "anchor": "none",
+    "animals": "14",
+    "canvas": 1,
+    "coins": "3.645 ZC",
+    "documentWidth": 375,
+    "height": 844,
+    "kind": null,
+    "pageHeight": 5734,
+    "paneTailGap": 65.44807815551758,
+    "paneVisible": true,
+    "paused": "false",
+    "reserved": 3,
+    "scope": "zoo",
+    "tab": "build",
+    "width": 390,
+    "y": 4258.66650390625
+  },
+  "closeSettled": {
+    "anchor": "none",
+    "animals": "14",
+    "canvas": 1,
+    "coins": "3.645 ZC",
+    "documentWidth": 375,
+    "height": 844,
+    "kind": null,
+    "pageHeight": 5734,
+    "paneTailGap": 65.44807815551758,
+    "paneVisible": true,
+    "paused": "false",
+    "reserved": 3,
+    "scope": "zoo",
+    "tab": "build",
+    "width": 390,
+    "y": 4258.66650390625
+  },
+  "habitatClose": {
+    "before": {
+      "anchor": "none",
+      "animals": "14",
+      "canvas": 1,
+      "coins": "3.655 ZC",
+      "documentWidth": 375,
+      "height": 844,
+      "kind": null,
+      "pageHeight": 5734,
+      "paneTailGap": 65.44807815551758,
+      "paneVisible": true,
+      "paused": "false",
+      "reserved": 3,
+      "scope": "zoo",
+      "tab": "build",
+      "width": 390,
+      "y": 4258.66650390625
+    },
+    "after": {
+      "anchor": "none",
+      "animals": "14",
+      "canvas": 1,
+      "coins": "3.655 ZC",
+      "documentWidth": 375,
+      "height": 844,
+      "kind": null,
+      "pageHeight": 5734,
+      "paneTailGap": 65.44807815551758,
+      "paneVisible": true,
+      "paused": "false",
+      "reserved": 3,
+      "scope": "zoo",
+      "tab": "build",
+      "width": 390,
+      "y": 4258.66650390625
+    }
+  },
+  "errors": [],
+  "status": "FAIL"
+}

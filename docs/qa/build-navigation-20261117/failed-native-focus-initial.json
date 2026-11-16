@@ -1,0 +1,73 @@
+{
+  "at": "2026-11-16T22:30:18.443Z",
+  "method": "Codex internal browser native locator clicks at 390x844; isolated synthetic V5 campaign. Preview closure, delayed page/menu geometry and release of held layout.",
+  "qaCandidate": "build-nav-r2-20261117",
+  "checks": [
+    {
+      "name": "native cancellation keeps scroll immediately and after delay",
+      "passed": false
+    },
+    {
+      "name": "native cancellation retains layout until navigation",
+      "passed": true
+    }
+  ],
+  "rows": [],
+  "closeBefore": {
+    "anchor": "none",
+    "animals": "14",
+    "buttonTop": -231.34375,
+    "canvas": 1,
+    "coins": "3.655 ZC",
+    "documentWidth": 375,
+    "height": 844,
+    "kind": null,
+    "pageHeight": 5734,
+    "paneTailGap": 65.44789505004883,
+    "paneVisible": true,
+    "paused": "false",
+    "reserved": 3,
+    "scope": "zoo",
+    "tab": "build",
+    "width": 390,
+    "y": 4890
+  },
+  "closeAfter": {
+    "anchor": "none",
+    "animals": "14",
+    "canvas": 1,
+    "coins": "3.655 ZC",
+    "documentWidth": 375,
+    "height": 844,
+    "kind": null,
+    "pageHeight": 5734,
+    "paneTailGap": 65.44807815551758,
+    "paneVisible": true,
+    "paused": "false",
+    "reserved": 3,
+    "scope": "zoo",
+    "tab": "build",
+    "width": 390,
+    "y": 4258.66650390625
+  },
+  "closeSettled": {
+    "anchor": "none",
+    "animals": "14",
+    "canvas": 1,
+    "coins": "3.655 ZC",
+    "documentWidth": 375,
+    "height": 844,
+    "kind": null,
+    "pageHeight": 5734,
+    "paneTailGap": 65.44807815551758,
+    "paneVisible": true,
+    "paused": "false",
+    "reserved": 3,
+    "scope": "zoo",
+    "tab": "build",
+    "width": 390,
+    "y": 4258.66650390625
+  },
+  "status": "FAIL",
+  "note": "The End key completed scrolling after the initial read and moved Cancel above the viewport. Locator.press then focused the offscreen control and legitimately scrolled it into view. This is excluded from release gates; final native audit prepares focus before measuring."
+}

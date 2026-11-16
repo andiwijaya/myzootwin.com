@@ -23,7 +23,8 @@ export function mountBuildScrollStability(root:HTMLElement,signal:AbortSignal){
  }
  function preserve(event:Event){
   const target=event.target;if(!(target instanceof Element))return;
-  if(target.closest('[data-zoo-destination],[data-zoo-back],button[data-hud-tab]')){release();return;}
+  // A touch can become a swipe and be cancelled; release only when navigation is activated.
+  if(target.closest('[data-zoo-destination],[data-zoo-back],button[data-hud-tab]')){if(event.type==='click')release();return;}
   const escape=event instanceof KeyboardEvent&&event.key==='Escape';
   if(event.type==='keydown'&&!escape)return;
   if(!target.closest('[data-hud-pane="build"]')||(!escape&&!target.closest('button'))||!active())return;

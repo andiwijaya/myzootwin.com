@@ -1,0 +1,304 @@
+TAP version 13
+# Subtest: habitat camera fits macaw-aviary at 1366x768, bounds navigation and restores zoo view
+ok 1 - habitat camera fits macaw-aviary at 1366x768, bounds navigation and restores zoo view
+  ---
+  duration_ms: 13.8744
+  type: 'test'
+  ...
+# Subtest: habitat camera fits macaw-aviary at 360x780, bounds navigation and restores zoo view
+ok 2 - habitat camera fits macaw-aviary at 360x780, bounds navigation and restores zoo view
+  ---
+  duration_ms: 5.0629
+  type: 'test'
+  ...
+# Subtest: habitat camera fits macaw-aviary at 780x360, bounds navigation and restores zoo view
+ok 3 - habitat camera fits macaw-aviary at 780x360, bounds navigation and restores zoo view
+  ---
+  duration_ms: 2.1903
+  type: 'test'
+  ...
+# Subtest: habitat camera fits elephant-grove at 1366x768, bounds navigation and restores zoo view
+ok 4 - habitat camera fits elephant-grove at 1366x768, bounds navigation and restores zoo view
+  ---
+  duration_ms: 2.1506
+  type: 'test'
+  ...
+# Subtest: habitat camera fits elephant-grove at 360x780, bounds navigation and restores zoo view
+ok 5 - habitat camera fits elephant-grove at 360x780, bounds navigation and restores zoo view
+  ---
+  duration_ms: 2.2227
+  type: 'test'
+  ...
+# Subtest: habitat camera fits elephant-grove at 780x360, bounds navigation and restores zoo view
+ok 6 - habitat camera fits elephant-grove at 780x360, bounds navigation and restores zoo view
+  ---
+  duration_ms: 1.5261
+  type: 'test'
+  ...
+# Subtest: habitat camera fits lion-savanna at 1366x768, bounds navigation and restores zoo view
+ok 7 - habitat camera fits lion-savanna at 1366x768, bounds navigation and restores zoo view
+  ---
+  duration_ms: 2.1416
+  type: 'test'
+  ...
+# Subtest: habitat camera fits lion-savanna at 360x780, bounds navigation and restores zoo view
+ok 8 - habitat camera fits lion-savanna at 360x780, bounds navigation and restores zoo view
+  ---
+  duration_ms: 2.3416
+  type: 'test'
+  ...
+# Subtest: habitat camera fits lion-savanna at 780x360, bounds navigation and restores zoo view
+ok 9 - habitat camera fits lion-savanna at 780x360, bounds navigation and restores zoo view
+  ---
+  duration_ms: 2.4873
+  type: 'test'
+  ...
+# Subtest: habitat camera fits giraffe-plains at 1366x768, bounds navigation and restores zoo view
+ok 10 - habitat camera fits giraffe-plains at 1366x768, bounds navigation and restores zoo view
+  ---
+  duration_ms: 1.8719
+  type: 'test'
+  ...
+# Subtest: habitat camera fits giraffe-plains at 360x780, bounds navigation and restores zoo view
+ok 11 - habitat camera fits giraffe-plains at 360x780, bounds navigation and restores zoo view
+  ---
+  duration_ms: 1.6734
+  type: 'test'
+  ...
+# Subtest: habitat camera fits giraffe-plains at 780x360, bounds navigation and restores zoo view
+ok 12 - habitat camera fits giraffe-plains at 780x360, bounds navigation and restores zoo view
+  ---
+  duration_ms: 2.057
+  type: 'test'
+  ...
+# Subtest: habitat camera fits zebra-grasslands at 1366x768, bounds navigation and restores zoo view
+ok 13 - habitat camera fits zebra-grasslands at 1366x768, bounds navigation and restores zoo view
+  ---
+  duration_ms: 1.6894
+  type: 'test'
+  ...
+# Subtest: habitat camera fits zebra-grasslands at 360x780, bounds navigation and restores zoo view
+ok 14 - habitat camera fits zebra-grasslands at 360x780, bounds navigation and restores zoo view
+  ---
+  duration_ms: 2.8406
+  type: 'test'
+  ...
+# Subtest: habitat camera fits zebra-grasslands at 780x360, bounds navigation and restores zoo view
+ok 15 - habitat camera fits zebra-grasslands at 780x360, bounds navigation and restores zoo view
+  ---
+  duration_ms: 2.5782
+  type: 'test'
+  ...
+# Subtest: selection resolves actual habitat, facility and occupied tile without assuming fixed anchors
+ok 16 - selection resolves actual habitat, facility and occupied tile without assuming fixed anchors
+  ---
+  duration_ms: 0.3987
+  type: 'test'
+  ...
+# Subtest: render isolation clips merged geometry/shadows, restores original visibility/materials, and never mutates world
+ok 17 - render isolation clips merged geometry/shadows, restores original visibility/materials, and never mutates world
+  ---
+  duration_ms: 6.4433
+  type: 'test'
+  ...
+# Subtest: focused ray picking rejects invisible and clipped outside faces instead of selecting through the mask
+ok 18 - focused ray picking rejects invisible and clipped outside faces instead of selecting through the mask
+  ---
+  duration_ms: 2.6965
+  type: 'test'
+  ...
+# Subtest: leaving focus restores the original nearest-unowned-surface picking rule
+ok 19 - leaving focus restores the original nearest-unowned-surface picking rule
+  ---
+  duration_ms: 2.2317
+  type: 'test'
+  ...
+# Subtest: a focused habitat cannot undo another habitat facility or a shared path edit
+ok 20 - a focused habitat cannot undo another habitat facility or a shared path edit
+  ---
+  duration_ms: 1.0048
+  type: 'test'
+  ...
+# Subtest: roving HUD keyboard wraps and preserves ordinary Tab Escape and text keys
+ok 21 - roving HUD keyboard wraps and preserves ordinary Tab Escape and text keys
+  ---
+  duration_ms: 0.689
+  type: 'test'
+  ...
+# Subtest: HUD welfare distinguishes reserves from real aggregate and includes both birds
+ok 22 - HUD welfare distinguishes reserves from real aggregate and includes both birds
+  ---
+  duration_ms: 0.6712
+  type: 'test'
+  ...
+# Subtest: HUD coin formatting keeps exact normal amounts in both locales and bounds large labels
+ok 23 - HUD coin formatting keeps exact normal amounts in both locales and bounds large labels
+  ---
+  duration_ms: 14.5461
+  type: 'test'
+  ...
+# Subtest: opening a UI surface cancels held pointers without producing a world tap
+ok 24 - opening a UI surface cancels held pointers without producing a world tap
+  ---
+  duration_ms: 0.4023
+  type: 'test'
+  ...
+# Subtest: controller input cancellation reaches only its one active session and never reopens a disposed renderer
+ok 25 - controller input cancellation reaches only its one active session and never reopens a disposed renderer
+  ---
+  duration_ms: 0.4453
+  type: 'test'
+  ...
+# Subtest: footprint validates grid bounds, water, path, occupancy and scenery with precise reasons
+ok 26 - footprint validates grid bounds, water, path, occupancy and scenery with precise reasons
+  ---
+  duration_ms: 1.7867
+  type: 'test'
+  ...
+# Subtest: cancel never changes world, save or previously confirmed session plan
+ok 27 - cancel never changes world, save or previously confirmed session plan
+  ---
+  duration_ms: 2.2177
+  type: 'test'
+  ...
+# Subtest: confirm revalidates latest world and revision, invalid and repeated calls cannot commit
+ok 28 - confirm revalidates latest world and revision, invalid and repeated calls cannot commit
+  ---
+  duration_ms: 0.3095
+  type: 'test'
+  ...
+# Subtest: paused/disposed planner rejects all mutations and snapshots cannot mutate internal plans
+ok 29 - paused/disposed planner rejects all mutations and snapshots cannot mutate internal plans
+  ---
+  duration_ms: 0.3584
+  type: 'test'
+  ...
+# Subtest: one bounded session plan is replaced without accumulating duplicate objects
+ok 30 - one bounded session plan is replaced without accumulating duplicate objects
+  ---
+  duration_ms: 15.5311
+  type: 'test'
+  ...
+# Subtest: actual scene ground snaps at desktop/portrait/landscape; ghost valid/invalid and confirmed cue reuse fixed pool
+ok 31 - actual scene ground snaps at desktop/portrait/landscape; ghost valid/invalid and confirmed cue reuse fixed pool
+  ---
+  duration_ms: 96.1587
+  type: 'test'
+  ...
+# Subtest: scenery and outside-world ray hits yield rejected ghost; stale resize has no cached screen coordinates
+ok 32 - scenery and outside-world ray hits yield rejected ghost; stale resize has no cached screen coordinates
+  ---
+  duration_ms: 17.8012
+  type: 'test'
+  ...
+# Subtest: controller only forwards placement to live ready unpaused session and old session is released
+ok 33 - controller only forwards placement to live ready unpaused session and old session is released
+  ---
+  duration_ms: 0.827
+  type: 'test'
+  ...
+# Subtest: all placement reasons and controls have nonempty ID/EN messages
+ok 34 - all placement reasons and controls have nonempty ID/EN messages
+  ---
+  duration_ms: 0.1726
+  type: 'test'
+  ...
+# Subtest: paused previews keep read-only camera commands while game mutations stay blocked
+ok 35 - paused previews keep read-only camera commands while game mutations stay blocked
+  ---
+  duration_ms: 1.7321
+  type: 'test'
+  ...
+# Subtest: RAF start is idempotent and stale cancelled callbacks cannot duplicate a restarted loop
+ok 36 - RAF start is idempotent and stale cancelled callbacks cannot duplicate a restarted loop
+  ---
+  duration_ms: 0.6816
+  type: 'test'
+  ...
+# Subtest: disposed RAF loop cannot render or restart
+ok 37 - disposed RAF loop cannot render or restart
+  ---
+  duration_ms: 0.1577
+  type: 'test'
+  ...
+# Subtest: render exceptions stop the RAF chain and report once
+ok 38 - render exceptions stop the RAF chain and report once
+  ---
+  duration_ms: 0.1281
+  type: 'test'
+  ...
+# Subtest: request failures become an explicit stopped error
+ok 39 - request failures become an explicit stopped error
+  ---
+  duration_ms: 0.2295
+  type: 'test'
+  ...
+# Subtest: lazy session opens once, closes once, and can reopen without overlap
+ok 40 - lazy session opens once, closes once, and can reopen without overlap
+  ---
+  duration_ms: 0.6241
+  type: 'test'
+  ...
+# Subtest: closing during import prevents a late mount and ready transition
+ok 41 - closing during import prevents a late mount and ready transition
+  ---
+  duration_ms: 0.2693
+  type: 'test'
+  ...
+# Subtest: a failed lazy load is visible and a later attempt can recover
+ok 42 - a failed lazy load is visible and a later attempt can recover
+  ---
+  duration_ms: 0.3705
+  type: 'test'
+  ...
+# Subtest: unsupported WebGL has its own fallback and retry state
+ok 43 - unsupported WebGL has its own fallback and retry state
+  ---
+  duration_ms: 0.3368
+  type: 'test'
+  ...
+# Subtest: initialization exceptions do not become false ready states
+ok 44 - initialization exceptions do not become false ready states
+  ---
+  duration_ms: 0.2417
+  type: 'test'
+  ...
+# Subtest: context loss disposes the active session once and supports a fresh retry
+ok 45 - context loss disposes the active session once and supports a fresh retry
+  ---
+  duration_ms: 0.2504
+  type: 'test'
+  ...
+# Subtest: synchronous failure while mounting still disposes the late-created session
+ok 46 - synchronous failure while mounting still disposes the late-created session
+  ---
+  duration_ms: 0.1431
+  type: 'test'
+  ...
+# Subtest: pause state is applied to newly loaded sessions without changing lifecycle status
+ok 47 - pause state is applied to newly loaded sessions without changing lifecycle status
+  ---
+  duration_ms: 0.2019
+  type: 'test'
+  ...
+# Subtest: disposing a pending import prevents later renderer creation
+ok 48 - disposing a pending import prevents later renderer creation
+  ---
+  duration_ms: 0.1278
+  type: 'test'
+  ...
+# Subtest: latest visual and mute choices reach every new session, including retry while paused
+ok 49 - latest visual and mute choices reach every new session, including retry while paused
+  ---
+  duration_ms: 0.3573
+  type: 'test'
+  ...
+1..49
+# tests 49
+# suites 0
+# pass 49
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 580.1225

@@ -121,3 +121,13 @@ Selesai dan live: commit `dccada6`, Cloudflare Pages `4a487a31-de08-4f26-bf64-f9
 - [x] Menjalankan regresi/typecheck/build, deploy dan memverifikasi domain utama lewat internal browser.
 
 Selesai dan live: commit `642f16f`, Cloudflare Pages `9e5edd5a-21b2-44cc-af59-2bd05b178d8f`, **16 November 2026 pukul 21.12.53 WIB**. **624 pemeriksaan browser**, **49 tes regresi**, typecheck bersih dan build 10 halaman lulus. Posisi scroll dan konten di bawah preview: **maksimum 0 px** pada kelima kandang, tengah/bawah halaman, konfirmasi/Batal di 360/390 px. Native Batal/Escape berulang menjaga scroll **4.258,67 px** serta kartu berikut **493,32 px**; gulir manual bebas dan tinggi halaman tidak menumpuk. **130/130 body/hash produksi** dan **146/146 pemeriksaan navigasi live** lulus; saldo **4.381 ZC**, populasi **14** tetap, satu renderer dan console bersih. Campaign ditinggalkan pada Zoo dalam keadaan jeda; tidak ada pembelian/refill/klaim/reset manual di produksi. [Laporan](qa/build-preview-scroll-20261116/REPORT.md), [verifikasi](qa/build-preview-scroll-20261116/verification.json), [deployment](qa/build-preview-scroll-20261116/deployment.json), [bukti live](qa/build-preview-scroll-20261116/live-native.json).
+
+## Navigasi setelah preview Bangun ditutup - 17 November 2026
+
+- [x] Menelusuri pelepasan tinggi kartu/panel/shell serta scroll anchoring saat pindah menu dan kandang.
+- [x] Audit internal browser pada kelima kandang setelah Batal/pembelian: Misi/Rawat/Tamu, kembali ke Bangun, pindah kandang dan kembali, termasuk keluar-masuk Zoo. Delapan profil final 360/390 px: **1.016 pemeriksaan**, **40 penutupan preview/20 pembelian**, **160 perpindahan** lulus.
+- [x] Memeriksa ruang kosong tersisa, scroll/menu tertunda, dan sentuhan navigasi yang dibatalkan sebelum klik. Tidak ada ruang penahan tertinggal setelah navigasi; maksimum pergeseran scroll/tombol **0 px**.
+- [x] Memperbaiki sentuhan navigasi yang dibatalkan serta panel Rawat yang dipaksakan saat zoom pertama; **49 tes**, typecheck **692 berkas tanpa temuan**, dan build **10 halaman** lulus. Kontrol HP **155/155**, native **23/23** lulus; total **1.194 pemeriksaan browser**. HTML dan tujuh bundle kandidat QA identik dengan build final.
+- [ ] Memeriksa domain utama dan menyimpan bukti/checklist final.
+
+Kandidat final lulus semua gate lokal dan siap dirilis. Bukti r2 dipertahankan sebagai `before-*`, terpisah dari hasil final. [Laporan](qa/build-navigation-20261117/REPORT.md), [verifikasi](qa/build-navigation-20261117/verification.json), [bukti native](qa/build-navigation-20261117/native-navigation.json).

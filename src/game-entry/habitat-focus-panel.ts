@@ -25,7 +25,7 @@ export function mountHabitatFocusPanel(root:HTMLElement, host:HTMLElement, signa
   let view:HabitatFocusView={active:false,habitatId:null,kind:null,selectedHabitatId:null,selectedKind:null},ready=false,locale:'id'|'en'='id',wasActive=false,previousGuided='false';
   function render(){
     const active=ready&&view.active&&view.kind!==null,c=messages[locale];
-    if(active&&!wasActive){previousGuided=root.dataset.guided??'false';root.dataset.guided='false';root.dispatchEvent(new CustomEvent('hud-reveal',{detail:'care'}));}
+    if(active&&!wasActive){previousGuided=root.dataset.guided??'false';root.dataset.guided='false';if(!root.hasAttribute('data-zoo-scope'))root.dispatchEvent(new CustomEvent('hud-reveal',{detail:'care'}));}
     if(!active&&wasActive)root.dataset.guided=ready?previousGuided:'false';
     wasActive=active;
     if(active)root.dataset.habitatFocus=view.kind!;else delete root.dataset.habitatFocus;
