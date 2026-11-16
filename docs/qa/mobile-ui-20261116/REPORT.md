@@ -1,6 +1,6 @@
 # Perapian UI HP MyZooTwin — 16 November 2026
 
-Status: semua gate lokal lulus; publikasi dan verifikasi produksi menunggu.
+Status: **PASS — sudah live dan diverifikasi pada domain utama.**
 
 ## Temuan dan perubahan
 
@@ -40,4 +40,8 @@ Receipt: [verification.json](verification.json), lima JSON profil, [tests.tap](t
 
 ## Publikasi
 
-Menunggu commit fitur, deployment Cloudflare Pages, kecocokan body/hash produksi, dan pemeriksaan native kelima spesies di domain utama. Kampanye produksi diperiksa saat jeda tanpa pembelian, refill, klaim atau reset manual.
+Commit fitur `e2fbe81b8bf2f7ce2b45f8be9f5e6b6879f77721` sudah berada di main. Cloudflare Pages deployment `fddb6acd-5558-4151-a51d-cbf02f8e1dc1` berhasil pada **16 November 2026, 12:25:25 WIB**, check `133109713241`. Domain [myzootwin.com/play/](https://myzootwin.com/play/) memuat entry BWM1mIji dan CSS DaI8aQHM. **130/130 body/hash** HTML, JS, CSS dan aset runtime cocok dengan kandidat QA. [Deployment](deployment.json), [hash live](live-body-check.json), [audit native live](live-ui.json).
+
+Pada produksi, viewport 360 × 780 dan 390 × 844 memperlihatkan semua 14 individu (2 makaw, 2 gajah, 3 singa, 3 jerapah, 4 zebra), masing-masing empat indikator. Label satu baris, angka di bawah label, kartu 50–61 px setelah awal bagian spesies, tidak ada overflow horizontal. Target sentuh menu/toolbar minimal 44 × 44 px. Screenshot setiap spesies tersedia sebagai `live-*-390.jpg` dan overview `live-overview-390.jpg`.
+
+Kampanye browser internal dilanjutkan dan langsung dijeda untuk mengaktifkan kontrol; tick bergerak singkat dari 96.185 menjadi 96.191 saat masuk. Selama perpindahan menu, tick tetap **96.191**, saldo **4.381 ZC**, populasi **14**. Tidak ada pembelian, refill, klaim, reset atau transfer save manual pada produksi. Console warning/error kosong (batas 100), satu kanvas. Sesi ditinggalkan dijeda pada seluruh zoo, tab buatan tugas ditutup, viewport dikembalikan dan tiga server QA milik tugas dihentikan.
