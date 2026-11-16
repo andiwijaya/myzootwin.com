@@ -9,6 +9,7 @@ const extension=JSON.parse(readFileSync(new URL('./fixtures/zebra-visual-v5-exte
 const releaseExtension=JSON.parse(readFileSync(new URL('./fixtures/zebra-release-public-extension.json',import.meta.url),'utf8'));
 const glbExtension=JSON.parse(readFileSync(new URL('./fixtures/glb-visual-extension.json',import.meta.url),'utf8'));
 const focusExtension=JSON.parse(readFileSync(new URL('./fixtures/habitat-focus-visual-extension.json',import.meta.url),'utf8'));
+const uiExtension=JSON.parse(readFileSync(new URL('./fixtures/farm-ui-visual-extension.json',import.meta.url),'utf8'));
 const withoutLine=({line,...record})=>record;
 // Keep the immutable Z0-03 receipt. H1 found Box3Helper and spray's Object3D transform helper omitted by the original regex.
 // Compare its original source inventory after projecting out that explicit scanner correction.
@@ -33,17 +34,21 @@ test('all production-reachable visual sources and nested geometry/part sites rem
  const focusPaths=new Set(focusExtension.changedPaths);
  assert.deepEqual([...focusPaths].sort(),['src/game/render3d/camera-controls.ts','src/game/render3d/camera-navigation.ts','src/game/render3d/habitat-focus.ts','src/game/render3d/scene-picking.ts']);
  for(const predecessor of focusExtension.predecessors)assert.equal(historical.modules.find(m=>m.path===predecessor.path)?.sha256,predecessor.sha256);
+ const uiPaths=new Set(uiExtension.changedPaths);assert.deepEqual([...uiPaths],['src/game/render3d/camera-navigation.ts']);
+ for(const predecessor of uiExtension.predecessors)assert.deepEqual(predecessor,focusExtension.modules.find(m=>m.path===predecessor.path),'Exact reviewed camera predecessor');
  const priorModules=[...historical.modules.filter(m=>protectedModule(m)&&!migrated.has(m.path)&&!retiredModules.has(m.path)),...glbExtension.modules.filter(protectedModule)];
- assert.deepEqual(current.modules.filter(protectedModule),[...priorModules.filter(m=>!focusPaths.has(m.path)),...focusExtension.modules].sort(ordered),'Only the explicit zoom extension may change protected camera/render sources');
+ assert.deepEqual(current.modules.filter(protectedModule),[...priorModules.filter(m=>!focusPaths.has(m.path)),...focusExtension.modules.filter(m=>!uiPaths.has(m.path)),...uiExtension.modules].sort(ordered),'Only explicit zoom and toolbar extensions may change protected camera/render sources');
  const protectedAsset=a=>!integration.has(a.sourcePath)&&!a.sourcePath.startsWith('src/game/render3d/zebra/')&&a.sourcePath!=='src/game/render3d/scene-selection.ts';
  const priorAssets=[...historical.assets.filter(a=>protectedAsset(a)&&!migrated.has(a.sourcePath)&&!retiredModules.has(a.sourcePath)),...glbExtension.assets.filter(protectedAsset)];
- assert.deepEqual(current.assets.filter(protectedAsset),[...priorAssets.filter(a=>!focusPaths.has(a.sourcePath)),...focusExtension.assets].sort(ordered),'Original parts remain exact outside the explicit GLB and zoom extensions');
+ assert.deepEqual(current.assets.filter(protectedAsset),[...priorAssets.filter(a=>!focusPaths.has(a.sourcePath)),...focusExtension.assets.filter(a=>!uiPaths.has(a.sourcePath)),...uiExtension.assets].sort(ordered),'Original parts remain exact outside the explicit GLB, zoom and toolbar extensions');
  for(const path of integration)assert.deepEqual(current.assets.filter(a=>a.sourcePath===path).map(({line,...a})=>a),(path==='src/game/render3d/foundation-scene.ts'?glbExtension.assets:historical.assets).filter(a=>a.sourcePath===path).map(({line,...a})=>a),'Reviewed integration constructors/parts: '+path);
  // HP6 adds one reviewed preview image and five exact original capture derivatives.
  // Keep original media bytes/provenance exact; only two retired source references change.
  const originalStatic=new Set(historical.staticVisuals.map(a=>a.assetId));
  assert.deepEqual(current.staticVisuals.filter(a=>originalStatic.has(a.assetId)).map(withoutLine),historical.staticVisuals.map(withoutLine));
- assert.deepEqual(current.staticVisuals.filter(a=>!originalStatic.has(a.assetId)).map(withoutLine),extension.staticAdditions);
+ assert.deepEqual(uiExtension.staticSources.map(s=>s.path),['src/components/ZooUiIcon.astro']);
+ for(const s of uiExtension.staticSources)assert.equal(createHash('sha256').update(readFileSync(s.path,'utf8').replace(/\r\n/g,'\n')).digest('hex'),s.sha256,'Exact original toolbar SVG source');
+ assert.deepEqual(current.staticVisuals.filter(a=>!originalStatic.has(a.assetId)).map(withoutLine),[...extension.staticAdditions,...uiExtension.staticAdditions]);
  assert.ok(current.staticVisuals.every(a=>Number.isSafeInteger(a.line)&&a.line>0));
  assert.deepEqual(current.generatedResources,historical.generatedResources);
  const retired=new Map(extension.retiredSourceReferences.map(a=>[a.path,a.sourceStringReferences]));

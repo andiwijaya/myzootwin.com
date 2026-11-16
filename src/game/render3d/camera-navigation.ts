@@ -4,7 +4,7 @@ export interface CameraFrame {
   originX: number; originZ: number; mapWidth: number; mapHeight: number;
   mapCenterX?:number;mapCenterZ?:number;upY?:number;panInset?:number;
 }
-export type CameraCommand = 'zoom-in' | 'zoom-out' | 'reset' | 'rotate-left' | 'rotate-right';
+export type CameraCommand = 'zoom-in' | 'zoom-out' | 'reset' | 'rotate-left' | 'rotate-right' | 'pan-left' | 'pan-right' | 'pan-up' | 'pan-down';
 const clamp = (value:number, min:number, max:number) => Math.max(min,Math.min(max,value));
 
 /** Ground-plane navigation only: no simulation, renderer loop, picking or placement. */
@@ -27,16 +27,14 @@ export function createCameraNavigation(onChange:()=>void = ()=>{}) {
     const p=ground(clamp(anchorX,-1,1)*frame.halfWidth*delta,clamp(anchorY,-1,1)*frame.halfHeight*delta);
     x+=p.x;z+=p.z;zoom=next;commit();
   }
+  function panPixels(dx:number,dy:number){if(!frame||![dx,dy].every(Number.isFinite))return;const p=ground(-dx*2*frame.halfWidth/(zoom*frame.width),dy*2*frame.halfHeight/(zoom*frame.height));x+=p.x;z+=p.z;commit();}
   return {
     configure(next:CameraFrame, preserveFocus=false) {
       if(!Object.values(next).every(Number.isFinite)||next.width<=0||next.height<=0||next.halfWidth<=0||next.halfHeight<=0||next.mapWidth<=0||next.mapHeight<=0||(next.panInset??.6)<0||(next.panInset??.6)>=Math.min(next.mapWidth,next.mapHeight)/2||(next.panInset===undefined&&(next.mapWidth<=2||next.mapHeight<=2||Math.abs(next.originX-(next.mapCenterX??0))>next.mapWidth/2-.6||Math.abs(next.originZ-(next.mapCenterZ??0))>next.mapHeight/2-.6))||Math.abs(next.rightX*next.upZ-next.rightZ*next.upX)<.01)throw new RangeError('Invalid camera frame');
       const previous=frame?{x:frame.originX+x,z:frame.originZ+z}:undefined;
       frame={...next};if(preserveFocus&&previous&&zoom>1){x=previous.x-frame.originX;z=previous.z-frame.originZ;}commit();
     },
-    panPixels(dx:number,dy:number) {
-      if(!frame||![dx,dy].every(Number.isFinite))return;
-      const p=ground(-dx*2*frame.halfWidth/(zoom*frame.width),dy*2*frame.halfHeight/(zoom*frame.height));x+=p.x;z+=p.z;commit();
-    },
+    panPixels,
     focus(point:{x:number;z:number}){if(!frame||![point.x,point.z].every(Number.isFinite))return;zoom=2.5;x=point.x-frame.originX;z=point.z-frame.originZ;commit();},
     /** Fit a whole habitat with padding using the existing bounded pan policy. Existing close-up focus is unchanged. */
     focusArea(area:{x:number;z:number;width:number;depth:number}){
@@ -47,7 +45,7 @@ export function createCameraNavigation(onChange:()=>void = ()=>{}) {
     },
     zoomBy,
     restore(view:{zoom:number;focusX:number;focusZ:number}) {if(!frame||!Object.values(view).every(Number.isFinite))return;zoom=clamp(view.zoom,1,3);x=view.focusX-frame.originX;z=view.focusZ-frame.originZ;commit();},
-    command(command:CameraCommand) {if(command==='reset'){zoom=1;x=z=0;commit();}else if(command==='zoom-in'||command==='zoom-out')zoomBy(command==='zoom-in'?1.25:.8);},
+    command(command:CameraCommand) {if(command.startsWith('pan-'))panPixels(command==='pan-left'?40:command==='pan-right'?-40:0,command==='pan-up'?40:command==='pan-down'?-40:0);else if(command==='reset'){zoom=1;x=z=0;commit();}else if(command==='zoom-in'||command==='zoom-out')zoomBy(command==='zoom-in'?1.25:.8);},
     inspect:()=>({zoom,x,z,focusX:(frame?.originX??0)+x,focusZ:(frame?.originZ??0)+z,...limits()}),
   };
 }

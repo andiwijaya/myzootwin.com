@@ -7,6 +7,7 @@ import {mountVisualSettings} from './visual-settings-panel.ts';
 import {chooseGameLocale} from './i18n-format.ts';
 import {formatNumber} from './i18n-format.ts';
 import { mountHudLayout } from './hud-layout.ts';
+import {mountFarmUi} from './farm-ui.ts';
 import { createPauseGate } from './pause-gate.ts';
 import { mountRestartPanel } from './restart-panel.ts';
 import { mountRecoveryPanel } from './recovery-panel.ts';
@@ -316,6 +317,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         pauseGate.hold('background', true);
     restartPanel = mountRestartPanel(root, { save: durable, locale: () => locale, pause: () => pauseGate.hold('manual', true), closeGame: () => { resumePending = false; preview?.close(); }, replaced: () => { locale = chooseGameLocale(locale, manualLocale, durable.savedLocale()); syncEffectivePreferences(); render(locale); } });
     const hudLayout = mountHudLayout(root);
+    const farmUi=mountFarmUi(root);
     root.ownerDocument.addEventListener('myzootwin:privacy-modal', () => syncPause(), { signal: events.signal });
     syncPause();
     const ready = (async () => {
@@ -336,6 +338,7 @@ export function mountGameEntry(root: HTMLElement, options: {
             disposed = true;
             visualPanel?.dispose();
             ambience.dispose();
+            farmUi.dispose();
             hudLayout.dispose();
             pauseObserver.disconnect();
             restartPanel?.dispose();

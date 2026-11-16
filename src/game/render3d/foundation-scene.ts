@@ -112,10 +112,11 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   const habitatMask=createHabitatRenderMask();
   let focusedHabitat:FocusHabitat|null=null,focusWorld:RuntimeWorld|undefined,focusWorldRevision='',focusAnnouncement='';
   const focusAllows=(kind:HabitatKind)=>!focusedHabitat||habitatKind(focusedHabitat)===kind;
-  let focusUndoKey='',focusUndoAllowed=false;
+  let focusUndoKey='',focusUndoAllowed=false,previousZooOverview='';
   function focusCanUndo(frame=simulation.inspect()){if(!focusedHabitat)return true;const key=focusedHabitat.id+':'+frame.editorRevision;if(key!==focusUndoKey){focusUndoKey=key;focusUndoAllowed=habitatUndoAllowed(simulation.editorSnapshot(),focusedHabitat.id);}return focusUndoAllowed;}
   function cancelFocusPreviews(){placement?.command('cancel');zebraCarePreview?.cancel();giraffePreview?.cancel();lionPreview?.cancel();elephantCarePreview?.cancel();foodPreview=waterPreview=perchPreview=false;foodDirty=waterDirty=perchDirty=true;zebraRemoval=lionRemoval=giraffeRemoval=null;}
   function announceHabitatFocus(){
+    const overview=simulation.overviewView(),overviewKey=JSON.stringify(overview);if(overviewKey!==previousZooOverview){previousZooOverview=overviewKey;host.dispatchEvent(new CustomEvent('scene-zoo-overview-change',{detail:overview}));}
     const identity=picker?.selection(),selected=identity?habitatForSelection(focusWorld??simulation.worldSnapshot(),identity):undefined;
     const view:HabitatFocusView={active:!!focusedHabitat,habitatId:focusedHabitat?.id??null,kind:focusedHabitat?habitatKind(focusedHabitat):null,selectedHabitatId:selected?.id??null,selectedKind:selected?habitatKind(selected):null};
     const key=JSON.stringify(view);if(key!==focusAnnouncement){focusAnnouncement=key;host.dispatchEvent(new CustomEvent('scene-habitat-focus-change',{detail:view}));}

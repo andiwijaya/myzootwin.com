@@ -1,0 +1,112 @@
+{
+  "version": 1,
+  "scope": "Toolbar directional pan reuses the bounded native drag path. All animal, environment and GLB receipts stay pinned.",
+  "changedPaths": [
+    "src/game/render3d/camera-navigation.ts"
+  ],
+  "predecessors": [
+    {
+      "path": "src/game/render3d/camera-navigation.ts",
+      "sha256": "c3417e6c3dab8c9749743838425eb568c5e01f2e78f0039a66b8dc840fce17b0",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "clamp",
+          "line": 8
+        },
+        {
+          "name": "createCameraNavigation",
+          "line": 11
+        },
+        {
+          "name": "limits",
+          "line": 13
+        },
+        {
+          "name": "commit",
+          "line": 19
+        },
+        {
+          "name": "ground",
+          "line": 20
+        },
+        {
+          "name": "zoomBy",
+          "line": 24
+        }
+      ],
+      "threeTypes": [],
+      "exports": [
+        "CameraCommand",
+        "CameraFrame",
+        "createCameraNavigation"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "path": "src/game/render3d/camera-navigation.ts",
+      "sha256": "faa33e00da46ef443cc7ef22e9c46bba37b32a2bceaadaa597bc602076acb925",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "clamp",
+          "line": 8
+        },
+        {
+          "name": "createCameraNavigation",
+          "line": 11
+        },
+        {
+          "name": "limits",
+          "line": 13
+        },
+        {
+          "name": "commit",
+          "line": 19
+        },
+        {
+          "name": "ground",
+          "line": 20
+        },
+        {
+          "name": "zoomBy",
+          "line": 24
+        },
+        {
+          "name": "panPixels",
+          "line": 30
+        }
+      ],
+      "threeTypes": [],
+      "exports": [
+        "CameraCommand",
+        "CameraFrame",
+        "createCameraNavigation"
+      ]
+    }
+  ],
+  "assets": [],
+  "staticAdditions": [
+    {
+      "assetId": "src/components/ZooUiIcon.astro:inline-visual:0",
+      "sourcePath": "src/components/ZooUiIcon.astro",
+      "tag": "svg",
+      "status": "NOT_RUN"
+    }
+  ],
+  "staticSources": [
+    {
+      "path": "src/components/ZooUiIcon.astro",
+      "sha256": "99295d2c80bf4b32776568ca8de2fba9afd26371c2d57c2070452741822e6b74"
+    }
+  ]
+}

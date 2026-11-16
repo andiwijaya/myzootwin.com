@@ -12,6 +12,13 @@ import { mountCameraControls } from '../src/game/render3d/camera-controls.ts';
 const frame={width:500,height:350,halfWidth:10,halfHeight:7,rightX:.75,rightZ:-.66,upX:-.35,upZ:-.4,originX:-1,originZ:-1.2,mapWidth:12,mapHeight:10};
 const make=()=>{const n=createCameraNavigation();n.configure(frame);return n;};
 const close=(a,b)=>assert.ok(Math.abs(a-b)<1e-8,`${a} != ${b}`);
+test('toolbar pan follows native drag coordinates and stays bounded after repeated commands',()=>{
+ for(const [command,dx,dy]of [['pan-left',40,0],['pan-right',-40,0],['pan-up',0,40],['pan-down',0,-40]]){
+  const n=make(),drag=make();n.zoomBy(2);drag.zoomBy(2);n.command(command);drag.panPixels(dx,dy);assert.deepEqual(n.inspect(),drag.inspect());
+  for(let i=0;i<200;i++)n.command(command);const s=n.inspect();assert.ok(s.x>=s.minX&&s.x<=s.maxX&&s.z>=s.minZ&&s.z<=s.maxZ);
+  n.command('reset');n.command(command);close(n.inspect().x,0);close(n.inspect().z,0);
+ }
+});
 test('camera overview, zoom and adversarial panning keep the ground focus inside actual map at every aspect',()=>{
   const n=make();n.panPixels(9999,-9999);assert.equal(n.inspect().x,0);assert.equal(n.inspect().z,0);
   let seed=2317;const random=()=>{seed=(Math.imul(seed,1664525)+1013904223)>>>0;return seed/2**32;};

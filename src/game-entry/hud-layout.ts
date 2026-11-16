@@ -24,6 +24,10 @@ export function scrollHudTarget(target: Element | null | undefined, align: 'star
     if (root?.dataset.hudActive === 'true') {
         const scroller = target.closest<HTMLElement>('[data-hud-panels]');
         if (scroller) {
+            if (getComputedStyle(scroller).overflowY === 'visible') {
+                target.scrollIntoView({block:align==='start'?'start':'nearest',behavior:'instant'});
+                return;
+            }
             const r = target.getBoundingClientRect(), p = scroller.getBoundingClientRect();
             if (align === 'start' || r.top < p.top + 6)
                 scroller.scrollTop += r.top - p.top - 6;
@@ -93,7 +97,8 @@ export function mountHudLayout(root: HTMLElement) {
         set('[data-hud-welfare]',macawStatus.welfare);
         root.querySelector('[data-hud-welfare]')?.setAttribute('aria-label',macawStatus.welfareLabel);
         root.querySelector('[data-hud-welfare]')?.setAttribute('title',macawStatus.welfareLabel);
-        set('[data-hud-guests]', c.guests.replace('{n}', formatNumber(guests,locale)));
+        set('[data-hud-guests]', root.querySelector('[data-zoo-navigation]')?formatNumber(guests,locale):c.guests.replace('{n}', formatNumber(guests,locale)));
+        root.querySelector('[data-hud-guests]')?.setAttribute('aria-label',c.guests.replace('{n}',formatNumber(guests,locale)));
         set('[data-hud-mission]',macawStatus.mission);
         root.querySelector('[data-hud-mission]')?.setAttribute('aria-label', macawStatus.missionLabel);
         set('[data-hud-speed]', speed + '×');
@@ -178,7 +183,7 @@ export function mountHudLayout(root: HTMLElement) {
         // Re-align after the action, without trapping ordinary page scrolling.
         if ((e.target as HTMLElement).closest('[data-hud-chrome], [data-hud-tabs], [data-hud-pane], [data-camera-controls], [data-preview-stage]'))
             queueMicrotask(() => {
-                if (!disposed && active && !root.querySelector('dialog[open]'))
+                if (!disposed && active && !root.querySelector('dialog[open]') && !(root.hasAttribute('data-zoo-scope')&&window.innerWidth<900&&(e.target as HTMLElement).closest('.hud-rail')))
                     root.scrollIntoView({ block: 'start', behavior: 'instant' });
             });
         if ((e.target as HTMLElement).closest('[data-onboarding-exit]')) {
@@ -195,7 +200,7 @@ export function mountHudLayout(root: HTMLElement) {
             return;
         queueMicrotask(() => {
             if (!disposed && active && !root.querySelector('dialog[open]')) {
-                root.scrollIntoView({ block: 'start', behavior: 'instant' });
+                if (!(root.hasAttribute('data-zoo-scope')&&window.innerWidth<900))root.scrollIntoView({ block: 'start', behavior: 'instant' });
                 if (target.closest('[data-hud-pane]'))
                     scrollHudTarget(target);
             }
