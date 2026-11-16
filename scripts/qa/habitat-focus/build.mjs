@@ -26,7 +26,7 @@ for(const kind of ['elephant-log','lion-scent','giraffe-enrichment']){
   }
   if(!removed)throw Error('Busy fixture '+kind);
 }
-const state=sim.snapshot();sim.dispose();const checked=validateSaveV5(state);if(!checked.ok)throw Error('Invalid focus fixture '+checked.path);
+const state=sim.snapshot();sim.visitors(false);const buildScrollState=sim.snapshot();sim.dispose();const checked=validateSaveV5(state);if(!checked.ok)throw Error('Invalid focus fixture '+checked.path);if(!validateSaveV5(buildScrollState).ok||buildScrollState.visitorFlow.open)throw Error('Invalid closed-entrance Build scroll fixture');
 let html=await readFile(join(product,'play/index.html'),'utf8');
 html=html.replace(/<script\b[^>]*>[\s\S]*?<\/script>/gi,'').replace(/<link\b[^>]*rel="modulepreload"[^>]*>/gi,'');
 html=html.replace(/<body([^>]*)>/i,'<body$1><aside class="focus-qa"><strong>QA · synthetic five-habitat save · actual game UI and renderer</strong><p>No owner saves, uploads, downloads, public routes, or production changes.</p><div id="qa-actions"><button id="qa-suite">Run focused integration checks</button><button id="qa-inspect">Inspect current state</button><button id="qa-context">Inject WebGL context loss</button></div><details><summary>QA results</summary><pre id="qa-result">Loading</pre></details></aside>');
@@ -37,6 +37,7 @@ await cp(join(lab,'.qa/habitat-focus',id,'input/index.html'),join(lab,'index.htm
 await cp(join(product,'_astro'),join(lab,'_astro'),{recursive:true});
 for(const folder of ['zoo-assets','zoo-environment','zoo-fixtures','fonts'])try{await cp(join(root,'public',folder),join(lab,folder),{recursive:true});}catch(e){if(e.code!=='ENOENT')throw e;}
 await writeFile(join(lab,'focus-fixture.json'),JSON.stringify(state));
+await writeFile(join(lab,'build-scroll-fixture.json'),JSON.stringify(buildScrollState));
 const perfSimulation=preparedZebraCare({supplies:true,enrichment:true}),perfState=perfSimulation.snapshot();perfSimulation.dispose();
 if(!validateSaveV5(perfState).ok)throw Error('Invalid performance fixture');
 await writeFile(join(lab,'performance-fixture.json'),JSON.stringify(perfState));

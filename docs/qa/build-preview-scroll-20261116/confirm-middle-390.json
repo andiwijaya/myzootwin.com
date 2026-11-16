@@ -1,0 +1,727 @@
+{
+  "at": "2026-11-16T14:09:16.233Z",
+  "status": "PASS",
+  "mode": "confirm-middle",
+  "scope": "Internal-browser viewport QA, source-owned DOM clicks and frame sampling, actual game commands/renderer/UUID IndexedDB synthetic save. Strict scrollY stability; no allowance for native anchoring or bottom clamping. Not a physical phone.",
+  "viewport": {
+    "width": 390,
+    "height": 844,
+    "documentWidth": 375
+  },
+  "checks": [
+    {
+      "name": "macaw-aviary purchase immediate scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1496,
+          "maxScroll": 1496,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "paused": "false",
+          "tick": 13657
+        },
+        "immediate": {
+          "y": 1496,
+          "maxScroll": 1496,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "paused": "false",
+          "tick": 13657
+        }
+      }
+    },
+    {
+      "name": "macaw-aviary purchase no transient frame movement",
+      "passed": true,
+      "detail": {
+        "maxDelta": 0,
+        "samples": 46
+      }
+    },
+    {
+      "name": "macaw-aviary purchase committed scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1496,
+          "maxScroll": 1496,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "paused": "false",
+          "tick": 13657
+        },
+        "after": {
+          "y": 1496,
+          "maxScroll": 1496,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "paused": "false",
+          "tick": 13668
+        }
+      }
+    },
+    {
+      "name": "macaw-aviary purchase content following preview stays in place",
+      "passed": true,
+      "detail": {
+        "beforeBoxBottom": 594.2708435058594,
+        "afterBoxBottom": 594.2708435058594,
+        "maxContentDelta": 0
+      }
+    },
+    {
+      "name": "macaw-aviary purchase document still supports original position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1496,
+          "maxScroll": 1496,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "paused": "false",
+          "tick": 13657
+        },
+        "after": {
+          "y": 1496,
+          "maxScroll": 1496,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "paused": "false",
+          "tick": 13668
+        }
+      }
+    },
+    {
+      "name": "macaw-aviary purchase chosen Build and habitat retained",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary purchase simulation remains running",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary purchase canonical resource count",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary purchase player may scroll afterwards",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary reserved layout released outside Build",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove purchase immediate scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2136.666748046875,
+          "maxScroll": 2137,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "paused": "false",
+          "tick": 13682
+        },
+        "immediate": {
+          "y": 2136.666748046875,
+          "maxScroll": 2137,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "paused": "false",
+          "tick": 13682
+        }
+      }
+    },
+    {
+      "name": "elephant-grove purchase no transient frame movement",
+      "passed": true,
+      "detail": {
+        "maxDelta": 0,
+        "samples": 34
+      }
+    },
+    {
+      "name": "elephant-grove purchase committed scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2136.666748046875,
+          "maxScroll": 2137,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "paused": "false",
+          "tick": 13682
+        },
+        "after": {
+          "y": 2136.666748046875,
+          "maxScroll": 2137,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "paused": "false",
+          "tick": 13694
+        }
+      }
+    },
+    {
+      "name": "elephant-grove purchase content following preview stays in place",
+      "passed": true,
+      "detail": {
+        "beforeBoxBottom": 793.4375,
+        "afterBoxBottom": 793.4375,
+        "maxContentDelta": 0
+      }
+    },
+    {
+      "name": "elephant-grove purchase document still supports original position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2136.666748046875,
+          "maxScroll": 2137,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "paused": "false",
+          "tick": 13682
+        },
+        "after": {
+          "y": 2136.666748046875,
+          "maxScroll": 2137,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "paused": "false",
+          "tick": 13694
+        }
+      }
+    },
+    {
+      "name": "elephant-grove purchase chosen Build and habitat retained",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove purchase simulation remains running",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove purchase canonical resource count",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove purchase player may scroll afterwards",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove reserved layout released outside Build",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna purchase immediate scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2015.3333740234375,
+          "maxScroll": 2015,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "paused": "false",
+          "tick": 13710
+        },
+        "immediate": {
+          "y": 2015.3333740234375,
+          "maxScroll": 2015,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "paused": "false",
+          "tick": 13710
+        }
+      }
+    },
+    {
+      "name": "lion-savanna purchase no transient frame movement",
+      "passed": true,
+      "detail": {
+        "maxDelta": 0,
+        "samples": 31
+      }
+    },
+    {
+      "name": "lion-savanna purchase committed scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2015.3333740234375,
+          "maxScroll": 2015,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "paused": "false",
+          "tick": 13710
+        },
+        "after": {
+          "y": 2015.3333740234375,
+          "maxScroll": 2015,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "paused": "false",
+          "tick": 13722
+        }
+      }
+    },
+    {
+      "name": "lion-savanna purchase content following preview stays in place",
+      "passed": true,
+      "detail": {
+        "beforeBoxBottom": 778.3645935058594,
+        "afterBoxBottom": 778.3645935058594,
+        "maxContentDelta": 0
+      }
+    },
+    {
+      "name": "lion-savanna purchase document still supports original position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2015.3333740234375,
+          "maxScroll": 2015,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "paused": "false",
+          "tick": 13710
+        },
+        "after": {
+          "y": 2015.3333740234375,
+          "maxScroll": 2015,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "paused": "false",
+          "tick": 13722
+        }
+      }
+    },
+    {
+      "name": "lion-savanna purchase chosen Build and habitat retained",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna purchase simulation remains running",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna purchase canonical resource count",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna purchase player may scroll afterwards",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna reserved layout released outside Build",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains purchase immediate scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1891.3333740234375,
+          "maxScroll": 1891,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "paused": "false",
+          "tick": 13735
+        },
+        "immediate": {
+          "y": 1891.3333740234375,
+          "maxScroll": 1891,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "paused": "false",
+          "tick": 13735
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains purchase no transient frame movement",
+      "passed": true,
+      "detail": {
+        "maxDelta": 0,
+        "samples": 41
+      }
+    },
+    {
+      "name": "giraffe-plains purchase committed scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1891.3333740234375,
+          "maxScroll": 1891,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "paused": "false",
+          "tick": 13735
+        },
+        "after": {
+          "y": 1891.3333740234375,
+          "maxScroll": 1891,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "paused": "false",
+          "tick": 13747
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains purchase content following preview stays in place",
+      "passed": true,
+      "detail": {
+        "beforeBoxBottom": 778.5520935058594,
+        "afterBoxBottom": 778.5520935058594,
+        "maxContentDelta": 0
+      }
+    },
+    {
+      "name": "giraffe-plains purchase document still supports original position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1891.3333740234375,
+          "maxScroll": 1891,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "paused": "false",
+          "tick": 13735
+        },
+        "after": {
+          "y": 1891.3333740234375,
+          "maxScroll": 1891,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "paused": "false",
+          "tick": 13747
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains purchase chosen Build and habitat retained",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains purchase simulation remains running",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains purchase canonical resource count",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains purchase player may scroll afterwards",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains reserved layout released outside Build",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands purchase immediate scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2169.333251953125,
+          "maxScroll": 2169,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "paused": "false",
+          "tick": 13762
+        },
+        "immediate": {
+          "y": 2169.333251953125,
+          "maxScroll": 2169,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "paused": "false",
+          "tick": 13762
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands purchase no transient frame movement",
+      "passed": true,
+      "detail": {
+        "maxDelta": 0,
+        "samples": 54
+      }
+    },
+    {
+      "name": "zebra-grasslands purchase committed scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2169.333251953125,
+          "maxScroll": 2169,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "paused": "false",
+          "tick": 13762
+        },
+        "after": {
+          "y": 2169.333251953125,
+          "maxScroll": 2169,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "paused": "false",
+          "tick": 13773
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands purchase content following preview stays in place",
+      "passed": true,
+      "detail": {
+        "beforeBoxBottom": 793.09375,
+        "afterBoxBottom": 793.09375,
+        "maxContentDelta": 0
+      }
+    },
+    {
+      "name": "zebra-grasslands purchase document still supports original position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2169.333251953125,
+          "maxScroll": 2169,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "paused": "false",
+          "tick": 13762
+        },
+        "after": {
+          "y": 2169.333251953125,
+          "maxScroll": 2169,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "paused": "false",
+          "tick": 13773
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands purchase chosen Build and habitat retained",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands purchase simulation remains running",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands purchase canonical resource count",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands purchase player may scroll afterwards",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands reserved layout released outside Build",
+      "passed": true
+    },
+    {
+      "name": "restores document anchoring after leaving Build",
+      "passed": true
+    },
+    {
+      "name": "valid V5 and single renderer",
+      "passed": true
+    },
+    {
+      "name": "no application errors or horizontal overflow",
+      "passed": true
+    }
+  ],
+  "rows": [
+    {
+      "name": "macaw-aviary purchase",
+      "before": {
+        "y": 1496,
+        "maxScroll": 1496,
+        "tab": "build",
+        "kind": "macaw-aviary",
+        "paused": "false",
+        "tick": 13657
+      },
+      "immediate": {
+        "y": 1496,
+        "maxScroll": 1496,
+        "tab": "build",
+        "kind": "macaw-aviary",
+        "paused": "false",
+        "tick": 13657
+      },
+      "after": {
+        "y": 1496,
+        "maxScroll": 1496,
+        "tab": "build",
+        "kind": "macaw-aviary",
+        "paused": "false",
+        "tick": 13668
+      },
+      "maxDelta": 0,
+      "beforeBoxBottom": 594.2708435058594,
+      "afterBoxBottom": 594.2708435058594,
+      "maxContentDelta": 0,
+      "samples": 46,
+      "resourcesBefore": 21,
+      "resourcesAfter": 22
+    },
+    {
+      "name": "elephant-grove purchase",
+      "before": {
+        "y": 2136.666748046875,
+        "maxScroll": 2137,
+        "tab": "build",
+        "kind": "elephant-grove",
+        "paused": "false",
+        "tick": 13682
+      },
+      "immediate": {
+        "y": 2136.666748046875,
+        "maxScroll": 2137,
+        "tab": "build",
+        "kind": "elephant-grove",
+        "paused": "false",
+        "tick": 13682
+      },
+      "after": {
+        "y": 2136.666748046875,
+        "maxScroll": 2137,
+        "tab": "build",
+        "kind": "elephant-grove",
+        "paused": "false",
+        "tick": 13694
+      },
+      "maxDelta": 0,
+      "beforeBoxBottom": 793.4375,
+      "afterBoxBottom": 793.4375,
+      "maxContentDelta": 0,
+      "samples": 34,
+      "resourcesBefore": 22,
+      "resourcesAfter": 23
+    },
+    {
+      "name": "lion-savanna purchase",
+      "before": {
+        "y": 2015.3333740234375,
+        "maxScroll": 2015,
+        "tab": "build",
+        "kind": "lion-savanna",
+        "paused": "false",
+        "tick": 13710
+      },
+      "immediate": {
+        "y": 2015.3333740234375,
+        "maxScroll": 2015,
+        "tab": "build",
+        "kind": "lion-savanna",
+        "paused": "false",
+        "tick": 13710
+      },
+      "after": {
+        "y": 2015.3333740234375,
+        "maxScroll": 2015,
+        "tab": "build",
+        "kind": "lion-savanna",
+        "paused": "false",
+        "tick": 13722
+      },
+      "maxDelta": 0,
+      "beforeBoxBottom": 778.3645935058594,
+      "afterBoxBottom": 778.3645935058594,
+      "maxContentDelta": 0,
+      "samples": 31,
+      "resourcesBefore": 23,
+      "resourcesAfter": 24
+    },
+    {
+      "name": "giraffe-plains purchase",
+      "before": {
+        "y": 1891.3333740234375,
+        "maxScroll": 1891,
+        "tab": "build",
+        "kind": "giraffe-plains",
+        "paused": "false",
+        "tick": 13735
+      },
+      "immediate": {
+        "y": 1891.3333740234375,
+        "maxScroll": 1891,
+        "tab": "build",
+        "kind": "giraffe-plains",
+        "paused": "false",
+        "tick": 13735
+      },
+      "after": {
+        "y": 1891.3333740234375,
+        "maxScroll": 1891,
+        "tab": "build",
+        "kind": "giraffe-plains",
+        "paused": "false",
+        "tick": 13747
+      },
+      "maxDelta": 0,
+      "beforeBoxBottom": 778.5520935058594,
+      "afterBoxBottom": 778.5520935058594,
+      "maxContentDelta": 0,
+      "samples": 41,
+      "resourcesBefore": 24,
+      "resourcesAfter": 25
+    },
+    {
+      "name": "zebra-grasslands purchase",
+      "before": {
+        "y": 2169.333251953125,
+        "maxScroll": 2169,
+        "tab": "build",
+        "kind": "zebra-grasslands",
+        "paused": "false",
+        "tick": 13762
+      },
+      "immediate": {
+        "y": 2169.333251953125,
+        "maxScroll": 2169,
+        "tab": "build",
+        "kind": "zebra-grasslands",
+        "paused": "false",
+        "tick": 13762
+      },
+      "after": {
+        "y": 2169.333251953125,
+        "maxScroll": 2169,
+        "tab": "build",
+        "kind": "zebra-grasslands",
+        "paused": "false",
+        "tick": 13773
+      },
+      "maxDelta": 0,
+      "beforeBoxBottom": 793.09375,
+      "afterBoxBottom": 793.09375,
+      "maxContentDelta": 0,
+      "samples": 54,
+      "resourcesBefore": 25,
+      "resourcesAfter": 26
+    }
+  ],
+  "errors": [],
+  "final": {
+    "y": 1925.3333740234375,
+    "maxScroll": 1925,
+    "tab": "missions",
+    "kind": "zebra-grasslands",
+    "paused": "false",
+    "tick": 13777,
+    "valid": true,
+    "canvases": 1
+  },
+  "qaCandidate": "build-scroll-r3",
+  "qaBundle": [
+    "/assets/index-DH-glkwT.js"
+  ]
+}

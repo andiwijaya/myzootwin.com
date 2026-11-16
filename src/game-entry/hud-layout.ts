@@ -1,4 +1,5 @@
 import {formatNumber} from './i18n-format.ts';
+import {mountBuildScrollStability} from './build-scroll-stability.ts';
 import { HUD_TABS, isHudTab, nextHudTab, welfareSummary, coinSummary, type HudTab } from './hud-summary.ts';
 import type { BirdsView } from '../game/animals/autonomy.ts';
 import type { EconomyView } from '../game/economy/spending.ts';
@@ -50,6 +51,7 @@ export function scrollHudTarget(target: Element | null | undefined, align: 'star
 }
 export function mountHudLayout(root: HTMLElement) {
     const events = new AbortController(), chrome = root.querySelector<HTMLElement>('[data-hud-chrome]'), options = root.querySelector<HTMLDetailsElement>('[data-hud-options]'), tabs = root.querySelector<HTMLElement>('[data-hud-tabs]'), stats = root.querySelector<HTMLElement>('[data-hud-stats]');
+    mountBuildScrollStability(root,events.signal);
     let resizeTimer: ReturnType<typeof setTimeout> | undefined;
     let viewportWidth = window.innerWidth;
     let pointerDown = false;

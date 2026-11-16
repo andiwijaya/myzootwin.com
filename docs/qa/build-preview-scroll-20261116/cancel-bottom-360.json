@@ -1,0 +1,860 @@
+{
+  "at": "2026-11-16T14:02:14.922Z",
+  "status": "PASS",
+  "mode": "cancel-bottom",
+  "scope": "Internal-browser viewport QA, source-owned DOM clicks and frame sampling, actual game commands/renderer/UUID IndexedDB synthetic save. Strict scrollY stability; no allowance for native anchoring or bottom clamping. Not a physical phone.",
+  "viewport": {
+    "width": 360,
+    "height": 780,
+    "documentWidth": 345
+  },
+  "checks": [
+    {
+      "name": "macaw-aviary cancel immediate scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1652,
+          "maxScroll": 1652,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "paused": "false",
+          "tick": 13666
+        },
+        "immediate": {
+          "y": 1652,
+          "maxScroll": 1652,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "paused": "false",
+          "tick": 13666
+        }
+      }
+    },
+    {
+      "name": "macaw-aviary cancel no transient frame movement",
+      "passed": true,
+      "detail": {
+        "maxDelta": 0,
+        "samples": 15
+      }
+    },
+    {
+      "name": "macaw-aviary cancel committed scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1652,
+          "maxScroll": 1652,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "paused": "false",
+          "tick": 13666
+        },
+        "after": {
+          "y": 1652,
+          "maxScroll": 1652,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "paused": "false",
+          "tick": 13683
+        }
+      }
+    },
+    {
+      "name": "macaw-aviary cancel content following preview stays in place",
+      "passed": true,
+      "detail": {
+        "beforeBoxBottom": 529.7708435058594,
+        "afterBoxBottom": 529.7708435058594,
+        "maxContentDelta": 0
+      }
+    },
+    {
+      "name": "macaw-aviary cancel document still supports original position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 1652,
+          "maxScroll": 1652,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "paused": "false",
+          "tick": 13666
+        },
+        "after": {
+          "y": 1652,
+          "maxScroll": 1652,
+          "tab": "build",
+          "kind": "macaw-aviary",
+          "paused": "false",
+          "tick": 13683
+        }
+      }
+    },
+    {
+      "name": "macaw-aviary cancel chosen Build and habitat retained",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary cancel simulation remains running",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary cancel canonical resource count",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary cancel player may scroll afterwards",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary reserved layout released outside Build",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove cancel immediate scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2310.666748046875,
+          "maxScroll": 2311,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "paused": "false",
+          "tick": 13711
+        },
+        "immediate": {
+          "y": 2310.666748046875,
+          "maxScroll": 2311,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "paused": "false",
+          "tick": 13711
+        }
+      }
+    },
+    {
+      "name": "elephant-grove cancel no transient frame movement",
+      "passed": true,
+      "detail": {
+        "maxDelta": 0,
+        "samples": 16
+      }
+    },
+    {
+      "name": "elephant-grove cancel committed scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2310.666748046875,
+          "maxScroll": 2311,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "paused": "false",
+          "tick": 13711
+        },
+        "after": {
+          "y": 2310.666748046875,
+          "maxScroll": 2311,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "paused": "false",
+          "tick": 13730
+        }
+      }
+    },
+    {
+      "name": "elephant-grove cancel content following preview stays in place",
+      "passed": true,
+      "detail": {
+        "beforeBoxBottom": 729.6145935058594,
+        "afterBoxBottom": 729.6145935058594,
+        "maxContentDelta": 0
+      }
+    },
+    {
+      "name": "elephant-grove cancel document still supports original position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2310.666748046875,
+          "maxScroll": 2311,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "paused": "false",
+          "tick": 13711
+        },
+        "after": {
+          "y": 2310.666748046875,
+          "maxScroll": 2311,
+          "tab": "build",
+          "kind": "elephant-grove",
+          "paused": "false",
+          "tick": 13730
+        }
+      }
+    },
+    {
+      "name": "elephant-grove cancel chosen Build and habitat retained",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove cancel simulation remains running",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove cancel canonical resource count",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove cancel player may scroll afterwards",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove reserved layout released outside Build",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna cancel immediate scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2202.666748046875,
+          "maxScroll": 2203,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "paused": "false",
+          "tick": 13755
+        },
+        "immediate": {
+          "y": 2202.666748046875,
+          "maxScroll": 2203,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "paused": "false",
+          "tick": 13755
+        }
+      }
+    },
+    {
+      "name": "lion-savanna cancel no transient frame movement",
+      "passed": true,
+      "detail": {
+        "maxDelta": 0,
+        "samples": 19
+      }
+    },
+    {
+      "name": "lion-savanna cancel committed scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2202.666748046875,
+          "maxScroll": 2203,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "paused": "false",
+          "tick": 13755
+        },
+        "after": {
+          "y": 2202.666748046875,
+          "maxScroll": 2203,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "paused": "false",
+          "tick": 13771
+        }
+      }
+    },
+    {
+      "name": "lion-savanna cancel content following preview stays in place",
+      "passed": true,
+      "detail": {
+        "beforeBoxBottom": 714.7396240234375,
+        "afterBoxBottom": 714.7396240234375,
+        "maxContentDelta": 0
+      }
+    },
+    {
+      "name": "lion-savanna cancel document still supports original position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2202.666748046875,
+          "maxScroll": 2203,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "paused": "false",
+          "tick": 13755
+        },
+        "after": {
+          "y": 2202.666748046875,
+          "maxScroll": 2203,
+          "tab": "build",
+          "kind": "lion-savanna",
+          "paused": "false",
+          "tick": 13771
+        }
+      }
+    },
+    {
+      "name": "lion-savanna cancel chosen Build and habitat retained",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna cancel simulation remains running",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna cancel canonical resource count",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna cancel player may scroll afterwards",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna reserved layout released outside Build",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains cancel immediate scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2130.666748046875,
+          "maxScroll": 2131,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "paused": "false",
+          "tick": 13788
+        },
+        "immediate": {
+          "y": 2130.666748046875,
+          "maxScroll": 2131,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "paused": "false",
+          "tick": 13788
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains cancel no transient frame movement",
+      "passed": true,
+      "detail": {
+        "maxDelta": 0,
+        "samples": 15
+      }
+    },
+    {
+      "name": "giraffe-plains cancel committed scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2130.666748046875,
+          "maxScroll": 2131,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "paused": "false",
+          "tick": 13788
+        },
+        "after": {
+          "y": 2130.666748046875,
+          "maxScroll": 2131,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "paused": "false",
+          "tick": 13806
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains cancel content following preview stays in place",
+      "passed": true,
+      "detail": {
+        "beforeBoxBottom": 714.9271240234375,
+        "afterBoxBottom": 714.9271240234375,
+        "maxContentDelta": 0
+      }
+    },
+    {
+      "name": "giraffe-plains cancel document still supports original position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2130.666748046875,
+          "maxScroll": 2131,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "paused": "false",
+          "tick": 13788
+        },
+        "after": {
+          "y": 2130.666748046875,
+          "maxScroll": 2131,
+          "tab": "build",
+          "kind": "giraffe-plains",
+          "paused": "false",
+          "tick": 13806
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains cancel chosen Build and habitat retained",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains cancel simulation remains running",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains cancel canonical resource count",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains cancel player may scroll afterwards",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains reserved layout released outside Build",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands cancel immediate scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2324.666748046875,
+          "maxScroll": 2325,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "paused": "false",
+          "tick": 13830
+        },
+        "immediate": {
+          "y": 2324.666748046875,
+          "maxScroll": 2325,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "paused": "false",
+          "tick": 13830
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands cancel no transient frame movement",
+      "passed": true,
+      "detail": {
+        "maxDelta": 0,
+        "samples": 17
+      }
+    },
+    {
+      "name": "zebra-grasslands cancel committed scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2324.666748046875,
+          "maxScroll": 2325,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "paused": "false",
+          "tick": 13830
+        },
+        "after": {
+          "y": 2324.666748046875,
+          "maxScroll": 2325,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "paused": "false",
+          "tick": 13846
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands cancel content following preview stays in place",
+      "passed": true,
+      "detail": {
+        "beforeBoxBottom": 729.2604217529297,
+        "afterBoxBottom": 729.2604217529297,
+        "maxContentDelta": 0
+      }
+    },
+    {
+      "name": "zebra-grasslands cancel document still supports original position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 2324.666748046875,
+          "maxScroll": 2325,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "paused": "false",
+          "tick": 13830
+        },
+        "after": {
+          "y": 2324.666748046875,
+          "maxScroll": 2325,
+          "tab": "build",
+          "kind": "zebra-grasslands",
+          "paused": "false",
+          "tick": 13846
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands cancel chosen Build and habitat retained",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands cancel simulation remains running",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands cancel canonical resource count",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands cancel player may scroll afterwards",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands reserved layout released outside Build",
+      "passed": true
+    },
+    {
+      "name": "Zoo path Escape immediate scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 5468,
+          "maxScroll": 5468,
+          "tab": "build",
+          "kind": null,
+          "paused": "false",
+          "tick": 13866
+        },
+        "immediate": {
+          "y": 5468,
+          "maxScroll": 5468,
+          "tab": "build",
+          "kind": null,
+          "paused": "false",
+          "tick": 13866
+        }
+      }
+    },
+    {
+      "name": "Zoo path Escape no transient frame movement",
+      "passed": true,
+      "detail": {
+        "maxDelta": 0,
+        "samples": 18
+      }
+    },
+    {
+      "name": "Zoo path Escape committed scroll unchanged",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 5468,
+          "maxScroll": 5468,
+          "tab": "build",
+          "kind": null,
+          "paused": "false",
+          "tick": 13866
+        },
+        "after": {
+          "y": 5468,
+          "maxScroll": 5468,
+          "tab": "build",
+          "kind": null,
+          "paused": "false",
+          "tick": 13883
+        }
+      }
+    },
+    {
+      "name": "Zoo path Escape content following preview stays in place",
+      "passed": true,
+      "detail": {
+        "beforeBoxBottom": -344.5208740234375,
+        "afterBoxBottom": -344.5208740234375,
+        "maxContentDelta": 0
+      }
+    },
+    {
+      "name": "Zoo path Escape document still supports original position",
+      "passed": true,
+      "detail": {
+        "before": {
+          "y": 5468,
+          "maxScroll": 5468,
+          "tab": "build",
+          "kind": null,
+          "paused": "false",
+          "tick": 13866
+        },
+        "after": {
+          "y": 5468,
+          "maxScroll": 5468,
+          "tab": "build",
+          "kind": null,
+          "paused": "false",
+          "tick": 13883
+        }
+      }
+    },
+    {
+      "name": "Zoo path Escape chosen Build and habitat retained",
+      "passed": true
+    },
+    {
+      "name": "Zoo path Escape simulation remains running",
+      "passed": true
+    },
+    {
+      "name": "Zoo path Escape canonical resource count",
+      "passed": true
+    },
+    {
+      "name": "Zoo path Escape player may scroll afterwards",
+      "passed": true
+    },
+    {
+      "name": "restores document anchoring after leaving Build",
+      "passed": true
+    },
+    {
+      "name": "valid V5 and single renderer",
+      "passed": true
+    },
+    {
+      "name": "no application errors or horizontal overflow",
+      "passed": true
+    }
+  ],
+  "rows": [
+    {
+      "name": "macaw-aviary cancel",
+      "before": {
+        "y": 1652,
+        "maxScroll": 1652,
+        "tab": "build",
+        "kind": "macaw-aviary",
+        "paused": "false",
+        "tick": 13666
+      },
+      "immediate": {
+        "y": 1652,
+        "maxScroll": 1652,
+        "tab": "build",
+        "kind": "macaw-aviary",
+        "paused": "false",
+        "tick": 13666
+      },
+      "after": {
+        "y": 1652,
+        "maxScroll": 1652,
+        "tab": "build",
+        "kind": "macaw-aviary",
+        "paused": "false",
+        "tick": 13683
+      },
+      "maxDelta": 0,
+      "beforeBoxBottom": 529.7708435058594,
+      "afterBoxBottom": 529.7708435058594,
+      "maxContentDelta": 0,
+      "samples": 15,
+      "resourcesBefore": 21,
+      "resourcesAfter": 21
+    },
+    {
+      "name": "elephant-grove cancel",
+      "before": {
+        "y": 2310.666748046875,
+        "maxScroll": 2311,
+        "tab": "build",
+        "kind": "elephant-grove",
+        "paused": "false",
+        "tick": 13711
+      },
+      "immediate": {
+        "y": 2310.666748046875,
+        "maxScroll": 2311,
+        "tab": "build",
+        "kind": "elephant-grove",
+        "paused": "false",
+        "tick": 13711
+      },
+      "after": {
+        "y": 2310.666748046875,
+        "maxScroll": 2311,
+        "tab": "build",
+        "kind": "elephant-grove",
+        "paused": "false",
+        "tick": 13730
+      },
+      "maxDelta": 0,
+      "beforeBoxBottom": 729.6145935058594,
+      "afterBoxBottom": 729.6145935058594,
+      "maxContentDelta": 0,
+      "samples": 16,
+      "resourcesBefore": 21,
+      "resourcesAfter": 21
+    },
+    {
+      "name": "lion-savanna cancel",
+      "before": {
+        "y": 2202.666748046875,
+        "maxScroll": 2203,
+        "tab": "build",
+        "kind": "lion-savanna",
+        "paused": "false",
+        "tick": 13755
+      },
+      "immediate": {
+        "y": 2202.666748046875,
+        "maxScroll": 2203,
+        "tab": "build",
+        "kind": "lion-savanna",
+        "paused": "false",
+        "tick": 13755
+      },
+      "after": {
+        "y": 2202.666748046875,
+        "maxScroll": 2203,
+        "tab": "build",
+        "kind": "lion-savanna",
+        "paused": "false",
+        "tick": 13771
+      },
+      "maxDelta": 0,
+      "beforeBoxBottom": 714.7396240234375,
+      "afterBoxBottom": 714.7396240234375,
+      "maxContentDelta": 0,
+      "samples": 19,
+      "resourcesBefore": 21,
+      "resourcesAfter": 21
+    },
+    {
+      "name": "giraffe-plains cancel",
+      "before": {
+        "y": 2130.666748046875,
+        "maxScroll": 2131,
+        "tab": "build",
+        "kind": "giraffe-plains",
+        "paused": "false",
+        "tick": 13788
+      },
+      "immediate": {
+        "y": 2130.666748046875,
+        "maxScroll": 2131,
+        "tab": "build",
+        "kind": "giraffe-plains",
+        "paused": "false",
+        "tick": 13788
+      },
+      "after": {
+        "y": 2130.666748046875,
+        "maxScroll": 2131,
+        "tab": "build",
+        "kind": "giraffe-plains",
+        "paused": "false",
+        "tick": 13806
+      },
+      "maxDelta": 0,
+      "beforeBoxBottom": 714.9271240234375,
+      "afterBoxBottom": 714.9271240234375,
+      "maxContentDelta": 0,
+      "samples": 15,
+      "resourcesBefore": 21,
+      "resourcesAfter": 21
+    },
+    {
+      "name": "zebra-grasslands cancel",
+      "before": {
+        "y": 2324.666748046875,
+        "maxScroll": 2325,
+        "tab": "build",
+        "kind": "zebra-grasslands",
+        "paused": "false",
+        "tick": 13830
+      },
+      "immediate": {
+        "y": 2324.666748046875,
+        "maxScroll": 2325,
+        "tab": "build",
+        "kind": "zebra-grasslands",
+        "paused": "false",
+        "tick": 13830
+      },
+      "after": {
+        "y": 2324.666748046875,
+        "maxScroll": 2325,
+        "tab": "build",
+        "kind": "zebra-grasslands",
+        "paused": "false",
+        "tick": 13846
+      },
+      "maxDelta": 0,
+      "beforeBoxBottom": 729.2604217529297,
+      "afterBoxBottom": 729.2604217529297,
+      "maxContentDelta": 0,
+      "samples": 17,
+      "resourcesBefore": 21,
+      "resourcesAfter": 21
+    },
+    {
+      "name": "Zoo path Escape",
+      "before": {
+        "y": 5468,
+        "maxScroll": 5468,
+        "tab": "build",
+        "kind": null,
+        "paused": "false",
+        "tick": 13866
+      },
+      "immediate": {
+        "y": 5468,
+        "maxScroll": 5468,
+        "tab": "build",
+        "kind": null,
+        "paused": "false",
+        "tick": 13866
+      },
+      "after": {
+        "y": 5468,
+        "maxScroll": 5468,
+        "tab": "build",
+        "kind": null,
+        "paused": "false",
+        "tick": 13883
+      },
+      "maxDelta": 0,
+      "beforeBoxBottom": -344.5208740234375,
+      "afterBoxBottom": -344.5208740234375,
+      "maxContentDelta": 0,
+      "samples": 18,
+      "resourcesBefore": 21,
+      "resourcesAfter": 21
+    }
+  ],
+  "errors": [],
+  "final": {
+    "y": 5428,
+    "maxScroll": 5757,
+    "tab": "missions",
+    "kind": null,
+    "paused": "false",
+    "tick": 13888,
+    "valid": true,
+    "canvases": 1
+  },
+  "qaCandidate": "build-scroll-r3",
+  "qaBundle": [
+    "/assets/index-DH-glkwT.js"
+  ]
+}
