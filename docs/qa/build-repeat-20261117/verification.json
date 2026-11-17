@@ -1,0 +1,122 @@
+{
+  "at": "2026-11-17T00:01:03.908Z",
+  "status": "PASS",
+  "method": "Codex internal browser on synthetic UUID saves; phone viewport emulation, not physical phones. Actual canonical UI commits. No owner-save injection or spending on the production origin.",
+  "sourceFingerprint": "e2875fafaab73fec3646c9bce07af1b862f307b817f4de1e888ccc1b8811d4df",
+  "qaCandidate": "build-repeat-r1-20261117",
+  "applicationChange": false,
+  "deployment": {
+    "action": "NOT_REQUIRED",
+    "reason": "No application bug found. All 130 live bodies match the product under audit; changes are QA tooling and evidence only.",
+    "existingCommit": "073576396ac03768e7420cf06e1ee2d2008bbe91",
+    "existingDeployment": "787ff474-b3b0-4139-af7b-2664408a5005",
+    "existingCompletedAtWib": "2026-11-17 05:44:58 WIB"
+  },
+  "browser": {
+    "profiles": [
+      {
+        "file": "repeat-360-build-repeat-r1-20261117.json",
+        "sha256": "4c3f299ba0ce4c2912032cca7c412464d8c50d86d03681bed5fb18218ce4b4e2",
+        "width": 360,
+        "height": 780,
+        "checks": 807,
+        "closures": 55,
+        "purchases": 5,
+        "transitions": 80,
+        "maxScrollDelta": 0,
+        "maxContentDelta": 0,
+        "maxPositiveHeightGrowth": 0,
+        "maxNaturalTail": 65.44792556762695,
+        "bundles": [
+          {
+            "url": "/assets/index-BN03fY2Q.js",
+            "sha256": "a2df731003d664557df247fa40bec5c9eadf2cbc21a2aa6889af06be6fbf3f91"
+          }
+        ]
+      },
+      {
+        "file": "repeat-390-build-repeat-r1-20261117.json",
+        "sha256": "8de03939123a71c6dc8484310d707cf2188b489b04eedcfd1bee1f1a9570ade8",
+        "width": 390,
+        "height": 844,
+        "checks": 807,
+        "closures": 55,
+        "purchases": 5,
+        "transitions": 80,
+        "maxScrollDelta": 0,
+        "maxContentDelta": 0,
+        "maxPositiveHeightGrowth": 0,
+        "maxNaturalTail": 65.44795608520508,
+        "bundles": [
+          {
+            "url": "/assets/index-BN03fY2Q.js",
+            "sha256": "a2df731003d664557df247fa40bec5c9eadf2cbc21a2aa6889af06be6fbf3f91"
+          }
+        ]
+      }
+    ],
+    "repeatChecks": 1614,
+    "repeatClosures": 110,
+    "purchases": 10,
+    "transitions": 160,
+    "nativeChecks": 70,
+    "nativeClosures": 10,
+    "totalChecks": 1684,
+    "maxScrollDelta": 0,
+    "maxContentDelta": 0,
+    "maxPositiveHeightGrowth": 0
+  },
+  "astro": {
+    "files": 693,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0
+  },
+  "build": {
+    "pages": 10
+  },
+  "productIdentity": [
+    {
+      "file": "play/index.html",
+      "sha256": "83d5e9abd1884915eb285801e6dd61f234428bdc749cf93ca9ac2bff2528d052"
+    },
+    {
+      "file": "_astro/BaseLayout.astro_astro_type_script_index_0_lang.BM0Yzlbn.js",
+      "sha256": "75f5c9dec97fc168bbd3df90166b33b3ee4c441d186d638cba9313295eaf7e13"
+    },
+    {
+      "file": "_astro/BaseLayout.CobipK0U.css",
+      "sha256": "b25de5e982e5c2a87f5a5b97323f92b49358136e0005cbe97a36736eb1353805"
+    },
+    {
+      "file": "_astro/dialog-focus.CS_awhan.js",
+      "sha256": "1c49e5f75581f00265e803464e1caea211865f20cc06223682b8336e763d2d64"
+    },
+    {
+      "file": "_astro/foundation-scene.DUadef3K.js",
+      "sha256": "1739994241c9ff950e9f97d809dc38a1d6b2090e029fae7b48cc6418897d5065"
+    },
+    {
+      "file": "_astro/play.BG-7FAAS.css",
+      "sha256": "bb3a0208707c551410b32ee9bdf359f3638377df6325b2b69dfee64f09273365"
+    },
+    {
+      "file": "_astro/PlayEntry.astro_astro_type_script_index_0_lang.BdVMjwKe.js",
+      "sha256": "d931310de1bc2c3264733160a54cf63192c2a21c0831a429b6acfd97b0fe7d08"
+    },
+    {
+      "file": "_astro/ZooHome.Dg2zfea9.css",
+      "sha256": "c90df36514d498089cc7cedf47fc18c717b4d8473bcdd08f1442dae85ec77f3a"
+    }
+  ],
+  "production": {
+    "bodyHashes": 130,
+    "nativeChecks": 32,
+    "ownerCoins": "4.381 ZC",
+    "ownerAnimals": "14",
+    "ownerPaused": true
+  },
+  "excludedFromGates": [
+    "failed-*.json"
+  ]
+}
