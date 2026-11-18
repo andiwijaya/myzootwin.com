@@ -43,3 +43,14 @@ HP merupakan emulasi viewport Chromium di browser internal. Perangkat Android/iP
 Jalur publikasi tetap GitHub `main` → Cloudflare Pages `myzootwin-com`, dengan `npm run build` dan keluaran produk `dist`. Hanya perubahan fitur dan bukti terkait yang dimasukkan ke commit; perubahan GLB lokal lain dibiarkan di luar commit. Identitas commit, status deployment dan pemeriksaan aset produksi disimpan di `deployment.json` dan `live-assets.json` pada direktori bukti.
 
 [Buka game](https://myzootwin.com/play/).
+
+### Hasil produksi
+
+- Source produksi: `57cb3be475c55cddf7bd82eed068e1dcb938fa41`, satu push fast-forward ke `main`.
+- Cloudflare Pages `a84004ab-726d-4095-8fb4-adaada18fd56`: **completed / success**, 18 November 2026 07:44:36 UTC / 14:44:36 WIB.
+- **16/16 pemeriksaan HTTP/aset lulus** pada apex dan origin deployment: markup kedua mode serta hash semua JavaScript/CSS runtime yang dikeluarkan. Satu respons apex awal tidak cocok; respons berikutnya dan seluruh pemeriksaan ulang cocok. Penyebab sementara tidak ditetapkan; hasil awal serta diagnosis dipertahankan.
+- Browser internal pada domain utama memverifikasi Putar satu pointer 0° → 304,33°, zoom 100% → 125%, mode Geser dan pan, reset serta kembali ke zoo. Konsol: 0 error/warning. IndexedDB tidak dibaca/ditulis lewat skrip browser, tidak ada reset, bangun, refill, impor atau ekspor. Simpanan IAB yang sudah ada dibuka melalui Continue dan Resume/Pause singkat; saldo terlihat 4.381 ZC dan 14 satwa tetap tersedia selama pemeriksaan kamera yang dijeda. Tidak ada klaim kesamaan tick sebelum Resume.
+- Origin deployment tidak dapat dibuka di browser internal (`ERR_BLOCKED_BY_CLIENT`); origin itu diverifikasi melalui HTTP/aset, sementara tes UI live memakai domain utama yang diminta. Tidak ada percobaan browser eksternal.
+- Akhir UI: zoo dijeda, mode Geser, sudut 0°, zoom 100%, satu kanvas. Override viewport direset dan tab QA yang dapat ditutup sudah ditutup. Tab error loopback pertama tidak dapat ditutup oleh alat karena kebijakan URL data; tab itu bersifat sementara.
+
+Bukti sesudah deployment dicatat dalam commit dokumentasi lokal tanpa push tambahan agar tidak memicu deployment kedua.
