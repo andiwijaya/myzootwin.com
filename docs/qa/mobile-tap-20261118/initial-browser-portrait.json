@@ -1,0 +1,56 @@
+{
+  "at": "2026-11-18T09:11:32.206Z",
+  "status": "FAIL",
+  "error": "Error: elephant-grove fit exact posed animal elephant-ayu {\"expected\":\"elephant-ayu\",\"body\":{\"x\":151.66777117262333,\"y\":433.2213047738163,\"z\":-0.5243806357048222},\"view\":{\"angle\":0,\"zoom\":1,\"x\":0,\"z\":0}}",
+  "method": "Internal browser only. Synthetic UUID V5 save, original WebGL GLBs/camera/frame driver/UI; injected canvas touch and mouse PointerEvents. Expected IDs come from independent raw raycasts on visible, clipped, posed render triangles. Not a physical-device touch/FPS claim.",
+  "viewport": {
+    "width": 360,
+    "height": 780,
+    "documentWidth": 345,
+    "devicePixelRatio": 1.0000000298023224
+  },
+  "checks": [
+    {
+      "name": "elephant-grove fit gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove fit exact posed animal elephant-ayu",
+      "passed": false,
+      "detail": {
+        "expected": "elephant-ayu",
+        "body": {
+          "x": 151.66777117262333,
+          "y": 433.2213047738163,
+          "z": -0.5243806357048222
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    }
+  ],
+  "cases": [],
+  "touchCosts": [
+    1.600000023841858
+  ],
+  "distinctAnimals": [],
+  "errors": [],
+  "final": {
+    "view": {
+      "angle": 0,
+      "zoom": 1,
+      "x": 0,
+      "z": 0
+    },
+    "selected": null,
+    "paused": true,
+    "valid": true,
+    "animals": 14,
+    "habitats": 5,
+    "canvas": 1
+  }
+}

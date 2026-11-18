@@ -7,7 +7,7 @@ export interface GestureTarget {
   rotateBy?(degrees:number):void;
   panZoomPixels?(dx:number,dy:number,factor:number,anchorX:number,anchorY:number):void;
 }
-export interface CameraGestureOptions {requestFrame?:()=>void;now?:()=>number;}
+export interface CameraGestureOptions {requestFrame?:()=>void;now?:()=>number;onTapStart?:(point:CameraPointer)=>void;}
 
 /** Raw pointers own the gesture immediately; camera work can be consumed once per visual frame. */
 export function createCameraGestures(target:GestureTarget, rect:()=>{left:number;top:number;width:number;height:number}, onTap?:(point:CameraPointer)=>void, dragMode:()=>CameraDragMode=()=> 'pan', options:CameraGestureOptions={}) {
@@ -44,7 +44,7 @@ export function createCameraGestures(target:GestureTarget, rect:()=>{left:number
     const p=held.get(id);if(!p)return;
     const elapsed=now()-p.started,tap=!cancelled&&!p.dragged&&elapsed>=0&&elapsed<=300;
     held.delete(id);
-    if(tap){taps++;onTap?.({id:p.id,x:p.x,y:p.y});}else suppressedTaps++;
+    if(tap){taps++;onTap?.({id:p.id,x:p.startX,y:p.startY,...(p.pointerType?{pointerType:p.pointerType}:{})});}else suppressedTaps++;
     dirty=false;
     if(pair){pair=undefined;for(const remaining of held.values()){remaining.dragged=true;remaining.startX=remaining.appliedX=remaining.x;remaining.startY=remaining.appliedY=remaining.y;}}
     if(!held.size)bounds=undefined;
@@ -55,6 +55,7 @@ export function createCameraGestures(target:GestureTarget, rect:()=>{left:number
       if(!held.size){const next=rect();if(![next.left,next.top,next.width,next.height].every(Number.isFinite)||next.width<=0||next.height<=0)return false;bounds=next;}
       else flush();
       held.set(p.id,{...p,startX:p.x,startY:p.y,appliedX:p.x,appliedY:p.y,travel:0,started:now(),dragged:false});
+      if(held.size===1&&p.pointerType==='touch')options.onTapStart?.({...p});
       if(held.size===2){for(const p of held.values())p.dragged=true;pair=samplePair();}return true;
     },
     move,

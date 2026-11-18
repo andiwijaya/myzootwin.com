@@ -15,6 +15,7 @@ import {runBuildScrollAudit} from './build-scroll-audit.ts';
 import {runBuildNavigationAudit} from './build-navigation-audit.ts';
 import {runBuildRepeatAudit} from './build-repeat-audit.ts';
 import {runMobileGestureAudit} from './mobile-gesture-audit.ts';
+import {runMobileTapAudit} from './mobile-tap-audit.ts';
 import {validateSpeciesHabitatPlacement} from '../../../src/game/world/species-habitat.ts';
 import {validatePathPlacement} from '../../../src/game/world/paths.ts';
 import type {PlacementView} from '../../../src/game/world/placement-preview.ts';
@@ -326,6 +327,7 @@ if(url.searchParams.has('build-scroll'))void runBuildScrollAudit({root,host,read
 if(url.searchParams.has('build-nav'))void runBuildNavigationAudit({root,host,read:()=>current!,session,errors,mode:url.searchParams.get('build-nav')!});
 if(url.searchParams.has('build-repeat'))void runBuildRepeatAudit({root,host,read:()=>current!,session,errors});
 if(url.searchParams.has('mobile-gestures'))void runMobileGestureAudit({root,host,read:()=>current!,session,errors,selectHome});
+if(url.searchParams.has('mobile-taps'))void runMobileTapAudit({root,host,read:()=>current!,session,errors,camera:()=>camera,scene:()=>renderScene});
 document.querySelector('#qa-inspect')!.addEventListener('click',()=>{void report();});
 document.querySelector('#qa-context')!.addEventListener('click',()=>{renderer?.getContext().getExtension('WEBGL_lose_context')?.loseContext();});
 window.addEventListener('pagehide',()=>{closed=true;handle.dispose();},{once:true});

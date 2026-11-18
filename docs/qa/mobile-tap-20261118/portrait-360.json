@@ -1,0 +1,3307 @@
+{
+  "at": "2026-11-18T09:13:39.974Z",
+  "status": "PASS",
+  "method": "Internal browser only. Synthetic UUID V5 save, original WebGL GLBs/camera/frame driver/UI; injected canvas touch and mouse PointerEvents. Expected IDs come from independent raw raycasts on visible, clipped, posed render triangles. Not a physical-device touch/FPS claim.",
+  "viewport": {
+    "width": 360,
+    "height": 780,
+    "documentWidth": 345,
+    "devicePixelRatio": 1.0000000298023224
+  },
+  "checks": [
+    {
+      "name": "elephant-grove fit gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove fit exact posed animal elephant-ayu",
+      "passed": true,
+      "detail": {
+        "expected": "elephant-ayu",
+        "actual": "elephant-ayu",
+        "body": {
+          "x": 151.66777117262333,
+          "y": 433.2227570171695,
+          "z": -0.5243801136688048
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "elephant-grove fit near silhouette selects visible animal elephant-ayu",
+      "passed": true,
+      "detail": {
+        "expected": "elephant-ayu",
+        "actual": "elephant-ayu",
+        "oldExact": "habitat-actual-elephant-test",
+        "point": {
+          "x": 214.66777117262333,
+          "y": 433.2227570171695
+        }
+      }
+    },
+    {
+      "name": "elephant-grove fit exact posed animal elephant-nara",
+      "passed": true,
+      "detail": {
+        "expected": "elephant-nara",
+        "actual": "elephant-nara",
+        "body": {
+          "x": 140.57243656888653,
+          "y": 367.86621243624506,
+          "z": -0.4595167540436407
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "elephant-grove fit has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        },
+        "meshes": [
+          "elephant-ayu",
+          "elephant-nara"
+        ]
+      }
+    },
+    {
+      "name": "elephant-grove fit small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove fit cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove fit empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove fit inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove rotate gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove rotate exact posed animal elephant-ayu",
+      "passed": true,
+      "detail": {
+        "expected": "elephant-ayu",
+        "actual": "elephant-ayu",
+        "body": {
+          "x": 188.19256158251815,
+          "y": 444.1338847377834,
+          "z": -0.5255595062083067
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "elephant-grove rotate exact posed animal elephant-nara",
+      "passed": true,
+      "detail": {
+        "expected": "elephant-nara",
+        "actual": "elephant-nara",
+        "body": {
+          "x": 89.06468677899738,
+          "y": 382.5931818477515,
+          "z": -0.47493575822500955
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "elephant-grove rotate near silhouette selects visible animal elephant-nara",
+      "passed": true,
+      "detail": {
+        "expected": "elephant-nara",
+        "actual": "elephant-nara",
+        "oldExact": "habitat-actual-elephant-test",
+        "point": {
+          "x": 156.06468677899738,
+          "y": 382.5931818477515
+        }
+      }
+    },
+    {
+      "name": "elephant-grove rotate has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 325.8,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        },
+        "meshes": [
+          "elephant-ayu",
+          "elephant-nara"
+        ]
+      }
+    },
+    {
+      "name": "elephant-grove rotate small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove rotate cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove rotate empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove rotate inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pinch gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pinch exact posed animal elephant-ayu",
+      "passed": true,
+      "detail": {
+        "expected": "elephant-ayu",
+        "actual": "elephant-ayu",
+        "body": {
+          "x": 137.20187387721822,
+          "y": 463.51027310665336,
+          "z": -0.5243857664015844
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "elephant-grove pinch near silhouette selects visible animal elephant-ayu",
+      "passed": true,
+      "detail": {
+        "expected": "elephant-ayu",
+        "actual": "elephant-ayu",
+        "oldExact": "habitat-actual-elephant-test",
+        "point": {
+          "x": 126.20187387721822,
+          "y": 463.51027310665336
+        }
+      }
+    },
+    {
+      "name": "elephant-grove pinch exact posed animal elephant-nara",
+      "passed": true,
+      "detail": {
+        "expected": "elephant-nara",
+        "actual": "elephant-nara",
+        "body": {
+          "x": 118.33980505086564,
+          "y": 352.43173971464967,
+          "z": -0.4595165723044672
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "elephant-grove pinch has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": 0,
+          "z": 0
+        },
+        "meshes": [
+          "elephant-ayu",
+          "elephant-nara"
+        ]
+      }
+    },
+    {
+      "name": "elephant-grove pinch small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pinch cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pinch empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pinch inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pan gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pan exact posed animal elephant-ayu",
+      "passed": true,
+      "detail": {
+        "expected": "elephant-ayu",
+        "actual": "elephant-ayu",
+        "body": {
+          "x": 153.21838624902546,
+          "y": 472.48708129677334,
+          "z": -0.5294730421751338
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": -0.40379300118031847,
+          "z": -0.04223167666178396
+        }
+      }
+    },
+    {
+      "name": "elephant-grove pan near silhouette selects visible animal elephant-ayu",
+      "passed": true,
+      "detail": {
+        "expected": "elephant-ayu",
+        "actual": "elephant-ayu",
+        "oldExact": "habitat-actual-elephant-test",
+        "point": {
+          "x": 142.21838624902546,
+          "y": 472.48708129677334
+        }
+      }
+    },
+    {
+      "name": "elephant-grove pan exact posed animal elephant-nara",
+      "passed": true,
+      "detail": {
+        "expected": "elephant-nara",
+        "actual": "elephant-nara",
+        "body": {
+          "x": 134.35631742267287,
+          "y": 361.42873868183653,
+          "z": -0.4645995786943662
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": -0.40379300118031847,
+          "z": -0.04223167666178396
+        }
+      }
+    },
+    {
+      "name": "elephant-grove pan has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": -0.40379300118031847,
+          "z": -0.04223167666178396
+        },
+        "meshes": [
+          "elephant-ayu",
+          "elephant-nara"
+        ]
+      }
+    },
+    {
+      "name": "elephant-grove pan small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pan cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pan empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pan inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove combined gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove combined exact posed animal elephant-ayu",
+      "passed": true,
+      "detail": {
+        "expected": "elephant-ayu",
+        "actual": "elephant-ayu",
+        "body": {
+          "x": 215.49669926595686,
+          "y": 490.238978220229,
+          "z": -0.5293754953823679
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1.6999999999999995,
+          "x": -0.25475793557392556,
+          "z": -0.19339771148473328
+        }
+      }
+    },
+    {
+      "name": "elephant-grove combined near silhouette selects visible animal elephant-ayu",
+      "passed": true,
+      "detail": {
+        "expected": "elephant-ayu",
+        "actual": "elephant-ayu",
+        "oldExact": "habitat-actual-elephant-test",
+        "point": {
+          "x": 208.49669926595686,
+          "y": 490.238978220229
+        }
+      }
+    },
+    {
+      "name": "elephant-grove combined exact posed animal elephant-nara",
+      "passed": true,
+      "detail": {
+        "expected": "elephant-nara",
+        "actual": "elephant-nara",
+        "body": {
+          "x": 46.97931209997158,
+          "y": 385.68891662600424,
+          "z": -0.47873974297828714
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1.6999999999999995,
+          "x": -0.25475793557392556,
+          "z": -0.19339771148473328
+        }
+      }
+    },
+    {
+      "name": "elephant-grove combined has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 325.8,
+          "zoom": 1.6999999999999995,
+          "x": -0.25475793557392556,
+          "z": -0.19339771148473328
+        },
+        "meshes": [
+          "elephant-ayu",
+          "elephant-nara"
+        ]
+      }
+    },
+    {
+      "name": "elephant-grove combined small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove combined cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove combined empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove combined inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna fit gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna fit exact posed animal lion-raka",
+      "passed": true,
+      "detail": {
+        "expected": "lion-raka",
+        "actual": "lion-raka",
+        "body": {
+          "x": 235.53734429206148,
+          "y": 418.29639706825554,
+          "z": -0.5035458540860567
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "lion-savanna fit near silhouette selects visible animal lion-raka",
+      "passed": true,
+      "detail": {
+        "expected": "lion-raka",
+        "actual": "lion-raka",
+        "oldExact": "habitat-lion-test",
+        "point": {
+          "x": 242.53734429206148,
+          "y": 418.29639706825554
+        }
+      }
+    },
+    {
+      "name": "lion-savanna fit exact posed animal lion-sena",
+      "passed": true,
+      "detail": {
+        "expected": "lion-sena",
+        "actual": "lion-sena",
+        "body": {
+          "x": 159.92949142616675,
+          "y": 396.61794417763133,
+          "z": -0.47682583639202547
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "lion-savanna fit exact posed animal lion-tala",
+      "passed": true,
+      "detail": {
+        "expected": "lion-tala",
+        "actual": "lion-tala",
+        "body": {
+          "x": 219.82933231487138,
+          "y": 393.39788823925187,
+          "z": -0.47322744394109173
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "lion-savanna fit has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        },
+        "meshes": [
+          "lion-raka",
+          "lion-sena",
+          "lion-tala"
+        ]
+      }
+    },
+    {
+      "name": "lion-savanna fit small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna fit cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna fit empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna fit inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna rotate gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna rotate exact posed animal lion-raka",
+      "passed": true,
+      "detail": {
+        "expected": "lion-raka",
+        "actual": "lion-raka",
+        "body": {
+          "x": 249.4899221594347,
+          "y": 400.682396223914,
+          "z": -0.4813311773479605
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "lion-savanna rotate near silhouette selects visible animal lion-raka",
+      "passed": true,
+      "detail": {
+        "expected": "lion-raka",
+        "actual": "lion-raka",
+        "oldExact": "habitat-lion-test",
+        "point": {
+          "x": 256.48992215943474,
+          "y": 400.682396223914
+        }
+      }
+    },
+    {
+      "name": "lion-savanna rotate exact posed animal lion-sena",
+      "passed": true,
+      "detail": {
+        "expected": "lion-sena",
+        "actual": "lion-sena",
+        "body": {
+          "x": 143.29409245666295,
+          "y": 405.05004708064496,
+          "z": -0.48269063400091816
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "lion-savanna rotate exact posed animal lion-tala",
+      "passed": true,
+      "detail": {
+        "expected": "lion-tala",
+        "actual": "lion-tala",
+        "body": {
+          "x": 202.36401773200853,
+          "y": 381.13602324846767,
+          "z": -0.46158931999459407
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "lion-savanna rotate has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 325.8,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        },
+        "meshes": [
+          "lion-raka",
+          "lion-sena",
+          "lion-tala"
+        ]
+      }
+    },
+    {
+      "name": "lion-savanna rotate small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna rotate cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna rotate empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna rotate inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pinch gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pinch exact posed animal lion-raka",
+      "passed": true,
+      "detail": {
+        "expected": "lion-raka",
+        "actual": "lion-raka",
+        "body": {
+          "x": 279.780148180263,
+          "y": 438.1621941078313,
+          "z": -0.5035458540860567
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "lion-savanna pinch near silhouette selects visible animal lion-raka",
+      "passed": true,
+      "detail": {
+        "expected": "lion-raka",
+        "actual": "lion-raka",
+        "oldExact": "habitat-lion-test",
+        "point": {
+          "x": 286.780148180263,
+          "y": 438.1621941078313
+        }
+      }
+    },
+    {
+      "name": "lion-savanna pinch exact posed animal lion-sena",
+      "passed": true,
+      "detail": {
+        "expected": "lion-sena",
+        "actual": "lion-sena",
+        "body": {
+          "x": 166.66190862669916,
+          "y": 397.47207546373295,
+          "z": -0.4784111300579801
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "lion-savanna pinch exact posed animal lion-tala",
+      "passed": true,
+      "detail": {
+        "expected": "lion-tala",
+        "actual": "lion-tala",
+        "body": {
+          "x": 267.03394658058784,
+          "y": 402.1923853142922,
+          "z": -0.47740664465543825
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "lion-savanna pinch has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": 0,
+          "z": 0
+        },
+        "meshes": [
+          "lion-raka",
+          "lion-sena",
+          "lion-tala"
+        ]
+      }
+    },
+    {
+      "name": "lion-savanna pinch small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pinch cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pinch empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pinch inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pan gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pan exact posed animal lion-raka",
+      "passed": true,
+      "detail": {
+        "expected": "lion-raka",
+        "actual": "lion-raka",
+        "body": {
+          "x": 295.79666055207036,
+          "y": 447.152548394344,
+          "z": -0.5094556569727307
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": -0.4693438130602401,
+          "z": -0.04908746832765798
+        }
+      }
+    },
+    {
+      "name": "lion-savanna pan near silhouette selects visible animal lion-raka",
+      "passed": true,
+      "detail": {
+        "expected": "lion-raka",
+        "actual": "lion-raka",
+        "oldExact": "habitat-lion-test",
+        "point": {
+          "x": 302.79666055207036,
+          "y": 447.152548394344
+        }
+      }
+    },
+    {
+      "name": "lion-savanna pan exact posed animal lion-sena",
+      "passed": true,
+      "detail": {
+        "expected": "lion-sena",
+        "actual": "lion-sena",
+        "body": {
+          "x": 191.95032704892475,
+          "y": 400.4944329301511,
+          "z": -0.4828166766612433
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": -0.4693438130602401,
+          "z": -0.04908746832765798
+        }
+      }
+    },
+    {
+      "name": "lion-savanna pan exact posed animal lion-tala",
+      "passed": true,
+      "detail": {
+        "expected": "lion-tala",
+        "actual": "lion-tala",
+        "body": {
+          "x": 290.971338705467,
+          "y": 414.79072982140326,
+          "z": -0.4856881573036256
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": -0.4693438130602401,
+          "z": -0.04908746832765798
+        }
+      }
+    },
+    {
+      "name": "lion-savanna pan has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": -0.4693438130602401,
+          "z": -0.04908746832765798
+        },
+        "meshes": [
+          "lion-raka",
+          "lion-sena",
+          "lion-tala"
+        ]
+      }
+    },
+    {
+      "name": "lion-savanna pan small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pan cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pan empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pan inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna combined gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna combined exact posed animal lion-raka",
+      "passed": true,
+      "detail": {
+        "expected": "lion-raka",
+        "actual": "lion-raka",
+        "body": {
+          "x": 319.5160429266048,
+          "y": 417.20874695896333,
+          "z": -0.4859976070487215
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1.6999999999999995,
+          "x": -0.2847279544086463,
+          "z": -0.24036439906020599
+        }
+      }
+    },
+    {
+      "name": "lion-savanna combined near silhouette selects visible animal lion-raka",
+      "passed": true,
+      "detail": {
+        "expected": "lion-raka",
+        "actual": "lion-raka",
+        "oldExact": "habitat-lion-test",
+        "point": {
+          "x": 328.5160429266048,
+          "y": 417.20874695896333
+        }
+      }
+    },
+    {
+      "name": "lion-savanna combined exact posed animal lion-sena",
+      "passed": true,
+      "detail": {
+        "expected": "lion-sena",
+        "actual": "lion-sena",
+        "body": {
+          "x": 147.13509044150086,
+          "y": 409.7107591911189,
+          "z": -0.47961130627619386
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1.6999999999999995,
+          "x": -0.2847279544086463,
+          "z": -0.24036439906020599
+        }
+      }
+    },
+    {
+      "name": "lion-savanna combined exact posed animal lion-tala",
+      "passed": true,
+      "detail": {
+        "expected": "lion-tala",
+        "actual": "lion-tala",
+        "body": {
+          "x": 269.96461135642124,
+          "y": 391.872303684912,
+          "z": -0.4703522831123629
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1.6999999999999995,
+          "x": -0.2847279544086463,
+          "z": -0.24036439906020599
+        }
+      }
+    },
+    {
+      "name": "lion-savanna combined has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 325.8,
+          "zoom": 1.6999999999999995,
+          "x": -0.2847279544086463,
+          "z": -0.24036439906020599
+        },
+        "meshes": [
+          "lion-raka",
+          "lion-sena",
+          "lion-tala"
+        ]
+      }
+    },
+    {
+      "name": "lion-savanna combined small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna combined cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna combined empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna combined inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains fit gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains fit exact posed animal giraffe-dira",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-dira",
+        "actual": "giraffe-dira",
+        "body": {
+          "x": 194.9106088496919,
+          "y": 407.92227769266407,
+          "z": -0.4979876336539658
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains fit near silhouette selects visible animal giraffe-dira",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-dira",
+        "actual": "giraffe-dira",
+        "oldExact": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+        "point": {
+          "x": 201.9106088496919,
+          "y": 407.92227769266407
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains fit exact posed animal giraffe-sora",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-sora",
+        "actual": "giraffe-sora",
+        "body": {
+          "x": 147.44311337327366,
+          "y": 415.7083916883844,
+          "z": -0.5072591823116068
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains fit exact posed animal giraffe-lila",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-lila",
+        "actual": "giraffe-lila",
+        "body": {
+          "x": 88.47567055191156,
+          "y": 411.4529535154618,
+          "z": -0.501933141890647
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains fit has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        },
+        "meshes": [
+          "giraffe-dira",
+          "giraffe-sora",
+          "giraffe-lila"
+        ]
+      }
+    },
+    {
+      "name": "giraffe-plains fit small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains fit cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains fit empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains fit inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains rotate gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains rotate exact posed animal giraffe-dira",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-dira",
+        "actual": "giraffe-dira",
+        "body": {
+          "x": 195.7728903429162,
+          "y": 407.09454255877097,
+          "z": -0.4940586271026437
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains rotate near silhouette selects visible animal giraffe-dira",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-dira",
+        "actual": "giraffe-dira",
+        "oldExact": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+        "point": {
+          "x": 202.7728903429162,
+          "y": 407.09454255877097
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains rotate exact posed animal giraffe-sora",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-sora",
+        "actual": "giraffe-sora",
+        "body": {
+          "x": 158.62201981910914,
+          "y": 423.67860354440245,
+          "z": -0.5096910354572013
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains rotate exact posed animal giraffe-lila",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-lila",
+        "actual": "giraffe-lila",
+        "body": {
+          "x": 96.97246180875165,
+          "y": 442.05357774971736,
+          "z": -0.5270115880366217
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains rotate has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 325.8,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        },
+        "meshes": [
+          "giraffe-dira",
+          "giraffe-sora",
+          "giraffe-lila"
+        ]
+      }
+    },
+    {
+      "name": "giraffe-plains rotate small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains rotate cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains rotate empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains rotate inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pinch gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pinch exact posed animal giraffe-dira",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-dira",
+        "actual": "giraffe-dira",
+        "body": {
+          "x": 190.80306980038932,
+          "y": 426.42541366517287,
+          "z": -0.501865483294151
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains pinch near silhouette selects visible animal giraffe-dira",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-dira",
+        "actual": "giraffe-dira",
+        "oldExact": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+        "point": {
+          "x": 203.80306980038932,
+          "y": 426.42541366517287
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains pinch exact posed animal giraffe-sora",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-sora",
+        "actual": "giraffe-sora",
+        "body": {
+          "x": 147.18418234407056,
+          "y": 423.9051806493263,
+          "z": -0.5002088099443048
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains pinch exact posed animal giraffe-lila",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-lila",
+        "actual": "giraffe-lila",
+        "body": {
+          "x": 31.05544128525764,
+          "y": 421.3737633988667,
+          "z": -0.5013309895927839
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains pinch has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": 0,
+          "z": 0
+        },
+        "meshes": [
+          "giraffe-dira",
+          "giraffe-sora",
+          "giraffe-lila"
+        ]
+      }
+    },
+    {
+      "name": "giraffe-plains pinch small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pinch cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pinch empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pinch inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pan gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pan exact posed animal giraffe-dira",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-dira",
+        "actual": "giraffe-dira",
+        "body": {
+          "x": 206.41583080210268,
+          "y": 430.7445256232138,
+          "z": -0.5047046484153512
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": -0.4693438130602402,
+          "z": -0.04908746832765795
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains pan near silhouette selects visible animal giraffe-dira",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-dira",
+        "actual": "giraffe-dira",
+        "oldExact": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+        "point": {
+          "x": 219.41583080210268,
+          "y": 430.7445256232138
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains pan exact posed animal giraffe-sora",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-sora",
+        "actual": "giraffe-sora",
+        "body": {
+          "x": 166.6795498512499,
+          "y": 437.1481260626807,
+          "z": -0.508914050531911
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": -0.4693438130602402,
+          "z": -0.04908746832765795
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains pan exact posed animal giraffe-lila",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-lila",
+        "actual": "giraffe-lila",
+        "body": {
+          "x": 38.12862330810297,
+          "y": 427.3065101433904,
+          "z": -0.5024446714267277
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": -0.4693438130602402,
+          "z": -0.04908746832765795
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains pan has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": -0.4693438130602402,
+          "z": -0.04908746832765795
+        },
+        "meshes": [
+          "giraffe-dira",
+          "giraffe-sora",
+          "giraffe-lila"
+        ]
+      }
+    },
+    {
+      "name": "giraffe-plains pan small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pan cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pan empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pan inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains combined gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains combined exact posed animal giraffe-dira",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-dira",
+        "actual": "giraffe-dira",
+        "body": {
+          "x": 205.28822245273517,
+          "y": 420.17068401682536,
+          "z": -0.4946417421434518
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1.6999999999999995,
+          "x": -0.3041643219981273,
+          "z": -0.1048482763388846
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains combined near silhouette selects visible animal giraffe-dira",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-dira",
+        "actual": "giraffe-dira",
+        "oldExact": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+        "point": {
+          "x": 172.28822245273517,
+          "y": 420.17068401682536
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains combined exact posed animal giraffe-sora",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-sora",
+        "actual": "giraffe-sora",
+        "body": {
+          "x": 189.46451281295495,
+          "y": 449.21537624564644,
+          "z": -0.5107464504302666
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1.6999999999999995,
+          "x": -0.3041643219981273,
+          "z": -0.1048482763388846
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains combined exact posed animal giraffe-lila",
+      "passed": true,
+      "detail": {
+        "expected": "giraffe-lila",
+        "actual": "giraffe-lila",
+        "body": {
+          "x": 45.16140733016733,
+          "y": 475.0232968013863,
+          "z": -0.5250564327418384
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1.6999999999999995,
+          "x": -0.3041643219981273,
+          "z": -0.1048482763388846
+        }
+      }
+    },
+    {
+      "name": "giraffe-plains combined has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 325.8,
+          "zoom": 1.6999999999999995,
+          "x": -0.3041643219981273,
+          "z": -0.1048482763388846
+        },
+        "meshes": [
+          "giraffe-dira",
+          "giraffe-sora",
+          "giraffe-lila"
+        ]
+      }
+    },
+    {
+      "name": "giraffe-plains combined small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains combined cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains combined empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains combined inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands fit gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands fit exact posed animal zebra-zaki",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-zaki",
+        "actual": "zebra-zaki",
+        "body": {
+          "x": 224.94528097820765,
+          "y": 399.03336033238577,
+          "z": -0.507545740310265
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands fit near silhouette selects visible animal zebra-zaki",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-zaki",
+        "actual": "zebra-zaki",
+        "oldExact": "habitat-zebra-codec",
+        "point": {
+          "x": 191.94528097820765,
+          "y": 399.03336033238577
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands fit exact posed animal zebra-zuri",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-zuri",
+        "actual": "zebra-zuri",
+        "body": {
+          "x": 249.3402890649475,
+          "y": 398.83954868450314,
+          "z": -0.5072989079356403
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands fit exact posed animal zebra-mira",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-mira",
+        "actual": "zebra-mira",
+        "body": {
+          "x": 148.49570517271533,
+          "y": 358.21819010643856,
+          "z": -0.45556483256995783
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands fit exact posed animal zebra-kira",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-kira",
+        "actual": "zebra-kira",
+        "body": {
+          "x": 134.62462926526814,
+          "y": 427.3541404578799,
+          "z": -0.5436141886515868
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands fit has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        },
+        "meshes": [
+          "zebra-zaki",
+          "zebra-zuri",
+          "zebra-mira",
+          "zebra-kira"
+        ]
+      }
+    },
+    {
+      "name": "zebra-grasslands fit small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands fit cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands fit empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands fit inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands rotate gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands rotate exact posed animal zebra-zaki",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-zaki",
+        "actual": "zebra-zaki",
+        "body": {
+          "x": 244.47742036026264,
+          "y": 384.92132632078795,
+          "z": -0.49091159848623933
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands rotate exact posed animal zebra-zuri",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-zuri",
+        "actual": "zebra-zuri",
+        "body": {
+          "x": 252.88416286868835,
+          "y": 372.1789614631373,
+          "z": -0.4780976192708791
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands rotate near silhouette selects visible animal zebra-zuri",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-zuri",
+        "actual": "zebra-zuri",
+        "oldExact": "habitat-zebra-codec",
+        "point": {
+          "x": 259.88416286868835,
+          "y": 372.1789614631373
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands rotate exact posed animal zebra-mira",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-mira",
+        "actual": "zebra-mira",
+        "body": {
+          "x": 105.98028411831952,
+          "y": 361.7935625054964,
+          "z": -0.4786930773003599
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands rotate exact posed animal zebra-kira",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-kira",
+        "actual": "zebra-kira",
+        "body": {
+          "x": 185.6258857009471,
+          "y": 442.8181412687263,
+          "z": -0.5491338038355853
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands rotate has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 325.8,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        },
+        "meshes": [
+          "zebra-zaki",
+          "zebra-zuri",
+          "zebra-mira",
+          "zebra-kira"
+        ]
+      }
+    },
+    {
+      "name": "zebra-grasslands rotate small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands rotate cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands rotate empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands rotate inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pinch gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pinch exact posed animal zebra-zaki",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-zaki",
+        "actual": "zebra-zaki",
+        "body": {
+          "x": 258.85802620464847,
+          "y": 419.9794342733305,
+          "z": -0.518456776639459
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands pinch near silhouette selects visible animal zebra-zaki",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-zaki",
+        "actual": "zebra-zaki",
+        "oldExact": "habitat-zebra-codec",
+        "point": {
+          "x": 265.85802620464847,
+          "y": 419.9794342733305
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands pinch exact posed animal zebra-zuri",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-zuri",
+        "actual": "zebra-zuri",
+        "body": {
+          "x": 290.565652564529,
+          "y": 397.266154628242,
+          "z": -0.5014409452395279
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands pinch exact posed animal zebra-mira",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-mira",
+        "actual": "zebra-mira",
+        "body": {
+          "x": 133.27317817777953,
+          "y": 347.45965141095775,
+          "z": -0.4641280131307255
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands pinch exact posed animal zebra-kira",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-kira",
+        "actual": "zebra-kira",
+        "body": {
+          "x": 130.05726846270932,
+          "y": 455.5506308205902,
+          "z": -0.5451052172257509
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": 0,
+          "z": 0
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands pinch has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": 0,
+          "z": 0
+        },
+        "meshes": [
+          "zebra-zaki",
+          "zebra-zuri",
+          "zebra-mira",
+          "zebra-kira"
+        ]
+      }
+    },
+    {
+      "name": "zebra-grasslands pinch small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pinch cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pinch empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pinch inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pan gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pan exact posed animal zebra-zaki",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-zaki",
+        "actual": "zebra-zaki",
+        "body": {
+          "x": 265.72924776885407,
+          "y": 424.80407454486175,
+          "z": -0.5220711936989275
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": -0.5348946249401616,
+          "z": -0.055943259993531974
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands pan near silhouette selects visible animal zebra-zaki",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-zaki",
+        "actual": "zebra-zaki",
+        "oldExact": "habitat-zebra-codec",
+        "point": {
+          "x": 265.72924776885407,
+          "y": 431.80407454486175
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands pan exact posed animal zebra-zuri",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-zuri",
+        "actual": "zebra-zuri",
+        "body": {
+          "x": 311.9550392333768,
+          "y": 400.41833999938234,
+          "z": -0.5038024296070331
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": -0.5348946249401616,
+          "z": -0.055943259993531974
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands pan exact posed animal zebra-mira",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-mira",
+        "actual": "zebra-mira",
+        "body": {
+          "x": 151.98012200092387,
+          "y": 364.4837637823255,
+          "z": -0.4745913949196314
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": -0.5348946249401616,
+          "z": -0.055943259993531974
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands pan exact posed animal zebra-kira",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-kira",
+        "actual": "zebra-kira",
+        "body": {
+          "x": 158.19129115458904,
+          "y": 465.01706670881515,
+          "z": -0.552197071838967
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": -0.5348946249401616,
+          "z": -0.055943259993531974
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands pan has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 0,
+          "zoom": 1.6999999999999995,
+          "x": -0.5348946249401616,
+          "z": -0.055943259993531974
+        },
+        "meshes": [
+          "zebra-zaki",
+          "zebra-zuri",
+          "zebra-mira",
+          "zebra-kira"
+        ]
+      }
+    },
+    {
+      "name": "zebra-grasslands pan small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pan cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pan empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pan inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands combined gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands combined exact posed animal zebra-zaki",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-zaki",
+        "actual": "zebra-zaki",
+        "body": {
+          "x": 280.0091366588401,
+          "y": 397.9095139734927,
+          "z": -0.5006631210939079
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1.6999999999999995,
+          "x": -0.32449442848806626,
+          "z": -0.2739348458563242
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands combined exact posed animal zebra-zuri",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-zuri",
+        "actual": "zebra-zuri",
+        "body": {
+          "x": 295.0828655519365,
+          "y": 355.2365170275168,
+          "z": -0.47542028181068074
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1.6999999999999995,
+          "x": -0.32449442848806626,
+          "z": -0.2739348458563242
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands combined near silhouette selects visible animal zebra-zuri",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-zuri",
+        "actual": "zebra-zuri",
+        "oldExact": "habitat-zebra-codec",
+        "point": {
+          "x": 302.0828655519365,
+          "y": 355.2365170275168
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands combined exact posed animal zebra-mira",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-mira",
+        "actual": "zebra-mira",
+        "body": {
+          "x": 90.61326844731987,
+          "y": 375.2714362582731,
+          "z": -0.4874758798658867
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1.6999999999999995,
+          "x": -0.32449442848806626,
+          "z": -0.2739348458563242
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands combined exact posed animal zebra-kira",
+      "passed": true,
+      "detail": {
+        "expected": "zebra-kira",
+        "actual": "zebra-kira",
+        "body": {
+          "x": 250.98007290136604,
+          "y": 476.86365175844105,
+          "z": -0.5473677529100044
+        },
+        "view": {
+          "angle": 325.8,
+          "zoom": 1.6999999999999995,
+          "x": -0.32449442848806626,
+          "z": -0.2739348458563242
+        }
+      }
+    },
+    {
+      "name": "zebra-grasslands combined has a proven visible animal",
+      "passed": true,
+      "detail": {
+        "view": {
+          "angle": 325.8,
+          "zoom": 1.6999999999999995,
+          "x": -0.32449442848806626,
+          "z": -0.2739348458563242
+        },
+        "meshes": [
+          "zebra-zaki",
+          "zebra-zuri",
+          "zebra-mira",
+          "zebra-kira"
+        ]
+      }
+    },
+    {
+      "name": "zebra-grasslands combined small drag preserves selected animal",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands combined cancelled tap preserves selection",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands combined empty corner does not snap to a distant animal",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands combined inspection does not mutate the command ledger",
+      "passed": true
+    },
+    {
+      "name": "all four selectable resident species have successful near-silhouette taps",
+      "passed": true
+    },
+    {
+      "name": "no overflow",
+      "passed": true
+    },
+    {
+      "name": "valid V5, fourteen animals, five habitats",
+      "passed": true
+    },
+    {
+      "name": "one world canvas",
+      "passed": true
+    },
+    {
+      "name": "no application errors",
+      "passed": true
+    }
+  ],
+  "cases": [
+    {
+      "kind": "elephant-grove",
+      "pose": "fit",
+      "view": {
+        "angle": 357.7731959463471,
+        "zoom": 1,
+        "x": 0,
+        "z": 0
+      },
+      "selected": [
+        {
+          "id": "elephant-ayu",
+          "point": {
+            "x": 151.66777117262333,
+            "y": 433.2227570171695,
+            "z": -0.5243801136688048
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "elephant-nara",
+          "point": {
+            "x": 140.57243656888653,
+            "y": 367.86621243624506,
+            "z": -0.4595167540436407
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "elephant-ayu",
+          "point": {
+            "x": 214.66777117262333,
+            "y": 433.2227570171695
+          },
+          "oldExact": "habitat-actual-elephant-test",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "elephant-grove",
+      "pose": "rotate",
+      "view": {
+        "angle": 323.57319594634714,
+        "zoom": 1,
+        "x": 0,
+        "z": 0
+      },
+      "selected": [
+        {
+          "id": "elephant-ayu",
+          "point": {
+            "x": 188.19256158251815,
+            "y": 444.1338847377834,
+            "z": -0.5255595062083067
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "elephant-nara",
+          "point": {
+            "x": 89.06468677899738,
+            "y": 382.5931818477515,
+            "z": -0.47493575822500955
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "elephant-nara",
+          "point": {
+            "x": 156.06468677899738,
+            "y": 382.5931818477515
+          },
+          "oldExact": "habitat-actual-elephant-test",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "elephant-grove",
+      "pose": "pinch",
+      "view": {
+        "angle": 357.7731959463471,
+        "zoom": 1.6999999999999995,
+        "x": -0.0734147163788903,
+        "z": 0.06176078393040818
+      },
+      "selected": [
+        {
+          "id": "elephant-ayu",
+          "point": {
+            "x": 137.20187387721822,
+            "y": 463.51027310665336,
+            "z": -0.5243857664015844
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "elephant-nara",
+          "point": {
+            "x": 118.33980505086564,
+            "y": 352.43173971464967,
+            "z": -0.4595165723044672
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "elephant-ayu",
+          "point": {
+            "x": 126.20187387721822,
+            "y": 463.51027310665336
+          },
+          "oldExact": "habitat-actual-elephant-test",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "elephant-grove",
+      "pose": "pan",
+      "view": {
+        "angle": 357.7731959463471,
+        "zoom": 1.6999999999999995,
+        "x": -0.47720771755920866,
+        "z": 0.019529107268624557
+      },
+      "selected": [
+        {
+          "id": "elephant-ayu",
+          "point": {
+            "x": 153.21838624902546,
+            "y": 472.48708129677334,
+            "z": -0.5294730421751338
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "elephant-nara",
+          "point": {
+            "x": 134.35631742267287,
+            "y": 361.42873868183653,
+            "z": -0.4645995786943662
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "elephant-ayu",
+          "point": {
+            "x": 142.21838624902546,
+            "y": 472.48708129677334
+          },
+          "oldExact": "habitat-actual-elephant-test",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "elephant-grove",
+      "pose": "combined",
+      "view": {
+        "angle": 323.57319594634714,
+        "zoom": 1.6999999999999995,
+        "x": -0.3501925314071811,
+        "z": -0.1835817586102264
+      },
+      "selected": [
+        {
+          "id": "elephant-ayu",
+          "point": {
+            "x": 215.49669926595686,
+            "y": 490.238978220229,
+            "z": -0.5293754953823679
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "elephant-nara",
+          "point": {
+            "x": 46.97931209997158,
+            "y": 385.68891662600424,
+            "z": -0.47873974297828714
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "elephant-ayu",
+          "point": {
+            "x": 208.49669926595686,
+            "y": 490.238978220229
+          },
+          "oldExact": "habitat-actual-elephant-test",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "lion-savanna",
+      "pose": "fit",
+      "view": {
+        "angle": 357.7731959463471,
+        "zoom": 1,
+        "x": 0,
+        "z": 0
+      },
+      "selected": [
+        {
+          "id": "lion-raka",
+          "point": {
+            "x": 235.53734429206148,
+            "y": 418.29639706825554,
+            "z": -0.5035458540860567
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "lion-sena",
+          "point": {
+            "x": 159.92949142616675,
+            "y": 396.61794417763133,
+            "z": -0.47682583639202547
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "lion-tala",
+          "point": {
+            "x": 219.82933231487138,
+            "y": 393.39788823925187,
+            "z": -0.47322744394109173
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "lion-raka",
+          "point": {
+            "x": 242.53734429206148,
+            "y": 418.29639706825554
+          },
+          "oldExact": "habitat-lion-test",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "lion-savanna",
+      "pose": "rotate",
+      "view": {
+        "angle": 323.57319594634714,
+        "zoom": 1,
+        "x": 0,
+        "z": 0
+      },
+      "selected": [
+        {
+          "id": "lion-raka",
+          "point": {
+            "x": 249.4899221594347,
+            "y": 400.682396223914,
+            "z": -0.4813311773479605
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "lion-sena",
+          "point": {
+            "x": 143.29409245666295,
+            "y": 405.05004708064496,
+            "z": -0.48269063400091816
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "lion-tala",
+          "point": {
+            "x": 202.36401773200853,
+            "y": 381.13602324846767,
+            "z": -0.46158931999459407
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "lion-raka",
+          "point": {
+            "x": 256.48992215943474,
+            "y": 400.682396223914
+          },
+          "oldExact": "habitat-lion-test",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "lion-savanna",
+      "pose": "pinch",
+      "view": {
+        "angle": 357.7731959463471,
+        "zoom": 1.6999999999999995,
+        "x": -0.06079390243608129,
+        "z": 0.05114341180947157
+      },
+      "selected": [
+        {
+          "id": "lion-raka",
+          "point": {
+            "x": 279.780148180263,
+            "y": 438.1621941078313,
+            "z": -0.5035458540860567
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "lion-sena",
+          "point": {
+            "x": 166.66190862669916,
+            "y": 397.47207546373295,
+            "z": -0.4784111300579801
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "lion-tala",
+          "point": {
+            "x": 267.03394658058784,
+            "y": 402.1923853142922,
+            "z": -0.47740664465543825
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "lion-raka",
+          "point": {
+            "x": 286.780148180263,
+            "y": 438.1621941078313
+          },
+          "oldExact": "habitat-lion-test",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "lion-savanna",
+      "pose": "pan",
+      "view": {
+        "angle": 357.7731959463471,
+        "zoom": 1.6999999999999995,
+        "x": -0.5301377154963214,
+        "z": 0.0020559434818139266
+      },
+      "selected": [
+        {
+          "id": "lion-raka",
+          "point": {
+            "x": 295.79666055207036,
+            "y": 447.152548394344,
+            "z": -0.5094556569727307
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "lion-sena",
+          "point": {
+            "x": 191.95032704892475,
+            "y": 400.4944329301511,
+            "z": -0.4828166766612433
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "lion-tala",
+          "point": {
+            "x": 290.971338705467,
+            "y": 414.79072982140326,
+            "z": -0.4856881573036256
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "lion-raka",
+          "point": {
+            "x": 302.79666055207036,
+            "y": 447.152548394344
+          },
+          "oldExact": "habitat-lion-test",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "lion-savanna",
+      "pose": "combined",
+      "view": {
+        "angle": 323.57319594634714,
+        "zoom": 1.6999999999999995,
+        "x": -0.363756271812622,
+        "z": -0.2322359186845553
+      },
+      "selected": [
+        {
+          "id": "lion-raka",
+          "point": {
+            "x": 319.5160429266048,
+            "y": 417.20874695896333,
+            "z": -0.4859976070487215
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "lion-sena",
+          "point": {
+            "x": 147.13509044150086,
+            "y": 409.7107591911189,
+            "z": -0.47961130627619386
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "lion-tala",
+          "point": {
+            "x": 269.96461135642124,
+            "y": 391.872303684912,
+            "z": -0.4703522831123629
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "lion-raka",
+          "point": {
+            "x": 328.5160429266048,
+            "y": 417.20874695896333
+          },
+          "oldExact": "habitat-lion-test",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "giraffe-plains",
+      "pose": "fit",
+      "view": {
+        "angle": 357.7731959463471,
+        "zoom": 1,
+        "x": 0,
+        "z": 0
+      },
+      "selected": [
+        {
+          "id": "giraffe-dira",
+          "point": {
+            "x": 194.9106088496919,
+            "y": 407.92227769266407,
+            "z": -0.4979876336539658
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "giraffe-sora",
+          "point": {
+            "x": 147.44311337327366,
+            "y": 415.7083916883844,
+            "z": -0.5072591823116068
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "giraffe-lila",
+          "point": {
+            "x": 88.47567055191156,
+            "y": 411.4529535154618,
+            "z": -0.501933141890647
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "giraffe-dira",
+          "point": {
+            "x": 201.9106088496919,
+            "y": 407.92227769266407
+          },
+          "oldExact": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "giraffe-plains",
+      "pose": "rotate",
+      "view": {
+        "angle": 323.57319594634714,
+        "zoom": 1,
+        "x": 0,
+        "z": 0
+      },
+      "selected": [
+        {
+          "id": "giraffe-dira",
+          "point": {
+            "x": 195.7728903429162,
+            "y": 407.09454255877097,
+            "z": -0.4940586271026437
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "giraffe-sora",
+          "point": {
+            "x": 158.62201981910914,
+            "y": 423.67860354440245,
+            "z": -0.5096910354572013
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "giraffe-lila",
+          "point": {
+            "x": 96.97246180875165,
+            "y": 442.05357774971736,
+            "z": -0.5270115880366217
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "giraffe-dira",
+          "point": {
+            "x": 202.7728903429162,
+            "y": 407.09454255877097
+          },
+          "oldExact": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "giraffe-plains",
+      "pose": "pinch",
+      "view": {
+        "angle": 357.7731959463471,
+        "zoom": 1.6999999999999995,
+        "x": -0.09483848780028836,
+        "z": 0.0797837224227762
+      },
+      "selected": [
+        {
+          "id": "giraffe-dira",
+          "point": {
+            "x": 190.80306980038932,
+            "y": 426.42541366517287,
+            "z": -0.501865483294151
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "giraffe-sora",
+          "point": {
+            "x": 147.18418234407056,
+            "y": 423.9051806493263,
+            "z": -0.5002088099443048
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "giraffe-lila",
+          "point": {
+            "x": 31.05544128525764,
+            "y": 421.3737633988667,
+            "z": -0.5013309895927839
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "giraffe-dira",
+          "point": {
+            "x": 203.80306980038932,
+            "y": 426.42541366517287
+          },
+          "oldExact": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "giraffe-plains",
+      "pose": "pan",
+      "view": {
+        "angle": 357.7731959463471,
+        "zoom": 1.6999999999999995,
+        "x": -0.5641823008605282,
+        "z": 0.030696254095118336
+      },
+      "selected": [
+        {
+          "id": "giraffe-dira",
+          "point": {
+            "x": 206.41583080210268,
+            "y": 430.7445256232138,
+            "z": -0.5047046484153512
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "giraffe-sora",
+          "point": {
+            "x": 166.6795498512499,
+            "y": 437.1481260626807,
+            "z": -0.508914050531911
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "giraffe-lila",
+          "point": {
+            "x": 38.12862330810297,
+            "y": 427.3065101433904,
+            "z": -0.5024446714267277
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "giraffe-dira",
+          "point": {
+            "x": 219.41583080210268,
+            "y": 430.7445256232138
+          },
+          "oldExact": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "giraffe-plains",
+      "pose": "combined",
+      "view": {
+        "angle": 323.57319594634714,
+        "zoom": 1.6999999999999995,
+        "x": -0.42744849714832966,
+        "z": -0.0921678469528664
+      },
+      "selected": [
+        {
+          "id": "giraffe-dira",
+          "point": {
+            "x": 205.28822245273517,
+            "y": 420.17068401682536,
+            "z": -0.4946417421434518
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "giraffe-sora",
+          "point": {
+            "x": 189.46451281295495,
+            "y": 449.21537624564644,
+            "z": -0.5107464504302666
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "giraffe-lila",
+          "point": {
+            "x": 45.16140733016733,
+            "y": 475.0232968013863,
+            "z": -0.5250564327418384
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "giraffe-dira",
+          "point": {
+            "x": 172.28822245273517,
+            "y": 420.17068401682536
+          },
+          "oldExact": "habitat-385b11e9-32fa-44bd-bd3f-4b7501b4bf90",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "zebra-grasslands",
+      "pose": "fit",
+      "view": {
+        "angle": 357.7731959463471,
+        "zoom": 1,
+        "x": 0,
+        "z": 0
+      },
+      "selected": [
+        {
+          "id": "zebra-zaki",
+          "point": {
+            "x": 224.94528097820765,
+            "y": 399.03336033238577,
+            "z": -0.507545740310265
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "zebra-zuri",
+          "point": {
+            "x": 249.3402890649475,
+            "y": 398.83954868450314,
+            "z": -0.5072989079356403
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "zebra-mira",
+          "point": {
+            "x": 148.49570517271533,
+            "y": 358.21819010643856,
+            "z": -0.45556483256995783
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "zebra-kira",
+          "point": {
+            "x": 134.62462926526814,
+            "y": 427.3541404578799,
+            "z": -0.5436141886515868
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "zebra-zaki",
+          "point": {
+            "x": 191.94528097820765,
+            "y": 399.03336033238577
+          },
+          "oldExact": "habitat-zebra-codec",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "zebra-grasslands",
+      "pose": "rotate",
+      "view": {
+        "angle": 323.57319594634714,
+        "zoom": 1,
+        "x": 0,
+        "z": 0
+      },
+      "selected": [
+        {
+          "id": "zebra-zaki",
+          "point": {
+            "x": 244.47742036026264,
+            "y": 384.92132632078795,
+            "z": -0.49091159848623933
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "zebra-zuri",
+          "point": {
+            "x": 252.88416286868835,
+            "y": 372.1789614631373,
+            "z": -0.4780976192708791
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "zebra-mira",
+          "point": {
+            "x": 105.98028411831952,
+            "y": 361.7935625054964,
+            "z": -0.4786930773003599
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "zebra-kira",
+          "point": {
+            "x": 185.6258857009471,
+            "y": 442.8181412687263,
+            "z": -0.5491338038355853
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "zebra-zuri",
+          "point": {
+            "x": 259.88416286868835,
+            "y": 372.1789614631373
+          },
+          "oldExact": "habitat-zebra-codec",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "zebra-grasslands",
+      "pose": "pinch",
+      "view": {
+        "angle": 357.7731959463471,
+        "zoom": 1.6999999999999995,
+        "x": -0.05593039024119584,
+        "z": 0.047051938864713705
+      },
+      "selected": [
+        {
+          "id": "zebra-zaki",
+          "point": {
+            "x": 258.85802620464847,
+            "y": 419.9794342733305,
+            "z": -0.518456776639459
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "zebra-zuri",
+          "point": {
+            "x": 290.565652564529,
+            "y": 397.266154628242,
+            "z": -0.5014409452395279
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "zebra-mira",
+          "point": {
+            "x": 133.27317817777953,
+            "y": 347.45965141095775,
+            "z": -0.4641280131307255
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "zebra-kira",
+          "point": {
+            "x": 130.05726846270932,
+            "y": 455.5506308205902,
+            "z": -0.5451052172257509
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "zebra-zaki",
+          "point": {
+            "x": 265.85802620464847,
+            "y": 419.9794342733305
+          },
+          "oldExact": "habitat-zebra-codec",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "zebra-grasslands",
+      "pose": "pan",
+      "view": {
+        "angle": 357.7731959463471,
+        "zoom": 1.6999999999999995,
+        "x": -0.5908250151813572,
+        "z": -0.008891321128817964
+      },
+      "selected": [
+        {
+          "id": "zebra-zaki",
+          "point": {
+            "x": 265.72924776885407,
+            "y": 424.80407454486175,
+            "z": -0.5220711936989275
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "zebra-zuri",
+          "point": {
+            "x": 311.9550392333768,
+            "y": 400.41833999938234,
+            "z": -0.5038024296070331
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "zebra-mira",
+          "point": {
+            "x": 151.98012200092387,
+            "y": 364.4837637823255,
+            "z": -0.4745913949196314
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "zebra-kira",
+          "point": {
+            "x": 158.19129115458904,
+            "y": 465.01706670881515,
+            "z": -0.552197071838967
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "zebra-zaki",
+          "point": {
+            "x": 265.72924776885407,
+            "y": 431.80407454486175
+          },
+          "oldExact": "habitat-zebra-codec",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    },
+    {
+      "kind": "zebra-grasslands",
+      "pose": "combined",
+      "view": {
+        "angle": 323.57319594634714,
+        "zoom": 1.6999999999999995,
+        "x": -0.39720048049972334,
+        "z": -0.26645664391072366
+      },
+      "selected": [
+        {
+          "id": "zebra-zaki",
+          "point": {
+            "x": 280.0091366588401,
+            "y": 397.9095139734927,
+            "z": -0.5006631210939079
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "zebra-zuri",
+          "point": {
+            "x": 295.0828655519365,
+            "y": 355.2365170275168,
+            "z": -0.47542028181068074
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "zebra-mira",
+          "point": {
+            "x": 90.61326844731987,
+            "y": 375.2714362582731,
+            "z": -0.4874758798658867
+          },
+          "upDrift": 3
+        },
+        {
+          "id": "zebra-kira",
+          "point": {
+            "x": 250.98007290136604,
+            "y": 476.86365175844105,
+            "z": -0.5473677529100044
+          },
+          "upDrift": 3
+        }
+      ],
+      "misses": [
+        {
+          "id": "zebra-zuri",
+          "point": {
+            "x": 302.0828655519365,
+            "y": 355.2365170275168
+          },
+          "oldExact": "habitat-zebra-codec",
+          "method": "independent visible surface scan, seven CSS pixels beyond its final visible sample"
+        }
+      ]
+    }
+  ],
+  "touchCosts": [
+    12.300000071525574,
+    32,
+    6.299999952316284,
+    2.600000023841858,
+    10.300000071525574,
+    5.700000047683716,
+    27.5,
+    1.600000023841858,
+    10.100000023841858,
+    34.60000002384186,
+    6,
+    1.7999999523162842,
+    10.699999928474426,
+    27.899999976158142,
+    6.100000023841858,
+    1.5,
+    9.399999976158142,
+    30.200000047683716,
+    5.600000023841858,
+    1.600000023841858,
+    5.100000023841858,
+    25.300000071525574,
+    4.799999952316284,
+    8.299999952316284,
+    1.399999976158142,
+    13.800000071525574,
+    23.199999928474426,
+    8.800000071525574,
+    12.599999904632568,
+    1.899999976158142,
+    5.700000047683716,
+    25.899999976158142,
+    4.899999976158142,
+    8.199999928474426,
+    2.100000023841858,
+    5.100000023841858,
+    29.899999976158142,
+    5.800000071525574,
+    7.899999976158142,
+    1.2999999523162842,
+    7.899999976158142,
+    16.899999976158142,
+    4.899999976158142,
+    9.100000023841858,
+    1.5,
+    6.399999976158142,
+    18.200000047683716,
+    9.199999928474426,
+    5.200000047683716,
+    2.600000023841858,
+    7.699999928474426,
+    23.90000009536743,
+    7.299999952316284,
+    4.799999952316284,
+    2.299999952316284,
+    6.700000047683716,
+    17.699999928474426,
+    6.5,
+    4.799999952316284,
+    1.5999999046325684,
+    6.5,
+    17.699999928474426,
+    6.799999952316284,
+    4.899999976158142,
+    2.100000023841858,
+    10.5,
+    42.200000047683716,
+    10.700000047683716,
+    9.100000023841858,
+    2,
+    12,
+    38.39999997615814,
+    8.699999928474426,
+    8.800000071525574,
+    8.399999976158142,
+    3.1999999284744263,
+    15.399999976158142,
+    17,
+    54.299999952316284,
+    11.600000023841858,
+    11.800000071525574,
+    4.299999952316284,
+    17.600000023841858,
+    56.5,
+    16.899999976158142,
+    11.300000071525574,
+    10.900000095367432,
+    4.299999952316284,
+    15.5,
+    46.60000002384186,
+    10,
+    10.300000071525574,
+    8.299999952316284,
+    3.5,
+    20.899999976158142,
+    16.5,
+    36.89999997615814,
+    8.200000047683716,
+    9.800000071525574,
+    3.399999976158142,
+    11.899999976158142
+  ],
+  "distinctAnimals": [
+    "elephant-ayu",
+    "elephant-nara",
+    "giraffe-dira",
+    "giraffe-lila",
+    "giraffe-sora",
+    "lion-raka",
+    "lion-sena",
+    "lion-tala",
+    "zebra-kira",
+    "zebra-mira",
+    "zebra-zaki",
+    "zebra-zuri"
+  ],
+  "errors": [],
+  "final": {
+    "view": {
+      "angle": 0,
+      "zoom": 1,
+      "x": 0,
+      "z": 0
+    },
+    "selected": "giraffe-dira",
+    "paused": true,
+    "valid": true,
+    "animals": 14,
+    "habitats": 5,
+    "canvas": 1
+  }
+}

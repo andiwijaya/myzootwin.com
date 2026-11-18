@@ -1,0 +1,56 @@
+{
+  "at": "2026-11-18T09:10:27.309Z",
+  "status": "FAIL",
+  "error": "Error: elephant-grove fit exact posed animal elephant-nara {\"expected\":\"elephant-nara\",\"body\":{\"x\":418.1558231025164,\"y\":336.3472987472047,\"z\":-0.45989196367614815},\"view\":{\"angle\":0,\"zoom\":1,\"x\":0,\"z\":0}}",
+  "method": "Internal browser only. Synthetic UUID V5 save, original WebGL GLBs/camera/frame driver/UI; injected canvas touch and mouse PointerEvents. Expected IDs come from independent raw raycasts on visible, clipped, posed render triangles. Not a physical-device touch/FPS claim.",
+  "viewport": {
+    "width": 1280,
+    "height": 720,
+    "documentWidth": 1265,
+    "devicePixelRatio": 1.5
+  },
+  "checks": [
+    {
+      "name": "elephant-grove fit gestures cannot select an object",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove fit exact posed animal elephant-nara",
+      "passed": false,
+      "detail": {
+        "expected": "elephant-nara",
+        "body": {
+          "x": 418.1558231025164,
+          "y": 336.3472987472047,
+          "z": -0.45989196367614815
+        },
+        "view": {
+          "angle": 0,
+          "zoom": 1,
+          "x": 0,
+          "z": 0
+        }
+      }
+    }
+  ],
+  "cases": [],
+  "touchCosts": [
+    3.700000047683716
+  ],
+  "distinctAnimals": [],
+  "errors": [],
+  "final": {
+    "view": {
+      "angle": 0,
+      "zoom": 1,
+      "x": 0,
+      "z": 0
+    },
+    "selected": null,
+    "paused": true,
+    "valid": true,
+    "animals": 14,
+    "habitats": 5,
+    "canvas": 1
+  }
+}

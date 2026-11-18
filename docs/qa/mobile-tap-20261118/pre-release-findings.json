@@ -1,0 +1,21 @@
+{
+  "status": "RESOLVED_BEFORE_DEPLOY",
+  "initialRegression": {
+    "tests": 126,
+    "pass": 125,
+    "fail": 1,
+    "reason": "New explicit inventory extension required the same helper/assetId scanner projection as the historical receipt."
+  },
+  "initialBrowser": {
+    "reason": "DOMRect getters were not copied by object spread in the unshipped snapshot implementation. Replaced with explicit left/top/width/height copy, added prototype-accessor regression and reran all final browser cases.",
+    "preserved": [
+      "initial-browser-desktop.json",
+      "initial-browser-portrait.json"
+    ],
+    "desktopInitialViewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "viewportCorrection": "Override applied to the existing QA tab before navigation. Final receipts assert exact viewport dimensions."
+  }
+}
