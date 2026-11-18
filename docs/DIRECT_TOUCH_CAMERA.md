@@ -34,3 +34,14 @@ Jalur publikasi tetap GitHub `main` → Cloudflare Pages `myzootwin-com`, memaka
 [Buka game](https://myzootwin.com/play/).
 
 Pemeriksaan Astro atas 694 berkas: 0 error, 0 warning dan 0 hint. Build produksi menyelesaikan 10 halaman. Fingerprint sumber dan seluruh 160 berkas build dicatat pada receipt lokal.
+
+### Hasil produksi
+
+- Source produksi: `f6b0cae78109b6d81c9bde9194fd318307313675`. Satu push fast-forward, tanpa mengubah hosting, akses, dependency atau simpanan.
+- Cloudflare Pages `6b0d94e0-956b-465e-9f3b-c5080a8147d3`: **completed / success**, 18 November 2026 08:01:27 UTC / 15:01:27 WIB.
+- **16/16 pemeriksaan live lulus** pada domain utama dan origin deployment: markup bantuan baru serta semua hash JavaScript/CSS runtime cocok dengan build lokal. Aset model/media yang tidak berubah tidak diunduh ulang untuk pemeriksaan ini.
+- Browser internal pada domain utama, lebar 360 px: mode efektif langsung Rotate, pilihan mode berukuran 0 × 0 karena tersembunyi. Drag pertama pada kandang jerapah mengubah sudut 0° → 304,33° tanpa memilih tombol Putar. Zoom tetap 100%; tombol + menghasilkan 125%.
+- Simpanan IAB lama dibuka melalui Continue dan Resume/Pause singkat, kemudian pengujian kamera dilakukan saat dijeda. Saldo terlihat 4.381 ZC dan 14 satwa tetap tersedia. Tidak ada reset progres, pembangunan, refill, impor/ekspor atau pembacaan/penulisan storage melalui skrip browser. Tidak diklaim kesamaan tick penuh sebelum/sesudah Resume.
+- Konsol live: 0 error/warning. Akhir pemeriksaan mobile: zoo dijeda, mode langsung Rotate, sudut 0°, zoom 100%, satu kanvas. Override viewport direset sesudah pemeriksaan; tab QA ditutup.
+
+Bukti sesudah deployment dicatat dalam commit dokumentasi lokal tanpa push tambahan, sehingga tidak memicu deployment kedua.
