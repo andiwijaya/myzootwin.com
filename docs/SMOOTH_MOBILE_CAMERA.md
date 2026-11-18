@@ -49,3 +49,14 @@ Jalur tetap GitHub `main` → Cloudflare Pages `myzootwin-com`, build produk `np
 - **54 burst × 64 posisi mentah** masing-masing menghasilkan **satu pembaruan kamera dan satu render** pada frame asli berikutnya. Termasuk pan pada zoom 100% dan 300%. Tidak ada tap yang dikenali dari gestur; tiga kontrol positif tap singkat membuka kandang nyata yang dituju.
 - Observasi harness burst → frame pertama: median **25,4 ms**, p95 **93,0 ms**, maksimum **132,1 ms** (54 sampel). Angka ini mencakup penjadwalan/render/harness internal dan tidak dinyatakan sebagai FPS atau jaminan latensi perangkat fisik.
 - Seluruh **160 berkas produk** identik antara build A yang diuji browser dan build rilis final. Perbedaan sumber terakhir hanya pembaruan tes diagnostik HUD.
+
+### Verifikasi produksi
+
+- Commit rilis: `82d546d02933b365f676b361218937c8974f14d9`. GitHub `main` terverifikasi menunjuk commit ini setelah deployment.
+- Cloudflare Pages: `c3e2ff13-8595-4f62-a553-63d9c925e504`, **success** pada **18 November 2026, 15:49:20 WIB** (2026-11-18T08:49:20Z).
+- **16/16 pemeriksaan live lulus** pada domain utama dan origin deployment tetap: markup kamera benar, seluruh JavaScript/CSS runtime identik byte demi byte dengan build final yang diuji.
+- Browser internal pada viewport 360 × 780 memuat entry `/_astro/PlayEntry.astro_astro_type_script_index_0_lang.pafrMdRy.js`. Mode mobile langsung rotate; tombol pemilih mode berukuran 0 × 0.
+- Native drag 100 px saat game aktif mengubah sudut 0° menjadi 304,3299°; drag 4 px berikutnya menjadi 302,1031°. Keduanya mempertahankan zoom 100%, habitat Jerapah, tab Misi dan pilihan objek kosong. Ini bukti pointer native dalam viewport mobile; multitouch sentuh dibuktikan matriks lokal, bukan perangkat fisik.
+- Konsol live **0 error/warning**. Simpanan V5 yang sama tetap mempunyai 14 satwa dan 5 habitat. Game dijeda kembali pada tampilan Zoo, zoom 100%, sudut 0°. Interval singkat game aktif tidak diklaim memiliki tick yang sama.
+- Screenshot [live-mobile-smooth.jpg](qa/camera-smooth-20261118/live-mobile-smooth.jpg) diambil setelah kedua drag. Tab produksi dipertahankan, tab QA ditutup dan viewport sementara dikembalikan. Server QA milik tugas (PID 30172, port 52396) dihentikan dan port kosong terverifikasi.
+- Fingerprint sumber setelah verifikasi live sama dengan build rilis: `90d35de96c441f613e4c540d78b54335303f82a5c44283b335079da4f709f4d1`. Catatan bukti setelah rilis disimpan pada commit lokal terpisah tanpa memicu deployment kedua.
