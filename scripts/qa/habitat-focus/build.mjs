@@ -11,7 +11,7 @@ const id=process.argv[2];if(!/^[a-z0-9-]{1,60}$/.test(id??''))throw Error('Pass 
 const root=resolve('.'),base=resolve('.qa/habitat-focus',id),product=join(base,'product'),lab=join(base,'lab');
 try{await access(base);throw Error('Preserve the prior QA build; choose a new ID');}catch(e){if(e.code!=='ENOENT')throw e;}
 await mkdir(join(base,'input'),{recursive:true});
-const source=await sourceFingerprint(root),result=await runNode([await astroCli(root),'build','--outDir',product],{cwd:root,timeoutMs:120000});
+const source=await sourceFingerprint(root),result=await runNode([await astroCli(root),'build','--outDir',product],{cwd:root,timeoutMs:300000});
 await writeFile(join(base,'build.log'),result.stdout+result.stderr);if(result.exitCode!==0)throw Error('Product build failed; see build.log');
 // Synthetic five-habitat seed. Facility removal/refunds use real source commands solely to
 // leave a construction slot for each species. This is not unlock/progression acceptance.

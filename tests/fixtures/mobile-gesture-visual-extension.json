@@ -1,0 +1,423 @@
+{
+  "version": 1,
+  "scope": "Reviewed one-thumb Pan/Rotate and two-finger pan/pinch/twist. Continuous bounded camera angles only; no animal, world, lighting, save or simulation changes.",
+  "changedPaths": [
+    "src/game/render3d/camera-controls.ts",
+    "src/game/render3d/camera-gestures.ts",
+    "src/game/render3d/camera-navigation.ts"
+  ],
+  "predecessors": [
+    {
+      "path": "src/game/render3d/camera-controls.ts",
+      "sha256": "a8932a57ee596ad23a8e71c99000c91d86deb8e4045e97ce4b8024f247f214d5",
+      "family": "camera-picking",
+      "imports": [
+        "src/game/render3d/camera-gestures.ts",
+        "src/game/render3d/camera-navigation.ts",
+        "src/game/render3d/isometric-camera.ts",
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "mountCameraControls",
+          "line": 7
+        },
+        {
+          "name": "release",
+          "line": 19
+        },
+        {
+          "name": "cancelAll",
+          "line": 20
+        },
+        {
+          "name": "point",
+          "line": 21
+        },
+        {
+          "name": "up",
+          "line": 33
+        },
+        {
+          "name": "reframe",
+          "line": 58
+        },
+        {
+          "name": "command",
+          "line": 66
+        }
+      ],
+      "threeTypes": [
+        "Vector3"
+      ],
+      "exports": [
+        "mountCameraControls"
+      ]
+    },
+    {
+      "path": "src/game/render3d/camera-gestures.ts",
+      "sha256": "5a49ef54071338c3d1feca8b9f86b771f5065cd5687498250a38ebfb4385d348",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "createCameraGestures",
+          "line": 6
+        },
+        {
+          "name": "valid",
+          "line": 8
+        },
+        {
+          "name": "samplePair",
+          "line": 9
+        },
+        {
+          "name": "remove",
+          "line": 10
+        }
+      ],
+      "threeTypes": [],
+      "exports": [
+        "CameraPointer",
+        "GestureTarget",
+        "createCameraGestures"
+      ]
+    },
+    {
+      "path": "src/game/render3d/camera-navigation.ts",
+      "sha256": "faa33e00da46ef443cc7ef22e9c46bba37b32a2bceaadaa597bc602076acb925",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "clamp",
+          "line": 8
+        },
+        {
+          "name": "createCameraNavigation",
+          "line": 11
+        },
+        {
+          "name": "limits",
+          "line": 13
+        },
+        {
+          "name": "commit",
+          "line": 19
+        },
+        {
+          "name": "ground",
+          "line": 20
+        },
+        {
+          "name": "zoomBy",
+          "line": 24
+        },
+        {
+          "name": "panPixels",
+          "line": 30
+        }
+      ],
+      "threeTypes": [],
+      "exports": [
+        "CameraCommand",
+        "CameraFrame",
+        "createCameraNavigation"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "path": "src/game/render3d/camera-controls.ts",
+      "sha256": "b8d6a012b3265055315d81f7f9d866c0313d5b53e9ea9f34fea4666e98fe7301",
+      "family": "camera-picking",
+      "imports": [
+        "src/game/render3d/camera-gestures.ts",
+        "src/game/render3d/camera-navigation.ts",
+        "src/game/render3d/isometric-camera.ts",
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "mountCameraControls",
+          "line": 7
+        },
+        {
+          "name": "release",
+          "line": 19
+        },
+        {
+          "name": "cancelAll",
+          "line": 20
+        },
+        {
+          "name": "point",
+          "line": 21
+        },
+        {
+          "name": "up",
+          "line": 33
+        },
+        {
+          "name": "reframe",
+          "line": 58
+        },
+        {
+          "name": "rotateBy",
+          "line": 66
+        },
+        {
+          "name": "command",
+          "line": 70
+        }
+      ],
+      "threeTypes": [
+        "Vector3"
+      ],
+      "exports": [
+        "mountCameraControls"
+      ]
+    },
+    {
+      "path": "src/game/render3d/camera-gestures.ts",
+      "sha256": "3900afacd6d2a44a9fe87dafcb154f9749a54e819b9437407a38c2d37d0fd6c1",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "createCameraGestures",
+          "line": 7
+        },
+        {
+          "name": "valid",
+          "line": 9
+        },
+        {
+          "name": "samplePair",
+          "line": 10
+        },
+        {
+          "name": "remove",
+          "line": 11
+        }
+      ],
+      "threeTypes": [],
+      "exports": [
+        "CameraDragMode",
+        "CameraPointer",
+        "GestureTarget",
+        "createCameraGestures"
+      ]
+    },
+    {
+      "path": "src/game/render3d/camera-navigation.ts",
+      "sha256": "020e46ad4c871355f66528f08361220027c0899282c8d58dd0e7493424e1116b",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "clamp",
+          "line": 8
+        },
+        {
+          "name": "createCameraNavigation",
+          "line": 11
+        },
+        {
+          "name": "limits",
+          "line": 13
+        },
+        {
+          "name": "commit",
+          "line": 19
+        },
+        {
+          "name": "ground",
+          "line": 20
+        },
+        {
+          "name": "zoomBy",
+          "line": 24
+        },
+        {
+          "name": "panPixels",
+          "line": 30
+        }
+      ],
+      "threeTypes": [],
+      "exports": [
+        "CameraCommand",
+        "CameraFrame",
+        "createCameraNavigation"
+      ]
+    }
+  ],
+  "assets": [],
+  "publishedHabitatTap": {
+    "scope": "Register the already-published direct habitat-tap handler from 8918db4. This task does not modify scene-picking.ts.",
+    "commit": "8918db4e9d7d745e353cf3a014a5049c01b2571d",
+    "predecessor": {
+      "path": "src/game/render3d/scene-picking.ts",
+      "sha256": "ae2b95555913b35b6ef58ee5d809e6d0ec76bc4647a42268dff8d63411c32bae",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [
+        {
+          "type": "Group",
+          "owner": "createScenePicker",
+          "variable": "group",
+          "line": 19
+        },
+        {
+          "type": "Mesh",
+          "owner": "createScenePicker",
+          "variable": "fill",
+          "line": 23
+        },
+        {
+          "type": "PlaneGeometry",
+          "owner": "createScenePicker",
+          "variable": "PlaneGeometry",
+          "line": 23
+        },
+        {
+          "type": "MeshBasicMaterial",
+          "owner": "createScenePicker",
+          "variable": "MeshBasicMaterial",
+          "line": 23
+        }
+      ],
+      "labels": [
+        {
+          "label": "Selection indicator",
+          "owner": "createScenePicker",
+          "line": 19,
+          "kind": "runtime-object-name"
+        }
+      ],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "raycastScene",
+          "line": 6
+        },
+        {
+          "name": "createScenePicker",
+          "line": 18
+        },
+        {
+          "name": "select",
+          "line": 26
+        }
+      ],
+      "threeTypes": [
+        "Box3",
+        "Box3Helper",
+        "DoubleSide",
+        "Group",
+        "Mesh",
+        "MeshBasicMaterial",
+        "PlaneGeometry",
+        "Raycaster",
+        "Vector2",
+        "Vector3"
+      ],
+      "exports": [
+        "PickRect",
+        "createScenePicker",
+        "raycastScene"
+      ]
+    },
+    "module": {
+      "path": "src/game/render3d/scene-picking.ts",
+      "sha256": "831e9814a2e0ce2834914d795e6c7859e11838f588c851cb30bae7768502c4f2",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [
+        {
+          "type": "Group",
+          "owner": "createScenePicker",
+          "variable": "group",
+          "line": 19
+        },
+        {
+          "type": "Mesh",
+          "owner": "createScenePicker",
+          "variable": "fill",
+          "line": 23
+        },
+        {
+          "type": "PlaneGeometry",
+          "owner": "createScenePicker",
+          "variable": "PlaneGeometry",
+          "line": 23
+        },
+        {
+          "type": "MeshBasicMaterial",
+          "owner": "createScenePicker",
+          "variable": "MeshBasicMaterial",
+          "line": 23
+        }
+      ],
+      "labels": [
+        {
+          "label": "Selection indicator",
+          "owner": "createScenePicker",
+          "line": 19,
+          "kind": "runtime-object-name"
+        }
+      ],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "raycastScene",
+          "line": 6
+        },
+        {
+          "name": "createScenePicker",
+          "line": 18
+        },
+        {
+          "name": "select",
+          "line": 26
+        }
+      ],
+      "threeTypes": [
+        "Box3",
+        "Box3Helper",
+        "DoubleSide",
+        "Group",
+        "Mesh",
+        "MeshBasicMaterial",
+        "PlaneGeometry",
+        "Raycaster",
+        "Vector2",
+        "Vector3"
+      ],
+      "exports": [
+        "PickRect",
+        "createScenePicker",
+        "raycastScene"
+      ]
+    }
+  }
+}

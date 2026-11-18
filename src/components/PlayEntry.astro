@@ -94,6 +94,11 @@ const destinations=[['zoo','zoo','Zoo'],['macaw-aviary','macaw','Makaw'],['eleph
     </fieldset>
     <button type="button" data-zoo-back data-habitat-zoom-exit aria-label="Kembali ke zoo" disabled><ZooUiIcon name="left"/></button>
   </div>
+  <fieldset class="hud-control-gate zoo-drag-modes" data-hud-controls data-hud-camera-controls>
+    <legend class="selection-announcement" data-zoo-copy="gestureMode">Gerakan satu jari</legend>
+    <button type="button" data-camera-command="drag-pan" aria-pressed="true" data-zoo-copy="dragPan">Geser</button>
+    <button type="button" data-camera-command="drag-rotate" aria-pressed="false" data-zoo-copy="dragRotate">Putar</button>
+  </fieldset>
   <fieldset class="hud-control-gate zoo-pan-pad" id="zoo-pan-pad" data-zoo-pan-pad data-hud-controls data-hud-camera-controls hidden>
     <legend class="selection-announcement" data-zoo-copy="pan">Geser kamera</legend>
     <button type="button" data-camera-command="pan-left" aria-label="Geser kamera ke kiri">←</button>

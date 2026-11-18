@@ -246,8 +246,9 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   function cameraState(zoom=Number(host?.dataset.cameraZoom??1)) {
     if(zoomOutput)zoomOutput.value=`${Math.round(zoom*100)}%`;
     const angle=Number(host?.dataset.cameraAzimuth??0),announcement=root.querySelector('[data-camera-angle]');
-    setText(announcement,entryMessages[locale].cameraAngle.replace('{angle}',String(angle)));
+    setText(announcement,entryMessages[locale].cameraAngle.replace('{angle}',String(Math.round(angle)%360)));
     for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]'))button.disabled=state.status!=='ready'||(button.dataset.cameraCommand==='zoom-in'?zoom>=3:button.dataset.cameraCommand==='zoom-out'?zoom<=1:button.dataset.cameraCommand==='reset'?zoom===1&&angle===0:false);
+    for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command^="drag-"]'))button.setAttribute('aria-pressed',String(button.dataset.cameraCommand==='drag-'+(host?.dataset.cameraDragMode??'pan')));
   }
 
   function renderBirds(){
@@ -321,6 +322,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     root.querySelector('[data-camera-help]')?.replaceChildren(copy.cameraHelp);
     for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]')) {
       const command=button.dataset.cameraCommand;
+      if(command==='drag-pan'||command==='drag-rotate'){const c=zooUiCopy[locale],label=c[command==='drag-pan'?'dragPan':'dragRotate'];button.textContent=label;button.setAttribute('aria-label',label+' · '+c.gestureMode);button.title=label+' · '+c.gestureMode;continue;}
       if(command?.startsWith('pan-')){const key=({'pan-left':'panLeft','pan-right':'panRight','pan-up':'panUp','pan-down':'panDown'} as const)[command as 'pan-left'];const label=zooUiCopy[locale][key];button.setAttribute('aria-label',label);button.title=label;continue;}
       if(command==='reset')button.textContent=copy.cameraReset;
       const label=copy[command==='zoom-in'?'cameraZoomIn':command==='zoom-out'?'cameraZoomOut':command==='rotate-left'?'cameraRotateLeft':command==='rotate-right'?'cameraRotateRight':'cameraReset'];button.setAttribute('aria-label',label);button.title=label;

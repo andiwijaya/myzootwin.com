@@ -4,7 +4,7 @@ export interface CameraFrame {
   originX: number; originZ: number; mapWidth: number; mapHeight: number;
   mapCenterX?:number;mapCenterZ?:number;upY?:number;panInset?:number;
 }
-export type CameraCommand = 'zoom-in' | 'zoom-out' | 'reset' | 'rotate-left' | 'rotate-right' | 'pan-left' | 'pan-right' | 'pan-up' | 'pan-down';
+export type CameraCommand = 'zoom-in' | 'zoom-out' | 'reset' | 'rotate-left' | 'rotate-right' | 'pan-left' | 'pan-right' | 'pan-up' | 'pan-down' | 'drag-pan' | 'drag-rotate';
 const clamp = (value:number, min:number, max:number) => Math.max(min,Math.min(max,value));
 
 /** Ground-plane navigation only: no simulation, renderer loop, picking or placement. */

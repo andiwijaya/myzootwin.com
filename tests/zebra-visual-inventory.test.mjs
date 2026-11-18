@@ -10,6 +10,7 @@ const releaseExtension=JSON.parse(readFileSync(new URL('./fixtures/zebra-release
 const glbExtension=JSON.parse(readFileSync(new URL('./fixtures/glb-visual-extension.json',import.meta.url),'utf8'));
 const focusExtension=JSON.parse(readFileSync(new URL('./fixtures/habitat-focus-visual-extension.json',import.meta.url),'utf8'));
 const uiExtension=JSON.parse(readFileSync(new URL('./fixtures/farm-ui-visual-extension.json',import.meta.url),'utf8'));
+const gestureExtension=JSON.parse(readFileSync(new URL('./fixtures/mobile-gesture-visual-extension.json',import.meta.url),'utf8'));
 const withoutLine=({line,...record})=>record;
 // Keep the immutable Z0-03 receipt. H1 found Box3Helper and spray's Object3D transform helper omitted by the original regex.
 // Compare its original source inventory after projecting out that explicit scanner correction.
@@ -37,10 +38,17 @@ test('all production-reachable visual sources and nested geometry/part sites rem
  const uiPaths=new Set(uiExtension.changedPaths);assert.deepEqual([...uiPaths],['src/game/render3d/camera-navigation.ts']);
  for(const predecessor of uiExtension.predecessors)assert.deepEqual(predecessor,focusExtension.modules.find(m=>m.path===predecessor.path),'Exact reviewed camera predecessor');
  const priorModules=[...historical.modules.filter(m=>protectedModule(m)&&!migrated.has(m.path)&&!retiredModules.has(m.path)),...glbExtension.modules.filter(protectedModule)];
- assert.deepEqual(current.modules.filter(protectedModule),[...priorModules.filter(m=>!focusPaths.has(m.path)),...focusExtension.modules.filter(m=>!uiPaths.has(m.path)),...uiExtension.modules].sort(ordered),'Only explicit zoom and toolbar extensions may change protected camera/render sources');
+ const gesturePaths=new Set(gestureExtension.changedPaths);assert.deepEqual([...gesturePaths].sort(),['src/game/render3d/camera-controls.ts','src/game/render3d/camera-gestures.ts','src/game/render3d/camera-navigation.ts']);
+ const beforePublishedTap=[...priorModules.filter(m=>!focusPaths.has(m.path)),...focusExtension.modules.filter(m=>!uiPaths.has(m.path)),...uiExtension.modules];
+ const publishedTap=gestureExtension.publishedHabitatTap;assert.equal(publishedTap.module.path,'src/game/render3d/scene-picking.ts');assert.match(publishedTap.commit,/^8918db4[a-f0-9]{33}$/);
+ assert.deepEqual(publishedTap.predecessor,beforePublishedTap.find(m=>m.path===publishedTap.module.path),'Exact predecessor of the already-published direct habitat-tap handler');
+ const beforeGestures=beforePublishedTap.map(m=>m.path===publishedTap.module.path?publishedTap.module:m);
+ for(const predecessor of gestureExtension.predecessors)assert.deepEqual(predecessor,beforeGestures.find(m=>m.path===predecessor.path),'Exact reviewed pre-gesture camera source');
+ assert.deepEqual(current.modules.filter(protectedModule),[...beforeGestures.filter(m=>!gesturePaths.has(m.path)),...gestureExtension.modules].sort(ordered),'Only explicit zoom, toolbar and mobile gesture extensions may change protected camera/render sources');
  const protectedAsset=a=>!integration.has(a.sourcePath)&&!a.sourcePath.startsWith('src/game/render3d/zebra/')&&a.sourcePath!=='src/game/render3d/scene-selection.ts';
  const priorAssets=[...historical.assets.filter(a=>protectedAsset(a)&&!migrated.has(a.sourcePath)&&!retiredModules.has(a.sourcePath)),...glbExtension.assets.filter(protectedAsset)];
- assert.deepEqual(current.assets.filter(protectedAsset),[...priorAssets.filter(a=>!focusPaths.has(a.sourcePath)),...focusExtension.assets.filter(a=>!uiPaths.has(a.sourcePath)),...uiExtension.assets].sort(ordered),'Original parts remain exact outside the explicit GLB, zoom and toolbar extensions');
+ const beforeGestureAssets=[...priorAssets.filter(a=>!focusPaths.has(a.sourcePath)),...focusExtension.assets.filter(a=>!uiPaths.has(a.sourcePath)),...uiExtension.assets];
+ assert.deepEqual(current.assets.filter(protectedAsset),[...beforeGestureAssets.filter(a=>!gesturePaths.has(a.sourcePath)),...gestureExtension.assets].sort(ordered),'Original parts remain exact outside the explicit GLB, zoom, toolbar and mobile gesture extensions');
  for(const path of integration)assert.deepEqual(current.assets.filter(a=>a.sourcePath===path).map(({line,...a})=>a),(path==='src/game/render3d/foundation-scene.ts'?glbExtension.assets:historical.assets).filter(a=>a.sourcePath===path).map(({line,...a})=>a),'Reviewed integration constructors/parts: '+path);
  // HP6 adds one reviewed preview image and five exact original capture derivatives.
  // Keep original media bytes/provenance exact; only two retired source references change.

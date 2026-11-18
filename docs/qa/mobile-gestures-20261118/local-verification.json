@@ -1,0 +1,71 @@
+{
+  "status": "PASS_PRE_DEPLOY",
+  "sourceFingerprint": "44e1939bb825e742849a598d9d0d0bb9fdbb635a88d5d4157b2a451639562c3a",
+  "productFingerprint": "5814c12f61368d900d052dadaecf728357ea1b052e9a391b3b0eb9ce2167a6f9",
+  "productFiles": 160,
+  "browser": {
+    "checks": 456,
+    "cases": 18,
+    "viewports": [
+      {
+        "name": "portrait-360",
+        "width": 360,
+        "height": 780,
+        "documentWidth": 345,
+        "checks": 152,
+        "cases": 6
+      },
+      {
+        "name": "landscape-780",
+        "width": 780,
+        "height": 360,
+        "documentWidth": 765,
+        "checks": 152,
+        "cases": 6
+      },
+      {
+        "name": "desktop-1366",
+        "documentWidth": 1351,
+        "height": 768,
+        "width": 1366,
+        "checks": 152,
+        "cases": 6
+      }
+    ],
+    "scope": "Injected touch PointerEvents through original UI/canvas; separate native mouse drag. Internal Chromium viewport emulation, not a physical phone."
+  },
+  "productMatchesBrowserTestedBuild": true,
+  "check": {
+    "files": 694,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0
+  },
+  "publishedPickingReceiptCorrection": "8918db4e9d7d745e353cf3a014a5049c01b2571d; picking source unchanged in this task",
+  "initialAttempts": [
+    "initial-harness-failure.json",
+    "initial-pause-expectation.json"
+  ],
+  "deployment": "PENDING",
+  "regression": {
+    "tests": 1111,
+    "pass": 1111,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "rawLogSha256": "e3397567194f7f3694a3af1db2887d3c9b64d63adc5e471f4c63dc9754d1837e",
+    "log": "tests.log.gz",
+    "durationMs": 557206.9844
+  },
+  "logs": {
+    "build": "build.log.gz",
+    "check": "check.log.gz"
+  },
+  "native": {
+    "drag": "native-drag.json",
+    "english": "english.json",
+    "cold": "native-cold.json",
+    "scope": "Native mouse drag and controls; no exact tick equality claim across cold Resume/Pause."
+  }
+}

@@ -1,21 +1,21 @@
 import { Vector3, type Box3, type OrthographicCamera } from 'three';
 import { fitIsometricCamera } from './isometric-camera.ts';
 import { createCameraNavigation, type CameraCommand } from './camera-navigation.ts';
-import { createCameraGestures, type CameraPointer } from './camera-gestures.ts';
+import { createCameraGestures, type CameraPointer, type CameraDragMode } from './camera-gestures.ts';
 import {sceneOrigin} from '../world/scene-coordinates.ts';
 
 export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, camera:OrthographicCamera, bounds:Box3, map:{width:number;height:number}, onTap?:(point:CameraPointer)=>void,onCancel?:()=>void) {
   let disposed=false,enabled=true;const events=new AbortController();
-  let basePosition=new Vector3(),width=0,height=0,azimuthStep=0;
+  let basePosition=new Vector3(),width=0,height=0,azimuth=0,dragMode:CameraDragMode='pan';
   let habitatView:{bounds:Box3;area:{x:number;z:number;width:number;depth:number}}|null=null;
   let previousView:{zoom:number;focusX:number;focusZ:number;azimuth:number}|null=null;
   const navigation=createCameraNavigation(()=>{
     if(disposed)return;const view=navigation.inspect();
     camera.position.copy(basePosition).add(new Vector3(view.x,0,view.z));camera.zoom=view.zoom;camera.updateProjectionMatrix();camera.updateMatrixWorld(true);
-    host.dataset.cameraZoom=String(view.zoom);host.dataset.cameraPanX=String(view.x);host.dataset.cameraPanZ=String(view.z);host.dataset.cameraAzimuth=String(azimuthStep*45);
-    host.dispatchEvent(new CustomEvent('camera-view-change',{detail:{zoom:view.zoom,azimuth:azimuthStep*45},bubbles:false}));
+    host.dataset.cameraZoom=String(view.zoom);host.dataset.cameraPanX=String(view.x);host.dataset.cameraPanZ=String(view.z);host.dataset.cameraAzimuth=String(azimuth);host.dataset.cameraDragMode=dragMode;
+    host.dispatchEvent(new CustomEvent('camera-view-change',{detail:{zoom:view.zoom,azimuth,dragMode},bubbles:false}));
   });
-  const gestures=createCameraGestures(navigation,()=>canvas.getBoundingClientRect(),onTap);
+  const gestures=createCameraGestures({...navigation,rotateBy},()=>canvas.getBoundingClientRect(),onTap,()=>dragMode);
   function release(id:number) {try{if(canvas.hasPointerCapture(id))canvas.releasePointerCapture(id);}catch{/* Already released by the browser. */}}
   function cancelAll() {const ids=gestures.ids();gestures.cancelAll();for(const id of ids)release(id);canvas.style.cursor='grab';}
   const point=(event:PointerEvent)=>({id:event.pointerId,x:event.clientX,y:event.clientY});
@@ -57,23 +57,28 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
   // Refit only on an explicit view/size change, never per simulation/render frame.
   function reframe(preserveFocus=false){
     if(width<=0||height<=0)return;
-    const frame=fitIsometricCamera(camera,habitatView?.bounds??bounds,width/height,azimuthStep*Math.PI/4);basePosition=camera.position.clone();
+    const frame=fitIsometricCamera(camera,habitatView?.bounds??bounds,width/height,azimuth*Math.PI/180);basePosition=camera.position.clone();
     const right=new Vector3(1,0,0).applyQuaternion(camera.quaternion),up=new Vector3(0,1,0).applyQuaternion(camera.quaternion);
     const origin=sceneOrigin(map);
     const area=habitatView?.area;
     navigation.configure({width,height,halfWidth:frame.halfWidth,halfHeight:frame.halfHeight,rightX:right.x,rightZ:right.z,upX:up.x,upZ:up.z,upY:up.y,originX:frame.originX,originZ:frame.originZ,mapWidth:area?.width??map.width,mapHeight:area?.depth??map.height,mapCenterX:area?area.x+area.width/2:map.width/2-origin.x,mapCenterZ:area?area.z+area.depth/2:map.height/2-origin.z,...(area?{panInset:.08}:{})},preserveFocus);
   }
+  function rotateBy(degrees:number){
+    if(!enabled||disposed||!width||!height||!Number.isFinite(degrees)||degrees===0)return;
+    azimuth=((azimuth+degrees)%360+360)%360;reframe(true);
+  }
   function command(value:CameraCommand){
     if(!enabled||disposed||!width||!height)return;cancelAll();
-    if(value==='rotate-left'||value==='rotate-right'){azimuthStep=(azimuthStep+(value==='rotate-left'?7:1))%8;reframe(true);}
-    else if(value==='reset'){azimuthStep=0;reframe();navigation.command('reset');}
+    if(value==='rotate-left'||value==='rotate-right')rotateBy(value==='rotate-left'?-45:45);
+    else if(value==='drag-pan'||value==='drag-rotate'){dragMode=value==='drag-pan'?'pan':'rotate';navigation.panPixels(0,0);}
+    else if(value==='reset'){azimuth=0;reframe();navigation.command('reset');}
     else navigation.command(value);
   }
   return {
     setHabitatView(next:{bounds:Box3;area:{x:number;z:number;width:number;depth:number}}|null){
       if(disposed)return;cancelAll();
-      if(next){if(!habitatView){const v=navigation.inspect();previousView={zoom:v.zoom,focusX:v.focusX,focusZ:v.focusZ,azimuth:azimuthStep};}habitatView=next;azimuthStep=0;reframe();navigation.command('reset');}
-      else if(habitatView){habitatView=null;if(previousView)azimuthStep=previousView.azimuth;reframe();if(previousView)navigation.restore(previousView);previousView=null;}
+      if(next){if(!habitatView){const v=navigation.inspect();previousView={zoom:v.zoom,focusX:v.focusX,focusZ:v.focusZ,azimuth};}habitatView=next;azimuth=0;reframe();navigation.command('reset');}
+      else if(habitatView){habitatView=null;if(previousView)azimuth=previousView.azimuth;reframe();if(previousView)navigation.restore(previousView);previousView=null;}
     },
     resize(nextWidth:number,nextHeight:number) {
       if(disposed||!Number.isFinite(nextWidth)||!Number.isFinite(nextHeight)||nextWidth<=0||nextHeight<=0)return;
@@ -83,7 +88,7 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
     focusArea(area:{x:number;z:number;width:number;depth:number}){if(enabled&&!disposed){cancelAll();navigation.focusArea(area);}},
     command,
     setEnabled(value:boolean) {enabled=value;if(!enabled)cancelAll();},
-    dispose(){if(disposed)return;cancelAll();disposed=true;events.abort();delete host.dataset.cameraZoom;delete host.dataset.cameraPanX;delete host.dataset.cameraPanZ;delete host.dataset.cameraAzimuth;},
-    inspect:()=>{const v=navigation.inspect();return {cameraControlsDisposed:disposed,cameraInputEnabled:enabled&&!disposed,cameraZoom:v.zoom,cameraAzimuth:azimuthStep*45,cameraPanX:v.x,cameraPanZ:v.z,cameraFocusX:v.focusX,cameraFocusZ:v.focusZ,cameraMinPanX:v.minX,cameraMaxPanX:v.maxX,cameraMinPanZ:v.minZ,cameraMaxPanZ:v.maxZ,cameraPointers:gestures.inspect().pointers,cameraPinching:gestures.inspect().pinching};},
+    dispose(){if(disposed)return;cancelAll();disposed=true;events.abort();delete host.dataset.cameraZoom;delete host.dataset.cameraPanX;delete host.dataset.cameraPanZ;delete host.dataset.cameraAzimuth;delete host.dataset.cameraDragMode;},
+    inspect:()=>{const v=navigation.inspect();return {cameraControlsDisposed:disposed,cameraInputEnabled:enabled&&!disposed,cameraZoom:v.zoom,cameraAzimuth:azimuth,cameraRotateDrag:dragMode==='rotate',cameraPanX:v.x,cameraPanZ:v.z,cameraFocusX:v.focusX,cameraFocusZ:v.focusZ,cameraMinPanX:v.minX,cameraMaxPanX:v.maxX,cameraMinPanZ:v.minZ,cameraMaxPanZ:v.maxZ,cameraPointers:gestures.inspect().pointers,cameraPinching:gestures.inspect().pinching};},
   };
 }
