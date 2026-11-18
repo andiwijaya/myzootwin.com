@@ -1,5 +1,7 @@
 # Gestur kamera mobile — 18 November 2026
 
+> Pemetaan sentuhan pada laporan ini telah diganti oleh [kamera sentuh langsung](DIRECT_TOUCH_CAMERA.md): satu jari langsung memutar, dua jari pan dan pinch untuk zoom. Laporan di bawah mempertahankan bukti rilis awal.
+
 Pengguna meminta rotasi dengan jempol, pinch dan gestur mobile yang tetap berfungsi, pengujian hanya di browser internal, serta deployment langsung secara otonom.
 
 ## Cara memakai

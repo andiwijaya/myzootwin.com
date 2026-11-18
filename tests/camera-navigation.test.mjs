@@ -152,32 +152,32 @@ test('actual raycast and habitat ghost identify the same world tile after orbit,
 
 test('navigation-only contract ignores orbit commands and invalid camera angles cannot poison matrices',()=>{const n=make(),before=n.inspect();n.command('rotate-left');n.command('rotate-right');assert.deepEqual(n.inspect(),before);const camera=new OrthographicCamera(),bounds=new Box3(new Vector3(-6,0,-5),new Vector3(6,2,5));fitIsometricCamera(camera,bounds,1);const matrix=camera.matrixWorld.clone();assert.throws(()=>fitIsometricCamera(camera,bounds,1,NaN),RangeError);assert.ok(camera.matrixWorld.equals(matrix));});
 
-test('one-thumb Rotate is continuous, fits every corner, keeps taps separate and switches back to bounded Pan',()=>{
+test('touch rotates immediately without choosing a mode, while desktop mouse retains its selected Pan mode',()=>{
  const s=setup(()=>assert.fail('drag must never tap'));try{
-  s.c.command('drag-rotate');assert.equal(s.host.dataset.cameraDragMode,'rotate');assert.equal(s.c.inspect().cameraRotateDrag,true);
+  assert.equal(s.host.dataset.cameraDragMode,'pan');assert.equal(s.c.inspect().cameraRotateDrag,false);
   fire(s.canvas,'pointerdown',{pointerId:1,button:0,pointerType:'touch',clientX:200,clientY:150});
   fire(s.canvas,'pointermove',{pointerId:1,pointerType:'touch',clientX:237,clientY:154});const turn=s.c.inspect();close(turn.cameraAzimuth,346.68);assert.equal(turn.cameraPointers,1);assert.equal(turn.cameraZoom,1);
   for(const x of[-6,6])for(const y of[-.4,2.4])for(const z of[-5,5]){const p=new Vector3(x,y,z).project(s.camera);assert.ok(Math.abs(p.x)<.92&&Math.abs(p.y)<.92);}
   fire(s.canvas,'pointerup',{pointerId:1,pointerType:'touch',clientX:237,clientY:154});assert.equal(s.c.inspect().cameraPointers,0);
   s.c.command('zoom-in');s.c.command('drag-pan');const angle=s.c.inspect().cameraAzimuth;
-  fire(s.canvas,'pointerdown',{pointerId:2,button:0,pointerType:'touch',clientX:200,clientY:150});fire(s.canvas,'pointermove',{pointerId:2,pointerType:'touch',clientX:250,clientY:180});fire(s.canvas,'pointerup',{pointerId:2,pointerType:'touch',clientX:250,clientY:180});
+  fire(s.canvas,'pointerdown',{pointerId:2,button:0,pointerType:'mouse',clientX:200,clientY:150});fire(s.canvas,'pointermove',{pointerId:2,pointerType:'mouse',buttons:1,clientX:250,clientY:180});fire(s.canvas,'pointerup',{pointerId:2,pointerType:'mouse',clientX:250,clientY:180});
   assert.equal(s.c.inspect().cameraAzimuth,angle);assert.ok(Math.hypot(s.c.inspect().cameraPanX,s.c.inspect().cameraPanZ)>0);assert.equal(s.host.dataset.cameraDragMode,'pan');
   s.c.command('reset');assert.equal(s.c.inspect().cameraAzimuth,0);assert.equal(s.c.inspect().cameraZoom,1);
  }finally{s.finish();}
 });
 
-test('two-finger twist ignores pinch wobble, crosses the signed-angle seam without a jump and rejects a collapsed pair',()=>{
+test('two-finger pan and pinch never rotate, including a tilted pair, angle seam and collapsed pair',()=>{
  const turns=[],target={panPixels(){},zoomBy(){},rotateBy:d=>turns.push(d)},g=createCameraGestures(target,()=>({left:0,top:0,width:500,height:350}),()=>assert.fail('multitouch tap'));
  const p=angle=>({id:2,x:200+100*Math.cos(angle*Math.PI/180),y:150+100*Math.sin(angle*Math.PI/180)});
- g.down({id:1,x:200,y:150});g.down(p(179));g.move(p(-178));assert.equal(turns.length,0);g.move(p(-175));close(turns[0],-6);g.move(p(-172));close(turns[1],-3);
- g.move({id:2,x:201,y:150});g.move({id:2,x:199,y:150});assert.equal(turns.length,2);g.cancelAll();assert.equal(g.inspect().pointers,0);
+ g.down({id:1,x:200,y:150,pointerType:'touch'});g.down({...p(179),pointerType:'touch'});g.move(p(-178));g.move(p(-175));g.move(p(-172));
+ g.move({id:2,x:201,y:150});g.move({id:2,x:199,y:150});assert.deepEqual(turns,[]);g.cancelAll();assert.equal(g.inspect().pointers,0);
 });
 
-test('pinch, centroid pan and twist work together in either thumb mode; lifting or cancelling cannot select',()=>{
+test('two touch pointers pan and pinch without rotation in either mouse mode; lifting cannot select',()=>{
  for(const mode of['drag-pan','drag-rotate']){const s=setup(()=>assert.fail('multitouch must not select'));try{
   s.c.command(mode);const touch=(id,x,y)=>({pointerId:id,button:0,pointerType:'touch',clientX:x,clientY:y});
   fire(s.canvas,'pointerdown',touch(1,180,175));fire(s.canvas,'pointerdown',touch(2,320,175));fire(s.canvas,'pointermove',touch(1,160,140));fire(s.canvas,'pointermove',touch(2,350,215));
-  const v=s.c.inspect();assert.ok(v.cameraZoom>1.4);assert.ok(v.cameraAzimuth>1&&v.cameraAzimuth<359);assert.ok(Math.hypot(v.cameraPanX,v.cameraPanZ)>0);assert.equal(v.cameraPinching,true);
+  const v=s.c.inspect();assert.ok(v.cameraZoom>1.4);assert.equal(v.cameraAzimuth,0);assert.ok(Math.hypot(v.cameraPanX,v.cameraPanZ)>0);assert.equal(v.cameraPinching,true);
   fire(s.canvas,'pointerup',touch(2,350,215));const before=s.c.inspect();fire(s.canvas,'pointermove',touch(1,160,140));assert.deepEqual(s.c.inspect(),before);fire(s.canvas,'pointerup',touch(1,160,140));assert.equal(s.c.inspect().cameraPointers,0);assert.equal(s.canvas.captured.size,0);
  }finally{s.finish();}}
 });
@@ -190,11 +190,34 @@ test('thumb mode changes, pause, resize, blur, habitat focus and disposal releas
  }finally{s.finish();}}
 });
 
-test('habitat exit restores a freely rotated zoo angle and focus exactly without persisting gesture mode',()=>{
+test('habitat exit restores a directly touch-rotated zoo angle and focus while retaining the desktop mouse mode',()=>{
  const s=setup();try{
-  s.c.command('zoom-in');s.c.command('drag-rotate');fire(s.canvas,'pointerdown',{pointerId:1,button:0,pointerType:'touch',clientX:200,clientY:150});fire(s.canvas,'pointerup',{pointerId:1,pointerType:'touch',clientX:273,clientY:150});const before=s.c.inspect();
+  s.c.command('zoom-in');fire(s.canvas,'pointerdown',{pointerId:1,button:0,pointerType:'touch',clientX:200,clientY:150});fire(s.canvas,'pointerup',{pointerId:1,pointerType:'touch',clientX:273,clientY:150});const before=s.c.inspect();
   s.c.setHabitatView({bounds:new Box3(new Vector3(-2,0,-2),new Vector3(2,3,2)),area:{x:-2,z:-2,width:4,depth:4}});assert.equal(s.c.inspect().cameraAzimuth,0);
   fire(s.canvas,'pointerdown',{pointerId:2,button:0,pointerType:'touch',clientX:200,clientY:150});fire(s.canvas,'pointerup',{pointerId:2,pointerType:'touch',clientX:150,clientY:150});s.c.setHabitatView(null);
-  close(s.c.inspect().cameraAzimuth,before.cameraAzimuth);close(s.c.inspect().cameraZoom,before.cameraZoom);close(s.c.inspect().cameraFocusX,before.cameraFocusX);close(s.c.inspect().cameraFocusZ,before.cameraFocusZ);assert.equal(s.c.inspect().cameraRotateDrag,true);
+  close(s.c.inspect().cameraAzimuth,before.cameraAzimuth);close(s.c.inspect().cameraZoom,before.cameraZoom);close(s.c.inspect().cameraFocusX,before.cameraFocusX);close(s.c.inspect().cameraFocusZ,before.cameraFocusZ);assert.equal(s.c.inspect().cameraRotateDrag,false);
+ }finally{s.finish();}
+});
+
+test('phone and landscape layouts rotate on the first drag and switching back restores desktop mouse Pan',()=>{
+ const s=setup(()=>assert.fail('drag must not select'));try{
+  s.c.command('zoom-in');
+  for(const width of[360,780,1366,360]){
+   window.innerWidth=width;s.c.resize(width,350);const before=s.c.inspect();
+   fire(s.canvas,'pointerdown',{pointerId:1,button:0,pointerType:'mouse',clientX:200,clientY:150});fire(s.canvas,'pointermove',{pointerId:1,pointerType:'mouse',buttons:1,clientX:236,clientY:160});fire(s.canvas,'pointerup',{pointerId:1,pointerType:'mouse',clientX:236,clientY:160});
+   const after=s.c.inspect();assert.equal(after.cameraRotateDrag,width<900);assert.equal(s.host.dataset.cameraDragMode,width<900?'rotate':'pan');
+   if(width<900)assert.notEqual(after.cameraAzimuth,before.cameraAzimuth);else{assert.equal(after.cameraAzimuth,before.cameraAzimuth);assert.ok(Math.hypot(after.cameraPanX-before.cameraPanX,after.cameraPanZ-before.cameraPanZ)>0);}
+   assert.equal(after.cameraPointers,0);assert.equal(s.canvas.captured.size,0);
+  }
+ }finally{s.finish();}
+});
+
+test('a small touch remains one tap, but a thumb drag followed by two-finger pan and one-finger rotation never taps',()=>{
+ let taps=0;const s=setup(()=>taps++);try{
+  const touch=(id,x,y)=>({pointerId:id,button:0,pointerType:'touch',clientX:x,clientY:y});
+  fire(s.canvas,'pointerdown',touch(1,200,150));fire(s.canvas,'pointerup',touch(1,203,151));assert.equal(taps,1);assert.equal(s.c.inspect().cameraAzimuth,0);
+  fire(s.canvas,'pointerdown',touch(1,180,150));fire(s.canvas,'pointermove',touch(1,200,150));const rotated=s.c.inspect().cameraAzimuth;
+  fire(s.canvas,'pointerdown',touch(2,320,150));fire(s.canvas,'pointermove',touch(1,175,155));fire(s.canvas,'pointermove',touch(2,345,175));assert.equal(s.c.inspect().cameraAzimuth,rotated);assert.ok(s.c.inspect().cameraZoom>1);
+  fire(s.canvas,'pointerup',touch(2,345,175));const lifted=s.c.inspect();fire(s.canvas,'pointermove',touch(1,175,155));assert.deepEqual(s.c.inspect(),lifted);fire(s.canvas,'pointermove',touch(1,195,155));assert.notEqual(s.c.inspect().cameraAzimuth,rotated);fire(s.canvas,'pointerup',touch(1,195,155));assert.equal(taps,1);assert.equal(s.c.inspect().cameraPointers,0);
  }finally{s.finish();}
 });

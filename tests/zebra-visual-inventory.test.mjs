@@ -11,6 +11,7 @@ const glbExtension=JSON.parse(readFileSync(new URL('./fixtures/glb-visual-extens
 const focusExtension=JSON.parse(readFileSync(new URL('./fixtures/habitat-focus-visual-extension.json',import.meta.url),'utf8'));
 const uiExtension=JSON.parse(readFileSync(new URL('./fixtures/farm-ui-visual-extension.json',import.meta.url),'utf8'));
 const gestureExtension=JSON.parse(readFileSync(new URL('./fixtures/mobile-gesture-visual-extension.json',import.meta.url),'utf8'));
+const directTouchExtension=JSON.parse(readFileSync(new URL('./fixtures/direct-touch-visual-extension.json',import.meta.url),'utf8'));
 const withoutLine=({line,...record})=>record;
 // Keep the immutable Z0-03 receipt. H1 found Box3Helper and spray's Object3D transform helper omitted by the original regex.
 // Compare its original source inventory after projecting out that explicit scanner correction.
@@ -44,11 +45,15 @@ test('all production-reachable visual sources and nested geometry/part sites rem
  assert.deepEqual(publishedTap.predecessor,beforePublishedTap.find(m=>m.path===publishedTap.module.path),'Exact predecessor of the already-published direct habitat-tap handler');
  const beforeGestures=beforePublishedTap.map(m=>m.path===publishedTap.module.path?publishedTap.module:m);
  for(const predecessor of gestureExtension.predecessors)assert.deepEqual(predecessor,beforeGestures.find(m=>m.path===predecessor.path),'Exact reviewed pre-gesture camera source');
- assert.deepEqual(current.modules.filter(protectedModule),[...beforeGestures.filter(m=>!gesturePaths.has(m.path)),...gestureExtension.modules].sort(ordered),'Only explicit zoom, toolbar and mobile gesture extensions may change protected camera/render sources');
+ const beforeDirectTouch=[...beforeGestures.filter(m=>!gesturePaths.has(m.path)),...gestureExtension.modules],directTouchPaths=new Set(directTouchExtension.changedPaths);
+ assert.deepEqual([...directTouchPaths].sort(),['src/game/render3d/camera-controls.ts','src/game/render3d/camera-gestures.ts']);
+ for(const predecessor of directTouchExtension.predecessors)assert.deepEqual(predecessor,beforeDirectTouch.find(m=>m.path===predecessor.path),'Exact predecessor for direct one-finger rotation');
+ assert.deepEqual(current.modules.filter(protectedModule),[...beforeDirectTouch.filter(m=>!directTouchPaths.has(m.path)),...directTouchExtension.modules].sort(ordered),'Only explicit zoom, toolbar and touch extensions may change protected camera/render sources');
  const protectedAsset=a=>!integration.has(a.sourcePath)&&!a.sourcePath.startsWith('src/game/render3d/zebra/')&&a.sourcePath!=='src/game/render3d/scene-selection.ts';
  const priorAssets=[...historical.assets.filter(a=>protectedAsset(a)&&!migrated.has(a.sourcePath)&&!retiredModules.has(a.sourcePath)),...glbExtension.assets.filter(protectedAsset)];
  const beforeGestureAssets=[...priorAssets.filter(a=>!focusPaths.has(a.sourcePath)),...focusExtension.assets.filter(a=>!uiPaths.has(a.sourcePath)),...uiExtension.assets];
- assert.deepEqual(current.assets.filter(protectedAsset),[...beforeGestureAssets.filter(a=>!gesturePaths.has(a.sourcePath)),...gestureExtension.assets].sort(ordered),'Original parts remain exact outside the explicit GLB, zoom, toolbar and mobile gesture extensions');
+ const beforeDirectTouchAssets=[...beforeGestureAssets.filter(a=>!gesturePaths.has(a.sourcePath)),...gestureExtension.assets];
+ assert.deepEqual(current.assets.filter(protectedAsset),[...beforeDirectTouchAssets.filter(a=>!directTouchPaths.has(a.sourcePath)),...directTouchExtension.assets].sort(ordered),'Original parts remain exact outside the explicit GLB, zoom, toolbar and touch extensions');
  for(const path of integration)assert.deepEqual(current.assets.filter(a=>a.sourcePath===path).map(({line,...a})=>a),(path==='src/game/render3d/foundation-scene.ts'?glbExtension.assets:historical.assets).filter(a=>a.sourcePath===path).map(({line,...a})=>a),'Reviewed integration constructors/parts: '+path);
  // HP6 adds one reviewed preview image and five exact original capture derivatives.
  // Keep original media bytes/provenance exact; only two retired source references change.

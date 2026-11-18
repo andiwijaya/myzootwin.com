@@ -1,0 +1,57 @@
+{
+  "status": "PASS_PRE_DEPLOY",
+  "sourceFingerprint": "fc33d87cec684ec1f07f268f82d6cdf1d07232b7a3223407576e91b9d4e3e4ea",
+  "productFingerprint": "a4c5515149cbe3af3c7e121e66d4749a9862d14d16f491ba68f2ca9d2437d4e7",
+  "productFiles": 160,
+  "regression": {
+    "tests": 89,
+    "pass": 89,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "scope": "Camera, picking, habitat focus, Zebra camera, placement, renderer lifecycle, HUD navigation, language and protected visual inventory. Not a rerun of the entire simulation/economy suite.",
+    "rawLogSha256": "acdcd59ca0f773ab5ce4d22e173f23758a087b002cac3b0b13f853e702c6830c"
+  },
+  "check": {
+    "files": 694,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0
+  },
+  "build": {
+    "pages": 10
+  },
+  "browser": {
+    "checks": 366,
+    "cases": 18,
+    "viewports": [
+      {
+        "name": "portrait-360",
+        "width": 360,
+        "height": 780,
+        "documentWidth": 345,
+        "checks": 122,
+        "cases": 6
+      },
+      {
+        "name": "landscape-780",
+        "documentWidth": 765,
+        "height": 360,
+        "width": 780,
+        "checks": 122,
+        "cases": 6
+      },
+      {
+        "name": "desktop-1366",
+        "documentWidth": 1351,
+        "height": 768,
+        "width": 1366,
+        "checks": 122,
+        "cases": 6
+      }
+    ],
+    "scope": "Internal browser; injected touch events on original product canvas and synthetic UUID save. Not physical touch."
+  },
+  "deployment": "PENDING"
+}

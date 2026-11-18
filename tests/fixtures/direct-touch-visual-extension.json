@@ -1,0 +1,193 @@
+{
+  "version": 1,
+  "scope": "Direct touch mapping: one finger rotates without a selector; two fingers pan and pinch only. Mobile mouse emulation follows the same mapping. Desktop mouse modes and all visual assets remain unchanged.",
+  "changedPaths": [
+    "src/game/render3d/camera-controls.ts",
+    "src/game/render3d/camera-gestures.ts"
+  ],
+  "predecessors": [
+    {
+      "path": "src/game/render3d/camera-controls.ts",
+      "sha256": "b8d6a012b3265055315d81f7f9d866c0313d5b53e9ea9f34fea4666e98fe7301",
+      "family": "camera-picking",
+      "imports": [
+        "src/game/render3d/camera-gestures.ts",
+        "src/game/render3d/camera-navigation.ts",
+        "src/game/render3d/isometric-camera.ts",
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "mountCameraControls",
+          "line": 7
+        },
+        {
+          "name": "release",
+          "line": 19
+        },
+        {
+          "name": "cancelAll",
+          "line": 20
+        },
+        {
+          "name": "point",
+          "line": 21
+        },
+        {
+          "name": "up",
+          "line": 33
+        },
+        {
+          "name": "reframe",
+          "line": 58
+        },
+        {
+          "name": "rotateBy",
+          "line": 66
+        },
+        {
+          "name": "command",
+          "line": 70
+        }
+      ],
+      "threeTypes": [
+        "Vector3"
+      ],
+      "exports": [
+        "mountCameraControls"
+      ]
+    },
+    {
+      "path": "src/game/render3d/camera-gestures.ts",
+      "sha256": "3900afacd6d2a44a9fe87dafcb154f9749a54e819b9437407a38c2d37d0fd6c1",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "createCameraGestures",
+          "line": 7
+        },
+        {
+          "name": "valid",
+          "line": 9
+        },
+        {
+          "name": "samplePair",
+          "line": 10
+        },
+        {
+          "name": "remove",
+          "line": 11
+        }
+      ],
+      "threeTypes": [],
+      "exports": [
+        "CameraDragMode",
+        "CameraPointer",
+        "GestureTarget",
+        "createCameraGestures"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "path": "src/game/render3d/camera-controls.ts",
+      "sha256": "86edbaa06187db1813ee0587a6b5b2f8ebd49e791b2049a7de65825852f1a60f",
+      "family": "camera-picking",
+      "imports": [
+        "src/game/render3d/camera-gestures.ts",
+        "src/game/render3d/camera-navigation.ts",
+        "src/game/render3d/isometric-camera.ts",
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "mountCameraControls",
+          "line": 7
+        },
+        {
+          "name": "pointerMode",
+          "line": 12
+        },
+        {
+          "name": "release",
+          "line": 20
+        },
+        {
+          "name": "cancelAll",
+          "line": 21
+        },
+        {
+          "name": "point",
+          "line": 22
+        },
+        {
+          "name": "up",
+          "line": 34
+        },
+        {
+          "name": "reframe",
+          "line": 59
+        },
+        {
+          "name": "rotateBy",
+          "line": 67
+        },
+        {
+          "name": "command",
+          "line": 71
+        }
+      ],
+      "threeTypes": [
+        "Vector3"
+      ],
+      "exports": [
+        "mountCameraControls"
+      ]
+    },
+    {
+      "path": "src/game/render3d/camera-gestures.ts",
+      "sha256": "33595065ed998a2a815c9ff6ef5446f457c82db3c4475a27dbc44225b0c874a6",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "createCameraGestures",
+          "line": 7
+        },
+        {
+          "name": "valid",
+          "line": 9
+        },
+        {
+          "name": "samplePair",
+          "line": 10
+        },
+        {
+          "name": "remove",
+          "line": 11
+        }
+      ],
+      "threeTypes": [],
+      "exports": [
+        "CameraDragMode",
+        "CameraPointer",
+        "GestureTarget",
+        "createCameraGestures"
+      ]
+    }
+  ],
+  "assets": []
+}
