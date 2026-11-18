@@ -46,14 +46,14 @@ const session=()=>handle.inspectRenderer()?.session;
 function expect(name:string,passed:boolean,detail?:unknown){checks.push({name,passed,detail});if(!passed)throw Error(name+': '+JSON.stringify(detail));}
 function pointer(type:string,id:number,x:number,y:number,buttons:number,pointerType='mouse'){host.querySelector('canvas')!.dispatchEvent(new PointerEvent(type,{bubbles:true,cancelable:true,pointerId:id,button:0,buttons,clientX:x,clientY:y,pointerType,isPrimary:id===1}));}
 
-async function selectHome(kind:string){
+async function selectHome(kind:string,pointerType='mouse'){
   await waitFor(()=>!!camera&&session()?.assetsWaiting===false,'renderer assets');if(focus?.active)click('[data-habitat-zoom-exit]');
   const h=current!.world.habitats.find(h=>habitatKind(h)===kind)!;if(!h)throw Error('Missing test habitat');
   const origin=sceneOrigin(current!.world),rect=host.getBoundingClientRect(),cells=[h.cells[Math.floor(h.cells.length/2)]!,...h.cells];
   for(const cell of cells){
     const p=new Vector3(cell.x+.5-origin.x,.15,cell.z+.5-origin.z).project(camera!);if(Math.abs(p.x)>.99||Math.abs(p.y)>.99)continue;
     const x=rect.left+(p.x+1)*rect.width/2,y=rect.top+(1-p.y)*rect.height/2;
-    pointer('pointerdown',1,x,y,1);pointer('pointerup',1,x,y,0);await delay();
+    pointer('pointerdown',1,x,y,1,pointerType);pointer('pointerup',1,x,y,0,pointerType);await delay();
     if(focus?.selectedHabitatId===h.id||focus?.habitatId===h.id){selections.push({kind,x,y,method:'injected actual canvas PointerEvents'});return;}
   }
   throw Error('Cannot select '+kind+' through visible source triangles');
@@ -325,7 +325,7 @@ if(url.searchParams.has('audit'))void runMenuAudit({root,host,seed:url.searchPar
 if(url.searchParams.has('build-scroll'))void runBuildScrollAudit({root,host,read:()=>current!,session,errors,mode:url.searchParams.get('build-scroll')!});
 if(url.searchParams.has('build-nav'))void runBuildNavigationAudit({root,host,read:()=>current!,session,errors,mode:url.searchParams.get('build-nav')!});
 if(url.searchParams.has('build-repeat'))void runBuildRepeatAudit({root,host,read:()=>current!,session,errors});
-if(url.searchParams.has('mobile-gestures'))void runMobileGestureAudit({root,host,read:()=>current!,session,errors});
+if(url.searchParams.has('mobile-gestures'))void runMobileGestureAudit({root,host,read:()=>current!,session,errors,selectHome});
 document.querySelector('#qa-inspect')!.addEventListener('click',()=>{void report();});
 document.querySelector('#qa-context')!.addEventListener('click',()=>{renderer?.getContext().getExtension('WEBGL_lose_context')?.loseContext();});
 window.addEventListener('pagehide',()=>{closed=true;handle.dispose();},{once:true});

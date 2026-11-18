@@ -1,10 +1,10 @@
 import { Vector3, type Box3, type OrthographicCamera } from 'three';
 import { fitIsometricCamera } from './isometric-camera.ts';
 import { createCameraNavigation, type CameraCommand } from './camera-navigation.ts';
-import { createCameraGestures, type CameraPointer, type CameraDragMode } from './camera-gestures.ts';
+import { createCameraGestures, type CameraPointer, type CameraDragMode, type CameraGestureOptions } from './camera-gestures.ts';
 import {sceneOrigin} from '../world/scene-coordinates.ts';
 
-export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, camera:OrthographicCamera, bounds:Box3, map:{width:number;height:number}, onTap?:(point:CameraPointer)=>void,onCancel?:()=>void) {
+export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, camera:OrthographicCamera, bounds:Box3, map:{width:number;height:number}, onTap?:(point:CameraPointer)=>void,onCancel?:()=>void, gestureOptions:CameraGestureOptions={}) {
   let disposed=false,enabled=true;const events=new AbortController();
   let basePosition=new Vector3(),width=0,height=0,azimuth=0,dragMode:CameraDragMode='pan';
   let habitatView:{bounds:Box3;area:{x:number;z:number;width:number;depth:number}}|null=null;
@@ -16,20 +16,22 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
     const mode=pointerMode();host.dataset.cameraZoom=String(view.zoom);host.dataset.cameraPanX=String(view.x);host.dataset.cameraPanZ=String(view.z);host.dataset.cameraAzimuth=String(azimuth);host.dataset.cameraDragMode=mode;
     host.dispatchEvent(new CustomEvent('camera-view-change',{detail:{zoom:view.zoom,azimuth,dragMode:mode},bubbles:false}));
   });
-  const gestures=createCameraGestures({...navigation,rotateBy},()=>canvas.getBoundingClientRect(),onTap,pointerMode);
+  const gestures=createCameraGestures({...navigation,rotateBy},()=>canvas.getBoundingClientRect(),onTap,pointerMode,gestureOptions);
   function release(id:number) {try{if(canvas.hasPointerCapture(id))canvas.releasePointerCapture(id);}catch{/* Already released by the browser. */}}
   function cancelAll() {const ids=gestures.ids();gestures.cancelAll();for(const id of ids)release(id);canvas.style.cursor='grab';}
   const point=(event:PointerEvent)=>({id:event.pointerId,x:event.clientX,y:event.clientY,pointerType:event.pointerType});
   canvas.style.touchAction='none';canvas.style.cursor='grab';
   canvas.addEventListener('pointerdown',event=>{
     if(!enabled||disposed||event.button!==0||!gestures.down(point(event)))return;
-    event.preventDefault();host.focus({preventScroll:true});canvas.style.cursor='grabbing';
+    event.preventDefault();if(gestures.inspect().pointers===1)host.focus({preventScroll:true});canvas.style.cursor='grabbing';
     try{canvas.setPointerCapture(event.pointerId);}catch{/* Injected non-native pointers cannot be captured. */}
   },{signal:events.signal});
   canvas.addEventListener('pointermove',event=>{
     if(!enabled||disposed||!gestures.ids().includes(event.pointerId))return;
     if(event.pointerType==='mouse'&&(event.buttons&1)===0){cancelAll();return;}
-    event.preventDefault();gestures.move(point(event));
+    event.preventDefault();
+    if(typeof event.getCoalescedEvents==='function')for(const sample of event.getCoalescedEvents())gestures.move(point(sample));
+    gestures.move(point(event));
   },{signal:events.signal});
   function up(event:PointerEvent) {if(disposed)return;gestures.up(point(event));release(event.pointerId);if(!gestures.inspect().pointers)canvas.style.cursor='grab';}
   canvas.addEventListener('pointerup',up,{signal:events.signal});
@@ -55,6 +57,7 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
     } else navigation.command(key==='+'||key==='='?'zoom-in':'zoom-out');
   },{signal:events.signal});
   window.addEventListener('blur',cancelAll,{signal:events.signal});
+  window.addEventListener('scroll',cancelAll,{signal:events.signal,capture:true,passive:true});
   // Refit only on an explicit view/size change, never per simulation/render frame.
   function reframe(preserveFocus=false){
     if(width<=0||height<=0)return;
@@ -88,8 +91,9 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
     focus(point:{x:number;z:number}){if(enabled&&!disposed){cancelAll();navigation.focus(point);}},
     focusArea(area:{x:number;z:number;width:number;depth:number}){if(enabled&&!disposed){cancelAll();navigation.focusArea(area);}},
     command,
+    flush:gestures.flush,
     setEnabled(value:boolean) {enabled=value;if(!enabled)cancelAll();},
     dispose(){if(disposed)return;cancelAll();disposed=true;events.abort();delete host.dataset.cameraZoom;delete host.dataset.cameraPanX;delete host.dataset.cameraPanZ;delete host.dataset.cameraAzimuth;delete host.dataset.cameraDragMode;},
-    inspect:()=>{const v=navigation.inspect();return {cameraControlsDisposed:disposed,cameraInputEnabled:enabled&&!disposed,cameraZoom:v.zoom,cameraAzimuth:azimuth,cameraRotateDrag:pointerMode()==='rotate',cameraPanX:v.x,cameraPanZ:v.z,cameraFocusX:v.focusX,cameraFocusZ:v.focusZ,cameraMinPanX:v.minX,cameraMaxPanX:v.maxX,cameraMinPanZ:v.minZ,cameraMaxPanZ:v.maxZ,cameraPointers:gestures.inspect().pointers,cameraPinching:gestures.inspect().pinching};},
+    inspect:()=>{const v=navigation.inspect(),g=gestures.inspect();return {cameraControlsDisposed:disposed,cameraInputEnabled:enabled&&!disposed,cameraZoom:v.zoom,cameraAzimuth:azimuth,cameraRotateDrag:pointerMode()==='rotate',cameraPanX:v.x,cameraPanZ:v.z,cameraFocusX:v.focusX,cameraFocusZ:v.focusZ,cameraMinPanX:v.minX,cameraMaxPanX:v.maxX,cameraMinPanZ:v.minZ,cameraMaxPanZ:v.maxZ,cameraPointers:g.pointers,cameraPinching:g.pinching,cameraGesturePending:g.pending,cameraGestureUpdates:g.updates,cameraPointerMoves:g.moves,cameraTapCount:g.taps,cameraSuppressedTaps:g.suppressedTaps};},
   };
 }

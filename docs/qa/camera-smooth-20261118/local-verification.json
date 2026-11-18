@@ -1,0 +1,76 @@
+{
+  "status": "PASS_PRE_DEPLOY",
+  "sourceFingerprint": "90d35de96c441f613e4c540d78b54335303f82a5c44283b335079da4f709f4d1",
+  "productFingerprint": "432ecdeddcc81fe501315563ee5f1e668d988df34f0bb0ca0292387b74f70bd6",
+  "productFiles": 160,
+  "productMatchesBrowserBuild": true,
+  "regression": {
+    "tests": 118,
+    "pass": 118,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "rawLogSha256": "7e3e0e654a92b3630af1b4e12ea3fc73cf422bb657dbf419104ffc19697698cc",
+    "scope": "Gesture/navigation/picking, five habitats, renderer/frame lifecycle, placement/HUD/language, clock reentrancy/migration/V5 clock and shared resource ownership. Not the entire economy suite."
+  },
+  "check": {
+    "files": 695,
+    "errors": 0,
+    "warnings": 0,
+    "hints": 0
+  },
+  "build": {
+    "pages": 10
+  },
+  "browser": {
+    "status": "PASS",
+    "checks": 657,
+    "cases": 18,
+    "bursts": 54,
+    "rawPositionsPerBurst": 64,
+    "cameraUpdatesPerBurst": 1,
+    "rendersPerBurst": 1,
+    "tapsDuringCameraGestures": 0,
+    "deliberateTapPositiveChecks": 3,
+    "productMatchesBrowserBuild": true,
+    "productFingerprint": "432ecdeddcc81fe501315563ee5f1e668d988df34f0bb0ca0292387b74f70bd6",
+    "productFiles": 160,
+    "sourceFingerprint": "90d35de96c441f613e4c540d78b54335303f82a5c44283b335079da4f709f4d1",
+    "timing": {
+      "samples": 54,
+      "minMs": 14.200000047683716,
+      "medianMs": 25.399999976158146,
+      "p95Ms": 93,
+      "maxMs": 132.10000002384186,
+      "scope": "Harness wall time from injected raw burst to observation on first original RAF; not physical-device or presented-FPS evidence."
+    },
+    "viewports": [
+      {
+        "name": "portrait-360",
+        "width": 360,
+        "height": 780,
+        "documentWidth": 345,
+        "checks": 219,
+        "bursts": 18
+      },
+      {
+        "name": "landscape-780",
+        "documentWidth": 765,
+        "height": 360,
+        "width": 780,
+        "checks": 219,
+        "bursts": 18
+      },
+      {
+        "name": "desktop-1366",
+        "documentWidth": 1351,
+        "height": 768,
+        "width": 1366,
+        "checks": 219,
+        "bursts": 18
+      }
+    ]
+  },
+  "deployment": "PENDING"
+}

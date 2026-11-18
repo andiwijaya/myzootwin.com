@@ -1,0 +1,2563 @@
+{
+  "at": "2026-11-18T08:40:02.328Z",
+  "status": "PASS",
+  "method": "Internal Chromium viewport; synthetic UUID V5 save; injected touch PointerEvents through original UI/canvas. Raw bursts are measured before and after the original visual frame. Not physical touch or presented FPS.",
+  "viewport": {
+    "width": 360,
+    "height": 780,
+    "documentWidth": 345
+  },
+  "checks": [
+    {
+      "name": "zoo mobile needs no mode selector",
+      "passed": true
+    },
+    {
+      "name": "zoo first thumb drag rotates without choosing Putar",
+      "passed": true,
+      "detail": {
+        "angle": 335.34000000000003,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      }
+    },
+    {
+      "name": "zoo thumb leaves no pointer or selection",
+      "passed": true
+    },
+    {
+      "name": "zoo thumb does not scroll document",
+      "passed": true
+    },
+    {
+      "name": "zoo two fingers pan",
+      "passed": true,
+      "detail": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": -1.8220137132926622,
+        "z": -0.3465991460833052,
+        "mode": "rotate",
+        "pointers": 2
+      }
+    },
+    {
+      "name": "zoo pan keeps angle and final pinch distance",
+      "passed": true
+    },
+    {
+      "name": "zoo third finger is ignored",
+      "passed": true
+    },
+    {
+      "name": "zoo pinch zooms with a tilted pair",
+      "passed": true,
+      "detail": {
+        "angle": 0,
+        "zoom": 1.5660459763365826,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      }
+    },
+    {
+      "name": "zoo two fingers never rotate the camera",
+      "passed": true
+    },
+    {
+      "name": "zoo two fingers own the gesture",
+      "passed": true
+    },
+    {
+      "name": "zoo lifting a finger has no jump",
+      "passed": true
+    },
+    {
+      "name": "zoo remaining finger resumes direct rotation",
+      "passed": true
+    },
+    {
+      "name": "zoo multitouch releases without selecting",
+      "passed": true
+    },
+    {
+      "name": "zoo reset cancels held and late touches",
+      "passed": true
+    },
+    {
+      "name": "zoo pointercancel stays cancelled",
+      "passed": true
+    },
+    {
+      "name": "zoo pause cancels held touch",
+      "passed": true
+    },
+    {
+      "name": "zoo paused thumb rotates without simulation progress",
+      "passed": true
+    },
+    {
+      "name": "zoo Fit restores angle and zoom",
+      "passed": true
+    },
+    {
+      "name": "zoo camera gestures never change command ledger",
+      "passed": true,
+      "detail": {
+        "before": 128,
+        "after": 128
+      }
+    },
+    {
+      "name": "zoo one world and valid progress",
+      "passed": true
+    },
+    {
+      "name": "zoo burst has one pending frame and no eager camera work",
+      "passed": true
+    },
+    {
+      "name": "zoo 64 thumb samples make one camera update and one render",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 5,
+          "moves": 7,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 106,
+          "tick": 13646,
+          "events": 16
+        },
+        "queued": {
+          "updates": 5,
+          "moves": 71,
+          "taps": 0,
+          "pending": true,
+          "pointers": 1,
+          "frames": 1,
+          "renders": 106,
+          "tick": 13646,
+          "events": 16
+        },
+        "after": {
+          "updates": 6,
+          "moves": 71,
+          "taps": 0,
+          "pending": false,
+          "pointers": 1,
+          "frames": 0,
+          "renders": 107,
+          "tick": 13646,
+          "events": 17
+        },
+        "elapsedMs": 18.90000009536743
+      }
+    },
+    {
+      "name": "zoo first requested frame already follows the thumb",
+      "passed": true
+    },
+    {
+      "name": "zoo release leaves no extra camera frame",
+      "passed": true
+    },
+    {
+      "name": "zoo pan at 1 keeps raw events out of camera matrices",
+      "passed": true
+    },
+    {
+      "name": "zoo pan at 1 is one atomic update without zoom drift",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 6,
+          "moves": 71,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 109,
+          "tick": 13646,
+          "events": 19
+        },
+        "after": {
+          "updates": 7,
+          "moves": 135,
+          "taps": 0,
+          "pending": false,
+          "pointers": 2,
+          "frames": 0,
+          "renders": 110,
+          "tick": 13646,
+          "events": 20
+        },
+        "pose": {
+          "angle": 0,
+          "zoom": 1.0000000000000002,
+          "x": -2.3291143781273686e-15,
+          "z": -2.5292589166771548e-15,
+          "mode": "rotate",
+          "pointers": 2
+        },
+        "elapsedMs": 17
+      }
+    },
+    {
+      "name": "zoo pan at 1 never picks",
+      "passed": true
+    },
+    {
+      "name": "zoo pan at 3 keeps raw events out of camera matrices",
+      "passed": true
+    },
+    {
+      "name": "zoo pan at 3 is one atomic update without zoom drift",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 7,
+          "moves": 135,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 117,
+          "tick": 13646,
+          "events": 27
+        },
+        "after": {
+          "updates": 8,
+          "moves": 199,
+          "taps": 0,
+          "pending": false,
+          "pointers": 2,
+          "frames": 0,
+          "renders": 118,
+          "tick": 13646,
+          "events": 28
+        },
+        "pose": {
+          "angle": 0,
+          "zoom": 3,
+          "x": -0.702912462415218,
+          "z": -0.031905310458143404,
+          "mode": "rotate",
+          "pointers": 2
+        },
+        "elapsedMs": 17.600000023841858
+      }
+    },
+    {
+      "name": "zoo pan at 3 never picks",
+      "passed": true
+    },
+    {
+      "name": "zoo sub-threshold backtracking is never an object tap",
+      "passed": true
+    },
+    {
+      "name": "zoo 4px camera drag never picks",
+      "passed": true
+    },
+    {
+      "name": "zoo long hold does not select on release",
+      "passed": true
+    },
+    {
+      "name": "zoo cancelling queued motion prevents drift or selection",
+      "passed": true
+    },
+    {
+      "name": "zoo paused input never advances simulation time",
+      "passed": true
+    },
+    {
+      "name": "zoo all camera gestures leave object tap counter untouched",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary mobile needs no mode selector",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary first thumb drag rotates without choosing Putar",
+      "passed": true,
+      "detail": {
+        "angle": 335.34000000000003,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      }
+    },
+    {
+      "name": "macaw-aviary thumb leaves no pointer or selection",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary thumb does not scroll document",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary two fingers pan",
+      "passed": true,
+      "detail": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": -0.054769230769230716,
+        "z": -0.03398071483084259,
+        "mode": "rotate",
+        "pointers": 2
+      }
+    },
+    {
+      "name": "macaw-aviary pan keeps angle and final pinch distance",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary third finger is ignored",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary pinch zooms with a tilted pair",
+      "passed": true,
+      "detail": {
+        "angle": 0,
+        "zoom": 1.5660459763365826,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      }
+    },
+    {
+      "name": "macaw-aviary two fingers never rotate the camera",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary two fingers own the gesture",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary lifting a finger has no jump",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary remaining finger resumes direct rotation",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary multitouch releases without selecting",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary reset cancels held and late touches",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary pointercancel stays cancelled",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary pause cancels held touch",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary paused thumb rotates without simulation progress",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary Fit restores angle and zoom",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary camera gestures never change command ledger",
+      "passed": true,
+      "detail": {
+        "before": 128,
+        "after": 128
+      }
+    },
+    {
+      "name": "macaw-aviary one world and valid progress",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary burst has one pending frame and no eager camera work",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary 64 thumb samples make one camera update and one render",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 15,
+          "moves": 211,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 144,
+          "tick": 13649,
+          "events": 48
+        },
+        "queued": {
+          "updates": 15,
+          "moves": 275,
+          "taps": 0,
+          "pending": true,
+          "pointers": 1,
+          "frames": 1,
+          "renders": 144,
+          "tick": 13649,
+          "events": 48
+        },
+        "after": {
+          "updates": 16,
+          "moves": 275,
+          "taps": 0,
+          "pending": false,
+          "pointers": 1,
+          "frames": 0,
+          "renders": 145,
+          "tick": 13649,
+          "events": 49
+        },
+        "elapsedMs": 16.200000047683716
+      }
+    },
+    {
+      "name": "macaw-aviary first requested frame already follows the thumb",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary release leaves no extra camera frame",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary pan at 1 keeps raw events out of camera matrices",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary pan at 1 is one atomic update without zoom drift",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 16,
+          "moves": 275,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 147,
+          "tick": 13649,
+          "events": 51
+        },
+        "after": {
+          "updates": 17,
+          "moves": 339,
+          "taps": 0,
+          "pending": false,
+          "pointers": 2,
+          "frames": 0,
+          "renders": 148,
+          "tick": 13649,
+          "events": 52
+        },
+        "pose": {
+          "angle": 0,
+          "zoom": 1.0000000000000002,
+          "x": -6.080606104100853e-17,
+          "z": -4.030963597100566e-17,
+          "mode": "rotate",
+          "pointers": 2
+        },
+        "elapsedMs": 15.100000023841858
+      }
+    },
+    {
+      "name": "macaw-aviary pan at 1 never picks",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary pan at 3 keeps raw events out of camera matrices",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary pan at 3 is one atomic update without zoom drift",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 17,
+          "moves": 339,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 155,
+          "tick": 13649,
+          "events": 59
+        },
+        "after": {
+          "updates": 18,
+          "moves": 403,
+          "taps": 0,
+          "pending": false,
+          "pointers": 2,
+          "frames": 0,
+          "renders": 156,
+          "tick": 13649,
+          "events": 60
+        },
+        "pose": {
+          "angle": 0,
+          "zoom": 3,
+          "x": -0.06891381068387278,
+          "z": -0.0031280090228701556,
+          "mode": "rotate",
+          "pointers": 2
+        },
+        "elapsedMs": 15.399999976158142
+      }
+    },
+    {
+      "name": "macaw-aviary pan at 3 never picks",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary sub-threshold backtracking is never an object tap",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary 4px camera drag never picks",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary long hold does not select on release",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary cancelling queued motion prevents drift or selection",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary paused input never advances simulation time",
+      "passed": true
+    },
+    {
+      "name": "macaw-aviary all camera gestures leave object tap counter untouched",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove mobile needs no mode selector",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove first thumb drag rotates without choosing Putar",
+      "passed": true,
+      "detail": {
+        "angle": 335.34000000000003,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      }
+    },
+    {
+      "name": "elephant-grove thumb leaves no pointer or selection",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove thumb does not scroll document",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove two fingers pan",
+      "passed": true,
+      "detail": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": -0.25887692397557754,
+        "z": -0.08539282950000336,
+        "mode": "rotate",
+        "pointers": 2
+      }
+    },
+    {
+      "name": "elephant-grove pan keeps angle and final pinch distance",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove third finger is ignored",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pinch zooms with a tilted pair",
+      "passed": true,
+      "detail": {
+        "angle": 0,
+        "zoom": 1.5660459763365826,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      }
+    },
+    {
+      "name": "elephant-grove two fingers never rotate the camera",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove two fingers own the gesture",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove lifting a finger has no jump",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove remaining finger resumes direct rotation",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove multitouch releases without selecting",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove reset cancels held and late touches",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pointercancel stays cancelled",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pause cancels held touch",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove paused thumb rotates without simulation progress",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove Fit restores angle and zoom",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove camera gestures never change command ledger",
+      "passed": true,
+      "detail": {
+        "before": 128,
+        "after": 128
+      }
+    },
+    {
+      "name": "elephant-grove one world and valid progress",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove burst has one pending frame and no eager camera work",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove 64 thumb samples make one camera update and one render",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 25,
+          "moves": 415,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 184,
+          "tick": 13652,
+          "events": 80
+        },
+        "queued": {
+          "updates": 25,
+          "moves": 479,
+          "taps": 0,
+          "pending": true,
+          "pointers": 1,
+          "frames": 1,
+          "renders": 184,
+          "tick": 13652,
+          "events": 80
+        },
+        "after": {
+          "updates": 26,
+          "moves": 479,
+          "taps": 0,
+          "pending": false,
+          "pointers": 1,
+          "frames": 0,
+          "renders": 185,
+          "tick": 13652,
+          "events": 81
+        },
+        "elapsedMs": 15.100000023841858
+      }
+    },
+    {
+      "name": "elephant-grove first requested frame already follows the thumb",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove release leaves no extra camera frame",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pan at 1 keeps raw events out of camera matrices",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pan at 1 is one atomic update without zoom drift",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 26,
+          "moves": 479,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 187,
+          "tick": 13652,
+          "events": 83
+        },
+        "after": {
+          "updates": 27,
+          "moves": 543,
+          "taps": 0,
+          "pending": false,
+          "pointers": 2,
+          "frames": 0,
+          "renders": 188,
+          "tick": 13652,
+          "events": 84
+        },
+        "pose": {
+          "angle": 0,
+          "zoom": 1.0000000000000002,
+          "x": -2.874111215418225e-16,
+          "z": -2.3584553227906973e-16,
+          "mode": "rotate",
+          "pointers": 2
+        },
+        "elapsedMs": 15.300000071525574
+      }
+    },
+    {
+      "name": "elephant-grove pan at 1 never picks",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pan at 3 keeps raw events out of camera matrices",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove pan at 3 is one atomic update without zoom drift",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 27,
+          "moves": 543,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 195,
+          "tick": 13652,
+          "events": 91
+        },
+        "after": {
+          "updates": 28,
+          "moves": 607,
+          "taps": 0,
+          "pending": false,
+          "pointers": 2,
+          "frames": 0,
+          "renders": 196,
+          "tick": 13652,
+          "events": 92
+        },
+        "pose": {
+          "angle": 0,
+          "zoom": 3,
+          "x": -0.17317897269724788,
+          "z": -0.007860621605346018,
+          "mode": "rotate",
+          "pointers": 2
+        },
+        "elapsedMs": 14.799999952316284
+      }
+    },
+    {
+      "name": "elephant-grove pan at 3 never picks",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove sub-threshold backtracking is never an object tap",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove 4px camera drag never picks",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove long hold does not select on release",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove cancelling queued motion prevents drift or selection",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove paused input never advances simulation time",
+      "passed": true
+    },
+    {
+      "name": "elephant-grove all camera gestures leave object tap counter untouched",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna mobile needs no mode selector",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna first thumb drag rotates without choosing Putar",
+      "passed": true,
+      "detail": {
+        "angle": 335.34000000000003,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      }
+    },
+    {
+      "name": "lion-savanna thumb leaves no pointer or selection",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna thumb does not scroll document",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna two fingers pan",
+      "passed": true,
+      "detail": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": -0.41476923076923067,
+        "z": -0.09925530182143234,
+        "mode": "rotate",
+        "pointers": 2
+      }
+    },
+    {
+      "name": "lion-savanna pan keeps angle and final pinch distance",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna third finger is ignored",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pinch zooms with a tilted pair",
+      "passed": true,
+      "detail": {
+        "angle": 0,
+        "zoom": 1.5660459763365826,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      }
+    },
+    {
+      "name": "lion-savanna two fingers never rotate the camera",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna two fingers own the gesture",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna lifting a finger has no jump",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna remaining finger resumes direct rotation",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna multitouch releases without selecting",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna reset cancels held and late touches",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pointercancel stays cancelled",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pause cancels held touch",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna paused thumb rotates without simulation progress",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna Fit restores angle and zoom",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna camera gestures never change command ledger",
+      "passed": true,
+      "detail": {
+        "before": 128,
+        "after": 128
+      }
+    },
+    {
+      "name": "lion-savanna one world and valid progress",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna burst has one pending frame and no eager camera work",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna 64 thumb samples make one camera update and one render",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 35,
+          "moves": 619,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 222,
+          "tick": 13655,
+          "events": 112
+        },
+        "queued": {
+          "updates": 35,
+          "moves": 683,
+          "taps": 0,
+          "pending": true,
+          "pointers": 1,
+          "frames": 1,
+          "renders": 222,
+          "tick": 13655,
+          "events": 112
+        },
+        "after": {
+          "updates": 36,
+          "moves": 683,
+          "taps": 0,
+          "pending": false,
+          "pointers": 1,
+          "frames": 0,
+          "renders": 223,
+          "tick": 13655,
+          "events": 113
+        },
+        "elapsedMs": 16.299999952316284
+      }
+    },
+    {
+      "name": "lion-savanna first requested frame already follows the thumb",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna release leaves no extra camera frame",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pan at 1 keeps raw events out of camera matrices",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pan at 1 is one atomic update without zoom drift",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 36,
+          "moves": 683,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 225,
+          "tick": 13655,
+          "events": 115
+        },
+        "after": {
+          "updates": 37,
+          "moves": 747,
+          "taps": 0,
+          "pending": false,
+          "pointers": 2,
+          "frames": 0,
+          "renders": 226,
+          "tick": 13655,
+          "events": 116
+        },
+        "pose": {
+          "angle": 0,
+          "zoom": 1.0000000000000002,
+          "x": -4.604863499060649e-16,
+          "z": -4.177854643435589e-16,
+          "mode": "rotate",
+          "pointers": 2
+        },
+        "elapsedMs": 14.200000047683716
+      }
+    },
+    {
+      "name": "lion-savanna pan at 1 never picks",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pan at 3 keeps raw events out of camera matrices",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna pan at 3 is one atomic update without zoom drift",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 37,
+          "moves": 747,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 233,
+          "tick": 13655,
+          "events": 123
+        },
+        "after": {
+          "updates": 38,
+          "moves": 811,
+          "taps": 0,
+          "pending": false,
+          "pointers": 2,
+          "frames": 0,
+          "renders": 234,
+          "tick": 13655,
+          "events": 124
+        },
+        "pose": {
+          "angle": 0,
+          "zoom": 3,
+          "x": -0.20129244229095689,
+          "z": -0.00913669654127878,
+          "mode": "rotate",
+          "pointers": 2
+        },
+        "elapsedMs": 14.899999976158142
+      }
+    },
+    {
+      "name": "lion-savanna pan at 3 never picks",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna sub-threshold backtracking is never an object tap",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna 4px camera drag never picks",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna long hold does not select on release",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna cancelling queued motion prevents drift or selection",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna paused input never advances simulation time",
+      "passed": true
+    },
+    {
+      "name": "lion-savanna all camera gestures leave object tap counter untouched",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains mobile needs no mode selector",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains first thumb drag rotates without choosing Putar",
+      "passed": true,
+      "detail": {
+        "angle": 335.34000000000003,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      }
+    },
+    {
+      "name": "giraffe-plains thumb leaves no pointer or selection",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains thumb does not scroll document",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains two fingers pan",
+      "passed": true,
+      "detail": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": -0.2639999999999996,
+        "z": -0.09925530182143234,
+        "mode": "rotate",
+        "pointers": 2
+      }
+    },
+    {
+      "name": "giraffe-plains pan keeps angle and final pinch distance",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains third finger is ignored",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pinch zooms with a tilted pair",
+      "passed": true,
+      "detail": {
+        "angle": 0,
+        "zoom": 1.5660459763365826,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      }
+    },
+    {
+      "name": "giraffe-plains two fingers never rotate the camera",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains two fingers own the gesture",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains lifting a finger has no jump",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains remaining finger resumes direct rotation",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains multitouch releases without selecting",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains reset cancels held and late touches",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pointercancel stays cancelled",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pause cancels held touch",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains paused thumb rotates without simulation progress",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains Fit restores angle and zoom",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains camera gestures never change command ledger",
+      "passed": true,
+      "detail": {
+        "before": 128,
+        "after": 128
+      }
+    },
+    {
+      "name": "giraffe-plains one world and valid progress",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains burst has one pending frame and no eager camera work",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains 64 thumb samples make one camera update and one render",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 45,
+          "moves": 823,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 259,
+          "tick": 13658,
+          "events": 144
+        },
+        "queued": {
+          "updates": 45,
+          "moves": 887,
+          "taps": 0,
+          "pending": true,
+          "pointers": 1,
+          "frames": 1,
+          "renders": 259,
+          "tick": 13658,
+          "events": 144
+        },
+        "after": {
+          "updates": 46,
+          "moves": 887,
+          "taps": 0,
+          "pending": false,
+          "pointers": 1,
+          "frames": 0,
+          "renders": 260,
+          "tick": 13658,
+          "events": 145
+        },
+        "elapsedMs": 17.700000047683716
+      }
+    },
+    {
+      "name": "giraffe-plains first requested frame already follows the thumb",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains release leaves no extra camera frame",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pan at 1 keeps raw events out of camera matrices",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pan at 1 is one atomic update without zoom drift",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 46,
+          "moves": 887,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 262,
+          "tick": 13658,
+          "events": 147
+        },
+        "after": {
+          "updates": 47,
+          "moves": 951,
+          "taps": 0,
+          "pending": false,
+          "pointers": 2,
+          "frames": 0,
+          "renders": 263,
+          "tick": 13658,
+          "events": 148
+        },
+        "pose": {
+          "angle": 0,
+          "zoom": 1.0000000000000002,
+          "x": -2.93098878501041e-16,
+          "z": -2.2648549702353184e-16,
+          "mode": "rotate",
+          "pointers": 2
+        },
+        "elapsedMs": 15.200000047683716
+      }
+    },
+    {
+      "name": "giraffe-plains pan at 1 never picks",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pan at 3 keeps raw events out of camera matrices",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains pan at 3 is one atomic update without zoom drift",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 47,
+          "moves": 951,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 270,
+          "tick": 13658,
+          "events": 155
+        },
+        "after": {
+          "updates": 48,
+          "moves": 1015,
+          "taps": 0,
+          "pending": false,
+          "pointers": 2,
+          "frames": 0,
+          "renders": 271,
+          "tick": 13658,
+          "events": 156
+        },
+        "pose": {
+          "angle": 0,
+          "zoom": 3,
+          "x": -0.20129244229095694,
+          "z": -0.00913669654127878,
+          "mode": "rotate",
+          "pointers": 2
+        },
+        "elapsedMs": 14.400000095367432
+      }
+    },
+    {
+      "name": "giraffe-plains pan at 3 never picks",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains sub-threshold backtracking is never an object tap",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains 4px camera drag never picks",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains long hold does not select on release",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains cancelling queued motion prevents drift or selection",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains paused input never advances simulation time",
+      "passed": true
+    },
+    {
+      "name": "giraffe-plains all camera gestures leave object tap counter untouched",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands mobile needs no mode selector",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands first thumb drag rotates without choosing Putar",
+      "passed": true,
+      "detail": {
+        "angle": 335.34000000000003,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      }
+    },
+    {
+      "name": "zebra-grasslands thumb leaves no pointer or selection",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands thumb does not scroll document",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands two fingers pan",
+      "passed": true,
+      "detail": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": -0.536307692307692,
+        "z": -0.11311777414286144,
+        "mode": "rotate",
+        "pointers": 2
+      }
+    },
+    {
+      "name": "zebra-grasslands pan keeps angle and final pinch distance",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands third finger is ignored",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pinch zooms with a tilted pair",
+      "passed": true,
+      "detail": {
+        "angle": 0,
+        "zoom": 1.5660459763365826,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      }
+    },
+    {
+      "name": "zebra-grasslands two fingers never rotate the camera",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands two fingers own the gesture",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands lifting a finger has no jump",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands remaining finger resumes direct rotation",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands multitouch releases without selecting",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands reset cancels held and late touches",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pointercancel stays cancelled",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pause cancels held touch",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands paused thumb rotates without simulation progress",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands Fit restores angle and zoom",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands camera gestures never change command ledger",
+      "passed": true,
+      "detail": {
+        "before": 128,
+        "after": 128
+      }
+    },
+    {
+      "name": "zebra-grasslands one world and valid progress",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands burst has one pending frame and no eager camera work",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands 64 thumb samples make one camera update and one render",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 55,
+          "moves": 1027,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 294,
+          "tick": 13661,
+          "events": 176
+        },
+        "queued": {
+          "updates": 55,
+          "moves": 1091,
+          "taps": 0,
+          "pending": true,
+          "pointers": 1,
+          "frames": 1,
+          "renders": 294,
+          "tick": 13661,
+          "events": 176
+        },
+        "after": {
+          "updates": 56,
+          "moves": 1091,
+          "taps": 0,
+          "pending": false,
+          "pointers": 1,
+          "frames": 0,
+          "renders": 295,
+          "tick": 13661,
+          "events": 177
+        },
+        "elapsedMs": 14.399999976158142
+      }
+    },
+    {
+      "name": "zebra-grasslands first requested frame already follows the thumb",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands release leaves no extra camera frame",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pan at 1 keeps raw events out of camera matrices",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pan at 1 is one atomic update without zoom drift",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 56,
+          "moves": 1091,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 297,
+          "tick": 13661,
+          "events": 179
+        },
+        "after": {
+          "updates": 57,
+          "moves": 1155,
+          "taps": 0,
+          "pending": false,
+          "pointers": 2,
+          "frames": 0,
+          "renders": 298,
+          "tick": 13661,
+          "events": 180
+        },
+        "pose": {
+          "angle": 0,
+          "zoom": 1.0000000000000002,
+          "x": -5.954211482835837e-16,
+          "z": -5.561363335660783e-16,
+          "mode": "rotate",
+          "pointers": 2
+        },
+        "elapsedMs": 15.600000023841858
+      }
+    },
+    {
+      "name": "zebra-grasslands pan at 1 never picks",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pan at 3 keeps raw events out of camera matrices",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands pan at 3 is one atomic update without zoom drift",
+      "passed": true,
+      "detail": {
+        "before": {
+          "updates": 57,
+          "moves": 1155,
+          "taps": 0,
+          "pending": false,
+          "pointers": 0,
+          "frames": 0,
+          "renders": 305,
+          "tick": 13661,
+          "events": 187
+        },
+        "after": {
+          "updates": 58,
+          "moves": 1219,
+          "taps": 0,
+          "pending": false,
+          "pointers": 2,
+          "frames": 0,
+          "renders": 306,
+          "tick": 13661,
+          "events": 188
+        },
+        "pose": {
+          "angle": 0,
+          "zoom": 3,
+          "x": -0.22940591188466586,
+          "z": -0.010412771477211622,
+          "mode": "rotate",
+          "pointers": 2
+        },
+        "elapsedMs": 14.300000071525574
+      }
+    },
+    {
+      "name": "zebra-grasslands pan at 3 never picks",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands sub-threshold backtracking is never an object tap",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands 4px camera drag never picks",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands long hold does not select on release",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands cancelling queued motion prevents drift or selection",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands paused input never advances simulation time",
+      "passed": true
+    },
+    {
+      "name": "zebra-grasslands all camera gestures leave object tap counter untouched",
+      "passed": true
+    },
+    {
+      "name": "a deliberate short touch still opens the actual tapped habitat",
+      "passed": true
+    },
+    {
+      "name": "no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "no application errors",
+      "passed": true
+    }
+  ],
+  "cases": [
+    {
+      "kind": "zoo",
+      "start": {
+        "angle": 0,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      },
+      "rotated": {
+        "angle": 335.34000000000003,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      },
+      "panBefore": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "panned": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": -1.8220137132926622,
+        "z": -0.3465991460833052,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "pinched": {
+        "angle": 0,
+        "zoom": 1.5660459763365826,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "revision": 128,
+      "final": {
+        "angle": 0,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      }
+    },
+    {
+      "kind": "macaw-aviary",
+      "start": {
+        "angle": 0,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      },
+      "rotated": {
+        "angle": 335.34000000000003,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      },
+      "panBefore": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "panned": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": -0.054769230769230716,
+        "z": -0.03398071483084259,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "pinched": {
+        "angle": 0,
+        "zoom": 1.5660459763365826,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "revision": 128,
+      "final": {
+        "angle": 0,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      }
+    },
+    {
+      "kind": "elephant-grove",
+      "start": {
+        "angle": 0,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      },
+      "rotated": {
+        "angle": 335.34000000000003,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      },
+      "panBefore": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "panned": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": -0.25887692397557754,
+        "z": -0.08539282950000336,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "pinched": {
+        "angle": 0,
+        "zoom": 1.5660459763365826,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "revision": 128,
+      "final": {
+        "angle": 0,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      }
+    },
+    {
+      "kind": "lion-savanna",
+      "start": {
+        "angle": 0,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      },
+      "rotated": {
+        "angle": 335.34000000000003,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      },
+      "panBefore": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "panned": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": -0.41476923076923067,
+        "z": -0.09925530182143234,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "pinched": {
+        "angle": 0,
+        "zoom": 1.5660459763365826,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "revision": 128,
+      "final": {
+        "angle": 0,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      }
+    },
+    {
+      "kind": "giraffe-plains",
+      "start": {
+        "angle": 0,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      },
+      "rotated": {
+        "angle": 335.34000000000003,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      },
+      "panBefore": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "panned": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": -0.2639999999999996,
+        "z": -0.09925530182143234,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "pinched": {
+        "angle": 0,
+        "zoom": 1.5660459763365826,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "revision": 128,
+      "final": {
+        "angle": 0,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      }
+    },
+    {
+      "kind": "zebra-grasslands",
+      "start": {
+        "angle": 0,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      },
+      "rotated": {
+        "angle": 335.34000000000003,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      },
+      "panBefore": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "panned": {
+        "angle": 0,
+        "zoom": 1.25,
+        "x": -0.536307692307692,
+        "z": -0.11311777414286144,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "pinched": {
+        "angle": 0,
+        "zoom": 1.5660459763365826,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 2
+      },
+      "revision": 128,
+      "final": {
+        "angle": 0,
+        "zoom": 1,
+        "x": 0,
+        "z": 0,
+        "mode": "rotate",
+        "pointers": 0
+      }
+    }
+  ],
+  "performanceCases": [
+    {
+      "kind": "zoo",
+      "input": "64 one-finger positions",
+      "before": {
+        "updates": 5,
+        "moves": 7,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 106,
+        "tick": 13646,
+        "events": 16
+      },
+      "queued": {
+        "updates": 5,
+        "moves": 71,
+        "taps": 0,
+        "pending": true,
+        "pointers": 1,
+        "frames": 1,
+        "renders": 106,
+        "tick": 13646,
+        "events": 16
+      },
+      "after": {
+        "updates": 6,
+        "moves": 71,
+        "taps": 0,
+        "pending": false,
+        "pointers": 1,
+        "frames": 0,
+        "renders": 107,
+        "tick": 13646,
+        "events": 17
+      },
+      "elapsedMs": 18.90000009536743
+    },
+    {
+      "kind": "zoo",
+      "input": "64 two-finger positions",
+      "limit": 1,
+      "before": {
+        "updates": 6,
+        "moves": 71,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 109,
+        "tick": 13646,
+        "events": 19
+      },
+      "after": {
+        "updates": 7,
+        "moves": 135,
+        "taps": 0,
+        "pending": false,
+        "pointers": 2,
+        "frames": 0,
+        "renders": 110,
+        "tick": 13646,
+        "events": 20
+      },
+      "elapsedMs": 17
+    },
+    {
+      "kind": "zoo",
+      "input": "64 two-finger positions",
+      "limit": 3,
+      "before": {
+        "updates": 7,
+        "moves": 135,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 117,
+        "tick": 13646,
+        "events": 27
+      },
+      "after": {
+        "updates": 8,
+        "moves": 199,
+        "taps": 0,
+        "pending": false,
+        "pointers": 2,
+        "frames": 0,
+        "renders": 118,
+        "tick": 13646,
+        "events": 28
+      },
+      "elapsedMs": 17.600000023841858
+    },
+    {
+      "kind": "macaw-aviary",
+      "input": "64 one-finger positions",
+      "before": {
+        "updates": 15,
+        "moves": 211,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 144,
+        "tick": 13649,
+        "events": 48
+      },
+      "queued": {
+        "updates": 15,
+        "moves": 275,
+        "taps": 0,
+        "pending": true,
+        "pointers": 1,
+        "frames": 1,
+        "renders": 144,
+        "tick": 13649,
+        "events": 48
+      },
+      "after": {
+        "updates": 16,
+        "moves": 275,
+        "taps": 0,
+        "pending": false,
+        "pointers": 1,
+        "frames": 0,
+        "renders": 145,
+        "tick": 13649,
+        "events": 49
+      },
+      "elapsedMs": 16.200000047683716
+    },
+    {
+      "kind": "macaw-aviary",
+      "input": "64 two-finger positions",
+      "limit": 1,
+      "before": {
+        "updates": 16,
+        "moves": 275,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 147,
+        "tick": 13649,
+        "events": 51
+      },
+      "after": {
+        "updates": 17,
+        "moves": 339,
+        "taps": 0,
+        "pending": false,
+        "pointers": 2,
+        "frames": 0,
+        "renders": 148,
+        "tick": 13649,
+        "events": 52
+      },
+      "elapsedMs": 15.100000023841858
+    },
+    {
+      "kind": "macaw-aviary",
+      "input": "64 two-finger positions",
+      "limit": 3,
+      "before": {
+        "updates": 17,
+        "moves": 339,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 155,
+        "tick": 13649,
+        "events": 59
+      },
+      "after": {
+        "updates": 18,
+        "moves": 403,
+        "taps": 0,
+        "pending": false,
+        "pointers": 2,
+        "frames": 0,
+        "renders": 156,
+        "tick": 13649,
+        "events": 60
+      },
+      "elapsedMs": 15.399999976158142
+    },
+    {
+      "kind": "elephant-grove",
+      "input": "64 one-finger positions",
+      "before": {
+        "updates": 25,
+        "moves": 415,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 184,
+        "tick": 13652,
+        "events": 80
+      },
+      "queued": {
+        "updates": 25,
+        "moves": 479,
+        "taps": 0,
+        "pending": true,
+        "pointers": 1,
+        "frames": 1,
+        "renders": 184,
+        "tick": 13652,
+        "events": 80
+      },
+      "after": {
+        "updates": 26,
+        "moves": 479,
+        "taps": 0,
+        "pending": false,
+        "pointers": 1,
+        "frames": 0,
+        "renders": 185,
+        "tick": 13652,
+        "events": 81
+      },
+      "elapsedMs": 15.100000023841858
+    },
+    {
+      "kind": "elephant-grove",
+      "input": "64 two-finger positions",
+      "limit": 1,
+      "before": {
+        "updates": 26,
+        "moves": 479,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 187,
+        "tick": 13652,
+        "events": 83
+      },
+      "after": {
+        "updates": 27,
+        "moves": 543,
+        "taps": 0,
+        "pending": false,
+        "pointers": 2,
+        "frames": 0,
+        "renders": 188,
+        "tick": 13652,
+        "events": 84
+      },
+      "elapsedMs": 15.300000071525574
+    },
+    {
+      "kind": "elephant-grove",
+      "input": "64 two-finger positions",
+      "limit": 3,
+      "before": {
+        "updates": 27,
+        "moves": 543,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 195,
+        "tick": 13652,
+        "events": 91
+      },
+      "after": {
+        "updates": 28,
+        "moves": 607,
+        "taps": 0,
+        "pending": false,
+        "pointers": 2,
+        "frames": 0,
+        "renders": 196,
+        "tick": 13652,
+        "events": 92
+      },
+      "elapsedMs": 14.799999952316284
+    },
+    {
+      "kind": "lion-savanna",
+      "input": "64 one-finger positions",
+      "before": {
+        "updates": 35,
+        "moves": 619,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 222,
+        "tick": 13655,
+        "events": 112
+      },
+      "queued": {
+        "updates": 35,
+        "moves": 683,
+        "taps": 0,
+        "pending": true,
+        "pointers": 1,
+        "frames": 1,
+        "renders": 222,
+        "tick": 13655,
+        "events": 112
+      },
+      "after": {
+        "updates": 36,
+        "moves": 683,
+        "taps": 0,
+        "pending": false,
+        "pointers": 1,
+        "frames": 0,
+        "renders": 223,
+        "tick": 13655,
+        "events": 113
+      },
+      "elapsedMs": 16.299999952316284
+    },
+    {
+      "kind": "lion-savanna",
+      "input": "64 two-finger positions",
+      "limit": 1,
+      "before": {
+        "updates": 36,
+        "moves": 683,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 225,
+        "tick": 13655,
+        "events": 115
+      },
+      "after": {
+        "updates": 37,
+        "moves": 747,
+        "taps": 0,
+        "pending": false,
+        "pointers": 2,
+        "frames": 0,
+        "renders": 226,
+        "tick": 13655,
+        "events": 116
+      },
+      "elapsedMs": 14.200000047683716
+    },
+    {
+      "kind": "lion-savanna",
+      "input": "64 two-finger positions",
+      "limit": 3,
+      "before": {
+        "updates": 37,
+        "moves": 747,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 233,
+        "tick": 13655,
+        "events": 123
+      },
+      "after": {
+        "updates": 38,
+        "moves": 811,
+        "taps": 0,
+        "pending": false,
+        "pointers": 2,
+        "frames": 0,
+        "renders": 234,
+        "tick": 13655,
+        "events": 124
+      },
+      "elapsedMs": 14.899999976158142
+    },
+    {
+      "kind": "giraffe-plains",
+      "input": "64 one-finger positions",
+      "before": {
+        "updates": 45,
+        "moves": 823,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 259,
+        "tick": 13658,
+        "events": 144
+      },
+      "queued": {
+        "updates": 45,
+        "moves": 887,
+        "taps": 0,
+        "pending": true,
+        "pointers": 1,
+        "frames": 1,
+        "renders": 259,
+        "tick": 13658,
+        "events": 144
+      },
+      "after": {
+        "updates": 46,
+        "moves": 887,
+        "taps": 0,
+        "pending": false,
+        "pointers": 1,
+        "frames": 0,
+        "renders": 260,
+        "tick": 13658,
+        "events": 145
+      },
+      "elapsedMs": 17.700000047683716
+    },
+    {
+      "kind": "giraffe-plains",
+      "input": "64 two-finger positions",
+      "limit": 1,
+      "before": {
+        "updates": 46,
+        "moves": 887,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 262,
+        "tick": 13658,
+        "events": 147
+      },
+      "after": {
+        "updates": 47,
+        "moves": 951,
+        "taps": 0,
+        "pending": false,
+        "pointers": 2,
+        "frames": 0,
+        "renders": 263,
+        "tick": 13658,
+        "events": 148
+      },
+      "elapsedMs": 15.200000047683716
+    },
+    {
+      "kind": "giraffe-plains",
+      "input": "64 two-finger positions",
+      "limit": 3,
+      "before": {
+        "updates": 47,
+        "moves": 951,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 270,
+        "tick": 13658,
+        "events": 155
+      },
+      "after": {
+        "updates": 48,
+        "moves": 1015,
+        "taps": 0,
+        "pending": false,
+        "pointers": 2,
+        "frames": 0,
+        "renders": 271,
+        "tick": 13658,
+        "events": 156
+      },
+      "elapsedMs": 14.400000095367432
+    },
+    {
+      "kind": "zebra-grasslands",
+      "input": "64 one-finger positions",
+      "before": {
+        "updates": 55,
+        "moves": 1027,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 294,
+        "tick": 13661,
+        "events": 176
+      },
+      "queued": {
+        "updates": 55,
+        "moves": 1091,
+        "taps": 0,
+        "pending": true,
+        "pointers": 1,
+        "frames": 1,
+        "renders": 294,
+        "tick": 13661,
+        "events": 176
+      },
+      "after": {
+        "updates": 56,
+        "moves": 1091,
+        "taps": 0,
+        "pending": false,
+        "pointers": 1,
+        "frames": 0,
+        "renders": 295,
+        "tick": 13661,
+        "events": 177
+      },
+      "elapsedMs": 14.399999976158142
+    },
+    {
+      "kind": "zebra-grasslands",
+      "input": "64 two-finger positions",
+      "limit": 1,
+      "before": {
+        "updates": 56,
+        "moves": 1091,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 297,
+        "tick": 13661,
+        "events": 179
+      },
+      "after": {
+        "updates": 57,
+        "moves": 1155,
+        "taps": 0,
+        "pending": false,
+        "pointers": 2,
+        "frames": 0,
+        "renders": 298,
+        "tick": 13661,
+        "events": 180
+      },
+      "elapsedMs": 15.600000023841858
+    },
+    {
+      "kind": "zebra-grasslands",
+      "input": "64 two-finger positions",
+      "limit": 3,
+      "before": {
+        "updates": 57,
+        "moves": 1155,
+        "taps": 0,
+        "pending": false,
+        "pointers": 0,
+        "frames": 0,
+        "renders": 305,
+        "tick": 13661,
+        "events": 187
+      },
+      "after": {
+        "updates": 58,
+        "moves": 1219,
+        "taps": 0,
+        "pending": false,
+        "pointers": 2,
+        "frames": 0,
+        "renders": 306,
+        "tick": 13661,
+        "events": 188
+      },
+      "elapsedMs": 14.300000071525574
+    }
+  ],
+  "errors": [],
+  "final": {
+    "view": {
+      "angle": 0,
+      "zoom": 1,
+      "x": 0,
+      "z": 0,
+      "mode": "rotate",
+      "pointers": 0
+    },
+    "valid": true,
+    "habitats": 5,
+    "animals": 14,
+    "canvases": 1
+  }
+}

@@ -17,11 +17,11 @@ export function createFrameLoop(driver: FrameDriver, render: (time: number) => v
     pending = undefined;
   }
 
-  function schedule(token: number) {
-    if (!running || disposed || token !== generation) return;
+  function schedule(token: number, once=false) {
+    if ((!running&&!once) || disposed || token !== generation || pending!==undefined) return;
     try {
       pending = driver.request((time) => {
-        if (!running || disposed || token !== generation) return;
+        if ((!running&&!once) || disposed || token !== generation) return;
         pending = undefined;
         try { render(time); }
         catch {
@@ -30,7 +30,7 @@ export function createFrameLoop(driver: FrameDriver, render: (time: number) => v
           onError();
           return;
         }
-        if (token === generation) schedule(token);
+        if (running&&token === generation) schedule(token);
       });
     } catch {
       stop();
@@ -42,9 +42,13 @@ export function createFrameLoop(driver: FrameDriver, render: (time: number) => v
   return {
     start() {
       if (running || disposed) return;
+      if(pending!==undefined)driver.cancel(pending);
+      pending=undefined;
       running = true;
       schedule(++generation);
     },
+    // A camera gesture can draw while paused, using the same single pending frame.
+    requestFrame(){if(!disposed&&pending===undefined)schedule(generation,true);},
     stop,
     dispose() { stop(); disposed = true; },
     inspect: () => ({ running, disposed, pendingFrames: pending === undefined ? 0 : 1 }),

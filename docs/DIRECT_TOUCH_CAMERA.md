@@ -1,5 +1,7 @@
 # Kamera sentuh langsung — 18 November 2026
 
+> Pemetaan ini tetap berlaku. Perbaikan berikutnya untuk pemrosesan per frame dan pencegahan salah pilih dicatat pada [kamera mobile yang lebih responsif](SMOOTH_MOBILE_CAMERA.md).
+
 Pengguna meminta satu jari langsung memutar kamera di mobile, dua jari untuk pan dan pinch untuk zoom, tanpa memilih tombol Putar. Permintaan juga mengotorisasi pengujian hanya di browser internal dan deployment langsung.
 
 ## Perilaku

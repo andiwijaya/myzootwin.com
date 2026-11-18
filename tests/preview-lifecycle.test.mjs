@@ -40,6 +40,19 @@ test('disposed RAF loop cannot render or restart', () => {
   assert.equal(draws,0); assert.equal(frames.pending.size,0); assert.equal(loop.inspect().disposed,true);
 });
 
+test('paused one-shot redraws and live camera bursts share exactly one frame without starting a second chain',()=>{
+ const frames=driver();let draws=0;const loop=createFrameLoop(frames,()=>draws++,()=>assert.fail('unexpected frame error'));
+ for(let i=0;i<100;i++)loop.requestFrame();assert.equal(frames.pending.size,1);assert.equal(loop.inspect().running,false);frames.fire([...frames.pending.keys()][0]);assert.equal(draws,1);assert.equal(frames.pending.size,0);
+ loop.requestFrame();const stale=[...frames.pending.values()][0];loop.start();stale(5);assert.equal(draws,1);assert.equal(frames.pending.size,1);
+ for(let i=0;i<100;i++)loop.requestFrame();frames.fire([...frames.pending.keys()][0]);assert.equal(draws,2);assert.equal(frames.pending.size,1);
+ loop.stop();loop.requestFrame();const late=[...frames.pending.values()][0];loop.dispose();late(10);loop.requestFrame();assert.equal(draws,2);assert.equal(frames.pending.size,0);
+});
+
+test('a paused redraw failure reports once and never leaves a callback or restarts',()=>{
+ const frames=driver();let errors=0;const loop=createFrameLoop(frames,()=>{throw Error('camera render');},()=>errors++);
+ loop.requestFrame();frames.fire([...frames.pending.keys()][0]);loop.requestFrame();loop.start();assert.equal(errors,1);assert.equal(frames.pending.size,0);assert.equal(loop.inspect().disposed,true);
+});
+
 test('render exceptions stop the RAF chain and report once', () => {
   const frames=driver(); let errors=0;
   const loop=createFrameLoop(frames,()=>{throw Error('render');},()=>errors++);

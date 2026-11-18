@@ -28,6 +28,13 @@ export function createCameraNavigation(onChange:()=>void = ()=>{}) {
     x+=p.x;z+=p.z;zoom=next;commit();
   }
   function panPixels(dx:number,dy:number){if(!frame||![dx,dy].every(Number.isFinite))return;const p=ground(-dx*2*frame.halfWidth/(zoom*frame.width),dy*2*frame.halfHeight/(zoom*frame.height));x+=p.x;z+=p.z;commit();}
+  /** Apply the two-finger centroid and span together, clamping only the final view. */
+  function panZoomPixels(dx:number,dy:number,factor:number,anchorX:number,anchorY:number){
+    if(!frame||![dx,dy,factor,anchorX,anchorY].every(Number.isFinite)||factor<=0)return;
+    const next=clamp(zoom*factor,1,3),delta=1/zoom-1/next;
+    const p=ground(-dx*2*frame.halfWidth/(zoom*frame.width)+clamp(anchorX,-1,1)*frame.halfWidth*delta,dy*2*frame.halfHeight/(zoom*frame.height)+clamp(anchorY,-1,1)*frame.halfHeight*delta);
+    x+=p.x;z+=p.z;zoom=next;commit();
+  }
   return {
     configure(next:CameraFrame, preserveFocus=false) {
       if(!Object.values(next).every(Number.isFinite)||next.width<=0||next.height<=0||next.halfWidth<=0||next.halfHeight<=0||next.mapWidth<=0||next.mapHeight<=0||(next.panInset??.6)<0||(next.panInset??.6)>=Math.min(next.mapWidth,next.mapHeight)/2||(next.panInset===undefined&&(next.mapWidth<=2||next.mapHeight<=2||Math.abs(next.originX-(next.mapCenterX??0))>next.mapWidth/2-.6||Math.abs(next.originZ-(next.mapCenterZ??0))>next.mapHeight/2-.6))||Math.abs(next.rightX*next.upZ-next.rightZ*next.upX)<.01)throw new RangeError('Invalid camera frame');
@@ -35,6 +42,7 @@ export function createCameraNavigation(onChange:()=>void = ()=>{}) {
       frame={...next};if(preserveFocus&&previous&&zoom>1){x=previous.x-frame.originX;z=previous.z-frame.originZ;}commit();
     },
     panPixels,
+    panZoomPixels,
     focus(point:{x:number;z:number}){if(!frame||![point.x,point.z].every(Number.isFinite))return;zoom=2.5;x=point.x-frame.originX;z=point.z-frame.originZ;commit();},
     /** Fit a whole habitat with padding using the existing bounded pan policy. Existing close-up focus is unchanged. */
     focusArea(area:{x:number;z:number;width:number;depth:number}){

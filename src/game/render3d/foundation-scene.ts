@@ -358,10 +358,15 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     if (renderer) renderSubmissions++;
     macaw?.refresh();const waiting=Boolean(animalLibrary&&(!catalogueReady||animalLibrary.inspect().animalPending>0||(sceneryLibrary?.inspect().animalPending??0)>0||(fixturesLibrary?.inspect().animalPending??0)>0));assetStatus.hidden=!waiting;const assetLabel=simulation.localeView()==='id'?'Menyiapkan suaka…':'Preparing the sanctuary…';if(assetStatus.textContent!==assetLabel)assetStatus.textContent=assetLabel;if(waiting!==assetsWaiting){assetsWaiting=waiting;updateRunning();}
   }
+  let inVisualFrame=false;
   const loop = createFrameLoop(frames, time => {
-    if(!options.onFrameTiming){simulation.frame(time);macaw?.frame(time);render();return;}
-    const started=performance.now();simulation.frame(time);const stepped=performance.now();
-    macaw?.frame(time);render();options.onFrameTiming({simulationMs:stepped-started,sceneMs:performance.now()-stepped});
+    inVisualFrame=true;
+    try{
+      controls?.flush();
+      if(!options.onFrameTiming){simulation.frame(time);macaw?.frame(time);render();return;}
+      const started=performance.now();simulation.frame(time);const stepped=performance.now();
+      macaw?.frame(time);render();options.onFrameTiming({simulationMs:stepped-started,sceneMs:performance.now()-stepped});
+    }finally{inVisualFrame=false;}
   }, () => onFailure('render'));
   function updateRunning() {
     const shouldPause = disposed || lost || paused || grantBusy || document.hidden;
@@ -396,7 +401,7 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     catch { onFailure('render'); }
   }
   function onCameraView() {
-    if(disposed||lost||!paused||document.hidden)return;
+    if(disposed||lost||!paused||document.hidden||inVisualFrame||loop.inspect().pendingFrames>0)return;
     try { render(); }
     catch { onFailure('render'); }
   }
@@ -483,7 +488,7 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     elephantCarePreview=createElephantCarePreview(()=>simulation.worldSnapshot(),camera,()=>canvas.getBoundingClientRect(),{command:()=>simulation.commandRevision(),defaultCell:kind=>simulation.defaultElephantCareCell(kind),validate:(kind,cell)=>simulation.elephantCarePlacementView(kind,cell),commit:quote=>{const result=simulation.placeElephantCare(quote);if(result.ok){careFailure=null;careResult='placed';saveSession();announceEdit();}else careFailure=result.reason;return result;}},()=>{careDirty=true;announceElephantCare();});
     giraffePreview=createGiraffeCarePreview(()=>simulation.worldSnapshot(),camera,()=>canvas.getBoundingClientRect(),{command:()=>simulation.commandRevision(),defaultCell:kind=>simulation.defaultGiraffeCareCell(kind),validate:(kind,cell)=>simulation.validateGiraffeCarePlacement(kind,cell),commit:quote=>{const result=simulation.placeGiraffeCare(quote);if(result.ok){giraffeFailure=null;saveSession();}else giraffeFailure=result.reason;return result;}},()=>{careDirty=true;announceGiraffe();});
     lionPreview=createLionCarePreview(()=>simulation.worldSnapshot(),camera,()=>canvas.getBoundingClientRect(),{command:()=>simulation.commandRevision(),defaultCell:kind=>simulation.defaultLionCareCell(kind),validate:(kind,cell)=>simulation.validateLionCarePlacement(kind,cell),commit:quote=>{const result=simulation.placeLionCare(quote);if(result.ok){lionFailure=null;saveSession();}else lionFailure=result.reason;return result;}},()=>{careDirty=true;announceLion();});
-    controls=mountCameraControls(host,canvas,camera,diorama.bounds,initialWorld,point=>{if(!macaw?.view().active){if(zebraCarePreview?.view().active)zebraCarePreview.pick(point);else if(giraffePreview?.view().active)giraffePreview.pick(point);else if(lionPreview?.view().active)lionPreview.pick(point);else if(elephantCarePreview?.view().active)elephantCarePreview.pick(point);else if(placement?.active())placement.pick(point);else picker?.pick(point,identity=>{const home=habitatForSelection(focusWorld??simulation.worldSnapshot(),identity);return !!home&&!host.dispatchEvent(new CustomEvent('scene-habitat-tap',{bubbles:true,cancelable:true,detail:{habitatId:home.id}}));});}},()=>zebraCarePreview?.view().active?zebraCarePreview.cancel():giraffePreview?.view().active?giraffePreview.cancel():lionPreview?.view().active?lionPreview.cancel():elephantCarePreview?.view().active?elephantCarePreview.cancel():placement?.active()?placement.command('cancel'):focusedHabitat?(exitHabitatFocus(),render()):picker?.clear());
+    controls=mountCameraControls(host,canvas,camera,diorama.bounds,initialWorld,point=>{if(!macaw?.view().active){if(zebraCarePreview?.view().active)zebraCarePreview.pick(point);else if(giraffePreview?.view().active)giraffePreview.pick(point);else if(lionPreview?.view().active)lionPreview.pick(point);else if(elephantCarePreview?.view().active)elephantCarePreview.pick(point);else if(placement?.active())placement.pick(point);else picker?.pick(point,identity=>{const home=habitatForSelection(focusWorld??simulation.worldSnapshot(),identity);return !!home&&!host.dispatchEvent(new CustomEvent('scene-habitat-tap',{bubbles:true,cancelable:true,detail:{habitatId:home.id}}));});}},()=>zebraCarePreview?.view().active?zebraCarePreview.cancel():giraffePreview?.view().active?giraffePreview.cancel():lionPreview?.view().active?lionPreview.cancel():elephantCarePreview?.view().active?elephantCarePreview.cancel():placement?.active()?placement.command('cancel'):focusedHabitat?(exitHabitatFocus(),render()):picker?.clear(),{requestFrame:()=>loop.requestFrame()});
     host.addEventListener('camera-view-change',onCameraView);
     macaw=createMacawStudio(()=>simulation.macawWorldSnapshot(),view=>{birds?.setVisible(!view.active);worldLayer.visible=!view.active||view.habitat;host.dispatchEvent(new CustomEvent('scene-studio-change',{detail:view}));updateRunning();resize();},()=>visual().reducedMotion,animalLibrary,()=>visual().low);scene.add(macaw.group);host.addEventListener('keydown',onStudioKey,true);
     canvas.addEventListener('webglcontextlost', onLost);
