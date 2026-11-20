@@ -99,8 +99,9 @@ async function runPilot(name, viewport, touch) {
     const water = state.world.resources.find(({ kind }) => kind === 'water');
     const priorOperations = new Set(migrated.ledger.map(({ operationId }) => operationId));
     const refills = state.ledger.filter(({ kind, relatedId, operationId }) =>
-      kind === 'supplies' && relatedId === water.id && operationId.endsWith('-refill') && !priorOperations.has(operationId));
+      kind === 'supplies' && relatedId === water.id && !priorOperations.has(operationId));
     assert.equal(refills.length, 1);
+    assert.equal(refills[0].operationId, `cmd-${migrated.economy.nextCommand}`);
     assert.ok(refills[0].amount < 0);
     assert.equal(state.economy.nextCommand, migrated.economy.nextCommand + 1);
     assert.ok(state.tick > refills[0].tick);
