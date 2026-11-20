@@ -2,11 +2,14 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import { serializeSave } from '../../src/game/persistence/save-v1.ts';
+import { SAVE_DATABASE } from '../../src/game/persistence/durable-backend.ts';
 
-const [address, playwrightEntry] = process.argv.slice(2);
+const [address, playwrightEntry, mode = 'pilot'] = process.argv.slice(2);
 const origin = new URL(address);
-assert.equal(origin.protocol, 'http:');
-assert.equal(origin.hostname, '127.0.0.1');
+assert.ok(['pilot', 'default'].includes(mode));
+const normalRoute = mode === 'default';
+const local = origin.protocol === 'http:' && origin.hostname === '127.0.0.1';
+assert.ok(local || (normalRoute && origin.origin === 'https://myzootwin.com'));
 const { chromium } = await import(pathToFileURL(playwrightEntry).href);
 const fixture = new URL('../fixtures/elephant-legacy-v1.json', import.meta.url);
 const { state: legacy } = JSON.parse(readFileSync(fixture, 'utf8')).entries.midQ02;
@@ -40,10 +43,10 @@ function checkpoint(page, name, key) {
   }), { name, key });
 }
 
-async function runPilot(name, viewport, touch) {
+async function runProfile(name, viewport, touch) {
   const context = await browser.newContext({ viewport, isMobile: touch, hasTouch: touch, locale: 'en-US', reducedMotion: 'reduce' });
-  const databaseName = 'myzootwin-qa-common-engine-v03-' + name;
-  const route = new URL('/play/?qa-session=' + name, origin).href;
+  const databaseName = normalRoute ? SAVE_DATABASE : 'myzootwin-qa-common-engine-v03-' + name;
+  const route = new URL(normalRoute ? '/play/' : '/play/?qa-session=' + name, origin).href;
   const page = await context.newPage();
   page.setDefaultTimeout(timeout);
   const errors = [];
@@ -54,8 +57,21 @@ async function runPilot(name, viewport, touch) {
     else await button.click();
   }
 
+  async function openSave(stock, runtime = 'common-engine') {
+    await press('[data-continue]');
+    await page.locator(stage + ' canvas').waitFor();
+    await attribute(page, stage, 'data-simulation-runtime', runtime);
+    await attribute(page, stage, 'data-common-engine-version', runtime === 'native' ? null : '0.3.0');
+    await attribute(page, stage, 'data-placed-birds', '2');
+    await attribute(page, stage, 'data-water-stock', String(stock));
+    await page.locator('[data-save-resume-button]').waitFor();
+    await attribute(page, save, 'data-save-phase', 'saved');
+  }
+
   try {
     await page.goto(new URL('/robots.txt', origin).href, { waitUntil: 'domcontentloaded' });
+    assert.equal(new URL(page.url()).origin, origin.origin);
+    assert.deepEqual(await page.evaluate(() => indexedDB.databases()), []);
     await page.evaluate(({ databaseName, oldRecord }) => new Promise((resolve, reject) => {
       const connection = indexedDB.open(databaseName, 1);
       connection.onupgradeneeded = () => connection.result.createObjectStore('checkpoints').put(oldRecord, 'primary');
@@ -64,17 +80,12 @@ async function runPilot(name, viewport, touch) {
     }), { databaseName, oldRecord });
 
     await page.goto(route, { waitUntil: 'domcontentloaded' });
+    assert.equal(page.url(), route);
     await attribute(page, save, 'data-save-phase', 'available');
     await press('[data-hud-save-details] > summary');
     await press('[data-save-recovery-review]');
     await press('[data-save-recovery-confirm]');
-    await press('[data-continue]');
-    await page.locator(stage + ' canvas').waitFor();
-    await attribute(page, stage, 'data-common-engine-pilot', '0.3.0');
-    await attribute(page, stage, 'data-placed-birds', '2');
-    await attribute(page, stage, 'data-water-stock', '6');
-    await page.locator('[data-save-resume-button]').waitFor();
-    await attribute(page, save, 'data-save-phase', 'saved');
+    await openSave(6);
     assert.deepEqual(await checkpoint(page, databaseName, 'elephant-v1-backup'), oldRecord);
     const migrated = JSON.parse((await checkpoint(page, databaseName, 'primary')).payload);
     assert.equal(migrated.schemaVersion, 5);
@@ -110,13 +121,14 @@ async function runPilot(name, viewport, touch) {
 
     await page.reload({ waitUntil: 'domcontentloaded' });
     await attribute(page, save, 'data-save-phase', 'available');
-    await press('[data-continue]');
-    await page.locator('[data-save-resume-button]').waitFor();
-    await attribute(page, stage, 'data-common-engine-pilot', '0.3.0');
-    await attribute(page, stage, 'data-water-stock', String(water.stock));
-    await attribute(page, stage, 'data-placed-birds', '2');
-    await attribute(page, save, 'data-save-phase', 'saved');
+    await openSave(water.stock);
     assert.equal((await checkpoint(page, databaseName, 'primary')).payload, saved.payload);
+    if (normalRoute) {
+      await page.goto(new URL('/play/?engine=native', origin).href, { waitUntil: 'domcontentloaded' });
+      await attribute(page, save, 'data-save-phase', 'available');
+      await openSave(water.stock, 'native');
+      assert.equal((await checkpoint(page, databaseName, 'primary')).payload, saved.payload);
+    }
     assert.deepEqual(await page.evaluate(async () => (await indexedDB.databases()).map(({ name }) => name)), [databaseName]);
     assert.deepEqual(errors, []);
     const display = await page.evaluate(() => ({ width: innerWidth, height: innerHeight, scrollWidth: document.documentElement.scrollWidth, touch: navigator.maxTouchPoints > 0 }));
@@ -124,8 +136,9 @@ async function runPilot(name, viewport, touch) {
     assert.equal(display.height, viewport.height);
     assert.equal(display.touch, touch);
     assert.ok(display.scrollWidth <= display.width);
-    console.log(JSON.stringify({ profile: name, ...display, engine: '0.3.0', database: databaseName, saveVersion: '1 → 5',
-      tick: [legacy.tick, state.tick], refillTick: refills[0].tick, water: [6, water.stock], careCommands: 1, saveRevision: saved.revision, reopened: true, v1BackupIdentical: true }));
+    console.log(JSON.stringify({ profile: name, mode, ...display, engine: '0.3.0', database: databaseName, saveVersion: '1 → 5',
+      tick: [legacy.tick, state.tick], refillTick: refills[0].tick, water: [6, water.stock], careCommands: 1, saveRevision: saved.revision,
+      reopened: true, v1BackupIdentical: true, nativeRollback: normalRoute }));
   } catch (error) {
     const diagnostics = await page.evaluate(({ root, stage, save }) => ({
       entry: { ...document.querySelector(root)?.dataset }, stage: { ...document.querySelector(stage)?.dataset },
@@ -141,8 +154,8 @@ async function runPilot(name, viewport, touch) {
 }
 
 try {
-  await runPilot('desktop-qa', { width: 1366, height: 900 }, false);
-  await runPilot('mobile-qa', { width: 390, height: 844 }, true);
+  await runProfile('desktop-qa', { width: 1366, height: 900 }, false);
+  await runProfile('mobile-qa', { width: 390, height: 844 }, true);
 } finally {
   await browser.close();
 }
