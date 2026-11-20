@@ -222,3 +222,30 @@ Final443/check170/9routes;13-case localization fixture x3=39 plus19 HUD x3=57 an
 Current isolated audit gate uses `MYZOO_QA_SCOPE=hygiene-m6-05` with `node scripts/qa/settings-isolated.mjs local` and `serve`; default `qa:local` still writesdist and must not replace an owner-served build.464tests/184checked files,9routes; M6-05 output bytes equal M6-04 so browser evidence is explicitly reused, not rerun. See M6-05_REPO_LICENSE_AUDIT.md.
 
 Keep final milestone builds/ownerdist/investigation baselines, original media/saves and meaningful failures. Review redundant generated candidates before more than12loose isolated builds or100MB generated QA; this is a review threshold, not automatic permission to delete. Archive exact candidate bodies with CRC/every-file SHA, verify root/no-reparse/no-live-use, then remove only named copies. Committed receipts remain, local archive location/SHA/manifest must be stated; never pretend an ignored archive is in Git. Existing `qa:prune` acts only on its own `.qa/runs`, not every isolated build scope. Eight superseded copies are locally archived under `.qa/archives/m6-05`; no restore overdist/source. Legacy rights and13package-notice gaps remain for review; no license/physical/performance gate is cleared by hygiene.
+
+## Common Engine 0.3.0 runtime
+
+`/play/` uses Common Engine for fixed ticks. MyZooTwin handles care, IndexedDB checkpoints, and save migrations. The `/play/?engine=native` route opens the same save with the native clock. Cloudflare Pages can also roll back to the previous production deployment.
+
+The private Common Engine workflow installs the pinned GitHub package with `packages: read`. Cloudflare Pages production uses `NPM_CONFIG_USERCONFIG=/opt/buildhome/repo/.npmrc.pages` and the `MYZOOTWIN_PAGES_PACKAGES_TOKEN` secret with GitHub classic PAT scope `read:packages`. The npm config contains the environment variable reference.
+
+The full browser regression opens a synthetic V1 save in fresh desktop and touch-emulated Chromium profiles. It checks one Macaw refill, ticks after the refill, autosave, reload, and reopening the same checkpoint through the native runtime. A standard localhost build can run this regression using the normal route.
+
+```bash
+npm run build -- --outDir .qa/common-engine-release/default
+npm run preview -- --host 127.0.0.1 --port 4762 --outDir .qa/common-engine-release/default
+node tests/browser/common-engine-pilot.mjs http://127.0.0.1:4762 /path/to/playwright/index.mjs default
+```
+
+For a localhost build with an explicit QA database name, enable the pilot flag.
+
+```bash
+PUBLIC_MYZOOTWIN_COMMON_ENGINE_QA=1 npm run build -- --outDir .qa/common-engine-pilot/dist
+npm run preview -- --host 127.0.0.1 --port 4762 --outDir .qa/common-engine-pilot/dist
+```
+
+Use `http://127.0.0.1:4762/play/?qa-session=desktop-qa` for a session in `myzootwin-qa-common-engine-v03-desktop-qa`. With Playwright 1.64.1 and Chromium installed, run the focused regression against that preview.
+
+```bash
+node tests/browser/common-engine-pilot.mjs http://127.0.0.1:4762 /path/to/playwright/index.mjs
+```

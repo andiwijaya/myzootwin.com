@@ -75,7 +75,7 @@ const evaluateMissions=(state:RuntimeState,advance=false)=>{evaluateMacawMission
 const macawTransaction=<Result>(state:RuntimeState,run:(view:ZooSaveV1)=>Result):Result=>{const view=macawRuntimeView(state),result=run(view);commitMacawRuntimeView(state,view);return result;};
 
 /** Fixed simulation time and validated atomic world, care and financial transactions. */
-export function createSimulation(initial: ZooSave = createInitialState(), savedEditor?:EditorState) {
+export function createSimulation(initial: ZooSave = createInitialState(), savedEditor?:EditorState, createClock: typeof createFixedClock = createFixedClock) {
   const checked=validateState(initial);
   if(!checked.ok)throw new Error(`Invalid initial state at ${checked.path}`);
   const reconciled=reconcilePathAccess(checked.value.world);
@@ -94,7 +94,7 @@ export function createSimulation(initial: ZooSave = createInitialState(), savedE
   let lastFrame:number|null=null;
   const bus=createEventBus<SimulationEvent>();
   const publish=(event:SimulationEvent)=>{evaluateMissions(state,event.type==='tick');bus.emit(event);};
-  const clock=createFixedClock(()=>{
+  const clock=createClock(()=>{
     if(state.tick>=MAX_TICK)throw new RangeError('Simulation tick limit reached');
     state.tick++;
     state.gameTimeMs=state.tick*TICK_MS;
