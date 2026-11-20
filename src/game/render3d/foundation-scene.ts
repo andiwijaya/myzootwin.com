@@ -71,6 +71,7 @@ import { PreviewFailure, type PreviewFailureKind, type PreviewSession } from './
 
 interface FoundationOptions {
   stateStore?:SanctuarySessionState<ZooSave>;
+  createClock?: Parameters<typeof createSimulation>[2];
   frames?: FrameDriver;
   createContext?: (canvas: HTMLCanvasElement) => WebGL2RenderingContext | null;
   createRenderer?: (canvas: HTMLCanvasElement, context: WebGL2RenderingContext) => WebGLRenderer;
@@ -162,7 +163,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   let visitors:ReturnType<typeof createVisitorScene>|undefined;let previousVisitors='';let previousEconomy='';let guideRead:import('../missions/onboarding.ts').FirstMissionGuide|undefined,guideReadKey='';let previousGuide='';let previousMission='';let previousRecovery='';let recoveryReadKey='';let recoveryRead:import('../economy/recovery.ts').RecoveryView|undefined;let visitorsDirty=true;
   function announceVisitors(){const view=simulation.visitorView(),key=JSON.stringify(view);if(key!==previousVisitors){previousVisitors=key;host.dispatchEvent(new CustomEvent('scene-visitors-change',{detail:view}));}host.dataset.visitorCount=String(view.active);host.dataset.visitorWalking=String(view.walking);host.dataset.visitorViewing=String(view.viewing);host.dataset.visitorViewed=String(view.viewedTotal);}
   let paths:ReturnType<typeof createPathScene>|undefined;
-  const simulation = createSimulation(options.stateStore?.read(),options.stateStore?.readEditor());
+  const simulation = createSimulation(options.stateStore?.read(),options.stateStore?.readEditor(),options.createClock);
   const viewReadKeys=new Map<string,string>();
   function viewChanged(name:string,frame:ReturnType<typeof simulation.inspect>,extra:unknown[]=[]){
     const key=JSON.stringify([frame.tick,frame.commandRevision,frame.editorRevision,paused,lost,grantBusy,options.stateStore?.canCommit?.(),simulation.localeView(),...extra]);
