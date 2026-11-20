@@ -95,6 +95,10 @@ async function runProfile(name, viewport, touch) {
     await attribute(page, root, 'data-session-paused', 'false');
     await press('[data-zoo-destination="macaw-aviary"]');
     await press('[data-hud-tab="care"]');
+    // The renderer can still pause ticks while its 3D assets finish loading.
+    await page.waitForFunction(({ save, initialTick }) =>
+      Number(document.querySelector(save)?.getAttribute('data-saved-tick')) > initialTick,
+      { save, initialTick: migrated.tick }, { timeout });
     await press('[data-water-command="refill"]');
     await attribute(page, stage, 'data-water-stock', '8');
     const lastSavedTick = Number(await page.locator(save).getAttribute('data-saved-tick'));
