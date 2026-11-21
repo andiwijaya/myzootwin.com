@@ -82,7 +82,7 @@ async function local() {
   const concurrency=Math.min(4,availableParallelism());
   let current='unit';
   try {
-    for(const [kind,args] of [['unit',['--experimental-strip-types','--test','--test-concurrency='+concurrency,'--test-reporter=tap',...testFiles]],['check',[astro,'check']],['build',[astro,'build']]]) {
+    for(const [kind,args] of [['check',[astro,'check']],['unit',['--experimental-strip-types','--test','--test-concurrency='+concurrency,'--test-reporter=tap',...testFiles]],['build',[astro,'build']]]) {
       current=kind;const startedAt=now();console.log(`QA ${runId}: ${kind}...`);
       // Multispecies simulation tests are CPU and memory intensive on Windows.
       const result=await runNode(args,{cwd:root,children:owned,timeoutMs:kind==='unit'?1_200_000:180_000,environment:kind==='build'?{MYZOO_QA_ANALYZE:'1'}:{}});

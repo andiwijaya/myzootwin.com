@@ -53,7 +53,6 @@ export function mountHudLayout(root: HTMLElement) {
     const events = new AbortController(), chrome = root.querySelector<HTMLElement>('[data-hud-chrome]'), options = root.querySelector<HTMLDetailsElement>('[data-hud-options]'), tabs = root.querySelector<HTMLElement>('[data-hud-tabs]'), stats = root.querySelector<HTMLElement>('[data-hud-stats]');
     const toolsToggle = root.dataset.mapFirst === 'true' ? root.querySelector<HTMLButtonElement>('[data-zoo-tools-toggle]') : null;
     const toolsRail = toolsToggle ? root.querySelector<HTMLElement>('.hud-rail') : null;
-    const panelRegion = root.querySelector<HTMLElement>('[data-hud-panels]');
     mountBuildScrollStability(root,events.signal);
     let resizeTimer: ReturnType<typeof setTimeout> | undefined;
     let viewportWidth = window.innerWidth;
