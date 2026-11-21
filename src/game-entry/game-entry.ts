@@ -347,7 +347,7 @@ export function mountGameEntry(root: HTMLElement, options: {
     if (document.hidden)
         pauseGate.hold('background', true);
     restartPanel = mountRestartPanel(root, { save: durable, locale: () => locale, pause: () => pauseGate.hold('manual', true), closeGame: () => { resumePending = false; preview?.close(); }, replaced: () => { locale = chooseGameLocale(locale, manualLocale, durable.savedLocale()); syncEffectivePreferences(); render(locale); } });
-    const hudLayout = mountHudLayout(root);
+    const hudLayout = mountHudLayout(root, storage);
     const farmUi=mountFarmUi(root);
     root.ownerDocument.addEventListener('myzootwin:privacy-modal', () => syncPause(), { signal: events.signal });
     syncPause();
