@@ -4,8 +4,9 @@ import { join, relative, resolve, isAbsolute } from 'node:path';
 import { spawn } from 'node:child_process';
 import { createServer } from 'node:net';
 
-export const BROWSER_CASES=['desktop-native','portrait-native-id','landscape-native-id','native-lifecycle','injected-failure-retry','navigation-reload'];
-export const PRODUCT_ROUTES=['/','/en/','/animals/','/wildlife/','/pets/','/learn/','/adventures/','/gear/','/about/','/play/'];
+export const BROWSER_CASES=['desktop-native','portrait-native-id','landscape-native-id','native-lifecycle','injected-failure-retry','navigation-reload','tutorial-home','animal-articles'];
+export const ANIMAL_ARTICLE_ROUTES=['makaw','gajah','singa','jerapah','zebra'].map(slug=>'/artikel/'+slug+'/');
+export const PRODUCT_ROUTES=['/','/en/','/animals/','/wildlife/','/pets/','/learn/','/adventures/','/gear/','/about/','/play/','/tutorial/','/en/tutorial/','/artikel/',...ANIMAL_ARTICLE_ROUTES];
 export const IPC_BROWSER_METHOD='isolated-playwright-local-build';
 export const sha256=bytes=>createHash('sha256').update(bytes).digest('hex');
 export const now=()=>new Date().toISOString();
@@ -111,6 +112,28 @@ export function browserVerdict(receipt,report) {
       const [width,height]=id==='desktop-native'?[1366,768]:id==='portrait-native-id'?[360,780]:[780,360];
       if(d.width!==width||d.height!==height||!Number.isFinite(d.documentWidth)||d.documentWidth<=0||d.documentWidth>width||d.state!=='ready'||d.canvas!==1||d.visualReviewed!==true||row.screenshot!==`screens/${id}.jpg`||d.entryScript!==report.entryScript)fail(`${id}: viewport/render/build/screenshot mismatch`);
       if(id.endsWith('-id')&&d.lang!=='id')fail(`${id}: missing Indonesian state`);
+    }
+    if(id==='tutorial-home') {
+      const pages=d.pages??[];
+      if(pages.length!==2)fail('Tutorial needs desktop and phone observations');
+      for(const [lang,home,guide,width,height] of [['id','/','/tutorial/',1366,768],['en','/en/','/en/tutorial/',360,780]]) {
+        const p=pages.find(page=>page.lang===lang);
+        if(!p||p.home!==home||p.guide!==guide||p.width!==width||p.height!==height||p.chapters!==8||
+          p.mobileScreens!==6||p.desktopScreens!==6||p.play!=='/play/'||p.canonical!=='https://myzootwin.com'+guide||
+          p.homeOverflow!==false||p.guideOverflow!==false)fail(`Tutorial route, screenshots or layout mismatch for ${lang}`);
+      }
+    }
+    if(id==='animal-articles') {
+      const profiles=d.profiles??[];
+      if(profiles.length!==2)fail('Animal articles need desktop and phone observations');
+      for(const [width,height] of [[1366,768],[390,844]]) {
+        const profile=profiles.find(p=>p.width===width&&p.height===height);
+        const articles=profile?.articles??[];
+        if(profile?.index!=='/artikel/'||profile.overflow!==false||articles.map(article=>article.path).join('|')!==ANIMAL_ARTICLE_ROUTES.join('|')||
+          new Set(articles.map(article=>article.photo)).size!==5||articles.some(article=>article.overflow!==false||
+            typeof article.photo!=='string'||!article.photo.startsWith('/_astro/')||article.play!=='/play/'||
+            article.canonical!=='https://myzootwin.com'+article.path))fail(`Animal article route, photo or layout mismatch at ${width}px`);
+      }
     }
     if(id==='native-lifecycle') {
       if(d.harnessRunId!==report.runId||d.harnessBuildId!==report.build.id||d.harnessSourceId!==report.source.id)fail('Fixture identity mismatch');

@@ -1,0 +1,52 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { animalStories, type AnimalStory } from '../../articles/stories';
+import '../../articles/articles.css';
+
+export function getStaticPaths() {
+  return animalStories.map(story => ({ params: { slug: story.slug }, props: { story } }));
+}
+
+interface Props {
+  story: AnimalStory;
+}
+
+const { story } = Astro.props;
+const socialImage = { src: story.image.src, width: story.image.width, height: story.image.height, alt: story.alt };
+---
+<BaseLayout gameStories locale="id" title={story.title + ' — MyZooTwin'} description={story.description} socialImage={socialImage}>
+  <article class="animal-story" data-animal-story={story.slug}>
+    <header class="animal-story-intro">
+      <a class="article-back" href="/artikel/">← Semua artikel</a>
+      <p class="article-species">{story.species} <i>{story.scientificName}</i></p>
+      <h1>{story.title}</h1>
+      <p class="animal-story-lead">{story.description}</p>
+    </header>
+    <figure class="animal-story-picture">
+      <img src={story.image.src} width={story.image.width} height={story.image.height}
+        alt={story.alt} fetchpriority="high" decoding="async" data-article-photo />
+      <figcaption>Ilustrasi fotorealistis dibuat dengan ImageGen</figcaption>
+    </figure>
+    <div class="animal-story-body">
+      <section aria-labelledby="story-scene-title">
+        <p class="story-setting">Kisah di {story.habitat}</p>
+        <h2 id="story-scene-title">{story.scene}</h2>
+        {story.story.map(paragraph => <p>{paragraph}</p>)}
+      </section>
+      <section aria-labelledby="story-wild-title">
+        <h2 id="story-wild-title">Di alam</h2>
+        {story.wild.map((paragraph, index) => (
+          <p>{paragraph}{index === story.wild.length - 1 && <> <a href={story.source.href}>{story.source.label}</a></>}</p>
+        ))}
+      </section>
+      <section class="story-try" aria-labelledby="story-try-title">
+        <h2 id="story-try-title">Coba amati di game</h2>
+        <p>{story.tryInGame}</p>
+        <div>
+          <a class="button" href="/play/">Main Sekarang</a>
+          <a class="article-back" href={story.slug === 'makaw' ? '/tutorial/#rawat' : '/tutorial/#habitat'}>Lihat tutorial</a>
+        </div>
+      </section>
+    </div>
+  </article>
+</BaseLayout>

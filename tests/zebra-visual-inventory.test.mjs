@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
-import {readFileSync} from 'node:fs';
+import {readFileSync,readdirSync} from 'node:fs';
 import {gunzipSync} from 'node:zlib';
 import {discoverVisualInventory} from '../scripts/qa/zebra/visual-inventory.mjs';
 const frozen=JSON.parse(readFileSync(new URL('../docs/qa/zebra/z0-03/inventory.json',import.meta.url),'utf8'));
@@ -17,6 +17,8 @@ const touchPickingExtension=JSON.parse(readFileSync(new URL('./fixtures/mobile-t
 const landscapeExtension=JSON.parse(readFileSync(new URL('./fixtures/tropical-creek-visual-extension.json',import.meta.url),'utf8'));
 const polishExtension=JSON.parse(readFileSync(new URL('./fixtures/habitat-polish-visual-extension.json',import.meta.url),'utf8'));
 const orbitExtension=JSON.parse(readFileSync(new URL('./fixtures/camera-orbit-visual-extension.json',import.meta.url),'utf8'));
+const tutorialExtension=JSON.parse(readFileSync(new URL('./fixtures/tutorial-visual-extension.json',import.meta.url),'utf8'));
+const articleExtension=JSON.parse(readFileSync(new URL('./fixtures/article-visual-extension.json',import.meta.url),'utf8'));
 const withoutLine=({line,...record})=>record;
 // Keep the immutable Z0-03 receipt. H1 found Box3Helper and spray's Object3D transform helper omitted by the original regex.
 // Compare its original source inventory after projecting out that explicit scanner correction.
@@ -89,7 +91,21 @@ test('all production-reachable visual sources and nested geometry/part sites rem
  assert.deepEqual(current.staticVisuals.filter(a=>originalStatic.has(a.assetId)).map(withoutLine),historical.staticVisuals.map(withoutLine));
  assert.deepEqual(uiExtension.staticSources.map(s=>s.path),['src/components/ZooUiIcon.astro']);
  for(const s of uiExtension.staticSources)assert.equal(createHash('sha256').update(readFileSync(s.path,'utf8').replace(/\r\n/g,'\n')).digest('hex'),s.sha256,'Exact original toolbar SVG source');
- assert.deepEqual(current.staticVisuals.filter(a=>!originalStatic.has(a.assetId)).map(withoutLine),[...extension.staticAdditions,...uiExtension.staticAdditions]);
+ assert.deepEqual(current.staticVisuals.filter(a=>!originalStatic.has(a.assetId)).map(withoutLine),[...extension.staticAdditions,...tutorialExtension.staticAdditions,...uiExtension.staticAdditions,...articleExtension.staticAdditions]);
+ for(const [directory,count,pattern,images] of [
+  ['tutorial',12,/^[a-z]+-(desktop|mobile)\.webp$/,tutorialExtension.screenshots],
+  ['articles',5,/^(gajah|jerapah|makaw|singa|zebra)\.webp$/,articleExtension.photos],
+ ]){
+  const location=new URL('../src/assets/'+directory+'/',import.meta.url);
+  assert.equal(images.length,count);
+  assert.deepEqual(readdirSync(location).sort(),images.map(image=>image.file));
+  for(const {file,bytes,sha256} of images){
+   assert.match(file,pattern);
+   const media=readFileSync(new URL(file,location));
+   assert.equal(media.length,bytes);
+   assert.equal(createHash('sha256').update(media).digest('hex'),sha256,'Reviewed '+directory+' image '+file);
+  }
+ }
  assert.ok(current.staticVisuals.every(a=>Number.isSafeInteger(a.line)&&a.line>0));
  assert.deepEqual(current.generatedResources,historical.generatedResources);
  const retired=new Map(extension.retiredSourceReferences.map(a=>[a.path,a.sourceStringReferences]));
