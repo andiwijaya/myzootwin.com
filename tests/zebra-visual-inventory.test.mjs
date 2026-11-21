@@ -14,6 +14,7 @@ const gestureExtension=JSON.parse(readFileSync(new URL('./fixtures/mobile-gestur
 const directTouchExtension=JSON.parse(readFileSync(new URL('./fixtures/direct-touch-visual-extension.json',import.meta.url),'utf8'));
 const smoothExtension=JSON.parse(readFileSync(new URL('./fixtures/camera-smooth-visual-extension.json',import.meta.url),'utf8'));
 const touchPickingExtension=JSON.parse(readFileSync(new URL('./fixtures/mobile-tap-visual-extension.json',import.meta.url),'utf8'));
+const landscapeExtension=JSON.parse(readFileSync(new URL('./fixtures/tropical-creek-visual-extension.json',import.meta.url),'utf8'));
 const withoutLine=({line,...record})=>record;
 // Keep the immutable Z0-03 receipt. H1 found Box3Helper and spray's Object3D transform helper omitted by the original regex.
 // Compare its original source inventory after projecting out that explicit scanner correction.
@@ -56,14 +57,19 @@ test('all production-reachable visual sources and nested geometry/part sites rem
  const beforeTouchPicking=[...beforeSmooth.filter(m=>!smoothPaths.has(m.path)),...smoothExtension.modules],touchPickingPaths=new Set(touchPickingExtension.changedPaths);
  assert.deepEqual([...touchPickingPaths].sort(),['src/game/render3d/camera-gestures.ts','src/game/render3d/scene-picking.ts']);
  for(const predecessor of touchPickingExtension.predecessors)assert.deepEqual(predecessor,beforeTouchPicking.find(m=>m.path===predecessor.path),'Exact predecessor for visible mobile animal tap ownership');
- assert.deepEqual(current.modules.filter(protectedModule),[...beforeTouchPicking.filter(m=>!touchPickingPaths.has(m.path)),...touchPickingExtension.modules].sort(ordered),'Only explicit camera and touch-picking extensions may change protected camera/render sources');
+ const beforeLandscape=[...beforeTouchPicking.filter(m=>!touchPickingPaths.has(m.path)),...touchPickingExtension.modules];
+ const landscapePaths=new Set(landscapeExtension.modules.map(m=>m.path));
+ assert.deepEqual([...landscapePaths],['src/game/render3d/isometric-camera.ts','src/game/render3d/macaw/autonomous-birds.ts','src/game/render3d/tropical-surroundings.ts']);
+ assert.deepEqual(landscapeExtension.predecessors,beforeLandscape.filter(m=>landscapePaths.has(m.path)).sort(ordered));
+ assert.deepEqual(current.modules.filter(protectedModule),[...beforeLandscape.filter(m=>!landscapePaths.has(m.path)),...landscapeExtension.modules].sort(ordered),'Reviewed renderer source extensions only');
  const protectedAsset=a=>!integration.has(a.sourcePath)&&!a.sourcePath.startsWith('src/game/render3d/zebra/')&&a.sourcePath!=='src/game/render3d/scene-selection.ts';
  const priorAssets=[...historical.assets.filter(a=>protectedAsset(a)&&!migrated.has(a.sourcePath)&&!retiredModules.has(a.sourcePath)),...glbExtension.assets.filter(protectedAsset)];
  const beforeGestureAssets=[...priorAssets.filter(a=>!focusPaths.has(a.sourcePath)),...focusExtension.assets.filter(a=>!uiPaths.has(a.sourcePath)),...uiExtension.assets];
  const beforeDirectTouchAssets=[...beforeGestureAssets.filter(a=>!gesturePaths.has(a.sourcePath)),...gestureExtension.assets];
  const beforeSmoothAssets=[...beforeDirectTouchAssets.filter(a=>!directTouchPaths.has(a.sourcePath)),...directTouchExtension.assets];
  const beforeTouchPickingAssets=[...beforeSmoothAssets.filter(a=>!smoothPaths.has(a.sourcePath)),...smoothExtension.assets];
- assert.deepEqual(current.assets.filter(protectedAsset),[...beforeTouchPickingAssets.filter(a=>!touchPickingPaths.has(a.sourcePath)),...touchPickingExtension.assets].sort(ordered),'Original parts remain exact outside the explicit visual/camera/picking extensions');
+ const beforeLandscapeAssets=[...beforeTouchPickingAssets.filter(a=>!touchPickingPaths.has(a.sourcePath)),...touchPickingExtension.assets];
+ assert.deepEqual(current.assets.filter(protectedAsset),[...beforeLandscapeAssets.filter(a=>!landscapePaths.has(a.sourcePath)),...landscapeExtension.assets].sort(ordered),'Original parts remain exact outside reviewed renderer source extensions');
  for(const path of integration)assert.deepEqual(current.assets.filter(a=>a.sourcePath===path).map(({line,...a})=>a),(path==='src/game/render3d/foundation-scene.ts'?glbExtension.assets:historical.assets).filter(a=>a.sourcePath===path).map(({line,...a})=>a),'Reviewed integration constructors/parts: '+path);
  // HP6 adds one reviewed preview image and five exact original capture derivatives.
  // Keep original media bytes/provenance exact; only two retired source references change.

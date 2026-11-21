@@ -3,6 +3,34 @@ const turn=()=>new Promise(r=>setImmediate(r));
 function memory(record=null){const data={record,previous:null,writes:0,reads:0,fail:null,held:null,closed:0};const backend={async read(){data.reads++;if(data.fail==='read')throw new SaveFault('unavailable');if(data.record!==null)checkedCheckpoint(data.record);return structuredClone(data.record);},async commit(expected,payload,writer,writtenAt){data.writes++;if(data.held)await Promise.resolve(data.held);if(data.fail)throw new SaveFault(data.fail);if((data.record?.revision??0)!==expected)throw new SaveFault('conflict');const next=checkedCheckpoint({format:1,revision:expected+1,payload,writer,writtenAt});data.previous=data.record;data.record=next;return structuredClone(next);},close(){data.closed++;}};return{data,backend};}
 function harness(mem=memory(),writer='test-a'){let serial=0,now=100;const timers=new Map(),views=[];const save=createAutosave(mem.backend,{writer,now:()=>now++,schedule:(fn,ms)=>{timers.set(++serial,{fn,ms});return serial;},cancel:id=>timers.delete(id),changed:v=>views.push(v)});return{...mem,save,timers,views,async fire(){const [id,t]=[...timers][0];timers.delete(id);t.fn();await turn();await turn();}};}
 const seed=state=>checkedCheckpoint({format:1,revision:4,writtenAt:90,writer:'old-tab',payload:encodeCheckpointState(state)});
+test('a paused map can open an existing checkpoint without scheduling any write before resume', async () => {
+    const before = seed(createInitialState());
+    const { backend, data } = memory(before);
+    let resumed = false;
+    const save = createAutosave(backend, { writer: 'map-qa', allowSessionWrite: () => resumed });
+    await save.load();
+    assert.ok(await save.continueSaved());
+    const simulation = createSimulation(save.session.read());
+    try {
+        simulation.advance(100);
+        const next = simulation.snapshot();
+        save.session.write(next);
+        save.session.checkpoint(() => next, true);
+        assert.equal(save.session.canCommit(), false);
+        await save.flush();
+        assert.equal(data.writes, 0);
+        assert.deepEqual(data.record, before);
+        assert.equal(save.session.read().tick, 0);
+        resumed = true;
+        save.session.checkpoint(() => next, true);
+        await save.flush();
+        assert.equal(data.writes, 1);
+        assert.equal(stateFromCheckpoint(data.record).tick, 1);
+    } finally {
+        save.dispose();
+        simulation.dispose();
+    }
+});
 test('empty read does not write or create progress; Continue needs a real saved game',async()=>{const h=harness();await h.save.load();assert.equal(h.save.view().phase,'empty');assert.equal(h.data.writes,0);assert.equal(h.save.canOpen(),true);assert.equal(await h.save.continueSaved(),false);h.save.dispose();await turn();});
 test('new game durably stores full versioned starter state and exposes truthful saved summary',async()=>{const h=harness();await h.save.load();assert.ok(h.save.startNew('id'));assert.equal(h.save.view().phase,'dirty');assert.equal(h.timers.size,1);assert.equal([...h.timers.values()][0].ms,0);await h.fire();assert.equal(h.save.view().phase,'saved');assert.equal(h.save.view().savedCurrency,1500);assert.equal(h.save.view().savedMissions,0);assert.equal(h.save.view().savedBirds,0);assert.equal(h.save.view().revision,1);assert.equal(stateFromCheckpoint(h.data.record).preferences.locale,'id');assert.equal(h.save.startNew('en'),false);h.save.dispose();await turn();});
 test('saved game blocks fresh overwrite and Continue restores all data with no elapsed-time catchup',async()=>{const s=createSimulation();s.advance(200);s.setSpeed(10);s.setLocale('id');const state=s.snapshot(),h=harness(memory(seed(state)));await h.save.load();assert.equal(h.save.canOpen(),false);assert.equal(h.save.startNew('en'),false);assert.equal(h.data.writes,0);assert.ok(await h.save.continueSaved());assert.deepEqual(h.save.session.read(),state);const restored=createSimulation(h.save.session.read());restored.frame(999999999);assert.equal(restored.inspect().tick,state.tick);assert.equal(restored.inspect().speed,10);assert.equal(h.save.savedLocale(),'id');h.save.dispose();s.dispose();restored.dispose();await turn();});

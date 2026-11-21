@@ -35,11 +35,19 @@ export function mountGameEntry(root: HTMLElement, options: {
     preferenceStorage?: Pick<Storage, 'getItem' | 'setItem'> | null;
     browserLanguage?: string;
     audioFactory?:()=>AudioContext;
+    mapFirst?: boolean;
     loadRenderer?:(store:import("../game/core/session-state.ts").SanctuarySessionState<ZooSave>)=>ReturnType<PreviewLoader>;
 } = {}) {
     mounted.get(root)?.dispose();
     let disposed = false;
     root.dataset.enhanced = 'true';
+    const mapActions = options.mapFirst ? root.querySelector<HTMLElement>('[data-map-actions]') : null;
+    const mapControl = mapActions?.querySelector<HTMLButtonElement>('[data-map-control]');
+    const mapFirst = Boolean(mapControl);
+    const cameraToolbar = root.querySelector<HTMLElement>('.zoo-camera-toolbar');
+    const cameraHome = cameraToolbar?.parentNode, cameraNext = cameraToolbar?.nextSibling;
+    if (mapActions && cameraToolbar) mapActions.append(cameraToolbar);
+    if (mapFirst) root.dataset.mapFirst = 'true';
     let storage: Pick<Storage, 'getItem' | 'setItem'> | undefined;
     try {
         storage = 'preferenceStorage' in options ? options.preferenceStorage ?? undefined : window.localStorage;
@@ -64,7 +72,7 @@ export function mountGameEntry(root: HTMLElement, options: {
     containDialogFocus(root, events.signal);
     let channel: BroadcastChannel | undefined;
     const writer = crypto.randomUUID();
-    const durable = createAutosave<ZooSave>(options.backend ?? createZebraIndexedDbBackend(browserFactory()), { writer, changed: () => {
+    const durable = createAutosave<ZooSave>(options.backend ?? createZebraIndexedDbBackend(browserFactory()), { writer, allowSessionWrite: (): boolean => !mapFirst || (durable.view().active && !resumePending), changed: () => {
             if (disposed)
                 return;
             // Refresh status/visibility without reapplying the locale to every menu.
@@ -201,7 +209,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         for (const selector of ['[data-onboarding-start]', '[data-preview-open]']) {
             const b = root.querySelector<HTMLButtonElement>(selector);
             if (b)
-                b.disabled = resumePending || !durable.canOpen();
+                b.disabled = (!mapFirst && resumePending) || !durable.canOpen();
         }
         const gate = root.querySelector<HTMLElement>('[data-save-resume]');
         if (gate)
@@ -209,7 +217,7 @@ export function mountGameEntry(root: HTMLElement, options: {
         root.querySelector('[data-save-resume-note]')?.replaceChildren(c.resumeNote);
         root.querySelector('[data-save-resume-button]')?.replaceChildren(c.resume);
         const toolbarBlocked = ['conflict','unreadable'].includes(view.phase) || view.restartBusy;
-        gateGameplay(pauseGate.paused(), resumePending || toolbarBlocked, toolbarBlocked);
+        gateGameplay(pauseGate.paused(), (!mapFirst && resumePending) || toolbarBlocked, toolbarBlocked);
     }
     root.querySelector('[data-continue]')?.addEventListener('click', async () => {
         if (disposed || resumePending)
@@ -250,15 +258,17 @@ export function mountGameEntry(root: HTMLElement, options: {
         channel = new BroadcastChannel('myzootwin-progress-v1');
         channel.addEventListener('message', event => {
             const value = event.data;
-            if (value?.writer !== writer && Number.isSafeInteger(value?.revision))
+            if (value?.writer !== writer && Number.isSafeInteger(value?.revision)) {
                 durable.externalRevision(value.revision, typeof value.generation === 'string' ? value.generation : undefined);
+                if (mapFirst) syncPause();
+            }
         }, { signal: events.signal });
     }
     recoveryPanel = mountRecoveryPanel(root, { save: durable, allowDownload: options.allowRecoveryDownload !== false, locale: () => locale, pause: () => pauseGate.hold('dialog', true), closeGame: () => { resumePending = false; preview?.close(); }, restored: () => { locale = chooseGameLocale(locale, manualLocale, durable.savedLocale()); syncEffectivePreferences(); render(locale); } });
     function gateGameplay(paused: boolean, hard: boolean, toolbarBlocked: boolean) {
         const hud = root.dataset.hudActive === 'true';
         const layout = root.querySelector<HTMLElement>('[data-guide-layout]'), stage = root.querySelector<HTMLElement>('[data-preview-stage]');
-        if (layout) layout.inert = hud ? hard : paused;
+        if (layout) layout.inert = hud ? hard : paused && !mapFirst;
         if (stage) stage.inert = hud && hard;
         for (const gate of root.querySelectorAll<HTMLFieldSetElement>('[data-hud-controls]'))
             gate.disabled = hud && (gate.hasAttribute('data-hud-camera-controls') ? hard : paused);
@@ -273,7 +283,7 @@ export function mountGameEntry(root: HTMLElement, options: {
     function anyDialogOpen() { return Boolean(root.querySelector('dialog[open]') || root.ownerDocument.querySelector('#site-privacy-dialog[open]')); }
     function syncPause() {
         const v = durable.view();
-        pauseGate.update({ continue: resumePending, dialog: anyDialogOpen(), storage: ['conflict', 'unreadable'].includes(v.phase), restart: v.restartBusy });
+        pauseGate.update({ continue: resumePending || (mapFirst && !v.active), dialog: anyDialogOpen(), storage: ['conflict', 'unreadable'].includes(v.phase), restart: v.restartBusy });
         renderPause();
     }
     function renderPause() {
@@ -292,13 +302,23 @@ export function mountGameEntry(root: HTMLElement, options: {
             toggle.disabled = blocked || Boolean(root.querySelector('dialog[open]'));
             toggle.setAttribute('aria-pressed', String(paused));
         }
+        if (mapControl && mapActions) {
+            mapActions.hidden = !ready;
+            mapControl.disabled = blocked || dialogOpen;
+            const label = v.active
+                ? locale === 'id' ? (paused ? 'Lanjut bermain' : 'Jeda') : (paused ? 'Resume' : 'Pause')
+                : locale === 'id' ? 'Mulai misi' : 'Start mission';
+            if (mapControl.textContent !== label) mapControl.textContent = label;
+            if (v.active) mapControl.setAttribute('aria-pressed', String(paused));
+            else mapControl.removeAttribute('aria-pressed');
+        }
         if (status)
             status.textContent = locale === 'id' ? (pauseGate.has('background') ? 'Dijeda saat kamu pergi. Lanjutkan saat siap; tidak ada progres offline.' : paused ? 'Suaka dijeda. Satwa, pengunjung, uang dan misi tidak berjalan.' : 'Suaka berjalan. Jeda kapan saja untuk berhenti dengan aman.') : (pauseGate.has('background') ? 'Paused while you were away. Resume when ready; no offline progress.' : paused ? 'Zoo paused. Animals, visitors, money and missions are frozen.' : 'Zoo running. Pause any time to stop safely.');
-        gateGameplay(pauseGate.paused(), resumePending || blocked, blocked);
+        gateGameplay(pauseGate.paused(), (!mapFirst && resumePending) || blocked, blocked);
         ambience.setPlaying(v.active && ready && !paused && !document.hidden && !blocked);
         if(!ready && ambience.inspect().liveContexts)ambience.stopSession();
     }
-    root.querySelector('[data-pause-toggle]')?.addEventListener('click', () => {
+    function togglePause() {
         if (['conflict', 'unreadable'].includes(durable.view().phase) || durable.view().restartBusy || anyDialogOpen())
             return;
         if (pauseGate.paused()) {
@@ -309,6 +329,12 @@ export function mountGameEntry(root: HTMLElement, options: {
             pauseGate.hold('manual', true);
         syncPause();
         renderSave();
+    }
+    root.querySelector('[data-pause-toggle]')?.addEventListener('click', togglePause, { signal: events.signal });
+    mapControl?.addEventListener('click', () => {
+        if (preview?.getState().status !== 'ready') return;
+        if (durable.view().active) togglePause();
+        else preview.startGuided();
     }, { signal: events.signal });
     root.addEventListener('click',event=>{if(event.isTrusted&&preview?.getState().status==='ready'&&durable.view().active)ambience.gesture();},{signal:events.signal});
     root.addEventListener('hud-layout-change',syncPause,{signal:events.signal});
@@ -323,15 +349,34 @@ export function mountGameEntry(root: HTMLElement, options: {
     syncPause();
     const ready = (async () => {
         await durable.load();
+        if (mapFirst && !disposed && durable.view().phase === 'available') {
+            // Load the canonical checkpoint for the camera and leave all writes gated until Resume.
+            resumePending = true;
+            if (!await durable.continueSaved()) resumePending = false;
+        }
         if (disposed)
             return;
         locale = chooseGameLocale(locale, manualLocale, durable.savedLocale());
-        preview = mountPreviewPanel(root, { loadRenderer:options.loadRenderer?()=>options.loadRenderer!(durable.session):undefined, stateStore: durable.session, canOpen: () => durable.canOpen(), beforeOpen: () => durable.view().active || durable.startNew(locale) });
+        const stateStore = mapFirst ? { ...durable.session, read: () => durable.session.read() ?? durable.freshState(locale) } : durable.session;
+        preview = mountPreviewPanel(root, {
+            loadRenderer: options.loadRenderer ? () => options.loadRenderer!(stateStore) : undefined,
+            stateStore,
+            canOpen: () => durable.canOpen(),
+            beforeOpen() {
+                const started = durable.view().active || durable.startNew(locale);
+                if (started && mapFirst) syncPause();
+                return started;
+            },
+        });
         preview.setPaused(pauseGate.paused());
         visualPanel=mountVisualSettings(root,storage,{locale:()=>locale,current:currentVisual,currentMuted,audioStatus:()=>ambience.inspect().status,apply:(value,muted)=>{visualChoice={...value};mutedChoice=muted;preview?.setVisualSettings(value);preview?.setMuted(muted);ambience.setMuted(muted);}});
         syncEffectivePreferences();
         for(const button of root.querySelectorAll<HTMLButtonElement>('[data-open-dialog="play-settings"]'))button.disabled=false;
         render(locale);
+        if (mapFirst && durable.canOpen()) {
+            syncPause();
+            await preview.openMap();
+        }
     })();
     const handle = { ready, dispose() {
             if (disposed)
@@ -349,6 +394,8 @@ export function mountGameEntry(root: HTMLElement, options: {
             channel?.close();
             channel = undefined;
             events.abort();
+            if (mapFirst) delete root.dataset.mapFirst;
+            if (cameraToolbar && cameraHome) cameraHome.insertBefore(cameraToolbar, cameraNext ?? null);
             delete root.dataset.enhanced;
             mounted.delete(root);
         }, inspect: () => durable.inspect(), inspectRenderer: () => preview?.inspect(), inspectAudio:()=>ambience.inspect() };

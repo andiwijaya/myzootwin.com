@@ -1,0 +1,681 @@
+{
+  "predecessors": [
+    {
+      "path": "src/game/render3d/isometric-camera.ts",
+      "sha256": "f1b2521752896ea8811d313e0d21815a590004685756925856c6812361865591",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "fitIsometricCamera",
+          "line": 4
+        }
+      ],
+      "threeTypes": [
+        "Box3",
+        "OrthographicCamera",
+        "Vector3"
+      ],
+      "exports": [
+        "fitIsometricCamera"
+      ]
+    },
+    {
+      "path": "src/game/render3d/macaw/autonomous-birds.ts",
+      "sha256": "f84ca59c32a49760a5b64cc96686e673c85bc793aca5a05c087f8df01ffd0d98",
+      "family": "macaw",
+      "imports": [
+        "src/game/animals/autonomy.ts",
+        "src/game/render3d/glb/resident-rig.ts",
+        "src/game/render3d/macaw/macaw-animation.ts",
+        "src/game/render3d/macaw/macaw-geometry.ts",
+        "src/game/render3d/macaw/macaw-rig.ts",
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [
+        {
+          "type": "Group",
+          "owner": "createAutonomousBirds",
+          "variable": "group",
+          "line": 20
+        },
+        {
+          "type": "CylinderGeometry",
+          "owner": "sync",
+          "variable": "CylinderGeometry",
+          "line": 26
+        },
+        {
+          "type": "MeshStandardMaterial",
+          "owner": "sync",
+          "variable": "MeshStandardMaterial",
+          "line": 26
+        },
+        {
+          "type": "Mesh",
+          "owner": "sync",
+          "variable": "branch",
+          "line": 31
+        },
+        {
+          "type": "Mesh",
+          "owner": "sync",
+          "variable": "post",
+          "line": 32
+        }
+      ],
+      "labels": [
+        {
+          "label": "Two sanctuary macaws",
+          "owner": "createAutonomousBirds",
+          "line": 20,
+          "kind": "runtime-object-name"
+        }
+      ],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "autonomousPose",
+          "line": 10
+        },
+        {
+          "name": "createAutonomousBirds",
+          "line": 19
+        },
+        {
+          "name": "clear",
+          "line": 23
+        },
+        {
+          "name": "sync",
+          "line": 24
+        },
+        {
+          "name": "update",
+          "line": 38
+        }
+      ],
+      "threeTypes": [
+        "CylinderGeometry",
+        "Group",
+        "Mesh",
+        "MeshStandardMaterial"
+      ],
+      "exports": [
+        "autonomousPose",
+        "createAutonomousBirds"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "path": "src/game/render3d/isometric-camera.ts",
+      "sha256": "40f56537348b945a028f416d695ebb2af515222758bf550ac1b56de61f5364a9",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "fitIsometricCamera",
+          "line": 4
+        }
+      ],
+      "threeTypes": [
+        "Box3",
+        "OrthographicCamera",
+        "Vector3"
+      ],
+      "exports": [
+        "fitIsometricCamera"
+      ]
+    },
+    {
+      "path": "src/game/render3d/macaw/autonomous-birds.ts",
+      "sha256": "5ac95df120d1f37d3eab41aa949c1ba0fbd12fc372284a3bf3cbbeda121ca517",
+      "family": "macaw",
+      "imports": [
+        "src/game/animals/autonomy.ts",
+        "src/game/animals/feeding.ts",
+        "src/game/render3d/glb/resident-rig.ts",
+        "src/game/render3d/macaw/macaw-animation.ts",
+        "src/game/render3d/macaw/macaw-geometry.ts",
+        "src/game/render3d/macaw/macaw-rig.ts",
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [
+        {
+          "type": "Group",
+          "owner": "createAutonomousBirds",
+          "variable": "group",
+          "line": 48
+        },
+        {
+          "type": "CylinderGeometry",
+          "owner": "sync",
+          "variable": "CylinderGeometry",
+          "line": 56
+        },
+        {
+          "type": "MeshStandardMaterial",
+          "owner": "sync",
+          "variable": "MeshStandardMaterial",
+          "line": 56
+        },
+        {
+          "type": "Mesh",
+          "owner": "sync",
+          "variable": "branch",
+          "line": 61
+        },
+        {
+          "type": "Mesh",
+          "owner": "sync",
+          "variable": "post",
+          "line": 62
+        }
+      ],
+      "labels": [
+        {
+          "label": "Two sanctuary macaws",
+          "owner": "createAutonomousBirds",
+          "line": 48,
+          "kind": "runtime-object-name"
+        }
+      ],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "ease",
+          "line": 11
+        },
+        {
+          "name": "macawFeedingPose",
+          "line": 17
+        },
+        {
+          "name": "autonomousPose",
+          "line": 33
+        },
+        {
+          "name": "createAutonomousBirds",
+          "line": 47
+        },
+        {
+          "name": "clear",
+          "line": 52
+        },
+        {
+          "name": "sync",
+          "line": 53
+        },
+        {
+          "name": "update",
+          "line": 68
+        }
+      ],
+      "threeTypes": [
+        "CylinderGeometry",
+        "Group",
+        "Mesh",
+        "MeshStandardMaterial"
+      ],
+      "exports": [
+        "autonomousPose",
+        "createAutonomousBirds",
+        "macawFeedingPose"
+      ]
+    },
+    {
+      "path": "src/game/render3d/tropical-surroundings.ts",
+      "sha256": "588f6df2bd0c9c19797cacee300e57e1e5d1f84277b948e1968dde8cc44bcfaa",
+      "family": "shared-world",
+      "imports": [
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [
+        {
+          "type": "BufferGeometry",
+          "owner": "surface",
+          "variable": "geometry",
+          "line": 17
+        },
+        {
+          "type": "Group",
+          "owner": "createTropicalSurroundings",
+          "variable": "group",
+          "line": 42
+        },
+        {
+          "type": "MeshLambertMaterial",
+          "owner": "createTropicalSurroundings",
+          "variable": "material",
+          "line": 47
+        },
+        {
+          "type": "Mesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "ground",
+          "line": 85
+        },
+        {
+          "type": "Mesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "bank",
+          "line": 99
+        },
+        {
+          "type": "Mesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "creek",
+          "line": 100
+        },
+        {
+          "type": "Mesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "water",
+          "line": 101
+        },
+        {
+          "type": "Mesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "entry",
+          "line": 102
+        },
+        {
+          "type": "CylinderGeometry",
+          "owner": "createTropicalSurroundings",
+          "variable": "trunkGeometry",
+          "line": 121
+        },
+        {
+          "type": "IcosahedronGeometry",
+          "owner": "createTropicalSurroundings",
+          "variable": "crownGeometry",
+          "line": 122
+        },
+        {
+          "type": "MeshLambertMaterial",
+          "owner": "createTropicalSurroundings",
+          "variable": "treeMaterial",
+          "line": 123
+        },
+        {
+          "type": "InstancedMesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "trunks",
+          "line": 124
+        },
+        {
+          "type": "InstancedMesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "crowns",
+          "line": 125
+        }
+      ],
+      "labels": [
+        {
+          "label": "Tropical Creek surroundings",
+          "owner": "createTropicalSurroundings",
+          "line": 43,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Meadow and forested ridges",
+          "owner": "createTropicalSurroundings",
+          "line": 86,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Far creek bank",
+          "owner": "createTropicalSurroundings",
+          "line": 103,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Far creek shallows",
+          "owner": "createTropicalSurroundings",
+          "line": 104,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Far creek current",
+          "owner": "createTropicalSurroundings",
+          "line": 105,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Trail toward the sanctuary",
+          "owner": "createTropicalSurroundings",
+          "line": 106,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Forest trunks",
+          "owner": "createTropicalSurroundings",
+          "line": 126,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Forest canopy",
+          "owner": "createTropicalSurroundings",
+          "line": 127,
+          "kind": "runtime-object-name"
+        }
+      ],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "linear",
+          "line": 12
+        },
+        {
+          "name": "unit",
+          "line": 13
+        },
+        {
+          "name": "smooth",
+          "line": 14
+        },
+        {
+          "name": "surface",
+          "line": 16
+        },
+        {
+          "name": "ribbon",
+          "line": 25
+        },
+        {
+          "name": "createTropicalSurroundings",
+          "line": 41
+        },
+        {
+          "name": "contour",
+          "line": 58
+        }
+      ],
+      "threeTypes": [
+        "BufferGeometry",
+        "Color",
+        "CylinderGeometry",
+        "Float32BufferAttribute",
+        "Group",
+        "IcosahedronGeometry",
+        "InstancedMesh",
+        "Mesh",
+        "MeshLambertMaterial",
+        "Object3D"
+      ],
+      "exports": [
+        "createTropicalSurroundings"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "sourcePath": "src/game/render3d/macaw/autonomous-birds.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "Group",
+      "owner": "createAutonomousBirds",
+      "variable": "group",
+      "line": 48,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/autonomous-birds.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "CylinderGeometry",
+      "owner": "sync",
+      "variable": "CylinderGeometry",
+      "line": 56,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/autonomous-birds.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "MeshStandardMaterial",
+      "owner": "sync",
+      "variable": "MeshStandardMaterial",
+      "line": 56,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/autonomous-birds.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "Mesh",
+      "owner": "sync",
+      "variable": "branch",
+      "line": 61,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/autonomous-birds.ts",
+      "family": "macaw",
+      "kind": "constructor-site",
+      "type": "Mesh",
+      "owner": "sync",
+      "variable": "post",
+      "line": 62,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/macaw/autonomous-birds.ts",
+      "family": "macaw",
+      "kind": "runtime-object-name",
+      "label": "Two sanctuary macaws",
+      "owner": "createAutonomousBirds",
+      "line": 48,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "BufferGeometry",
+      "owner": "surface",
+      "variable": "geometry",
+      "line": 17,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Group",
+      "owner": "createTropicalSurroundings",
+      "variable": "group",
+      "line": 42,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "MeshLambertMaterial",
+      "owner": "createTropicalSurroundings",
+      "variable": "material",
+      "line": 47,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Mesh",
+      "owner": "createTropicalSurroundings",
+      "variable": "ground",
+      "line": 85,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Mesh",
+      "owner": "createTropicalSurroundings",
+      "variable": "bank",
+      "line": 99,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Mesh",
+      "owner": "createTropicalSurroundings",
+      "variable": "creek",
+      "line": 100,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Mesh",
+      "owner": "createTropicalSurroundings",
+      "variable": "water",
+      "line": 101,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Mesh",
+      "owner": "createTropicalSurroundings",
+      "variable": "entry",
+      "line": 102,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "CylinderGeometry",
+      "owner": "createTropicalSurroundings",
+      "variable": "trunkGeometry",
+      "line": 121,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "IcosahedronGeometry",
+      "owner": "createTropicalSurroundings",
+      "variable": "crownGeometry",
+      "line": 122,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "MeshLambertMaterial",
+      "owner": "createTropicalSurroundings",
+      "variable": "treeMaterial",
+      "line": 123,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "InstancedMesh",
+      "owner": "createTropicalSurroundings",
+      "variable": "trunks",
+      "line": 124,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "InstancedMesh",
+      "owner": "createTropicalSurroundings",
+      "variable": "crowns",
+      "line": 125,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Tropical Creek surroundings",
+      "owner": "createTropicalSurroundings",
+      "line": 43,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Meadow and forested ridges",
+      "owner": "createTropicalSurroundings",
+      "line": 86,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Far creek bank",
+      "owner": "createTropicalSurroundings",
+      "line": 103,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Far creek shallows",
+      "owner": "createTropicalSurroundings",
+      "line": 104,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Far creek current",
+      "owner": "createTropicalSurroundings",
+      "line": 105,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Trail toward the sanctuary",
+      "owner": "createTropicalSurroundings",
+      "line": 106,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Forest trunks",
+      "owner": "createTropicalSurroundings",
+      "line": 126,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Forest canopy",
+      "owner": "createTropicalSurroundings",
+      "line": 127,
+      "visualStatus": "NOT_RUN"
+    }
+  ]
+}

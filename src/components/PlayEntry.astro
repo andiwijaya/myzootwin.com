@@ -65,11 +65,15 @@ const destinations=[['zoo','zoo','Zoo'],['macaw-aviary','macaw','Makaw'],['eleph
       </svg>
       </div>
       <div class="preview-stage" data-preview-stage role="group" tabindex="0" data-entry-aria="previewCanvas" aria-label={copy.previewCanvas} aria-describedby="camera-help" aria-keyshortcuts="ArrowUp ArrowDown ArrowLeft ArrowRight Q E Home Escape Enter" hidden><span class="selection-crosshair" aria-hidden="true">+</span></div>
+      <div class="zoo-map-actions" data-map-actions hidden>
+        <button class="zoo-map-control" type="button" data-map-control aria-describedby="hud-pause-status">Mulai misi</button>
+      </div>
       <div class="preview-feedback" data-preview-feedback role="status" aria-live="polite" hidden>
         <strong data-preview-title>{copy.previewLoading}</strong>
         <p data-preview-detail>{copy.previewLoadingDetail}</p>
       </div>
       </div><div class="zoo-world-controls" data-zoo-controls hidden>
+  <button class="zoo-tools-toggle" type="button" data-zoo-tools-toggle aria-expanded="false" aria-controls="zoo-tool-panels" hidden>Buka kontrol</button>
   <div class="hud-stats" data-hud-stats hidden aria-label="Status suaka" aria-live="off">
     <div class="zoo-stat"><span data-zoo-copy="coins">Koin</span><strong data-hud-coins>0 ZC</strong></div>
     <div class="zoo-stat"><span data-zoo-copy="animals">Satwa</span><strong data-hud-animals>0</strong></div>

@@ -360,7 +360,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     renderStudio();
     focusPanel.update(next.status==='ready',locale);
     if(next.status==='ready'&&guidedStart){guidedStart=false;if(!missionPanel.focusCare())onboardingPanel.focus();}
-    if (previous !== next.status && next.status !== 'closed' && (root.dataset.guided!=='true'||failed) && !root.querySelector('dialog[open]')) {
+    if (previous !== next.status && next.status !== 'closed' && ((root.dataset.mapFirst !== 'true' && root.dataset.guided !== 'true') || failed) && !root.querySelector('dialog[open]')) {
       (failed ? next.status === 'error' && next.reason === 'load' ? reload : retry : close).focus();
     }
   }
@@ -438,7 +438,21 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   selectionPanel?.addEventListener('keydown',event=>{if(event.key==='Escape'){event.preventDefault();dismiss();}},{signal:events.signal});
   host.addEventListener('camera-view-change',()=>cameraState(),{signal:events.signal});
   for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]'))button.addEventListener('click',()=>controller.camera(button.dataset.cameraCommand as CameraCommand),{signal:events.signal});
-  const guidedButton=root.querySelector<HTMLButtonElement>('[data-onboarding-start]');if(guidedButton){guidedButton.disabled=false;guidedButton.addEventListener('click',()=>{if(!mayOpen())return;root.dataset.guided='true';guidedStart=true;if(state.status==='ready'){guidedStart=false;if(!missionPanel.focusCare())onboardingPanel.focus();}else void controller.open();},{signal:events.signal});}
+  function startGuided() {
+    if (!mayOpen()) return;
+    root.dataset.guided = 'true';
+    if (state.status === 'ready') {
+      if (!missionPanel.focusCare()) onboardingPanel.focus();
+    } else {
+      guidedStart = true;
+      void controller.open();
+    }
+  }
+  const guidedButton = root.querySelector<HTMLButtonElement>('[data-onboarding-start]');
+  if (guidedButton) {
+    guidedButton.disabled = false;
+    guidedButton.addEventListener('click', startGuided, {signal: events.signal});
+  }
   root.addEventListener('hud-input-cancel',()=>controller.cancelInput(),{signal:events.signal});
   root.querySelector('[data-macaw-building]')?.addEventListener('keydown',event=>{if((event as KeyboardEvent).key==='Escape'){event.preventDefault();controller.food('cancel');controller.water('cancel');controller.perch('cancel');}},{signal:events.signal});
   root.addEventListener('hud-panel-change',()=>{controller.cancelInput();controller.placement('cancel');controller.food('cancel');controller.water('cancel');controller.perch('cancel');},{signal:events.signal});
@@ -447,7 +461,7 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const mayOpen=()=>options.canOpen?.()!==false&&options.beforeOpen?.()!==false;
   open.addEventListener('click', () => { if(mayOpen())void controller.open(); }, { signal: events.signal });
   retry.addEventListener('click', () => {
-    if(!mayOpen())return;
+    if (root.dataset.mapFirst === 'true' ? options.canOpen?.() === false : !mayOpen()) return;
     void controller.open().then(()=>{
       if(state.status!=='ready'||root.querySelector('dialog[open]'))return;
       // Wait for ready and the pause gate's layout update. The world may still
@@ -467,6 +481,8 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
     setLocale(value: EntryLocale) { if (!disposed) { locale = value; controller.locale(value);render(state); } },
     setPaused(value: boolean) { if (!disposed) controller.setExternalPaused(value); },
     refresh:()=>{if(!disposed)render(state);},
+    openMap: () => controller.open(),
+    startGuided,
     async openGame(paused=false){if(disposed||!mayOpen())return;guidedStart=true;root.dataset.guided='true';controller.setExternalPaused(paused);await controller.open();},
     close: () => { if (!disposed) controller.close(); },
     dispose() { if (disposed) return; disposed = true; controller.dispose();focusPanel.dispose();if(recoveryDialog?.open)recoveryDialog.close();if(editDialog?.open)editDialog.close(); events.abort(); if(foodDialog?.open)foodDialog.close();if(waterDialog?.open)waterDialog.close();if(perchDialog?.open)perchDialog.close();mounted.delete(root); },
