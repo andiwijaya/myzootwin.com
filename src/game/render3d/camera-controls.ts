@@ -4,21 +4,25 @@ import { createCameraNavigation, type CameraCommand } from './camera-navigation.
 import { createCameraGestures, type CameraPointer, type CameraDragMode, type CameraGestureOptions } from './camera-gestures.ts';
 import {sceneOrigin} from '../world/scene-coordinates.ts';
 
+// Keep the camera above the terrain and away from the overhead pole.
+const minTilt = -10, maxTilt = 35;
+const radiansPerDegree = Math.PI / 180;
+
 export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, camera:OrthographicCamera, bounds:Box3, map:{width:number;height:number}, onTap?:(point:CameraPointer)=>void,onCancel?:()=>void, gestureOptions:CameraGestureOptions={}) {
   let disposed=false,enabled=true;const events=new AbortController();
-  let basePosition=new Vector3(),width=0,height=0,azimuth=0,dragMode:CameraDragMode='pan';
+  let basePosition=new Vector3(),width=0,height=0,azimuth=0,tilt=0,dragMode:CameraDragMode='rotate';
   let habitatView:{bounds:Box3;area:{x:number;z:number;width:number;depth:number}}|null=null;
-  let previousView:{zoom:number;focusX:number;focusZ:number;azimuth:number}|null=null;
+  let previousView:{zoom:number;focusX:number;focusZ:number;azimuth:number;tilt:number}|null=null;
   function pointerMode(pointer?:CameraPointer):CameraDragMode {
-    if (window.innerWidth < 900) return 'rotate';
-    if (habitatView || (pointer && pointer.pointerType !== 'mouse')) return dragMode;
-    return pointer?.shiftKey ? 'pan' : 'rotate';
+    if(pointer?.pointerType==='mouse'&&pointer.shiftKey)return 'pan';
+    if(pointer?.pointerType==='touch'||window.innerWidth<900)return 'rotate';
+    return habitatView?dragMode:'rotate';
   }
   const navigation=createCameraNavigation(()=>{
     if(disposed)return;const view=navigation.inspect();
     camera.position.copy(basePosition).add(new Vector3(view.x,0,view.z));camera.zoom=view.zoom;camera.updateProjectionMatrix();camera.updateMatrixWorld(true);
-    const mode=pointerMode();host.dataset.cameraZoom=String(view.zoom);host.dataset.cameraPanX=String(view.x);host.dataset.cameraPanZ=String(view.z);host.dataset.cameraAzimuth=String(azimuth);host.dataset.cameraDragMode=mode;
-    host.dispatchEvent(new CustomEvent('camera-view-change',{detail:{zoom:view.zoom,azimuth,dragMode:mode},bubbles:false}));
+    const mode=pointerMode();host.dataset.cameraZoom=String(view.zoom);host.dataset.cameraPanX=String(view.x);host.dataset.cameraPanZ=String(view.z);host.dataset.cameraAzimuth=String(azimuth);host.dataset.cameraTilt=String(tilt);host.dataset.cameraDragMode=mode;
+    host.dispatchEvent(new CustomEvent('camera-view-change',{detail:{zoom:view.zoom,azimuth,tilt,dragMode:mode},bubbles:false}));
   });
   const gestures=createCameraGestures({...navigation,rotateBy},()=>canvas.getBoundingClientRect(),onTap,pointerMode,gestureOptions);
   function release(id:number) {try{if(canvas.hasPointerCapture(id))canvas.releasePointerCapture(id);}catch{/* Already released by the browser. */}}
@@ -65,28 +69,44 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
   // Refit only on an explicit view/size change, never per simulation/render frame.
   function reframe(preserveFocus=false){
     if(width<=0||height<=0)return;
-    const frame=fitIsometricCamera(camera,habitatView?.bounds??bounds,width/height,azimuth*Math.PI/180);basePosition=camera.position.clone();
+    const frame=fitIsometricCamera(camera,habitatView?.bounds??bounds,width/height,azimuth*radiansPerDegree,tilt*radiansPerDegree);basePosition=camera.position.clone();
     const right=new Vector3(1,0,0).applyQuaternion(camera.quaternion),up=new Vector3(0,1,0).applyQuaternion(camera.quaternion);
     const origin=sceneOrigin(map);
     const area=habitatView?.area;
     navigation.configure({width,height,halfWidth:frame.halfWidth,halfHeight:frame.halfHeight,rightX:right.x,rightZ:right.z,upX:up.x,upZ:up.z,upY:up.y,originX:frame.originX,originZ:frame.originZ,mapWidth:area?.width??map.width,mapHeight:area?.depth??map.height,mapCenterX:area?area.x+area.width/2:map.width/2-origin.x,mapCenterZ:area?area.z+area.depth/2:map.height/2-origin.z,...(area?{panInset:.08}:{})},preserveFocus);
   }
-  function rotateBy(degrees:number){
-    if(!enabled||disposed||!width||!height||!Number.isFinite(degrees)||degrees===0)return;
-    azimuth=((azimuth+degrees)%360+360)%360;reframe(true);
+  function rotateBy(azimuthDegrees:number,tiltDegrees=0){
+    if(!enabled||disposed||!width||!height||!Number.isFinite(azimuthDegrees)||!Number.isFinite(tiltDegrees))return;
+    const nextAzimuth=azimuthDegrees===0?azimuth:((azimuth+azimuthDegrees)%360+360)%360;
+    const nextTilt=Math.max(minTilt,Math.min(maxTilt,tilt+tiltDegrees));
+    if(nextAzimuth===azimuth&&nextTilt===tilt)return;
+    azimuth=nextAzimuth;
+    tilt=nextTilt;
+    reframe(true);
   }
   function command(value:CameraCommand){
     if(!enabled||disposed||!width||!height)return;cancelAll();
     if(value==='rotate-left'||value==='rotate-right')rotateBy(value==='rotate-left'?-45:45);
     else if(value==='drag-pan'||value==='drag-rotate'){dragMode=value==='drag-pan'?'pan':'rotate';navigation.panPixels(0,0);}
-    else if(value==='reset'){azimuth=0;reframe();navigation.command('reset');}
+    else if(value==='reset'){azimuth=tilt=0;reframe();navigation.command('reset');}
     else navigation.command(value);
   }
   return {
     setHabitatView(next:{bounds:Box3;area:{x:number;z:number;width:number;depth:number}}|null){
       if(disposed)return;cancelAll();
-      if(next){if(!habitatView){const v=navigation.inspect();previousView={zoom:v.zoom,focusX:v.focusX,focusZ:v.focusZ,azimuth};}habitatView=next;azimuth=0;reframe();navigation.command('reset');}
-      else if(habitatView){habitatView=null;if(previousView)azimuth=previousView.azimuth;reframe();if(previousView)navigation.restore(previousView);previousView=null;}
+      if(next){
+        if(!habitatView){const v=navigation.inspect();previousView={zoom:v.zoom,focusX:v.focusX,focusZ:v.focusZ,azimuth,tilt};}
+        habitatView=next;
+        azimuth=tilt=0;
+        reframe();
+        navigation.command('reset');
+      }else if(habitatView&&previousView){
+        habitatView=null;
+        ({azimuth,tilt}=previousView);
+        reframe();
+        navigation.restore(previousView);
+        previousView=null;
+      }
     },
     resize(nextWidth:number,nextHeight:number) {
       if(disposed||!Number.isFinite(nextWidth)||!Number.isFinite(nextHeight)||nextWidth<=0||nextHeight<=0)return;
@@ -97,7 +117,7 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
     command,
     flush:gestures.flush,
     setEnabled(value:boolean) {enabled=value;if(!enabled)cancelAll();},
-    dispose(){if(disposed)return;cancelAll();disposed=true;events.abort();delete host.dataset.cameraZoom;delete host.dataset.cameraPanX;delete host.dataset.cameraPanZ;delete host.dataset.cameraAzimuth;delete host.dataset.cameraDragMode;},
-    inspect:()=>{const v=navigation.inspect(),g=gestures.inspect();return {cameraControlsDisposed:disposed,cameraInputEnabled:enabled&&!disposed,cameraZoom:v.zoom,cameraAzimuth:azimuth,cameraRotateDrag:pointerMode()==='rotate',cameraPanX:v.x,cameraPanZ:v.z,cameraFocusX:v.focusX,cameraFocusZ:v.focusZ,cameraMinPanX:v.minX,cameraMaxPanX:v.maxX,cameraMinPanZ:v.minZ,cameraMaxPanZ:v.maxZ,cameraPointers:g.pointers,cameraPinching:g.pinching,cameraGesturePending:g.pending,cameraGestureUpdates:g.updates,cameraPointerMoves:g.moves,cameraTapCount:g.taps,cameraSuppressedTaps:g.suppressedTaps};},
+    dispose(){if(disposed)return;cancelAll();disposed=true;events.abort();delete host.dataset.cameraZoom;delete host.dataset.cameraPanX;delete host.dataset.cameraPanZ;delete host.dataset.cameraAzimuth;delete host.dataset.cameraTilt;delete host.dataset.cameraDragMode;},
+    inspect:()=>{const v=navigation.inspect(),g=gestures.inspect();return {cameraControlsDisposed:disposed,cameraInputEnabled:enabled&&!disposed,cameraZoom:v.zoom,cameraAzimuth:azimuth,cameraTilt:tilt,cameraRotateDrag:pointerMode()==='rotate',cameraPanX:v.x,cameraPanZ:v.z,cameraFocusX:v.focusX,cameraFocusZ:v.focusZ,cameraMinPanX:v.minX,cameraMaxPanX:v.maxX,cameraMinPanZ:v.minZ,cameraMaxPanZ:v.maxZ,cameraPointers:g.pointers,cameraPinching:g.pinching,cameraGesturePending:g.pending,cameraGestureUpdates:g.updates,cameraPointerMoves:g.moves,cameraTapCount:g.taps,cameraSuppressedTaps:g.suppressedTaps};},
   };
 }

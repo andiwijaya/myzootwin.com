@@ -58,6 +58,34 @@ async function productViewport(page, width, height, id, directory) {
     await language.selectOption('id');
     await summary.press('Escape');
   }
+  const bottom = page.locator('[data-zoo-bottom-toggle]');
+  const side = page.locator('[data-zoo-tools-toggle]');
+  const panel = page.locator('[data-zoo-bottom-panel]');
+  const frame = page.locator('.preview-frame');
+  const originalHeight = (await frame.boundingBox()).height;
+  assert.equal(await bottom.getAttribute('aria-expanded'), 'true');
+  assert.equal(await side.getAttribute('aria-expanded'), 'false');
+  assert.equal(await panel.isVisible(), true);
+  await bottom.click();
+  assert.equal(await bottom.getAttribute('aria-expanded'), 'false');
+  assert.equal(await panel.isVisible(), false);
+  assert.equal(await page.locator('[data-zoo-navigation]').isVisible(), false);
+  assert.equal(await page.locator('[data-hud-coins]').isVisible(), false);
+  assert.equal(await page.locator('[data-map-actions] [data-camera-command="rotate-right"]').isVisible(), true);
+  assert.equal(await bottom.evaluate(node => {
+    const rect = node.getBoundingClientRect();
+    return rect.top >= -1 && rect.bottom <= innerHeight + 1;
+  }), true);
+  const collapsedHeight = (await frame.boundingBox()).height;
+  assert.ok(collapsedHeight > originalHeight);
+  await side.click();
+  assert.equal(await side.getAttribute('aria-expanded'), 'true');
+  assert.equal(await panel.isVisible(), false);
+  await bottom.click();
+  assert.equal(await panel.isVisible(), true);
+  assert.equal(await side.getAttribute('aria-expanded'), 'true');
+  await side.click();
+  await page.evaluate(() => window.scrollTo(0, 0));
   const screenshot = `screens/${id}.jpg`;
   await page.screenshot({ path: childPath(directory, screenshot), type: 'jpeg', quality: 85 });
   const data = await page.evaluate(() => ({
@@ -73,7 +101,7 @@ async function productViewport(page, width, height, id, directory) {
   assert.equal(data.state, 'ready');
   assert.equal(data.canvas, 1);
   if (id.endsWith('-id')) assert.equal(data.lang, 'id');
-  return { screenshot, data: { ...data, visualReviewed: false } };
+  return { screenshot, data: { ...data, bottomPanel: { originalHeight, collapsedHeight }, visualReviewed: false } };
 }
 
 async function navigationReload(page) {

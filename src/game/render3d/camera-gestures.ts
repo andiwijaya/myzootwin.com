@@ -4,7 +4,7 @@ interface HeldPointer extends CameraPointer {startX:number;startY:number;applied
 export interface GestureTarget {
   panPixels(dx:number,dy:number):void;
   zoomBy(factor:number,anchorX:number,anchorY:number):void;
-  rotateBy?(degrees:number):void;
+  rotateBy?(azimuthDegrees:number,tiltDegrees:number):void;
   panZoomPixels?(dx:number,dy:number,factor:number,anchorX:number,anchorY:number):void;
 }
 export interface CameraGestureOptions {requestFrame?:()=>void;now?:()=>number;onTapStart?:(point:CameraPointer)=>void;}
@@ -27,8 +27,10 @@ export function createCameraGestures(target:GestureTarget, rect:()=>{left:number
     }else if(held.size===1){
       const p=held.values().next().value!;if(!p.dragged)return false;
       const dx=p.x-p.appliedX,dy=p.y-p.appliedY;p.appliedX=p.x;p.appliedY=p.y;
-      if(p.pointerType==='touch'||p.mode==='rotate'){if(dx===0)return false;target.rotateBy?.(-dx/bounds.width*180);}
-      else{if(dx===0&&dy===0)return false;target.panPixels(dx,dy);}
+      if(dx===0&&dy===0)return false;
+      if(p.pointerType==='touch'||p.mode==='rotate'){
+        target.rotateBy?.(-dx/bounds.width*180,dy/bounds.height*90);
+      }else target.panPixels(dx,dy);
     }else return false;
     updates++;return true;
   }

@@ -245,10 +245,11 @@ function createPanel(root: HTMLElement, options: PreviewPanelOptions) {
   const zoomOutput=root.querySelector<HTMLOutputElement>('[data-camera-zoom]');
   function cameraState(zoom=Number(host?.dataset.cameraZoom??1)) {
     if(zoomOutput)zoomOutput.value=`${Math.round(zoom*100)}%`;
-    const angle=Number(host?.dataset.cameraAzimuth??0),announcement=root.querySelector('[data-camera-angle]');
-    setText(announcement,entryMessages[locale].cameraAngle.replace('{angle}',String(Math.round(angle)%360)));
-    for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]'))button.disabled=state.status!=='ready'||(button.dataset.cameraCommand==='zoom-in'?zoom>=3:button.dataset.cameraCommand==='zoom-out'?zoom<=1:button.dataset.cameraCommand==='reset'?zoom===1&&angle===0:false);
-    for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command^="drag-"]'))button.setAttribute('aria-pressed',String(button.dataset.cameraCommand==='drag-'+(host?.dataset.cameraDragMode??'pan')));
+    const angle=Number(host?.dataset.cameraAzimuth??0),tilt=Number(host?.dataset.cameraTilt??0);
+    setText(root.querySelector('[data-camera-angle]'),entryMessages[locale].cameraAngle
+      .replace('{angle}',String(Math.round(angle)%360)).replace('{tilt}',String(Math.round(tilt))));
+    for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command]'))button.disabled=state.status!=='ready'||(button.dataset.cameraCommand==='zoom-in'?zoom>=3:button.dataset.cameraCommand==='zoom-out'?zoom<=1:button.dataset.cameraCommand==='reset'?zoom===1&&angle===0&&tilt===0:false);
+    for(const button of root.querySelectorAll<HTMLButtonElement>('[data-camera-command^="drag-"]'))button.setAttribute('aria-pressed',String(button.dataset.cameraCommand==='drag-'+(host?.dataset.cameraDragMode??'rotate')));
   }
 
   function renderBirds(){

@@ -1,0 +1,256 @@
+{
+  "scope": "Horizontal and vertical camera orbit with mouse and one-finger touch in the zoo overview and habitat focus.",
+  "predecessors": [
+    {
+      "path": "src/game/render3d/camera-controls.ts",
+      "sha256": "38843994c675b0f76da8c41a35e6a6889801c4ab86ab0342a16fa104bc385209",
+      "family": "camera-picking",
+      "imports": [
+        "src/game/render3d/camera-gestures.ts",
+        "src/game/render3d/camera-navigation.ts",
+        "src/game/render3d/isometric-camera.ts",
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "mountCameraControls",
+          "line": 7
+        },
+        {
+          "name": "pointerMode",
+          "line": 12
+        },
+        {
+          "name": "release",
+          "line": 24
+        },
+        {
+          "name": "cancelAll",
+          "line": 25
+        },
+        {
+          "name": "point",
+          "line": 26
+        },
+        {
+          "name": "up",
+          "line": 40
+        },
+        {
+          "name": "reframe",
+          "line": 66
+        },
+        {
+          "name": "rotateBy",
+          "line": 74
+        },
+        {
+          "name": "command",
+          "line": 78
+        }
+      ],
+      "threeTypes": [
+        "Vector3"
+      ],
+      "exports": [
+        "mountCameraControls"
+      ]
+    },
+    {
+      "path": "src/game/render3d/camera-gestures.ts",
+      "sha256": "db357d3b36d07495b54012ed806242827e86662cac1a85b65fa1bd08af63071a",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "createCameraGestures",
+          "line": 13
+        },
+        {
+          "name": "valid",
+          "line": 16
+        },
+        {
+          "name": "samplePair",
+          "line": 17
+        },
+        {
+          "name": "flush",
+          "line": 18
+        },
+        {
+          "name": "move",
+          "line": 35
+        },
+        {
+          "name": "remove",
+          "line": 43
+        }
+      ],
+      "threeTypes": [],
+      "exports": [
+        "CameraDragMode",
+        "CameraGestureOptions",
+        "CameraPointer",
+        "GestureTarget",
+        "createCameraGestures"
+      ]
+    },
+    {
+      "path": "src/game/render3d/isometric-camera.ts",
+      "sha256": "40f56537348b945a028f416d695ebb2af515222758bf550ac1b56de61f5364a9",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "fitIsometricCamera",
+          "line": 4
+        }
+      ],
+      "threeTypes": [
+        "Box3",
+        "OrthographicCamera",
+        "Vector3"
+      ],
+      "exports": [
+        "fitIsometricCamera"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "path": "src/game/render3d/camera-controls.ts",
+      "sha256": "8f38e932b89e8968af73e64833dd772552f219ce776209a1ee17a3f7fdbfe792",
+      "family": "camera-picking",
+      "imports": [
+        "src/game/render3d/camera-gestures.ts",
+        "src/game/render3d/camera-navigation.ts",
+        "src/game/render3d/isometric-camera.ts",
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "mountCameraControls",
+          "line": 11
+        },
+        {
+          "name": "pointerMode",
+          "line": 16
+        },
+        {
+          "name": "release",
+          "line": 28
+        },
+        {
+          "name": "cancelAll",
+          "line": 29
+        },
+        {
+          "name": "point",
+          "line": 30
+        },
+        {
+          "name": "up",
+          "line": 44
+        },
+        {
+          "name": "reframe",
+          "line": 70
+        },
+        {
+          "name": "rotateBy",
+          "line": 78
+        },
+        {
+          "name": "command",
+          "line": 87
+        }
+      ],
+      "threeTypes": [
+        "Vector3"
+      ],
+      "exports": [
+        "mountCameraControls"
+      ]
+    },
+    {
+      "path": "src/game/render3d/camera-gestures.ts",
+      "sha256": "55692c834aff7f5ea4dc24929997d7970450b7c955f82432f68a81381aebb0e5",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "createCameraGestures",
+          "line": 13
+        },
+        {
+          "name": "valid",
+          "line": 16
+        },
+        {
+          "name": "samplePair",
+          "line": 17
+        },
+        {
+          "name": "flush",
+          "line": 18
+        },
+        {
+          "name": "move",
+          "line": 37
+        },
+        {
+          "name": "remove",
+          "line": 45
+        }
+      ],
+      "threeTypes": [],
+      "exports": [
+        "CameraDragMode",
+        "CameraGestureOptions",
+        "CameraPointer",
+        "GestureTarget",
+        "createCameraGestures"
+      ]
+    },
+    {
+      "path": "src/game/render3d/isometric-camera.ts",
+      "sha256": "5575b922dac7e0a6547933ac5eb7fee0497129a0ea08670cba7113a6d7ee4fd2",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "fitIsometricCamera",
+          "line": 4
+        }
+      ],
+      "threeTypes": [
+        "Box3",
+        "OrthographicCamera",
+        "Vector3"
+      ],
+      "exports": [
+        "fitIsometricCamera"
+      ]
+    }
+  ],
+  "assets": []
+}
