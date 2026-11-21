@@ -156,18 +156,18 @@ test('touch and desktop left drag rotate while Shift at mouse-down selects pan',
  const s=setup(()=>assert.fail('drag must never tap'));try{
   assert.equal(s.host.dataset.cameraDragMode,'rotate');assert.equal(s.c.inspect().cameraRotateDrag,true);
   fire(s.canvas,'pointerdown',{pointerId:1,button:0,pointerType:'touch',clientX:200,clientY:150});
-  fire(s.canvas,'pointermove',{pointerId:1,pointerType:'touch',clientX:237,clientY:154});const turn=s.c.inspect();close(turn.cameraAzimuth,346.68);assert.equal(turn.cameraPointers,1);assert.equal(turn.cameraZoom,1);
+  fire(s.canvas,'pointermove',{pointerId:1,pointerType:'touch',clientX:237,clientY:154});const turn=s.c.inspect();close(turn.cameraAzimuth,346.68);close(turn.cameraTilt,4/350*90);assert.equal(turn.cameraPointers,1);assert.equal(turn.cameraZoom,1);
   for(const x of[-6,6])for(const y of[-.4,2.4])for(const z of[-5,5]){const p=new Vector3(x,y,z).project(s.camera);assert.ok(Math.abs(p.x)<.92&&Math.abs(p.y)<.92);}
   fire(s.canvas,'pointerup',{pointerId:1,pointerType:'touch',clientX:237,clientY:154});assert.equal(s.c.inspect().cameraPointers,0);
   s.c.command('zoom-in');
   const before=s.c.inspect();
   const mouse=(id,x,y,shiftKey)=>({pointerId:id,button:0,buttons:1,pointerType:'mouse',clientX:x,clientY:y,shiftKey});
   fire(s.canvas,'pointerdown',mouse(2,200,150,false));fire(s.canvas,'pointermove',mouse(2,250,180,true));fire(s.canvas,'pointerup',mouse(2,250,180,true));
-  const rotated=s.c.inspect();assert.notEqual(rotated.cameraAzimuth,before.cameraAzimuth);
+  const rotated=s.c.inspect();assert.notEqual(rotated.cameraAzimuth,before.cameraAzimuth);assert.notEqual(rotated.cameraTilt,before.cameraTilt);
   close(rotated.cameraFocusX,before.cameraFocusX);close(rotated.cameraFocusZ,before.cameraFocusZ);
   fire(s.canvas,'pointerdown',mouse(3,200,150,true));fire(s.canvas,'pointermove',mouse(3,250,180,false));fire(s.canvas,'pointerup',mouse(3,250,180,false));
-  const panned=s.c.inspect();close(panned.cameraAzimuth,rotated.cameraAzimuth);assert.ok(Math.hypot(panned.cameraPanX-rotated.cameraPanX,panned.cameraPanZ-rotated.cameraPanZ)>0);
-  s.c.command('reset');assert.equal(s.c.inspect().cameraAzimuth,0);assert.equal(s.c.inspect().cameraZoom,1);
+  const panned=s.c.inspect();close(panned.cameraAzimuth,rotated.cameraAzimuth);close(panned.cameraTilt,rotated.cameraTilt);assert.ok(Math.hypot(panned.cameraPanX-rotated.cameraPanX,panned.cameraPanZ-rotated.cameraPanZ)>0);
+  s.c.command('reset');assert.equal(s.c.inspect().cameraAzimuth,0);assert.equal(s.c.inspect().cameraTilt,0);assert.equal(s.c.inspect().cameraZoom,1);
  }finally{s.finish();}
 });
 
@@ -182,7 +182,7 @@ test('two touch pointers pan and pinch without rotation in either mouse mode; li
  for(const mode of['drag-pan','drag-rotate']){const s=setup(()=>assert.fail('multitouch must not select'));try{
   s.c.command(mode);const touch=(id,x,y)=>({pointerId:id,button:0,pointerType:'touch',clientX:x,clientY:y});
   fire(s.canvas,'pointerdown',touch(1,180,175));fire(s.canvas,'pointerdown',touch(2,320,175));fire(s.canvas,'pointermove',touch(1,160,140));fire(s.canvas,'pointermove',touch(2,350,215));
-  const v=s.c.inspect();assert.ok(v.cameraZoom>1.4);assert.equal(v.cameraAzimuth,0);assert.ok(Math.hypot(v.cameraPanX,v.cameraPanZ)>0);assert.equal(v.cameraPinching,true);
+  const v=s.c.inspect();assert.ok(v.cameraZoom>1.4);assert.equal(v.cameraAzimuth,0);assert.equal(v.cameraTilt,0);assert.ok(Math.hypot(v.cameraPanX,v.cameraPanZ)>0);assert.equal(v.cameraPinching,true);
   fire(s.canvas,'pointerup',touch(2,350,215));const before=s.c.inspect();fire(s.canvas,'pointermove',touch(1,160,140));assert.deepEqual(s.c.inspect(),before);fire(s.canvas,'pointerup',touch(1,160,140));assert.equal(s.c.inspect().cameraPointers,0);assert.equal(s.canvas.captured.size,0);
  }finally{s.finish();}}
 });
@@ -195,12 +195,61 @@ test('thumb mode changes, pause, resize, blur, habitat focus and disposal releas
  }finally{s.finish();}}
 });
 
-test('habitat exit restores a directly touch-rotated zoo angle and focus while retaining the desktop mouse mode',()=>{
+test('habitat exit restores the zoo rotation, tilt, zoom and focus',()=>{
  const s=setup();try{
-  s.c.command('zoom-in');fire(s.canvas,'pointerdown',{pointerId:1,button:0,pointerType:'touch',clientX:200,clientY:150});fire(s.canvas,'pointerup',{pointerId:1,pointerType:'touch',clientX:273,clientY:150});const before=s.c.inspect();
-  s.c.setHabitatView({bounds:new Box3(new Vector3(-2,0,-2),new Vector3(2,3,2)),area:{x:-2,z:-2,width:4,depth:4}});assert.equal(s.c.inspect().cameraAzimuth,0);assert.equal(s.c.inspect().cameraRotateDrag,false);
-  fire(s.canvas,'pointerdown',{pointerId:2,button:0,pointerType:'touch',clientX:200,clientY:150});fire(s.canvas,'pointerup',{pointerId:2,pointerType:'touch',clientX:150,clientY:150});s.c.setHabitatView(null);
-  close(s.c.inspect().cameraAzimuth,before.cameraAzimuth);close(s.c.inspect().cameraZoom,before.cameraZoom);close(s.c.inspect().cameraFocusX,before.cameraFocusX);close(s.c.inspect().cameraFocusZ,before.cameraFocusZ);assert.equal(s.c.inspect().cameraRotateDrag,true);
+  s.c.command('zoom-in');fire(s.canvas,'pointerdown',{pointerId:1,button:0,pointerType:'touch',clientX:200,clientY:150});fire(s.canvas,'pointerup',{pointerId:1,pointerType:'touch',clientX:273,clientY:192});const before=s.c.inspect();
+  s.c.setHabitatView({bounds:new Box3(new Vector3(-2,0,-2),new Vector3(2,3,2)),area:{x:-2,z:-2,width:4,depth:4}});assert.equal(s.c.inspect().cameraAzimuth,0);assert.equal(s.c.inspect().cameraTilt,0);assert.equal(s.c.inspect().cameraRotateDrag,true);
+  fire(s.canvas,'pointerdown',{pointerId:2,button:0,pointerType:'touch',clientX:200,clientY:150});fire(s.canvas,'pointerup',{pointerId:2,pointerType:'touch',clientX:150,clientY:118});s.c.setHabitatView(null);
+  for(const key of ['cameraAzimuth','cameraTilt','cameraZoom','cameraFocusX','cameraFocusZ'])close(s.c.inspect()[key],before[key]);
+  assert.equal(s.c.inspect().cameraRotateDrag,true);
+ }finally{s.finish();}
+});
+
+test('vertical drags tilt the real zoomed habitat camera with mouse or touch and stop above the ground',()=>{
+ const s=setup(()=>assert.fail('orbit must not select'));try{
+  window.innerWidth=1366;
+  const bounds=new Box3(new Vector3(-2,0,-2),new Vector3(2,3,2));
+  s.c.setHabitatView({bounds,area:{x:-2,z:-2,width:4,depth:4}});
+  for(const pointerType of ['mouse','touch']){
+   s.c.command('reset');
+   const point=(clientX,clientY,shiftKey=false)=>({pointerId:1,button:0,buttons:1,pointerType,clientX,clientY,shiftKey});
+   const drag=(dx,dy,shiftKey=false)=>{
+    fire(s.canvas,'pointerdown',point(200,150,shiftKey));
+    fire(s.canvas,'pointermove',point(200+dx,150+dy,shiftKey));
+    fire(s.canvas,'pointerup',point(200+dx,150+dy,shiftKey));
+   };
+   const base=s.camera.quaternion.clone();
+   drag(0,80);
+   close(s.c.inspect().cameraTilt,80/350*90);
+   assert.equal(s.c.inspect().cameraAzimuth,0);
+   assert.ok(base.angleTo(s.camera.quaternion)>.2);
+   for(const x of [-2,2])for(const y of [0,3])for(const z of [-2,2]){
+    const p=new Vector3(x,y,z).project(s.camera);
+    assert.ok(Math.abs(p.x)<.93&&Math.abs(p.y)<.93);
+   }
+   drag(40,0);
+   close(s.c.inspect().cameraAzimuth,345.6);
+   close(s.c.inspect().cameraTilt,80/350*90);
+   drag(0,700);
+   assert.equal(s.c.inspect().cameraTilt,35);
+   drag(0,-700);
+   assert.equal(s.c.inspect().cameraTilt,-10);
+   const direction=s.camera.getWorldDirection(new Vector3());
+   assert.ok(direction.y<-.3);
+   s.c.command('zoom-in');
+   const before=s.c.inspect();
+   drag(20,45,pointerType==='mouse');
+   const after=s.c.inspect();
+   if(pointerType==='mouse'){
+    assert.equal(after.cameraTilt,before.cameraTilt);
+    assert.equal(after.cameraAzimuth,before.cameraAzimuth);
+    assert.ok(Math.hypot(after.cameraPanX-before.cameraPanX,after.cameraPanZ-before.cameraPanZ)>.01);
+   }else{
+    assert.ok(after.cameraTilt>before.cameraTilt);
+    assert.notEqual(after.cameraAzimuth,before.cameraAzimuth);
+   }
+   assert.equal(s.host.dataset.cameraTilt,String(after.cameraTilt));
+  }
  }finally{s.finish();}
 });
 

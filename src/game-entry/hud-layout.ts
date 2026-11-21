@@ -53,12 +53,14 @@ export function mountHudLayout(root: HTMLElement) {
     const events = new AbortController(), chrome = root.querySelector<HTMLElement>('[data-hud-chrome]'), options = root.querySelector<HTMLDetailsElement>('[data-hud-options]'), tabs = root.querySelector<HTMLElement>('[data-hud-tabs]'), stats = root.querySelector<HTMLElement>('[data-hud-stats]');
     const toolsToggle = root.dataset.mapFirst === 'true' ? root.querySelector<HTMLButtonElement>('[data-zoo-tools-toggle]') : null;
     const toolsRail = toolsToggle ? root.querySelector<HTMLElement>('.hud-rail') : null;
+    const bottomToggle = toolsToggle ? root.querySelector<HTMLButtonElement>('[data-zoo-bottom-toggle]') : null;
+    const bottomPanel = bottomToggle ? root.querySelector<HTMLElement>('[data-zoo-bottom-panel]') : null;
     mountBuildScrollStability(root,events.signal);
     let resizeTimer: ReturnType<typeof setTimeout> | undefined;
     let viewportWidth = window.innerWidth;
     let pointerDown = false;
     let active = false, selected: HudTab = 'missions', disposed = false, balance = 1500, welfare: number | null = null, guests = 0, mission: string | null = 'Q01', speed: 1 | 10 = 1, lastChrome = 0;
-    let toolsOpen = false;
+    let toolsOpen = false, bottomOpen = true;
     if (toolsRail) toolsRail.id = 'zoo-tool-panels';
     function renderToolsToggle() {
         if (!toolsToggle) return;
@@ -70,6 +72,17 @@ export function mountHudLayout(root: HTMLElement) {
         if (toolsRail) toolsRail.hidden = active && !toolsOpen;
         toolsToggle.setAttribute('aria-expanded', String(toolsOpen));
         if (root.dataset.zooToolsOpen !== String(toolsOpen)) root.dataset.zooToolsOpen = String(toolsOpen);
+    }
+    function renderBottomToggle() {
+        if (!bottomToggle || !bottomPanel) return;
+        const label = root.lang === 'id'
+            ? (bottomOpen ? 'Sembunyikan panel bawah' : 'Tampilkan panel bawah')
+            : (bottomOpen ? 'Hide bottom panel' : 'Show bottom panel');
+        if (bottomToggle.textContent !== label) bottomToggle.textContent = label;
+        bottomToggle.hidden = !active;
+        bottomPanel.hidden = !bottomOpen;
+        bottomToggle.setAttribute('aria-expanded', String(bottomOpen));
+        if (root.dataset.zooBottomOpen !== String(bottomOpen)) root.dataset.zooBottomOpen = String(bottomOpen);
     }
     const set = (selector: string, text: string) => {
         const el = root.querySelector(selector);
@@ -109,6 +122,7 @@ export function mountHudLayout(root: HTMLElement) {
             return;
         const locale = root.lang === 'id' ? 'id' : 'en', c = copy[locale];
         renderToolsToggle();
+        renderBottomToggle();
         for (const el of root.querySelectorAll<HTMLElement>('[data-hud-text]')) {
             const key = el.dataset.hudText as keyof typeof c;
             if (key in c && el.textContent !== c[key])
@@ -195,6 +209,12 @@ export function mountHudLayout(root: HTMLElement) {
         toolsOpen = !toolsOpen;
         renderToolsToggle();
         root.dispatchEvent(new Event('hud-input-cancel'));
+    }, { signal: events.signal });
+    bottomToggle?.addEventListener('click', () => {
+        bottomOpen = !bottomOpen;
+        root.dispatchEvent(new Event('hud-input-cancel'));
+        renderBottomToggle();
+        bottomToggle.scrollIntoView({block: 'nearest', inline: 'nearest', behavior: 'instant'});
     }, { signal: events.signal });
     tabs?.addEventListener('click', e => {
         const b = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-hud-tab]');
@@ -352,6 +372,7 @@ export function mountHudLayout(root: HTMLElement) {
             delete root.dataset.hudActive;
             delete root.dataset.hudTab;
             delete root.dataset.zooToolsOpen;
+            delete root.dataset.zooBottomOpen;
             for (const pane of root.querySelectorAll<HTMLElement>('[data-hud-pane]'))
                 pane.hidden = false;
         } };

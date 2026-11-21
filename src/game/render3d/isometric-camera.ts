@@ -1,12 +1,14 @@
 import { Box3, OrthographicCamera, Vector3 } from 'three';
 
 /** Base 3/4 overview; navigation applies bounded ground-plane translation and zoom. */
-export function fitIsometricCamera(camera: OrthographicCamera, bounds: Box3, aspect: number, azimuth = 0) {
+export function fitIsometricCamera(camera: OrthographicCamera, bounds: Box3, aspect: number, azimuth = 0, tilt = 0) {
   const center = bounds.getCenter(new Vector3());
-  if(!Number.isFinite(azimuth))throw new RangeError('Invalid camera azimuth');
+  if(!Number.isFinite(azimuth)||!Number.isFinite(tilt))throw new RangeError('Invalid camera rotation');
   // Moving along the view axis leaves orthographic framing and ray directions intact.
   // The longer depth interval keeps the foreground meadow visible on tall displays.
-  const offset=new Vector3(14,13,16).applyAxisAngle(new Vector3(0,1,0),azimuth).multiplyScalar(3.5);
+  const offset=new Vector3(14,13,16).applyAxisAngle(new Vector3(0,1,0),azimuth);
+  if(tilt!==0)offset.applyAxisAngle(new Vector3(offset.z,0,-offset.x).normalize(),-tilt);
+  offset.multiplyScalar(3.5);
   camera.position.copy(center).add(offset);
   camera.lookAt(center);
   camera.updateMatrixWorld(true);

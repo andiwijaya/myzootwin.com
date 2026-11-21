@@ -16,6 +16,7 @@ const smoothExtension=JSON.parse(readFileSync(new URL('./fixtures/camera-smooth-
 const touchPickingExtension=JSON.parse(readFileSync(new URL('./fixtures/mobile-tap-visual-extension.json',import.meta.url),'utf8'));
 const landscapeExtension=JSON.parse(readFileSync(new URL('./fixtures/tropical-creek-visual-extension.json',import.meta.url),'utf8'));
 const polishExtension=JSON.parse(readFileSync(new URL('./fixtures/habitat-polish-visual-extension.json',import.meta.url),'utf8'));
+const orbitExtension=JSON.parse(readFileSync(new URL('./fixtures/camera-orbit-visual-extension.json',import.meta.url),'utf8'));
 const withoutLine=({line,...record})=>record;
 // Keep the immutable Z0-03 receipt. H1 found Box3Helper and spray's Object3D transform helper omitted by the original regex.
 // Compare its original source inventory after projecting out that explicit scanner correction.
@@ -66,7 +67,11 @@ test('all production-reachable visual sources and nested geometry/part sites rem
  const polishPaths=new Set(polishExtension.modules.map(m=>m.path));
  assert.deepEqual([...polishPaths],['src/game/render3d/camera-controls.ts','src/game/render3d/camera-gestures.ts','src/game/render3d/habitat-focus.ts','src/game/render3d/tropical-surroundings.ts']);
  assert.deepEqual(polishExtension.predecessors,beforePolish.filter(m=>polishPaths.has(m.path)).sort(ordered));
- assert.deepEqual(current.modules.filter(protectedModule),[...beforePolish.filter(m=>!polishPaths.has(m.path)),...polishExtension.modules].sort(ordered),'Reviewed renderer source extensions only');
+ const beforeOrbit=[...beforePolish.filter(m=>!polishPaths.has(m.path)),...polishExtension.modules];
+ const orbitPaths=new Set(orbitExtension.modules.map(m=>m.path));
+ assert.deepEqual([...orbitPaths],['src/game/render3d/camera-controls.ts','src/game/render3d/camera-gestures.ts','src/game/render3d/isometric-camera.ts']);
+ assert.deepEqual(orbitExtension.predecessors,beforeOrbit.filter(m=>orbitPaths.has(m.path)).sort(ordered));
+ assert.deepEqual(current.modules.filter(protectedModule),[...beforeOrbit.filter(m=>!orbitPaths.has(m.path)),...orbitExtension.modules].sort(ordered),'Reviewed renderer source extensions only');
  const protectedAsset=a=>!integration.has(a.sourcePath)&&!a.sourcePath.startsWith('src/game/render3d/zebra/')&&a.sourcePath!=='src/game/render3d/scene-selection.ts';
  const priorAssets=[...historical.assets.filter(a=>protectedAsset(a)&&!migrated.has(a.sourcePath)&&!retiredModules.has(a.sourcePath)),...glbExtension.assets.filter(protectedAsset)];
  const beforeGestureAssets=[...priorAssets.filter(a=>!focusPaths.has(a.sourcePath)),...focusExtension.assets.filter(a=>!uiPaths.has(a.sourcePath)),...uiExtension.assets];
@@ -75,7 +80,8 @@ test('all production-reachable visual sources and nested geometry/part sites rem
  const beforeTouchPickingAssets=[...beforeSmoothAssets.filter(a=>!smoothPaths.has(a.sourcePath)),...smoothExtension.assets];
  const beforeLandscapeAssets=[...beforeTouchPickingAssets.filter(a=>!touchPickingPaths.has(a.sourcePath)),...touchPickingExtension.assets];
  const beforePolishAssets=[...beforeLandscapeAssets.filter(a=>!landscapePaths.has(a.sourcePath)),...landscapeExtension.assets];
- assert.deepEqual(current.assets.filter(protectedAsset),[...beforePolishAssets.filter(a=>!polishPaths.has(a.sourcePath)),...polishExtension.assets].sort(ordered),'Original parts remain exact outside reviewed renderer source extensions');
+ const beforeOrbitAssets=[...beforePolishAssets.filter(a=>!polishPaths.has(a.sourcePath)),...polishExtension.assets];
+ assert.deepEqual(current.assets.filter(protectedAsset),[...beforeOrbitAssets.filter(a=>!orbitPaths.has(a.sourcePath)),...orbitExtension.assets].sort(ordered),'Original parts remain exact outside reviewed renderer source extensions');
  for(const path of integration)assert.deepEqual(current.assets.filter(a=>a.sourcePath===path).map(({line,...a})=>a),(path==='src/game/render3d/foundation-scene.ts'?glbExtension.assets:historical.assets).filter(a=>a.sourcePath===path).map(({line,...a})=>a),'Reviewed integration constructors/parts: '+path);
  // HP6 adds one reviewed preview image and five exact original capture derivatives.
  // Keep original media bytes/provenance exact; only two retired source references change.
