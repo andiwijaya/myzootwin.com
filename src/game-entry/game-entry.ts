@@ -81,6 +81,7 @@ export function mountGameEntry(root: HTMLElement, options: {
             recoveryPanel?.render();
             restartPanel?.render();
             visualPanel?.render();
+            if (mapFirst && !durable.view().active && preview?.getState().status === 'ready') renderPause();
         }, committed: (revision, generation) => channel?.postMessage({ writer, revision, generation }) });
     const currentVisual=()=>visualChoice??durable.savedVisualSettings()??{graphics:'auto' as const,reducedMotion:false};
     const currentMuted=()=>mutedChoice??durable.savedMuted()??true;
@@ -304,9 +305,10 @@ export function mountGameEntry(root: HTMLElement, options: {
         }
         if (mapControl && mapActions) {
             mapActions.hidden = !ready;
-            mapControl.disabled = blocked || dialogOpen;
+            mapControl.disabled = blocked || dialogOpen || v.phase === 'loading';
             const label = v.active
                 ? locale === 'id' ? (paused ? 'Lanjut bermain' : 'Jeda') : (paused ? 'Resume' : 'Pause')
+                : v.hasSave ? (locale === 'id' ? 'Muat ulang simpanan' : 'Reload saved zoo')
                 : locale === 'id' ? 'Mulai misi' : 'Start mission';
             if (mapControl.textContent !== label) mapControl.textContent = label;
             if (v.active) mapControl.setAttribute('aria-pressed', String(paused));
@@ -333,7 +335,9 @@ export function mountGameEntry(root: HTMLElement, options: {
     root.querySelector('[data-pause-toggle]')?.addEventListener('click', togglePause, { signal: events.signal });
     mapControl?.addEventListener('click', () => {
         if (preview?.getState().status !== 'ready') return;
-        if (durable.view().active) togglePause();
+        const view = durable.view();
+        if (view.active) togglePause();
+        else if (view.hasSave) window.location.reload();
         else preview.startGuided();
     }, { signal: events.signal });
     root.addEventListener('click',event=>{if(event.isTrusted&&preview?.getState().status==='ready'&&durable.view().active)ambience.gesture();},{signal:events.signal});
@@ -363,8 +367,12 @@ export function mountGameEntry(root: HTMLElement, options: {
             stateStore,
             canOpen: () => durable.canOpen(),
             beforeOpen() {
-                const started = durable.view().active || durable.startNew(locale);
-                if (started && mapFirst) syncPause();
+                const active = durable.view().active;
+                const started = active || durable.startNew(locale);
+                if (started && mapFirst) {
+                    if (!active) pauseGate.resume();
+                    syncPause();
+                }
                 return started;
             },
         });
