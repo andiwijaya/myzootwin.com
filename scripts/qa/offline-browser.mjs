@@ -5,7 +5,7 @@ import { pathToFileURL } from 'node:url';
 import { brotliDecompressSync } from 'node:zlib';
 import { build } from 'vite';
 import { withIpcPreview } from './ipc-preview.mjs';
-import { childPath, fixtureIdentityMatches, json, now } from './tooling.mjs';
+import { ANIMAL_ARTICLE_ROUTES, childPath, fixtureIdentityMatches, json, now } from './tooling.mjs';
 
 const productOrigin = 'http://127.0.0.1:4321';
 const fixtureOrigin = 'http://127.0.0.1:4322';
@@ -118,6 +118,114 @@ async function productViewport(page, width, height, id, directory) {
   if (id.endsWith('-id')) assert.equal(data.lang, 'id');
   return { screenshot, data: { ...data, bottomPanel: { originalHeight, collapsedHeight },
     menuReloads: { collapsedAfterReload, reopenedAfterReload }, visualReviewed: false } };
+}
+
+async function tutorialFromHome(page) {
+  const pages = [];
+  for (const [lang, home, guide, width, height] of [
+    ['id', '/', '/tutorial/', 1366, 768],
+    ['en', '/en/', '/en/tutorial/', 360, 780],
+  ]) {
+    await page.setViewportSize({ width, height });
+    await page.goto(productOrigin + home);
+    const homeOverflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
+    const promotion = page.locator('[data-home-map-features]');
+    const tutorial = page.locator('[data-home-tutorial]');
+    assert.equal(await promotion.isVisible(), true);
+    assert.equal(await promotion.locator('a').getAttribute('href'), guide + '#kamera');
+    assert.equal(await tutorial.getAttribute('href'), guide);
+    await tutorial.click();
+    await page.waitForURL(productOrigin + guide, { waitUntil: 'domcontentloaded' });
+    assert.equal(new URL(page.url()).pathname, guide);
+    assert.equal(await page.locator('html').getAttribute('lang'), lang);
+    const article = page.locator('[data-tutorial-page]');
+    const chapterIds = await article.locator('[data-tutorial-chapter]').evaluateAll(nodes => nodes.map(node => node.id));
+    const links = await article.locator('nav a').evaluateAll(nodes => nodes.map(node => node.getAttribute('href')));
+    assert.equal(chapterIds.length, 8);
+    assert.deepEqual(links, chapterIds.map(id => '#' + id));
+    const imgs = await article.locator('img[data-tutorial-screenshot]').evaluateAll(async nodes =>
+      Promise.all(nodes.map(async node => {
+        const file = new Image();
+        file.src = node.src;
+        await file.decode();
+        return { url: node.src, width: file.naturalWidth, height: file.naturalHeight,
+          device: node.dataset.tutorialScreenshot, alt: node.alt,
+          zoomLink: node.closest('a')?.href };
+      })),
+    );
+    assert.equal(new Set(imgs.map(img => img.url)).size, 12);
+    assert.ok(imgs.every(img => img.alt.trim() && img.zoomLink === img.url && img.url.startsWith(productOrigin + '/_astro/')));
+    const mobileScreens = imgs.filter(x => x.device === 'mobile' && x.width === 390 && x.height === 844).length;
+    const desktopScreens = imgs.filter(x => x.device === 'desktop' && x.width === 1366 && x.height === 768).length;
+    assert.equal(mobileScreens, 6);
+    assert.equal(desktopScreens, 6);
+    const canonical = await page.locator('link[rel="canonical"]').getAttribute('href');
+    assert.equal(canonical, 'https://myzootwin.com' + guide);
+    const alternate = lang === 'id' ? 'en' : 'id';
+    assert.equal(await page.locator(`header .language-link[hreflang="${alternate}"]`).getAttribute('href'),
+      lang === 'id' ? '/en/tutorial/' : '/tutorial/');
+    const guideOverflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
+    assert.equal(homeOverflow, false);
+    assert.equal(guideOverflow, false);
+    await article.locator('nav a[href="#misi-pertama"]').click();
+    await page.waitForURL(productOrigin + guide + '#misi-pertama');
+    assert.equal(new URL(page.url()).hash, '#misi-pertama');
+    await article.locator('[data-tutorial-play]').first().click();
+    await page.waitForURL(productOrigin + '/play/', { waitUntil: 'domcontentloaded' });
+    const play = new URL(page.url()).pathname;
+    assert.equal(play, '/play/');
+    await ready(page);
+    pages.push({ lang, home, guide, width, height, chapters: chapterIds.length, mobileScreens, desktopScreens,
+      play, canonical, homeOverflow, guideOverflow });
+  }
+  return { data: { pages } };
+}
+
+async function animalArticles(page) {
+  const profiles = [];
+  for (const [width, height] of [[1366, 768], [390, 844]]) {
+    await page.setViewportSize({ width, height });
+    await page.goto(productOrigin + '/');
+    const menu = page.locator('header a[data-site-articles]');
+    assert.equal(await menu.getAttribute('href'), '/artikel/');
+    await menu.click();
+    await page.waitForURL(productOrigin + '/artikel/', { waitUntil: 'domcontentloaded' });
+    const index = new URL(page.url()).pathname;
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
+    assert.equal(overflow, false);
+    const list = page.locator('[data-article-index]');
+    const links = await list.locator('[data-article-card]').evaluateAll(nodes => nodes.map(node => node.getAttribute('href')));
+    assert.deepEqual(links, ANIMAL_ARTICLE_ROUTES);
+    const articles = [];
+    for (const path of links) {
+      await list.locator(`a[href="${path}"]`).click();
+      await page.waitForURL(productOrigin + path, { waitUntil: 'domcontentloaded' });
+      const story = page.locator('[data-animal-story]');
+      const slug = path.split('/')[2];
+      assert.equal(await story.getAttribute('data-animal-story'), slug);
+      assert.equal(await story.locator('[data-article-photo]').count(), 1);
+      const photo = await story.locator('[data-article-photo]').evaluate(async image => {
+        await image.decode();
+        if (!image.alt || image.naturalWidth !== 1280 || image.naturalHeight !== 853) throw Error('Invalid article photo');
+        return new URL(image.src).pathname;
+      });
+      const canonical = await page.locator('link[rel="canonical"]').getAttribute('href');
+      const play = await story.locator('a[href="/play/"]').getAttribute('href');
+      const chapter = await story.locator('a[href^="/tutorial/#"]').getAttribute('href');
+      assert.equal(canonical, 'https://myzootwin.com' + path);
+      assert.equal(play, '/play/');
+      assert.equal(chapter, slug === 'makaw' ? '/tutorial/#rawat' : '/tutorial/#habitat');
+      assert.equal(await story.locator('a[href^="https://"]').count(), 1);
+      const pageOverflow = await page.evaluate(() => document.documentElement.scrollWidth > innerWidth);
+      assert.equal(pageOverflow, false);
+      articles.push({ path, photo, canonical, play, overflow: pageOverflow });
+      await page.goBack();
+      await list.waitFor();
+    }
+    assert.equal(new Set(articles.map(article => article.photo)).size, 5);
+    profiles.push({ width, height, index, overflow, articles });
+  }
+  return { data: { profiles } };
 }
 
 async function navigationReload(page) {
@@ -234,6 +342,8 @@ export async function runOfflineBrowser(root, directory, report) {
         ['desktop-native', () => productViewport(page, 1366, 768, 'desktop-native', directory)],
         ['portrait-native-id', () => productViewport(page, 360, 780, 'portrait-native-id', directory)],
         ['landscape-native-id', () => productViewport(page, 780, 360, 'landscape-native-id', directory)],
+        ['tutorial-home', () => tutorialFromHome(page)],
+        ['animal-articles', () => animalArticles(page)],
         ['navigation-reload', () => navigationReload(page)],
         ['native-lifecycle', () => lifecycle(page)],
         ['injected-failure-retry', () => contextRetry(page)],

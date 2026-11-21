@@ -1,0 +1,75 @@
+.article-hub, .animal-story {
+  max-width: 1190px;
+  margin-inline: auto;
+  padding: clamp(1rem, 4vw, 3.6rem);
+}
+.article-index-intro {
+  padding-block: clamp(1.5rem, 4vw, 2.8rem);
+  border-bottom: 1px solid var(--line);
+  margin-block-end: clamp(1.1rem, 3vw, 2rem);
+}
+.article-index-intro h1, .animal-story h1 {
+  font-size: clamp(2.45rem, 6.4vw, 5rem);
+  line-height: 1.07;
+}
+.article-index-intro p, .animal-story-lead {
+  max-width: 58ch;
+  margin: .9rem 0 0;
+  color: #425e4e;
+  font-size: clamp(1rem, 2vw, 1.18rem);
+}
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 285px), 1fr));
+  gap: 1.15rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.article-grid li { min-width: 0; }
+.article-card {
+  display: block;
+  height: 100%;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #f7f8f1;
+}
+.article-card:hover { border-color: #879d76; }
+.article-card img { display: block; width: 100%; height: auto; aspect-ratio: 3/2; object-fit: cover; }
+.article-card > div { padding: 1rem 1.15rem 1.2rem; }
+.article-card h2 { font-size: clamp(1.45rem, 2.3vw, 2rem); line-height: 1.14; }
+.article-card p:not(.article-species) { margin: .6rem 0 0; color: #425e4e; }
+.article-species, .story-setting {
+  margin: 0 0 .45rem;
+  color: var(--forest);
+  font-size: .85rem;
+  font-weight: 700;
+}
+.article-species i { margin-inline-start: .45rem; font-weight: 400; }
+.animal-story { max-width: 1060px; }
+.animal-story-intro { margin-block-end: 1.6rem; }
+.article-back {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--forest);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: .23em;
+}
+.animal-story-intro .article-back { margin-block-end: .75rem; }
+.animal-story-picture { margin: 0 0 2rem; }
+.animal-story-picture img { display: block; width: 100%; height: auto; border-radius: 14px; }
+.animal-story-picture figcaption { margin-top: .4rem; font-size: .84rem; color: #425e4e; }
+.animal-story-body { max-width: 68ch; margin-inline: auto; }
+.animal-story-body h2 { font-size: clamp(1.7rem, 4vw, 2.55rem); line-height: 1.14; }
+.animal-story-body section { margin-bottom: 2.05rem; }
+.animal-story-body p { margin: .75rem 0; }
+.animal-story-body p a { color: var(--forest); text-decoration: underline; text-underline-offset: .2em; }
+.story-try { padding: clamp(1rem, 4vw, 1.8rem); border-radius: 14px; background: #edf2e7; }
+.story-try div { display: flex; flex-wrap: wrap; align-items: center; gap: .6rem 1rem; }
+.story-try .button { min-height: 48px; }
+@media (prefers-reduced-motion: reduce) {
+  .animal-story .button:hover { transform: none; }
+}

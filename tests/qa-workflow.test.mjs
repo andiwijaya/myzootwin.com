@@ -3,7 +3,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { resolve, join } from 'node:path';
 import { tmpdir } from 'node:os';
-import { assessRun, parseTap, childPath, within, runNode, browserVerdict, BROWSER_CASES, pageMetadata, fixtureIdentityMatches } from '../scripts/qa/tooling.mjs';
+import { assessRun, parseTap, childPath, within, runNode, browserVerdict, BROWSER_CASES, PRODUCT_ROUTES, pageMetadata, fixtureIdentityMatches } from '../scripts/qa/tooling.mjs';
 
 const tap='TAP version 13\n'+Array.from({length:36},(_,i)=>`ok ${i+1} - example`).join('\n')+'\n1..36\n# tests 36\n# pass 36\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n';
 test('QA cannot pass from failed process, truncated/capped TAP, duplicate summary or skipped tests',()=>{
@@ -15,7 +15,7 @@ test('QA requires completed check/build receipts; successful compile text alone 
   assert.throws(()=>assessRun({exitCode:0,stdout:'0 errors\n0 warnings'},'check'));
   assert.throws(()=>assessRun({exitCode:2,stdout:'9 page(s) built\n[build] Complete!'},'build'));
   assert.throws(()=>assessRun({exitCode:0,stdout:'9 page(s) built\n[build] Complete!'},'build'));
-  assert.equal(assessRun({exitCode:0,stdout:'10 page(s) built\n[build] Complete!'},'build'),null);
+  assert.equal(assessRun({exitCode:0,stdout:PRODUCT_ROUTES.length+' page(s) built\n[build] Complete!'},'build'),null);
 });
 test('QA capture actually marks overflowing or timed-out child output as failure',async()=>{
   const overflow=await runNode(['-e',"process.stdout.write('x'.repeat(65536))"],{limit:1000});assert.equal(overflow.overflow,true);assert.throws(()=>assessRun(overflow,'fixture'));
@@ -30,7 +30,7 @@ function records() {
   const receipt={runId:'run-1',buildId:'build-1',sourceId:'source-1',method:'approved-cua-isolated-browser',physicalDevice:false,startedAt:time,finishedAt:time,ownedTabsClosed:true,viewportReset:true,console:{entries:[],limit:200,capped:false},cases:BROWSER_CASES.map(id=>({id,status:'UNRUN',observedAt:time}))};
   return {time,report,receipt};
 }
-test('browser checks remain UNRUN until all six approved-runtime cases are recorded',()=>{
+test('browser checks remain UNRUN until all approved-runtime cases are recorded',()=>{
   const {report,receipt}=records();assert.equal(browserVerdict(null,report).status,'UNRUN');assert.equal(browserVerdict(receipt,report).status,'UNRUN');
 });
 test('stale identity/time, capped console and missing cleanup can never produce browser PASS',()=>{
