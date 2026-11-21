@@ -1,6 +1,6 @@
 # Local QA — repeatable foundation workflow
 
-Use the existing Node 24 installation (verified 24.12.0), npm and repository dependencies. No new package, browser driver, global install, PowerShell policy change, Actions or production access is required. This workflow tests the current nine-route **foundation**; it is not the V1 gameplay release gate.
+Use Node 24, npm, and repository dependencies. This workflow checks ten product routes, the build, and six browser cases. The full gameplay and physical-device checks have separate harnesses.
 
 ## Commands from the repository root
 
@@ -11,7 +11,7 @@ npm run qa:verify
 npm run qa:serve
 ```
 
-`npm test` discovers the root `tests/*.test.mjs` files using native Node strip-types. `qa:local` creates a unique ignored `.qa/runs/<runId>/` directory, runs the full discovered suite with complete TAP, Astro check/build, then starts and stops its own loopback Astro preview for HTTP checks of all nine routes, `/play` direct URL and sitemap. It records UTC timestamps, Node/platform, Git HEAD, test file list/counts, complete bounded logs/hashes, source fingerprints **before/after** tests and a fingerprint of all built output. A changed input, failed command, incomplete/capped test log or bad route is FAIL; stages not reached stay UNRUN. Logs are limited to 2MB per command, with overflow/timeout always failing.
+`npm test` discovers the root `tests/*.test.mjs` files using native Node strip-types. `qa:local` creates a unique ignored `.qa/runs/<runId>/` directory and runs the full discovered suite with complete TAP, Astro check/build, and HTTP checks of all ten routes, the direct `/play` URL, and the sitemap. The unit stage uses at most four workers and has a 20-minute timeout. It records the source and build fingerprints, Git HEAD, test counts, and complete bounded logs. A changed input, failed command, incomplete or capped log, timeout, or bad route is FAIL.
 
 After the automatic stages succeed, the overall status is deliberately **UNRUN** because the browser steps have not happened. `qa:verify` before a browser receipt exits **2 (UNRUN)**, not zero. A complete verified workflow exits **0 (PASS)**; any failed consistency check exits **1 (FAIL)**. This explicit UNRUN exit is expected, not a request to bypass the browser stage.
 
@@ -19,18 +19,18 @@ After the automatic stages succeed, the overall status is deliberately **UNRUN**
 
 ## Supported browser recipe (manual via the approved runtime)
 
-Use the documented isolated in-app browser/computer-use runtime; no standalone Playwright, Puppeteer, CDP, extension/personal profile or hidden automation route. Browser `evaluate` is for read-only DOM/diagnostic observations. Perform mutations with the actual buttons/selects and supported navigation APIs. Screenshots must capture the actual native canvas and be visually inspected. Viewport dimensions are DOM observations, not physical-device claims.
+For loopback runs, use the documented isolated in-app browser or computer-use runtime. Browser `evaluate` is for read-only DOM and diagnostic observations. Use the actual buttons, selects, and navigation APIs. Screenshots must capture the actual canvas and be visually inspected. Dimensions describe browser viewports.
 
 Start from the generated `browser-template.json`, preserving the exact run/build/source identities. Save the completed receipt as `browser-receipt.json` in that run directory. Set real UTC `startedAt`, `finishedAt`, per-case `observedAt`, `method: approved-cua-isolated-browser`, `physicalDevice: false`. Each case starts UNRUN; only record PASS after actual observation. A failed action records FAIL and its evidence; fix/retest rather than relabeling a failed/stale receipt. The six case IDs are mandatory:
 
 | Case | Actual actions and required `data` |
 |---|---|
-| `desktop-native` | Actual built `/play/`; set/verify **1366×768**, press Open with keyboard, inspect real canvas. Record `width,height,documentWidth,state:'ready',canvas:1,visualReviewed:true,entryScript` (pathname of the actual built PlayEntry script). Save `screens/desktop-native.jpg`. |
+| `desktop-native` | Actual built `/play/`; set/verify **1366×768**, wait for the map to open, and inspect the canvas. Record `width,height,documentWidth,state:'ready',canvas:1,visualReviewed:true,entryScript` (pathname of the actual built PlayEntry script). Save `screens/desktop-native.jpg`. |
 | `portrait-native-id` | Use working Settings to choose ID, close/Escape; set/verify **360×780**, inspect canvas and readable controls. Same data plus `lang:'id'`. Save `screens/portrait-native-id.jpg`. |
 | `landscape-native-id` | Set/verify **780×360**, inspect actual canvas/UI with no page overflow. Same ID data. Save `screens/landscape-native-id.jpg`. |
 | `native-lifecycle` | Open labelled fixture. Read visible `#qa-run-id`, `#qa-build-id`, `#qa-source-id` into `harnessRunId,harnessBuildId,harnessSourceId`. Record `samples` from the DOM `#qa-diagnostics`: `ready`, `paused`, `still-paused` after other UI actions, `resumed`, and `closed`. Each sample has `name` plus the diagnostic fields. Confirm time/tick/event/world visual time, one session/subscriber/RAF and zero resources after Close. |
 | `injected-failure-retry` | With a native fixture canvas, use **Inject context loss** (WEBGL_lose_context). Record `source:'WEBGL_lose_context',failedState:'error',failedReason:'context-lost',failedCanvas:0,failedSubscribers:0`; press Retry and record `retryState:'ready',retryCanvas:1`. This is an injected test, never a physically unsupported-device claim. |
-| `navigation-reload` | Actual product: follow journal link to `/animals/`, Back to `/play/`, verify no canvas, reload and verify no canvas/correct canonical. Record `journalPath,returnPath,returnCanvas:0,reloadCanvas:0,canonical:'https://myzootwin.com/play/'`. |
+| `navigation-reload` | Start the mission with the keyboard, pause, and wait for Saved. Follow the journal link to `/animals/`, then go Back to `/play/` and reload. Record `journalPath,returnPath,returnCanvas:1,reloadCanvas:1,canonical:'https://myzootwin.com/play/'` and `checkpoints` with `{paused:true,tick,revision,currency}` from before navigation, after Back, and after reload. The three checkpoints must match. |
 
 Use the runtime's real native-product warn/error log read with limit **200**; save `console:{entries,limit:200,capped:false}`. If 200 entries are returned, mark capped and investigate; do not call capped history a clean console. This receipt is an operator-observed runtime capture window, not independent instrumentation of every browser event or a performance test. Fixture context-loss diagnostics are labelled separately from native-product console results.
 
@@ -45,6 +45,18 @@ npm run qa:verify
 ```
 
 Optional exact-run selection: `npm run qa:verify -- 20261031T000000Z-12345678` (replace with the actual generated ID). Each verification attempt appends a status/hash record to `verification-attempts.jsonl`; failures and an initial UNRUN remain visible. `report.json` is the current result, not a production release approval.
+
+## Offline QA for restricted hosts
+
+If the host blocks loopback requests, use private local IPC for the same Astro preview HTTP handler and launch a temporary Chromium with Playwright. Install Playwright and its supported browser in the QA environment, or set `MYZOO_QA_PLAYWRIGHT_MODULE` and `MYZOO_QA_CHROME` to absolute paths for an existing installation. The browser receives the actual product responses through IPC and loads the separately bundled, run-labelled fixture. External requests are blocked for this test context.
+
+```powershell
+npm run qa:local -- --offline
+npm run qa:browser
+npm run qa:verify
+```
+
+`qa:browser` records the six real browser cases and saves three JPEGs. Inspect them and set `visualReviewed` only on reviewed screenshot cases in the generated receipt before running `qa:verify`. The verifier checks the method against the run's HTTP transport and applies the same viewport, identity, lifecycle, console, and screenshot requirements. Offline runs cover local build behavior. Production HTTP/CDN and physical-device checks remain separate.
 
 ## Artifact bounds and preservation
 

@@ -152,16 +152,21 @@ test('actual raycast and habitat ghost identify the same world tile after orbit,
 
 test('navigation-only contract ignores orbit commands and invalid camera angles cannot poison matrices',()=>{const n=make(),before=n.inspect();n.command('rotate-left');n.command('rotate-right');assert.deepEqual(n.inspect(),before);const camera=new OrthographicCamera(),bounds=new Box3(new Vector3(-6,0,-5),new Vector3(6,2,5));fitIsometricCamera(camera,bounds,1);const matrix=camera.matrixWorld.clone();assert.throws(()=>fitIsometricCamera(camera,bounds,1,NaN),RangeError);assert.ok(camera.matrixWorld.equals(matrix));});
 
-test('touch rotates immediately without choosing a mode, while desktop mouse retains its selected Pan mode',()=>{
+test('touch and desktop left drag rotate while Shift at mouse-down selects pan',()=>{
  const s=setup(()=>assert.fail('drag must never tap'));try{
-  assert.equal(s.host.dataset.cameraDragMode,'pan');assert.equal(s.c.inspect().cameraRotateDrag,false);
+  assert.equal(s.host.dataset.cameraDragMode,'rotate');assert.equal(s.c.inspect().cameraRotateDrag,true);
   fire(s.canvas,'pointerdown',{pointerId:1,button:0,pointerType:'touch',clientX:200,clientY:150});
   fire(s.canvas,'pointermove',{pointerId:1,pointerType:'touch',clientX:237,clientY:154});const turn=s.c.inspect();close(turn.cameraAzimuth,346.68);assert.equal(turn.cameraPointers,1);assert.equal(turn.cameraZoom,1);
   for(const x of[-6,6])for(const y of[-.4,2.4])for(const z of[-5,5]){const p=new Vector3(x,y,z).project(s.camera);assert.ok(Math.abs(p.x)<.92&&Math.abs(p.y)<.92);}
   fire(s.canvas,'pointerup',{pointerId:1,pointerType:'touch',clientX:237,clientY:154});assert.equal(s.c.inspect().cameraPointers,0);
-  s.c.command('zoom-in');s.c.command('drag-pan');const angle=s.c.inspect().cameraAzimuth;
-  fire(s.canvas,'pointerdown',{pointerId:2,button:0,pointerType:'mouse',clientX:200,clientY:150});fire(s.canvas,'pointermove',{pointerId:2,pointerType:'mouse',buttons:1,clientX:250,clientY:180});fire(s.canvas,'pointerup',{pointerId:2,pointerType:'mouse',clientX:250,clientY:180});
-  assert.equal(s.c.inspect().cameraAzimuth,angle);assert.ok(Math.hypot(s.c.inspect().cameraPanX,s.c.inspect().cameraPanZ)>0);assert.equal(s.host.dataset.cameraDragMode,'pan');
+  s.c.command('zoom-in');
+  const before=s.c.inspect();
+  const mouse=(id,x,y,shiftKey)=>({pointerId:id,button:0,buttons:1,pointerType:'mouse',clientX:x,clientY:y,shiftKey});
+  fire(s.canvas,'pointerdown',mouse(2,200,150,false));fire(s.canvas,'pointermove',mouse(2,250,180,true));fire(s.canvas,'pointerup',mouse(2,250,180,true));
+  const rotated=s.c.inspect();assert.notEqual(rotated.cameraAzimuth,before.cameraAzimuth);
+  close(rotated.cameraFocusX,before.cameraFocusX);close(rotated.cameraFocusZ,before.cameraFocusZ);
+  fire(s.canvas,'pointerdown',mouse(3,200,150,true));fire(s.canvas,'pointermove',mouse(3,250,180,false));fire(s.canvas,'pointerup',mouse(3,250,180,false));
+  const panned=s.c.inspect();close(panned.cameraAzimuth,rotated.cameraAzimuth);assert.ok(Math.hypot(panned.cameraPanX-rotated.cameraPanX,panned.cameraPanZ-rotated.cameraPanZ)>0);
   s.c.command('reset');assert.equal(s.c.inspect().cameraAzimuth,0);assert.equal(s.c.inspect().cameraZoom,1);
  }finally{s.finish();}
 });
@@ -193,20 +198,20 @@ test('thumb mode changes, pause, resize, blur, habitat focus and disposal releas
 test('habitat exit restores a directly touch-rotated zoo angle and focus while retaining the desktop mouse mode',()=>{
  const s=setup();try{
   s.c.command('zoom-in');fire(s.canvas,'pointerdown',{pointerId:1,button:0,pointerType:'touch',clientX:200,clientY:150});fire(s.canvas,'pointerup',{pointerId:1,pointerType:'touch',clientX:273,clientY:150});const before=s.c.inspect();
-  s.c.setHabitatView({bounds:new Box3(new Vector3(-2,0,-2),new Vector3(2,3,2)),area:{x:-2,z:-2,width:4,depth:4}});assert.equal(s.c.inspect().cameraAzimuth,0);
+  s.c.setHabitatView({bounds:new Box3(new Vector3(-2,0,-2),new Vector3(2,3,2)),area:{x:-2,z:-2,width:4,depth:4}});assert.equal(s.c.inspect().cameraAzimuth,0);assert.equal(s.c.inspect().cameraRotateDrag,false);
   fire(s.canvas,'pointerdown',{pointerId:2,button:0,pointerType:'touch',clientX:200,clientY:150});fire(s.canvas,'pointerup',{pointerId:2,pointerType:'touch',clientX:150,clientY:150});s.c.setHabitatView(null);
-  close(s.c.inspect().cameraAzimuth,before.cameraAzimuth);close(s.c.inspect().cameraZoom,before.cameraZoom);close(s.c.inspect().cameraFocusX,before.cameraFocusX);close(s.c.inspect().cameraFocusZ,before.cameraFocusZ);assert.equal(s.c.inspect().cameraRotateDrag,false);
+  close(s.c.inspect().cameraAzimuth,before.cameraAzimuth);close(s.c.inspect().cameraZoom,before.cameraZoom);close(s.c.inspect().cameraFocusX,before.cameraFocusX);close(s.c.inspect().cameraFocusZ,before.cameraFocusZ);assert.equal(s.c.inspect().cameraRotateDrag,true);
  }finally{s.finish();}
 });
 
-test('phone and landscape layouts rotate on the first drag and switching back restores desktop mouse Pan',()=>{
+test('unmodified drags rotate the whole zoo across phone, landscape, and desktop layouts',()=>{
  const s=setup(()=>assert.fail('drag must not select'));try{
   s.c.command('zoom-in');
   for(const width of[360,780,1366,360]){
    window.innerWidth=width;s.c.resize(width,350);const before=s.c.inspect();
    fire(s.canvas,'pointerdown',{pointerId:1,button:0,pointerType:'mouse',clientX:200,clientY:150});fire(s.canvas,'pointermove',{pointerId:1,pointerType:'mouse',buttons:1,clientX:236,clientY:160});fire(s.canvas,'pointerup',{pointerId:1,pointerType:'mouse',clientX:236,clientY:160});
-   const after=s.c.inspect();assert.equal(after.cameraRotateDrag,width<900);assert.equal(s.host.dataset.cameraDragMode,width<900?'rotate':'pan');
-   if(width<900)assert.notEqual(after.cameraAzimuth,before.cameraAzimuth);else{assert.equal(after.cameraAzimuth,before.cameraAzimuth);assert.ok(Math.hypot(after.cameraPanX-before.cameraPanX,after.cameraPanZ-before.cameraPanZ)>0);}
+   const after=s.c.inspect();assert.equal(after.cameraRotateDrag,true);assert.equal(s.host.dataset.cameraDragMode,'rotate');
+   assert.notEqual(after.cameraAzimuth,before.cameraAzimuth);
    assert.equal(after.cameraPointers,0);assert.equal(s.canvas.captured.size,0);
   }
  }finally{s.finish();}

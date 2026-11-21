@@ -1,0 +1,1005 @@
+{
+  "scope": "Desktop overview drag and Shift-pan, visible-only habitat clipping, and terrain under the focused zoo.",
+  "predecessors": [
+    {
+      "path": "src/game/render3d/camera-controls.ts",
+      "sha256": "5cb9018198a104d1de4e45f663fcfc5eb4c43686856b0be40e6f522797aee3f0",
+      "family": "camera-picking",
+      "imports": [
+        "src/game/render3d/camera-gestures.ts",
+        "src/game/render3d/camera-navigation.ts",
+        "src/game/render3d/isometric-camera.ts",
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "mountCameraControls",
+          "line": 7
+        },
+        {
+          "name": "pointerMode",
+          "line": 12
+        },
+        {
+          "name": "release",
+          "line": 20
+        },
+        {
+          "name": "cancelAll",
+          "line": 21
+        },
+        {
+          "name": "point",
+          "line": 22
+        },
+        {
+          "name": "up",
+          "line": 36
+        },
+        {
+          "name": "reframe",
+          "line": 62
+        },
+        {
+          "name": "rotateBy",
+          "line": 70
+        },
+        {
+          "name": "command",
+          "line": 74
+        }
+      ],
+      "threeTypes": [
+        "Vector3"
+      ],
+      "exports": [
+        "mountCameraControls"
+      ]
+    },
+    {
+      "path": "src/game/render3d/camera-gestures.ts",
+      "sha256": "d76a083fbfa1738ed97be1761201870a7b7d02c94dbb817b35c59d5b3ece77d1",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "createCameraGestures",
+          "line": 13
+        },
+        {
+          "name": "valid",
+          "line": 16
+        },
+        {
+          "name": "samplePair",
+          "line": 17
+        },
+        {
+          "name": "flush",
+          "line": 18
+        },
+        {
+          "name": "move",
+          "line": 35
+        },
+        {
+          "name": "remove",
+          "line": 43
+        }
+      ],
+      "threeTypes": [],
+      "exports": [
+        "CameraDragMode",
+        "CameraGestureOptions",
+        "CameraPointer",
+        "GestureTarget",
+        "createCameraGestures"
+      ]
+    },
+    {
+      "path": "src/game/render3d/habitat-focus.ts",
+      "sha256": "2a4fb71d107043b0c0390c75076f8143a5342b266487eaf348ac5274bbe39d27",
+      "family": "shared-world",
+      "imports": [
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "habitatKind",
+          "line": 16
+        },
+        {
+          "name": "habitatContains",
+          "line": 17
+        },
+        {
+          "name": "habitatUndoAllowed",
+          "line": 20
+        },
+        {
+          "name": "habitatForSelection",
+          "line": 27
+        },
+        {
+          "name": "habitatFocusArea",
+          "line": 34
+        },
+        {
+          "name": "habitatFocusBounds",
+          "line": 39
+        },
+        {
+          "name": "createHabitatRenderMask",
+          "line": 50
+        },
+        {
+          "name": "belongs",
+          "line": 54
+        },
+        {
+          "name": "restoreVisibility",
+          "line": 62
+        },
+        {
+          "name": "hide",
+          "line": 63
+        },
+        {
+          "name": "restoreMaterials",
+          "line": 64
+        },
+        {
+          "name": "set",
+          "line": 68
+        },
+        {
+          "name": "apply",
+          "line": 74
+        },
+        {
+          "name": "release",
+          "line": 87
+        }
+      ],
+      "threeTypes": [
+        "Box3",
+        "Plane",
+        "Vector3"
+      ],
+      "exports": [
+        "FocusHabitat",
+        "HabitatFocusView",
+        "createHabitatRenderMask",
+        "habitatContains",
+        "habitatFocusArea",
+        "habitatFocusBounds",
+        "habitatForSelection",
+        "habitatKind",
+        "habitatUndoAllowed"
+      ]
+    },
+    {
+      "path": "src/game/render3d/tropical-surroundings.ts",
+      "sha256": "61108a66e85f0d05f457782f92f155c2fe984569eb461b55972cbb175674a76c",
+      "family": "shared-world",
+      "imports": [
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [
+        {
+          "type": "BufferGeometry",
+          "owner": "surface",
+          "variable": "geometry",
+          "line": 17
+        },
+        {
+          "type": "Group",
+          "owner": "createTropicalSurroundings",
+          "variable": "group",
+          "line": 42
+        },
+        {
+          "type": "MeshLambertMaterial",
+          "owner": "createTropicalSurroundings",
+          "variable": "material",
+          "line": 47
+        },
+        {
+          "type": "Mesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "ground",
+          "line": 85
+        },
+        {
+          "type": "Mesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "bank",
+          "line": 99
+        },
+        {
+          "type": "Mesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "creek",
+          "line": 100
+        },
+        {
+          "type": "Mesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "water",
+          "line": 101
+        },
+        {
+          "type": "Mesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "entry",
+          "line": 102
+        },
+        {
+          "type": "CylinderGeometry",
+          "owner": "createTropicalSurroundings",
+          "variable": "trunkGeometry",
+          "line": 129
+        },
+        {
+          "type": "IcosahedronGeometry",
+          "owner": "createTropicalSurroundings",
+          "variable": "crownGeometry",
+          "line": 130
+        },
+        {
+          "type": "MeshLambertMaterial",
+          "owner": "createTropicalSurroundings",
+          "variable": "treeMaterial",
+          "line": 131
+        },
+        {
+          "type": "MeshBasicMaterial",
+          "owner": "createTropicalSurroundings",
+          "variable": "lowTerrainMaterial",
+          "line": 132
+        },
+        {
+          "type": "MeshBasicMaterial",
+          "owner": "createTropicalSurroundings",
+          "variable": "lowTreeMaterial",
+          "line": 133
+        },
+        {
+          "type": "InstancedMesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "trunks",
+          "line": 134
+        },
+        {
+          "type": "InstancedMesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "crowns",
+          "line": 135
+        }
+      ],
+      "labels": [
+        {
+          "label": "Tropical Creek surroundings",
+          "owner": "createTropicalSurroundings",
+          "line": 43,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Meadow and forested ridges",
+          "owner": "createTropicalSurroundings",
+          "line": 86,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Far creek bank",
+          "owner": "createTropicalSurroundings",
+          "line": 103,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Far creek shallows",
+          "owner": "createTropicalSurroundings",
+          "line": 104,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Far creek current",
+          "owner": "createTropicalSurroundings",
+          "line": 105,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Trail toward the sanctuary",
+          "owner": "createTropicalSurroundings",
+          "line": 106,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Forest trunks",
+          "owner": "createTropicalSurroundings",
+          "line": 136,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Forest canopy",
+          "owner": "createTropicalSurroundings",
+          "line": 137,
+          "kind": "runtime-object-name"
+        }
+      ],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "linear",
+          "line": 12
+        },
+        {
+          "name": "unit",
+          "line": 13
+        },
+        {
+          "name": "smooth",
+          "line": 14
+        },
+        {
+          "name": "surface",
+          "line": 16
+        },
+        {
+          "name": "ribbon",
+          "line": 25
+        },
+        {
+          "name": "createTropicalSurroundings",
+          "line": 41
+        },
+        {
+          "name": "contour",
+          "line": 58
+        }
+      ],
+      "threeTypes": [
+        "BufferGeometry",
+        "Color",
+        "CylinderGeometry",
+        "Float32BufferAttribute",
+        "Group",
+        "IcosahedronGeometry",
+        "InstancedMesh",
+        "Mesh",
+        "MeshBasicMaterial",
+        "MeshLambertMaterial",
+        "Object3D",
+        "Raycaster",
+        "Vector3"
+      ],
+      "exports": [
+        "createTropicalSurroundings"
+      ]
+    }
+  ],
+  "modules": [
+    {
+      "path": "src/game/render3d/camera-controls.ts",
+      "sha256": "38843994c675b0f76da8c41a35e6a6889801c4ab86ab0342a16fa104bc385209",
+      "family": "camera-picking",
+      "imports": [
+        "src/game/render3d/camera-gestures.ts",
+        "src/game/render3d/camera-navigation.ts",
+        "src/game/render3d/isometric-camera.ts",
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "mountCameraControls",
+          "line": 7
+        },
+        {
+          "name": "pointerMode",
+          "line": 12
+        },
+        {
+          "name": "release",
+          "line": 24
+        },
+        {
+          "name": "cancelAll",
+          "line": 25
+        },
+        {
+          "name": "point",
+          "line": 26
+        },
+        {
+          "name": "up",
+          "line": 40
+        },
+        {
+          "name": "reframe",
+          "line": 66
+        },
+        {
+          "name": "rotateBy",
+          "line": 74
+        },
+        {
+          "name": "command",
+          "line": 78
+        }
+      ],
+      "threeTypes": [
+        "Vector3"
+      ],
+      "exports": [
+        "mountCameraControls"
+      ]
+    },
+    {
+      "path": "src/game/render3d/camera-gestures.ts",
+      "sha256": "db357d3b36d07495b54012ed806242827e86662cac1a85b65fa1bd08af63071a",
+      "family": "camera-picking",
+      "imports": [],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "createCameraGestures",
+          "line": 13
+        },
+        {
+          "name": "valid",
+          "line": 16
+        },
+        {
+          "name": "samplePair",
+          "line": 17
+        },
+        {
+          "name": "flush",
+          "line": 18
+        },
+        {
+          "name": "move",
+          "line": 35
+        },
+        {
+          "name": "remove",
+          "line": 43
+        }
+      ],
+      "threeTypes": [],
+      "exports": [
+        "CameraDragMode",
+        "CameraGestureOptions",
+        "CameraPointer",
+        "GestureTarget",
+        "createCameraGestures"
+      ]
+    },
+    {
+      "path": "src/game/render3d/habitat-focus.ts",
+      "sha256": "f1da3e4c07b646440b212af412228acc012a124a506939a1e3d7abb05e154cce",
+      "family": "shared-world",
+      "imports": [
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [],
+      "labels": [],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "habitatKind",
+          "line": 16
+        },
+        {
+          "name": "habitatContains",
+          "line": 17
+        },
+        {
+          "name": "habitatUndoAllowed",
+          "line": 20
+        },
+        {
+          "name": "habitatForSelection",
+          "line": 27
+        },
+        {
+          "name": "habitatFocusArea",
+          "line": 34
+        },
+        {
+          "name": "habitatFocusBounds",
+          "line": 39
+        },
+        {
+          "name": "createHabitatRenderMask",
+          "line": 50
+        },
+        {
+          "name": "belongs",
+          "line": 54
+        },
+        {
+          "name": "restoreVisibility",
+          "line": 62
+        },
+        {
+          "name": "hide",
+          "line": 63
+        },
+        {
+          "name": "restoreMaterials",
+          "line": 64
+        },
+        {
+          "name": "set",
+          "line": 68
+        },
+        {
+          "name": "clip",
+          "line": 74
+        },
+        {
+          "name": "release",
+          "line": 76
+        },
+        {
+          "name": "apply",
+          "line": 84
+        }
+      ],
+      "threeTypes": [
+        "Box3",
+        "Plane",
+        "Vector3"
+      ],
+      "exports": [
+        "FocusHabitat",
+        "HabitatFocusView",
+        "createHabitatRenderMask",
+        "habitatContains",
+        "habitatFocusArea",
+        "habitatFocusBounds",
+        "habitatForSelection",
+        "habitatKind",
+        "habitatUndoAllowed"
+      ]
+    },
+    {
+      "path": "src/game/render3d/tropical-surroundings.ts",
+      "sha256": "1b3b5b03d1a7a9926a09b1a3a504b738eb748fcf36133db1459ba32add63c346",
+      "family": "shared-world",
+      "imports": [
+        "src/game/world/scene-coordinates.ts"
+      ],
+      "constructors": [
+        {
+          "type": "BufferGeometry",
+          "owner": "surface",
+          "variable": "geometry",
+          "line": 17
+        },
+        {
+          "type": "Group",
+          "owner": "createTropicalSurroundings",
+          "variable": "group",
+          "line": 42
+        },
+        {
+          "type": "MeshLambertMaterial",
+          "owner": "createTropicalSurroundings",
+          "variable": "material",
+          "line": 47
+        },
+        {
+          "type": "Mesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "ground",
+          "line": 88
+        },
+        {
+          "type": "Mesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "bank",
+          "line": 102
+        },
+        {
+          "type": "Mesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "creek",
+          "line": 103
+        },
+        {
+          "type": "Mesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "water",
+          "line": 104
+        },
+        {
+          "type": "Mesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "entry",
+          "line": 105
+        },
+        {
+          "type": "CylinderGeometry",
+          "owner": "createTropicalSurroundings",
+          "variable": "trunkGeometry",
+          "line": 132
+        },
+        {
+          "type": "IcosahedronGeometry",
+          "owner": "createTropicalSurroundings",
+          "variable": "crownGeometry",
+          "line": 133
+        },
+        {
+          "type": "MeshLambertMaterial",
+          "owner": "createTropicalSurroundings",
+          "variable": "treeMaterial",
+          "line": 134
+        },
+        {
+          "type": "MeshBasicMaterial",
+          "owner": "createTropicalSurroundings",
+          "variable": "lowTerrainMaterial",
+          "line": 135
+        },
+        {
+          "type": "MeshBasicMaterial",
+          "owner": "createTropicalSurroundings",
+          "variable": "lowTreeMaterial",
+          "line": 136
+        },
+        {
+          "type": "InstancedMesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "trunks",
+          "line": 137
+        },
+        {
+          "type": "InstancedMesh",
+          "owner": "createTropicalSurroundings",
+          "variable": "crowns",
+          "line": 138
+        }
+      ],
+      "labels": [
+        {
+          "label": "Tropical Creek surroundings",
+          "owner": "createTropicalSurroundings",
+          "line": 43,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Meadow and forested ridges",
+          "owner": "createTropicalSurroundings",
+          "line": 89,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Far creek bank",
+          "owner": "createTropicalSurroundings",
+          "line": 106,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Far creek shallows",
+          "owner": "createTropicalSurroundings",
+          "line": 107,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Far creek current",
+          "owner": "createTropicalSurroundings",
+          "line": 108,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Trail toward the sanctuary",
+          "owner": "createTropicalSurroundings",
+          "line": 109,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Forest trunks",
+          "owner": "createTropicalSurroundings",
+          "line": 139,
+          "kind": "runtime-object-name"
+        },
+        {
+          "label": "Forest canopy",
+          "owner": "createTropicalSurroundings",
+          "line": 140,
+          "kind": "runtime-object-name"
+        }
+      ],
+      "selectors": [],
+      "functions": [
+        {
+          "name": "linear",
+          "line": 12
+        },
+        {
+          "name": "unit",
+          "line": 13
+        },
+        {
+          "name": "smooth",
+          "line": 14
+        },
+        {
+          "name": "surface",
+          "line": 16
+        },
+        {
+          "name": "ribbon",
+          "line": 25
+        },
+        {
+          "name": "createTropicalSurroundings",
+          "line": 41
+        },
+        {
+          "name": "contour",
+          "line": 58
+        }
+      ],
+      "threeTypes": [
+        "BufferGeometry",
+        "Color",
+        "CylinderGeometry",
+        "Float32BufferAttribute",
+        "Group",
+        "IcosahedronGeometry",
+        "InstancedMesh",
+        "Mesh",
+        "MeshBasicMaterial",
+        "MeshLambertMaterial",
+        "Object3D",
+        "Raycaster",
+        "Vector3"
+      ],
+      "exports": [
+        "createTropicalSurroundings"
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "BufferGeometry",
+      "owner": "surface",
+      "variable": "geometry",
+      "line": 17,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Group",
+      "owner": "createTropicalSurroundings",
+      "variable": "group",
+      "line": 42,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "MeshLambertMaterial",
+      "owner": "createTropicalSurroundings",
+      "variable": "material",
+      "line": 47,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Mesh",
+      "owner": "createTropicalSurroundings",
+      "variable": "ground",
+      "line": 88,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Mesh",
+      "owner": "createTropicalSurroundings",
+      "variable": "bank",
+      "line": 102,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Mesh",
+      "owner": "createTropicalSurroundings",
+      "variable": "creek",
+      "line": 103,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Mesh",
+      "owner": "createTropicalSurroundings",
+      "variable": "water",
+      "line": 104,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "Mesh",
+      "owner": "createTropicalSurroundings",
+      "variable": "entry",
+      "line": 105,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "CylinderGeometry",
+      "owner": "createTropicalSurroundings",
+      "variable": "trunkGeometry",
+      "line": 132,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "IcosahedronGeometry",
+      "owner": "createTropicalSurroundings",
+      "variable": "crownGeometry",
+      "line": 133,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "MeshLambertMaterial",
+      "owner": "createTropicalSurroundings",
+      "variable": "treeMaterial",
+      "line": 134,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "MeshBasicMaterial",
+      "owner": "createTropicalSurroundings",
+      "variable": "lowTerrainMaterial",
+      "line": 135,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "MeshBasicMaterial",
+      "owner": "createTropicalSurroundings",
+      "variable": "lowTreeMaterial",
+      "line": 136,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "InstancedMesh",
+      "owner": "createTropicalSurroundings",
+      "variable": "trunks",
+      "line": 137,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "InstancedMesh",
+      "owner": "createTropicalSurroundings",
+      "variable": "crowns",
+      "line": 138,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Tropical Creek surroundings",
+      "owner": "createTropicalSurroundings",
+      "line": 43,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Meadow and forested ridges",
+      "owner": "createTropicalSurroundings",
+      "line": 89,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Far creek bank",
+      "owner": "createTropicalSurroundings",
+      "line": 106,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Far creek shallows",
+      "owner": "createTropicalSurroundings",
+      "line": 107,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Far creek current",
+      "owner": "createTropicalSurroundings",
+      "line": 108,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Trail toward the sanctuary",
+      "owner": "createTropicalSurroundings",
+      "line": 109,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Forest trunks",
+      "owner": "createTropicalSurroundings",
+      "line": 139,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "runtime-object-name",
+      "label": "Forest canopy",
+      "owner": "createTropicalSurroundings",
+      "line": 140,
+      "visualStatus": "NOT_RUN"
+    }
+  ]
+}

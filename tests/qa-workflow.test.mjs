@@ -14,6 +14,8 @@ test('QA requires completed check/build receipts; successful compile text alone 
   assert.throws(()=>assessRun({exitCode:0,stdout:'built in 10ms'},'build'));
   assert.throws(()=>assessRun({exitCode:0,stdout:'0 errors\n0 warnings'},'check'));
   assert.throws(()=>assessRun({exitCode:2,stdout:'9 page(s) built\n[build] Complete!'},'build'));
+  assert.throws(()=>assessRun({exitCode:0,stdout:'9 page(s) built\n[build] Complete!'},'build'));
+  assert.equal(assessRun({exitCode:0,stdout:'10 page(s) built\n[build] Complete!'},'build'),null);
 });
 test('QA capture actually marks overflowing or timed-out child output as failure',async()=>{
   const overflow=await runNode(['-e',"process.stdout.write('x'.repeat(65536))"],{limit:1000});assert.equal(overflow.overflow,true);assert.throws(()=>assessRun(overflow,'fixture'));
@@ -41,6 +43,17 @@ test('a claimed mobile PASS must match the measured viewport, rendered canvas an
   row.status='PASS';row.screenshot='screens/portrait-native-id.jpg';row.observedAt=time;
   row.data={width:1366,height:768,documentWidth:1366,state:'ready',canvas:1,visualReviewed:true,lang:'id',entryScript:report.entryScript};
   assert.equal(browserVerdict(receipt,report).status,'FAIL');
+});
+
+test('navigation opens one paused canvas with the same checkpoint after Back and reload',()=>{
+  const {report,receipt}=records();
+  const row=receipt.cases.find(c=>c.id==='navigation-reload');
+  row.status='PASS';
+  row.data={journalPath:'/animals/',returnPath:'/play/',returnCanvas:1,reloadCanvas:1,canonical:'https://myzootwin.com/play/',
+    checkpoints:Array.from({length:3},()=>({paused:true,tick:12,revision:3,currency:1500}))};
+  assert.deepEqual(browserVerdict(receipt,report).errors,[]);
+  row.data.checkpoints[2].tick++;
+  assert.match(browserVerdict(receipt,report).errors[0],/checkpoint/);
 });
 
 test('route comparison decodes actual journal HTML entities before checking the browser baseline',()=>{
