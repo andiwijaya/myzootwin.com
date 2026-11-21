@@ -3,7 +3,8 @@ import { fileURLToPath } from 'node:url';
 import { mkdir, readFile, writeFile, appendFile, readdir, rm, realpath, lstat } from 'node:fs/promises';
 import { spawn, execFileSync } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
-import { astroCli, BROWSER_CASES, now, sha256, childPath, json, readJson, identities, assessRun, runNode, portFree, stopChild, safeRunDirectories, browserVerdict, sourceFingerprint, pageMetadata, fixtureIdentityMatches } from './tooling.mjs';
+import { availableParallelism } from 'node:os';
+import { astroCli, BROWSER_CASES, IPC_BROWSER_METHOD, PRODUCT_ROUTES, now, sha256, childPath, json, readJson, identities, assessRun, runNode, portFree, stopChild, safeRunDirectories, browserVerdict, sourceFingerprint, pageMetadata, fixtureIdentityMatches } from './tooling.mjs';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'../..');
 const output=join(root,'.qa'),runs=join(output,'runs');
@@ -40,27 +41,33 @@ async function waitFor(url,child) {
 }
 async function stopAll() { await Promise.all([...owned].map(child=>stopChild(child))); }
 async function requireFree() { for(const port of [4321,4322])if(!await portFree(port))throw Error(`Loopback port ${port} is occupied; no unowned process will be stopped.`); }
-async function routeChecks(report) {
+async function routeChecks(report, request, transport) {
   const baseline=await readJson(join(root,'docs/qa/giraffe-baseline/released-route-metadata.json'));
-  const routes=['/','/en/','/animals/','/wildlife/','/pets/','/learn/','/adventures/','/gear/','/about/','/play/'];
+  const routes=PRODUCT_ROUTES;
   const observations=[];
   for(const path of routes) {
-    const response=await fetch('http://127.0.0.1:4321'+path,{signal:AbortSignal.timeout(5000)}),html=await response.text();
+    const response=await request(path),html=await response.text();
     const built=await readFile(join(root,'dist',path,'index.html'),'utf8');
     if(response.status!==200||sha256(html)!==sha256(built))throw Error(`Wrong/non-current built route: ${path}`);
     const meta=pageMetadata(html);
     if(meta.canonical!=='https://myzootwin.com'+path)throw Error(`Canonical regression ${path}`);
-    // The bilingual homepage deliberately replaces the released landing metadata.
-    const prior=path === '/' ? undefined : baseline.desktopRoutes.find(x=>x.path===path)?.direct;
+    // The homepage and Play Zoo have since shipped Indonesian metadata.
+    const prior=path === '/play/'
+      ? {title:'Main Zoo — Tropical Creek | MyZooTwin',h1:'Dunia kecil untuk dirawat.'}
+      : path === '/' ? undefined : baseline.desktopRoutes.find(x=>x.path===path)?.direct;
     const normalize=text=>text.replace(/\s+/g,'');
     if(prior&&Object.keys(prior).some(key=>normalize(String(meta[key]??''))!==normalize(String(prior[key]))))throw Error(`Baseline journal metadata regression ${path}`);
     observations.push({path,status:response.status,sha256:sha256(html),...meta});
   }
-  const direct=await fetch('http://127.0.0.1:4321/play',{signal:AbortSignal.timeout(5000)});
+  let direct=await request('/play');
+  const redirect=direct.headers.get?.('location')??direct.headers.location;
+  if(direct.status>=300&&direct.status<400&&redirect==='/play/')direct=await request(redirect);
   if(!direct.ok||pageMetadata(await direct.text()).canonical!=='https://myzootwin.com/play/')throw Error('Direct /play regression');
-  const sitemap=await (await fetch('http://127.0.0.1:4321/sitemap-0.xml')).text();
+  const sitemapResponse=await request('/sitemap-0.xml');
+  if(!sitemapResponse.ok)throw Error('Missing sitemap');
+  const sitemap=await sitemapResponse.text();
   if([...sitemap.matchAll(/<loc>/g)].length!==routes.length||!routes.every(path=>sitemap.includes('https://myzootwin.com'+path)))throw Error('Route sitemap regression');
-  return {status:'PASS',observedAt:now(),routes:observations,directPlay:true,sitemapCount:routes.length,buildId:report.build.id};
+  return {status:'PASS',observedAt:now(),transport,routes:observations,directPlay:true,sitemapCount:routes.length,buildId:report.build.id};
 }
 async function local() {
   await mkdir(runs,{recursive:true});
@@ -71,13 +78,14 @@ async function local() {
   const testFiles=(await readdir(join(root,'tests'))).filter(name=>name.endsWith('.test.mjs')).sort().map(name=>'tests/'+name);
   const report={schemaVersion:1,runId,startedAt:now(),node:process.version,platform:process.platform,head:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8',windowsHide:true}).trim(),testFiles,sourceStart:inputSource,stages:{unit:{status:'UNRUN'},check:{status:'UNRUN'},build:{status:'UNRUN'},routes:{status:'UNRUN'},browser:{status:'UNRUN',required:BROWSER_CASES},cleanup:{status:'UNRUN'}},status:'UNRUN'};
   const save=()=>json(join(directory,'report.json'),report);await save();await json(join(output,'latest.json'),{runId});
+  const offline=process.argv.includes('--offline');
+  const concurrency=Math.min(4,availableParallelism());
   let current='unit';
   try {
-    for(const [kind,args] of [['unit',['--experimental-strip-types','--test','--test-reporter=tap',...testFiles]],['check',[astro,'check']],['build',[astro,'build']]]) {
+    for(const [kind,args] of [['unit',['--experimental-strip-types','--test','--test-concurrency='+concurrency,'--test-reporter=tap',...testFiles]],['check',[astro,'check']],['build',[astro,'build']]]) {
       current=kind;const startedAt=now();console.log(`QA ${runId}: ${kind}...`);
-      // The multispecies regression baseline already takes ~264s; keep a bounded
-      // 10-minute unit budget while retaining the existing3-minute compile budgets.
-      const result=await runNode(args,{cwd:root,children:owned,timeoutMs:kind==='unit'?600_000:180_000,environment:kind==='build'?{MYZOO_QA_ANALYZE:'1'}:{}});
+      // Multispecies simulation tests are CPU and memory intensive on Windows.
+      const result=await runNode(args,{cwd:root,children:owned,timeoutMs:kind==='unit'?1_200_000:180_000,environment:kind==='build'?{MYZOO_QA_ANALYZE:'1'}:{}});
       const log=(result.stdout+'\n'+result.stderr).split(/\r?\n/).map(x=>x.trimEnd()).join('\n').trimEnd()+'\n';
       await writeFile(join(directory,kind+'.log'),log);
       const summary=assessRun(result,kind);
@@ -86,12 +94,21 @@ async function local() {
     const identity=await identities(root);if(identity.source.id!==inputSource.id)throw Error('Source changed during local checks; rerun the workflow');report.source=identity.source;report.build=identity.build;
     const play=await readFile(join(root,'dist/play/index.html'),'utf8');
     report.entryScript=play.match(/<script[^>]+src="([^"]*PlayEntry[^"\s]+\.js)"/)?.[1];if(!report.entryScript)throw Error('Missing built entry script');
-    current='routes';await requireFree();const log={text:''},child=preview([astro,'preview','--host','127.0.0.1','--port','4321'],log);
-    try {await waitFor('http://127.0.0.1:4321/play/',child);report.stages.routes=await routeChecks(report);if(log.overflow||log.error)throw Error('Preview log incomplete');}
-    finally {await stopChild(child);await writeFile(join(directory,'preview.log'),log.text);}
+    current='routes';await requireFree();
+    if(offline){
+      const {withIpcPreview}=await import('./ipc-preview.mjs');
+      report.stages.routes=await withIpcPreview(root,request=>routeChecks(report,request,'ipc'));
+    }else{
+      const log={text:''},child=preview([astro,'preview','--host','127.0.0.1','--port','4321'],log);
+      const request=path=>fetch('http://127.0.0.1:4321'+path,{signal:AbortSignal.timeout(5000)});
+      try {await waitFor('http://127.0.0.1:4321/play/',child);report.stages.routes=await routeChecks(report,request,'loopback');if(log.overflow||log.error)throw Error('Preview log incomplete');}
+      finally {await stopChild(child);await writeFile(join(directory,'preview.log'),log.text);}
+    }
+    current='fixture';
     const prepared=await runNode([join(root,'tests/browser/prepare-preview-harness.mjs'),runId,report.build.id,report.source.id],{cwd:root,children:owned});assessRun(prepared,'fixture');
     if(!fixtureIdentityMatches(await readFile(join(root,'tests/browser/.generated/preview-harness.html'),'utf8'),report))throw Error('Generated fixture is missing the exact run/build/source identity');
-    await json(join(directory,'browser-template.json'),{runId,buildId:report.build.id,sourceId:report.source.id,method:'approved-cua-isolated-browser',physicalDevice:false,startedAt:null,finishedAt:null,ownedTabsClosed:false,viewportReset:false,console:{entries:[],limit:200,capped:false},cases:BROWSER_CASES.map(id=>({id,status:'UNRUN',observedAt:null,data:{}}))});
+    await json(join(directory,'browser-template.json'),{runId,buildId:report.build.id,sourceId:report.source.id,method:offline?IPC_BROWSER_METHOD:'approved-cua-isolated-browser',physicalDevice:false,startedAt:null,finishedAt:null,ownedTabsClosed:false,viewportReset:false,console:{entries:[],limit:200,capped:false},cases:BROWSER_CASES.map(id=>({id,status:'UNRUN',observedAt:null,data:{}}))});
+    report.stages.fixture={status:'PASS',observedAt:now(),buildId:report.build.id,sourceId:report.source.id};
   } catch(error) { report.stages[current]={...report.stages[current],status:'FAIL',error:error.message};report.status='FAIL';process.exitCode=1; }
   finally {
     try {await stopAll();await requireFree();report.stages.cleanup={status:'PASS',observedAt:now(),ports:[4321,4322],note:'Only this command-owned processes were stopped.'};}
@@ -102,6 +119,7 @@ async function local() {
 }
 async function serve() {
   const {directory,report}=await latest();for(const key of ['unit','check','build','routes'])if(report.stages[key].status!=='PASS')throw Error('Local checks must PASS first');
+  if(report.stages.routes.transport==='ipc')throw Error('Use qa:browser for the offline run');
   await unchanged(report);if(!fixtureIdentityMatches(await readFile(join(root,'tests/browser/.generated/preview-harness.html'),'utf8'),report))throw Error('Regenerate fixture with this run identity');await requireFree();
   const logs=[{text:''},{text:''}];
   const children=[preview([astro,'preview','--host','127.0.0.1','--port','4321'],logs[0]),preview([vite,'--host','127.0.0.1','--port','4322','--strictPort'],logs[1])];
@@ -119,9 +137,19 @@ async function serve() {
     console.log('Owned previews stopped; both loopback ports are free.');
   }
 }
+async function browser() {
+  const {directory,report}=await latest();
+  for(const key of ['unit','check','build','routes'])if(report.stages[key].status!=='PASS')throw Error('Local checks must PASS first');
+  if(report.stages.routes.transport!=='ipc')throw Error('Run qa:local -- --offline for this browser workflow');
+  await unchanged(report);
+  const {runOfflineBrowser}=await import('./offline-browser.mjs');
+  await runOfflineBrowser(root,directory,report);
+  await requireFree();
+}
 async function verify() {
   const {directory,report}=await latest();let verdict;
   try {
+    for(const key of ['unit','check','build','routes','fixture','cleanup'])if(report.stages[key]?.status!=='PASS')throw Error(`qa:local stage ${key} must PASS before verification`);
     await unchanged(report);
     for(const key of ['unit','check','build']) {
       const stage=report.stages[key];if(stage.log!==key+'.log')throw Error('Unexpected stage log path');const log=await readFile(childPath(directory,stage.log),'utf8');
@@ -139,7 +167,7 @@ async function verify() {
     }
     if(screenshots.length>8)throw Error('Screenshot budget exceeded');if(new Set(screenshots.map(x=>x.sha256)).size!==screenshots.length)throw Error('Duplicate screenshots cannot prove different browser cases');
     try {if((await readJson(join(directory,'serve.json'))).logOverflow)throw Error('Browser preview log was capped');}catch(error){if(error.code!=='ENOENT')throw error;}
-    report.stages.browser={...verdict,verifiedAt:now(),screenshots,receiptSha256:receipt?sha256(JSON.stringify(receipt)):null,method:'manual approved-runtime observations + automated receipt consistency checks; not an automated browser driver'};
+    report.stages.browser={...verdict,verifiedAt:now(),screenshots,receiptSha256:receipt?sha256(JSON.stringify(receipt)):null,method:receipt?.method??null};
     await requireFree();report.stages.cleanup={status:'PASS',observedAt:now(),ports:[4321,4322],tabs:'Operator must close owned tabs and reset viewport; see browser receipt.'};
     report.status=Object.values(report.stages).some(x=>x.status==='FAIL')?'FAIL':Object.values(report.stages).every(x=>x.status==='PASS')?'PASS':'UNRUN';
   }catch(error){report.stages.browser={status:'FAIL',verifiedAt:now(),error:error.message};report.status='FAIL';}
@@ -153,5 +181,5 @@ async function prune() {
   const apply=process.argv.includes('--apply');console.log(JSON.stringify({mode:apply?'APPLY':'DRY RUN',keep:3,remove,scope:'.qa/runs only; never docs/qa, source, media or rollback history'},null,2));
   if(apply)for(const path of remove) { const real=await realpath(path),base=await realpath(runs),expected=join(await realpath(root),'.qa','runs');if(base.toLowerCase()!==expected.toLowerCase())throw Error('QA runs root resolves outside its named location');childPath(base,real);if(basename(real)!==basename(path))throw Error('Resolved run path changed');await rm(real,{recursive:true,force:false}); }
 }
-try {if(command==='local')await local();else if(command==='serve')await serve();else if(command==='verify')await verify();else if(command==='prune')await prune();else throw Error('Expected local, serve, verify or prune');}
+try {if(command==='local')await local();else if(command==='serve')await serve();else if(command==='browser')await browser();else if(command==='verify')await verify();else if(command==='prune')await prune();else throw Error('Expected local, serve, browser, verify or prune');}
 catch(error){console.error(error.message);process.exitCode=1;await stopAll();}

@@ -113,6 +113,7 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   const worldLayer=new Group();scene.add(worldLayer);
   let surroundings: ReturnType<typeof import('./tropical-surroundings.ts').createTropicalSurroundings> | undefined;
   let surroundingsRequested = false;
+  let surfaceWidth = 0, surfaceHeight = 0;
   const habitatMask=createHabitatRenderMask();
   let focusedHabitat:FocusHabitat|null=null,focusWorld:RuntimeWorld|undefined,focusWorldRevision='',focusAnnouncement='';
   const focusAllows=(kind:HabitatKind)=>!focusedHabitat||habitatKind(focusedHabitat)===kind;
@@ -126,12 +127,12 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
     const key=JSON.stringify(view);if(key!==focusAnnouncement){focusAnnouncement=key;host.dispatchEvent(new CustomEvent('scene-habitat-focus-change',{detail:view}));}
   }
   function exitHabitatFocus(){
-    if(!focusedHabitat)return;cancelFocusPreviews();focusedHabitat=null;habitatMask.set(null,focusWorld??simulation.worldSnapshot());controls?.setHabitatView(null);focusWorld=undefined;focusWorldRevision='';picker?.setFilter();picker?.clear();lighting?.invalidate();announceHabitatFocus();updateRunning();
+    if(!focusedHabitat)return;cancelFocusPreviews();focusedHabitat=null;refreshPixelRatio();habitatMask.set(null,focusWorld??simulation.worldSnapshot());controls?.setHabitatView(null);focusWorld=undefined;focusWorldRevision='';picker?.setFilter();picker?.clear();lighting?.invalidate();announceHabitatFocus();updateRunning();
   }
   function enterHabitatFocus(id?:string){
     if(disposed||lost||grantBusy||macaw?.view().active||!diorama)return;
     const world=simulation.worldSnapshot(),home=id?world.habitats.find(h=>h.id===id):habitatForSelection(world,picker?.selection()??null);if(!home)return;
-    cancelFocusPreviews();focusedHabitat=home;focusWorld=world;focusWorldRevision='';habitatMask.set(home,world);controls?.setHabitatView({bounds:habitatFocusBounds(home,world,diorama.catalog),area:habitatFocusArea(home,world)});picker?.setFilter((identity,point)=>habitatMask.allows(identity,focusWorld!,point));picker?.clear();lighting?.invalidate();announceHabitatFocus();updateRunning();render();
+    cancelFocusPreviews();focusedHabitat=home;refreshPixelRatio();focusWorld=world;focusWorldRevision='';habitatMask.set(home,world);controls?.setHabitatView({bounds:habitatFocusBounds(home,world,diorama.catalog),area:habitatFocusArea(home,world)});picker?.setFilter((identity,point)=>habitatMask.allows(identity,focusWorld!,point));picker?.clear();lighting?.invalidate();announceHabitatFocus();updateRunning();render();
   }
   let macaw:ReturnType<typeof createMacawStudio>|undefined;
   let lighting:ReturnType<typeof createSanctuaryLighting>|undefined;
@@ -403,18 +404,22 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     else loop.start();
   }
   function inspectFixtureFeatures(){const f=facilities?.inspect();return{feederVisible:Boolean(feeder?.inspect().feederVisible||f?.glbFeederVisible),feederBowl1Fruit:f?.glbFeederBowl1Fruit??0,feederBowl2Fruit:f?.glbFeederBowl2Fruit??0,feederFruitCount:f?.glbFeederFruitCount??0,waterVisible:Boolean(waterStation?.inspect().waterVisible||f?.glbWaterVisible),waterSurface1:f?.glbWaterSurface1??false,waterSurface2:f?.glbWaterSurface2??false,restKitVisible:Boolean(restKit?.inspect().restKitVisible||f?.glbRestKitVisible),elephantCareFacilities:f?.glbElephantCareFacilities??0,elephantCarePondVisible:f?.glbElephantCarePondVisible??false,elephantCareWetPond:f?.glbElephantCareWetPond??false,elephantCareEarnedLilies:f?.glbElephantCareEarnedLilies??false,elephantCareVisibleFoodPortions:f?.glbElephantCareVisibleFoodPortions??0};}
+  function refreshPixelRatio() {
+    if (!renderer || !surfaceWidth || !surfaceHeight) return;
+    const policy = visual();
+    const closeMacaw = focusedHabitat && habitatKind(focusedHabitat) === 'macaw-aviary';
+    const pixelBudget = closeMacaw ? 96_000 : 125_000;
+    const pixelRatio = policy.low && surfaceWidth < 600 && surfaceHeight > surfaceWidth
+      ? Math.min(policy.pixelRatio, Math.sqrt(pixelBudget / (surfaceWidth * surfaceHeight)))
+      : policy.pixelRatio;
+    if (pixelRatio !== renderer.getPixelRatio()) renderer.setPixelRatio(pixelRatio);
+  }
   function resize() {
     if (disposed || lost || !renderer) return;
     const bounds = host.getBoundingClientRect();
-    const width = Math.max(1, Math.round(bounds.width));
-    const height = Math.max(1, Math.round(bounds.height));
-    const policy = visual();
-    // The enlarged portrait map can exceed the low-quality raster budget even at DPR 1.
-    // Picking and layout still use the canvas's CSS size.
-    const pixelRatio = policy.low && width < 600 && height > width
-      ? Math.min(policy.pixelRatio, Math.sqrt(125_000 / (width * height)))
-      : policy.pixelRatio;
-    renderer.setPixelRatio(pixelRatio);
+    const width = surfaceWidth = Math.max(1, Math.round(bounds.width));
+    const height = surfaceHeight = Math.max(1, Math.round(bounds.height));
+    refreshPixelRatio();
     renderer.setSize(width, height, false);
     controls?.resize(width,height);macaw?.resize(width,height);
     render();

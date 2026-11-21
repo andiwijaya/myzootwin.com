@@ -71,6 +71,16 @@ export function createHabitatRenderMask() {
     const a = habitatFocusArea(next, world), pad = .065;
     planes = [new Plane(new Vector3(1, 0, 0), -a.x + pad), new Plane(new Vector3(-1, 0, 0), a.x + a.width + pad), new Plane(new Vector3(0, 0, 1), -a.z + pad), new Plane(new Vector3(0, 0, -1), a.z + a.depth + pad)];
   }
+  function clip(material: Material) {
+    if (materials.has(material)) return;
+    const release = () => materials.delete(material);
+    materials.set(material, {planes: material.clippingPlanes, shadows: material.clipShadows, intersection: material.clipIntersection, release});
+    material.addEventListener('dispose', release);
+    material.clippingPlanes = planes;
+    material.clipShadows = true;
+    material.clipIntersection = false;
+    material.needsUpdate = true;
+  }
   function apply(root: Object3D, catalog: SceneCatalog, world: RuntimeWorld, hidden: (Object3D | undefined)[]) {
     if (!home) return;
     for (const object of hidden) if (object) hide(object);
@@ -78,18 +88,12 @@ export function createHabitatRenderMask() {
       // Mixed terrain batches are cut by planes; a wholly unrelated owned mesh need not be submitted.
       if (batch.ranges.length && batch.ranges.every(r => r.id !== null && !belongs(catalog.identities.get(r.id) ?? null,world))) hide(batch.mesh);
     }
-    root.traverse(object => {
+    // Hidden habitat branches are skipped by the renderer and shadow pass.
+    root.traverseVisible(object => {
       const renderable = object as Object3D & {material?: Material | Material[]; customDepthMaterial?: Material};
-      const sources = renderable.material ? (Array.isArray(renderable.material) ? [...renderable.material] : [renderable.material]) : [];
-      if (renderable.customDepthMaterial) sources.push(renderable.customDepthMaterial);
-      for (const material of sources) {
-        if (!materials.has(material)) {
-          const release = () => materials.delete(material);
-          materials.set(material, {planes: material.clippingPlanes, shadows: material.clipShadows, intersection: material.clipIntersection, release});
-          material.addEventListener('dispose', release);
-          material.clippingPlanes = planes; material.clipShadows = true; material.clipIntersection = false; material.needsUpdate = true;
-        }
-      }
+      if (Array.isArray(renderable.material)) renderable.material.forEach(clip);
+      else if (renderable.material) clip(renderable.material);
+      if (renderable.customDepthMaterial) clip(renderable.customDepthMaterial);
     });
   }
   return {set, apply, restoreVisibility, allows: (identity: SceneIdentity, world: RuntimeWorld, point?: {x:number;z:number}) => {

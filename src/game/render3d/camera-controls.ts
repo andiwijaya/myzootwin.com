@@ -9,7 +9,11 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
   let basePosition=new Vector3(),width=0,height=0,azimuth=0,dragMode:CameraDragMode='pan';
   let habitatView:{bounds:Box3;area:{x:number;z:number;width:number;depth:number}}|null=null;
   let previousView:{zoom:number;focusX:number;focusZ:number;azimuth:number}|null=null;
-  const pointerMode=():CameraDragMode=>window.innerWidth<900?'rotate':dragMode;
+  function pointerMode(pointer?:CameraPointer):CameraDragMode {
+    if (window.innerWidth < 900) return 'rotate';
+    if (habitatView || (pointer && pointer.pointerType !== 'mouse')) return dragMode;
+    return pointer?.shiftKey ? 'pan' : 'rotate';
+  }
   const navigation=createCameraNavigation(()=>{
     if(disposed)return;const view=navigation.inspect();
     camera.position.copy(basePosition).add(new Vector3(view.x,0,view.z));camera.zoom=view.zoom;camera.updateProjectionMatrix();camera.updateMatrixWorld(true);
@@ -19,7 +23,7 @@ export function mountCameraControls(host:HTMLElement, canvas:HTMLCanvasElement, 
   const gestures=createCameraGestures({...navigation,rotateBy},()=>canvas.getBoundingClientRect(),onTap,pointerMode,gestureOptions);
   function release(id:number) {try{if(canvas.hasPointerCapture(id))canvas.releasePointerCapture(id);}catch{/* Already released by the browser. */}}
   function cancelAll() {const ids=gestures.ids();gestures.cancelAll();for(const id of ids)release(id);canvas.style.cursor='grab';}
-  const point=(event:PointerEvent)=>({id:event.pointerId,x:event.clientX,y:event.clientY,pointerType:event.pointerType});
+  const point=(event:PointerEvent)=>({id:event.pointerId,x:event.clientX,y:event.clientY,pointerType:event.pointerType,shiftKey:event.shiftKey});
   canvas.style.touchAction='none';canvas.style.cursor='grab';
   canvas.addEventListener('pointerdown',event=>{
     if(!enabled||disposed||event.button!==0||!gestures.down(point(event)))return;

@@ -82,6 +82,9 @@ export function createTropicalSurroundings(map: MapSize & { gate: Point }) {
       }
     }
   }
+  // Habitat focus clips the zoo's playable tiles. Close the meadow with the
+  // existing inner corners so the cutaway still has ground beneath it.
+  indices.push(0, segments * 3, segments, segments, segments * 3, segments * 2);
   const ground = new Mesh(surface(positions, colors, indices), material);
   ground.name = 'Meadow and forested ridges';
   group.add(ground);

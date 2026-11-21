@@ -52,6 +52,7 @@ export function scrollHudTarget(target: Element | null | undefined, align: 'star
 export function mountHudLayout(root: HTMLElement) {
     const events = new AbortController(), chrome = root.querySelector<HTMLElement>('[data-hud-chrome]'), options = root.querySelector<HTMLDetailsElement>('[data-hud-options]'), tabs = root.querySelector<HTMLElement>('[data-hud-tabs]'), stats = root.querySelector<HTMLElement>('[data-hud-stats]');
     const toolsToggle = root.dataset.mapFirst === 'true' ? root.querySelector<HTMLButtonElement>('[data-zoo-tools-toggle]') : null;
+    const toolsRail = toolsToggle ? root.querySelector<HTMLElement>('.hud-rail') : null;
     const panelRegion = root.querySelector<HTMLElement>('[data-hud-panels]');
     mountBuildScrollStability(root,events.signal);
     let resizeTimer: ReturnType<typeof setTimeout> | undefined;
@@ -59,14 +60,15 @@ export function mountHudLayout(root: HTMLElement) {
     let pointerDown = false;
     let active = false, selected: HudTab = 'missions', disposed = false, balance = 1500, welfare: number | null = null, guests = 0, mission: string | null = 'Q01', speed: 1 | 10 = 1, lastChrome = 0;
     let toolsOpen = false;
-    if (toolsToggle && panelRegion) panelRegion.id = 'zoo-tool-panels';
+    if (toolsRail) toolsRail.id = 'zoo-tool-panels';
     function renderToolsToggle() {
         if (!toolsToggle) return;
         const copy = root.lang === 'id'
-            ? (toolsOpen ? 'Tutup kontrol' : 'Buka kontrol')
-            : (toolsOpen ? 'Close controls' : 'Open controls');
+            ? (toolsOpen ? 'Tutup menu' : 'Buka menu')
+            : (toolsOpen ? 'Close menu' : 'Open menu');
         if (toolsToggle.textContent !== copy) toolsToggle.textContent = copy;
         toolsToggle.hidden = !active;
+        if (toolsRail) toolsRail.hidden = active && !toolsOpen;
         toolsToggle.setAttribute('aria-expanded', String(toolsOpen));
         if (root.dataset.zooToolsOpen !== String(toolsOpen)) root.dataset.zooToolsOpen = String(toolsOpen);
     }

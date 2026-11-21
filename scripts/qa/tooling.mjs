@@ -5,6 +5,8 @@ import { spawn } from 'node:child_process';
 import { createServer } from 'node:net';
 
 export const BROWSER_CASES=['desktop-native','portrait-native-id','landscape-native-id','native-lifecycle','injected-failure-retry','navigation-reload'];
+export const PRODUCT_ROUTES=['/','/en/','/animals/','/wildlife/','/pets/','/learn/','/adventures/','/gear/','/about/','/play/'];
+export const IPC_BROWSER_METHOD='isolated-playwright-local-build';
 export const sha256=bytes=>createHash('sha256').update(bytes).digest('hex');
 export const now=()=>new Date().toISOString();
 export function within(root,path) { const part=relative(resolve(root),resolve(path));return part!==''&&!isAbsolute(part)&&part!=='..'&&!part.startsWith('..\\')&&!part.startsWith('../'); }
@@ -57,7 +59,7 @@ export function assessRun(result,kind) {
   if(kind==='unit')return parseTap(result.stdout);
   const plain=result.stdout.replace(/\x1b\[[0-9;]*m/g,'');
   if(kind==='check'&&!/0 errors[\s\S]*0 warnings[\s\S]*0 hints/.test(plain))throw Error('Incomplete Astro check summary');
-  if(kind==='build'&&(!/9 page\(s\) built/.test(plain)||!plain.includes('[build] Complete!')))throw Error('Incomplete nine-route build summary');
+  if(kind==='build'&&(Number(plain.match(/\b(\d+) page\(s\) built/)?.[1])!==PRODUCT_ROUTES.length||!plain.includes('[build] Complete!')))throw Error('Incomplete product build summary');
   return null;
 }
 /** Full capture up to a hard limit; reaching it always fails, never a capped-log PASS. */
@@ -94,7 +96,8 @@ export function browserVerdict(receipt,report) {
   const errors=[],missing=[];const fail=message=>errors.push(message);
   if(!receipt)return {status:'UNRUN',errors:[],missing:BROWSER_CASES};
   if(receipt.runId!==report.runId||receipt.buildId!==report.build.id||receipt.sourceId!==report.source.id)fail('Stale/mismatched run, build or source identity');
-  if(receipt.method!=='approved-cua-isolated-browser'||receipt.physicalDevice!==false)fail('Browser method/device claims are not this viewport recipe');
+  const method=report.stages?.routes?.transport==='ipc'?IPC_BROWSER_METHOD:'approved-cua-isolated-browser';
+  if(receipt.method!==method||receipt.physicalDevice!==false)fail('Browser method/device claims do not match the route transport');
   const validTime=value=>Number.isFinite(Date.parse(value))&&Date.parse(value)>=Date.parse(report.startedAt)&&Date.parse(value)<=Date.now()+60_000;
   if(!validTime(receipt.startedAt)||!validTime(receipt.finishedAt)||Date.parse(receipt.finishedAt)<Date.parse(receipt.startedAt))fail('Missing/stale browser timestamps');
   if(receipt.ownedTabsClosed!==true||receipt.viewportReset!==true)fail('Browser cleanup was not confirmed');
@@ -122,7 +125,12 @@ export function browserVerdict(receipt,report) {
       if(!paused||!later||!resumed||paused.simulationTick!==later.simulationTick||paused.pendingFrames!==0||later.pendingFrames!==0||resumed.simulationTick<=later.simulationTick)fail('Pause/resume did not hold and resume fixed ticks');
     }
     if(id==='injected-failure-retry'&&(d.source!=='WEBGL_lose_context'||d.failedState!=='error'||d.failedReason!=='context-lost'||d.failedCanvas!==0||d.failedSubscribers!==0||d.retryState!=='ready'||d.retryCanvas!==1))fail('Injected failure/retry evidence invalid');
-    if(id==='navigation-reload'&&(d.journalPath!=='/animals/'||d.returnPath!=='/play/'||d.returnCanvas!==0||d.reloadCanvas!==0||d.canonical!=='https://myzootwin.com/play/'))fail('Navigation/reload regression');
+    if(id==='navigation-reload'){
+      const checkpoint=d.checkpoints?.[0];
+      const same=!!checkpoint&&d.checkpoints.length===3&&d.checkpoints.every(entry=>entry?.paused===true&&
+        ['tick','revision','currency'].every(key=>Number.isSafeInteger(entry[key])&&entry[key]>=0&&entry[key]===checkpoint[key]));
+      if(d.journalPath!=='/animals/'||d.returnPath!=='/play/'||d.returnCanvas!==1||d.reloadCanvas!==1||d.canonical!=='https://myzootwin.com/play/'||!same)fail('Navigation/reload changed the paused zoo or its checkpoint');
+    }
   }
   return {status:errors.length?'FAIL':missing.length?'UNRUN':'PASS',errors,missing};
 }
