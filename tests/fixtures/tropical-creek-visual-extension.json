@@ -232,7 +232,7 @@
     },
     {
       "path": "src/game/render3d/tropical-surroundings.ts",
-      "sha256": "00a5bb5fee607ecc4d2cb912d0f4d510737d2a8c2266ae70bbf20655edba6db2",
+      "sha256": "61108a66e85f0d05f457782f92f155c2fe984569eb461b55972cbb175674a76c",
       "family": "shared-world",
       "imports": [
         "src/game/world/scene-coordinates.ts"
@@ -290,43 +290,43 @@
           "type": "CylinderGeometry",
           "owner": "createTropicalSurroundings",
           "variable": "trunkGeometry",
-          "line": 121
+          "line": 129
         },
         {
           "type": "IcosahedronGeometry",
           "owner": "createTropicalSurroundings",
           "variable": "crownGeometry",
-          "line": 122
+          "line": 130
         },
         {
           "type": "MeshLambertMaterial",
           "owner": "createTropicalSurroundings",
           "variable": "treeMaterial",
-          "line": 123
+          "line": 131
         },
         {
           "type": "MeshBasicMaterial",
           "owner": "createTropicalSurroundings",
           "variable": "lowTerrainMaterial",
-          "line": 124
+          "line": 132
         },
         {
           "type": "MeshBasicMaterial",
           "owner": "createTropicalSurroundings",
           "variable": "lowTreeMaterial",
-          "line": 125
+          "line": 133
         },
         {
           "type": "InstancedMesh",
           "owner": "createTropicalSurroundings",
           "variable": "trunks",
-          "line": 126
+          "line": 134
         },
         {
           "type": "InstancedMesh",
           "owner": "createTropicalSurroundings",
           "variable": "crowns",
-          "line": 127
+          "line": 135
         }
       ],
       "labels": [
@@ -369,13 +369,13 @@
         {
           "label": "Forest trunks",
           "owner": "createTropicalSurroundings",
-          "line": 128,
+          "line": 136,
           "kind": "runtime-object-name"
         },
         {
           "label": "Forest canopy",
           "owner": "createTropicalSurroundings",
-          "line": 129,
+          "line": 137,
           "kind": "runtime-object-name"
         }
       ],
@@ -421,7 +421,9 @@
         "Mesh",
         "MeshBasicMaterial",
         "MeshLambertMaterial",
-        "Object3D"
+        "Object3D",
+        "Raycaster",
+        "Vector3"
       ],
       "exports": [
         "createTropicalSurroundings"
@@ -575,7 +577,7 @@
       "type": "CylinderGeometry",
       "owner": "createTropicalSurroundings",
       "variable": "trunkGeometry",
-      "line": 121,
+      "line": 129,
       "visualStatus": "NOT_RUN"
     },
     {
@@ -585,7 +587,7 @@
       "type": "IcosahedronGeometry",
       "owner": "createTropicalSurroundings",
       "variable": "crownGeometry",
-      "line": 122,
+      "line": 130,
       "visualStatus": "NOT_RUN"
     },
     {
@@ -595,7 +597,7 @@
       "type": "MeshLambertMaterial",
       "owner": "createTropicalSurroundings",
       "variable": "treeMaterial",
-      "line": 123,
+      "line": 131,
       "visualStatus": "NOT_RUN"
     },
     {
@@ -605,7 +607,7 @@
       "type": "MeshBasicMaterial",
       "owner": "createTropicalSurroundings",
       "variable": "lowTerrainMaterial",
-      "line": 124,
+      "line": 132,
       "visualStatus": "NOT_RUN"
     },
     {
@@ -615,7 +617,7 @@
       "type": "MeshBasicMaterial",
       "owner": "createTropicalSurroundings",
       "variable": "lowTreeMaterial",
-      "line": 125,
+      "line": 133,
       "visualStatus": "NOT_RUN"
     },
     {
@@ -625,7 +627,7 @@
       "type": "InstancedMesh",
       "owner": "createTropicalSurroundings",
       "variable": "trunks",
-      "line": 126,
+      "line": 134,
       "visualStatus": "NOT_RUN"
     },
     {
@@ -635,7 +637,7 @@
       "type": "InstancedMesh",
       "owner": "createTropicalSurroundings",
       "variable": "crowns",
-      "line": 127,
+      "line": 135,
       "visualStatus": "NOT_RUN"
     },
     {
@@ -698,7 +700,7 @@
       "kind": "runtime-object-name",
       "label": "Forest trunks",
       "owner": "createTropicalSurroundings",
-      "line": 128,
+      "line": 136,
       "visualStatus": "NOT_RUN"
     },
     {
@@ -707,7 +709,7 @@
       "kind": "runtime-object-name",
       "label": "Forest canopy",
       "owner": "createTropicalSurroundings",
-      "line": 129,
+      "line": 137,
       "visualStatus": "NOT_RUN"
     }
   ]

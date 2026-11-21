@@ -1,6 +1,6 @@
 import {
   BufferGeometry, Color, CylinderGeometry, Float32BufferAttribute, Group, IcosahedronGeometry,
-  InstancedMesh, Mesh, MeshBasicMaterial, MeshLambertMaterial, Object3D,
+  InstancedMesh, Mesh, MeshBasicMaterial, MeshLambertMaterial, Object3D, Raycaster, Vector3,
 } from 'three';
 import type { Point } from '../core/state.ts';
 import { sceneOrigin, type MapSize } from '../world/scene-coordinates.ts';
@@ -106,6 +106,11 @@ export function createTropicalSurroundings(map: MapSize & { gate: Point }) {
   entry.name = 'Trail toward the sanctuary';
   group.add(bank, creek, water, entry);
 
+  ground.geometry.computeBoundingBox();
+  const terrainRay = new Raycaster();
+  const down = new Vector3(0, -1, 0);
+  const probe = new Vector3();
+  const aboveRidges = ground.geometry.boundingBox!.max.y + 1;
   const trees = rim.flatMap((edge, index) => [0, 1].flatMap(row => {
     const distance = row ? 13.5 + (index * 19 % 29) * .48 : 3.6 + (index * 17 % 19) * .48;
     const split = rim[(index + 1) % rim.length]!;
@@ -114,7 +119,10 @@ export function createTropicalSurroundings(map: MapSize & { gate: Point }) {
     const acrossCreek = point.z < north && point.z > north - 6.7;
     const atEntrance = point.x < left && Math.abs(point.z - gateZ) < 2.3;
     if (acrossCreek || atEntrance || index % 11 === 7) return [];
-    return [{ ...point, groundHeight: point.height, base: index % 2 === row,
+    // Trees can land between terrain vertices, where the rendered height differs from the ridge formula.
+    terrainRay.set(probe.set(point.x, aboveRidges, point.z), down);
+    const groundHeight = terrainRay.intersectObject(ground, false)[0]?.point.y ?? point.height;
+    return [{ ...point, groundHeight, base: index % 2 === row,
       height: 1.1 + (index * 13 % 17) * .1, distant: row > 0 }];
   })).sort((a, b) => Number(b.base) - Number(a.base));
   const common = trees.filter(tree => tree.base).length;
@@ -131,7 +139,7 @@ export function createTropicalSurroundings(map: MapSize & { gate: Point }) {
   const wood = new Color('#7f6b4e');
   const foliage = ['#507e51', '#608c58', '#628c50', '#3f7957'].map(tint => new Color(tint));
   for (const [index, tree] of trees.entries()) {
-    transform.position.set(tree.x, tree.groundHeight + tree.height * .43, tree.z);
+    transform.position.set(tree.x, tree.groundHeight + tree.height * .40, tree.z);
     transform.scale.set(1, tree.height * .95, 1);
     transform.rotation.set(0, index * 1.2, .05 * Math.sin(index));
     transform.updateMatrix();
