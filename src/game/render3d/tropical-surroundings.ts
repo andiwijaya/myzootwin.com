@@ -1,6 +1,6 @@
 import {
   BufferGeometry, Color, CylinderGeometry, Float32BufferAttribute, Group, IcosahedronGeometry,
-  InstancedMesh, Mesh, MeshLambertMaterial, Object3D,
+  InstancedMesh, Mesh, MeshBasicMaterial, MeshLambertMaterial, Object3D,
 } from 'three';
 import type { Point } from '../core/state.ts';
 import { sceneOrigin, type MapSize } from '../world/scene-coordinates.ts';
@@ -121,8 +121,10 @@ export function createTropicalSurroundings(map: MapSize & { gate: Point }) {
   const trunkGeometry = new CylinderGeometry(.047, .086, 1, 5);
   const crownGeometry = new IcosahedronGeometry(1, 0);
   const treeMaterial = new MeshLambertMaterial();
-  const trunks = new InstancedMesh(trunkGeometry, treeMaterial, trees.length);
-  const crowns = new InstancedMesh(crownGeometry, treeMaterial, trees.length * 2);
+  const lowTerrainMaterial = new MeshBasicMaterial({ vertexColors: true });
+  const lowTreeMaterial = new MeshBasicMaterial();
+  const trunks: InstancedMesh = new InstancedMesh(trunkGeometry, treeMaterial, trees.length);
+  const crowns: InstancedMesh = new InstancedMesh(crownGeometry, treeMaterial, trees.length * 2);
   trunks.name = 'Forest trunks';
   crowns.name = 'Forest canopy';
   const transform = new Object3D();
@@ -149,23 +151,31 @@ export function createTropicalSurroundings(map: MapSize & { gate: Point }) {
   trunks.computeBoundingSphere();
   crowns.computeBoundingSphere();
   group.add(trunks, crowns);
+  const terrainMeshes: Mesh[] = [ground, bank, creek, water, entry];
+  let lowGraphics = false;
   return {
     group,
     setLowGraphics(low: boolean) {
+      if (low === lowGraphics) return;
+      lowGraphics = low;
       const count = low ? common : trees.length;
       trunks.count = count;
       crowns.count = count * 2;
+      trunks.material = crowns.material = low ? lowTreeMaterial : treeMaterial;
+      for (const mesh of terrainMeshes) mesh.material = low ? lowTerrainMaterial : material;
     },
     dispose() {
       group.removeFromParent();
       group.clear();
-      for (const mesh of [ground, bank, creek, water, entry]) mesh.geometry.dispose();
+      for (const mesh of terrainMeshes) mesh.geometry.dispose();
       trunks.dispose();
       crowns.dispose();
       trunkGeometry.dispose();
       crownGeometry.dispose();
       treeMaterial.dispose();
       material.dispose();
+      lowTerrainMaterial.dispose();
+      lowTreeMaterial.dispose();
     },
   };
 }

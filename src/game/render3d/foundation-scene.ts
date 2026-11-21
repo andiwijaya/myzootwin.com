@@ -412,7 +412,7 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     // The enlarged portrait map can exceed the low-quality raster budget even at DPR 1.
     // Picking and layout still use the canvas's CSS size.
     const pixelRatio = policy.low && width < 600 && height > width
-      ? Math.min(policy.pixelRatio, Math.sqrt(150_000 / (width * height)))
+      ? Math.min(policy.pixelRatio, Math.sqrt(125_000 / (width * height)))
       : policy.pixelRatio;
     renderer.setPixelRatio(pixelRatio);
     renderer.setSize(width, height, false);

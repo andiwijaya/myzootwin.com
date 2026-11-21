@@ -232,7 +232,7 @@
     },
     {
       "path": "src/game/render3d/tropical-surroundings.ts",
-      "sha256": "588f6df2bd0c9c19797cacee300e57e1e5d1f84277b948e1968dde8cc44bcfaa",
+      "sha256": "00a5bb5fee607ecc4d2cb912d0f4d510737d2a8c2266ae70bbf20655edba6db2",
       "family": "shared-world",
       "imports": [
         "src/game/world/scene-coordinates.ts"
@@ -305,16 +305,28 @@
           "line": 123
         },
         {
+          "type": "MeshBasicMaterial",
+          "owner": "createTropicalSurroundings",
+          "variable": "lowTerrainMaterial",
+          "line": 124
+        },
+        {
+          "type": "MeshBasicMaterial",
+          "owner": "createTropicalSurroundings",
+          "variable": "lowTreeMaterial",
+          "line": 125
+        },
+        {
           "type": "InstancedMesh",
           "owner": "createTropicalSurroundings",
           "variable": "trunks",
-          "line": 124
+          "line": 126
         },
         {
           "type": "InstancedMesh",
           "owner": "createTropicalSurroundings",
           "variable": "crowns",
-          "line": 125
+          "line": 127
         }
       ],
       "labels": [
@@ -357,13 +369,13 @@
         {
           "label": "Forest trunks",
           "owner": "createTropicalSurroundings",
-          "line": 126,
+          "line": 128,
           "kind": "runtime-object-name"
         },
         {
           "label": "Forest canopy",
           "owner": "createTropicalSurroundings",
-          "line": 127,
+          "line": 129,
           "kind": "runtime-object-name"
         }
       ],
@@ -407,6 +419,7 @@
         "IcosahedronGeometry",
         "InstancedMesh",
         "Mesh",
+        "MeshBasicMaterial",
         "MeshLambertMaterial",
         "Object3D"
       ],
@@ -589,10 +602,30 @@
       "sourcePath": "src/game/render3d/tropical-surroundings.ts",
       "family": "shared-world",
       "kind": "constructor-site",
+      "type": "MeshBasicMaterial",
+      "owner": "createTropicalSurroundings",
+      "variable": "lowTerrainMaterial",
+      "line": 124,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
+      "type": "MeshBasicMaterial",
+      "owner": "createTropicalSurroundings",
+      "variable": "lowTreeMaterial",
+      "line": 125,
+      "visualStatus": "NOT_RUN"
+    },
+    {
+      "sourcePath": "src/game/render3d/tropical-surroundings.ts",
+      "family": "shared-world",
+      "kind": "constructor-site",
       "type": "InstancedMesh",
       "owner": "createTropicalSurroundings",
       "variable": "trunks",
-      "line": 124,
+      "line": 126,
       "visualStatus": "NOT_RUN"
     },
     {
@@ -602,7 +635,7 @@
       "type": "InstancedMesh",
       "owner": "createTropicalSurroundings",
       "variable": "crowns",
-      "line": 125,
+      "line": 127,
       "visualStatus": "NOT_RUN"
     },
     {
@@ -665,7 +698,7 @@
       "kind": "runtime-object-name",
       "label": "Forest trunks",
       "owner": "createTropicalSurroundings",
-      "line": 126,
+      "line": 128,
       "visualStatus": "NOT_RUN"
     },
     {
@@ -674,7 +707,7 @@
       "kind": "runtime-object-name",
       "label": "Forest canopy",
       "owner": "createTropicalSurroundings",
-      "line": 127,
+      "line": 129,
       "visualStatus": "NOT_RUN"
     }
   ]
