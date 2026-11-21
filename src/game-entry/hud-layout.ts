@@ -49,7 +49,10 @@ export function scrollHudTarget(target: Element | null | undefined, align: 'star
     else
         target.scrollIntoView({ block: 'nearest', behavior: 'instant' });
 }
-export function mountHudLayout(root: HTMLElement) {
+const toolsOpenKey = 'myzootwin.hud.tools-open.v1';
+const bottomOpenKey = 'myzootwin.hud.bottom-open.v1';
+
+export function mountHudLayout(root: HTMLElement, storage?: Pick<Storage, 'getItem' | 'setItem'>) {
     const events = new AbortController(), chrome = root.querySelector<HTMLElement>('[data-hud-chrome]'), options = root.querySelector<HTMLDetailsElement>('[data-hud-options]'), tabs = root.querySelector<HTMLElement>('[data-hud-tabs]'), stats = root.querySelector<HTMLElement>('[data-hud-stats]');
     const toolsToggle = root.dataset.mapFirst === 'true' ? root.querySelector<HTMLButtonElement>('[data-zoo-tools-toggle]') : null;
     const toolsRail = toolsToggle ? root.querySelector<HTMLElement>('.hud-rail') : null;
@@ -60,7 +63,20 @@ export function mountHudLayout(root: HTMLElement) {
     let viewportWidth = window.innerWidth;
     let pointerDown = false;
     let active = false, selected: HudTab = 'missions', disposed = false, balance = 1500, welfare: number | null = null, guests = 0, mission: string | null = 'Q01', speed: 1 | 10 = 1, lastChrome = 0;
-    let toolsOpen = false, bottomOpen = true;
+    function readPanelOpen(key: string, fallback: boolean) {
+        try {
+            const value = storage?.getItem(key);
+            if (value === 'true' || value === 'false') return value === 'true';
+        } catch { /* The browser can block access to local preferences. */ }
+        return fallback;
+    }
+    function savePanelOpen(key: string, open: boolean) {
+        try {
+            storage?.setItem(key, String(open));
+        } catch { /* Keep the panel usable when preferences cannot be saved. */ }
+    }
+    let toolsOpen = toolsToggle ? readPanelOpen(toolsOpenKey, false) : false;
+    let bottomOpen = bottomToggle ? readPanelOpen(bottomOpenKey, true) : true;
     if (toolsRail) toolsRail.id = 'zoo-tool-panels';
     function renderToolsToggle() {
         if (!toolsToggle) return;
@@ -198,6 +214,7 @@ export function mountHudLayout(root: HTMLElement) {
     root.addEventListener('hud-reveal', e => {
         const tab = (e as CustomEvent<unknown>).detail;
         if (isHudTab(tab)) {
+            // Reveal the requested tool without replacing the player's toggle preference.
             toolsOpen = true;
             renderToolsToggle();
             select(tab);
@@ -207,11 +224,13 @@ export function mountHudLayout(root: HTMLElement) {
     }, { signal: events.signal });
     toolsToggle?.addEventListener('click', () => {
         toolsOpen = !toolsOpen;
+        savePanelOpen(toolsOpenKey, toolsOpen);
         renderToolsToggle();
         root.dispatchEvent(new Event('hud-input-cancel'));
     }, { signal: events.signal });
     bottomToggle?.addEventListener('click', () => {
         bottomOpen = !bottomOpen;
+        savePanelOpen(bottomOpenKey, bottomOpen);
         root.dispatchEvent(new Event('hud-input-cancel'));
         renderBottomToggle();
         bottomToggle.scrollIntoView({block: 'nearest', inline: 'nearest', behavior: 'instant'});

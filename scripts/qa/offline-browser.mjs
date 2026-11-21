@@ -61,6 +61,13 @@ async function productViewport(page, width, height, id, directory) {
   const bottom = page.locator('[data-zoo-bottom-toggle]');
   const side = page.locator('[data-zoo-tools-toggle]');
   const panel = page.locator('[data-zoo-bottom-panel]');
+  const rail = page.locator('.hud-rail');
+  const readMenus = async () => ({
+    bottom: await bottom.getAttribute('aria-expanded'),
+    side: await side.getAttribute('aria-expanded'),
+    bottomVisible: await panel.isVisible(),
+    sideVisible: await rail.isVisible(),
+  });
   const frame = page.locator('.preview-frame');
   const originalHeight = (await frame.boundingBox()).height;
   assert.equal(await bottom.getAttribute('aria-expanded'), 'true');
@@ -81,10 +88,18 @@ async function productViewport(page, width, height, id, directory) {
   await side.click();
   assert.equal(await side.getAttribute('aria-expanded'), 'true');
   assert.equal(await panel.isVisible(), false);
+  await page.reload();
+  await ready(page);
+  const collapsedAfterReload = await readMenus();
+  assert.deepEqual(collapsedAfterReload, { bottom: 'false', side: 'true', bottomVisible: false, sideVisible: true });
   await bottom.click();
   assert.equal(await panel.isVisible(), true);
   assert.equal(await side.getAttribute('aria-expanded'), 'true');
   await side.click();
+  await page.reload();
+  await ready(page);
+  const reopenedAfterReload = await readMenus();
+  assert.deepEqual(reopenedAfterReload, { bottom: 'true', side: 'false', bottomVisible: true, sideVisible: false });
   await page.evaluate(() => window.scrollTo(0, 0));
   const screenshot = `screens/${id}.jpg`;
   await page.screenshot({ path: childPath(directory, screenshot), type: 'jpeg', quality: 85 });
@@ -101,7 +116,8 @@ async function productViewport(page, width, height, id, directory) {
   assert.equal(data.state, 'ready');
   assert.equal(data.canvas, 1);
   if (id.endsWith('-id')) assert.equal(data.lang, 'id');
-  return { screenshot, data: { ...data, bottomPanel: { originalHeight, collapsedHeight }, visualReviewed: false } };
+  return { screenshot, data: { ...data, bottomPanel: { originalHeight, collapsedHeight },
+    menuReloads: { collapsedAfterReload, reopenedAfterReload }, visualReviewed: false } };
 }
 
 async function navigationReload(page) {
