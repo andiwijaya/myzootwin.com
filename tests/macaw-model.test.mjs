@@ -8,7 +8,27 @@ import {createMacawStudio} from '../src/game/render3d/macaw/macaw-studio.ts';
 import {createPreviewController} from '../src/game/render3d/preview-controller.ts';
 import {createInitialState} from '../src/game/core/initial-state.ts';
 import {createSimulation} from '../src/game/core/simulation.ts';
+import {macawFeedingPose} from '../src/game/render3d/macaw/autonomous-birds.ts';
+import {macawContract} from '../art/animals/v01/macaw.mjs';
 function vertices(rig){const result=[];rig.root.updateMatrixWorld(true);rig.root.traverseVisible(m=>{if(!m.isMesh)return;const p=m.geometry.getAttribute('position');for(let i=0;i<p.count;i++)result.push(new Vector3().fromBufferAttribute(p,i).applyMatrix4(m.matrixWorld));});return result;}
+test('Macaw feeding approaches and contacts both fruit heights before the canonical portion is consumed', () => {
+    const rig = macawContract();
+    const beak = () => rig.rig.bones.get('head').localToWorld(new Vector3(0, .029, .23))
+        .multiplyScalar(MACAW_SCALE).add(new Vector3(0, .079, .4));
+    try {
+        for (const reduced of [false, true]) for (const portions of [1, 4]) {
+            rig.rig.apply(macawFeedingPose(20, 0, portions, reduced));
+            const approach = beak();
+            rig.rig.apply(macawFeedingPose(1, .5, portions, reduced));
+            const contact = beak();
+            assert.ok(approach.y - contact.y > .17);
+            assert.ok(Math.abs(contact.y - (.079 + .213 * MACAW_SCALE + .04 + (portions > 2 ? .018 : 0))) < .002);
+            assert.ok(Math.abs(contact.z - .7844) < .002);
+        }
+    } finally {
+        rig.dispose();
+    }
+});
 test('original macaw has finite nondegenerate closed-part triangles, linear palette, one material and no textures under4000-triangle design budget',()=>{const a=createMacawAssets();try{assert.ok(a.inspect().macawTriangles>2000&&a.inspect().macawTriangles<=4000);assert.equal(a.inspect().macawTextures,0);assert.equal(a.material.map,null);assert.equal(a.material.vertexColors,true);for(const name of MACAW_PARTS){const g=a.geometries[name],p=g.getAttribute('position'),n=g.getAttribute('normal'),c=g.getAttribute('color');assert.ok(p.count>0&&p.count%3===0,name);assert.equal(p.count,n.count);assert.equal(c.count,p.count);for(let i=0;i<p.count;i++){for(const value of [p.getX(i),p.getY(i),p.getZ(i),n.getX(i),n.getY(i),n.getZ(i)])assert.ok(Number.isFinite(value),name);assert.ok(Math.abs(Math.hypot(n.getX(i),n.getY(i),n.getZ(i))-1)<1e-4);for(const value of [c.getX(i),c.getY(i),c.getZ(i)])assert.ok(value>=0&&value<=1);}for(let i=0;i<p.count;i+=3){const x=new Vector3().fromBufferAttribute(p,i),y=new Vector3().fromBufferAttribute(p,i+1),z=new Vector3().fromBufferAttribute(p,i+2);assert.ok(y.sub(x).cross(z.sub(x)).lengthSq()>1e-14,name);}}}finally{a.dispose();}});
 test('hooked bill outside faces point outward rather than vanishing under backface culling',()=>{const a=createMacawAssets();try{const g=a.geometries.head,p=g.getAttribute('position'),n=g.getAttribute('normal');let faces=0;for(let i=0;i<p.count;i+=3){const x=(p.getX(i)+p.getX(i+1)+p.getX(i+2))/3,z=(p.getZ(i)+p.getZ(i+1)+p.getZ(i+2))/3+.09;if(x>.025&&z>.28){assert.ok(n.getX(i)>0);faces++;}}assert.ok(faces>=8);}finally{a.dispose();}});
 test('perch body and long tail clear the floor, both grip feet touch the same branch curve with two forward/two rear toes',()=>{const a=createMacawAssets(),rig=createMacawRig(a);try{rig.apply(sampleMacawPose('perch',0));rig.root.position.y=.42;const all=vertices(rig);assert.ok(Math.min(...all.map(v=>v.y))>.025);assert.ok(Math.max(...all.map(v=>v.y))<1.4);const foot=a.geometries.gripFoot.getAttribute('position');let near=0,front=0,rear=0;for(let i=0;i<foot.count;i++){const y=foot.getY(i),z=foot.getZ(i),gap=Math.abs(Math.hypot(y+.035,z)-.035);if(y<.025&&gap<.006)near++;if(z>.035)front++;if(z<-.035)rear++;}assert.ok(near>40&&front>20&&rear>20);assert.equal(rig.inspect().macawFootGrip,true);}finally{rig.dispose();a.dispose();}});

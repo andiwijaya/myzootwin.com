@@ -4,7 +4,7 @@ import { createZebraIndexedDbBackend } from '../game/persistence/zebra-backend.t
 function mountPlayRoute(root: HTMLElement) {
   const { protocol, hostname, search } = window.location;
   const params = new URLSearchParams(search);
-  const options: NonNullable<Parameters<typeof mountGameEntry>[1]> = {};
+  const options: NonNullable<Parameters<typeof mountGameEntry>[1]> = { mapFirst: true };
   if (import.meta.env.PUBLIC_MYZOOTWIN_COMMON_ENGINE_QA === '1' &&
       protocol === 'http:' && ['localhost', '127.0.0.1', '[::1]'].includes(hostname)) {
     const sessions = params.getAll('qa-session');

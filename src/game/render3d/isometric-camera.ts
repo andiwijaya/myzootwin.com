@@ -4,7 +4,9 @@ import { Box3, OrthographicCamera, Vector3 } from 'three';
 export function fitIsometricCamera(camera: OrthographicCamera, bounds: Box3, aspect: number, azimuth = 0) {
   const center = bounds.getCenter(new Vector3());
   if(!Number.isFinite(azimuth))throw new RangeError('Invalid camera azimuth');
-  const offset=new Vector3(14,13,16).applyAxisAngle(new Vector3(0,1,0),azimuth);
+  // Moving along the view axis leaves orthographic framing and ray directions intact.
+  // The longer depth interval keeps the foreground meadow visible on tall displays.
+  const offset=new Vector3(14,13,16).applyAxisAngle(new Vector3(0,1,0),azimuth).multiplyScalar(3.5);
   camera.position.copy(center).add(offset);
   camera.lookAt(center);
   camera.updateMatrixWorld(true);
@@ -17,6 +19,6 @@ export function fitIsometricCamera(camera: OrthographicCamera, bounds: Box3, asp
   halfHeight = Math.max(halfHeight, halfWidth / Math.max(.01, aspect)) * 1.09;
   camera.left = -halfHeight * aspect; camera.right = halfHeight * aspect;
   camera.top = halfHeight; camera.bottom = -halfHeight;
-  camera.near = .1; camera.far = 100; camera.updateProjectionMatrix();
+  camera.near = .1; camera.far = 210; camera.updateProjectionMatrix();
   return {halfWidth:halfHeight*aspect,halfHeight,originX:center.x-offset.x*center.y/offset.y,originZ:center.z-offset.z*center.y/offset.y};
 }

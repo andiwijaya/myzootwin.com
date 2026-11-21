@@ -31,6 +31,7 @@ interface Options {
     cancel?: (id: unknown) => void;
     changed?: (view: SaveView) => void;
     committed?: (revision: number, generation: string) => void;
+    allowSessionWrite?: () => boolean;
 }
 /** Single bounded timer + one in-flight write + latest reader. No simulation/render scheduling. */
 export function createAutosave<State extends PersistedZooSave=ZooSaveV1>(backend: DurableBackend<State>, options: Options) {
@@ -183,10 +184,11 @@ export function createAutosave<State extends PersistedZooSave=ZooSaveV1>(backend
         }
         notify();
     }
-    const session: SanctuarySessionState<State> = { read: () => data ? structuredClone(data) : undefined, write(value) { if(!candidateBusy)data = structuredClone(value); }, readEditor: () => editor ? structuredClone(editor) : undefined, writeEditor(value) { editor = structuredClone(value); },
-        canCommit:()=>active&&storageReady&&!closing&&!blocked()&&phase!=='error'&&!candidateBusy,
+    const mayWrite = () => options.allowSessionWrite?.() !== false;
+    const session: SanctuarySessionState<State> = { read: () => data ? structuredClone(data) : undefined, write(value) { if(mayWrite()&&!candidateBusy)data = structuredClone(value); }, readEditor: () => editor ? structuredClone(editor) : undefined, writeEditor(value) { if(mayWrite())editor = structuredClone(value); },
+        canCommit:()=>mayWrite()&&active&&storageReady&&!closing&&!blocked()&&phase!=='error'&&!candidateBusy,
         async commitCandidate(candidate,expected){
-            if(!active||!storageReady||closing||blocked()||phase==='error'||candidateBusy||!reader)return undefined;
+            if(!mayWrite()||!active||!storageReady||closing||blocked()||phase==='error'||candidateBusy||!reader)return undefined;
             candidateBusy=true;
             try{
                 await drain(true);
@@ -211,7 +213,7 @@ export function createAutosave<State extends PersistedZooSave=ZooSaveV1>(backend
             }catch(error){failed(error);return undefined;}
             finally{candidateBusy=false;if(dirty&&!blocked())queue(pendingCritical);}
         }, checkpoint(next, critical = false) {
-            if (!active || closing || blocked())
+            if (!mayWrite() || !active || closing || blocked())
                 return;
             reader = next;
             dirty = true;
@@ -221,12 +223,16 @@ export function createAutosave<State extends PersistedZooSave=ZooSaveV1>(backend
             notify();
             queue(critical);
         }, flush: () => { void drain(); } };
-    return { session, view, load, flush: drain, savedMuted: () => record ? stateFromCheckpoint(record).preferences.muted : null, savedVisualSettings: () => record ? {graphics:stateFromCheckpoint(record).preferences.graphics,reducedMotion:stateFromCheckpoint(record).preferences.reducedMotion} : null, savedLocale: () => record ? stateFromCheckpoint(record).preferences.locale : undefined, canOpen: () => !blocked() && phase !== 'loading' && !requiresTransition() && (active || !record),
+    function freshState(locale: 'en' | 'id') {
+        const initial = createInitialState();
+        initial.preferences.locale = locale;
+        return codec.prepare?.(initial) ?? initial as State;
+    }
+    return { session, view, load, freshState, flush: drain, savedMuted: () => record ? stateFromCheckpoint(record).preferences.muted : null, savedVisualSettings: () => record ? {graphics:stateFromCheckpoint(record).preferences.graphics,reducedMotion:stateFromCheckpoint(record).preferences.reducedMotion} : null, savedLocale: () => record ? stateFromCheckpoint(record).preferences.locale : undefined, canOpen: () => !blocked() && phase !== 'loading' && !requiresTransition() && (active || !record),
         startNew(locale: 'en' | 'id') {
             if (blocked() || phase === 'loading' || record || active || requiresTransition())
                 return false;
-            data = codec.prepare?.(createInitialState())??createInitialState() as State;
-            data.preferences.locale = locale;
+            data = freshState(locale);
             editor = undefined;
             active = true;
             reader = () => structuredClone(data!);

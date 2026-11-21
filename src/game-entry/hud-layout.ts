@@ -51,11 +51,25 @@ export function scrollHudTarget(target: Element | null | undefined, align: 'star
 }
 export function mountHudLayout(root: HTMLElement) {
     const events = new AbortController(), chrome = root.querySelector<HTMLElement>('[data-hud-chrome]'), options = root.querySelector<HTMLDetailsElement>('[data-hud-options]'), tabs = root.querySelector<HTMLElement>('[data-hud-tabs]'), stats = root.querySelector<HTMLElement>('[data-hud-stats]');
+    const toolsToggle = root.dataset.mapFirst === 'true' ? root.querySelector<HTMLButtonElement>('[data-zoo-tools-toggle]') : null;
+    const panelRegion = root.querySelector<HTMLElement>('[data-hud-panels]');
     mountBuildScrollStability(root,events.signal);
     let resizeTimer: ReturnType<typeof setTimeout> | undefined;
     let viewportWidth = window.innerWidth;
     let pointerDown = false;
     let active = false, selected: HudTab = 'missions', disposed = false, balance = 1500, welfare: number | null = null, guests = 0, mission: string | null = 'Q01', speed: 1 | 10 = 1, lastChrome = 0;
+    let toolsOpen = false;
+    if (toolsToggle && panelRegion) panelRegion.id = 'zoo-tool-panels';
+    function renderToolsToggle() {
+        if (!toolsToggle) return;
+        const copy = root.lang === 'id'
+            ? (toolsOpen ? 'Tutup kontrol' : 'Buka kontrol')
+            : (toolsOpen ? 'Close controls' : 'Open controls');
+        if (toolsToggle.textContent !== copy) toolsToggle.textContent = copy;
+        toolsToggle.hidden = !active;
+        toolsToggle.setAttribute('aria-expanded', String(toolsOpen));
+        if (root.dataset.zooToolsOpen !== String(toolsOpen)) root.dataset.zooToolsOpen = String(toolsOpen);
+    }
     const set = (selector: string, text: string) => {
         const el = root.querySelector(selector);
         if (el && el.textContent !== text)
@@ -93,6 +107,7 @@ export function mountHudLayout(root: HTMLElement) {
         if (disposed)
             return;
         const locale = root.lang === 'id' ? 'id' : 'en', c = copy[locale];
+        renderToolsToggle();
         for (const el of root.querySelectorAll<HTMLElement>('[data-hud-text]')) {
             const key = el.dataset.hudText as keyof typeof c;
             if (key in c && el.textContent !== c[key])
@@ -168,10 +183,17 @@ export function mountHudLayout(root: HTMLElement) {
     root.addEventListener('hud-reveal', e => {
         const tab = (e as CustomEvent<unknown>).detail;
         if (isHudTab(tab)) {
+            toolsOpen = true;
+            renderToolsToggle();
             select(tab);
             if (options)
                 options.open = false;
         }
+    }, { signal: events.signal });
+    toolsToggle?.addEventListener('click', () => {
+        toolsOpen = !toolsOpen;
+        renderToolsToggle();
+        root.dispatchEvent(new Event('hud-input-cancel'));
     }, { signal: events.signal });
     tabs?.addEventListener('click', e => {
         const b = (e.target as HTMLElement).closest<HTMLButtonElement>('[data-hud-tab]');
@@ -328,6 +350,7 @@ export function mountHudLayout(root: HTMLElement) {
             root.style.removeProperty('--hud-chrome-height');
             delete root.dataset.hudActive;
             delete root.dataset.hudTab;
+            delete root.dataset.zooToolsOpen;
             for (const pane of root.querySelectorAll<HTMLElement>('[data-hud-pane]'))
                 pane.hidden = false;
         } };

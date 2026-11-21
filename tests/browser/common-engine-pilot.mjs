@@ -57,14 +57,15 @@ async function runProfile(name, viewport, touch) {
     else await button.click();
   }
 
-  async function openSave(stock, runtime = 'common-engine') {
-    await press('[data-continue]');
+  async function openSave(stock, runtime = 'common-engine', afterRecovery = false) {
+    if (afterRecovery) await press('[data-continue]');
     await page.locator(stage + ' canvas').waitFor();
     await attribute(page, stage, 'data-simulation-runtime', runtime);
     await attribute(page, stage, 'data-common-engine-version', runtime === 'native' ? null : '0.3.0');
     await attribute(page, stage, 'data-placed-birds', '2');
     await attribute(page, stage, 'data-water-stock', String(stock));
-    await page.locator('[data-save-resume-button]').waitFor();
+    await page.locator('[data-map-control]').waitFor();
+    await attribute(page, save, 'data-resume-pending', 'true');
     await attribute(page, save, 'data-save-phase', 'saved');
   }
 
@@ -85,15 +86,17 @@ async function runProfile(name, viewport, touch) {
     await press('[data-hud-save-details] > summary');
     await press('[data-save-recovery-review]');
     await press('[data-save-recovery-confirm]');
-    await openSave(6);
+    await openSave(6, 'common-engine', true);
     assert.deepEqual(await checkpoint(page, databaseName, 'elephant-v1-backup'), oldRecord);
     const migrated = JSON.parse((await checkpoint(page, databaseName, 'primary')).payload);
     assert.equal(migrated.schemaVersion, 5);
     assert.equal(migrated.tick, legacy.tick);
 
-    await press('[data-save-resume-button]');
+    await press('[data-map-control]');
     await attribute(page, root, 'data-session-paused', 'false');
     await press('[data-zoo-destination="macaw-aviary"]');
+    const tools = page.locator('[data-zoo-tools-toggle]');
+    if (await tools.isVisible() && await tools.getAttribute('aria-expanded') === 'false') await press('[data-zoo-tools-toggle]');
     await press('[data-hud-tab="care"]');
     await press('[data-water-command="refill"]');
     await attribute(page, stage, 'data-water-stock', '8');
@@ -101,7 +104,7 @@ async function runProfile(name, viewport, touch) {
     await page.waitForFunction(({ save, lastSavedTick }) =>
       Number(document.querySelector(save)?.getAttribute('data-saved-tick')) > lastSavedTick + 3,
       { save, lastSavedTick }, { timeout });
-    await press('[data-pause-toggle]');
+    await press('[data-map-control]');
     await attribute(page, root, 'data-session-paused', 'true');
     await attribute(page, save, 'data-save-phase', 'saved');
 
@@ -120,12 +123,10 @@ async function runProfile(name, viewport, touch) {
     assert.deepEqual(await checkpoint(page, databaseName, 'elephant-v1-backup'), oldRecord);
 
     await page.reload({ waitUntil: 'domcontentloaded' });
-    await attribute(page, save, 'data-save-phase', 'available');
     await openSave(water.stock);
     assert.equal((await checkpoint(page, databaseName, 'primary')).payload, saved.payload);
     if (normalRoute) {
       await page.goto(new URL('/play/?engine=native', origin).href, { waitUntil: 'domcontentloaded' });
-      await attribute(page, save, 'data-save-phase', 'available');
       await openSave(water.stock, 'native');
       assert.equal((await checkpoint(page, databaseName, 'primary')).payload, saved.payload);
     }

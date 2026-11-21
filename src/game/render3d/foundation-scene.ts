@@ -111,6 +111,8 @@ export function mountFoundationScene(host: HTMLElement, onFailure: (kind: Previe
   const materials: Material[] = [];
   const scene = new Scene();
   const worldLayer=new Group();scene.add(worldLayer);
+  let surroundings: ReturnType<typeof import('./tropical-surroundings.ts').createTropicalSurroundings> | undefined;
+  let surroundingsRequested = false;
   const habitatMask=createHabitatRenderMask();
   let focusedHabitat:FocusHabitat|null=null,focusWorld:RuntimeWorld|undefined,focusWorldRevision='',focusAnnouncement='';
   const focusAllows=(kind:HabitatKind)=>!focusedHabitat||habitatKind(focusedHabitat)===kind;
@@ -322,7 +324,8 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     habitatMask.restoreVisibility();
     const frame=simulation.inspect();
     const visibleKind=focusedHabitat?habitatKind(focusedHabitat):null;
-    const policy=visual();lighting?.setLowGraphics(policy.low);diorama?.setLowGraphics(policy.low);visitors?.setVisibleCap(policy.low?1:3);
+    const policy=visual();lighting?.setLowGraphics(policy.low);diorama?.setLowGraphics(policy.low);surroundings?.setLowGraphics(policy.low);visitors?.setVisibleCap(policy.low?1:3);
+    if (surroundings) surroundings.group.visible = worldLayer.visible;
     scenery?.sync(policy.low);announceZebraCare(frame);announceSpeed(false,frame);announceLion();announceGiraffe();announceGrant(frame);announceElephantCare(frame);announceElephantMissions(frame);announceElephantRecovery(frame);announceElephantGuide(frame);
     const guide=readGuide(frame),guideKey=JSON.stringify(guide);if(guideKey!==previousGuide){previousGuide=guideKey;host.dispatchEvent(new CustomEvent('scene-onboarding-change',{detail:guide}));}
     const missions=simulation.missionView(),missionKey=JSON.stringify(missions);if(missionKey!==previousMission){previousMission=missionKey;host.dispatchEvent(new CustomEvent('scene-missions-change',{detail:missions}));}
@@ -335,7 +338,7 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     const macawWorld=habitatDirty||foodDirty||waterDirty||perchDirty?simulation.macawWorldSnapshot():undefined;
     if(habitatDirty&&habitats){habitats.sync(macawWorld!);grove?.sync(world!);lionWorld?.sync(structuralWorld(world!),simulation.lionMissionView().awards.includes('savanna-wildflowers'));giraffeWorld?.sync(structuralWorld(world!),simulation.giraffeMissionView().awards);zebraWorld?.sync(world!);lighting?.invalidate();decoration?.sync(macawWorld!,simulation.missionView().care.unlocked);banner?.sync(macawWorld!,simulation.missionView().thriving.unlocked);habitatDirty=false;}
     if(pathDirty&&paths){paths.sync(world!);zebraWorld?.sync(world!);picker?.refresh();pathDirty=false;}
-    if(birdsDirty&&birds){const z=simulation.zebraSnapshot();zebraModels?.sync(z.animals,z.width,z.height,policy.low,z.previous);if(z.animals.some(a=>Math.hypot(a.motion.lastStep.x,a.motion.lastStep.z)>0))lighting?.invalidate();const s=simulation.birdSnapshot();birds.sync(s.animals,s.habitats,s.width,s.height,simulationTimeMs,policy.low);const g=simulation.giraffeSnapshot();giraffeModels?.sync(g.animals,g.width,g.height,policy.low);if(g.animals.some(a=>a.currentBehavior!=='idle'))lighting?.invalidate();const lions=simulation.lionCareView().residents;lionModels?.sync(lions,s.width,s.height,policy.low,simulation.worldSnapshot());const e=simulation.elephantSnapshot();elephantModels?.sync(e.animals,e.width,e.height,simulation.elephantCareSnapshot().resources,policy.low);if(picker?.selection()?.kind==='giraffe')picker.refresh();if(picker?.selection()?.kind==='lion')picker.refresh();if(picker?.selection()?.kind==='elephant')picker.refresh();if(e.animals.length&&(!policy.reducedMotion||e.animals.some(a=>['seek-food','seek-water','wander','eat','drink','seek-bath','bathe','spray','seek-shade','rest','seek-log','enrich','approach-companion','trunk-touch'].includes(a.currentBehavior))))lighting?.invalidate();birdsDirty=false;announceBirds();}
+    if(birdsDirty&&birds){const z=simulation.zebraSnapshot();zebraModels?.sync(z.animals,z.width,z.height,policy.low,z.previous);if(z.animals.some(a=>Math.hypot(a.motion.lastStep.x,a.motion.lastStep.z)>0))lighting?.invalidate();const s=simulation.birdSnapshot();birds.sync(s.animals,s.habitats,s.width,s.height,simulationTimeMs,policy.low,simulation.foodView().portions);const g=simulation.giraffeSnapshot();giraffeModels?.sync(g.animals,g.width,g.height,policy.low);if(g.animals.some(a=>a.currentBehavior!=='idle'))lighting?.invalidate();const lions=simulation.lionCareView().residents;lionModels?.sync(lions,s.width,s.height,policy.low,simulation.worldSnapshot());const e=simulation.elephantSnapshot();elephantModels?.sync(e.animals,e.width,e.height,simulation.elephantCareSnapshot().resources,policy.low);if(picker?.selection()?.kind==='giraffe')picker.refresh();if(picker?.selection()?.kind==='lion')picker.refresh();if(picker?.selection()?.kind==='elephant')picker.refresh();if(e.animals.length&&(!policy.reducedMotion||e.animals.some(a=>['seek-food','seek-water','wander','eat','drink','seek-bath','bathe','spray','seek-shade','rest','seek-log','enrich','approach-companion','trunk-touch'].includes(a.currentBehavior))))lighting?.invalidate();birdsDirty=false;announceBirds();}
     if(foodDirty){feeder?.sync(structuralWorld(macawWorld!) as typeof macawWorld&{},foodPreview,simulation.foodView().canPlace);announceFood();foodDirty=false;}
     if(waterDirty){waterStation?.sync(structuralWorld(macawWorld!) as typeof macawWorld&{},waterPreview,simulation.waterView().canPlace);announceWater();waterDirty=false;}
     if(perchDirty){const view=simulation.perchView();restKit?.sync(structuralWorld(macawWorld!) as typeof macawWorld&{},perchPreview,view.canPlace);birds?.setPerchesVisible(!view.reachable&&!perchPreview);announcePerch();perchDirty=false;}
@@ -346,7 +349,7 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     // Hidden rigs keep receiving authoritative tick snapshots; pose only the visible habitat.
     // Time-based poses and interpolation catch up immediately when that habitat is shown.
     if(!visibleKind)visitors?.update(remainder/100,simulationTimeMs+remainder,policy.reducedMotion);
-    if(!visibleKind||visibleKind==='macaw-aviary')birds?.update(remainder/100,simulationTimeMs+remainder);
+    if(!visibleKind||visibleKind==='macaw-aviary')birds?.update(remainder/100,simulationTimeMs+remainder,policy.reducedMotion);
     if(!visibleKind||visibleKind==='elephant-grove')elephantModels?.update(remainder/100,simulationTimeMs+remainder,policy.reducedMotion,policy.low);
     zebraCareGhost?.sync(zebraCarePreview?.view()??null,simulation.worldSize().width,simulation.worldSize().height);if(!visibleKind||visibleKind==='zebra-grasslands')zebraModels?.update(paused?1:remainder/100,simulationTimeMs+remainder,policy.reducedMotion);if(!visibleKind||visibleKind==='giraffe-plains')giraffeModels?.update(remainder/100,simulationTimeMs+remainder,policy.reducedMotion);giraffeGhost?.sync(giraffePreview?.view()??null,simulation.worldSize().width,simulation.worldSize().height);
     if(!visibleKind||visibleKind==='lion-savanna')lionModels?.update(remainder/100,simulationTimeMs+remainder,policy.reducedMotion);lionGhost?.sync(lionPreview?.view()??null,simulation.worldSize().width,simulation.worldSize().height);
@@ -361,6 +364,16 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     picker?.captureView();
     if (renderer) renderSubmissions++;
     macaw?.refresh();const waiting=Boolean(animalLibrary&&(!catalogueReady||animalLibrary.inspect().animalPending>0||(sceneryLibrary?.inspect().animalPending??0)>0||(fixturesLibrary?.inspect().animalPending??0)>0));assetStatus.hidden=!waiting;const assetLabel=simulation.localeView()==='id'?'Menyiapkan suaka…':'Preparing the sanctuary…';if(assetStatus.textContent!==assetLabel)assetStatus.textContent=assetLabel;if(waiting!==assetsWaiting){assetsWaiting=waiting;updateRunning();}
+    if (catalogueReady && !waiting && !surroundingsRequested) {
+      surroundingsRequested = true;
+      void import('./tropical-surroundings.ts').then(({createTropicalSurroundings}) => {
+        if (disposed || lost) return;
+        surroundings = createTropicalSurroundings(simulation.worldSnapshot());
+        scene.add(surroundings.group);
+        render();
+        host.dataset.landscapeReady = 'true';
+      }).catch(() => { if (!disposed && !lost) host.dataset.landscapeReady = 'false'; });
+    }
   }
   let inVisualFrame=false;
   const loop = createFrameLoop(frames, time => {
@@ -395,7 +408,13 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     const bounds = host.getBoundingClientRect();
     const width = Math.max(1, Math.round(bounds.width));
     const height = Math.max(1, Math.round(bounds.height));
-    renderer.setPixelRatio(visual().pixelRatio);
+    const policy = visual();
+    // The enlarged portrait map can exceed the low-quality raster budget even at DPR 1.
+    // Picking and layout still use the canvas's CSS size.
+    const pixelRatio = policy.low && width < 600 && height > width
+      ? Math.min(policy.pixelRatio, Math.sqrt(125_000 / (width * height)))
+      : policy.pixelRatio;
+    renderer.setPixelRatio(pixelRatio);
     renderer.setSize(width, height, false);
     controls?.resize(width,height);macaw?.resize(width,height);
     render();
@@ -429,6 +448,8 @@ function announceHabitat(){announceEdit();const access=simulation.access();host.
     safe(()=>feeder?.dispose());safe(()=>waterStation?.dispose());safe(()=>restKit?.dispose());
     safe(()=>birds?.dispose());safe(()=>visitors?.dispose());
     safe(()=>lighting?.dispose());
+    safe(()=>surroundings?.dispose());
+    delete host.dataset.landscapeReady;
     safe(()=>macaw?.dispose());safe(()=>scenery?.dispose());safe(()=>facilities?.dispose());safe(()=>fixturesLibrary?.dispose());safe(()=>animalLibrary?.dispose());safe(()=>sceneryLibrary?.dispose());assetStatus.remove();host.removeEventListener('keydown',onStudioKey,true);host.removeEventListener('camera-view-change',onCameraView);
     safe(saveSession);safe(()=>options.stateStore?.checkpoint?.(()=>simulation.snapshot(),true));safe(()=>options.stateStore?.flush?.());
     unsubscribe();
