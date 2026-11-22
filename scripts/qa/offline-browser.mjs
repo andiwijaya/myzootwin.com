@@ -143,6 +143,28 @@ async function tutorialFromHome(page) {
     const links = await article.locator('nav a').evaluateAll(nodes => nodes.map(node => node.getAttribute('href')));
     assert.equal(chapterIds.length, 8);
     assert.deepEqual(links, chapterIds.map(id => '#' + id));
+    const search = article.locator('[data-tutorial-search]');
+    await search.waitFor({ state: 'visible' });
+    assert.equal(await article.locator(':scope > :first-child').getAttribute('role'), 'search');
+    const query = search.getByRole('searchbox');
+    const results = search.locator('#tutorial-results a');
+    const queries = lang === 'id'
+      ? [['cara beri MAKÁN', '#rawat'], ['Q01', '#misi-pertama'], ['rota', '#kamera']]
+      : [['Q01', '#misi-pertama'], ['elephant', '#habitat'], ['two fingers', '#kamera']];
+    for (const [text, target] of queries) {
+      await query.fill(text);
+      assert.equal(await results.first().getAttribute('href'), target);
+      assert.ok((await results.first().locator('span').innerText()).trim());
+    }
+    if (lang === 'id') await query.press('Enter');
+    else await results.first().click();
+    await page.waitForURL(productOrigin + guide + '#kamera');
+    await query.fill('xyz123invalid');
+    assert.equal(await results.count(), 0);
+    assert.match(await search.getByRole('status').innerText(), /Tidak ada topik|No matching topics/);
+    await search.locator('[data-search-clear]').click();
+    assert.equal(await query.inputValue(), '');
+    assert.equal(await search.getByRole('status').innerText(), '');
     const imgs = await article.locator('img[data-tutorial-screenshot]').evaluateAll(async nodes =>
       Promise.all(nodes.map(async node => {
         const file = new Image();

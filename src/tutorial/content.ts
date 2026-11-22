@@ -12,6 +12,7 @@ type TutorialSection = {
   summary: string;
   steps: readonly [label: string, instruction: string][];
   note?: string;
+  searchTerms?: string;
   screenshots?: ScreenshotPair;
 };
 
@@ -51,6 +52,7 @@ export const tutorialCopy: Record<TutorialLocale, TutorialCopy> = {
     sections: [
       {
         id: 'mulai',
+        searchTerms: 'awal pemula mulai main',
         title: 'Mulai permainan',
         summary: 'MyZooTwin berjalan di browser yang mendukung WebGL. Kamu bisa langsung bermain tanpa unduhan atau akun.',
         steps: [
@@ -66,6 +68,7 @@ export const tutorialCopy: Record<TutorialLocale, TutorialCopy> = {
       },
       {
         id: 'misi-pertama',
+        searchTerms: 'bangun kandang aviary quest pertama',
         title: 'Bangun aviari dan selesaikan Q01',
         summary: 'Misi pertama menuntunmu membangun kandang makaw, menyambungkan gerbang, lalu mengambil hadiah.',
         steps: [
@@ -83,6 +86,7 @@ export const tutorialCopy: Record<TutorialLocale, TutorialCopy> = {
       },
       {
         id: 'rawat',
+        searchTerms: 'makanan makan minum feeding isi ulang feeder',
         title: 'Sambut dan rawat satwa',
         summary: 'Pilih Makaw di panel bawah, lalu buka Rawat. Setiap habitat punya kebutuhan dan fasilitasnya sendiri.',
         steps: [
@@ -99,6 +103,7 @@ export const tutorialCopy: Record<TutorialLocale, TutorialCopy> = {
       },
       {
         id: 'pengunjung',
+        searchTerms: 'pendapatan uang ekonomi tiket tamu',
         title: 'Buka gerbang dan kelola Zoo Coins',
         summary: 'Pengunjung memerlukan jalur yang tersambung dari gerbang ke area pandang di luar pagar.',
         steps: [
@@ -115,6 +120,7 @@ export const tutorialCopy: Record<TutorialLocale, TutorialCopy> = {
       },
       {
         id: 'habitat',
+        searchTerms: 'kandang baru unlock habitat gajah singa jerapah zebra',
         title: 'Buka lima habitat',
         summary: 'Mulai dari Makaw. Setelah hadiah misi akhir satu habitat diklaim, habitat berikutnya tersedia lewat tab Bangun.',
         steps: [
@@ -126,6 +132,7 @@ export const tutorialCopy: Record<TutorialLocale, TutorialCopy> = {
       },
       {
         id: 'kamera',
+        searchTerms: 'rotate rotasi vertikal horizontal gesture gestur pinch pan kontrol',
         title: 'Jelajahi peta dan zoom kandang',
         summary: 'Kamera bisa berputar ke samping dan miring naik-turun. Gunakan tampilan Zoo untuk melihat seluruh area atau pilih kandang dari panel bawah.',
         steps: [
@@ -143,6 +150,7 @@ export const tutorialCopy: Record<TutorialLocale, TutorialCopy> = {
       },
       {
         id: 'simpan',
+        searchTerms: 'save autosave pause resume progres lanjut',
         title: 'Jeda, simpan, dan lanjutkan',
         summary: 'Progres tersimpan otomatis di profil browser yang sedang kamu pakai saat penyimpanan tersedia.',
         steps: [
@@ -158,6 +166,7 @@ export const tutorialCopy: Record<TutorialLocale, TutorialCopy> = {
       },
       {
         id: 'bantuan',
+        searchTerms: 'masalah error troubleshooting gagal macet',
         title: 'Jika kamu buntu',
         summary: 'Mulai dari petunjuk yang tampil di kartu misi atau di dekat tombol yang sedang kamu pakai.',
         steps: [
@@ -192,6 +201,7 @@ export const tutorialCopy: Record<TutorialLocale, TutorialCopy> = {
     sections: [
       {
         id: 'mulai',
+        searchTerms: 'begin beginner start playing',
         title: 'Start the game',
         summary: 'MyZooTwin runs in a WebGL-capable browser. You can play without an account or a download.',
         steps: [
@@ -207,6 +217,7 @@ export const tutorialCopy: Record<TutorialLocale, TutorialCopy> = {
       },
       {
         id: 'misi-pertama',
+        searchTerms: 'first quest build enclosure',
         title: 'Build the aviary and complete Q01',
         summary: 'The first mission guides you through building a macaw habitat, connecting it to the entrance, and claiming the reward.',
         steps: [
@@ -224,6 +235,7 @@ export const tutorialCopy: Record<TutorialLocale, TutorialCopy> = {
       },
       {
         id: 'rawat',
+        searchTerms: 'feeding refill feed drink',
         title: 'Welcome and care for animals',
         summary: 'Choose Macaws in the bottom panel, then open Care. Each habitat has its own facilities and needs.',
         steps: [
@@ -240,6 +252,7 @@ export const tutorialCopy: Record<TutorialLocale, TutorialCopy> = {
       },
       {
         id: 'pengunjung',
+        searchTerms: 'visitors income money economy tickets',
         title: 'Open the entrance and manage Zoo Coins',
         summary: 'Guests need a connected path from the entrance to a spot outside the habitat fence where they can watch.',
         steps: [
@@ -256,6 +269,7 @@ export const tutorialCopy: Record<TutorialLocale, TutorialCopy> = {
       },
       {
         id: 'habitat',
+        searchTerms: 'unlock enclosure elephant lion giraffe zebra',
         title: 'Unlock all five habitats',
         summary: 'Start with Macaws. Claim the last mission reward in each habitat to access the next habitat in Build.',
         steps: [
@@ -267,6 +281,7 @@ export const tutorialCopy: Record<TutorialLocale, TutorialCopy> = {
       },
       {
         id: 'kamera',
+        searchTerms: 'controls gestures rotation vertical horizontal pan mouse',
         title: 'Explore the map and zoom into habitats',
         summary: 'The camera turns sideways and tilts up or down. Choose Zoo for the whole park or a habitat to see it up close.',
         steps: [
@@ -284,6 +299,7 @@ export const tutorialCopy: Record<TutorialLocale, TutorialCopy> = {
       },
       {
         id: 'simpan',
+        searchTerms: 'autosave reload progress',
         title: 'Pause, save, and resume',
         summary: 'Progress saves automatically in the current browser profile when storage is available.',
         steps: [
@@ -299,6 +315,7 @@ export const tutorialCopy: Record<TutorialLocale, TutorialCopy> = {
       },
       {
         id: 'bantuan',
+        searchTerms: 'problems error troubleshooting failure',
         title: 'If you get stuck',
         summary: 'Start with the message on the mission card or next to the control you are using.',
         steps: [
