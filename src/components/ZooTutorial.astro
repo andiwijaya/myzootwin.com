@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ZooTutorialSearch from './ZooTutorialSearch.astro';
 import { tutorialCopy, type TutorialLocale } from '../tutorial/content';
 
 interface Props {
@@ -22,6 +23,7 @@ const socialImage = {
 ---
 <BaseLayout gameGuide locale={locale} title={copy.title + ' — Tutorial'} description={copy.description} socialImage={socialImage}>
   <article class="guide" data-tutorial-page>
+    <ZooTutorialSearch {locale} />
     <header class="guide-intro">
       <h1>{copy.title}</h1>
       <p>{copy.intro}</p>
@@ -35,7 +37,7 @@ const socialImage = {
       <p>{copy.imageNote}</p>
     </nav>
     {copy.sections.map(section => (
-      <section id={section.id} class="guide-chapter" aria-labelledby={section.id + '-title'} data-tutorial-chapter>
+      <section id={section.id} class="guide-chapter" aria-labelledby={section.id + '-title'} data-tutorial-chapter data-search-terms={section.searchTerms} tabindex="-1">
         <div class="guide-copy">
           <h2 id={section.id + '-title'}>{section.title}</h2>
           <p class="guide-summary">{section.summary}</p>

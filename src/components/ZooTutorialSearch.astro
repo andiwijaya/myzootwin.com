@@ -1,0 +1,169 @@
+---
+import type { TutorialLocale } from '../tutorial/content';
+
+interface Props {
+  locale: TutorialLocale;
+}
+
+const copy = {
+  id: {
+    label: 'Cari di tutorial',
+    placeholder: 'Misalnya pakan, kamera, atau Q01',
+    clear: 'Hapus',
+    noMatch: 'Tidak ada topik yang cocok. Coba kata lain.',
+    found: '{count} topik ditemukan.',
+  },
+  en: {
+    label: 'Search the tutorial',
+    placeholder: 'Try feeding, camera, or Q01',
+    clear: 'Clear',
+    noMatch: 'No matching topics. Try a different word.',
+    found: 'Matching topics ({count})',
+  },
+}[Astro.props.locale];
+---
+<form class="tutorial-search" role="search" aria-label={copy.label} data-tutorial-search
+  data-no-match={copy.noMatch} data-found={copy.found} hidden>
+  <label for="tutorial-query">{copy.label}</label>
+  <div class="tutorial-query">
+    <input id="tutorial-query" type="search" enterkeyhint="search" autocomplete="off" maxlength="120"
+      placeholder={copy.placeholder} aria-controls="tutorial-results" />
+    <button type="button" data-search-clear hidden>{copy.clear}</button>
+  </div>
+  <p class="tutorial-search-status" role="status" aria-atomic="true"></p>
+  <ul id="tutorial-results" class="tutorial-results" hidden></ul>
+</form>
+
+<script>
+  const commonWords = new Set([
+    'apa', 'bagaimana', 'cara', 'dan', 'dengan', 'di', 'ke', 'untuk', 'yang',
+    'a', 'an', 'and', 'do', 'for', 'how', 'i', 'in', 'the', 'to',
+  ]);
+
+  function words(text: string) {
+    return text.normalize('NFKD').toLowerCase().replace(/\p{M}/gu, '').match(/[\p{L}\p{N}]+/gu) ?? [];
+  }
+
+  function matchScore(index: string[], term: string, weight: number) {
+    if (index.includes(term)) return weight + 1;
+    return index.some(word => word.startsWith(term)) ? weight : 0;
+  }
+
+  const form = document.querySelector<HTMLFormElement>('[data-tutorial-search]');
+  const input = form?.querySelector('input');
+  const clear = form?.querySelector<HTMLButtonElement>('[data-search-clear]');
+  const status = form?.querySelector('[role="status"]');
+  const results = form?.querySelector('ul');
+
+  if (form && input && clear && status && results) {
+    const topics = Array.from(document.querySelectorAll<HTMLElement>('[data-tutorial-chapter]'), section => {
+      const title = section.querySelector('h2')?.textContent?.trim() ?? '';
+      const excerpts = Array.from(section.querySelectorAll('.guide-copy p, .guide-steps li, .guide-progression dt, .guide-progression dd'), block => {
+        const text = block.textContent?.replace(/\s+/g, ' ').trim() ?? '';
+        return { text, terms: words(text) };
+      });
+      return {
+        id: section.id,
+        title,
+        titleTerms: words(title),
+        aliases: words(section.dataset.searchTerms ?? ''),
+        body: excerpts.flatMap(excerpt => excerpt.terms),
+        excerpts,
+      };
+    });
+    const { noMatch = '', found = '' } = form.dataset;
+
+    const update = () => {
+      const query = [...new Set(words(input.value).filter(word => !commonWords.has(word)))];
+      const matches = query.length ? topics.flatMap(topic => {
+        let score = 0;
+        for (const term of query) {
+          const weight = Math.max(
+            matchScore(topic.titleTerms, term, 8),
+            matchScore(topic.aliases, term, 4),
+            matchScore(topic.body, term, 1),
+          );
+          if (!weight) return [];
+          score += weight;
+        }
+        return [{ topic, score }];
+      }).sort((a, b) => b.score - a.score) : [];
+
+      results.replaceChildren(...matches.map(({ topic }) => {
+        const item = document.createElement('li');
+        const link = document.createElement('a');
+        const title = document.createElement('strong');
+        const excerpt = document.createElement('span');
+        let bestText = topic.excerpts[0]?.text ?? '';
+        let bestScore = 0;
+        for (const block of topic.excerpts) {
+          const weight = query.reduce((sum, term) => sum + matchScore(block.terms, term, 1), 0);
+          if (weight > bestScore) {
+            bestScore = weight;
+            bestText = block.text;
+          }
+        }
+        link.href = '#' + topic.id;
+        title.textContent = topic.title;
+        excerpt.textContent = bestText;
+        link.append(title, excerpt);
+        item.append(link);
+        return item;
+      }));
+      clear.hidden = !input.value;
+      results.hidden = !matches.length;
+      status.textContent = matches.length ? found.replace('{count}', String(matches.length)) : input.value.trim() ? noMatch : '';
+    };
+
+    input.addEventListener('input', update);
+    clear.addEventListener('click', () => {
+      input.value = '';
+      update();
+      input.focus();
+    });
+    form.addEventListener('submit', event => {
+      event.preventDefault();
+      results.querySelector('a')?.click();
+    });
+    update();
+    form.hidden = false;
+  }
+</script>
+
+<style>
+  .tutorial-search {
+    padding: clamp(.95rem, 2.6vw, 1.45rem);
+    margin-block-end: clamp(.85rem, 2vw, 1.5rem);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    background: #f7f8f1;
+  }
+  label { display: block; margin-block-end: .45rem; font-weight: 750; }
+  .tutorial-query { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .5rem; }
+  input, button {
+    min-height: 46px;
+    font: inherit;
+    color: var(--forest);
+    border: 1px solid #879d76;
+    border-radius: 9px;
+  }
+  input { width: 100%; min-width: 0; padding: .5rem .75rem; background: white; }
+  input::-webkit-search-cancel-button { display: none; }
+  button { padding-inline: .76rem; background: #edf2e7; cursor: pointer; }
+  input:focus-visible, button:focus-visible { outline: 2px solid var(--forest); outline-offset: 2px; }
+  .tutorial-search-status { margin: .65rem 0 0; color: #425e4e; }
+  .tutorial-search-status:empty { margin: 0; }
+  .tutorial-results { margin: .35rem 0 0; padding: 0; list-style: none; }
+  .tutorial-results :global(a) {
+    display: grid;
+    gap: .2rem;
+    padding: .7rem .2rem;
+    border-block-start: 1px solid var(--line);
+    color: var(--forest);
+    text-decoration: none;
+    overflow-wrap: anywhere;
+  }
+  .tutorial-results :global(a:focus-visible) { outline: 2px solid var(--forest); outline-offset: 2px; }
+  .tutorial-results :global(strong) { text-decoration: underline; text-underline-offset: .16em; }
+  .tutorial-results :global(span) { color: #425e4e; font-size: .92rem; }
+</style>
