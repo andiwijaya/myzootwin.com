@@ -1,6 +1,35 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { animalStories } from '../../articles/stories';
+
+const fieldNotes: Record<string, [string, string]> = {
+  makaw: ['Blue-and-yellow macaw', 'Watch the feet as much as the beak. Macaws grip branches, turn pieces of food and bring them up to the beak. The strong beak can open seeds and nuts.'],
+  gajah: ['Asian elephant', 'A trunk is both a nose and a tool. An elephant uses it to pick up food, explore by touch and move water to its mouth. Bathing and drinking are different activities.'],
+  singa: ['Lion', 'Look for the quieter moments of pride life. Resting together, touching and calling are all social behaviours. A roar is only one way lions communicate.'],
+  jerapah: ['Giraffe', 'Compare the posture of a giraffe browsing high leaves with its posture at water. To reach down, it can spread or bend its front legs.'],
+  zebra: ['Plains zebra', 'A zebra’s stripes are not identical to its neighbours’. Compare the shoulder or flank of two grazing individuals to see where the patterns differ.'],
+};
+const breadcrumbs = [{ href: '/en/', name: 'Home' }, { href: '/animals/', name: 'Animal library' }];
 ---
-<BaseLayout title="Animals — MyZooTwin"><section class="listing"><p class="eyebrow">The animal library</p><h1>Meet the<br /><em>neighborhood.</em></h1><p class="lead">Meet the five animals of MyZooTwin through stories from the game and notes on their lives in the wild.</p><div class="empty-card"><h2>Read the animal stories</h2><p>Choose an individual article about macaws, elephants, lions, giraffes, or zebras. The stories are available in Indonesian.</p><a class="button" href="/artikel/" hreflang="id" lang="id">Baca artikel satwa →</a></div></section></BaseLayout>
-<style>.listing{padding:clamp(5rem,11vw,10rem) clamp(1.2rem,10vw,10rem);background:var(--cream);min-height:70vh}.listing h1{font-size:clamp(3.5rem,8vw,7rem);margin:1rem 0}.listing h1 em{font-style:normal;color:var(--gold)}.lead{font-size:1.15rem;color:var(--muted);max-width:34rem}.empty-card{margin-top:5rem;max-width:620px;padding:2.5rem;background:var(--paper);border:1px solid var(--line)}.empty-card h2{font-size:2rem;margin:1.4rem 0 .5rem}.empty-card p{color:var(--muted);margin-bottom:1.7rem}.pillar-icon{display:grid;place-items:center;width:3.1rem;height:3.1rem;border:1px solid var(--gold);border-radius:50%;color:var(--gold)}
+<BaseLayout title="Meet the Animals: Five Species in MyZooTwin" description="Meet the macaws, Asian elephants, lions, giraffes and plains zebras of MyZooTwin. Explore real animal behaviour and find all five species stories." {breadcrumbs}>
+  <section class="library" aria-labelledby="library-title">
+    <p class="eyebrow">The animal library</p>
+    <h1 id="library-title">Meet the animals of MyZooTwin</h1>
+    <p class="intro">Start with one feature you can spot, then compare the animal in the game with how it moves, feeds or lives in the wild. The full stories are in Indonesian. The reference on each card is in English.</p>
+    <div class="profiles">
+      {animalStories.map(story => {
+        const [name, note] = fieldNotes[story.slug];
+        return <article class="profile" id={story.slug}>
+          <p class="eyebrow">{story.habitat}</p>
+          <h2>{name}</h2><p class="scientific"><i>{story.scientificName}</i></p>
+          <p>{note}</p>
+          <ul><li><a href={'/artikel/' + story.slug + '/'} hreflang="id">Read the {name.toLowerCase()} story (Indonesian)</a></li><li><a href={story.source.href}>{story.source.label}</a></li></ul>
+        </article>;
+      })}
+    </div>
+    <p class="library-next"><a href="/learn/">Learn what the game simulates</a> · <a href="/en/tutorial/">Follow the illustrated tutorial</a></p>
+  </section>
+</BaseLayout>
+<style>
+  .library{padding:clamp(2.4rem,7vw,6rem) clamp(1.2rem,8vw,8rem);background:var(--cream)}.library h1{font-size:clamp(2.5rem,6vw,5.25rem);max-width:15ch}.intro{max-width:63ch;color:var(--muted);font-size:1.1rem}.profiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:1rem;margin-block:2.5rem}.profile{padding:1.35rem;border:1px solid var(--line);background:var(--paper);border-radius:14px}.profile h2{font-size:1.7rem}.scientific{margin-top:.4rem;color:var(--muted)}.profile ul{padding-inline-start:1.15rem}.profile a,.library-next a{text-decoration:underline;text-underline-offset:.2em}
 </style>

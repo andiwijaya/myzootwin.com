@@ -3,11 +3,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import {homeHabitatCards} from '../home-habitats';
 import ZebraHomePreview from './ZebraHomePreview.astro';
 import mapPreview from '../assets/tutorial/camera-mobile.webp';
+import { siteUrl } from '../seo.mjs';
 const {locale = 'id'} = Astro.props;
 const tutorialPath = locale === 'id' ? '/tutorial/' : '/en/tutorial/';
+const stories = {
+ macaw: ['makaw', 'makaw', 'macaws'], elephant: ['gajah', 'gajah Asia', 'Asian elephants'],
+ lion: ['singa', 'singa', 'lions'], giraffe: ['jerapah', 'jerapah', 'giraffes'], zebra: ['zebra', 'zebra', 'zebras'],
+} as const;
 const copy = locale === 'id' ? {
- title:'MyZooTwin — Game Zoo 3D dengan Lima Habitat',
- description:'Bangun zoo 3D di browser dengan lima habitat. Rawat makaw, gajah, singa, jerapah dan Zebra, jalankan misi serta sambut pengunjung.',
+ title:'MyZooTwin — Game Kebun Binatang 3D di Browser',
+ description:'Bangun kebun binatang 3D langsung di browser tanpa akun. Rawat makaw, gajah, singa, jerapah dan zebra, jalankan misi, lalu buka lima habitat.',
  eyebrow:'Zoo kecilmu, cerita yang terus tumbuh', headline:'Bangun zoo 3D kamu.', accent:'Rawat setiap penghuni.',
  intro:'Mulai dari aviary tropis. Rawat satwamu, sambut pengunjung, lalu kembangkan zoo hingga ke Zebra Grasslands.',
  play:'Main Sekarang', explore:'Jelajahi habitat', details:'Langsung di browser · Tanpa akun', save:'Progres tersimpan di browser pada perangkat ini.',
@@ -38,8 +43,8 @@ const copy = locale === 'id' ? {
  startTitle:'Zoo pertamamu dimulai di sini.',startText:'Buka permainan, mulai petualangan baru atau lanjutkan progres yang tersimpan di browser ini.',journal:'Kenali dunia satwa',about:'Tentang MyZooTwin',previewLink:'Kenali Zebra Grasslands',
  faqTitle:'Sebelum mulai', faq:[['Apakah perlu mengunduh atau membuat akun?','Tidak. Permainan berjalan di browser tanpa akun. JavaScript dan browser yang mendukung WebGL diperlukan untuk bermain.'],['Apakah semua habitat langsung terbuka?','Perjalanan dimulai di Macaw Aviary. Perluasan Elephant Grove, Lion Savanna, Giraffe Plains dan Zebra Grasslands mengikuti progres serta misi zoo.'],['Apakah isi ulang langsung memenuhi kebutuhan satwa?','Tidak. Isi ulang menyiapkan stok pakan, air atau pengayaan. Satwa perlu mencapai fasilitas dan memakainya sampai selesai agar mendapat manfaat.'],['Bagaimana membuka Zebra Grasslands?','Selesaikan dan klaim GQ04 di Giraffe Plains. Klaim hibah Zebra satu kali, lalu bangun habitat, sambungkan jalur dan siapkan kebutuhan kawanan. Habitat serta fasilitas memakai Zoo Coins virtual yang sama.'],['Di mana progres disimpan?','Progres disimpan lokal di profil browser ini saat penyimpanan tersedia. Tidak ada sinkronisasi antarperangkat. Menghapus data situs akan menghapus progres lokal.']]
 } : {
- title:'MyZooTwin — 3D Zoo Game with Five Habitats',
- description:'Build a 3D zoo in your browser with five habitats. Care for macaws, elephants, lions, giraffes and Zebras, complete missions and welcome visitors.',
+ title:'MyZooTwin — 3D Zoo Game to Play in Your Browser',
+ description:'Build a zoo in your browser without an account. Care for macaws, elephants, lions, giraffes and zebras, complete missions and unlock five habitats.',
  eyebrow:'Your little zoo, a growing story',headline:'Build your 3D zoo.',accent:'Care for every resident.',
  intro:'Begin with a tropical aviary. Care for your animals, welcome visitors and grow your zoo all the way to Zebra Grasslands.',
  play:'Play Now',explore:'Explore the habitats',details:'In your browser · No account needed',save:'Progress is saved in this browser on this device.',
@@ -66,12 +71,14 @@ const copy = locale === 'id' ? {
  faqTitle:'Before you begin',faq:[['Do I need a download or an account?','No. Play in your browser without an account. JavaScript and a WebGL-capable browser are required to play.'],['Are all habitats open from the start?','Your journey starts at Macaw Aviary. Elephant Grove, Lion Savanna, Giraffe Plains and Zebra Grasslands unlock through zoo progress and missions.'],['Do refills immediately satisfy animal needs?','No. Refills prepare food, water or enrichment supplies. Animals need to reach a facility and finish using it to benefit.'],['How do I unlock Zebra Grasslands?','Complete and claim GQ04 in Giraffe Plains. Claim the Zebra grant once, then build the habitat, connect paths and prepare the herd essentials. Habitats and facilities use the same virtual Zoo Coins.'],['Where is my progress saved?','Progress stays locally in this browser profile when storage is available. There is no cross-device sync. Clearing site data removes local progress.']]
 };
 const socialImage = {src:'/images/home/v5-zoo-social.jpg',alt:copy.heroAlt,width:1200,height:630};
-const structuredData = {'@context':'https://schema.org','@type':'VideoGame',name:'MyZooTwin',url:'https://myzootwin.com/play/',description:copy.description,genre:'Simulation',gamePlatform:'Web browser',inLanguage:['id','en'],image:'https://myzootwin.com/images/home/v5-zoo-social.jpg'};
+const structuredData = [
+ {'@type':'WebSite','@id':siteUrl('/#website'),name:'MyZooTwin',url:siteUrl('/'),inLanguage:['id','en']},
+ {'@type':'VideoGame','@id':siteUrl('/play/#game'),name:'MyZooTwin',url:siteUrl('/play/'),description:copy.description,genre:'Simulation',gamePlatform:'Web browser',inLanguage:['id','en'],image:siteUrl(socialImage.src)},
+];
 ---
-<BaseLayout gameHome locale={locale} title={copy.title} description={copy.description} socialImage={socialImage}>
- <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+<BaseLayout gameHome locale={locale} title={copy.title} description={copy.description} socialImage={socialImage} structuredData={structuredData}>
  <section class="zoo-hero" aria-labelledby="game-title">
-  <div class="hero-copy"><p class="eyebrow">{copy.eyebrow}</p><h1 id="game-title">{copy.headline}<br /><em>{copy.accent}</em></h1><p class="intro">{copy.intro}</p><div class="hero-actions"><a class="button" href="/play/" data-site-source="home">{copy.play}<span aria-hidden="true">↗</span></a><a class="button secondary" href={tutorialPath} data-home-tutorial>{copy.tutorial}</a><a class="text-link" href="#habitats">{copy.explore}<span aria-hidden="true">↓</span></a></div><p class="play-details">{copy.details}<br />{copy.save}</p></div>
+  <div class="hero-copy"><p class="eyebrow">{copy.eyebrow}</p><h1 id="game-title">{copy.headline}<br />{' '}<em>{copy.accent}</em></h1><p class="intro">{copy.intro}</p><div class="hero-actions"><a class="button" href="/play/" data-site-source="home">{copy.play}<span aria-hidden="true">↗</span></a><a class="button secondary" href={tutorialPath} data-home-tutorial>{copy.tutorial}</a><a class="text-link" href="#habitats">{copy.explore}<span aria-hidden="true">↓</span></a></div><p class="play-details">{copy.details}<br />{copy.save}</p></div>
   <figure class="hero-image"><img src="/images/home/v5-zoo-770.webp" srcset="/images/home/v5-zoo-480.webp 480w, /images/home/v5-zoo-770.webp 770w" sizes="(max-width: 900px) 92vw, 57vw" width="770" height="520" alt={copy.heroAlt} fetchpriority="high" /><figcaption>{copy.caption}</figcaption></figure>
  </section>
  <section class="section controls-feature" aria-labelledby="controls-title" data-home-map-features>
@@ -89,13 +96,17 @@ const structuredData = {'@context':'https://schema.org','@type':'VideoGame',name
  <ZebraHomePreview locale={locale} />
  <section class="habitats section" id="habitats" aria-labelledby="habitats-title"><div class="section-heading"><p class="eyebrow">{copy.habitatsLabel}</p><h2 id="habitats-title">{copy.habitatsTitle}</h2><p>{copy.habitatsIntro}</p></div><div class="habitat-grid">{homeHabitatCards.map((habitat,i) => {
   const text=locale==='id'?habitat.idCopy:habitat.enCopy;
-  return <article class:list={['habitat-card',`habitat-${i}`,{'habitat-new':habitat.id==='zebra'}]} data-home-habitat={habitat.id} data-availability={habitat.availability} aria-labelledby={`habitat-${habitat.id}-title`}><span class="habitat-number" aria-hidden="true">0{i+1}</span><p class="habitat-status">{copy.habitatStatus[habitat.availability]}</p><p class="habitat-label">{text.label}</p><h3 id={`habitat-${habitat.id}-title`} lang="en">{habitat.name}</h3><p class="habitat-description">{text.text}</p><a class="habitat-play" href="/play/" data-site-source="home" aria-label={`${copy.cardPlay} · ${habitat.name}`}>{copy.cardPlay}<span aria-hidden="true">→</span></a></article>;
+  const [slug, indonesian, english] = stories[habitat.id];
+  return <article class:list={['habitat-card',`habitat-${i}`,{'habitat-new':habitat.id==='zebra'}]} data-home-habitat={habitat.id} data-availability={habitat.availability} aria-labelledby={`habitat-${habitat.id}-title`}><span class="habitat-number" aria-hidden="true">0{i+1}</span><p class="habitat-status">{copy.habitatStatus[habitat.availability]}</p><p class="habitat-label">{text.label}</p><h3 id={`habitat-${habitat.id}-title`} lang="en">{habitat.name}</h3><p class="habitat-description">{text.text}</p><a class="habitat-play" href="/play/" data-site-source="home" aria-label={`${copy.cardPlay} · ${habitat.name}`}>{copy.cardPlay}<span aria-hidden="true">→</span></a><a class="habitat-story" href={`/artikel/${slug}/`} hreflang="id">{locale === 'id' ? `Baca kisah ${indonesian}` : `Read about ${english} (ID)`}</a></article>;
  })}</div><div class="habitat-actions"><a class="button" href="/play/" data-site-source="home">{copy.habitatsPlay}<span aria-hidden="true">↗</span></a><p>{copy.habitatsNote}</p></div></section>
  <section class="spotlight section" aria-labelledby="spotlight-title"><figure><img src="/images/home/giraffes-800.webp" srcset="/images/home/giraffes-480.webp 480w, /images/home/giraffes-800.webp 800w" sizes="(max-width: 900px) 90vw, 48vw" width="800" height="640" alt={copy.featureAlt} loading="lazy" decoding="async" /><figcaption>{copy.featureCaption}</figcaption></figure><div class="spotlight-copy"><p class="eyebrow">{copy.featureLabel}</p><h2 id="spotlight-title">{copy.featureTitle}</h2><p class="intro">{copy.featureIntro}</p><p>{copy.featureText}</p><a class="text-link" href="/play/" data-site-source="home">{copy.play}<span aria-hidden="true">↗</span></a></div></section>
  <section class="section play-loop" aria-labelledby="loop-title"><div class="section-heading"><p class="eyebrow">{copy.loopLabel}</p><h2 id="loop-title">{copy.loopTitle}</h2></div><ol class="steps">{copy.steps.map(([title,text],i) => <li><span aria-hidden="true">0{i+1}</span><h3>{title}</h3><p>{text}</p></li>)}</ol></section>
  <section class="section faq" aria-labelledby="faq-title"><h2 id="faq-title">{copy.faqTitle}</h2><div>{copy.faq.map(([question,answer]) => <details><summary>{question}</summary><p>{answer}</p></details>)}</div></section>
  <section class="start section" aria-labelledby="start-title"><p class="eyebrow">MyZooTwin</p><h2 id="start-title">{copy.startTitle}</h2><p>{copy.startText}</p><a class="button" href="/play/" data-site-source="home">{copy.play}<span aria-hidden="true">↗</span></a><div class="related-links"><a href="/animals/">{copy.journal}</a><a href="/about/">{copy.about}</a><a href="#zebra-grasslands-title">{copy.previewLink}</a></div></section>
 </BaseLayout>
+<style>
+.habitat-story{display:block;width:fit-content;margin-top:.55rem;font-size:.86rem;font-weight:700;text-decoration:underline;text-underline-offset:.2em}
+</style>
 <style>
 .controls-feature{display:grid;grid-template-columns:minmax(0,1fr) minmax(170px,290px);gap:clamp(1.5rem,5vw,4rem);align-items:center}
 .controls-copy{max-width:42rem}

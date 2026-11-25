@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { animalStories, type AnimalStory } from '../../articles/stories';
+import { siteUrl } from '../../seo.mjs';
 import '../../articles/articles.css';
 
 export function getStaticPaths() {
@@ -13,14 +14,25 @@ interface Props {
 
 const { story } = Astro.props;
 const socialImage = { src: story.image.src, width: story.image.width, height: story.image.height, alt: story.alt };
+const href = `/artikel/${story.slug}/`;
+const author = { '@type': 'Organization', name: 'MyZooTwin', url: siteUrl('/about/') };
+const breadcrumbs = [{ href: '/', name: 'Beranda' }, { href: '/artikel/', name: 'Artikel Satwa' }, { href, name: story.species }];
+const structuredData = [{
+  '@type': 'Article',
+  mainEntityOfPage: siteUrl(href), url: siteUrl(href), headline: story.title,
+  description: story.description, image: [siteUrl(story.image.src)], inLanguage: 'id',
+  author, publisher: author, citation: story.source.href,
+  about: { '@type': 'Thing', name: story.species, alternateName: story.scientificName },
+}];
+const title = story.slug === 'gajah' ? `${story.title} | Gajah Asia — MyZooTwin` : `${story.title} — MyZooTwin`;
 ---
-<BaseLayout gameStories locale="id" title={story.title + ' — MyZooTwin'} description={story.description} socialImage={socialImage}>
+<BaseLayout gameStories article locale="id" title={title} description={story.description} socialImage={socialImage} {breadcrumbs} {structuredData}>
   <article class="animal-story" data-animal-story={story.slug}>
     <header class="animal-story-intro">
-      <a class="article-back" href="/artikel/">← Semua artikel</a>
       <p class="article-species">{story.species} <i>{story.scientificName}</i></p>
       <h1>{story.title}</h1>
       <p class="animal-story-lead">{story.description}</p>
+      <p class="story-byline">Oleh <a href="/about/" hreflang="en">MyZooTwin</a></p>
     </header>
     <figure class="animal-story-picture">
       <img src={story.image.src} width={story.image.width} height={story.image.height}
@@ -47,6 +59,15 @@ const socialImage = { src: story.image.src, width: story.image.width, height: st
           <a class="article-back" href={story.slug === 'makaw' ? '/tutorial/#rawat' : '/tutorial/#habitat'}>Lihat tutorial</a>
         </div>
       </section>
+      <section class="story-related" aria-labelledby="story-related-title">
+        <h2 id="story-related-title">Baca juga</h2>
+        <ul>{animalStories.filter(other => other.slug !== story.slug).map(other => (
+          <li><a href={`/artikel/${other.slug}/`}>{other.title}</a></li>
+        ))}</ul>
+      </section>
     </div>
   </article>
 </BaseLayout>
+<style>
+  .story-byline{font-size:.9rem;color:var(--muted)}.story-byline a,.story-related a{color:var(--forest);text-decoration:underline;text-underline-offset:.2em}.story-related{border-top:1px solid var(--line);padding-top:1.5rem}.story-related ul{padding-inline-start:1.25rem}
+</style>

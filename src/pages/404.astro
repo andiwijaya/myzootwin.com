@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout locale="id" notFound title="Halaman tidak ditemukan — MyZooTwin" description="Halaman ini tidak tersedia. Kembali ke beranda MyZooTwin atau cari panduan dan artikel satwa.">
+  <section class="missing">
+    <p class="eyebrow">404</p>
+    <h1>Halaman tidak ditemukan</h1>
+    <p>Tautannya mungkin berubah. Kamu masih bisa bermain, membaca tutorial, atau menjelajahi artikel satwa.</p>
+    <div><a class="button" href="/">Ke beranda</a><a class="button secondary" href="/tutorial/">Buka tutorial</a><a class="button secondary" href="/artikel/">Baca artikel satwa</a></div>
+  </section>
+</BaseLayout>
+<style>
+  .missing{background:var(--cream);padding:clamp(3rem,10vw,8rem) clamp(1.2rem,9vw,8rem)}.missing h1{font-size:clamp(2.4rem,7vw,5rem)}.missing div{display:flex;flex-wrap:wrap;gap:.8rem}
+</style>

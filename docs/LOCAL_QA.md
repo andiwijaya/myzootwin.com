@@ -1,6 +1,6 @@
 # Local QA — repeatable foundation workflow
 
-Use Node 24, npm, and repository dependencies. This workflow checks ten product routes, the build, and six browser cases. The full gameplay and physical-device checks have separate harnesses.
+Use Node 24, npm, and repository dependencies. This workflow checks all public routes, the build, and the documented browser cases. The full gameplay and physical-device checks have separate harnesses.
 
 ## Commands from the repository root
 
@@ -11,7 +11,9 @@ npm run qa:verify
 npm run qa:serve
 ```
 
-`npm test` discovers the root `tests/*.test.mjs` files using native Node strip-types. `qa:local` creates a unique ignored `.qa/runs/<runId>/` directory and runs the full discovered suite with complete TAP, Astro check/build, and HTTP checks of all ten routes, the direct `/play` URL, and the sitemap. The unit stage uses at most four workers and has a 20-minute timeout. It records the source and build fingerprints, Git HEAD, test counts, and complete bounded logs. A changed input, failed command, incomplete or capped log, timeout, or bad route is FAIL.
+`npm test` discovers the root `tests/*.test.mjs` files using native Node strip-types. `qa:local` creates a unique ignored `.qa/runs/<runId>/` directory and runs the full discovered suite with complete TAP, Astro check/build, and HTTP checks of the public routes, the direct `/play` URL, both sitemap XML responses, and the custom 404. It also validates the static SEO contract. The unit stage uses at most four workers and has a 20-minute timeout. It records the source and build fingerprints, Git HEAD, test counts, and complete bounded logs. A changed input, failed command, incomplete or capped log, timeout, or bad route is FAIL.
+
+For an SEO-only check after building, run `npm run qa:seo`. It checks canonical URLs, unique metadata, hreflang, internal links, image metadata, structured data, noindex, sitemap coverage, and the 404 artifact. Unpublished sections in `src/seo.mjs` remain crawlable so Google can read their noindex directive. Check Google Search Console separately for actual indexing.
 
 After the automatic stages succeed, the overall status is deliberately **UNRUN** because the browser steps have not happened. `qa:verify` before a browser receipt exits **2 (UNRUN)**, not zero. A complete verified workflow exits **0 (PASS)**; any failed consistency check exits **1 (FAIL)**. This explicit UNRUN exit is expected, not a request to bypass the browser stage.
 

@@ -5,6 +5,7 @@ import { spawn, execFileSync } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
 import { availableParallelism } from 'node:os';
 import { astroCli, BROWSER_CASES, IPC_BROWSER_METHOD, PRODUCT_ROUTES, now, sha256, childPath, json, readJson, identities, assessRun, runNode, portFree, stopChild, safeRunDirectories, browserVerdict, sourceFingerprint, pageMetadata, fixtureIdentityMatches } from './tooling.mjs';
+import { assertBuiltSeo, sitemapLocations } from './seo.mjs';
 
 const root=resolve(dirname(fileURLToPath(import.meta.url)),'../..');
 const output=join(root,'.qa'),runs=join(output,'runs');
@@ -42,32 +43,30 @@ async function waitFor(url,child) {
 async function stopAll() { await Promise.all([...owned].map(child=>stopChild(child))); }
 async function requireFree() { for(const port of [4321,4322])if(!await portFree(port))throw Error(`Loopback port ${port} is occupied; no unowned process will be stopped.`); }
 async function routeChecks(report, request, transport) {
-  const baseline=await readJson(join(root,'docs/qa/giraffe-baseline/released-route-metadata.json'));
+  const dist=join(root,'dist'),seo=await assertBuiltSeo(dist);
   const routes=PRODUCT_ROUTES;
   const observations=[];
   for(const path of routes) {
     const response=await request(path),html=await response.text();
-    const built=await readFile(join(root,'dist',path,'index.html'),'utf8');
+    const built=await readFile(join(dist,path,'index.html'),'utf8');
     if(response.status!==200||sha256(html)!==sha256(built))throw Error(`Wrong/non-current built route: ${path}`);
     const meta=pageMetadata(html);
     if(meta.canonical!=='https://myzootwin.com'+path)throw Error(`Canonical regression ${path}`);
-    // The homepage and Play Zoo have since shipped Indonesian metadata.
-    const prior=path === '/play/'
-      ? {title:'Main Zoo — Tropical Creek | MyZooTwin',h1:'Dunia kecil untuk dirawat.'}
-      : path === '/' ? undefined : baseline.desktopRoutes.find(x=>x.path===path)?.direct;
-    const normalize=text=>text.replace(/\s+/g,'');
-    if(prior&&Object.keys(prior).some(key=>normalize(String(meta[key]??''))!==normalize(String(prior[key]))))throw Error(`Baseline journal metadata regression ${path}`);
     observations.push({path,status:response.status,sha256:sha256(html),...meta});
   }
   let direct=await request('/play');
   const redirect=direct.headers.get?.('location')??direct.headers.location;
   if(direct.status>=300&&direct.status<400&&redirect==='/play/')direct=await request(redirect);
   if(!direct.ok||pageMetadata(await direct.text()).canonical!=='https://myzootwin.com/play/')throw Error('Direct /play regression');
-  const sitemapResponse=await request('/sitemap-0.xml');
-  if(!sitemapResponse.ok)throw Error('Missing sitemap');
-  const sitemap=await sitemapResponse.text();
-  if([...sitemap.matchAll(/<loc>/g)].length!==routes.length||!routes.every(path=>sitemap.includes('https://myzootwin.com'+path)))throw Error('Route sitemap regression');
-  return {status:'PASS',observedAt:now(),transport,routes:observations,directPlay:true,sitemapCount:routes.length,buildId:report.build.id};
+  const index=await request('/sitemap-index.xml');
+  if(!index.ok||JSON.stringify(sitemapLocations(await index.text()))!==JSON.stringify(seo.sitemapChildren))throw Error('Sitemap index regression');
+  for(const sitemap of seo.sitemapChildren){
+    const path=new URL(sitemap).pathname,response=await request(path);
+    if(!response.ok||await response.text()!==await readFile(join(dist,path),'utf8'))throw Error(`Sitemap response regression: ${path}`);
+  }
+  const missing=await request('/__qa-missing-page__/');
+  if(missing.status!==404||!(await missing.text()).includes('Halaman tidak ditemukan'))throw Error('Missing URL did not serve the custom 404');
+  return {status:'PASS',observedAt:now(),transport,routes:observations,directPlay:true,sitemapCount:seo.sitemapCount,seo,buildId:report.build.id};
 }
 async function local() {
   await mkdir(runs,{recursive:true});

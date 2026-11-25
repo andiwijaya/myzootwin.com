@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ZooTutorialSearch from './ZooTutorialSearch.astro';
 import { tutorialCopy, type TutorialLocale } from '../tutorial/content';
+import { siteUrl } from '../seo.mjs';
 
 interface Props {
   locale: TutorialLocale;
@@ -9,6 +10,10 @@ interface Props {
 
 const { locale } = Astro.props;
 const copy = tutorialCopy[locale];
+const home = locale === 'id' ? '/' : '/en/';
+const path = `${home}tutorial/`;
+const title = locale === 'id' ? 'Tutorial MyZooTwin: Cara Bermain dan Membuka Habitat' : 'MyZooTwin Tutorial: How to Play and Unlock Habitats';
+const breadcrumbs = [{ href: home, name: locale === 'id' ? 'Beranda' : 'Home' }, { href: path, name: 'Tutorial' }];
 const photos = import.meta.glob<string>('../assets/tutorial/*.webp', { eager: true, query: '?url', import: 'default' });
 const devices = [
   { key: 'mobile', label: copy.mobile, width: 390, height: 844 },
@@ -20,8 +25,13 @@ const socialImage = {
   width: 1366,
   height: 768,
 };
+const structuredData = [{
+  '@type': 'WebPage', name: title, url: siteUrl(path), inLanguage: locale,
+  description: copy.description, primaryImageOfPage: { '@type': 'ImageObject', url: siteUrl(socialImage.src) },
+  about: { '@id': siteUrl('/play/#game') }, isPartOf: { '@id': siteUrl('/#website') },
+}];
 ---
-<BaseLayout gameGuide locale={locale} title={copy.title + ' — Tutorial'} description={copy.description} socialImage={socialImage}>
+<BaseLayout gameGuide {locale} {title} description={copy.description} {socialImage} {breadcrumbs} {structuredData}>
   <article class="guide" data-tutorial-page>
     <ZooTutorialSearch {locale} />
     <header class="guide-intro">
@@ -74,11 +84,13 @@ const socialImage = {
     <section class="guide-end" aria-labelledby="guide-end-title">
       <h2 id="guide-end-title">{copy.ready}</h2>
       <a class="button" href="/play/" data-tutorial-play>{copy.play}<span aria-hidden="true">↗</span></a>
+      <p><a class="guide-reading" href="/artikel/" hreflang="id">{locale === 'id' ? 'Baca kisah satwa dari lima habitat' : 'Read animal stories from the five habitats (Indonesian)'}</a></p>
     </section>
   </article>
 </BaseLayout>
 
 <style>
+  .guide-reading{text-decoration:underline;text-underline-offset:.2em}
   .guide {
     max-width: 1170px;
     margin-inline: auto;

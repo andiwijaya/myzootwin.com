@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const breadcrumbs = [{ href: '/en/', name: 'Home' }, { href: '/learn/', name: 'Learn' }];
+---
+<BaseLayout title="Learn With MyZooTwin: Animal Care in a Zoo Simulation" description="Use MyZooTwin to observe animal routines and test how layout affects access. Learn what food, rest, enrichment and welfare mean in the game." {breadcrumbs}>
+  <article class="learn-page">
+    <p class="eyebrow">Play, then look a little closer</p>
+    <h1>What does the MyZooTwin game simulate?</h1>
+    <p class="lead">In Tropical Creek, stocking a facility and seeing an animal use it are two separate steps. Follow one resident and watch how the layout changes what it can reach.</p>
+    <section>
+      <h2>Follow a routine</h2>
+      <p>Try the macaw aviary first. Fill the food and water, then leave the simulation running and follow one bird. Note when it travels to a station, spends time there and moves on. You can use <a href="/en/tutorial/#kamera">habitat zoom</a> when the view is too wide to follow.</p>
+    </section>
+    <section>
+      <h2>Change one thing at a time</h2>
+      <p>Predict what will happen if you make an approach to a facility easier to reach. Compare before and after at normal speed. If a resident still doesn’t use it immediately, watch what it is already doing before changing something else. Rest, food, water and enrichment are separate needs in the game.</p>
+    </section>
+    <section>
+      <h2>Separate the model from the real animal</h2>
+      <p>Game scores and timers simplify what happens in a habitat. They are neither scientific measurements nor instructions for caring for real animals. Use the <a href="/animals/">animal library</a> to compare something you saw in the game with a species reference.</p>
+    </section>
+    <a class="button" href="/play/" data-site-source="learn">Open the simulation</a>
+  </article>
+</BaseLayout>
+<style>
+  .learn-page{max-width:940px;margin:auto;padding:clamp(2.4rem,7vw,6rem) clamp(1.2rem,5vw,4rem)}.learn-page h1{font-size:clamp(2.5rem,6vw,5rem)}.learn-page section{border-top:1px solid var(--line);padding:1.3rem 0}.learn-page h2{font-size:clamp(1.55rem,4vw,2.2rem)}.learn-page p{max-width:65ch}.learn-page .lead{font-size:1.22rem;color:var(--muted);margin-bottom:2rem}.learn-page p a{text-decoration:underline;text-underline-offset:.2em}
+</style>

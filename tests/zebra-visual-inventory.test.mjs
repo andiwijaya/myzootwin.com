@@ -138,6 +138,12 @@ test('all production-reachable visual sources and nested geometry/part sites rem
   assert.ok(Array.isArray(added.provenance)&&added.provenance.length===1,'Content-hash-bound GLB provenance '+added.path);
   accepted.set(added.path,added);
  }
+ // The shared layout reuses the reviewed V5 social image. The scanner also
+ // recognizes its legacy filename alias; keep the original bytes and provenance.
+ for(const name of ['v5-zoo-social.jpg','zoo-social.jpg']){
+  const path='public/images/home/'+name,record=accepted.get(path);assert.ok(record,path);
+  accepted.set(path,{...record,sourceStringReferences:[...record.sourceStringReferences,'src/layouts/BaseLayout.astro'].sort()});
+ }
  assert.deepEqual(current.publicAssets,[...accepted.values()].sort((a,b)=>a.path.localeCompare(b.path)),'All copied assets remain exactly reviewed; no unregistered addition/deletion/content/provenance drift');
  assert.equal(createHash('sha256').update(readFileSync(new URL('../'+extension.evidence.path,import.meta.url))).digest('hex'),extension.evidence.sha256);
  assert.equal(extension.staticAdditions.length,1);assert.equal(extension.publicAdditions.length,5);

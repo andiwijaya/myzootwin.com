@@ -7,6 +7,7 @@ import { createServer } from 'node:net';
 export const BROWSER_CASES=['desktop-native','portrait-native-id','landscape-native-id','native-lifecycle','injected-failure-retry','navigation-reload','tutorial-home','animal-articles'];
 export const ANIMAL_ARTICLE_ROUTES=['makaw','gajah','singa','jerapah','zebra'].map(slug=>'/artikel/'+slug+'/');
 export const PRODUCT_ROUTES=['/','/en/','/animals/','/wildlife/','/pets/','/learn/','/adventures/','/gear/','/about/','/play/','/tutorial/','/en/tutorial/','/artikel/',...ANIMAL_ARTICLE_ROUTES];
+export const STATIC_PAGE_COUNT=PRODUCT_ROUTES.length+1; // Includes the custom 404.html.
 export const IPC_BROWSER_METHOD='isolated-playwright-local-build';
 export const sha256=bytes=>createHash('sha256').update(bytes).digest('hex');
 export const now=()=>new Date().toISOString();
@@ -60,7 +61,7 @@ export function assessRun(result,kind) {
   if(kind==='unit')return parseTap(result.stdout);
   const plain=result.stdout.replace(/\x1b\[[0-9;]*m/g,'');
   if(kind==='check'&&!/0 errors[\s\S]*0 warnings[\s\S]*0 hints/.test(plain))throw Error('Incomplete Astro check summary');
-  if(kind==='build'&&(Number(plain.match(/\b(\d+) page\(s\) built/)?.[1])!==PRODUCT_ROUTES.length||!plain.includes('[build] Complete!')))throw Error('Incomplete product build summary');
+  if(kind==='build'&&(Number(plain.match(/\b(\d+) page\(s\) built/)?.[1])!==STATIC_PAGE_COUNT||!plain.includes('[build] Complete!')))throw Error('Incomplete product build summary');
   return null;
 }
 /** Full capture up to a hard limit; reaching it always fails, never a capped-log PASS. */

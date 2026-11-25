@@ -1,24 +1,38 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getImage } from 'astro:assets';
 import { animalStories } from '../../articles/stories';
+import { siteUrl } from '../../seo.mjs';
 import '../../articles/articles.css';
 
 const cover = animalStories[0].image;
+const thumbnails = await Promise.all(animalStories.map(story =>
+  getImage({ src: story.image, width: 720, widths: [360, 540, 720], format: 'webp' }),
+));
+const breadcrumbs = [{ href: '/', name: 'Beranda' }, { href: '/artikel/', name: 'Artikel Satwa' }];
+const structuredData = [{
+  '@type': 'CollectionPage', name: 'Artikel Satwa MyZooTwin', url: siteUrl('/artikel/'), inLanguage: 'id',
+  mainEntity: { '@type': 'ItemList', itemListElement: animalStories.map((story, index) => ({
+    '@type': 'ListItem', position: index + 1, name: story.title, url: siteUrl(`/artikel/${story.slug}/`),
+  })) },
+}];
 ---
-<BaseLayout gameStories locale="id" title="Artikel Satwa — MyZooTwin"
+<BaseLayout gameStories locale="id" title="Artikel Satwa: Makaw, Gajah, Singa, Jerapah dan Zebra — MyZooTwin"
   description="Lima cerita satwa dari MyZooTwin. Baca kisah Makaw, Gajah, Singa, Jerapah, dan Zebra di habitat masing-masing."
-  socialImage={{ src: cover.src, width: cover.width, height: cover.height, alt: animalStories[0].alt }}>
+  socialImage={{ src: cover.src, width: cover.width, height: cover.height, alt: animalStories[0].alt }} {breadcrumbs} {structuredData}>
   <section class="article-hub" data-article-index aria-labelledby="article-index-title">
     <header class="article-index-intro">
-      <h1 id="article-index-title">Cerita dari lima habitat</h1>
+      <h1 id="article-index-title">Artikel satwa dari lima habitat</h1>
       <p>Ikuti keseharian satwa MyZooTwin, lalu kenali kebiasaan mereka di alam. Pilih satu satwa untuk membaca ceritanya.</p>
     </header>
     <ul class="article-grid">
       {animalStories.map((story, index) => (
         <li>
           <a class="article-card" href={'/artikel/' + story.slug + '/'} data-article-card={story.slug}>
-            <img src={story.image.src} width={story.image.width} height={story.image.height}
-              alt={story.alt} loading={index < 3 ? 'eager' : 'lazy'} decoding="async" />
+            <img src={thumbnails[index].src} srcset={thumbnails[index].srcSet.attribute}
+              width={720} height={Math.round(720 * story.image.height / story.image.width)}
+              sizes="(max-width: 640px) 92vw, (max-width: 975px) 45vw, 360px"
+              alt={story.alt} loading={index === 0 ? 'eager' : 'lazy'} decoding="async" />
             <div>
               <p class="article-species">{story.species}</p>
               <h2>{story.title}</h2>

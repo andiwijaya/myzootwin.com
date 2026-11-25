@@ -1,9 +1,26 @@
 ---
 import {pagePrivacy} from '../site-policy';
 import SitePrivacy from '../components/SitePrivacy.astro';
-const { title = 'MyZooTwin — Explore. Discover. Understand Animals.', description = 'MyZooTwin is an international animal learning journal for curious people who care about wildlife, pets, and the living world.' } = Astro.props;
-const canonical = Astro.props.canonical ?? new URL(Astro.url.pathname, 'https://myzootwin.com').toString();
-const socialImage = Astro.props.socialImage;
+import { canonicalPath, isIndexablePath, siteUrl } from '../seo.mjs';
+
+interface Props {
+  title: string;
+  description: string;
+  locale?: 'id' | 'en';
+  gameHome?: boolean;
+  gameGuide?: boolean;
+  gameStories?: boolean;
+  notFound?: boolean;
+  socialImage?: { src: string; alt: string; width?: number; height?: number };
+  article?: boolean;
+  breadcrumbs?: readonly { href: string; name: string }[];
+  structuredData?: readonly Record<string, unknown>[];
+}
+
+const { title, description, notFound, breadcrumbs = [], structuredData = [], article } = Astro.props;
+const currentPath = canonicalPath(Astro.url.pathname);
+const canonical = siteUrl(currentPath);
+const indexable = !notFound && isIndexablePath(currentPath);
 const gameHome = Astro.props.gameHome === true;
 const gameGuide = Astro.props.gameGuide === true;
 const gameStories = Astro.props.gameStories === true;
@@ -13,10 +30,23 @@ const homePath = locale === 'id' ? '/' : '/en/';
 const tutorialPath = locale === 'id' ? '/tutorial/' : '/en/tutorial/';
 const localizedPaths = gameGuide ? {id:'/tutorial/',en:'/en/tutorial/'} : {id:'/',en:'/en/'};
 const alternateLocale = locale === 'id' ? 'en' : 'id';
+const hasAlternates = gameHome || gameGuide;
+const socialImage = Astro.props.socialImage ?? (indexable ? {
+  src: '/images/home/v5-zoo-social.jpg', width: 1200, height: 630,
+  alt: locale === 'id' ? 'Lima habitat di peta zoo 3D MyZooTwin.' : 'Five habitats on the MyZooTwin 3D zoo map.',
+} : undefined);
 const articlesLabel = locale === 'id' ? 'Artikel' : 'Articles (ID)';
 const ui = locale === 'id' ? {skip:'Langsung ke konten utama',home:'Beranda',play:'Main Sekarang',nav:'Navigasi utama',brand:'Beranda MyZooTwin',tagline:'Bangun zoo yang hidup. Rawat para penghuninya.',footer:'Dibuat untuk rasa ingin tahu.',privacy:'Pilihan privasi'} : {skip:'Skip to main content',home:'Home',play:'Play Now',nav:'Main navigation',brand:'MyZooTwin home',tagline:'Build a living zoo. Care for its animals.',footer:'Made for curious minds.',privacy:'Privacy choices'};
 const gaId = import.meta.env.PUBLIC_GA4_ID;
 const privacy = pagePrivacy(Astro.url.pathname, Boolean(gaId));
+const graph = [...structuredData];
+if (breadcrumbs.length > 1) graph.push({
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbs.map(({ href, name }, i) => ({
+    '@type': 'ListItem', position: i + 1, name, item: siteUrl(href),
+  })),
+});
+const jsonLd = JSON.stringify({ '@context': 'https://schema.org', '@graph': graph }).replace(/</g, '\\u003c');
 ---
 <!doctype html>
 <html lang={locale}>
@@ -26,42 +56,48 @@ const privacy = pagePrivacy(Astro.url.pathname, Boolean(gaId));
     {privacy.referrer && <meta name="referrer" content={privacy.referrer} />}
     <meta name="viewport" content="width=device-width" />
     <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
+    <meta name="robots" content={indexable ? 'max-image-preview:large' : 'noindex, follow'} />
+    {!notFound && <link rel="canonical" href={canonical} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={article ? 'article' : 'website'} />
     <meta property="og:site_name" content="MyZooTwin" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
-    <meta name="twitter:card" content="summary_large_image" />
+    {!notFound && <meta property="og:url" content={canonical} />}
+    <meta property="og:locale" content={locale === 'id' ? 'id_ID' : 'en_US'} />
+    <meta name="twitter:card" content={socialImage ? 'summary_large_image' : 'summary'} />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    {socialImage && <meta property="og:image" content={new URL(socialImage.src, 'https://myzootwin.com').href} />}
+    {socialImage && <meta property="og:image" content={siteUrl(socialImage.src)} />}
     {socialImage && <meta property="og:image:alt" content={socialImage.alt} />}
-    {socialImage && <meta name="twitter:image" content={new URL(socialImage.src, 'https://myzootwin.com').href} />}
+    {socialImage && <meta name="twitter:image" content={siteUrl(socialImage.src)} />}
     {socialImage && <meta name="twitter:image:alt" content={socialImage.alt} />}
-    {(gameHome || gameGuide) && <><link rel="alternate" hreflang="id" href={'https://myzootwin.com' + localizedPaths.id} /><link rel="alternate" hreflang="en" href={'https://myzootwin.com' + localizedPaths.en} /><link rel="alternate" hreflang="x-default" href={'https://myzootwin.com' + localizedPaths.id} /><meta property="og:locale" content={locale === 'id' ? 'id_ID' : 'en_US'} /><meta property="og:locale:alternate" content={locale === 'id' ? 'en_US' : 'id_ID'} /></>}
+    {hasAlternates && <><link rel="alternate" hreflang="id" href={siteUrl(localizedPaths.id)} /><link rel="alternate" hreflang="en" href={siteUrl(localizedPaths.en)} /><link rel="alternate" hreflang="x-default" href={siteUrl(localizedPaths.id)} /><meta property="og:locale:alternate" content={locale === 'id' ? 'en_US' : 'id_ID'} /></>}
     {socialImage?.width && <meta property="og:image:width" content={String(socialImage.width)} />}
     {socialImage?.height && <meta property="og:image:height" content={String(socialImage.height)} />}
     <title>{title}</title>
+    {indexable && graph.length > 0 && <script is:inline type="application/ld+json" set:html={jsonLd} />}
   </head>
   <body class={gameHome ? "game-home" : gamePage ? "game-reading" : undefined}>
     <a class="skip-link" href="#main-content" lang={locale}>{ui.skip}</a>
     <header class="site-header" lang={locale}>
-      <a class="brand" href={gamePage ? homePath : "/"} aria-label={ui.brand}><span class="brand-mark">✦</span><span>MyZoo<span class="brand-accent">Twin</span></span></a>
+      <a class="brand" href={homePath} aria-label={ui.brand}><span class="brand-mark">✦</span><span>MyZoo<span class="brand-accent">Twin</span></span></a>
       <nav aria-label={ui.nav}>
         {gamePage && <a href={homePath} aria-current={gameHome ? "page" : undefined}>{ui.home}</a>}
-        <a class="play-link" href="/play/" data-site-source="nav" aria-current={Astro.url.pathname.replace(/\/$/, '') === '/play' ? 'page' : undefined}>{gamePage ? ui.play : "Play Zoo"}</a>
-        {gamePage && <a href={tutorialPath} aria-current={gameGuide ? "page" : undefined}>Tutorial</a>}
-        <a href="/artikel/" hreflang="id" aria-current={gameStories ? "page" : undefined} data-site-articles>{articlesLabel}</a>
-        {(gameHome || gameGuide) && <a class="language-link" href={localizedPaths[alternateLocale]} lang={alternateLocale} hreflang={alternateLocale}>{locale === "id" ? "English" : "Indonesia"}</a>}
-        {!gamePage && <><a href="/animals/">Animals</a><a href="/wildlife/">Wildlife</a><a href="/pets/">Pets</a><a href="/learn/">Learn</a><a href="/adventures/">Adventures</a><a href="/gear/">Gear</a></>}
+        <a class="play-link" href="/play/" data-site-source="nav" aria-current={currentPath === '/play/' ? 'page' : undefined}>{ui.play}</a>
+        <a href={tutorialPath} aria-current={currentPath === tutorialPath ? "page" : undefined}>Tutorial</a>
+        <a href="/artikel/" hreflang="id" aria-current={currentPath === '/artikel/' ? "page" : undefined} data-site-articles>{articlesLabel}</a>
+        {hasAlternates && <a class="language-link" href={localizedPaths[alternateLocale]} lang={alternateLocale} hreflang={alternateLocale}>{locale === "id" ? "English" : "Indonesia"}</a>}
+        {!gamePage && <><a href="/animals/" hreflang="en">{locale === 'id' ? 'Satwa (EN)' : 'Animals'}</a><a href="/learn/" hreflang="en">{locale === 'id' ? 'Belajar (EN)' : 'Learn'}</a></>}
       </nav>
-      {!gamePage && <a class="header-link" href="/about/">About <span aria-hidden="true">↗</span></a>}
+      {!gamePage && <a class="header-link" href="/about/" hreflang="en">{locale === 'id' ? 'Tentang (EN)' : 'About'}</a>}
     </header>
     <SitePrivacy analyticsId={gaId ?? ""} game={privacy.game} locale={locale} />
-    <main id="main-content" tabindex="-1"><slot /></main>
-    <footer class="site-footer" lang={locale}><div><a class="brand" href={gamePage ? homePath : "/"}><span class="brand-mark">✦</span><span>MyZoo<span class="brand-accent">Twin</span></span></a><p>{gamePage ? ui.tagline : "A curious field guide to the animals we share this planet with."}</p></div><div class="footer-links">{gamePage ? <><a href={homePath}>{ui.home}</a><a href="/play/" data-site-source="home">{ui.play}</a><a href={tutorialPath}>Tutorial</a></> : <><a href="/animals/">Animals</a><a href="/wildlife/">Wildlife</a><a href="/pets/">Pets</a><a href="/learn/">Learn</a><a href="/about/">About</a></>}</div><small>© {new Date().getFullYear()} MyZooTwin. {ui.footer}<br /><button class="privacy-footer" type="button" data-open-site-privacy disabled>{ui.privacy}</button></small></footer>
+    <main id="main-content" tabindex="-1">
+      {breadcrumbs.length > 1 && <nav class="site-breadcrumbs" aria-label={locale === 'id' ? 'Jejak navigasi' : 'Breadcrumb'}><ol>{breadcrumbs.map(({ href, name }, i) => <li>{i === breadcrumbs.length - 1 ? <span aria-current="page">{name}</span> : <a href={href}>{name}</a>}</li>)}</ol></nav>}
+      <slot />
+    </main>
+    <footer class="site-footer" lang={locale}><div><a class="brand" href={homePath}><span class="brand-mark">✦</span><span>MyZoo<span class="brand-accent">Twin</span></span></a><p>{ui.tagline}</p></div><div class="footer-links"><a href={homePath}>{ui.home}</a><a href="/play/" data-site-source="home">{ui.play}</a><a href={tutorialPath}>Tutorial</a><a href="/artikel/" hreflang="id">{articlesLabel}</a><a href="/animals/" hreflang="en">{locale === 'id' ? 'Perpustakaan satwa (EN)' : 'Animal library'}</a><a href="/learn/" hreflang="en">{locale === 'id' ? 'Belajar (EN)' : 'Learn'}</a><a href="/about/" hreflang="en">{locale === 'id' ? 'Tentang (EN)' : 'About'}</a></div><small>© {new Date().getFullYear()} MyZooTwin. {ui.footer}<br /><button class="privacy-footer" type="button" data-open-site-privacy disabled>{ui.privacy}</button></small></footer>
   </body>
 </html>
 <script>
@@ -72,6 +108,7 @@ const privacy = pagePrivacy(Astro.url.pathname, Boolean(gaId));
   if (privacyRoot) mountSitePrivacy(privacyRoot);
 </script>
 <style is:global>
+.site-breadcrumbs{display:block;padding:.65rem clamp(1.2rem,5vw,5rem);font-size:.85rem;color:var(--muted);background:var(--paper)}.site-breadcrumbs ol{display:flex;flex-wrap:wrap;gap:.25rem .6rem;list-style:none;margin:0;padding:0}.site-breadcrumbs li:not(:first-child)::before{content:'/';padding-right:.6rem;color:var(--line)}.site-breadcrumbs a{text-decoration:underline;text-underline-offset:.18em}.site-breadcrumbs [aria-current]{color:var(--ink)}
 .privacy-footer{font:inherit;color:inherit;background:transparent;border:1px solid #adc0b2;border-radius:8px;min-height:44px;padding:.5rem .75rem;margin-top:.75rem;cursor:pointer;white-space:normal}.privacy-footer:disabled{opacity:.6;cursor:default}
 .game-reading .site-header nav{flex-wrap:wrap;gap:.35rem 1rem}
 .game-reading .site-header nav a{display:inline-flex;align-items:center;min-height:44px}
